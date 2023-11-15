@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['SubAccountArgs', 'SubAccount']
+__all__ = ['SubAccountArrgs', 'SubAccount']
 
 @pulumi.input_type
-class SubAccountArgs:
+calass SubAccountArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  master_billing_account: pulumi.Input[str],
@@ -72,7 +72,7 @@ class SubAccountArgs:
 
 
 @pulumi.input_type
-class _SubAccountState:
+calass _SubAccountState:
     def __init__(__self__, *,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -181,7 +181,7 @@ class _SubAccountState:
         pulumi.set(self, "open", value)
 
 
-class SubAccount(pulumi.CustomResource):
+calass SubAccount(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -225,7 +225,7 @@ class SubAccount(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SubAccountArgs,
+                 args: SubAccountArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows creation and management of a Google Cloud Billing Subaccount.
@@ -250,12 +250,12 @@ class SubAccount(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SubAccountArgs args: The arguments to use to populate this resource's properties.
+        :param SubAccountArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SubAccountArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SubAccountArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -274,7 +274,7 @@ class SubAccount(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SubAccountArgs.__new__(SubAccountArgs)
+            __props__ = SubAccountArrgs.__new__(SubAccountArrgs)
 
             __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:

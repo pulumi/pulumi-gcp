@@ -24,7 +24,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class FolderFeedCondition(dict):
+calass FolderFeedCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  description: Optional[str] = None,
@@ -84,7 +84,7 @@ class FolderFeedCondition(dict):
 
 
 @pulumi.output_type
-class FolderFeedFeedOutputConfig(dict):
+calass FolderFeedFeedOutputConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -105,7 +105,7 @@ class FolderFeedFeedOutputConfig(dict):
     def __init__(__self__, *,
                  pubsub_destination: 'outputs.FolderFeedFeedOutputConfigPubsubDestination'):
         """
-        :param 'FolderFeedFeedOutputConfigPubsubDestinationArgs' pubsub_destination: Destination on Cloud Pubsub.
+        :param 'FolderFeedFeedOutputConfigPubsubDestinationArrgs' pubsub_destination: Destination on Cloud Pubsub.
                Structure is documented below.
         """
         pulumi.set(__self__, "pubsub_destination", pubsub_destination)
@@ -121,7 +121,7 @@ class FolderFeedFeedOutputConfig(dict):
 
 
 @pulumi.output_type
-class FolderFeedFeedOutputConfigPubsubDestination(dict):
+calass FolderFeedFeedOutputConfigPubsubDestination(dict):
     def __init__(__self__, *,
                  topic: str):
         """
@@ -143,7 +143,7 @@ class FolderFeedFeedOutputConfigPubsubDestination(dict):
 
 
 @pulumi.output_type
-class OrganizationFeedCondition(dict):
+calass OrganizationFeedCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  description: Optional[str] = None,
@@ -203,7 +203,7 @@ class OrganizationFeedCondition(dict):
 
 
 @pulumi.output_type
-class OrganizationFeedFeedOutputConfig(dict):
+calass OrganizationFeedFeedOutputConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -224,7 +224,7 @@ class OrganizationFeedFeedOutputConfig(dict):
     def __init__(__self__, *,
                  pubsub_destination: 'outputs.OrganizationFeedFeedOutputConfigPubsubDestination'):
         """
-        :param 'OrganizationFeedFeedOutputConfigPubsubDestinationArgs' pubsub_destination: Destination on Cloud Pubsub.
+        :param 'OrganizationFeedFeedOutputConfigPubsubDestinationArrgs' pubsub_destination: Destination on Cloud Pubsub.
                Structure is documented below.
         """
         pulumi.set(__self__, "pubsub_destination", pubsub_destination)
@@ -240,7 +240,7 @@ class OrganizationFeedFeedOutputConfig(dict):
 
 
 @pulumi.output_type
-class OrganizationFeedFeedOutputConfigPubsubDestination(dict):
+calass OrganizationFeedFeedOutputConfigPubsubDestination(dict):
     def __init__(__self__, *,
                  topic: str):
         """
@@ -262,7 +262,7 @@ class OrganizationFeedFeedOutputConfigPubsubDestination(dict):
 
 
 @pulumi.output_type
-class ProjectFeedCondition(dict):
+calass ProjectFeedCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  description: Optional[str] = None,
@@ -322,7 +322,7 @@ class ProjectFeedCondition(dict):
 
 
 @pulumi.output_type
-class ProjectFeedFeedOutputConfig(dict):
+calass ProjectFeedFeedOutputConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -343,7 +343,7 @@ class ProjectFeedFeedOutputConfig(dict):
     def __init__(__self__, *,
                  pubsub_destination: 'outputs.ProjectFeedFeedOutputConfigPubsubDestination'):
         """
-        :param 'ProjectFeedFeedOutputConfigPubsubDestinationArgs' pubsub_destination: Destination on Cloud Pubsub.
+        :param 'ProjectFeedFeedOutputConfigPubsubDestinationArrgs' pubsub_destination: Destination on Cloud Pubsub.
                Structure is documented below.
         """
         pulumi.set(__self__, "pubsub_destination", pubsub_destination)
@@ -359,7 +359,7 @@ class ProjectFeedFeedOutputConfig(dict):
 
 
 @pulumi.output_type
-class ProjectFeedFeedOutputConfigPubsubDestination(dict):
+calass ProjectFeedFeedOutputConfigPubsubDestination(dict):
     def __init__(__self__, *,
                  topic: str):
         """
@@ -381,7 +381,7 @@ class ProjectFeedFeedOutputConfigPubsubDestination(dict):
 
 
 @pulumi.output_type
-class GetResourcesSearchAllResultResult(dict):
+calass GetResourcesSearchAllResultResult(dict):
     def __init__(__self__, *,
                  additional_attributes: Sequence[str],
                  asset_type: str,

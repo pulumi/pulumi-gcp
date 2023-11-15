@@ -10,18 +10,18 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ClusterNodeTypeConfigArgs',
-    'NetworkVpcNetworkArgs',
-    'PrivateCloudHcxArgs',
-    'PrivateCloudManagementClusterArgs',
-    'PrivateCloudManagementClusterNodeTypeConfigArgs',
-    'PrivateCloudNetworkConfigArgs',
-    'PrivateCloudNsxArgs',
-    'PrivateCloudVcenterArgs',
+    'ClusterNodeTypeConfigArrgs',
+    'NetworkVpcNetworkArrgs',
+    'PrivateCloudHcxArrgs',
+    'PrivateCloudManagementClusterArrgs',
+    'PrivateCloudManagementClusterNodeTypeConfigArrgs',
+    'PrivateCloudNetworkConfigArrgs',
+    'PrivateCloudNsxArrgs',
+    'PrivateCloudVcenterArrgs',
 ]
 
 @pulumi.input_type
-class ClusterNodeTypeConfigArgs:
+calass ClusterNodeTypeConfigArrgs:
     def __init__(__self__, *,
                  node_count: pulumi.Input[int],
                  node_type_id: pulumi.Input[str],
@@ -80,7 +80,7 @@ class ClusterNodeTypeConfigArgs:
 
 
 @pulumi.input_type
-class NetworkVpcNetworkArgs:
+calass NetworkVpcNetworkArrgs:
     def __init__(__self__, *,
                  network: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -125,7 +125,7 @@ class NetworkVpcNetworkArgs:
 
 
 @pulumi.input_type
-class PrivateCloudHcxArgs:
+calass PrivateCloudHcxArrgs:
     def __init__(__self__, *,
                  fqdn: Optional[pulumi.Input[str]] = None,
                  internal_ip: Optional[pulumi.Input[str]] = None,
@@ -198,10 +198,10 @@ class PrivateCloudHcxArgs:
 
 
 @pulumi.input_type
-class PrivateCloudManagementClusterArgs:
+calass PrivateCloudManagementClusterArrgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]] = None):
+                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArrgs']]]] = None):
         """
         :param pulumi.Input[str] cluster_id: The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
                * Only contains 1-63 alphanumeric characters and hyphens
@@ -209,7 +209,7 @@ class PrivateCloudManagementClusterArgs:
                * Ends with a non-hyphen character
                * Not formatted as a UUID
                * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster,
+        :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArrgs']]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         """
@@ -236,7 +236,7 @@ class PrivateCloudManagementClusterArgs:
 
     @property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]]:
+    def node_type_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArrgs']]]]:
         """
         The map of cluster node types in this cluster,
         where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -245,12 +245,12 @@ class PrivateCloudManagementClusterArgs:
         return pulumi.get(self, "node_type_configs")
 
     @node_type_configs.setter
-    def node_type_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]]):
+    def node_type_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArrgs']]]]):
         pulumi.set(self, "node_type_configs", value)
 
 
 @pulumi.input_type
-class PrivateCloudManagementClusterNodeTypeConfigArgs:
+calass PrivateCloudManagementClusterNodeTypeConfigArrgs:
     def __init__(__self__, *,
                  node_count: pulumi.Input[int],
                  node_type_id: pulumi.Input[str],
@@ -313,7 +313,7 @@ class PrivateCloudManagementClusterNodeTypeConfigArgs:
 
 
 @pulumi.input_type
-class PrivateCloudNetworkConfigArgs:
+calass PrivateCloudNetworkConfigArrgs:
     def __init__(__self__, *,
                  management_cidr: pulumi.Input[str],
                  management_ip_address_layout_version: Optional[pulumi.Input[int]] = None,
@@ -403,7 +403,7 @@ class PrivateCloudNetworkConfigArgs:
 
 
 @pulumi.input_type
-class PrivateCloudNsxArgs:
+calass PrivateCloudNsxArrgs:
     def __init__(__self__, *,
                  fqdn: Optional[pulumi.Input[str]] = None,
                  internal_ip: Optional[pulumi.Input[str]] = None,
@@ -476,7 +476,7 @@ class PrivateCloudNsxArgs:
 
 
 @pulumi.input_type
-class PrivateCloudVcenterArgs:
+calass PrivateCloudVcenterArrgs:
     def __init__(__self__, *,
                  fqdn: Optional[pulumi.Input[str]] = None,
                  internal_ip: Optional[pulumi.Input[str]] = None,

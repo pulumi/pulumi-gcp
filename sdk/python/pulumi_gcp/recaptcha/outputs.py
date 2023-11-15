@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class EnterpriseKeyAndroidSettings(dict):
+calass EnterpriseKeyAndroidSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -67,7 +67,7 @@ class EnterpriseKeyAndroidSettings(dict):
 
 
 @pulumi.output_type
-class EnterpriseKeyIosSettings(dict):
+calass EnterpriseKeyIosSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -117,7 +117,7 @@ class EnterpriseKeyIosSettings(dict):
 
 
 @pulumi.output_type
-class EnterpriseKeyTestingOptions(dict):
+calass EnterpriseKeyTestingOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -167,7 +167,7 @@ class EnterpriseKeyTestingOptions(dict):
 
 
 @pulumi.output_type
-class EnterpriseKeyWebSettings(dict):
+calass EnterpriseKeyWebSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

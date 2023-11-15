@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ZoneIamMemberArgs', 'ZoneIamMember']
+__all__ = ['ZoneIamMemberArrgs', 'ZoneIamMember']
 
 @pulumi.input_type
-class ZoneIamMemberArgs:
+calass ZoneIamMemberArrgs:
     def __init__(__self__, *,
                  dataplex_zone: pulumi.Input[str],
                  lake: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ZoneIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ZoneIamMemberConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -101,11 +101,11 @@ class ZoneIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ZoneIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ZoneIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ZoneIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ZoneIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -144,9 +144,9 @@ class ZoneIamMemberArgs:
 
 
 @pulumi.input_type
-class _ZoneIamMemberState:
+calass _ZoneIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['ZoneIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ZoneIamMemberConditionArrgs']] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
@@ -195,11 +195,11 @@ class _ZoneIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ZoneIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ZoneIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ZoneIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ZoneIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -293,12 +293,12 @@ class _ZoneIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class ZoneIamMember(pulumi.CustomResource):
+calass ZoneIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ZoneIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ZoneIamMemberConditionArrgs']]] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -327,7 +327,7 @@ class ZoneIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -418,7 +418,7 @@ class ZoneIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ZoneIamMemberArgs,
+                 args: ZoneIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Dataplex Zone. Each of these resources serves a different use case:
@@ -441,7 +441,7 @@ class ZoneIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -508,12 +508,12 @@ class ZoneIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ZoneIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param ZoneIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ZoneIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ZoneIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -522,7 +522,7 @@ class ZoneIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ZoneIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ZoneIamMemberConditionArrgs']]] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -536,7 +536,7 @@ class ZoneIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ZoneIamMemberArgs.__new__(ZoneIamMemberArgs)
+            __props__ = ZoneIamMemberArrgs.__new__(ZoneIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if dataplex_zone is None and not opts.urn:
@@ -564,7 +564,7 @@ class ZoneIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ZoneIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ZoneIamMemberConditionArrgs']]] = None,
             dataplex_zone: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             lake: Optional[pulumi.Input[str]] = None,

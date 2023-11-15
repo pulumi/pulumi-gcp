@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['RegionBackendServiceIamPolicyArgs', 'RegionBackendServiceIamPolicy']
+__all__ = ['RegionBackendServiceIamPolicyArrgs', 'RegionBackendServiceIamPolicy']
 
 @pulumi.input_type
-class RegionBackendServiceIamPolicyArgs:
+calass RegionBackendServiceIamPolicyArrgs:
     def __init__(__self__, *,
                  policy_data: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
@@ -119,7 +119,7 @@ class RegionBackendServiceIamPolicyArgs:
 
 
 @pulumi.input_type
-class _RegionBackendServiceIamPolicyState:
+calass _RegionBackendServiceIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -242,7 +242,7 @@ class _RegionBackendServiceIamPolicyState:
         pulumi.set(self, "region", value)
 
 
-class RegionBackendServiceIamPolicy(pulumi.CustomResource):
+calass RegionBackendServiceIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -306,7 +306,7 @@ class RegionBackendServiceIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionBackendServiceIamPolicyArgs,
+                 args: RegionBackendServiceIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -334,12 +334,12 @@ class RegionBackendServiceIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param RegionBackendServiceIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param RegionBackendServiceIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionBackendServiceIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegionBackendServiceIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -359,7 +359,7 @@ class RegionBackendServiceIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionBackendServiceIamPolicyArgs.__new__(RegionBackendServiceIamPolicyArgs)
+            __props__ = RegionBackendServiceIamPolicyArrgs.__new__(RegionBackendServiceIamPolicyArrgs)
 
             __props__.__dict__["name"] = name
             if policy_data is None and not opts.urn:

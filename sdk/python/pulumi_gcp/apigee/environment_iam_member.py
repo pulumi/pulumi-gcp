@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EnvironmentIamMemberArgs', 'EnvironmentIamMember']
+__all__ = ['EnvironmentIamMemberArrgs', 'EnvironmentIamMember']
 
 @pulumi.input_type
-class EnvironmentIamMemberArgs:
+calass EnvironmentIamMemberArrgs:
     def __init__(__self__, *,
                  env_id: pulumi.Input[str],
                  member: pulumi.Input[str],
                  org_id: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['EnvironmentIamMemberConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['EnvironmentIamMemberConditionArrgs']] = None):
         """
         The set of arguments for constructing a EnvironmentIamMember resource.
         :param pulumi.Input[str] env_id: Used to find the parent resource to bind the IAM policy to
@@ -105,18 +105,18 @@ class EnvironmentIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['EnvironmentIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['EnvironmentIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['EnvironmentIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['EnvironmentIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _EnvironmentIamMemberState:
+calass _EnvironmentIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['EnvironmentIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['EnvironmentIamMemberConditionArrgs']] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -157,11 +157,11 @@ class _EnvironmentIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['EnvironmentIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['EnvironmentIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['EnvironmentIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['EnvironmentIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -233,12 +233,12 @@ class _EnvironmentIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class EnvironmentIamMember(pulumi.CustomResource):
+calass EnvironmentIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['EnvironmentIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['EnvironmentIamMemberConditionArrgs']]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -265,7 +265,7 @@ class EnvironmentIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -348,7 +348,7 @@ class EnvironmentIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EnvironmentIamMemberArgs,
+                 args: EnvironmentIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Apigee Environment. Each of these resources serves a different use case:
@@ -371,7 +371,7 @@ class EnvironmentIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -432,12 +432,12 @@ class EnvironmentIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param EnvironmentIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param EnvironmentIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EnvironmentIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EnvironmentIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -446,7 +446,7 @@ class EnvironmentIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['EnvironmentIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['EnvironmentIamMemberConditionArrgs']]] = None,
                  env_id: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -458,7 +458,7 @@ class EnvironmentIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EnvironmentIamMemberArgs.__new__(EnvironmentIamMemberArgs)
+            __props__ = EnvironmentIamMemberArrgs.__new__(EnvironmentIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if env_id is None and not opts.urn:
@@ -484,7 +484,7 @@ class EnvironmentIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['EnvironmentIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['EnvironmentIamMemberConditionArrgs']]] = None,
             env_id: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

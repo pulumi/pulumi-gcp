@@ -10,150 +10,150 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AutoscalingPolicyBasicAlgorithmArgs',
-    'AutoscalingPolicyBasicAlgorithmYarnConfigArgs',
-    'AutoscalingPolicyIamBindingConditionArgs',
-    'AutoscalingPolicyIamMemberConditionArgs',
-    'AutoscalingPolicySecondaryWorkerConfigArgs',
-    'AutoscalingPolicyWorkerConfigArgs',
-    'ClusterClusterConfigArgs',
-    'ClusterClusterConfigAutoscalingConfigArgs',
-    'ClusterClusterConfigDataprocMetricConfigArgs',
-    'ClusterClusterConfigDataprocMetricConfigMetricArgs',
-    'ClusterClusterConfigEncryptionConfigArgs',
-    'ClusterClusterConfigEndpointConfigArgs',
-    'ClusterClusterConfigGceClusterConfigArgs',
-    'ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs',
-    'ClusterClusterConfigGceClusterConfigReservationAffinityArgs',
-    'ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs',
-    'ClusterClusterConfigInitializationActionArgs',
-    'ClusterClusterConfigLifecycleConfigArgs',
-    'ClusterClusterConfigMasterConfigArgs',
-    'ClusterClusterConfigMasterConfigAcceleratorArgs',
-    'ClusterClusterConfigMasterConfigDiskConfigArgs',
-    'ClusterClusterConfigMetastoreConfigArgs',
-    'ClusterClusterConfigPreemptibleWorkerConfigArgs',
-    'ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs',
-    'ClusterClusterConfigSecurityConfigArgs',
-    'ClusterClusterConfigSecurityConfigKerberosConfigArgs',
-    'ClusterClusterConfigSoftwareConfigArgs',
-    'ClusterClusterConfigWorkerConfigArgs',
-    'ClusterClusterConfigWorkerConfigAcceleratorArgs',
-    'ClusterClusterConfigWorkerConfigDiskConfigArgs',
-    'ClusterIAMBindingConditionArgs',
-    'ClusterIAMMemberConditionArgs',
-    'ClusterVirtualClusterConfigArgs',
-    'ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs',
-    'ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs',
-    'ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs',
-    'ClusterVirtualClusterConfigKubernetesClusterConfigArgs',
-    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs',
-    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs',
-    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs',
-    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs',
-    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs',
-    'ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs',
-    'JobHadoopConfigArgs',
-    'JobHadoopConfigLoggingConfigArgs',
-    'JobHiveConfigArgs',
-    'JobIAMBindingConditionArgs',
-    'JobIAMMemberConditionArgs',
-    'JobPigConfigArgs',
-    'JobPigConfigLoggingConfigArgs',
-    'JobPlacementArgs',
-    'JobPrestoConfigArgs',
-    'JobPrestoConfigLoggingConfigArgs',
-    'JobPysparkConfigArgs',
-    'JobPysparkConfigLoggingConfigArgs',
-    'JobReferenceArgs',
-    'JobSchedulingArgs',
-    'JobSparkConfigArgs',
-    'JobSparkConfigLoggingConfigArgs',
-    'JobSparksqlConfigArgs',
-    'JobSparksqlConfigLoggingConfigArgs',
-    'JobStatusArgs',
-    'MetastoreFederationBackendMetastoreArgs',
-    'MetastoreFederationIamBindingConditionArgs',
-    'MetastoreFederationIamMemberConditionArgs',
-    'MetastoreServiceEncryptionConfigArgs',
-    'MetastoreServiceHiveMetastoreConfigArgs',
-    'MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs',
-    'MetastoreServiceHiveMetastoreConfigKerberosConfigArgs',
-    'MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs',
-    'MetastoreServiceIamBindingConditionArgs',
-    'MetastoreServiceIamMemberConditionArgs',
-    'MetastoreServiceMaintenanceWindowArgs',
-    'MetastoreServiceMetadataIntegrationArgs',
-    'MetastoreServiceMetadataIntegrationDataCatalogConfigArgs',
-    'MetastoreServiceNetworkConfigArgs',
-    'MetastoreServiceNetworkConfigConsumerArgs',
-    'MetastoreServiceScalingConfigArgs',
-    'MetastoreServiceTelemetryConfigArgs',
-    'WorkflowTemplateJobArgs',
-    'WorkflowTemplateJobHadoopJobArgs',
-    'WorkflowTemplateJobHadoopJobLoggingConfigArgs',
-    'WorkflowTemplateJobHiveJobArgs',
-    'WorkflowTemplateJobHiveJobQueryListArgs',
-    'WorkflowTemplateJobPigJobArgs',
-    'WorkflowTemplateJobPigJobLoggingConfigArgs',
-    'WorkflowTemplateJobPigJobQueryListArgs',
-    'WorkflowTemplateJobPrestoJobArgs',
-    'WorkflowTemplateJobPrestoJobLoggingConfigArgs',
-    'WorkflowTemplateJobPrestoJobQueryListArgs',
-    'WorkflowTemplateJobPysparkJobArgs',
-    'WorkflowTemplateJobPysparkJobLoggingConfigArgs',
-    'WorkflowTemplateJobSchedulingArgs',
-    'WorkflowTemplateJobSparkJobArgs',
-    'WorkflowTemplateJobSparkJobLoggingConfigArgs',
-    'WorkflowTemplateJobSparkRJobArgs',
-    'WorkflowTemplateJobSparkRJobLoggingConfigArgs',
-    'WorkflowTemplateJobSparkSqlJobArgs',
-    'WorkflowTemplateJobSparkSqlJobLoggingConfigArgs',
-    'WorkflowTemplateJobSparkSqlJobQueryListArgs',
-    'WorkflowTemplateParameterArgs',
-    'WorkflowTemplateParameterValidationArgs',
-    'WorkflowTemplateParameterValidationRegexArgs',
-    'WorkflowTemplateParameterValidationValuesArgs',
-    'WorkflowTemplatePlacementArgs',
-    'WorkflowTemplatePlacementClusterSelectorArgs',
-    'WorkflowTemplatePlacementManagedClusterArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs',
-    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs',
+    'AutoscalingPolicyBasicAlgorithmArrgs',
+    'AutoscalingPolicyBasicAlgorithmYarnConfigArrgs',
+    'AutoscalingPolicyIamBindingConditionArrgs',
+    'AutoscalingPolicyIamMemberConditionArrgs',
+    'AutoscalingPolicySecondaryWorkerConfigArrgs',
+    'AutoscalingPolicyWorkerConfigArrgs',
+    'ClusterClusterConfigArrgs',
+    'ClusterClusterConfigAutoscalingConfigArrgs',
+    'ClusterClusterConfigDataprocMetricConfigArrgs',
+    'ClusterClusterConfigDataprocMetricConfigMetricArrgs',
+    'ClusterClusterConfigEncryptionConfigArrgs',
+    'ClusterClusterConfigEndpointConfigArrgs',
+    'ClusterClusterConfigGceClusterConfigArrgs',
+    'ClusterClusterConfigGceClusterConfigNodeGroupAffinityArrgs',
+    'ClusterClusterConfigGceClusterConfigReservationAffinityArrgs',
+    'ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArrgs',
+    'ClusterClusterConfigInitializationActionArrgs',
+    'ClusterClusterConfigLifecycleConfigArrgs',
+    'ClusterClusterConfigMasterConfigArrgs',
+    'ClusterClusterConfigMasterConfigAcceleratorArrgs',
+    'ClusterClusterConfigMasterConfigDiskConfigArrgs',
+    'ClusterClusterConfigMetastoreConfigArrgs',
+    'ClusterClusterConfigPreemptibleWorkerConfigArrgs',
+    'ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArrgs',
+    'ClusterClusterConfigSecurityConfigArrgs',
+    'ClusterClusterConfigSecurityConfigKerberosConfigArrgs',
+    'ClusterClusterConfigSoftwareConfigArrgs',
+    'ClusterClusterConfigWorkerConfigArrgs',
+    'ClusterClusterConfigWorkerConfigAcceleratorArrgs',
+    'ClusterClusterConfigWorkerConfigDiskConfigArrgs',
+    'ClusterIAMBindingConditionArrgs',
+    'ClusterIAMMemberConditionArrgs',
+    'ClusterVirtualClusterConfigArrgs',
+    'ClusterVirtualClusterConfigAuxiliaryServicesConfigArrgs',
+    'ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArrgs',
+    'ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArrgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigArrgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArrgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArrgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArrgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArrgs',
+    'ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArrgs',
+    'JobHadoopConfigArrgs',
+    'JobHadoopConfigLoggingConfigArrgs',
+    'JobHiveConfigArrgs',
+    'JobIAMBindingConditionArrgs',
+    'JobIAMMemberConditionArrgs',
+    'JobPigConfigArrgs',
+    'JobPigConfigLoggingConfigArrgs',
+    'JobPlacementArrgs',
+    'JobPrestoConfigArrgs',
+    'JobPrestoConfigLoggingConfigArrgs',
+    'JobPysparkConfigArrgs',
+    'JobPysparkConfigLoggingConfigArrgs',
+    'JobReferenceArrgs',
+    'JobSchedulingArrgs',
+    'JobSparkConfigArrgs',
+    'JobSparkConfigLoggingConfigArrgs',
+    'JobSparksqlConfigArrgs',
+    'JobSparksqlConfigLoggingConfigArrgs',
+    'JobStatusArrgs',
+    'MetastoreFederationBackendMetastoreArrgs',
+    'MetastoreFederationIamBindingConditionArrgs',
+    'MetastoreFederationIamMemberConditionArrgs',
+    'MetastoreServiceEncryptionConfigArrgs',
+    'MetastoreServiceHiveMetastoreConfigArrgs',
+    'MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrgs',
+    'MetastoreServiceHiveMetastoreConfigKerberosConfigArrgs',
+    'MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrgs',
+    'MetastoreServiceIamBindingConditionArrgs',
+    'MetastoreServiceIamMemberConditionArrgs',
+    'MetastoreServiceMaintenanceWindowArrgs',
+    'MetastoreServiceMetadataIntegrationArrgs',
+    'MetastoreServiceMetadataIntegrationDataCatalogConfigArrgs',
+    'MetastoreServiceNetworkConfigArrgs',
+    'MetastoreServiceNetworkConfigConsumerArrgs',
+    'MetastoreServiceScalingConfigArrgs',
+    'MetastoreServiceTelemetryConfigArrgs',
+    'WorkflowTemplateJobArrgs',
+    'WorkflowTemplateJobHadoopJobArrgs',
+    'WorkflowTemplateJobHadoopJobLoggingConfigArrgs',
+    'WorkflowTemplateJobHiveJobArrgs',
+    'WorkflowTemplateJobHiveJobQueryListArrgs',
+    'WorkflowTemplateJobPigJobArrgs',
+    'WorkflowTemplateJobPigJobLoggingConfigArrgs',
+    'WorkflowTemplateJobPigJobQueryListArrgs',
+    'WorkflowTemplateJobPrestoJobArrgs',
+    'WorkflowTemplateJobPrestoJobLoggingConfigArrgs',
+    'WorkflowTemplateJobPrestoJobQueryListArrgs',
+    'WorkflowTemplateJobPysparkJobArrgs',
+    'WorkflowTemplateJobPysparkJobLoggingConfigArrgs',
+    'WorkflowTemplateJobSchedulingArrgs',
+    'WorkflowTemplateJobSparkJobArrgs',
+    'WorkflowTemplateJobSparkJobLoggingConfigArrgs',
+    'WorkflowTemplateJobSparkRJobArrgs',
+    'WorkflowTemplateJobSparkRJobLoggingConfigArrgs',
+    'WorkflowTemplateJobSparkSqlJobArrgs',
+    'WorkflowTemplateJobSparkSqlJobLoggingConfigArrgs',
+    'WorkflowTemplateJobSparkSqlJobQueryListArrgs',
+    'WorkflowTemplateParameterArrgs',
+    'WorkflowTemplateParameterValidationArrgs',
+    'WorkflowTemplateParameterValidationRegexArrgs',
+    'WorkflowTemplateParameterValidationValuesArrgs',
+    'WorkflowTemplatePlacementArrgs',
+    'WorkflowTemplatePlacementClusterSelectorArrgs',
+    'WorkflowTemplatePlacementManagedClusterArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArrgs',
+    'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrgs',
 ]
 
 @pulumi.input_type
-class AutoscalingPolicyBasicAlgorithmArgs:
+calass AutoscalingPolicyBasicAlgorithmArrgs:
     def __init__(__self__, *,
-                 yarn_config: pulumi.Input['AutoscalingPolicyBasicAlgorithmYarnConfigArgs'],
+                 yarn_config: pulumi.Input['AutoscalingPolicyBasicAlgorithmYarnConfigArrgs'],
                  cooldown_period: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['AutoscalingPolicyBasicAlgorithmYarnConfigArgs'] yarn_config: YARN autoscaling configuration.
+        :param pulumi.Input['AutoscalingPolicyBasicAlgorithmYarnConfigArrgs'] yarn_config: YARN autoscaling configuration.
                Structure is documented below.
         :param pulumi.Input[str] cooldown_period: Duration between scaling events. A scaling period starts after the
                update operation from the previous event has completed.
@@ -165,7 +165,7 @@ class AutoscalingPolicyBasicAlgorithmArgs:
 
     @property
     @pulumi.getter(name="yarnConfig")
-    def yarn_config(self) -> pulumi.Input['AutoscalingPolicyBasicAlgorithmYarnConfigArgs']:
+    def yarn_config(self) -> pulumi.Input['AutoscalingPolicyBasicAlgorithmYarnConfigArrgs']:
         """
         YARN autoscaling configuration.
         Structure is documented below.
@@ -173,7 +173,7 @@ class AutoscalingPolicyBasicAlgorithmArgs:
         return pulumi.get(self, "yarn_config")
 
     @yarn_config.setter
-    def yarn_config(self, value: pulumi.Input['AutoscalingPolicyBasicAlgorithmYarnConfigArgs']):
+    def yarn_config(self, value: pulumi.Input['AutoscalingPolicyBasicAlgorithmYarnConfigArrgs']):
         pulumi.set(self, "yarn_config", value)
 
     @property
@@ -192,7 +192,7 @@ class AutoscalingPolicyBasicAlgorithmArgs:
 
 
 @pulumi.input_type
-class AutoscalingPolicyBasicAlgorithmYarnConfigArgs:
+calass AutoscalingPolicyBasicAlgorithmYarnConfigArrgs:
     def __init__(__self__, *,
                  graceful_decommission_timeout: pulumi.Input[str],
                  scale_down_factor: pulumi.Input[float],
@@ -318,7 +318,7 @@ class AutoscalingPolicyBasicAlgorithmYarnConfigArgs:
 
 
 @pulumi.input_type
-class AutoscalingPolicyIamBindingConditionArgs:
+calass AutoscalingPolicyIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -357,7 +357,7 @@ class AutoscalingPolicyIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class AutoscalingPolicyIamMemberConditionArgs:
+calass AutoscalingPolicyIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -396,7 +396,7 @@ class AutoscalingPolicyIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class AutoscalingPolicySecondaryWorkerConfigArgs:
+calass AutoscalingPolicySecondaryWorkerConfigArrgs:
     def __init__(__self__, *,
                  max_instances: Optional[pulumi.Input[int]] = None,
                  min_instances: Optional[pulumi.Input[int]] = None,
@@ -477,7 +477,7 @@ class AutoscalingPolicySecondaryWorkerConfigArgs:
 
 
 @pulumi.input_type
-class AutoscalingPolicyWorkerConfigArgs:
+calass AutoscalingPolicyWorkerConfigArrgs:
     def __init__(__self__, *,
                  max_instances: pulumi.Input[int],
                  min_instances: Optional[pulumi.Input[int]] = None,
@@ -553,53 +553,53 @@ class AutoscalingPolicyWorkerConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigArgs:
+calass ClusterClusterConfigArrgs:
     def __init__(__self__, *,
-                 autoscaling_config: Optional[pulumi.Input['ClusterClusterConfigAutoscalingConfigArgs']] = None,
+                 autoscaling_config: Optional[pulumi.Input['ClusterClusterConfigAutoscalingConfigArrgs']] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 dataproc_metric_config: Optional[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs']] = None,
-                 encryption_config: Optional[pulumi.Input['ClusterClusterConfigEncryptionConfigArgs']] = None,
-                 endpoint_config: Optional[pulumi.Input['ClusterClusterConfigEndpointConfigArgs']] = None,
-                 gce_cluster_config: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigArgs']] = None,
-                 initialization_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArgs']]]] = None,
-                 lifecycle_config: Optional[pulumi.Input['ClusterClusterConfigLifecycleConfigArgs']] = None,
-                 master_config: Optional[pulumi.Input['ClusterClusterConfigMasterConfigArgs']] = None,
-                 metastore_config: Optional[pulumi.Input['ClusterClusterConfigMetastoreConfigArgs']] = None,
-                 preemptible_worker_config: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigArgs']] = None,
-                 security_config: Optional[pulumi.Input['ClusterClusterConfigSecurityConfigArgs']] = None,
-                 software_config: Optional[pulumi.Input['ClusterClusterConfigSoftwareConfigArgs']] = None,
+                 dataproc_metric_config: Optional[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArrgs']] = None,
+                 encryption_config: Optional[pulumi.Input['ClusterClusterConfigEncryptionConfigArrgs']] = None,
+                 endpoint_config: Optional[pulumi.Input['ClusterClusterConfigEndpointConfigArrgs']] = None,
+                 gce_cluster_config: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigArrgs']] = None,
+                 initialization_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArrgs']]]] = None,
+                 lifecycle_config: Optional[pulumi.Input['ClusterClusterConfigLifecycleConfigArrgs']] = None,
+                 master_config: Optional[pulumi.Input['ClusterClusterConfigMasterConfigArrgs']] = None,
+                 metastore_config: Optional[pulumi.Input['ClusterClusterConfigMetastoreConfigArrgs']] = None,
+                 preemptible_worker_config: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigArrgs']] = None,
+                 security_config: Optional[pulumi.Input['ClusterClusterConfigSecurityConfigArrgs']] = None,
+                 software_config: Optional[pulumi.Input['ClusterClusterConfigSoftwareConfigArrgs']] = None,
                  staging_bucket: Optional[pulumi.Input[str]] = None,
                  temp_bucket: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input['ClusterClusterConfigWorkerConfigArgs']] = None):
+                 worker_config: Optional[pulumi.Input['ClusterClusterConfigWorkerConfigArrgs']] = None):
         """
-        :param pulumi.Input['ClusterClusterConfigAutoscalingConfigArgs'] autoscaling_config: The autoscaling policy config associated with the cluster.
+        :param pulumi.Input['ClusterClusterConfigAutoscalingConfigArrgs'] autoscaling_config: The autoscaling policy config associated with the cluster.
                Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
                only be removed by setting `policy_uri = ""`, rather than removing the whole block.
                Structure defined below.
-        :param pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs'] dataproc_metric_config: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+        :param pulumi.Input['ClusterClusterConfigDataprocMetricConfigArrgs'] dataproc_metric_config: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
                Structure defined below.
-        :param pulumi.Input['ClusterClusterConfigEncryptionConfigArgs'] encryption_config: The Customer managed encryption keys settings for the cluster.
+        :param pulumi.Input['ClusterClusterConfigEncryptionConfigArrgs'] encryption_config: The Customer managed encryption keys settings for the cluster.
                Structure defined below.
-        :param pulumi.Input['ClusterClusterConfigEndpointConfigArgs'] endpoint_config: The config settings for port access on the cluster.
+        :param pulumi.Input['ClusterClusterConfigEndpointConfigArrgs'] endpoint_config: The config settings for port access on the cluster.
                Structure defined below.
-        :param pulumi.Input['ClusterClusterConfigGceClusterConfigArgs'] gce_cluster_config: Common config settings for resources of Google Compute Engine cluster
+        :param pulumi.Input['ClusterClusterConfigGceClusterConfigArrgs'] gce_cluster_config: Common config settings for resources of Google Compute Engine cluster
                instances, applicable to all instances in the cluster. Structure defined below.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArgs']]] initialization_actions: Commands to execute on each node after config is completed.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArrgs']]] initialization_actions: Commands to execute on each node after config is completed.
                You can specify multiple versions of these. Structure defined below.
-        :param pulumi.Input['ClusterClusterConfigLifecycleConfigArgs'] lifecycle_config: The settings for auto deletion cluster schedule.
+        :param pulumi.Input['ClusterClusterConfigLifecycleConfigArrgs'] lifecycle_config: The settings for auto deletion cluster schedule.
                Structure defined below.
-        :param pulumi.Input['ClusterClusterConfigMasterConfigArgs'] master_config: The Google Compute Engine config settings for the master instances
+        :param pulumi.Input['ClusterClusterConfigMasterConfigArrgs'] master_config: The Google Compute Engine config settings for the master instances
                in a cluster. Structure defined below.
-        :param pulumi.Input['ClusterClusterConfigMetastoreConfigArgs'] metastore_config: The config setting for metastore service with the cluster.
+        :param pulumi.Input['ClusterClusterConfigMetastoreConfigArrgs'] metastore_config: The config setting for metastore service with the cluster.
                Structure defined below.
                - - -
-        :param pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigArgs'] preemptible_worker_config: The Google Compute Engine config settings for the additional
+        :param pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigArrgs'] preemptible_worker_config: The Google Compute Engine config settings for the additional
                instances in a cluster. Structure defined below.
                * **NOTE** : `preemptible_worker_config` is
                an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
                such for legacy/compatibility reasons.
-        :param pulumi.Input['ClusterClusterConfigSecurityConfigArgs'] security_config: Security related configuration. Structure defined below.
-        :param pulumi.Input['ClusterClusterConfigSoftwareConfigArgs'] software_config: The config settings for software inside the cluster.
+        :param pulumi.Input['ClusterClusterConfigSecurityConfigArrgs'] security_config: Security related configuration. Structure defined below.
+        :param pulumi.Input['ClusterClusterConfigSoftwareConfigArrgs'] software_config: The config settings for software inside the cluster.
                Structure defined below.
         :param pulumi.Input[str] staging_bucket: The Cloud Storage staging bucket used to stage files,
                such as Hadoop jars, between client machines and the cluster.
@@ -611,7 +611,7 @@ class ClusterClusterConfigArgs:
         :param pulumi.Input[str] temp_bucket: The Cloud Storage temp bucket used to store ephemeral cluster
                and jobs data, such as Spark and MapReduce history files.
                Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
-        :param pulumi.Input['ClusterClusterConfigWorkerConfigArgs'] worker_config: The Google Compute Engine config settings for the worker instances
+        :param pulumi.Input['ClusterClusterConfigWorkerConfigArrgs'] worker_config: The Google Compute Engine config settings for the worker instances
                in a cluster. Structure defined below.
         """
         if autoscaling_config is not None:
@@ -649,7 +649,7 @@ class ClusterClusterConfigArgs:
 
     @property
     @pulumi.getter(name="autoscalingConfig")
-    def autoscaling_config(self) -> Optional[pulumi.Input['ClusterClusterConfigAutoscalingConfigArgs']]:
+    def autoscaling_config(self) -> Optional[pulumi.Input['ClusterClusterConfigAutoscalingConfigArrgs']]:
         """
         The autoscaling policy config associated with the cluster.
         Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
@@ -659,7 +659,7 @@ class ClusterClusterConfigArgs:
         return pulumi.get(self, "autoscaling_config")
 
     @autoscaling_config.setter
-    def autoscaling_config(self, value: Optional[pulumi.Input['ClusterClusterConfigAutoscalingConfigArgs']]):
+    def autoscaling_config(self, value: Optional[pulumi.Input['ClusterClusterConfigAutoscalingConfigArrgs']]):
         pulumi.set(self, "autoscaling_config", value)
 
     @property
@@ -673,7 +673,7 @@ class ClusterClusterConfigArgs:
 
     @property
     @pulumi.getter(name="dataprocMetricConfig")
-    def dataproc_metric_config(self) -> Optional[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs']]:
+    def dataproc_metric_config(self) -> Optional[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArrgs']]:
         """
         The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
         Structure defined below.
@@ -681,12 +681,12 @@ class ClusterClusterConfigArgs:
         return pulumi.get(self, "dataproc_metric_config")
 
     @dataproc_metric_config.setter
-    def dataproc_metric_config(self, value: Optional[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArgs']]):
+    def dataproc_metric_config(self, value: Optional[pulumi.Input['ClusterClusterConfigDataprocMetricConfigArrgs']]):
         pulumi.set(self, "dataproc_metric_config", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['ClusterClusterConfigEncryptionConfigArgs']]:
+    def encryption_config(self) -> Optional[pulumi.Input['ClusterClusterConfigEncryptionConfigArrgs']]:
         """
         The Customer managed encryption keys settings for the cluster.
         Structure defined below.
@@ -694,12 +694,12 @@ class ClusterClusterConfigArgs:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['ClusterClusterConfigEncryptionConfigArgs']]):
+    def encryption_config(self, value: Optional[pulumi.Input['ClusterClusterConfigEncryptionConfigArrgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter(name="endpointConfig")
-    def endpoint_config(self) -> Optional[pulumi.Input['ClusterClusterConfigEndpointConfigArgs']]:
+    def endpoint_config(self) -> Optional[pulumi.Input['ClusterClusterConfigEndpointConfigArrgs']]:
         """
         The config settings for port access on the cluster.
         Structure defined below.
@@ -707,12 +707,12 @@ class ClusterClusterConfigArgs:
         return pulumi.get(self, "endpoint_config")
 
     @endpoint_config.setter
-    def endpoint_config(self, value: Optional[pulumi.Input['ClusterClusterConfigEndpointConfigArgs']]):
+    def endpoint_config(self, value: Optional[pulumi.Input['ClusterClusterConfigEndpointConfigArrgs']]):
         pulumi.set(self, "endpoint_config", value)
 
     @property
     @pulumi.getter(name="gceClusterConfig")
-    def gce_cluster_config(self) -> Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigArgs']]:
+    def gce_cluster_config(self) -> Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigArrgs']]:
         """
         Common config settings for resources of Google Compute Engine cluster
         instances, applicable to all instances in the cluster. Structure defined below.
@@ -720,12 +720,12 @@ class ClusterClusterConfigArgs:
         return pulumi.get(self, "gce_cluster_config")
 
     @gce_cluster_config.setter
-    def gce_cluster_config(self, value: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigArgs']]):
+    def gce_cluster_config(self, value: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigArrgs']]):
         pulumi.set(self, "gce_cluster_config", value)
 
     @property
     @pulumi.getter(name="initializationActions")
-    def initialization_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArgs']]]]:
+    def initialization_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArrgs']]]]:
         """
         Commands to execute on each node after config is completed.
         You can specify multiple versions of these. Structure defined below.
@@ -733,12 +733,12 @@ class ClusterClusterConfigArgs:
         return pulumi.get(self, "initialization_actions")
 
     @initialization_actions.setter
-    def initialization_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArgs']]]]):
+    def initialization_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArrgs']]]]):
         pulumi.set(self, "initialization_actions", value)
 
     @property
     @pulumi.getter(name="lifecycleConfig")
-    def lifecycle_config(self) -> Optional[pulumi.Input['ClusterClusterConfigLifecycleConfigArgs']]:
+    def lifecycle_config(self) -> Optional[pulumi.Input['ClusterClusterConfigLifecycleConfigArrgs']]:
         """
         The settings for auto deletion cluster schedule.
         Structure defined below.
@@ -746,12 +746,12 @@ class ClusterClusterConfigArgs:
         return pulumi.get(self, "lifecycle_config")
 
     @lifecycle_config.setter
-    def lifecycle_config(self, value: Optional[pulumi.Input['ClusterClusterConfigLifecycleConfigArgs']]):
+    def lifecycle_config(self, value: Optional[pulumi.Input['ClusterClusterConfigLifecycleConfigArrgs']]):
         pulumi.set(self, "lifecycle_config", value)
 
     @property
     @pulumi.getter(name="masterConfig")
-    def master_config(self) -> Optional[pulumi.Input['ClusterClusterConfigMasterConfigArgs']]:
+    def master_config(self) -> Optional[pulumi.Input['ClusterClusterConfigMasterConfigArrgs']]:
         """
         The Google Compute Engine config settings for the master instances
         in a cluster. Structure defined below.
@@ -759,12 +759,12 @@ class ClusterClusterConfigArgs:
         return pulumi.get(self, "master_config")
 
     @master_config.setter
-    def master_config(self, value: Optional[pulumi.Input['ClusterClusterConfigMasterConfigArgs']]):
+    def master_config(self, value: Optional[pulumi.Input['ClusterClusterConfigMasterConfigArrgs']]):
         pulumi.set(self, "master_config", value)
 
     @property
     @pulumi.getter(name="metastoreConfig")
-    def metastore_config(self) -> Optional[pulumi.Input['ClusterClusterConfigMetastoreConfigArgs']]:
+    def metastore_config(self) -> Optional[pulumi.Input['ClusterClusterConfigMetastoreConfigArrgs']]:
         """
         The config setting for metastore service with the cluster.
         Structure defined below.
@@ -773,12 +773,12 @@ class ClusterClusterConfigArgs:
         return pulumi.get(self, "metastore_config")
 
     @metastore_config.setter
-    def metastore_config(self, value: Optional[pulumi.Input['ClusterClusterConfigMetastoreConfigArgs']]):
+    def metastore_config(self, value: Optional[pulumi.Input['ClusterClusterConfigMetastoreConfigArrgs']]):
         pulumi.set(self, "metastore_config", value)
 
     @property
     @pulumi.getter(name="preemptibleWorkerConfig")
-    def preemptible_worker_config(self) -> Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigArgs']]:
+    def preemptible_worker_config(self) -> Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigArrgs']]:
         """
         The Google Compute Engine config settings for the additional
         instances in a cluster. Structure defined below.
@@ -789,24 +789,24 @@ class ClusterClusterConfigArgs:
         return pulumi.get(self, "preemptible_worker_config")
 
     @preemptible_worker_config.setter
-    def preemptible_worker_config(self, value: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigArgs']]):
+    def preemptible_worker_config(self, value: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigArrgs']]):
         pulumi.set(self, "preemptible_worker_config", value)
 
     @property
     @pulumi.getter(name="securityConfig")
-    def security_config(self) -> Optional[pulumi.Input['ClusterClusterConfigSecurityConfigArgs']]:
+    def security_config(self) -> Optional[pulumi.Input['ClusterClusterConfigSecurityConfigArrgs']]:
         """
         Security related configuration. Structure defined below.
         """
         return pulumi.get(self, "security_config")
 
     @security_config.setter
-    def security_config(self, value: Optional[pulumi.Input['ClusterClusterConfigSecurityConfigArgs']]):
+    def security_config(self, value: Optional[pulumi.Input['ClusterClusterConfigSecurityConfigArrgs']]):
         pulumi.set(self, "security_config", value)
 
     @property
     @pulumi.getter(name="softwareConfig")
-    def software_config(self) -> Optional[pulumi.Input['ClusterClusterConfigSoftwareConfigArgs']]:
+    def software_config(self) -> Optional[pulumi.Input['ClusterClusterConfigSoftwareConfigArrgs']]:
         """
         The config settings for software inside the cluster.
         Structure defined below.
@@ -814,7 +814,7 @@ class ClusterClusterConfigArgs:
         return pulumi.get(self, "software_config")
 
     @software_config.setter
-    def software_config(self, value: Optional[pulumi.Input['ClusterClusterConfigSoftwareConfigArgs']]):
+    def software_config(self, value: Optional[pulumi.Input['ClusterClusterConfigSoftwareConfigArrgs']]):
         pulumi.set(self, "software_config", value)
 
     @property
@@ -851,7 +851,7 @@ class ClusterClusterConfigArgs:
 
     @property
     @pulumi.getter(name="workerConfig")
-    def worker_config(self) -> Optional[pulumi.Input['ClusterClusterConfigWorkerConfigArgs']]:
+    def worker_config(self) -> Optional[pulumi.Input['ClusterClusterConfigWorkerConfigArrgs']]:
         """
         The Google Compute Engine config settings for the worker instances
         in a cluster. Structure defined below.
@@ -859,12 +859,12 @@ class ClusterClusterConfigArgs:
         return pulumi.get(self, "worker_config")
 
     @worker_config.setter
-    def worker_config(self, value: Optional[pulumi.Input['ClusterClusterConfigWorkerConfigArgs']]):
+    def worker_config(self, value: Optional[pulumi.Input['ClusterClusterConfigWorkerConfigArrgs']]):
         pulumi.set(self, "worker_config", value)
 
 
 @pulumi.input_type
-class ClusterClusterConfigAutoscalingConfigArgs:
+calass ClusterClusterConfigAutoscalingConfigArrgs:
     def __init__(__self__, *,
                  policy_uri: pulumi.Input[str]):
         """
@@ -902,29 +902,29 @@ class ClusterClusterConfigAutoscalingConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigDataprocMetricConfigArgs:
+calass ClusterClusterConfigDataprocMetricConfigArrgs:
     def __init__(__self__, *,
-                 metrics: pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArgs']]]):
+                 metrics: pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArgs']]] metrics: Metrics sources to enable.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArrgs']]] metrics: Metrics sources to enable.
         """
         pulumi.set(__self__, "metrics", metrics)
 
     @property
     @pulumi.getter
-    def metrics(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArgs']]]:
+    def metrics(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArrgs']]]:
         """
         Metrics sources to enable.
         """
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArgs']]]):
+    def metrics(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigDataprocMetricConfigMetricArrgs']]]):
         pulumi.set(self, "metrics", value)
 
 
 @pulumi.input_type
-class ClusterClusterConfigDataprocMetricConfigMetricArgs:
+calass ClusterClusterConfigDataprocMetricConfigMetricArrgs:
     def __init__(__self__, *,
                  metric_source: pulumi.Input[str],
                  metric_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -966,7 +966,7 @@ class ClusterClusterConfigDataprocMetricConfigMetricArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigEncryptionConfigArgs:
+calass ClusterClusterConfigEncryptionConfigArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str]):
         """
@@ -994,7 +994,7 @@ class ClusterClusterConfigEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigEndpointConfigArgs:
+calass ClusterClusterConfigEndpointConfigArrgs:
     def __init__(__self__, *,
                  enable_http_port_access: pulumi.Input[bool],
                  http_ports: Optional[pulumi.Input[Mapping[str, Any]]] = None):
@@ -1030,16 +1030,16 @@ class ClusterClusterConfigEndpointConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigGceClusterConfigArgs:
+calass ClusterClusterConfigGceClusterConfigArrgs:
     def __init__(__self__, *,
                  internal_ip_only: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 node_group_affinity: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs']] = None,
-                 reservation_affinity: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArgs']] = None,
+                 node_group_affinity: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArrgs']] = None,
+                 reservation_affinity: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArrgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArrgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -1054,8 +1054,8 @@ class ClusterClusterConfigGceClusterConfigArgs:
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to the cluster will be part of. Conflicts with `subnetwork`.
                If neither is specified, this defaults to the "default" network.
-        :param pulumi.Input['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs'] node_group_affinity: Node Group Affinity for sole-tenant clusters.
-        :param pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming zonal reservation.
+        :param pulumi.Input['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArrgs'] node_group_affinity: Node Group Affinity for sole-tenant clusters.
+        :param pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArrgs'] reservation_affinity: Reservation Affinity for consuming zonal reservation.
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: The set of Google API scopes
@@ -1063,7 +1063,7 @@ class ClusterClusterConfigGceClusterConfigArgs:
                specified. Both OAuth2 URLs and gcloud
                short names are supported. To allow full access to all Cloud APIs, use the
                `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
-        :param pulumi.Input['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
+        :param pulumi.Input['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArrgs'] shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
                
                - - -
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
@@ -1146,26 +1146,26 @@ class ClusterClusterConfigGceClusterConfigArgs:
 
     @property
     @pulumi.getter(name="nodeGroupAffinity")
-    def node_group_affinity(self) -> Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs']]:
+    def node_group_affinity(self) -> Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArrgs']]:
         """
         Node Group Affinity for sole-tenant clusters.
         """
         return pulumi.get(self, "node_group_affinity")
 
     @node_group_affinity.setter
-    def node_group_affinity(self, value: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs']]):
+    def node_group_affinity(self, value: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArrgs']]):
         pulumi.set(self, "node_group_affinity", value)
 
     @property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArgs']]:
+    def reservation_affinity(self) -> Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArrgs']]:
         """
         Reservation Affinity for consuming zonal reservation.
         """
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArgs']]):
+    def reservation_affinity(self, value: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigReservationAffinityArrgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @property
@@ -1199,7 +1199,7 @@ class ClusterClusterConfigGceClusterConfigArgs:
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArrgs']]:
         """
         Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
 
@@ -1208,7 +1208,7 @@ class ClusterClusterConfigGceClusterConfigArgs:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArrgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
@@ -1257,7 +1257,7 @@ class ClusterClusterConfigGceClusterConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs:
+calass ClusterClusterConfigGceClusterConfigNodeGroupAffinityArrgs:
     def __init__(__self__, *,
                  node_group_uri: pulumi.Input[str]):
         """
@@ -1279,7 +1279,7 @@ class ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigGceClusterConfigReservationAffinityArgs:
+calass ClusterClusterConfigGceClusterConfigReservationAffinityArrgs:
     def __init__(__self__, *,
                  consume_reservation_type: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -1334,7 +1334,7 @@ class ClusterClusterConfigGceClusterConfigReservationAffinityArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs:
+calass ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
@@ -1393,7 +1393,7 @@ class ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigInitializationActionArgs:
+calass ClusterClusterConfigInitializationActionArrgs:
     def __init__(__self__, *,
                  script: pulumi.Input[str],
                  timeout_sec: Optional[pulumi.Input[int]] = None):
@@ -1441,7 +1441,7 @@ class ClusterClusterConfigInitializationActionArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigLifecycleConfigArgs:
+calass ClusterClusterConfigLifecycleConfigArrgs:
     def __init__(__self__, *,
                  auto_delete_time: Optional[pulumi.Input[str]] = None,
                  idle_delete_ttl: Optional[pulumi.Input[str]] = None,
@@ -1502,18 +1502,18 @@ class ClusterClusterConfigLifecycleConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigMasterConfigArgs:
+calass ClusterClusterConfigMasterConfigArrgs:
     def __init__(__self__, *,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigAcceleratorArgs']]]] = None,
-                 disk_config: Optional[pulumi.Input['ClusterClusterConfigMasterConfigDiskConfigArgs']] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigAcceleratorArrgs']]]] = None,
+                 disk_config: Optional[pulumi.Input['ClusterClusterConfigMasterConfigDiskConfigArrgs']] = None,
                  image_uri: Optional[pulumi.Input[str]] = None,
                  instance_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  num_instances: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigAcceleratorArgs']]] accelerators: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
-        :param pulumi.Input['ClusterClusterConfigMasterConfigDiskConfigArgs'] disk_config: Disk Config
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigAcceleratorArrgs']]] accelerators: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+        :param pulumi.Input['ClusterClusterConfigMasterConfigDiskConfigArrgs'] disk_config: Disk Config
         :param pulumi.Input[str] image_uri: The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
                for more information.
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine machine type
@@ -1543,26 +1543,26 @@ class ClusterClusterConfigMasterConfigArgs:
 
     @property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigAcceleratorArgs']]]]:
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigAcceleratorArrgs']]]]:
         """
         The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
         """
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigAcceleratorArgs']]]]):
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigAcceleratorArrgs']]]]):
         pulumi.set(self, "accelerators", value)
 
     @property
     @pulumi.getter(name="diskConfig")
-    def disk_config(self) -> Optional[pulumi.Input['ClusterClusterConfigMasterConfigDiskConfigArgs']]:
+    def disk_config(self) -> Optional[pulumi.Input['ClusterClusterConfigMasterConfigDiskConfigArrgs']]:
         """
         Disk Config
         """
         return pulumi.get(self, "disk_config")
 
     @disk_config.setter
-    def disk_config(self, value: Optional[pulumi.Input['ClusterClusterConfigMasterConfigDiskConfigArgs']]):
+    def disk_config(self, value: Optional[pulumi.Input['ClusterClusterConfigMasterConfigDiskConfigArrgs']]):
         pulumi.set(self, "disk_config", value)
 
     @property
@@ -1631,7 +1631,7 @@ class ClusterClusterConfigMasterConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigMasterConfigAcceleratorArgs:
+calass ClusterClusterConfigMasterConfigAcceleratorArrgs:
     def __init__(__self__, *,
                  accelerator_count: pulumi.Input[int],
                  accelerator_type: pulumi.Input[str]):
@@ -1680,7 +1680,7 @@ class ClusterClusterConfigMasterConfigAcceleratorArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigMasterConfigDiskConfigArgs:
+calass ClusterClusterConfigMasterConfigDiskConfigArrgs:
     def __init__(__self__, *,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  boot_disk_type: Optional[pulumi.Input[str]] = None,
@@ -1747,7 +1747,7 @@ class ClusterClusterConfigMasterConfigDiskConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigMetastoreConfigArgs:
+calass ClusterClusterConfigMetastoreConfigArrgs:
     def __init__(__self__, *,
                  dataproc_metastore_service: pulumi.Input[str]):
         """
@@ -1777,14 +1777,14 @@ class ClusterClusterConfigMetastoreConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigPreemptibleWorkerConfigArgs:
+calass ClusterClusterConfigPreemptibleWorkerConfigArrgs:
     def __init__(__self__, *,
-                 disk_config: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs']] = None,
+                 disk_config: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArrgs']] = None,
                  instance_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  num_instances: Optional[pulumi.Input[int]] = None,
                  preemptibility: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs'] disk_config: Disk Config
+        :param pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArrgs'] disk_config: Disk Config
         :param pulumi.Input[int] num_instances: Specifies the number of preemptible nodes to create.
                Defaults to 0.
         :param pulumi.Input[str] preemptibility: Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
@@ -1804,14 +1804,14 @@ class ClusterClusterConfigPreemptibleWorkerConfigArgs:
 
     @property
     @pulumi.getter(name="diskConfig")
-    def disk_config(self) -> Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs']]:
+    def disk_config(self) -> Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArrgs']]:
         """
         Disk Config
         """
         return pulumi.get(self, "disk_config")
 
     @disk_config.setter
-    def disk_config(self, value: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs']]):
+    def disk_config(self, value: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArrgs']]):
         pulumi.set(self, "disk_config", value)
 
     @property
@@ -1854,7 +1854,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs:
+calass ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArrgs:
     def __init__(__self__, *,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  boot_disk_type: Optional[pulumi.Input[str]] = None,
@@ -1921,29 +1921,29 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigSecurityConfigArgs:
+calass ClusterClusterConfigSecurityConfigArrgs:
     def __init__(__self__, *,
-                 kerberos_config: pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgs']):
+                 kerberos_config: pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArrgs']):
         """
-        :param pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgs'] kerberos_config: Kerberos Configuration
+        :param pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArrgs'] kerberos_config: Kerberos Configuration
         """
         pulumi.set(__self__, "kerberos_config", kerberos_config)
 
     @property
     @pulumi.getter(name="kerberosConfig")
-    def kerberos_config(self) -> pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgs']:
+    def kerberos_config(self) -> pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArrgs']:
         """
         Kerberos Configuration
         """
         return pulumi.get(self, "kerberos_config")
 
     @kerberos_config.setter
-    def kerberos_config(self, value: pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArgs']):
+    def kerberos_config(self, value: pulumi.Input['ClusterClusterConfigSecurityConfigKerberosConfigArrgs']):
         pulumi.set(self, "kerberos_config", value)
 
 
 @pulumi.input_type
-class ClusterClusterConfigSecurityConfigKerberosConfigArgs:
+calass ClusterClusterConfigSecurityConfigKerberosConfigArrgs:
     def __init__(__self__, *,
                  kms_key_uri: pulumi.Input[str],
                  root_principal_password_uri: pulumi.Input[str],
@@ -2224,7 +2224,7 @@ class ClusterClusterConfigSecurityConfigKerberosConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigSoftwareConfigArgs:
+calass ClusterClusterConfigSoftwareConfigArrgs:
     def __init__(__self__, *,
                  image_version: Optional[pulumi.Input[str]] = None,
                  optional_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2315,18 +2315,18 @@ class ClusterClusterConfigSoftwareConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigWorkerConfigArgs:
+calass ClusterClusterConfigWorkerConfigArrgs:
     def __init__(__self__, *,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArgs']]]] = None,
-                 disk_config: Optional[pulumi.Input['ClusterClusterConfigWorkerConfigDiskConfigArgs']] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArrgs']]]] = None,
+                 disk_config: Optional[pulumi.Input['ClusterClusterConfigWorkerConfigDiskConfigArrgs']] = None,
                  image_uri: Optional[pulumi.Input[str]] = None,
                  instance_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  num_instances: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArgs']]] accelerators: The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
-        :param pulumi.Input['ClusterClusterConfigWorkerConfigDiskConfigArgs'] disk_config: Disk Config
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArrgs']]] accelerators: The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+        :param pulumi.Input['ClusterClusterConfigWorkerConfigDiskConfigArrgs'] disk_config: Disk Config
         :param pulumi.Input[str] image_uri: The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
                for more information.
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine machine type
@@ -2361,26 +2361,26 @@ class ClusterClusterConfigWorkerConfigArgs:
 
     @property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArgs']]]]:
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArrgs']]]]:
         """
         The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
         """
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArgs']]]]):
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArrgs']]]]):
         pulumi.set(self, "accelerators", value)
 
     @property
     @pulumi.getter(name="diskConfig")
-    def disk_config(self) -> Optional[pulumi.Input['ClusterClusterConfigWorkerConfigDiskConfigArgs']]:
+    def disk_config(self) -> Optional[pulumi.Input['ClusterClusterConfigWorkerConfigDiskConfigArrgs']]:
         """
         Disk Config
         """
         return pulumi.get(self, "disk_config")
 
     @disk_config.setter
-    def disk_config(self, value: Optional[pulumi.Input['ClusterClusterConfigWorkerConfigDiskConfigArgs']]):
+    def disk_config(self, value: Optional[pulumi.Input['ClusterClusterConfigWorkerConfigDiskConfigArrgs']]):
         pulumi.set(self, "disk_config", value)
 
     @property
@@ -2454,7 +2454,7 @@ class ClusterClusterConfigWorkerConfigArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigWorkerConfigAcceleratorArgs:
+calass ClusterClusterConfigWorkerConfigAcceleratorArrgs:
     def __init__(__self__, *,
                  accelerator_count: pulumi.Input[int],
                  accelerator_type: pulumi.Input[str]):
@@ -2503,7 +2503,7 @@ class ClusterClusterConfigWorkerConfigAcceleratorArgs:
 
 
 @pulumi.input_type
-class ClusterClusterConfigWorkerConfigDiskConfigArgs:
+calass ClusterClusterConfigWorkerConfigDiskConfigArrgs:
     def __init__(__self__, *,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  boot_disk_type: Optional[pulumi.Input[str]] = None,
@@ -2570,7 +2570,7 @@ class ClusterClusterConfigWorkerConfigDiskConfigArgs:
 
 
 @pulumi.input_type
-class ClusterIAMBindingConditionArgs:
+calass ClusterIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -2609,7 +2609,7 @@ class ClusterIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class ClusterIAMMemberConditionArgs:
+calass ClusterIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -2648,15 +2648,15 @@ class ClusterIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class ClusterVirtualClusterConfigArgs:
+calass ClusterVirtualClusterConfigArrgs:
     def __init__(__self__, *,
-                 auxiliary_services_config: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs']] = None,
-                 kubernetes_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArgs']] = None,
+                 auxiliary_services_config: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArrgs']] = None,
+                 kubernetes_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArrgs']] = None,
                  staging_bucket: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs'] auxiliary_services_config: Configuration of auxiliary services used by this cluster. 
+        :param pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArrgs'] auxiliary_services_config: Configuration of auxiliary services used by this cluster. 
                Structure defined below.
-        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArgs'] kubernetes_cluster_config: The configuration for running the Dataproc cluster on Kubernetes.
+        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArrgs'] kubernetes_cluster_config: The configuration for running the Dataproc cluster on Kubernetes.
                Structure defined below.
                - - -
         :param pulumi.Input[str] staging_bucket: The Cloud Storage staging bucket used to stage files,
@@ -2676,7 +2676,7 @@ class ClusterVirtualClusterConfigArgs:
 
     @property
     @pulumi.getter(name="auxiliaryServicesConfig")
-    def auxiliary_services_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs']]:
+    def auxiliary_services_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArrgs']]:
         """
         Configuration of auxiliary services used by this cluster. 
         Structure defined below.
@@ -2684,12 +2684,12 @@ class ClusterVirtualClusterConfigArgs:
         return pulumi.get(self, "auxiliary_services_config")
 
     @auxiliary_services_config.setter
-    def auxiliary_services_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs']]):
+    def auxiliary_services_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigArrgs']]):
         pulumi.set(self, "auxiliary_services_config", value)
 
     @property
     @pulumi.getter(name="kubernetesClusterConfig")
-    def kubernetes_cluster_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArgs']]:
+    def kubernetes_cluster_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArrgs']]:
         """
         The configuration for running the Dataproc cluster on Kubernetes.
         Structure defined below.
@@ -2698,7 +2698,7 @@ class ClusterVirtualClusterConfigArgs:
         return pulumi.get(self, "kubernetes_cluster_config")
 
     @kubernetes_cluster_config.setter
-    def kubernetes_cluster_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArgs']]):
+    def kubernetes_cluster_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigArrgs']]):
         pulumi.set(self, "kubernetes_cluster_config", value)
 
     @property
@@ -2721,13 +2721,13 @@ class ClusterVirtualClusterConfigArgs:
 
 
 @pulumi.input_type
-class ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs:
+calass ClusterVirtualClusterConfigAuxiliaryServicesConfigArrgs:
     def __init__(__self__, *,
-                 metastore_config: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs']] = None,
-                 spark_history_server_config: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs']] = None):
+                 metastore_config: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArrgs']] = None,
+                 spark_history_server_config: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArrgs']] = None):
         """
-        :param pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs'] metastore_config: The Hive Metastore configuration for this workload.
-        :param pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs'] spark_history_server_config: The Spark History Server configuration for the workload.
+        :param pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArrgs'] metastore_config: The Hive Metastore configuration for this workload.
+        :param pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArrgs'] spark_history_server_config: The Spark History Server configuration for the workload.
         """
         if metastore_config is not None:
             pulumi.set(__self__, "metastore_config", metastore_config)
@@ -2736,31 +2736,31 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs:
 
     @property
     @pulumi.getter(name="metastoreConfig")
-    def metastore_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs']]:
+    def metastore_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArrgs']]:
         """
         The Hive Metastore configuration for this workload.
         """
         return pulumi.get(self, "metastore_config")
 
     @metastore_config.setter
-    def metastore_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs']]):
+    def metastore_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArrgs']]):
         pulumi.set(self, "metastore_config", value)
 
     @property
     @pulumi.getter(name="sparkHistoryServerConfig")
-    def spark_history_server_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs']]:
+    def spark_history_server_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArrgs']]:
         """
         The Spark History Server configuration for the workload.
         """
         return pulumi.get(self, "spark_history_server_config")
 
     @spark_history_server_config.setter
-    def spark_history_server_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs']]):
+    def spark_history_server_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArrgs']]):
         pulumi.set(self, "spark_history_server_config", value)
 
 
 @pulumi.input_type
-class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs:
+calass ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArrgs:
     def __init__(__self__, *,
                  dataproc_metastore_service: Optional[pulumi.Input[str]] = None):
         """
@@ -2791,7 +2791,7 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs:
 
 
 @pulumi.input_type
-class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs:
+calass ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArrgs:
     def __init__(__self__, *,
                  dataproc_cluster: Optional[pulumi.Input[str]] = None):
         """
@@ -2816,14 +2816,14 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig
 
 
 @pulumi.input_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigArgs:
+calass ClusterVirtualClusterConfigKubernetesClusterConfigArrgs:
     def __init__(__self__, *,
-                 gke_cluster_config: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs'],
-                 kubernetes_software_config: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs'],
+                 gke_cluster_config: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArrgs'],
+                 kubernetes_software_config: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArrgs'],
                  kubernetes_namespace: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs'] gke_cluster_config: The configuration for running the Dataproc cluster on GKE.
-        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs'] kubernetes_software_config: The software configuration for this Dataproc cluster running on Kubernetes.
+        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArrgs'] gke_cluster_config: The configuration for running the Dataproc cluster on GKE.
+        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArrgs'] kubernetes_software_config: The software configuration for this Dataproc cluster running on Kubernetes.
         :param pulumi.Input[str] kubernetes_namespace: A namespace within the Kubernetes cluster to deploy into. 
                If this namespace does not exist, it is created.
                If it  exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it.
@@ -2836,26 +2836,26 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigArgs:
 
     @property
     @pulumi.getter(name="gkeClusterConfig")
-    def gke_cluster_config(self) -> pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs']:
+    def gke_cluster_config(self) -> pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArrgs']:
         """
         The configuration for running the Dataproc cluster on GKE.
         """
         return pulumi.get(self, "gke_cluster_config")
 
     @gke_cluster_config.setter
-    def gke_cluster_config(self, value: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs']):
+    def gke_cluster_config(self, value: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArrgs']):
         pulumi.set(self, "gke_cluster_config", value)
 
     @property
     @pulumi.getter(name="kubernetesSoftwareConfig")
-    def kubernetes_software_config(self) -> pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs']:
+    def kubernetes_software_config(self) -> pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArrgs']:
         """
         The software configuration for this Dataproc cluster running on Kubernetes.
         """
         return pulumi.get(self, "kubernetes_software_config")
 
     @kubernetes_software_config.setter
-    def kubernetes_software_config(self, value: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs']):
+    def kubernetes_software_config(self, value: pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArrgs']):
         pulumi.set(self, "kubernetes_software_config", value)
 
     @property
@@ -2875,14 +2875,14 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigArgs:
 
 
 @pulumi.input_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs:
+calass ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArrgs:
     def __init__(__self__, *,
                  gke_cluster_target: Optional[pulumi.Input[str]] = None,
-                 node_pool_targets: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs']]]] = None):
+                 node_pool_targets: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrgs']]]] = None):
         """
         :param pulumi.Input[str] gke_cluster_target: A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
                (the GKE cluster can be zonal or regional)
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs']]] node_pool_targets: GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrgs']]] node_pool_targets: GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
                GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
                Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
         """
@@ -2906,7 +2906,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs:
 
     @property
     @pulumi.getter(name="nodePoolTargets")
-    def node_pool_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs']]]]:
+    def node_pool_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrgs']]]]:
         """
         GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
         GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
@@ -2915,21 +2915,21 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs:
         return pulumi.get(self, "node_pool_targets")
 
     @node_pool_targets.setter
-    def node_pool_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs']]]]):
+    def node_pool_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrgs']]]]):
         pulumi.set(self, "node_pool_targets", value)
 
 
 @pulumi.input_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs:
+calass ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArrgs:
     def __init__(__self__, *,
                  node_pool: pulumi.Input[str],
                  roles: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 node_pool_config: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs']] = None):
+                 node_pool_config: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArrgs']] = None):
         """
         :param pulumi.Input[str] node_pool: The target GKE node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: The roles associated with the GKE node pool. 
                One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
-        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs'] node_pool_config: The configuration for the GKE node pool. 
+        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArrgs'] node_pool_config: The configuration for the GKE node pool. 
                If specified, Dataproc attempts to create a node pool with the specified shape.
                If one with the same name already exists, it is verified against all specified fields.
                If a field differs, the virtual cluster creation will fail.
@@ -2966,7 +2966,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
 
     @property
     @pulumi.getter(name="nodePoolConfig")
-    def node_pool_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs']]:
+    def node_pool_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArrgs']]:
         """
         The configuration for the GKE node pool. 
         If specified, Dataproc attempts to create a node pool with the specified shape.
@@ -2976,23 +2976,23 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
         return pulumi.get(self, "node_pool_config")
 
     @node_pool_config.setter
-    def node_pool_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs']]):
+    def node_pool_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArrgs']]):
         pulumi.set(self, "node_pool_config", value)
 
 
 @pulumi.input_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs:
+calass ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArrgs:
     def __init__(__self__, *,
                  locations: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 autoscaling: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs']] = None,
-                 config: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs']] = None):
+                 autoscaling: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArrgs']] = None,
+                 config: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArrgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Compute Engine zones where node pool nodes associated 
                with a Dataproc on GKE virtual cluster will be located.
                - - -
-        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs'] autoscaling: The autoscaler configuration for this node pool. 
+        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArrgs'] autoscaling: The autoscaler configuration for this node pool. 
                The autoscaler is enabled only when a valid configuration is present.
-        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs'] config: The node pool configuration.
+        :param pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArrgs'] config: The node pool configuration.
         """
         pulumi.set(__self__, "locations", locations)
         if autoscaling is not None:
@@ -3016,7 +3016,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
 
     @property
     @pulumi.getter
-    def autoscaling(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs']]:
+    def autoscaling(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArrgs']]:
         """
         The autoscaler configuration for this node pool. 
         The autoscaler is enabled only when a valid configuration is present.
@@ -3024,24 +3024,24 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
         return pulumi.get(self, "autoscaling")
 
     @autoscaling.setter
-    def autoscaling(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs']]):
+    def autoscaling(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArrgs']]):
         pulumi.set(self, "autoscaling", value)
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArrgs']]:
         """
         The node pool configuration.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArrgs']]):
         pulumi.set(self, "config", value)
 
 
 @pulumi.input_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs:
+calass ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArrgs:
     def __init__(__self__, *,
                  max_node_count: Optional[pulumi.Input[int]] = None,
                  min_node_count: Optional[pulumi.Input[int]] = None):
@@ -3080,7 +3080,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
 
 
 @pulumi.input_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs:
+calass ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArrgs:
     def __init__(__self__, *,
                  local_ssd_count: Optional[pulumi.Input[int]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -3177,7 +3177,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
 
 
 @pulumi.input_type
-class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs:
+calass ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArrgs:
     def __init__(__self__, *,
                  component_version: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -3221,13 +3221,13 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
 
 
 @pulumi.input_type
-class JobHadoopConfigArgs:
+calass JobHadoopConfigArrgs:
     def __init__(__self__, *,
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logging_config: Optional[pulumi.Input['JobHadoopConfigLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['JobHadoopConfigLoggingConfigArrgs']] = None,
                  main_class: Optional[pulumi.Input[str]] = None,
                  main_jar_file_uri: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -3309,11 +3309,11 @@ class JobHadoopConfigArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['JobHadoopConfigLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['JobHadoopConfigLoggingConfigArrgs']]:
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['JobHadoopConfigLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['JobHadoopConfigLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -3356,7 +3356,7 @@ class JobHadoopConfigArgs:
 
 
 @pulumi.input_type
-class JobHadoopConfigLoggingConfigArgs:
+calass JobHadoopConfigLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(__self__, "driver_log_levels", driver_log_levels)
@@ -3372,7 +3372,7 @@ class JobHadoopConfigLoggingConfigArgs:
 
 
 @pulumi.input_type
-class JobHiveConfigArgs:
+calass JobHiveConfigArrgs:
     def __init__(__self__, *,
                  continue_on_failure: Optional[pulumi.Input[bool]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3479,7 +3479,7 @@ class JobHiveConfigArgs:
 
 
 @pulumi.input_type
-class JobIAMBindingConditionArgs:
+calass JobIAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -3518,7 +3518,7 @@ class JobIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class JobIAMMemberConditionArgs:
+calass JobIAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -3557,11 +3557,11 @@ class JobIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class JobPigConfigArgs:
+calass JobPigConfigArrgs:
     def __init__(__self__, *,
                  continue_on_failure: Optional[pulumi.Input[bool]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logging_config: Optional[pulumi.Input['JobPigConfigLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['JobPigConfigLoggingConfigArrgs']] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query_file_uri: Optional[pulumi.Input[str]] = None,
                  query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3621,11 +3621,11 @@ class JobPigConfigArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['JobPigConfigLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['JobPigConfigLoggingConfigArrgs']]:
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['JobPigConfigLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['JobPigConfigLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -3680,7 +3680,7 @@ class JobPigConfigArgs:
 
 
 @pulumi.input_type
-class JobPigConfigLoggingConfigArgs:
+calass JobPigConfigLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(__self__, "driver_log_levels", driver_log_levels)
@@ -3696,7 +3696,7 @@ class JobPigConfigLoggingConfigArgs:
 
 
 @pulumi.input_type
-class JobPlacementArgs:
+calass JobPlacementArrgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[str],
                  cluster_uuid: Optional[pulumi.Input[str]] = None):
@@ -3724,11 +3724,11 @@ class JobPlacementArgs:
 
 
 @pulumi.input_type
-class JobPrestoConfigArgs:
+calass JobPrestoConfigArrgs:
     def __init__(__self__, *,
                  client_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  continue_on_failure: Optional[pulumi.Input[bool]] = None,
-                 logging_config: Optional[pulumi.Input['JobPrestoConfigLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['JobPrestoConfigLoggingConfigArrgs']] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query_file_uri: Optional[pulumi.Input[str]] = None,
@@ -3786,11 +3786,11 @@ class JobPrestoConfigArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['JobPrestoConfigLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['JobPrestoConfigLoggingConfigArrgs']]:
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['JobPrestoConfigLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['JobPrestoConfigLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -3847,7 +3847,7 @@ class JobPrestoConfigArgs:
 
 
 @pulumi.input_type
-class JobPrestoConfigLoggingConfigArgs:
+calass JobPrestoConfigLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(__self__, "driver_log_levels", driver_log_levels)
@@ -3863,14 +3863,14 @@ class JobPrestoConfigLoggingConfigArgs:
 
 
 @pulumi.input_type
-class JobPysparkConfigArgs:
+calass JobPysparkConfigArrgs:
     def __init__(__self__, *,
                  main_python_file_uri: pulumi.Input[str],
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logging_config: Optional[pulumi.Input['JobPysparkConfigLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['JobPysparkConfigLoggingConfigArrgs']] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  python_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -3962,11 +3962,11 @@ class JobPysparkConfigArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['JobPysparkConfigLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['JobPysparkConfigLoggingConfigArrgs']]:
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['JobPysparkConfigLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['JobPysparkConfigLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -3997,7 +3997,7 @@ class JobPysparkConfigArgs:
 
 
 @pulumi.input_type
-class JobPysparkConfigLoggingConfigArgs:
+calass JobPysparkConfigLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(__self__, "driver_log_levels", driver_log_levels)
@@ -4013,7 +4013,7 @@ class JobPysparkConfigLoggingConfigArgs:
 
 
 @pulumi.input_type
-class JobReferenceArgs:
+calass JobReferenceArrgs:
     def __init__(__self__, *,
                  job_id: Optional[pulumi.Input[str]] = None):
         if job_id is not None:
@@ -4030,7 +4030,7 @@ class JobReferenceArgs:
 
 
 @pulumi.input_type
-class JobSchedulingArgs:
+calass JobSchedulingArrgs:
     def __init__(__self__, *,
                  max_failures_per_hour: pulumi.Input[int],
                  max_failures_total: pulumi.Input[int]):
@@ -4057,13 +4057,13 @@ class JobSchedulingArgs:
 
 
 @pulumi.input_type
-class JobSparkConfigArgs:
+calass JobSparkConfigArrgs:
     def __init__(__self__, *,
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logging_config: Optional[pulumi.Input['JobSparkConfigLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['JobSparkConfigLoggingConfigArrgs']] = None,
                  main_class: Optional[pulumi.Input[str]] = None,
                  main_jar_file_uri: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -4147,11 +4147,11 @@ class JobSparkConfigArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['JobSparkConfigLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['JobSparkConfigLoggingConfigArrgs']]:
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['JobSparkConfigLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['JobSparkConfigLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -4196,7 +4196,7 @@ class JobSparkConfigArgs:
 
 
 @pulumi.input_type
-class JobSparkConfigLoggingConfigArgs:
+calass JobSparkConfigLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(__self__, "driver_log_levels", driver_log_levels)
@@ -4212,10 +4212,10 @@ class JobSparkConfigLoggingConfigArgs:
 
 
 @pulumi.input_type
-class JobSparksqlConfigArgs:
+calass JobSparksqlConfigArrgs:
     def __init__(__self__, *,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logging_config: Optional[pulumi.Input['JobSparksqlConfigLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['JobSparksqlConfigLoggingConfigArrgs']] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query_file_uri: Optional[pulumi.Input[str]] = None,
                  query_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -4260,11 +4260,11 @@ class JobSparksqlConfigArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['JobSparksqlConfigLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['JobSparksqlConfigLoggingConfigArrgs']]:
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['JobSparksqlConfigLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['JobSparksqlConfigLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -4319,7 +4319,7 @@ class JobSparksqlConfigArgs:
 
 
 @pulumi.input_type
-class JobSparksqlConfigLoggingConfigArgs:
+calass JobSparksqlConfigLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(__self__, "driver_log_levels", driver_log_levels)
@@ -4335,7 +4335,7 @@ class JobSparksqlConfigLoggingConfigArgs:
 
 
 @pulumi.input_type
-class JobStatusArgs:
+calass JobStatusArrgs:
     def __init__(__self__, *,
                  details: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -4388,7 +4388,7 @@ class JobStatusArgs:
 
 
 @pulumi.input_type
-class MetastoreFederationBackendMetastoreArgs:
+calass MetastoreFederationBackendMetastoreArrgs:
     def __init__(__self__, *,
                  metastore_type: pulumi.Input[str],
                  name: pulumi.Input[str],
@@ -4446,7 +4446,7 @@ class MetastoreFederationBackendMetastoreArgs:
 
 
 @pulumi.input_type
-class MetastoreFederationIamBindingConditionArgs:
+calass MetastoreFederationIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -4485,7 +4485,7 @@ class MetastoreFederationIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class MetastoreFederationIamMemberConditionArgs:
+calass MetastoreFederationIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -4524,7 +4524,7 @@ class MetastoreFederationIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class MetastoreServiceEncryptionConfigArgs:
+calass MetastoreServiceEncryptionConfigArrgs:
     def __init__(__self__, *,
                  kms_key: pulumi.Input[str]):
         """
@@ -4548,18 +4548,18 @@ class MetastoreServiceEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class MetastoreServiceHiveMetastoreConfigArgs:
+calass MetastoreServiceHiveMetastoreConfigArrgs:
     def __init__(__self__, *,
                  version: pulumi.Input[str],
-                 auxiliary_versions: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs']]]] = None,
+                 auxiliary_versions: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrgs']]]] = None,
                  config_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  endpoint_protocol: Optional[pulumi.Input[str]] = None,
-                 kerberos_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArgs']] = None):
+                 kerberos_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArrgs']] = None):
         """
         :param pulumi.Input[str] version: The Hive metastore schema version.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
                The mappings override system defaults (some keys cannot be overridden)
-        :param pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArgs'] kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+        :param pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArrgs'] kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
                Structure is documented below.
         """
         pulumi.set(__self__, "version", version)
@@ -4586,11 +4586,11 @@ class MetastoreServiceHiveMetastoreConfigArgs:
 
     @property
     @pulumi.getter(name="auxiliaryVersions")
-    def auxiliary_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs']]]]:
+    def auxiliary_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrgs']]]]:
         return pulumi.get(self, "auxiliary_versions")
 
     @auxiliary_versions.setter
-    def auxiliary_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs']]]]):
+    def auxiliary_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrgs']]]]):
         pulumi.set(self, "auxiliary_versions", value)
 
     @property
@@ -4617,7 +4617,7 @@ class MetastoreServiceHiveMetastoreConfigArgs:
 
     @property
     @pulumi.getter(name="kerberosConfig")
-    def kerberos_config(self) -> Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArgs']]:
+    def kerberos_config(self) -> Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArrgs']]:
         """
         Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
         Structure is documented below.
@@ -4625,12 +4625,12 @@ class MetastoreServiceHiveMetastoreConfigArgs:
         return pulumi.get(self, "kerberos_config")
 
     @kerberos_config.setter
-    def kerberos_config(self, value: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArgs']]):
+    def kerberos_config(self, value: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArrgs']]):
         pulumi.set(self, "kerberos_config", value)
 
 
 @pulumi.input_type
-class MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs:
+calass MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  version: pulumi.Input[str],
@@ -4685,13 +4685,13 @@ class MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs:
 
 
 @pulumi.input_type
-class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs:
+calass MetastoreServiceHiveMetastoreConfigKerberosConfigArrgs:
     def __init__(__self__, *,
-                 keytab: pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs'],
+                 keytab: pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrgs'],
                  krb5_config_gcs_uri: pulumi.Input[str],
                  principal: pulumi.Input[str]):
         """
-        :param pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs'] keytab: A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+        :param pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrgs'] keytab: A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
                Structure is documented below.
         :param pulumi.Input[str] krb5_config_gcs_uri: A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
         :param pulumi.Input[str] principal: A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
@@ -4702,7 +4702,7 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs:
 
     @property
     @pulumi.getter
-    def keytab(self) -> pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs']:
+    def keytab(self) -> pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrgs']:
         """
         A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
         Structure is documented below.
@@ -4710,7 +4710,7 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs:
         return pulumi.get(self, "keytab")
 
     @keytab.setter
-    def keytab(self, value: pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs']):
+    def keytab(self, value: pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrgs']):
         pulumi.set(self, "keytab", value)
 
     @property
@@ -4739,7 +4739,7 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs:
 
 
 @pulumi.input_type
-class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs:
+calass MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrgs:
     def __init__(__self__, *,
                  cloud_secret: pulumi.Input[str]):
         """
@@ -4763,7 +4763,7 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs:
 
 
 @pulumi.input_type
-class MetastoreServiceIamBindingConditionArgs:
+calass MetastoreServiceIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -4802,7 +4802,7 @@ class MetastoreServiceIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class MetastoreServiceIamMemberConditionArgs:
+calass MetastoreServiceIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -4841,7 +4841,7 @@ class MetastoreServiceIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class MetastoreServiceMaintenanceWindowArgs:
+calass MetastoreServiceMaintenanceWindowArrgs:
     def __init__(__self__, *,
                  day_of_week: pulumi.Input[str],
                  hour_of_day: pulumi.Input[int]):
@@ -4880,18 +4880,18 @@ class MetastoreServiceMaintenanceWindowArgs:
 
 
 @pulumi.input_type
-class MetastoreServiceMetadataIntegrationArgs:
+calass MetastoreServiceMetadataIntegrationArrgs:
     def __init__(__self__, *,
-                 data_catalog_config: pulumi.Input['MetastoreServiceMetadataIntegrationDataCatalogConfigArgs']):
+                 data_catalog_config: pulumi.Input['MetastoreServiceMetadataIntegrationDataCatalogConfigArrgs']):
         """
-        :param pulumi.Input['MetastoreServiceMetadataIntegrationDataCatalogConfigArgs'] data_catalog_config: The integration config for the Data Catalog service.
+        :param pulumi.Input['MetastoreServiceMetadataIntegrationDataCatalogConfigArrgs'] data_catalog_config: The integration config for the Data Catalog service.
                Structure is documented below.
         """
         pulumi.set(__self__, "data_catalog_config", data_catalog_config)
 
     @property
     @pulumi.getter(name="dataCatalogConfig")
-    def data_catalog_config(self) -> pulumi.Input['MetastoreServiceMetadataIntegrationDataCatalogConfigArgs']:
+    def data_catalog_config(self) -> pulumi.Input['MetastoreServiceMetadataIntegrationDataCatalogConfigArrgs']:
         """
         The integration config for the Data Catalog service.
         Structure is documented below.
@@ -4899,12 +4899,12 @@ class MetastoreServiceMetadataIntegrationArgs:
         return pulumi.get(self, "data_catalog_config")
 
     @data_catalog_config.setter
-    def data_catalog_config(self, value: pulumi.Input['MetastoreServiceMetadataIntegrationDataCatalogConfigArgs']):
+    def data_catalog_config(self, value: pulumi.Input['MetastoreServiceMetadataIntegrationDataCatalogConfigArrgs']):
         pulumi.set(self, "data_catalog_config", value)
 
 
 @pulumi.input_type
-class MetastoreServiceMetadataIntegrationDataCatalogConfigArgs:
+calass MetastoreServiceMetadataIntegrationDataCatalogConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -4926,18 +4926,18 @@ class MetastoreServiceMetadataIntegrationDataCatalogConfigArgs:
 
 
 @pulumi.input_type
-class MetastoreServiceNetworkConfigArgs:
+calass MetastoreServiceNetworkConfigArrgs:
     def __init__(__self__, *,
-                 consumers: pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArgs']]]):
+                 consumers: pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArgs']]] consumers: The consumer-side network configuration for the Dataproc Metastore instance.
+        :param pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArrgs']]] consumers: The consumer-side network configuration for the Dataproc Metastore instance.
                Structure is documented below.
         """
         pulumi.set(__self__, "consumers", consumers)
 
     @property
     @pulumi.getter
-    def consumers(self) -> pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArgs']]]:
+    def consumers(self) -> pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArrgs']]]:
         """
         The consumer-side network configuration for the Dataproc Metastore instance.
         Structure is documented below.
@@ -4945,12 +4945,12 @@ class MetastoreServiceNetworkConfigArgs:
         return pulumi.get(self, "consumers")
 
     @consumers.setter
-    def consumers(self, value: pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArgs']]]):
+    def consumers(self, value: pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArrgs']]]):
         pulumi.set(self, "consumers", value)
 
 
 @pulumi.input_type
-class MetastoreServiceNetworkConfigConsumerArgs:
+calass MetastoreServiceNetworkConfigConsumerArrgs:
     def __init__(__self__, *,
                  subnetwork: pulumi.Input[str],
                  endpoint_uri: Optional[pulumi.Input[str]] = None):
@@ -4996,7 +4996,7 @@ class MetastoreServiceNetworkConfigConsumerArgs:
 
 
 @pulumi.input_type
-class MetastoreServiceScalingConfigArgs:
+calass MetastoreServiceScalingConfigArrgs:
     def __init__(__self__, *,
                  instance_size: Optional[pulumi.Input[str]] = None,
                  scaling_factor: Optional[pulumi.Input[float]] = None):
@@ -5037,7 +5037,7 @@ class MetastoreServiceScalingConfigArgs:
 
 
 @pulumi.input_type
-class MetastoreServiceTelemetryConfigArgs:
+calass MetastoreServiceTelemetryConfigArrgs:
     def __init__(__self__, *,
                  log_format: Optional[pulumi.Input[str]] = None):
         """
@@ -5064,33 +5064,33 @@ class MetastoreServiceTelemetryConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobArgs:
+calass WorkflowTemplateJobArrgs:
     def __init__(__self__, *,
                  step_id: pulumi.Input[str],
-                 hadoop_job: Optional[pulumi.Input['WorkflowTemplateJobHadoopJobArgs']] = None,
-                 hive_job: Optional[pulumi.Input['WorkflowTemplateJobHiveJobArgs']] = None,
+                 hadoop_job: Optional[pulumi.Input['WorkflowTemplateJobHadoopJobArrgs']] = None,
+                 hive_job: Optional[pulumi.Input['WorkflowTemplateJobHiveJobArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 pig_job: Optional[pulumi.Input['WorkflowTemplateJobPigJobArgs']] = None,
+                 pig_job: Optional[pulumi.Input['WorkflowTemplateJobPigJobArrgs']] = None,
                  prerequisite_step_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 presto_job: Optional[pulumi.Input['WorkflowTemplateJobPrestoJobArgs']] = None,
-                 pyspark_job: Optional[pulumi.Input['WorkflowTemplateJobPysparkJobArgs']] = None,
-                 scheduling: Optional[pulumi.Input['WorkflowTemplateJobSchedulingArgs']] = None,
-                 spark_job: Optional[pulumi.Input['WorkflowTemplateJobSparkJobArgs']] = None,
-                 spark_r_job: Optional[pulumi.Input['WorkflowTemplateJobSparkRJobArgs']] = None,
-                 spark_sql_job: Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobArgs']] = None):
+                 presto_job: Optional[pulumi.Input['WorkflowTemplateJobPrestoJobArrgs']] = None,
+                 pyspark_job: Optional[pulumi.Input['WorkflowTemplateJobPysparkJobArrgs']] = None,
+                 scheduling: Optional[pulumi.Input['WorkflowTemplateJobSchedulingArrgs']] = None,
+                 spark_job: Optional[pulumi.Input['WorkflowTemplateJobSparkJobArrgs']] = None,
+                 spark_r_job: Optional[pulumi.Input['WorkflowTemplateJobSparkRJobArrgs']] = None,
+                 spark_sql_job: Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobArrgs']] = None):
         """
         :param pulumi.Input[str] step_id: Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-        :param pulumi.Input['WorkflowTemplateJobHadoopJobArgs'] hadoop_job: Job is a Hadoop job.
-        :param pulumi.Input['WorkflowTemplateJobHiveJobArgs'] hive_job: Job is a Hive job.
+        :param pulumi.Input['WorkflowTemplateJobHadoopJobArrgs'] hadoop_job: Job is a Hadoop job.
+        :param pulumi.Input['WorkflowTemplateJobHiveJobArrgs'] hive_job: Job is a Hive job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
-        :param pulumi.Input['WorkflowTemplateJobPigJobArgs'] pig_job: Job is a Pig job.
+        :param pulumi.Input['WorkflowTemplateJobPigJobArrgs'] pig_job: Job is a Pig job.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prerequisite_step_ids: The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
-        :param pulumi.Input['WorkflowTemplateJobPrestoJobArgs'] presto_job: Job is a Presto job.
-        :param pulumi.Input['WorkflowTemplateJobPysparkJobArgs'] pyspark_job: Job is a PySpark job.
-        :param pulumi.Input['WorkflowTemplateJobSchedulingArgs'] scheduling: Job scheduling configuration.
-        :param pulumi.Input['WorkflowTemplateJobSparkJobArgs'] spark_job: Job is a Spark job.
-        :param pulumi.Input['WorkflowTemplateJobSparkRJobArgs'] spark_r_job: Job is a SparkR job.
-        :param pulumi.Input['WorkflowTemplateJobSparkSqlJobArgs'] spark_sql_job: Job is a SparkSql job.
+        :param pulumi.Input['WorkflowTemplateJobPrestoJobArrgs'] presto_job: Job is a Presto job.
+        :param pulumi.Input['WorkflowTemplateJobPysparkJobArrgs'] pyspark_job: Job is a PySpark job.
+        :param pulumi.Input['WorkflowTemplateJobSchedulingArrgs'] scheduling: Job scheduling configuration.
+        :param pulumi.Input['WorkflowTemplateJobSparkJobArrgs'] spark_job: Job is a Spark job.
+        :param pulumi.Input['WorkflowTemplateJobSparkRJobArrgs'] spark_r_job: Job is a SparkR job.
+        :param pulumi.Input['WorkflowTemplateJobSparkSqlJobArrgs'] spark_sql_job: Job is a SparkSql job.
         """
         pulumi.set(__self__, "step_id", step_id)
         if hadoop_job is not None:
@@ -5130,26 +5130,26 @@ class WorkflowTemplateJobArgs:
 
     @property
     @pulumi.getter(name="hadoopJob")
-    def hadoop_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobHadoopJobArgs']]:
+    def hadoop_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobHadoopJobArrgs']]:
         """
         Job is a Hadoop job.
         """
         return pulumi.get(self, "hadoop_job")
 
     @hadoop_job.setter
-    def hadoop_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobHadoopJobArgs']]):
+    def hadoop_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobHadoopJobArrgs']]):
         pulumi.set(self, "hadoop_job", value)
 
     @property
     @pulumi.getter(name="hiveJob")
-    def hive_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobHiveJobArgs']]:
+    def hive_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobHiveJobArrgs']]:
         """
         Job is a Hive job.
         """
         return pulumi.get(self, "hive_job")
 
     @hive_job.setter
-    def hive_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobHiveJobArgs']]):
+    def hive_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobHiveJobArrgs']]):
         pulumi.set(self, "hive_job", value)
 
     @property
@@ -5166,14 +5166,14 @@ class WorkflowTemplateJobArgs:
 
     @property
     @pulumi.getter(name="pigJob")
-    def pig_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobPigJobArgs']]:
+    def pig_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobPigJobArrgs']]:
         """
         Job is a Pig job.
         """
         return pulumi.get(self, "pig_job")
 
     @pig_job.setter
-    def pig_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobPigJobArgs']]):
+    def pig_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobPigJobArrgs']]):
         pulumi.set(self, "pig_job", value)
 
     @property
@@ -5190,85 +5190,85 @@ class WorkflowTemplateJobArgs:
 
     @property
     @pulumi.getter(name="prestoJob")
-    def presto_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobPrestoJobArgs']]:
+    def presto_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobPrestoJobArrgs']]:
         """
         Job is a Presto job.
         """
         return pulumi.get(self, "presto_job")
 
     @presto_job.setter
-    def presto_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobPrestoJobArgs']]):
+    def presto_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobPrestoJobArrgs']]):
         pulumi.set(self, "presto_job", value)
 
     @property
     @pulumi.getter(name="pysparkJob")
-    def pyspark_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobPysparkJobArgs']]:
+    def pyspark_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobPysparkJobArrgs']]:
         """
         Job is a PySpark job.
         """
         return pulumi.get(self, "pyspark_job")
 
     @pyspark_job.setter
-    def pyspark_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobPysparkJobArgs']]):
+    def pyspark_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobPysparkJobArrgs']]):
         pulumi.set(self, "pyspark_job", value)
 
     @property
     @pulumi.getter
-    def scheduling(self) -> Optional[pulumi.Input['WorkflowTemplateJobSchedulingArgs']]:
+    def scheduling(self) -> Optional[pulumi.Input['WorkflowTemplateJobSchedulingArrgs']]:
         """
         Job scheduling configuration.
         """
         return pulumi.get(self, "scheduling")
 
     @scheduling.setter
-    def scheduling(self, value: Optional[pulumi.Input['WorkflowTemplateJobSchedulingArgs']]):
+    def scheduling(self, value: Optional[pulumi.Input['WorkflowTemplateJobSchedulingArrgs']]):
         pulumi.set(self, "scheduling", value)
 
     @property
     @pulumi.getter(name="sparkJob")
-    def spark_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkJobArgs']]:
+    def spark_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkJobArrgs']]:
         """
         Job is a Spark job.
         """
         return pulumi.get(self, "spark_job")
 
     @spark_job.setter
-    def spark_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkJobArgs']]):
+    def spark_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkJobArrgs']]):
         pulumi.set(self, "spark_job", value)
 
     @property
     @pulumi.getter(name="sparkRJob")
-    def spark_r_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkRJobArgs']]:
+    def spark_r_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkRJobArrgs']]:
         """
         Job is a SparkR job.
         """
         return pulumi.get(self, "spark_r_job")
 
     @spark_r_job.setter
-    def spark_r_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkRJobArgs']]):
+    def spark_r_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkRJobArrgs']]):
         pulumi.set(self, "spark_r_job", value)
 
     @property
     @pulumi.getter(name="sparkSqlJob")
-    def spark_sql_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobArgs']]:
+    def spark_sql_job(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobArrgs']]:
         """
         Job is a SparkSql job.
         """
         return pulumi.get(self, "spark_sql_job")
 
     @spark_sql_job.setter
-    def spark_sql_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobArgs']]):
+    def spark_sql_job(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobArrgs']]):
         pulumi.set(self, "spark_sql_job", value)
 
 
 @pulumi.input_type
-class WorkflowTemplateJobHadoopJobArgs:
+calass WorkflowTemplateJobHadoopJobArrgs:
     def __init__(__self__, *,
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobHadoopJobLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobHadoopJobLoggingConfigArrgs']] = None,
                  main_class: Optional[pulumi.Input[str]] = None,
                  main_jar_file_uri: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -5277,7 +5277,7 @@ class WorkflowTemplateJobHadoopJobArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
-        :param pulumi.Input['WorkflowTemplateJobHadoopJobLoggingConfigArgs'] logging_config: The runtime log config for job execution.
+        :param pulumi.Input['WorkflowTemplateJobHadoopJobLoggingConfigArrgs'] logging_config: The runtime log config for job execution.
         :param pulumi.Input[str] main_class: The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
         :param pulumi.Input[str] main_jar_file_uri: The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
@@ -5349,14 +5349,14 @@ class WorkflowTemplateJobHadoopJobArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobHadoopJobLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobHadoopJobLoggingConfigArrgs']]:
         """
         The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobHadoopJobLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobHadoopJobLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -5397,7 +5397,7 @@ class WorkflowTemplateJobHadoopJobArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobHadoopJobLoggingConfigArgs:
+calass WorkflowTemplateJobHadoopJobLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -5420,20 +5420,20 @@ class WorkflowTemplateJobHadoopJobLoggingConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobHiveJobArgs:
+calass WorkflowTemplateJobHiveJobArrgs:
     def __init__(__self__, *,
                  continue_on_failure: Optional[pulumi.Input[bool]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query_file_uri: Optional[pulumi.Input[str]] = None,
-                 query_list: Optional[pulumi.Input['WorkflowTemplateJobHiveJobQueryListArgs']] = None,
+                 query_list: Optional[pulumi.Input['WorkflowTemplateJobHiveJobQueryListArrgs']] = None,
                  script_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] continue_on_failure: Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
         :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains Hive queries.
-        :param pulumi.Input['WorkflowTemplateJobHiveJobQueryListArgs'] query_list: A list of queries.
+        :param pulumi.Input['WorkflowTemplateJobHiveJobQueryListArrgs'] query_list: A list of queries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] script_variables: Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
         """
         if continue_on_failure is not None:
@@ -5499,14 +5499,14 @@ class WorkflowTemplateJobHiveJobArgs:
 
     @property
     @pulumi.getter(name="queryList")
-    def query_list(self) -> Optional[pulumi.Input['WorkflowTemplateJobHiveJobQueryListArgs']]:
+    def query_list(self) -> Optional[pulumi.Input['WorkflowTemplateJobHiveJobQueryListArrgs']]:
         """
         A list of queries.
         """
         return pulumi.get(self, "query_list")
 
     @query_list.setter
-    def query_list(self, value: Optional[pulumi.Input['WorkflowTemplateJobHiveJobQueryListArgs']]):
+    def query_list(self, value: Optional[pulumi.Input['WorkflowTemplateJobHiveJobQueryListArrgs']]):
         pulumi.set(self, "query_list", value)
 
     @property
@@ -5523,7 +5523,7 @@ class WorkflowTemplateJobHiveJobArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobHiveJobQueryListArgs:
+calass WorkflowTemplateJobHiveJobQueryListArrgs:
     def __init__(__self__, *,
                  queries: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -5545,22 +5545,22 @@ class WorkflowTemplateJobHiveJobQueryListArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobPigJobArgs:
+calass WorkflowTemplateJobPigJobArrgs:
     def __init__(__self__, *,
                  continue_on_failure: Optional[pulumi.Input[bool]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobPigJobLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobPigJobLoggingConfigArrgs']] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query_file_uri: Optional[pulumi.Input[str]] = None,
-                 query_list: Optional[pulumi.Input['WorkflowTemplateJobPigJobQueryListArgs']] = None,
+                 query_list: Optional[pulumi.Input['WorkflowTemplateJobPigJobQueryListArrgs']] = None,
                  script_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] continue_on_failure: Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
-        :param pulumi.Input['WorkflowTemplateJobPigJobLoggingConfigArgs'] logging_config: The runtime log config for job execution.
+        :param pulumi.Input['WorkflowTemplateJobPigJobLoggingConfigArrgs'] logging_config: The runtime log config for job execution.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
         :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains the Pig queries.
-        :param pulumi.Input['WorkflowTemplateJobPigJobQueryListArgs'] query_list: A list of queries.
+        :param pulumi.Input['WorkflowTemplateJobPigJobQueryListArrgs'] query_list: A list of queries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] script_variables: Mapping of query variable names to values (equivalent to the Pig command: `name=`).
         """
         if continue_on_failure is not None:
@@ -5604,14 +5604,14 @@ class WorkflowTemplateJobPigJobArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobPigJobLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobPigJobLoggingConfigArrgs']]:
         """
         The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobPigJobLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobPigJobLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -5640,14 +5640,14 @@ class WorkflowTemplateJobPigJobArgs:
 
     @property
     @pulumi.getter(name="queryList")
-    def query_list(self) -> Optional[pulumi.Input['WorkflowTemplateJobPigJobQueryListArgs']]:
+    def query_list(self) -> Optional[pulumi.Input['WorkflowTemplateJobPigJobQueryListArrgs']]:
         """
         A list of queries.
         """
         return pulumi.get(self, "query_list")
 
     @query_list.setter
-    def query_list(self, value: Optional[pulumi.Input['WorkflowTemplateJobPigJobQueryListArgs']]):
+    def query_list(self, value: Optional[pulumi.Input['WorkflowTemplateJobPigJobQueryListArrgs']]):
         pulumi.set(self, "query_list", value)
 
     @property
@@ -5664,7 +5664,7 @@ class WorkflowTemplateJobPigJobArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobPigJobLoggingConfigArgs:
+calass WorkflowTemplateJobPigJobLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -5687,7 +5687,7 @@ class WorkflowTemplateJobPigJobLoggingConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobPigJobQueryListArgs:
+calass WorkflowTemplateJobPigJobQueryListArrgs:
     def __init__(__self__, *,
                  queries: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -5709,23 +5709,23 @@ class WorkflowTemplateJobPigJobQueryListArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobPrestoJobArgs:
+calass WorkflowTemplateJobPrestoJobArrgs:
     def __init__(__self__, *,
                  client_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  continue_on_failure: Optional[pulumi.Input[bool]] = None,
-                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobPrestoJobLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobPrestoJobLoggingConfigArrgs']] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query_file_uri: Optional[pulumi.Input[str]] = None,
-                 query_list: Optional[pulumi.Input['WorkflowTemplateJobPrestoJobQueryListArgs']] = None):
+                 query_list: Optional[pulumi.Input['WorkflowTemplateJobPrestoJobQueryListArrgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_tags: Presto client tags to attach to this query
         :param pulumi.Input[bool] continue_on_failure: Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
-        :param pulumi.Input['WorkflowTemplateJobPrestoJobLoggingConfigArgs'] logging_config: The runtime log config for job execution.
+        :param pulumi.Input['WorkflowTemplateJobPrestoJobLoggingConfigArrgs'] logging_config: The runtime log config for job execution.
         :param pulumi.Input[str] output_format: The format in which query output will be displayed. See the Presto documentation for supported output formats
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
         :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains SQL queries.
-        :param pulumi.Input['WorkflowTemplateJobPrestoJobQueryListArgs'] query_list: A list of queries.
+        :param pulumi.Input['WorkflowTemplateJobPrestoJobQueryListArrgs'] query_list: A list of queries.
         """
         if client_tags is not None:
             pulumi.set(__self__, "client_tags", client_tags)
@@ -5768,14 +5768,14 @@ class WorkflowTemplateJobPrestoJobArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobPrestoJobLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobPrestoJobLoggingConfigArrgs']]:
         """
         The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobPrestoJobLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobPrestoJobLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -5816,19 +5816,19 @@ class WorkflowTemplateJobPrestoJobArgs:
 
     @property
     @pulumi.getter(name="queryList")
-    def query_list(self) -> Optional[pulumi.Input['WorkflowTemplateJobPrestoJobQueryListArgs']]:
+    def query_list(self) -> Optional[pulumi.Input['WorkflowTemplateJobPrestoJobQueryListArrgs']]:
         """
         A list of queries.
         """
         return pulumi.get(self, "query_list")
 
     @query_list.setter
-    def query_list(self, value: Optional[pulumi.Input['WorkflowTemplateJobPrestoJobQueryListArgs']]):
+    def query_list(self, value: Optional[pulumi.Input['WorkflowTemplateJobPrestoJobQueryListArrgs']]):
         pulumi.set(self, "query_list", value)
 
 
 @pulumi.input_type
-class WorkflowTemplateJobPrestoJobLoggingConfigArgs:
+calass WorkflowTemplateJobPrestoJobLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -5851,7 +5851,7 @@ class WorkflowTemplateJobPrestoJobLoggingConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobPrestoJobQueryListArgs:
+calass WorkflowTemplateJobPrestoJobQueryListArrgs:
     def __init__(__self__, *,
                  queries: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -5873,14 +5873,14 @@ class WorkflowTemplateJobPrestoJobQueryListArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobPysparkJobArgs:
+calass WorkflowTemplateJobPysparkJobArrgs:
     def __init__(__self__, *,
                  main_python_file_uri: pulumi.Input[str],
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobPysparkJobLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobPysparkJobLoggingConfigArrgs']] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  python_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -5889,7 +5889,7 @@ class WorkflowTemplateJobPysparkJobArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
-        :param pulumi.Input['WorkflowTemplateJobPysparkJobLoggingConfigArgs'] logging_config: The runtime log config for job execution.
+        :param pulumi.Input['WorkflowTemplateJobPysparkJobLoggingConfigArrgs'] logging_config: The runtime log config for job execution.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] python_file_uris: HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
         """
@@ -5971,14 +5971,14 @@ class WorkflowTemplateJobPysparkJobArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobPysparkJobLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobPysparkJobLoggingConfigArrgs']]:
         """
         The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobPysparkJobLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobPysparkJobLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -6007,7 +6007,7 @@ class WorkflowTemplateJobPysparkJobArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobPysparkJobLoggingConfigArgs:
+calass WorkflowTemplateJobPysparkJobLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -6030,7 +6030,7 @@ class WorkflowTemplateJobPysparkJobLoggingConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobSchedulingArgs:
+calass WorkflowTemplateJobSchedulingArrgs:
     def __init__(__self__, *,
                  max_failures_per_hour: Optional[pulumi.Input[int]] = None,
                  max_failures_total: Optional[pulumi.Input[int]] = None):
@@ -6069,13 +6069,13 @@ class WorkflowTemplateJobSchedulingArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobSparkJobArgs:
+calass WorkflowTemplateJobSparkJobArrgs:
     def __init__(__self__, *,
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobSparkJobLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobSparkJobLoggingConfigArrgs']] = None,
                  main_class: Optional[pulumi.Input[str]] = None,
                  main_jar_file_uri: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -6084,7 +6084,7 @@ class WorkflowTemplateJobSparkJobArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
-        :param pulumi.Input['WorkflowTemplateJobSparkJobLoggingConfigArgs'] logging_config: The runtime log config for job execution.
+        :param pulumi.Input['WorkflowTemplateJobSparkJobLoggingConfigArrgs'] logging_config: The runtime log config for job execution.
         :param pulumi.Input[str] main_class: The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
         :param pulumi.Input[str] main_jar_file_uri: The HCFS URI of the jar file that contains the main class.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
@@ -6156,14 +6156,14 @@ class WorkflowTemplateJobSparkJobArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkJobLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkJobLoggingConfigArrgs']]:
         """
         The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkJobLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkJobLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -6204,7 +6204,7 @@ class WorkflowTemplateJobSparkJobArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobSparkJobLoggingConfigArgs:
+calass WorkflowTemplateJobSparkJobLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -6227,20 +6227,20 @@ class WorkflowTemplateJobSparkJobLoggingConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobSparkRJobArgs:
+calass WorkflowTemplateJobSparkRJobArrgs:
     def __init__(__self__, *,
                  main_r_file_uri: pulumi.Input[str],
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobSparkRJobLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobSparkRJobLoggingConfigArrgs']] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] main_r_file_uri: Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
-        :param pulumi.Input['WorkflowTemplateJobSparkRJobLoggingConfigArgs'] logging_config: The runtime log config for job execution.
+        :param pulumi.Input['WorkflowTemplateJobSparkRJobLoggingConfigArrgs'] logging_config: The runtime log config for job execution.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         pulumi.set(__self__, "main_r_file_uri", main_r_file_uri)
@@ -6305,14 +6305,14 @@ class WorkflowTemplateJobSparkRJobArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkRJobLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkRJobLoggingConfigArrgs']]:
         """
         The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkRJobLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkRJobLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -6329,7 +6329,7 @@ class WorkflowTemplateJobSparkRJobArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobSparkRJobLoggingConfigArgs:
+calass WorkflowTemplateJobSparkRJobLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -6352,20 +6352,20 @@ class WorkflowTemplateJobSparkRJobLoggingConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobSparkSqlJobArgs:
+calass WorkflowTemplateJobSparkSqlJobArrgs:
     def __init__(__self__, *,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobLoggingConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobLoggingConfigArrgs']] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  query_file_uri: Optional[pulumi.Input[str]] = None,
-                 query_list: Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobQueryListArgs']] = None,
+                 query_list: Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobQueryListArrgs']] = None,
                  script_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
-        :param pulumi.Input['WorkflowTemplateJobSparkSqlJobLoggingConfigArgs'] logging_config: The runtime log config for job execution.
+        :param pulumi.Input['WorkflowTemplateJobSparkSqlJobLoggingConfigArrgs'] logging_config: The runtime log config for job execution.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
         :param pulumi.Input[str] query_file_uri: The HCFS URI of the script that contains SQL queries.
-        :param pulumi.Input['WorkflowTemplateJobSparkSqlJobQueryListArgs'] query_list: A list of queries.
+        :param pulumi.Input['WorkflowTemplateJobSparkSqlJobQueryListArrgs'] query_list: A list of queries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] script_variables: Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
         """
         if jar_file_uris is not None:
@@ -6395,14 +6395,14 @@ class WorkflowTemplateJobSparkSqlJobArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobLoggingConfigArrgs']]:
         """
         The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
@@ -6431,14 +6431,14 @@ class WorkflowTemplateJobSparkSqlJobArgs:
 
     @property
     @pulumi.getter(name="queryList")
-    def query_list(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobQueryListArgs']]:
+    def query_list(self) -> Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobQueryListArrgs']]:
         """
         A list of queries.
         """
         return pulumi.get(self, "query_list")
 
     @query_list.setter
-    def query_list(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobQueryListArgs']]):
+    def query_list(self, value: Optional[pulumi.Input['WorkflowTemplateJobSparkSqlJobQueryListArrgs']]):
         pulumi.set(self, "query_list", value)
 
     @property
@@ -6455,7 +6455,7 @@ class WorkflowTemplateJobSparkSqlJobArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobSparkSqlJobLoggingConfigArgs:
+calass WorkflowTemplateJobSparkSqlJobLoggingConfigArrgs:
     def __init__(__self__, *,
                  driver_log_levels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -6478,7 +6478,7 @@ class WorkflowTemplateJobSparkSqlJobLoggingConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateJobSparkSqlJobQueryListArgs:
+calass WorkflowTemplateJobSparkSqlJobQueryListArrgs:
     def __init__(__self__, *,
                  queries: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -6500,17 +6500,17 @@ class WorkflowTemplateJobSparkSqlJobQueryListArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateParameterArgs:
+calass WorkflowTemplateParameterArrgs:
     def __init__(__self__, *,
                  fields: pulumi.Input[Sequence[pulumi.Input[str]]],
                  name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 validation: Optional[pulumi.Input['WorkflowTemplateParameterValidationArgs']] = None):
+                 validation: Optional[pulumi.Input['WorkflowTemplateParameterValidationArrgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths. A field path is similar in syntax to a .sparkJob.args
         :param pulumi.Input[str] name: Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
         :param pulumi.Input[str] description: Brief description of the parameter. Must not exceed 1024 characters.
-        :param pulumi.Input['WorkflowTemplateParameterValidationArgs'] validation: Validation rules to be applied to this parameter's value.
+        :param pulumi.Input['WorkflowTemplateParameterValidationArrgs'] validation: Validation rules to be applied to this parameter's value.
         """
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "name", name)
@@ -6557,25 +6557,25 @@ class WorkflowTemplateParameterArgs:
 
     @property
     @pulumi.getter
-    def validation(self) -> Optional[pulumi.Input['WorkflowTemplateParameterValidationArgs']]:
+    def validation(self) -> Optional[pulumi.Input['WorkflowTemplateParameterValidationArrgs']]:
         """
         Validation rules to be applied to this parameter's value.
         """
         return pulumi.get(self, "validation")
 
     @validation.setter
-    def validation(self, value: Optional[pulumi.Input['WorkflowTemplateParameterValidationArgs']]):
+    def validation(self, value: Optional[pulumi.Input['WorkflowTemplateParameterValidationArrgs']]):
         pulumi.set(self, "validation", value)
 
 
 @pulumi.input_type
-class WorkflowTemplateParameterValidationArgs:
+calass WorkflowTemplateParameterValidationArrgs:
     def __init__(__self__, *,
-                 regex: Optional[pulumi.Input['WorkflowTemplateParameterValidationRegexArgs']] = None,
-                 values: Optional[pulumi.Input['WorkflowTemplateParameterValidationValuesArgs']] = None):
+                 regex: Optional[pulumi.Input['WorkflowTemplateParameterValidationRegexArrgs']] = None,
+                 values: Optional[pulumi.Input['WorkflowTemplateParameterValidationValuesArrgs']] = None):
         """
-        :param pulumi.Input['WorkflowTemplateParameterValidationRegexArgs'] regex: Validation based on regular expressions.
-        :param pulumi.Input['WorkflowTemplateParameterValidationValuesArgs'] values: Validation based on a list of allowed values.
+        :param pulumi.Input['WorkflowTemplateParameterValidationRegexArrgs'] regex: Validation based on regular expressions.
+        :param pulumi.Input['WorkflowTemplateParameterValidationValuesArrgs'] values: Validation based on a list of allowed values.
         """
         if regex is not None:
             pulumi.set(__self__, "regex", regex)
@@ -6584,31 +6584,31 @@ class WorkflowTemplateParameterValidationArgs:
 
     @property
     @pulumi.getter
-    def regex(self) -> Optional[pulumi.Input['WorkflowTemplateParameterValidationRegexArgs']]:
+    def regex(self) -> Optional[pulumi.Input['WorkflowTemplateParameterValidationRegexArrgs']]:
         """
         Validation based on regular expressions.
         """
         return pulumi.get(self, "regex")
 
     @regex.setter
-    def regex(self, value: Optional[pulumi.Input['WorkflowTemplateParameterValidationRegexArgs']]):
+    def regex(self, value: Optional[pulumi.Input['WorkflowTemplateParameterValidationRegexArrgs']]):
         pulumi.set(self, "regex", value)
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input['WorkflowTemplateParameterValidationValuesArgs']]:
+    def values(self) -> Optional[pulumi.Input['WorkflowTemplateParameterValidationValuesArrgs']]:
         """
         Validation based on a list of allowed values.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input['WorkflowTemplateParameterValidationValuesArgs']]):
+    def values(self, value: Optional[pulumi.Input['WorkflowTemplateParameterValidationValuesArrgs']]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
-class WorkflowTemplateParameterValidationRegexArgs:
+calass WorkflowTemplateParameterValidationRegexArrgs:
     def __init__(__self__, *,
                  regexes: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -6630,7 +6630,7 @@ class WorkflowTemplateParameterValidationRegexArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplateParameterValidationValuesArgs:
+calass WorkflowTemplateParameterValidationValuesArrgs:
     def __init__(__self__, *,
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -6652,13 +6652,13 @@ class WorkflowTemplateParameterValidationValuesArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementArgs:
+calass WorkflowTemplatePlacementArrgs:
     def __init__(__self__, *,
-                 cluster_selector: Optional[pulumi.Input['WorkflowTemplatePlacementClusterSelectorArgs']] = None,
-                 managed_cluster: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterArgs']] = None):
+                 cluster_selector: Optional[pulumi.Input['WorkflowTemplatePlacementClusterSelectorArrgs']] = None,
+                 managed_cluster: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterArrgs']] = None):
         """
-        :param pulumi.Input['WorkflowTemplatePlacementClusterSelectorArgs'] cluster_selector: A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterArgs'] managed_cluster: A cluster that is managed by the workflow.
+        :param pulumi.Input['WorkflowTemplatePlacementClusterSelectorArrgs'] cluster_selector: A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterArrgs'] managed_cluster: A cluster that is managed by the workflow.
         """
         if cluster_selector is not None:
             pulumi.set(__self__, "cluster_selector", cluster_selector)
@@ -6667,31 +6667,31 @@ class WorkflowTemplatePlacementArgs:
 
     @property
     @pulumi.getter(name="clusterSelector")
-    def cluster_selector(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementClusterSelectorArgs']]:
+    def cluster_selector(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementClusterSelectorArrgs']]:
         """
         A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
         """
         return pulumi.get(self, "cluster_selector")
 
     @cluster_selector.setter
-    def cluster_selector(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementClusterSelectorArgs']]):
+    def cluster_selector(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementClusterSelectorArrgs']]):
         pulumi.set(self, "cluster_selector", value)
 
     @property
     @pulumi.getter(name="managedCluster")
-    def managed_cluster(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterArgs']]:
+    def managed_cluster(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterArrgs']]:
         """
         A cluster that is managed by the workflow.
         """
         return pulumi.get(self, "managed_cluster")
 
     @managed_cluster.setter
-    def managed_cluster(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterArgs']]):
+    def managed_cluster(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterArrgs']]):
         pulumi.set(self, "managed_cluster", value)
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementClusterSelectorArgs:
+calass WorkflowTemplatePlacementClusterSelectorArrgs:
     def __init__(__self__, *,
                  cluster_labels: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  zone: Optional[pulumi.Input[str]] = None):
@@ -6729,14 +6729,14 @@ class WorkflowTemplatePlacementClusterSelectorArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterArgs:
+calass WorkflowTemplatePlacementManagedClusterArrgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[str],
-                 config: pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArgs'],
+                 config: pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArrgs'],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] cluster_name: Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArgs'] config: Required. The cluster configuration.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArrgs'] config: Required. The cluster configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -6758,14 +6758,14 @@ class WorkflowTemplatePlacementManagedClusterArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArgs']:
+    def config(self) -> pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArrgs']:
         """
         Required. The cluster configuration.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArgs']):
+    def config(self, value: pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigArrgs']):
         pulumi.set(self, "config", value)
 
     @property
@@ -6782,39 +6782,39 @@ class WorkflowTemplatePlacementManagedClusterArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigArrgs:
     def __init__(__self__, *,
-                 autoscaling_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs']] = None,
-                 encryption_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs']] = None,
-                 endpoint_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs']] = None,
-                 gce_cluster_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs']] = None,
-                 gke_cluster_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs']] = None,
-                 initialization_actions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs']]]] = None,
-                 lifecycle_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs']] = None,
-                 master_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs']] = None,
-                 metastore_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs']] = None,
-                 secondary_worker_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs']] = None,
-                 security_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs']] = None,
-                 software_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs']] = None,
+                 autoscaling_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArrgs']] = None,
+                 encryption_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArrgs']] = None,
+                 endpoint_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArrgs']] = None,
+                 gce_cluster_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArrgs']] = None,
+                 gke_cluster_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArrgs']] = None,
+                 initialization_actions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrgs']]]] = None,
+                 lifecycle_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArrgs']] = None,
+                 master_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArrgs']] = None,
+                 metastore_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArrgs']] = None,
+                 secondary_worker_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArrgs']] = None,
+                 security_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArrgs']] = None,
+                 software_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArrgs']] = None,
                  staging_bucket: Optional[pulumi.Input[str]] = None,
                  temp_bucket: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs']] = None):
+                 worker_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArrgs']] = None):
         """
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs'] autoscaling_config: Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs'] encryption_config: Encryption settings for the cluster.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs'] endpoint_config: Port/endpoint configuration for this cluster
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs'] gce_cluster_config: The shared Compute Engine config settings for all instances in a cluster.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs'] gke_cluster_config: The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs']]] initialization_actions: Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs'] lifecycle_config: Lifecycle setting for the cluster.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs'] master_config: The Compute Engine config settings for additional worker instances in a cluster.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs'] metastore_config: Metastore configuration.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs'] secondary_worker_config: The Compute Engine config settings for additional worker instances in a cluster.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs'] security_config: Security settings for the cluster.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs'] software_config: The config settings for software inside the cluster.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArrgs'] autoscaling_config: Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArrgs'] encryption_config: Encryption settings for the cluster.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArrgs'] endpoint_config: Port/endpoint configuration for this cluster
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArrgs'] gce_cluster_config: The shared Compute Engine config settings for all instances in a cluster.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArrgs'] gke_cluster_config: The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrgs']]] initialization_actions: Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArrgs'] lifecycle_config: Lifecycle setting for the cluster.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArrgs'] master_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArrgs'] metastore_config: Metastore configuration.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArrgs'] secondary_worker_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArrgs'] security_config: Security settings for the cluster.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArrgs'] software_config: The config settings for software inside the cluster.
         :param pulumi.Input[str] staging_bucket: A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
         :param pulumi.Input[str] temp_bucket: A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs'] worker_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArrgs'] worker_config: The Compute Engine config settings for additional worker instances in a cluster.
                
                - - -
         """
@@ -6851,146 +6851,146 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
 
     @property
     @pulumi.getter(name="autoscalingConfig")
-    def autoscaling_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs']]:
+    def autoscaling_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArrgs']]:
         """
         Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
         """
         return pulumi.get(self, "autoscaling_config")
 
     @autoscaling_config.setter
-    def autoscaling_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs']]):
+    def autoscaling_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArrgs']]):
         pulumi.set(self, "autoscaling_config", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs']]:
+    def encryption_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArrgs']]:
         """
         Encryption settings for the cluster.
         """
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs']]):
+    def encryption_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArrgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter(name="endpointConfig")
-    def endpoint_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs']]:
+    def endpoint_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArrgs']]:
         """
         Port/endpoint configuration for this cluster
         """
         return pulumi.get(self, "endpoint_config")
 
     @endpoint_config.setter
-    def endpoint_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs']]):
+    def endpoint_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArrgs']]):
         pulumi.set(self, "endpoint_config", value)
 
     @property
     @pulumi.getter(name="gceClusterConfig")
-    def gce_cluster_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs']]:
+    def gce_cluster_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArrgs']]:
         """
         The shared Compute Engine config settings for all instances in a cluster.
         """
         return pulumi.get(self, "gce_cluster_config")
 
     @gce_cluster_config.setter
-    def gce_cluster_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs']]):
+    def gce_cluster_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArrgs']]):
         pulumi.set(self, "gce_cluster_config", value)
 
     @property
     @pulumi.getter(name="gkeClusterConfig")
-    def gke_cluster_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs']]:
+    def gke_cluster_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArrgs']]:
         """
         The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
         """
         return pulumi.get(self, "gke_cluster_config")
 
     @gke_cluster_config.setter
-    def gke_cluster_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs']]):
+    def gke_cluster_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArrgs']]):
         pulumi.set(self, "gke_cluster_config", value)
 
     @property
     @pulumi.getter(name="initializationActions")
-    def initialization_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs']]]]:
+    def initialization_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrgs']]]]:
         """
         Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
         """
         return pulumi.get(self, "initialization_actions")
 
     @initialization_actions.setter
-    def initialization_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs']]]]):
+    def initialization_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrgs']]]]):
         pulumi.set(self, "initialization_actions", value)
 
     @property
     @pulumi.getter(name="lifecycleConfig")
-    def lifecycle_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs']]:
+    def lifecycle_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArrgs']]:
         """
         Lifecycle setting for the cluster.
         """
         return pulumi.get(self, "lifecycle_config")
 
     @lifecycle_config.setter
-    def lifecycle_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs']]):
+    def lifecycle_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArrgs']]):
         pulumi.set(self, "lifecycle_config", value)
 
     @property
     @pulumi.getter(name="masterConfig")
-    def master_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs']]:
+    def master_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArrgs']]:
         """
         The Compute Engine config settings for additional worker instances in a cluster.
         """
         return pulumi.get(self, "master_config")
 
     @master_config.setter
-    def master_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs']]):
+    def master_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArrgs']]):
         pulumi.set(self, "master_config", value)
 
     @property
     @pulumi.getter(name="metastoreConfig")
-    def metastore_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs']]:
+    def metastore_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArrgs']]:
         """
         Metastore configuration.
         """
         return pulumi.get(self, "metastore_config")
 
     @metastore_config.setter
-    def metastore_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs']]):
+    def metastore_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArrgs']]):
         pulumi.set(self, "metastore_config", value)
 
     @property
     @pulumi.getter(name="secondaryWorkerConfig")
-    def secondary_worker_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs']]:
+    def secondary_worker_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArrgs']]:
         """
         The Compute Engine config settings for additional worker instances in a cluster.
         """
         return pulumi.get(self, "secondary_worker_config")
 
     @secondary_worker_config.setter
-    def secondary_worker_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs']]):
+    def secondary_worker_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArrgs']]):
         pulumi.set(self, "secondary_worker_config", value)
 
     @property
     @pulumi.getter(name="securityConfig")
-    def security_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs']]:
+    def security_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArrgs']]:
         """
         Security settings for the cluster.
         """
         return pulumi.get(self, "security_config")
 
     @security_config.setter
-    def security_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs']]):
+    def security_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArrgs']]):
         pulumi.set(self, "security_config", value)
 
     @property
     @pulumi.getter(name="softwareConfig")
-    def software_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs']]:
+    def software_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArrgs']]:
         """
         The config settings for software inside the cluster.
         """
         return pulumi.get(self, "software_config")
 
     @software_config.setter
-    def software_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs']]):
+    def software_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArrgs']]):
         pulumi.set(self, "software_config", value)
 
     @property
@@ -7019,7 +7019,7 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
 
     @property
     @pulumi.getter(name="workerConfig")
-    def worker_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs']]:
+    def worker_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArrgs']]:
         """
         The Compute Engine config settings for additional worker instances in a cluster.
 
@@ -7028,12 +7028,12 @@ class WorkflowTemplatePlacementManagedClusterConfigArgs:
         return pulumi.get(self, "worker_config")
 
     @worker_config.setter
-    def worker_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs']]):
+    def worker_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArrgs']]):
         pulumi.set(self, "worker_config", value)
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArrgs:
     def __init__(__self__, *,
                  policy: Optional[pulumi.Input[str]] = None):
         """
@@ -7056,7 +7056,7 @@ class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArrgs:
     def __init__(__self__, *,
                  gce_pd_kms_key_name: Optional[pulumi.Input[str]] = None):
         """
@@ -7079,7 +7079,7 @@ class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArrgs:
     def __init__(__self__, *,
                  enable_http_port_access: Optional[pulumi.Input[bool]] = None,
                  http_ports: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -7118,17 +7118,17 @@ class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArrgs:
     def __init__(__self__, *,
                  internal_ip_only: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 node_group_affinity: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs']] = None,
+                 node_group_affinity: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArrgs']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
-                 reservation_affinity: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs']] = None,
+                 reservation_affinity: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArrgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArrgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -7136,12 +7136,12 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
         :param pulumi.Input[bool] internal_ip_only: If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param pulumi.Input[str] network: The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs'] node_group_affinity: Node Group Affinity for sole-tenant clusters.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArrgs'] node_group_affinity: Node Group Affinity for sole-tenant clusters.
         :param pulumi.Input[str] private_ipv6_google_access: The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArrgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
         :param pulumi.Input[str] service_account: The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArrgs'] shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
         :param pulumi.Input[str] subnetwork: The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         :param pulumi.Input[str] zone: The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
@@ -7209,14 +7209,14 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
 
     @property
     @pulumi.getter(name="nodeGroupAffinity")
-    def node_group_affinity(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs']]:
+    def node_group_affinity(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArrgs']]:
         """
         Node Group Affinity for sole-tenant clusters.
         """
         return pulumi.get(self, "node_group_affinity")
 
     @node_group_affinity.setter
-    def node_group_affinity(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs']]):
+    def node_group_affinity(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArrgs']]):
         pulumi.set(self, "node_group_affinity", value)
 
     @property
@@ -7233,14 +7233,14 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
 
     @property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs']]:
+    def reservation_affinity(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArrgs']]:
         """
         Reservation Affinity for consuming Zonal reservation.
         """
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs']]):
+    def reservation_affinity(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArrgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @property
@@ -7269,14 +7269,14 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArrgs']]:
         """
         Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
         """
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArrgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
@@ -7317,7 +7317,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArrgs:
     def __init__(__self__, *,
                  node_group: pulumi.Input[str]):
         """
@@ -7339,7 +7339,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffi
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArrgs:
     def __init__(__self__, *,
                  consume_reservation_type: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -7394,7 +7394,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAf
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
@@ -7449,30 +7449,30 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArrgs:
     def __init__(__self__, *,
-                 namespaced_gke_deployment_target: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs']] = None):
+                 namespaced_gke_deployment_target: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArrgs']] = None):
         """
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs'] namespaced_gke_deployment_target: A target for the deployment.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArrgs'] namespaced_gke_deployment_target: A target for the deployment.
         """
         if namespaced_gke_deployment_target is not None:
             pulumi.set(__self__, "namespaced_gke_deployment_target", namespaced_gke_deployment_target)
 
     @property
     @pulumi.getter(name="namespacedGkeDeploymentTarget")
-    def namespaced_gke_deployment_target(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs']]:
+    def namespaced_gke_deployment_target(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArrgs']]:
         """
         A target for the deployment.
         """
         return pulumi.get(self, "namespaced_gke_deployment_target")
 
     @namespaced_gke_deployment_target.setter
-    def namespaced_gke_deployment_target(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs']]):
+    def namespaced_gke_deployment_target(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArrgs']]):
         pulumi.set(self, "namespaced_gke_deployment_target", value)
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArrgs:
     def __init__(__self__, *,
                  cluster_namespace: Optional[pulumi.Input[str]] = None,
                  target_gke_cluster: Optional[pulumi.Input[str]] = None):
@@ -7511,7 +7511,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGke
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigInitializationActionArrgs:
     def __init__(__self__, *,
                  executable_file: Optional[pulumi.Input[str]] = None,
                  execution_timeout: Optional[pulumi.Input[str]] = None):
@@ -7550,7 +7550,7 @@ class WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArrgs:
     def __init__(__self__, *,
                  auto_delete_time: Optional[pulumi.Input[str]] = None,
                  auto_delete_ttl: Optional[pulumi.Input[str]] = None,
@@ -7621,26 +7621,26 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigMasterConfigArrgs:
     def __init__(__self__, *,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs']]]] = None,
-                 disk_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs']] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrgs']]]] = None,
+                 disk_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArrgs']] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  instance_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_preemptible: Optional[pulumi.Input[bool]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 managed_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs']]]] = None,
+                 managed_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrgs']]]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  num_instances: Optional[pulumi.Input[int]] = None,
                  preemptibility: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs']]] accelerators: The Compute Engine accelerator configuration for these instances.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs'] disk_config: Disk option config settings.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrgs']]] accelerators: The Compute Engine accelerator configuration for these instances.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArrgs'] disk_config: Disk option config settings.
         :param pulumi.Input[str] image: The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         :param pulumi.Input[bool] is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
         :param pulumi.Input[str] machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs']]] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrgs']]] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         :param pulumi.Input[str] min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         :param pulumi.Input[int] num_instances: The number of VM instances in the instance group. For master instance groups, must be set to 1.
         :param pulumi.Input[str] preemptibility: Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
@@ -7668,26 +7668,26 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs:
 
     @property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs']]]]:
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrgs']]]]:
         """
         The Compute Engine accelerator configuration for these instances.
         """
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs']]]]):
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrgs']]]]):
         pulumi.set(self, "accelerators", value)
 
     @property
     @pulumi.getter(name="diskConfig")
-    def disk_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs']]:
+    def disk_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArrgs']]:
         """
         Disk option config settings.
         """
         return pulumi.get(self, "disk_config")
 
     @disk_config.setter
-    def disk_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs']]):
+    def disk_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArrgs']]):
         pulumi.set(self, "disk_config", value)
 
     @property
@@ -7740,14 +7740,14 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs:
 
     @property
     @pulumi.getter(name="managedGroupConfigs")
-    def managed_group_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs']]]]:
+    def managed_group_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrgs']]]]:
         """
         Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         """
         return pulumi.get(self, "managed_group_configs")
 
     @managed_group_configs.setter
-    def managed_group_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs']]]]):
+    def managed_group_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrgs']]]]):
         pulumi.set(self, "managed_group_configs", value)
 
     @property
@@ -7788,7 +7788,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArrgs:
     def __init__(__self__, *,
                  accelerator_count: Optional[pulumi.Input[int]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None):
@@ -7827,7 +7827,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArrgs:
     def __init__(__self__, *,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  boot_disk_type: Optional[pulumi.Input[str]] = None,
@@ -7882,7 +7882,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArrgs:
     def __init__(__self__, *,
                  instance_group_manager_name: Optional[pulumi.Input[str]] = None,
                  instance_template_name: Optional[pulumi.Input[str]] = None):
@@ -7911,7 +7911,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfi
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArrgs:
     def __init__(__self__, *,
                  dataproc_metastore_service: pulumi.Input[str]):
         """
@@ -7933,26 +7933,26 @@ class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArrgs:
     def __init__(__self__, *,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs']]]] = None,
-                 disk_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs']] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrgs']]]] = None,
+                 disk_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArrgs']] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  instance_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_preemptible: Optional[pulumi.Input[bool]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 managed_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs']]]] = None,
+                 managed_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrgs']]]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  num_instances: Optional[pulumi.Input[int]] = None,
                  preemptibility: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs']]] accelerators: The Compute Engine accelerator configuration for these instances.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs'] disk_config: Disk option config settings.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrgs']]] accelerators: The Compute Engine accelerator configuration for these instances.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArrgs'] disk_config: Disk option config settings.
         :param pulumi.Input[str] image: The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         :param pulumi.Input[bool] is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
         :param pulumi.Input[str] machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs']]] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrgs']]] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         :param pulumi.Input[str] min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         :param pulumi.Input[int] num_instances: The number of VM instances in the instance group. For master instance groups, must be set to 1.
         :param pulumi.Input[str] preemptibility: Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
@@ -7980,26 +7980,26 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
 
     @property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs']]]]:
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrgs']]]]:
         """
         The Compute Engine accelerator configuration for these instances.
         """
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs']]]]):
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrgs']]]]):
         pulumi.set(self, "accelerators", value)
 
     @property
     @pulumi.getter(name="diskConfig")
-    def disk_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs']]:
+    def disk_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArrgs']]:
         """
         Disk option config settings.
         """
         return pulumi.get(self, "disk_config")
 
     @disk_config.setter
-    def disk_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs']]):
+    def disk_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArrgs']]):
         pulumi.set(self, "disk_config", value)
 
     @property
@@ -8052,14 +8052,14 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
 
     @property
     @pulumi.getter(name="managedGroupConfigs")
-    def managed_group_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs']]]]:
+    def managed_group_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrgs']]]]:
         """
         Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         """
         return pulumi.get(self, "managed_group_configs")
 
     @managed_group_configs.setter
-    def managed_group_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs']]]]):
+    def managed_group_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrgs']]]]):
         pulumi.set(self, "managed_group_configs", value)
 
     @property
@@ -8100,7 +8100,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArrgs:
     def __init__(__self__, *,
                  accelerator_count: Optional[pulumi.Input[int]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None):
@@ -8139,7 +8139,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelera
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArrgs:
     def __init__(__self__, *,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  boot_disk_type: Optional[pulumi.Input[str]] = None,
@@ -8194,7 +8194,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArrgs:
     def __init__(__self__, *,
                  instance_group_manager_name: Optional[pulumi.Input[str]] = None,
                  instance_template_name: Optional[pulumi.Input[str]] = None):
@@ -8223,30 +8223,30 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedG
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArrgs:
     def __init__(__self__, *,
-                 kerberos_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs']] = None):
+                 kerberos_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArrgs']] = None):
         """
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs'] kerberos_config: Kerberos related configuration.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArrgs'] kerberos_config: Kerberos related configuration.
         """
         if kerberos_config is not None:
             pulumi.set(__self__, "kerberos_config", kerberos_config)
 
     @property
     @pulumi.getter(name="kerberosConfig")
-    def kerberos_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs']]:
+    def kerberos_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArrgs']]:
         """
         Kerberos related configuration.
         """
         return pulumi.get(self, "kerberos_config")
 
     @kerberos_config.setter
-    def kerberos_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs']]):
+    def kerberos_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArrgs']]):
         pulumi.set(self, "kerberos_config", value)
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArrgs:
     def __init__(__self__, *,
                  cross_realm_trust_admin_server: Optional[pulumi.Input[str]] = None,
                  cross_realm_trust_kdc: Optional[pulumi.Input[str]] = None,
@@ -8493,7 +8493,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigA
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArrgs:
     def __init__(__self__, *,
                  image_version: Optional[pulumi.Input[str]] = None,
                  optional_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -8578,26 +8578,26 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArrgs:
     def __init__(__self__, *,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs']]]] = None,
-                 disk_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs']] = None,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrgs']]]] = None,
+                 disk_config: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArrgs']] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  instance_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_preemptible: Optional[pulumi.Input[bool]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
-                 managed_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs']]]] = None,
+                 managed_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrgs']]]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  num_instances: Optional[pulumi.Input[int]] = None,
                  preemptibility: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs']]] accelerators: The Compute Engine accelerator configuration for these instances.
-        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs'] disk_config: Disk option config settings.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrgs']]] accelerators: The Compute Engine accelerator configuration for these instances.
+        :param pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArrgs'] disk_config: Disk option config settings.
         :param pulumi.Input[str] image: The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         :param pulumi.Input[bool] is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
         :param pulumi.Input[str] machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs']]] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrgs']]] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         :param pulumi.Input[str] min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         :param pulumi.Input[int] num_instances: The number of VM instances in the instance group. For master instance groups, must be set to 1.
         :param pulumi.Input[str] preemptibility: Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
@@ -8625,26 +8625,26 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
 
     @property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs']]]]:
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrgs']]]]:
         """
         The Compute Engine accelerator configuration for these instances.
         """
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs']]]]):
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrgs']]]]):
         pulumi.set(self, "accelerators", value)
 
     @property
     @pulumi.getter(name="diskConfig")
-    def disk_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs']]:
+    def disk_config(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArrgs']]:
         """
         Disk option config settings.
         """
         return pulumi.get(self, "disk_config")
 
     @disk_config.setter
-    def disk_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs']]):
+    def disk_config(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArrgs']]):
         pulumi.set(self, "disk_config", value)
 
     @property
@@ -8697,14 +8697,14 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
 
     @property
     @pulumi.getter(name="managedGroupConfigs")
-    def managed_group_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs']]]]:
+    def managed_group_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrgs']]]]:
         """
         Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         """
         return pulumi.get(self, "managed_group_configs")
 
     @managed_group_configs.setter
-    def managed_group_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs']]]]):
+    def managed_group_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrgs']]]]):
         pulumi.set(self, "managed_group_configs", value)
 
     @property
@@ -8745,7 +8745,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArrgs:
     def __init__(__self__, *,
                  accelerator_count: Optional[pulumi.Input[int]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None):
@@ -8784,7 +8784,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArrgs:
     def __init__(__self__, *,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  boot_disk_type: Optional[pulumi.Input[str]] = None,
@@ -8839,7 +8839,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs:
 
 
 @pulumi.input_type
-class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs:
+calass WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrgs:
     def __init__(__self__, *,
                  instance_group_manager_name: Optional[pulumi.Input[str]] = None,
                  instance_template_name: Optional[pulumi.Input[str]] = None):

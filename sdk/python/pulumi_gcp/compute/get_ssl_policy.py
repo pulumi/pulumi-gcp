@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetSSLPolicyResult:
+calass GetSSLPolicyResult:
     """
     A collection of values returned by getSSLPolicy.
     """
@@ -138,7 +138,7 @@ class GetSSLPolicyResult:
         return pulumi.get(self, "self_link")
 
 
-class AwaitableGetSSLPolicyResult(GetSSLPolicyResult):
+calass AwaitableGetSSLPolicyResult(GetSSLPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

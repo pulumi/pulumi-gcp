@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAppConnectionResult:
+calass GetAppConnectionResult:
     """
     A collection of values returned by getAppConnection.
     """
@@ -124,7 +124,7 @@ class GetAppConnectionResult:
         return pulumi.get(self, "type")
 
 
-class AwaitableGetAppConnectionResult(GetAppConnectionResult):
+calass AwaitableGetAppConnectionResult(GetAppConnectionResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

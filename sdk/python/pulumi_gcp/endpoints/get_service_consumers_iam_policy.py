@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetServiceConsumersIamPolicyResult:
+calass GetServiceConsumersIamPolicyResult:
     """
     A collection of values returned by getServiceConsumersIamPolicy.
     """
@@ -74,7 +74,7 @@ class GetServiceConsumersIamPolicyResult:
         return pulumi.get(self, "service_name")
 
 
-class AwaitableGetServiceConsumersIamPolicyResult(GetServiceConsumersIamPolicyResult):
+calass AwaitableGetServiceConsumersIamPolicyResult(GetServiceConsumersIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

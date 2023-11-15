@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage IAM policies on bigtable tables. Each of these resources serves a different use case:
@@ -373,12 +372,6 @@ func (i *TableIamBinding) ToTableIamBindingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamBindingOutput)
 }
 
-func (i *TableIamBinding) ToOutput(ctx context.Context) pulumix.Output[*TableIamBinding] {
-	return pulumix.Output[*TableIamBinding]{
-		OutputState: i.ToTableIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TableIamBindingArrayInput is an input type that accepts TableIamBindingArray and TableIamBindingArrayOutput values.
 // You can construct a concrete instance of `TableIamBindingArrayInput` via:
 //
@@ -402,12 +395,6 @@ func (i TableIamBindingArray) ToTableIamBindingArrayOutput() TableIamBindingArra
 
 func (i TableIamBindingArray) ToTableIamBindingArrayOutputWithContext(ctx context.Context) TableIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamBindingArrayOutput)
-}
-
-func (i TableIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*TableIamBinding] {
-	return pulumix.Output[[]*TableIamBinding]{
-		OutputState: i.ToTableIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TableIamBindingMapInput is an input type that accepts TableIamBindingMap and TableIamBindingMapOutput values.
@@ -435,12 +422,6 @@ func (i TableIamBindingMap) ToTableIamBindingMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamBindingMapOutput)
 }
 
-func (i TableIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TableIamBinding] {
-	return pulumix.Output[map[string]*TableIamBinding]{
-		OutputState: i.ToTableIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TableIamBindingOutput struct{ *pulumi.OutputState }
 
 func (TableIamBindingOutput) ElementType() reflect.Type {
@@ -453,12 +434,6 @@ func (o TableIamBindingOutput) ToTableIamBindingOutput() TableIamBindingOutput {
 
 func (o TableIamBindingOutput) ToTableIamBindingOutputWithContext(ctx context.Context) TableIamBindingOutput {
 	return o
-}
-
-func (o TableIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*TableIamBinding] {
-	return pulumix.Output[*TableIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableIamBindingOutput) Condition() TableIamBindingConditionPtrOutput {
@@ -524,12 +499,6 @@ func (o TableIamBindingArrayOutput) ToTableIamBindingArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o TableIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TableIamBinding] {
-	return pulumix.Output[[]*TableIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TableIamBindingArrayOutput) Index(i pulumi.IntInput) TableIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TableIamBinding {
 		return vs[0].([]*TableIamBinding)[vs[1].(int)]
@@ -548,12 +517,6 @@ func (o TableIamBindingMapOutput) ToTableIamBindingMapOutput() TableIamBindingMa
 
 func (o TableIamBindingMapOutput) ToTableIamBindingMapOutputWithContext(ctx context.Context) TableIamBindingMapOutput {
 	return o
-}
-
-func (o TableIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TableIamBinding] {
-	return pulumix.Output[map[string]*TableIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableIamBindingMapOutput) MapIndex(k pulumi.StringInput) TableIamBindingOutput {

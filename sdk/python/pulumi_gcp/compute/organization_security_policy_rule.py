@@ -11,13 +11,13 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OrganizationSecurityPolicyRuleArgs', 'OrganizationSecurityPolicyRule']
+__all__ = ['OrganizationSecurityPolicyRuleArrgs', 'OrganizationSecurityPolicyRule']
 
 @pulumi.input_type
-class OrganizationSecurityPolicyRuleArgs:
+calass OrganizationSecurityPolicyRuleArrgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
-                 match: pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs'],
+                 match: pulumi.Input['OrganizationSecurityPolicyRuleMatchArrgs'],
                  policy_id: pulumi.Input[str],
                  priority: pulumi.Input[int],
                  description: Optional[pulumi.Input[str]] = None,
@@ -30,7 +30,7 @@ class OrganizationSecurityPolicyRuleArgs:
         The set of arguments for constructing a OrganizationSecurityPolicyRule resource.
         :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny" or "goto_next".
-        :param pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input['OrganizationSecurityPolicyRuleMatchArrgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a value
@@ -82,7 +82,7 @@ class OrganizationSecurityPolicyRuleArgs:
 
     @property
     @pulumi.getter
-    def match(self) -> pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']:
+    def match(self) -> pulumi.Input['OrganizationSecurityPolicyRuleMatchArrgs']:
         """
         A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         Structure is documented below.
@@ -90,7 +90,7 @@ class OrganizationSecurityPolicyRuleArgs:
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']):
+    def match(self, value: pulumi.Input['OrganizationSecurityPolicyRuleMatchArrgs']):
         pulumi.set(self, "match", value)
 
     @property
@@ -200,13 +200,13 @@ class OrganizationSecurityPolicyRuleArgs:
 
 
 @pulumi.input_type
-class _OrganizationSecurityPolicyRuleState:
+calass _OrganizationSecurityPolicyRuleState:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 match: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']] = None,
+                 match: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArrgs']] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -222,7 +222,7 @@ class _OrganizationSecurityPolicyRuleState:
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
-        :param pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input['OrganizationSecurityPolicyRuleMatchArrgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
@@ -311,7 +311,7 @@ class _OrganizationSecurityPolicyRuleState:
 
     @property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']]:
+    def match(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArrgs']]:
         """
         A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         Structure is documented below.
@@ -319,7 +319,7 @@ class _OrganizationSecurityPolicyRuleState:
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']]):
+    def match(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArrgs']]):
         pulumi.set(self, "match", value)
 
     @property
@@ -389,7 +389,7 @@ class _OrganizationSecurityPolicyRuleState:
         pulumi.set(self, "target_service_accounts", value)
 
 
-class OrganizationSecurityPolicyRule(pulumi.CustomResource):
+calass OrganizationSecurityPolicyRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -398,7 +398,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArrgs']]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -430,18 +430,18 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             direction="INGRESS",
             enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
+            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArrgs(
+                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArrgs(
                     src_ip_ranges=[
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
                     layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
+                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs(
                             ip_protocol="tcp",
                             ports=["22"],
                         ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
+                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs(
                             ip_protocol="icmp",
                         ),
                     ],
@@ -469,7 +469,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
-        :param pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArrgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
@@ -487,7 +487,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OrganizationSecurityPolicyRuleArgs,
+                 args: OrganizationSecurityPolicyRuleArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A rule for the OrganizationSecurityPolicy.
@@ -514,18 +514,18 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             direction="INGRESS",
             enable_logging=True,
-            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArgs(
-                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArgs(
+            match=gcp.compute.OrganizationSecurityPolicyRuleMatchArrgs(
+                config=gcp.compute.OrganizationSecurityPolicyRuleMatchConfigArrgs(
                     src_ip_ranges=[
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
                     layer4_configs=[
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
+                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs(
                             ip_protocol="tcp",
                             ports=["22"],
                         ),
-                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs(
+                        gcp.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArrgs(
                             ip_protocol="icmp",
                         ),
                     ],
@@ -544,12 +544,12 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param OrganizationSecurityPolicyRuleArgs args: The arguments to use to populate this resource's properties.
+        :param OrganizationSecurityPolicyRuleArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(OrganizationSecurityPolicyRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationSecurityPolicyRuleArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -562,7 +562,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArrgs']]] = None,
                  policy_id: Optional[pulumi.Input[str]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -575,7 +575,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = OrganizationSecurityPolicyRuleArgs.__new__(OrganizationSecurityPolicyRuleArgs)
+            __props__ = OrganizationSecurityPolicyRuleArrgs.__new__(OrganizationSecurityPolicyRuleArrgs)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
@@ -609,7 +609,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             direction: Optional[pulumi.Input[str]] = None,
             enable_logging: Optional[pulumi.Input[bool]] = None,
-            match: Optional[pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']]] = None,
+            match: Optional[pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArrgs']]] = None,
             policy_id: Optional[pulumi.Input[str]] = None,
             preview: Optional[pulumi.Input[bool]] = None,
             priority: Optional[pulumi.Input[int]] = None,
@@ -630,7 +630,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
-        :param pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input[pulumi.InputType['OrganizationSecurityPolicyRuleMatchArrgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
         :param pulumi.Input[str] policy_id: The ID of the OrganizationSecurityPolicy this rule applies to.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.

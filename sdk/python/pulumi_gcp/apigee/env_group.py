@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['EnvGroupArgs', 'EnvGroup']
+__all__ = ['EnvGroupArrgs', 'EnvGroup']
 
 @pulumi.input_type
-class EnvGroupArgs:
+calass EnvGroupArrgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[str],
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -75,7 +75,7 @@ class EnvGroupArgs:
 
 
 @pulumi.input_type
-class _EnvGroupState:
+calass _EnvGroupState:
     def __init__(__self__, *,
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -138,7 +138,7 @@ class _EnvGroupState:
         pulumi.set(self, "org_id", value)
 
 
-class EnvGroup(pulumi.CustomResource):
+calass EnvGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -210,7 +210,7 @@ class EnvGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EnvGroupArgs,
+                 args: EnvGroupArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An `Environment group` in Apigee.
@@ -262,12 +262,12 @@ class EnvGroup(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param EnvGroupArgs args: The arguments to use to populate this resource's properties.
+        :param EnvGroupArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EnvGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EnvGroupArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -286,7 +286,7 @@ class EnvGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EnvGroupArgs.__new__(EnvGroupArgs)
+            __props__ = EnvGroupArrgs.__new__(EnvGroupArrgs)
 
             __props__.__dict__["hostnames"] = hostnames
             __props__.__dict__["name"] = name

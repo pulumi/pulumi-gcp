@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ServicePerimeterResourceArgs', 'ServicePerimeterResource']
+__all__ = ['ServicePerimeterResourceArrgs', 'ServicePerimeterResource']
 
 @pulumi.input_type
-class ServicePerimeterResourceArgs:
+calass ServicePerimeterResourceArrgs:
     def __init__(__self__, *,
                  perimeter_name: pulumi.Input[str],
                  resource: pulumi.Input[str]):
@@ -60,7 +60,7 @@ class ServicePerimeterResourceArgs:
 
 
 @pulumi.input_type
-class _ServicePerimeterResourceState:
+calass _ServicePerimeterResourceState:
     def __init__(__self__, *,
                  perimeter_name: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None):
@@ -109,7 +109,7 @@ class _ServicePerimeterResourceState:
         pulumi.set(self, "resource", value)
 
 
-class ServicePerimeterResource(pulumi.CustomResource):
+calass ServicePerimeterResource(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -152,7 +152,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
         service_perimeter_resource_service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter-resourceServicePerimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             title="restrict_all",
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArrgs(
                 restricted_services=["storage.googleapis.com"],
             ))
         service_perimeter_resource_service_perimeter_resource = gcp.accesscontextmanager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource",
@@ -182,7 +182,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ServicePerimeterResourceArgs,
+                 args: ServicePerimeterResourceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows configuring a single GCP resource that should be inside of a service perimeter.
@@ -219,7 +219,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
         service_perimeter_resource_service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter-resourceServicePerimeter",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             title="restrict_all",
-            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArrgs(
                 restricted_services=["storage.googleapis.com"],
             ))
         service_perimeter_resource_service_perimeter_resource = gcp.accesscontextmanager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource",
@@ -236,12 +236,12 @@ class ServicePerimeterResource(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ServicePerimeterResourceArgs args: The arguments to use to populate this resource's properties.
+        :param ServicePerimeterResourceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ServicePerimeterResourceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ServicePerimeterResourceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -259,7 +259,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ServicePerimeterResourceArgs.__new__(ServicePerimeterResourceArgs)
+            __props__ = ServicePerimeterResourceArrgs.__new__(ServicePerimeterResourceArrgs)
 
             if perimeter_name is None and not opts.urn:
                 raise TypeError("Missing required property 'perimeter_name'")

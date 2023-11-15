@@ -10,14 +10,14 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'EnterpriseKeyAndroidSettingsArgs',
-    'EnterpriseKeyIosSettingsArgs',
-    'EnterpriseKeyTestingOptionsArgs',
-    'EnterpriseKeyWebSettingsArgs',
+    'EnterpriseKeyAndroidSettingsArrgs',
+    'EnterpriseKeyIosSettingsArrgs',
+    'EnterpriseKeyTestingOptionsArrgs',
+    'EnterpriseKeyWebSettingsArrgs',
 ]
 
 @pulumi.input_type
-class EnterpriseKeyAndroidSettingsArgs:
+calass EnterpriseKeyAndroidSettingsArrgs:
     def __init__(__self__, *,
                  allow_all_package_names: Optional[pulumi.Input[bool]] = None,
                  allowed_package_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -56,7 +56,7 @@ class EnterpriseKeyAndroidSettingsArgs:
 
 
 @pulumi.input_type
-class EnterpriseKeyIosSettingsArgs:
+calass EnterpriseKeyIosSettingsArrgs:
     def __init__(__self__, *,
                  allow_all_bundle_ids: Optional[pulumi.Input[bool]] = None,
                  allowed_bundle_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -95,7 +95,7 @@ class EnterpriseKeyIosSettingsArgs:
 
 
 @pulumi.input_type
-class EnterpriseKeyTestingOptionsArgs:
+calass EnterpriseKeyTestingOptionsArrgs:
     def __init__(__self__, *,
                  testing_challenge: Optional[pulumi.Input[str]] = None,
                  testing_score: Optional[pulumi.Input[float]] = None):
@@ -134,7 +134,7 @@ class EnterpriseKeyTestingOptionsArgs:
 
 
 @pulumi.input_type
-class EnterpriseKeyWebSettingsArgs:
+calass EnterpriseKeyWebSettingsArrgs:
     def __init__(__self__, *,
                  integration_type: pulumi.Input[str],
                  allow_all_domains: Optional[pulumi.Input[bool]] = None,

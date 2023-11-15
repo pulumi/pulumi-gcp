@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAccountKeyResult:
+calass GetAccountKeyResult:
     """
     A collection of values returned by getAccountKey.
     """
@@ -78,7 +78,7 @@ class GetAccountKeyResult:
         return pulumi.get(self, "public_key_type")
 
 
-class AwaitableGetAccountKeyResult(GetAccountKeyResult):
+calass AwaitableGetAccountKeyResult(GetAccountKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

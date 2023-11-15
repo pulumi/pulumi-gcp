@@ -10,30 +10,30 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ConnectionProfileAlloydbArgs',
-    'ConnectionProfileAlloydbSettingsArgs',
-    'ConnectionProfileAlloydbSettingsInitialUserArgs',
-    'ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs',
-    'ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs',
-    'ConnectionProfileCloudsqlArgs',
-    'ConnectionProfileCloudsqlSettingsArgs',
-    'ConnectionProfileCloudsqlSettingsIpConfigArgs',
-    'ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs',
-    'ConnectionProfileErrorArgs',
-    'ConnectionProfileMysqlArgs',
-    'ConnectionProfileMysqlSslArgs',
-    'ConnectionProfilePostgresqlArgs',
-    'ConnectionProfilePostgresqlSslArgs',
+    'ConnectionProfileAlloydbArrgs',
+    'ConnectionProfileAlloydbSettingsArrgs',
+    'ConnectionProfileAlloydbSettingsInitialUserArrgs',
+    'ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArrgs',
+    'ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArrgs',
+    'ConnectionProfileCloudsqlArrgs',
+    'ConnectionProfileCloudsqlSettingsArrgs',
+    'ConnectionProfileCloudsqlSettingsIpConfigArrgs',
+    'ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrgs',
+    'ConnectionProfileErrorArrgs',
+    'ConnectionProfileMysqlArrgs',
+    'ConnectionProfileMysqlSslArrgs',
+    'ConnectionProfilePostgresqlArrgs',
+    'ConnectionProfilePostgresqlSslArrgs',
 ]
 
 @pulumi.input_type
-class ConnectionProfileAlloydbArgs:
+calass ConnectionProfileAlloydbArrgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 settings: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsArgs']] = None):
+                 settings: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsArrgs']] = None):
         """
         :param pulumi.Input[str] cluster_id: Required. The AlloyDB cluster ID that this connection profile is associated with.
-        :param pulumi.Input['ConnectionProfileAlloydbSettingsArgs'] settings: Immutable. Metadata used to create the destination AlloyDB cluster.
+        :param pulumi.Input['ConnectionProfileAlloydbSettingsArrgs'] settings: Immutable. Metadata used to create the destination AlloyDB cluster.
                Structure is documented below.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -54,7 +54,7 @@ class ConnectionProfileAlloydbArgs:
 
     @property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['ConnectionProfileAlloydbSettingsArgs']]:
+    def settings(self) -> Optional[pulumi.Input['ConnectionProfileAlloydbSettingsArrgs']]:
         """
         Immutable. Metadata used to create the destination AlloyDB cluster.
         Structure is documented below.
@@ -62,24 +62,24 @@ class ConnectionProfileAlloydbArgs:
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsArgs']]):
+    def settings(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsArrgs']]):
         pulumi.set(self, "settings", value)
 
 
 @pulumi.input_type
-class ConnectionProfileAlloydbSettingsArgs:
+calass ConnectionProfileAlloydbSettingsArrgs:
     def __init__(__self__, *,
-                 initial_user: pulumi.Input['ConnectionProfileAlloydbSettingsInitialUserArgs'],
+                 initial_user: pulumi.Input['ConnectionProfileAlloydbSettingsInitialUserArrgs'],
                  vpc_network: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 primary_instance_settings: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs']] = None):
+                 primary_instance_settings: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArrgs']] = None):
         """
-        :param pulumi.Input['ConnectionProfileAlloydbSettingsInitialUserArgs'] initial_user: Required. Input only. Initial user to setup during cluster creation.
+        :param pulumi.Input['ConnectionProfileAlloydbSettingsInitialUserArrgs'] initial_user: Required. Input only. Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[str] vpc_network: Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
                It is specified in the form: 'projects/{project_number}/global/networks/{network_id}'. This is required to create a cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the AlloyDB cluster created by DMS.
-        :param pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs'] primary_instance_settings: Settings for the cluster's primary instance
+        :param pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArrgs'] primary_instance_settings: Settings for the cluster's primary instance
                Structure is documented below.
         """
         pulumi.set(__self__, "initial_user", initial_user)
@@ -91,7 +91,7 @@ class ConnectionProfileAlloydbSettingsArgs:
 
     @property
     @pulumi.getter(name="initialUser")
-    def initial_user(self) -> pulumi.Input['ConnectionProfileAlloydbSettingsInitialUserArgs']:
+    def initial_user(self) -> pulumi.Input['ConnectionProfileAlloydbSettingsInitialUserArrgs']:
         """
         Required. Input only. Initial user to setup during cluster creation.
         Structure is documented below.
@@ -99,7 +99,7 @@ class ConnectionProfileAlloydbSettingsArgs:
         return pulumi.get(self, "initial_user")
 
     @initial_user.setter
-    def initial_user(self, value: pulumi.Input['ConnectionProfileAlloydbSettingsInitialUserArgs']):
+    def initial_user(self, value: pulumi.Input['ConnectionProfileAlloydbSettingsInitialUserArrgs']):
         pulumi.set(self, "initial_user", value)
 
     @property
@@ -129,7 +129,7 @@ class ConnectionProfileAlloydbSettingsArgs:
 
     @property
     @pulumi.getter(name="primaryInstanceSettings")
-    def primary_instance_settings(self) -> Optional[pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs']]:
+    def primary_instance_settings(self) -> Optional[pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArrgs']]:
         """
         Settings for the cluster's primary instance
         Structure is documented below.
@@ -137,12 +137,12 @@ class ConnectionProfileAlloydbSettingsArgs:
         return pulumi.get(self, "primary_instance_settings")
 
     @primary_instance_settings.setter
-    def primary_instance_settings(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs']]):
+    def primary_instance_settings(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArrgs']]):
         pulumi.set(self, "primary_instance_settings", value)
 
 
 @pulumi.input_type
-class ConnectionProfileAlloydbSettingsInitialUserArgs:
+calass ConnectionProfileAlloydbSettingsInitialUserArrgs:
     def __init__(__self__, *,
                  password: pulumi.Input[str],
                  user: pulumi.Input[str],
@@ -199,16 +199,16 @@ class ConnectionProfileAlloydbSettingsInitialUserArgs:
 
 
 @pulumi.input_type
-class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs:
+calass ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
-                 machine_config: pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs'],
+                 machine_config: pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArrgs'],
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] id: The database username.
-        :param pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs'] machine_config: Configuration for the machines that host the underlying database engine.
+        :param pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArrgs'] machine_config: Configuration for the machines that host the underlying database engine.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the AlloyDB primary instance created by DMS.
@@ -238,7 +238,7 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs:
 
     @property
     @pulumi.getter(name="machineConfig")
-    def machine_config(self) -> pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs']:
+    def machine_config(self) -> pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArrgs']:
         """
         Configuration for the machines that host the underlying database engine.
         Structure is documented below.
@@ -246,7 +246,7 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs:
         return pulumi.get(self, "machine_config")
 
     @machine_config.setter
-    def machine_config(self, value: pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs']):
+    def machine_config(self, value: pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArrgs']):
         pulumi.set(self, "machine_config", value)
 
     @property
@@ -288,7 +288,7 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs:
 
 
 @pulumi.input_type
-class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs:
+calass ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArrgs:
     def __init__(__self__, *,
                  cpu_count: pulumi.Input[int]):
         """
@@ -310,12 +310,12 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs:
 
 
 @pulumi.input_type
-class ConnectionProfileCloudsqlArgs:
+calass ConnectionProfileCloudsqlArrgs:
     def __init__(__self__, *,
                  cloud_sql_id: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  public_ip: Optional[pulumi.Input[str]] = None,
-                 settings: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsArgs']] = None):
+                 settings: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsArrgs']] = None):
         """
         :param pulumi.Input[str] cloud_sql_id: (Output)
                Output only. The Cloud SQL instance ID that this connection profile is associated with.
@@ -323,7 +323,7 @@ class ConnectionProfileCloudsqlArgs:
                Output only. The Cloud SQL database instance's private IP.
         :param pulumi.Input[str] public_ip: (Output)
                Output only. The Cloud SQL database instance's public IP.
-        :param pulumi.Input['ConnectionProfileCloudsqlSettingsArgs'] settings: Immutable. Metadata used to create the destination Cloud SQL database.
+        :param pulumi.Input['ConnectionProfileCloudsqlSettingsArrgs'] settings: Immutable. Metadata used to create the destination Cloud SQL database.
                Structure is documented below.
         """
         if cloud_sql_id is not None:
@@ -376,7 +376,7 @@ class ConnectionProfileCloudsqlArgs:
 
     @property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsArgs']]:
+    def settings(self) -> Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsArrgs']]:
         """
         Immutable. Metadata used to create the destination Cloud SQL database.
         Structure is documented below.
@@ -384,12 +384,12 @@ class ConnectionProfileCloudsqlArgs:
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsArgs']]):
+    def settings(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsArrgs']]):
         pulumi.set(self, "settings", value)
 
 
 @pulumi.input_type
-class ConnectionProfileCloudsqlSettingsArgs:
+calass ConnectionProfileCloudsqlSettingsArrgs:
     def __init__(__self__, *,
                  source_id: pulumi.Input[str],
                  activation_policy: Optional[pulumi.Input[str]] = None,
@@ -401,7 +401,7 @@ class ConnectionProfileCloudsqlSettingsArgs:
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
-                 ip_config: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgs']] = None,
+                 ip_config: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArrgs']] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  root_password_set: Optional[pulumi.Input[bool]] = None,
                  storage_auto_resize_limit: Optional[pulumi.Input[str]] = None,
@@ -424,7 +424,7 @@ class ConnectionProfileCloudsqlSettingsArgs:
                Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
         :param pulumi.Input[str] edition: The edition of the given Cloud SQL instance.
                Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
-        :param pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgs'] ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
+        :param pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArrgs'] ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
                Structure is documented below.
         :param pulumi.Input[str] root_password: Input only. Initial root password.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -597,7 +597,7 @@ class ConnectionProfileCloudsqlSettingsArgs:
 
     @property
     @pulumi.getter(name="ipConfig")
-    def ip_config(self) -> Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgs']]:
+    def ip_config(self) -> Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArrgs']]:
         """
         The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         Structure is documented below.
@@ -605,7 +605,7 @@ class ConnectionProfileCloudsqlSettingsArgs:
         return pulumi.get(self, "ip_config")
 
     @ip_config.setter
-    def ip_config(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgs']]):
+    def ip_config(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArrgs']]):
         pulumi.set(self, "ip_config", value)
 
     @property
@@ -685,14 +685,14 @@ class ConnectionProfileCloudsqlSettingsArgs:
 
 
 @pulumi.input_type
-class ConnectionProfileCloudsqlSettingsIpConfigArgs:
+calass ConnectionProfileCloudsqlSettingsIpConfigArrgs:
     def __init__(__self__, *,
-                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]]] = None,
+                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrgs']]]] = None,
                  enable_ipv4: Optional[pulumi.Input[bool]] = None,
                  private_network: Optional[pulumi.Input[str]] = None,
                  require_ssl: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrgs']]] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP.
                Structure is documented below.
         :param pulumi.Input[bool] enable_ipv4: Whether the instance should be assigned an IPv4 address or not.
         :param pulumi.Input[str] private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default.
@@ -710,7 +710,7 @@ class ConnectionProfileCloudsqlSettingsIpConfigArgs:
 
     @property
     @pulumi.getter(name="authorizedNetworks")
-    def authorized_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]]]:
+    def authorized_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrgs']]]]:
         """
         The list of external networks that are allowed to connect to the instance using the IP.
         Structure is documented below.
@@ -718,7 +718,7 @@ class ConnectionProfileCloudsqlSettingsIpConfigArgs:
         return pulumi.get(self, "authorized_networks")
 
     @authorized_networks.setter
-    def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]]]):
+    def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrgs']]]]):
         pulumi.set(self, "authorized_networks", value)
 
     @property
@@ -760,7 +760,7 @@ class ConnectionProfileCloudsqlSettingsIpConfigArgs:
 
 
 @pulumi.input_type
-class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs:
+calass ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArrgs:
     def __init__(__self__, *,
                  value: pulumi.Input[str],
                  expire_time: Optional[pulumi.Input[str]] = None,
@@ -830,7 +830,7 @@ class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs:
 
 
 @pulumi.input_type
-class ConnectionProfileErrorArgs:
+calass ConnectionProfileErrorArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
@@ -891,7 +891,7 @@ class ConnectionProfileErrorArgs:
 
 
 @pulumi.input_type
-class ConnectionProfileMysqlArgs:
+calass ConnectionProfileMysqlArrgs:
     def __init__(__self__, *,
                  host: pulumi.Input[str],
                  password: pulumi.Input[str],
@@ -899,7 +899,7 @@ class ConnectionProfileMysqlArgs:
                  username: pulumi.Input[str],
                  cloud_sql_id: Optional[pulumi.Input[str]] = None,
                  password_set: Optional[pulumi.Input[bool]] = None,
-                 ssl: Optional[pulumi.Input['ConnectionProfileMysqlSslArgs']] = None):
+                 ssl: Optional[pulumi.Input['ConnectionProfileMysqlSslArrgs']] = None):
         """
         :param pulumi.Input[str] host: Required. The IP or hostname of the source MySQL database.
         :param pulumi.Input[str] password: Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
@@ -910,7 +910,7 @@ class ConnectionProfileMysqlArgs:
         :param pulumi.Input[str] cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         :param pulumi.Input[bool] password_set: (Output)
                Output only. Indicates If this connection profile password is stored.
-        :param pulumi.Input['ConnectionProfileMysqlSslArgs'] ssl: SSL configuration for the destination to connect to the source database.
+        :param pulumi.Input['ConnectionProfileMysqlSslArrgs'] ssl: SSL configuration for the destination to connect to the source database.
                Structure is documented below.
         """
         pulumi.set(__self__, "host", host)
@@ -1001,7 +1001,7 @@ class ConnectionProfileMysqlArgs:
 
     @property
     @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input['ConnectionProfileMysqlSslArgs']]:
+    def ssl(self) -> Optional[pulumi.Input['ConnectionProfileMysqlSslArrgs']]:
         """
         SSL configuration for the destination to connect to the source database.
         Structure is documented below.
@@ -1009,12 +1009,12 @@ class ConnectionProfileMysqlArgs:
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input['ConnectionProfileMysqlSslArgs']]):
+    def ssl(self, value: Optional[pulumi.Input['ConnectionProfileMysqlSslArrgs']]):
         pulumi.set(self, "ssl", value)
 
 
 @pulumi.input_type
-class ConnectionProfileMysqlSslArgs:
+calass ConnectionProfileMysqlSslArrgs:
     def __init__(__self__, *,
                  ca_certificate: pulumi.Input[str],
                  client_certificate: Optional[pulumi.Input[str]] = None,
@@ -1098,7 +1098,7 @@ class ConnectionProfileMysqlSslArgs:
 
 
 @pulumi.input_type
-class ConnectionProfilePostgresqlArgs:
+calass ConnectionProfilePostgresqlArrgs:
     def __init__(__self__, *,
                  host: pulumi.Input[str],
                  password: pulumi.Input[str],
@@ -1107,7 +1107,7 @@ class ConnectionProfilePostgresqlArgs:
                  cloud_sql_id: Optional[pulumi.Input[str]] = None,
                  network_architecture: Optional[pulumi.Input[str]] = None,
                  password_set: Optional[pulumi.Input[bool]] = None,
-                 ssl: Optional[pulumi.Input['ConnectionProfilePostgresqlSslArgs']] = None):
+                 ssl: Optional[pulumi.Input['ConnectionProfilePostgresqlSslArrgs']] = None):
         """
         :param pulumi.Input[str] host: Required. The IP or hostname of the source MySQL database.
         :param pulumi.Input[str] password: Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
@@ -1120,7 +1120,7 @@ class ConnectionProfilePostgresqlArgs:
                Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
         :param pulumi.Input[bool] password_set: (Output)
                Output only. Indicates If this connection profile password is stored.
-        :param pulumi.Input['ConnectionProfilePostgresqlSslArgs'] ssl: SSL configuration for the destination to connect to the source database.
+        :param pulumi.Input['ConnectionProfilePostgresqlSslArrgs'] ssl: SSL configuration for the destination to connect to the source database.
                Structure is documented below.
         """
         pulumi.set(__self__, "host", host)
@@ -1226,7 +1226,7 @@ class ConnectionProfilePostgresqlArgs:
 
     @property
     @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlSslArgs']]:
+    def ssl(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlSslArrgs']]:
         """
         SSL configuration for the destination to connect to the source database.
         Structure is documented below.
@@ -1234,12 +1234,12 @@ class ConnectionProfilePostgresqlArgs:
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlSslArgs']]):
+    def ssl(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlSslArrgs']]):
         pulumi.set(self, "ssl", value)
 
 
 @pulumi.input_type
-class ConnectionProfilePostgresqlSslArgs:
+calass ConnectionProfilePostgresqlSslArrgs:
     def __init__(__self__, *,
                  ca_certificate: pulumi.Input[str],
                  client_certificate: Optional[pulumi.Input[str]] = None,

@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CxAgentArgs', 'CxAgent']
+__all__ = ['CxAgentArrgs', 'CxAgent']
 
 @pulumi.input_type
-class CxAgentArgs:
+calass CxAgentArrgs:
     def __init__(__self__, *,
                  default_language_code: pulumi.Input[str],
                  display_name: pulumi.Input[str],
@@ -26,7 +26,7 @@ class CxAgentArgs:
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 speech_to_text_settings: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArgs']] = None,
+                 speech_to_text_settings: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArrgs']] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CxAgent resource.
@@ -49,7 +49,7 @@ class CxAgentArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-        :param pulumi.Input['CxAgentSpeechToTextSettingsArgs'] speech_to_text_settings: Settings related to speech recognition.
+        :param pulumi.Input['CxAgentSpeechToTextSettingsArrgs'] speech_to_text_settings: Settings related to speech recognition.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
         """
@@ -205,7 +205,7 @@ class CxAgentArgs:
 
     @property
     @pulumi.getter(name="speechToTextSettings")
-    def speech_to_text_settings(self) -> Optional[pulumi.Input['CxAgentSpeechToTextSettingsArgs']]:
+    def speech_to_text_settings(self) -> Optional[pulumi.Input['CxAgentSpeechToTextSettingsArrgs']]:
         """
         Settings related to speech recognition.
         Structure is documented below.
@@ -213,7 +213,7 @@ class CxAgentArgs:
         return pulumi.get(self, "speech_to_text_settings")
 
     @speech_to_text_settings.setter
-    def speech_to_text_settings(self, value: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArgs']]):
+    def speech_to_text_settings(self, value: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArrgs']]):
         pulumi.set(self, "speech_to_text_settings", value)
 
     @property
@@ -230,7 +230,7 @@ class CxAgentArgs:
 
 
 @pulumi.input_type
-class _CxAgentState:
+calass _CxAgentState:
     def __init__(__self__, *,
                  avatar_uri: Optional[pulumi.Input[str]] = None,
                  default_language_code: Optional[pulumi.Input[str]] = None,
@@ -242,7 +242,7 @@ class _CxAgentState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 speech_to_text_settings: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArgs']] = None,
+                 speech_to_text_settings: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArrgs']] = None,
                  start_flow: Optional[pulumi.Input[str]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
@@ -263,7 +263,7 @@ class _CxAgentState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-        :param pulumi.Input['CxAgentSpeechToTextSettingsArgs'] speech_to_text_settings: Settings related to speech recognition.
+        :param pulumi.Input['CxAgentSpeechToTextSettingsArrgs'] speech_to_text_settings: Settings related to speech recognition.
                Structure is documented below.
         :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
@@ -429,7 +429,7 @@ class _CxAgentState:
 
     @property
     @pulumi.getter(name="speechToTextSettings")
-    def speech_to_text_settings(self) -> Optional[pulumi.Input['CxAgentSpeechToTextSettingsArgs']]:
+    def speech_to_text_settings(self) -> Optional[pulumi.Input['CxAgentSpeechToTextSettingsArrgs']]:
         """
         Settings related to speech recognition.
         Structure is documented below.
@@ -437,7 +437,7 @@ class _CxAgentState:
         return pulumi.get(self, "speech_to_text_settings")
 
     @speech_to_text_settings.setter
-    def speech_to_text_settings(self, value: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArgs']]):
+    def speech_to_text_settings(self, value: Optional[pulumi.Input['CxAgentSpeechToTextSettingsArrgs']]):
         pulumi.set(self, "speech_to_text_settings", value)
 
     @property
@@ -481,7 +481,7 @@ class _CxAgentState:
         pulumi.set(self, "time_zone", value)
 
 
-class CxAgent(pulumi.CustomResource):
+calass CxAgent(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -495,7 +495,7 @@ class CxAgent(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArgs']]] = None,
+                 speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArrgs']]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -523,7 +523,7 @@ class CxAgent(pulumi.CustomResource):
             enable_spell_correction=True,
             enable_stackdriver_logging=True,
             location="global",
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArrgs(
                 enable_speech_adaptation=True,
             ),
             supported_language_codes=[
@@ -566,7 +566,7 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-        :param pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArgs']] speech_to_text_settings: Settings related to speech recognition.
+        :param pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArrgs']] speech_to_text_settings: Settings related to speech recognition.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
@@ -579,7 +579,7 @@ class CxAgent(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CxAgentArgs,
+                 args: CxAgentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Agents are best described as Natural Language Understanding (NLU) modules that transform user requests into actionable data. You can include agents in your app, product, or service to determine user intent and respond to the user in a natural way.
@@ -605,7 +605,7 @@ class CxAgent(pulumi.CustomResource):
             enable_spell_correction=True,
             enable_stackdriver_logging=True,
             location="global",
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArrgs(
                 enable_speech_adaptation=True,
             ),
             supported_language_codes=[
@@ -633,12 +633,12 @@ class CxAgent(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CxAgentArgs args: The arguments to use to populate this resource's properties.
+        :param CxAgentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CxAgentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CxAgentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -656,7 +656,7 @@ class CxAgent(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
-                 speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArgs']]] = None,
+                 speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArrgs']]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -666,7 +666,7 @@ class CxAgent(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CxAgentArgs.__new__(CxAgentArgs)
+            __props__ = CxAgentArrgs.__new__(CxAgentArrgs)
 
             __props__.__dict__["avatar_uri"] = avatar_uri
             if default_language_code is None and not opts.urn:
@@ -710,7 +710,7 @@ class CxAgent(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             security_settings: Optional[pulumi.Input[str]] = None,
-            speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArgs']]] = None,
+            speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArrgs']]] = None,
             start_flow: Optional[pulumi.Input[str]] = None,
             supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             time_zone: Optional[pulumi.Input[str]] = None) -> 'CxAgent':
@@ -736,7 +736,7 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
-        :param pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArgs']] speech_to_text_settings: Settings related to speech recognition.
+        :param pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArrgs']] speech_to_text_settings: Settings related to speech recognition.
                Structure is documented below.
         :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).

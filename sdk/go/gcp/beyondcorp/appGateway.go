@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A BeyondCorp AppGateway resource represents a BeyondCorp protected AppGateway to a remote application. It creates
@@ -345,12 +344,6 @@ func (i *AppGateway) ToAppGatewayOutputWithContext(ctx context.Context) AppGatew
 	return pulumi.ToOutputWithContext(ctx, i).(AppGatewayOutput)
 }
 
-func (i *AppGateway) ToOutput(ctx context.Context) pulumix.Output[*AppGateway] {
-	return pulumix.Output[*AppGateway]{
-		OutputState: i.ToAppGatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppGatewayArrayInput is an input type that accepts AppGatewayArray and AppGatewayArrayOutput values.
 // You can construct a concrete instance of `AppGatewayArrayInput` via:
 //
@@ -374,12 +367,6 @@ func (i AppGatewayArray) ToAppGatewayArrayOutput() AppGatewayArrayOutput {
 
 func (i AppGatewayArray) ToAppGatewayArrayOutputWithContext(ctx context.Context) AppGatewayArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppGatewayArrayOutput)
-}
-
-func (i AppGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]*AppGateway] {
-	return pulumix.Output[[]*AppGateway]{
-		OutputState: i.ToAppGatewayArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AppGatewayMapInput is an input type that accepts AppGatewayMap and AppGatewayMapOutput values.
@@ -407,12 +394,6 @@ func (i AppGatewayMap) ToAppGatewayMapOutputWithContext(ctx context.Context) App
 	return pulumi.ToOutputWithContext(ctx, i).(AppGatewayMapOutput)
 }
 
-func (i AppGatewayMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppGateway] {
-	return pulumix.Output[map[string]*AppGateway]{
-		OutputState: i.ToAppGatewayMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppGatewayOutput struct{ *pulumi.OutputState }
 
 func (AppGatewayOutput) ElementType() reflect.Type {
@@ -425,12 +406,6 @@ func (o AppGatewayOutput) ToAppGatewayOutput() AppGatewayOutput {
 
 func (o AppGatewayOutput) ToAppGatewayOutputWithContext(ctx context.Context) AppGatewayOutput {
 	return o
-}
-
-func (o AppGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*AppGateway] {
-	return pulumix.Output[*AppGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of connections allocated for the Gateway.
@@ -519,12 +494,6 @@ func (o AppGatewayArrayOutput) ToAppGatewayArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o AppGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AppGateway] {
-	return pulumix.Output[[]*AppGateway]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AppGatewayArrayOutput) Index(i pulumi.IntInput) AppGatewayOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppGateway {
 		return vs[0].([]*AppGateway)[vs[1].(int)]
@@ -543,12 +512,6 @@ func (o AppGatewayMapOutput) ToAppGatewayMapOutput() AppGatewayMapOutput {
 
 func (o AppGatewayMapOutput) ToAppGatewayMapOutputWithContext(ctx context.Context) AppGatewayMapOutput {
 	return o
-}
-
-func (o AppGatewayMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AppGateway] {
-	return pulumix.Output[map[string]*AppGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppGatewayMapOutput) MapIndex(k pulumi.StringInput) AppGatewayOutput {

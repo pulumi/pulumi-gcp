@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetFolderServiceAccountResult:
+calass GetFolderServiceAccountResult:
     """
     A collection of values returned by getFolderServiceAccount.
     """
@@ -66,7 +66,7 @@ class GetFolderServiceAccountResult:
         return pulumi.get(self, "name")
 
 
-class AwaitableGetFolderServiceAccountResult(GetFolderServiceAccountResult):
+calass AwaitableGetFolderServiceAccountResult(GetFolderServiceAccountResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

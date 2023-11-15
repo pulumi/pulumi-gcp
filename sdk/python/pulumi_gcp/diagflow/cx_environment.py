@@ -11,19 +11,19 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CxEnvironmentArgs', 'CxEnvironment']
+__all__ = ['CxEnvironmentArrgs', 'CxEnvironment']
 
 @pulumi.input_type
-class CxEnvironmentArgs:
+calass CxEnvironmentArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 version_configs: pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]],
+                 version_configs: pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArrgs']]],
                  description: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CxEnvironment resource.
         :param pulumi.Input[str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
-        :param pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
+        :param pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArrgs']]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
                Structure is documented below.
         :param pulumi.Input[str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] parent: The Agent to create an Environment for.
@@ -50,7 +50,7 @@ class CxEnvironmentArgs:
 
     @property
     @pulumi.getter(name="versionConfigs")
-    def version_configs(self) -> pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]:
+    def version_configs(self) -> pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArrgs']]]:
         """
         A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
         Structure is documented below.
@@ -58,7 +58,7 @@ class CxEnvironmentArgs:
         return pulumi.get(self, "version_configs")
 
     @version_configs.setter
-    def version_configs(self, value: pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]):
+    def version_configs(self, value: pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArrgs']]]):
         pulumi.set(self, "version_configs", value)
 
     @property
@@ -88,14 +88,14 @@ class CxEnvironmentArgs:
 
 
 @pulumi.input_type
-class _CxEnvironmentState:
+calass _CxEnvironmentState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]] = None):
+                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArrgs']]]] = None):
         """
         Input properties used for looking up and filtering CxEnvironment resources.
         :param pulumi.Input[str] description: The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -104,7 +104,7 @@ class _CxEnvironmentState:
         :param pulumi.Input[str] parent: The Agent to create an Environment for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[str] update_time: Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
+        :param pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArrgs']]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
                Structure is documented below.
         """
         if description is not None:
@@ -183,7 +183,7 @@ class _CxEnvironmentState:
 
     @property
     @pulumi.getter(name="versionConfigs")
-    def version_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]]:
+    def version_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArrgs']]]]:
         """
         A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
         Structure is documented below.
@@ -191,11 +191,11 @@ class _CxEnvironmentState:
         return pulumi.get(self, "version_configs")
 
     @version_configs.setter
-    def version_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArgs']]]]):
+    def version_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxEnvironmentVersionConfigArrgs']]]]):
         pulumi.set(self, "version_configs", value)
 
 
-class CxEnvironment(pulumi.CustomResource):
+calass CxEnvironment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -203,7 +203,7 @@ class CxEnvironment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEnvironmentVersionConfigArgs']]]]] = None,
+                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEnvironmentVersionConfigArrgs']]]]] = None,
                  __props__=None):
         """
         Represents an environment for an agent. You can create multiple versions of your agent and publish them to separate environments.
@@ -237,7 +237,7 @@ class CxEnvironment(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArrgs(
                 enable_speech_adaptation=True,
             ))
         version1 = gcp.diagflow.CxVersion("version1",
@@ -248,7 +248,7 @@ class CxEnvironment(pulumi.CustomResource):
             parent=agent.id,
             display_name="Development",
             description="Development Environment",
-            version_configs=[gcp.diagflow.CxEnvironmentVersionConfigArgs(
+            version_configs=[gcp.diagflow.CxEnvironmentVersionConfigArrgs(
                 version=version1.id,
             )])
         ```
@@ -271,14 +271,14 @@ class CxEnvironment(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         :param pulumi.Input[str] parent: The Agent to create an Environment for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEnvironmentVersionConfigArgs']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEnvironmentVersionConfigArrgs']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CxEnvironmentArgs,
+                 args: CxEnvironmentArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents an environment for an agent. You can create multiple versions of your agent and publish them to separate environments.
@@ -312,7 +312,7 @@ class CxEnvironment(pulumi.CustomResource):
             avatar_uri="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArrgs(
                 enable_speech_adaptation=True,
             ))
         version1 = gcp.diagflow.CxVersion("version1",
@@ -323,7 +323,7 @@ class CxEnvironment(pulumi.CustomResource):
             parent=agent.id,
             display_name="Development",
             description="Development Environment",
-            version_configs=[gcp.diagflow.CxEnvironmentVersionConfigArgs(
+            version_configs=[gcp.diagflow.CxEnvironmentVersionConfigArrgs(
                 version=version1.id,
             )])
         ```
@@ -341,12 +341,12 @@ class CxEnvironment(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CxEnvironmentArgs args: The arguments to use to populate this resource's properties.
+        :param CxEnvironmentArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CxEnvironmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CxEnvironmentArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -358,7 +358,7 @@ class CxEnvironment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEnvironmentVersionConfigArgs']]]]] = None,
+                 version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEnvironmentVersionConfigArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -366,7 +366,7 @@ class CxEnvironment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CxEnvironmentArgs.__new__(CxEnvironmentArgs)
+            __props__ = CxEnvironmentArrgs.__new__(CxEnvironmentArrgs)
 
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
@@ -393,7 +393,7 @@ class CxEnvironment(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEnvironmentVersionConfigArgs']]]]] = None) -> 'CxEnvironment':
+            version_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEnvironmentVersionConfigArrgs']]]]] = None) -> 'CxEnvironment':
         """
         Get an existing CxEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -407,7 +407,7 @@ class CxEnvironment(pulumi.CustomResource):
         :param pulumi.Input[str] parent: The Agent to create an Environment for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[str] update_time: Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEnvironmentVersionConfigArgs']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEnvironmentVersionConfigArrgs']]]] version_configs: A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

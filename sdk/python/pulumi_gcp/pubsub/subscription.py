@@ -11,27 +11,27 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SubscriptionArgs', 'Subscription']
+__all__ = ['SubscriptionArrgs', 'Subscription']
 
 @pulumi.input_type
-class SubscriptionArgs:
+calass SubscriptionArrgs:
     def __init__(__self__, *,
                  topic: pulumi.Input[str],
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
-                 bigquery_config: Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']] = None,
-                 cloud_storage_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']] = None,
-                 dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']] = None,
+                 bigquery_config: Optional[pulumi.Input['SubscriptionBigqueryConfigArrgs']] = None,
+                 cloud_storage_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigArrgs']] = None,
+                 dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArrgs']] = None,
                  enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
-                 expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']] = None,
+                 expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArrgs']] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
+                 push_config: Optional[pulumi.Input['SubscriptionPushConfigArrgs']] = None,
                  retain_acked_messages: Optional[pulumi.Input[bool]] = None,
-                 retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None):
+                 retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArrgs']] = None):
         """
         The set of arguments for constructing a Subscription resource.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
@@ -53,15 +53,15 @@ class SubscriptionArgs:
                for the call to the push endpoint.
                If the subscriber never acknowledges the message, the Pub/Sub system
                will eventually redeliver the message.
-        :param pulumi.Input['SubscriptionBigqueryConfigArgs'] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
+        :param pulumi.Input['SubscriptionBigqueryConfigArrgs'] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
                Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
                If all three are empty, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
-        :param pulumi.Input['SubscriptionCloudStorageConfigArgs'] cloud_storage_config: If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+        :param pulumi.Input['SubscriptionCloudStorageConfigArrgs'] cloud_storage_config: If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
                Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
                If all three are empty, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
-        :param pulumi.Input['SubscriptionDeadLetterPolicyArgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
+        :param pulumi.Input['SubscriptionDeadLetterPolicyArrgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
                this subscription. If dead_letter_policy is not set, dead lettering
                is disabled.
                The Cloud Pub/Sub service account associated with this subscription's
@@ -78,7 +78,7 @@ class SubscriptionArgs:
         :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
-        :param pulumi.Input['SubscriptionExpirationPolicyArgs'] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
+        :param pulumi.Input['SubscriptionExpirationPolicyArrgs'] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
                A subscription is considered active as long as any connected subscriber
                is successfully consuming messages from the subscription or is issuing
                operations on the subscription. If expirationPolicy is not set, a default
@@ -105,7 +105,7 @@ class SubscriptionArgs:
         :param pulumi.Input[str] name: Name of the subscription.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['SubscriptionPushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to
+        :param pulumi.Input['SubscriptionPushConfigArrgs'] push_config: If push delivery is used with this subscription, this field is used to
                configure it. An empty pushConfig signifies that the subscriber will
                pull and ack messages using API methods.
                Structure is documented below.
@@ -113,7 +113,7 @@ class SubscriptionArgs:
                messages are not expunged from the subscription's backlog, even if
                they are acknowledged, until they fall out of the
                messageRetentionDuration window.
-        :param pulumi.Input['SubscriptionRetryPolicyArgs'] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription.
+        :param pulumi.Input['SubscriptionRetryPolicyArrgs'] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription.
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
@@ -193,7 +193,7 @@ class SubscriptionArgs:
 
     @property
     @pulumi.getter(name="bigqueryConfig")
-    def bigquery_config(self) -> Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']]:
+    def bigquery_config(self) -> Optional[pulumi.Input['SubscriptionBigqueryConfigArrgs']]:
         """
         If delivery to BigQuery is used with this subscription, this field is used to configure it.
         Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
@@ -203,12 +203,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "bigquery_config")
 
     @bigquery_config.setter
-    def bigquery_config(self, value: Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']]):
+    def bigquery_config(self, value: Optional[pulumi.Input['SubscriptionBigqueryConfigArrgs']]):
         pulumi.set(self, "bigquery_config", value)
 
     @property
     @pulumi.getter(name="cloudStorageConfig")
-    def cloud_storage_config(self) -> Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']]:
+    def cloud_storage_config(self) -> Optional[pulumi.Input['SubscriptionCloudStorageConfigArrgs']]:
         """
         If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
         Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
@@ -218,12 +218,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "cloud_storage_config")
 
     @cloud_storage_config.setter
-    def cloud_storage_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']]):
+    def cloud_storage_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigArrgs']]):
         pulumi.set(self, "cloud_storage_config", value)
 
     @property
     @pulumi.getter(name="deadLetterPolicy")
-    def dead_letter_policy(self) -> Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']]:
+    def dead_letter_policy(self) -> Optional[pulumi.Input['SubscriptionDeadLetterPolicyArrgs']]:
         """
         A policy that specifies the conditions for dead lettering messages in
         this subscription. If dead_letter_policy is not set, dead lettering
@@ -237,7 +237,7 @@ class SubscriptionArgs:
         return pulumi.get(self, "dead_letter_policy")
 
     @dead_letter_policy.setter
-    def dead_letter_policy(self, value: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']]):
+    def dead_letter_policy(self, value: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArrgs']]):
         pulumi.set(self, "dead_letter_policy", value)
 
     @property
@@ -273,7 +273,7 @@ class SubscriptionArgs:
 
     @property
     @pulumi.getter(name="expirationPolicy")
-    def expiration_policy(self) -> Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']]:
+    def expiration_policy(self) -> Optional[pulumi.Input['SubscriptionExpirationPolicyArrgs']]:
         """
         A policy that specifies the conditions for this subscription's expiration.
         A subscription is considered active as long as any connected subscriber
@@ -287,7 +287,7 @@ class SubscriptionArgs:
         return pulumi.get(self, "expiration_policy")
 
     @expiration_policy.setter
-    def expiration_policy(self, value: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']]):
+    def expiration_policy(self, value: Optional[pulumi.Input['SubscriptionExpirationPolicyArrgs']]):
         pulumi.set(self, "expiration_policy", value)
 
     @property
@@ -366,7 +366,7 @@ class SubscriptionArgs:
 
     @property
     @pulumi.getter(name="pushConfig")
-    def push_config(self) -> Optional[pulumi.Input['SubscriptionPushConfigArgs']]:
+    def push_config(self) -> Optional[pulumi.Input['SubscriptionPushConfigArrgs']]:
         """
         If push delivery is used with this subscription, this field is used to
         configure it. An empty pushConfig signifies that the subscriber will
@@ -376,7 +376,7 @@ class SubscriptionArgs:
         return pulumi.get(self, "push_config")
 
     @push_config.setter
-    def push_config(self, value: Optional[pulumi.Input['SubscriptionPushConfigArgs']]):
+    def push_config(self, value: Optional[pulumi.Input['SubscriptionPushConfigArrgs']]):
         pulumi.set(self, "push_config", value)
 
     @property
@@ -396,7 +396,7 @@ class SubscriptionArgs:
 
     @property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]:
+    def retry_policy(self) -> Optional[pulumi.Input['SubscriptionRetryPolicyArrgs']]:
         """
         A policy that specifies how Pub/Sub retries message delivery for this subscription.
         If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
@@ -406,30 +406,30 @@ class SubscriptionArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]):
+    def retry_policy(self, value: Optional[pulumi.Input['SubscriptionRetryPolicyArrgs']]):
         pulumi.set(self, "retry_policy", value)
 
 
 @pulumi.input_type
-class _SubscriptionState:
+calass _SubscriptionState:
     def __init__(__self__, *,
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
-                 bigquery_config: Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']] = None,
-                 cloud_storage_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']] = None,
-                 dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']] = None,
+                 bigquery_config: Optional[pulumi.Input['SubscriptionBigqueryConfigArrgs']] = None,
+                 cloud_storage_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigArrgs']] = None,
+                 dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArrgs']] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
-                 expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']] = None,
+                 expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArrgs']] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
+                 push_config: Optional[pulumi.Input['SubscriptionPushConfigArrgs']] = None,
                  retain_acked_messages: Optional[pulumi.Input[bool]] = None,
-                 retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
+                 retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArrgs']] = None,
                  topic: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Subscription resources.
@@ -448,15 +448,15 @@ class _SubscriptionState:
                for the call to the push endpoint.
                If the subscriber never acknowledges the message, the Pub/Sub system
                will eventually redeliver the message.
-        :param pulumi.Input['SubscriptionBigqueryConfigArgs'] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
+        :param pulumi.Input['SubscriptionBigqueryConfigArrgs'] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
                Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
                If all three are empty, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
-        :param pulumi.Input['SubscriptionCloudStorageConfigArgs'] cloud_storage_config: If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+        :param pulumi.Input['SubscriptionCloudStorageConfigArrgs'] cloud_storage_config: If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
                Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
                If all three are empty, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
-        :param pulumi.Input['SubscriptionDeadLetterPolicyArgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
+        :param pulumi.Input['SubscriptionDeadLetterPolicyArrgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
                this subscription. If dead_letter_policy is not set, dead lettering
                is disabled.
                The Cloud Pub/Sub service account associated with this subscription's
@@ -474,7 +474,7 @@ class _SubscriptionState:
         :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
-        :param pulumi.Input['SubscriptionExpirationPolicyArgs'] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
+        :param pulumi.Input['SubscriptionExpirationPolicyArrgs'] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
                A subscription is considered active as long as any connected subscriber
                is successfully consuming messages from the subscription or is issuing
                operations on the subscription. If expirationPolicy is not set, a default
@@ -503,7 +503,7 @@ class _SubscriptionState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input['SubscriptionPushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to
+        :param pulumi.Input['SubscriptionPushConfigArrgs'] push_config: If push delivery is used with this subscription, this field is used to
                configure it. An empty pushConfig signifies that the subscriber will
                pull and ack messages using API methods.
                Structure is documented below.
@@ -511,7 +511,7 @@ class _SubscriptionState:
                messages are not expunged from the subscription's backlog, even if
                they are acknowledged, until they fall out of the
                messageRetentionDuration window.
-        :param pulumi.Input['SubscriptionRetryPolicyArgs'] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription.
+        :param pulumi.Input['SubscriptionRetryPolicyArrgs'] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription.
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
@@ -585,7 +585,7 @@ class _SubscriptionState:
 
     @property
     @pulumi.getter(name="bigqueryConfig")
-    def bigquery_config(self) -> Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']]:
+    def bigquery_config(self) -> Optional[pulumi.Input['SubscriptionBigqueryConfigArrgs']]:
         """
         If delivery to BigQuery is used with this subscription, this field is used to configure it.
         Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
@@ -595,12 +595,12 @@ class _SubscriptionState:
         return pulumi.get(self, "bigquery_config")
 
     @bigquery_config.setter
-    def bigquery_config(self, value: Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']]):
+    def bigquery_config(self, value: Optional[pulumi.Input['SubscriptionBigqueryConfigArrgs']]):
         pulumi.set(self, "bigquery_config", value)
 
     @property
     @pulumi.getter(name="cloudStorageConfig")
-    def cloud_storage_config(self) -> Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']]:
+    def cloud_storage_config(self) -> Optional[pulumi.Input['SubscriptionCloudStorageConfigArrgs']]:
         """
         If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
         Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
@@ -610,12 +610,12 @@ class _SubscriptionState:
         return pulumi.get(self, "cloud_storage_config")
 
     @cloud_storage_config.setter
-    def cloud_storage_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']]):
+    def cloud_storage_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigArrgs']]):
         pulumi.set(self, "cloud_storage_config", value)
 
     @property
     @pulumi.getter(name="deadLetterPolicy")
-    def dead_letter_policy(self) -> Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']]:
+    def dead_letter_policy(self) -> Optional[pulumi.Input['SubscriptionDeadLetterPolicyArrgs']]:
         """
         A policy that specifies the conditions for dead lettering messages in
         this subscription. If dead_letter_policy is not set, dead lettering
@@ -629,7 +629,7 @@ class _SubscriptionState:
         return pulumi.get(self, "dead_letter_policy")
 
     @dead_letter_policy.setter
-    def dead_letter_policy(self, value: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']]):
+    def dead_letter_policy(self, value: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArrgs']]):
         pulumi.set(self, "dead_letter_policy", value)
 
     @property
@@ -677,7 +677,7 @@ class _SubscriptionState:
 
     @property
     @pulumi.getter(name="expirationPolicy")
-    def expiration_policy(self) -> Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']]:
+    def expiration_policy(self) -> Optional[pulumi.Input['SubscriptionExpirationPolicyArrgs']]:
         """
         A policy that specifies the conditions for this subscription's expiration.
         A subscription is considered active as long as any connected subscriber
@@ -691,7 +691,7 @@ class _SubscriptionState:
         return pulumi.get(self, "expiration_policy")
 
     @expiration_policy.setter
-    def expiration_policy(self, value: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']]):
+    def expiration_policy(self, value: Optional[pulumi.Input['SubscriptionExpirationPolicyArrgs']]):
         pulumi.set(self, "expiration_policy", value)
 
     @property
@@ -783,7 +783,7 @@ class _SubscriptionState:
 
     @property
     @pulumi.getter(name="pushConfig")
-    def push_config(self) -> Optional[pulumi.Input['SubscriptionPushConfigArgs']]:
+    def push_config(self) -> Optional[pulumi.Input['SubscriptionPushConfigArrgs']]:
         """
         If push delivery is used with this subscription, this field is used to
         configure it. An empty pushConfig signifies that the subscriber will
@@ -793,7 +793,7 @@ class _SubscriptionState:
         return pulumi.get(self, "push_config")
 
     @push_config.setter
-    def push_config(self, value: Optional[pulumi.Input['SubscriptionPushConfigArgs']]):
+    def push_config(self, value: Optional[pulumi.Input['SubscriptionPushConfigArrgs']]):
         pulumi.set(self, "push_config", value)
 
     @property
@@ -813,7 +813,7 @@ class _SubscriptionState:
 
     @property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]:
+    def retry_policy(self) -> Optional[pulumi.Input['SubscriptionRetryPolicyArrgs']]:
         """
         A policy that specifies how Pub/Sub retries message delivery for this subscription.
         If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
@@ -823,7 +823,7 @@ class _SubscriptionState:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]):
+    def retry_policy(self, value: Optional[pulumi.Input['SubscriptionRetryPolicyArrgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @property
@@ -842,26 +842,26 @@ class _SubscriptionState:
         pulumi.set(self, "topic", value)
 
 
-class Subscription(pulumi.CustomResource):
+calass Subscription(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
-                 bigquery_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionBigqueryConfigArgs']]] = None,
-                 cloud_storage_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionCloudStorageConfigArgs']]] = None,
-                 dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
+                 bigquery_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionBigqueryConfigArrgs']]] = None,
+                 cloud_storage_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionCloudStorageConfigArrgs']]] = None,
+                 dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArrgs']]] = None,
                  enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
-                 expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']]] = None,
+                 expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArrgs']]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 push_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']]] = None,
+                 push_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionPushConfigArrgs']]] = None,
                  retain_acked_messages: Optional[pulumi.Input[bool]] = None,
-                 retry_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArgs']]] = None,
+                 retry_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArrgs']]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -891,7 +891,7 @@ class Subscription(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
+            push_config=gcp.pubsub.SubscriptionPushConfigArrgs(
                 push_endpoint="https://example.com/push",
                 attributes={
                     "x-goog-version": "v1",
@@ -913,10 +913,10 @@ class Subscription(pulumi.CustomResource):
             message_retention_duration="1200s",
             retain_acked_messages=True,
             ack_deadline_seconds=20,
-            expiration_policy=gcp.pubsub.SubscriptionExpirationPolicyArgs(
+            expiration_policy=gcp.pubsub.SubscriptionExpirationPolicyArrgs(
                 ttl="300000.5s",
             ),
-            retry_policy=gcp.pubsub.SubscriptionRetryPolicyArgs(
+            retry_policy=gcp.pubsub.SubscriptionRetryPolicyArrgs(
                 minimum_backoff="10s",
             ),
             enable_message_ordering=False)
@@ -942,7 +942,7 @@ class Subscription(pulumi.CustomResource):
         example_dead_letter = gcp.pubsub.Topic("exampleDeadLetter")
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
             topic=example_topic.name,
-            dead_letter_policy=gcp.pubsub.SubscriptionDeadLetterPolicyArgs(
+            dead_letter_policy=gcp.pubsub.SubscriptionDeadLetterPolicyArrgs(
                 dead_letter_topic=example_dead_letter.id,
                 max_delivery_attempts=10,
             ))
@@ -979,7 +979,7 @@ class Subscription(pulumi.CustomResource):
         \"\"\")
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
             topic=example_topic.name,
-            bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
+            bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArrgs(
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
             ),
             opts=pulumi.ResourceOptions(depends_on=[
@@ -1021,15 +1021,15 @@ class Subscription(pulumi.CustomResource):
                for the call to the push endpoint.
                If the subscriber never acknowledges the message, the Pub/Sub system
                will eventually redeliver the message.
-        :param pulumi.Input[pulumi.InputType['SubscriptionBigqueryConfigArgs']] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
+        :param pulumi.Input[pulumi.InputType['SubscriptionBigqueryConfigArrgs']] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
                Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
                If all three are empty, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['SubscriptionCloudStorageConfigArgs']] cloud_storage_config: If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+        :param pulumi.Input[pulumi.InputType['SubscriptionCloudStorageConfigArrgs']] cloud_storage_config: If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
                Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
                If all three are empty, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
+        :param pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArrgs']] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
                this subscription. If dead_letter_policy is not set, dead lettering
                is disabled.
                The Cloud Pub/Sub service account associated with this subscription's
@@ -1046,7 +1046,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
-        :param pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
+        :param pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArrgs']] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
                A subscription is considered active as long as any connected subscriber
                is successfully consuming messages from the subscription or is issuing
                operations on the subscription. If expirationPolicy is not set, a default
@@ -1073,7 +1073,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the subscription.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']] push_config: If push delivery is used with this subscription, this field is used to
+        :param pulumi.Input[pulumi.InputType['SubscriptionPushConfigArrgs']] push_config: If push delivery is used with this subscription, this field is used to
                configure it. An empty pushConfig signifies that the subscriber will
                pull and ack messages using API methods.
                Structure is documented below.
@@ -1081,7 +1081,7 @@ class Subscription(pulumi.CustomResource):
                messages are not expunged from the subscription's backlog, even if
                they are acknowledged, until they fall out of the
                messageRetentionDuration window.
-        :param pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArgs']] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription.
+        :param pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArrgs']] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription.
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
@@ -1094,7 +1094,7 @@ class Subscription(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SubscriptionArgs,
+                 args: SubscriptionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A named resource representing the stream of messages from a single,
@@ -1123,7 +1123,7 @@ class Subscription(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
+            push_config=gcp.pubsub.SubscriptionPushConfigArrgs(
                 push_endpoint="https://example.com/push",
                 attributes={
                     "x-goog-version": "v1",
@@ -1145,10 +1145,10 @@ class Subscription(pulumi.CustomResource):
             message_retention_duration="1200s",
             retain_acked_messages=True,
             ack_deadline_seconds=20,
-            expiration_policy=gcp.pubsub.SubscriptionExpirationPolicyArgs(
+            expiration_policy=gcp.pubsub.SubscriptionExpirationPolicyArrgs(
                 ttl="300000.5s",
             ),
-            retry_policy=gcp.pubsub.SubscriptionRetryPolicyArgs(
+            retry_policy=gcp.pubsub.SubscriptionRetryPolicyArrgs(
                 minimum_backoff="10s",
             ),
             enable_message_ordering=False)
@@ -1174,7 +1174,7 @@ class Subscription(pulumi.CustomResource):
         example_dead_letter = gcp.pubsub.Topic("exampleDeadLetter")
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
             topic=example_topic.name,
-            dead_letter_policy=gcp.pubsub.SubscriptionDeadLetterPolicyArgs(
+            dead_letter_policy=gcp.pubsub.SubscriptionDeadLetterPolicyArrgs(
                 dead_letter_topic=example_dead_letter.id,
                 max_delivery_attempts=10,
             ))
@@ -1211,7 +1211,7 @@ class Subscription(pulumi.CustomResource):
         \"\"\")
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
             topic=example_topic.name,
-            bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
+            bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArrgs(
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
             ),
             opts=pulumi.ResourceOptions(depends_on=[
@@ -1237,12 +1237,12 @@ class Subscription(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param SubscriptionArgs args: The arguments to use to populate this resource's properties.
+        :param SubscriptionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SubscriptionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SubscriptionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1252,20 +1252,20 @@ class Subscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
-                 bigquery_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionBigqueryConfigArgs']]] = None,
-                 cloud_storage_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionCloudStorageConfigArgs']]] = None,
-                 dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
+                 bigquery_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionBigqueryConfigArrgs']]] = None,
+                 cloud_storage_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionCloudStorageConfigArrgs']]] = None,
+                 dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArrgs']]] = None,
                  enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
                  enable_message_ordering: Optional[pulumi.Input[bool]] = None,
-                 expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']]] = None,
+                 expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArrgs']]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 push_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']]] = None,
+                 push_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionPushConfigArrgs']]] = None,
                  retain_acked_messages: Optional[pulumi.Input[bool]] = None,
-                 retry_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArgs']]] = None,
+                 retry_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArrgs']]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1274,7 +1274,7 @@ class Subscription(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SubscriptionArgs.__new__(SubscriptionArgs)
+            __props__ = SubscriptionArrgs.__new__(SubscriptionArrgs)
 
             __props__.__dict__["ack_deadline_seconds"] = ack_deadline_seconds
             __props__.__dict__["bigquery_config"] = bigquery_config
@@ -1309,22 +1309,22 @@ class Subscription(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
-            bigquery_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionBigqueryConfigArgs']]] = None,
-            cloud_storage_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionCloudStorageConfigArgs']]] = None,
-            dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
+            bigquery_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionBigqueryConfigArrgs']]] = None,
+            cloud_storage_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionCloudStorageConfigArrgs']]] = None,
+            dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArrgs']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_exactly_once_delivery: Optional[pulumi.Input[bool]] = None,
             enable_message_ordering: Optional[pulumi.Input[bool]] = None,
-            expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']]] = None,
+            expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArrgs']]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             message_retention_duration: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            push_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']]] = None,
+            push_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionPushConfigArrgs']]] = None,
             retain_acked_messages: Optional[pulumi.Input[bool]] = None,
-            retry_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArgs']]] = None,
+            retry_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArrgs']]] = None,
             topic: Optional[pulumi.Input[str]] = None) -> 'Subscription':
         """
         Get an existing Subscription resource's state with the given name, id, and optional extra
@@ -1348,15 +1348,15 @@ class Subscription(pulumi.CustomResource):
                for the call to the push endpoint.
                If the subscriber never acknowledges the message, the Pub/Sub system
                will eventually redeliver the message.
-        :param pulumi.Input[pulumi.InputType['SubscriptionBigqueryConfigArgs']] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
+        :param pulumi.Input[pulumi.InputType['SubscriptionBigqueryConfigArrgs']] bigquery_config: If delivery to BigQuery is used with this subscription, this field is used to configure it.
                Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
                If all three are empty, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['SubscriptionCloudStorageConfigArgs']] cloud_storage_config: If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+        :param pulumi.Input[pulumi.InputType['SubscriptionCloudStorageConfigArrgs']] cloud_storage_config: If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
                Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
                If all three are empty, then the subscriber will pull and ack messages using API methods.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
+        :param pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArrgs']] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
                this subscription. If dead_letter_policy is not set, dead lettering
                is disabled.
                The Cloud Pub/Sub service account associated with this subscription's
@@ -1374,7 +1374,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
-        :param pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
+        :param pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArrgs']] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
                A subscription is considered active as long as any connected subscriber
                is successfully consuming messages from the subscription or is issuing
                operations on the subscription. If expirationPolicy is not set, a default
@@ -1403,7 +1403,7 @@ class Subscription(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']] push_config: If push delivery is used with this subscription, this field is used to
+        :param pulumi.Input[pulumi.InputType['SubscriptionPushConfigArrgs']] push_config: If push delivery is used with this subscription, this field is used to
                configure it. An empty pushConfig signifies that the subscriber will
                pull and ack messages using API methods.
                Structure is documented below.
@@ -1411,7 +1411,7 @@ class Subscription(pulumi.CustomResource):
                messages are not expunged from the subscription's backlog, even if
                they are acknowledged, until they fall out of the
                messageRetentionDuration window.
-        :param pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArgs']] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription.
+        :param pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArrgs']] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription.
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.

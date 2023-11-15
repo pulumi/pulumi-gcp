@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DnsManagedZoneIamBindingArgs', 'DnsManagedZoneIamBinding']
+__all__ = ['DnsManagedZoneIamBindingArrgs', 'DnsManagedZoneIamBinding']
 
 @pulumi.input_type
-class DnsManagedZoneIamBindingArgs:
+calass DnsManagedZoneIamBindingArrgs:
     def __init__(__self__, *,
                  managed_zone: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DnsManagedZoneIamBinding resource.
@@ -87,11 +87,11 @@ class DnsManagedZoneIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -121,9 +121,9 @@ class DnsManagedZoneIamBindingArgs:
 
 
 @pulumi.input_type
-class _DnsManagedZoneIamBindingState:
+calass _DnsManagedZoneIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -166,11 +166,11 @@ class _DnsManagedZoneIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['DnsManagedZoneIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -246,12 +246,12 @@ class _DnsManagedZoneIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class DnsManagedZoneIamBinding(pulumi.CustomResource):
+calass DnsManagedZoneIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DnsManagedZoneIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['DnsManagedZoneIamBindingConditionArrgs']]] = None,
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -278,7 +278,7 @@ class DnsManagedZoneIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -363,7 +363,7 @@ class DnsManagedZoneIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DnsManagedZoneIamBindingArgs,
+                 args: DnsManagedZoneIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Cloud DNS ManagedZone. Each of these resources serves a different use case:
@@ -386,7 +386,7 @@ class DnsManagedZoneIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -447,12 +447,12 @@ class DnsManagedZoneIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param DnsManagedZoneIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param DnsManagedZoneIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DnsManagedZoneIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DnsManagedZoneIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -461,7 +461,7 @@ class DnsManagedZoneIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DnsManagedZoneIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['DnsManagedZoneIamBindingConditionArrgs']]] = None,
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -473,7 +473,7 @@ class DnsManagedZoneIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DnsManagedZoneIamBindingArgs.__new__(DnsManagedZoneIamBindingArgs)
+            __props__ = DnsManagedZoneIamBindingArrgs.__new__(DnsManagedZoneIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if managed_zone is None and not opts.urn:
@@ -497,7 +497,7 @@ class DnsManagedZoneIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['DnsManagedZoneIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['DnsManagedZoneIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             managed_zone: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

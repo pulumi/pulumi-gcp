@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class TriggerDestination(dict):
+calass TriggerDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -47,8 +47,8 @@ class TriggerDestination(dict):
                  workflow: Optional[str] = None):
         """
         :param str cloud_function: [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
-        :param 'TriggerDestinationCloudRunServiceArgs' cloud_run_service: Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
-        :param 'TriggerDestinationGkeArgs' gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        :param 'TriggerDestinationCloudRunServiceArrgs' cloud_run_service: Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
+        :param 'TriggerDestinationGkeArrgs' gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         :param str workflow: The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         """
         if cloud_function is not None:
@@ -94,7 +94,7 @@ class TriggerDestination(dict):
 
 
 @pulumi.output_type
-class TriggerDestinationCloudRunService(dict):
+calass TriggerDestinationCloudRunService(dict):
     def __init__(__self__, *,
                  service: str,
                  path: Optional[str] = None,
@@ -136,7 +136,7 @@ class TriggerDestinationCloudRunService(dict):
 
 
 @pulumi.output_type
-class TriggerDestinationGke(dict):
+calass TriggerDestinationGke(dict):
     def __init__(__self__, *,
                  cluster: str,
                  location: str,
@@ -199,7 +199,7 @@ class TriggerDestinationGke(dict):
 
 
 @pulumi.output_type
-class TriggerMatchingCriteria(dict):
+calass TriggerMatchingCriteria(dict):
     def __init__(__self__, *,
                  attribute: str,
                  value: str,
@@ -244,11 +244,11 @@ class TriggerMatchingCriteria(dict):
 
 
 @pulumi.output_type
-class TriggerTransport(dict):
+calass TriggerTransport(dict):
     def __init__(__self__, *,
                  pubsub: Optional['outputs.TriggerTransportPubsub'] = None):
         """
-        :param 'TriggerTransportPubsubArgs' pubsub: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
+        :param 'TriggerTransportPubsubArrgs' pubsub: The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
         if pubsub is not None:
             pulumi.set(__self__, "pubsub", pubsub)
@@ -263,7 +263,7 @@ class TriggerTransport(dict):
 
 
 @pulumi.output_type
-class TriggerTransportPubsub(dict):
+calass TriggerTransportPubsub(dict):
     def __init__(__self__, *,
                  subscription: Optional[str] = None,
                  topic: Optional[str] = None):

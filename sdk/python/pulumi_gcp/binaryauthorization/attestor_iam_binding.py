@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AttestorIamBindingArgs', 'AttestorIamBinding']
+__all__ = ['AttestorIamBindingArrgs', 'AttestorIamBinding']
 
 @pulumi.input_type
-class AttestorIamBindingArgs:
+calass AttestorIamBindingArrgs:
     def __init__(__self__, *,
                  attestor: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['AttestorIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AttestorIamBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AttestorIamBinding resource.
@@ -87,11 +87,11 @@ class AttestorIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AttestorIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AttestorIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AttestorIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AttestorIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -121,10 +121,10 @@ class AttestorIamBindingArgs:
 
 
 @pulumi.input_type
-class _AttestorIamBindingState:
+calass _AttestorIamBindingState:
     def __init__(__self__, *,
                  attestor: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['AttestorIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AttestorIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -178,11 +178,11 @@ class _AttestorIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AttestorIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AttestorIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AttestorIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AttestorIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -246,13 +246,13 @@ class _AttestorIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class AttestorIamBinding(pulumi.CustomResource):
+calass AttestorIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestor: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AttestorIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AttestorIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -278,7 +278,7 @@ class AttestorIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -363,7 +363,7 @@ class AttestorIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AttestorIamBindingArgs,
+                 args: AttestorIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Binary Authorization Attestor. Each of these resources serves a different use case:
@@ -386,7 +386,7 @@ class AttestorIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -447,12 +447,12 @@ class AttestorIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param AttestorIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param AttestorIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AttestorIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AttestorIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -462,7 +462,7 @@ class AttestorIamBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestor: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AttestorIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AttestorIamBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -473,7 +473,7 @@ class AttestorIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AttestorIamBindingArgs.__new__(AttestorIamBindingArgs)
+            __props__ = AttestorIamBindingArrgs.__new__(AttestorIamBindingArrgs)
 
             if attestor is None and not opts.urn:
                 raise TypeError("Missing required property 'attestor'")
@@ -498,7 +498,7 @@ class AttestorIamBinding(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             attestor: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['AttestorIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['AttestorIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,

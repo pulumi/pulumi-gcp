@@ -11,21 +11,21 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ApiKeyArgs', 'ApiKey']
+__all__ = ['ApiKeyArrgs', 'ApiKey']
 
 @pulumi.input_type
-class ApiKeyArgs:
+calass ApiKeyArrgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArgs']] = None):
+                 restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArrgs']] = None):
         """
         The set of arguments for constructing a ApiKey resource.
         :param pulumi.Input[str] display_name: Human-readable display name of this API key. Modifiable by user.
         :param pulumi.Input[str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input['ApiKeyRestrictionsArgs'] restrictions: Key restrictions.
+        :param pulumi.Input['ApiKeyRestrictionsArrgs'] restrictions: Key restrictions.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -74,25 +74,25 @@ class ApiKeyArgs:
 
     @property
     @pulumi.getter
-    def restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsArgs']]:
+    def restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsArrgs']]:
         """
         Key restrictions.
         """
         return pulumi.get(self, "restrictions")
 
     @restrictions.setter
-    def restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsArgs']]):
+    def restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsArrgs']]):
         pulumi.set(self, "restrictions", value)
 
 
 @pulumi.input_type
-class _ApiKeyState:
+calass _ApiKeyState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  key_string: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArgs']] = None,
+                 restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArrgs']] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApiKey resources.
@@ -100,7 +100,7 @@ class _ApiKeyState:
         :param pulumi.Input[str] key_string: Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         :param pulumi.Input[str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input['ApiKeyRestrictionsArgs'] restrictions: Key restrictions.
+        :param pulumi.Input['ApiKeyRestrictionsArrgs'] restrictions: Key restrictions.
         :param pulumi.Input[str] uid: Output only. Unique id in UUID4 format.
         """
         if display_name is not None:
@@ -166,14 +166,14 @@ class _ApiKeyState:
 
     @property
     @pulumi.getter
-    def restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsArgs']]:
+    def restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsArrgs']]:
         """
         Key restrictions.
         """
         return pulumi.get(self, "restrictions")
 
     @restrictions.setter
-    def restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsArgs']]):
+    def restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsArrgs']]):
         pulumi.set(self, "restrictions", value)
 
     @property
@@ -189,7 +189,7 @@ class _ApiKeyState:
         pulumi.set(self, "uid", value)
 
 
-class ApiKey(pulumi.CustomResource):
+calass ApiKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -197,7 +197,7 @@ class ApiKey(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restrictions: Optional[pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']]] = None,
+                 restrictions: Optional[pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArrgs']]] = None,
                  __props__=None):
         """
         The Apikeys Key resource
@@ -215,14 +215,14 @@ class ApiKey(pulumi.CustomResource):
         primary = gcp.projects.ApiKey("primary",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
-                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
+            restrictions=gcp.projects.ApiKeyRestrictionsArrgs(
+                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArrgs(
+                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrgs(
                         package_name="com.example.app123",
                         sha1_fingerprint="1699466a142d4682a5f91b50fdf400f2358e2b0b",
                     )],
                 ),
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
+                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArrgs(
                     service="translate.googleapis.com",
                     methods=["GET*"],
                 )],
@@ -240,12 +240,12 @@ class ApiKey(pulumi.CustomResource):
         primary = gcp.projects.ApiKey("primary",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
+            restrictions=gcp.projects.ApiKeyRestrictionsArrgs(
+                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArrgs(
                     service="translate.googleapis.com",
                     methods=["GET*"],
                 )],
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
+                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArrgs(
                     allowed_referrers=[".*"],
                 ),
             ))
@@ -262,12 +262,12 @@ class ApiKey(pulumi.CustomResource):
         primary = gcp.projects.ApiKey("primary",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
+            restrictions=gcp.projects.ApiKeyRestrictionsArrgs(
+                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArrgs(
                     service="translate.googleapis.com",
                     methods=["GET*"],
                 )],
-                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
+                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArrgs(
                     allowed_bundle_ids=["com.google.app.macos"],
                 ),
             ))
@@ -297,12 +297,12 @@ class ApiKey(pulumi.CustomResource):
         primary = gcp.projects.ApiKey("primary",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
+            restrictions=gcp.projects.ApiKeyRestrictionsArrgs(
+                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArrgs(
                     service="translate.googleapis.com",
                     methods=["GET*"],
                 )],
-                server_key_restrictions=gcp.projects.ApiKeyRestrictionsServerKeyRestrictionsArgs(
+                server_key_restrictions=gcp.projects.ApiKeyRestrictionsServerKeyRestrictionsArrgs(
                     allowed_ips=["127.0.0.1"],
                 ),
             ))
@@ -329,13 +329,13 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Human-readable display name of this API key. Modifiable by user.
         :param pulumi.Input[str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']] restrictions: Key restrictions.
+        :param pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArrgs']] restrictions: Key restrictions.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ApiKeyArgs] = None,
+                 args: Optional[ApiKeyArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Apikeys Key resource
@@ -353,14 +353,14 @@ class ApiKey(pulumi.CustomResource):
         primary = gcp.projects.ApiKey("primary",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
-                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
+            restrictions=gcp.projects.ApiKeyRestrictionsArrgs(
+                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArrgs(
+                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArrgs(
                         package_name="com.example.app123",
                         sha1_fingerprint="1699466a142d4682a5f91b50fdf400f2358e2b0b",
                     )],
                 ),
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
+                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArrgs(
                     service="translate.googleapis.com",
                     methods=["GET*"],
                 )],
@@ -378,12 +378,12 @@ class ApiKey(pulumi.CustomResource):
         primary = gcp.projects.ApiKey("primary",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
+            restrictions=gcp.projects.ApiKeyRestrictionsArrgs(
+                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArrgs(
                     service="translate.googleapis.com",
                     methods=["GET*"],
                 )],
-                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
+                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArrgs(
                     allowed_referrers=[".*"],
                 ),
             ))
@@ -400,12 +400,12 @@ class ApiKey(pulumi.CustomResource):
         primary = gcp.projects.ApiKey("primary",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
+            restrictions=gcp.projects.ApiKeyRestrictionsArrgs(
+                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArrgs(
                     service="translate.googleapis.com",
                     methods=["GET*"],
                 )],
-                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArgs(
+                ios_key_restrictions=gcp.projects.ApiKeyRestrictionsIosKeyRestrictionsArrgs(
                     allowed_bundle_ids=["com.google.app.macos"],
                 ),
             ))
@@ -435,12 +435,12 @@ class ApiKey(pulumi.CustomResource):
         primary = gcp.projects.ApiKey("primary",
             display_name="sample-key",
             project=basic.name,
-            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
-                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArgs(
+            restrictions=gcp.projects.ApiKeyRestrictionsArrgs(
+                api_targets=[gcp.projects.ApiKeyRestrictionsApiTargetArrgs(
                     service="translate.googleapis.com",
                     methods=["GET*"],
                 )],
-                server_key_restrictions=gcp.projects.ApiKeyRestrictionsServerKeyRestrictionsArgs(
+                server_key_restrictions=gcp.projects.ApiKeyRestrictionsServerKeyRestrictionsArrgs(
                     allowed_ips=["127.0.0.1"],
                 ),
             ))
@@ -463,12 +463,12 @@ class ApiKey(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ApiKeyArgs args: The arguments to use to populate this resource's properties.
+        :param ApiKeyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApiKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApiKeyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -480,7 +480,7 @@ class ApiKey(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 restrictions: Optional[pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']]] = None,
+                 restrictions: Optional[pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -488,7 +488,7 @@ class ApiKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApiKeyArgs.__new__(ApiKeyArgs)
+            __props__ = ApiKeyArrgs.__new__(ApiKeyArrgs)
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
@@ -512,7 +512,7 @@ class ApiKey(pulumi.CustomResource):
             key_string: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            restrictions: Optional[pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']]] = None,
+            restrictions: Optional[pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArrgs']]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'ApiKey':
         """
         Get an existing ApiKey resource's state with the given name, id, and optional extra
@@ -525,7 +525,7 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[str] key_string: Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         :param pulumi.Input[str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']] restrictions: Key restrictions.
+        :param pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArrgs']] restrictions: Key restrictions.
         :param pulumi.Input[str] uid: Output only. Unique id in UUID4 format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

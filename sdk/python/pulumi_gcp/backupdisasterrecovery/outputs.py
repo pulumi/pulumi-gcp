@@ -15,7 +15,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ManagementServerManagementUri(dict):
+calass ManagementServerManagementUri(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -67,7 +67,7 @@ class ManagementServerManagementUri(dict):
 
 
 @pulumi.output_type
-class ManagementServerNetwork(dict):
+calass ManagementServerNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

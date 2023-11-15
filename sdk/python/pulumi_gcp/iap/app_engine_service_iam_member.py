@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AppEngineServiceIamMemberArgs', 'AppEngineServiceIamMember']
+__all__ = ['AppEngineServiceIamMemberArrgs', 'AppEngineServiceIamMember']
 
 @pulumi.input_type
-class AppEngineServiceIamMemberArgs:
+calass AppEngineServiceIamMemberArrgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
                  service: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['AppEngineServiceIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AppEngineServiceIamMemberConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AppEngineServiceIamMember resource.
@@ -29,7 +29,7 @@ class AppEngineServiceIamMemberArgs:
                `iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] service: Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input['AppEngineServiceIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['AppEngineServiceIamMemberConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -104,7 +104,7 @@ class AppEngineServiceIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AppEngineServiceIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AppEngineServiceIamMemberConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -112,7 +112,7 @@ class AppEngineServiceIamMemberArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AppEngineServiceIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AppEngineServiceIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -142,10 +142,10 @@ class AppEngineServiceIamMemberArgs:
 
 
 @pulumi.input_type
-class _AppEngineServiceIamMemberState:
+calass _AppEngineServiceIamMemberState:
     def __init__(__self__, *,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['AppEngineServiceIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['AppEngineServiceIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -154,7 +154,7 @@ class _AppEngineServiceIamMemberState:
         """
         Input properties used for looking up and filtering AppEngineServiceIamMember resources.
         :param pulumi.Input[str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input['AppEngineServiceIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['AppEngineServiceIamMemberConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -205,7 +205,7 @@ class _AppEngineServiceIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AppEngineServiceIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['AppEngineServiceIamMemberConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -213,7 +213,7 @@ class _AppEngineServiceIamMemberState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AppEngineServiceIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['AppEngineServiceIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -289,13 +289,13 @@ class _AppEngineServiceIamMemberState:
         pulumi.set(self, "service", value)
 
 
-class AppEngineServiceIamMember(pulumi.CustomResource):
+calass AppEngineServiceIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AppEngineServiceIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AppEngineServiceIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -324,7 +324,7 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -341,10 +341,10 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -378,7 +378,7 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
 
         binding = gcp.iap.AppEngineServiceIamBinding("binding",
             app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineServiceIamBindingConditionArgs(
+            condition=gcp.iap.AppEngineServiceIamBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -410,7 +410,7 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
 
         member = gcp.iap.AppEngineServiceIamMember("member",
             app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineServiceIamMemberConditionArgs(
+            condition=gcp.iap.AppEngineServiceIamMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -448,7 +448,7 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[pulumi.InputType['AppEngineServiceIamMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['AppEngineServiceIamMemberConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -473,7 +473,7 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AppEngineServiceIamMemberArgs,
+                 args: AppEngineServiceIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineService. Each of these resources serves a different use case:
@@ -498,7 +498,7 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -515,10 +515,10 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.httpsResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -552,7 +552,7 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
 
         binding = gcp.iap.AppEngineServiceIamBinding("binding",
             app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineServiceIamBindingConditionArgs(
+            condition=gcp.iap.AppEngineServiceIamBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -584,7 +584,7 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
 
         member = gcp.iap.AppEngineServiceIamMember("member",
             app_id=google_app_engine_standard_app_version["version"]["project"],
-            condition=gcp.iap.AppEngineServiceIamMemberConditionArgs(
+            condition=gcp.iap.AppEngineServiceIamMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -620,12 +620,12 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param AppEngineServiceIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param AppEngineServiceIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AppEngineServiceIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AppEngineServiceIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -635,7 +635,7 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['AppEngineServiceIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['AppEngineServiceIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -647,7 +647,7 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AppEngineServiceIamMemberArgs.__new__(AppEngineServiceIamMemberArgs)
+            __props__ = AppEngineServiceIamMemberArrgs.__new__(AppEngineServiceIamMemberArrgs)
 
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
@@ -675,7 +675,7 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['AppEngineServiceIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['AppEngineServiceIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -689,7 +689,7 @@ class AppEngineServiceIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
-        :param pulumi.Input[pulumi.InputType['AppEngineServiceIamMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['AppEngineServiceIamMemberConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

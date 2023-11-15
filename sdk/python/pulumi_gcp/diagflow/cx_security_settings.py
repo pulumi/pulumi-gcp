@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CxSecuritySettingsArgs', 'CxSecuritySettings']
+__all__ = ['CxSecuritySettingsArrgs', 'CxSecuritySettings']
 
 @pulumi.input_type
-class CxSecuritySettingsArgs:
+calass CxSecuritySettingsArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 audio_export_settings: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']] = None,
+                 audio_export_settings: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArrgs']] = None,
                  deidentify_template: Optional[pulumi.Input[str]] = None,
-                 insights_export_settings: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']] = None,
+                 insights_export_settings: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArrgs']] = None,
                  inspect_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -36,7 +36,7 @@ class CxSecuritySettingsArgs:
                - - -
         :param pulumi.Input[str] location: The location these settings are located in. Settings can only be applied to an agent in the same location.
                See [Available Regions](https://cloud.google.com/dialogflow/cx/docs/concept/region#avail) for a list of supported locations.
-        :param pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs'] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
+        :param pulumi.Input['CxSecuritySettingsAudioExportSettingsArrgs'] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
                If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
                If audio export is enabled, audio is recorded and saved to gcs_bucket, subject to retention policy of gcs_bucket.
                This setting won't effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
@@ -44,7 +44,7 @@ class CxSecuritySettingsArgs:
         :param pulumi.Input[str] deidentify_template: [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with [redacted] text.
                Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
                Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
-        :param pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs'] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
+        :param pulumi.Input['CxSecuritySettingsInsightsExportSettingsArrgs'] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
                If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
                Structure is documented below.
         :param pulumi.Input[str] inspect_template: [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config.
@@ -119,7 +119,7 @@ class CxSecuritySettingsArgs:
 
     @property
     @pulumi.getter(name="audioExportSettings")
-    def audio_export_settings(self) -> Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']]:
+    def audio_export_settings(self) -> Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArrgs']]:
         """
         Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
         If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
@@ -130,7 +130,7 @@ class CxSecuritySettingsArgs:
         return pulumi.get(self, "audio_export_settings")
 
     @audio_export_settings.setter
-    def audio_export_settings(self, value: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']]):
+    def audio_export_settings(self, value: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArrgs']]):
         pulumi.set(self, "audio_export_settings", value)
 
     @property
@@ -149,7 +149,7 @@ class CxSecuritySettingsArgs:
 
     @property
     @pulumi.getter(name="insightsExportSettings")
-    def insights_export_settings(self) -> Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']]:
+    def insights_export_settings(self) -> Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArrgs']]:
         """
         Controls conversation exporting settings to Insights after conversation is completed.
         If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -158,7 +158,7 @@ class CxSecuritySettingsArgs:
         return pulumi.get(self, "insights_export_settings")
 
     @insights_export_settings.setter
-    def insights_export_settings(self, value: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']]):
+    def insights_export_settings(self, value: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArrgs']]):
         pulumi.set(self, "insights_export_settings", value)
 
     @property
@@ -258,12 +258,12 @@ class CxSecuritySettingsArgs:
 
 
 @pulumi.input_type
-class _CxSecuritySettingsState:
+calass _CxSecuritySettingsState:
     def __init__(__self__, *,
-                 audio_export_settings: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']] = None,
+                 audio_export_settings: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArrgs']] = None,
                  deidentify_template: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 insights_export_settings: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']] = None,
+                 insights_export_settings: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArrgs']] = None,
                  inspect_template: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -275,7 +275,7 @@ class _CxSecuritySettingsState:
                  retention_window_days: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering CxSecuritySettings resources.
-        :param pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs'] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
+        :param pulumi.Input['CxSecuritySettingsAudioExportSettingsArrgs'] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
                If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
                If audio export is enabled, audio is recorded and saved to gcs_bucket, subject to retention policy of gcs_bucket.
                This setting won't effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
@@ -287,7 +287,7 @@ class _CxSecuritySettingsState:
                
                
                - - -
-        :param pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs'] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
+        :param pulumi.Input['CxSecuritySettingsInsightsExportSettingsArrgs'] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
                If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
                Structure is documented below.
         :param pulumi.Input[str] inspect_template: [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config.
@@ -342,7 +342,7 @@ class _CxSecuritySettingsState:
 
     @property
     @pulumi.getter(name="audioExportSettings")
-    def audio_export_settings(self) -> Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']]:
+    def audio_export_settings(self) -> Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArrgs']]:
         """
         Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
         If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
@@ -353,7 +353,7 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "audio_export_settings")
 
     @audio_export_settings.setter
-    def audio_export_settings(self, value: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArgs']]):
+    def audio_export_settings(self, value: Optional[pulumi.Input['CxSecuritySettingsAudioExportSettingsArrgs']]):
         pulumi.set(self, "audio_export_settings", value)
 
     @property
@@ -387,7 +387,7 @@ class _CxSecuritySettingsState:
 
     @property
     @pulumi.getter(name="insightsExportSettings")
-    def insights_export_settings(self) -> Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']]:
+    def insights_export_settings(self) -> Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArrgs']]:
         """
         Controls conversation exporting settings to Insights after conversation is completed.
         If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -396,7 +396,7 @@ class _CxSecuritySettingsState:
         return pulumi.get(self, "insights_export_settings")
 
     @insights_export_settings.setter
-    def insights_export_settings(self, value: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs']]):
+    def insights_export_settings(self, value: Optional[pulumi.Input['CxSecuritySettingsInsightsExportSettingsArrgs']]):
         pulumi.set(self, "insights_export_settings", value)
 
     @property
@@ -521,15 +521,15 @@ class _CxSecuritySettingsState:
         pulumi.set(self, "retention_window_days", value)
 
 
-class CxSecuritySettings(pulumi.CustomResource):
+calass CxSecuritySettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audio_export_settings: Optional[pulumi.Input[pulumi.InputType['CxSecuritySettingsAudioExportSettingsArgs']]] = None,
+                 audio_export_settings: Optional[pulumi.Input[pulumi.InputType['CxSecuritySettingsAudioExportSettingsArrgs']]] = None,
                  deidentify_template: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 insights_export_settings: Optional[pulumi.Input[pulumi.InputType['CxSecuritySettingsInsightsExportSettingsArgs']]] = None,
+                 insights_export_settings: Optional[pulumi.Input[pulumi.InputType['CxSecuritySettingsInsightsExportSettingsArrgs']]] = None,
                  inspect_template: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -571,20 +571,20 @@ class CxSecuritySettings(pulumi.CustomResource):
         inspect = gcp.dataloss.PreventionInspectTemplate("inspect",
             parent="projects/my-project-name/locations/global",
             display_name="dialogflowcx-inspect-template",
-            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
-                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArrgs(
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArrgs(
                     name="EMAIL_ADDRESS",
                 )],
             ))
         deidentify = gcp.dataloss.PreventionDeidentifyTemplate("deidentify",
             parent="projects/my-project-name/locations/global",
             display_name="dialogflowcx-deidentify-template",
-            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
-                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
-                    transformations=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                        primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                            replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
-                                new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArrgs(
+                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArrgs(
+                    transformations=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrgs(
+                        primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArrgs(
+                            replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArrgs(
+                                new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArrgs(
                                     string_value="[REDACTED]",
                                 ),
                             ),
@@ -603,13 +603,13 @@ class CxSecuritySettings(pulumi.CustomResource):
             inspect_template=inspect.id,
             deidentify_template=deidentify.id,
             purge_data_types=["DIALOGFLOW_HISTORY"],
-            audio_export_settings=gcp.diagflow.CxSecuritySettingsAudioExportSettingsArgs(
+            audio_export_settings=gcp.diagflow.CxSecuritySettingsAudioExportSettingsArrgs(
                 gcs_bucket=bucket.id,
                 audio_export_pattern="export",
                 enable_audio_redaction=True,
                 audio_format="OGG",
             ),
-            insights_export_settings=gcp.diagflow.CxSecuritySettingsInsightsExportSettingsArgs(
+            insights_export_settings=gcp.diagflow.CxSecuritySettingsInsightsExportSettingsArrgs(
                 enable_insights_export=True,
             ),
             retention_strategy="REMOVE_AFTER_CONVERSATION")
@@ -633,7 +633,7 @@ class CxSecuritySettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CxSecuritySettingsAudioExportSettingsArgs']] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
+        :param pulumi.Input[pulumi.InputType['CxSecuritySettingsAudioExportSettingsArrgs']] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
                If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
                If audio export is enabled, audio is recorded and saved to gcs_bucket, subject to retention policy of gcs_bucket.
                This setting won't effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
@@ -645,7 +645,7 @@ class CxSecuritySettings(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['CxSecuritySettingsInsightsExportSettingsArgs']] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
+        :param pulumi.Input[pulumi.InputType['CxSecuritySettingsInsightsExportSettingsArrgs']] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
                If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
                Structure is documented below.
         :param pulumi.Input[str] inspect_template: [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config.
@@ -673,7 +673,7 @@ class CxSecuritySettings(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CxSecuritySettingsArgs,
+                 args: CxSecuritySettingsArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents the settings related to security issues, such as data redaction and data retention. It may take hours for updates on the settings to propagate to all the related components and take effect.
@@ -707,20 +707,20 @@ class CxSecuritySettings(pulumi.CustomResource):
         inspect = gcp.dataloss.PreventionInspectTemplate("inspect",
             parent="projects/my-project-name/locations/global",
             display_name="dialogflowcx-inspect-template",
-            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArgs(
-                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs(
+            inspect_config=gcp.dataloss.PreventionInspectTemplateInspectConfigArrgs(
+                info_types=[gcp.dataloss.PreventionInspectTemplateInspectConfigInfoTypeArrgs(
                     name="EMAIL_ADDRESS",
                 )],
             ))
         deidentify = gcp.dataloss.PreventionDeidentifyTemplate("deidentify",
             parent="projects/my-project-name/locations/global",
             display_name="dialogflowcx-deidentify-template",
-            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
-                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs(
-                    transformations=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs(
-                        primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs(
-                            replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs(
-                                new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs(
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArrgs(
+                info_type_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArrgs(
+                    transformations=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArrgs(
+                        primitive_transformation=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArrgs(
+                            replace_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArrgs(
+                                new_value=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArrgs(
                                     string_value="[REDACTED]",
                                 ),
                             ),
@@ -739,13 +739,13 @@ class CxSecuritySettings(pulumi.CustomResource):
             inspect_template=inspect.id,
             deidentify_template=deidentify.id,
             purge_data_types=["DIALOGFLOW_HISTORY"],
-            audio_export_settings=gcp.diagflow.CxSecuritySettingsAudioExportSettingsArgs(
+            audio_export_settings=gcp.diagflow.CxSecuritySettingsAudioExportSettingsArrgs(
                 gcs_bucket=bucket.id,
                 audio_export_pattern="export",
                 enable_audio_redaction=True,
                 audio_format="OGG",
             ),
-            insights_export_settings=gcp.diagflow.CxSecuritySettingsInsightsExportSettingsArgs(
+            insights_export_settings=gcp.diagflow.CxSecuritySettingsInsightsExportSettingsArrgs(
                 enable_insights_export=True,
             ),
             retention_strategy="REMOVE_AFTER_CONVERSATION")
@@ -768,12 +768,12 @@ class CxSecuritySettings(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CxSecuritySettingsArgs args: The arguments to use to populate this resource's properties.
+        :param CxSecuritySettingsArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CxSecuritySettingsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CxSecuritySettingsArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -782,10 +782,10 @@ class CxSecuritySettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audio_export_settings: Optional[pulumi.Input[pulumi.InputType['CxSecuritySettingsAudioExportSettingsArgs']]] = None,
+                 audio_export_settings: Optional[pulumi.Input[pulumi.InputType['CxSecuritySettingsAudioExportSettingsArrgs']]] = None,
                  deidentify_template: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 insights_export_settings: Optional[pulumi.Input[pulumi.InputType['CxSecuritySettingsInsightsExportSettingsArgs']]] = None,
+                 insights_export_settings: Optional[pulumi.Input[pulumi.InputType['CxSecuritySettingsInsightsExportSettingsArrgs']]] = None,
                  inspect_template: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -801,7 +801,7 @@ class CxSecuritySettings(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CxSecuritySettingsArgs.__new__(CxSecuritySettingsArgs)
+            __props__ = CxSecuritySettingsArrgs.__new__(CxSecuritySettingsArrgs)
 
             __props__.__dict__["audio_export_settings"] = audio_export_settings
             __props__.__dict__["deidentify_template"] = deidentify_template
@@ -830,10 +830,10 @@ class CxSecuritySettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audio_export_settings: Optional[pulumi.Input[pulumi.InputType['CxSecuritySettingsAudioExportSettingsArgs']]] = None,
+            audio_export_settings: Optional[pulumi.Input[pulumi.InputType['CxSecuritySettingsAudioExportSettingsArrgs']]] = None,
             deidentify_template: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            insights_export_settings: Optional[pulumi.Input[pulumi.InputType['CxSecuritySettingsInsightsExportSettingsArgs']]] = None,
+            insights_export_settings: Optional[pulumi.Input[pulumi.InputType['CxSecuritySettingsInsightsExportSettingsArrgs']]] = None,
             inspect_template: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -850,7 +850,7 @@ class CxSecuritySettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CxSecuritySettingsAudioExportSettingsArgs']] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
+        :param pulumi.Input[pulumi.InputType['CxSecuritySettingsAudioExportSettingsArrgs']] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations.
                If retention_strategy is set to REMOVE_AFTER_CONVERSATION or gcs_bucket is empty, audio export is disabled.
                If audio export is enabled, audio is recorded and saved to gcs_bucket, subject to retention policy of gcs_bucket.
                This setting won't effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
@@ -862,7 +862,7 @@ class CxSecuritySettings(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['CxSecuritySettingsInsightsExportSettingsArgs']] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
+        :param pulumi.Input[pulumi.InputType['CxSecuritySettingsInsightsExportSettingsArrgs']] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
                If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
                Structure is documented below.
         :param pulumi.Input[str] inspect_template: [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config.

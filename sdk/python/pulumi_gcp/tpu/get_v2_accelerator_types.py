@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetV2AcceleratorTypesResult:
+calass GetV2AcceleratorTypesResult:
     """
     A collection of values returned by getV2AcceleratorTypes.
     """
@@ -62,7 +62,7 @@ class GetV2AcceleratorTypesResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetV2AcceleratorTypesResult(GetV2AcceleratorTypesResult):
+calass AwaitableGetV2AcceleratorTypesResult(GetV2AcceleratorTypesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

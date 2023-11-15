@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ZoneIamBindingArgs', 'ZoneIamBinding']
+__all__ = ['ZoneIamBindingArrgs', 'ZoneIamBinding']
 
 @pulumi.input_type
-class ZoneIamBindingArgs:
+calass ZoneIamBindingArrgs:
     def __init__(__self__, *,
                  dataplex_zone: pulumi.Input[str],
                  lake: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ZoneIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ZoneIamBindingConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -101,11 +101,11 @@ class ZoneIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ZoneIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ZoneIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ZoneIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ZoneIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -144,9 +144,9 @@ class ZoneIamBindingArgs:
 
 
 @pulumi.input_type
-class _ZoneIamBindingState:
+calass _ZoneIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['ZoneIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ZoneIamBindingConditionArrgs']] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
@@ -195,11 +195,11 @@ class _ZoneIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ZoneIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ZoneIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ZoneIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ZoneIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -293,12 +293,12 @@ class _ZoneIamBindingState:
         pulumi.set(self, "role", value)
 
 
-class ZoneIamBinding(pulumi.CustomResource):
+calass ZoneIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ZoneIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ZoneIamBindingConditionArrgs']]] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -327,7 +327,7 @@ class ZoneIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -418,7 +418,7 @@ class ZoneIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ZoneIamBindingArgs,
+                 args: ZoneIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Dataplex Zone. Each of these resources serves a different use case:
@@ -441,7 +441,7 @@ class ZoneIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -508,12 +508,12 @@ class ZoneIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ZoneIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param ZoneIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ZoneIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ZoneIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -522,7 +522,7 @@ class ZoneIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ZoneIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ZoneIamBindingConditionArrgs']]] = None,
                  dataplex_zone: Optional[pulumi.Input[str]] = None,
                  lake: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -536,7 +536,7 @@ class ZoneIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ZoneIamBindingArgs.__new__(ZoneIamBindingArgs)
+            __props__ = ZoneIamBindingArrgs.__new__(ZoneIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if dataplex_zone is None and not opts.urn:
@@ -564,7 +564,7 @@ class ZoneIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ZoneIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ZoneIamBindingConditionArrgs']]] = None,
             dataplex_zone: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             lake: Optional[pulumi.Input[str]] = None,

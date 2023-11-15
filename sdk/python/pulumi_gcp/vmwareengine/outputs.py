@@ -30,7 +30,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ClusterNodeTypeConfig(dict):
+calass ClusterNodeTypeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -98,7 +98,7 @@ class ClusterNodeTypeConfig(dict):
 
 
 @pulumi.output_type
-class NetworkVpcNetwork(dict):
+calass NetworkVpcNetwork(dict):
     def __init__(__self__, *,
                  network: Optional[str] = None,
                  type: Optional[str] = None):
@@ -135,7 +135,7 @@ class NetworkVpcNetwork(dict):
 
 
 @pulumi.output_type
-class PrivateCloudHcx(dict):
+calass PrivateCloudHcx(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -209,7 +209,7 @@ class PrivateCloudHcx(dict):
 
 
 @pulumi.output_type
-class PrivateCloudManagementCluster(dict):
+calass PrivateCloudManagementCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -239,7 +239,7 @@ class PrivateCloudManagementCluster(dict):
                * Ends with a non-hyphen character
                * Not formatted as a UUID
                * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        :param Sequence['PrivateCloudManagementClusterNodeTypeConfigArgs'] node_type_configs: The map of cluster node types in this cluster,
+        :param Sequence['PrivateCloudManagementClusterNodeTypeConfigArrgs'] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
                Structure is documented below.
         """
@@ -272,7 +272,7 @@ class PrivateCloudManagementCluster(dict):
 
 
 @pulumi.output_type
-class PrivateCloudManagementClusterNodeTypeConfig(dict):
+calass PrivateCloudManagementClusterNodeTypeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -344,7 +344,7 @@ class PrivateCloudManagementClusterNodeTypeConfig(dict):
 
 
 @pulumi.output_type
-class PrivateCloudNetworkConfig(dict):
+calass PrivateCloudNetworkConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -441,7 +441,7 @@ class PrivateCloudNetworkConfig(dict):
 
 
 @pulumi.output_type
-class PrivateCloudNsx(dict):
+calass PrivateCloudNsx(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -515,7 +515,7 @@ class PrivateCloudNsx(dict):
 
 
 @pulumi.output_type
-class PrivateCloudVcenter(dict):
+calass PrivateCloudVcenter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -589,7 +589,7 @@ class PrivateCloudVcenter(dict):
 
 
 @pulumi.output_type
-class GetClusterNodeTypeConfigResult(dict):
+calass GetClusterNodeTypeConfigResult(dict):
     def __init__(__self__, *,
                  custom_core_count: int,
                  node_count: int,
@@ -615,7 +615,7 @@ class GetClusterNodeTypeConfigResult(dict):
 
 
 @pulumi.output_type
-class GetNetworkVpcNetworkResult(dict):
+calass GetNetworkVpcNetworkResult(dict):
     def __init__(__self__, *,
                  network: str,
                  type: str):
@@ -634,7 +634,7 @@ class GetNetworkVpcNetworkResult(dict):
 
 
 @pulumi.output_type
-class GetPrivateCloudHcxResult(dict):
+calass GetPrivateCloudHcxResult(dict):
     def __init__(__self__, *,
                  fqdn: str,
                  internal_ip: str,
@@ -667,7 +667,7 @@ class GetPrivateCloudHcxResult(dict):
 
 
 @pulumi.output_type
-class GetPrivateCloudManagementClusterResult(dict):
+calass GetPrivateCloudManagementClusterResult(dict):
     def __init__(__self__, *,
                  cluster_id: str,
                  node_type_configs: Sequence['outputs.GetPrivateCloudManagementClusterNodeTypeConfigResult']):
@@ -686,7 +686,7 @@ class GetPrivateCloudManagementClusterResult(dict):
 
 
 @pulumi.output_type
-class GetPrivateCloudManagementClusterNodeTypeConfigResult(dict):
+calass GetPrivateCloudManagementClusterNodeTypeConfigResult(dict):
     def __init__(__self__, *,
                  custom_core_count: int,
                  node_count: int,
@@ -712,7 +712,7 @@ class GetPrivateCloudManagementClusterNodeTypeConfigResult(dict):
 
 
 @pulumi.output_type
-class GetPrivateCloudNetworkConfigResult(dict):
+calass GetPrivateCloudNetworkConfigResult(dict):
     def __init__(__self__, *,
                  management_cidr: str,
                  management_ip_address_layout_version: int,
@@ -745,7 +745,7 @@ class GetPrivateCloudNetworkConfigResult(dict):
 
 
 @pulumi.output_type
-class GetPrivateCloudNsxResult(dict):
+calass GetPrivateCloudNsxResult(dict):
     def __init__(__self__, *,
                  fqdn: str,
                  internal_ip: str,
@@ -778,7 +778,7 @@ class GetPrivateCloudNsxResult(dict):
 
 
 @pulumi.output_type
-class GetPrivateCloudVcenterResult(dict):
+calass GetPrivateCloudVcenterResult(dict):
     def __init__(__self__, *,
                  fqdn: str,
                  internal_ip: str,

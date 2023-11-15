@@ -10,14 +10,14 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'GroupGroupKeyArgs',
-    'GroupMembershipMemberKeyArgs',
-    'GroupMembershipPreferredMemberKeyArgs',
-    'GroupMembershipRoleArgs',
+    'GroupGroupKeyArrgs',
+    'GroupMembershipMemberKeyArrgs',
+    'GroupMembershipPreferredMemberKeyArrgs',
+    'GroupMembershipRoleArrgs',
 ]
 
 @pulumi.input_type
-class GroupGroupKeyArgs:
+calass GroupGroupKeyArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  namespace: Optional[pulumi.Input[str]] = None):
@@ -79,7 +79,7 @@ class GroupGroupKeyArgs:
 
 
 @pulumi.input_type
-class GroupMembershipMemberKeyArgs:
+calass GroupMembershipMemberKeyArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  namespace: Optional[pulumi.Input[str]] = None):
@@ -137,7 +137,7 @@ class GroupMembershipMemberKeyArgs:
 
 
 @pulumi.input_type
-class GroupMembershipPreferredMemberKeyArgs:
+calass GroupMembershipPreferredMemberKeyArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  namespace: Optional[pulumi.Input[str]] = None):
@@ -195,7 +195,7 @@ class GroupMembershipPreferredMemberKeyArgs:
 
 
 @pulumi.input_type
-class GroupMembershipRoleArgs:
+calass GroupMembershipRoleArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """

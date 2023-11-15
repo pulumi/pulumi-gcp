@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['GlobalAddressArgs', 'GlobalAddress']
+__all__ = ['GlobalAddressArrgs', 'GlobalAddress']
 
 @pulumi.input_type
-class GlobalAddressArgs:
+calass GlobalAddressArrgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
@@ -236,7 +236,7 @@ class GlobalAddressArgs:
 
 
 @pulumi.input_type
-class _GlobalAddressState:
+calass _GlobalAddressState:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
@@ -541,7 +541,7 @@ class _GlobalAddressState:
         pulumi.set(self, "self_link", value)
 
 
-class GlobalAddress(pulumi.CustomResource):
+calass GlobalAddress(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -653,7 +653,7 @@ class GlobalAddress(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[GlobalAddressArgs] = None,
+                 args: Optional[GlobalAddressArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Global Address resource. Global addresses are used for
@@ -707,12 +707,12 @@ class GlobalAddress(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param GlobalAddressArgs args: The arguments to use to populate this resource's properties.
+        :param GlobalAddressArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GlobalAddressArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GlobalAddressArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -738,7 +738,7 @@ class GlobalAddress(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GlobalAddressArgs.__new__(GlobalAddressArgs)
+            __props__ = GlobalAddressArrgs.__new__(GlobalAddressArrgs)
 
             __props__.__dict__["address"] = address
             __props__.__dict__["address_type"] = address_type

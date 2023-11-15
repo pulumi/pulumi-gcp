@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetNetblockIPRangesResult:
+calass GetNetblockIPRangesResult:
     """
     A collection of values returned by getNetblockIPRanges.
     """
@@ -76,7 +76,7 @@ class GetNetblockIPRangesResult:
         return pulumi.get(self, "range_type")
 
 
-class AwaitableGetNetblockIPRangesResult(GetNetblockIPRangesResult):
+calass AwaitableGetNetblockIPRangesResult(GetNetblockIPRangesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -116,7 +116,7 @@ def get_netblock_ip_ranges(range_type: Optional[str] = None,
     default = gcp.compute.Network("default")
     allow_hcs = gcp.compute.Firewall("allow-hcs",
         network=default.name,
-        allows=[gcp.compute.FirewallAllowArgs(
+        allows=[gcp.compute.FirewallAllowArrgs(
             protocol="tcp",
             ports=["80"],
         )],
@@ -185,7 +185,7 @@ def get_netblock_ip_ranges_output(range_type: Optional[pulumi.Input[Optional[str
     default = gcp.compute.Network("default")
     allow_hcs = gcp.compute.Firewall("allow-hcs",
         network=default.name,
-        allows=[gcp.compute.FirewallAllowArgs(
+        allows=[gcp.compute.FirewallAllowArrgs(
             protocol="tcp",
             ports=["80"],
         )],

@@ -36,7 +36,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AddonsConfigAddonsConfig(dict):
+calass AddonsConfigAddonsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -69,15 +69,15 @@ class AddonsConfigAddonsConfig(dict):
                  integration_config: Optional['outputs.AddonsConfigAddonsConfigIntegrationConfig'] = None,
                  monetization_config: Optional['outputs.AddonsConfigAddonsConfigMonetizationConfig'] = None):
         """
-        :param 'AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs' advanced_api_ops_config: Configuration for the Monetization add-on.
+        :param 'AddonsConfigAddonsConfigAdvancedApiOpsConfigArrgs' advanced_api_ops_config: Configuration for the Monetization add-on.
                Structure is documented below.
-        :param 'AddonsConfigAddonsConfigApiSecurityConfigArgs' api_security_config: Configuration for the Monetization add-on.
+        :param 'AddonsConfigAddonsConfigApiSecurityConfigArrgs' api_security_config: Configuration for the Monetization add-on.
                Structure is documented below.
-        :param 'AddonsConfigAddonsConfigConnectorsPlatformConfigArgs' connectors_platform_config: Configuration for the Monetization add-on.
+        :param 'AddonsConfigAddonsConfigConnectorsPlatformConfigArrgs' connectors_platform_config: Configuration for the Monetization add-on.
                Structure is documented below.
-        :param 'AddonsConfigAddonsConfigIntegrationConfigArgs' integration_config: Configuration for the Monetization add-on.
+        :param 'AddonsConfigAddonsConfigIntegrationConfigArrgs' integration_config: Configuration for the Monetization add-on.
                Structure is documented below.
-        :param 'AddonsConfigAddonsConfigMonetizationConfigArgs' monetization_config: Configuration for the Monetization add-on.
+        :param 'AddonsConfigAddonsConfigMonetizationConfigArrgs' monetization_config: Configuration for the Monetization add-on.
                Structure is documented below.
         """
         if advanced_api_ops_config is not None:
@@ -138,7 +138,7 @@ class AddonsConfigAddonsConfig(dict):
 
 
 @pulumi.output_type
-class AddonsConfigAddonsConfigAdvancedApiOpsConfig(dict):
+calass AddonsConfigAddonsConfigAdvancedApiOpsConfig(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
@@ -157,7 +157,7 @@ class AddonsConfigAddonsConfigAdvancedApiOpsConfig(dict):
 
 
 @pulumi.output_type
-class AddonsConfigAddonsConfigApiSecurityConfig(dict):
+calass AddonsConfigAddonsConfigApiSecurityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -207,7 +207,7 @@ class AddonsConfigAddonsConfigApiSecurityConfig(dict):
 
 
 @pulumi.output_type
-class AddonsConfigAddonsConfigConnectorsPlatformConfig(dict):
+calass AddonsConfigAddonsConfigConnectorsPlatformConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -257,7 +257,7 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfig(dict):
 
 
 @pulumi.output_type
-class AddonsConfigAddonsConfigIntegrationConfig(dict):
+calass AddonsConfigAddonsConfigIntegrationConfig(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
@@ -276,7 +276,7 @@ class AddonsConfigAddonsConfigIntegrationConfig(dict):
 
 
 @pulumi.output_type
-class AddonsConfigAddonsConfigMonetizationConfig(dict):
+calass AddonsConfigAddonsConfigMonetizationConfig(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
@@ -295,7 +295,7 @@ class AddonsConfigAddonsConfigMonetizationConfig(dict):
 
 
 @pulumi.output_type
-class EnvironmentIamBindingCondition(dict):
+calass EnvironmentIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -322,7 +322,7 @@ class EnvironmentIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class EnvironmentIamMemberCondition(dict):
+calass EnvironmentIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -349,7 +349,7 @@ class EnvironmentIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class EnvironmentNodeConfig(dict):
+calass EnvironmentNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -425,7 +425,7 @@ class EnvironmentNodeConfig(dict):
 
 
 @pulumi.output_type
-class KeystoresAliasesKeyCertFileCertsInfo(dict):
+calass KeystoresAliasesKeyCertFileCertsInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -446,7 +446,7 @@ class KeystoresAliasesKeyCertFileCertsInfo(dict):
     def __init__(__self__, *,
                  cert_infos: Optional[Sequence['outputs.KeystoresAliasesKeyCertFileCertsInfoCertInfo']] = None):
         """
-        :param Sequence['KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs'] cert_infos: (Output)
+        :param Sequence['KeystoresAliasesKeyCertFileCertsInfoCertInfoArrgs'] cert_infos: (Output)
                List of all properties in the object.
                Structure is documented below.
         """
@@ -465,7 +465,7 @@ class KeystoresAliasesKeyCertFileCertsInfo(dict):
 
 
 @pulumi.output_type
-class KeystoresAliasesKeyCertFileCertsInfoCertInfo(dict):
+calass KeystoresAliasesKeyCertFileCertsInfoCertInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -659,7 +659,7 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfo(dict):
 
 
 @pulumi.output_type
-class KeystoresAliasesPkcs12CertsInfo(dict):
+calass KeystoresAliasesPkcs12CertsInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -680,7 +680,7 @@ class KeystoresAliasesPkcs12CertsInfo(dict):
     def __init__(__self__, *,
                  cert_infos: Optional[Sequence['outputs.KeystoresAliasesPkcs12CertsInfoCertInfo']] = None):
         """
-        :param Sequence['KeystoresAliasesPkcs12CertsInfoCertInfoArgs'] cert_infos: (Output)
+        :param Sequence['KeystoresAliasesPkcs12CertsInfoCertInfoArrgs'] cert_infos: (Output)
                List of all properties in the object.
                Structure is documented below.
         """
@@ -699,7 +699,7 @@ class KeystoresAliasesPkcs12CertsInfo(dict):
 
 
 @pulumi.output_type
-class KeystoresAliasesPkcs12CertsInfoCertInfo(dict):
+calass KeystoresAliasesPkcs12CertsInfoCertInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -893,7 +893,7 @@ class KeystoresAliasesPkcs12CertsInfoCertInfo(dict):
 
 
 @pulumi.output_type
-class KeystoresAliasesSelfSignedCertCertsInfo(dict):
+calass KeystoresAliasesSelfSignedCertCertsInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -914,7 +914,7 @@ class KeystoresAliasesSelfSignedCertCertsInfo(dict):
     def __init__(__self__, *,
                  cert_infos: Optional[Sequence['outputs.KeystoresAliasesSelfSignedCertCertsInfoCertInfo']] = None):
         """
-        :param Sequence['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs'] cert_infos: (Output)
+        :param Sequence['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrgs'] cert_infos: (Output)
                List of all properties in the object.
                Structure is documented below.
         """
@@ -933,7 +933,7 @@ class KeystoresAliasesSelfSignedCertCertsInfo(dict):
 
 
 @pulumi.output_type
-class KeystoresAliasesSelfSignedCertCertsInfoCertInfo(dict):
+calass KeystoresAliasesSelfSignedCertCertsInfoCertInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1127,7 +1127,7 @@ class KeystoresAliasesSelfSignedCertCertsInfoCertInfo(dict):
 
 
 @pulumi.output_type
-class KeystoresAliasesSelfSignedCertSubject(dict):
+calass KeystoresAliasesSelfSignedCertSubject(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1243,7 +1243,7 @@ class KeystoresAliasesSelfSignedCertSubject(dict):
 
 
 @pulumi.output_type
-class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames(dict):
+calass KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1279,11 +1279,11 @@ class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames(dict):
 
 
 @pulumi.output_type
-class OrganizationProperties(dict):
+calass OrganizationProperties(dict):
     def __init__(__self__, *,
                  properties: Optional[Sequence['outputs.OrganizationPropertiesProperty']] = None):
         """
-        :param Sequence['OrganizationPropertiesPropertyArgs'] properties: List of all properties in the object.
+        :param Sequence['OrganizationPropertiesPropertyArrgs'] properties: List of all properties in the object.
                Structure is documented below.
         """
         if properties is not None:
@@ -1300,7 +1300,7 @@ class OrganizationProperties(dict):
 
 
 @pulumi.output_type
-class OrganizationPropertiesProperty(dict):
+calass OrganizationPropertiesProperty(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  value: Optional[str] = None):
@@ -1331,7 +1331,7 @@ class OrganizationPropertiesProperty(dict):
 
 
 @pulumi.output_type
-class SharedflowMetaData(dict):
+calass SharedflowMetaData(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1395,7 +1395,7 @@ class SharedflowMetaData(dict):
 
 
 @pulumi.output_type
-class TargetServerSSlInfo(dict):
+calass TargetServerSSlInfo(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1437,7 +1437,7 @@ class TargetServerSSlInfo(dict):
         :param bool enabled: Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
         :param Sequence[str] ciphers: The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
         :param bool client_auth_enabled: Enables two-way TLS.
-        :param 'TargetServerSSlInfoCommonNameArgs' common_name: The TLS Common Name of the certificate.
+        :param 'TargetServerSSlInfoCommonNameArrgs' common_name: The TLS Common Name of the certificate.
                Structure is documented below.
         :param bool ignore_validation_errors: If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
         :param str key_alias: Required if clientAuthEnabled is true. The resource ID for the alias containing the private key and cert.
@@ -1538,7 +1538,7 @@ class TargetServerSSlInfo(dict):
 
 
 @pulumi.output_type
-class TargetServerSSlInfoCommonName(dict):
+calass TargetServerSSlInfoCommonName(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

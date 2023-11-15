@@ -11,28 +11,28 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['VMwareClusterArgs', 'VMwareCluster']
+__all__ = ['VMwareClusterArrgs', 'VMwareCluster']
 
 @pulumi.input_type
-class VMwareClusterArgs:
+calass VMwareClusterArrgs:
     def __init__(__self__, *,
                  admin_cluster_membership: pulumi.Input[str],
-                 control_plane_node: pulumi.Input['VMwareClusterControlPlaneNodeArgs'],
+                 control_plane_node: pulumi.Input['VMwareClusterControlPlaneNodeArrgs'],
                  location: pulumi.Input[str],
                  on_prem_version: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 anti_affinity_groups: Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArgs']] = None,
-                 authorization: Optional[pulumi.Input['VMwareClusterAuthorizationArgs']] = None,
-                 auto_repair_config: Optional[pulumi.Input['VMwareClusterAutoRepairConfigArgs']] = None,
-                 dataplane_v2: Optional[pulumi.Input['VMwareClusterDataplaneV2Args']] = None,
+                 anti_affinity_groups: Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArrgs']] = None,
+                 authorization: Optional[pulumi.Input['VMwareClusterAuthorizationArrgs']] = None,
+                 auto_repair_config: Optional[pulumi.Input['VMwareClusterAutoRepairConfigArrgs']] = None,
+                 dataplane_v2: Optional[pulumi.Input['VMwareClusterDataplaneV2Arrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
-                 load_balancer: Optional[pulumi.Input['VMwareClusterLoadBalancerArgs']] = None,
+                 load_balancer: Optional[pulumi.Input['VMwareClusterLoadBalancerArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input['VMwareClusterNetworkConfigArgs']] = None,
+                 network_config: Optional[pulumi.Input['VMwareClusterNetworkConfigArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 storage: Optional[pulumi.Input['VMwareClusterStorageArgs']] = None,
-                 upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']] = None,
+                 storage: Optional[pulumi.Input['VMwareClusterStorageArrgs']] = None,
+                 upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArrgs']] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a VMwareCluster resource.
@@ -40,7 +40,7 @@ class VMwareClusterArgs:
                This is the full resource name of the admin cluster's hub membership.
                In the future, references to other resource types might be allowed if
                admin clusters are modeled as their own resources.
-        :param pulumi.Input['VMwareClusterControlPlaneNodeArgs'] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
+        :param pulumi.Input['VMwareClusterControlPlaneNodeArrgs'] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
@@ -55,27 +55,27 @@ class VMwareClusterArgs:
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['VMwareClusterAntiAffinityGroupsArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
+        :param pulumi.Input['VMwareClusterAntiAffinityGroupsArrgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
                least three physical hosts in the datacenter.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterAuthorizationArgs'] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
+        :param pulumi.Input['VMwareClusterAuthorizationArrgs'] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterAutoRepairConfigArgs'] auto_repair_config: Configuration for auto repairing.
+        :param pulumi.Input['VMwareClusterAutoRepairConfigArrgs'] auto_repair_config: Configuration for auto repairing.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterDataplaneV2Args'] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+        :param pulumi.Input['VMwareClusterDataplaneV2Arrgs'] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
                Structure is documented below.
         :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
-        :param pulumi.Input['VMwareClusterLoadBalancerArgs'] load_balancer: Load Balancer configuration.
+        :param pulumi.Input['VMwareClusterLoadBalancerArrgs'] load_balancer: Load Balancer configuration.
                Structure is documented below.
         :param pulumi.Input[str] name: The VMware cluster name.
-        :param pulumi.Input['VMwareClusterNetworkConfigArgs'] network_config: The VMware User Cluster network configuration.
+        :param pulumi.Input['VMwareClusterNetworkConfigArrgs'] network_config: The VMware User Cluster network configuration.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['VMwareClusterStorageArgs'] storage: Storage configuration.
+        :param pulumi.Input['VMwareClusterStorageArrgs'] storage: Storage configuration.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterUpgradePolicyArgs'] upgrade_policy: Specifies upgrade policy for the cluster.
+        :param pulumi.Input['VMwareClusterUpgradePolicyArrgs'] upgrade_policy: Specifies upgrade policy for the cluster.
                Structure is documented below.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
@@ -129,7 +129,7 @@ class VMwareClusterArgs:
 
     @property
     @pulumi.getter(name="controlPlaneNode")
-    def control_plane_node(self) -> pulumi.Input['VMwareClusterControlPlaneNodeArgs']:
+    def control_plane_node(self) -> pulumi.Input['VMwareClusterControlPlaneNodeArrgs']:
         """
         VMware User Cluster control plane nodes must have either 1 or 3 replicas.
         Structure is documented below.
@@ -137,7 +137,7 @@ class VMwareClusterArgs:
         return pulumi.get(self, "control_plane_node")
 
     @control_plane_node.setter
-    def control_plane_node(self, value: pulumi.Input['VMwareClusterControlPlaneNodeArgs']):
+    def control_plane_node(self, value: pulumi.Input['VMwareClusterControlPlaneNodeArrgs']):
         pulumi.set(self, "control_plane_node", value)
 
     @property
@@ -188,7 +188,7 @@ class VMwareClusterArgs:
 
     @property
     @pulumi.getter(name="antiAffinityGroups")
-    def anti_affinity_groups(self) -> Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArgs']]:
+    def anti_affinity_groups(self) -> Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArrgs']]:
         """
         AAGConfig specifies whether to spread VMware User Cluster nodes across at
         least three physical hosts in the datacenter.
@@ -197,12 +197,12 @@ class VMwareClusterArgs:
         return pulumi.get(self, "anti_affinity_groups")
 
     @anti_affinity_groups.setter
-    def anti_affinity_groups(self, value: Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArgs']]):
+    def anti_affinity_groups(self, value: Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArrgs']]):
         pulumi.set(self, "anti_affinity_groups", value)
 
     @property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input['VMwareClusterAuthorizationArgs']]:
+    def authorization(self) -> Optional[pulumi.Input['VMwareClusterAuthorizationArrgs']]:
         """
         RBAC policy that will be applied and managed by GKE On-Prem.
         Structure is documented below.
@@ -210,12 +210,12 @@ class VMwareClusterArgs:
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input['VMwareClusterAuthorizationArgs']]):
+    def authorization(self, value: Optional[pulumi.Input['VMwareClusterAuthorizationArrgs']]):
         pulumi.set(self, "authorization", value)
 
     @property
     @pulumi.getter(name="autoRepairConfig")
-    def auto_repair_config(self) -> Optional[pulumi.Input['VMwareClusterAutoRepairConfigArgs']]:
+    def auto_repair_config(self) -> Optional[pulumi.Input['VMwareClusterAutoRepairConfigArrgs']]:
         """
         Configuration for auto repairing.
         Structure is documented below.
@@ -223,12 +223,12 @@ class VMwareClusterArgs:
         return pulumi.get(self, "auto_repair_config")
 
     @auto_repair_config.setter
-    def auto_repair_config(self, value: Optional[pulumi.Input['VMwareClusterAutoRepairConfigArgs']]):
+    def auto_repair_config(self, value: Optional[pulumi.Input['VMwareClusterAutoRepairConfigArrgs']]):
         pulumi.set(self, "auto_repair_config", value)
 
     @property
     @pulumi.getter(name="dataplaneV2")
-    def dataplane_v2(self) -> Optional[pulumi.Input['VMwareClusterDataplaneV2Args']]:
+    def dataplane_v2(self) -> Optional[pulumi.Input['VMwareClusterDataplaneV2Arrgs']]:
         """
         VmwareDataplaneV2Config specifies configuration for Dataplane V2.
         Structure is documented below.
@@ -236,7 +236,7 @@ class VMwareClusterArgs:
         return pulumi.get(self, "dataplane_v2")
 
     @dataplane_v2.setter
-    def dataplane_v2(self, value: Optional[pulumi.Input['VMwareClusterDataplaneV2Args']]):
+    def dataplane_v2(self, value: Optional[pulumi.Input['VMwareClusterDataplaneV2Arrgs']]):
         pulumi.set(self, "dataplane_v2", value)
 
     @property
@@ -265,7 +265,7 @@ class VMwareClusterArgs:
 
     @property
     @pulumi.getter(name="loadBalancer")
-    def load_balancer(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerArgs']]:
+    def load_balancer(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerArrgs']]:
         """
         Load Balancer configuration.
         Structure is documented below.
@@ -273,7 +273,7 @@ class VMwareClusterArgs:
         return pulumi.get(self, "load_balancer")
 
     @load_balancer.setter
-    def load_balancer(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerArgs']]):
+    def load_balancer(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerArrgs']]):
         pulumi.set(self, "load_balancer", value)
 
     @property
@@ -290,7 +290,7 @@ class VMwareClusterArgs:
 
     @property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigArgs']]:
+    def network_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigArrgs']]:
         """
         The VMware User Cluster network configuration.
         Structure is documented below.
@@ -298,7 +298,7 @@ class VMwareClusterArgs:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigArgs']]):
+    def network_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigArrgs']]):
         pulumi.set(self, "network_config", value)
 
     @property
@@ -316,7 +316,7 @@ class VMwareClusterArgs:
 
     @property
     @pulumi.getter
-    def storage(self) -> Optional[pulumi.Input['VMwareClusterStorageArgs']]:
+    def storage(self) -> Optional[pulumi.Input['VMwareClusterStorageArrgs']]:
         """
         Storage configuration.
         Structure is documented below.
@@ -324,12 +324,12 @@ class VMwareClusterArgs:
         return pulumi.get(self, "storage")
 
     @storage.setter
-    def storage(self, value: Optional[pulumi.Input['VMwareClusterStorageArgs']]):
+    def storage(self, value: Optional[pulumi.Input['VMwareClusterStorageArrgs']]):
         pulumi.set(self, "storage", value)
 
     @property
     @pulumi.getter(name="upgradePolicy")
-    def upgrade_policy(self) -> Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']]:
+    def upgrade_policy(self) -> Optional[pulumi.Input['VMwareClusterUpgradePolicyArrgs']]:
         """
         Specifies upgrade policy for the cluster.
         Structure is documented below.
@@ -337,7 +337,7 @@ class VMwareClusterArgs:
         return pulumi.get(self, "upgrade_policy")
 
     @upgrade_policy.setter
-    def upgrade_policy(self, value: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']]):
+    def upgrade_policy(self, value: Optional[pulumi.Input['VMwareClusterUpgradePolicyArrgs']]):
         pulumi.set(self, "upgrade_policy", value)
 
     @property
@@ -354,39 +354,39 @@ class VMwareClusterArgs:
 
 
 @pulumi.input_type
-class _VMwareClusterState:
+calass _VMwareClusterState:
     def __init__(__self__, *,
                  admin_cluster_membership: Optional[pulumi.Input[str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 anti_affinity_groups: Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArgs']] = None,
-                 authorization: Optional[pulumi.Input['VMwareClusterAuthorizationArgs']] = None,
-                 auto_repair_config: Optional[pulumi.Input['VMwareClusterAutoRepairConfigArgs']] = None,
-                 control_plane_node: Optional[pulumi.Input['VMwareClusterControlPlaneNodeArgs']] = None,
+                 anti_affinity_groups: Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArrgs']] = None,
+                 authorization: Optional[pulumi.Input['VMwareClusterAuthorizationArrgs']] = None,
+                 auto_repair_config: Optional[pulumi.Input['VMwareClusterAutoRepairConfigArrgs']] = None,
+                 control_plane_node: Optional[pulumi.Input['VMwareClusterControlPlaneNodeArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 dataplane_v2: Optional[pulumi.Input['VMwareClusterDataplaneV2Args']] = None,
+                 dataplane_v2: Optional[pulumi.Input['VMwareClusterDataplaneV2Arrgs']] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 fleets: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterFleetArgs']]]] = None,
-                 load_balancer: Optional[pulumi.Input['VMwareClusterLoadBalancerArgs']] = None,
+                 fleets: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterFleetArrgs']]]] = None,
+                 load_balancer: Optional[pulumi.Input['VMwareClusterLoadBalancerArrgs']] = None,
                  local_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input['VMwareClusterNetworkConfigArgs']] = None,
+                 network_config: Optional[pulumi.Input['VMwareClusterNetworkConfigArrgs']] = None,
                  on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusArgs']]]] = None,
-                 storage: Optional[pulumi.Input['VMwareClusterStorageArgs']] = None,
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusArrgs']]]] = None,
+                 storage: Optional[pulumi.Input['VMwareClusterStorageArrgs']] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']] = None,
-                 validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]]] = None,
-                 vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]] = None,
+                 upgrade_policy: Optional[pulumi.Input['VMwareClusterUpgradePolicyArrgs']] = None,
+                 validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArrgs']]]] = None,
+                 vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArrgs']]]] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering VMwareCluster resources.
@@ -405,17 +405,17 @@ class _VMwareClusterState:
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['VMwareClusterAntiAffinityGroupsArgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
+        :param pulumi.Input['VMwareClusterAntiAffinityGroupsArrgs'] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
                least three physical hosts in the datacenter.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterAuthorizationArgs'] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
+        :param pulumi.Input['VMwareClusterAuthorizationArrgs'] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterAutoRepairConfigArgs'] auto_repair_config: Configuration for auto repairing.
+        :param pulumi.Input['VMwareClusterAutoRepairConfigArrgs'] auto_repair_config: Configuration for auto repairing.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterControlPlaneNodeArgs'] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
+        :param pulumi.Input['VMwareClusterControlPlaneNodeArrgs'] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time at which VMware User Cluster was created.
-        :param pulumi.Input['VMwareClusterDataplaneV2Args'] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+        :param pulumi.Input['VMwareClusterDataplaneV2Arrgs'] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
                Structure is documented below.
         :param pulumi.Input[str] delete_time: The time at which VMware User Cluster was deleted.
         :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
@@ -428,9 +428,9 @@ class _VMwareClusterState:
                client has an up-to-date value before proceeding.
                Allows clients to perform consistent read-modify-writes
                through optimistic concurrency control.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterFleetArgs']]] fleets: Fleet configuration for the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterFleetArrgs']]] fleets: Fleet configuration for the cluster.
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterLoadBalancerArgs'] load_balancer: Load Balancer configuration.
+        :param pulumi.Input['VMwareClusterLoadBalancerArrgs'] load_balancer: Load Balancer configuration.
                Structure is documented below.
         :param pulumi.Input[str] local_name: The object name of the VMware OnPremUserCluster custom resource on the
                associated admin cluster. This field is used to support conflicting
@@ -444,7 +444,7 @@ class _VMwareClusterState:
                cluster controller logs.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The VMware cluster name.
-        :param pulumi.Input['VMwareClusterNetworkConfigArgs'] network_config: The VMware User Cluster network configuration.
+        :param pulumi.Input['VMwareClusterNetworkConfigArrgs'] network_config: The VMware User Cluster network configuration.
                Structure is documented below.
         :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -452,18 +452,18 @@ class _VMwareClusterState:
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the VMware User Cluster.
         :param pulumi.Input[str] state: (Output)
                The lifecycle state of the condition.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusArgs']]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusArrgs']]] statuses: (Output)
                Specifies the detailed validation check status
                Structure is documented below.
-        :param pulumi.Input['VMwareClusterStorageArgs'] storage: Storage configuration.
+        :param pulumi.Input['VMwareClusterStorageArrgs'] storage: Storage configuration.
                Structure is documented below.
         :param pulumi.Input[str] uid: The unique identifier of the VMware User Cluster.
         :param pulumi.Input[str] update_time: The time at which VMware User Cluster was last updated.
-        :param pulumi.Input['VMwareClusterUpgradePolicyArgs'] upgrade_policy: Specifies upgrade policy for the cluster.
+        :param pulumi.Input['VMwareClusterUpgradePolicyArrgs'] upgrade_policy: Specifies upgrade policy for the cluster.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]] validation_checks: ValidationCheck represents the result of the preflight check job.
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArrgs']]] validation_checks: ValidationCheck represents the result of the preflight check job.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArrgs']]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster.
                Inherited from the admin cluster.
                Structure is documented below.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
@@ -572,7 +572,7 @@ class _VMwareClusterState:
 
     @property
     @pulumi.getter(name="antiAffinityGroups")
-    def anti_affinity_groups(self) -> Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArgs']]:
+    def anti_affinity_groups(self) -> Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArrgs']]:
         """
         AAGConfig specifies whether to spread VMware User Cluster nodes across at
         least three physical hosts in the datacenter.
@@ -581,12 +581,12 @@ class _VMwareClusterState:
         return pulumi.get(self, "anti_affinity_groups")
 
     @anti_affinity_groups.setter
-    def anti_affinity_groups(self, value: Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArgs']]):
+    def anti_affinity_groups(self, value: Optional[pulumi.Input['VMwareClusterAntiAffinityGroupsArrgs']]):
         pulumi.set(self, "anti_affinity_groups", value)
 
     @property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input['VMwareClusterAuthorizationArgs']]:
+    def authorization(self) -> Optional[pulumi.Input['VMwareClusterAuthorizationArrgs']]:
         """
         RBAC policy that will be applied and managed by GKE On-Prem.
         Structure is documented below.
@@ -594,12 +594,12 @@ class _VMwareClusterState:
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input['VMwareClusterAuthorizationArgs']]):
+    def authorization(self, value: Optional[pulumi.Input['VMwareClusterAuthorizationArrgs']]):
         pulumi.set(self, "authorization", value)
 
     @property
     @pulumi.getter(name="autoRepairConfig")
-    def auto_repair_config(self) -> Optional[pulumi.Input['VMwareClusterAutoRepairConfigArgs']]:
+    def auto_repair_config(self) -> Optional[pulumi.Input['VMwareClusterAutoRepairConfigArrgs']]:
         """
         Configuration for auto repairing.
         Structure is documented below.
@@ -607,12 +607,12 @@ class _VMwareClusterState:
         return pulumi.get(self, "auto_repair_config")
 
     @auto_repair_config.setter
-    def auto_repair_config(self, value: Optional[pulumi.Input['VMwareClusterAutoRepairConfigArgs']]):
+    def auto_repair_config(self, value: Optional[pulumi.Input['VMwareClusterAutoRepairConfigArrgs']]):
         pulumi.set(self, "auto_repair_config", value)
 
     @property
     @pulumi.getter(name="controlPlaneNode")
-    def control_plane_node(self) -> Optional[pulumi.Input['VMwareClusterControlPlaneNodeArgs']]:
+    def control_plane_node(self) -> Optional[pulumi.Input['VMwareClusterControlPlaneNodeArrgs']]:
         """
         VMware User Cluster control plane nodes must have either 1 or 3 replicas.
         Structure is documented below.
@@ -620,7 +620,7 @@ class _VMwareClusterState:
         return pulumi.get(self, "control_plane_node")
 
     @control_plane_node.setter
-    def control_plane_node(self, value: Optional[pulumi.Input['VMwareClusterControlPlaneNodeArgs']]):
+    def control_plane_node(self, value: Optional[pulumi.Input['VMwareClusterControlPlaneNodeArrgs']]):
         pulumi.set(self, "control_plane_node", value)
 
     @property
@@ -637,7 +637,7 @@ class _VMwareClusterState:
 
     @property
     @pulumi.getter(name="dataplaneV2")
-    def dataplane_v2(self) -> Optional[pulumi.Input['VMwareClusterDataplaneV2Args']]:
+    def dataplane_v2(self) -> Optional[pulumi.Input['VMwareClusterDataplaneV2Arrgs']]:
         """
         VmwareDataplaneV2Config specifies configuration for Dataplane V2.
         Structure is documented below.
@@ -645,7 +645,7 @@ class _VMwareClusterState:
         return pulumi.get(self, "dataplane_v2")
 
     @dataplane_v2.setter
-    def dataplane_v2(self, value: Optional[pulumi.Input['VMwareClusterDataplaneV2Args']]):
+    def dataplane_v2(self, value: Optional[pulumi.Input['VMwareClusterDataplaneV2Arrgs']]):
         pulumi.set(self, "dataplane_v2", value)
 
     @property
@@ -727,7 +727,7 @@ class _VMwareClusterState:
 
     @property
     @pulumi.getter
-    def fleets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterFleetArgs']]]]:
+    def fleets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterFleetArrgs']]]]:
         """
         Fleet configuration for the cluster.
         Structure is documented below.
@@ -735,12 +735,12 @@ class _VMwareClusterState:
         return pulumi.get(self, "fleets")
 
     @fleets.setter
-    def fleets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterFleetArgs']]]]):
+    def fleets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterFleetArrgs']]]]):
         pulumi.set(self, "fleets", value)
 
     @property
     @pulumi.getter(name="loadBalancer")
-    def load_balancer(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerArgs']]:
+    def load_balancer(self) -> Optional[pulumi.Input['VMwareClusterLoadBalancerArrgs']]:
         """
         Load Balancer configuration.
         Structure is documented below.
@@ -748,7 +748,7 @@ class _VMwareClusterState:
         return pulumi.get(self, "load_balancer")
 
     @load_balancer.setter
-    def load_balancer(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerArgs']]):
+    def load_balancer(self, value: Optional[pulumi.Input['VMwareClusterLoadBalancerArrgs']]):
         pulumi.set(self, "load_balancer", value)
 
     @property
@@ -798,7 +798,7 @@ class _VMwareClusterState:
 
     @property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigArgs']]:
+    def network_config(self) -> Optional[pulumi.Input['VMwareClusterNetworkConfigArrgs']]:
         """
         The VMware User Cluster network configuration.
         Structure is documented below.
@@ -806,7 +806,7 @@ class _VMwareClusterState:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigArgs']]):
+    def network_config(self, value: Optional[pulumi.Input['VMwareClusterNetworkConfigArrgs']]):
         pulumi.set(self, "network_config", value)
 
     @property
@@ -861,7 +861,7 @@ class _VMwareClusterState:
 
     @property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusArgs']]]]:
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusArrgs']]]]:
         """
         (Output)
         Specifies the detailed validation check status
@@ -870,12 +870,12 @@ class _VMwareClusterState:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusArgs']]]]):
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterStatusArrgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @property
     @pulumi.getter
-    def storage(self) -> Optional[pulumi.Input['VMwareClusterStorageArgs']]:
+    def storage(self) -> Optional[pulumi.Input['VMwareClusterStorageArrgs']]:
         """
         Storage configuration.
         Structure is documented below.
@@ -883,7 +883,7 @@ class _VMwareClusterState:
         return pulumi.get(self, "storage")
 
     @storage.setter
-    def storage(self, value: Optional[pulumi.Input['VMwareClusterStorageArgs']]):
+    def storage(self, value: Optional[pulumi.Input['VMwareClusterStorageArrgs']]):
         pulumi.set(self, "storage", value)
 
     @property
@@ -912,7 +912,7 @@ class _VMwareClusterState:
 
     @property
     @pulumi.getter(name="upgradePolicy")
-    def upgrade_policy(self) -> Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']]:
+    def upgrade_policy(self) -> Optional[pulumi.Input['VMwareClusterUpgradePolicyArrgs']]:
         """
         Specifies upgrade policy for the cluster.
         Structure is documented below.
@@ -920,12 +920,12 @@ class _VMwareClusterState:
         return pulumi.get(self, "upgrade_policy")
 
     @upgrade_policy.setter
-    def upgrade_policy(self, value: Optional[pulumi.Input['VMwareClusterUpgradePolicyArgs']]):
+    def upgrade_policy(self, value: Optional[pulumi.Input['VMwareClusterUpgradePolicyArrgs']]):
         pulumi.set(self, "upgrade_policy", value)
 
     @property
     @pulumi.getter(name="validationChecks")
-    def validation_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]]]:
+    def validation_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArrgs']]]]:
         """
         ValidationCheck represents the result of the preflight check job.
         Structure is documented below.
@@ -933,12 +933,12 @@ class _VMwareClusterState:
         return pulumi.get(self, "validation_checks")
 
     @validation_checks.setter
-    def validation_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArgs']]]]):
+    def validation_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterValidationCheckArrgs']]]]):
         pulumi.set(self, "validation_checks", value)
 
     @property
     @pulumi.getter
-    def vcenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]]:
+    def vcenters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArrgs']]]]:
         """
         VmwareVCenterConfig specifies vCenter config for the user cluster.
         Inherited from the admin cluster.
@@ -947,7 +947,7 @@ class _VMwareClusterState:
         return pulumi.get(self, "vcenters")
 
     @vcenters.setter
-    def vcenters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArgs']]]]):
+    def vcenters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareClusterVcenterArrgs']]]]):
         pulumi.set(self, "vcenters", value)
 
     @property
@@ -963,28 +963,28 @@ class _VMwareClusterState:
         pulumi.set(self, "vm_tracking_enabled", value)
 
 
-class VMwareCluster(pulumi.CustomResource):
+calass VMwareCluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_cluster_membership: Optional[pulumi.Input[str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 anti_affinity_groups: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArgs']]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAuthorizationArgs']]] = None,
-                 auto_repair_config: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAutoRepairConfigArgs']]] = None,
-                 control_plane_node: Optional[pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArgs']]] = None,
-                 dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Args']]] = None,
+                 anti_affinity_groups: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArrgs']]] = None,
+                 authorization: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAuthorizationArrgs']]] = None,
+                 auto_repair_config: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAutoRepairConfigArrgs']]] = None,
+                 control_plane_node: Optional[pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArrgs']]] = None,
+                 dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Arrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
-                 load_balancer: Optional[pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArgs']]] = None,
+                 load_balancer: Optional[pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['VMwareClusterNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['VMwareClusterNetworkConfigArrgs']]] = None,
                  on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 storage: Optional[pulumi.Input[pulumi.InputType['VMwareClusterStorageArgs']]] = None,
-                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArgs']]] = None,
+                 storage: Optional[pulumi.Input[pulumi.InputType['VMwareClusterStorageArrgs']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArrgs']]] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -1001,32 +1001,32 @@ class VMwareCluster(pulumi.CustomResource):
             description="test cluster",
             on_prem_version="1.13.1-gke.35",
             annotations={},
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArrgs(
                 service_address_cidr_blocks=["10.96.0.0/12"],
                 pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArrgs(
                     enabled=True,
                 ),
             ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArrgs(
                 cpus=4,
                 memory=8192,
                 replicas=1,
             ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArrgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArrgs(
                     control_plane_vip="10.251.133.5",
                     ingress_vip="10.251.135.19",
                 ),
-                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
+                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArrgs(
                     address_pools=[
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs(
                             pool="ingress-ip",
                             manual_assign=True,
                             addresses=["10.251.135.19"],
                             avoid_buggy_ips=True,
                         ),
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs(
                             pool="lb-test-ip",
                             manual_assign=True,
                             addresses=["10.251.135.19"],
@@ -1049,15 +1049,15 @@ class VMwareCluster(pulumi.CustomResource):
             description="test cluster",
             on_prem_version="1.13.1-gke.35",
             annotations={},
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArrgs(
                 service_address_cidr_blocks=["10.96.0.0/12"],
                 pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArrgs(
                     enabled=True,
                 ),
-                control_plane_v2_config=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs(
-                    control_plane_ip_block=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs(
-                        ips=[gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs(
+                control_plane_v2_config=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigArrgs(
+                    control_plane_ip_block=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArrgs(
+                        ips=[gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrgs(
                             hostname="test-hostname",
                             ip="10.0.0.1",
                         )],
@@ -1066,44 +1066,44 @@ class VMwareCluster(pulumi.CustomResource):
                     ),
                 ),
             ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArrgs(
                 cpus=4,
                 memory=8192,
                 replicas=1,
-                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs(
+                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArrgs(
                     enabled=True,
                 ),
             ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArrgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArrgs(
                     control_plane_vip="10.251.133.5",
                     ingress_vip="10.251.135.19",
                 ),
-                f5_config=gcp.gkeonprem.VMwareClusterLoadBalancerF5ConfigArgs(
+                f5_config=gcp.gkeonprem.VMwareClusterLoadBalancerF5ConfigArrgs(
                     address="10.0.0.1",
                     partition="test-partition",
                     snat_pool="test-snap-pool",
                 ),
             ),
-            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Args(
+            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Arrgs(
                 dataplane_v2_enabled=True,
                 windows_dataplane_v2_enabled=True,
                 advanced_networking=True,
             ),
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
-            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
-                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
+            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArrgs(
+                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArrgs(
                     username="testuser@gmail.com",
                 )],
             ),
-            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArgs(
+            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArrgs(
                 aag_config_disabled=True,
             ),
-            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArgs(
+            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArrgs(
                 enabled=True,
             ),
-            storage=gcp.gkeonprem.VMwareClusterStorageArgs(
+            storage=gcp.gkeonprem.VMwareClusterStorageArrgs(
                 vsphere_csi_disabled=True,
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -1120,32 +1120,32 @@ class VMwareCluster(pulumi.CustomResource):
             description="test cluster",
             on_prem_version="1.13.1-gke.35",
             annotations={},
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArrgs(
                 service_address_cidr_blocks=["10.96.0.0/12"],
                 pod_address_cidr_blocks=["192.168.0.0/16"],
-                host_config=gcp.gkeonprem.VMwareClusterNetworkConfigHostConfigArgs(
+                host_config=gcp.gkeonprem.VMwareClusterNetworkConfigHostConfigArrgs(
                     dns_servers=["10.254.41.1"],
                     ntp_servers=["216.239.35.8"],
                     dns_search_domains=["test-domain"],
                 ),
-                static_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigArgs(
-                    ip_blocks=[gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs(
+                static_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigArrgs(
+                    ip_blocks=[gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockArrgs(
                         netmask="255.255.252.0",
                         gateway="10.251.31.254",
                         ips=[
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs(
                                 ip="10.251.30.153",
                                 hostname="test-hostname1",
                             ),
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs(
                                 ip="10.251.31.206",
                                 hostname="test-hostname2",
                             ),
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs(
                                 ip="10.251.31.193",
                                 hostname="test-hostname3",
                             ),
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs(
                                 ip="10.251.30.230",
                                 hostname="test-hostname4",
                             ),
@@ -1153,45 +1153,45 @@ class VMwareCluster(pulumi.CustomResource):
                     )],
                 ),
             ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArrgs(
                 cpus=4,
                 memory=8192,
                 replicas=1,
-                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs(
+                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArrgs(
                     enabled=True,
                 ),
             ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArrgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArrgs(
                     control_plane_vip="10.251.133.5",
                     ingress_vip="10.251.135.19",
                 ),
-                manual_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerManualLbConfigArgs(
+                manual_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerManualLbConfigArrgs(
                     ingress_http_node_port=30005,
                     ingress_https_node_port=30006,
                     control_plane_node_port=30007,
                     konnectivity_server_node_port=30008,
                 ),
             ),
-            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Args(
+            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Arrgs(
                 dataplane_v2_enabled=True,
                 windows_dataplane_v2_enabled=True,
                 advanced_networking=True,
             ),
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
-            upgrade_policy=gcp.gkeonprem.VMwareClusterUpgradePolicyArgs(
+            upgrade_policy=gcp.gkeonprem.VMwareClusterUpgradePolicyArrgs(
                 control_plane_only=True,
             ),
-            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
-                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
+            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArrgs(
+                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArrgs(
                     username="testuser@gmail.com",
                 )],
             ),
-            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArgs(
+            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArrgs(
                 aag_config_disabled=True,
             ),
-            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArgs(
+            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArrgs(
                 enabled=True,
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -1230,31 +1230,31 @@ class VMwareCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArgs']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
+        :param pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArrgs']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
                least three physical hosts in the datacenter.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterAuthorizationArgs']] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterAuthorizationArrgs']] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterAutoRepairConfigArgs']] auto_repair_config: Configuration for auto repairing.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterAutoRepairConfigArrgs']] auto_repair_config: Configuration for auto repairing.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArgs']] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArrgs']] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Args']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Arrgs']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
                Structure is documented below.
         :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
         :param pulumi.Input[bool] enable_control_plane_v2: Enable control plane V2. Default to false.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArgs']] load_balancer: Load Balancer configuration.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArrgs']] load_balancer: Load Balancer configuration.
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The VMware cluster name.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterNetworkConfigArgs']] network_config: The VMware User Cluster network configuration.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterNetworkConfigArrgs']] network_config: The VMware User Cluster network configuration.
                Structure is documented below.
         :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterStorageArgs']] storage: Storage configuration.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterStorageArrgs']] storage: Storage configuration.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArgs']] upgrade_policy: Specifies upgrade policy for the cluster.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArrgs']] upgrade_policy: Specifies upgrade policy for the cluster.
                Structure is documented below.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.
         """
@@ -1262,7 +1262,7 @@ class VMwareCluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: VMwareClusterArgs,
+                 args: VMwareClusterArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -1278,32 +1278,32 @@ class VMwareCluster(pulumi.CustomResource):
             description="test cluster",
             on_prem_version="1.13.1-gke.35",
             annotations={},
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArrgs(
                 service_address_cidr_blocks=["10.96.0.0/12"],
                 pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArrgs(
                     enabled=True,
                 ),
             ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArrgs(
                 cpus=4,
                 memory=8192,
                 replicas=1,
             ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArrgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArrgs(
                     control_plane_vip="10.251.133.5",
                     ingress_vip="10.251.135.19",
                 ),
-                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArgs(
+                metal_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigArrgs(
                     address_pools=[
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs(
                             pool="ingress-ip",
                             manual_assign=True,
                             addresses=["10.251.135.19"],
                             avoid_buggy_ips=True,
                         ),
-                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs(
+                        gcp.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArrgs(
                             pool="lb-test-ip",
                             manual_assign=True,
                             addresses=["10.251.135.19"],
@@ -1326,15 +1326,15 @@ class VMwareCluster(pulumi.CustomResource):
             description="test cluster",
             on_prem_version="1.13.1-gke.35",
             annotations={},
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArrgs(
                 service_address_cidr_blocks=["10.96.0.0/12"],
                 pod_address_cidr_blocks=["192.168.0.0/16"],
-                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArgs(
+                dhcp_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfigArrgs(
                     enabled=True,
                 ),
-                control_plane_v2_config=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs(
-                    control_plane_ip_block=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs(
-                        ips=[gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs(
+                control_plane_v2_config=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigArrgs(
+                    control_plane_ip_block=gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArrgs(
+                        ips=[gcp.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArrgs(
                             hostname="test-hostname",
                             ip="10.0.0.1",
                         )],
@@ -1343,44 +1343,44 @@ class VMwareCluster(pulumi.CustomResource):
                     ),
                 ),
             ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArrgs(
                 cpus=4,
                 memory=8192,
                 replicas=1,
-                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs(
+                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArrgs(
                     enabled=True,
                 ),
             ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArrgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArrgs(
                     control_plane_vip="10.251.133.5",
                     ingress_vip="10.251.135.19",
                 ),
-                f5_config=gcp.gkeonprem.VMwareClusterLoadBalancerF5ConfigArgs(
+                f5_config=gcp.gkeonprem.VMwareClusterLoadBalancerF5ConfigArrgs(
                     address="10.0.0.1",
                     partition="test-partition",
                     snat_pool="test-snap-pool",
                 ),
             ),
-            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Args(
+            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Arrgs(
                 dataplane_v2_enabled=True,
                 windows_dataplane_v2_enabled=True,
                 advanced_networking=True,
             ),
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
-            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
-                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
+            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArrgs(
+                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArrgs(
                     username="testuser@gmail.com",
                 )],
             ),
-            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArgs(
+            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArrgs(
                 aag_config_disabled=True,
             ),
-            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArgs(
+            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArrgs(
                 enabled=True,
             ),
-            storage=gcp.gkeonprem.VMwareClusterStorageArgs(
+            storage=gcp.gkeonprem.VMwareClusterStorageArrgs(
                 vsphere_csi_disabled=True,
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -1397,32 +1397,32 @@ class VMwareCluster(pulumi.CustomResource):
             description="test cluster",
             on_prem_version="1.13.1-gke.35",
             annotations={},
-            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArgs(
+            network_config=gcp.gkeonprem.VMwareClusterNetworkConfigArrgs(
                 service_address_cidr_blocks=["10.96.0.0/12"],
                 pod_address_cidr_blocks=["192.168.0.0/16"],
-                host_config=gcp.gkeonprem.VMwareClusterNetworkConfigHostConfigArgs(
+                host_config=gcp.gkeonprem.VMwareClusterNetworkConfigHostConfigArrgs(
                     dns_servers=["10.254.41.1"],
                     ntp_servers=["216.239.35.8"],
                     dns_search_domains=["test-domain"],
                 ),
-                static_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigArgs(
-                    ip_blocks=[gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs(
+                static_ip_config=gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigArrgs(
+                    ip_blocks=[gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockArrgs(
                         netmask="255.255.252.0",
                         gateway="10.251.31.254",
                         ips=[
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs(
                                 ip="10.251.30.153",
                                 hostname="test-hostname1",
                             ),
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs(
                                 ip="10.251.31.206",
                                 hostname="test-hostname2",
                             ),
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs(
                                 ip="10.251.31.193",
                                 hostname="test-hostname3",
                             ),
-                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs(
+                            gcp.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArrgs(
                                 ip="10.251.30.230",
                                 hostname="test-hostname4",
                             ),
@@ -1430,45 +1430,45 @@ class VMwareCluster(pulumi.CustomResource):
                     )],
                 ),
             ),
-            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArgs(
+            control_plane_node=gcp.gkeonprem.VMwareClusterControlPlaneNodeArrgs(
                 cpus=4,
                 memory=8192,
                 replicas=1,
-                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArgs(
+                auto_resize_config=gcp.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfigArrgs(
                     enabled=True,
                 ),
             ),
-            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArgs(
-                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArgs(
+            load_balancer=gcp.gkeonprem.VMwareClusterLoadBalancerArrgs(
+                vip_config=gcp.gkeonprem.VMwareClusterLoadBalancerVipConfigArrgs(
                     control_plane_vip="10.251.133.5",
                     ingress_vip="10.251.135.19",
                 ),
-                manual_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerManualLbConfigArgs(
+                manual_lb_config=gcp.gkeonprem.VMwareClusterLoadBalancerManualLbConfigArrgs(
                     ingress_http_node_port=30005,
                     ingress_https_node_port=30006,
                     control_plane_node_port=30007,
                     konnectivity_server_node_port=30008,
                 ),
             ),
-            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Args(
+            dataplane_v2=gcp.gkeonprem.VMwareClusterDataplaneV2Arrgs(
                 dataplane_v2_enabled=True,
                 windows_dataplane_v2_enabled=True,
                 advanced_networking=True,
             ),
             vm_tracking_enabled=True,
             enable_control_plane_v2=True,
-            upgrade_policy=gcp.gkeonprem.VMwareClusterUpgradePolicyArgs(
+            upgrade_policy=gcp.gkeonprem.VMwareClusterUpgradePolicyArrgs(
                 control_plane_only=True,
             ),
-            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArgs(
-                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArgs(
+            authorization=gcp.gkeonprem.VMwareClusterAuthorizationArrgs(
+                admin_users=[gcp.gkeonprem.VMwareClusterAuthorizationAdminUserArrgs(
                     username="testuser@gmail.com",
                 )],
             ),
-            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArgs(
+            anti_affinity_groups=gcp.gkeonprem.VMwareClusterAntiAffinityGroupsArrgs(
                 aag_config_disabled=True,
             ),
-            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArgs(
+            auto_repair_config=gcp.gkeonprem.VMwareClusterAutoRepairConfigArrgs(
                 enabled=True,
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -1491,12 +1491,12 @@ class VMwareCluster(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param VMwareClusterArgs args: The arguments to use to populate this resource's properties.
+        :param VMwareClusterArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(VMwareClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(VMwareClusterArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1507,21 +1507,21 @@ class VMwareCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_cluster_membership: Optional[pulumi.Input[str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 anti_affinity_groups: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArgs']]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAuthorizationArgs']]] = None,
-                 auto_repair_config: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAutoRepairConfigArgs']]] = None,
-                 control_plane_node: Optional[pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArgs']]] = None,
-                 dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Args']]] = None,
+                 anti_affinity_groups: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArrgs']]] = None,
+                 authorization: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAuthorizationArrgs']]] = None,
+                 auto_repair_config: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAutoRepairConfigArrgs']]] = None,
+                 control_plane_node: Optional[pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArrgs']]] = None,
+                 dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Arrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
-                 load_balancer: Optional[pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArgs']]] = None,
+                 load_balancer: Optional[pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['VMwareClusterNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['VMwareClusterNetworkConfigArrgs']]] = None,
                  on_prem_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 storage: Optional[pulumi.Input[pulumi.InputType['VMwareClusterStorageArgs']]] = None,
-                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArgs']]] = None,
+                 storage: Optional[pulumi.Input[pulumi.InputType['VMwareClusterStorageArrgs']]] = None,
+                 upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArrgs']]] = None,
                  vm_tracking_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1530,7 +1530,7 @@ class VMwareCluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = VMwareClusterArgs.__new__(VMwareClusterArgs)
+            __props__ = VMwareClusterArrgs.__new__(VMwareClusterArrgs)
 
             if admin_cluster_membership is None and not opts.urn:
                 raise TypeError("Missing required property 'admin_cluster_membership'")
@@ -1584,35 +1584,35 @@ class VMwareCluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             admin_cluster_membership: Optional[pulumi.Input[str]] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            anti_affinity_groups: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArgs']]] = None,
-            authorization: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAuthorizationArgs']]] = None,
-            auto_repair_config: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAutoRepairConfigArgs']]] = None,
-            control_plane_node: Optional[pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArgs']]] = None,
+            anti_affinity_groups: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArrgs']]] = None,
+            authorization: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAuthorizationArrgs']]] = None,
+            auto_repair_config: Optional[pulumi.Input[pulumi.InputType['VMwareClusterAutoRepairConfigArrgs']]] = None,
+            control_plane_node: Optional[pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Args']]] = None,
+            dataplane_v2: Optional[pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Arrgs']]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_control_plane_v2: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
-            fleets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterFleetArgs']]]]] = None,
-            load_balancer: Optional[pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArgs']]] = None,
+            fleets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterFleetArrgs']]]]] = None,
+            load_balancer: Optional[pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArrgs']]] = None,
             local_name: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_config: Optional[pulumi.Input[pulumi.InputType['VMwareClusterNetworkConfigArgs']]] = None,
+            network_config: Optional[pulumi.Input[pulumi.InputType['VMwareClusterNetworkConfigArrgs']]] = None,
             on_prem_version: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterStatusArgs']]]]] = None,
-            storage: Optional[pulumi.Input[pulumi.InputType['VMwareClusterStorageArgs']]] = None,
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterStatusArrgs']]]]] = None,
+            storage: Optional[pulumi.Input[pulumi.InputType['VMwareClusterStorageArrgs']]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArgs']]] = None,
-            validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterValidationCheckArgs']]]]] = None,
-            vcenters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterVcenterArgs']]]]] = None,
+            upgrade_policy: Optional[pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArrgs']]] = None,
+            validation_checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterValidationCheckArrgs']]]]] = None,
+            vcenters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterVcenterArrgs']]]]] = None,
             vm_tracking_enabled: Optional[pulumi.Input[bool]] = None) -> 'VMwareCluster':
         """
         Get an existing VMwareCluster resource's state with the given name, id, and optional extra
@@ -1636,17 +1636,17 @@ class VMwareCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArgs']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
+        :param pulumi.Input[pulumi.InputType['VMwareClusterAntiAffinityGroupsArrgs']] anti_affinity_groups: AAGConfig specifies whether to spread VMware User Cluster nodes across at
                least three physical hosts in the datacenter.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterAuthorizationArgs']] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterAuthorizationArrgs']] authorization: RBAC policy that will be applied and managed by GKE On-Prem.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterAutoRepairConfigArgs']] auto_repair_config: Configuration for auto repairing.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterAutoRepairConfigArrgs']] auto_repair_config: Configuration for auto repairing.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArgs']] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterControlPlaneNodeArrgs']] control_plane_node: VMware User Cluster control plane nodes must have either 1 or 3 replicas.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time at which VMware User Cluster was created.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Args']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterDataplaneV2Arrgs']] dataplane_v2: VmwareDataplaneV2Config specifies configuration for Dataplane V2.
                Structure is documented below.
         :param pulumi.Input[str] delete_time: The time at which VMware User Cluster was deleted.
         :param pulumi.Input[str] description: A human readable description of this VMware User Cluster.
@@ -1659,9 +1659,9 @@ class VMwareCluster(pulumi.CustomResource):
                client has an up-to-date value before proceeding.
                Allows clients to perform consistent read-modify-writes
                through optimistic concurrency control.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterFleetArgs']]]] fleets: Fleet configuration for the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterFleetArrgs']]]] fleets: Fleet configuration for the cluster.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArgs']] load_balancer: Load Balancer configuration.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterLoadBalancerArrgs']] load_balancer: Load Balancer configuration.
                Structure is documented below.
         :param pulumi.Input[str] local_name: The object name of the VMware OnPremUserCluster custom resource on the
                associated admin cluster. This field is used to support conflicting
@@ -1675,7 +1675,7 @@ class VMwareCluster(pulumi.CustomResource):
                cluster controller logs.
         :param pulumi.Input[str] location: The location of the resource.
         :param pulumi.Input[str] name: The VMware cluster name.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterNetworkConfigArgs']] network_config: The VMware User Cluster network configuration.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterNetworkConfigArrgs']] network_config: The VMware User Cluster network configuration.
                Structure is documented below.
         :param pulumi.Input[str] on_prem_version: The Anthos clusters on the VMware version for your user cluster.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1683,18 +1683,18 @@ class VMwareCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the VMware User Cluster.
         :param pulumi.Input[str] state: (Output)
                The lifecycle state of the condition.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterStatusArgs']]]] statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterStatusArrgs']]]] statuses: (Output)
                Specifies the detailed validation check status
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterStorageArgs']] storage: Storage configuration.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterStorageArrgs']] storage: Storage configuration.
                Structure is documented below.
         :param pulumi.Input[str] uid: The unique identifier of the VMware User Cluster.
         :param pulumi.Input[str] update_time: The time at which VMware User Cluster was last updated.
-        :param pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArgs']] upgrade_policy: Specifies upgrade policy for the cluster.
+        :param pulumi.Input[pulumi.InputType['VMwareClusterUpgradePolicyArrgs']] upgrade_policy: Specifies upgrade policy for the cluster.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterValidationCheckArgs']]]] validation_checks: ValidationCheck represents the result of the preflight check job.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterValidationCheckArrgs']]]] validation_checks: ValidationCheck represents the result of the preflight check job.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterVcenterArgs']]]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VMwareClusterVcenterArrgs']]]] vcenters: VmwareVCenterConfig specifies vCenter config for the user cluster.
                Inherited from the admin cluster.
                Structure is documented below.
         :param pulumi.Input[bool] vm_tracking_enabled: Enable VM tracking.

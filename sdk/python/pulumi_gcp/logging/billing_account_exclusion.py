@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['BillingAccountExclusionArgs', 'BillingAccountExclusion']
+__all__ = ['BillingAccountExclusionArrgs', 'BillingAccountExclusion']
 
 @pulumi.input_type
-class BillingAccountExclusionArgs:
+calass BillingAccountExclusionArrgs:
     def __init__(__self__, *,
                  billing_account: pulumi.Input[str],
                  filter: pulumi.Input[str],
@@ -104,7 +104,7 @@ class BillingAccountExclusionArgs:
 
 
 @pulumi.input_type
-class _BillingAccountExclusionState:
+calass _BillingAccountExclusionState:
     def __init__(__self__, *,
                  billing_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -197,7 +197,7 @@ class _BillingAccountExclusionState:
         pulumi.set(self, "name", value)
 
 
-class BillingAccountExclusion(pulumi.CustomResource):
+calass BillingAccountExclusion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -244,7 +244,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BillingAccountExclusionArgs,
+                 args: BillingAccountExclusionArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -268,12 +268,12 @@ class BillingAccountExclusion(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param BillingAccountExclusionArgs args: The arguments to use to populate this resource's properties.
+        :param BillingAccountExclusionArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BillingAccountExclusionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BillingAccountExclusionArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -294,7 +294,7 @@ class BillingAccountExclusion(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BillingAccountExclusionArgs.__new__(BillingAccountExclusionArgs)
+            __props__ = BillingAccountExclusionArrgs.__new__(BillingAccountExclusionArrgs)
 
             if billing_account is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account'")

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['NetworkArgs', 'Network']
+__all__ = ['NetworkArrgs', 'Network']
 
 @pulumi.input_type
-class NetworkArgs:
+calass NetworkArrgs:
     def __init__(__self__, *,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
@@ -244,7 +244,7 @@ class NetworkArgs:
 
 
 @pulumi.input_type
-class _NetworkState:
+calass _NetworkState:
     def __init__(__self__, *,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
@@ -509,7 +509,7 @@ class _NetworkState:
         pulumi.set(self, "self_link", value)
 
 
-class Network(pulumi.CustomResource):
+calass Network(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -631,7 +631,7 @@ class Network(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[NetworkArgs] = None,
+                 args: Optional[NetworkArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a VPC network or legacy network resource on GCP.
@@ -691,12 +691,12 @@ class Network(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NetworkArgs args: The arguments to use to populate this resource's properties.
+        :param NetworkArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NetworkArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -722,7 +722,7 @@ class Network(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NetworkArgs.__new__(NetworkArgs)
+            __props__ = NetworkArrgs.__new__(NetworkArrgs)
 
             __props__.__dict__["auto_create_subnetworks"] = auto_create_subnetworks
             __props__.__dict__["delete_default_routes_on_create"] = delete_default_routes_on_create

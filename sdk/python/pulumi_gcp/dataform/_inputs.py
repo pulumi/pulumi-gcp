@@ -10,19 +10,19 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'RepositoryGitRemoteSettingsArgs',
-    'RepositoryReleaseConfigCodeCompilationConfigArgs',
-    'RepositoryReleaseConfigRecentScheduledReleaseRecordArgs',
-    'RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs',
-    'RepositoryWorkflowConfigInvocationConfigArgs',
-    'RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs',
-    'RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs',
-    'RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs',
-    'RepositoryWorkspaceCompilationOverridesArgs',
+    'RepositoryGitRemoteSettingsArrgs',
+    'RepositoryReleaseConfigCodeCompilationConfigArrgs',
+    'RepositoryReleaseConfigRecentScheduledReleaseRecordArrgs',
+    'RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrgs',
+    'RepositoryWorkflowConfigInvocationConfigArrgs',
+    'RepositoryWorkflowConfigInvocationConfigIncludedTargetArrgs',
+    'RepositoryWorkflowConfigRecentScheduledExecutionRecordArrgs',
+    'RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrgs',
+    'RepositoryWorkspaceCompilationOverridesArrgs',
 ]
 
 @pulumi.input_type
-class RepositoryGitRemoteSettingsArgs:
+calass RepositoryGitRemoteSettingsArrgs:
     def __init__(__self__, *,
                  authentication_token_secret_version: pulumi.Input[str],
                  default_branch: pulumi.Input[str],
@@ -92,7 +92,7 @@ class RepositoryGitRemoteSettingsArgs:
 
 
 @pulumi.input_type
-class RepositoryReleaseConfigCodeCompilationConfigArgs:
+calass RepositoryReleaseConfigCodeCompilationConfigArrgs:
     def __init__(__self__, *,
                  assertion_schema: Optional[pulumi.Input[str]] = None,
                  database_suffix: Optional[pulumi.Input[str]] = None,
@@ -233,15 +233,15 @@ class RepositoryReleaseConfigCodeCompilationConfigArgs:
 
 
 @pulumi.input_type
-class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
+calass RepositoryReleaseConfigRecentScheduledReleaseRecordArrgs:
     def __init__(__self__, *,
                  compilation_result: Optional[pulumi.Input[str]] = None,
-                 error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]] = None,
+                 error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrgs']]]] = None,
                  release_time: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] compilation_result: (Output)
                The name of the created compilation result, if one was successfully created. Must be in the format projects/*/locations/*/repositories/*/compilationResults/*.
-        :param pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]] error_statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrgs']]] error_statuses: (Output)
                The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
                Structure is documented below.
         :param pulumi.Input[str] release_time: (Output)
@@ -269,7 +269,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
 
     @property
     @pulumi.getter(name="errorStatuses")
-    def error_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]]:
+    def error_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrgs']]]]:
         """
         (Output)
         The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
@@ -278,7 +278,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
         return pulumi.get(self, "error_statuses")
 
     @error_statuses.setter
-    def error_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]]):
+    def error_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrgs']]]]):
         pulumi.set(self, "error_statuses", value)
 
     @property
@@ -296,7 +296,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
 
 
 @pulumi.input_type
-class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs:
+calass RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  message: Optional[pulumi.Input[str]] = None):
@@ -339,18 +339,18 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs:
 
 
 @pulumi.input_type
-class RepositoryWorkflowConfigInvocationConfigArgs:
+calass RepositoryWorkflowConfigInvocationConfigArrgs:
     def __init__(__self__, *,
                  fully_refresh_incremental_tables_enabled: Optional[pulumi.Input[bool]] = None,
                  included_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 included_targets: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]] = None,
+                 included_targets: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArrgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  transitive_dependencies_included: Optional[pulumi.Input[bool]] = None,
                  transitive_dependents_included: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] fully_refresh_incremental_tables_enabled: Optional. When set to true, any incremental tables will be fully refreshed.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_tags: Optional. The set of tags to include.
-        :param pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]] included_targets: Optional. The set of action identifiers to include.
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArrgs']]] included_targets: Optional. The set of action identifiers to include.
                Structure is documented below.
         :param pulumi.Input[str] service_account: Optional. The service account to run workflow invocations under.
         :param pulumi.Input[bool] transitive_dependencies_included: Optional. When set to true, transitive dependencies of included actions will be executed.
@@ -395,7 +395,7 @@ class RepositoryWorkflowConfigInvocationConfigArgs:
 
     @property
     @pulumi.getter(name="includedTargets")
-    def included_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]]:
+    def included_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArrgs']]]]:
         """
         Optional. The set of action identifiers to include.
         Structure is documented below.
@@ -403,7 +403,7 @@ class RepositoryWorkflowConfigInvocationConfigArgs:
         return pulumi.get(self, "included_targets")
 
     @included_targets.setter
-    def included_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]]):
+    def included_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArrgs']]]]):
         pulumi.set(self, "included_targets", value)
 
     @property
@@ -444,7 +444,7 @@ class RepositoryWorkflowConfigInvocationConfigArgs:
 
 
 @pulumi.input_type
-class RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs:
+calass RepositoryWorkflowConfigInvocationConfigIncludedTargetArrgs:
     def __init__(__self__, *,
                  database: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -499,13 +499,13 @@ class RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs:
 
 
 @pulumi.input_type
-class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
+calass RepositoryWorkflowConfigRecentScheduledExecutionRecordArrgs:
     def __init__(__self__, *,
-                 error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]] = None,
+                 error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrgs']]]] = None,
                  execution_time: Optional[pulumi.Input[str]] = None,
                  workflow_invocation: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]] error_statuses: (Output)
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrgs']]] error_statuses: (Output)
                The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
                Structure is documented below.
         :param pulumi.Input[str] execution_time: (Output)
@@ -522,7 +522,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
 
     @property
     @pulumi.getter(name="errorStatuses")
-    def error_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]]:
+    def error_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrgs']]]]:
         """
         (Output)
         The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
@@ -531,7 +531,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
         return pulumi.get(self, "error_statuses")
 
     @error_statuses.setter
-    def error_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]]):
+    def error_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrgs']]]]):
         pulumi.set(self, "error_statuses", value)
 
     @property
@@ -562,7 +562,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
 
 
 @pulumi.input_type
-class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs:
+calass RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  message: Optional[pulumi.Input[str]] = None):
@@ -605,7 +605,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs:
 
 
 @pulumi.input_type
-class RepositoryWorkspaceCompilationOverridesArgs:
+calass RepositoryWorkspaceCompilationOverridesArrgs:
     def __init__(__self__, *,
                  default_database: Optional[pulumi.Input[str]] = None,
                  schema_suffix: Optional[pulumi.Input[str]] = None,

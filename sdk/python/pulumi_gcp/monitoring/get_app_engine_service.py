@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAppEngineServiceResult:
+calass GetAppEngineServiceResult:
     """
     A collection of values returned by getAppEngineService.
     """
@@ -102,7 +102,7 @@ class GetAppEngineServiceResult:
         return pulumi.get(self, "user_labels")
 
 
-class AwaitableGetAppEngineServiceResult(GetAppEngineServiceResult):
+calass AwaitableGetAppEngineServiceResult(GetAppEngineServiceResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -151,11 +151,11 @@ def get_app_engine_service(module_id: Optional[str] = None,
         version_id="v1",
         service="myapp",
         runtime="nodejs10",
-        entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+        entrypoint=gcp.appengine.StandardAppVersionEntrypointArrgs(
             shell="node ./app.js",
         ),
-        deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-            zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+        deployment=gcp.appengine.StandardAppVersionDeploymentArrgs(
+            zip=gcp.appengine.StandardAppVersionDeploymentZipArrgs(
                 source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
             ),
         ),
@@ -227,11 +227,11 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
         version_id="v1",
         service="myapp",
         runtime="nodejs10",
-        entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
+        entrypoint=gcp.appengine.StandardAppVersionEntrypointArrgs(
             shell="node ./app.js",
         ),
-        deployment=gcp.appengine.StandardAppVersionDeploymentArgs(
-            zip=gcp.appengine.StandardAppVersionDeploymentZipArgs(
+        deployment=gcp.appengine.StandardAppVersionDeploymentArrgs(
+            zip=gcp.appengine.StandardAppVersionDeploymentZipArrgs(
                 source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
             ),
         ),

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a forwarding rule within GCE from its name.
@@ -146,12 +145,6 @@ func (o LookupForwardingRuleResultOutput) ToLookupForwardingRuleResultOutput() L
 
 func (o LookupForwardingRuleResultOutput) ToLookupForwardingRuleResultOutputWithContext(ctx context.Context) LookupForwardingRuleResultOutput {
 	return o
-}
-
-func (o LookupForwardingRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupForwardingRuleResult] {
-	return pulumix.Output[LookupForwardingRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupForwardingRuleResultOutput) AllPorts() pulumi.BoolOutput {

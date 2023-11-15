@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetVPNGatewayResult:
+calass GetVPNGatewayResult:
     """
     A collection of values returned by getVPNGateway.
     """
@@ -95,7 +95,7 @@ class GetVPNGatewayResult:
         return pulumi.get(self, "self_link")
 
 
-class AwaitableGetVPNGatewayResult(GetVPNGatewayResult):
+calass AwaitableGetVPNGatewayResult(GetVPNGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

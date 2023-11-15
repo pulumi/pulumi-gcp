@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -331,12 +330,6 @@ func (i *PrivateCloud) ToPrivateCloudOutputWithContext(ctx context.Context) Priv
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudOutput)
 }
 
-func (i *PrivateCloud) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloud] {
-	return pulumix.Output[*PrivateCloud]{
-		OutputState: i.ToPrivateCloudOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrivateCloudArrayInput is an input type that accepts PrivateCloudArray and PrivateCloudArrayOutput values.
 // You can construct a concrete instance of `PrivateCloudArrayInput` via:
 //
@@ -360,12 +353,6 @@ func (i PrivateCloudArray) ToPrivateCloudArrayOutput() PrivateCloudArrayOutput {
 
 func (i PrivateCloudArray) ToPrivateCloudArrayOutputWithContext(ctx context.Context) PrivateCloudArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudArrayOutput)
-}
-
-func (i PrivateCloudArray) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateCloud] {
-	return pulumix.Output[[]*PrivateCloud]{
-		OutputState: i.ToPrivateCloudArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PrivateCloudMapInput is an input type that accepts PrivateCloudMap and PrivateCloudMapOutput values.
@@ -393,12 +380,6 @@ func (i PrivateCloudMap) ToPrivateCloudMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudMapOutput)
 }
 
-func (i PrivateCloudMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateCloud] {
-	return pulumix.Output[map[string]*PrivateCloud]{
-		OutputState: i.ToPrivateCloudMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateCloudOutput struct{ *pulumi.OutputState }
 
 func (PrivateCloudOutput) ElementType() reflect.Type {
@@ -411,12 +392,6 @@ func (o PrivateCloudOutput) ToPrivateCloudOutput() PrivateCloudOutput {
 
 func (o PrivateCloudOutput) ToPrivateCloudOutputWithContext(ctx context.Context) PrivateCloudOutput {
 	return o
-}
-
-func (o PrivateCloudOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateCloud] {
-	return pulumix.Output[*PrivateCloud]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User-provided description for this private cloud.
@@ -495,12 +470,6 @@ func (o PrivateCloudArrayOutput) ToPrivateCloudArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o PrivateCloudArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PrivateCloud] {
-	return pulumix.Output[[]*PrivateCloud]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateCloudArrayOutput) Index(i pulumi.IntInput) PrivateCloudOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PrivateCloud {
 		return vs[0].([]*PrivateCloud)[vs[1].(int)]
@@ -519,12 +488,6 @@ func (o PrivateCloudMapOutput) ToPrivateCloudMapOutput() PrivateCloudMapOutput {
 
 func (o PrivateCloudMapOutput) ToPrivateCloudMapOutputWithContext(ctx context.Context) PrivateCloudMapOutput {
 	return o
-}
-
-func (o PrivateCloudMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PrivateCloud] {
-	return pulumix.Output[map[string]*PrivateCloud]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateCloudMapOutput) MapIndex(k pulumi.StringInput) PrivateCloudOutput {

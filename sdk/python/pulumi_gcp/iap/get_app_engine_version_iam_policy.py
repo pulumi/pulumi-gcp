@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAppEngineVersionIamPolicyResult:
+calass GetAppEngineVersionIamPolicyResult:
     """
     A collection of values returned by getAppEngineVersionIamPolicy.
     """
@@ -90,7 +90,7 @@ class GetAppEngineVersionIamPolicyResult:
         return pulumi.get(self, "version_id")
 
 
-class AwaitableGetAppEngineVersionIamPolicyResult(GetAppEngineVersionIamPolicyResult):
+calass AwaitableGetAppEngineVersionIamPolicyResult(GetAppEngineVersionIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

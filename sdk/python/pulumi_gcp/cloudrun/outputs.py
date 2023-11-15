@@ -87,7 +87,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DomainMappingMetadata(dict):
+calass DomainMappingMetadata(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -290,7 +290,7 @@ class DomainMappingMetadata(dict):
 
 
 @pulumi.output_type
-class DomainMappingSpec(dict):
+calass DomainMappingSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -369,7 +369,7 @@ class DomainMappingSpec(dict):
 
 
 @pulumi.output_type
-class DomainMappingStatus(dict):
+calass DomainMappingStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -397,7 +397,7 @@ class DomainMappingStatus(dict):
                  observed_generation: Optional[int] = None,
                  resource_records: Optional[Sequence['outputs.DomainMappingStatusResourceRecord']] = None):
         """
-        :param Sequence['DomainMappingStatusConditionArgs'] conditions: (Output)
+        :param Sequence['DomainMappingStatusConditionArrgs'] conditions: (Output)
                Array of observed DomainMappingConditions, indicating the current state
                of the DomainMapping.
                Structure is documented below.
@@ -406,7 +406,7 @@ class DomainMappingStatus(dict):
         :param int observed_generation: (Output)
                ObservedGeneration is the 'Generation' of the DomainMapping that
                was last processed by the controller.
-        :param Sequence['DomainMappingStatusResourceRecordArgs'] resource_records: The resource records required to configure this domain mapping. These
+        :param Sequence['DomainMappingStatusResourceRecordArrgs'] resource_records: The resource records required to configure this domain mapping. These
                records must be added to the domain's DNS configuration in order to
                serve the application via this domain mapping.
                Structure is documented below.
@@ -463,7 +463,7 @@ class DomainMappingStatus(dict):
 
 
 @pulumi.output_type
-class DomainMappingStatusCondition(dict):
+calass DomainMappingStatusCondition(dict):
     def __init__(__self__, *,
                  message: Optional[str] = None,
                  reason: Optional[str] = None,
@@ -526,7 +526,7 @@ class DomainMappingStatusCondition(dict):
 
 
 @pulumi.output_type
-class DomainMappingStatusResourceRecord(dict):
+calass DomainMappingStatusResourceRecord(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  rrdata: Optional[str] = None,
@@ -575,7 +575,7 @@ class DomainMappingStatusResourceRecord(dict):
 
 
 @pulumi.output_type
-class IamBindingCondition(dict):
+calass IamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -602,7 +602,7 @@ class IamBindingCondition(dict):
 
 
 @pulumi.output_type
-class IamMemberCondition(dict):
+calass IamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -629,7 +629,7 @@ class IamMemberCondition(dict):
 
 
 @pulumi.output_type
-class ServiceMetadata(dict):
+calass ServiceMetadata(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -849,7 +849,7 @@ class ServiceMetadata(dict):
 
 
 @pulumi.output_type
-class ServiceStatus(dict):
+calass ServiceStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -879,7 +879,7 @@ class ServiceStatus(dict):
                  traffics: Optional[Sequence['outputs.ServiceStatusTraffic']] = None,
                  url: Optional[str] = None):
         """
-        :param Sequence['ServiceStatusConditionArgs'] conditions: (Output)
+        :param Sequence['ServiceStatusConditionArrgs'] conditions: (Output)
                Array of observed Service Conditions, indicating the current ready state of the service.
                Structure is documented below.
         :param str latest_created_revision_name: (Output)
@@ -895,7 +895,7 @@ class ServiceStatus(dict):
                controller.
                Clients polling for completed reconciliation should poll until observedGeneration =
                metadata.generation and the Ready condition's status is True or False.
-        :param Sequence['ServiceStatusTrafficArgs'] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        :param Sequence['ServiceStatusTrafficArrgs'] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions
                and Configurations
                Structure is documented below.
         :param str url: (Output)
@@ -983,7 +983,7 @@ class ServiceStatus(dict):
 
 
 @pulumi.output_type
-class ServiceStatusCondition(dict):
+calass ServiceStatusCondition(dict):
     def __init__(__self__, *,
                  message: Optional[str] = None,
                  reason: Optional[str] = None,
@@ -1046,7 +1046,7 @@ class ServiceStatusCondition(dict):
 
 
 @pulumi.output_type
-class ServiceStatusTraffic(dict):
+calass ServiceStatusTraffic(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1144,12 +1144,12 @@ class ServiceStatusTraffic(dict):
 
 
 @pulumi.output_type
-class ServiceTemplate(dict):
+calass ServiceTemplate(dict):
     def __init__(__self__, *,
                  metadata: Optional['outputs.ServiceTemplateMetadata'] = None,
                  spec: Optional['outputs.ServiceTemplateSpec'] = None):
         """
-        :param 'ServiceTemplateMetadataArgs' metadata: Optional metadata for this Revision, including labels and annotations.
+        :param 'ServiceTemplateMetadataArrgs' metadata: Optional metadata for this Revision, including labels and annotations.
                Name will be generated by the Configuration. To set minimum instances
                for this revision, use the "autoscaling.knative.dev/minScale" annotation
                key. To set maximum instances for this revision, use the
@@ -1157,7 +1157,7 @@ class ServiceTemplate(dict):
                connections for the revision, use the "run.googleapis.com/cloudsql-instances"
                annotation key.
                Structure is documented below.
-        :param 'ServiceTemplateSpecArgs' spec: RevisionSpec holds the desired state of the Revision (from the client).
+        :param 'ServiceTemplateSpecArrgs' spec: RevisionSpec holds the desired state of the Revision (from the client).
                Structure is documented below.
         """
         if metadata is not None:
@@ -1191,7 +1191,7 @@ class ServiceTemplate(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateMetadata(dict):
+calass ServiceTemplateMetadata(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1383,7 +1383,7 @@ class ServiceTemplateMetadata(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpec(dict):
+calass ServiceTemplateSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1417,7 +1417,7 @@ class ServiceTemplateSpec(dict):
         """
         :param int container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
                requests per container of the Revision. Values are:
-        :param Sequence['ServiceTemplateSpecContainerArgs'] containers: Containers defines the unit of execution for this Revision.
+        :param Sequence['ServiceTemplateSpecContainerArrgs'] containers: Containers defines the unit of execution for this Revision.
                Structure is documented below.
         :param str service_account_name: Email address of the IAM service account associated with the revision of the
                service. The service account represents the identity of the running revision,
@@ -1431,7 +1431,7 @@ class ServiceTemplateSpec(dict):
                
                > **Warning:** `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         :param int timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
-        :param Sequence['ServiceTemplateSpecVolumeArgs'] volumes: Volume represents a named volume in a container.
+        :param Sequence['ServiceTemplateSpecVolumeArrgs'] volumes: Volume represents a named volume in a container.
                Structure is documented below.
         """
         if container_concurrency is not None:
@@ -1512,7 +1512,7 @@ class ServiceTemplateSpec(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainer(dict):
+calass ServiceTemplateSpecContainer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1558,7 +1558,7 @@ class ServiceTemplateSpecContainer(dict):
                The docker image's CMD is used if this is not provided.
         :param Sequence[str] commands: Entrypoint array. Not executed within a shell.
                The docker image's ENTRYPOINT is used if this is not provided.
-        :param Sequence['ServiceTemplateSpecContainerEnvFromArgs'] env_froms: (Optional, Deprecated)
+        :param Sequence['ServiceTemplateSpecContainerEnvFromArrgs'] env_froms: (Optional, Deprecated)
                List of sources to populate environment variables in the container.
                All invalid keys will be reported as an event when the container is starting.
                When a key exists in multiple sources, the value associated with the last source will
@@ -1567,21 +1567,21 @@ class ServiceTemplateSpecContainer(dict):
                Structure is documented below.
                
                > **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-        :param Sequence['ServiceTemplateSpecContainerEnvArgs'] envs: List of environment variables to set in the container.
+        :param Sequence['ServiceTemplateSpecContainerEnvArrgs'] envs: List of environment variables to set in the container.
                Structure is documented below.
-        :param 'ServiceTemplateSpecContainerLivenessProbeArgs' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
+        :param 'ServiceTemplateSpecContainerLivenessProbeArrgs' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
                https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                Structure is documented below.
         :param str name: Name of the container
-        :param Sequence['ServiceTemplateSpecContainerPortArgs'] ports: List of open ports in the container.
+        :param Sequence['ServiceTemplateSpecContainerPortArrgs'] ports: List of open ports in the container.
                Structure is documented below.
-        :param 'ServiceTemplateSpecContainerResourcesArgs' resources: Compute Resources required by this container. Used to set values such as max memory
+        :param 'ServiceTemplateSpecContainerResourcesArrgs' resources: Compute Resources required by this container. Used to set values such as max memory
                Structure is documented below.
-        :param 'ServiceTemplateSpecContainerStartupProbeArgs' startup_probe: Startup probe of application within the container.
+        :param 'ServiceTemplateSpecContainerStartupProbeArrgs' startup_probe: Startup probe of application within the container.
                All other probes are disabled if a startup probe is provided, until it
                succeeds. Container will not be added to service endpoints if the probe fails.
                Structure is documented below.
-        :param Sequence['ServiceTemplateSpecContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
+        :param Sequence['ServiceTemplateSpecContainerVolumeMountArrgs'] volume_mounts: Volume to mount into the container's filesystem.
                Only supports SecretVolumeSources.
                Structure is documented below.
         :param str working_dir: (Optional, Deprecated)
@@ -1745,7 +1745,7 @@ class ServiceTemplateSpecContainer(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerEnv(dict):
+calass ServiceTemplateSpecContainerEnv(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1770,7 +1770,7 @@ class ServiceTemplateSpecContainerEnv(dict):
         """
         :param str name: Name of the environment variable.
         :param str value: Defaults to "".
-        :param 'ServiceTemplateSpecContainerEnvValueFromArgs' value_from: Source for the environment variable's value. Only supports secret_key_ref.
+        :param 'ServiceTemplateSpecContainerEnvValueFromArrgs' value_from: Source for the environment variable's value. Only supports secret_key_ref.
                Structure is documented below.
         """
         if name is not None:
@@ -1807,7 +1807,7 @@ class ServiceTemplateSpecContainerEnv(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerEnvFrom(dict):
+calass ServiceTemplateSpecContainerEnvFrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1832,10 +1832,10 @@ class ServiceTemplateSpecContainerEnvFrom(dict):
                  prefix: Optional[str] = None,
                  secret_ref: Optional['outputs.ServiceTemplateSpecContainerEnvFromSecretRef'] = None):
         """
-        :param 'ServiceTemplateSpecContainerEnvFromConfigMapRefArgs' config_map_ref: The ConfigMap to select from.
+        :param 'ServiceTemplateSpecContainerEnvFromConfigMapRefArrgs' config_map_ref: The ConfigMap to select from.
                Structure is documented below.
         :param str prefix: An optional identifier to prepend to each key in the ConfigMap.
-        :param 'ServiceTemplateSpecContainerEnvFromSecretRefArgs' secret_ref: The Secret to select from.
+        :param 'ServiceTemplateSpecContainerEnvFromSecretRefArrgs' secret_ref: The Secret to select from.
                Structure is documented below.
         """
         if config_map_ref is not None:
@@ -1873,7 +1873,7 @@ class ServiceTemplateSpecContainerEnvFrom(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerEnvFromConfigMapRef(dict):
+calass ServiceTemplateSpecContainerEnvFromConfigMapRef(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1895,7 +1895,7 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRef(dict):
                  local_object_reference: Optional['outputs.ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference'] = None,
                  optional: Optional[bool] = None):
         """
-        :param 'ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs' local_object_reference: The ConfigMap to select from.
+        :param 'ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArrgs' local_object_reference: The ConfigMap to select from.
                Structure is documented below.
         :param bool optional: Specify whether the ConfigMap must be defined
         """
@@ -1923,7 +1923,7 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRef(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference(dict):
+calass ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -1941,7 +1941,7 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerEnvFromSecretRef(dict):
+calass ServiceTemplateSpecContainerEnvFromSecretRef(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1963,7 +1963,7 @@ class ServiceTemplateSpecContainerEnvFromSecretRef(dict):
                  local_object_reference: Optional['outputs.ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference'] = None,
                  optional: Optional[bool] = None):
         """
-        :param 'ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs' local_object_reference: The Secret to select from.
+        :param 'ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArrgs' local_object_reference: The Secret to select from.
                Structure is documented below.
         :param bool optional: Specify whether the Secret must be defined
         """
@@ -1991,7 +1991,7 @@ class ServiceTemplateSpecContainerEnvFromSecretRef(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(dict):
+calass ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -2009,7 +2009,7 @@ class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerEnvValueFrom(dict):
+calass ServiceTemplateSpecContainerEnvValueFrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2030,7 +2030,7 @@ class ServiceTemplateSpecContainerEnvValueFrom(dict):
     def __init__(__self__, *,
                  secret_key_ref: 'outputs.ServiceTemplateSpecContainerEnvValueFromSecretKeyRef'):
         """
-        :param 'ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs' secret_key_ref: Selects a key (version) of a secret in Secret Manager.
+        :param 'ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArrgs' secret_key_ref: Selects a key (version) of a secret in Secret Manager.
                Structure is documented below.
         """
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
@@ -2046,7 +2046,7 @@ class ServiceTemplateSpecContainerEnvValueFrom(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerEnvValueFromSecretKeyRef(dict):
+calass ServiceTemplateSpecContainerEnvValueFromSecretKeyRef(dict):
     def __init__(__self__, *,
                  key: str,
                  name: str):
@@ -2085,7 +2085,7 @@ class ServiceTemplateSpecContainerEnvValueFromSecretKeyRef(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerLivenessProbe(dict):
+calass ServiceTemplateSpecContainerLivenessProbe(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2121,9 +2121,9 @@ class ServiceTemplateSpecContainerLivenessProbe(dict):
         """
         :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after
                having succeeded. Defaults to 3. Minimum value is 1.
-        :param 'ServiceTemplateSpecContainerLivenessProbeGrpcArgs' grpc: GRPC specifies an action involving a GRPC port.
+        :param 'ServiceTemplateSpecContainerLivenessProbeGrpcArrgs' grpc: GRPC specifies an action involving a GRPC port.
                Structure is documented below.
-        :param 'ServiceTemplateSpecContainerLivenessProbeHttpGetArgs' http_get: HttpGet specifies the http request to perform.
+        :param 'ServiceTemplateSpecContainerLivenessProbeHttpGetArrgs' http_get: HttpGet specifies the http request to perform.
                Structure is documented below.
         :param int initial_delay_seconds: Number of seconds after the container has started before the probe is
                initiated.
@@ -2205,7 +2205,7 @@ class ServiceTemplateSpecContainerLivenessProbe(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerLivenessProbeGrpc(dict):
+calass ServiceTemplateSpecContainerLivenessProbeGrpc(dict):
     def __init__(__self__, *,
                  port: Optional[int] = None,
                  service: Optional[str] = None):
@@ -2242,7 +2242,7 @@ class ServiceTemplateSpecContainerLivenessProbeGrpc(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerLivenessProbeHttpGet(dict):
+calass ServiceTemplateSpecContainerLivenessProbeHttpGet(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2265,7 +2265,7 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGet(dict):
                  path: Optional[str] = None,
                  port: Optional[int] = None):
         """
-        :param Sequence['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+        :param Sequence['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param str path: Path to access on the HTTP server. If set, it should not be empty string.
         :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
@@ -2306,7 +2306,7 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGet(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader(dict):
+calass ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader(dict):
     def __init__(__self__, *,
                  name: str,
                  value: Optional[str] = None):
@@ -2336,7 +2336,7 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerPort(dict):
+calass ServiceTemplateSpecContainerPort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2396,7 +2396,7 @@ class ServiceTemplateSpecContainerPort(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerResources(dict):
+calass ServiceTemplateSpecContainerResources(dict):
     def __init__(__self__, *,
                  limits: Optional[Mapping[str, str]] = None,
                  requests: Optional[Mapping[str, str]] = None):
@@ -2439,7 +2439,7 @@ class ServiceTemplateSpecContainerResources(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerStartupProbe(dict):
+calass ServiceTemplateSpecContainerStartupProbe(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2478,16 +2478,16 @@ class ServiceTemplateSpecContainerStartupProbe(dict):
         """
         :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after
                having succeeded. Defaults to 3. Minimum value is 1.
-        :param 'ServiceTemplateSpecContainerStartupProbeGrpcArgs' grpc: GRPC specifies an action involving a GRPC port.
+        :param 'ServiceTemplateSpecContainerStartupProbeGrpcArrgs' grpc: GRPC specifies an action involving a GRPC port.
                Structure is documented below.
-        :param 'ServiceTemplateSpecContainerStartupProbeHttpGetArgs' http_get: HttpGet specifies the http request to perform.
+        :param 'ServiceTemplateSpecContainerStartupProbeHttpGetArrgs' http_get: HttpGet specifies the http request to perform.
                Structure is documented below.
         :param int initial_delay_seconds: Number of seconds after the container has started before the probe is
                initiated.
                Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
         :param int period_seconds: How often (in seconds) to perform the probe.
                Default to 10 seconds. Minimum value is 1. Maximum value is 240.
-        :param 'ServiceTemplateSpecContainerStartupProbeTcpSocketArgs' tcp_socket: TcpSocket specifies an action involving a TCP port.
+        :param 'ServiceTemplateSpecContainerStartupProbeTcpSocketArrgs' tcp_socket: TcpSocket specifies an action involving a TCP port.
                Structure is documented below.
         :param int timeout_seconds: Number of seconds after which the probe times out.
                Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
@@ -2575,7 +2575,7 @@ class ServiceTemplateSpecContainerStartupProbe(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerStartupProbeGrpc(dict):
+calass ServiceTemplateSpecContainerStartupProbeGrpc(dict):
     def __init__(__self__, *,
                  port: Optional[int] = None,
                  service: Optional[str] = None):
@@ -2612,7 +2612,7 @@ class ServiceTemplateSpecContainerStartupProbeGrpc(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerStartupProbeHttpGet(dict):
+calass ServiceTemplateSpecContainerStartupProbeHttpGet(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2635,7 +2635,7 @@ class ServiceTemplateSpecContainerStartupProbeHttpGet(dict):
                  path: Optional[str] = None,
                  port: Optional[int] = None):
         """
-        :param Sequence['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+        :param Sequence['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param str path: Path to access on the HTTP server. If set, it should not be empty string.
         :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
@@ -2676,7 +2676,7 @@ class ServiceTemplateSpecContainerStartupProbeHttpGet(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader(dict):
+calass ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader(dict):
     def __init__(__self__, *,
                  name: str,
                  value: Optional[str] = None):
@@ -2706,7 +2706,7 @@ class ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerStartupProbeTcpSocket(dict):
+calass ServiceTemplateSpecContainerStartupProbeTcpSocket(dict):
     def __init__(__self__, *,
                  port: Optional[int] = None):
         """
@@ -2727,7 +2727,7 @@ class ServiceTemplateSpecContainerStartupProbeTcpSocket(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecContainerVolumeMount(dict):
+calass ServiceTemplateSpecContainerVolumeMount(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2775,7 +2775,7 @@ class ServiceTemplateSpecContainerVolumeMount(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecVolume(dict):
+calass ServiceTemplateSpecVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2799,7 +2799,7 @@ class ServiceTemplateSpecVolume(dict):
                  secret: Optional['outputs.ServiceTemplateSpecVolumeSecret'] = None):
         """
         :param str name: Volume's name.
-        :param 'ServiceTemplateSpecVolumeSecretArgs' secret: The secret's value will be presented as the content of a file whose
+        :param 'ServiceTemplateSpecVolumeSecretArrgs' secret: The secret's value will be presented as the content of a file whose
                name is defined in the item path. If no items are defined, the name of
                the file is the secret_name.
                Structure is documented below.
@@ -2836,7 +2836,7 @@ class ServiceTemplateSpecVolume(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecVolumeEmptyDir(dict):
+calass ServiceTemplateSpecVolumeEmptyDir(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2888,7 +2888,7 @@ class ServiceTemplateSpecVolumeEmptyDir(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecVolumeSecret(dict):
+calass ServiceTemplateSpecVolumeSecret(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2926,7 +2926,7 @@ class ServiceTemplateSpecVolumeSecret(dict):
                and 0777. Defaults to 0644. Directories within the path are not affected by
                this setting. This might be in conflict with other options that affect the
                file mode, like fsGroup, and the result can be other mode bits set.
-        :param Sequence['ServiceTemplateSpecVolumeSecretItemArgs'] items: If unspecified, the volume will expose a file whose name is the
+        :param Sequence['ServiceTemplateSpecVolumeSecretItemArrgs'] items: If unspecified, the volume will expose a file whose name is the
                secret_name.
                If specified, the key will be used as the version to fetch from Cloud
                Secret Manager and the path will be the name of the file exposed in the
@@ -2981,7 +2981,7 @@ class ServiceTemplateSpecVolumeSecret(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateSpecVolumeSecretItem(dict):
+calass ServiceTemplateSpecVolumeSecretItem(dict):
     def __init__(__self__, *,
                  key: str,
                  path: str,
@@ -3036,7 +3036,7 @@ class ServiceTemplateSpecVolumeSecretItem(dict):
 
 
 @pulumi.output_type
-class ServiceTraffic(dict):
+calass ServiceTraffic(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3133,7 +3133,7 @@ class ServiceTraffic(dict):
 
 
 @pulumi.output_type
-class GetServiceMetadataResult(dict):
+calass GetServiceMetadataResult(dict):
     def __init__(__self__, *,
                  annotations: Mapping[str, str],
                  effective_annotations: Mapping[str, str],
@@ -3208,7 +3208,7 @@ class GetServiceMetadataResult(dict):
 
 
 @pulumi.output_type
-class GetServiceStatusResult(dict):
+calass GetServiceStatusResult(dict):
     def __init__(__self__, *,
                  conditions: Sequence['outputs.GetServiceStatusConditionResult'],
                  latest_created_revision_name: str,
@@ -3255,7 +3255,7 @@ class GetServiceStatusResult(dict):
 
 
 @pulumi.output_type
-class GetServiceStatusConditionResult(dict):
+calass GetServiceStatusConditionResult(dict):
     def __init__(__self__, *,
                  message: str,
                  reason: str,
@@ -3288,7 +3288,7 @@ class GetServiceStatusConditionResult(dict):
 
 
 @pulumi.output_type
-class GetServiceStatusTrafficResult(dict):
+calass GetServiceStatusTrafficResult(dict):
     def __init__(__self__, *,
                  latest_revision: bool,
                  percent: int,
@@ -3328,7 +3328,7 @@ class GetServiceStatusTrafficResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateResult(dict):
+calass GetServiceTemplateResult(dict):
     def __init__(__self__, *,
                  metadatas: Sequence['outputs.GetServiceTemplateMetadataResult'],
                  specs: Sequence['outputs.GetServiceTemplateSpecResult']):
@@ -3347,7 +3347,7 @@ class GetServiceTemplateResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateMetadataResult(dict):
+calass GetServiceTemplateMetadataResult(dict):
     def __init__(__self__, *,
                  annotations: Mapping[str, str],
                  generation: int,
@@ -3414,7 +3414,7 @@ class GetServiceTemplateMetadataResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecResult(dict):
+calass GetServiceTemplateSpecResult(dict):
     def __init__(__self__, *,
                  container_concurrency: int,
                  containers: Sequence['outputs.GetServiceTemplateSpecContainerResult'],
@@ -3461,7 +3461,7 @@ class GetServiceTemplateSpecResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerResult(dict):
+calass GetServiceTemplateSpecContainerResult(dict):
     def __init__(__self__, *,
                  args: Sequence[str],
                  commands: Sequence[str],
@@ -3556,7 +3556,7 @@ class GetServiceTemplateSpecContainerResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerEnvResult(dict):
+calass GetServiceTemplateSpecContainerEnvResult(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str,
@@ -3588,7 +3588,7 @@ class GetServiceTemplateSpecContainerEnvResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerEnvFromResult(dict):
+calass GetServiceTemplateSpecContainerEnvFromResult(dict):
     def __init__(__self__, *,
                  config_map_reves: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefResult'],
                  prefix: str,
@@ -3614,7 +3614,7 @@ class GetServiceTemplateSpecContainerEnvFromResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerEnvFromConfigMapRefResult(dict):
+calass GetServiceTemplateSpecContainerEnvFromConfigMapRefResult(dict):
     def __init__(__self__, *,
                  local_object_references: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResult'],
                  optional: bool):
@@ -3633,7 +3633,7 @@ class GetServiceTemplateSpecContainerEnvFromConfigMapRefResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResult(dict):
+calass GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResult(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -3651,7 +3651,7 @@ class GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResu
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerEnvFromSecretRefResult(dict):
+calass GetServiceTemplateSpecContainerEnvFromSecretRefResult(dict):
     def __init__(__self__, *,
                  local_object_references: Sequence['outputs.GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult'],
                  optional: bool):
@@ -3670,7 +3670,7 @@ class GetServiceTemplateSpecContainerEnvFromSecretRefResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult(dict):
+calass GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -3688,7 +3688,7 @@ class GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult(
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerEnvValueFromResult(dict):
+calass GetServiceTemplateSpecContainerEnvValueFromResult(dict):
     def __init__(__self__, *,
                  secret_key_reves: Sequence['outputs.GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult']):
         pulumi.set(__self__, "secret_key_reves", secret_key_reves)
@@ -3700,7 +3700,7 @@ class GetServiceTemplateSpecContainerEnvValueFromResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult(dict):
+calass GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult(dict):
     def __init__(__self__, *,
                  key: str,
                  name: str):
@@ -3725,7 +3725,7 @@ class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerLivenessProbeResult(dict):
+calass GetServiceTemplateSpecContainerLivenessProbeResult(dict):
     def __init__(__self__, *,
                  failure_threshold: int,
                  grpcs: Sequence['outputs.GetServiceTemplateSpecContainerLivenessProbeGrpcResult'],
@@ -3772,7 +3772,7 @@ class GetServiceTemplateSpecContainerLivenessProbeResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerLivenessProbeGrpcResult(dict):
+calass GetServiceTemplateSpecContainerLivenessProbeGrpcResult(dict):
     def __init__(__self__, *,
                  port: int,
                  service: str):
@@ -3791,7 +3791,7 @@ class GetServiceTemplateSpecContainerLivenessProbeGrpcResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerLivenessProbeHttpGetResult(dict):
+calass GetServiceTemplateSpecContainerLivenessProbeHttpGetResult(dict):
     def __init__(__self__, *,
                  http_headers: Sequence['outputs.GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderResult'],
                  path: str,
@@ -3817,7 +3817,7 @@ class GetServiceTemplateSpecContainerLivenessProbeHttpGetResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderResult(dict):
+calass GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderResult(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
@@ -3842,7 +3842,7 @@ class GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerPortResult(dict):
+calass GetServiceTemplateSpecContainerPortResult(dict):
     def __init__(__self__, *,
                  container_port: int,
                  name: str,
@@ -3874,7 +3874,7 @@ class GetServiceTemplateSpecContainerPortResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerResourceResult(dict):
+calass GetServiceTemplateSpecContainerResourceResult(dict):
     def __init__(__self__, *,
                  limits: Mapping[str, str],
                  requests: Mapping[str, str]):
@@ -3893,7 +3893,7 @@ class GetServiceTemplateSpecContainerResourceResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerStartupProbeResult(dict):
+calass GetServiceTemplateSpecContainerStartupProbeResult(dict):
     def __init__(__self__, *,
                  failure_threshold: int,
                  grpcs: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeGrpcResult'],
@@ -3947,7 +3947,7 @@ class GetServiceTemplateSpecContainerStartupProbeResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerStartupProbeGrpcResult(dict):
+calass GetServiceTemplateSpecContainerStartupProbeGrpcResult(dict):
     def __init__(__self__, *,
                  port: int,
                  service: str):
@@ -3966,7 +3966,7 @@ class GetServiceTemplateSpecContainerStartupProbeGrpcResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerStartupProbeHttpGetResult(dict):
+calass GetServiceTemplateSpecContainerStartupProbeHttpGetResult(dict):
     def __init__(__self__, *,
                  http_headers: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult'],
                  path: str,
@@ -3992,7 +3992,7 @@ class GetServiceTemplateSpecContainerStartupProbeHttpGetResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult(dict):
+calass GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
@@ -4017,7 +4017,7 @@ class GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerStartupProbeTcpSocketResult(dict):
+calass GetServiceTemplateSpecContainerStartupProbeTcpSocketResult(dict):
     def __init__(__self__, *,
                  port: int):
         pulumi.set(__self__, "port", port)
@@ -4029,7 +4029,7 @@ class GetServiceTemplateSpecContainerStartupProbeTcpSocketResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecContainerVolumeMountResult(dict):
+calass GetServiceTemplateSpecContainerVolumeMountResult(dict):
     def __init__(__self__, *,
                  mount_path: str,
                  name: str):
@@ -4054,7 +4054,7 @@ class GetServiceTemplateSpecContainerVolumeMountResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecVolumeResult(dict):
+calass GetServiceTemplateSpecVolumeResult(dict):
     def __init__(__self__, *,
                  empty_dirs: Sequence['outputs.GetServiceTemplateSpecVolumeEmptyDirResult'],
                  name: str,
@@ -4086,7 +4086,7 @@ class GetServiceTemplateSpecVolumeResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecVolumeEmptyDirResult(dict):
+calass GetServiceTemplateSpecVolumeEmptyDirResult(dict):
     def __init__(__self__, *,
                  medium: str,
                  size_limit: str):
@@ -4105,7 +4105,7 @@ class GetServiceTemplateSpecVolumeEmptyDirResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecVolumeSecretResult(dict):
+calass GetServiceTemplateSpecVolumeSecretResult(dict):
     def __init__(__self__, *,
                  default_mode: int,
                  items: Sequence['outputs.GetServiceTemplateSpecVolumeSecretItemResult'],
@@ -4131,7 +4131,7 @@ class GetServiceTemplateSpecVolumeSecretResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTemplateSpecVolumeSecretItemResult(dict):
+calass GetServiceTemplateSpecVolumeSecretItemResult(dict):
     def __init__(__self__, *,
                  key: str,
                  mode: int,
@@ -4157,7 +4157,7 @@ class GetServiceTemplateSpecVolumeSecretItemResult(dict):
 
 
 @pulumi.output_type
-class GetServiceTrafficResult(dict):
+calass GetServiceTrafficResult(dict):
     def __init__(__self__, *,
                  latest_revision: bool,
                  percent: int,

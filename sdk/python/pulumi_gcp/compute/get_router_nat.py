@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetRouterNatResult:
+calass GetRouterNatResult:
     """
     A collection of values returned by getRouterNat.
     """
@@ -204,7 +204,7 @@ class GetRouterNatResult:
         return pulumi.get(self, "udp_idle_timeout_sec")
 
 
-class AwaitableGetRouterNatResult(GetRouterNatResult):
+calass AwaitableGetRouterNatResult(GetRouterNatResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['WorkerPoolArgs', 'WorkerPool']
+__all__ = ['WorkerPoolArrgs', 'WorkerPool']
 
 @pulumi.input_type
-class WorkerPoolArgs:
+calass WorkerPoolArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
+                 network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None):
+                 worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArrgs']] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
         :param pulumi.Input[str] location: The location for the resource
@@ -34,9 +34,9 @@ class WorkerPoolArgs:
                
                
                - - -
-        :param pulumi.Input['WorkerPoolNetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input['WorkerPoolNetworkConfigArrgs'] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input['WorkerPoolWorkerConfigArgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input['WorkerPoolWorkerConfigArrgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
         if annotations is not None:
@@ -107,14 +107,14 @@ class WorkerPoolArgs:
 
     @property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']]:
+    def network_config(self) -> Optional[pulumi.Input['WorkerPoolNetworkConfigArrgs']]:
         """
         Network configuration for the `WorkerPool`. Structure is documented below.
         """
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']]):
+    def network_config(self, value: Optional[pulumi.Input['WorkerPoolNetworkConfigArrgs']]):
         pulumi.set(self, "network_config", value)
 
     @property
@@ -131,19 +131,19 @@ class WorkerPoolArgs:
 
     @property
     @pulumi.getter(name="workerConfig")
-    def worker_config(self) -> Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']]:
+    def worker_config(self) -> Optional[pulumi.Input['WorkerPoolWorkerConfigArrgs']]:
         """
         Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
         return pulumi.get(self, "worker_config")
 
     @worker_config.setter
-    def worker_config(self, value: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']]):
+    def worker_config(self, value: Optional[pulumi.Input['WorkerPoolWorkerConfigArrgs']]):
         pulumi.set(self, "worker_config", value)
 
 
 @pulumi.input_type
-class _WorkerPoolState:
+calass _WorkerPoolState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -152,12 +152,12 @@ class _WorkerPoolState:
                  effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
+                 network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None):
+                 worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArrgs']] = None):
         """
         Input properties used for looking up and filtering WorkerPool resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size
@@ -173,12 +173,12 @@ class _WorkerPoolState:
                
                
                - - -
-        :param pulumi.Input['WorkerPoolNetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input['WorkerPoolNetworkConfigArrgs'] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] state: Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
         :param pulumi.Input[str] uid: Output only. A unique identifier for the `WorkerPool`.
         :param pulumi.Input[str] update_time: Output only. Time at which the request to update the `WorkerPool` was received.
-        :param pulumi.Input['WorkerPoolWorkerConfigArgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input['WorkerPoolWorkerConfigArrgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -299,14 +299,14 @@ class _WorkerPoolState:
 
     @property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']]:
+    def network_config(self) -> Optional[pulumi.Input['WorkerPoolNetworkConfigArrgs']]:
         """
         Network configuration for the `WorkerPool`. Structure is documented below.
         """
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']]):
+    def network_config(self, value: Optional[pulumi.Input['WorkerPoolNetworkConfigArrgs']]):
         pulumi.set(self, "network_config", value)
 
     @property
@@ -359,18 +359,18 @@ class _WorkerPoolState:
 
     @property
     @pulumi.getter(name="workerConfig")
-    def worker_config(self) -> Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']]:
+    def worker_config(self) -> Optional[pulumi.Input['WorkerPoolWorkerConfigArrgs']]:
         """
         Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
         return pulumi.get(self, "worker_config")
 
     @worker_config.setter
-    def worker_config(self, value: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']]):
+    def worker_config(self, value: Optional[pulumi.Input['WorkerPoolWorkerConfigArrgs']]):
         pulumi.set(self, "worker_config", value)
 
 
-class WorkerPool(pulumi.CustomResource):
+calass WorkerPool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -379,9 +379,9 @@ class WorkerPool(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArgs']]] = None,
+                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArrgs']]] = None,
                  __props__=None):
         """
         Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
@@ -394,7 +394,7 @@ class WorkerPool(pulumi.CustomResource):
 
         pool = gcp.cloudbuild.WorkerPool("pool",
             location="europe-west1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
+            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArrgs(
                 disk_size_gb=100,
                 machine_type="e2-standard-4",
                 no_external_ip=False,
@@ -423,12 +423,12 @@ class WorkerPool(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
         pool = gcp.cloudbuild.WorkerPool("pool",
             location="europe-west1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
+            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArrgs(
                 disk_size_gb=100,
                 machine_type="e2-standard-4",
                 no_external_ip=False,
             ),
-            network_config=gcp.cloudbuild.WorkerPoolNetworkConfigArgs(
+            network_config=gcp.cloudbuild.WorkerPoolNetworkConfigArrgs(
                 peered_network=network.id,
                 peered_network_ip_range="/29",
             ),
@@ -462,15 +462,15 @@ class WorkerPool(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArrgs']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArgs']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArrgs']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WorkerPoolArgs,
+                 args: WorkerPoolArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
@@ -483,7 +483,7 @@ class WorkerPool(pulumi.CustomResource):
 
         pool = gcp.cloudbuild.WorkerPool("pool",
             location="europe-west1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
+            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArrgs(
                 disk_size_gb=100,
                 machine_type="e2-standard-4",
                 no_external_ip=False,
@@ -512,12 +512,12 @@ class WorkerPool(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(depends_on=[servicenetworking]))
         pool = gcp.cloudbuild.WorkerPool("pool",
             location="europe-west1",
-            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArgs(
+            worker_config=gcp.cloudbuild.WorkerPoolWorkerConfigArrgs(
                 disk_size_gb=100,
                 machine_type="e2-standard-4",
                 no_external_ip=False,
             ),
-            network_config=gcp.cloudbuild.WorkerPoolNetworkConfigArgs(
+            network_config=gcp.cloudbuild.WorkerPoolNetworkConfigArrgs(
                 peered_network=network.id,
                 peered_network_ip_range="/29",
             ),
@@ -541,12 +541,12 @@ class WorkerPool(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param WorkerPoolArgs args: The arguments to use to populate this resource's properties.
+        :param WorkerPoolArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WorkerPoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WorkerPoolArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -559,9 +559,9 @@ class WorkerPool(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArgs']]] = None,
+                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -569,7 +569,7 @@ class WorkerPool(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WorkerPoolArgs.__new__(WorkerPoolArgs)
+            __props__ = WorkerPoolArrgs.__new__(WorkerPoolArrgs)
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["display_name"] = display_name
@@ -603,12 +603,12 @@ class WorkerPool(pulumi.CustomResource):
             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            network_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']]] = None,
+            network_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArgs']]] = None) -> 'WorkerPool':
+            worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArrgs']]] = None) -> 'WorkerPool':
         """
         Get an existing WorkerPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -629,12 +629,12 @@ class WorkerPool(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['WorkerPoolNetworkConfigArrgs']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] state: Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
         :param pulumi.Input[str] uid: Output only. A unique identifier for the `WorkerPool`.
         :param pulumi.Input[str] update_time: Output only. Time at which the request to update the `WorkerPool` was received.
-        :param pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArgs']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['WorkerPoolWorkerConfigArrgs']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

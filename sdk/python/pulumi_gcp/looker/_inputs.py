@@ -10,20 +10,20 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'InstanceAdminSettingsArgs',
-    'InstanceDenyMaintenancePeriodArgs',
-    'InstanceDenyMaintenancePeriodEndDateArgs',
-    'InstanceDenyMaintenancePeriodStartDateArgs',
-    'InstanceDenyMaintenancePeriodTimeArgs',
-    'InstanceEncryptionConfigArgs',
-    'InstanceMaintenanceWindowArgs',
-    'InstanceMaintenanceWindowStartTimeArgs',
-    'InstanceOauthConfigArgs',
-    'InstanceUserMetadataArgs',
+    'InstanceAdminSettingsArrgs',
+    'InstanceDenyMaintenancePeriodArrgs',
+    'InstanceDenyMaintenancePeriodEndDateArrgs',
+    'InstanceDenyMaintenancePeriodStartDateArrgs',
+    'InstanceDenyMaintenancePeriodTimeArrgs',
+    'InstanceEncryptionConfigArrgs',
+    'InstanceMaintenanceWindowArrgs',
+    'InstanceMaintenanceWindowStartTimeArrgs',
+    'InstanceOauthConfigArrgs',
+    'InstanceUserMetadataArrgs',
 ]
 
 @pulumi.input_type
-class InstanceAdminSettingsArgs:
+calass InstanceAdminSettingsArrgs:
     def __init__(__self__, *,
                  allowed_email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if allowed_email_domains is not None:
@@ -40,17 +40,17 @@ class InstanceAdminSettingsArgs:
 
 
 @pulumi.input_type
-class InstanceDenyMaintenancePeriodArgs:
+calass InstanceDenyMaintenancePeriodArrgs:
     def __init__(__self__, *,
-                 end_date: pulumi.Input['InstanceDenyMaintenancePeriodEndDateArgs'],
-                 start_date: pulumi.Input['InstanceDenyMaintenancePeriodStartDateArgs'],
-                 time: pulumi.Input['InstanceDenyMaintenancePeriodTimeArgs']):
+                 end_date: pulumi.Input['InstanceDenyMaintenancePeriodEndDateArrgs'],
+                 start_date: pulumi.Input['InstanceDenyMaintenancePeriodStartDateArrgs'],
+                 time: pulumi.Input['InstanceDenyMaintenancePeriodTimeArrgs']):
         """
-        :param pulumi.Input['InstanceDenyMaintenancePeriodEndDateArgs'] end_date: Required. Start date of the deny maintenance period
+        :param pulumi.Input['InstanceDenyMaintenancePeriodEndDateArrgs'] end_date: Required. Start date of the deny maintenance period
                Structure is documented below.
-        :param pulumi.Input['InstanceDenyMaintenancePeriodStartDateArgs'] start_date: Required. Start date of the deny maintenance period
+        :param pulumi.Input['InstanceDenyMaintenancePeriodStartDateArrgs'] start_date: Required. Start date of the deny maintenance period
                Structure is documented below.
-        :param pulumi.Input['InstanceDenyMaintenancePeriodTimeArgs'] time: Required. Start time of the window in UTC time.
+        :param pulumi.Input['InstanceDenyMaintenancePeriodTimeArrgs'] time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
         pulumi.set(__self__, "end_date", end_date)
@@ -59,7 +59,7 @@ class InstanceDenyMaintenancePeriodArgs:
 
     @property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> pulumi.Input['InstanceDenyMaintenancePeriodEndDateArgs']:
+    def end_date(self) -> pulumi.Input['InstanceDenyMaintenancePeriodEndDateArrgs']:
         """
         Required. Start date of the deny maintenance period
         Structure is documented below.
@@ -67,12 +67,12 @@ class InstanceDenyMaintenancePeriodArgs:
         return pulumi.get(self, "end_date")
 
     @end_date.setter
-    def end_date(self, value: pulumi.Input['InstanceDenyMaintenancePeriodEndDateArgs']):
+    def end_date(self, value: pulumi.Input['InstanceDenyMaintenancePeriodEndDateArrgs']):
         pulumi.set(self, "end_date", value)
 
     @property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> pulumi.Input['InstanceDenyMaintenancePeriodStartDateArgs']:
+    def start_date(self) -> pulumi.Input['InstanceDenyMaintenancePeriodStartDateArrgs']:
         """
         Required. Start date of the deny maintenance period
         Structure is documented below.
@@ -80,12 +80,12 @@ class InstanceDenyMaintenancePeriodArgs:
         return pulumi.get(self, "start_date")
 
     @start_date.setter
-    def start_date(self, value: pulumi.Input['InstanceDenyMaintenancePeriodStartDateArgs']):
+    def start_date(self, value: pulumi.Input['InstanceDenyMaintenancePeriodStartDateArrgs']):
         pulumi.set(self, "start_date", value)
 
     @property
     @pulumi.getter
-    def time(self) -> pulumi.Input['InstanceDenyMaintenancePeriodTimeArgs']:
+    def time(self) -> pulumi.Input['InstanceDenyMaintenancePeriodTimeArrgs']:
         """
         Required. Start time of the window in UTC time.
         Structure is documented below.
@@ -93,12 +93,12 @@ class InstanceDenyMaintenancePeriodArgs:
         return pulumi.get(self, "time")
 
     @time.setter
-    def time(self, value: pulumi.Input['InstanceDenyMaintenancePeriodTimeArgs']):
+    def time(self, value: pulumi.Input['InstanceDenyMaintenancePeriodTimeArrgs']):
         pulumi.set(self, "time", value)
 
 
 @pulumi.input_type
-class InstanceDenyMaintenancePeriodEndDateArgs:
+calass InstanceDenyMaintenancePeriodEndDateArrgs:
     def __init__(__self__, *,
                  day: Optional[pulumi.Input[int]] = None,
                  month: Optional[pulumi.Input[int]] = None,
@@ -159,7 +159,7 @@ class InstanceDenyMaintenancePeriodEndDateArgs:
 
 
 @pulumi.input_type
-class InstanceDenyMaintenancePeriodStartDateArgs:
+calass InstanceDenyMaintenancePeriodStartDateArrgs:
     def __init__(__self__, *,
                  day: Optional[pulumi.Input[int]] = None,
                  month: Optional[pulumi.Input[int]] = None,
@@ -220,7 +220,7 @@ class InstanceDenyMaintenancePeriodStartDateArgs:
 
 
 @pulumi.input_type
-class InstanceDenyMaintenancePeriodTimeArgs:
+calass InstanceDenyMaintenancePeriodTimeArrgs:
     def __init__(__self__, *,
                  hours: Optional[pulumi.Input[int]] = None,
                  minutes: Optional[pulumi.Input[int]] = None,
@@ -291,7 +291,7 @@ class InstanceDenyMaintenancePeriodTimeArgs:
 
 
 @pulumi.input_type
-class InstanceEncryptionConfigArgs:
+calass InstanceEncryptionConfigArrgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  kms_key_name_version: Optional[pulumi.Input[str]] = None,
@@ -350,10 +350,10 @@ class InstanceEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class InstanceMaintenanceWindowArgs:
+calass InstanceMaintenanceWindowArrgs:
     def __init__(__self__, *,
                  day_of_week: pulumi.Input[str],
-                 start_time: pulumi.Input['InstanceMaintenanceWindowStartTimeArgs']):
+                 start_time: pulumi.Input['InstanceMaintenanceWindowStartTimeArrgs']):
         """
         :param pulumi.Input[str] day_of_week: Required. Day of the week for this MaintenanceWindow (in UTC).
                - MONDAY: Monday
@@ -364,7 +364,7 @@ class InstanceMaintenanceWindowArgs:
                - SATURDAY: Saturday
                - SUNDAY: Sunday
                Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-        :param pulumi.Input['InstanceMaintenanceWindowStartTimeArgs'] start_time: Required. Start time of the window in UTC time.
+        :param pulumi.Input['InstanceMaintenanceWindowStartTimeArrgs'] start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
@@ -392,7 +392,7 @@ class InstanceMaintenanceWindowArgs:
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> pulumi.Input['InstanceMaintenanceWindowStartTimeArgs']:
+    def start_time(self) -> pulumi.Input['InstanceMaintenanceWindowStartTimeArrgs']:
         """
         Required. Start time of the window in UTC time.
         Structure is documented below.
@@ -400,12 +400,12 @@ class InstanceMaintenanceWindowArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: pulumi.Input['InstanceMaintenanceWindowStartTimeArgs']):
+    def start_time(self, value: pulumi.Input['InstanceMaintenanceWindowStartTimeArrgs']):
         pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type
-class InstanceMaintenanceWindowStartTimeArgs:
+calass InstanceMaintenanceWindowStartTimeArrgs:
     def __init__(__self__, *,
                  hours: Optional[pulumi.Input[int]] = None,
                  minutes: Optional[pulumi.Input[int]] = None,
@@ -476,7 +476,7 @@ class InstanceMaintenanceWindowStartTimeArgs:
 
 
 @pulumi.input_type
-class InstanceOauthConfigArgs:
+calass InstanceOauthConfigArrgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[str],
                  client_secret: pulumi.Input[str]):
@@ -513,7 +513,7 @@ class InstanceOauthConfigArgs:
 
 
 @pulumi.input_type
-class InstanceUserMetadataArgs:
+calass InstanceUserMetadataArrgs:
     def __init__(__self__, *,
                  additional_developer_user_count: Optional[pulumi.Input[int]] = None,
                  additional_standard_user_count: Optional[pulumi.Input[int]] = None,

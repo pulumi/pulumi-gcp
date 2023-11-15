@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['WorkstationIamBindingArgs', 'WorkstationIamBinding']
+__all__ = ['WorkstationIamBindingArrgs', 'WorkstationIamBinding']
 
 @pulumi.input_type
-class WorkstationIamBindingArgs:
+calass WorkstationIamBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
                  workstation_cluster_id: pulumi.Input[str],
                  workstation_config_id: pulumi.Input[str],
                  workstation_id: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['WorkstationIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['WorkstationIamBindingConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -110,11 +110,11 @@ class WorkstationIamBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WorkstationIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['WorkstationIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WorkstationIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['WorkstationIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -157,9 +157,9 @@ class WorkstationIamBindingArgs:
 
 
 @pulumi.input_type
-class _WorkstationIamBindingState:
+calass _WorkstationIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['WorkstationIamBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['WorkstationIamBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -212,11 +212,11 @@ class _WorkstationIamBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WorkstationIamBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['WorkstationIamBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WorkstationIamBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['WorkstationIamBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -320,12 +320,12 @@ class _WorkstationIamBindingState:
         pulumi.set(self, "workstation_id", value)
 
 
-class WorkstationIamBinding(pulumi.CustomResource):
+calass WorkstationIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['WorkstationIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['WorkstationIamBindingConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -385,7 +385,7 @@ class WorkstationIamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WorkstationIamBindingArgs,
+                 args: WorkstationIamBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -413,12 +413,12 @@ class WorkstationIamBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param WorkstationIamBindingArgs args: The arguments to use to populate this resource's properties.
+        :param WorkstationIamBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WorkstationIamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WorkstationIamBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -427,7 +427,7 @@ class WorkstationIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['WorkstationIamBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['WorkstationIamBindingConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -442,7 +442,7 @@ class WorkstationIamBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WorkstationIamBindingArgs.__new__(WorkstationIamBindingArgs)
+            __props__ = WorkstationIamBindingArrgs.__new__(WorkstationIamBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
@@ -473,7 +473,7 @@ class WorkstationIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['WorkstationIamBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['WorkstationIamBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,

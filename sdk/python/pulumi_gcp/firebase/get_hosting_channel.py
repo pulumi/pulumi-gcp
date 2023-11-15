@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetHostingChannelResult:
+calass GetHostingChannelResult:
     """
     A collection of values returned by getHostingChannel.
     """
@@ -110,7 +110,7 @@ class GetHostingChannelResult:
         return pulumi.get(self, "ttl")
 
 
-class AwaitableGetHostingChannelResult(GetHostingChannelResult):
+calass AwaitableGetHostingChannelResult(GetHostingChannelResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

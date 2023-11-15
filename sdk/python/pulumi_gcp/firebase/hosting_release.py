@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['HostingReleaseArgs', 'HostingRelease']
+__all__ = ['HostingReleaseArrgs', 'HostingRelease']
 
 @pulumi.input_type
-class HostingReleaseArgs:
+calass HostingReleaseArrgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[str],
                  channel_id: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class HostingReleaseArgs:
 
 
 @pulumi.input_type
-class _HostingReleaseState:
+calass _HostingReleaseState:
     def __init__(__self__, *,
                  channel_id: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
@@ -270,7 +270,7 @@ class _HostingReleaseState:
         pulumi.set(self, "version_name", value)
 
 
-class HostingRelease(pulumi.CustomResource):
+calass HostingRelease(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -295,8 +295,8 @@ class HostingRelease(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
             site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
+            config=gcp.firebase.HostingVersionConfigArrgs(
+                redirects=[gcp.firebase.HostingVersionConfigRedirectArrgs(
                     glob="/google/**",
                     status_code=302,
                     location="https://www.google.com",
@@ -321,8 +321,8 @@ class HostingRelease(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
             site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
+            config=gcp.firebase.HostingVersionConfigArrgs(
+                redirects=[gcp.firebase.HostingVersionConfigRedirectArrgs(
                     glob="/google/**",
                     status_code=302,
                     location="https://www.google.com",
@@ -401,7 +401,7 @@ class HostingRelease(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: HostingReleaseArgs,
+                 args: HostingReleaseArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -417,8 +417,8 @@ class HostingRelease(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
             site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
+            config=gcp.firebase.HostingVersionConfigArrgs(
+                redirects=[gcp.firebase.HostingVersionConfigRedirectArrgs(
                     glob="/google/**",
                     status_code=302,
                     location="https://www.google.com",
@@ -443,8 +443,8 @@ class HostingRelease(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_hosting_version = gcp.firebase.HostingVersion("defaultHostingVersion",
             site_id=default_hosting_site.site_id,
-            config=gcp.firebase.HostingVersionConfigArgs(
-                redirects=[gcp.firebase.HostingVersionConfigRedirectArgs(
+            config=gcp.firebase.HostingVersionConfigArrgs(
+                redirects=[gcp.firebase.HostingVersionConfigRedirectArrgs(
                     glob="/google/**",
                     status_code=302,
                     location="https://www.google.com",
@@ -500,12 +500,12 @@ class HostingRelease(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param HostingReleaseArgs args: The arguments to use to populate this resource's properties.
+        :param HostingReleaseArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(HostingReleaseArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(HostingReleaseArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -526,7 +526,7 @@ class HostingRelease(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = HostingReleaseArgs.__new__(HostingReleaseArgs)
+            __props__ = HostingReleaseArrgs.__new__(HostingReleaseArrgs)
 
             __props__.__dict__["channel_id"] = channel_id
             __props__.__dict__["message"] = message

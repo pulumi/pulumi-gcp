@@ -10,235 +10,235 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AttachedClusterAuthorizationArgs',
-    'AttachedClusterBinaryAuthorizationArgs',
-    'AttachedClusterErrorArgs',
-    'AttachedClusterFleetArgs',
-    'AttachedClusterLoggingConfigArgs',
-    'AttachedClusterLoggingConfigComponentConfigArgs',
-    'AttachedClusterMonitoringConfigArgs',
-    'AttachedClusterMonitoringConfigManagedPrometheusConfigArgs',
-    'AttachedClusterOidcConfigArgs',
-    'AttachedClusterWorkloadIdentityConfigArgs',
-    'AwsClusterAuthorizationArgs',
-    'AwsClusterAuthorizationAdminUserArgs',
-    'AwsClusterBinaryAuthorizationArgs',
-    'AwsClusterControlPlaneArgs',
-    'AwsClusterControlPlaneAwsServicesAuthenticationArgs',
-    'AwsClusterControlPlaneConfigEncryptionArgs',
-    'AwsClusterControlPlaneDatabaseEncryptionArgs',
-    'AwsClusterControlPlaneInstancePlacementArgs',
-    'AwsClusterControlPlaneMainVolumeArgs',
-    'AwsClusterControlPlaneProxyConfigArgs',
-    'AwsClusterControlPlaneRootVolumeArgs',
-    'AwsClusterControlPlaneSshConfigArgs',
-    'AwsClusterFleetArgs',
-    'AwsClusterLoggingConfigArgs',
-    'AwsClusterLoggingConfigComponentConfigArgs',
-    'AwsClusterNetworkingArgs',
-    'AwsClusterWorkloadIdentityConfigArgs',
-    'AwsNodePoolAutoscalingArgs',
-    'AwsNodePoolConfigArgs',
-    'AwsNodePoolConfigAutoscalingMetricsCollectionArgs',
-    'AwsNodePoolConfigConfigEncryptionArgs',
-    'AwsNodePoolConfigInstancePlacementArgs',
-    'AwsNodePoolConfigProxyConfigArgs',
-    'AwsNodePoolConfigRootVolumeArgs',
-    'AwsNodePoolConfigSpotConfigArgs',
-    'AwsNodePoolConfigSshConfigArgs',
-    'AwsNodePoolConfigTaintArgs',
-    'AwsNodePoolManagementArgs',
-    'AwsNodePoolMaxPodsConstraintArgs',
-    'AwsNodePoolUpdateSettingsArgs',
-    'AwsNodePoolUpdateSettingsSurgeSettingsArgs',
-    'AzureClusterAuthorizationArgs',
-    'AzureClusterAuthorizationAdminUserArgs',
-    'AzureClusterAzureServicesAuthenticationArgs',
-    'AzureClusterControlPlaneArgs',
-    'AzureClusterControlPlaneDatabaseEncryptionArgs',
-    'AzureClusterControlPlaneMainVolumeArgs',
-    'AzureClusterControlPlaneProxyConfigArgs',
-    'AzureClusterControlPlaneReplicaPlacementArgs',
-    'AzureClusterControlPlaneRootVolumeArgs',
-    'AzureClusterControlPlaneSshConfigArgs',
-    'AzureClusterFleetArgs',
-    'AzureClusterLoggingConfigArgs',
-    'AzureClusterLoggingConfigComponentConfigArgs',
-    'AzureClusterNetworkingArgs',
-    'AzureClusterWorkloadIdentityConfigArgs',
-    'AzureNodePoolAutoscalingArgs',
-    'AzureNodePoolConfigArgs',
-    'AzureNodePoolConfigProxyConfigArgs',
-    'AzureNodePoolConfigRootVolumeArgs',
-    'AzureNodePoolConfigSshConfigArgs',
-    'AzureNodePoolManagementArgs',
-    'AzureNodePoolMaxPodsConstraintArgs',
-    'ClusterAddonsConfigArgs',
-    'ClusterAddonsConfigCloudrunConfigArgs',
-    'ClusterAddonsConfigConfigConnectorConfigArgs',
-    'ClusterAddonsConfigDnsCacheConfigArgs',
-    'ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs',
-    'ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs',
-    'ClusterAddonsConfigGcsFuseCsiDriverConfigArgs',
-    'ClusterAddonsConfigGkeBackupAgentConfigArgs',
-    'ClusterAddonsConfigHorizontalPodAutoscalingArgs',
-    'ClusterAddonsConfigHttpLoadBalancingArgs',
-    'ClusterAddonsConfigIstioConfigArgs',
-    'ClusterAddonsConfigKalmConfigArgs',
-    'ClusterAddonsConfigNetworkPolicyConfigArgs',
-    'ClusterAuthenticatorGroupsConfigArgs',
-    'ClusterBinaryAuthorizationArgs',
-    'ClusterClusterAutoscalingArgs',
-    'ClusterClusterAutoscalingAutoProvisioningDefaultsArgs',
-    'ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs',
-    'ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs',
-    'ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs',
-    'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs',
-    'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs',
-    'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs',
-    'ClusterClusterAutoscalingResourceLimitArgs',
-    'ClusterClusterTelemetryArgs',
-    'ClusterConfidentialNodesArgs',
-    'ClusterCostManagementConfigArgs',
-    'ClusterDatabaseEncryptionArgs',
-    'ClusterDefaultSnatStatusArgs',
-    'ClusterDnsConfigArgs',
-    'ClusterEnableK8sBetaApisArgs',
-    'ClusterGatewayApiConfigArgs',
-    'ClusterIdentityServiceConfigArgs',
-    'ClusterIpAllocationPolicyArgs',
-    'ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs',
-    'ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs',
-    'ClusterLoggingConfigArgs',
-    'ClusterMaintenancePolicyArgs',
-    'ClusterMaintenancePolicyDailyMaintenanceWindowArgs',
-    'ClusterMaintenancePolicyMaintenanceExclusionArgs',
-    'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs',
-    'ClusterMaintenancePolicyRecurringWindowArgs',
-    'ClusterMasterAuthArgs',
-    'ClusterMasterAuthClientCertificateConfigArgs',
-    'ClusterMasterAuthorizedNetworksConfigArgs',
-    'ClusterMasterAuthorizedNetworksConfigCidrBlockArgs',
-    'ClusterMeshCertificatesArgs',
-    'ClusterMonitoringConfigArgs',
-    'ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs',
-    'ClusterMonitoringConfigManagedPrometheusArgs',
-    'ClusterNetworkPolicyArgs',
-    'ClusterNodeConfigArgs',
-    'ClusterNodeConfigAdvancedMachineFeaturesArgs',
-    'ClusterNodeConfigConfidentialNodesArgs',
-    'ClusterNodeConfigEffectiveTaintArgs',
-    'ClusterNodeConfigEphemeralStorageConfigArgs',
-    'ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs',
-    'ClusterNodeConfigFastSocketArgs',
-    'ClusterNodeConfigGcfsConfigArgs',
-    'ClusterNodeConfigGuestAcceleratorArgs',
-    'ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs',
-    'ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs',
-    'ClusterNodeConfigGvnicArgs',
-    'ClusterNodeConfigHostMaintenancePolicyArgs',
-    'ClusterNodeConfigKubeletConfigArgs',
-    'ClusterNodeConfigLinuxNodeConfigArgs',
-    'ClusterNodeConfigLocalNvmeSsdBlockConfigArgs',
-    'ClusterNodeConfigReservationAffinityArgs',
-    'ClusterNodeConfigSandboxConfigArgs',
-    'ClusterNodeConfigShieldedInstanceConfigArgs',
-    'ClusterNodeConfigSoleTenantConfigArgs',
-    'ClusterNodeConfigSoleTenantConfigNodeAffinityArgs',
-    'ClusterNodeConfigTaintArgs',
-    'ClusterNodeConfigWorkloadMetadataConfigArgs',
-    'ClusterNodePoolArgs',
-    'ClusterNodePoolAutoConfigArgs',
-    'ClusterNodePoolAutoConfigNetworkTagsArgs',
-    'ClusterNodePoolAutoscalingArgs',
-    'ClusterNodePoolDefaultsArgs',
-    'ClusterNodePoolDefaultsNodeConfigDefaultsArgs',
-    'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs',
-    'ClusterNodePoolManagementArgs',
-    'ClusterNodePoolNetworkConfigArgs',
-    'ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs',
-    'ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs',
-    'ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs',
-    'ClusterNodePoolNodeConfigArgs',
-    'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs',
-    'ClusterNodePoolNodeConfigConfidentialNodesArgs',
-    'ClusterNodePoolNodeConfigEffectiveTaintArgs',
-    'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs',
-    'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs',
-    'ClusterNodePoolNodeConfigFastSocketArgs',
-    'ClusterNodePoolNodeConfigGcfsConfigArgs',
-    'ClusterNodePoolNodeConfigGuestAcceleratorArgs',
-    'ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs',
-    'ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs',
-    'ClusterNodePoolNodeConfigGvnicArgs',
-    'ClusterNodePoolNodeConfigHostMaintenancePolicyArgs',
-    'ClusterNodePoolNodeConfigKubeletConfigArgs',
-    'ClusterNodePoolNodeConfigLinuxNodeConfigArgs',
-    'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs',
-    'ClusterNodePoolNodeConfigReservationAffinityArgs',
-    'ClusterNodePoolNodeConfigSandboxConfigArgs',
-    'ClusterNodePoolNodeConfigShieldedInstanceConfigArgs',
-    'ClusterNodePoolNodeConfigSoleTenantConfigArgs',
-    'ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs',
-    'ClusterNodePoolNodeConfigTaintArgs',
-    'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs',
-    'ClusterNodePoolPlacementPolicyArgs',
-    'ClusterNodePoolUpgradeSettingsArgs',
-    'ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs',
-    'ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs',
-    'ClusterNotificationConfigArgs',
-    'ClusterNotificationConfigPubsubArgs',
-    'ClusterNotificationConfigPubsubFilterArgs',
-    'ClusterPodSecurityPolicyConfigArgs',
-    'ClusterPrivateClusterConfigArgs',
-    'ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs',
-    'ClusterProtectConfigArgs',
-    'ClusterProtectConfigWorkloadConfigArgs',
-    'ClusterReleaseChannelArgs',
-    'ClusterResourceUsageExportConfigArgs',
-    'ClusterResourceUsageExportConfigBigqueryDestinationArgs',
-    'ClusterSecurityPostureConfigArgs',
-    'ClusterServiceExternalIpsConfigArgs',
-    'ClusterTpuConfigArgs',
-    'ClusterVerticalPodAutoscalingArgs',
-    'ClusterWorkloadIdentityConfigArgs',
-    'NodePoolAutoscalingArgs',
-    'NodePoolManagementArgs',
-    'NodePoolNetworkConfigArgs',
-    'NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs',
-    'NodePoolNetworkConfigAdditionalPodNetworkConfigArgs',
-    'NodePoolNetworkConfigPodCidrOverprovisionConfigArgs',
-    'NodePoolNodeConfigArgs',
-    'NodePoolNodeConfigAdvancedMachineFeaturesArgs',
-    'NodePoolNodeConfigConfidentialNodesArgs',
-    'NodePoolNodeConfigEffectiveTaintArgs',
-    'NodePoolNodeConfigEphemeralStorageConfigArgs',
-    'NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs',
-    'NodePoolNodeConfigFastSocketArgs',
-    'NodePoolNodeConfigGcfsConfigArgs',
-    'NodePoolNodeConfigGuestAcceleratorArgs',
-    'NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs',
-    'NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs',
-    'NodePoolNodeConfigGvnicArgs',
-    'NodePoolNodeConfigHostMaintenancePolicyArgs',
-    'NodePoolNodeConfigKubeletConfigArgs',
-    'NodePoolNodeConfigLinuxNodeConfigArgs',
-    'NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs',
-    'NodePoolNodeConfigReservationAffinityArgs',
-    'NodePoolNodeConfigSandboxConfigArgs',
-    'NodePoolNodeConfigShieldedInstanceConfigArgs',
-    'NodePoolNodeConfigSoleTenantConfigArgs',
-    'NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs',
-    'NodePoolNodeConfigTaintArgs',
-    'NodePoolNodeConfigWorkloadMetadataConfigArgs',
-    'NodePoolPlacementPolicyArgs',
-    'NodePoolUpgradeSettingsArgs',
-    'NodePoolUpgradeSettingsBlueGreenSettingsArgs',
-    'NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs',
+    'AttachedClusterAuthorizationArrgs',
+    'AttachedClusterBinaryAuthorizationArrgs',
+    'AttachedClusterErrorArrgs',
+    'AttachedClusterFleetArrgs',
+    'AttachedClusterLoggingConfigArrgs',
+    'AttachedClusterLoggingConfigComponentConfigArrgs',
+    'AttachedClusterMonitoringConfigArrgs',
+    'AttachedClusterMonitoringConfigManagedPrometheusConfigArrgs',
+    'AttachedClusterOidcConfigArrgs',
+    'AttachedClusterWorkloadIdentityConfigArrgs',
+    'AwsClusterAuthorizationArrgs',
+    'AwsClusterAuthorizationAdminUserArrgs',
+    'AwsClusterBinaryAuthorizationArrgs',
+    'AwsClusterControlPlaneArrgs',
+    'AwsClusterControlPlaneAwsServicesAuthenticationArrgs',
+    'AwsClusterControlPlaneConfigEncryptionArrgs',
+    'AwsClusterControlPlaneDatabaseEncryptionArrgs',
+    'AwsClusterControlPlaneInstancePlacementArrgs',
+    'AwsClusterControlPlaneMainVolumeArrgs',
+    'AwsClusterControlPlaneProxyConfigArrgs',
+    'AwsClusterControlPlaneRootVolumeArrgs',
+    'AwsClusterControlPlaneSshConfigArrgs',
+    'AwsClusterFleetArrgs',
+    'AwsClusterLoggingConfigArrgs',
+    'AwsClusterLoggingConfigComponentConfigArrgs',
+    'AwsClusterNetworkingArrgs',
+    'AwsClusterWorkloadIdentityConfigArrgs',
+    'AwsNodePoolAutoscalingArrgs',
+    'AwsNodePoolConfigArrgs',
+    'AwsNodePoolConfigAutoscalingMetricsCollectionArrgs',
+    'AwsNodePoolConfigConfigEncryptionArrgs',
+    'AwsNodePoolConfigInstancePlacementArrgs',
+    'AwsNodePoolConfigProxyConfigArrgs',
+    'AwsNodePoolConfigRootVolumeArrgs',
+    'AwsNodePoolConfigSpotConfigArrgs',
+    'AwsNodePoolConfigSshConfigArrgs',
+    'AwsNodePoolConfigTaintArrgs',
+    'AwsNodePoolManagementArrgs',
+    'AwsNodePoolMaxPodsConstraintArrgs',
+    'AwsNodePoolUpdateSettingsArrgs',
+    'AwsNodePoolUpdateSettingsSurgeSettingsArrgs',
+    'AzureClusterAuthorizationArrgs',
+    'AzureClusterAuthorizationAdminUserArrgs',
+    'AzureClusterAzureServicesAuthenticationArrgs',
+    'AzureClusterControlPlaneArrgs',
+    'AzureClusterControlPlaneDatabaseEncryptionArrgs',
+    'AzureClusterControlPlaneMainVolumeArrgs',
+    'AzureClusterControlPlaneProxyConfigArrgs',
+    'AzureClusterControlPlaneReplicaPlacementArrgs',
+    'AzureClusterControlPlaneRootVolumeArrgs',
+    'AzureClusterControlPlaneSshConfigArrgs',
+    'AzureClusterFleetArrgs',
+    'AzureClusterLoggingConfigArrgs',
+    'AzureClusterLoggingConfigComponentConfigArrgs',
+    'AzureClusterNetworkingArrgs',
+    'AzureClusterWorkloadIdentityConfigArrgs',
+    'AzureNodePoolAutoscalingArrgs',
+    'AzureNodePoolConfigArrgs',
+    'AzureNodePoolConfigProxyConfigArrgs',
+    'AzureNodePoolConfigRootVolumeArrgs',
+    'AzureNodePoolConfigSshConfigArrgs',
+    'AzureNodePoolManagementArrgs',
+    'AzureNodePoolMaxPodsConstraintArrgs',
+    'ClusterAddonsConfigArrgs',
+    'ClusterAddonsConfigCloudrunConfigArrgs',
+    'ClusterAddonsConfigConfigConnectorConfigArrgs',
+    'ClusterAddonsConfigDnsCacheConfigArrgs',
+    'ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrgs',
+    'ClusterAddonsConfigGcpFilestoreCsiDriverConfigArrgs',
+    'ClusterAddonsConfigGcsFuseCsiDriverConfigArrgs',
+    'ClusterAddonsConfigGkeBackupAgentConfigArrgs',
+    'ClusterAddonsConfigHorizontalPodAutoscalingArrgs',
+    'ClusterAddonsConfigHttpLoadBalancingArrgs',
+    'ClusterAddonsConfigIstioConfigArrgs',
+    'ClusterAddonsConfigKalmConfigArrgs',
+    'ClusterAddonsConfigNetworkPolicyConfigArrgs',
+    'ClusterAuthenticatorGroupsConfigArrgs',
+    'ClusterBinaryAuthorizationArrgs',
+    'ClusterClusterAutoscalingArrgs',
+    'ClusterClusterAutoscalingAutoProvisioningDefaultsArrgs',
+    'ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArrgs',
+    'ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArrgs',
+    'ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArrgs',
+    'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArrgs',
+    'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArrgs',
+    'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs',
+    'ClusterClusterAutoscalingResourceLimitArrgs',
+    'ClusterClusterTelemetryArrgs',
+    'ClusterConfidentialNodesArrgs',
+    'ClusterCostManagementConfigArrgs',
+    'ClusterDatabaseEncryptionArrgs',
+    'ClusterDefaultSnatStatusArrgs',
+    'ClusterDnsConfigArrgs',
+    'ClusterEnableK8sBetaApisArrgs',
+    'ClusterGatewayApiConfigArrgs',
+    'ClusterIdentityServiceConfigArrgs',
+    'ClusterIpAllocationPolicyArrgs',
+    'ClusterIpAllocationPolicyAdditionalPodRangesConfigArrgs',
+    'ClusterIpAllocationPolicyPodCidrOverprovisionConfigArrgs',
+    'ClusterLoggingConfigArrgs',
+    'ClusterMaintenancePolicyArrgs',
+    'ClusterMaintenancePolicyDailyMaintenanceWindowArrgs',
+    'ClusterMaintenancePolicyMaintenanceExclusionArrgs',
+    'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArrgs',
+    'ClusterMaintenancePolicyRecurringWindowArrgs',
+    'ClusterMasterAuthArrgs',
+    'ClusterMasterAuthClientCertificateConfigArrgs',
+    'ClusterMasterAuthorizedNetworksConfigArrgs',
+    'ClusterMasterAuthorizedNetworksConfigCidrBlockArrgs',
+    'ClusterMeshCertificatesArrgs',
+    'ClusterMonitoringConfigArrgs',
+    'ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrgs',
+    'ClusterMonitoringConfigManagedPrometheusArrgs',
+    'ClusterNetworkPolicyArrgs',
+    'ClusterNodeConfigArrgs',
+    'ClusterNodeConfigAdvancedMachineFeaturesArrgs',
+    'ClusterNodeConfigConfidentialNodesArrgs',
+    'ClusterNodeConfigEffectiveTaintArrgs',
+    'ClusterNodeConfigEphemeralStorageConfigArrgs',
+    'ClusterNodeConfigEphemeralStorageLocalSsdConfigArrgs',
+    'ClusterNodeConfigFastSocketArrgs',
+    'ClusterNodeConfigGcfsConfigArrgs',
+    'ClusterNodeConfigGuestAcceleratorArrgs',
+    'ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs',
+    'ClusterNodeConfigGuestAcceleratorGpuSharingConfigArrgs',
+    'ClusterNodeConfigGvnicArrgs',
+    'ClusterNodeConfigHostMaintenancePolicyArrgs',
+    'ClusterNodeConfigKubeletConfigArrgs',
+    'ClusterNodeConfigLinuxNodeConfigArrgs',
+    'ClusterNodeConfigLocalNvmeSsdBlockConfigArrgs',
+    'ClusterNodeConfigReservationAffinityArrgs',
+    'ClusterNodeConfigSandboxConfigArrgs',
+    'ClusterNodeConfigShieldedInstanceConfigArrgs',
+    'ClusterNodeConfigSoleTenantConfigArrgs',
+    'ClusterNodeConfigSoleTenantConfigNodeAffinityArrgs',
+    'ClusterNodeConfigTaintArrgs',
+    'ClusterNodeConfigWorkloadMetadataConfigArrgs',
+    'ClusterNodePoolArrgs',
+    'ClusterNodePoolAutoConfigArrgs',
+    'ClusterNodePoolAutoConfigNetworkTagsArrgs',
+    'ClusterNodePoolAutoscalingArrgs',
+    'ClusterNodePoolDefaultsArrgs',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsArrgs',
+    'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArrgs',
+    'ClusterNodePoolManagementArrgs',
+    'ClusterNodePoolNetworkConfigArrgs',
+    'ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrgs',
+    'ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrgs',
+    'ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrgs',
+    'ClusterNodePoolNodeConfigArrgs',
+    'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArrgs',
+    'ClusterNodePoolNodeConfigConfidentialNodesArrgs',
+    'ClusterNodePoolNodeConfigEffectiveTaintArrgs',
+    'ClusterNodePoolNodeConfigEphemeralStorageConfigArrgs',
+    'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrgs',
+    'ClusterNodePoolNodeConfigFastSocketArrgs',
+    'ClusterNodePoolNodeConfigGcfsConfigArrgs',
+    'ClusterNodePoolNodeConfigGuestAcceleratorArrgs',
+    'ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs',
+    'ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrgs',
+    'ClusterNodePoolNodeConfigGvnicArrgs',
+    'ClusterNodePoolNodeConfigHostMaintenancePolicyArrgs',
+    'ClusterNodePoolNodeConfigKubeletConfigArrgs',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigArrgs',
+    'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrgs',
+    'ClusterNodePoolNodeConfigReservationAffinityArrgs',
+    'ClusterNodePoolNodeConfigSandboxConfigArrgs',
+    'ClusterNodePoolNodeConfigShieldedInstanceConfigArrgs',
+    'ClusterNodePoolNodeConfigSoleTenantConfigArrgs',
+    'ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrgs',
+    'ClusterNodePoolNodeConfigTaintArrgs',
+    'ClusterNodePoolNodeConfigWorkloadMetadataConfigArrgs',
+    'ClusterNodePoolPlacementPolicyArrgs',
+    'ClusterNodePoolUpgradeSettingsArrgs',
+    'ClusterNodePoolUpgradeSettingsBlueGreenSettingsArrgs',
+    'ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs',
+    'ClusterNotificationConfigArrgs',
+    'ClusterNotificationConfigPubsubArrgs',
+    'ClusterNotificationConfigPubsubFilterArrgs',
+    'ClusterPodSecurityPolicyConfigArrgs',
+    'ClusterPrivateClusterConfigArrgs',
+    'ClusterPrivateClusterConfigMasterGlobalAccessConfigArrgs',
+    'ClusterProtectConfigArrgs',
+    'ClusterProtectConfigWorkloadConfigArrgs',
+    'ClusterReleaseChannelArrgs',
+    'ClusterResourceUsageExportConfigArrgs',
+    'ClusterResourceUsageExportConfigBigqueryDestinationArrgs',
+    'ClusterSecurityPostureConfigArrgs',
+    'ClusterServiceExternalIpsConfigArrgs',
+    'ClusterTpuConfigArrgs',
+    'ClusterVerticalPodAutoscalingArrgs',
+    'ClusterWorkloadIdentityConfigArrgs',
+    'NodePoolAutoscalingArrgs',
+    'NodePoolManagementArrgs',
+    'NodePoolNetworkConfigArrgs',
+    'NodePoolNetworkConfigAdditionalNodeNetworkConfigArrgs',
+    'NodePoolNetworkConfigAdditionalPodNetworkConfigArrgs',
+    'NodePoolNetworkConfigPodCidrOverprovisionConfigArrgs',
+    'NodePoolNodeConfigArrgs',
+    'NodePoolNodeConfigAdvancedMachineFeaturesArrgs',
+    'NodePoolNodeConfigConfidentialNodesArrgs',
+    'NodePoolNodeConfigEffectiveTaintArrgs',
+    'NodePoolNodeConfigEphemeralStorageConfigArrgs',
+    'NodePoolNodeConfigEphemeralStorageLocalSsdConfigArrgs',
+    'NodePoolNodeConfigFastSocketArrgs',
+    'NodePoolNodeConfigGcfsConfigArrgs',
+    'NodePoolNodeConfigGuestAcceleratorArrgs',
+    'NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs',
+    'NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrgs',
+    'NodePoolNodeConfigGvnicArrgs',
+    'NodePoolNodeConfigHostMaintenancePolicyArrgs',
+    'NodePoolNodeConfigKubeletConfigArrgs',
+    'NodePoolNodeConfigLinuxNodeConfigArrgs',
+    'NodePoolNodeConfigLocalNvmeSsdBlockConfigArrgs',
+    'NodePoolNodeConfigReservationAffinityArrgs',
+    'NodePoolNodeConfigSandboxConfigArrgs',
+    'NodePoolNodeConfigShieldedInstanceConfigArrgs',
+    'NodePoolNodeConfigSoleTenantConfigArrgs',
+    'NodePoolNodeConfigSoleTenantConfigNodeAffinityArrgs',
+    'NodePoolNodeConfigTaintArrgs',
+    'NodePoolNodeConfigWorkloadMetadataConfigArrgs',
+    'NodePoolPlacementPolicyArrgs',
+    'NodePoolUpgradeSettingsArrgs',
+    'NodePoolUpgradeSettingsBlueGreenSettingsArrgs',
+    'NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs',
 ]
 
 @pulumi.input_type
-class AttachedClusterAuthorizationArgs:
+calass AttachedClusterAuthorizationArrgs:
     def __init__(__self__, *,
                  admin_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -269,7 +269,7 @@ class AttachedClusterAuthorizationArgs:
 
 
 @pulumi.input_type
-class AttachedClusterBinaryAuthorizationArgs:
+calass AttachedClusterBinaryAuthorizationArrgs:
     def __init__(__self__, *,
                  evaluation_mode: Optional[pulumi.Input[str]] = None):
         """
@@ -294,7 +294,7 @@ class AttachedClusterBinaryAuthorizationArgs:
 
 
 @pulumi.input_type
-class AttachedClusterErrorArgs:
+calass AttachedClusterErrorArrgs:
     def __init__(__self__, *,
                  message: Optional[pulumi.Input[str]] = None):
         """
@@ -317,7 +317,7 @@ class AttachedClusterErrorArgs:
 
 
 @pulumi.input_type
-class AttachedClusterFleetArgs:
+calass AttachedClusterFleetArrgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  membership: Optional[pulumi.Input[str]] = None):
@@ -363,11 +363,11 @@ class AttachedClusterFleetArgs:
 
 
 @pulumi.input_type
-class AttachedClusterLoggingConfigArgs:
+calass AttachedClusterLoggingConfigArrgs:
     def __init__(__self__, *,
-                 component_config: Optional[pulumi.Input['AttachedClusterLoggingConfigComponentConfigArgs']] = None):
+                 component_config: Optional[pulumi.Input['AttachedClusterLoggingConfigComponentConfigArrgs']] = None):
         """
-        :param pulumi.Input['AttachedClusterLoggingConfigComponentConfigArgs'] component_config: The configuration of the logging components
+        :param pulumi.Input['AttachedClusterLoggingConfigComponentConfigArrgs'] component_config: The configuration of the logging components
                Structure is documented below.
         """
         if component_config is not None:
@@ -375,7 +375,7 @@ class AttachedClusterLoggingConfigArgs:
 
     @property
     @pulumi.getter(name="componentConfig")
-    def component_config(self) -> Optional[pulumi.Input['AttachedClusterLoggingConfigComponentConfigArgs']]:
+    def component_config(self) -> Optional[pulumi.Input['AttachedClusterLoggingConfigComponentConfigArrgs']]:
         """
         The configuration of the logging components
         Structure is documented below.
@@ -383,12 +383,12 @@ class AttachedClusterLoggingConfigArgs:
         return pulumi.get(self, "component_config")
 
     @component_config.setter
-    def component_config(self, value: Optional[pulumi.Input['AttachedClusterLoggingConfigComponentConfigArgs']]):
+    def component_config(self, value: Optional[pulumi.Input['AttachedClusterLoggingConfigComponentConfigArrgs']]):
         pulumi.set(self, "component_config", value)
 
 
 @pulumi.input_type
-class AttachedClusterLoggingConfigComponentConfigArgs:
+calass AttachedClusterLoggingConfigComponentConfigArrgs:
     def __init__(__self__, *,
                  enable_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -413,11 +413,11 @@ class AttachedClusterLoggingConfigComponentConfigArgs:
 
 
 @pulumi.input_type
-class AttachedClusterMonitoringConfigArgs:
+calass AttachedClusterMonitoringConfigArrgs:
     def __init__(__self__, *,
-                 managed_prometheus_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigManagedPrometheusConfigArgs']] = None):
+                 managed_prometheus_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigManagedPrometheusConfigArrgs']] = None):
         """
-        :param pulumi.Input['AttachedClusterMonitoringConfigManagedPrometheusConfigArgs'] managed_prometheus_config: Enable Google Cloud Managed Service for Prometheus in the cluster.
+        :param pulumi.Input['AttachedClusterMonitoringConfigManagedPrometheusConfigArrgs'] managed_prometheus_config: Enable Google Cloud Managed Service for Prometheus in the cluster.
                Structure is documented below.
         """
         if managed_prometheus_config is not None:
@@ -425,7 +425,7 @@ class AttachedClusterMonitoringConfigArgs:
 
     @property
     @pulumi.getter(name="managedPrometheusConfig")
-    def managed_prometheus_config(self) -> Optional[pulumi.Input['AttachedClusterMonitoringConfigManagedPrometheusConfigArgs']]:
+    def managed_prometheus_config(self) -> Optional[pulumi.Input['AttachedClusterMonitoringConfigManagedPrometheusConfigArrgs']]:
         """
         Enable Google Cloud Managed Service for Prometheus in the cluster.
         Structure is documented below.
@@ -433,12 +433,12 @@ class AttachedClusterMonitoringConfigArgs:
         return pulumi.get(self, "managed_prometheus_config")
 
     @managed_prometheus_config.setter
-    def managed_prometheus_config(self, value: Optional[pulumi.Input['AttachedClusterMonitoringConfigManagedPrometheusConfigArgs']]):
+    def managed_prometheus_config(self, value: Optional[pulumi.Input['AttachedClusterMonitoringConfigManagedPrometheusConfigArrgs']]):
         pulumi.set(self, "managed_prometheus_config", value)
 
 
 @pulumi.input_type
-class AttachedClusterMonitoringConfigManagedPrometheusConfigArgs:
+calass AttachedClusterMonitoringConfigManagedPrometheusConfigArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -461,7 +461,7 @@ class AttachedClusterMonitoringConfigManagedPrometheusConfigArgs:
 
 
 @pulumi.input_type
-class AttachedClusterOidcConfigArgs:
+calass AttachedClusterOidcConfigArrgs:
     def __init__(__self__, *,
                  issuer_url: pulumi.Input[str],
                  jwks: Optional[pulumi.Input[str]] = None):
@@ -499,7 +499,7 @@ class AttachedClusterOidcConfigArgs:
 
 
 @pulumi.input_type
-class AttachedClusterWorkloadIdentityConfigArgs:
+calass AttachedClusterWorkloadIdentityConfigArrgs:
     def __init__(__self__, *,
                  identity_provider: Optional[pulumi.Input[str]] = None,
                  issuer_uri: Optional[pulumi.Input[str]] = None,
@@ -556,29 +556,29 @@ class AttachedClusterWorkloadIdentityConfigArgs:
 
 
 @pulumi.input_type
-class AwsClusterAuthorizationArgs:
+calass AwsClusterAuthorizationArrgs:
     def __init__(__self__, *,
-                 admin_users: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]):
+                 admin_users: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]] admin_users: Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArrgs']]] admin_users: Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
     @property
     @pulumi.getter(name="adminUsers")
-    def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]:
+    def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArrgs']]]:
         """
         Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         return pulumi.get(self, "admin_users")
 
     @admin_users.setter
-    def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArgs']]]):
+    def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['AwsClusterAuthorizationAdminUserArrgs']]]):
         pulumi.set(self, "admin_users", value)
 
 
 @pulumi.input_type
-class AwsClusterAuthorizationAdminUserArgs:
+calass AwsClusterAuthorizationAdminUserArrgs:
     def __init__(__self__, *,
                  username: pulumi.Input[str]):
         """
@@ -600,7 +600,7 @@ class AwsClusterAuthorizationAdminUserArgs:
 
 
 @pulumi.input_type
-class AwsClusterBinaryAuthorizationArgs:
+calass AwsClusterBinaryAuthorizationArrgs:
     def __init__(__self__, *,
                  evaluation_mode: Optional[pulumi.Input[str]] = None):
         """
@@ -623,36 +623,36 @@ class AwsClusterBinaryAuthorizationArgs:
 
 
 @pulumi.input_type
-class AwsClusterControlPlaneArgs:
+calass AwsClusterControlPlaneArrgs:
     def __init__(__self__, *,
-                 aws_services_authentication: pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs'],
-                 config_encryption: pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs'],
-                 database_encryption: pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs'],
+                 aws_services_authentication: pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArrgs'],
+                 config_encryption: pulumi.Input['AwsClusterControlPlaneConfigEncryptionArrgs'],
+                 database_encryption: pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArrgs'],
                  iam_instance_profile: pulumi.Input[str],
                  subnet_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  version: pulumi.Input[str],
-                 instance_placement: Optional[pulumi.Input['AwsClusterControlPlaneInstancePlacementArgs']] = None,
+                 instance_placement: Optional[pulumi.Input['AwsClusterControlPlaneInstancePlacementArrgs']] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
-                 main_volume: Optional[pulumi.Input['AwsClusterControlPlaneMainVolumeArgs']] = None,
-                 proxy_config: Optional[pulumi.Input['AwsClusterControlPlaneProxyConfigArgs']] = None,
-                 root_volume: Optional[pulumi.Input['AwsClusterControlPlaneRootVolumeArgs']] = None,
+                 main_volume: Optional[pulumi.Input['AwsClusterControlPlaneMainVolumeArrgs']] = None,
+                 proxy_config: Optional[pulumi.Input['AwsClusterControlPlaneProxyConfigArrgs']] = None,
+                 root_volume: Optional[pulumi.Input['AwsClusterControlPlaneRootVolumeArrgs']] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ssh_config: Optional[pulumi.Input['AwsClusterControlPlaneSshConfigArgs']] = None,
+                 ssh_config: Optional[pulumi.Input['AwsClusterControlPlaneSshConfigArrgs']] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs'] aws_services_authentication: Authentication configuration for management of AWS resources.
-        :param pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs'] config_encryption: The ARN of the AWS KMS key used to encrypt cluster configuration.
-        :param pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs'] database_encryption: The ARN of the AWS KMS key used to encrypt cluster secrets.
+        :param pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArrgs'] aws_services_authentication: Authentication configuration for management of AWS resources.
+        :param pulumi.Input['AwsClusterControlPlaneConfigEncryptionArrgs'] config_encryption: The ARN of the AWS KMS key used to encrypt cluster configuration.
+        :param pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArrgs'] database_encryption: The ARN of the AWS KMS key used to encrypt cluster secrets.
         :param pulumi.Input[str] iam_instance_profile: The name of the AWS IAM instance pofile to assign to each control plane replica.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnet_ids: The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
         :param pulumi.Input[str] version: The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
-        :param pulumi.Input['AwsClusterControlPlaneInstancePlacementArgs'] instance_placement: (Beta only) Details of placement information for an instance.
+        :param pulumi.Input['AwsClusterControlPlaneInstancePlacementArrgs'] instance_placement: (Beta only) Details of placement information for an instance.
         :param pulumi.Input[str] instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
-        :param pulumi.Input['AwsClusterControlPlaneMainVolumeArgs'] main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
-        :param pulumi.Input['AwsClusterControlPlaneProxyConfigArgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
-        :param pulumi.Input['AwsClusterControlPlaneRootVolumeArgs'] root_volume: Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+        :param pulumi.Input['AwsClusterControlPlaneMainVolumeArrgs'] main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
+        :param pulumi.Input['AwsClusterControlPlaneProxyConfigArrgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
+        :param pulumi.Input['AwsClusterControlPlaneRootVolumeArrgs'] root_volume: Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Optional. The IDs of additional security groups to add to control plane replicas. The Anthos Multi-Cloud API will automatically create and manage security groups with the minimum rules needed for a functioning cluster.
-        :param pulumi.Input['AwsClusterControlPlaneSshConfigArgs'] ssh_config: Optional. SSH configuration for how to access the underlying control plane machines.
+        :param pulumi.Input['AwsClusterControlPlaneSshConfigArrgs'] ssh_config: Optional. SSH configuration for how to access the underlying control plane machines.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
         """
         pulumi.set(__self__, "aws_services_authentication", aws_services_authentication)
@@ -680,38 +680,38 @@ class AwsClusterControlPlaneArgs:
 
     @property
     @pulumi.getter(name="awsServicesAuthentication")
-    def aws_services_authentication(self) -> pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs']:
+    def aws_services_authentication(self) -> pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArrgs']:
         """
         Authentication configuration for management of AWS resources.
         """
         return pulumi.get(self, "aws_services_authentication")
 
     @aws_services_authentication.setter
-    def aws_services_authentication(self, value: pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArgs']):
+    def aws_services_authentication(self, value: pulumi.Input['AwsClusterControlPlaneAwsServicesAuthenticationArrgs']):
         pulumi.set(self, "aws_services_authentication", value)
 
     @property
     @pulumi.getter(name="configEncryption")
-    def config_encryption(self) -> pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs']:
+    def config_encryption(self) -> pulumi.Input['AwsClusterControlPlaneConfigEncryptionArrgs']:
         """
         The ARN of the AWS KMS key used to encrypt cluster configuration.
         """
         return pulumi.get(self, "config_encryption")
 
     @config_encryption.setter
-    def config_encryption(self, value: pulumi.Input['AwsClusterControlPlaneConfigEncryptionArgs']):
+    def config_encryption(self, value: pulumi.Input['AwsClusterControlPlaneConfigEncryptionArrgs']):
         pulumi.set(self, "config_encryption", value)
 
     @property
     @pulumi.getter(name="databaseEncryption")
-    def database_encryption(self) -> pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs']:
+    def database_encryption(self) -> pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArrgs']:
         """
         The ARN of the AWS KMS key used to encrypt cluster secrets.
         """
         return pulumi.get(self, "database_encryption")
 
     @database_encryption.setter
-    def database_encryption(self, value: pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArgs']):
+    def database_encryption(self, value: pulumi.Input['AwsClusterControlPlaneDatabaseEncryptionArrgs']):
         pulumi.set(self, "database_encryption", value)
 
     @property
@@ -752,14 +752,14 @@ class AwsClusterControlPlaneArgs:
 
     @property
     @pulumi.getter(name="instancePlacement")
-    def instance_placement(self) -> Optional[pulumi.Input['AwsClusterControlPlaneInstancePlacementArgs']]:
+    def instance_placement(self) -> Optional[pulumi.Input['AwsClusterControlPlaneInstancePlacementArrgs']]:
         """
         (Beta only) Details of placement information for an instance.
         """
         return pulumi.get(self, "instance_placement")
 
     @instance_placement.setter
-    def instance_placement(self, value: Optional[pulumi.Input['AwsClusterControlPlaneInstancePlacementArgs']]):
+    def instance_placement(self, value: Optional[pulumi.Input['AwsClusterControlPlaneInstancePlacementArrgs']]):
         pulumi.set(self, "instance_placement", value)
 
     @property
@@ -776,38 +776,38 @@ class AwsClusterControlPlaneArgs:
 
     @property
     @pulumi.getter(name="mainVolume")
-    def main_volume(self) -> Optional[pulumi.Input['AwsClusterControlPlaneMainVolumeArgs']]:
+    def main_volume(self) -> Optional[pulumi.Input['AwsClusterControlPlaneMainVolumeArrgs']]:
         """
         Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
         """
         return pulumi.get(self, "main_volume")
 
     @main_volume.setter
-    def main_volume(self, value: Optional[pulumi.Input['AwsClusterControlPlaneMainVolumeArgs']]):
+    def main_volume(self, value: Optional[pulumi.Input['AwsClusterControlPlaneMainVolumeArrgs']]):
         pulumi.set(self, "main_volume", value)
 
     @property
     @pulumi.getter(name="proxyConfig")
-    def proxy_config(self) -> Optional[pulumi.Input['AwsClusterControlPlaneProxyConfigArgs']]:
+    def proxy_config(self) -> Optional[pulumi.Input['AwsClusterControlPlaneProxyConfigArrgs']]:
         """
         Proxy configuration for outbound HTTP(S) traffic.
         """
         return pulumi.get(self, "proxy_config")
 
     @proxy_config.setter
-    def proxy_config(self, value: Optional[pulumi.Input['AwsClusterControlPlaneProxyConfigArgs']]):
+    def proxy_config(self, value: Optional[pulumi.Input['AwsClusterControlPlaneProxyConfigArrgs']]):
         pulumi.set(self, "proxy_config", value)
 
     @property
     @pulumi.getter(name="rootVolume")
-    def root_volume(self) -> Optional[pulumi.Input['AwsClusterControlPlaneRootVolumeArgs']]:
+    def root_volume(self) -> Optional[pulumi.Input['AwsClusterControlPlaneRootVolumeArrgs']]:
         """
         Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         """
         return pulumi.get(self, "root_volume")
 
     @root_volume.setter
-    def root_volume(self, value: Optional[pulumi.Input['AwsClusterControlPlaneRootVolumeArgs']]):
+    def root_volume(self, value: Optional[pulumi.Input['AwsClusterControlPlaneRootVolumeArrgs']]):
         pulumi.set(self, "root_volume", value)
 
     @property
@@ -824,14 +824,14 @@ class AwsClusterControlPlaneArgs:
 
     @property
     @pulumi.getter(name="sshConfig")
-    def ssh_config(self) -> Optional[pulumi.Input['AwsClusterControlPlaneSshConfigArgs']]:
+    def ssh_config(self) -> Optional[pulumi.Input['AwsClusterControlPlaneSshConfigArrgs']]:
         """
         Optional. SSH configuration for how to access the underlying control plane machines.
         """
         return pulumi.get(self, "ssh_config")
 
     @ssh_config.setter
-    def ssh_config(self, value: Optional[pulumi.Input['AwsClusterControlPlaneSshConfigArgs']]):
+    def ssh_config(self, value: Optional[pulumi.Input['AwsClusterControlPlaneSshConfigArrgs']]):
         pulumi.set(self, "ssh_config", value)
 
     @property
@@ -848,7 +848,7 @@ class AwsClusterControlPlaneArgs:
 
 
 @pulumi.input_type
-class AwsClusterControlPlaneAwsServicesAuthenticationArgs:
+calass AwsClusterControlPlaneAwsServicesAuthenticationArrgs:
     def __init__(__self__, *,
                  role_arn: pulumi.Input[str],
                  role_session_name: Optional[pulumi.Input[str]] = None):
@@ -886,7 +886,7 @@ class AwsClusterControlPlaneAwsServicesAuthenticationArgs:
 
 
 @pulumi.input_type
-class AwsClusterControlPlaneConfigEncryptionArgs:
+calass AwsClusterControlPlaneConfigEncryptionArrgs:
     def __init__(__self__, *,
                  kms_key_arn: pulumi.Input[str]):
         """
@@ -908,7 +908,7 @@ class AwsClusterControlPlaneConfigEncryptionArgs:
 
 
 @pulumi.input_type
-class AwsClusterControlPlaneDatabaseEncryptionArgs:
+calass AwsClusterControlPlaneDatabaseEncryptionArrgs:
     def __init__(__self__, *,
                  kms_key_arn: pulumi.Input[str]):
         """
@@ -930,7 +930,7 @@ class AwsClusterControlPlaneDatabaseEncryptionArgs:
 
 
 @pulumi.input_type
-class AwsClusterControlPlaneInstancePlacementArgs:
+calass AwsClusterControlPlaneInstancePlacementArrgs:
     def __init__(__self__, *,
                  tenancy: Optional[pulumi.Input[str]] = None):
         """
@@ -953,7 +953,7 @@ class AwsClusterControlPlaneInstancePlacementArgs:
 
 
 @pulumi.input_type
-class AwsClusterControlPlaneMainVolumeArgs:
+calass AwsClusterControlPlaneMainVolumeArrgs:
     def __init__(__self__, *,
                  iops: Optional[pulumi.Input[int]] = None,
                  kms_key_arn: Optional[pulumi.Input[str]] = None,
@@ -1040,7 +1040,7 @@ class AwsClusterControlPlaneMainVolumeArgs:
 
 
 @pulumi.input_type
-class AwsClusterControlPlaneProxyConfigArgs:
+calass AwsClusterControlPlaneProxyConfigArrgs:
     def __init__(__self__, *,
                  secret_arn: pulumi.Input[str],
                  secret_version: pulumi.Input[str]):
@@ -1077,7 +1077,7 @@ class AwsClusterControlPlaneProxyConfigArgs:
 
 
 @pulumi.input_type
-class AwsClusterControlPlaneRootVolumeArgs:
+calass AwsClusterControlPlaneRootVolumeArrgs:
     def __init__(__self__, *,
                  iops: Optional[pulumi.Input[int]] = None,
                  kms_key_arn: Optional[pulumi.Input[str]] = None,
@@ -1164,7 +1164,7 @@ class AwsClusterControlPlaneRootVolumeArgs:
 
 
 @pulumi.input_type
-class AwsClusterControlPlaneSshConfigArgs:
+calass AwsClusterControlPlaneSshConfigArrgs:
     def __init__(__self__, *,
                  ec2_key_pair: pulumi.Input[str]):
         """
@@ -1186,7 +1186,7 @@ class AwsClusterControlPlaneSshConfigArgs:
 
 
 @pulumi.input_type
-class AwsClusterFleetArgs:
+calass AwsClusterFleetArrgs:
     def __init__(__self__, *,
                  membership: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -1225,30 +1225,30 @@ class AwsClusterFleetArgs:
 
 
 @pulumi.input_type
-class AwsClusterLoggingConfigArgs:
+calass AwsClusterLoggingConfigArrgs:
     def __init__(__self__, *,
-                 component_config: Optional[pulumi.Input['AwsClusterLoggingConfigComponentConfigArgs']] = None):
+                 component_config: Optional[pulumi.Input['AwsClusterLoggingConfigComponentConfigArrgs']] = None):
         """
-        :param pulumi.Input['AwsClusterLoggingConfigComponentConfigArgs'] component_config: Configuration of the logging components.
+        :param pulumi.Input['AwsClusterLoggingConfigComponentConfigArrgs'] component_config: Configuration of the logging components.
         """
         if component_config is not None:
             pulumi.set(__self__, "component_config", component_config)
 
     @property
     @pulumi.getter(name="componentConfig")
-    def component_config(self) -> Optional[pulumi.Input['AwsClusterLoggingConfigComponentConfigArgs']]:
+    def component_config(self) -> Optional[pulumi.Input['AwsClusterLoggingConfigComponentConfigArrgs']]:
         """
         Configuration of the logging components.
         """
         return pulumi.get(self, "component_config")
 
     @component_config.setter
-    def component_config(self, value: Optional[pulumi.Input['AwsClusterLoggingConfigComponentConfigArgs']]):
+    def component_config(self, value: Optional[pulumi.Input['AwsClusterLoggingConfigComponentConfigArrgs']]):
         pulumi.set(self, "component_config", value)
 
 
 @pulumi.input_type
-class AwsClusterLoggingConfigComponentConfigArgs:
+calass AwsClusterLoggingConfigComponentConfigArrgs:
     def __init__(__self__, *,
                  enable_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -1271,7 +1271,7 @@ class AwsClusterLoggingConfigComponentConfigArgs:
 
 
 @pulumi.input_type
-class AwsClusterNetworkingArgs:
+calass AwsClusterNetworkingArrgs:
     def __init__(__self__, *,
                  pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
                  service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -1343,7 +1343,7 @@ class AwsClusterNetworkingArgs:
 
 
 @pulumi.input_type
-class AwsClusterWorkloadIdentityConfigArgs:
+calass AwsClusterWorkloadIdentityConfigArrgs:
     def __init__(__self__, *,
                  identity_provider: Optional[pulumi.Input[str]] = None,
                  issuer_uri: Optional[pulumi.Input[str]] = None,
@@ -1384,7 +1384,7 @@ class AwsClusterWorkloadIdentityConfigArgs:
 
 
 @pulumi.input_type
-class AwsNodePoolAutoscalingArgs:
+calass AwsNodePoolAutoscalingArrgs:
     def __init__(__self__, *,
                  max_node_count: pulumi.Input[int],
                  min_node_count: pulumi.Input[int]):
@@ -1421,37 +1421,37 @@ class AwsNodePoolAutoscalingArgs:
 
 
 @pulumi.input_type
-class AwsNodePoolConfigArgs:
+calass AwsNodePoolConfigArrgs:
     def __init__(__self__, *,
-                 config_encryption: pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs'],
+                 config_encryption: pulumi.Input['AwsNodePoolConfigConfigEncryptionArrgs'],
                  iam_instance_profile: pulumi.Input[str],
-                 autoscaling_metrics_collection: Optional[pulumi.Input['AwsNodePoolConfigAutoscalingMetricsCollectionArgs']] = None,
+                 autoscaling_metrics_collection: Optional[pulumi.Input['AwsNodePoolConfigAutoscalingMetricsCollectionArrgs']] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
-                 instance_placement: Optional[pulumi.Input['AwsNodePoolConfigInstancePlacementArgs']] = None,
+                 instance_placement: Optional[pulumi.Input['AwsNodePoolConfigInstancePlacementArrgs']] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 proxy_config: Optional[pulumi.Input['AwsNodePoolConfigProxyConfigArgs']] = None,
-                 root_volume: Optional[pulumi.Input['AwsNodePoolConfigRootVolumeArgs']] = None,
+                 proxy_config: Optional[pulumi.Input['AwsNodePoolConfigProxyConfigArrgs']] = None,
+                 root_volume: Optional[pulumi.Input['AwsNodePoolConfigRootVolumeArrgs']] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 spot_config: Optional[pulumi.Input['AwsNodePoolConfigSpotConfigArgs']] = None,
-                 ssh_config: Optional[pulumi.Input['AwsNodePoolConfigSshConfigArgs']] = None,
+                 spot_config: Optional[pulumi.Input['AwsNodePoolConfigSpotConfigArrgs']] = None,
+                 ssh_config: Optional[pulumi.Input['AwsNodePoolConfigSshConfigArrgs']] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArrgs']]]] = None):
         """
-        :param pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs'] config_encryption: The ARN of the AWS KMS key used to encrypt node pool configuration.
+        :param pulumi.Input['AwsNodePoolConfigConfigEncryptionArrgs'] config_encryption: The ARN of the AWS KMS key used to encrypt node pool configuration.
         :param pulumi.Input[str] iam_instance_profile: The name of the AWS IAM role assigned to nodes in the pool.
-        :param pulumi.Input['AwsNodePoolConfigAutoscalingMetricsCollectionArgs'] autoscaling_metrics_collection: Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
+        :param pulumi.Input['AwsNodePoolConfigAutoscalingMetricsCollectionArrgs'] autoscaling_metrics_collection: Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
         :param pulumi.Input[str] image_type: (Beta only) The OS image type to use on node pool instances.
-        :param pulumi.Input['AwsNodePoolConfigInstancePlacementArgs'] instance_placement: (Beta only) Details of placement information for an instance.
+        :param pulumi.Input['AwsNodePoolConfigInstancePlacementArrgs'] instance_placement: (Beta only) Details of placement information for an instance.
         :param pulumi.Input[str] instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input['AwsNodePoolConfigProxyConfigArgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
-        :param pulumi.Input['AwsNodePoolConfigRootVolumeArgs'] root_volume: Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
+        :param pulumi.Input['AwsNodePoolConfigProxyConfigArrgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
+        :param pulumi.Input['AwsNodePoolConfigRootVolumeArrgs'] root_volume: Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
-        :param pulumi.Input['AwsNodePoolConfigSpotConfigArgs'] spot_config: (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
-        :param pulumi.Input['AwsNodePoolConfigSshConfigArgs'] ssh_config: Optional. The SSH configuration.
+        :param pulumi.Input['AwsNodePoolConfigSpotConfigArrgs'] spot_config: (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+        :param pulumi.Input['AwsNodePoolConfigSshConfigArrgs'] ssh_config: Optional. The SSH configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
-        :param pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArgs']]] taints: Optional. The initial taints assigned to nodes of this node pool.
+        :param pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArrgs']]] taints: Optional. The initial taints assigned to nodes of this node pool.
         """
         pulumi.set(__self__, "config_encryption", config_encryption)
         pulumi.set(__self__, "iam_instance_profile", iam_instance_profile)
@@ -1482,14 +1482,14 @@ class AwsNodePoolConfigArgs:
 
     @property
     @pulumi.getter(name="configEncryption")
-    def config_encryption(self) -> pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs']:
+    def config_encryption(self) -> pulumi.Input['AwsNodePoolConfigConfigEncryptionArrgs']:
         """
         The ARN of the AWS KMS key used to encrypt node pool configuration.
         """
         return pulumi.get(self, "config_encryption")
 
     @config_encryption.setter
-    def config_encryption(self, value: pulumi.Input['AwsNodePoolConfigConfigEncryptionArgs']):
+    def config_encryption(self, value: pulumi.Input['AwsNodePoolConfigConfigEncryptionArrgs']):
         pulumi.set(self, "config_encryption", value)
 
     @property
@@ -1506,14 +1506,14 @@ class AwsNodePoolConfigArgs:
 
     @property
     @pulumi.getter(name="autoscalingMetricsCollection")
-    def autoscaling_metrics_collection(self) -> Optional[pulumi.Input['AwsNodePoolConfigAutoscalingMetricsCollectionArgs']]:
+    def autoscaling_metrics_collection(self) -> Optional[pulumi.Input['AwsNodePoolConfigAutoscalingMetricsCollectionArrgs']]:
         """
         Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
         """
         return pulumi.get(self, "autoscaling_metrics_collection")
 
     @autoscaling_metrics_collection.setter
-    def autoscaling_metrics_collection(self, value: Optional[pulumi.Input['AwsNodePoolConfigAutoscalingMetricsCollectionArgs']]):
+    def autoscaling_metrics_collection(self, value: Optional[pulumi.Input['AwsNodePoolConfigAutoscalingMetricsCollectionArrgs']]):
         pulumi.set(self, "autoscaling_metrics_collection", value)
 
     @property
@@ -1530,14 +1530,14 @@ class AwsNodePoolConfigArgs:
 
     @property
     @pulumi.getter(name="instancePlacement")
-    def instance_placement(self) -> Optional[pulumi.Input['AwsNodePoolConfigInstancePlacementArgs']]:
+    def instance_placement(self) -> Optional[pulumi.Input['AwsNodePoolConfigInstancePlacementArrgs']]:
         """
         (Beta only) Details of placement information for an instance.
         """
         return pulumi.get(self, "instance_placement")
 
     @instance_placement.setter
-    def instance_placement(self, value: Optional[pulumi.Input['AwsNodePoolConfigInstancePlacementArgs']]):
+    def instance_placement(self, value: Optional[pulumi.Input['AwsNodePoolConfigInstancePlacementArrgs']]):
         pulumi.set(self, "instance_placement", value)
 
     @property
@@ -1566,26 +1566,26 @@ class AwsNodePoolConfigArgs:
 
     @property
     @pulumi.getter(name="proxyConfig")
-    def proxy_config(self) -> Optional[pulumi.Input['AwsNodePoolConfigProxyConfigArgs']]:
+    def proxy_config(self) -> Optional[pulumi.Input['AwsNodePoolConfigProxyConfigArrgs']]:
         """
         Proxy configuration for outbound HTTP(S) traffic.
         """
         return pulumi.get(self, "proxy_config")
 
     @proxy_config.setter
-    def proxy_config(self, value: Optional[pulumi.Input['AwsNodePoolConfigProxyConfigArgs']]):
+    def proxy_config(self, value: Optional[pulumi.Input['AwsNodePoolConfigProxyConfigArrgs']]):
         pulumi.set(self, "proxy_config", value)
 
     @property
     @pulumi.getter(name="rootVolume")
-    def root_volume(self) -> Optional[pulumi.Input['AwsNodePoolConfigRootVolumeArgs']]:
+    def root_volume(self) -> Optional[pulumi.Input['AwsNodePoolConfigRootVolumeArrgs']]:
         """
         Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         """
         return pulumi.get(self, "root_volume")
 
     @root_volume.setter
-    def root_volume(self, value: Optional[pulumi.Input['AwsNodePoolConfigRootVolumeArgs']]):
+    def root_volume(self, value: Optional[pulumi.Input['AwsNodePoolConfigRootVolumeArrgs']]):
         pulumi.set(self, "root_volume", value)
 
     @property
@@ -1602,26 +1602,26 @@ class AwsNodePoolConfigArgs:
 
     @property
     @pulumi.getter(name="spotConfig")
-    def spot_config(self) -> Optional[pulumi.Input['AwsNodePoolConfigSpotConfigArgs']]:
+    def spot_config(self) -> Optional[pulumi.Input['AwsNodePoolConfigSpotConfigArrgs']]:
         """
         (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
         """
         return pulumi.get(self, "spot_config")
 
     @spot_config.setter
-    def spot_config(self, value: Optional[pulumi.Input['AwsNodePoolConfigSpotConfigArgs']]):
+    def spot_config(self, value: Optional[pulumi.Input['AwsNodePoolConfigSpotConfigArrgs']]):
         pulumi.set(self, "spot_config", value)
 
     @property
     @pulumi.getter(name="sshConfig")
-    def ssh_config(self) -> Optional[pulumi.Input['AwsNodePoolConfigSshConfigArgs']]:
+    def ssh_config(self) -> Optional[pulumi.Input['AwsNodePoolConfigSshConfigArrgs']]:
         """
         Optional. The SSH configuration.
         """
         return pulumi.get(self, "ssh_config")
 
     @ssh_config.setter
-    def ssh_config(self, value: Optional[pulumi.Input['AwsNodePoolConfigSshConfigArgs']]):
+    def ssh_config(self, value: Optional[pulumi.Input['AwsNodePoolConfigSshConfigArrgs']]):
         pulumi.set(self, "ssh_config", value)
 
     @property
@@ -1638,19 +1638,19 @@ class AwsNodePoolConfigArgs:
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArgs']]]]:
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArrgs']]]]:
         """
         Optional. The initial taints assigned to nodes of this node pool.
         """
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArgs']]]]):
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsNodePoolConfigTaintArrgs']]]]):
         pulumi.set(self, "taints", value)
 
 
 @pulumi.input_type
-class AwsNodePoolConfigAutoscalingMetricsCollectionArgs:
+calass AwsNodePoolConfigAutoscalingMetricsCollectionArrgs:
     def __init__(__self__, *,
                  granularity: pulumi.Input[str],
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -1688,7 +1688,7 @@ class AwsNodePoolConfigAutoscalingMetricsCollectionArgs:
 
 
 @pulumi.input_type
-class AwsNodePoolConfigConfigEncryptionArgs:
+calass AwsNodePoolConfigConfigEncryptionArrgs:
     def __init__(__self__, *,
                  kms_key_arn: pulumi.Input[str]):
         """
@@ -1710,7 +1710,7 @@ class AwsNodePoolConfigConfigEncryptionArgs:
 
 
 @pulumi.input_type
-class AwsNodePoolConfigInstancePlacementArgs:
+calass AwsNodePoolConfigInstancePlacementArrgs:
     def __init__(__self__, *,
                  tenancy: Optional[pulumi.Input[str]] = None):
         """
@@ -1733,7 +1733,7 @@ class AwsNodePoolConfigInstancePlacementArgs:
 
 
 @pulumi.input_type
-class AwsNodePoolConfigProxyConfigArgs:
+calass AwsNodePoolConfigProxyConfigArrgs:
     def __init__(__self__, *,
                  secret_arn: pulumi.Input[str],
                  secret_version: pulumi.Input[str]):
@@ -1770,7 +1770,7 @@ class AwsNodePoolConfigProxyConfigArgs:
 
 
 @pulumi.input_type
-class AwsNodePoolConfigRootVolumeArgs:
+calass AwsNodePoolConfigRootVolumeArrgs:
     def __init__(__self__, *,
                  iops: Optional[pulumi.Input[int]] = None,
                  kms_key_arn: Optional[pulumi.Input[str]] = None,
@@ -1857,7 +1857,7 @@ class AwsNodePoolConfigRootVolumeArgs:
 
 
 @pulumi.input_type
-class AwsNodePoolConfigSpotConfigArgs:
+calass AwsNodePoolConfigSpotConfigArrgs:
     def __init__(__self__, *,
                  instance_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -1879,7 +1879,7 @@ class AwsNodePoolConfigSpotConfigArgs:
 
 
 @pulumi.input_type
-class AwsNodePoolConfigSshConfigArgs:
+calass AwsNodePoolConfigSshConfigArrgs:
     def __init__(__self__, *,
                  ec2_key_pair: pulumi.Input[str]):
         """
@@ -1901,7 +1901,7 @@ class AwsNodePoolConfigSshConfigArgs:
 
 
 @pulumi.input_type
-class AwsNodePoolConfigTaintArgs:
+calass AwsNodePoolConfigTaintArrgs:
     def __init__(__self__, *,
                  effect: pulumi.Input[str],
                  key: pulumi.Input[str],
@@ -1953,7 +1953,7 @@ class AwsNodePoolConfigTaintArgs:
 
 
 @pulumi.input_type
-class AwsNodePoolManagementArgs:
+calass AwsNodePoolManagementArrgs:
     def __init__(__self__, *,
                  auto_repair: Optional[pulumi.Input[bool]] = None):
         """
@@ -1976,7 +1976,7 @@ class AwsNodePoolManagementArgs:
 
 
 @pulumi.input_type
-class AwsNodePoolMaxPodsConstraintArgs:
+calass AwsNodePoolMaxPodsConstraintArrgs:
     def __init__(__self__, *,
                  max_pods_per_node: pulumi.Input[int]):
         """
@@ -2002,30 +2002,30 @@ class AwsNodePoolMaxPodsConstraintArgs:
 
 
 @pulumi.input_type
-class AwsNodePoolUpdateSettingsArgs:
+calass AwsNodePoolUpdateSettingsArrgs:
     def __init__(__self__, *,
-                 surge_settings: Optional[pulumi.Input['AwsNodePoolUpdateSettingsSurgeSettingsArgs']] = None):
+                 surge_settings: Optional[pulumi.Input['AwsNodePoolUpdateSettingsSurgeSettingsArrgs']] = None):
         """
-        :param pulumi.Input['AwsNodePoolUpdateSettingsSurgeSettingsArgs'] surge_settings: Optional. Settings for surge update.
+        :param pulumi.Input['AwsNodePoolUpdateSettingsSurgeSettingsArrgs'] surge_settings: Optional. Settings for surge update.
         """
         if surge_settings is not None:
             pulumi.set(__self__, "surge_settings", surge_settings)
 
     @property
     @pulumi.getter(name="surgeSettings")
-    def surge_settings(self) -> Optional[pulumi.Input['AwsNodePoolUpdateSettingsSurgeSettingsArgs']]:
+    def surge_settings(self) -> Optional[pulumi.Input['AwsNodePoolUpdateSettingsSurgeSettingsArrgs']]:
         """
         Optional. Settings for surge update.
         """
         return pulumi.get(self, "surge_settings")
 
     @surge_settings.setter
-    def surge_settings(self, value: Optional[pulumi.Input['AwsNodePoolUpdateSettingsSurgeSettingsArgs']]):
+    def surge_settings(self, value: Optional[pulumi.Input['AwsNodePoolUpdateSettingsSurgeSettingsArrgs']]):
         pulumi.set(self, "surge_settings", value)
 
 
 @pulumi.input_type
-class AwsNodePoolUpdateSettingsSurgeSettingsArgs:
+calass AwsNodePoolUpdateSettingsSurgeSettingsArrgs:
     def __init__(__self__, *,
                  max_surge: Optional[pulumi.Input[int]] = None,
                  max_unavailable: Optional[pulumi.Input[int]] = None):
@@ -2064,29 +2064,29 @@ class AwsNodePoolUpdateSettingsSurgeSettingsArgs:
 
 
 @pulumi.input_type
-class AzureClusterAuthorizationArgs:
+calass AzureClusterAuthorizationArrgs:
     def __init__(__self__, *,
-                 admin_users: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]):
+                 admin_users: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]] admin_users: Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArrgs']]] admin_users: Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         pulumi.set(__self__, "admin_users", admin_users)
 
     @property
     @pulumi.getter(name="adminUsers")
-    def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]:
+    def admin_users(self) -> pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArrgs']]]:
         """
         Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
         """
         return pulumi.get(self, "admin_users")
 
     @admin_users.setter
-    def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArgs']]]):
+    def admin_users(self, value: pulumi.Input[Sequence[pulumi.Input['AzureClusterAuthorizationAdminUserArrgs']]]):
         pulumi.set(self, "admin_users", value)
 
 
 @pulumi.input_type
-class AzureClusterAuthorizationAdminUserArgs:
+calass AzureClusterAuthorizationAdminUserArrgs:
     def __init__(__self__, *,
                  username: pulumi.Input[str]):
         """
@@ -2108,7 +2108,7 @@ class AzureClusterAuthorizationAdminUserArgs:
 
 
 @pulumi.input_type
-class AzureClusterAzureServicesAuthenticationArgs:
+calass AzureClusterAzureServicesAuthenticationArrgs:
     def __init__(__self__, *,
                  application_id: pulumi.Input[str],
                  tenant_id: pulumi.Input[str]):
@@ -2145,27 +2145,27 @@ class AzureClusterAzureServicesAuthenticationArgs:
 
 
 @pulumi.input_type
-class AzureClusterControlPlaneArgs:
+calass AzureClusterControlPlaneArrgs:
     def __init__(__self__, *,
-                 ssh_config: pulumi.Input['AzureClusterControlPlaneSshConfigArgs'],
+                 ssh_config: pulumi.Input['AzureClusterControlPlaneSshConfigArrgs'],
                  subnet_id: pulumi.Input[str],
                  version: pulumi.Input[str],
-                 database_encryption: Optional[pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArgs']] = None,
-                 main_volume: Optional[pulumi.Input['AzureClusterControlPlaneMainVolumeArgs']] = None,
-                 proxy_config: Optional[pulumi.Input['AzureClusterControlPlaneProxyConfigArgs']] = None,
-                 replica_placements: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArgs']]]] = None,
-                 root_volume: Optional[pulumi.Input['AzureClusterControlPlaneRootVolumeArgs']] = None,
+                 database_encryption: Optional[pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArrgs']] = None,
+                 main_volume: Optional[pulumi.Input['AzureClusterControlPlaneMainVolumeArrgs']] = None,
+                 proxy_config: Optional[pulumi.Input['AzureClusterControlPlaneProxyConfigArrgs']] = None,
+                 replica_placements: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArrgs']]]] = None,
+                 root_volume: Optional[pulumi.Input['AzureClusterControlPlaneRootVolumeArrgs']] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vm_size: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['AzureClusterControlPlaneSshConfigArgs'] ssh_config: SSH configuration for how to access the underlying control plane machines.
+        :param pulumi.Input['AzureClusterControlPlaneSshConfigArrgs'] ssh_config: SSH configuration for how to access the underlying control plane machines.
         :param pulumi.Input[str] subnet_id: The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
         :param pulumi.Input[str] version: The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
-        :param pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArgs'] database_encryption: Optional. Configuration related to application-layer secrets encryption.
-        :param pulumi.Input['AzureClusterControlPlaneMainVolumeArgs'] main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
-        :param pulumi.Input['AzureClusterControlPlaneProxyConfigArgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
-        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArgs']]] replica_placements: Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
-        :param pulumi.Input['AzureClusterControlPlaneRootVolumeArgs'] root_volume: Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
+        :param pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArrgs'] database_encryption: Optional. Configuration related to application-layer secrets encryption.
+        :param pulumi.Input['AzureClusterControlPlaneMainVolumeArrgs'] main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
+        :param pulumi.Input['AzureClusterControlPlaneProxyConfigArrgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
+        :param pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArrgs']]] replica_placements: Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
+        :param pulumi.Input['AzureClusterControlPlaneRootVolumeArrgs'] root_volume: Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. A set of tags to apply to all underlying control plane Azure resources.
         :param pulumi.Input[str] vm_size: Optional. The Azure VM size name. Example: `Standard_DS2_v2`. For available VM sizes, see https://docs.microsoft.com/en-us/azure/virtual-machines/vm-naming-conventions. When unspecified, it defaults to `Standard_DS2_v2`.
         """
@@ -2189,14 +2189,14 @@ class AzureClusterControlPlaneArgs:
 
     @property
     @pulumi.getter(name="sshConfig")
-    def ssh_config(self) -> pulumi.Input['AzureClusterControlPlaneSshConfigArgs']:
+    def ssh_config(self) -> pulumi.Input['AzureClusterControlPlaneSshConfigArrgs']:
         """
         SSH configuration for how to access the underlying control plane machines.
         """
         return pulumi.get(self, "ssh_config")
 
     @ssh_config.setter
-    def ssh_config(self, value: pulumi.Input['AzureClusterControlPlaneSshConfigArgs']):
+    def ssh_config(self, value: pulumi.Input['AzureClusterControlPlaneSshConfigArrgs']):
         pulumi.set(self, "ssh_config", value)
 
     @property
@@ -2225,62 +2225,62 @@ class AzureClusterControlPlaneArgs:
 
     @property
     @pulumi.getter(name="databaseEncryption")
-    def database_encryption(self) -> Optional[pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArgs']]:
+    def database_encryption(self) -> Optional[pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArrgs']]:
         """
         Optional. Configuration related to application-layer secrets encryption.
         """
         return pulumi.get(self, "database_encryption")
 
     @database_encryption.setter
-    def database_encryption(self, value: Optional[pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArgs']]):
+    def database_encryption(self, value: Optional[pulumi.Input['AzureClusterControlPlaneDatabaseEncryptionArrgs']]):
         pulumi.set(self, "database_encryption", value)
 
     @property
     @pulumi.getter(name="mainVolume")
-    def main_volume(self) -> Optional[pulumi.Input['AzureClusterControlPlaneMainVolumeArgs']]:
+    def main_volume(self) -> Optional[pulumi.Input['AzureClusterControlPlaneMainVolumeArrgs']]:
         """
         Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
         """
         return pulumi.get(self, "main_volume")
 
     @main_volume.setter
-    def main_volume(self, value: Optional[pulumi.Input['AzureClusterControlPlaneMainVolumeArgs']]):
+    def main_volume(self, value: Optional[pulumi.Input['AzureClusterControlPlaneMainVolumeArrgs']]):
         pulumi.set(self, "main_volume", value)
 
     @property
     @pulumi.getter(name="proxyConfig")
-    def proxy_config(self) -> Optional[pulumi.Input['AzureClusterControlPlaneProxyConfigArgs']]:
+    def proxy_config(self) -> Optional[pulumi.Input['AzureClusterControlPlaneProxyConfigArrgs']]:
         """
         Proxy configuration for outbound HTTP(S) traffic.
         """
         return pulumi.get(self, "proxy_config")
 
     @proxy_config.setter
-    def proxy_config(self, value: Optional[pulumi.Input['AzureClusterControlPlaneProxyConfigArgs']]):
+    def proxy_config(self, value: Optional[pulumi.Input['AzureClusterControlPlaneProxyConfigArrgs']]):
         pulumi.set(self, "proxy_config", value)
 
     @property
     @pulumi.getter(name="replicaPlacements")
-    def replica_placements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArgs']]]]:
+    def replica_placements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArrgs']]]]:
         """
         Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
         """
         return pulumi.get(self, "replica_placements")
 
     @replica_placements.setter
-    def replica_placements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArgs']]]]):
+    def replica_placements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArrgs']]]]):
         pulumi.set(self, "replica_placements", value)
 
     @property
     @pulumi.getter(name="rootVolume")
-    def root_volume(self) -> Optional[pulumi.Input['AzureClusterControlPlaneRootVolumeArgs']]:
+    def root_volume(self) -> Optional[pulumi.Input['AzureClusterControlPlaneRootVolumeArrgs']]:
         """
         Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
         """
         return pulumi.get(self, "root_volume")
 
     @root_volume.setter
-    def root_volume(self, value: Optional[pulumi.Input['AzureClusterControlPlaneRootVolumeArgs']]):
+    def root_volume(self, value: Optional[pulumi.Input['AzureClusterControlPlaneRootVolumeArrgs']]):
         pulumi.set(self, "root_volume", value)
 
     @property
@@ -2309,7 +2309,7 @@ class AzureClusterControlPlaneArgs:
 
 
 @pulumi.input_type
-class AzureClusterControlPlaneDatabaseEncryptionArgs:
+calass AzureClusterControlPlaneDatabaseEncryptionArrgs:
     def __init__(__self__, *,
                  key_id: pulumi.Input[str]):
         """
@@ -2331,7 +2331,7 @@ class AzureClusterControlPlaneDatabaseEncryptionArgs:
 
 
 @pulumi.input_type
-class AzureClusterControlPlaneMainVolumeArgs:
+calass AzureClusterControlPlaneMainVolumeArrgs:
     def __init__(__self__, *,
                  size_gib: Optional[pulumi.Input[int]] = None):
         """
@@ -2354,7 +2354,7 @@ class AzureClusterControlPlaneMainVolumeArgs:
 
 
 @pulumi.input_type
-class AzureClusterControlPlaneProxyConfigArgs:
+calass AzureClusterControlPlaneProxyConfigArrgs:
     def __init__(__self__, *,
                  resource_group_id: pulumi.Input[str],
                  secret_id: pulumi.Input[str]):
@@ -2391,7 +2391,7 @@ class AzureClusterControlPlaneProxyConfigArgs:
 
 
 @pulumi.input_type
-class AzureClusterControlPlaneReplicaPlacementArgs:
+calass AzureClusterControlPlaneReplicaPlacementArrgs:
     def __init__(__self__, *,
                  azure_availability_zone: pulumi.Input[str],
                  subnet_id: pulumi.Input[str]):
@@ -2428,7 +2428,7 @@ class AzureClusterControlPlaneReplicaPlacementArgs:
 
 
 @pulumi.input_type
-class AzureClusterControlPlaneRootVolumeArgs:
+calass AzureClusterControlPlaneRootVolumeArrgs:
     def __init__(__self__, *,
                  size_gib: Optional[pulumi.Input[int]] = None):
         """
@@ -2451,7 +2451,7 @@ class AzureClusterControlPlaneRootVolumeArgs:
 
 
 @pulumi.input_type
-class AzureClusterControlPlaneSshConfigArgs:
+calass AzureClusterControlPlaneSshConfigArrgs:
     def __init__(__self__, *,
                  authorized_key: pulumi.Input[str]):
         """
@@ -2473,7 +2473,7 @@ class AzureClusterControlPlaneSshConfigArgs:
 
 
 @pulumi.input_type
-class AzureClusterFleetArgs:
+calass AzureClusterFleetArrgs:
     def __init__(__self__, *,
                  membership: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -2512,30 +2512,30 @@ class AzureClusterFleetArgs:
 
 
 @pulumi.input_type
-class AzureClusterLoggingConfigArgs:
+calass AzureClusterLoggingConfigArrgs:
     def __init__(__self__, *,
-                 component_config: Optional[pulumi.Input['AzureClusterLoggingConfigComponentConfigArgs']] = None):
+                 component_config: Optional[pulumi.Input['AzureClusterLoggingConfigComponentConfigArrgs']] = None):
         """
-        :param pulumi.Input['AzureClusterLoggingConfigComponentConfigArgs'] component_config: Configuration of the logging components.
+        :param pulumi.Input['AzureClusterLoggingConfigComponentConfigArrgs'] component_config: Configuration of the logging components.
         """
         if component_config is not None:
             pulumi.set(__self__, "component_config", component_config)
 
     @property
     @pulumi.getter(name="componentConfig")
-    def component_config(self) -> Optional[pulumi.Input['AzureClusterLoggingConfigComponentConfigArgs']]:
+    def component_config(self) -> Optional[pulumi.Input['AzureClusterLoggingConfigComponentConfigArrgs']]:
         """
         Configuration of the logging components.
         """
         return pulumi.get(self, "component_config")
 
     @component_config.setter
-    def component_config(self, value: Optional[pulumi.Input['AzureClusterLoggingConfigComponentConfigArgs']]):
+    def component_config(self, value: Optional[pulumi.Input['AzureClusterLoggingConfigComponentConfigArrgs']]):
         pulumi.set(self, "component_config", value)
 
 
 @pulumi.input_type
-class AzureClusterLoggingConfigComponentConfigArgs:
+calass AzureClusterLoggingConfigComponentConfigArrgs:
     def __init__(__self__, *,
                  enable_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -2558,7 +2558,7 @@ class AzureClusterLoggingConfigComponentConfigArgs:
 
 
 @pulumi.input_type
-class AzureClusterNetworkingArgs:
+calass AzureClusterNetworkingArrgs:
     def __init__(__self__, *,
                  pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
                  service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -2614,7 +2614,7 @@ class AzureClusterNetworkingArgs:
 
 
 @pulumi.input_type
-class AzureClusterWorkloadIdentityConfigArgs:
+calass AzureClusterWorkloadIdentityConfigArrgs:
     def __init__(__self__, *,
                  identity_provider: Optional[pulumi.Input[str]] = None,
                  issuer_uri: Optional[pulumi.Input[str]] = None,
@@ -2655,7 +2655,7 @@ class AzureClusterWorkloadIdentityConfigArgs:
 
 
 @pulumi.input_type
-class AzureNodePoolAutoscalingArgs:
+calass AzureNodePoolAutoscalingArrgs:
     def __init__(__self__, *,
                  max_node_count: pulumi.Input[int],
                  min_node_count: pulumi.Input[int]):
@@ -2692,19 +2692,19 @@ class AzureNodePoolAutoscalingArgs:
 
 
 @pulumi.input_type
-class AzureNodePoolConfigArgs:
+calass AzureNodePoolConfigArrgs:
     def __init__(__self__, *,
-                 ssh_config: pulumi.Input['AzureNodePoolConfigSshConfigArgs'],
+                 ssh_config: pulumi.Input['AzureNodePoolConfigSshConfigArrgs'],
                  image_type: Optional[pulumi.Input[str]] = None,
-                 proxy_config: Optional[pulumi.Input['AzureNodePoolConfigProxyConfigArgs']] = None,
-                 root_volume: Optional[pulumi.Input['AzureNodePoolConfigRootVolumeArgs']] = None,
+                 proxy_config: Optional[pulumi.Input['AzureNodePoolConfigProxyConfigArrgs']] = None,
+                 root_volume: Optional[pulumi.Input['AzureNodePoolConfigRootVolumeArrgs']] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vm_size: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['AzureNodePoolConfigSshConfigArgs'] ssh_config: SSH configuration for how to access the node pool machines.
+        :param pulumi.Input['AzureNodePoolConfigSshConfigArrgs'] ssh_config: SSH configuration for how to access the node pool machines.
         :param pulumi.Input[str] image_type: (Beta only) The OS image type to use on node pool instances.
-        :param pulumi.Input['AzureNodePoolConfigProxyConfigArgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
-        :param pulumi.Input['AzureNodePoolConfigRootVolumeArgs'] root_volume: Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
+        :param pulumi.Input['AzureNodePoolConfigProxyConfigArrgs'] proxy_config: Proxy configuration for outbound HTTP(S) traffic.
+        :param pulumi.Input['AzureNodePoolConfigRootVolumeArrgs'] root_volume: Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
         :param pulumi.Input[str] vm_size: Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
         """
@@ -2722,14 +2722,14 @@ class AzureNodePoolConfigArgs:
 
     @property
     @pulumi.getter(name="sshConfig")
-    def ssh_config(self) -> pulumi.Input['AzureNodePoolConfigSshConfigArgs']:
+    def ssh_config(self) -> pulumi.Input['AzureNodePoolConfigSshConfigArrgs']:
         """
         SSH configuration for how to access the node pool machines.
         """
         return pulumi.get(self, "ssh_config")
 
     @ssh_config.setter
-    def ssh_config(self, value: pulumi.Input['AzureNodePoolConfigSshConfigArgs']):
+    def ssh_config(self, value: pulumi.Input['AzureNodePoolConfigSshConfigArrgs']):
         pulumi.set(self, "ssh_config", value)
 
     @property
@@ -2746,26 +2746,26 @@ class AzureNodePoolConfigArgs:
 
     @property
     @pulumi.getter(name="proxyConfig")
-    def proxy_config(self) -> Optional[pulumi.Input['AzureNodePoolConfigProxyConfigArgs']]:
+    def proxy_config(self) -> Optional[pulumi.Input['AzureNodePoolConfigProxyConfigArrgs']]:
         """
         Proxy configuration for outbound HTTP(S) traffic.
         """
         return pulumi.get(self, "proxy_config")
 
     @proxy_config.setter
-    def proxy_config(self, value: Optional[pulumi.Input['AzureNodePoolConfigProxyConfigArgs']]):
+    def proxy_config(self, value: Optional[pulumi.Input['AzureNodePoolConfigProxyConfigArrgs']]):
         pulumi.set(self, "proxy_config", value)
 
     @property
     @pulumi.getter(name="rootVolume")
-    def root_volume(self) -> Optional[pulumi.Input['AzureNodePoolConfigRootVolumeArgs']]:
+    def root_volume(self) -> Optional[pulumi.Input['AzureNodePoolConfigRootVolumeArrgs']]:
         """
         Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
         """
         return pulumi.get(self, "root_volume")
 
     @root_volume.setter
-    def root_volume(self, value: Optional[pulumi.Input['AzureNodePoolConfigRootVolumeArgs']]):
+    def root_volume(self, value: Optional[pulumi.Input['AzureNodePoolConfigRootVolumeArrgs']]):
         pulumi.set(self, "root_volume", value)
 
     @property
@@ -2794,7 +2794,7 @@ class AzureNodePoolConfigArgs:
 
 
 @pulumi.input_type
-class AzureNodePoolConfigProxyConfigArgs:
+calass AzureNodePoolConfigProxyConfigArrgs:
     def __init__(__self__, *,
                  resource_group_id: pulumi.Input[str],
                  secret_id: pulumi.Input[str]):
@@ -2831,7 +2831,7 @@ class AzureNodePoolConfigProxyConfigArgs:
 
 
 @pulumi.input_type
-class AzureNodePoolConfigRootVolumeArgs:
+calass AzureNodePoolConfigRootVolumeArrgs:
     def __init__(__self__, *,
                  size_gib: Optional[pulumi.Input[int]] = None):
         """
@@ -2854,7 +2854,7 @@ class AzureNodePoolConfigRootVolumeArgs:
 
 
 @pulumi.input_type
-class AzureNodePoolConfigSshConfigArgs:
+calass AzureNodePoolConfigSshConfigArrgs:
     def __init__(__self__, *,
                  authorized_key: pulumi.Input[str]):
         """
@@ -2876,7 +2876,7 @@ class AzureNodePoolConfigSshConfigArgs:
 
 
 @pulumi.input_type
-class AzureNodePoolManagementArgs:
+calass AzureNodePoolManagementArrgs:
     def __init__(__self__, *,
                  auto_repair: Optional[pulumi.Input[bool]] = None):
         """
@@ -2899,7 +2899,7 @@ class AzureNodePoolManagementArgs:
 
 
 @pulumi.input_type
-class AzureNodePoolMaxPodsConstraintArgs:
+calass AzureNodePoolMaxPodsConstraintArrgs:
     def __init__(__self__, *,
                  max_pods_per_node: pulumi.Input[int]):
         """
@@ -2925,23 +2925,23 @@ class AzureNodePoolMaxPodsConstraintArgs:
 
 
 @pulumi.input_type
-class ClusterAddonsConfigArgs:
+calass ClusterAddonsConfigArrgs:
     def __init__(__self__, *,
-                 cloudrun_config: Optional[pulumi.Input['ClusterAddonsConfigCloudrunConfigArgs']] = None,
-                 config_connector_config: Optional[pulumi.Input['ClusterAddonsConfigConfigConnectorConfigArgs']] = None,
-                 dns_cache_config: Optional[pulumi.Input['ClusterAddonsConfigDnsCacheConfigArgs']] = None,
-                 gce_persistent_disk_csi_driver_config: Optional[pulumi.Input['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs']] = None,
-                 gcp_filestore_csi_driver_config: Optional[pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs']] = None,
-                 gcs_fuse_csi_driver_config: Optional[pulumi.Input['ClusterAddonsConfigGcsFuseCsiDriverConfigArgs']] = None,
-                 gke_backup_agent_config: Optional[pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArgs']] = None,
-                 horizontal_pod_autoscaling: Optional[pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArgs']] = None,
-                 http_load_balancing: Optional[pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArgs']] = None,
-                 istio_config: Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArgs']] = None,
-                 kalm_config: Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArgs']] = None,
-                 network_policy_config: Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs']] = None):
+                 cloudrun_config: Optional[pulumi.Input['ClusterAddonsConfigCloudrunConfigArrgs']] = None,
+                 config_connector_config: Optional[pulumi.Input['ClusterAddonsConfigConfigConnectorConfigArrgs']] = None,
+                 dns_cache_config: Optional[pulumi.Input['ClusterAddonsConfigDnsCacheConfigArrgs']] = None,
+                 gce_persistent_disk_csi_driver_config: Optional[pulumi.Input['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrgs']] = None,
+                 gcp_filestore_csi_driver_config: Optional[pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArrgs']] = None,
+                 gcs_fuse_csi_driver_config: Optional[pulumi.Input['ClusterAddonsConfigGcsFuseCsiDriverConfigArrgs']] = None,
+                 gke_backup_agent_config: Optional[pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArrgs']] = None,
+                 horizontal_pod_autoscaling: Optional[pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArrgs']] = None,
+                 http_load_balancing: Optional[pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArrgs']] = None,
+                 istio_config: Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArrgs']] = None,
+                 kalm_config: Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArrgs']] = None,
+                 network_policy_config: Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArrgs']] = None):
         """
-        :param pulumi.Input['ClusterAddonsConfigCloudrunConfigArgs'] cloudrun_config: . Structure is documented below.
-        :param pulumi.Input['ClusterAddonsConfigConfigConnectorConfigArgs'] config_connector_config: .
+        :param pulumi.Input['ClusterAddonsConfigCloudrunConfigArrgs'] cloudrun_config: . Structure is documented below.
+        :param pulumi.Input['ClusterAddonsConfigConfigConnectorConfigArrgs'] config_connector_config: .
                The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
                
                
@@ -2951,39 +2951,39 @@ class ClusterAddonsConfigArgs:
                import pulumi
                ```
                <a name="nested_binary_authorization"></a>The `binary_authorization` block supports:
-        :param pulumi.Input['ClusterAddonsConfigDnsCacheConfigArgs'] dns_cache_config: .
+        :param pulumi.Input['ClusterAddonsConfigDnsCacheConfigArrgs'] dns_cache_config: .
                The status of the NodeLocal DNSCache addon. It is disabled by default.
                Set `enabled = true` to enable.
                
                **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
                All cluster nodes running GKE 1.15 and higher are recreated.**
-        :param pulumi.Input['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs'] gce_persistent_disk_csi_driver_config: .
+        :param pulumi.Input['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrgs'] gce_persistent_disk_csi_driver_config: .
                Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
                
                **Note:** The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
-        :param pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs'] gcp_filestore_csi_driver_config: The status of the Filestore CSI driver addon,
+        :param pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArrgs'] gcp_filestore_csi_driver_config: The status of the Filestore CSI driver addon,
                which allows the usage of filestore instance as volumes.
                It is disabled by default; set `enabled = true` to enable.
-        :param pulumi.Input['ClusterAddonsConfigGcsFuseCsiDriverConfigArgs'] gcs_fuse_csi_driver_config: The status of the GCSFuse CSI driver addon,
+        :param pulumi.Input['ClusterAddonsConfigGcsFuseCsiDriverConfigArrgs'] gcs_fuse_csi_driver_config: The status of the GCSFuse CSI driver addon,
                which allows the usage of a gcs bucket as volumes.
                It is disabled by default for Standard clusters; set `enabled = true` to enable.
                It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
                See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
-        :param pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArgs'] gke_backup_agent_config: .
+        :param pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArrgs'] gke_backup_agent_config: .
                The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
-        :param pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArgs'] horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
+        :param pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArrgs'] horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
                addon, which increases or decreases the number of replica pods a replication controller
                has based on the resource usage of the existing pods.
                It is enabled by default;
                set `disabled = true` to disable.
-        :param pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArgs'] http_load_balancing: The status of the HTTP (L7) load balancing
+        :param pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArrgs'] http_load_balancing: The status of the HTTP (L7) load balancing
                controller addon, which makes it easy to set up HTTP load balancers for services in a
                cluster. It is enabled by default; set `disabled = true` to disable.
-        :param pulumi.Input['ClusterAddonsConfigIstioConfigArgs'] istio_config: .
+        :param pulumi.Input['ClusterAddonsConfigIstioConfigArrgs'] istio_config: .
                Structure is documented below.
-        :param pulumi.Input['ClusterAddonsConfigKalmConfigArgs'] kalm_config: .
+        :param pulumi.Input['ClusterAddonsConfigKalmConfigArrgs'] kalm_config: .
                Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
-        :param pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs'] network_policy_config: Whether we should enable the network policy addon
+        :param pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArrgs'] network_policy_config: Whether we should enable the network policy addon
                for the master.  This must be enabled in order to enable network policy for the nodes.
                To enable this, you must also define a `network_policy` block,
                otherwise nothing will happen.
@@ -3017,19 +3017,19 @@ class ClusterAddonsConfigArgs:
 
     @property
     @pulumi.getter(name="cloudrunConfig")
-    def cloudrun_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigCloudrunConfigArgs']]:
+    def cloudrun_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigCloudrunConfigArrgs']]:
         """
         . Structure is documented below.
         """
         return pulumi.get(self, "cloudrun_config")
 
     @cloudrun_config.setter
-    def cloudrun_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigCloudrunConfigArgs']]):
+    def cloudrun_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigCloudrunConfigArrgs']]):
         pulumi.set(self, "cloudrun_config", value)
 
     @property
     @pulumi.getter(name="configConnectorConfig")
-    def config_connector_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigConfigConnectorConfigArgs']]:
+    def config_connector_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigConfigConnectorConfigArrgs']]:
         """
         .
         The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
@@ -3045,12 +3045,12 @@ class ClusterAddonsConfigArgs:
         return pulumi.get(self, "config_connector_config")
 
     @config_connector_config.setter
-    def config_connector_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigConfigConnectorConfigArgs']]):
+    def config_connector_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigConfigConnectorConfigArrgs']]):
         pulumi.set(self, "config_connector_config", value)
 
     @property
     @pulumi.getter(name="dnsCacheConfig")
-    def dns_cache_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigDnsCacheConfigArgs']]:
+    def dns_cache_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigDnsCacheConfigArrgs']]:
         """
         .
         The status of the NodeLocal DNSCache addon. It is disabled by default.
@@ -3062,12 +3062,12 @@ class ClusterAddonsConfigArgs:
         return pulumi.get(self, "dns_cache_config")
 
     @dns_cache_config.setter
-    def dns_cache_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigDnsCacheConfigArgs']]):
+    def dns_cache_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigDnsCacheConfigArrgs']]):
         pulumi.set(self, "dns_cache_config", value)
 
     @property
     @pulumi.getter(name="gcePersistentDiskCsiDriverConfig")
-    def gce_persistent_disk_csi_driver_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs']]:
+    def gce_persistent_disk_csi_driver_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrgs']]:
         """
         .
         Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
@@ -3077,12 +3077,12 @@ class ClusterAddonsConfigArgs:
         return pulumi.get(self, "gce_persistent_disk_csi_driver_config")
 
     @gce_persistent_disk_csi_driver_config.setter
-    def gce_persistent_disk_csi_driver_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs']]):
+    def gce_persistent_disk_csi_driver_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrgs']]):
         pulumi.set(self, "gce_persistent_disk_csi_driver_config", value)
 
     @property
     @pulumi.getter(name="gcpFilestoreCsiDriverConfig")
-    def gcp_filestore_csi_driver_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs']]:
+    def gcp_filestore_csi_driver_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArrgs']]:
         """
         The status of the Filestore CSI driver addon,
         which allows the usage of filestore instance as volumes.
@@ -3091,12 +3091,12 @@ class ClusterAddonsConfigArgs:
         return pulumi.get(self, "gcp_filestore_csi_driver_config")
 
     @gcp_filestore_csi_driver_config.setter
-    def gcp_filestore_csi_driver_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs']]):
+    def gcp_filestore_csi_driver_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArrgs']]):
         pulumi.set(self, "gcp_filestore_csi_driver_config", value)
 
     @property
     @pulumi.getter(name="gcsFuseCsiDriverConfig")
-    def gcs_fuse_csi_driver_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigGcsFuseCsiDriverConfigArgs']]:
+    def gcs_fuse_csi_driver_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigGcsFuseCsiDriverConfigArrgs']]:
         """
         The status of the GCSFuse CSI driver addon,
         which allows the usage of a gcs bucket as volumes.
@@ -3107,12 +3107,12 @@ class ClusterAddonsConfigArgs:
         return pulumi.get(self, "gcs_fuse_csi_driver_config")
 
     @gcs_fuse_csi_driver_config.setter
-    def gcs_fuse_csi_driver_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigGcsFuseCsiDriverConfigArgs']]):
+    def gcs_fuse_csi_driver_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigGcsFuseCsiDriverConfigArrgs']]):
         pulumi.set(self, "gcs_fuse_csi_driver_config", value)
 
     @property
     @pulumi.getter(name="gkeBackupAgentConfig")
-    def gke_backup_agent_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArgs']]:
+    def gke_backup_agent_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArrgs']]:
         """
         .
         The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
@@ -3120,12 +3120,12 @@ class ClusterAddonsConfigArgs:
         return pulumi.get(self, "gke_backup_agent_config")
 
     @gke_backup_agent_config.setter
-    def gke_backup_agent_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArgs']]):
+    def gke_backup_agent_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArrgs']]):
         pulumi.set(self, "gke_backup_agent_config", value)
 
     @property
     @pulumi.getter(name="horizontalPodAutoscaling")
-    def horizontal_pod_autoscaling(self) -> Optional[pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArgs']]:
+    def horizontal_pod_autoscaling(self) -> Optional[pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArrgs']]:
         """
         The status of the Horizontal Pod Autoscaling
         addon, which increases or decreases the number of replica pods a replication controller
@@ -3136,12 +3136,12 @@ class ClusterAddonsConfigArgs:
         return pulumi.get(self, "horizontal_pod_autoscaling")
 
     @horizontal_pod_autoscaling.setter
-    def horizontal_pod_autoscaling(self, value: Optional[pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArgs']]):
+    def horizontal_pod_autoscaling(self, value: Optional[pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArrgs']]):
         pulumi.set(self, "horizontal_pod_autoscaling", value)
 
     @property
     @pulumi.getter(name="httpLoadBalancing")
-    def http_load_balancing(self) -> Optional[pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArgs']]:
+    def http_load_balancing(self) -> Optional[pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArrgs']]:
         """
         The status of the HTTP (L7) load balancing
         controller addon, which makes it easy to set up HTTP load balancers for services in a
@@ -3150,12 +3150,12 @@ class ClusterAddonsConfigArgs:
         return pulumi.get(self, "http_load_balancing")
 
     @http_load_balancing.setter
-    def http_load_balancing(self, value: Optional[pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArgs']]):
+    def http_load_balancing(self, value: Optional[pulumi.Input['ClusterAddonsConfigHttpLoadBalancingArrgs']]):
         pulumi.set(self, "http_load_balancing", value)
 
     @property
     @pulumi.getter(name="istioConfig")
-    def istio_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArgs']]:
+    def istio_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArrgs']]:
         """
         .
         Structure is documented below.
@@ -3163,12 +3163,12 @@ class ClusterAddonsConfigArgs:
         return pulumi.get(self, "istio_config")
 
     @istio_config.setter
-    def istio_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArgs']]):
+    def istio_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArrgs']]):
         pulumi.set(self, "istio_config", value)
 
     @property
     @pulumi.getter(name="kalmConfig")
-    def kalm_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArgs']]:
+    def kalm_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArrgs']]:
         """
         .
         Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
@@ -3176,12 +3176,12 @@ class ClusterAddonsConfigArgs:
         return pulumi.get(self, "kalm_config")
 
     @kalm_config.setter
-    def kalm_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArgs']]):
+    def kalm_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArrgs']]):
         pulumi.set(self, "kalm_config", value)
 
     @property
     @pulumi.getter(name="networkPolicyConfig")
-    def network_policy_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs']]:
+    def network_policy_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArrgs']]:
         """
         Whether we should enable the network policy addon
         for the master.  This must be enabled in order to enable network policy for the nodes.
@@ -3193,12 +3193,12 @@ class ClusterAddonsConfigArgs:
         return pulumi.get(self, "network_policy_config")
 
     @network_policy_config.setter
-    def network_policy_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs']]):
+    def network_policy_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArrgs']]):
         pulumi.set(self, "network_policy_config", value)
 
 
 @pulumi.input_type
-class ClusterAddonsConfigCloudrunConfigArgs:
+calass ClusterAddonsConfigCloudrunConfigArrgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[bool],
                  load_balancer_type: Optional[pulumi.Input[str]] = None):
@@ -3238,7 +3238,7 @@ class ClusterAddonsConfigCloudrunConfigArgs:
 
 
 @pulumi.input_type
-class ClusterAddonsConfigConfigConnectorConfigArgs:
+calass ClusterAddonsConfigConfigConnectorConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -3260,7 +3260,7 @@ class ClusterAddonsConfigConfigConnectorConfigArgs:
 
 
 @pulumi.input_type
-class ClusterAddonsConfigDnsCacheConfigArgs:
+calass ClusterAddonsConfigDnsCacheConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -3282,7 +3282,7 @@ class ClusterAddonsConfigDnsCacheConfigArgs:
 
 
 @pulumi.input_type
-class ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs:
+calass ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -3304,7 +3304,7 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs:
 
 
 @pulumi.input_type
-class ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs:
+calass ClusterAddonsConfigGcpFilestoreCsiDriverConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -3326,7 +3326,7 @@ class ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs:
 
 
 @pulumi.input_type
-class ClusterAddonsConfigGcsFuseCsiDriverConfigArgs:
+calass ClusterAddonsConfigGcsFuseCsiDriverConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -3348,7 +3348,7 @@ class ClusterAddonsConfigGcsFuseCsiDriverConfigArgs:
 
 
 @pulumi.input_type
-class ClusterAddonsConfigGkeBackupAgentConfigArgs:
+calass ClusterAddonsConfigGkeBackupAgentConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -3370,7 +3370,7 @@ class ClusterAddonsConfigGkeBackupAgentConfigArgs:
 
 
 @pulumi.input_type
-class ClusterAddonsConfigHorizontalPodAutoscalingArgs:
+calass ClusterAddonsConfigHorizontalPodAutoscalingArrgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[bool]):
         """
@@ -3396,7 +3396,7 @@ class ClusterAddonsConfigHorizontalPodAutoscalingArgs:
 
 
 @pulumi.input_type
-class ClusterAddonsConfigHttpLoadBalancingArgs:
+calass ClusterAddonsConfigHttpLoadBalancingArrgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[bool]):
         """
@@ -3422,7 +3422,7 @@ class ClusterAddonsConfigHttpLoadBalancingArgs:
 
 
 @pulumi.input_type
-class ClusterAddonsConfigIstioConfigArgs:
+calass ClusterAddonsConfigIstioConfigArrgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[bool],
                  auth: Optional[pulumi.Input[str]] = None):
@@ -3462,7 +3462,7 @@ class ClusterAddonsConfigIstioConfigArgs:
 
 
 @pulumi.input_type
-class ClusterAddonsConfigKalmConfigArgs:
+calass ClusterAddonsConfigKalmConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -3484,7 +3484,7 @@ class ClusterAddonsConfigKalmConfigArgs:
 
 
 @pulumi.input_type
-class ClusterAddonsConfigNetworkPolicyConfigArgs:
+calass ClusterAddonsConfigNetworkPolicyConfigArrgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[bool]):
         """
@@ -3510,7 +3510,7 @@ class ClusterAddonsConfigNetworkPolicyConfigArgs:
 
 
 @pulumi.input_type
-class ClusterAuthenticatorGroupsConfigArgs:
+calass ClusterAuthenticatorGroupsConfigArrgs:
     def __init__(__self__, *,
                  security_group: pulumi.Input[str]):
         """
@@ -3532,7 +3532,7 @@ class ClusterAuthenticatorGroupsConfigArgs:
 
 
 @pulumi.input_type
-class ClusterBinaryAuthorizationArgs:
+calass ClusterBinaryAuthorizationArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  evaluation_mode: Optional[pulumi.Input[str]] = None):
@@ -3579,14 +3579,14 @@ class ClusterBinaryAuthorizationArgs:
 
 
 @pulumi.input_type
-class ClusterClusterAutoscalingArgs:
+calass ClusterClusterAutoscalingArrgs:
     def __init__(__self__, *,
-                 auto_provisioning_defaults: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArgs']] = None,
+                 auto_provisioning_defaults: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArrgs']] = None,
                  autoscaling_profile: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArgs']]]] = None):
+                 resource_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArrgs']]]] = None):
         """
-        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArgs'] auto_provisioning_defaults: Contains defaults for a node pool created by NAP. A subset of fields also apply to
+        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArrgs'] auto_provisioning_defaults: Contains defaults for a node pool created by NAP. A subset of fields also apply to
                GKE Autopilot clusters.
                Structure is documented below.
         :param pulumi.Input[str] autoscaling_profile: ) Configuration
@@ -3595,7 +3595,7 @@ class ClusterClusterAutoscalingArgs:
                when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
         :param pulumi.Input[bool] enabled: Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
                for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArgs']]] resource_limits: Global constraints for machine resources in the
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArrgs']]] resource_limits: Global constraints for machine resources in the
                cluster. Configuring the `cpu` and `memory` types is required if node
                auto-provisioning is enabled. These limits will apply to node pool autoscaling
                in addition to node auto-provisioning. Structure is documented below.
@@ -3611,7 +3611,7 @@ class ClusterClusterAutoscalingArgs:
 
     @property
     @pulumi.getter(name="autoProvisioningDefaults")
-    def auto_provisioning_defaults(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArgs']]:
+    def auto_provisioning_defaults(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArrgs']]:
         """
         Contains defaults for a node pool created by NAP. A subset of fields also apply to
         GKE Autopilot clusters.
@@ -3620,7 +3620,7 @@ class ClusterClusterAutoscalingArgs:
         return pulumi.get(self, "auto_provisioning_defaults")
 
     @auto_provisioning_defaults.setter
-    def auto_provisioning_defaults(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArgs']]):
+    def auto_provisioning_defaults(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsArrgs']]):
         pulumi.set(self, "auto_provisioning_defaults", value)
 
     @property
@@ -3653,7 +3653,7 @@ class ClusterClusterAutoscalingArgs:
 
     @property
     @pulumi.getter(name="resourceLimits")
-    def resource_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArgs']]]]:
+    def resource_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArrgs']]]]:
         """
         Global constraints for machine resources in the
         cluster. Configuring the `cpu` and `memory` types is required if node
@@ -3663,29 +3663,29 @@ class ClusterClusterAutoscalingArgs:
         return pulumi.get(self, "resource_limits")
 
     @resource_limits.setter
-    def resource_limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArgs']]]]):
+    def resource_limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArrgs']]]]):
         pulumi.set(self, "resource_limits", value)
 
 
 @pulumi.input_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsArrgs:
     def __init__(__self__, *,
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
-                 management: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs']] = None,
+                 management: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArrgs']] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs']] = None,
-                 upgrade_settings: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs']] = None):
+                 shielded_instance_config: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArrgs']] = None,
+                 upgrade_settings: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArrgs']] = None):
         """
         :param pulumi.Input[str] boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param pulumi.Input[int] disk_size: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
         :param pulumi.Input[str] image_type: The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
-        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs'] management: NodeManagement configuration for this NodePool. Structure is documented below.
+        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArrgs'] management: NodeManagement configuration for this NodePool. Structure is documented below.
         :param pulumi.Input[str] min_cpu_platform: Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
                specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
                as "Intel Haswell" or "Intel Sandy Bridge".
@@ -3693,8 +3693,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
                
                > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoring_service` and `logging_service`.
         :param pulumi.Input[str] service_account: The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
-        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs'] upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArrgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArrgs'] upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
         """
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
@@ -3767,14 +3767,14 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
 
     @property
     @pulumi.getter
-    def management(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs']]:
+    def management(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArrgs']]:
         """
         NodeManagement configuration for this NodePool. Structure is documented below.
         """
         return pulumi.get(self, "management")
 
     @management.setter
-    def management(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs']]):
+    def management(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArrgs']]):
         pulumi.set(self, "management", value)
 
     @property
@@ -3819,35 +3819,35 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArrgs']]:
         """
         Shielded Instance options. Structure is documented below.
         """
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArrgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
     @pulumi.getter(name="upgradeSettings")
-    def upgrade_settings(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs']]:
+    def upgrade_settings(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArrgs']]:
         """
         Specifies the upgrade settings for NAP created node pools. Structure is documented below.
         """
         return pulumi.get(self, "upgrade_settings")
 
     @upgrade_settings.setter
-    def upgrade_settings(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs']]):
+    def upgrade_settings(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArrgs']]):
         pulumi.set(self, "upgrade_settings", value)
 
 
 @pulumi.input_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs:
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArrgs:
     def __init__(__self__, *,
                  auto_repair: Optional[pulumi.Input[bool]] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
-                 upgrade_options: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs']]]] = None):
+                 upgrade_options: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArrgs']]]] = None):
         """
         :param pulumi.Input[bool] auto_repair: Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
                
@@ -3889,16 +3889,16 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs:
 
     @property
     @pulumi.getter(name="upgradeOptions")
-    def upgrade_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs']]]]:
+    def upgrade_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArrgs']]]]:
         return pulumi.get(self, "upgrade_options")
 
     @upgrade_options.setter
-    def upgrade_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs']]]]):
+    def upgrade_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArrgs']]]]):
         pulumi.set(self, "upgrade_options", value)
 
 
 @pulumi.input_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs:
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArrgs:
     def __init__(__self__, *,
                  auto_upgrade_start_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None):
@@ -3933,7 +3933,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionAr
 
 
 @pulumi.input_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs:
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None):
@@ -3980,14 +3980,14 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArg
 
 
 @pulumi.input_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs:
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArrgs:
     def __init__(__self__, *,
-                 blue_green_settings: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs']] = None,
+                 blue_green_settings: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArrgs']] = None,
                  max_surge: Optional[pulumi.Input[int]] = None,
                  max_unavailable: Optional[pulumi.Input[int]] = None,
                  strategy: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs'] blue_green_settings: Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArrgs'] blue_green_settings: Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         :param pulumi.Input[int] max_surge: The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
         :param pulumi.Input[int] max_unavailable: The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
         :param pulumi.Input[str] strategy: Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
@@ -4003,14 +4003,14 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs:
 
     @property
     @pulumi.getter(name="blueGreenSettings")
-    def blue_green_settings(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs']]:
+    def blue_green_settings(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArrgs']]:
         """
         Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         """
         return pulumi.get(self, "blue_green_settings")
 
     @blue_green_settings.setter
-    def blue_green_settings(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs']]):
+    def blue_green_settings(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArrgs']]):
         pulumi.set(self, "blue_green_settings", value)
 
     @property
@@ -4051,13 +4051,13 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs:
 
 
 @pulumi.input_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs:
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArrgs:
     def __init__(__self__, *,
                  node_pool_soak_duration: Optional[pulumi.Input[str]] = None,
-                 standard_rollout_policy: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']] = None):
+                 standard_rollout_policy: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs']] = None):
         """
         :param pulumi.Input[str] node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'] standard_rollout_policy: Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        :param pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs'] standard_rollout_policy: Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         """
         if node_pool_soak_duration is not None:
             pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
@@ -4078,19 +4078,19 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
 
     @property
     @pulumi.getter(name="standardRolloutPolicy")
-    def standard_rollout_policy(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']]:
+    def standard_rollout_policy(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs']]:
         """
         Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         """
         return pulumi.get(self, "standard_rollout_policy")
 
     @standard_rollout_policy.setter
-    def standard_rollout_policy(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']]):
+    def standard_rollout_policy(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs']]):
         pulumi.set(self, "standard_rollout_policy", value)
 
 
 @pulumi.input_type
-class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs:
+calass ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs:
     def __init__(__self__, *,
                  batch_node_count: Optional[pulumi.Input[int]] = None,
                  batch_percentage: Optional[pulumi.Input[float]] = None,
@@ -4145,7 +4145,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
 
 
 @pulumi.input_type
-class ClusterClusterAutoscalingResourceLimitArgs:
+calass ClusterClusterAutoscalingResourceLimitArrgs:
     def __init__(__self__, *,
                  resource_type: pulumi.Input[str],
                  maximum: Optional[pulumi.Input[int]] = None,
@@ -4203,7 +4203,7 @@ class ClusterClusterAutoscalingResourceLimitArgs:
 
 
 @pulumi.input_type
-class ClusterClusterTelemetryArgs:
+calass ClusterClusterTelemetryArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str]):
         """
@@ -4227,7 +4227,7 @@ class ClusterClusterTelemetryArgs:
 
 
 @pulumi.input_type
-class ClusterConfidentialNodesArgs:
+calass ClusterConfidentialNodesArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -4251,7 +4251,7 @@ class ClusterConfidentialNodesArgs:
 
 
 @pulumi.input_type
-class ClusterCostManagementConfigArgs:
+calass ClusterCostManagementConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -4273,7 +4273,7 @@ class ClusterCostManagementConfigArgs:
 
 
 @pulumi.input_type
-class ClusterDatabaseEncryptionArgs:
+calass ClusterDatabaseEncryptionArrgs:
     def __init__(__self__, *,
                  state: pulumi.Input[str],
                  key_name: Optional[pulumi.Input[str]] = None):
@@ -4315,7 +4315,7 @@ class ClusterDatabaseEncryptionArgs:
 
 
 @pulumi.input_type
-class ClusterDefaultSnatStatusArgs:
+calass ClusterDefaultSnatStatusArrgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[bool]):
         """
@@ -4341,7 +4341,7 @@ class ClusterDefaultSnatStatusArgs:
 
 
 @pulumi.input_type
-class ClusterDnsConfigArgs:
+calass ClusterDnsConfigArrgs:
     def __init__(__self__, *,
                  cluster_dns: Optional[pulumi.Input[str]] = None,
                  cluster_dns_domain: Optional[pulumi.Input[str]] = None,
@@ -4396,7 +4396,7 @@ class ClusterDnsConfigArgs:
 
 
 @pulumi.input_type
-class ClusterEnableK8sBetaApisArgs:
+calass ClusterEnableK8sBetaApisArrgs:
     def __init__(__self__, *,
                  enabled_apis: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -4418,7 +4418,7 @@ class ClusterEnableK8sBetaApisArgs:
 
 
 @pulumi.input_type
-class ClusterGatewayApiConfigArgs:
+calass ClusterGatewayApiConfigArrgs:
     def __init__(__self__, *,
                  channel: pulumi.Input[str]):
         """
@@ -4440,7 +4440,7 @@ class ClusterGatewayApiConfigArgs:
 
 
 @pulumi.input_type
-class ClusterIdentityServiceConfigArgs:
+calass ClusterIdentityServiceConfigArrgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -4463,17 +4463,17 @@ class ClusterIdentityServiceConfigArgs:
 
 
 @pulumi.input_type
-class ClusterIpAllocationPolicyArgs:
+calass ClusterIpAllocationPolicyArrgs:
     def __init__(__self__, *,
-                 additional_pod_ranges_config: Optional[pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs']] = None,
+                 additional_pod_ranges_config: Optional[pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArrgs']] = None,
                  cluster_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  cluster_secondary_range_name: Optional[pulumi.Input[str]] = None,
-                 pod_cidr_overprovision_config: Optional[pulumi.Input['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs']] = None,
+                 pod_cidr_overprovision_config: Optional[pulumi.Input['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArrgs']] = None,
                  services_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  services_secondary_range_name: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs'] additional_pod_ranges_config: The configuration for additional pod secondary ranges at
+        :param pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArrgs'] additional_pod_ranges_config: The configuration for additional pod secondary ranges at
                the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
                secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
         :param pulumi.Input[str] cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs.
@@ -4514,7 +4514,7 @@ class ClusterIpAllocationPolicyArgs:
 
     @property
     @pulumi.getter(name="additionalPodRangesConfig")
-    def additional_pod_ranges_config(self) -> Optional[pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs']]:
+    def additional_pod_ranges_config(self) -> Optional[pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArrgs']]:
         """
         The configuration for additional pod secondary ranges at
         the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
@@ -4523,7 +4523,7 @@ class ClusterIpAllocationPolicyArgs:
         return pulumi.get(self, "additional_pod_ranges_config")
 
     @additional_pod_ranges_config.setter
-    def additional_pod_ranges_config(self, value: Optional[pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs']]):
+    def additional_pod_ranges_config(self, value: Optional[pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArrgs']]):
         pulumi.set(self, "additional_pod_ranges_config", value)
 
     @property
@@ -4558,11 +4558,11 @@ class ClusterIpAllocationPolicyArgs:
 
     @property
     @pulumi.getter(name="podCidrOverprovisionConfig")
-    def pod_cidr_overprovision_config(self) -> Optional[pulumi.Input['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs']]:
+    def pod_cidr_overprovision_config(self) -> Optional[pulumi.Input['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArrgs']]:
         return pulumi.get(self, "pod_cidr_overprovision_config")
 
     @pod_cidr_overprovision_config.setter
-    def pod_cidr_overprovision_config(self, value: Optional[pulumi.Input['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs']]):
+    def pod_cidr_overprovision_config(self, value: Optional[pulumi.Input['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArrgs']]):
         pulumi.set(self, "pod_cidr_overprovision_config", value)
 
     @property
@@ -4612,7 +4612,7 @@ class ClusterIpAllocationPolicyArgs:
 
 
 @pulumi.input_type
-class ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs:
+calass ClusterIpAllocationPolicyAdditionalPodRangesConfigArrgs:
     def __init__(__self__, *,
                  pod_range_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -4634,7 +4634,7 @@ class ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs:
 
 
 @pulumi.input_type
-class ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs:
+calass ClusterIpAllocationPolicyPodCidrOverprovisionConfigArrgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[bool]):
         """
@@ -4660,7 +4660,7 @@ class ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs:
 
 
 @pulumi.input_type
-class ClusterLoggingConfigArgs:
+calass ClusterLoggingConfigArrgs:
     def __init__(__self__, *,
                  enable_components: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -4684,13 +4684,13 @@ class ClusterLoggingConfigArgs:
 
 
 @pulumi.input_type
-class ClusterMaintenancePolicyArgs:
+calass ClusterMaintenancePolicyArrgs:
     def __init__(__self__, *,
-                 daily_maintenance_window: Optional[pulumi.Input['ClusterMaintenancePolicyDailyMaintenanceWindowArgs']] = None,
-                 maintenance_exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]] = None,
-                 recurring_window: Optional[pulumi.Input['ClusterMaintenancePolicyRecurringWindowArgs']] = None):
+                 daily_maintenance_window: Optional[pulumi.Input['ClusterMaintenancePolicyDailyMaintenanceWindowArrgs']] = None,
+                 maintenance_exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArrgs']]]] = None,
+                 recurring_window: Optional[pulumi.Input['ClusterMaintenancePolicyRecurringWindowArrgs']] = None):
         """
-        :param pulumi.Input['ClusterMaintenancePolicyDailyMaintenanceWindowArgs'] daily_maintenance_window: Time window specified for daily maintenance operations.
+        :param pulumi.Input['ClusterMaintenancePolicyDailyMaintenanceWindowArrgs'] daily_maintenance_window: Time window specified for daily maintenance operations.
                Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
                where HH : \\[00-23\\] and MM : \\[00-59\\] GMT. For example:
                
@@ -4698,8 +4698,8 @@ class ClusterMaintenancePolicyArgs:
                ```python
                import pulumi
                ```
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
-        :param pulumi.Input['ClusterMaintenancePolicyRecurringWindowArgs'] recurring_window: Time window for recurring maintenance operations.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArrgs']]] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+        :param pulumi.Input['ClusterMaintenancePolicyRecurringWindowArrgs'] recurring_window: Time window for recurring maintenance operations.
                
                Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
                the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
@@ -4724,7 +4724,7 @@ class ClusterMaintenancePolicyArgs:
 
     @property
     @pulumi.getter(name="dailyMaintenanceWindow")
-    def daily_maintenance_window(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyDailyMaintenanceWindowArgs']]:
+    def daily_maintenance_window(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyDailyMaintenanceWindowArrgs']]:
         """
         Time window specified for daily maintenance operations.
         Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
@@ -4738,24 +4738,24 @@ class ClusterMaintenancePolicyArgs:
         return pulumi.get(self, "daily_maintenance_window")
 
     @daily_maintenance_window.setter
-    def daily_maintenance_window(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyDailyMaintenanceWindowArgs']]):
+    def daily_maintenance_window(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyDailyMaintenanceWindowArrgs']]):
         pulumi.set(self, "daily_maintenance_window", value)
 
     @property
     @pulumi.getter(name="maintenanceExclusions")
-    def maintenance_exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]]:
+    def maintenance_exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArrgs']]]]:
         """
         Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
         """
         return pulumi.get(self, "maintenance_exclusions")
 
     @maintenance_exclusions.setter
-    def maintenance_exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]]):
+    def maintenance_exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArrgs']]]]):
         pulumi.set(self, "maintenance_exclusions", value)
 
     @property
     @pulumi.getter(name="recurringWindow")
-    def recurring_window(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyRecurringWindowArgs']]:
+    def recurring_window(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyRecurringWindowArrgs']]:
         """
         Time window for recurring maintenance operations.
 
@@ -4776,12 +4776,12 @@ class ClusterMaintenancePolicyArgs:
         return pulumi.get(self, "recurring_window")
 
     @recurring_window.setter
-    def recurring_window(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyRecurringWindowArgs']]):
+    def recurring_window(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyRecurringWindowArrgs']]):
         pulumi.set(self, "recurring_window", value)
 
 
 @pulumi.input_type
-class ClusterMaintenancePolicyDailyMaintenanceWindowArgs:
+calass ClusterMaintenancePolicyDailyMaintenanceWindowArrgs:
     def __init__(__self__, *,
                  start_time: pulumi.Input[str],
                  duration: Optional[pulumi.Input[str]] = None):
@@ -4809,14 +4809,14 @@ class ClusterMaintenancePolicyDailyMaintenanceWindowArgs:
 
 
 @pulumi.input_type
-class ClusterMaintenancePolicyMaintenanceExclusionArgs:
+calass ClusterMaintenancePolicyMaintenanceExclusionArrgs:
     def __init__(__self__, *,
                  end_time: pulumi.Input[str],
                  exclusion_name: pulumi.Input[str],
                  start_time: pulumi.Input[str],
-                 exclusion_options: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs']] = None):
+                 exclusion_options: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArrgs']] = None):
         """
-        :param pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs'] exclusion_options: MaintenanceExclusionOptions provides maintenance exclusion related options.
+        :param pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArrgs'] exclusion_options: MaintenanceExclusionOptions provides maintenance exclusion related options.
         """
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "exclusion_name", exclusion_name)
@@ -4853,19 +4853,19 @@ class ClusterMaintenancePolicyMaintenanceExclusionArgs:
 
     @property
     @pulumi.getter(name="exclusionOptions")
-    def exclusion_options(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs']]:
+    def exclusion_options(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArrgs']]:
         """
         MaintenanceExclusionOptions provides maintenance exclusion related options.
         """
         return pulumi.get(self, "exclusion_options")
 
     @exclusion_options.setter
-    def exclusion_options(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs']]):
+    def exclusion_options(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArrgs']]):
         pulumi.set(self, "exclusion_options", value)
 
 
 @pulumi.input_type
-class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs:
+calass ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArrgs:
     def __init__(__self__, *,
                  scope: pulumi.Input[str]):
         """
@@ -4909,7 +4909,7 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs:
 
 
 @pulumi.input_type
-class ClusterMaintenancePolicyRecurringWindowArgs:
+calass ClusterMaintenancePolicyRecurringWindowArrgs:
     def __init__(__self__, *,
                  end_time: pulumi.Input[str],
                  recurrence: pulumi.Input[str],
@@ -4947,14 +4947,14 @@ class ClusterMaintenancePolicyRecurringWindowArgs:
 
 
 @pulumi.input_type
-class ClusterMasterAuthArgs:
+calass ClusterMasterAuthArrgs:
     def __init__(__self__, *,
-                 client_certificate_config: pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs'],
+                 client_certificate_config: pulumi.Input['ClusterMasterAuthClientCertificateConfigArrgs'],
                  client_certificate: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  cluster_ca_certificate: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs'] client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
+        :param pulumi.Input['ClusterMasterAuthClientCertificateConfigArrgs'] client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
                
                ```python
                import pulumi
@@ -4972,7 +4972,7 @@ class ClusterMasterAuthArgs:
 
     @property
     @pulumi.getter(name="clientCertificateConfig")
-    def client_certificate_config(self) -> pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs']:
+    def client_certificate_config(self) -> pulumi.Input['ClusterMasterAuthClientCertificateConfigArrgs']:
         """
         Whether client certificate authorization is enabled for this cluster.  For example:
 
@@ -4985,7 +4985,7 @@ class ClusterMasterAuthArgs:
         return pulumi.get(self, "client_certificate_config")
 
     @client_certificate_config.setter
-    def client_certificate_config(self, value: pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs']):
+    def client_certificate_config(self, value: pulumi.Input['ClusterMasterAuthClientCertificateConfigArrgs']):
         pulumi.set(self, "client_certificate_config", value)
 
     @property
@@ -5017,7 +5017,7 @@ class ClusterMasterAuthArgs:
 
 
 @pulumi.input_type
-class ClusterMasterAuthClientCertificateConfigArgs:
+calass ClusterMasterAuthClientCertificateConfigArrgs:
     def __init__(__self__, *,
                  issue_client_certificate: pulumi.Input[bool]):
         pulumi.set(__self__, "issue_client_certificate", issue_client_certificate)
@@ -5033,12 +5033,12 @@ class ClusterMasterAuthClientCertificateConfigArgs:
 
 
 @pulumi.input_type
-class ClusterMasterAuthorizedNetworksConfigArgs:
+calass ClusterMasterAuthorizedNetworksConfigArrgs:
     def __init__(__self__, *,
-                 cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArgs']]]] = None,
+                 cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArrgs']]]] = None,
                  gcp_public_cidrs_access_enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArgs']]] cidr_blocks: External networks that can access the
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArrgs']]] cidr_blocks: External networks that can access the
                Kubernetes cluster master through HTTPS.
         :param pulumi.Input[bool] gcp_public_cidrs_access_enabled: Whether Kubernetes master is
                accessible via Google Compute Engine Public IPs.
@@ -5050,7 +5050,7 @@ class ClusterMasterAuthorizedNetworksConfigArgs:
 
     @property
     @pulumi.getter(name="cidrBlocks")
-    def cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArgs']]]]:
+    def cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArrgs']]]]:
         """
         External networks that can access the
         Kubernetes cluster master through HTTPS.
@@ -5058,7 +5058,7 @@ class ClusterMasterAuthorizedNetworksConfigArgs:
         return pulumi.get(self, "cidr_blocks")
 
     @cidr_blocks.setter
-    def cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArgs']]]]):
+    def cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArrgs']]]]):
         pulumi.set(self, "cidr_blocks", value)
 
     @property
@@ -5076,7 +5076,7 @@ class ClusterMasterAuthorizedNetworksConfigArgs:
 
 
 @pulumi.input_type
-class ClusterMasterAuthorizedNetworksConfigCidrBlockArgs:
+calass ClusterMasterAuthorizedNetworksConfigCidrBlockArrgs:
     def __init__(__self__, *,
                  cidr_block: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None):
@@ -5116,7 +5116,7 @@ class ClusterMasterAuthorizedNetworksConfigCidrBlockArgs:
 
 
 @pulumi.input_type
-class ClusterMeshCertificatesArgs:
+calass ClusterMeshCertificatesArrgs:
     def __init__(__self__, *,
                  enable_certificates: pulumi.Input[bool]):
         """
@@ -5138,15 +5138,15 @@ class ClusterMeshCertificatesArgs:
 
 
 @pulumi.input_type
-class ClusterMonitoringConfigArgs:
+calass ClusterMonitoringConfigArrgs:
     def __init__(__self__, *,
-                 advanced_datapath_observability_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]]] = None,
+                 advanced_datapath_observability_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrgs']]]] = None,
                  enable_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 managed_prometheus: Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusArgs']] = None):
+                 managed_prometheus: Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusArrgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]] advanced_datapath_observability_configs: Configuration for Advanced Datapath Monitoring. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrgs']]] advanced_datapath_observability_configs: Configuration for Advanced Datapath Monitoring. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT` and `STATEFULSET`. In beta provider, `WORKLOADS` is supported on top of those 10 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
-        :param pulumi.Input['ClusterMonitoringConfigManagedPrometheusArgs'] managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
+        :param pulumi.Input['ClusterMonitoringConfigManagedPrometheusArrgs'] managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
         """
         if advanced_datapath_observability_configs is not None:
             pulumi.set(__self__, "advanced_datapath_observability_configs", advanced_datapath_observability_configs)
@@ -5157,14 +5157,14 @@ class ClusterMonitoringConfigArgs:
 
     @property
     @pulumi.getter(name="advancedDatapathObservabilityConfigs")
-    def advanced_datapath_observability_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]]]:
+    def advanced_datapath_observability_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrgs']]]]:
         """
         Configuration for Advanced Datapath Monitoring. Structure is documented below.
         """
         return pulumi.get(self, "advanced_datapath_observability_configs")
 
     @advanced_datapath_observability_configs.setter
-    def advanced_datapath_observability_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]]]):
+    def advanced_datapath_observability_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrgs']]]]):
         pulumi.set(self, "advanced_datapath_observability_configs", value)
 
     @property
@@ -5181,19 +5181,19 @@ class ClusterMonitoringConfigArgs:
 
     @property
     @pulumi.getter(name="managedPrometheus")
-    def managed_prometheus(self) -> Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusArgs']]:
+    def managed_prometheus(self) -> Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusArrgs']]:
         """
         Configuration for Managed Service for Prometheus. Structure is documented below.
         """
         return pulumi.get(self, "managed_prometheus")
 
     @managed_prometheus.setter
-    def managed_prometheus(self, value: Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusArgs']]):
+    def managed_prometheus(self, value: Optional[pulumi.Input['ClusterMonitoringConfigManagedPrometheusArrgs']]):
         pulumi.set(self, "managed_prometheus", value)
 
 
 @pulumi.input_type
-class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
+calass ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrgs:
     def __init__(__self__, *,
                  enable_metrics: pulumi.Input[bool],
                  relay_mode: Optional[pulumi.Input[str]] = None):
@@ -5231,7 +5231,7 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
 
 
 @pulumi.input_type
-class ClusterMonitoringConfigManagedPrometheusArgs:
+calass ClusterMonitoringConfigManagedPrometheusArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -5253,7 +5253,7 @@ class ClusterMonitoringConfigManagedPrometheusArgs:
 
 
 @pulumi.input_type
-class ClusterNetworkPolicyArgs:
+calass ClusterNetworkPolicyArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
                  provider: Optional[pulumi.Input[str]] = None):
@@ -5291,26 +5291,26 @@ class ClusterNetworkPolicyArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigArgs:
+calass ClusterNodeConfigArrgs:
     def __init__(__self__, *,
-                 advanced_machine_features: Optional[pulumi.Input['ClusterNodeConfigAdvancedMachineFeaturesArgs']] = None,
+                 advanced_machine_features: Optional[pulumi.Input['ClusterNodeConfigAdvancedMachineFeaturesArrgs']] = None,
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
-                 confidential_nodes: Optional[pulumi.Input['ClusterNodeConfigConfidentialNodesArgs']] = None,
+                 confidential_nodes: Optional[pulumi.Input['ClusterNodeConfigConfidentialNodesArrgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
-                 effective_taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]]] = None,
-                 ephemeral_storage_config: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs']] = None,
-                 ephemeral_storage_local_ssd_config: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs']] = None,
-                 fast_socket: Optional[pulumi.Input['ClusterNodeConfigFastSocketArgs']] = None,
-                 gcfs_config: Optional[pulumi.Input['ClusterNodeConfigGcfsConfigArgs']] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]]] = None,
-                 gvnic: Optional[pulumi.Input['ClusterNodeConfigGvnicArgs']] = None,
-                 host_maintenance_policy: Optional[pulumi.Input['ClusterNodeConfigHostMaintenancePolicyArgs']] = None,
+                 effective_taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArrgs']]]] = None,
+                 ephemeral_storage_config: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArrgs']] = None,
+                 ephemeral_storage_local_ssd_config: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArrgs']] = None,
+                 fast_socket: Optional[pulumi.Input['ClusterNodeConfigFastSocketArrgs']] = None,
+                 gcfs_config: Optional[pulumi.Input['ClusterNodeConfigGcfsConfigArrgs']] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArrgs']]]] = None,
+                 gvnic: Optional[pulumi.Input['ClusterNodeConfigGvnicArrgs']] = None,
+                 host_maintenance_policy: Optional[pulumi.Input['ClusterNodeConfigHostMaintenancePolicyArrgs']] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
-                 kubelet_config: Optional[pulumi.Input['ClusterNodeConfigKubeletConfigArgs']] = None,
+                 kubelet_config: Optional[pulumi.Input['ClusterNodeConfigKubeletConfigArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 linux_node_config: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs']] = None,
-                 local_nvme_ssd_block_config: Optional[pulumi.Input['ClusterNodeConfigLocalNvmeSsdBlockConfigArgs']] = None,
+                 linux_node_config: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigArrgs']] = None,
+                 local_nvme_ssd_block_config: Optional[pulumi.Input['ClusterNodeConfigLocalNvmeSsdBlockConfigArrgs']] = None,
                  local_ssd_count: Optional[pulumi.Input[int]] = None,
                  logging_variant: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -5319,40 +5319,40 @@ class ClusterNodeConfigArgs:
                  node_group: Optional[pulumi.Input[str]] = None,
                  oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
-                 reservation_affinity: Optional[pulumi.Input['ClusterNodeConfigReservationAffinityArgs']] = None,
+                 reservation_affinity: Optional[pulumi.Input['ClusterNodeConfigReservationAffinityArrgs']] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 sandbox_config: Optional[pulumi.Input['ClusterNodeConfigSandboxConfigArgs']] = None,
+                 sandbox_config: Optional[pulumi.Input['ClusterNodeConfigSandboxConfigArrgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs']] = None,
-                 sole_tenant_config: Optional[pulumi.Input['ClusterNodeConfigSoleTenantConfigArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArrgs']] = None,
+                 sole_tenant_config: Optional[pulumi.Input['ClusterNodeConfigSoleTenantConfigArrgs']] = None,
                  spot: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]]] = None,
-                 workload_metadata_config: Optional[pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArgs']] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArrgs']]]] = None,
+                 workload_metadata_config: Optional[pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArrgs']] = None):
         """
-        :param pulumi.Input['ClusterNodeConfigAdvancedMachineFeaturesArgs'] advanced_machine_features: Specifies options for controlling
+        :param pulumi.Input['ClusterNodeConfigAdvancedMachineFeaturesArrgs'] advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
         :param pulumi.Input[str] boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
-        :param pulumi.Input['ClusterNodeConfigConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param pulumi.Input['ClusterNodeConfigConfidentialNodesArrgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArrgs'] ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
                import pulumi
                ```
-        :param pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs'] ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArrgs'] ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
                import pulumi
                ```
-        :param pulumi.Input['ClusterNodeConfigFastSocketArgs'] fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+        :param pulumi.Input['ClusterNodeConfigFastSocketArrgs'] fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
                Node Pool must enable gvnic.
                GKE version 1.25.2-gke.1700 or later.
                Structure is documented below.
-        :param pulumi.Input['ClusterNodeConfigGcfsConfigArgs'] gcfs_config: Parameters for the Google Container Filesystem (GCFS).
+        :param pulumi.Input['ClusterNodeConfigGcfsConfigArrgs'] gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
                A `machine_type` that has more than 16 GiB of memory is also recommended.
@@ -5362,9 +5362,9 @@ class ClusterNodeConfigArgs:
                ```python
                import pulumi
                ```
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArrgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
-        :param pulumi.Input['ClusterNodeConfigGvnicArgs'] gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
+        :param pulumi.Input['ClusterNodeConfigGvnicArrgs'] gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
                Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
                GKE node version 1.15.11-gke.15 or later
@@ -5376,7 +5376,7 @@ class ClusterNodeConfigArgs:
                ```
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
-        :param pulumi.Input['ClusterNodeConfigKubeletConfigArgs'] kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        :param pulumi.Input['ClusterNodeConfigKubeletConfigArrgs'] kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Structure is documented below.
                
                ```python
@@ -5384,14 +5384,14 @@ class ClusterNodeConfigArgs:
                ```
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
-        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs'] linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigArrgs'] linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
                
                ```python
                import pulumi
                ```
-        :param pulumi.Input['ClusterNodeConfigLocalNvmeSsdBlockConfigArgs'] local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigLocalNvmeSsdBlockConfigArrgs'] local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
         :param pulumi.Input[int] local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
         :param pulumi.Input[str] logging_variant: Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -5417,13 +5417,13 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input[bool] preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
-        :param pulumi.Input['ClusterNodeConfigReservationAffinityArgs'] reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigReservationAffinityArrgs'] reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
-        :param pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param pulumi.Input['ClusterNodeConfigSoleTenantConfigArgs'] sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArrgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigSoleTenantConfigArrgs'] sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
                
                ```python
                import pulumi
@@ -5433,7 +5433,7 @@ class ClusterNodeConfigArgs:
                for more information. Defaults to false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArrgs']]] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
                to apply to nodes. GKE's API can only set this field on cluster creation.
                However, GKE will add taints to your nodes if you enable certain features such
                as GPUs. If this field is set, any diffs on this field will cause the provider to
@@ -5441,7 +5441,7 @@ class ClusterNodeConfigArgs:
                Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
                this field to manage taints. If you do, `lifecycle.ignore_changes` is
                recommended. Structure is documented below.
-        :param pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
+        :param pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArrgs'] workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
         if advanced_machine_features is not None:
@@ -5519,7 +5519,7 @@ class ClusterNodeConfigArgs:
 
     @property
     @pulumi.getter(name="advancedMachineFeatures")
-    def advanced_machine_features(self) -> Optional[pulumi.Input['ClusterNodeConfigAdvancedMachineFeaturesArgs']]:
+    def advanced_machine_features(self) -> Optional[pulumi.Input['ClusterNodeConfigAdvancedMachineFeaturesArrgs']]:
         """
         Specifies options for controlling
         advanced machine features. Structure is documented below.
@@ -5527,7 +5527,7 @@ class ClusterNodeConfigArgs:
         return pulumi.get(self, "advanced_machine_features")
 
     @advanced_machine_features.setter
-    def advanced_machine_features(self, value: Optional[pulumi.Input['ClusterNodeConfigAdvancedMachineFeaturesArgs']]):
+    def advanced_machine_features(self, value: Optional[pulumi.Input['ClusterNodeConfigAdvancedMachineFeaturesArrgs']]):
         pulumi.set(self, "advanced_machine_features", value)
 
     @property
@@ -5544,14 +5544,14 @@ class ClusterNodeConfigArgs:
 
     @property
     @pulumi.getter(name="confidentialNodes")
-    def confidential_nodes(self) -> Optional[pulumi.Input['ClusterNodeConfigConfidentialNodesArgs']]:
+    def confidential_nodes(self) -> Optional[pulumi.Input['ClusterNodeConfigConfidentialNodesArrgs']]:
         """
         Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         """
         return pulumi.get(self, "confidential_nodes")
 
     @confidential_nodes.setter
-    def confidential_nodes(self, value: Optional[pulumi.Input['ClusterNodeConfigConfidentialNodesArgs']]):
+    def confidential_nodes(self, value: Optional[pulumi.Input['ClusterNodeConfigConfidentialNodesArrgs']]):
         pulumi.set(self, "confidential_nodes", value)
 
     @property
@@ -5582,16 +5582,16 @@ class ClusterNodeConfigArgs:
 
     @property
     @pulumi.getter(name="effectiveTaints")
-    def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]]]:
+    def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArrgs']]]]:
         return pulumi.get(self, "effective_taints")
 
     @effective_taints.setter
-    def effective_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]]]):
+    def effective_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArrgs']]]]):
         pulumi.set(self, "effective_taints", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageConfig")
-    def ephemeral_storage_config(self) -> Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs']]:
+    def ephemeral_storage_config(self) -> Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArrgs']]:
         """
         ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 
@@ -5602,12 +5602,12 @@ class ClusterNodeConfigArgs:
         return pulumi.get(self, "ephemeral_storage_config")
 
     @ephemeral_storage_config.setter
-    def ephemeral_storage_config(self, value: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs']]):
+    def ephemeral_storage_config(self, value: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArrgs']]):
         pulumi.set(self, "ephemeral_storage_config", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageLocalSsdConfig")
-    def ephemeral_storage_local_ssd_config(self) -> Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs']]:
+    def ephemeral_storage_local_ssd_config(self) -> Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArrgs']]:
         """
         Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 
@@ -5618,12 +5618,12 @@ class ClusterNodeConfigArgs:
         return pulumi.get(self, "ephemeral_storage_local_ssd_config")
 
     @ephemeral_storage_local_ssd_config.setter
-    def ephemeral_storage_local_ssd_config(self, value: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs']]):
+    def ephemeral_storage_local_ssd_config(self, value: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageLocalSsdConfigArrgs']]):
         pulumi.set(self, "ephemeral_storage_local_ssd_config", value)
 
     @property
     @pulumi.getter(name="fastSocket")
-    def fast_socket(self) -> Optional[pulumi.Input['ClusterNodeConfigFastSocketArgs']]:
+    def fast_socket(self) -> Optional[pulumi.Input['ClusterNodeConfigFastSocketArrgs']]:
         """
         Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
         Node Pool must enable gvnic.
@@ -5633,12 +5633,12 @@ class ClusterNodeConfigArgs:
         return pulumi.get(self, "fast_socket")
 
     @fast_socket.setter
-    def fast_socket(self, value: Optional[pulumi.Input['ClusterNodeConfigFastSocketArgs']]):
+    def fast_socket(self, value: Optional[pulumi.Input['ClusterNodeConfigFastSocketArrgs']]):
         pulumi.set(self, "fast_socket", value)
 
     @property
     @pulumi.getter(name="gcfsConfig")
-    def gcfs_config(self) -> Optional[pulumi.Input['ClusterNodeConfigGcfsConfigArgs']]:
+    def gcfs_config(self) -> Optional[pulumi.Input['ClusterNodeConfigGcfsConfigArrgs']]:
         """
         Parameters for the Google Container Filesystem (GCFS).
         If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
@@ -5654,12 +5654,12 @@ class ClusterNodeConfigArgs:
         return pulumi.get(self, "gcfs_config")
 
     @gcfs_config.setter
-    def gcfs_config(self, value: Optional[pulumi.Input['ClusterNodeConfigGcfsConfigArgs']]):
+    def gcfs_config(self, value: Optional[pulumi.Input['ClusterNodeConfigGcfsConfigArrgs']]):
         pulumi.set(self, "gcfs_config", value)
 
     @property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]]]:
+    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArrgs']]]]:
         """
         List of the type and count of accelerator cards attached to the instance.
         Structure documented below.
@@ -5667,12 +5667,12 @@ class ClusterNodeConfigArgs:
         return pulumi.get(self, "guest_accelerators")
 
     @guest_accelerators.setter
-    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]]]):
+    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArrgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
 
     @property
     @pulumi.getter
-    def gvnic(self) -> Optional[pulumi.Input['ClusterNodeConfigGvnicArgs']]:
+    def gvnic(self) -> Optional[pulumi.Input['ClusterNodeConfigGvnicArrgs']]:
         """
         Google Virtual NIC (gVNIC) is a virtual network interface.
         Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -5688,16 +5688,16 @@ class ClusterNodeConfigArgs:
         return pulumi.get(self, "gvnic")
 
     @gvnic.setter
-    def gvnic(self, value: Optional[pulumi.Input['ClusterNodeConfigGvnicArgs']]):
+    def gvnic(self, value: Optional[pulumi.Input['ClusterNodeConfigGvnicArrgs']]):
         pulumi.set(self, "gvnic", value)
 
     @property
     @pulumi.getter(name="hostMaintenancePolicy")
-    def host_maintenance_policy(self) -> Optional[pulumi.Input['ClusterNodeConfigHostMaintenancePolicyArgs']]:
+    def host_maintenance_policy(self) -> Optional[pulumi.Input['ClusterNodeConfigHostMaintenancePolicyArrgs']]:
         return pulumi.get(self, "host_maintenance_policy")
 
     @host_maintenance_policy.setter
-    def host_maintenance_policy(self, value: Optional[pulumi.Input['ClusterNodeConfigHostMaintenancePolicyArgs']]):
+    def host_maintenance_policy(self, value: Optional[pulumi.Input['ClusterNodeConfigHostMaintenancePolicyArrgs']]):
         pulumi.set(self, "host_maintenance_policy", value)
 
     @property
@@ -5715,7 +5715,7 @@ class ClusterNodeConfigArgs:
 
     @property
     @pulumi.getter(name="kubeletConfig")
-    def kubelet_config(self) -> Optional[pulumi.Input['ClusterNodeConfigKubeletConfigArgs']]:
+    def kubelet_config(self) -> Optional[pulumi.Input['ClusterNodeConfigKubeletConfigArrgs']]:
         """
         Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Structure is documented below.
@@ -5727,7 +5727,7 @@ class ClusterNodeConfigArgs:
         return pulumi.get(self, "kubelet_config")
 
     @kubelet_config.setter
-    def kubelet_config(self, value: Optional[pulumi.Input['ClusterNodeConfigKubeletConfigArgs']]):
+    def kubelet_config(self, value: Optional[pulumi.Input['ClusterNodeConfigKubeletConfigArrgs']]):
         pulumi.set(self, "kubelet_config", value)
 
     @property
@@ -5745,7 +5745,7 @@ class ClusterNodeConfigArgs:
 
     @property
     @pulumi.getter(name="linuxNodeConfig")
-    def linux_node_config(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs']]:
+    def linux_node_config(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigArrgs']]:
         """
         Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Note that validations happen all server side. All attributes are optional.
@@ -5758,19 +5758,19 @@ class ClusterNodeConfigArgs:
         return pulumi.get(self, "linux_node_config")
 
     @linux_node_config.setter
-    def linux_node_config(self, value: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs']]):
+    def linux_node_config(self, value: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigArrgs']]):
         pulumi.set(self, "linux_node_config", value)
 
     @property
     @pulumi.getter(name="localNvmeSsdBlockConfig")
-    def local_nvme_ssd_block_config(self) -> Optional[pulumi.Input['ClusterNodeConfigLocalNvmeSsdBlockConfigArgs']]:
+    def local_nvme_ssd_block_config(self) -> Optional[pulumi.Input['ClusterNodeConfigLocalNvmeSsdBlockConfigArrgs']]:
         """
         Parameters for the local NVMe SSDs. Structure is documented below.
         """
         return pulumi.get(self, "local_nvme_ssd_block_config")
 
     @local_nvme_ssd_block_config.setter
-    def local_nvme_ssd_block_config(self, value: Optional[pulumi.Input['ClusterNodeConfigLocalNvmeSsdBlockConfigArgs']]):
+    def local_nvme_ssd_block_config(self, value: Optional[pulumi.Input['ClusterNodeConfigLocalNvmeSsdBlockConfigArrgs']]):
         pulumi.set(self, "local_nvme_ssd_block_config", value)
 
     @property
@@ -5888,14 +5888,14 @@ class ClusterNodeConfigArgs:
 
     @property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['ClusterNodeConfigReservationAffinityArgs']]:
+    def reservation_affinity(self) -> Optional[pulumi.Input['ClusterNodeConfigReservationAffinityArrgs']]:
         """
         The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['ClusterNodeConfigReservationAffinityArgs']]):
+    def reservation_affinity(self, value: Optional[pulumi.Input['ClusterNodeConfigReservationAffinityArrgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @property
@@ -5913,11 +5913,11 @@ class ClusterNodeConfigArgs:
 
     @property
     @pulumi.getter(name="sandboxConfig")
-    def sandbox_config(self) -> Optional[pulumi.Input['ClusterNodeConfigSandboxConfigArgs']]:
+    def sandbox_config(self) -> Optional[pulumi.Input['ClusterNodeConfigSandboxConfigArrgs']]:
         return pulumi.get(self, "sandbox_config")
 
     @sandbox_config.setter
-    def sandbox_config(self, value: Optional[pulumi.Input['ClusterNodeConfigSandboxConfigArgs']]):
+    def sandbox_config(self, value: Optional[pulumi.Input['ClusterNodeConfigSandboxConfigArrgs']]):
         pulumi.set(self, "sandbox_config", value)
 
     @property
@@ -5935,19 +5935,19 @@ class ClusterNodeConfigArgs:
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> Optional[pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArrgs']]:
         """
         Shielded Instance options. Structure is documented below.
         """
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: Optional[pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArrgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
     @pulumi.getter(name="soleTenantConfig")
-    def sole_tenant_config(self) -> Optional[pulumi.Input['ClusterNodeConfigSoleTenantConfigArgs']]:
+    def sole_tenant_config(self) -> Optional[pulumi.Input['ClusterNodeConfigSoleTenantConfigArrgs']]:
         """
         Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
 
@@ -5958,7 +5958,7 @@ class ClusterNodeConfigArgs:
         return pulumi.get(self, "sole_tenant_config")
 
     @sole_tenant_config.setter
-    def sole_tenant_config(self, value: Optional[pulumi.Input['ClusterNodeConfigSoleTenantConfigArgs']]):
+    def sole_tenant_config(self, value: Optional[pulumi.Input['ClusterNodeConfigSoleTenantConfigArrgs']]):
         pulumi.set(self, "sole_tenant_config", value)
 
     @property
@@ -5990,7 +5990,7 @@ class ClusterNodeConfigArgs:
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]]]:
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArrgs']]]]:
         """
         A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
         to apply to nodes. GKE's API can only set this field on cluster creation.
@@ -6004,12 +6004,12 @@ class ClusterNodeConfigArgs:
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]]]):
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArrgs']]]]):
         pulumi.set(self, "taints", value)
 
     @property
     @pulumi.getter(name="workloadMetadataConfig")
-    def workload_metadata_config(self) -> Optional[pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArgs']]:
+    def workload_metadata_config(self) -> Optional[pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArrgs']]:
         """
         Metadata configuration to expose to workloads on the node pool.
         Structure is documented below.
@@ -6017,12 +6017,12 @@ class ClusterNodeConfigArgs:
         return pulumi.get(self, "workload_metadata_config")
 
     @workload_metadata_config.setter
-    def workload_metadata_config(self, value: Optional[pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArgs']]):
+    def workload_metadata_config(self, value: Optional[pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArrgs']]):
         pulumi.set(self, "workload_metadata_config", value)
 
 
 @pulumi.input_type
-class ClusterNodeConfigAdvancedMachineFeaturesArgs:
+calass ClusterNodeConfigAdvancedMachineFeaturesArrgs:
     def __init__(__self__, *,
                  threads_per_core: pulumi.Input[int]):
         """
@@ -6044,7 +6044,7 @@ class ClusterNodeConfigAdvancedMachineFeaturesArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigConfidentialNodesArgs:
+calass ClusterNodeConfigConfidentialNodesArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -6068,7 +6068,7 @@ class ClusterNodeConfigConfidentialNodesArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigEffectiveTaintArgs:
+calass ClusterNodeConfigEffectiveTaintArrgs:
     def __init__(__self__, *,
                  effect: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -6123,7 +6123,7 @@ class ClusterNodeConfigEffectiveTaintArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigEphemeralStorageConfigArgs:
+calass ClusterNodeConfigEphemeralStorageConfigArrgs:
     def __init__(__self__, *,
                  local_ssd_count: pulumi.Input[int]):
         """
@@ -6145,7 +6145,7 @@ class ClusterNodeConfigEphemeralStorageConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs:
+calass ClusterNodeConfigEphemeralStorageLocalSsdConfigArrgs:
     def __init__(__self__, *,
                  local_ssd_count: pulumi.Input[int]):
         """
@@ -6167,7 +6167,7 @@ class ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigFastSocketArgs:
+calass ClusterNodeConfigFastSocketArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -6189,7 +6189,7 @@ class ClusterNodeConfigFastSocketArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigGcfsConfigArgs:
+calass ClusterNodeConfigGcfsConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -6211,19 +6211,19 @@ class ClusterNodeConfigGcfsConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigGuestAcceleratorArgs:
+calass ClusterNodeConfigGuestAcceleratorArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str],
-                 gpu_driver_installation_config: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']] = None,
+                 gpu_driver_installation_config: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs']] = None,
                  gpu_partition_size: Optional[pulumi.Input[str]] = None,
-                 gpu_sharing_config: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs']] = None):
+                 gpu_sharing_config: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArrgs']] = None):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-        :param pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs'] gpu_driver_installation_config: Configuration for auto installation of GPU driver. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs'] gpu_driver_installation_config: Configuration for auto installation of GPU driver. Structure is documented below.
         :param pulumi.Input[str] gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
-        :param pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs'] gpu_sharing_config: Configuration for GPU sharing. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArrgs'] gpu_sharing_config: Configuration for GPU sharing. Structure is documented below.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -6260,14 +6260,14 @@ class ClusterNodeConfigGuestAcceleratorArgs:
 
     @property
     @pulumi.getter(name="gpuDriverInstallationConfig")
-    def gpu_driver_installation_config(self) -> Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]:
+    def gpu_driver_installation_config(self) -> Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs']]:
         """
         Configuration for auto installation of GPU driver. Structure is documented below.
         """
         return pulumi.get(self, "gpu_driver_installation_config")
 
     @gpu_driver_installation_config.setter
-    def gpu_driver_installation_config(self, value: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]):
+    def gpu_driver_installation_config(self, value: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs']]):
         pulumi.set(self, "gpu_driver_installation_config", value)
 
     @property
@@ -6284,19 +6284,19 @@ class ClusterNodeConfigGuestAcceleratorArgs:
 
     @property
     @pulumi.getter(name="gpuSharingConfig")
-    def gpu_sharing_config(self) -> Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs']]:
+    def gpu_sharing_config(self) -> Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArrgs']]:
         """
         Configuration for GPU sharing. Structure is documented below.
         """
         return pulumi.get(self, "gpu_sharing_config")
 
     @gpu_sharing_config.setter
-    def gpu_sharing_config(self, value: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs']]):
+    def gpu_sharing_config(self, value: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArrgs']]):
         pulumi.set(self, "gpu_sharing_config", value)
 
 
 @pulumi.input_type
-class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs:
+calass ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs:
     def __init__(__self__, *,
                  gpu_driver_version: pulumi.Input[str]):
         """
@@ -6328,7 +6328,7 @@ class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs:
+calass ClusterNodeConfigGuestAcceleratorGpuSharingConfigArrgs:
     def __init__(__self__, *,
                  gpu_sharing_strategy: pulumi.Input[str],
                  max_shared_clients_per_gpu: pulumi.Input[int]):
@@ -6369,7 +6369,7 @@ class ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigGvnicArgs:
+calass ClusterNodeConfigGvnicArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -6391,7 +6391,7 @@ class ClusterNodeConfigGvnicArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigHostMaintenancePolicyArgs:
+calass ClusterNodeConfigHostMaintenancePolicyArrgs:
     def __init__(__self__, *,
                  maintenance_interval: pulumi.Input[str]):
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
@@ -6407,7 +6407,7 @@ class ClusterNodeConfigHostMaintenancePolicyArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigKubeletConfigArgs:
+calass ClusterNodeConfigKubeletConfigArrgs:
     def __init__(__self__, *,
                  cpu_manager_policy: pulumi.Input[str],
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
@@ -6499,7 +6499,7 @@ class ClusterNodeConfigKubeletConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigLinuxNodeConfigArgs:
+calass ClusterNodeConfigLinuxNodeConfigArrgs:
     def __init__(__self__, *,
                  sysctls: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         """
@@ -6525,7 +6525,7 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigLocalNvmeSsdBlockConfigArgs:
+calass ClusterNodeConfigLocalNvmeSsdBlockConfigArrgs:
     def __init__(__self__, *,
                  local_ssd_count: pulumi.Input[int]):
         """
@@ -6549,7 +6549,7 @@ class ClusterNodeConfigLocalNvmeSsdBlockConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigReservationAffinityArgs:
+calass ClusterNodeConfigReservationAffinityArrgs:
     def __init__(__self__, *,
                  consume_reservation_type: pulumi.Input[str],
                  key: Optional[pulumi.Input[str]] = None,
@@ -6615,7 +6615,7 @@ class ClusterNodeConfigReservationAffinityArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigSandboxConfigArgs:
+calass ClusterNodeConfigSandboxConfigArrgs:
     def __init__(__self__, *,
                  sandbox_type: pulumi.Input[str]):
         """
@@ -6643,7 +6643,7 @@ class ClusterNodeConfigSandboxConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigShieldedInstanceConfigArgs:
+calass ClusterNodeConfigShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None):
@@ -6690,23 +6690,23 @@ class ClusterNodeConfigShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigSoleTenantConfigArgs:
+calass ClusterNodeConfigSoleTenantConfigArrgs:
     def __init__(__self__, *,
-                 node_affinities: pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSoleTenantConfigNodeAffinityArgs']]]):
+                 node_affinities: pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSoleTenantConfigNodeAffinityArrgs']]]):
         pulumi.set(__self__, "node_affinities", node_affinities)
 
     @property
     @pulumi.getter(name="nodeAffinities")
-    def node_affinities(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSoleTenantConfigNodeAffinityArgs']]]:
+    def node_affinities(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSoleTenantConfigNodeAffinityArrgs']]]:
         return pulumi.get(self, "node_affinities")
 
     @node_affinities.setter
-    def node_affinities(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSoleTenantConfigNodeAffinityArgs']]]):
+    def node_affinities(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSoleTenantConfigNodeAffinityArrgs']]]):
         pulumi.set(self, "node_affinities", value)
 
 
 @pulumi.input_type
-class ClusterNodeConfigSoleTenantConfigNodeAffinityArgs:
+calass ClusterNodeConfigSoleTenantConfigNodeAffinityArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  operator: pulumi.Input[str],
@@ -6758,7 +6758,7 @@ class ClusterNodeConfigSoleTenantConfigNodeAffinityArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigTaintArgs:
+calass ClusterNodeConfigTaintArrgs:
     def __init__(__self__, *,
                  effect: pulumi.Input[str],
                  key: pulumi.Input[str],
@@ -6810,7 +6810,7 @@ class ClusterNodeConfigTaintArgs:
 
 
 @pulumi.input_type
-class ClusterNodeConfigWorkloadMetadataConfigArgs:
+calass ClusterNodeConfigWorkloadMetadataConfigArrgs:
     def __init__(__self__, *,
                  mode: pulumi.Input[str]):
         """
@@ -6840,22 +6840,22 @@ class ClusterNodeConfigWorkloadMetadataConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolArgs:
+calass ClusterNodePoolArrgs:
     def __init__(__self__, *,
-                 autoscaling: Optional[pulumi.Input['ClusterNodePoolAutoscalingArgs']] = None,
+                 autoscaling: Optional[pulumi.Input['ClusterNodePoolAutoscalingArrgs']] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  managed_instance_group_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 management: Optional[pulumi.Input['ClusterNodePoolManagementArgs']] = None,
+                 management: Optional[pulumi.Input['ClusterNodePoolManagementArrgs']] = None,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input['ClusterNodePoolNetworkConfigArgs']] = None,
-                 node_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigArgs']] = None,
+                 network_config: Optional[pulumi.Input['ClusterNodePoolNetworkConfigArrgs']] = None,
+                 node_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigArrgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 placement_policy: Optional[pulumi.Input['ClusterNodePoolPlacementPolicyArgs']] = None,
-                 upgrade_settings: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsArgs']] = None,
+                 placement_policy: Optional[pulumi.Input['ClusterNodePoolPlacementPolicyArrgs']] = None,
+                 upgrade_settings: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsArrgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
@@ -6864,14 +6864,14 @@ class ClusterNodePoolArgs:
                `container.NodePool` objects with no default node pool, you'll need to
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
-        :param pulumi.Input['ClusterNodePoolManagementArgs'] management: NodeManagement configuration for this NodePool. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolManagementArrgs'] management: NodeManagement configuration for this NodePool. Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
                
                - - -
-        :param pulumi.Input['ClusterNodePoolNetworkConfigArgs'] network_config: Configuration for
+        :param pulumi.Input['ClusterNodePoolNetworkConfigArrgs'] network_config: Configuration for
                [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-        :param pulumi.Input['ClusterNodePoolNodeConfigArgs'] node_config: Parameters used in creating the default node pool.
+        :param pulumi.Input['ClusterNodePoolNodeConfigArrgs'] node_config: Parameters used in creating the default node pool.
                Generally, this field should not be used at the same time as a
                `container.NodePool` or a `node_pool` block; this configuration
                manages the default node pool, which isn't recommended to be used.
@@ -6887,7 +6887,7 @@ class ClusterNodePoolArgs:
                locations. In contrast, in a regional cluster, cluster master nodes are present
                in multiple zones in the region. For that reason, regional clusters should be
                preferred.
-        :param pulumi.Input['ClusterNodePoolUpgradeSettingsArgs'] upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolUpgradeSettingsArrgs'] upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
         """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
@@ -6922,11 +6922,11 @@ class ClusterNodePoolArgs:
 
     @property
     @pulumi.getter
-    def autoscaling(self) -> Optional[pulumi.Input['ClusterNodePoolAutoscalingArgs']]:
+    def autoscaling(self) -> Optional[pulumi.Input['ClusterNodePoolAutoscalingArrgs']]:
         return pulumi.get(self, "autoscaling")
 
     @autoscaling.setter
-    def autoscaling(self, value: Optional[pulumi.Input['ClusterNodePoolAutoscalingArgs']]):
+    def autoscaling(self, value: Optional[pulumi.Input['ClusterNodePoolAutoscalingArrgs']]):
         pulumi.set(self, "autoscaling", value)
 
     @property
@@ -6966,14 +6966,14 @@ class ClusterNodePoolArgs:
 
     @property
     @pulumi.getter
-    def management(self) -> Optional[pulumi.Input['ClusterNodePoolManagementArgs']]:
+    def management(self) -> Optional[pulumi.Input['ClusterNodePoolManagementArrgs']]:
         """
         NodeManagement configuration for this NodePool. Structure is documented below.
         """
         return pulumi.get(self, "management")
 
     @management.setter
-    def management(self, value: Optional[pulumi.Input['ClusterNodePoolManagementArgs']]):
+    def management(self, value: Optional[pulumi.Input['ClusterNodePoolManagementArrgs']]):
         pulumi.set(self, "management", value)
 
     @property
@@ -7011,7 +7011,7 @@ class ClusterNodePoolArgs:
 
     @property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['ClusterNodePoolNetworkConfigArgs']]:
+    def network_config(self) -> Optional[pulumi.Input['ClusterNodePoolNetworkConfigArrgs']]:
         """
         Configuration for
         [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
@@ -7019,12 +7019,12 @@ class ClusterNodePoolArgs:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['ClusterNodePoolNetworkConfigArgs']]):
+    def network_config(self, value: Optional[pulumi.Input['ClusterNodePoolNetworkConfigArrgs']]):
         pulumi.set(self, "network_config", value)
 
     @property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigArgs']]:
+    def node_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigArrgs']]:
         """
         Parameters used in creating the default node pool.
         Generally, this field should not be used at the same time as a
@@ -7035,7 +7035,7 @@ class ClusterNodePoolArgs:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigArgs']]):
+    def node_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigArrgs']]):
         pulumi.set(self, "node_config", value)
 
     @property
@@ -7071,23 +7071,23 @@ class ClusterNodePoolArgs:
 
     @property
     @pulumi.getter(name="placementPolicy")
-    def placement_policy(self) -> Optional[pulumi.Input['ClusterNodePoolPlacementPolicyArgs']]:
+    def placement_policy(self) -> Optional[pulumi.Input['ClusterNodePoolPlacementPolicyArrgs']]:
         return pulumi.get(self, "placement_policy")
 
     @placement_policy.setter
-    def placement_policy(self, value: Optional[pulumi.Input['ClusterNodePoolPlacementPolicyArgs']]):
+    def placement_policy(self, value: Optional[pulumi.Input['ClusterNodePoolPlacementPolicyArrgs']]):
         pulumi.set(self, "placement_policy", value)
 
     @property
     @pulumi.getter(name="upgradeSettings")
-    def upgrade_settings(self) -> Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsArgs']]:
+    def upgrade_settings(self) -> Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsArrgs']]:
         """
         Specifies the upgrade settings for NAP created node pools. Structure is documented below.
         """
         return pulumi.get(self, "upgrade_settings")
 
     @upgrade_settings.setter
-    def upgrade_settings(self, value: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsArgs']]):
+    def upgrade_settings(self, value: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsArrgs']]):
         pulumi.set(self, "upgrade_settings", value)
 
     @property
@@ -7101,30 +7101,30 @@ class ClusterNodePoolArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolAutoConfigArgs:
+calass ClusterNodePoolAutoConfigArrgs:
     def __init__(__self__, *,
-                 network_tags: Optional[pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgs']] = None):
+                 network_tags: Optional[pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArrgs']] = None):
         """
-        :param pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgs'] network_tags: The network tag config for the cluster's automatically provisioned node pools.
+        :param pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArrgs'] network_tags: The network tag config for the cluster's automatically provisioned node pools.
         """
         if network_tags is not None:
             pulumi.set(__self__, "network_tags", network_tags)
 
     @property
     @pulumi.getter(name="networkTags")
-    def network_tags(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgs']]:
+    def network_tags(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArrgs']]:
         """
         The network tag config for the cluster's automatically provisioned node pools.
         """
         return pulumi.get(self, "network_tags")
 
     @network_tags.setter
-    def network_tags(self, value: Optional[pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgs']]):
+    def network_tags(self, value: Optional[pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArrgs']]):
         pulumi.set(self, "network_tags", value)
 
 
 @pulumi.input_type
-class ClusterNodePoolAutoConfigNetworkTagsArgs:
+calass ClusterNodePoolAutoConfigNetworkTagsArrgs:
     def __init__(__self__, *,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -7155,7 +7155,7 @@ class ClusterNodePoolAutoConfigNetworkTagsArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolAutoscalingArgs:
+calass ClusterNodePoolAutoscalingArrgs:
     def __init__(__self__, *,
                  location_policy: Optional[pulumi.Input[str]] = None,
                  max_node_count: Optional[pulumi.Input[int]] = None,
@@ -7220,35 +7220,35 @@ class ClusterNodePoolAutoscalingArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolDefaultsArgs:
+calass ClusterNodePoolDefaultsArrgs:
     def __init__(__self__, *,
-                 node_config_defaults: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsArgs']] = None):
+                 node_config_defaults: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsArrgs']] = None):
         """
-        :param pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsArgs'] node_config_defaults: Subset of NodeConfig message that has defaults.
+        :param pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsArrgs'] node_config_defaults: Subset of NodeConfig message that has defaults.
         """
         if node_config_defaults is not None:
             pulumi.set(__self__, "node_config_defaults", node_config_defaults)
 
     @property
     @pulumi.getter(name="nodeConfigDefaults")
-    def node_config_defaults(self) -> Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsArgs']]:
+    def node_config_defaults(self) -> Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsArrgs']]:
         """
         Subset of NodeConfig message that has defaults.
         """
         return pulumi.get(self, "node_config_defaults")
 
     @node_config_defaults.setter
-    def node_config_defaults(self, value: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsArgs']]):
+    def node_config_defaults(self, value: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsArrgs']]):
         pulumi.set(self, "node_config_defaults", value)
 
 
 @pulumi.input_type
-class ClusterNodePoolDefaultsNodeConfigDefaultsArgs:
+calass ClusterNodePoolDefaultsNodeConfigDefaultsArrgs:
     def __init__(__self__, *,
-                 gcfs_config: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs']] = None,
+                 gcfs_config: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArrgs']] = None,
                  logging_variant: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs'] gcfs_config: ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArrgs'] gcfs_config: ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         :param pulumi.Input[str] logging_variant: The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         """
         if gcfs_config is not None:
@@ -7258,14 +7258,14 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsArgs:
 
     @property
     @pulumi.getter(name="gcfsConfig")
-    def gcfs_config(self) -> Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs']]:
+    def gcfs_config(self) -> Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArrgs']]:
         """
         ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         """
         return pulumi.get(self, "gcfs_config")
 
     @gcfs_config.setter
-    def gcfs_config(self, value: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs']]):
+    def gcfs_config(self, value: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArrgs']]):
         pulumi.set(self, "gcfs_config", value)
 
     @property
@@ -7282,7 +7282,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs:
+calass ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -7304,7 +7304,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolManagementArgs:
+calass ClusterNodePoolManagementArrgs:
     def __init__(__self__, *,
                  auto_repair: Optional[pulumi.Input[bool]] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None):
@@ -7347,13 +7347,13 @@ class ClusterNodePoolManagementArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNetworkConfigArgs:
+calass ClusterNodePoolNetworkConfigArrgs:
     def __init__(__self__, *,
-                 additional_node_network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]] = None,
-                 additional_pod_network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]] = None,
+                 additional_node_network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrgs']]]] = None,
+                 additional_pod_network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrgs']]]] = None,
                  create_pod_range: Optional[pulumi.Input[bool]] = None,
                  enable_private_nodes: Optional[pulumi.Input[bool]] = None,
-                 pod_cidr_overprovision_config: Optional[pulumi.Input['ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs']] = None,
+                 pod_cidr_overprovision_config: Optional[pulumi.Input['ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrgs']] = None,
                  pod_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  pod_range: Optional[pulumi.Input[str]] = None):
         """
@@ -7382,20 +7382,20 @@ class ClusterNodePoolNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="additionalNodeNetworkConfigs")
-    def additional_node_network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]]:
+    def additional_node_network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrgs']]]]:
         return pulumi.get(self, "additional_node_network_configs")
 
     @additional_node_network_configs.setter
-    def additional_node_network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]]):
+    def additional_node_network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrgs']]]]):
         pulumi.set(self, "additional_node_network_configs", value)
 
     @property
     @pulumi.getter(name="additionalPodNetworkConfigs")
-    def additional_pod_network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]]:
+    def additional_pod_network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrgs']]]]:
         return pulumi.get(self, "additional_pod_network_configs")
 
     @additional_pod_network_configs.setter
-    def additional_pod_network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]]):
+    def additional_pod_network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrgs']]]]):
         pulumi.set(self, "additional_pod_network_configs", value)
 
     @property
@@ -7427,11 +7427,11 @@ class ClusterNodePoolNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="podCidrOverprovisionConfig")
-    def pod_cidr_overprovision_config(self) -> Optional[pulumi.Input['ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs']]:
+    def pod_cidr_overprovision_config(self) -> Optional[pulumi.Input['ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrgs']]:
         return pulumi.get(self, "pod_cidr_overprovision_config")
 
     @pod_cidr_overprovision_config.setter
-    def pod_cidr_overprovision_config(self, value: Optional[pulumi.Input['ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs']]):
+    def pod_cidr_overprovision_config(self, value: Optional[pulumi.Input['ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrgs']]):
         pulumi.set(self, "pod_cidr_overprovision_config", value)
 
     @property
@@ -7460,7 +7460,7 @@ class ClusterNodePoolNetworkConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs:
+calass ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrgs:
     def __init__(__self__, *,
                  network: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
@@ -7505,7 +7505,7 @@ class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs:
+calass ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrgs:
     def __init__(__self__, *,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  secondary_pod_range: Optional[pulumi.Input[str]] = None,
@@ -7554,7 +7554,7 @@ class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs:
+calass ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[bool]):
         """
@@ -7580,26 +7580,26 @@ class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigArgs:
+calass ClusterNodePoolNodeConfigArrgs:
     def __init__(__self__, *,
-                 advanced_machine_features: Optional[pulumi.Input['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs']] = None,
+                 advanced_machine_features: Optional[pulumi.Input['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArrgs']] = None,
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
-                 confidential_nodes: Optional[pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArgs']] = None,
+                 confidential_nodes: Optional[pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArrgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
-                 effective_taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]]] = None,
-                 ephemeral_storage_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']] = None,
-                 ephemeral_storage_local_ssd_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']] = None,
-                 fast_socket: Optional[pulumi.Input['ClusterNodePoolNodeConfigFastSocketArgs']] = None,
-                 gcfs_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigGcfsConfigArgs']] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]]] = None,
-                 gvnic: Optional[pulumi.Input['ClusterNodePoolNodeConfigGvnicArgs']] = None,
-                 host_maintenance_policy: Optional[pulumi.Input['ClusterNodePoolNodeConfigHostMaintenancePolicyArgs']] = None,
+                 effective_taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArrgs']]]] = None,
+                 ephemeral_storage_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArrgs']] = None,
+                 ephemeral_storage_local_ssd_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrgs']] = None,
+                 fast_socket: Optional[pulumi.Input['ClusterNodePoolNodeConfigFastSocketArrgs']] = None,
+                 gcfs_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigGcfsConfigArrgs']] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArrgs']]]] = None,
+                 gvnic: Optional[pulumi.Input['ClusterNodePoolNodeConfigGvnicArrgs']] = None,
+                 host_maintenance_policy: Optional[pulumi.Input['ClusterNodePoolNodeConfigHostMaintenancePolicyArrgs']] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
-                 kubelet_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs']] = None,
+                 kubelet_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 linux_node_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs']] = None,
-                 local_nvme_ssd_block_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs']] = None,
+                 linux_node_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArrgs']] = None,
+                 local_nvme_ssd_block_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrgs']] = None,
                  local_ssd_count: Optional[pulumi.Input[int]] = None,
                  logging_variant: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -7608,40 +7608,40 @@ class ClusterNodePoolNodeConfigArgs:
                  node_group: Optional[pulumi.Input[str]] = None,
                  oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
-                 reservation_affinity: Optional[pulumi.Input['ClusterNodePoolNodeConfigReservationAffinityArgs']] = None,
+                 reservation_affinity: Optional[pulumi.Input['ClusterNodePoolNodeConfigReservationAffinityArrgs']] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 sandbox_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgs']] = None,
+                 sandbox_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArrgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs']] = None,
-                 sole_tenant_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArrgs']] = None,
+                 sole_tenant_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArrgs']] = None,
                  spot: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]]] = None,
-                 workload_metadata_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs']] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArrgs']]]] = None,
+                 workload_metadata_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArrgs']] = None):
         """
-        :param pulumi.Input['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs'] advanced_machine_features: Specifies options for controlling
+        :param pulumi.Input['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArrgs'] advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
         :param pulumi.Input[str] boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
-        :param pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArrgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArrgs'] ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
                import pulumi
                ```
-        :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs'] ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrgs'] ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
                import pulumi
                ```
-        :param pulumi.Input['ClusterNodePoolNodeConfigFastSocketArgs'] fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
+        :param pulumi.Input['ClusterNodePoolNodeConfigFastSocketArrgs'] fast_socket: Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
                Node Pool must enable gvnic.
                GKE version 1.25.2-gke.1700 or later.
                Structure is documented below.
-        :param pulumi.Input['ClusterNodePoolNodeConfigGcfsConfigArgs'] gcfs_config: Parameters for the Google Container Filesystem (GCFS).
+        :param pulumi.Input['ClusterNodePoolNodeConfigGcfsConfigArrgs'] gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
                A `machine_type` that has more than 16 GiB of memory is also recommended.
@@ -7651,9 +7651,9 @@ class ClusterNodePoolNodeConfigArgs:
                ```python
                import pulumi
                ```
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArrgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
-        :param pulumi.Input['ClusterNodePoolNodeConfigGvnicArgs'] gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
+        :param pulumi.Input['ClusterNodePoolNodeConfigGvnicArrgs'] gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
                Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
                gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
                GKE node version 1.15.11-gke.15 or later
@@ -7665,7 +7665,7 @@ class ClusterNodePoolNodeConfigArgs:
                ```
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
                will delete and recreate all nodes in the node pool.
-        :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs'] kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        :param pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArrgs'] kubelet_config: Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Structure is documented below.
                
                ```python
@@ -7673,14 +7673,14 @@ class ClusterNodePoolNodeConfigArgs:
                ```
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
                reserved by Kubernetes Core components and cannot be specified.
-        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs'] linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArrgs'] linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
                
                ```python
                import pulumi
                ```
-        :param pulumi.Input['ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs'] local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrgs'] local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
         :param pulumi.Input[int] local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
         :param pulumi.Input[str] logging_variant: Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -7706,13 +7706,13 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input[bool] preemptible: A boolean that represents whether or not the underlying node VMs
                are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
                for more information. Defaults to false.
-        :param pulumi.Input['ClusterNodePoolNodeConfigReservationAffinityArgs'] reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigReservationAffinityArrgs'] reservation_affinity: The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
                for how these labels are applied to clusters, node pools and nodes.
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
-        :param pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
-        :param pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArgs'] sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArrgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArrgs'] sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
                
                ```python
                import pulumi
@@ -7722,7 +7722,7 @@ class ClusterNodePoolNodeConfigArgs:
                for more information. Defaults to false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArrgs']]] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
                to apply to nodes. GKE's API can only set this field on cluster creation.
                However, GKE will add taints to your nodes if you enable certain features such
                as GPUs. If this field is set, any diffs on this field will cause the provider to
@@ -7730,7 +7730,7 @@ class ClusterNodePoolNodeConfigArgs:
                Kubernetes (eg. through `kubectl`), and it's recommended that you do not use
                this field to manage taints. If you do, `lifecycle.ignore_changes` is
                recommended. Structure is documented below.
-        :param pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
+        :param pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArrgs'] workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
         if advanced_machine_features is not None:
@@ -7808,7 +7808,7 @@ class ClusterNodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="advancedMachineFeatures")
-    def advanced_machine_features(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs']]:
+    def advanced_machine_features(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArrgs']]:
         """
         Specifies options for controlling
         advanced machine features. Structure is documented below.
@@ -7816,7 +7816,7 @@ class ClusterNodePoolNodeConfigArgs:
         return pulumi.get(self, "advanced_machine_features")
 
     @advanced_machine_features.setter
-    def advanced_machine_features(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs']]):
+    def advanced_machine_features(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArrgs']]):
         pulumi.set(self, "advanced_machine_features", value)
 
     @property
@@ -7833,14 +7833,14 @@ class ClusterNodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="confidentialNodes")
-    def confidential_nodes(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArgs']]:
+    def confidential_nodes(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArrgs']]:
         """
         Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         """
         return pulumi.get(self, "confidential_nodes")
 
     @confidential_nodes.setter
-    def confidential_nodes(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArgs']]):
+    def confidential_nodes(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArrgs']]):
         pulumi.set(self, "confidential_nodes", value)
 
     @property
@@ -7871,16 +7871,16 @@ class ClusterNodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="effectiveTaints")
-    def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]]]:
+    def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArrgs']]]]:
         return pulumi.get(self, "effective_taints")
 
     @effective_taints.setter
-    def effective_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]]]):
+    def effective_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArrgs']]]]):
         pulumi.set(self, "effective_taints", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageConfig")
-    def ephemeral_storage_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']]:
+    def ephemeral_storage_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArrgs']]:
         """
         ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 
@@ -7891,12 +7891,12 @@ class ClusterNodePoolNodeConfigArgs:
         return pulumi.get(self, "ephemeral_storage_config")
 
     @ephemeral_storage_config.setter
-    def ephemeral_storage_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']]):
+    def ephemeral_storage_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArrgs']]):
         pulumi.set(self, "ephemeral_storage_config", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageLocalSsdConfig")
-    def ephemeral_storage_local_ssd_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']]:
+    def ephemeral_storage_local_ssd_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrgs']]:
         """
         Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 
@@ -7907,12 +7907,12 @@ class ClusterNodePoolNodeConfigArgs:
         return pulumi.get(self, "ephemeral_storage_local_ssd_config")
 
     @ephemeral_storage_local_ssd_config.setter
-    def ephemeral_storage_local_ssd_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']]):
+    def ephemeral_storage_local_ssd_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrgs']]):
         pulumi.set(self, "ephemeral_storage_local_ssd_config", value)
 
     @property
     @pulumi.getter(name="fastSocket")
-    def fast_socket(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigFastSocketArgs']]:
+    def fast_socket(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigFastSocketArrgs']]:
         """
         Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
         Node Pool must enable gvnic.
@@ -7922,12 +7922,12 @@ class ClusterNodePoolNodeConfigArgs:
         return pulumi.get(self, "fast_socket")
 
     @fast_socket.setter
-    def fast_socket(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigFastSocketArgs']]):
+    def fast_socket(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigFastSocketArrgs']]):
         pulumi.set(self, "fast_socket", value)
 
     @property
     @pulumi.getter(name="gcfsConfig")
-    def gcfs_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigGcfsConfigArgs']]:
+    def gcfs_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigGcfsConfigArrgs']]:
         """
         Parameters for the Google Container Filesystem (GCFS).
         If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
@@ -7943,12 +7943,12 @@ class ClusterNodePoolNodeConfigArgs:
         return pulumi.get(self, "gcfs_config")
 
     @gcfs_config.setter
-    def gcfs_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigGcfsConfigArgs']]):
+    def gcfs_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigGcfsConfigArrgs']]):
         pulumi.set(self, "gcfs_config", value)
 
     @property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]]]:
+    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArrgs']]]]:
         """
         List of the type and count of accelerator cards attached to the instance.
         Structure documented below.
@@ -7956,12 +7956,12 @@ class ClusterNodePoolNodeConfigArgs:
         return pulumi.get(self, "guest_accelerators")
 
     @guest_accelerators.setter
-    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]]]):
+    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArrgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
 
     @property
     @pulumi.getter
-    def gvnic(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigGvnicArgs']]:
+    def gvnic(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigGvnicArrgs']]:
         """
         Google Virtual NIC (gVNIC) is a virtual network interface.
         Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -7977,16 +7977,16 @@ class ClusterNodePoolNodeConfigArgs:
         return pulumi.get(self, "gvnic")
 
     @gvnic.setter
-    def gvnic(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigGvnicArgs']]):
+    def gvnic(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigGvnicArrgs']]):
         pulumi.set(self, "gvnic", value)
 
     @property
     @pulumi.getter(name="hostMaintenancePolicy")
-    def host_maintenance_policy(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigHostMaintenancePolicyArgs']]:
+    def host_maintenance_policy(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigHostMaintenancePolicyArrgs']]:
         return pulumi.get(self, "host_maintenance_policy")
 
     @host_maintenance_policy.setter
-    def host_maintenance_policy(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigHostMaintenancePolicyArgs']]):
+    def host_maintenance_policy(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigHostMaintenancePolicyArrgs']]):
         pulumi.set(self, "host_maintenance_policy", value)
 
     @property
@@ -8004,7 +8004,7 @@ class ClusterNodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="kubeletConfig")
-    def kubelet_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs']]:
+    def kubelet_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArrgs']]:
         """
         Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Structure is documented below.
@@ -8016,7 +8016,7 @@ class ClusterNodePoolNodeConfigArgs:
         return pulumi.get(self, "kubelet_config")
 
     @kubelet_config.setter
-    def kubelet_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs']]):
+    def kubelet_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArrgs']]):
         pulumi.set(self, "kubelet_config", value)
 
     @property
@@ -8034,7 +8034,7 @@ class ClusterNodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="linuxNodeConfig")
-    def linux_node_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs']]:
+    def linux_node_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArrgs']]:
         """
         Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         Note that validations happen all server side. All attributes are optional.
@@ -8047,19 +8047,19 @@ class ClusterNodePoolNodeConfigArgs:
         return pulumi.get(self, "linux_node_config")
 
     @linux_node_config.setter
-    def linux_node_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs']]):
+    def linux_node_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArrgs']]):
         pulumi.set(self, "linux_node_config", value)
 
     @property
     @pulumi.getter(name="localNvmeSsdBlockConfig")
-    def local_nvme_ssd_block_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs']]:
+    def local_nvme_ssd_block_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrgs']]:
         """
         Parameters for the local NVMe SSDs. Structure is documented below.
         """
         return pulumi.get(self, "local_nvme_ssd_block_config")
 
     @local_nvme_ssd_block_config.setter
-    def local_nvme_ssd_block_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs']]):
+    def local_nvme_ssd_block_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrgs']]):
         pulumi.set(self, "local_nvme_ssd_block_config", value)
 
     @property
@@ -8177,14 +8177,14 @@ class ClusterNodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigReservationAffinityArgs']]:
+    def reservation_affinity(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigReservationAffinityArrgs']]:
         """
         The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigReservationAffinityArgs']]):
+    def reservation_affinity(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigReservationAffinityArrgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @property
@@ -8202,11 +8202,11 @@ class ClusterNodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="sandboxConfig")
-    def sandbox_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgs']]:
+    def sandbox_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArrgs']]:
         return pulumi.get(self, "sandbox_config")
 
     @sandbox_config.setter
-    def sandbox_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgs']]):
+    def sandbox_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArrgs']]):
         pulumi.set(self, "sandbox_config", value)
 
     @property
@@ -8224,19 +8224,19 @@ class ClusterNodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArrgs']]:
         """
         Shielded Instance options. Structure is documented below.
         """
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArrgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
     @pulumi.getter(name="soleTenantConfig")
-    def sole_tenant_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArgs']]:
+    def sole_tenant_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArrgs']]:
         """
         Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
 
@@ -8247,7 +8247,7 @@ class ClusterNodePoolNodeConfigArgs:
         return pulumi.get(self, "sole_tenant_config")
 
     @sole_tenant_config.setter
-    def sole_tenant_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArgs']]):
+    def sole_tenant_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArrgs']]):
         pulumi.set(self, "sole_tenant_config", value)
 
     @property
@@ -8279,7 +8279,7 @@ class ClusterNodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]]]:
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArrgs']]]]:
         """
         A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
         to apply to nodes. GKE's API can only set this field on cluster creation.
@@ -8293,12 +8293,12 @@ class ClusterNodePoolNodeConfigArgs:
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]]]):
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArrgs']]]]):
         pulumi.set(self, "taints", value)
 
     @property
     @pulumi.getter(name="workloadMetadataConfig")
-    def workload_metadata_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs']]:
+    def workload_metadata_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArrgs']]:
         """
         Metadata configuration to expose to workloads on the node pool.
         Structure is documented below.
@@ -8306,12 +8306,12 @@ class ClusterNodePoolNodeConfigArgs:
         return pulumi.get(self, "workload_metadata_config")
 
     @workload_metadata_config.setter
-    def workload_metadata_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs']]):
+    def workload_metadata_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArrgs']]):
         pulumi.set(self, "workload_metadata_config", value)
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs:
+calass ClusterNodePoolNodeConfigAdvancedMachineFeaturesArrgs:
     def __init__(__self__, *,
                  threads_per_core: pulumi.Input[int]):
         """
@@ -8333,7 +8333,7 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigConfidentialNodesArgs:
+calass ClusterNodePoolNodeConfigConfidentialNodesArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -8357,7 +8357,7 @@ class ClusterNodePoolNodeConfigConfidentialNodesArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigEffectiveTaintArgs:
+calass ClusterNodePoolNodeConfigEffectiveTaintArrgs:
     def __init__(__self__, *,
                  effect: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -8412,7 +8412,7 @@ class ClusterNodePoolNodeConfigEffectiveTaintArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigEphemeralStorageConfigArgs:
+calass ClusterNodePoolNodeConfigEphemeralStorageConfigArrgs:
     def __init__(__self__, *,
                  local_ssd_count: pulumi.Input[int]):
         """
@@ -8434,7 +8434,7 @@ class ClusterNodePoolNodeConfigEphemeralStorageConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs:
+calass ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArrgs:
     def __init__(__self__, *,
                  local_ssd_count: pulumi.Input[int]):
         """
@@ -8456,7 +8456,7 @@ class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigFastSocketArgs:
+calass ClusterNodePoolNodeConfigFastSocketArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -8478,7 +8478,7 @@ class ClusterNodePoolNodeConfigFastSocketArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigGcfsConfigArgs:
+calass ClusterNodePoolNodeConfigGcfsConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -8500,19 +8500,19 @@ class ClusterNodePoolNodeConfigGcfsConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigGuestAcceleratorArgs:
+calass ClusterNodePoolNodeConfigGuestAcceleratorArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str],
-                 gpu_driver_installation_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']] = None,
+                 gpu_driver_installation_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs']] = None,
                  gpu_partition_size: Optional[pulumi.Input[str]] = None,
-                 gpu_sharing_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']] = None):
+                 gpu_sharing_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrgs']] = None):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-        :param pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs'] gpu_driver_installation_config: Configuration for auto installation of GPU driver. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs'] gpu_driver_installation_config: Configuration for auto installation of GPU driver. Structure is documented below.
         :param pulumi.Input[str] gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
-        :param pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs'] gpu_sharing_config: Configuration for GPU sharing. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrgs'] gpu_sharing_config: Configuration for GPU sharing. Structure is documented below.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -8549,14 +8549,14 @@ class ClusterNodePoolNodeConfigGuestAcceleratorArgs:
 
     @property
     @pulumi.getter(name="gpuDriverInstallationConfig")
-    def gpu_driver_installation_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]:
+    def gpu_driver_installation_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs']]:
         """
         Configuration for auto installation of GPU driver. Structure is documented below.
         """
         return pulumi.get(self, "gpu_driver_installation_config")
 
     @gpu_driver_installation_config.setter
-    def gpu_driver_installation_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]):
+    def gpu_driver_installation_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs']]):
         pulumi.set(self, "gpu_driver_installation_config", value)
 
     @property
@@ -8573,19 +8573,19 @@ class ClusterNodePoolNodeConfigGuestAcceleratorArgs:
 
     @property
     @pulumi.getter(name="gpuSharingConfig")
-    def gpu_sharing_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']]:
+    def gpu_sharing_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrgs']]:
         """
         Configuration for GPU sharing. Structure is documented below.
         """
         return pulumi.get(self, "gpu_sharing_config")
 
     @gpu_sharing_config.setter
-    def gpu_sharing_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']]):
+    def gpu_sharing_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrgs']]):
         pulumi.set(self, "gpu_sharing_config", value)
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs:
+calass ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs:
     def __init__(__self__, *,
                  gpu_driver_version: pulumi.Input[str]):
         """
@@ -8617,7 +8617,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs:
+calass ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrgs:
     def __init__(__self__, *,
                  gpu_sharing_strategy: pulumi.Input[str],
                  max_shared_clients_per_gpu: pulumi.Input[int]):
@@ -8658,7 +8658,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigGvnicArgs:
+calass ClusterNodePoolNodeConfigGvnicArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -8680,7 +8680,7 @@ class ClusterNodePoolNodeConfigGvnicArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs:
+calass ClusterNodePoolNodeConfigHostMaintenancePolicyArrgs:
     def __init__(__self__, *,
                  maintenance_interval: pulumi.Input[str]):
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
@@ -8696,7 +8696,7 @@ class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigKubeletConfigArgs:
+calass ClusterNodePoolNodeConfigKubeletConfigArrgs:
     def __init__(__self__, *,
                  cpu_manager_policy: pulumi.Input[str],
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
@@ -8788,7 +8788,7 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
+calass ClusterNodePoolNodeConfigLinuxNodeConfigArrgs:
     def __init__(__self__, *,
                  sysctls: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         """
@@ -8814,7 +8814,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs:
+calass ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrgs:
     def __init__(__self__, *,
                  local_ssd_count: pulumi.Input[int]):
         """
@@ -8838,7 +8838,7 @@ class ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigReservationAffinityArgs:
+calass ClusterNodePoolNodeConfigReservationAffinityArrgs:
     def __init__(__self__, *,
                  consume_reservation_type: pulumi.Input[str],
                  key: Optional[pulumi.Input[str]] = None,
@@ -8904,7 +8904,7 @@ class ClusterNodePoolNodeConfigReservationAffinityArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigSandboxConfigArgs:
+calass ClusterNodePoolNodeConfigSandboxConfigArrgs:
     def __init__(__self__, *,
                  sandbox_type: pulumi.Input[str]):
         """
@@ -8932,7 +8932,7 @@ class ClusterNodePoolNodeConfigSandboxConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigShieldedInstanceConfigArgs:
+calass ClusterNodePoolNodeConfigShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None):
@@ -8979,23 +8979,23 @@ class ClusterNodePoolNodeConfigShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigSoleTenantConfigArgs:
+calass ClusterNodePoolNodeConfigSoleTenantConfigArrgs:
     def __init__(__self__, *,
-                 node_affinities: pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]):
+                 node_affinities: pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrgs']]]):
         pulumi.set(__self__, "node_affinities", node_affinities)
 
     @property
     @pulumi.getter(name="nodeAffinities")
-    def node_affinities(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]:
+    def node_affinities(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrgs']]]:
         return pulumi.get(self, "node_affinities")
 
     @node_affinities.setter
-    def node_affinities(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]):
+    def node_affinities(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrgs']]]):
         pulumi.set(self, "node_affinities", value)
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs:
+calass ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  operator: pulumi.Input[str],
@@ -9047,7 +9047,7 @@ class ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigTaintArgs:
+calass ClusterNodePoolNodeConfigTaintArrgs:
     def __init__(__self__, *,
                  effect: pulumi.Input[str],
                  key: pulumi.Input[str],
@@ -9099,7 +9099,7 @@ class ClusterNodePoolNodeConfigTaintArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs:
+calass ClusterNodePoolNodeConfigWorkloadMetadataConfigArrgs:
     def __init__(__self__, *,
                  mode: pulumi.Input[str]):
         """
@@ -9129,7 +9129,7 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolPlacementPolicyArgs:
+calass ClusterNodePoolPlacementPolicyArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  policy_name: Optional[pulumi.Input[str]] = None,
@@ -9177,14 +9177,14 @@ class ClusterNodePoolPlacementPolicyArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolUpgradeSettingsArgs:
+calass ClusterNodePoolUpgradeSettingsArrgs:
     def __init__(__self__, *,
-                 blue_green_settings: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs']] = None,
+                 blue_green_settings: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsArrgs']] = None,
                  max_surge: Optional[pulumi.Input[int]] = None,
                  max_unavailable: Optional[pulumi.Input[int]] = None,
                  strategy: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs'] blue_green_settings: Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsArrgs'] blue_green_settings: Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         :param pulumi.Input[int] max_surge: The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
         :param pulumi.Input[int] max_unavailable: The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
         :param pulumi.Input[str] strategy: Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
@@ -9200,14 +9200,14 @@ class ClusterNodePoolUpgradeSettingsArgs:
 
     @property
     @pulumi.getter(name="blueGreenSettings")
-    def blue_green_settings(self) -> Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs']]:
+    def blue_green_settings(self) -> Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsArrgs']]:
         """
         Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         """
         return pulumi.get(self, "blue_green_settings")
 
     @blue_green_settings.setter
-    def blue_green_settings(self, value: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs']]):
+    def blue_green_settings(self, value: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsArrgs']]):
         pulumi.set(self, "blue_green_settings", value)
 
     @property
@@ -9248,12 +9248,12 @@ class ClusterNodePoolUpgradeSettingsArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs:
+calass ClusterNodePoolUpgradeSettingsBlueGreenSettingsArrgs:
     def __init__(__self__, *,
-                 standard_rollout_policy: pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'],
+                 standard_rollout_policy: pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs'],
                  node_pool_soak_duration: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'] standard_rollout_policy: Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs'] standard_rollout_policy: Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         :param pulumi.Input[str] node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         pulumi.set(__self__, "standard_rollout_policy", standard_rollout_policy)
@@ -9262,14 +9262,14 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs:
 
     @property
     @pulumi.getter(name="standardRolloutPolicy")
-    def standard_rollout_policy(self) -> pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']:
+    def standard_rollout_policy(self) -> pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs']:
         """
         Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         """
         return pulumi.get(self, "standard_rollout_policy")
 
     @standard_rollout_policy.setter
-    def standard_rollout_policy(self, value: pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']):
+    def standard_rollout_policy(self, value: pulumi.Input['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs']):
         pulumi.set(self, "standard_rollout_policy", value)
 
     @property
@@ -9286,7 +9286,7 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs:
 
 
 @pulumi.input_type
-class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs:
+calass ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs:
     def __init__(__self__, *,
                  batch_node_count: Optional[pulumi.Input[int]] = None,
                  batch_percentage: Optional[pulumi.Input[float]] = None,
@@ -9341,36 +9341,36 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs:
 
 
 @pulumi.input_type
-class ClusterNotificationConfigArgs:
+calass ClusterNotificationConfigArrgs:
     def __init__(__self__, *,
-                 pubsub: pulumi.Input['ClusterNotificationConfigPubsubArgs']):
+                 pubsub: pulumi.Input['ClusterNotificationConfigPubsubArrgs']):
         """
-        :param pulumi.Input['ClusterNotificationConfigPubsubArgs'] pubsub: The pubsub config for the cluster's upgrade notifications.
+        :param pulumi.Input['ClusterNotificationConfigPubsubArrgs'] pubsub: The pubsub config for the cluster's upgrade notifications.
         """
         pulumi.set(__self__, "pubsub", pubsub)
 
     @property
     @pulumi.getter
-    def pubsub(self) -> pulumi.Input['ClusterNotificationConfigPubsubArgs']:
+    def pubsub(self) -> pulumi.Input['ClusterNotificationConfigPubsubArrgs']:
         """
         The pubsub config for the cluster's upgrade notifications.
         """
         return pulumi.get(self, "pubsub")
 
     @pubsub.setter
-    def pubsub(self, value: pulumi.Input['ClusterNotificationConfigPubsubArgs']):
+    def pubsub(self, value: pulumi.Input['ClusterNotificationConfigPubsubArrgs']):
         pulumi.set(self, "pubsub", value)
 
 
 @pulumi.input_type
-class ClusterNotificationConfigPubsubArgs:
+calass ClusterNotificationConfigPubsubArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
-                 filter: Optional[pulumi.Input['ClusterNotificationConfigPubsubFilterArgs']] = None,
+                 filter: Optional[pulumi.Input['ClusterNotificationConfigPubsubFilterArrgs']] = None,
                  topic: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enabled: Whether or not the notification config is enabled
-        :param pulumi.Input['ClusterNotificationConfigPubsubFilterArgs'] filter: Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+        :param pulumi.Input['ClusterNotificationConfigPubsubFilterArrgs'] filter: Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
                
                ```python
                import pulumi
@@ -9397,7 +9397,7 @@ class ClusterNotificationConfigPubsubArgs:
 
     @property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['ClusterNotificationConfigPubsubFilterArgs']]:
+    def filter(self) -> Optional[pulumi.Input['ClusterNotificationConfigPubsubFilterArrgs']]:
         """
         Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
 
@@ -9408,7 +9408,7 @@ class ClusterNotificationConfigPubsubArgs:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['ClusterNotificationConfigPubsubFilterArgs']]):
+    def filter(self, value: Optional[pulumi.Input['ClusterNotificationConfigPubsubFilterArrgs']]):
         pulumi.set(self, "filter", value)
 
     @property
@@ -9425,7 +9425,7 @@ class ClusterNotificationConfigPubsubArgs:
 
 
 @pulumi.input_type
-class ClusterNotificationConfigPubsubFilterArgs:
+calass ClusterNotificationConfigPubsubFilterArrgs:
     def __init__(__self__, *,
                  event_types: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -9447,7 +9447,7 @@ class ClusterNotificationConfigPubsubFilterArgs:
 
 
 @pulumi.input_type
-class ClusterPodSecurityPolicyConfigArgs:
+calass ClusterPodSecurityPolicyConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -9471,11 +9471,11 @@ class ClusterPodSecurityPolicyConfigArgs:
 
 
 @pulumi.input_type
-class ClusterPrivateClusterConfigArgs:
+calass ClusterPrivateClusterConfigArrgs:
     def __init__(__self__, *,
                  enable_private_endpoint: Optional[pulumi.Input[bool]] = None,
                  enable_private_nodes: Optional[pulumi.Input[bool]] = None,
-                 master_global_access_config: Optional[pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs']] = None,
+                 master_global_access_config: Optional[pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArrgs']] = None,
                  master_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  peering_name: Optional[pulumi.Input[str]] = None,
                  private_endpoint: Optional[pulumi.Input[str]] = None,
@@ -9490,7 +9490,7 @@ class ClusterPrivateClusterConfigArgs:
                creating a private endpoint on the cluster. In a private cluster, nodes only
                have RFC 1918 private addresses and communicate with the master's private
                endpoint via private networking.
-        :param pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs'] master_global_access_config: Controls cluster master global
+        :param pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArrgs'] master_global_access_config: Controls cluster master global
                access settings. If unset, the provider will no longer manage this field and will
                not modify the previously-set value. Structure is documented below.
         :param pulumi.Input[str] master_ipv4_cidr_block: The IP range in CIDR notation to use for
@@ -9558,7 +9558,7 @@ class ClusterPrivateClusterConfigArgs:
 
     @property
     @pulumi.getter(name="masterGlobalAccessConfig")
-    def master_global_access_config(self) -> Optional[pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs']]:
+    def master_global_access_config(self) -> Optional[pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArrgs']]:
         """
         Controls cluster master global
         access settings. If unset, the provider will no longer manage this field and will
@@ -9567,7 +9567,7 @@ class ClusterPrivateClusterConfigArgs:
         return pulumi.get(self, "master_global_access_config")
 
     @master_global_access_config.setter
-    def master_global_access_config(self, value: Optional[pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs']]):
+    def master_global_access_config(self, value: Optional[pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArrgs']]):
         pulumi.set(self, "master_global_access_config", value)
 
     @property
@@ -9642,7 +9642,7 @@ class ClusterPrivateClusterConfigArgs:
 
 
 @pulumi.input_type
-class ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs:
+calass ClusterPrivateClusterConfigMasterGlobalAccessConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -9666,12 +9666,12 @@ class ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs:
 
 
 @pulumi.input_type
-class ClusterProtectConfigArgs:
+calass ClusterProtectConfigArrgs:
     def __init__(__self__, *,
-                 workload_config: Optional[pulumi.Input['ClusterProtectConfigWorkloadConfigArgs']] = None,
+                 workload_config: Optional[pulumi.Input['ClusterProtectConfigWorkloadConfigArrgs']] = None,
                  workload_vulnerability_mode: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ClusterProtectConfigWorkloadConfigArgs'] workload_config: ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+        :param pulumi.Input['ClusterProtectConfigWorkloadConfigArrgs'] workload_config: ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
         :param pulumi.Input[str] workload_vulnerability_mode: ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
         """
         if workload_config is not None:
@@ -9681,14 +9681,14 @@ class ClusterProtectConfigArgs:
 
     @property
     @pulumi.getter(name="workloadConfig")
-    def workload_config(self) -> Optional[pulumi.Input['ClusterProtectConfigWorkloadConfigArgs']]:
+    def workload_config(self) -> Optional[pulumi.Input['ClusterProtectConfigWorkloadConfigArrgs']]:
         """
         ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
         """
         return pulumi.get(self, "workload_config")
 
     @workload_config.setter
-    def workload_config(self, value: Optional[pulumi.Input['ClusterProtectConfigWorkloadConfigArgs']]):
+    def workload_config(self, value: Optional[pulumi.Input['ClusterProtectConfigWorkloadConfigArrgs']]):
         pulumi.set(self, "workload_config", value)
 
     @property
@@ -9705,7 +9705,7 @@ class ClusterProtectConfigArgs:
 
 
 @pulumi.input_type
-class ClusterProtectConfigWorkloadConfigArgs:
+calass ClusterProtectConfigWorkloadConfigArrgs:
     def __init__(__self__, *,
                  audit_mode: pulumi.Input[str]):
         """
@@ -9727,7 +9727,7 @@ class ClusterProtectConfigWorkloadConfigArgs:
 
 
 @pulumi.input_type
-class ClusterReleaseChannelArgs:
+calass ClusterReleaseChannelArrgs:
     def __init__(__self__, *,
                  channel: pulumi.Input[str]):
         """
@@ -9759,13 +9759,13 @@ class ClusterReleaseChannelArgs:
 
 
 @pulumi.input_type
-class ClusterResourceUsageExportConfigArgs:
+calass ClusterResourceUsageExportConfigArrgs:
     def __init__(__self__, *,
-                 bigquery_destination: pulumi.Input['ClusterResourceUsageExportConfigBigqueryDestinationArgs'],
+                 bigquery_destination: pulumi.Input['ClusterResourceUsageExportConfigBigqueryDestinationArrgs'],
                  enable_network_egress_metering: Optional[pulumi.Input[bool]] = None,
                  enable_resource_consumption_metering: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['ClusterResourceUsageExportConfigBigqueryDestinationArgs'] bigquery_destination: Parameters for using BigQuery as the destination of resource usage export.
+        :param pulumi.Input['ClusterResourceUsageExportConfigBigqueryDestinationArrgs'] bigquery_destination: Parameters for using BigQuery as the destination of resource usage export.
                
                * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
                
@@ -9788,7 +9788,7 @@ class ClusterResourceUsageExportConfigArgs:
 
     @property
     @pulumi.getter(name="bigqueryDestination")
-    def bigquery_destination(self) -> pulumi.Input['ClusterResourceUsageExportConfigBigqueryDestinationArgs']:
+    def bigquery_destination(self) -> pulumi.Input['ClusterResourceUsageExportConfigBigqueryDestinationArrgs']:
         """
         Parameters for using BigQuery as the destination of resource usage export.
 
@@ -9801,7 +9801,7 @@ class ClusterResourceUsageExportConfigArgs:
         return pulumi.get(self, "bigquery_destination")
 
     @bigquery_destination.setter
-    def bigquery_destination(self, value: pulumi.Input['ClusterResourceUsageExportConfigBigqueryDestinationArgs']):
+    def bigquery_destination(self, value: pulumi.Input['ClusterResourceUsageExportConfigBigqueryDestinationArrgs']):
         pulumi.set(self, "bigquery_destination", value)
 
     @property
@@ -9835,7 +9835,7 @@ class ClusterResourceUsageExportConfigArgs:
 
 
 @pulumi.input_type
-class ClusterResourceUsageExportConfigBigqueryDestinationArgs:
+calass ClusterResourceUsageExportConfigBigqueryDestinationArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str]):
         pulumi.set(__self__, "dataset_id", dataset_id)
@@ -9851,7 +9851,7 @@ class ClusterResourceUsageExportConfigBigqueryDestinationArgs:
 
 
 @pulumi.input_type
-class ClusterSecurityPostureConfigArgs:
+calass ClusterSecurityPostureConfigArrgs:
     def __init__(__self__, *,
                  mode: Optional[pulumi.Input[str]] = None,
                  vulnerability_mode: Optional[pulumi.Input[str]] = None):
@@ -9890,7 +9890,7 @@ class ClusterSecurityPostureConfigArgs:
 
 
 @pulumi.input_type
-class ClusterServiceExternalIpsConfigArgs:
+calass ClusterServiceExternalIpsConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -9912,7 +9912,7 @@ class ClusterServiceExternalIpsConfigArgs:
 
 
 @pulumi.input_type
-class ClusterTpuConfigArgs:
+calass ClusterTpuConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
                  ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
@@ -9958,7 +9958,7 @@ class ClusterTpuConfigArgs:
 
 
 @pulumi.input_type
-class ClusterVerticalPodAutoscalingArgs:
+calass ClusterVerticalPodAutoscalingArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -9980,7 +9980,7 @@ class ClusterVerticalPodAutoscalingArgs:
 
 
 @pulumi.input_type
-class ClusterWorkloadIdentityConfigArgs:
+calass ClusterWorkloadIdentityConfigArrgs:
     def __init__(__self__, *,
                  workload_pool: Optional[pulumi.Input[str]] = None):
         """
@@ -10011,7 +10011,7 @@ class ClusterWorkloadIdentityConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolAutoscalingArgs:
+calass NodePoolAutoscalingArrgs:
     def __init__(__self__, *,
                  location_policy: Optional[pulumi.Input[str]] = None,
                  max_node_count: Optional[pulumi.Input[int]] = None,
@@ -10118,7 +10118,7 @@ class NodePoolAutoscalingArgs:
 
 
 @pulumi.input_type
-class NodePoolManagementArgs:
+calass NodePoolManagementArrgs:
     def __init__(__self__, *,
                  auto_repair: Optional[pulumi.Input[bool]] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None):
@@ -10157,19 +10157,19 @@ class NodePoolManagementArgs:
 
 
 @pulumi.input_type
-class NodePoolNetworkConfigArgs:
+calass NodePoolNetworkConfigArrgs:
     def __init__(__self__, *,
-                 additional_node_network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]] = None,
-                 additional_pod_network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]] = None,
+                 additional_node_network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArrgs']]]] = None,
+                 additional_pod_network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArrgs']]]] = None,
                  create_pod_range: Optional[pulumi.Input[bool]] = None,
                  enable_private_nodes: Optional[pulumi.Input[bool]] = None,
-                 pod_cidr_overprovision_config: Optional[pulumi.Input['NodePoolNetworkConfigPodCidrOverprovisionConfigArgs']] = None,
+                 pod_cidr_overprovision_config: Optional[pulumi.Input['NodePoolNetworkConfigPodCidrOverprovisionConfigArrgs']] = None,
                  pod_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  pod_range: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArrgs']]] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
                Structure is documented below
-        :param pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArrgs']]] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
                Structure is documented below
         :param pulumi.Input[bool] create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
         :param pulumi.Input[bool] enable_private_nodes: Whether nodes have internal IP addresses only.
@@ -10193,7 +10193,7 @@ class NodePoolNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="additionalNodeNetworkConfigs")
-    def additional_node_network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]]:
+    def additional_node_network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArrgs']]]]:
         """
         We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
         Structure is documented below
@@ -10201,12 +10201,12 @@ class NodePoolNetworkConfigArgs:
         return pulumi.get(self, "additional_node_network_configs")
 
     @additional_node_network_configs.setter
-    def additional_node_network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]]):
+    def additional_node_network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArrgs']]]]):
         pulumi.set(self, "additional_node_network_configs", value)
 
     @property
     @pulumi.getter(name="additionalPodNetworkConfigs")
-    def additional_pod_network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]]:
+    def additional_pod_network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArrgs']]]]:
         """
         We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
         Structure is documented below
@@ -10214,7 +10214,7 @@ class NodePoolNetworkConfigArgs:
         return pulumi.get(self, "additional_pod_network_configs")
 
     @additional_pod_network_configs.setter
-    def additional_pod_network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]]):
+    def additional_pod_network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArrgs']]]]):
         pulumi.set(self, "additional_pod_network_configs", value)
 
     @property
@@ -10243,11 +10243,11 @@ class NodePoolNetworkConfigArgs:
 
     @property
     @pulumi.getter(name="podCidrOverprovisionConfig")
-    def pod_cidr_overprovision_config(self) -> Optional[pulumi.Input['NodePoolNetworkConfigPodCidrOverprovisionConfigArgs']]:
+    def pod_cidr_overprovision_config(self) -> Optional[pulumi.Input['NodePoolNetworkConfigPodCidrOverprovisionConfigArrgs']]:
         return pulumi.get(self, "pod_cidr_overprovision_config")
 
     @pod_cidr_overprovision_config.setter
-    def pod_cidr_overprovision_config(self, value: Optional[pulumi.Input['NodePoolNetworkConfigPodCidrOverprovisionConfigArgs']]):
+    def pod_cidr_overprovision_config(self, value: Optional[pulumi.Input['NodePoolNetworkConfigPodCidrOverprovisionConfigArrgs']]):
         pulumi.set(self, "pod_cidr_overprovision_config", value)
 
     @property
@@ -10276,7 +10276,7 @@ class NodePoolNetworkConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs:
+calass NodePoolNetworkConfigAdditionalNodeNetworkConfigArrgs:
     def __init__(__self__, *,
                  network: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
@@ -10315,7 +10315,7 @@ class NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNetworkConfigAdditionalPodNetworkConfigArgs:
+calass NodePoolNetworkConfigAdditionalPodNetworkConfigArrgs:
     def __init__(__self__, *,
                  max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  secondary_pod_range: Optional[pulumi.Input[str]] = None,
@@ -10370,7 +10370,7 @@ class NodePoolNetworkConfigAdditionalPodNetworkConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNetworkConfigPodCidrOverprovisionConfigArgs:
+calass NodePoolNetworkConfigPodCidrOverprovisionConfigArrgs:
     def __init__(__self__, *,
                  disabled: pulumi.Input[bool]):
         pulumi.set(__self__, "disabled", disabled)
@@ -10386,26 +10386,26 @@ class NodePoolNetworkConfigPodCidrOverprovisionConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigArgs:
+calass NodePoolNodeConfigArrgs:
     def __init__(__self__, *,
-                 advanced_machine_features: Optional[pulumi.Input['NodePoolNodeConfigAdvancedMachineFeaturesArgs']] = None,
+                 advanced_machine_features: Optional[pulumi.Input['NodePoolNodeConfigAdvancedMachineFeaturesArrgs']] = None,
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
-                 confidential_nodes: Optional[pulumi.Input['NodePoolNodeConfigConfidentialNodesArgs']] = None,
+                 confidential_nodes: Optional[pulumi.Input['NodePoolNodeConfigConfidentialNodesArrgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
-                 effective_taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArgs']]]] = None,
-                 ephemeral_storage_config: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArgs']] = None,
-                 ephemeral_storage_local_ssd_config: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']] = None,
-                 fast_socket: Optional[pulumi.Input['NodePoolNodeConfigFastSocketArgs']] = None,
-                 gcfs_config: Optional[pulumi.Input['NodePoolNodeConfigGcfsConfigArgs']] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArgs']]]] = None,
-                 gvnic: Optional[pulumi.Input['NodePoolNodeConfigGvnicArgs']] = None,
-                 host_maintenance_policy: Optional[pulumi.Input['NodePoolNodeConfigHostMaintenancePolicyArgs']] = None,
+                 effective_taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArrgs']]]] = None,
+                 ephemeral_storage_config: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArrgs']] = None,
+                 ephemeral_storage_local_ssd_config: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageLocalSsdConfigArrgs']] = None,
+                 fast_socket: Optional[pulumi.Input['NodePoolNodeConfigFastSocketArrgs']] = None,
+                 gcfs_config: Optional[pulumi.Input['NodePoolNodeConfigGcfsConfigArrgs']] = None,
+                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArrgs']]]] = None,
+                 gvnic: Optional[pulumi.Input['NodePoolNodeConfigGvnicArrgs']] = None,
+                 host_maintenance_policy: Optional[pulumi.Input['NodePoolNodeConfigHostMaintenancePolicyArrgs']] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
-                 kubelet_config: Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigArgs']] = None,
+                 kubelet_config: Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 linux_node_config: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigArgs']] = None,
-                 local_nvme_ssd_block_config: Optional[pulumi.Input['NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs']] = None,
+                 linux_node_config: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigArrgs']] = None,
+                 local_nvme_ssd_block_config: Optional[pulumi.Input['NodePoolNodeConfigLocalNvmeSsdBlockConfigArrgs']] = None,
                  local_ssd_count: Optional[pulumi.Input[int]] = None,
                  logging_variant: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -10414,18 +10414,18 @@ class NodePoolNodeConfigArgs:
                  node_group: Optional[pulumi.Input[str]] = None,
                  oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
-                 reservation_affinity: Optional[pulumi.Input['NodePoolNodeConfigReservationAffinityArgs']] = None,
+                 reservation_affinity: Optional[pulumi.Input['NodePoolNodeConfigReservationAffinityArrgs']] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 sandbox_config: Optional[pulumi.Input['NodePoolNodeConfigSandboxConfigArgs']] = None,
+                 sandbox_config: Optional[pulumi.Input['NodePoolNodeConfigSandboxConfigArrgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['NodePoolNodeConfigShieldedInstanceConfigArgs']] = None,
-                 sole_tenant_config: Optional[pulumi.Input['NodePoolNodeConfigSoleTenantConfigArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['NodePoolNodeConfigShieldedInstanceConfigArrgs']] = None,
+                 sole_tenant_config: Optional[pulumi.Input['NodePoolNodeConfigSoleTenantConfigArrgs']] = None,
                  spot: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]]] = None,
-                 workload_metadata_config: Optional[pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArgs']] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArrgs']]]] = None,
+                 workload_metadata_config: Optional[pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArrgs']] = None):
         """
-        :param pulumi.Input['NodePoolNodeConfigConfidentialNodesArgs'] confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
+        :param pulumi.Input['NodePoolNodeConfigConfidentialNodesArrgs'] confidential_nodes: Configuration for Confidential Nodes feature. Structure is documented below.
         """
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -10502,11 +10502,11 @@ class NodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="advancedMachineFeatures")
-    def advanced_machine_features(self) -> Optional[pulumi.Input['NodePoolNodeConfigAdvancedMachineFeaturesArgs']]:
+    def advanced_machine_features(self) -> Optional[pulumi.Input['NodePoolNodeConfigAdvancedMachineFeaturesArrgs']]:
         return pulumi.get(self, "advanced_machine_features")
 
     @advanced_machine_features.setter
-    def advanced_machine_features(self, value: Optional[pulumi.Input['NodePoolNodeConfigAdvancedMachineFeaturesArgs']]):
+    def advanced_machine_features(self, value: Optional[pulumi.Input['NodePoolNodeConfigAdvancedMachineFeaturesArrgs']]):
         pulumi.set(self, "advanced_machine_features", value)
 
     @property
@@ -10520,14 +10520,14 @@ class NodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="confidentialNodes")
-    def confidential_nodes(self) -> Optional[pulumi.Input['NodePoolNodeConfigConfidentialNodesArgs']]:
+    def confidential_nodes(self) -> Optional[pulumi.Input['NodePoolNodeConfigConfidentialNodesArrgs']]:
         """
         Configuration for Confidential Nodes feature. Structure is documented below.
         """
         return pulumi.get(self, "confidential_nodes")
 
     @confidential_nodes.setter
-    def confidential_nodes(self, value: Optional[pulumi.Input['NodePoolNodeConfigConfidentialNodesArgs']]):
+    def confidential_nodes(self, value: Optional[pulumi.Input['NodePoolNodeConfigConfidentialNodesArrgs']]):
         pulumi.set(self, "confidential_nodes", value)
 
     @property
@@ -10550,74 +10550,74 @@ class NodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="effectiveTaints")
-    def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArgs']]]]:
+    def effective_taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArrgs']]]]:
         return pulumi.get(self, "effective_taints")
 
     @effective_taints.setter
-    def effective_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArgs']]]]):
+    def effective_taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArrgs']]]]):
         pulumi.set(self, "effective_taints", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageConfig")
-    def ephemeral_storage_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArgs']]:
+    def ephemeral_storage_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArrgs']]:
         return pulumi.get(self, "ephemeral_storage_config")
 
     @ephemeral_storage_config.setter
-    def ephemeral_storage_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArgs']]):
+    def ephemeral_storage_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArrgs']]):
         pulumi.set(self, "ephemeral_storage_config", value)
 
     @property
     @pulumi.getter(name="ephemeralStorageLocalSsdConfig")
-    def ephemeral_storage_local_ssd_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']]:
+    def ephemeral_storage_local_ssd_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageLocalSsdConfigArrgs']]:
         return pulumi.get(self, "ephemeral_storage_local_ssd_config")
 
     @ephemeral_storage_local_ssd_config.setter
-    def ephemeral_storage_local_ssd_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']]):
+    def ephemeral_storage_local_ssd_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageLocalSsdConfigArrgs']]):
         pulumi.set(self, "ephemeral_storage_local_ssd_config", value)
 
     @property
     @pulumi.getter(name="fastSocket")
-    def fast_socket(self) -> Optional[pulumi.Input['NodePoolNodeConfigFastSocketArgs']]:
+    def fast_socket(self) -> Optional[pulumi.Input['NodePoolNodeConfigFastSocketArrgs']]:
         return pulumi.get(self, "fast_socket")
 
     @fast_socket.setter
-    def fast_socket(self, value: Optional[pulumi.Input['NodePoolNodeConfigFastSocketArgs']]):
+    def fast_socket(self, value: Optional[pulumi.Input['NodePoolNodeConfigFastSocketArrgs']]):
         pulumi.set(self, "fast_socket", value)
 
     @property
     @pulumi.getter(name="gcfsConfig")
-    def gcfs_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigGcfsConfigArgs']]:
+    def gcfs_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigGcfsConfigArrgs']]:
         return pulumi.get(self, "gcfs_config")
 
     @gcfs_config.setter
-    def gcfs_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigGcfsConfigArgs']]):
+    def gcfs_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigGcfsConfigArrgs']]):
         pulumi.set(self, "gcfs_config", value)
 
     @property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArgs']]]]:
+    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArrgs']]]]:
         return pulumi.get(self, "guest_accelerators")
 
     @guest_accelerators.setter
-    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArgs']]]]):
+    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArrgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
 
     @property
     @pulumi.getter
-    def gvnic(self) -> Optional[pulumi.Input['NodePoolNodeConfigGvnicArgs']]:
+    def gvnic(self) -> Optional[pulumi.Input['NodePoolNodeConfigGvnicArrgs']]:
         return pulumi.get(self, "gvnic")
 
     @gvnic.setter
-    def gvnic(self, value: Optional[pulumi.Input['NodePoolNodeConfigGvnicArgs']]):
+    def gvnic(self, value: Optional[pulumi.Input['NodePoolNodeConfigGvnicArrgs']]):
         pulumi.set(self, "gvnic", value)
 
     @property
     @pulumi.getter(name="hostMaintenancePolicy")
-    def host_maintenance_policy(self) -> Optional[pulumi.Input['NodePoolNodeConfigHostMaintenancePolicyArgs']]:
+    def host_maintenance_policy(self) -> Optional[pulumi.Input['NodePoolNodeConfigHostMaintenancePolicyArrgs']]:
         return pulumi.get(self, "host_maintenance_policy")
 
     @host_maintenance_policy.setter
-    def host_maintenance_policy(self, value: Optional[pulumi.Input['NodePoolNodeConfigHostMaintenancePolicyArgs']]):
+    def host_maintenance_policy(self, value: Optional[pulumi.Input['NodePoolNodeConfigHostMaintenancePolicyArrgs']]):
         pulumi.set(self, "host_maintenance_policy", value)
 
     @property
@@ -10631,11 +10631,11 @@ class NodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="kubeletConfig")
-    def kubelet_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigArgs']]:
+    def kubelet_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigArrgs']]:
         return pulumi.get(self, "kubelet_config")
 
     @kubelet_config.setter
-    def kubelet_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigArgs']]):
+    def kubelet_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigArrgs']]):
         pulumi.set(self, "kubelet_config", value)
 
     @property
@@ -10649,20 +10649,20 @@ class NodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="linuxNodeConfig")
-    def linux_node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigArgs']]:
+    def linux_node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigArrgs']]:
         return pulumi.get(self, "linux_node_config")
 
     @linux_node_config.setter
-    def linux_node_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigArgs']]):
+    def linux_node_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigArrgs']]):
         pulumi.set(self, "linux_node_config", value)
 
     @property
     @pulumi.getter(name="localNvmeSsdBlockConfig")
-    def local_nvme_ssd_block_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs']]:
+    def local_nvme_ssd_block_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigLocalNvmeSsdBlockConfigArrgs']]:
         return pulumi.get(self, "local_nvme_ssd_block_config")
 
     @local_nvme_ssd_block_config.setter
-    def local_nvme_ssd_block_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs']]):
+    def local_nvme_ssd_block_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigLocalNvmeSsdBlockConfigArrgs']]):
         pulumi.set(self, "local_nvme_ssd_block_config", value)
 
     @property
@@ -10739,11 +10739,11 @@ class NodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['NodePoolNodeConfigReservationAffinityArgs']]:
+    def reservation_affinity(self) -> Optional[pulumi.Input['NodePoolNodeConfigReservationAffinityArrgs']]:
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['NodePoolNodeConfigReservationAffinityArgs']]):
+    def reservation_affinity(self, value: Optional[pulumi.Input['NodePoolNodeConfigReservationAffinityArrgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @property
@@ -10757,11 +10757,11 @@ class NodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="sandboxConfig")
-    def sandbox_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigSandboxConfigArgs']]:
+    def sandbox_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigSandboxConfigArrgs']]:
         return pulumi.get(self, "sandbox_config")
 
     @sandbox_config.setter
-    def sandbox_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigSandboxConfigArgs']]):
+    def sandbox_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigSandboxConfigArrgs']]):
         pulumi.set(self, "sandbox_config", value)
 
     @property
@@ -10775,20 +10775,20 @@ class NodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigShieldedInstanceConfigArrgs']]:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigShieldedInstanceConfigArrgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @property
     @pulumi.getter(name="soleTenantConfig")
-    def sole_tenant_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigSoleTenantConfigArgs']]:
+    def sole_tenant_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigSoleTenantConfigArrgs']]:
         return pulumi.get(self, "sole_tenant_config")
 
     @sole_tenant_config.setter
-    def sole_tenant_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigSoleTenantConfigArgs']]):
+    def sole_tenant_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigSoleTenantConfigArrgs']]):
         pulumi.set(self, "sole_tenant_config", value)
 
     @property
@@ -10811,25 +10811,25 @@ class NodePoolNodeConfigArgs:
 
     @property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]]]:
+    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArrgs']]]]:
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]]]):
+    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArrgs']]]]):
         pulumi.set(self, "taints", value)
 
     @property
     @pulumi.getter(name="workloadMetadataConfig")
-    def workload_metadata_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArgs']]:
+    def workload_metadata_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArrgs']]:
         return pulumi.get(self, "workload_metadata_config")
 
     @workload_metadata_config.setter
-    def workload_metadata_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArgs']]):
+    def workload_metadata_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArrgs']]):
         pulumi.set(self, "workload_metadata_config", value)
 
 
 @pulumi.input_type
-class NodePoolNodeConfigAdvancedMachineFeaturesArgs:
+calass NodePoolNodeConfigAdvancedMachineFeaturesArrgs:
     def __init__(__self__, *,
                  threads_per_core: pulumi.Input[int]):
         pulumi.set(__self__, "threads_per_core", threads_per_core)
@@ -10845,7 +10845,7 @@ class NodePoolNodeConfigAdvancedMachineFeaturesArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigConfidentialNodesArgs:
+calass NodePoolNodeConfigConfidentialNodesArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -10869,7 +10869,7 @@ class NodePoolNodeConfigConfidentialNodesArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigEffectiveTaintArgs:
+calass NodePoolNodeConfigEffectiveTaintArrgs:
     def __init__(__self__, *,
                  effect: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -10910,7 +10910,7 @@ class NodePoolNodeConfigEffectiveTaintArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigEphemeralStorageConfigArgs:
+calass NodePoolNodeConfigEphemeralStorageConfigArrgs:
     def __init__(__self__, *,
                  local_ssd_count: pulumi.Input[int]):
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
@@ -10926,7 +10926,7 @@ class NodePoolNodeConfigEphemeralStorageConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs:
+calass NodePoolNodeConfigEphemeralStorageLocalSsdConfigArrgs:
     def __init__(__self__, *,
                  local_ssd_count: pulumi.Input[int]):
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
@@ -10942,7 +10942,7 @@ class NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigFastSocketArgs:
+calass NodePoolNodeConfigFastSocketArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -10966,7 +10966,7 @@ class NodePoolNodeConfigFastSocketArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigGcfsConfigArgs:
+calass NodePoolNodeConfigGcfsConfigArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -10990,13 +10990,13 @@ class NodePoolNodeConfigGcfsConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigGuestAcceleratorArgs:
+calass NodePoolNodeConfigGuestAcceleratorArrgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str],
-                 gpu_driver_installation_config: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']] = None,
+                 gpu_driver_installation_config: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs']] = None,
                  gpu_partition_size: Optional[pulumi.Input[str]] = None,
-                 gpu_sharing_config: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']] = None):
+                 gpu_sharing_config: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrgs']] = None):
         """
         :param pulumi.Input[str] type: The type of the policy. Supports a single value: COMPACT.
                Specifying COMPACT placement policy type places node pool's nodes in a closer
@@ -11036,11 +11036,11 @@ class NodePoolNodeConfigGuestAcceleratorArgs:
 
     @property
     @pulumi.getter(name="gpuDriverInstallationConfig")
-    def gpu_driver_installation_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]:
+    def gpu_driver_installation_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs']]:
         return pulumi.get(self, "gpu_driver_installation_config")
 
     @gpu_driver_installation_config.setter
-    def gpu_driver_installation_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]):
+    def gpu_driver_installation_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs']]):
         pulumi.set(self, "gpu_driver_installation_config", value)
 
     @property
@@ -11054,16 +11054,16 @@ class NodePoolNodeConfigGuestAcceleratorArgs:
 
     @property
     @pulumi.getter(name="gpuSharingConfig")
-    def gpu_sharing_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']]:
+    def gpu_sharing_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrgs']]:
         return pulumi.get(self, "gpu_sharing_config")
 
     @gpu_sharing_config.setter
-    def gpu_sharing_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']]):
+    def gpu_sharing_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrgs']]):
         pulumi.set(self, "gpu_sharing_config", value)
 
 
 @pulumi.input_type
-class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs:
+calass NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrgs:
     def __init__(__self__, *,
                  gpu_driver_version: pulumi.Input[str]):
         pulumi.set(__self__, "gpu_driver_version", gpu_driver_version)
@@ -11079,7 +11079,7 @@ class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs:
+calass NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrgs:
     def __init__(__self__, *,
                  gpu_sharing_strategy: pulumi.Input[str],
                  max_shared_clients_per_gpu: pulumi.Input[int]):
@@ -11106,7 +11106,7 @@ class NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigGvnicArgs:
+calass NodePoolNodeConfigGvnicArrgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
@@ -11130,7 +11130,7 @@ class NodePoolNodeConfigGvnicArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigHostMaintenancePolicyArgs:
+calass NodePoolNodeConfigHostMaintenancePolicyArrgs:
     def __init__(__self__, *,
                  maintenance_interval: pulumi.Input[str]):
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
@@ -11146,7 +11146,7 @@ class NodePoolNodeConfigHostMaintenancePolicyArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigKubeletConfigArgs:
+calass NodePoolNodeConfigKubeletConfigArrgs:
     def __init__(__self__, *,
                  cpu_manager_policy: pulumi.Input[str],
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
@@ -11198,7 +11198,7 @@ class NodePoolNodeConfigKubeletConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigLinuxNodeConfigArgs:
+calass NodePoolNodeConfigLinuxNodeConfigArrgs:
     def __init__(__self__, *,
                  sysctls: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(__self__, "sysctls", sysctls)
@@ -11214,7 +11214,7 @@ class NodePoolNodeConfigLinuxNodeConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs:
+calass NodePoolNodeConfigLocalNvmeSsdBlockConfigArrgs:
     def __init__(__self__, *,
                  local_ssd_count: pulumi.Input[int]):
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
@@ -11230,7 +11230,7 @@ class NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigReservationAffinityArgs:
+calass NodePoolNodeConfigReservationAffinityArrgs:
     def __init__(__self__, *,
                  consume_reservation_type: pulumi.Input[str],
                  key: Optional[pulumi.Input[str]] = None,
@@ -11270,7 +11270,7 @@ class NodePoolNodeConfigReservationAffinityArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigSandboxConfigArgs:
+calass NodePoolNodeConfigSandboxConfigArrgs:
     def __init__(__self__, *,
                  sandbox_type: pulumi.Input[str]):
         pulumi.set(__self__, "sandbox_type", sandbox_type)
@@ -11286,7 +11286,7 @@ class NodePoolNodeConfigSandboxConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigShieldedInstanceConfigArgs:
+calass NodePoolNodeConfigShieldedInstanceConfigArrgs:
     def __init__(__self__, *,
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None):
@@ -11315,23 +11315,23 @@ class NodePoolNodeConfigShieldedInstanceConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigSoleTenantConfigArgs:
+calass NodePoolNodeConfigSoleTenantConfigArrgs:
     def __init__(__self__, *,
-                 node_affinities: pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]):
+                 node_affinities: pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigSoleTenantConfigNodeAffinityArrgs']]]):
         pulumi.set(__self__, "node_affinities", node_affinities)
 
     @property
     @pulumi.getter(name="nodeAffinities")
-    def node_affinities(self) -> pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]:
+    def node_affinities(self) -> pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigSoleTenantConfigNodeAffinityArrgs']]]:
         return pulumi.get(self, "node_affinities")
 
     @node_affinities.setter
-    def node_affinities(self, value: pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]):
+    def node_affinities(self, value: pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigSoleTenantConfigNodeAffinityArrgs']]]):
         pulumi.set(self, "node_affinities", value)
 
 
 @pulumi.input_type
-class NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs:
+calass NodePoolNodeConfigSoleTenantConfigNodeAffinityArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  operator: pulumi.Input[str],
@@ -11369,7 +11369,7 @@ class NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigTaintArgs:
+calass NodePoolNodeConfigTaintArrgs:
     def __init__(__self__, *,
                  effect: pulumi.Input[str],
                  key: pulumi.Input[str],
@@ -11407,7 +11407,7 @@ class NodePoolNodeConfigTaintArgs:
 
 
 @pulumi.input_type
-class NodePoolNodeConfigWorkloadMetadataConfigArgs:
+calass NodePoolNodeConfigWorkloadMetadataConfigArrgs:
     def __init__(__self__, *,
                  mode: pulumi.Input[str]):
         pulumi.set(__self__, "mode", mode)
@@ -11423,7 +11423,7 @@ class NodePoolNodeConfigWorkloadMetadataConfigArgs:
 
 
 @pulumi.input_type
-class NodePoolPlacementPolicyArgs:
+calass NodePoolPlacementPolicyArrgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  policy_name: Optional[pulumi.Input[str]] = None,
@@ -11485,14 +11485,14 @@ class NodePoolPlacementPolicyArgs:
 
 
 @pulumi.input_type
-class NodePoolUpgradeSettingsArgs:
+calass NodePoolUpgradeSettingsArrgs:
     def __init__(__self__, *,
-                 blue_green_settings: Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsArgs']] = None,
+                 blue_green_settings: Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsArrgs']] = None,
                  max_surge: Optional[pulumi.Input[int]] = None,
                  max_unavailable: Optional[pulumi.Input[int]] = None,
                  strategy: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsArgs'] blue_green_settings: The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
+        :param pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsArrgs'] blue_green_settings: The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
                Structure is documented below
         :param pulumi.Input[int] max_surge: The number of additional nodes that can be added to the node pool during
                an upgrade. Increasing `max_surge` raises the number of nodes that can be upgraded simultaneously.
@@ -11515,7 +11515,7 @@ class NodePoolUpgradeSettingsArgs:
 
     @property
     @pulumi.getter(name="blueGreenSettings")
-    def blue_green_settings(self) -> Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsArgs']]:
+    def blue_green_settings(self) -> Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsArrgs']]:
         """
         The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
         Structure is documented below
@@ -11523,7 +11523,7 @@ class NodePoolUpgradeSettingsArgs:
         return pulumi.get(self, "blue_green_settings")
 
     @blue_green_settings.setter
-    def blue_green_settings(self, value: Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsArgs']]):
+    def blue_green_settings(self, value: Optional[pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsArrgs']]):
         pulumi.set(self, "blue_green_settings", value)
 
     @property
@@ -11570,12 +11570,12 @@ class NodePoolUpgradeSettingsArgs:
 
 
 @pulumi.input_type
-class NodePoolUpgradeSettingsBlueGreenSettingsArgs:
+calass NodePoolUpgradeSettingsBlueGreenSettingsArrgs:
     def __init__(__self__, *,
-                 standard_rollout_policy: pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'],
+                 standard_rollout_policy: pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs'],
                  node_pool_soak_duration: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs'] standard_rollout_policy: Specifies the standard policy settings for blue-green upgrades.
+        :param pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs'] standard_rollout_policy: Specifies the standard policy settings for blue-green upgrades.
         :param pulumi.Input[str] node_pool_soak_duration: Time needed after draining the entire blue pool.
                After this period, the blue pool will be cleaned up.
         """
@@ -11585,14 +11585,14 @@ class NodePoolUpgradeSettingsBlueGreenSettingsArgs:
 
     @property
     @pulumi.getter(name="standardRolloutPolicy")
-    def standard_rollout_policy(self) -> pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']:
+    def standard_rollout_policy(self) -> pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs']:
         """
         Specifies the standard policy settings for blue-green upgrades.
         """
         return pulumi.get(self, "standard_rollout_policy")
 
     @standard_rollout_policy.setter
-    def standard_rollout_policy(self, value: pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']):
+    def standard_rollout_policy(self, value: pulumi.Input['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs']):
         pulumi.set(self, "standard_rollout_policy", value)
 
     @property
@@ -11610,7 +11610,7 @@ class NodePoolUpgradeSettingsBlueGreenSettingsArgs:
 
 
 @pulumi.input_type
-class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs:
+calass NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArrgs:
     def __init__(__self__, *,
                  batch_node_count: Optional[pulumi.Input[int]] = None,
                  batch_percentage: Optional[pulumi.Input[float]] = None,

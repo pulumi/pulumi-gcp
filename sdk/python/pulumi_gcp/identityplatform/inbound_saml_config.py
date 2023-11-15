@@ -11,23 +11,23 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InboundSamlConfigArgs', 'InboundSamlConfig']
+__all__ = ['InboundSamlConfigArrgs', 'InboundSamlConfig']
 
 @pulumi.input_type
-class InboundSamlConfigArgs:
+calass InboundSamlConfigArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 idp_config: pulumi.Input['InboundSamlConfigIdpConfigArgs'],
-                 sp_config: pulumi.Input['InboundSamlConfigSpConfigArgs'],
+                 idp_config: pulumi.Input['InboundSamlConfigIdpConfigArrgs'],
+                 sp_config: pulumi.Input['InboundSamlConfigSpConfigArrgs'],
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InboundSamlConfig resource.
         :param pulumi.Input[str] display_name: Human friendly display name.
-        :param pulumi.Input['InboundSamlConfigIdpConfigArgs'] idp_config: SAML IdP configuration when the project acts as the relying party
+        :param pulumi.Input['InboundSamlConfigIdpConfigArrgs'] idp_config: SAML IdP configuration when the project acts as the relying party
                Structure is documented below.
-        :param pulumi.Input['InboundSamlConfigSpConfigArgs'] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+        :param pulumi.Input['InboundSamlConfigSpConfigArrgs'] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
                and accept an authentication assertion issued by a SAML identity provider.
                Structure is documented below.
         :param pulumi.Input[bool] enabled: If this config allows users to sign in with the provider.
@@ -61,7 +61,7 @@ class InboundSamlConfigArgs:
 
     @property
     @pulumi.getter(name="idpConfig")
-    def idp_config(self) -> pulumi.Input['InboundSamlConfigIdpConfigArgs']:
+    def idp_config(self) -> pulumi.Input['InboundSamlConfigIdpConfigArrgs']:
         """
         SAML IdP configuration when the project acts as the relying party
         Structure is documented below.
@@ -69,12 +69,12 @@ class InboundSamlConfigArgs:
         return pulumi.get(self, "idp_config")
 
     @idp_config.setter
-    def idp_config(self, value: pulumi.Input['InboundSamlConfigIdpConfigArgs']):
+    def idp_config(self, value: pulumi.Input['InboundSamlConfigIdpConfigArrgs']):
         pulumi.set(self, "idp_config", value)
 
     @property
     @pulumi.getter(name="spConfig")
-    def sp_config(self) -> pulumi.Input['InboundSamlConfigSpConfigArgs']:
+    def sp_config(self) -> pulumi.Input['InboundSamlConfigSpConfigArrgs']:
         """
         SAML SP (Service Provider) configuration when the project acts as the relying party to receive
         and accept an authentication assertion issued by a SAML identity provider.
@@ -83,7 +83,7 @@ class InboundSamlConfigArgs:
         return pulumi.get(self, "sp_config")
 
     @sp_config.setter
-    def sp_config(self, value: pulumi.Input['InboundSamlConfigSpConfigArgs']):
+    def sp_config(self, value: pulumi.Input['InboundSamlConfigSpConfigArrgs']):
         pulumi.set(self, "sp_config", value)
 
     @property
@@ -127,26 +127,26 @@ class InboundSamlConfigArgs:
 
 
 @pulumi.input_type
-class _InboundSamlConfigState:
+calass _InboundSamlConfigState:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 idp_config: Optional[pulumi.Input['InboundSamlConfigIdpConfigArgs']] = None,
+                 idp_config: Optional[pulumi.Input['InboundSamlConfigIdpConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sp_config: Optional[pulumi.Input['InboundSamlConfigSpConfigArgs']] = None):
+                 sp_config: Optional[pulumi.Input['InboundSamlConfigSpConfigArrgs']] = None):
         """
         Input properties used for looking up and filtering InboundSamlConfig resources.
         :param pulumi.Input[str] display_name: Human friendly display name.
         :param pulumi.Input[bool] enabled: If this config allows users to sign in with the provider.
-        :param pulumi.Input['InboundSamlConfigIdpConfigArgs'] idp_config: SAML IdP configuration when the project acts as the relying party
+        :param pulumi.Input['InboundSamlConfigIdpConfigArrgs'] idp_config: SAML IdP configuration when the project acts as the relying party
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
                hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
                alphanumeric character, and have at least 2 characters.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['InboundSamlConfigSpConfigArgs'] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+        :param pulumi.Input['InboundSamlConfigSpConfigArrgs'] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
                and accept an authentication assertion issued by a SAML identity provider.
                Structure is documented below.
         """
@@ -189,7 +189,7 @@ class _InboundSamlConfigState:
 
     @property
     @pulumi.getter(name="idpConfig")
-    def idp_config(self) -> Optional[pulumi.Input['InboundSamlConfigIdpConfigArgs']]:
+    def idp_config(self) -> Optional[pulumi.Input['InboundSamlConfigIdpConfigArrgs']]:
         """
         SAML IdP configuration when the project acts as the relying party
         Structure is documented below.
@@ -197,7 +197,7 @@ class _InboundSamlConfigState:
         return pulumi.get(self, "idp_config")
 
     @idp_config.setter
-    def idp_config(self, value: Optional[pulumi.Input['InboundSamlConfigIdpConfigArgs']]):
+    def idp_config(self, value: Optional[pulumi.Input['InboundSamlConfigIdpConfigArrgs']]):
         pulumi.set(self, "idp_config", value)
 
     @property
@@ -229,7 +229,7 @@ class _InboundSamlConfigState:
 
     @property
     @pulumi.getter(name="spConfig")
-    def sp_config(self) -> Optional[pulumi.Input['InboundSamlConfigSpConfigArgs']]:
+    def sp_config(self) -> Optional[pulumi.Input['InboundSamlConfigSpConfigArrgs']]:
         """
         SAML SP (Service Provider) configuration when the project acts as the relying party to receive
         and accept an authentication assertion issued by a SAML identity provider.
@@ -238,21 +238,21 @@ class _InboundSamlConfigState:
         return pulumi.get(self, "sp_config")
 
     @sp_config.setter
-    def sp_config(self, value: Optional[pulumi.Input['InboundSamlConfigSpConfigArgs']]):
+    def sp_config(self, value: Optional[pulumi.Input['InboundSamlConfigSpConfigArrgs']]):
         pulumi.set(self, "sp_config", value)
 
 
-class InboundSamlConfig(pulumi.CustomResource):
+calass InboundSamlConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 idp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigIdpConfigArgs']]] = None,
+                 idp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigIdpConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigSpConfigArgs']]] = None,
+                 sp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigSpConfigArrgs']]] = None,
                  __props__=None):
         """
         Inbound SAML configuration for a Identity Toolkit project.
@@ -270,15 +270,15 @@ class InboundSamlConfig(pulumi.CustomResource):
 
         saml_config = gcp.identityplatform.InboundSamlConfig("samlConfig",
             display_name="Display Name",
-            idp_config=gcp.identityplatform.InboundSamlConfigIdpConfigArgs(
+            idp_config=gcp.identityplatform.InboundSamlConfigIdpConfigArrgs(
                 idp_entity_id="tf-idp",
                 sign_request=True,
                 sso_url="https://example.com",
-                idp_certificates=[gcp.identityplatform.InboundSamlConfigIdpConfigIdpCertificateArgs(
+                idp_certificates=[gcp.identityplatform.InboundSamlConfigIdpConfigIdpCertificateArrgs(
                     x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
                 )],
             ),
-            sp_config=gcp.identityplatform.InboundSamlConfigSpConfigArgs(
+            sp_config=gcp.identityplatform.InboundSamlConfigSpConfigArrgs(
                 sp_entity_id="tf-sp",
                 callback_uri="https://example.com",
             ))
@@ -304,14 +304,14 @@ class InboundSamlConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human friendly display name.
         :param pulumi.Input[bool] enabled: If this config allows users to sign in with the provider.
-        :param pulumi.Input[pulumi.InputType['InboundSamlConfigIdpConfigArgs']] idp_config: SAML IdP configuration when the project acts as the relying party
+        :param pulumi.Input[pulumi.InputType['InboundSamlConfigIdpConfigArrgs']] idp_config: SAML IdP configuration when the project acts as the relying party
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
                hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
                alphanumeric character, and have at least 2 characters.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['InboundSamlConfigSpConfigArgs']] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+        :param pulumi.Input[pulumi.InputType['InboundSamlConfigSpConfigArrgs']] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
                and accept an authentication assertion issued by a SAML identity provider.
                Structure is documented below.
         """
@@ -319,7 +319,7 @@ class InboundSamlConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InboundSamlConfigArgs,
+                 args: InboundSamlConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Inbound SAML configuration for a Identity Toolkit project.
@@ -337,15 +337,15 @@ class InboundSamlConfig(pulumi.CustomResource):
 
         saml_config = gcp.identityplatform.InboundSamlConfig("samlConfig",
             display_name="Display Name",
-            idp_config=gcp.identityplatform.InboundSamlConfigIdpConfigArgs(
+            idp_config=gcp.identityplatform.InboundSamlConfigIdpConfigArrgs(
                 idp_entity_id="tf-idp",
                 sign_request=True,
                 sso_url="https://example.com",
-                idp_certificates=[gcp.identityplatform.InboundSamlConfigIdpConfigIdpCertificateArgs(
+                idp_certificates=[gcp.identityplatform.InboundSamlConfigIdpConfigIdpCertificateArrgs(
                     x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
                 )],
             ),
-            sp_config=gcp.identityplatform.InboundSamlConfigSpConfigArgs(
+            sp_config=gcp.identityplatform.InboundSamlConfigSpConfigArrgs(
                 sp_entity_id="tf-sp",
                 callback_uri="https://example.com",
             ))
@@ -368,12 +368,12 @@ class InboundSamlConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InboundSamlConfigArgs args: The arguments to use to populate this resource's properties.
+        :param InboundSamlConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InboundSamlConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InboundSamlConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -384,10 +384,10 @@ class InboundSamlConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 idp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigIdpConfigArgs']]] = None,
+                 idp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigIdpConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigSpConfigArgs']]] = None,
+                 sp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigSpConfigArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -395,7 +395,7 @@ class InboundSamlConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InboundSamlConfigArgs.__new__(InboundSamlConfigArgs)
+            __props__ = InboundSamlConfigArrgs.__new__(InboundSamlConfigArrgs)
 
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -421,10 +421,10 @@ class InboundSamlConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            idp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigIdpConfigArgs']]] = None,
+            idp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigIdpConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            sp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigSpConfigArgs']]] = None) -> 'InboundSamlConfig':
+            sp_config: Optional[pulumi.Input[pulumi.InputType['InboundSamlConfigSpConfigArrgs']]] = None) -> 'InboundSamlConfig':
         """
         Get an existing InboundSamlConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -434,14 +434,14 @@ class InboundSamlConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human friendly display name.
         :param pulumi.Input[bool] enabled: If this config allows users to sign in with the provider.
-        :param pulumi.Input[pulumi.InputType['InboundSamlConfigIdpConfigArgs']] idp_config: SAML IdP configuration when the project acts as the relying party
+        :param pulumi.Input[pulumi.InputType['InboundSamlConfigIdpConfigArrgs']] idp_config: SAML IdP configuration when the project acts as the relying party
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
                hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
                alphanumeric character, and have at least 2 characters.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['InboundSamlConfigSpConfigArgs']] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
+        :param pulumi.Input[pulumi.InputType['InboundSamlConfigSpConfigArrgs']] sp_config: SAML SP (Service Provider) configuration when the project acts as the relying party to receive
                and accept an authentication assertion issued by a SAML identity provider.
                Structure is documented below.
         """

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The NetworkConnectivity Spoke resource
@@ -412,12 +411,6 @@ func (i *Spoke) ToSpokeOutputWithContext(ctx context.Context) SpokeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeOutput)
 }
 
-func (i *Spoke) ToOutput(ctx context.Context) pulumix.Output[*Spoke] {
-	return pulumix.Output[*Spoke]{
-		OutputState: i.ToSpokeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SpokeArrayInput is an input type that accepts SpokeArray and SpokeArrayOutput values.
 // You can construct a concrete instance of `SpokeArrayInput` via:
 //
@@ -441,12 +434,6 @@ func (i SpokeArray) ToSpokeArrayOutput() SpokeArrayOutput {
 
 func (i SpokeArray) ToSpokeArrayOutputWithContext(ctx context.Context) SpokeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeArrayOutput)
-}
-
-func (i SpokeArray) ToOutput(ctx context.Context) pulumix.Output[[]*Spoke] {
-	return pulumix.Output[[]*Spoke]{
-		OutputState: i.ToSpokeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SpokeMapInput is an input type that accepts SpokeMap and SpokeMapOutput values.
@@ -474,12 +461,6 @@ func (i SpokeMap) ToSpokeMapOutputWithContext(ctx context.Context) SpokeMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(SpokeMapOutput)
 }
 
-func (i SpokeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Spoke] {
-	return pulumix.Output[map[string]*Spoke]{
-		OutputState: i.ToSpokeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SpokeOutput struct{ *pulumi.OutputState }
 
 func (SpokeOutput) ElementType() reflect.Type {
@@ -492,12 +473,6 @@ func (o SpokeOutput) ToSpokeOutput() SpokeOutput {
 
 func (o SpokeOutput) ToSpokeOutputWithContext(ctx context.Context) SpokeOutput {
 	return o
-}
-
-func (o SpokeOutput) ToOutput(ctx context.Context) pulumix.Output[*Spoke] {
-	return pulumix.Output[*Spoke]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. The time the spoke was created.
@@ -597,12 +572,6 @@ func (o SpokeArrayOutput) ToSpokeArrayOutputWithContext(ctx context.Context) Spo
 	return o
 }
 
-func (o SpokeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Spoke] {
-	return pulumix.Output[[]*Spoke]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SpokeArrayOutput) Index(i pulumi.IntInput) SpokeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Spoke {
 		return vs[0].([]*Spoke)[vs[1].(int)]
@@ -621,12 +590,6 @@ func (o SpokeMapOutput) ToSpokeMapOutput() SpokeMapOutput {
 
 func (o SpokeMapOutput) ToSpokeMapOutputWithContext(ctx context.Context) SpokeMapOutput {
 	return o
-}
-
-func (o SpokeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Spoke] {
-	return pulumix.Output[map[string]*Spoke]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SpokeMapOutput) MapIndex(k pulumi.StringInput) SpokeOutput {

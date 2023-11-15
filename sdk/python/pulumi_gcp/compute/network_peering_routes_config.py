@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['NetworkPeeringRoutesConfigArgs', 'NetworkPeeringRoutesConfig']
+__all__ = ['NetworkPeeringRoutesConfigArrgs', 'NetworkPeeringRoutesConfig']
 
 @pulumi.input_type
-class NetworkPeeringRoutesConfigArgs:
+calass NetworkPeeringRoutesConfigArrgs:
     def __init__(__self__, *,
                  export_custom_routes: pulumi.Input[bool],
                  import_custom_routes: pulumi.Input[bool],
@@ -104,7 +104,7 @@ class NetworkPeeringRoutesConfigArgs:
 
 
 @pulumi.input_type
-class _NetworkPeeringRoutesConfigState:
+calass _NetworkPeeringRoutesConfigState:
     def __init__(__self__, *,
                  export_custom_routes: Optional[pulumi.Input[bool]] = None,
                  import_custom_routes: Optional[pulumi.Input[bool]] = None,
@@ -199,7 +199,7 @@ class _NetworkPeeringRoutesConfigState:
         pulumi.set(self, "project", value)
 
 
-class NetworkPeeringRoutesConfig(pulumi.CustomResource):
+calass NetworkPeeringRoutesConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -258,11 +258,11 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             ip_cidr_range="10.0.36.0/24",
             private_ip_google_access=True,
             secondary_ip_ranges=[
-                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                gcp.compute.SubnetworkSecondaryIpRangeArrgs(
                     range_name="pod",
                     ip_cidr_range="10.0.0.0/19",
                 ),
-                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                gcp.compute.SubnetworkSecondaryIpRangeArrgs(
                     range_name="svc",
                     ip_cidr_range="10.0.32.0/22",
                 ),
@@ -272,13 +272,13 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             initial_node_count=1,
             network=container_network.name,
             subnetwork=container_subnetwork.name,
-            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArgs(
+            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArrgs(
                 enable_private_endpoint=True,
                 enable_private_nodes=True,
                 master_ipv4_cidr_block="10.42.0.0/28",
             ),
-            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArgs(),
-            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
+            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArrgs(),
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArrgs(
                 cluster_secondary_range_name=container_subnetwork.secondary_ip_ranges[0].range_name,
                 services_secondary_range_name=container_subnetwork.secondary_ip_ranges[1].range_name,
             ),
@@ -322,7 +322,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NetworkPeeringRoutesConfigArgs,
+                 args: NetworkPeeringRoutesConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manage a network peering's route settings without managing the peering as
@@ -372,11 +372,11 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             ip_cidr_range="10.0.36.0/24",
             private_ip_google_access=True,
             secondary_ip_ranges=[
-                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                gcp.compute.SubnetworkSecondaryIpRangeArrgs(
                     range_name="pod",
                     ip_cidr_range="10.0.0.0/19",
                 ),
-                gcp.compute.SubnetworkSecondaryIpRangeArgs(
+                gcp.compute.SubnetworkSecondaryIpRangeArrgs(
                     range_name="svc",
                     ip_cidr_range="10.0.32.0/22",
                 ),
@@ -386,13 +386,13 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             initial_node_count=1,
             network=container_network.name,
             subnetwork=container_subnetwork.name,
-            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArgs(
+            private_cluster_config=gcp.container.ClusterPrivateClusterConfigArrgs(
                 enable_private_endpoint=True,
                 enable_private_nodes=True,
                 master_ipv4_cidr_block="10.42.0.0/28",
             ),
-            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArgs(),
-            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
+            master_authorized_networks_config=gcp.container.ClusterMasterAuthorizedNetworksConfigArrgs(),
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArrgs(
                 cluster_secondary_range_name=container_subnetwork.secondary_ip_ranges[0].range_name,
                 services_secondary_range_name=container_subnetwork.secondary_ip_ranges[1].range_name,
             ),
@@ -421,12 +421,12 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NetworkPeeringRoutesConfigArgs args: The arguments to use to populate this resource's properties.
+        :param NetworkPeeringRoutesConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NetworkPeeringRoutesConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkPeeringRoutesConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -447,7 +447,7 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NetworkPeeringRoutesConfigArgs.__new__(NetworkPeeringRoutesConfigArgs)
+            __props__ = NetworkPeeringRoutesConfigArrgs.__new__(NetworkPeeringRoutesConfigArrgs)
 
             if export_custom_routes is None and not opts.urn:
                 raise TypeError("Missing required property 'export_custom_routes'")

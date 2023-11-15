@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for a Google Cloud Healthcare DICOM store.
@@ -108,12 +107,6 @@ func (o LookupDicomStoreIamPolicyResultOutput) ToLookupDicomStoreIamPolicyResult
 
 func (o LookupDicomStoreIamPolicyResultOutput) ToLookupDicomStoreIamPolicyResultOutputWithContext(ctx context.Context) LookupDicomStoreIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupDicomStoreIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDicomStoreIamPolicyResult] {
-	return pulumix.Output[LookupDicomStoreIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupDicomStoreIamPolicyResultOutput) DicomStoreId() pulumi.StringOutput {

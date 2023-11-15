@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetTopicResult:
+calass GetTopicResult:
     """
     A collection of values returned by getTopic.
     """
@@ -108,7 +108,7 @@ class GetTopicResult:
         return pulumi.get(self, "schema_settings")
 
 
-class AwaitableGetTopicResult(GetTopicResult):
+calass AwaitableGetTopicResult(GetTopicResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

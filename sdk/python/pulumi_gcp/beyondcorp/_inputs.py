@@ -10,15 +10,15 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AppConnectionApplicationEndpointArgs',
-    'AppConnectionGatewayArgs',
-    'AppConnectorPrincipalInfoArgs',
-    'AppConnectorPrincipalInfoServiceAccountArgs',
-    'AppGatewayAllocatedConnectionArgs',
+    'AppConnectionApplicationEndpointArrgs',
+    'AppConnectionGatewayArrgs',
+    'AppConnectorPrincipalInfoArrgs',
+    'AppConnectorPrincipalInfoServiceAccountArrgs',
+    'AppGatewayAllocatedConnectionArrgs',
 ]
 
 @pulumi.input_type
-class AppConnectionApplicationEndpointArgs:
+calass AppConnectionApplicationEndpointArrgs:
     def __init__(__self__, *,
                  host: pulumi.Input[str],
                  port: pulumi.Input[int]):
@@ -59,7 +59,7 @@ class AppConnectionApplicationEndpointArgs:
 
 
 @pulumi.input_type
-class AppConnectionGatewayArgs:
+calass AppConnectionGatewayArrgs:
     def __init__(__self__, *,
                  app_gateway: pulumi.Input[str],
                  ingress_port: Optional[pulumi.Input[int]] = None,
@@ -137,18 +137,18 @@ class AppConnectionGatewayArgs:
 
 
 @pulumi.input_type
-class AppConnectorPrincipalInfoArgs:
+calass AppConnectorPrincipalInfoArrgs:
     def __init__(__self__, *,
-                 service_account: pulumi.Input['AppConnectorPrincipalInfoServiceAccountArgs']):
+                 service_account: pulumi.Input['AppConnectorPrincipalInfoServiceAccountArrgs']):
         """
-        :param pulumi.Input['AppConnectorPrincipalInfoServiceAccountArgs'] service_account: ServiceAccount represents a GCP service account.
+        :param pulumi.Input['AppConnectorPrincipalInfoServiceAccountArrgs'] service_account: ServiceAccount represents a GCP service account.
                Structure is documented below.
         """
         pulumi.set(__self__, "service_account", service_account)
 
     @property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> pulumi.Input['AppConnectorPrincipalInfoServiceAccountArgs']:
+    def service_account(self) -> pulumi.Input['AppConnectorPrincipalInfoServiceAccountArrgs']:
         """
         ServiceAccount represents a GCP service account.
         Structure is documented below.
@@ -156,12 +156,12 @@ class AppConnectorPrincipalInfoArgs:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: pulumi.Input['AppConnectorPrincipalInfoServiceAccountArgs']):
+    def service_account(self, value: pulumi.Input['AppConnectorPrincipalInfoServiceAccountArrgs']):
         pulumi.set(self, "service_account", value)
 
 
 @pulumi.input_type
-class AppConnectorPrincipalInfoServiceAccountArgs:
+calass AppConnectorPrincipalInfoServiceAccountArrgs:
     def __init__(__self__, *,
                  email: pulumi.Input[str]):
         """
@@ -187,7 +187,7 @@ class AppConnectorPrincipalInfoServiceAccountArgs:
 
 
 @pulumi.input_type
-class AppGatewayAllocatedConnectionArgs:
+calass AppGatewayAllocatedConnectionArrgs:
     def __init__(__self__, *,
                  ingress_port: Optional[pulumi.Input[int]] = None,
                  psc_uri: Optional[pulumi.Input[str]] = None):

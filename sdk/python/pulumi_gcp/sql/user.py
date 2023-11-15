@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['UserArgs', 'User']
+__all__ = ['UserArrgs', 'User']
 
 @pulumi.input_type
-class UserArgs:
+calass UserArrgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 password_policy: Optional[pulumi.Input['UserPasswordPolicyArgs']] = None,
+                 password_policy: Optional[pulumi.Input['UserPasswordPolicyArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -141,11 +141,11 @@ class UserArgs:
 
     @property
     @pulumi.getter(name="passwordPolicy")
-    def password_policy(self) -> Optional[pulumi.Input['UserPasswordPolicyArgs']]:
+    def password_policy(self) -> Optional[pulumi.Input['UserPasswordPolicyArrgs']]:
         return pulumi.get(self, "password_policy")
 
     @password_policy.setter
-    def password_policy(self, value: Optional[pulumi.Input['UserPasswordPolicyArgs']]):
+    def password_policy(self, value: Optional[pulumi.Input['UserPasswordPolicyArrgs']]):
         pulumi.set(self, "password_policy", value)
 
     @property
@@ -177,16 +177,16 @@ class UserArgs:
 
 
 @pulumi.input_type
-class _UserState:
+calass _UserState:
     def __init__(__self__, *,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 password_policy: Optional[pulumi.Input['UserPasswordPolicyArgs']] = None,
+                 password_policy: Optional[pulumi.Input['UserPasswordPolicyArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]] = None,
+                 sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArrgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering User resources.
@@ -308,11 +308,11 @@ class _UserState:
 
     @property
     @pulumi.getter(name="passwordPolicy")
-    def password_policy(self) -> Optional[pulumi.Input['UserPasswordPolicyArgs']]:
+    def password_policy(self) -> Optional[pulumi.Input['UserPasswordPolicyArrgs']]:
         return pulumi.get(self, "password_policy")
 
     @password_policy.setter
-    def password_policy(self, value: Optional[pulumi.Input['UserPasswordPolicyArgs']]):
+    def password_policy(self, value: Optional[pulumi.Input['UserPasswordPolicyArrgs']]):
         pulumi.set(self, "password_policy", value)
 
     @property
@@ -330,11 +330,11 @@ class _UserState:
 
     @property
     @pulumi.getter(name="sqlServerUserDetails")
-    def sql_server_user_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]]:
+    def sql_server_user_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArrgs']]]]:
         return pulumi.get(self, "sql_server_user_details")
 
     @sql_server_user_details.setter
-    def sql_server_user_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]]):
+    def sql_server_user_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArrgs']]]]):
         pulumi.set(self, "sql_server_user_details", value)
 
     @property
@@ -352,7 +352,7 @@ class _UserState:
         pulumi.set(self, "type", value)
 
 
-class User(pulumi.CustomResource):
+calass User(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -362,7 +362,7 @@ class User(pulumi.CustomResource):
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordPolicyArgs']]] = None,
+                 password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordPolicyArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -414,7 +414,7 @@ class User(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: UserArgs,
+                 args: UserArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
@@ -435,12 +435,12 @@ class User(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param UserArgs args: The arguments to use to populate this resource's properties.
+        :param UserArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(UserArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(UserArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -454,7 +454,7 @@ class User(pulumi.CustomResource):
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordPolicyArgs']]] = None,
+                 password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordPolicyArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -464,7 +464,7 @@ class User(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = UserArgs.__new__(UserArgs)
+            __props__ = UserArrgs.__new__(UserArrgs)
 
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["host"] = host
@@ -494,9 +494,9 @@ class User(pulumi.CustomResource):
             instance: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
-            password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordPolicyArgs']]] = None,
+            password_policy: Optional[pulumi.Input[pulumi.InputType['UserPasswordPolicyArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserSqlServerUserDetailArgs']]]]] = None,
+            sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserSqlServerUserDetailArrgs']]]]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra

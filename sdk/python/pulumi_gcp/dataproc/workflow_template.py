@@ -11,29 +11,29 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['WorkflowTemplateArgs', 'WorkflowTemplate']
+__all__ = ['WorkflowTemplateArrgs', 'WorkflowTemplate']
 
 @pulumi.input_type
-class WorkflowTemplateArgs:
+calass WorkflowTemplateArrgs:
     def __init__(__self__, *,
-                 jobs: pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]],
+                 jobs: pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArrgs']]],
                  location: pulumi.Input[str],
-                 placement: pulumi.Input['WorkflowTemplatePlacementArgs'],
+                 placement: pulumi.Input['WorkflowTemplatePlacementArrgs'],
                  dag_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArrgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a WorkflowTemplate resource.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArrgs']]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: Required. WorkflowTemplate scheduling information.
+        :param pulumi.Input['WorkflowTemplatePlacementArrgs'] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] dag_timeout: (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
         :param pulumi.Input[str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArrgs']]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[int] version: Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
         """
@@ -58,14 +58,14 @@ class WorkflowTemplateArgs:
 
     @property
     @pulumi.getter
-    def jobs(self) -> pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]:
+    def jobs(self) -> pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArrgs']]]:
         """
         Required. The Directed Acyclic Graph of Jobs to submit.
         """
         return pulumi.get(self, "jobs")
 
     @jobs.setter
-    def jobs(self, value: pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]):
+    def jobs(self, value: pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArrgs']]]):
         pulumi.set(self, "jobs", value)
 
     @property
@@ -82,14 +82,14 @@ class WorkflowTemplateArgs:
 
     @property
     @pulumi.getter
-    def placement(self) -> pulumi.Input['WorkflowTemplatePlacementArgs']:
+    def placement(self) -> pulumi.Input['WorkflowTemplatePlacementArrgs']:
         """
         Required. WorkflowTemplate scheduling information.
         """
         return pulumi.get(self, "placement")
 
     @placement.setter
-    def placement(self, value: pulumi.Input['WorkflowTemplatePlacementArgs']):
+    def placement(self, value: pulumi.Input['WorkflowTemplatePlacementArrgs']):
         pulumi.set(self, "placement", value)
 
     @property
@@ -130,14 +130,14 @@ class WorkflowTemplateArgs:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]:
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArrgs']]]]:
         """
         Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]):
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArrgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @property
@@ -169,17 +169,17 @@ class WorkflowTemplateArgs:
 
 
 @pulumi.input_type
-class _WorkflowTemplateState:
+calass _WorkflowTemplateState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]] = None,
+                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArrgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
-                 placement: Optional[pulumi.Input['WorkflowTemplatePlacementArgs']] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArrgs']]]] = None,
+                 placement: Optional[pulumi.Input['WorkflowTemplatePlacementArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
@@ -190,12 +190,12 @@ class _WorkflowTemplateState:
         :param pulumi.Input[str] dag_timeout: (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
                clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArrgs']]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
-        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input['WorkflowTemplatePlacementArgs'] placement: Required. WorkflowTemplate scheduling information.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArrgs']]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        :param pulumi.Input['WorkflowTemplatePlacementArrgs'] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time template was last updated.
@@ -270,14 +270,14 @@ class _WorkflowTemplateState:
 
     @property
     @pulumi.getter
-    def jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]]:
+    def jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArrgs']]]]:
         """
         Required. The Directed Acyclic Graph of Jobs to submit.
         """
         return pulumi.get(self, "jobs")
 
     @jobs.setter
-    def jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]]):
+    def jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArrgs']]]]):
         pulumi.set(self, "jobs", value)
 
     @property
@@ -318,26 +318,26 @@ class _WorkflowTemplateState:
 
     @property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]:
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArrgs']]]]:
         """
         Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]):
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArrgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @property
     @pulumi.getter
-    def placement(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementArgs']]:
+    def placement(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementArrgs']]:
         """
         Required. WorkflowTemplate scheduling information.
         """
         return pulumi.get(self, "placement")
 
     @placement.setter
-    def placement(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementArgs']]):
+    def placement(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementArrgs']]):
         pulumi.set(self, "placement", value)
 
     @property
@@ -392,18 +392,18 @@ class _WorkflowTemplateState:
         pulumi.set(self, "version", value)
 
 
-class WorkflowTemplate(pulumi.CustomResource):
+calass WorkflowTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
-                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]]] = None,
+                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArrgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]]] = None,
-                 placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArrgs']]]]] = None,
+                 placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -418,48 +418,48 @@ class WorkflowTemplate(pulumi.CustomResource):
 
         template = gcp.dataproc.WorkflowTemplate("template",
             jobs=[
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    spark_job=gcp.dataproc.WorkflowTemplateJobSparkJobArgs(
+                gcp.dataproc.WorkflowTemplateJobArrgs(
+                    spark_job=gcp.dataproc.WorkflowTemplateJobSparkJobArrgs(
                         main_class="SomeClass",
                     ),
                     step_id="someJob",
                 ),
-                gcp.dataproc.WorkflowTemplateJobArgs(
+                gcp.dataproc.WorkflowTemplateJobArrgs(
                     prerequisite_step_ids=["someJob"],
-                    presto_job=gcp.dataproc.WorkflowTemplateJobPrestoJobArgs(
+                    presto_job=gcp.dataproc.WorkflowTemplateJobPrestoJobArrgs(
                         query_file_uri="someuri",
                     ),
                     step_id="otherJob",
                 ),
             ],
             location="us-central1",
-            placement=gcp.dataproc.WorkflowTemplatePlacementArgs(
-                managed_cluster=gcp.dataproc.WorkflowTemplatePlacementManagedClusterArgs(
+            placement=gcp.dataproc.WorkflowTemplatePlacementArrgs(
+                managed_cluster=gcp.dataproc.WorkflowTemplatePlacementManagedClusterArrgs(
                     cluster_name="my-cluster",
-                    config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs(
-                        gce_cluster_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs(
+                    config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigArrgs(
+                        gce_cluster_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArrgs(
                             tags=[
                                 "foo",
                                 "bar",
                             ],
                             zone="us-central1-a",
                         ),
-                        master_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs(
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs(
+                        master_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArrgs(
+                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArrgs(
                                 boot_disk_size_gb=15,
                                 boot_disk_type="pd-ssd",
                             ),
                             machine_type="n1-standard-1",
                             num_instances=1,
                         ),
-                        secondary_worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs(
+                        secondary_worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArrgs(
                             num_instances=2,
                         ),
-                        software_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs(
+                        software_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArrgs(
                             image_version="2.0.35-debian10",
                         ),
-                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs(
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(
+                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArrgs(
+                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArrgs(
                                 boot_disk_size_gb=10,
                                 num_local_ssds=2,
                             ),
@@ -490,12 +490,12 @@ class WorkflowTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dag_timeout: (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArrgs']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']] placement: Required. WorkflowTemplate scheduling information.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArrgs']]]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        :param pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArrgs']] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[int] version: Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
         """
@@ -503,7 +503,7 @@ class WorkflowTemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WorkflowTemplateArgs,
+                 args: WorkflowTemplateArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Workflow Template is a reusable workflow configuration. It defines a graph of jobs with information on where to run those jobs.
@@ -516,48 +516,48 @@ class WorkflowTemplate(pulumi.CustomResource):
 
         template = gcp.dataproc.WorkflowTemplate("template",
             jobs=[
-                gcp.dataproc.WorkflowTemplateJobArgs(
-                    spark_job=gcp.dataproc.WorkflowTemplateJobSparkJobArgs(
+                gcp.dataproc.WorkflowTemplateJobArrgs(
+                    spark_job=gcp.dataproc.WorkflowTemplateJobSparkJobArrgs(
                         main_class="SomeClass",
                     ),
                     step_id="someJob",
                 ),
-                gcp.dataproc.WorkflowTemplateJobArgs(
+                gcp.dataproc.WorkflowTemplateJobArrgs(
                     prerequisite_step_ids=["someJob"],
-                    presto_job=gcp.dataproc.WorkflowTemplateJobPrestoJobArgs(
+                    presto_job=gcp.dataproc.WorkflowTemplateJobPrestoJobArrgs(
                         query_file_uri="someuri",
                     ),
                     step_id="otherJob",
                 ),
             ],
             location="us-central1",
-            placement=gcp.dataproc.WorkflowTemplatePlacementArgs(
-                managed_cluster=gcp.dataproc.WorkflowTemplatePlacementManagedClusterArgs(
+            placement=gcp.dataproc.WorkflowTemplatePlacementArrgs(
+                managed_cluster=gcp.dataproc.WorkflowTemplatePlacementManagedClusterArrgs(
                     cluster_name="my-cluster",
-                    config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigArgs(
-                        gce_cluster_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs(
+                    config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigArrgs(
+                        gce_cluster_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArrgs(
                             tags=[
                                 "foo",
                                 "bar",
                             ],
                             zone="us-central1-a",
                         ),
-                        master_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs(
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs(
+                        master_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigArrgs(
+                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArrgs(
                                 boot_disk_size_gb=15,
                                 boot_disk_type="pd-ssd",
                             ),
                             machine_type="n1-standard-1",
                             num_instances=1,
                         ),
-                        secondary_worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs(
+                        secondary_worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArrgs(
                             num_instances=2,
                         ),
-                        software_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs(
+                        software_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArrgs(
                             image_version="2.0.35-debian10",
                         ),
-                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs(
-                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs(
+                        worker_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArrgs(
+                            disk_config=gcp.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArrgs(
                                 boot_disk_size_gb=10,
                                 num_local_ssds=2,
                             ),
@@ -586,12 +586,12 @@ class WorkflowTemplate(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param WorkflowTemplateArgs args: The arguments to use to populate this resource's properties.
+        :param WorkflowTemplateArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WorkflowTemplateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WorkflowTemplateArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -601,12 +601,12 @@ class WorkflowTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dag_timeout: Optional[pulumi.Input[str]] = None,
-                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]]] = None,
+                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArrgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]]] = None,
-                 placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArrgs']]]]] = None,
+                 placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArrgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -616,7 +616,7 @@ class WorkflowTemplate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WorkflowTemplateArgs.__new__(WorkflowTemplateArgs)
+            __props__ = WorkflowTemplateArrgs.__new__(WorkflowTemplateArrgs)
 
             __props__.__dict__["dag_timeout"] = dag_timeout
             if jobs is None and not opts.urn:
@@ -652,12 +652,12 @@ class WorkflowTemplate(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             dag_timeout: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]]] = None,
+            jobs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArrgs']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]]] = None,
-            placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArrgs']]]]] = None,
+            placement: Optional[pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArrgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
@@ -673,12 +673,12 @@ class WorkflowTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] dag_timeout: (Beta only) Optional. Timeout duration for the DAG of jobs. You can use "s", "m", "h", and "d" suffixes for second, minute, hour, and day duration values, respectively. The timeout duration must be from 10 minutes ("10m") to 24 hours ("24h" or "1d"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a (/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
         :param pulumi.Input[Mapping[str, Any]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
                clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArgs']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateJobArrgs']]]] jobs: Required. The Directed Acyclic Graph of Jobs to submit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArgs']]]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-        :param pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArgs']] placement: Required. WorkflowTemplate scheduling information.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkflowTemplateParameterArrgs']]]] parameters: Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        :param pulumi.Input[pulumi.InputType['WorkflowTemplatePlacementArrgs']] placement: Required. WorkflowTemplate scheduling information.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] update_time: Output only. The time template was last updated.

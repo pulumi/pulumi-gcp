@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAppGatewayResult:
+calass GetAppGatewayResult:
     """
     A collection of values returned by getAppGateway.
     """
@@ -132,7 +132,7 @@ class GetAppGatewayResult:
         return pulumi.get(self, "uri")
 
 
-class AwaitableGetAppGatewayResult(GetAppGatewayResult):
+calass AwaitableGetAppGatewayResult(GetAppGatewayResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

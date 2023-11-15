@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetNetworkEndpointGroupResult:
+calass GetNetworkEndpointGroupResult:
     """
     A collection of values returned by getNetworkEndpointGroup.
     """
@@ -133,7 +133,7 @@ class GetNetworkEndpointGroupResult:
         return pulumi.get(self, "zone")
 
 
-class AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
+calass AwaitableGetNetworkEndpointGroupResult(GetNetworkEndpointGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

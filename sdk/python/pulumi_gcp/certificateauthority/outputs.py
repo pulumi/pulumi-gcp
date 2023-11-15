@@ -121,7 +121,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AuthorityAccessUrl(dict):
+calass AuthorityAccessUrl(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -179,7 +179,7 @@ class AuthorityAccessUrl(dict):
 
 
 @pulumi.output_type
-class AuthorityConfig(dict):
+calass AuthorityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -203,12 +203,12 @@ class AuthorityConfig(dict):
                  subject_config: 'outputs.AuthorityConfigSubjectConfig',
                  x509_config: 'outputs.AuthorityConfigX509Config'):
         """
-        :param 'AuthorityConfigSubjectConfigArgs' subject_config: Specifies some of the values in a certificate that are related to the subject.
+        :param 'AuthorityConfigSubjectConfigArrgs' subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
                
                
                <a name="nested_x509_config"></a>The `x509_config` block supports:
-        :param 'AuthorityConfigX509ConfigArgs' x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
+        :param 'AuthorityConfigX509ConfigArrgs' x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
                Structure is documented below.
         """
         pulumi.set(__self__, "subject_config", subject_config)
@@ -237,7 +237,7 @@ class AuthorityConfig(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigSubjectConfig(dict):
+calass AuthorityConfigSubjectConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -259,9 +259,9 @@ class AuthorityConfigSubjectConfig(dict):
                  subject: 'outputs.AuthorityConfigSubjectConfigSubject',
                  subject_alt_name: Optional['outputs.AuthorityConfigSubjectConfigSubjectAltName'] = None):
         """
-        :param 'AuthorityConfigSubjectConfigSubjectArgs' subject: Contains distinguished name fields such as the location and organization.
+        :param 'AuthorityConfigSubjectConfigSubjectArrgs' subject: Contains distinguished name fields such as the location and organization.
                Structure is documented below.
-        :param 'AuthorityConfigSubjectConfigSubjectAltNameArgs' subject_alt_name: The subject alternative name fields.
+        :param 'AuthorityConfigSubjectConfigSubjectAltNameArrgs' subject_alt_name: The subject alternative name fields.
                Structure is documented below.
         """
         pulumi.set(__self__, "subject", subject)
@@ -288,7 +288,7 @@ class AuthorityConfigSubjectConfig(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigSubjectConfigSubject(dict):
+calass AuthorityConfigSubjectConfigSubject(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -414,7 +414,7 @@ class AuthorityConfigSubjectConfigSubject(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigSubjectConfigSubjectAltName(dict):
+calass AuthorityConfigSubjectConfigSubjectAltName(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -490,7 +490,7 @@ class AuthorityConfigSubjectConfigSubjectAltName(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigX509Config(dict):
+calass AuthorityConfigX509Config(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -526,17 +526,17 @@ class AuthorityConfigX509Config(dict):
                  name_constraints: Optional['outputs.AuthorityConfigX509ConfigNameConstraints'] = None,
                  policy_ids: Optional[Sequence['outputs.AuthorityConfigX509ConfigPolicyId']] = None):
         """
-        :param 'AuthorityConfigX509ConfigCaOptionsArgs' ca_options: Describes values that are relevant in a CA certificate.
+        :param 'AuthorityConfigX509ConfigCaOptionsArrgs' ca_options: Describes values that are relevant in a CA certificate.
                Structure is documented below.
-        :param 'AuthorityConfigX509ConfigKeyUsageArgs' key_usage: Indicates the intended use for keys that correspond to a certificate.
+        :param 'AuthorityConfigX509ConfigKeyUsageArrgs' key_usage: Indicates the intended use for keys that correspond to a certificate.
                Structure is documented below.
-        :param Sequence['AuthorityConfigX509ConfigAdditionalExtensionArgs'] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        :param Sequence['AuthorityConfigX509ConfigAdditionalExtensionArrgs'] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
                Structure is documented below.
         :param Sequence[str] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
-        :param 'AuthorityConfigX509ConfigNameConstraintsArgs' name_constraints: Describes the X.509 name constraints extension.
+        :param 'AuthorityConfigX509ConfigNameConstraintsArrgs' name_constraints: Describes the X.509 name constraints extension.
                Structure is documented below.
-        :param Sequence['AuthorityConfigX509ConfigPolicyIdArgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param Sequence['AuthorityConfigX509ConfigPolicyIdArrgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
         pulumi.set(__self__, "ca_options", ca_options)
@@ -606,7 +606,7 @@ class AuthorityConfigX509Config(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigX509ConfigAdditionalExtension(dict):
+calass AuthorityConfigX509ConfigAdditionalExtension(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -631,7 +631,7 @@ class AuthorityConfigX509ConfigAdditionalExtension(dict):
         """
         :param bool critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
-        :param 'AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs' object_id: Describes values that are relevant in a CA certificate.
+        :param 'AuthorityConfigX509ConfigAdditionalExtensionObjectIdArrgs' object_id: Describes values that are relevant in a CA certificate.
                Structure is documented below.
         :param str value: The value of this X.509 extension. A base64-encoded string.
         """
@@ -667,7 +667,7 @@ class AuthorityConfigX509ConfigAdditionalExtension(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigX509ConfigAdditionalExtensionObjectId(dict):
+calass AuthorityConfigX509ConfigAdditionalExtensionObjectId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -702,7 +702,7 @@ class AuthorityConfigX509ConfigAdditionalExtensionObjectId(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigX509ConfigCaOptions(dict):
+calass AuthorityConfigX509ConfigCaOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -789,7 +789,7 @@ class AuthorityConfigX509ConfigCaOptions(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigX509ConfigKeyUsage(dict):
+calass AuthorityConfigX509ConfigKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -816,11 +816,11 @@ class AuthorityConfigX509ConfigKeyUsage(dict):
                  extended_key_usage: 'outputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage',
                  unknown_extended_key_usages: Optional[Sequence['outputs.AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage']] = None):
         """
-        :param 'AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs' base_key_usage: Describes high-level ways in which a key may be used.
+        :param 'AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrgs' base_key_usage: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param 'AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs' extended_key_usage: Describes high-level ways in which a key may be used.
+        :param 'AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrgs' extended_key_usage: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param Sequence['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        :param Sequence['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
         pulumi.set(__self__, "base_key_usage", base_key_usage)
@@ -857,7 +857,7 @@ class AuthorityConfigX509ConfigKeyUsage(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigX509ConfigKeyUsageBaseKeyUsage(dict):
+calass AuthorityConfigX509ConfigKeyUsageBaseKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1005,7 +1005,7 @@ class AuthorityConfigX509ConfigKeyUsageBaseKeyUsage(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage(dict):
+calass AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1111,7 +1111,7 @@ class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage(dict):
+calass AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1146,7 +1146,7 @@ class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigX509ConfigNameConstraints(dict):
+calass AuthorityConfigX509ConfigNameConstraints(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1339,7 +1339,7 @@ class AuthorityConfigX509ConfigNameConstraints(dict):
 
 
 @pulumi.output_type
-class AuthorityConfigX509ConfigPolicyId(dict):
+calass AuthorityConfigX509ConfigPolicyId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1374,7 +1374,7 @@ class AuthorityConfigX509ConfigPolicyId(dict):
 
 
 @pulumi.output_type
-class AuthorityKeySpec(dict):
+calass AuthorityKeySpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1432,7 +1432,7 @@ class AuthorityKeySpec(dict):
 
 
 @pulumi.output_type
-class AuthoritySubordinateConfig(dict):
+calass AuthoritySubordinateConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1460,7 +1460,7 @@ class AuthoritySubordinateConfig(dict):
                subordinate CertificateAuthority. This field is used for information
                and usability purposes only. The resource name is in the format
                `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
-        :param 'AuthoritySubordinateConfigPemIssuerChainArgs' pem_issuer_chain: Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+        :param 'AuthoritySubordinateConfigPemIssuerChainArrgs' pem_issuer_chain: Contains the PEM certificate chain for the issuers of this CertificateAuthority,
                but not pem certificate for this CA itself.
                Structure is documented below.
         """
@@ -1492,7 +1492,7 @@ class AuthoritySubordinateConfig(dict):
 
 
 @pulumi.output_type
-class AuthoritySubordinateConfigPemIssuerChain(dict):
+calass AuthoritySubordinateConfigPemIssuerChain(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1528,7 +1528,7 @@ class AuthoritySubordinateConfigPemIssuerChain(dict):
 
 
 @pulumi.output_type
-class CaPoolIamBindingCondition(dict):
+calass CaPoolIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1565,7 +1565,7 @@ class CaPoolIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class CaPoolIamMemberCondition(dict):
+calass CaPoolIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1602,7 +1602,7 @@ class CaPoolIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicy(dict):
+calass CaPoolIssuancePolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1635,17 +1635,17 @@ class CaPoolIssuancePolicy(dict):
                  identity_constraints: Optional['outputs.CaPoolIssuancePolicyIdentityConstraints'] = None,
                  maximum_lifetime: Optional[str] = None):
         """
-        :param 'CaPoolIssuancePolicyAllowedIssuanceModesArgs' allowed_issuance_modes: IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
+        :param 'CaPoolIssuancePolicyAllowedIssuanceModesArrgs' allowed_issuance_modes: IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
                Structure is documented below.
-        :param Sequence['CaPoolIssuancePolicyAllowedKeyTypeArgs'] allowed_key_types: If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
+        :param Sequence['CaPoolIssuancePolicyAllowedKeyTypeArrgs'] allowed_key_types: If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
                Otherwise, any key may be used.
                Structure is documented below.
-        :param 'CaPoolIssuancePolicyBaselineValuesArgs' baseline_values: A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
+        :param 'CaPoolIssuancePolicyBaselineValuesArrgs' baseline_values: A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
                includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
                request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
                issuance request will fail.
                Structure is documented below.
-        :param 'CaPoolIssuancePolicyIdentityConstraintsArgs' identity_constraints: Describes constraints on identities that may appear in Certificates issued through this CaPool.
+        :param 'CaPoolIssuancePolicyIdentityConstraintsArrgs' identity_constraints: Describes constraints on identities that may appear in Certificates issued through this CaPool.
                If this is omitted, then this CaPool will not add restrictions on a certificate's identity.
                Structure is documented below.
         :param str maximum_lifetime: The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
@@ -1714,7 +1714,7 @@ class CaPoolIssuancePolicy(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyAllowedIssuanceModes(dict):
+calass CaPoolIssuancePolicyAllowedIssuanceModes(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1762,7 +1762,7 @@ class CaPoolIssuancePolicyAllowedIssuanceModes(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyAllowedKeyType(dict):
+calass CaPoolIssuancePolicyAllowedKeyType(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1784,9 +1784,9 @@ class CaPoolIssuancePolicyAllowedKeyType(dict):
                  elliptic_curve: Optional['outputs.CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve'] = None,
                  rsa: Optional['outputs.CaPoolIssuancePolicyAllowedKeyTypeRsa'] = None):
         """
-        :param 'CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs' elliptic_curve: Represents an allowed Elliptic Curve key type.
+        :param 'CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArrgs' elliptic_curve: Represents an allowed Elliptic Curve key type.
                Structure is documented below.
-        :param 'CaPoolIssuancePolicyAllowedKeyTypeRsaArgs' rsa: Describes an RSA key that may be used in a Certificate issued from a CaPool.
+        :param 'CaPoolIssuancePolicyAllowedKeyTypeRsaArrgs' rsa: Describes an RSA key that may be used in a Certificate issued from a CaPool.
                Structure is documented below.
         """
         if elliptic_curve is not None:
@@ -1814,7 +1814,7 @@ class CaPoolIssuancePolicyAllowedKeyType(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve(dict):
+calass CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1851,7 +1851,7 @@ class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyAllowedKeyTypeRsa(dict):
+calass CaPoolIssuancePolicyAllowedKeyTypeRsa(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1905,7 +1905,7 @@ class CaPoolIssuancePolicyAllowedKeyTypeRsa(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyBaselineValues(dict):
+calass CaPoolIssuancePolicyBaselineValues(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1941,17 +1941,17 @@ class CaPoolIssuancePolicyBaselineValues(dict):
                  name_constraints: Optional['outputs.CaPoolIssuancePolicyBaselineValuesNameConstraints'] = None,
                  policy_ids: Optional[Sequence['outputs.CaPoolIssuancePolicyBaselineValuesPolicyId']] = None):
         """
-        :param 'CaPoolIssuancePolicyBaselineValuesCaOptionsArgs' ca_options: Describes values that are relevant in a CA certificate.
+        :param 'CaPoolIssuancePolicyBaselineValuesCaOptionsArrgs' ca_options: Describes values that are relevant in a CA certificate.
                Structure is documented below.
-        :param 'CaPoolIssuancePolicyBaselineValuesKeyUsageArgs' key_usage: Indicates the intended use for keys that correspond to a certificate.
+        :param 'CaPoolIssuancePolicyBaselineValuesKeyUsageArrgs' key_usage: Indicates the intended use for keys that correspond to a certificate.
                Structure is documented below.
-        :param Sequence['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs'] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        :param Sequence['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArrgs'] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
                Structure is documented below.
         :param Sequence[str] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
-        :param 'CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs' name_constraints: Describes the X.509 name constraints extension.
+        :param 'CaPoolIssuancePolicyBaselineValuesNameConstraintsArrgs' name_constraints: Describes the X.509 name constraints extension.
                Structure is documented below.
-        :param Sequence['CaPoolIssuancePolicyBaselineValuesPolicyIdArgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param Sequence['CaPoolIssuancePolicyBaselineValuesPolicyIdArrgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
         pulumi.set(__self__, "ca_options", ca_options)
@@ -2021,7 +2021,7 @@ class CaPoolIssuancePolicyBaselineValues(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyBaselineValuesAdditionalExtension(dict):
+calass CaPoolIssuancePolicyBaselineValuesAdditionalExtension(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2046,7 +2046,7 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtension(dict):
         """
         :param bool critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
-        :param 'CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArgs' object_id: Describes values that are relevant in a CA certificate.
+        :param 'CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectIdArrgs' object_id: Describes values that are relevant in a CA certificate.
                Structure is documented below.
         :param str value: The value of this X.509 extension. A base64-encoded string.
         """
@@ -2082,7 +2082,7 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtension(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId(dict):
+calass CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2117,7 +2117,7 @@ class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyBaselineValuesCaOptions(dict):
+calass CaPoolIssuancePolicyBaselineValuesCaOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2203,7 +2203,7 @@ class CaPoolIssuancePolicyBaselineValuesCaOptions(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyBaselineValuesKeyUsage(dict):
+calass CaPoolIssuancePolicyBaselineValuesKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2230,11 +2230,11 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsage(dict):
                  extended_key_usage: 'outputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage',
                  unknown_extended_key_usages: Optional[Sequence['outputs.CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage']] = None):
         """
-        :param 'CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs' base_key_usage: Describes high-level ways in which a key may be used.
+        :param 'CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArrgs' base_key_usage: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param 'CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs' extended_key_usage: Describes high-level ways in which a key may be used.
+        :param 'CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArrgs' extended_key_usage: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param Sequence['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        :param Sequence['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArrgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
         pulumi.set(__self__, "base_key_usage", base_key_usage)
@@ -2271,7 +2271,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsage(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage(dict):
+calass CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2419,7 +2419,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage(dict):
+calass CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2525,7 +2525,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage(dict):
+calass CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2560,7 +2560,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyBaselineValuesNameConstraints(dict):
+calass CaPoolIssuancePolicyBaselineValuesNameConstraints(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2753,7 +2753,7 @@ class CaPoolIssuancePolicyBaselineValuesNameConstraints(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyBaselineValuesPolicyId(dict):
+calass CaPoolIssuancePolicyBaselineValuesPolicyId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2788,7 +2788,7 @@ class CaPoolIssuancePolicyBaselineValuesPolicyId(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyIdentityConstraints(dict):
+calass CaPoolIssuancePolicyIdentityConstraints(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2819,7 +2819,7 @@ class CaPoolIssuancePolicyIdentityConstraints(dict):
                Otherwise, the requested SubjectAltNames will be discarded.
         :param bool allow_subject_passthrough: If this is set, the Subject field may be copied from a certificate request into the signed certificate.
                Otherwise, the requested Subject will be discarded.
-        :param 'CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs' cel_expression: A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
+        :param 'CaPoolIssuancePolicyIdentityConstraintsCelExpressionArrgs' cel_expression: A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
                certificate is signed. To see the full allowed syntax and some examples,
                see https://cloud.google.com/certificate-authority-service/docs/cel-guide
                Structure is documented below.
@@ -2860,7 +2860,7 @@ class CaPoolIssuancePolicyIdentityConstraints(dict):
 
 
 @pulumi.output_type
-class CaPoolIssuancePolicyIdentityConstraintsCelExpression(dict):
+calass CaPoolIssuancePolicyIdentityConstraintsCelExpression(dict):
     def __init__(__self__, *,
                  expression: str,
                  description: Optional[str] = None,
@@ -2914,7 +2914,7 @@ class CaPoolIssuancePolicyIdentityConstraintsCelExpression(dict):
 
 
 @pulumi.output_type
-class CaPoolPublishingOptions(dict):
+calass CaPoolPublishingOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2992,7 +2992,7 @@ class CaPoolPublishingOptions(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescription(dict):
+calass CertificateCertificateDescription(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3036,26 +3036,26 @@ class CertificateCertificateDescription(dict):
         """
         :param Sequence[str] aia_issuing_certificate_urls: (Output)
                Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
-        :param Sequence['CertificateCertificateDescriptionAuthorityKeyIdArgs'] authority_key_ids: (Output)
+        :param Sequence['CertificateCertificateDescriptionAuthorityKeyIdArrgs'] authority_key_ids: (Output)
                Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
                Structure is documented below.
-        :param Sequence['CertificateCertificateDescriptionCertFingerprintArgs'] cert_fingerprints: (Output)
+        :param Sequence['CertificateCertificateDescriptionCertFingerprintArrgs'] cert_fingerprints: (Output)
                The hash of the x.509 certificate.
                Structure is documented below.
         :param Sequence[str] crl_distribution_points: (Output)
                Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
-        :param Sequence['CertificateCertificateDescriptionPublicKeyArgs'] public_keys: A PublicKey describes a public key.
+        :param Sequence['CertificateCertificateDescriptionPublicKeyArrgs'] public_keys: A PublicKey describes a public key.
                Structure is documented below.
                
                
                <a name="nested_x509_config"></a>The `x509_config` block supports:
-        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionArgs'] subject_descriptions: (Output)
+        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionArrgs'] subject_descriptions: (Output)
                Describes some of the values in a certificate that are related to the subject and lifetime.
                Structure is documented below.
-        :param Sequence['CertificateCertificateDescriptionSubjectKeyIdArgs'] subject_key_ids: (Output)
+        :param Sequence['CertificateCertificateDescriptionSubjectKeyIdArrgs'] subject_key_ids: (Output)
                Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
                Structure is documented below.
-        :param Sequence['CertificateCertificateDescriptionX509DescriptionArgs'] x509_descriptions: (Output)
+        :param Sequence['CertificateCertificateDescriptionX509DescriptionArrgs'] x509_descriptions: (Output)
                A structured description of the issued X.509 certificate.
                Structure is documented below.
         """
@@ -3158,7 +3158,7 @@ class CertificateCertificateDescription(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionAuthorityKeyId(dict):
+calass CertificateCertificateDescriptionAuthorityKeyId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3196,7 +3196,7 @@ class CertificateCertificateDescriptionAuthorityKeyId(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionCertFingerprint(dict):
+calass CertificateCertificateDescriptionCertFingerprint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3234,7 +3234,7 @@ class CertificateCertificateDescriptionCertFingerprint(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionPublicKey(dict):
+calass CertificateCertificateDescriptionPublicKey(dict):
     def __init__(__self__, *,
                  format: Optional[str] = None,
                  key: Optional[str] = None):
@@ -3267,7 +3267,7 @@ class CertificateCertificateDescriptionPublicKey(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionSubjectDescription(dict):
+calass CertificateCertificateDescriptionSubjectDescription(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3308,9 +3308,9 @@ class CertificateCertificateDescriptionSubjectDescription(dict):
                The time at which the certificate expires.
         :param str not_before_time: (Output)
                The time at which the certificate becomes valid.
-        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs'] subject_alt_names: The subject alternative name fields.
+        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrgs'] subject_alt_names: The subject alternative name fields.
                Structure is documented below.
-        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs'] subjects: Contains distinguished name fields such as the location and organization.
+        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectArrgs'] subjects: Contains distinguished name fields such as the location and organization.
                Structure is documented below.
         """
         if hex_serial_number is not None:
@@ -3383,7 +3383,7 @@ class CertificateCertificateDescriptionSubjectDescription(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionSubjectDescriptionSubject(dict):
+calass CertificateCertificateDescriptionSubjectDescriptionSubject(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3511,7 +3511,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubject(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName(dict):
+calass CertificateCertificateDescriptionSubjectDescriptionSubjectAltName(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3542,7 +3542,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName(dict):
                  ip_addresses: Optional[Sequence[str]] = None,
                  uris: Optional[Sequence[str]] = None):
         """
-        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs'] custom_sans: (Output)
+        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrgs'] custom_sans: (Output)
                Contains additional subject alternative name values.
                Structure is documented below.
         :param Sequence[str] dns_names: Contains only valid, fully-qualified host names.
@@ -3605,7 +3605,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan(dict):
+calass CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3630,7 +3630,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
         """
         :param bool critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
-        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs'] obect_ids: (Output)
+        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrgs'] obect_ids: (Output)
                Describes how some of the technical fields in a certificate should be populated.
                Structure is documented below.
         :param str value: The value of this X.509 extension. A base64-encoded string.
@@ -3671,7 +3671,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId(dict):
+calass CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3707,7 +3707,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionSubjectKeyId(dict):
+calass CertificateCertificateDescriptionSubjectKeyId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3745,7 +3745,7 @@ class CertificateCertificateDescriptionSubjectKeyId(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionX509Description(dict):
+calass CertificateCertificateDescriptionX509Description(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3781,17 +3781,17 @@ class CertificateCertificateDescriptionX509Description(dict):
                  name_constraints: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionNameConstraint']] = None,
                  policy_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionPolicyId']] = None):
         """
-        :param Sequence['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs'] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        :param Sequence['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArrgs'] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
                Structure is documented below.
         :param Sequence[str] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
-        :param Sequence['CertificateCertificateDescriptionX509DescriptionCaOptionArgs'] ca_options: Describes values that are relevant in a CA certificate.
+        :param Sequence['CertificateCertificateDescriptionX509DescriptionCaOptionArrgs'] ca_options: Describes values that are relevant in a CA certificate.
                Structure is documented below.
-        :param Sequence['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs'] key_usages: Indicates the intended use for keys that correspond to a certificate.
+        :param Sequence['CertificateCertificateDescriptionX509DescriptionKeyUsageArrgs'] key_usages: Indicates the intended use for keys that correspond to a certificate.
                Structure is documented below.
-        :param Sequence['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs'] name_constraints: Describes the X.509 name constraints extension.
+        :param Sequence['CertificateCertificateDescriptionX509DescriptionNameConstraintArrgs'] name_constraints: Describes the X.509 name constraints extension.
                Structure is documented below.
-        :param Sequence['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param Sequence['CertificateCertificateDescriptionX509DescriptionPolicyIdArrgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
         if additional_extensions is not None:
@@ -3863,7 +3863,7 @@ class CertificateCertificateDescriptionX509Description(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionX509DescriptionAdditionalExtension(dict):
+calass CertificateCertificateDescriptionX509DescriptionAdditionalExtension(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3888,7 +3888,7 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtension(dict):
         """
         :param bool critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
-        :param Sequence['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs'] object_ids: Describes values that are relevant in a CA certificate.
+        :param Sequence['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArrgs'] object_ids: Describes values that are relevant in a CA certificate.
                Structure is documented below.
         :param str value: The value of this X.509 extension. A base64-encoded string.
         """
@@ -3927,7 +3927,7 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtension(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId(dict):
+calass CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3963,7 +3963,7 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectI
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionX509DescriptionCaOption(dict):
+calass CertificateCertificateDescriptionX509DescriptionCaOption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4015,7 +4015,7 @@ class CertificateCertificateDescriptionX509DescriptionCaOption(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionX509DescriptionKeyUsage(dict):
+calass CertificateCertificateDescriptionX509DescriptionKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4042,11 +4042,11 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsage(dict):
                  extended_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage']] = None,
                  unknown_extended_key_usages: Optional[Sequence['outputs.CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage']] = None):
         """
-        :param Sequence['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs'] base_key_usages: Describes high-level ways in which a key may be used.
+        :param Sequence['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArrgs'] base_key_usages: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param Sequence['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs'] extended_key_usages: Describes high-level ways in which a key may be used.
+        :param Sequence['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArrgs'] extended_key_usages: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param Sequence['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        :param Sequence['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArrgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
         if base_key_usages is not None:
@@ -4085,7 +4085,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsage(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage(dict):
+calass CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4233,7 +4233,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage(dict)
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage(dict):
+calass CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4339,7 +4339,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage(d
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage(dict):
+calass CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4375,7 +4375,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKey
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionX509DescriptionNameConstraint(dict):
+calass CertificateCertificateDescriptionX509DescriptionNameConstraint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4569,7 +4569,7 @@ class CertificateCertificateDescriptionX509DescriptionNameConstraint(dict):
 
 
 @pulumi.output_type
-class CertificateCertificateDescriptionX509DescriptionPolicyId(dict):
+calass CertificateCertificateDescriptionX509DescriptionPolicyId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4605,7 +4605,7 @@ class CertificateCertificateDescriptionX509DescriptionPolicyId(dict):
 
 
 @pulumi.output_type
-class CertificateConfig(dict):
+calass CertificateConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4632,14 +4632,14 @@ class CertificateConfig(dict):
                  subject_config: 'outputs.CertificateConfigSubjectConfig',
                  x509_config: 'outputs.CertificateConfigX509Config'):
         """
-        :param 'CertificateConfigPublicKeyArgs' public_key: A PublicKey describes a public key.
+        :param 'CertificateConfigPublicKeyArrgs' public_key: A PublicKey describes a public key.
                Structure is documented below.
                
                
                <a name="nested_x509_config"></a>The `x509_config` block supports:
-        :param 'CertificateConfigSubjectConfigArgs' subject_config: Specifies some of the values in a certificate that are related to the subject.
+        :param 'CertificateConfigSubjectConfigArrgs' subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
-        :param 'CertificateConfigX509ConfigArgs' x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
+        :param 'CertificateConfigX509ConfigArrgs' x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
                Structure is documented below.
         """
         pulumi.set(__self__, "public_key", public_key)
@@ -4678,7 +4678,7 @@ class CertificateConfig(dict):
 
 
 @pulumi.output_type
-class CertificateConfigPublicKey(dict):
+calass CertificateConfigPublicKey(dict):
     def __init__(__self__, *,
                  format: str,
                  key: Optional[str] = None):
@@ -4710,7 +4710,7 @@ class CertificateConfigPublicKey(dict):
 
 
 @pulumi.output_type
-class CertificateConfigSubjectConfig(dict):
+calass CertificateConfigSubjectConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4732,9 +4732,9 @@ class CertificateConfigSubjectConfig(dict):
                  subject: 'outputs.CertificateConfigSubjectConfigSubject',
                  subject_alt_name: Optional['outputs.CertificateConfigSubjectConfigSubjectAltName'] = None):
         """
-        :param 'CertificateConfigSubjectConfigSubjectArgs' subject: Contains distinguished name fields such as the location and organization.
+        :param 'CertificateConfigSubjectConfigSubjectArrgs' subject: Contains distinguished name fields such as the location and organization.
                Structure is documented below.
-        :param 'CertificateConfigSubjectConfigSubjectAltNameArgs' subject_alt_name: The subject alternative name fields.
+        :param 'CertificateConfigSubjectConfigSubjectAltNameArrgs' subject_alt_name: The subject alternative name fields.
                Structure is documented below.
         """
         pulumi.set(__self__, "subject", subject)
@@ -4761,7 +4761,7 @@ class CertificateConfigSubjectConfig(dict):
 
 
 @pulumi.output_type
-class CertificateConfigSubjectConfigSubject(dict):
+calass CertificateConfigSubjectConfigSubject(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4887,7 +4887,7 @@ class CertificateConfigSubjectConfigSubject(dict):
 
 
 @pulumi.output_type
-class CertificateConfigSubjectConfigSubjectAltName(dict):
+calass CertificateConfigSubjectConfigSubjectAltName(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4963,7 +4963,7 @@ class CertificateConfigSubjectConfigSubjectAltName(dict):
 
 
 @pulumi.output_type
-class CertificateConfigX509Config(dict):
+calass CertificateConfigX509Config(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4999,17 +4999,17 @@ class CertificateConfigX509Config(dict):
                  name_constraints: Optional['outputs.CertificateConfigX509ConfigNameConstraints'] = None,
                  policy_ids: Optional[Sequence['outputs.CertificateConfigX509ConfigPolicyId']] = None):
         """
-        :param 'CertificateConfigX509ConfigKeyUsageArgs' key_usage: Indicates the intended use for keys that correspond to a certificate.
+        :param 'CertificateConfigX509ConfigKeyUsageArrgs' key_usage: Indicates the intended use for keys that correspond to a certificate.
                Structure is documented below.
-        :param Sequence['CertificateConfigX509ConfigAdditionalExtensionArgs'] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        :param Sequence['CertificateConfigX509ConfigAdditionalExtensionArrgs'] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
                Structure is documented below.
         :param Sequence[str] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
                "Authority Information Access" extension in the certificate.
-        :param 'CertificateConfigX509ConfigCaOptionsArgs' ca_options: Describes values that are relevant in a CA certificate.
+        :param 'CertificateConfigX509ConfigCaOptionsArrgs' ca_options: Describes values that are relevant in a CA certificate.
                Structure is documented below.
-        :param 'CertificateConfigX509ConfigNameConstraintsArgs' name_constraints: Describes the X.509 name constraints extension.
+        :param 'CertificateConfigX509ConfigNameConstraintsArrgs' name_constraints: Describes the X.509 name constraints extension.
                Structure is documented below.
-        :param Sequence['CertificateConfigX509ConfigPolicyIdArgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param Sequence['CertificateConfigX509ConfigPolicyIdArrgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
                Structure is documented below.
         """
         pulumi.set(__self__, "key_usage", key_usage)
@@ -5080,7 +5080,7 @@ class CertificateConfigX509Config(dict):
 
 
 @pulumi.output_type
-class CertificateConfigX509ConfigAdditionalExtension(dict):
+calass CertificateConfigX509ConfigAdditionalExtension(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5105,7 +5105,7 @@ class CertificateConfigX509ConfigAdditionalExtension(dict):
         """
         :param bool critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
-        :param 'CertificateConfigX509ConfigAdditionalExtensionObjectIdArgs' object_id: Describes values that are relevant in a CA certificate.
+        :param 'CertificateConfigX509ConfigAdditionalExtensionObjectIdArrgs' object_id: Describes values that are relevant in a CA certificate.
                Structure is documented below.
         :param str value: The value of this X.509 extension. A base64-encoded string.
         """
@@ -5141,7 +5141,7 @@ class CertificateConfigX509ConfigAdditionalExtension(dict):
 
 
 @pulumi.output_type
-class CertificateConfigX509ConfigAdditionalExtensionObjectId(dict):
+calass CertificateConfigX509ConfigAdditionalExtensionObjectId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5176,7 +5176,7 @@ class CertificateConfigX509ConfigAdditionalExtensionObjectId(dict):
 
 
 @pulumi.output_type
-class CertificateConfigX509ConfigCaOptions(dict):
+calass CertificateConfigX509ConfigCaOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5262,7 +5262,7 @@ class CertificateConfigX509ConfigCaOptions(dict):
 
 
 @pulumi.output_type
-class CertificateConfigX509ConfigKeyUsage(dict):
+calass CertificateConfigX509ConfigKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5289,11 +5289,11 @@ class CertificateConfigX509ConfigKeyUsage(dict):
                  extended_key_usage: 'outputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsage',
                  unknown_extended_key_usages: Optional[Sequence['outputs.CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage']] = None):
         """
-        :param 'CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs' base_key_usage: Describes high-level ways in which a key may be used.
+        :param 'CertificateConfigX509ConfigKeyUsageBaseKeyUsageArrgs' base_key_usage: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param 'CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs' extended_key_usage: Describes high-level ways in which a key may be used.
+        :param 'CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArrgs' extended_key_usage: Describes high-level ways in which a key may be used.
                Structure is documented below.
-        :param Sequence['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        :param Sequence['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
                Structure is documented below.
         """
         pulumi.set(__self__, "base_key_usage", base_key_usage)
@@ -5330,7 +5330,7 @@ class CertificateConfigX509ConfigKeyUsage(dict):
 
 
 @pulumi.output_type
-class CertificateConfigX509ConfigKeyUsageBaseKeyUsage(dict):
+calass CertificateConfigX509ConfigKeyUsageBaseKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5478,7 +5478,7 @@ class CertificateConfigX509ConfigKeyUsageBaseKeyUsage(dict):
 
 
 @pulumi.output_type
-class CertificateConfigX509ConfigKeyUsageExtendedKeyUsage(dict):
+calass CertificateConfigX509ConfigKeyUsageExtendedKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5584,7 +5584,7 @@ class CertificateConfigX509ConfigKeyUsageExtendedKeyUsage(dict):
 
 
 @pulumi.output_type
-class CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage(dict):
+calass CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5619,7 +5619,7 @@ class CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage(dict):
 
 
 @pulumi.output_type
-class CertificateConfigX509ConfigNameConstraints(dict):
+calass CertificateConfigX509ConfigNameConstraints(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5812,7 +5812,7 @@ class CertificateConfigX509ConfigNameConstraints(dict):
 
 
 @pulumi.output_type
-class CertificateConfigX509ConfigPolicyId(dict):
+calass CertificateConfigX509ConfigPolicyId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5847,7 +5847,7 @@ class CertificateConfigX509ConfigPolicyId(dict):
 
 
 @pulumi.output_type
-class CertificateRevocationDetail(dict):
+calass CertificateRevocationDetail(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5901,7 +5901,7 @@ class CertificateRevocationDetail(dict):
 
 
 @pulumi.output_type
-class CertificateTemplateIamBindingCondition(dict):
+calass CertificateTemplateIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -5938,7 +5938,7 @@ class CertificateTemplateIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class CertificateTemplateIamMemberCondition(dict):
+calass CertificateTemplateIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -5975,7 +5975,7 @@ class CertificateTemplateIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class CertificateTemplateIdentityConstraints(dict):
+calass CertificateTemplateIdentityConstraints(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6004,7 +6004,7 @@ class CertificateTemplateIdentityConstraints(dict):
         """
         :param bool allow_subject_alt_names_passthrough: Required. If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
         :param bool allow_subject_passthrough: Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
-        :param 'CertificateTemplateIdentityConstraintsCelExpressionArgs' cel_expression: Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
+        :param 'CertificateTemplateIdentityConstraintsCelExpressionArrgs' cel_expression: Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
         """
         pulumi.set(__self__, "allow_subject_alt_names_passthrough", allow_subject_alt_names_passthrough)
         pulumi.set(__self__, "allow_subject_passthrough", allow_subject_passthrough)
@@ -6037,7 +6037,7 @@ class CertificateTemplateIdentityConstraints(dict):
 
 
 @pulumi.output_type
-class CertificateTemplateIdentityConstraintsCelExpression(dict):
+calass CertificateTemplateIdentityConstraintsCelExpression(dict):
     def __init__(__self__, *,
                  description: Optional[str] = None,
                  expression: Optional[str] = None,
@@ -6092,7 +6092,7 @@ class CertificateTemplateIdentityConstraintsCelExpression(dict):
 
 
 @pulumi.output_type
-class CertificateTemplatePassthroughExtensions(dict):
+calass CertificateTemplatePassthroughExtensions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6116,7 +6116,7 @@ class CertificateTemplatePassthroughExtensions(dict):
                  additional_extensions: Optional[Sequence['outputs.CertificateTemplatePassthroughExtensionsAdditionalExtension']] = None,
                  known_extensions: Optional[Sequence[str]] = None):
         """
-        :param Sequence['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs'] additional_extensions: Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
+        :param Sequence['CertificateTemplatePassthroughExtensionsAdditionalExtensionArrgs'] additional_extensions: Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
         :param Sequence[str] known_extensions: Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
         """
         if additional_extensions is not None:
@@ -6142,7 +6142,7 @@ class CertificateTemplatePassthroughExtensions(dict):
 
 
 @pulumi.output_type
-class CertificateTemplatePassthroughExtensionsAdditionalExtension(dict):
+calass CertificateTemplatePassthroughExtensionsAdditionalExtension(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6177,7 +6177,7 @@ class CertificateTemplatePassthroughExtensionsAdditionalExtension(dict):
 
 
 @pulumi.output_type
-class CertificateTemplatePredefinedValues(dict):
+calass CertificateTemplatePredefinedValues(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6210,11 +6210,11 @@ class CertificateTemplatePredefinedValues(dict):
                  key_usage: Optional['outputs.CertificateTemplatePredefinedValuesKeyUsage'] = None,
                  policy_ids: Optional[Sequence['outputs.CertificateTemplatePredefinedValuesPolicyId']] = None):
         """
-        :param Sequence['CertificateTemplatePredefinedValuesAdditionalExtensionArgs'] additional_extensions: Optional. Describes custom X.509 extensions.
+        :param Sequence['CertificateTemplatePredefinedValuesAdditionalExtensionArrgs'] additional_extensions: Optional. Describes custom X.509 extensions.
         :param Sequence[str] aia_ocsp_servers: Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
-        :param 'CertificateTemplatePredefinedValuesCaOptionsArgs' ca_options: Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
-        :param 'CertificateTemplatePredefinedValuesKeyUsageArgs' key_usage: Optional. Indicates the intended use for keys that correspond to a certificate.
-        :param Sequence['CertificateTemplatePredefinedValuesPolicyIdArgs'] policy_ids: Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        :param 'CertificateTemplatePredefinedValuesCaOptionsArrgs' ca_options: Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
+        :param 'CertificateTemplatePredefinedValuesKeyUsageArrgs' key_usage: Optional. Indicates the intended use for keys that correspond to a certificate.
+        :param Sequence['CertificateTemplatePredefinedValuesPolicyIdArrgs'] policy_ids: Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         """
         if additional_extensions is not None:
             pulumi.set(__self__, "additional_extensions", additional_extensions)
@@ -6269,7 +6269,7 @@ class CertificateTemplatePredefinedValues(dict):
 
 
 @pulumi.output_type
-class CertificateTemplatePredefinedValuesAdditionalExtension(dict):
+calass CertificateTemplatePredefinedValuesAdditionalExtension(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6292,7 +6292,7 @@ class CertificateTemplatePredefinedValuesAdditionalExtension(dict):
                  value: str,
                  critical: Optional[bool] = None):
         """
-        :param 'CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs' object_id: Required. The OID for this X.509 extension.
+        :param 'CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArrgs' object_id: Required. The OID for this X.509 extension.
         :param str value: Required. The value of this X.509 extension.
         :param bool critical: Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
         """
@@ -6327,7 +6327,7 @@ class CertificateTemplatePredefinedValuesAdditionalExtension(dict):
 
 
 @pulumi.output_type
-class CertificateTemplatePredefinedValuesAdditionalExtensionObjectId(dict):
+calass CertificateTemplatePredefinedValuesAdditionalExtensionObjectId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6366,7 +6366,7 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionObjectId(dict):
 
 
 @pulumi.output_type
-class CertificateTemplatePredefinedValuesCaOptions(dict):
+calass CertificateTemplatePredefinedValuesCaOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6416,7 +6416,7 @@ class CertificateTemplatePredefinedValuesCaOptions(dict):
 
 
 @pulumi.output_type
-class CertificateTemplatePredefinedValuesKeyUsage(dict):
+calass CertificateTemplatePredefinedValuesKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6443,9 +6443,9 @@ class CertificateTemplatePredefinedValuesKeyUsage(dict):
                  extended_key_usage: Optional['outputs.CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage'] = None,
                  unknown_extended_key_usages: Optional[Sequence['outputs.CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage']] = None):
         """
-        :param 'CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs' base_key_usage: Describes high-level ways in which a key may be used.
-        :param 'CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs' extended_key_usage: Detailed scenarios in which a key may be used.
-        :param Sequence['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        :param 'CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArrgs' base_key_usage: Describes high-level ways in which a key may be used.
+        :param 'CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArrgs' extended_key_usage: Detailed scenarios in which a key may be used.
+        :param Sequence['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArrgs'] unknown_extended_key_usages: Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
         """
         if base_key_usage is not None:
             pulumi.set(__self__, "base_key_usage", base_key_usage)
@@ -6480,7 +6480,7 @@ class CertificateTemplatePredefinedValuesKeyUsage(dict):
 
 
 @pulumi.output_type
-class CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage(dict):
+calass CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6628,7 +6628,7 @@ class CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage(dict):
 
 
 @pulumi.output_type
-class CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage(dict):
+calass CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6734,7 +6734,7 @@ class CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage(dict):
 
 
 @pulumi.output_type
-class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage(dict):
+calass CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6769,7 +6769,7 @@ class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage(dict):
 
 
 @pulumi.output_type
-class CertificateTemplatePredefinedValuesPolicyId(dict):
+calass CertificateTemplatePredefinedValuesPolicyId(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6804,7 +6804,7 @@ class CertificateTemplatePredefinedValuesPolicyId(dict):
 
 
 @pulumi.output_type
-class GetAuthorityAccessUrlResult(dict):
+calass GetAuthorityAccessUrlResult(dict):
     def __init__(__self__, *,
                  ca_certificate_access_url: str,
                  crl_access_urls: Sequence[str]):
@@ -6823,7 +6823,7 @@ class GetAuthorityAccessUrlResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigResult(dict):
+calass GetAuthorityConfigResult(dict):
     def __init__(__self__, *,
                  subject_configs: Sequence['outputs.GetAuthorityConfigSubjectConfigResult'],
                  x509_configs: Sequence['outputs.GetAuthorityConfigX509ConfigResult']):
@@ -6842,7 +6842,7 @@ class GetAuthorityConfigResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigSubjectConfigResult(dict):
+calass GetAuthorityConfigSubjectConfigResult(dict):
     def __init__(__self__, *,
                  subject_alt_names: Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectAltNameResult'],
                  subjects: Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectResult']):
@@ -6861,7 +6861,7 @@ class GetAuthorityConfigSubjectConfigResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigSubjectConfigSubjectResult(dict):
+calass GetAuthorityConfigSubjectConfigSubjectResult(dict):
     def __init__(__self__, *,
                  common_name: str,
                  country_code: str,
@@ -6922,7 +6922,7 @@ class GetAuthorityConfigSubjectConfigSubjectResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigSubjectConfigSubjectAltNameResult(dict):
+calass GetAuthorityConfigSubjectConfigSubjectAltNameResult(dict):
     def __init__(__self__, *,
                  dns_names: Sequence[str],
                  email_addresses: Sequence[str],
@@ -6955,7 +6955,7 @@ class GetAuthorityConfigSubjectConfigSubjectAltNameResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigX509ConfigResult(dict):
+calass GetAuthorityConfigX509ConfigResult(dict):
     def __init__(__self__, *,
                  additional_extensions: Sequence['outputs.GetAuthorityConfigX509ConfigAdditionalExtensionResult'],
                  aia_ocsp_servers: Sequence[str],
@@ -7002,7 +7002,7 @@ class GetAuthorityConfigX509ConfigResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigX509ConfigAdditionalExtensionResult(dict):
+calass GetAuthorityConfigX509ConfigAdditionalExtensionResult(dict):
     def __init__(__self__, *,
                  critical: bool,
                  object_ids: Sequence['outputs.GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult'],
@@ -7028,7 +7028,7 @@ class GetAuthorityConfigX509ConfigAdditionalExtensionResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult(dict):
+calass GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult(dict):
     def __init__(__self__, *,
                  object_id_paths: Sequence[int]):
         pulumi.set(__self__, "object_id_paths", object_id_paths)
@@ -7040,7 +7040,7 @@ class GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigX509ConfigCaOptionResult(dict):
+calass GetAuthorityConfigX509ConfigCaOptionResult(dict):
     def __init__(__self__, *,
                  is_ca: bool,
                  max_issuer_path_length: int,
@@ -7073,7 +7073,7 @@ class GetAuthorityConfigX509ConfigCaOptionResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigX509ConfigKeyUsageResult(dict):
+calass GetAuthorityConfigX509ConfigKeyUsageResult(dict):
     def __init__(__self__, *,
                  base_key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult'],
                  extended_key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult'],
@@ -7099,7 +7099,7 @@ class GetAuthorityConfigX509ConfigKeyUsageResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult(dict):
+calass GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult(dict):
     def __init__(__self__, *,
                  cert_sign: bool,
                  content_commitment: bool,
@@ -7167,7 +7167,7 @@ class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult(dict):
+calass GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult(dict):
     def __init__(__self__, *,
                  client_auth: bool,
                  code_signing: bool,
@@ -7214,7 +7214,7 @@ class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult(dict):
+calass GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult(dict):
     def __init__(__self__, *,
                  object_id_paths: Sequence[int]):
         pulumi.set(__self__, "object_id_paths", object_id_paths)
@@ -7226,7 +7226,7 @@ class GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigX509ConfigNameConstraintResult(dict):
+calass GetAuthorityConfigX509ConfigNameConstraintResult(dict):
     def __init__(__self__, *,
                  critical: bool,
                  excluded_dns_names: Sequence[str],
@@ -7294,7 +7294,7 @@ class GetAuthorityConfigX509ConfigNameConstraintResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityConfigX509ConfigPolicyIdResult(dict):
+calass GetAuthorityConfigX509ConfigPolicyIdResult(dict):
     def __init__(__self__, *,
                  object_id_paths: Sequence[int]):
         pulumi.set(__self__, "object_id_paths", object_id_paths)
@@ -7306,7 +7306,7 @@ class GetAuthorityConfigX509ConfigPolicyIdResult(dict):
 
 
 @pulumi.output_type
-class GetAuthorityKeySpecResult(dict):
+calass GetAuthorityKeySpecResult(dict):
     def __init__(__self__, *,
                  algorithm: str,
                  cloud_kms_key_version: str):
@@ -7325,7 +7325,7 @@ class GetAuthorityKeySpecResult(dict):
 
 
 @pulumi.output_type
-class GetAuthoritySubordinateConfigResult(dict):
+calass GetAuthoritySubordinateConfigResult(dict):
     def __init__(__self__, *,
                  certificate_authority: str,
                  pem_issuer_chains: Sequence['outputs.GetAuthoritySubordinateConfigPemIssuerChainResult']):
@@ -7344,7 +7344,7 @@ class GetAuthoritySubordinateConfigResult(dict):
 
 
 @pulumi.output_type
-class GetAuthoritySubordinateConfigPemIssuerChainResult(dict):
+calass GetAuthoritySubordinateConfigPemIssuerChainResult(dict):
     def __init__(__self__, *,
                  pem_certificates: Sequence[str]):
         pulumi.set(__self__, "pem_certificates", pem_certificates)

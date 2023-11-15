@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['HubArgs', 'Hub']
+__all__ = ['HubArrgs', 'Hub']
 
 @pulumi.input_type
-class HubArgs:
+calass HubArrgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -100,7 +100,7 @@ class HubArgs:
 
 
 @pulumi.input_type
-class _HubState:
+calass _HubState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -109,7 +109,7 @@ class _HubState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-                 routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]]] = None,
+                 routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArrgs']]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  unique_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -129,7 +129,7 @@ class _HubState:
                - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        :param pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArrgs']]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         :param pulumi.Input[str] state: Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
         :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the hub was last updated.
@@ -250,14 +250,14 @@ class _HubState:
 
     @property
     @pulumi.getter(name="routingVpcs")
-    def routing_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]]]:
+    def routing_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArrgs']]]]:
         """
         The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         """
         return pulumi.get(self, "routing_vpcs")
 
     @routing_vpcs.setter
-    def routing_vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]]]):
+    def routing_vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArrgs']]]]):
         pulumi.set(self, "routing_vpcs", value)
 
     @property
@@ -297,7 +297,7 @@ class _HubState:
         pulumi.set(self, "update_time", value)
 
 
-class Hub(pulumi.CustomResource):
+calass Hub(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -359,7 +359,7 @@ class Hub(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[HubArgs] = None,
+                 args: Optional[HubArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The NetworkConnectivity Hub resource
@@ -396,12 +396,12 @@ class Hub(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param HubArgs args: The arguments to use to populate this resource's properties.
+        :param HubArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(HubArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(HubArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -421,7 +421,7 @@ class Hub(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = HubArgs.__new__(HubArgs)
+            __props__ = HubArrgs.__new__(HubArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
@@ -453,7 +453,7 @@ class Hub(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-            routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HubRoutingVpcArgs']]]]] = None,
+            routing_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HubRoutingVpcArrgs']]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             unique_id: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Hub':
@@ -478,7 +478,7 @@ class Hub(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HubRoutingVpcArgs']]]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HubRoutingVpcArrgs']]]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         :param pulumi.Input[str] state: Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
         :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the hub was last updated.

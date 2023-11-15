@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InstanceArgs', 'Instance']
+__all__ = ['InstanceArrgs', 'Instance']
 
 @pulumi.input_type
-class InstanceArgs:
+calass InstanceArrgs:
     def __init__(__self__, *,
-                 node_config: pulumi.Input['InstanceNodeConfigArgs'],
+                 node_config: pulumi.Input['InstanceNodeConfigArrgs'],
                  node_count: pulumi.Input[int],
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-                 memcache_parameters: Optional[pulumi.Input['InstanceMemcacheParametersArgs']] = None,
+                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArrgs']] = None,
+                 memcache_parameters: Optional[pulumi.Input['InstanceMemcacheParametersArrgs']] = None,
                  memcache_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -30,7 +30,7 @@ class InstanceArgs:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input['InstanceNodeConfigArgs'] node_config: Configuration for memcache nodes.
+        :param pulumi.Input['InstanceNodeConfigArrgs'] node_config: Configuration for memcache nodes.
                Structure is documented below.
         :param pulumi.Input[int] node_count: Number of nodes in the memcache instance.
         :param pulumi.Input[str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
@@ -40,9 +40,9 @@ class InstanceArgs:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
+        :param pulumi.Input['InstanceMaintenancePolicyArrgs'] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
-        :param pulumi.Input['InstanceMemcacheParametersArgs'] memcache_parameters: User-specified parameters for this memcache instance.
+        :param pulumi.Input['InstanceMemcacheParametersArrgs'] memcache_parameters: User-specified parameters for this memcache instance.
                Structure is documented below.
         :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
                Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
@@ -81,7 +81,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> pulumi.Input['InstanceNodeConfigArgs']:
+    def node_config(self) -> pulumi.Input['InstanceNodeConfigArrgs']:
         """
         Configuration for memcache nodes.
         Structure is documented below.
@@ -89,7 +89,7 @@ class InstanceArgs:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: pulumi.Input['InstanceNodeConfigArgs']):
+    def node_config(self, value: pulumi.Input['InstanceNodeConfigArrgs']):
         pulumi.set(self, "node_config", value)
 
     @property
@@ -146,7 +146,7 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArrgs']]:
         """
         Maintenance policy for an instance.
         Structure is documented below.
@@ -154,12 +154,12 @@ class InstanceArgs:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArrgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @property
     @pulumi.getter(name="memcacheParameters")
-    def memcache_parameters(self) -> Optional[pulumi.Input['InstanceMemcacheParametersArgs']]:
+    def memcache_parameters(self) -> Optional[pulumi.Input['InstanceMemcacheParametersArrgs']]:
         """
         User-specified parameters for this memcache instance.
         Structure is documented below.
@@ -167,7 +167,7 @@ class InstanceArgs:
         return pulumi.get(self, "memcache_parameters")
 
     @memcache_parameters.setter
-    def memcache_parameters(self, value: Optional[pulumi.Input['InstanceMemcacheParametersArgs']]):
+    def memcache_parameters(self, value: Optional[pulumi.Input['InstanceMemcacheParametersArrgs']]):
         pulumi.set(self, "memcache_parameters", value)
 
     @property
@@ -238,7 +238,7 @@ class InstanceArgs:
 
 
 @pulumi.input_type
-class _InstanceState:
+calass _InstanceState:
     def __init__(__self__, *,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -246,14 +246,14 @@ class _InstanceState:
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
+                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArrgs']] = None,
+                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArrgs']]]] = None,
                  memcache_full_version: Optional[pulumi.Input[str]] = None,
-                 memcache_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]]] = None,
-                 memcache_parameters: Optional[pulumi.Input['InstanceMemcacheParametersArgs']] = None,
+                 memcache_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArrgs']]]] = None,
+                 memcache_parameters: Optional[pulumi.Input['InstanceMemcacheParametersArrgs']] = None,
                  memcache_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input['InstanceNodeConfigArgs']] = None,
+                 node_config: Optional[pulumi.Input['InstanceNodeConfigArrgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -274,14 +274,14 @@ class _InstanceState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
+        :param pulumi.Input['InstanceMaintenancePolicyArrgs'] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]] maintenance_schedules: Output only. Published maintenance schedule.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArrgs']]] maintenance_schedules: Output only. Published maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[str] memcache_full_version: The full version of memcached server running on this instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]] memcache_nodes: Additional information about the instance state, if available.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArrgs']]] memcache_nodes: Additional information about the instance state, if available.
                Structure is documented below.
-        :param pulumi.Input['InstanceMemcacheParametersArgs'] memcache_parameters: User-specified parameters for this memcache instance.
+        :param pulumi.Input['InstanceMemcacheParametersArrgs'] memcache_parameters: User-specified parameters for this memcache instance.
                Structure is documented below.
         :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
                Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
@@ -289,7 +289,7 @@ class _InstanceState:
                Default value is `MEMCACHE_1_5`.
                Possible values are: `MEMCACHE_1_5`.
         :param pulumi.Input[str] name: The resource name of the instance.
-        :param pulumi.Input['InstanceNodeConfigArgs'] node_config: Configuration for memcache nodes.
+        :param pulumi.Input['InstanceNodeConfigArrgs'] node_config: Configuration for memcache nodes.
                Structure is documented below.
         :param pulumi.Input[int] node_count: Number of nodes in the memcache instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -420,7 +420,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArrgs']]:
         """
         Maintenance policy for an instance.
         Structure is documented below.
@@ -428,12 +428,12 @@ class _InstanceState:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArrgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @property
     @pulumi.getter(name="maintenanceSchedules")
-    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
+    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArrgs']]]]:
         """
         Output only. Published maintenance schedule.
         Structure is documented below.
@@ -441,7 +441,7 @@ class _InstanceState:
         return pulumi.get(self, "maintenance_schedules")
 
     @maintenance_schedules.setter
-    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
+    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArrgs']]]]):
         pulumi.set(self, "maintenance_schedules", value)
 
     @property
@@ -458,7 +458,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="memcacheNodes")
-    def memcache_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]]]:
+    def memcache_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArrgs']]]]:
         """
         Additional information about the instance state, if available.
         Structure is documented below.
@@ -466,12 +466,12 @@ class _InstanceState:
         return pulumi.get(self, "memcache_nodes")
 
     @memcache_nodes.setter
-    def memcache_nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]]]):
+    def memcache_nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArrgs']]]]):
         pulumi.set(self, "memcache_nodes", value)
 
     @property
     @pulumi.getter(name="memcacheParameters")
-    def memcache_parameters(self) -> Optional[pulumi.Input['InstanceMemcacheParametersArgs']]:
+    def memcache_parameters(self) -> Optional[pulumi.Input['InstanceMemcacheParametersArrgs']]:
         """
         User-specified parameters for this memcache instance.
         Structure is documented below.
@@ -479,7 +479,7 @@ class _InstanceState:
         return pulumi.get(self, "memcache_parameters")
 
     @memcache_parameters.setter
-    def memcache_parameters(self, value: Optional[pulumi.Input['InstanceMemcacheParametersArgs']]):
+    def memcache_parameters(self, value: Optional[pulumi.Input['InstanceMemcacheParametersArrgs']]):
         pulumi.set(self, "memcache_parameters", value)
 
     @property
@@ -512,7 +512,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['InstanceNodeConfigArgs']]:
+    def node_config(self) -> Optional[pulumi.Input['InstanceNodeConfigArrgs']]:
         """
         Configuration for memcache nodes.
         Structure is documented below.
@@ -520,7 +520,7 @@ class _InstanceState:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['InstanceNodeConfigArgs']]):
+    def node_config(self, value: Optional[pulumi.Input['InstanceNodeConfigArrgs']]):
         pulumi.set(self, "node_config", value)
 
     @property
@@ -587,7 +587,7 @@ class _InstanceState:
         pulumi.set(self, "zones", value)
 
 
-class Instance(pulumi.CustomResource):
+calass Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -595,11 +595,11 @@ class Instance(pulumi.CustomResource):
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
-                 memcache_parameters: Optional[pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArgs']]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArrgs']]] = None,
+                 memcache_parameters: Optional[pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArrgs']]] = None,
                  memcache_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['InstanceNodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['InstanceNodeConfigArrgs']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -644,17 +644,17 @@ class Instance(pulumi.CustomResource):
             labels={
                 "env": "test",
             },
-            node_config=gcp.memcache.InstanceNodeConfigArgs(
+            node_config=gcp.memcache.InstanceNodeConfigArrgs(
                 cpu_count=1,
                 memory_size_mb=1024,
             ),
             node_count=1,
             memcache_version="MEMCACHE_1_5",
-            maintenance_policy=gcp.memcache.InstanceMaintenancePolicyArgs(
-                weekly_maintenance_windows=[gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
+            maintenance_policy=gcp.memcache.InstanceMaintenancePolicyArrgs(
+                weekly_maintenance_windows=[gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs(
                     day="SATURDAY",
                     duration="14400s",
-                    start_time=gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
+                    start_time=gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs(
                         hours=0,
                         minutes=30,
                         seconds=0,
@@ -693,9 +693,9 @@ class Instance(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
+        :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArrgs']] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArgs']] memcache_parameters: User-specified parameters for this memcache instance.
+        :param pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArrgs']] memcache_parameters: User-specified parameters for this memcache instance.
                Structure is documented below.
         :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
                Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
@@ -703,7 +703,7 @@ class Instance(pulumi.CustomResource):
                Default value is `MEMCACHE_1_5`.
                Possible values are: `MEMCACHE_1_5`.
         :param pulumi.Input[str] name: The resource name of the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceNodeConfigArgs']] node_config: Configuration for memcache nodes.
+        :param pulumi.Input[pulumi.InputType['InstanceNodeConfigArrgs']] node_config: Configuration for memcache nodes.
                Structure is documented below.
         :param pulumi.Input[int] node_count: Number of nodes in the memcache instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -716,7 +716,7 @@ class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceArgs,
+                 args: InstanceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Google Cloud Memcache instance.
@@ -757,17 +757,17 @@ class Instance(pulumi.CustomResource):
             labels={
                 "env": "test",
             },
-            node_config=gcp.memcache.InstanceNodeConfigArgs(
+            node_config=gcp.memcache.InstanceNodeConfigArrgs(
                 cpu_count=1,
                 memory_size_mb=1024,
             ),
             node_count=1,
             memcache_version="MEMCACHE_1_5",
-            maintenance_policy=gcp.memcache.InstanceMaintenancePolicyArgs(
-                weekly_maintenance_windows=[gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs(
+            maintenance_policy=gcp.memcache.InstanceMaintenancePolicyArrgs(
+                weekly_maintenance_windows=[gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowArrgs(
                     day="SATURDAY",
                     duration="14400s",
-                    start_time=gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs(
+                    start_time=gcp.memcache.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrgs(
                         hours=0,
                         minutes=30,
                         seconds=0,
@@ -798,12 +798,12 @@ class Instance(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InstanceArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -815,11 +815,11 @@ class Instance(pulumi.CustomResource):
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
-                 memcache_parameters: Optional[pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArgs']]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArrgs']]] = None,
+                 memcache_parameters: Optional[pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArrgs']]] = None,
                  memcache_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 node_config: Optional[pulumi.Input[pulumi.InputType['InstanceNodeConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['InstanceNodeConfigArrgs']]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -831,7 +831,7 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceArgs.__new__(InstanceArgs)
+            __props__ = InstanceArrgs.__new__(InstanceArrgs)
 
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["display_name"] = display_name
@@ -874,14 +874,14 @@ class Instance(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
-            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]]] = None,
+            maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArrgs']]] = None,
+            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArrgs']]]]] = None,
             memcache_full_version: Optional[pulumi.Input[str]] = None,
-            memcache_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMemcacheNodeArgs']]]]] = None,
-            memcache_parameters: Optional[pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArgs']]] = None,
+            memcache_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMemcacheNodeArrgs']]]]] = None,
+            memcache_parameters: Optional[pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArrgs']]] = None,
             memcache_version: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            node_config: Optional[pulumi.Input[pulumi.InputType['InstanceNodeConfigArgs']]] = None,
+            node_config: Optional[pulumi.Input[pulumi.InputType['InstanceNodeConfigArrgs']]] = None,
             node_count: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -907,14 +907,14 @@ class Instance(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
+        :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArrgs']] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]] maintenance_schedules: Output only. Published maintenance schedule.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArrgs']]]] maintenance_schedules: Output only. Published maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[str] memcache_full_version: The full version of memcached server running on this instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMemcacheNodeArgs']]]] memcache_nodes: Additional information about the instance state, if available.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMemcacheNodeArrgs']]]] memcache_nodes: Additional information about the instance state, if available.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArgs']] memcache_parameters: User-specified parameters for this memcache instance.
+        :param pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArrgs']] memcache_parameters: User-specified parameters for this memcache instance.
                Structure is documented below.
         :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
                Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
@@ -922,7 +922,7 @@ class Instance(pulumi.CustomResource):
                Default value is `MEMCACHE_1_5`.
                Possible values are: `MEMCACHE_1_5`.
         :param pulumi.Input[str] name: The resource name of the instance.
-        :param pulumi.Input[pulumi.InputType['InstanceNodeConfigArgs']] node_config: Configuration for memcache nodes.
+        :param pulumi.Input[pulumi.InputType['InstanceNodeConfigArrgs']] node_config: Configuration for memcache nodes.
                Structure is documented below.
         :param pulumi.Input[int] node_count: Number of nodes in the memcache instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

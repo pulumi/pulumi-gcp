@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TunnelInstanceIAMMemberArgs', 'TunnelInstanceIAMMember']
+__all__ = ['TunnelInstanceIAMMemberArrgs', 'TunnelInstanceIAMMember']
 
 @pulumi.input_type
-class TunnelInstanceIAMMemberArgs:
+calass TunnelInstanceIAMMemberArrgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['TunnelInstanceIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['TunnelInstanceIAMMemberConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -28,7 +28,7 @@ class TunnelInstanceIAMMemberArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input['TunnelInstanceIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['TunnelInstanceIAMMemberConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -92,7 +92,7 @@ class TunnelInstanceIAMMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['TunnelInstanceIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['TunnelInstanceIAMMemberConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -100,7 +100,7 @@ class TunnelInstanceIAMMemberArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['TunnelInstanceIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['TunnelInstanceIAMMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -139,9 +139,9 @@ class TunnelInstanceIAMMemberArgs:
 
 
 @pulumi.input_type
-class _TunnelInstanceIAMMemberState:
+calass _TunnelInstanceIAMMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['TunnelInstanceIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['TunnelInstanceIAMMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -150,7 +150,7 @@ class _TunnelInstanceIAMMemberState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TunnelInstanceIAMMember resources.
-        :param pulumi.Input['TunnelInstanceIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['TunnelInstanceIAMMemberConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] instance: Used to find the parent resource to bind the IAM policy to
@@ -189,7 +189,7 @@ class _TunnelInstanceIAMMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['TunnelInstanceIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['TunnelInstanceIAMMemberConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -197,7 +197,7 @@ class _TunnelInstanceIAMMemberState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['TunnelInstanceIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['TunnelInstanceIAMMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -282,12 +282,12 @@ class _TunnelInstanceIAMMemberState:
         pulumi.set(self, "zone", value)
 
 
-class TunnelInstanceIAMMember(pulumi.CustomResource):
+calass TunnelInstanceIAMMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TunnelInstanceIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['TunnelInstanceIAMMemberConditionArrgs']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -317,7 +317,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -334,10 +334,10 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -375,7 +375,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
             instance=google_compute_instance["tunnelvm"]["name"],
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.TunnelInstanceIAMBindingConditionArgs(
+            condition=gcp.iap.TunnelInstanceIAMBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -407,7 +407,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
             instance=google_compute_instance["tunnelvm"]["name"],
             role="roles/iap.tunnelResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.TunnelInstanceIAMMemberConditionArgs(
+            condition=gcp.iap.TunnelInstanceIAMMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -440,7 +440,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TunnelInstanceIAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['TunnelInstanceIAMMemberConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] instance: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -465,7 +465,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TunnelInstanceIAMMemberArgs,
+                 args: TunnelInstanceIAMMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Identity-Aware Proxy TunnelInstance. Each of these resources serves a different use case:
@@ -490,7 +490,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"],
         )])
@@ -507,10 +507,10 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -548,7 +548,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
             instance=google_compute_instance["tunnelvm"]["name"],
             role="roles/iap.tunnelResourceAccessor",
             members=["user:jane@example.com"],
-            condition=gcp.iap.TunnelInstanceIAMBindingConditionArgs(
+            condition=gcp.iap.TunnelInstanceIAMBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -580,7 +580,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
             instance=google_compute_instance["tunnelvm"]["name"],
             role="roles/iap.tunnelResourceAccessor",
             member="user:jane@example.com",
-            condition=gcp.iap.TunnelInstanceIAMMemberConditionArgs(
+            condition=gcp.iap.TunnelInstanceIAMMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -612,12 +612,12 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param TunnelInstanceIAMMemberArgs args: The arguments to use to populate this resource's properties.
+        :param TunnelInstanceIAMMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TunnelInstanceIAMMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TunnelInstanceIAMMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -626,7 +626,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TunnelInstanceIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['TunnelInstanceIAMMemberConditionArrgs']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -639,7 +639,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TunnelInstanceIAMMemberArgs.__new__(TunnelInstanceIAMMemberArgs)
+            __props__ = TunnelInstanceIAMMemberArrgs.__new__(TunnelInstanceIAMMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if instance is None and not opts.urn:
@@ -664,7 +664,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['TunnelInstanceIAMMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['TunnelInstanceIAMMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
@@ -678,7 +678,7 @@ class TunnelInstanceIAMMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['TunnelInstanceIAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['TunnelInstanceIAMMemberConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] instance: Used to find the parent resource to bind the IAM policy to

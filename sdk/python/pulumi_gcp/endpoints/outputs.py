@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ConsumersIamBindingCondition(dict):
+calass ConsumersIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -48,7 +48,7 @@ class ConsumersIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class ConsumersIamMemberCondition(dict):
+calass ConsumersIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -75,14 +75,14 @@ class ConsumersIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class ServiceApi(dict):
+calass ServiceApi(dict):
     def __init__(__self__, *,
                  methods: Optional[Sequence['outputs.ServiceApiMethod']] = None,
                  name: Optional[str] = None,
                  syntax: Optional[str] = None,
                  version: Optional[str] = None):
         """
-        :param Sequence['ServiceApiMethodArgs'] methods: A list of Method objects; structure is documented below.
+        :param Sequence['ServiceApiMethodArrgs'] methods: A list of Method objects; structure is documented below.
         :param str name: The simple name of the endpoint as described in the config.
         :param str syntax: `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
         :param str version: A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
@@ -130,7 +130,7 @@ class ServiceApi(dict):
 
 
 @pulumi.output_type
-class ServiceApiMethod(dict):
+calass ServiceApiMethod(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -204,7 +204,7 @@ class ServiceApiMethod(dict):
 
 
 @pulumi.output_type
-class ServiceEndpoint(dict):
+calass ServiceEndpoint(dict):
     def __init__(__self__, *,
                  address: Optional[str] = None,
                  name: Optional[str] = None):
@@ -235,7 +235,7 @@ class ServiceEndpoint(dict):
 
 
 @pulumi.output_type
-class ServiceIamBindingCondition(dict):
+calass ServiceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -262,7 +262,7 @@ class ServiceIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class ServiceIamMemberCondition(dict):
+calass ServiceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

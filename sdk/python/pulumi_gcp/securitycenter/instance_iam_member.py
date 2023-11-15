@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InstanceIamMemberArgs', 'InstanceIamMember']
+__all__ = ['InstanceIamMemberArrgs', 'InstanceIamMember']
 
 @pulumi.input_type
-class InstanceIamMemberArgs:
+calass InstanceIamMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['InstanceIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['InstanceIamMemberConditionArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -60,11 +60,11 @@ class InstanceIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['InstanceIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['InstanceIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['InstanceIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['InstanceIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -106,9 +106,9 @@ class InstanceIamMemberArgs:
 
 
 @pulumi.input_type
-class _InstanceIamMemberState:
+calass _InstanceIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['InstanceIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['InstanceIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -139,11 +139,11 @@ class _InstanceIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['InstanceIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['InstanceIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['InstanceIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['InstanceIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -211,12 +211,12 @@ class _InstanceIamMemberState:
         pulumi.set(self, "role", value)
 
 
-class InstanceIamMember(pulumi.CustomResource):
+calass InstanceIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -268,11 +268,11 @@ class InstanceIamMember(pulumi.CustomResource):
             labels={
                 "example_key": "example_value",
             },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
+            network_config=gcp.datafusion.InstanceNetworkConfigArrgs(
                 network="default",
                 ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
             ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
+            accelerators=[gcp.datafusion.InstanceAcceleratorArrgs(
                 accelerator_type="CDC",
                 state="ENABLED",
             )])
@@ -293,7 +293,7 @@ class InstanceIamMember(pulumi.CustomResource):
         cmek = gcp.datafusion.Instance("cmek",
             region="us-central1",
             type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
+            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArrgs(
                 key_reference=crypto_key.id,
             ),
             opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
@@ -319,7 +319,7 @@ class InstanceIamMember(pulumi.CustomResource):
         event_instance = gcp.datafusion.Instance("eventInstance",
             region="us-central1",
             type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
+            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArrgs(
                 enabled=True,
                 topic=event_topic.id,
             ))
@@ -367,7 +367,7 @@ class InstanceIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceIamMemberArgs,
+                 args: InstanceIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a Data Fusion instance.
@@ -414,11 +414,11 @@ class InstanceIamMember(pulumi.CustomResource):
             labels={
                 "example_key": "example_value",
             },
-            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
+            network_config=gcp.datafusion.InstanceNetworkConfigArrgs(
                 network="default",
                 ip_allocation=pulumi.Output.all(private_ip_alloc.address, private_ip_alloc.prefix_length).apply(lambda address, prefix_length: f"{address}/{prefix_length}"),
             ),
-            accelerators=[gcp.datafusion.InstanceAcceleratorArgs(
+            accelerators=[gcp.datafusion.InstanceAcceleratorArrgs(
                 accelerator_type="CDC",
                 state="ENABLED",
             )])
@@ -439,7 +439,7 @@ class InstanceIamMember(pulumi.CustomResource):
         cmek = gcp.datafusion.Instance("cmek",
             region="us-central1",
             type="BASIC",
-            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
+            crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArrgs(
                 key_reference=crypto_key.id,
             ),
             opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
@@ -465,7 +465,7 @@ class InstanceIamMember(pulumi.CustomResource):
         event_instance = gcp.datafusion.Instance("eventInstance",
             region="us-central1",
             type="BASIC",
-            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArgs(
+            event_publish_config=gcp.datafusion.InstanceEventPublishConfigArrgs(
                 enabled=True,
                 topic=event_topic.id,
             ))
@@ -503,12 +503,12 @@ class InstanceIamMember(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param InstanceIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -517,7 +517,7 @@ class InstanceIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -530,7 +530,7 @@ class InstanceIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceIamMemberArgs.__new__(InstanceIamMemberArgs)
+            __props__ = InstanceIamMemberArrgs.__new__(InstanceIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
@@ -553,7 +553,7 @@ class InstanceIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,

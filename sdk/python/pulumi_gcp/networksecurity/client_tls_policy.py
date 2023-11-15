@@ -11,22 +11,22 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ClientTlsPolicyArgs', 'ClientTlsPolicy']
+__all__ = ['ClientTlsPolicyArrgs', 'ClientTlsPolicy']
 
 @pulumi.input_type
-class ClientTlsPolicyArgs:
+calass ClientTlsPolicyArrgs:
     def __init__(__self__, *,
-                 client_certificate: Optional[pulumi.Input['ClientTlsPolicyClientCertificateArgs']] = None,
+                 client_certificate: Optional[pulumi.Input['ClientTlsPolicyClientCertificateArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]]] = None,
+                 server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArrgs']]]] = None,
                  sni: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ClientTlsPolicy resource.
-        :param pulumi.Input['ClientTlsPolicyClientCertificateArgs'] client_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
+        :param pulumi.Input['ClientTlsPolicyClientCertificateArrgs'] client_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
                Structure is documented below.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the ClientTlsPolicy resource.
@@ -40,7 +40,7 @@ class ClientTlsPolicyArgs:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]] server_validation_cas: Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArrgs']]] server_validation_cas: Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
                Structure is documented below.
         :param pulumi.Input[str] sni: Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
         """
@@ -63,7 +63,7 @@ class ClientTlsPolicyArgs:
 
     @property
     @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input['ClientTlsPolicyClientCertificateArgs']]:
+    def client_certificate(self) -> Optional[pulumi.Input['ClientTlsPolicyClientCertificateArrgs']]:
         """
         Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
         Structure is documented below.
@@ -71,7 +71,7 @@ class ClientTlsPolicyArgs:
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input['ClientTlsPolicyClientCertificateArgs']]):
+    def client_certificate(self, value: Optional[pulumi.Input['ClientTlsPolicyClientCertificateArrgs']]):
         pulumi.set(self, "client_certificate", value)
 
     @property
@@ -143,7 +143,7 @@ class ClientTlsPolicyArgs:
 
     @property
     @pulumi.getter(name="serverValidationCas")
-    def server_validation_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]]]:
+    def server_validation_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArrgs']]]]:
         """
         Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
         Structure is documented below.
@@ -151,7 +151,7 @@ class ClientTlsPolicyArgs:
         return pulumi.get(self, "server_validation_cas")
 
     @server_validation_cas.setter
-    def server_validation_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]]]):
+    def server_validation_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArrgs']]]]):
         pulumi.set(self, "server_validation_cas", value)
 
     @property
@@ -168,9 +168,9 @@ class ClientTlsPolicyArgs:
 
 
 @pulumi.input_type
-class _ClientTlsPolicyState:
+calass _ClientTlsPolicyState:
     def __init__(__self__, *,
-                 client_certificate: Optional[pulumi.Input['ClientTlsPolicyClientCertificateArgs']] = None,
+                 client_certificate: Optional[pulumi.Input['ClientTlsPolicyClientCertificateArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -179,12 +179,12 @@ class _ClientTlsPolicyState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]]] = None,
+                 server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArrgs']]]] = None,
                  sni: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ClientTlsPolicy resources.
-        :param pulumi.Input['ClientTlsPolicyClientCertificateArgs'] client_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
+        :param pulumi.Input['ClientTlsPolicyClientCertificateArrgs'] client_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Time the ClientTlsPolicy was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
@@ -202,7 +202,7 @@ class _ClientTlsPolicyState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]] server_validation_cas: Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArrgs']]] server_validation_cas: Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
                Structure is documented below.
         :param pulumi.Input[str] sni: Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
         :param pulumi.Input[str] update_time: Time the ClientTlsPolicy was updated in UTC.
@@ -234,7 +234,7 @@ class _ClientTlsPolicyState:
 
     @property
     @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input['ClientTlsPolicyClientCertificateArgs']]:
+    def client_certificate(self) -> Optional[pulumi.Input['ClientTlsPolicyClientCertificateArrgs']]:
         """
         Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
         Structure is documented below.
@@ -242,7 +242,7 @@ class _ClientTlsPolicyState:
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input['ClientTlsPolicyClientCertificateArgs']]):
+    def client_certificate(self, value: Optional[pulumi.Input['ClientTlsPolicyClientCertificateArrgs']]):
         pulumi.set(self, "client_certificate", value)
 
     @property
@@ -351,7 +351,7 @@ class _ClientTlsPolicyState:
 
     @property
     @pulumi.getter(name="serverValidationCas")
-    def server_validation_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]]]:
+    def server_validation_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArrgs']]]]:
         """
         Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
         Structure is documented below.
@@ -359,7 +359,7 @@ class _ClientTlsPolicyState:
         return pulumi.get(self, "server_validation_cas")
 
     @server_validation_cas.setter
-    def server_validation_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArgs']]]]):
+    def server_validation_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientTlsPolicyServerValidationCaArrgs']]]]):
         pulumi.set(self, "server_validation_cas", value)
 
     @property
@@ -387,18 +387,18 @@ class _ClientTlsPolicyState:
         pulumi.set(self, "update_time", value)
 
 
-class ClientTlsPolicy(pulumi.CustomResource):
+calass ClientTlsPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_certificate: Optional[pulumi.Input[pulumi.InputType['ClientTlsPolicyClientCertificateArgs']]] = None,
+                 client_certificate: Optional[pulumi.Input[pulumi.InputType['ClientTlsPolicyClientCertificateArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientTlsPolicyServerValidationCaArgs']]]]] = None,
+                 server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientTlsPolicyServerValidationCaArrgs']]]]] = None,
                  sni: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -428,19 +428,19 @@ class ClientTlsPolicy(pulumi.CustomResource):
                 "foo": "bar",
             },
             description="my description",
-            client_certificate=gcp.networksecurity.ClientTlsPolicyClientCertificateArgs(
-                certificate_provider_instance=gcp.networksecurity.ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs(
+            client_certificate=gcp.networksecurity.ClientTlsPolicyClientCertificateArrgs(
+                certificate_provider_instance=gcp.networksecurity.ClientTlsPolicyClientCertificateCertificateProviderInstanceArrgs(
                     plugin_instance="google_cloud_private_spiffe",
                 ),
             ),
             server_validation_cas=[
-                gcp.networksecurity.ClientTlsPolicyServerValidationCaArgs(
-                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs(
+                gcp.networksecurity.ClientTlsPolicyServerValidationCaArrgs(
+                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArrgs(
                         target_uri="unix:mypath",
                     ),
                 ),
-                gcp.networksecurity.ClientTlsPolicyServerValidationCaArgs(
-                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs(
+                gcp.networksecurity.ClientTlsPolicyServerValidationCaArrgs(
+                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArrgs(
                         target_uri="unix:mypath1",
                     ),
                 ),
@@ -466,7 +466,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClientTlsPolicyClientCertificateArgs']] client_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
+        :param pulumi.Input[pulumi.InputType['ClientTlsPolicyClientCertificateArrgs']] client_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
                Structure is documented below.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the ClientTlsPolicy resource.
@@ -480,7 +480,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientTlsPolicyServerValidationCaArgs']]]] server_validation_cas: Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientTlsPolicyServerValidationCaArrgs']]]] server_validation_cas: Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
                Structure is documented below.
         :param pulumi.Input[str] sni: Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
         """
@@ -488,7 +488,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ClientTlsPolicyArgs] = None,
+                 args: Optional[ClientTlsPolicyArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -517,19 +517,19 @@ class ClientTlsPolicy(pulumi.CustomResource):
                 "foo": "bar",
             },
             description="my description",
-            client_certificate=gcp.networksecurity.ClientTlsPolicyClientCertificateArgs(
-                certificate_provider_instance=gcp.networksecurity.ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs(
+            client_certificate=gcp.networksecurity.ClientTlsPolicyClientCertificateArrgs(
+                certificate_provider_instance=gcp.networksecurity.ClientTlsPolicyClientCertificateCertificateProviderInstanceArrgs(
                     plugin_instance="google_cloud_private_spiffe",
                 ),
             ),
             server_validation_cas=[
-                gcp.networksecurity.ClientTlsPolicyServerValidationCaArgs(
-                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs(
+                gcp.networksecurity.ClientTlsPolicyServerValidationCaArrgs(
+                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArrgs(
                         target_uri="unix:mypath",
                     ),
                 ),
-                gcp.networksecurity.ClientTlsPolicyServerValidationCaArgs(
-                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArgs(
+                gcp.networksecurity.ClientTlsPolicyServerValidationCaArrgs(
+                    grpc_endpoint=gcp.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpointArrgs(
                         target_uri="unix:mypath1",
                     ),
                 ),
@@ -554,12 +554,12 @@ class ClientTlsPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ClientTlsPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param ClientTlsPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ClientTlsPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ClientTlsPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -568,13 +568,13 @@ class ClientTlsPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_certificate: Optional[pulumi.Input[pulumi.InputType['ClientTlsPolicyClientCertificateArgs']]] = None,
+                 client_certificate: Optional[pulumi.Input[pulumi.InputType['ClientTlsPolicyClientCertificateArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientTlsPolicyServerValidationCaArgs']]]]] = None,
+                 server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientTlsPolicyServerValidationCaArrgs']]]]] = None,
                  sni: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -583,7 +583,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ClientTlsPolicyArgs.__new__(ClientTlsPolicyArgs)
+            __props__ = ClientTlsPolicyArrgs.__new__(ClientTlsPolicyArrgs)
 
             __props__.__dict__["client_certificate"] = client_certificate
             __props__.__dict__["description"] = description
@@ -609,7 +609,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            client_certificate: Optional[pulumi.Input[pulumi.InputType['ClientTlsPolicyClientCertificateArgs']]] = None,
+            client_certificate: Optional[pulumi.Input[pulumi.InputType['ClientTlsPolicyClientCertificateArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -618,7 +618,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientTlsPolicyServerValidationCaArgs']]]]] = None,
+            server_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientTlsPolicyServerValidationCaArrgs']]]]] = None,
             sni: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'ClientTlsPolicy':
         """
@@ -628,7 +628,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClientTlsPolicyClientCertificateArgs']] client_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
+        :param pulumi.Input[pulumi.InputType['ClientTlsPolicyClientCertificateArrgs']] client_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Time the ClientTlsPolicy was created in UTC.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
@@ -646,7 +646,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientTlsPolicyServerValidationCaArgs']]]] server_validation_cas: Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClientTlsPolicyServerValidationCaArrgs']]]] server_validation_cas: Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
                Structure is documented below.
         :param pulumi.Input[str] sni: Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
         :param pulumi.Input[str] update_time: Time the ClientTlsPolicy was updated in UTC.

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['FlexTemplateJobArgs', 'FlexTemplateJob']
+__all__ = ['FlexTemplateJobArrgs', 'FlexTemplateJob']
 
 @pulumi.input_type
-class FlexTemplateJobArgs:
+calass FlexTemplateJobArrgs:
     def __init__(__self__, *,
                  container_spec_gcs_path: pulumi.Input[str],
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -441,7 +441,7 @@ class FlexTemplateJobArgs:
 
 
 @pulumi.input_type
-class _FlexTemplateJobState:
+calass _FlexTemplateJobState:
     def __init__(__self__, *,
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autoscaling_algorithm: Optional[pulumi.Input[str]] = None,
@@ -952,7 +952,7 @@ class _FlexTemplateJobState:
         pulumi.set(self, "type", value)
 
 
-class FlexTemplateJob(pulumi.CustomResource):
+calass FlexTemplateJob(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1104,7 +1104,7 @@ class FlexTemplateJob(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FlexTemplateJobArgs,
+                 args: FlexTemplateJobArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -1179,12 +1179,12 @@ class FlexTemplateJob(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param FlexTemplateJobArgs args: The arguments to use to populate this resource's properties.
+        :param FlexTemplateJobArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FlexTemplateJobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(FlexTemplateJobArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1224,7 +1224,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FlexTemplateJobArgs.__new__(FlexTemplateJobArgs)
+            __props__ = FlexTemplateJobArrgs.__new__(FlexTemplateJobArrgs)
 
             __props__.__dict__["additional_experiments"] = additional_experiments
             __props__.__dict__["autoscaling_algorithm"] = autoscaling_algorithm

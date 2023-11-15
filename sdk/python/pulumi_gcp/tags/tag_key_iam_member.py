@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TagKeyIamMemberArgs', 'TagKeyIamMember']
+__all__ = ['TagKeyIamMemberArrgs', 'TagKeyIamMember']
 
 @pulumi.input_type
-class TagKeyIamMemberArgs:
+calass TagKeyIamMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
                  tag_key: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['TagKeyIamMemberConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['TagKeyIamMemberConditionArrgs']] = None):
         """
         The set of arguments for constructing a TagKeyIamMember resource.
         :param pulumi.Input[str] role: The role that should be applied. Only one
@@ -94,18 +94,18 @@ class TagKeyIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['TagKeyIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['TagKeyIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['TagKeyIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['TagKeyIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _TagKeyIamMemberState:
+calass _TagKeyIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['TagKeyIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['TagKeyIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -143,11 +143,11 @@ class _TagKeyIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['TagKeyIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['TagKeyIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['TagKeyIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['TagKeyIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -210,12 +210,12 @@ class _TagKeyIamMemberState:
         pulumi.set(self, "tag_key", value)
 
 
-class TagKeyIamMember(pulumi.CustomResource):
+calass TagKeyIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TagKeyIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['TagKeyIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  tag_key: Optional[pulumi.Input[str]] = None,
@@ -241,7 +241,7 @@ class TagKeyIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -321,7 +321,7 @@ class TagKeyIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TagKeyIamMemberArgs,
+                 args: TagKeyIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Tags TagKey. Each of these resources serves a different use case:
@@ -344,7 +344,7 @@ class TagKeyIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -402,12 +402,12 @@ class TagKeyIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param TagKeyIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param TagKeyIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TagKeyIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TagKeyIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -416,7 +416,7 @@ class TagKeyIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TagKeyIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['TagKeyIamMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  tag_key: Optional[pulumi.Input[str]] = None,
@@ -427,7 +427,7 @@ class TagKeyIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TagKeyIamMemberArgs.__new__(TagKeyIamMemberArgs)
+            __props__ = TagKeyIamMemberArrgs.__new__(TagKeyIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
@@ -450,7 +450,7 @@ class TagKeyIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['TagKeyIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['TagKeyIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None,

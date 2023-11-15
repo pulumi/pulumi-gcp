@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -61,12 +60,6 @@ func (i RepositoryGitRemoteSettingsArgs) ToRepositoryGitRemoteSettingsOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryGitRemoteSettingsOutput)
 }
 
-func (i RepositoryGitRemoteSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryGitRemoteSettings] {
-	return pulumix.Output[RepositoryGitRemoteSettings]{
-		OutputState: i.ToRepositoryGitRemoteSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryGitRemoteSettingsArgs) ToRepositoryGitRemoteSettingsPtrOutput() RepositoryGitRemoteSettingsPtrOutput {
 	return i.ToRepositoryGitRemoteSettingsPtrOutputWithContext(context.Background())
 }
@@ -108,12 +101,6 @@ func (i *repositoryGitRemoteSettingsPtrType) ToRepositoryGitRemoteSettingsPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryGitRemoteSettingsPtrOutput)
 }
 
-func (i *repositoryGitRemoteSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryGitRemoteSettings] {
-	return pulumix.Output[*RepositoryGitRemoteSettings]{
-		OutputState: i.ToRepositoryGitRemoteSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryGitRemoteSettingsOutput struct{ *pulumi.OutputState }
 
 func (RepositoryGitRemoteSettingsOutput) ElementType() reflect.Type {
@@ -136,12 +123,6 @@ func (o RepositoryGitRemoteSettingsOutput) ToRepositoryGitRemoteSettingsPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryGitRemoteSettings) *RepositoryGitRemoteSettings {
 		return &v
 	}).(RepositoryGitRemoteSettingsPtrOutput)
-}
-
-func (o RepositoryGitRemoteSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryGitRemoteSettings] {
-	return pulumix.Output[RepositoryGitRemoteSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*/secrets/*/versions/*.
@@ -177,12 +158,6 @@ func (o RepositoryGitRemoteSettingsPtrOutput) ToRepositoryGitRemoteSettingsPtrOu
 
 func (o RepositoryGitRemoteSettingsPtrOutput) ToRepositoryGitRemoteSettingsPtrOutputWithContext(ctx context.Context) RepositoryGitRemoteSettingsPtrOutput {
 	return o
-}
-
-func (o RepositoryGitRemoteSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryGitRemoteSettings] {
-	return pulumix.Output[*RepositoryGitRemoteSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryGitRemoteSettingsPtrOutput) Elem() RepositoryGitRemoteSettingsOutput {
@@ -303,12 +278,6 @@ func (i RepositoryReleaseConfigCodeCompilationConfigArgs) ToRepositoryReleaseCon
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigCodeCompilationConfigOutput)
 }
 
-func (i RepositoryReleaseConfigCodeCompilationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryReleaseConfigCodeCompilationConfig] {
-	return pulumix.Output[RepositoryReleaseConfigCodeCompilationConfig]{
-		OutputState: i.ToRepositoryReleaseConfigCodeCompilationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryReleaseConfigCodeCompilationConfigArgs) ToRepositoryReleaseConfigCodeCompilationConfigPtrOutput() RepositoryReleaseConfigCodeCompilationConfigPtrOutput {
 	return i.ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(context.Background())
 }
@@ -350,12 +319,6 @@ func (i *repositoryReleaseConfigCodeCompilationConfigPtrType) ToRepositoryReleas
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigCodeCompilationConfigPtrOutput)
 }
 
-func (i *repositoryReleaseConfigCodeCompilationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryReleaseConfigCodeCompilationConfig] {
-	return pulumix.Output[*RepositoryReleaseConfigCodeCompilationConfig]{
-		OutputState: i.ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryReleaseConfigCodeCompilationConfigOutput struct{ *pulumi.OutputState }
 
 func (RepositoryReleaseConfigCodeCompilationConfigOutput) ElementType() reflect.Type {
@@ -378,12 +341,6 @@ func (o RepositoryReleaseConfigCodeCompilationConfigOutput) ToRepositoryReleaseC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryReleaseConfigCodeCompilationConfig) *RepositoryReleaseConfigCodeCompilationConfig {
 		return &v
 	}).(RepositoryReleaseConfigCodeCompilationConfigPtrOutput)
-}
-
-func (o RepositoryReleaseConfigCodeCompilationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryReleaseConfigCodeCompilationConfig] {
-	return pulumix.Output[RepositoryReleaseConfigCodeCompilationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The default schema (BigQuery dataset ID) for assertions.
@@ -441,12 +398,6 @@ func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) ToRepositoryRelea
 
 func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(ctx context.Context) RepositoryReleaseConfigCodeCompilationConfigPtrOutput {
 	return o
-}
-
-func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryReleaseConfigCodeCompilationConfig] {
-	return pulumix.Output[*RepositoryReleaseConfigCodeCompilationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) Elem() RepositoryReleaseConfigCodeCompilationConfigOutput {
@@ -591,12 +542,6 @@ func (i RepositoryReleaseConfigRecentScheduledReleaseRecordArgs) ToRepositoryRel
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigRecentScheduledReleaseRecordOutput)
 }
 
-func (i RepositoryReleaseConfigRecentScheduledReleaseRecordArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecord] {
-	return pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecord]{
-		OutputState: i.ToRepositoryReleaseConfigRecentScheduledReleaseRecordOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryReleaseConfigRecentScheduledReleaseRecordArrayInput is an input type that accepts RepositoryReleaseConfigRecentScheduledReleaseRecordArray and RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput values.
 // You can construct a concrete instance of `RepositoryReleaseConfigRecentScheduledReleaseRecordArrayInput` via:
 //
@@ -622,12 +567,6 @@ func (i RepositoryReleaseConfigRecentScheduledReleaseRecordArray) ToRepositoryRe
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput)
 }
 
-func (i RepositoryReleaseConfigRecentScheduledReleaseRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecord] {
-	return pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecord]{
-		OutputState: i.ToRepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryReleaseConfigRecentScheduledReleaseRecordOutput struct{ *pulumi.OutputState }
 
 func (RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ElementType() reflect.Type {
@@ -640,12 +579,6 @@ func (o RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ToRepositoryR
 
 func (o RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordOutput {
 	return o
-}
-
-func (o RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecord] {
-	return pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -681,12 +614,6 @@ func (o RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput) ToReposi
 
 func (o RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput {
 	return o
-}
-
-func (o RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecord] {
-	return pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput) Index(i pulumi.IntInput) RepositoryReleaseConfigRecentScheduledReleaseRecordOutput {
@@ -736,12 +663,6 @@ func (i RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs) ToRe
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput)
 }
 
-func (i RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus] {
-	return pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus]{
-		OutputState: i.ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayInput is an input type that accepts RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray and RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput values.
 // You can construct a concrete instance of `RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayInput` via:
 //
@@ -767,12 +688,6 @@ func (i RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray) ToR
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput)
 }
 
-func (i RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus] {
-	return pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus]{
-		OutputState: i.ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput struct{ *pulumi.OutputState }
 
 func (RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) ElementType() reflect.Type {
@@ -785,12 +700,6 @@ func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) To
 
 func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput {
 	return o
-}
-
-func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus] {
-	return pulumix.Output[RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -817,12 +726,6 @@ func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutpu
 
 func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput {
 	return o
-}
-
-func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus] {
-	return pulumix.Output[[]RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput) Index(i pulumi.IntInput) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput {
@@ -886,12 +789,6 @@ func (i RepositoryWorkflowConfigInvocationConfigArgs) ToRepositoryWorkflowConfig
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigOutput)
 }
 
-func (i RepositoryWorkflowConfigInvocationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigInvocationConfig] {
-	return pulumix.Output[RepositoryWorkflowConfigInvocationConfig]{
-		OutputState: i.ToRepositoryWorkflowConfigInvocationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryWorkflowConfigInvocationConfigArgs) ToRepositoryWorkflowConfigInvocationConfigPtrOutput() RepositoryWorkflowConfigInvocationConfigPtrOutput {
 	return i.ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(context.Background())
 }
@@ -933,12 +830,6 @@ func (i *repositoryWorkflowConfigInvocationConfigPtrType) ToRepositoryWorkflowCo
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigPtrOutput)
 }
 
-func (i *repositoryWorkflowConfigInvocationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryWorkflowConfigInvocationConfig] {
-	return pulumix.Output[*RepositoryWorkflowConfigInvocationConfig]{
-		OutputState: i.ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryWorkflowConfigInvocationConfigOutput struct{ *pulumi.OutputState }
 
 func (RepositoryWorkflowConfigInvocationConfigOutput) ElementType() reflect.Type {
@@ -961,12 +852,6 @@ func (o RepositoryWorkflowConfigInvocationConfigOutput) ToRepositoryWorkflowConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryWorkflowConfigInvocationConfig) *RepositoryWorkflowConfigInvocationConfig {
 		return &v
 	}).(RepositoryWorkflowConfigInvocationConfigPtrOutput)
-}
-
-func (o RepositoryWorkflowConfigInvocationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigInvocationConfig] {
-	return pulumix.Output[RepositoryWorkflowConfigInvocationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. When set to true, any incremental tables will be fully refreshed.
@@ -1014,12 +899,6 @@ func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) ToRepositoryWorkflowC
 
 func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigPtrOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryWorkflowConfigInvocationConfig] {
-	return pulumix.Output[*RepositoryWorkflowConfigInvocationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) Elem() RepositoryWorkflowConfigInvocationConfigOutput {
@@ -1134,12 +1013,6 @@ func (i RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs) ToRepository
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput)
 }
 
-func (i RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigInvocationConfigIncludedTarget] {
-	return pulumix.Output[RepositoryWorkflowConfigInvocationConfigIncludedTarget]{
-		OutputState: i.ToRepositoryWorkflowConfigInvocationConfigIncludedTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayInput is an input type that accepts RepositoryWorkflowConfigInvocationConfigIncludedTargetArray and RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput values.
 // You can construct a concrete instance of `RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayInput` via:
 //
@@ -1165,12 +1038,6 @@ func (i RepositoryWorkflowConfigInvocationConfigIncludedTargetArray) ToRepositor
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput)
 }
 
-func (i RepositoryWorkflowConfigInvocationConfigIncludedTargetArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryWorkflowConfigInvocationConfigIncludedTarget] {
-	return pulumix.Output[[]RepositoryWorkflowConfigInvocationConfigIncludedTarget]{
-		OutputState: i.ToRepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput struct{ *pulumi.OutputState }
 
 func (RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) ElementType() reflect.Type {
@@ -1183,12 +1050,6 @@ func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) ToReposito
 
 func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) ToRepositoryWorkflowConfigInvocationConfigIncludedTargetOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigInvocationConfigIncludedTarget] {
-	return pulumix.Output[RepositoryWorkflowConfigInvocationConfigIncludedTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action's database (Google Cloud project ID).
@@ -1218,12 +1079,6 @@ func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput) ToRep
 
 func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput) ToRepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryWorkflowConfigInvocationConfigIncludedTarget] {
-	return pulumix.Output[[]RepositoryWorkflowConfigInvocationConfigIncludedTarget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput) Index(i pulumi.IntInput) RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput {
@@ -1281,12 +1136,6 @@ func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs) ToRepository
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput)
 }
 
-func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecord] {
-	return pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecord]{
-		OutputState: i.ToRepositoryWorkflowConfigRecentScheduledExecutionRecordOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayInput is an input type that accepts RepositoryWorkflowConfigRecentScheduledExecutionRecordArray and RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput values.
 // You can construct a concrete instance of `RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayInput` via:
 //
@@ -1312,12 +1161,6 @@ func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordArray) ToRepositor
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput)
 }
 
-func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecord] {
-	return pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecord]{
-		OutputState: i.ToRepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput struct{ *pulumi.OutputState }
 
 func (RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ElementType() reflect.Type {
@@ -1330,12 +1173,6 @@ func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ToReposito
 
 func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecord] {
-	return pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -1371,12 +1208,6 @@ func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput) ToRep
 
 func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecord] {
-	return pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecord]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput) Index(i pulumi.IntInput) RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput {
@@ -1426,12 +1257,6 @@ func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs) T
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput)
 }
 
-func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus] {
-	return pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus]{
-		OutputState: i.ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayInput is an input type that accepts RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray and RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput values.
 // You can construct a concrete instance of `RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayInput` via:
 //
@@ -1457,12 +1282,6 @@ func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray) 
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput)
 }
 
-func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus] {
-	return pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus]{
-		OutputState: i.ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput struct{ *pulumi.OutputState }
 
 func (RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput) ElementType() reflect.Type {
@@ -1475,12 +1294,6 @@ func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput)
 
 func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus] {
-	return pulumix.Output[RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Output)
@@ -1507,12 +1320,6 @@ func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOu
 
 func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput {
 	return o
-}
-
-func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus] {
-	return pulumix.Output[[]RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput) Index(i pulumi.IntInput) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput {
@@ -1562,12 +1369,6 @@ func (i RepositoryWorkspaceCompilationOverridesArgs) ToRepositoryWorkspaceCompil
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkspaceCompilationOverridesOutput)
 }
 
-func (i RepositoryWorkspaceCompilationOverridesArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkspaceCompilationOverrides] {
-	return pulumix.Output[RepositoryWorkspaceCompilationOverrides]{
-		OutputState: i.ToRepositoryWorkspaceCompilationOverridesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryWorkspaceCompilationOverridesArgs) ToRepositoryWorkspaceCompilationOverridesPtrOutput() RepositoryWorkspaceCompilationOverridesPtrOutput {
 	return i.ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(context.Background())
 }
@@ -1609,12 +1410,6 @@ func (i *repositoryWorkspaceCompilationOverridesPtrType) ToRepositoryWorkspaceCo
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkspaceCompilationOverridesPtrOutput)
 }
 
-func (i *repositoryWorkspaceCompilationOverridesPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryWorkspaceCompilationOverrides] {
-	return pulumix.Output[*RepositoryWorkspaceCompilationOverrides]{
-		OutputState: i.ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RepositoryWorkspaceCompilationOverridesOutput struct{ *pulumi.OutputState }
 
 func (RepositoryWorkspaceCompilationOverridesOutput) ElementType() reflect.Type {
@@ -1637,12 +1432,6 @@ func (o RepositoryWorkspaceCompilationOverridesOutput) ToRepositoryWorkspaceComp
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryWorkspaceCompilationOverrides) *RepositoryWorkspaceCompilationOverrides {
 		return &v
 	}).(RepositoryWorkspaceCompilationOverridesPtrOutput)
-}
-
-func (o RepositoryWorkspaceCompilationOverridesOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryWorkspaceCompilationOverrides] {
-	return pulumix.Output[RepositoryWorkspaceCompilationOverrides]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional. The default database (Google Cloud project ID).
@@ -1672,12 +1461,6 @@ func (o RepositoryWorkspaceCompilationOverridesPtrOutput) ToRepositoryWorkspaceC
 
 func (o RepositoryWorkspaceCompilationOverridesPtrOutput) ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(ctx context.Context) RepositoryWorkspaceCompilationOverridesPtrOutput {
 	return o
-}
-
-func (o RepositoryWorkspaceCompilationOverridesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryWorkspaceCompilationOverrides] {
-	return pulumix.Output[*RepositoryWorkspaceCompilationOverrides]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryWorkspaceCompilationOverridesPtrOutput) Elem() RepositoryWorkspaceCompilationOverridesOutput {

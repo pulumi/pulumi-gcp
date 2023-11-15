@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IAMAuditConfigArgs', 'IAMAuditConfig']
+__all__ = ['IAMAuditConfigArrgs', 'IAMAuditConfig']
 
 @pulumi.input_type
-class IAMAuditConfigArgs:
+calass IAMAuditConfigArrgs:
     def __init__(__self__, *,
-                 audit_log_configs: pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]],
+                 audit_log_configs: pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArrgs']]],
                  project: pulumi.Input[str],
                  service: pulumi.Input[str]):
         """
         The set of arguments for constructing a IAMAuditConfig resource.
-        :param pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArrgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] project: The project id of the target project. This is not
                inferred from the provider.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_project\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
@@ -32,14 +32,14 @@ class IAMAuditConfigArgs:
 
     @property
     @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]:
+    def audit_log_configs(self) -> pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArrgs']]]:
         """
         The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         """
         return pulumi.get(self, "audit_log_configs")
 
     @audit_log_configs.setter
-    def audit_log_configs(self, value: pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]):
+    def audit_log_configs(self, value: pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArrgs']]]):
         pulumi.set(self, "audit_log_configs", value)
 
     @property
@@ -69,15 +69,15 @@ class IAMAuditConfigArgs:
 
 
 @pulumi.input_type
-class _IAMAuditConfigState:
+calass _IAMAuditConfigState:
     def __init__(__self__, *,
-                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]] = None,
+                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArrgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IAMAuditConfig resources.
-        :param pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArrgs']]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
         :param pulumi.Input[str] project: The project id of the target project. This is not
                inferred from the provider.
@@ -94,14 +94,14 @@ class _IAMAuditConfigState:
 
     @property
     @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]]:
+    def audit_log_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArrgs']]]]:
         """
         The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         """
         return pulumi.get(self, "audit_log_configs")
 
     @audit_log_configs.setter
-    def audit_log_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArgs']]]]):
+    def audit_log_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IAMAuditConfigAuditLogConfigArrgs']]]]):
         pulumi.set(self, "audit_log_configs", value)
 
     @property
@@ -142,12 +142,12 @@ class _IAMAuditConfigState:
         pulumi.set(self, "service", value)
 
 
-class IAMAuditConfig(pulumi.CustomResource):
+calass IAMAuditConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]]] = None,
+                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -180,7 +180,7 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -195,8 +195,8 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -228,7 +228,7 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMBinding("project",
-            condition=gcp.projects.IAMBindingConditionArgs(
+            condition=gcp.projects.IAMBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -257,7 +257,7 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMMember("project",
-            condition=gcp.projects.IAMMemberConditionArgs(
+            condition=gcp.projects.IAMMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -275,10 +275,10 @@ class IAMAuditConfig(pulumi.CustomResource):
 
         project = gcp.projects.IAMAuditConfig("project",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
+                gcp.projects.IAMAuditConfigAuditLogConfigArrgs(
                     log_type="ADMIN_READ",
                 ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
+                gcp.projects.IAMAuditConfigAuditLogConfigArrgs(
                     exempted_members=["user:joebloggs@hashicorp.com"],
                     log_type="DATA_READ",
                 ),
@@ -329,7 +329,7 @@ class IAMAuditConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArrgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] project: The project id of the target project. This is not
                inferred from the provider.
         :param pulumi.Input[str] service: Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\\_project\\_iam\\_audit\\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
@@ -338,7 +338,7 @@ class IAMAuditConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IAMAuditConfigArgs,
+                 args: IAMAuditConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
@@ -369,7 +369,7 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -384,8 +384,8 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -417,7 +417,7 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMBinding("project",
-            condition=gcp.projects.IAMBindingConditionArgs(
+            condition=gcp.projects.IAMBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -446,7 +446,7 @@ class IAMAuditConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.projects.IAMMember("project",
-            condition=gcp.projects.IAMMemberConditionArgs(
+            condition=gcp.projects.IAMMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -464,10 +464,10 @@ class IAMAuditConfig(pulumi.CustomResource):
 
         project = gcp.projects.IAMAuditConfig("project",
             audit_log_configs=[
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
+                gcp.projects.IAMAuditConfigAuditLogConfigArrgs(
                     log_type="ADMIN_READ",
                 ),
-                gcp.projects.IAMAuditConfigAuditLogConfigArgs(
+                gcp.projects.IAMAuditConfigAuditLogConfigArrgs(
                     exempted_members=["user:joebloggs@hashicorp.com"],
                     log_type="DATA_READ",
                 ),
@@ -517,12 +517,12 @@ class IAMAuditConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param IAMAuditConfigArgs args: The arguments to use to populate this resource's properties.
+        :param IAMAuditConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IAMAuditConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IAMAuditConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -531,7 +531,7 @@ class IAMAuditConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]]] = None,
+                 audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArrgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -541,7 +541,7 @@ class IAMAuditConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IAMAuditConfigArgs.__new__(IAMAuditConfigArgs)
+            __props__ = IAMAuditConfigArrgs.__new__(IAMAuditConfigArrgs)
 
             if audit_log_configs is None and not opts.urn:
                 raise TypeError("Missing required property 'audit_log_configs'")
@@ -563,7 +563,7 @@ class IAMAuditConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]]] = None,
+            audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArrgs']]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             service: Optional[pulumi.Input[str]] = None) -> 'IAMAuditConfig':
@@ -574,7 +574,7 @@ class IAMAuditConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IAMAuditConfigAuditLogConfigArrgs']]]] audit_log_configs: The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
         :param pulumi.Input[str] project: The project id of the target project. This is not
                inferred from the provider.

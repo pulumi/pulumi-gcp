@@ -31,7 +31,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AppEngineServiceIamBindingCondition(dict):
+calass AppEngineServiceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -80,7 +80,7 @@ class AppEngineServiceIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class AppEngineServiceIamMemberCondition(dict):
+calass AppEngineServiceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -129,7 +129,7 @@ class AppEngineServiceIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class AppEngineVersionIamBindingCondition(dict):
+calass AppEngineVersionIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -178,7 +178,7 @@ class AppEngineVersionIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class AppEngineVersionIamMemberCondition(dict):
+calass AppEngineVersionIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -227,7 +227,7 @@ class AppEngineVersionIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class TunnelIamBindingCondition(dict):
+calass TunnelIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -268,7 +268,7 @@ class TunnelIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class TunnelIamMemberCondition(dict):
+calass TunnelIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -309,56 +309,7 @@ class TunnelIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class TunnelInstanceIAMBindingCondition(dict):
-    def __init__(__self__, *,
-                 expression: str,
-                 title: str,
-                 description: Optional[str] = None):
-        """
-        :param str expression: Textual representation of an expression in Common Expression Language syntax.
-        :param str title: A title for the expression, i.e. a short string describing its purpose.
-        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
-        """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @property
-    @pulumi.getter
-    def expression(self) -> str:
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        return pulumi.get(self, "expression")
-
-    @property
-    @pulumi.getter
-    def title(self) -> str:
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        return pulumi.get(self, "title")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
-        return pulumi.get(self, "description")
-
-
-@pulumi.output_type
-class TunnelInstanceIAMMemberCondition(dict):
+calass TunnelInstanceIAMBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -407,7 +358,7 @@ class TunnelInstanceIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class WebBackendServiceIamBindingCondition(dict):
+calass TunnelInstanceIAMMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -456,7 +407,7 @@ class WebBackendServiceIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class WebBackendServiceIamMemberCondition(dict):
+calass WebBackendServiceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -505,7 +456,7 @@ class WebBackendServiceIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class WebIamBindingCondition(dict):
+calass WebBackendServiceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -554,7 +505,7 @@ class WebIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class WebIamMemberCondition(dict):
+calass WebIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -603,81 +554,7 @@ class WebIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class WebRegionBackendServiceIamBindingCondition(dict):
-    def __init__(__self__, *,
-                 expression: str,
-                 title: str,
-                 description: Optional[str] = None):
-        """
-        :param str expression: Textual representation of an expression in Common Expression Language syntax.
-        :param str title: A title for the expression, i.e. a short string describing its purpose.
-        """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @property
-    @pulumi.getter
-    def expression(self) -> str:
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        return pulumi.get(self, "expression")
-
-    @property
-    @pulumi.getter
-    def title(self) -> str:
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        return pulumi.get(self, "title")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        return pulumi.get(self, "description")
-
-
-@pulumi.output_type
-class WebRegionBackendServiceIamMemberCondition(dict):
-    def __init__(__self__, *,
-                 expression: str,
-                 title: str,
-                 description: Optional[str] = None):
-        """
-        :param str expression: Textual representation of an expression in Common Expression Language syntax.
-        :param str title: A title for the expression, i.e. a short string describing its purpose.
-        """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @property
-    @pulumi.getter
-    def expression(self) -> str:
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        return pulumi.get(self, "expression")
-
-    @property
-    @pulumi.getter
-    def title(self) -> str:
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        return pulumi.get(self, "title")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        return pulumi.get(self, "description")
-
-
-@pulumi.output_type
-class WebTypeAppEngingIamBindingCondition(dict):
+calass WebIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -726,7 +603,81 @@ class WebTypeAppEngingIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class WebTypeAppEngingIamMemberCondition(dict):
+calass WebRegionBackendServiceIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+calass WebRegionBackendServiceIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+calass WebTypeAppEngingIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -775,7 +726,7 @@ class WebTypeAppEngingIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class WebTypeComputeIamBindingCondition(dict):
+calass WebTypeAppEngingIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -824,7 +775,56 @@ class WebTypeComputeIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class WebTypeComputeIamMemberCondition(dict):
+calass WebTypeComputeIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               consider it to be an entirely different resource and will treat it as such.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+calass WebTypeComputeIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

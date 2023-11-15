@@ -11,26 +11,26 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EdgeCacheServiceArgs', 'EdgeCacheService']
+__all__ = ['EdgeCacheServiceArrgs', 'EdgeCacheService']
 
 @pulumi.input_type
-class EdgeCacheServiceArgs:
+calass EdgeCacheServiceArrgs:
     def __init__(__self__, *,
-                 routing: pulumi.Input['EdgeCacheServiceRoutingArgs'],
+                 routing: pulumi.Input['EdgeCacheServiceRoutingArrgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  disable_http2: Optional[pulumi.Input[bool]] = None,
                  disable_quic: Optional[pulumi.Input[bool]] = None,
                  edge_security_policy: Optional[pulumi.Input[str]] = None,
                  edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 log_config: Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']] = None,
+                 log_config: Optional[pulumi.Input['EdgeCacheServiceLogConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  require_tls: Optional[pulumi.Input[bool]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EdgeCacheService resource.
-        :param pulumi.Input['EdgeCacheServiceRoutingArgs'] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
+        :param pulumi.Input['EdgeCacheServiceRoutingArrgs'] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the hostRule.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
@@ -43,7 +43,7 @@ class EdgeCacheServiceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['EdgeCacheServiceLogConfigArgs'] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+        :param pulumi.Input['EdgeCacheServiceLogConfigArrgs'] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -82,7 +82,7 @@ class EdgeCacheServiceArgs:
 
     @property
     @pulumi.getter
-    def routing(self) -> pulumi.Input['EdgeCacheServiceRoutingArgs']:
+    def routing(self) -> pulumi.Input['EdgeCacheServiceRoutingArrgs']:
         """
         Defines how requests are routed, modified, cached and/or which origin content is filled from.
         Structure is documented below.
@@ -90,7 +90,7 @@ class EdgeCacheServiceArgs:
         return pulumi.get(self, "routing")
 
     @routing.setter
-    def routing(self, value: pulumi.Input['EdgeCacheServiceRoutingArgs']):
+    def routing(self, value: pulumi.Input['EdgeCacheServiceRoutingArrgs']):
         pulumi.set(self, "routing", value)
 
     @property
@@ -172,7 +172,7 @@ class EdgeCacheServiceArgs:
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']]:
+    def log_config(self) -> Optional[pulumi.Input['EdgeCacheServiceLogConfigArrgs']]:
         """
         Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
         Structure is documented below.
@@ -180,7 +180,7 @@ class EdgeCacheServiceArgs:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']]):
+    def log_config(self, value: Optional[pulumi.Input['EdgeCacheServiceLogConfigArrgs']]):
         pulumi.set(self, "log_config", value)
 
     @property
@@ -239,7 +239,7 @@ class EdgeCacheServiceArgs:
 
 
 @pulumi.input_type
-class _EdgeCacheServiceState:
+calass _EdgeCacheServiceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_http2: Optional[pulumi.Input[bool]] = None,
@@ -250,12 +250,12 @@ class _EdgeCacheServiceState:
                  ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 log_config: Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']] = None,
+                 log_config: Optional[pulumi.Input['EdgeCacheServiceLogConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  require_tls: Optional[pulumi.Input[bool]] = None,
-                 routing: Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']] = None,
+                 routing: Optional[pulumi.Input['EdgeCacheServiceRoutingArrgs']] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EdgeCacheService resources.
@@ -273,7 +273,7 @@ class _EdgeCacheServiceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input['EdgeCacheServiceLogConfigArgs'] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+        :param pulumi.Input['EdgeCacheServiceLogConfigArrgs'] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -285,7 +285,7 @@ class _EdgeCacheServiceState:
         :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
                Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
                You must have at least one (1) edgeSslCertificate specified to enable this.
-        :param pulumi.Input['EdgeCacheServiceRoutingArgs'] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
+        :param pulumi.Input['EdgeCacheServiceRoutingArrgs'] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
         :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
                If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
@@ -438,7 +438,7 @@ class _EdgeCacheServiceState:
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']]:
+    def log_config(self) -> Optional[pulumi.Input['EdgeCacheServiceLogConfigArrgs']]:
         """
         Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
         Structure is documented below.
@@ -446,7 +446,7 @@ class _EdgeCacheServiceState:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['EdgeCacheServiceLogConfigArgs']]):
+    def log_config(self, value: Optional[pulumi.Input['EdgeCacheServiceLogConfigArrgs']]):
         pulumi.set(self, "log_config", value)
 
     @property
@@ -505,7 +505,7 @@ class _EdgeCacheServiceState:
 
     @property
     @pulumi.getter
-    def routing(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']]:
+    def routing(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingArrgs']]:
         """
         Defines how requests are routed, modified, cached and/or which origin content is filled from.
         Structure is documented below.
@@ -513,7 +513,7 @@ class _EdgeCacheServiceState:
         return pulumi.get(self, "routing")
 
     @routing.setter
-    def routing(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingArgs']]):
+    def routing(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingArrgs']]):
         pulumi.set(self, "routing", value)
 
     @property
@@ -530,7 +530,7 @@ class _EdgeCacheServiceState:
         pulumi.set(self, "ssl_policy", value)
 
 
-class EdgeCacheService(pulumi.CustomResource):
+calass EdgeCacheService(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -541,11 +541,11 @@ class EdgeCacheService(pulumi.CustomResource):
                  edge_security_policy: Optional[pulumi.Input[str]] = None,
                  edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  require_tls: Optional[pulumi.Input[bool]] = None,
-                 routing: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArgs']]] = None,
+                 routing: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArrgs']]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -567,34 +567,34 @@ class EdgeCacheService(pulumi.CustomResource):
             origin_address=dest.url,
             description="The default bucket for media edge test",
             max_attempts=2,
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArrgs(
                 connect_timeout="10s",
             ))
         instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instanceEdgeCacheService",
             description="some description",
-            routing=gcp.networkservices.EdgeCacheServiceRoutingArgs(
-                host_rules=[gcp.networkservices.EdgeCacheServiceRoutingHostRuleArgs(
+            routing=gcp.networkservices.EdgeCacheServiceRoutingArrgs(
+                host_rules=[gcp.networkservices.EdgeCacheServiceRoutingHostRuleArrgs(
                     description="host rule description",
                     hosts=["sslcert.tf-test.club"],
                     path_matcher="routes",
                 )],
-                path_matchers=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArgs(
+                path_matchers=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArrgs(
                     name="routes",
-                    route_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                    route_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs(
                         description="a route rule to match against",
                         priority="1",
-                        match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                        match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs(
                             prefix_match="/",
                         )],
                         origin=instance_edge_cache_origin.name,
-                        route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
-                            cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                        route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs(
+                            cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs(
                                 cache_mode="CACHE_ALL_STATIC",
                                 default_ttl="3600s",
                             ),
                         ),
-                        header_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs(
-                            response_header_to_adds=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs(
+                        header_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs(
+                            response_header_to_adds=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs(
                                 header_name="x-cache-status",
                                 header_value="{cdn_cache_status}",
                             )],
@@ -616,14 +616,14 @@ class EdgeCacheService(pulumi.CustomResource):
             origin_address="google.com",
             description="The default bucket for media edge test",
             max_attempts=2,
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArrgs(
                 connect_timeout="10s",
             ))
         instance_edge_cache_origin = gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin",
             origin_address=dest.url,
             description="The default bucket for media edge test",
             max_attempts=2,
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArrgs(
                 connect_timeout="10s",
             ))
         instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instanceEdgeCacheService",
@@ -633,105 +633,105 @@ class EdgeCacheService(pulumi.CustomResource):
             labels={
                 "a": "b",
             },
-            routing=gcp.networkservices.EdgeCacheServiceRoutingArgs(
+            routing=gcp.networkservices.EdgeCacheServiceRoutingArrgs(
                 host_rules=[
-                    gcp.networkservices.EdgeCacheServiceRoutingHostRuleArgs(
+                    gcp.networkservices.EdgeCacheServiceRoutingHostRuleArrgs(
                         description="host rule description",
                         hosts=["sslcert.tf-test.club"],
                         path_matcher="routes",
                     ),
-                    gcp.networkservices.EdgeCacheServiceRoutingHostRuleArgs(
+                    gcp.networkservices.EdgeCacheServiceRoutingHostRuleArrgs(
                         description="host rule2",
                         hosts=["sslcert.tf-test2.club"],
                         path_matcher="routes",
                     ),
-                    gcp.networkservices.EdgeCacheServiceRoutingHostRuleArgs(
+                    gcp.networkservices.EdgeCacheServiceRoutingHostRuleArrgs(
                         description="host rule3",
                         hosts=["sslcert.tf-test3.club"],
                         path_matcher="routesAdvanced",
                     ),
                 ],
                 path_matchers=[
-                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArgs(
+                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArrgs(
                         name="routes",
-                        route_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                        route_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs(
                             description="a route rule to match against",
                             priority="1",
-                            match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                            match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs(
                                 prefix_match="/",
                             )],
                             origin=instance_edge_cache_origin.name,
-                            route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
-                                cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                            route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs(
+                                cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs(
                                     cache_mode="CACHE_ALL_STATIC",
                                     default_ttl="3600s",
                                 ),
                             ),
-                            header_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs(
-                                response_header_to_adds=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs(
+                            header_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs(
+                                response_header_to_adds=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs(
                                     header_name="x-cache-status",
                                     header_value="{cdn_cache_status}",
                                 )],
                             ),
                         )],
                     ),
-                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArgs(
+                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArrgs(
                         name="routesAdvanced",
                         description="an advanced ruleset",
                         route_rules=[
-                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs(
                                 description="an advanced route rule to match against",
                                 priority="1",
                                 match_rules=[
-                                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs(
                                         prefix_match="/potato/",
                                         query_parameter_matches=[
-                                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
+                                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs(
                                                 name="debug",
                                                 present_match=True,
                                             ),
-                                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
+                                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs(
                                                 name="state",
                                                 exact_match="debug",
                                             ),
                                         ],
                                     ),
-                                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs(
                                         full_path_match="/apple",
                                     ),
                                 ],
-                                header_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs(
+                                header_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs(
                                     request_header_to_adds=[
-                                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs(
+                                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrgs(
                                             header_name="debug",
                                             header_value="true",
                                             replace=True,
                                         ),
-                                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs(
+                                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrgs(
                                             header_name="potato",
                                             header_value="plant",
                                         ),
                                     ],
-                                    response_header_to_adds=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs(
+                                    response_header_to_adds=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs(
                                         header_name="potato",
                                         header_value="plant",
                                         replace=True,
                                     )],
-                                    request_header_to_removes=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs(
+                                    request_header_to_removes=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrgs(
                                         header_name="prod",
                                     )],
-                                    response_header_to_removes=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs(
+                                    response_header_to_removes=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrgs(
                                         header_name="prod",
                                     )],
                                 ),
                                 origin=instance_edge_cache_origin.name,
-                                route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
-                                    cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                                route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs(
+                                    cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs(
                                         cache_mode="CACHE_ALL_STATIC",
                                         default_ttl="3800s",
                                         client_ttl="3600s",
                                         max_ttl="9000s",
-                                        cache_key_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs(
+                                        cache_key_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArrgs(
                                             include_protocol=True,
                                             exclude_host=True,
                                             included_query_parameters=[
@@ -749,11 +749,11 @@ class EdgeCacheService(pulumi.CustomResource):
                                             "500": "3000s",
                                         },
                                     ),
-                                    url_rewrite=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs(
+                                    url_rewrite=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArrgs(
                                         path_prefix_rewrite="/dev",
                                         host_rewrite="dev.club",
                                     ),
-                                    cors_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs(
+                                    cors_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArrgs(
                                         max_age="2500s",
                                         allow_credentials=True,
                                         allow_origins=["*"],
@@ -763,22 +763,22 @@ class EdgeCacheService(pulumi.CustomResource):
                                     ),
                                 ),
                             ),
-                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs(
                                 description="a second route rule to match against",
                                 priority="2",
-                                match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                                match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs(
                                     full_path_match="/yay",
                                 )],
                                 origin=instance_edge_cache_origin.name,
-                                route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
-                                    cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                                route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs(
+                                    cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs(
                                         cache_mode="CACHE_ALL_STATIC",
                                         default_ttl="3600s",
-                                        cache_key_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs(
+                                        cache_key_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArrgs(
                                             excluded_query_parameters=["dev"],
                                         ),
                                     ),
-                                    cors_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs(
+                                    cors_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArrgs(
                                         max_age="3000s",
                                         allow_headers=["dev"],
                                         disabled=True,
@@ -789,7 +789,7 @@ class EdgeCacheService(pulumi.CustomResource):
                     ),
                 ],
             ),
-            log_config=gcp.networkservices.EdgeCacheServiceLogConfigArgs(
+            log_config=gcp.networkservices.EdgeCacheServiceLogConfigArrgs(
                 enable=True,
                 sample_rate=0.01,
             ))
@@ -824,7 +824,7 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArrgs']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -834,7 +834,7 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
                Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
                You must have at least one (1) edgeSslCertificate specified to enable this.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArgs']] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArrgs']] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
         :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
                If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.
@@ -843,7 +843,7 @@ class EdgeCacheService(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EdgeCacheServiceArgs,
+                 args: EdgeCacheServiceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         EdgeCacheService defines the IP addresses, protocols, security policies, cache policies and routing configuration.
@@ -864,34 +864,34 @@ class EdgeCacheService(pulumi.CustomResource):
             origin_address=dest.url,
             description="The default bucket for media edge test",
             max_attempts=2,
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArrgs(
                 connect_timeout="10s",
             ))
         instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instanceEdgeCacheService",
             description="some description",
-            routing=gcp.networkservices.EdgeCacheServiceRoutingArgs(
-                host_rules=[gcp.networkservices.EdgeCacheServiceRoutingHostRuleArgs(
+            routing=gcp.networkservices.EdgeCacheServiceRoutingArrgs(
+                host_rules=[gcp.networkservices.EdgeCacheServiceRoutingHostRuleArrgs(
                     description="host rule description",
                     hosts=["sslcert.tf-test.club"],
                     path_matcher="routes",
                 )],
-                path_matchers=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArgs(
+                path_matchers=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArrgs(
                     name="routes",
-                    route_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                    route_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs(
                         description="a route rule to match against",
                         priority="1",
-                        match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                        match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs(
                             prefix_match="/",
                         )],
                         origin=instance_edge_cache_origin.name,
-                        route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
-                            cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                        route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs(
+                            cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs(
                                 cache_mode="CACHE_ALL_STATIC",
                                 default_ttl="3600s",
                             ),
                         ),
-                        header_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs(
-                            response_header_to_adds=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs(
+                        header_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs(
+                            response_header_to_adds=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs(
                                 header_name="x-cache-status",
                                 header_value="{cdn_cache_status}",
                             )],
@@ -913,14 +913,14 @@ class EdgeCacheService(pulumi.CustomResource):
             origin_address="google.com",
             description="The default bucket for media edge test",
             max_attempts=2,
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArrgs(
                 connect_timeout="10s",
             ))
         instance_edge_cache_origin = gcp.networkservices.EdgeCacheOrigin("instanceEdgeCacheOrigin",
             origin_address=dest.url,
             description="The default bucket for media edge test",
             max_attempts=2,
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArrgs(
                 connect_timeout="10s",
             ))
         instance_edge_cache_service = gcp.networkservices.EdgeCacheService("instanceEdgeCacheService",
@@ -930,105 +930,105 @@ class EdgeCacheService(pulumi.CustomResource):
             labels={
                 "a": "b",
             },
-            routing=gcp.networkservices.EdgeCacheServiceRoutingArgs(
+            routing=gcp.networkservices.EdgeCacheServiceRoutingArrgs(
                 host_rules=[
-                    gcp.networkservices.EdgeCacheServiceRoutingHostRuleArgs(
+                    gcp.networkservices.EdgeCacheServiceRoutingHostRuleArrgs(
                         description="host rule description",
                         hosts=["sslcert.tf-test.club"],
                         path_matcher="routes",
                     ),
-                    gcp.networkservices.EdgeCacheServiceRoutingHostRuleArgs(
+                    gcp.networkservices.EdgeCacheServiceRoutingHostRuleArrgs(
                         description="host rule2",
                         hosts=["sslcert.tf-test2.club"],
                         path_matcher="routes",
                     ),
-                    gcp.networkservices.EdgeCacheServiceRoutingHostRuleArgs(
+                    gcp.networkservices.EdgeCacheServiceRoutingHostRuleArrgs(
                         description="host rule3",
                         hosts=["sslcert.tf-test3.club"],
                         path_matcher="routesAdvanced",
                     ),
                 ],
                 path_matchers=[
-                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArgs(
+                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArrgs(
                         name="routes",
-                        route_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                        route_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs(
                             description="a route rule to match against",
                             priority="1",
-                            match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                            match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs(
                                 prefix_match="/",
                             )],
                             origin=instance_edge_cache_origin.name,
-                            route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
-                                cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                            route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs(
+                                cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs(
                                     cache_mode="CACHE_ALL_STATIC",
                                     default_ttl="3600s",
                                 ),
                             ),
-                            header_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs(
-                                response_header_to_adds=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs(
+                            header_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs(
+                                response_header_to_adds=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs(
                                     header_name="x-cache-status",
                                     header_value="{cdn_cache_status}",
                                 )],
                             ),
                         )],
                     ),
-                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArgs(
+                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherArrgs(
                         name="routesAdvanced",
                         description="an advanced ruleset",
                         route_rules=[
-                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs(
                                 description="an advanced route rule to match against",
                                 priority="1",
                                 match_rules=[
-                                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs(
                                         prefix_match="/potato/",
                                         query_parameter_matches=[
-                                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
+                                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs(
                                                 name="debug",
                                                 present_match=True,
                                             ),
-                                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
+                                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs(
                                                 name="state",
                                                 exact_match="debug",
                                             ),
                                         ],
                                     ),
-                                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                                    gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs(
                                         full_path_match="/apple",
                                     ),
                                 ],
-                                header_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs(
+                                header_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs(
                                     request_header_to_adds=[
-                                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs(
+                                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrgs(
                                             header_name="debug",
                                             header_value="true",
                                             replace=True,
                                         ),
-                                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs(
+                                        gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrgs(
                                             header_name="potato",
                                             header_value="plant",
                                         ),
                                     ],
-                                    response_header_to_adds=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs(
+                                    response_header_to_adds=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs(
                                         header_name="potato",
                                         header_value="plant",
                                         replace=True,
                                     )],
-                                    request_header_to_removes=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs(
+                                    request_header_to_removes=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrgs(
                                         header_name="prod",
                                     )],
-                                    response_header_to_removes=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs(
+                                    response_header_to_removes=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrgs(
                                         header_name="prod",
                                     )],
                                 ),
                                 origin=instance_edge_cache_origin.name,
-                                route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
-                                    cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                                route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs(
+                                    cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs(
                                         cache_mode="CACHE_ALL_STATIC",
                                         default_ttl="3800s",
                                         client_ttl="3600s",
                                         max_ttl="9000s",
-                                        cache_key_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs(
+                                        cache_key_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArrgs(
                                             include_protocol=True,
                                             exclude_host=True,
                                             included_query_parameters=[
@@ -1046,11 +1046,11 @@ class EdgeCacheService(pulumi.CustomResource):
                                             "500": "3000s",
                                         },
                                     ),
-                                    url_rewrite=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs(
+                                    url_rewrite=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArrgs(
                                         path_prefix_rewrite="/dev",
                                         host_rewrite="dev.club",
                                     ),
-                                    cors_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs(
+                                    cors_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArrgs(
                                         max_age="2500s",
                                         allow_credentials=True,
                                         allow_origins=["*"],
@@ -1060,22 +1060,22 @@ class EdgeCacheService(pulumi.CustomResource):
                                     ),
                                 ),
                             ),
-                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArgs(
+                            gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs(
                                 description="a second route rule to match against",
                                 priority="2",
-                                match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs(
+                                match_rules=[gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs(
                                     full_path_match="/yay",
                                 )],
                                 origin=instance_edge_cache_origin.name,
-                                route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs(
-                                    cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs(
+                                route_action=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs(
+                                    cdn_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs(
                                         cache_mode="CACHE_ALL_STATIC",
                                         default_ttl="3600s",
-                                        cache_key_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs(
+                                        cache_key_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArrgs(
                                             excluded_query_parameters=["dev"],
                                         ),
                                     ),
-                                    cors_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs(
+                                    cors_policy=gcp.networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArrgs(
                                         max_age="3000s",
                                         allow_headers=["dev"],
                                         disabled=True,
@@ -1086,7 +1086,7 @@ class EdgeCacheService(pulumi.CustomResource):
                     ),
                 ],
             ),
-            log_config=gcp.networkservices.EdgeCacheServiceLogConfigArgs(
+            log_config=gcp.networkservices.EdgeCacheServiceLogConfigArrgs(
                 enable=True,
                 sample_rate=0.01,
             ))
@@ -1109,12 +1109,12 @@ class EdgeCacheService(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param EdgeCacheServiceArgs args: The arguments to use to populate this resource's properties.
+        :param EdgeCacheServiceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EdgeCacheServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EdgeCacheServiceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1129,11 +1129,11 @@ class EdgeCacheService(pulumi.CustomResource):
                  edge_security_policy: Optional[pulumi.Input[str]] = None,
                  edge_ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  require_tls: Optional[pulumi.Input[bool]] = None,
-                 routing: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArgs']]] = None,
+                 routing: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArrgs']]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1142,7 +1142,7 @@ class EdgeCacheService(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EdgeCacheServiceArgs.__new__(EdgeCacheServiceArgs)
+            __props__ = EdgeCacheServiceArrgs.__new__(EdgeCacheServiceArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["disable_http2"] = disable_http2
@@ -1183,12 +1183,12 @@ class EdgeCacheService(pulumi.CustomResource):
             ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            log_config: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']]] = None,
+            log_config: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             require_tls: Optional[pulumi.Input[bool]] = None,
-            routing: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArgs']]] = None,
+            routing: Optional[pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArrgs']]] = None,
             ssl_policy: Optional[pulumi.Input[str]] = None) -> 'EdgeCacheService':
         """
         Get an existing EdgeCacheService resource's state with the given name, id, and optional extra
@@ -1211,7 +1211,7 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArrgs']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -1223,7 +1223,7 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
                Clients who connect over HTTP (port 80) will receive a HTTP 301 to the same URL over HTTPS (port 443).
                You must have at least one (1) edgeSslCertificate specified to enable this.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArgs']] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheServiceRoutingArrgs']] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
         :param pulumi.Input[str] ssl_policy: URL of the SslPolicy resource that will be associated with the EdgeCacheService.
                If not set, the EdgeCacheService has no SSL policy configured, and will default to the "COMPATIBLE" policy.

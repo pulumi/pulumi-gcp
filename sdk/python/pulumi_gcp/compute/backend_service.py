@@ -11,36 +11,36 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BackendServiceArgs', 'BackendService']
+__all__ = ['BackendServiceArrgs', 'BackendService']
 
 @pulumi.input_type
-class BackendServiceArgs:
+calass BackendServiceArrgs:
     def __init__(__self__, *,
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-                 backends: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArgs']]]] = None,
-                 cdn_policy: Optional[pulumi.Input['BackendServiceCdnPolicyArgs']] = None,
-                 circuit_breakers: Optional[pulumi.Input['BackendServiceCircuitBreakersArgs']] = None,
+                 backends: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArrgs']]]] = None,
+                 cdn_policy: Optional[pulumi.Input['BackendServiceCdnPolicyArrgs']] = None,
+                 circuit_breakers: Optional[pulumi.Input['BackendServiceCircuitBreakersArrgs']] = None,
                  compression_mode: Optional[pulumi.Input[str]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
-                 consistent_hash: Optional[pulumi.Input['BackendServiceConsistentHashArgs']] = None,
+                 consistent_hash: Optional[pulumi.Input['BackendServiceConsistentHashArrgs']] = None,
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
-                 iap: Optional[pulumi.Input['BackendServiceIapArgs']] = None,
+                 iap: Optional[pulumi.Input['BackendServiceIapArrgs']] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]] = None,
+                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArrgs']]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
-                 log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
+                 log_config: Optional[pulumi.Input['BackendServiceLogConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 outlier_detection: Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']] = None,
+                 outlier_detection: Optional[pulumi.Input['BackendServiceOutlierDetectionArrgs']] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
-                 security_settings: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']] = None,
+                 security_settings: Optional[pulumi.Input['BackendServiceSecuritySettingsArrgs']] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
@@ -50,18 +50,18 @@ class BackendServiceArgs:
                only until the end of the browser session (or equivalent). The
                maximum allowed value for TTL is one day.
                When the load balancing scheme is INTERNAL, this field is not used.
-        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArgs']]] backends: The set of backends that serve this BackendService.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArrgs']]] backends: The set of backends that serve this BackendService.
                Structure is documented below.
-        :param pulumi.Input['BackendServiceCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this BackendService.
+        :param pulumi.Input['BackendServiceCdnPolicyArrgs'] cdn_policy: Cloud CDN configuration for this BackendService.
                Structure is documented below.
-        :param pulumi.Input['BackendServiceCircuitBreakersArgs'] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
+        :param pulumi.Input['BackendServiceCircuitBreakersArrgs'] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
                Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input['BackendServiceConsistentHashArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
+        :param pulumi.Input['BackendServiceConsistentHashArrgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
                destination host will be lost when one or more hosts are added/removed from the
@@ -83,7 +83,7 @@ class BackendServiceArgs:
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
                For internal load balancing, a URL to a HealthCheck resource must be specified instead.
-        :param pulumi.Input['BackendServiceIapArgs'] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input['BackendServiceIapArrgs'] iap: Settings for enabling Cloud Identity Aware Proxy
                Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
                external load balancing. A backend service created for one type of
@@ -91,7 +91,7 @@ class BackendServiceArgs:
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
                Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArrgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
                localityLbPolicies is only supported when the BackendService is referenced
@@ -100,7 +100,7 @@ class BackendServiceArgs:
                Structure is documented below.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
-        :param pulumi.Input['BackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
+        :param pulumi.Input['BackendServiceLogConfigArrgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -113,7 +113,7 @@ class BackendServiceArgs:
                
                
                - - -
-        :param pulumi.Input['BackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        :param pulumi.Input['BackendServiceOutlierDetectionArrgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the load_balancing_scheme is set
                to INTERNAL_SELF_MANAGED.
                Structure is documented below.
@@ -129,7 +129,7 @@ class BackendServiceArgs:
                with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
                Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
-        :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either
+        :param pulumi.Input['BackendServiceSecuritySettingsArrgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either
                a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
                load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
@@ -213,7 +213,7 @@ class BackendServiceArgs:
 
     @property
     @pulumi.getter
-    def backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArgs']]]]:
+    def backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArrgs']]]]:
         """
         The set of backends that serve this BackendService.
         Structure is documented below.
@@ -221,12 +221,12 @@ class BackendServiceArgs:
         return pulumi.get(self, "backends")
 
     @backends.setter
-    def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArgs']]]]):
+    def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArrgs']]]]):
         pulumi.set(self, "backends", value)
 
     @property
     @pulumi.getter(name="cdnPolicy")
-    def cdn_policy(self) -> Optional[pulumi.Input['BackendServiceCdnPolicyArgs']]:
+    def cdn_policy(self) -> Optional[pulumi.Input['BackendServiceCdnPolicyArrgs']]:
         """
         Cloud CDN configuration for this BackendService.
         Structure is documented below.
@@ -234,12 +234,12 @@ class BackendServiceArgs:
         return pulumi.get(self, "cdn_policy")
 
     @cdn_policy.setter
-    def cdn_policy(self, value: Optional[pulumi.Input['BackendServiceCdnPolicyArgs']]):
+    def cdn_policy(self, value: Optional[pulumi.Input['BackendServiceCdnPolicyArrgs']]):
         pulumi.set(self, "cdn_policy", value)
 
     @property
     @pulumi.getter(name="circuitBreakers")
-    def circuit_breakers(self) -> Optional[pulumi.Input['BackendServiceCircuitBreakersArgs']]:
+    def circuit_breakers(self) -> Optional[pulumi.Input['BackendServiceCircuitBreakersArrgs']]:
         """
         Settings controlling the volume of connections to a backend service. This field
         is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
@@ -248,7 +248,7 @@ class BackendServiceArgs:
         return pulumi.get(self, "circuit_breakers")
 
     @circuit_breakers.setter
-    def circuit_breakers(self, value: Optional[pulumi.Input['BackendServiceCircuitBreakersArgs']]):
+    def circuit_breakers(self, value: Optional[pulumi.Input['BackendServiceCircuitBreakersArrgs']]):
         pulumi.set(self, "circuit_breakers", value)
 
     @property
@@ -279,7 +279,7 @@ class BackendServiceArgs:
 
     @property
     @pulumi.getter(name="consistentHash")
-    def consistent_hash(self) -> Optional[pulumi.Input['BackendServiceConsistentHashArgs']]:
+    def consistent_hash(self) -> Optional[pulumi.Input['BackendServiceConsistentHashArrgs']]:
         """
         Consistent Hash-based load balancing can be used to provide soft session
         affinity based on HTTP headers, cookies or other properties. This load balancing
@@ -294,7 +294,7 @@ class BackendServiceArgs:
         return pulumi.get(self, "consistent_hash")
 
     @consistent_hash.setter
-    def consistent_hash(self, value: Optional[pulumi.Input['BackendServiceConsistentHashArgs']]):
+    def consistent_hash(self, value: Optional[pulumi.Input['BackendServiceConsistentHashArrgs']]):
         pulumi.set(self, "consistent_hash", value)
 
     @property
@@ -378,7 +378,7 @@ class BackendServiceArgs:
 
     @property
     @pulumi.getter
-    def iap(self) -> Optional[pulumi.Input['BackendServiceIapArgs']]:
+    def iap(self) -> Optional[pulumi.Input['BackendServiceIapArrgs']]:
         """
         Settings for enabling Cloud Identity Aware Proxy
         Structure is documented below.
@@ -386,7 +386,7 @@ class BackendServiceArgs:
         return pulumi.get(self, "iap")
 
     @iap.setter
-    def iap(self, value: Optional[pulumi.Input['BackendServiceIapArgs']]):
+    def iap(self, value: Optional[pulumi.Input['BackendServiceIapArrgs']]):
         pulumi.set(self, "iap", value)
 
     @property
@@ -408,7 +408,7 @@ class BackendServiceArgs:
 
     @property
     @pulumi.getter(name="localityLbPolicies")
-    def locality_lb_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]]:
+    def locality_lb_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArrgs']]]]:
         """
         A list of locality load balancing policies to be used in order of
         preference. Either the policy or the customPolicy field should be set.
@@ -421,7 +421,7 @@ class BackendServiceArgs:
         return pulumi.get(self, "locality_lb_policies")
 
     @locality_lb_policies.setter
-    def locality_lb_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]]):
+    def locality_lb_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArrgs']]]]):
         pulumi.set(self, "locality_lb_policies", value)
 
     @property
@@ -439,7 +439,7 @@ class BackendServiceArgs:
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['BackendServiceLogConfigArgs']]:
+    def log_config(self) -> Optional[pulumi.Input['BackendServiceLogConfigArrgs']]:
         """
         This field denotes the logging options for the load balancer traffic served by this backend service.
         If logging is enabled, logs will be exported to Stackdriver.
@@ -448,7 +448,7 @@ class BackendServiceArgs:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['BackendServiceLogConfigArgs']]):
+    def log_config(self, value: Optional[pulumi.Input['BackendServiceLogConfigArrgs']]):
         pulumi.set(self, "log_config", value)
 
     @property
@@ -474,7 +474,7 @@ class BackendServiceArgs:
 
     @property
     @pulumi.getter(name="outlierDetection")
-    def outlier_detection(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']]:
+    def outlier_detection(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionArrgs']]:
         """
         Settings controlling eviction of unhealthy hosts from the load balancing pool.
         This field is applicable only when the load_balancing_scheme is set
@@ -484,7 +484,7 @@ class BackendServiceArgs:
         return pulumi.get(self, "outlier_detection")
 
     @outlier_detection.setter
-    def outlier_detection(self, value: Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']]):
+    def outlier_detection(self, value: Optional[pulumi.Input['BackendServiceOutlierDetectionArrgs']]):
         pulumi.set(self, "outlier_detection", value)
 
     @property
@@ -545,7 +545,7 @@ class BackendServiceArgs:
 
     @property
     @pulumi.getter(name="securitySettings")
-    def security_settings(self) -> Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']]:
+    def security_settings(self) -> Optional[pulumi.Input['BackendServiceSecuritySettingsArrgs']]:
         """
         The security settings that apply to this backend service. This field is applicable to either
         a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
@@ -556,7 +556,7 @@ class BackendServiceArgs:
         return pulumi.get(self, "security_settings")
 
     @security_settings.setter
-    def security_settings(self, value: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']]):
+    def security_settings(self, value: Optional[pulumi.Input['BackendServiceSecuritySettingsArrgs']]):
         pulumi.set(self, "security_settings", value)
 
     @property
@@ -588,15 +588,15 @@ class BackendServiceArgs:
 
 
 @pulumi.input_type
-class _BackendServiceState:
+calass _BackendServiceState:
     def __init__(__self__, *,
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-                 backends: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArgs']]]] = None,
-                 cdn_policy: Optional[pulumi.Input['BackendServiceCdnPolicyArgs']] = None,
-                 circuit_breakers: Optional[pulumi.Input['BackendServiceCircuitBreakersArgs']] = None,
+                 backends: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArrgs']]]] = None,
+                 cdn_policy: Optional[pulumi.Input['BackendServiceCdnPolicyArrgs']] = None,
+                 circuit_breakers: Optional[pulumi.Input['BackendServiceCircuitBreakersArrgs']] = None,
                  compression_mode: Optional[pulumi.Input[str]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
-                 consistent_hash: Optional[pulumi.Input['BackendServiceConsistentHashArgs']] = None,
+                 consistent_hash: Optional[pulumi.Input['BackendServiceConsistentHashArrgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -606,18 +606,18 @@ class _BackendServiceState:
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  generated_id: Optional[pulumi.Input[int]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
-                 iap: Optional[pulumi.Input['BackendServiceIapArgs']] = None,
+                 iap: Optional[pulumi.Input['BackendServiceIapArrgs']] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]] = None,
+                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArrgs']]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
-                 log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
+                 log_config: Optional[pulumi.Input['BackendServiceLogConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 outlier_detection: Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']] = None,
+                 outlier_detection: Optional[pulumi.Input['BackendServiceOutlierDetectionArrgs']] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
-                 security_settings: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']] = None,
+                 security_settings: Optional[pulumi.Input['BackendServiceSecuritySettingsArrgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
@@ -628,18 +628,18 @@ class _BackendServiceState:
                only until the end of the browser session (or equivalent). The
                maximum allowed value for TTL is one day.
                When the load balancing scheme is INTERNAL, this field is not used.
-        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArgs']]] backends: The set of backends that serve this BackendService.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArrgs']]] backends: The set of backends that serve this BackendService.
                Structure is documented below.
-        :param pulumi.Input['BackendServiceCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this BackendService.
+        :param pulumi.Input['BackendServiceCdnPolicyArrgs'] cdn_policy: Cloud CDN configuration for this BackendService.
                Structure is documented below.
-        :param pulumi.Input['BackendServiceCircuitBreakersArgs'] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
+        :param pulumi.Input['BackendServiceCircuitBreakersArrgs'] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
                Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input['BackendServiceConsistentHashArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
+        :param pulumi.Input['BackendServiceConsistentHashArrgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
                destination host will be lost when one or more hosts are added/removed from the
@@ -665,7 +665,7 @@ class _BackendServiceState:
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
                For internal load balancing, a URL to a HealthCheck resource must be specified instead.
-        :param pulumi.Input['BackendServiceIapArgs'] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input['BackendServiceIapArrgs'] iap: Settings for enabling Cloud Identity Aware Proxy
                Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
                external load balancing. A backend service created for one type of
@@ -673,7 +673,7 @@ class _BackendServiceState:
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
                Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArrgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
                localityLbPolicies is only supported when the BackendService is referenced
@@ -682,7 +682,7 @@ class _BackendServiceState:
                Structure is documented below.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
-        :param pulumi.Input['BackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
+        :param pulumi.Input['BackendServiceLogConfigArrgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -695,7 +695,7 @@ class _BackendServiceState:
                
                
                - - -
-        :param pulumi.Input['BackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        :param pulumi.Input['BackendServiceOutlierDetectionArrgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the load_balancing_scheme is set
                to INTERNAL_SELF_MANAGED.
                Structure is documented below.
@@ -711,7 +711,7 @@ class _BackendServiceState:
                with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
                Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
-        :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either
+        :param pulumi.Input['BackendServiceSecuritySettingsArrgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either
                a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
                load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
@@ -804,7 +804,7 @@ class _BackendServiceState:
 
     @property
     @pulumi.getter
-    def backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArgs']]]]:
+    def backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArrgs']]]]:
         """
         The set of backends that serve this BackendService.
         Structure is documented below.
@@ -812,12 +812,12 @@ class _BackendServiceState:
         return pulumi.get(self, "backends")
 
     @backends.setter
-    def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArgs']]]]):
+    def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceBackendArrgs']]]]):
         pulumi.set(self, "backends", value)
 
     @property
     @pulumi.getter(name="cdnPolicy")
-    def cdn_policy(self) -> Optional[pulumi.Input['BackendServiceCdnPolicyArgs']]:
+    def cdn_policy(self) -> Optional[pulumi.Input['BackendServiceCdnPolicyArrgs']]:
         """
         Cloud CDN configuration for this BackendService.
         Structure is documented below.
@@ -825,12 +825,12 @@ class _BackendServiceState:
         return pulumi.get(self, "cdn_policy")
 
     @cdn_policy.setter
-    def cdn_policy(self, value: Optional[pulumi.Input['BackendServiceCdnPolicyArgs']]):
+    def cdn_policy(self, value: Optional[pulumi.Input['BackendServiceCdnPolicyArrgs']]):
         pulumi.set(self, "cdn_policy", value)
 
     @property
     @pulumi.getter(name="circuitBreakers")
-    def circuit_breakers(self) -> Optional[pulumi.Input['BackendServiceCircuitBreakersArgs']]:
+    def circuit_breakers(self) -> Optional[pulumi.Input['BackendServiceCircuitBreakersArrgs']]:
         """
         Settings controlling the volume of connections to a backend service. This field
         is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
@@ -839,7 +839,7 @@ class _BackendServiceState:
         return pulumi.get(self, "circuit_breakers")
 
     @circuit_breakers.setter
-    def circuit_breakers(self, value: Optional[pulumi.Input['BackendServiceCircuitBreakersArgs']]):
+    def circuit_breakers(self, value: Optional[pulumi.Input['BackendServiceCircuitBreakersArrgs']]):
         pulumi.set(self, "circuit_breakers", value)
 
     @property
@@ -870,7 +870,7 @@ class _BackendServiceState:
 
     @property
     @pulumi.getter(name="consistentHash")
-    def consistent_hash(self) -> Optional[pulumi.Input['BackendServiceConsistentHashArgs']]:
+    def consistent_hash(self) -> Optional[pulumi.Input['BackendServiceConsistentHashArrgs']]:
         """
         Consistent Hash-based load balancing can be used to provide soft session
         affinity based on HTTP headers, cookies or other properties. This load balancing
@@ -885,7 +885,7 @@ class _BackendServiceState:
         return pulumi.get(self, "consistent_hash")
 
     @consistent_hash.setter
-    def consistent_hash(self, value: Optional[pulumi.Input['BackendServiceConsistentHashArgs']]):
+    def consistent_hash(self, value: Optional[pulumi.Input['BackendServiceConsistentHashArrgs']]):
         pulumi.set(self, "consistent_hash", value)
 
     @property
@@ -1006,7 +1006,7 @@ class _BackendServiceState:
 
     @property
     @pulumi.getter
-    def iap(self) -> Optional[pulumi.Input['BackendServiceIapArgs']]:
+    def iap(self) -> Optional[pulumi.Input['BackendServiceIapArrgs']]:
         """
         Settings for enabling Cloud Identity Aware Proxy
         Structure is documented below.
@@ -1014,7 +1014,7 @@ class _BackendServiceState:
         return pulumi.get(self, "iap")
 
     @iap.setter
-    def iap(self, value: Optional[pulumi.Input['BackendServiceIapArgs']]):
+    def iap(self, value: Optional[pulumi.Input['BackendServiceIapArrgs']]):
         pulumi.set(self, "iap", value)
 
     @property
@@ -1036,7 +1036,7 @@ class _BackendServiceState:
 
     @property
     @pulumi.getter(name="localityLbPolicies")
-    def locality_lb_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]]:
+    def locality_lb_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArrgs']]]]:
         """
         A list of locality load balancing policies to be used in order of
         preference. Either the policy or the customPolicy field should be set.
@@ -1049,7 +1049,7 @@ class _BackendServiceState:
         return pulumi.get(self, "locality_lb_policies")
 
     @locality_lb_policies.setter
-    def locality_lb_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]]):
+    def locality_lb_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArrgs']]]]):
         pulumi.set(self, "locality_lb_policies", value)
 
     @property
@@ -1067,7 +1067,7 @@ class _BackendServiceState:
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['BackendServiceLogConfigArgs']]:
+    def log_config(self) -> Optional[pulumi.Input['BackendServiceLogConfigArrgs']]:
         """
         This field denotes the logging options for the load balancer traffic served by this backend service.
         If logging is enabled, logs will be exported to Stackdriver.
@@ -1076,7 +1076,7 @@ class _BackendServiceState:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['BackendServiceLogConfigArgs']]):
+    def log_config(self, value: Optional[pulumi.Input['BackendServiceLogConfigArrgs']]):
         pulumi.set(self, "log_config", value)
 
     @property
@@ -1102,7 +1102,7 @@ class _BackendServiceState:
 
     @property
     @pulumi.getter(name="outlierDetection")
-    def outlier_detection(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']]:
+    def outlier_detection(self) -> Optional[pulumi.Input['BackendServiceOutlierDetectionArrgs']]:
         """
         Settings controlling eviction of unhealthy hosts from the load balancing pool.
         This field is applicable only when the load_balancing_scheme is set
@@ -1112,7 +1112,7 @@ class _BackendServiceState:
         return pulumi.get(self, "outlier_detection")
 
     @outlier_detection.setter
-    def outlier_detection(self, value: Optional[pulumi.Input['BackendServiceOutlierDetectionArgs']]):
+    def outlier_detection(self, value: Optional[pulumi.Input['BackendServiceOutlierDetectionArrgs']]):
         pulumi.set(self, "outlier_detection", value)
 
     @property
@@ -1173,7 +1173,7 @@ class _BackendServiceState:
 
     @property
     @pulumi.getter(name="securitySettings")
-    def security_settings(self) -> Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']]:
+    def security_settings(self) -> Optional[pulumi.Input['BackendServiceSecuritySettingsArrgs']]:
         """
         The security settings that apply to this backend service. This field is applicable to either
         a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
@@ -1184,7 +1184,7 @@ class _BackendServiceState:
         return pulumi.get(self, "security_settings")
 
     @security_settings.setter
-    def security_settings(self, value: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']]):
+    def security_settings(self, value: Optional[pulumi.Input['BackendServiceSecuritySettingsArrgs']]):
         pulumi.set(self, "security_settings", value)
 
     @property
@@ -1227,36 +1227,36 @@ class _BackendServiceState:
         pulumi.set(self, "timeout_sec", value)
 
 
-class BackendService(pulumi.CustomResource):
+calass BackendService(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-                 backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArgs']]]]] = None,
-                 cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
-                 circuit_breakers: Optional[pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArgs']]] = None,
+                 backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArrgs']]]]] = None,
+                 cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArrgs']]] = None,
+                 circuit_breakers: Optional[pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArrgs']]] = None,
                  compression_mode: Optional[pulumi.Input[str]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
-                 consistent_hash: Optional[pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']]] = None,
+                 consistent_hash: Optional[pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArrgs']]] = None,
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
-                 iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIapArgs']]] = None,
+                 iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIapArrgs']]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]]] = None,
+                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArrgs']]]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 outlier_detection: Optional[pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArgs']]] = None,
+                 outlier_detection: Optional[pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArrgs']]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
-                 security_settings: Optional[pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']]] = None,
+                 security_settings: Optional[pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArrgs']]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1285,8 +1285,8 @@ class BackendService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.BackendService("default",
-            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArrgs(
+                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArrgs(
                     include_host=True,
                     include_http_headers=["X-My-Header-Field"],
                     include_protocol=True,
@@ -1303,8 +1303,8 @@ class BackendService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.BackendService("default",
-            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArrgs(
+                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArrgs(
                     include_host=True,
                     include_named_cookies=[
                         "__next_preview_data",
@@ -1341,7 +1341,7 @@ class BackendService(pulumi.CustomResource):
             connection_draining_timeout_sec=10,
             custom_request_headers=[proxy.fqdn.apply(lambda fqdn: f"host: {fqdn}")],
             custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
-            backends=[gcp.compute.BackendServiceBackendArgs(
+            backends=[gcp.compute.BackendServiceBackendArrgs(
                 group=external_proxy.id,
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -1370,18 +1370,18 @@ class BackendService(pulumi.CustomResource):
                only until the end of the browser session (or equivalent). The
                maximum allowed value for TTL is one day.
                When the load balancing scheme is INTERNAL, this field is not used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArgs']]]] backends: The set of backends that serve this BackendService.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArrgs']]]] backends: The set of backends that serve this BackendService.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService.
+        :param pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArrgs']] cdn_policy: Cloud CDN configuration for this BackendService.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArgs']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
+        :param pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArrgs']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
                Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
+        :param pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArrgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
                destination host will be lost when one or more hosts are added/removed from the
@@ -1403,7 +1403,7 @@ class BackendService(pulumi.CustomResource):
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
                For internal load balancing, a URL to a HealthCheck resource must be specified instead.
-        :param pulumi.Input[pulumi.InputType['BackendServiceIapArgs']] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input[pulumi.InputType['BackendServiceIapArrgs']] iap: Settings for enabling Cloud Identity Aware Proxy
                Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
                external load balancing. A backend service created for one type of
@@ -1411,7 +1411,7 @@ class BackendService(pulumi.CustomResource):
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
                Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArrgs']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
                localityLbPolicies is only supported when the BackendService is referenced
@@ -1420,7 +1420,7 @@ class BackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
-        :param pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
+        :param pulumi.Input[pulumi.InputType['BackendServiceLogConfigArrgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -1433,7 +1433,7 @@ class BackendService(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        :param pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArrgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the load_balancing_scheme is set
                to INTERNAL_SELF_MANAGED.
                Structure is documented below.
@@ -1449,7 +1449,7 @@ class BackendService(pulumi.CustomResource):
                with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
                Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
-        :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either
+        :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArrgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either
                a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
                load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.
@@ -1464,7 +1464,7 @@ class BackendService(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[BackendServiceArgs] = None,
+                 args: Optional[BackendServiceArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Backend Service defines a group of virtual machines that will serve
@@ -1491,8 +1491,8 @@ class BackendService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.BackendService("default",
-            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArrgs(
+                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArrgs(
                     include_host=True,
                     include_http_headers=["X-My-Header-Field"],
                     include_protocol=True,
@@ -1509,8 +1509,8 @@ class BackendService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.compute.BackendService("default",
-            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
-                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArrgs(
+                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArrgs(
                     include_host=True,
                     include_named_cookies=[
                         "__next_preview_data",
@@ -1547,7 +1547,7 @@ class BackendService(pulumi.CustomResource):
             connection_draining_timeout_sec=10,
             custom_request_headers=[proxy.fqdn.apply(lambda fqdn: f"host: {fqdn}")],
             custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
-            backends=[gcp.compute.BackendServiceBackendArgs(
+            backends=[gcp.compute.BackendServiceBackendArrgs(
                 group=external_proxy.id,
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -1570,12 +1570,12 @@ class BackendService(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param BackendServiceArgs args: The arguments to use to populate this resource's properties.
+        :param BackendServiceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BackendServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BackendServiceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1585,30 +1585,30 @@ class BackendService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-                 backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArgs']]]]] = None,
-                 cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
-                 circuit_breakers: Optional[pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArgs']]] = None,
+                 backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArrgs']]]]] = None,
+                 cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArrgs']]] = None,
+                 circuit_breakers: Optional[pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArrgs']]] = None,
                  compression_mode: Optional[pulumi.Input[str]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
-                 consistent_hash: Optional[pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']]] = None,
+                 consistent_hash: Optional[pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArrgs']]] = None,
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_security_policy: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
-                 iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIapArgs']]] = None,
+                 iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIapArrgs']]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]]] = None,
+                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArrgs']]]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
-                 log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
+                 log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 outlier_detection: Optional[pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArgs']]] = None,
+                 outlier_detection: Optional[pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArrgs']]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
-                 security_settings: Optional[pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']]] = None,
+                 security_settings: Optional[pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArrgs']]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1618,7 +1618,7 @@ class BackendService(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BackendServiceArgs.__new__(BackendServiceArgs)
+            __props__ = BackendServiceArrgs.__new__(BackendServiceArrgs)
 
             __props__.__dict__["affinity_cookie_ttl_sec"] = affinity_cookie_ttl_sec
             __props__.__dict__["backends"] = backends
@@ -1662,12 +1662,12 @@ class BackendService(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
-            backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArgs']]]]] = None,
-            cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
-            circuit_breakers: Optional[pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArgs']]] = None,
+            backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArrgs']]]]] = None,
+            cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArrgs']]] = None,
+            circuit_breakers: Optional[pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArrgs']]] = None,
             compression_mode: Optional[pulumi.Input[str]] = None,
             connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
-            consistent_hash: Optional[pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']]] = None,
+            consistent_hash: Optional[pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArrgs']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1677,18 +1677,18 @@ class BackendService(pulumi.CustomResource):
             fingerprint: Optional[pulumi.Input[str]] = None,
             generated_id: Optional[pulumi.Input[int]] = None,
             health_checks: Optional[pulumi.Input[str]] = None,
-            iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIapArgs']]] = None,
+            iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIapArrgs']]] = None,
             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
-            locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]]] = None,
+            locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArrgs']]]]] = None,
             locality_lb_policy: Optional[pulumi.Input[str]] = None,
-            log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
+            log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            outlier_detection: Optional[pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArgs']]] = None,
+            outlier_detection: Optional[pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArrgs']]] = None,
             port_name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             security_policy: Optional[pulumi.Input[str]] = None,
-            security_settings: Optional[pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']]] = None,
+            security_settings: Optional[pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArrgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             session_affinity: Optional[pulumi.Input[str]] = None,
             timeout_sec: Optional[pulumi.Input[int]] = None) -> 'BackendService':
@@ -1704,18 +1704,18 @@ class BackendService(pulumi.CustomResource):
                only until the end of the browser session (or equivalent). The
                maximum allowed value for TTL is one day.
                When the load balancing scheme is INTERNAL, this field is not used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArgs']]]] backends: The set of backends that serve this BackendService.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceBackendArrgs']]]] backends: The set of backends that serve this BackendService.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService.
+        :param pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArrgs']] cdn_policy: Cloud CDN configuration for this BackendService.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArgs']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
+        :param pulumi.Input[pulumi.InputType['BackendServiceCircuitBreakersArrgs']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
                Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
-        :param pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
+        :param pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArrgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
                affinity based on HTTP headers, cookies or other properties. This load balancing
                policy is applicable only for HTTP connections. The affinity to a particular
                destination host will be lost when one or more hosts are added/removed from the
@@ -1741,7 +1741,7 @@ class BackendService(pulumi.CustomResource):
                A health check must be specified unless the backend service uses an internet
                or serverless NEG as a backend.
                For internal load balancing, a URL to a HealthCheck resource must be specified instead.
-        :param pulumi.Input[pulumi.InputType['BackendServiceIapArgs']] iap: Settings for enabling Cloud Identity Aware Proxy
+        :param pulumi.Input[pulumi.InputType['BackendServiceIapArrgs']] iap: Settings for enabling Cloud Identity Aware Proxy
                Structure is documented below.
         :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
                external load balancing. A backend service created for one type of
@@ -1749,7 +1749,7 @@ class BackendService(pulumi.CustomResource):
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
                Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArrgs']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
                localityLbPolicies is only supported when the BackendService is referenced
@@ -1758,7 +1758,7 @@ class BackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
-        :param pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
+        :param pulumi.Input[pulumi.InputType['BackendServiceLogConfigArrgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
                If logging is enabled, logs will be exported to Stackdriver.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -1771,7 +1771,7 @@ class BackendService(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        :param pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArrgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the load_balancing_scheme is set
                to INTERNAL_SELF_MANAGED.
                Structure is documented below.
@@ -1787,7 +1787,7 @@ class BackendService(pulumi.CustomResource):
                with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
                Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
-        :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either
+        :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArrgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either
                a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
                load_balancing_scheme set to INTERNAL_MANAGED; or a global backend service with the
                load_balancing_scheme set to INTERNAL_SELF_MANAGED.

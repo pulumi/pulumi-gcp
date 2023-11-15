@@ -43,7 +43,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class DeliveryPipelineCondition(dict):
+calass DeliveryPipelineCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -93,7 +93,7 @@ class DeliveryPipelineCondition(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineConditionPipelineReadyCondition(dict):
+calass DeliveryPipelineConditionPipelineReadyCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -137,7 +137,7 @@ class DeliveryPipelineConditionPipelineReadyCondition(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineConditionTargetsPresentCondition(dict):
+calass DeliveryPipelineConditionTargetsPresentCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -191,7 +191,7 @@ class DeliveryPipelineConditionTargetsPresentCondition(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineConditionTargetsTypeCondition(dict):
+calass DeliveryPipelineConditionTargetsTypeCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -229,11 +229,11 @@ class DeliveryPipelineConditionTargetsTypeCondition(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipeline(dict):
+calass DeliveryPipelineSerialPipeline(dict):
     def __init__(__self__, *,
                  stages: Optional[Sequence['outputs.DeliveryPipelineSerialPipelineStage']] = None):
         """
-        :param Sequence['DeliveryPipelineSerialPipelineStageArgs'] stages: Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
+        :param Sequence['DeliveryPipelineSerialPipelineStageArrgs'] stages: Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
         """
         if stages is not None:
             pulumi.set(__self__, "stages", stages)
@@ -248,7 +248,7 @@ class DeliveryPipelineSerialPipeline(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStage(dict):
+calass DeliveryPipelineSerialPipelineStage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -274,9 +274,9 @@ class DeliveryPipelineSerialPipelineStage(dict):
                  strategy: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategy'] = None,
                  target_id: Optional[str] = None):
         """
-        :param Sequence['DeliveryPipelineSerialPipelineStageDeployParameterArgs'] deploy_parameters: Optional. The deploy parameters to use for the target in this stage.
+        :param Sequence['DeliveryPipelineSerialPipelineStageDeployParameterArrgs'] deploy_parameters: Optional. The deploy parameters to use for the target in this stage.
         :param Sequence[str] profiles: Skaffold profiles to use when rendering the manifest for this stage's `Target`.
-        :param 'DeliveryPipelineSerialPipelineStageStrategyArgs' strategy: Optional. The strategy to use for a `Rollout` to this stage.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyArrgs' strategy: Optional. The strategy to use for a `Rollout` to this stage.
         :param str target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         if deploy_parameters is not None:
@@ -322,7 +322,7 @@ class DeliveryPipelineSerialPipelineStage(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageDeployParameter(dict):
+calass DeliveryPipelineSerialPipelineStageDeployParameter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -369,13 +369,13 @@ class DeliveryPipelineSerialPipelineStageDeployParameter(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategy(dict):
+calass DeliveryPipelineSerialPipelineStageStrategy(dict):
     def __init__(__self__, *,
                  canary: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanary'] = None,
                  standard: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyStandard'] = None):
         """
-        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryArgs' canary: Canary deployment strategy provides progressive percentage based deployments to a Target.
-        :param 'DeliveryPipelineSerialPipelineStageStrategyStandardArgs' standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryArrgs' canary: Canary deployment strategy provides progressive percentage based deployments to a Target.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyStandardArrgs' standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
         """
         if canary is not None:
             pulumi.set(__self__, "canary", canary)
@@ -400,7 +400,7 @@ class DeliveryPipelineSerialPipelineStageStrategy(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanary(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanary(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -427,9 +427,9 @@ class DeliveryPipelineSerialPipelineStageStrategyCanary(dict):
                  custom_canary_deployment: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment'] = None,
                  runtime_config: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig'] = None):
         """
-        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs' canary_deployment: Configures the progressive based deployment for a Target.
-        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs' custom_canary_deployment: Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
-        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs' runtime_config: Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArrgs' canary_deployment: Configures the progressive based deployment for a Target.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArrgs' custom_canary_deployment: Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArrgs' runtime_config: Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
         """
         if canary_deployment is not None:
             pulumi.set(__self__, "canary_deployment", canary_deployment)
@@ -464,7 +464,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanary(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment(dict):
     def __init__(__self__, *,
                  percentages: Sequence[int],
                  postdeploy: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy'] = None,
@@ -472,8 +472,8 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment(dict):
                  verify: Optional[bool] = None):
         """
         :param Sequence[int] percentages: Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
-        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs' postdeploy: (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
-        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs' predeploy: (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArrgs' postdeploy: (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArrgs' predeploy: (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
         :param bool verify: Whether to run verify tests after each percentage deployment.
         """
         pulumi.set(__self__, "percentages", percentages)
@@ -518,7 +518,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy(dict):
     def __init__(__self__, *,
                  actions: Optional[Sequence[str]] = None):
         """
@@ -537,7 +537,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeplo
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy(dict):
     def __init__(__self__, *,
                  actions: Optional[Sequence[str]] = None):
         """
@@ -556,7 +556,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -577,7 +577,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment(di
     def __init__(__self__, *,
                  phase_configs: Sequence['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig']):
         """
-        :param Sequence['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs'] phase_configs: Required. Configuration for each phase in the canary deployment in the order executed.
+        :param Sequence['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrgs'] phase_configs: Required. Configuration for each phase in the canary deployment in the order executed.
         """
         pulumi.set(__self__, "phase_configs", phase_configs)
 
@@ -591,7 +591,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment(di
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -619,8 +619,8 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
         """
         :param int percentage: Required. Percentage deployment for the phase.
         :param str phase_id: Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
-        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs' postdeploy: (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
-        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs' predeploy: (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArrgs' postdeploy: (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArrgs' predeploy: (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
         :param Sequence[str] profiles: Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
         :param bool verify: Whether to run verify tests after the deployment.
                
@@ -689,7 +689,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy(dict):
     def __init__(__self__, *,
                  actions: Optional[Sequence[str]] = None):
         """
@@ -708,7 +708,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy(dict):
     def __init__(__self__, *,
                  actions: Optional[Sequence[str]] = None):
         """
@@ -727,7 +727,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -749,8 +749,8 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig(dict):
                  cloud_run: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun'] = None,
                  kubernetes: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes'] = None):
         """
-        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs' cloud_run: Cloud Run runtime configuration.
-        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs' kubernetes: Kubernetes runtime configuration.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArrgs' cloud_run: Cloud Run runtime configuration.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArrgs' kubernetes: Kubernetes runtime configuration.
         """
         if cloud_run is not None:
             pulumi.set(__self__, "cloud_run", cloud_run)
@@ -775,7 +775,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -811,7 +811,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun(dic
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -835,8 +835,8 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes(d
                  gateway_service_mesh: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh'] = None,
                  service_networking: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking'] = None):
         """
-        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs' gateway_service_mesh: Kubernetes Gateway API service mesh configuration.
-        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs' service_networking: Kubernetes Service networking configuration.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArrgs' gateway_service_mesh: Kubernetes Gateway API service mesh configuration.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArrgs' service_networking: Kubernetes Service networking configuration.
         """
         if gateway_service_mesh is not None:
             pulumi.set(__self__, "gateway_service_mesh", gateway_service_mesh)
@@ -861,7 +861,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes(d
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -932,7 +932,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -990,14 +990,14 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyStandard(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyStandard(dict):
     def __init__(__self__, *,
                  postdeploy: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy'] = None,
                  predeploy: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy'] = None,
                  verify: Optional[bool] = None):
         """
-        :param 'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs' postdeploy: (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
-        :param 'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs' predeploy: (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArrgs' postdeploy: (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArrgs' predeploy: (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
         :param bool verify: Whether to verify a deployment.
         """
         if postdeploy is not None:
@@ -1033,7 +1033,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandard(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy(dict):
     def __init__(__self__, *,
                  actions: Optional[Sequence[str]] = None):
         """
@@ -1052,7 +1052,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy(dict):
 
 
 @pulumi.output_type
-class DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy(dict):
+calass DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy(dict):
     def __init__(__self__, *,
                  actions: Optional[Sequence[str]] = None):
         """
@@ -1071,7 +1071,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy(dict):
 
 
 @pulumi.output_type
-class TargetAnthosCluster(dict):
+calass TargetAnthosCluster(dict):
     def __init__(__self__, *,
                  membership: Optional[str] = None):
         """
@@ -1090,7 +1090,7 @@ class TargetAnthosCluster(dict):
 
 
 @pulumi.output_type
-class TargetExecutionConfig(dict):
+calass TargetExecutionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1179,7 +1179,7 @@ class TargetExecutionConfig(dict):
 
 
 @pulumi.output_type
-class TargetGke(dict):
+calass TargetGke(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1227,7 +1227,7 @@ class TargetGke(dict):
 
 
 @pulumi.output_type
-class TargetMultiTarget(dict):
+calass TargetMultiTarget(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1262,7 +1262,7 @@ class TargetMultiTarget(dict):
 
 
 @pulumi.output_type
-class TargetRun(dict):
+calass TargetRun(dict):
     def __init__(__self__, *,
                  location: str):
         """

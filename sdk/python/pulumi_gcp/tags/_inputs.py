@@ -10,14 +10,14 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'TagKeyIamBindingConditionArgs',
-    'TagKeyIamMemberConditionArgs',
-    'TagValueIamBindingConditionArgs',
-    'TagValueIamMemberConditionArgs',
+    'TagKeyIamBindingConditionArrgs',
+    'TagKeyIamMemberConditionArrgs',
+    'TagValueIamBindingConditionArrgs',
+    'TagValueIamMemberConditionArrgs',
 ]
 
 @pulumi.input_type
-class TagKeyIamBindingConditionArgs:
+calass TagKeyIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -56,7 +56,7 @@ class TagKeyIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class TagKeyIamMemberConditionArgs:
+calass TagKeyIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -95,7 +95,7 @@ class TagKeyIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class TagValueIamBindingConditionArgs:
+calass TagValueIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -134,7 +134,7 @@ class TagValueIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class TagValueIamMemberConditionArgs:
+calass TagValueIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

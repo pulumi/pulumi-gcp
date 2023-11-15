@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -169,12 +168,6 @@ func (o LookupResourcesSearchAllResultOutput) ToLookupResourcesSearchAllResultOu
 
 func (o LookupResourcesSearchAllResultOutput) ToLookupResourcesSearchAllResultOutputWithContext(ctx context.Context) LookupResourcesSearchAllResultOutput {
 	return o
-}
-
-func (o LookupResourcesSearchAllResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResourcesSearchAllResult] {
-	return pulumix.Output[LookupResourcesSearchAllResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupResourcesSearchAllResultOutput) AssetTypes() pulumi.StringArrayOutput {

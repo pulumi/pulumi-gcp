@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetKeysResult:
+calass GetKeysResult:
     """
     A collection of values returned by getKeys.
     """
@@ -74,7 +74,7 @@ class GetKeysResult:
         return pulumi.get(self, "zone_signing_keys")
 
 
-class AwaitableGetKeysResult(GetKeysResult):
+calass AwaitableGetKeysResult(GetKeysResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -103,7 +103,7 @@ def get_keys(managed_zone: Optional[str] = None,
 
     foo = gcp.dns.ManagedZone("foo",
         dns_name="foo.bar.",
-        dnssec_config=gcp.dns.ManagedZoneDnssecConfigArgs(
+        dnssec_config=gcp.dns.ManagedZoneDnssecConfigArrgs(
             state="on",
             non_existence="nsec3",
         ))
@@ -146,7 +146,7 @@ def get_keys_output(managed_zone: Optional[pulumi.Input[str]] = None,
 
     foo = gcp.dns.ManagedZone("foo",
         dns_name="foo.bar.",
-        dnssec_config=gcp.dns.ManagedZoneDnssecConfigArgs(
+        dnssec_config=gcp.dns.ManagedZoneDnssecConfigArrgs(
             state="on",
             non_existence="nsec3",
         ))

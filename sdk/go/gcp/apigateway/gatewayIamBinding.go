@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for API Gateway Gateway. Each of these resources serves a different use case:
@@ -385,12 +384,6 @@ func (i *GatewayIamBinding) ToGatewayIamBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamBindingOutput)
 }
 
-func (i *GatewayIamBinding) ToOutput(ctx context.Context) pulumix.Output[*GatewayIamBinding] {
-	return pulumix.Output[*GatewayIamBinding]{
-		OutputState: i.ToGatewayIamBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GatewayIamBindingArrayInput is an input type that accepts GatewayIamBindingArray and GatewayIamBindingArrayOutput values.
 // You can construct a concrete instance of `GatewayIamBindingArrayInput` via:
 //
@@ -414,12 +407,6 @@ func (i GatewayIamBindingArray) ToGatewayIamBindingArrayOutput() GatewayIamBindi
 
 func (i GatewayIamBindingArray) ToGatewayIamBindingArrayOutputWithContext(ctx context.Context) GatewayIamBindingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamBindingArrayOutput)
-}
-
-func (i GatewayIamBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayIamBinding] {
-	return pulumix.Output[[]*GatewayIamBinding]{
-		OutputState: i.ToGatewayIamBindingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GatewayIamBindingMapInput is an input type that accepts GatewayIamBindingMap and GatewayIamBindingMapOutput values.
@@ -447,12 +434,6 @@ func (i GatewayIamBindingMap) ToGatewayIamBindingMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamBindingMapOutput)
 }
 
-func (i GatewayIamBindingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayIamBinding] {
-	return pulumix.Output[map[string]*GatewayIamBinding]{
-		OutputState: i.ToGatewayIamBindingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewayIamBindingOutput struct{ *pulumi.OutputState }
 
 func (GatewayIamBindingOutput) ElementType() reflect.Type {
@@ -465,12 +446,6 @@ func (o GatewayIamBindingOutput) ToGatewayIamBindingOutput() GatewayIamBindingOu
 
 func (o GatewayIamBindingOutput) ToGatewayIamBindingOutputWithContext(ctx context.Context) GatewayIamBindingOutput {
 	return o
-}
-
-func (o GatewayIamBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayIamBinding] {
-	return pulumix.Output[*GatewayIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayIamBindingOutput) Condition() GatewayIamBindingConditionPtrOutput {
@@ -537,12 +512,6 @@ func (o GatewayIamBindingArrayOutput) ToGatewayIamBindingArrayOutputWithContext(
 	return o
 }
 
-func (o GatewayIamBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GatewayIamBinding] {
-	return pulumix.Output[[]*GatewayIamBinding]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GatewayIamBindingArrayOutput) Index(i pulumi.IntInput) GatewayIamBindingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GatewayIamBinding {
 		return vs[0].([]*GatewayIamBinding)[vs[1].(int)]
@@ -561,12 +530,6 @@ func (o GatewayIamBindingMapOutput) ToGatewayIamBindingMapOutput() GatewayIamBin
 
 func (o GatewayIamBindingMapOutput) ToGatewayIamBindingMapOutputWithContext(ctx context.Context) GatewayIamBindingMapOutput {
 	return o
-}
-
-func (o GatewayIamBindingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GatewayIamBinding] {
-	return pulumix.Output[map[string]*GatewayIamBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayIamBindingMapOutput) MapIndex(k pulumi.StringInput) GatewayIamBindingOutput {

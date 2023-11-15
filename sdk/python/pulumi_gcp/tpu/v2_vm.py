@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['V2VmArgs', 'V2Vm']
+__all__ = ['V2VmArrgs', 'V2Vm']
 
 @pulumi.input_type
-class V2VmArgs:
+calass V2VmArrgs:
     def __init__(__self__, *,
                  runtime_version: pulumi.Input[str],
                  accelerator_type: Optional[pulumi.Input[str]] = None,
@@ -123,7 +123,7 @@ class V2VmArgs:
 
 
 @pulumi.input_type
-class _V2VmState:
+calass _V2VmState:
     def __init__(__self__, *,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -234,7 +234,7 @@ class _V2VmState:
         pulumi.set(self, "zone", value)
 
 
-class V2Vm(pulumi.CustomResource):
+calass V2Vm(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -313,7 +313,7 @@ class V2Vm(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: V2VmArgs,
+                 args: V2VmArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -366,12 +366,12 @@ class V2Vm(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param V2VmArgs args: The arguments to use to populate this resource's properties.
+        :param V2VmArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(V2VmArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(V2VmArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -393,7 +393,7 @@ class V2Vm(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = V2VmArgs.__new__(V2VmArgs)
+            __props__ = V2VmArrgs.__new__(V2VmArrgs)
 
             __props__.__dict__["accelerator_type"] = accelerator_type
             __props__.__dict__["description"] = description

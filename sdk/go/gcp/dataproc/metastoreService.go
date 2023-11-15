@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A managed metastore service that serves metadata queries.
@@ -657,12 +656,6 @@ func (i *MetastoreService) ToMetastoreServiceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceOutput)
 }
 
-func (i *MetastoreService) ToOutput(ctx context.Context) pulumix.Output[*MetastoreService] {
-	return pulumix.Output[*MetastoreService]{
-		OutputState: i.ToMetastoreServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetastoreServiceArrayInput is an input type that accepts MetastoreServiceArray and MetastoreServiceArrayOutput values.
 // You can construct a concrete instance of `MetastoreServiceArrayInput` via:
 //
@@ -686,12 +679,6 @@ func (i MetastoreServiceArray) ToMetastoreServiceArrayOutput() MetastoreServiceA
 
 func (i MetastoreServiceArray) ToMetastoreServiceArrayOutputWithContext(ctx context.Context) MetastoreServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceArrayOutput)
-}
-
-func (i MetastoreServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreService] {
-	return pulumix.Output[[]*MetastoreService]{
-		OutputState: i.ToMetastoreServiceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MetastoreServiceMapInput is an input type that accepts MetastoreServiceMap and MetastoreServiceMapOutput values.
@@ -719,12 +706,6 @@ func (i MetastoreServiceMap) ToMetastoreServiceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMapOutput)
 }
 
-func (i MetastoreServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreService] {
-	return pulumix.Output[map[string]*MetastoreService]{
-		OutputState: i.ToMetastoreServiceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceOutput) ElementType() reflect.Type {
@@ -737,12 +718,6 @@ func (o MetastoreServiceOutput) ToMetastoreServiceOutput() MetastoreServiceOutpu
 
 func (o MetastoreServiceOutput) ToMetastoreServiceOutputWithContext(ctx context.Context) MetastoreServiceOutput {
 	return o
-}
-
-func (o MetastoreServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreService] {
-	return pulumix.Output[*MetastoreService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
@@ -904,12 +879,6 @@ func (o MetastoreServiceArrayOutput) ToMetastoreServiceArrayOutputWithContext(ct
 	return o
 }
 
-func (o MetastoreServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreService] {
-	return pulumix.Output[[]*MetastoreService]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetastoreServiceArrayOutput) Index(i pulumi.IntInput) MetastoreServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetastoreService {
 		return vs[0].([]*MetastoreService)[vs[1].(int)]
@@ -928,12 +897,6 @@ func (o MetastoreServiceMapOutput) ToMetastoreServiceMapOutput() MetastoreServic
 
 func (o MetastoreServiceMapOutput) ToMetastoreServiceMapOutputWithContext(ctx context.Context) MetastoreServiceMapOutput {
 	return o
-}
-
-func (o MetastoreServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreService] {
-	return pulumix.Output[map[string]*MetastoreService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceMapOutput) MapIndex(k pulumi.StringInput) MetastoreServiceOutput {

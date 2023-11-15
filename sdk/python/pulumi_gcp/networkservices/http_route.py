@@ -11,13 +11,13 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['HttpRouteArgs', 'HttpRoute']
+__all__ = ['HttpRouteArrgs', 'HttpRoute']
 
 @pulumi.input_type
-class HttpRouteArgs:
+calass HttpRouteArrgs:
     def __init__(__self__, *,
                  hostnames: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 rules: pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]],
+                 rules: pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArrgs']]],
                  description: Optional[pulumi.Input[str]] = None,
                  gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -27,7 +27,7 @@ class HttpRouteArgs:
         """
         The set of arguments for constructing a HttpRoute resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Set of hosts that should match against the HTTP host header to select a HttpRoute to process the request.
-        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArrgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
@@ -71,7 +71,7 @@ class HttpRouteArgs:
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]]:
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArrgs']]]:
         """
         Rules that define how traffic is routed and handled.
         Structure is documented below.
@@ -79,7 +79,7 @@ class HttpRouteArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]]):
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArrgs']]]):
         pulumi.set(self, "rules", value)
 
     @property
@@ -162,7 +162,7 @@ class HttpRouteArgs:
 
 
 @pulumi.input_type
-class _HttpRouteState:
+calass _HttpRouteState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -174,7 +174,7 @@ class _HttpRouteState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArrgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -196,7 +196,7 @@ class _HttpRouteState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArrgs']]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] update_time: Time the HttpRoute was updated in UTC.
@@ -357,7 +357,7 @@ class _HttpRouteState:
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]]]:
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArrgs']]]]:
         """
         Rules that define how traffic is routed and handled.
         Structure is documented below.
@@ -365,7 +365,7 @@ class _HttpRouteState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]]]):
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArrgs']]]]):
         pulumi.set(self, "rules", value)
 
     @property
@@ -393,7 +393,7 @@ class _HttpRouteState:
         pulumi.set(self, "update_time", value)
 
 
-class HttpRoute(pulumi.CustomResource):
+calass HttpRoute(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -405,7 +405,7 @@ class HttpRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArrgs']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -421,9 +421,9 @@ class HttpRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
-                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+            rules=[gcp.networkservices.HttpRouteRuleArrgs(
+                matches=[gcp.networkservices.HttpRouteRuleMatchArrgs(
+                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArrgs(
                         query_parameter="key",
                         exact_match="value",
                     )],
@@ -444,41 +444,41 @@ class HttpRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
+            rules=[gcp.networkservices.HttpRouteRuleArrgs(
                 matches=[
-                    gcp.networkservices.HttpRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
+                    gcp.networkservices.HttpRouteRuleMatchArrgs(
+                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArrgs(
                             header="header",
                             invert_match=False,
                             regex_match="header-value",
                         )],
-                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArrgs(
                             query_parameter="key",
                             exact_match="value",
                         )],
                         prefix_match="example",
                         ignore_case=False,
                     ),
-                    gcp.networkservices.HttpRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
+                    gcp.networkservices.HttpRouteRuleMatchArrgs(
+                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArrgs(
                             header="header",
                             invert_match=False,
                             present_match=True,
                         )],
-                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArrgs(
                             query_parameter="key",
                             regex_match="value",
                         )],
                         regex_match="example",
                         ignore_case=False,
                     ),
-                    gcp.networkservices.HttpRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
+                    gcp.networkservices.HttpRouteRuleMatchArrgs(
+                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArrgs(
                             header="header",
                             invert_match=False,
                             present_match=True,
                         )],
-                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArrgs(
                             query_parameter="key",
                             present_match=True,
                         )],
@@ -486,8 +486,8 @@ class HttpRoute(pulumi.CustomResource):
                         ignore_case=False,
                     ),
                 ],
-                action=gcp.networkservices.HttpRouteRuleActionArgs(
-                    redirect=gcp.networkservices.HttpRouteRuleActionRedirectArgs(
+                action=gcp.networkservices.HttpRouteRuleActionArrgs(
+                    redirect=gcp.networkservices.HttpRouteRuleActionRedirectArrgs(
                         host_redirect="new-host",
                         path_redirect="new-path",
                         prefix_rewrite="new-prefix",
@@ -495,22 +495,22 @@ class HttpRoute(pulumi.CustomResource):
                         strip_query=True,
                         port_redirect=8081,
                     ),
-                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArgs(
+                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArrgs(
                         path_prefix_rewrite="new-prefix",
                         host_rewrite="new-host",
                     ),
-                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArgs(
+                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArrgs(
                         retry_conditions=["server_error"],
                         num_retries=1,
                         per_try_timeout="1s",
                     ),
-                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArgs(
-                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs(
+                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArrgs(
+                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArrgs(
                             service_name="new",
                             weight=1,
                         ),
                     ),
-                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArgs(
+                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArrgs(
                         allow_origins=["example"],
                         allow_methods=[
                             "GET",
@@ -544,34 +544,34 @@ class HttpRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                action=gcp.networkservices.HttpRouteRuleActionArgs(
-                    fault_injection_policy=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyArgs(
-                        delay=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyDelayArgs(
+            rules=[gcp.networkservices.HttpRouteRuleArrgs(
+                action=gcp.networkservices.HttpRouteRuleActionArrgs(
+                    fault_injection_policy=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyArrgs(
+                        delay=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyDelayArrgs(
                             fixed_delay="1s",
                             percentage=1,
                         ),
-                        abort=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyAbortArgs(
+                        abort=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyAbortArrgs(
                             http_status=500,
                             percentage=1,
                         ),
                     ),
-                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArgs(
+                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArrgs(
                         path_prefix_rewrite="new-prefix",
                         host_rewrite="new-host",
                     ),
-                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArgs(
+                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArrgs(
                         retry_conditions=["server_error"],
                         num_retries=1,
                         per_try_timeout="1s",
                     ),
-                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArgs(
-                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs(
+                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArrgs(
+                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArrgs(
                             service_name="new",
                             weight=1,
                         ),
                     ),
-                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArgs(
+                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArrgs(
                         allow_origins=["example"],
                         allow_methods=[
                             "GET",
@@ -589,7 +589,7 @@ class HttpRoute(pulumi.CustomResource):
                         allow_credentials=True,
                         disabled=False,
                     ),
-                    request_header_modifier=gcp.networkservices.HttpRouteRuleActionRequestHeaderModifierArgs(
+                    request_header_modifier=gcp.networkservices.HttpRouteRuleActionRequestHeaderModifierArrgs(
                         set={
                             "version": "1",
                             "type": "json",
@@ -599,7 +599,7 @@ class HttpRoute(pulumi.CustomResource):
                         },
                         removes=["arg"],
                     ),
-                    response_header_modifier=gcp.networkservices.HttpRouteRuleActionResponseHeaderModifierArgs(
+                    response_header_modifier=gcp.networkservices.HttpRouteRuleActionResponseHeaderModifierArrgs(
                         set={
                             "version": "1",
                             "type": "json",
@@ -632,9 +632,9 @@ class HttpRoute(pulumi.CustomResource):
             description="my description",
             hostnames=["example"],
             meshes=[default_mesh.id],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
-                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+            rules=[gcp.networkservices.HttpRouteRuleArrgs(
+                matches=[gcp.networkservices.HttpRouteRuleMatchArrgs(
+                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArrgs(
                         query_parameter="key",
                         exact_match="value",
                     )],
@@ -675,14 +675,14 @@ class HttpRoute(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the HttpRoute resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArrgs']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: HttpRouteArgs,
+                 args: HttpRouteArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -698,9 +698,9 @@ class HttpRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
-                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+            rules=[gcp.networkservices.HttpRouteRuleArrgs(
+                matches=[gcp.networkservices.HttpRouteRuleMatchArrgs(
+                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArrgs(
                         query_parameter="key",
                         exact_match="value",
                     )],
@@ -721,41 +721,41 @@ class HttpRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
+            rules=[gcp.networkservices.HttpRouteRuleArrgs(
                 matches=[
-                    gcp.networkservices.HttpRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
+                    gcp.networkservices.HttpRouteRuleMatchArrgs(
+                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArrgs(
                             header="header",
                             invert_match=False,
                             regex_match="header-value",
                         )],
-                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArrgs(
                             query_parameter="key",
                             exact_match="value",
                         )],
                         prefix_match="example",
                         ignore_case=False,
                     ),
-                    gcp.networkservices.HttpRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
+                    gcp.networkservices.HttpRouteRuleMatchArrgs(
+                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArrgs(
                             header="header",
                             invert_match=False,
                             present_match=True,
                         )],
-                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArrgs(
                             query_parameter="key",
                             regex_match="value",
                         )],
                         regex_match="example",
                         ignore_case=False,
                     ),
-                    gcp.networkservices.HttpRouteRuleMatchArgs(
-                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArgs(
+                    gcp.networkservices.HttpRouteRuleMatchArrgs(
+                        headers=[gcp.networkservices.HttpRouteRuleMatchHeaderArrgs(
                             header="header",
                             invert_match=False,
                             present_match=True,
                         )],
-                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+                        query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArrgs(
                             query_parameter="key",
                             present_match=True,
                         )],
@@ -763,8 +763,8 @@ class HttpRoute(pulumi.CustomResource):
                         ignore_case=False,
                     ),
                 ],
-                action=gcp.networkservices.HttpRouteRuleActionArgs(
-                    redirect=gcp.networkservices.HttpRouteRuleActionRedirectArgs(
+                action=gcp.networkservices.HttpRouteRuleActionArrgs(
+                    redirect=gcp.networkservices.HttpRouteRuleActionRedirectArrgs(
                         host_redirect="new-host",
                         path_redirect="new-path",
                         prefix_rewrite="new-prefix",
@@ -772,22 +772,22 @@ class HttpRoute(pulumi.CustomResource):
                         strip_query=True,
                         port_redirect=8081,
                     ),
-                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArgs(
+                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArrgs(
                         path_prefix_rewrite="new-prefix",
                         host_rewrite="new-host",
                     ),
-                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArgs(
+                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArrgs(
                         retry_conditions=["server_error"],
                         num_retries=1,
                         per_try_timeout="1s",
                     ),
-                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArgs(
-                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs(
+                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArrgs(
+                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArrgs(
                             service_name="new",
                             weight=1,
                         ),
                     ),
-                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArgs(
+                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArrgs(
                         allow_origins=["example"],
                         allow_methods=[
                             "GET",
@@ -821,34 +821,34 @@ class HttpRoute(pulumi.CustomResource):
             },
             description="my description",
             hostnames=["example"],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                action=gcp.networkservices.HttpRouteRuleActionArgs(
-                    fault_injection_policy=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyArgs(
-                        delay=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyDelayArgs(
+            rules=[gcp.networkservices.HttpRouteRuleArrgs(
+                action=gcp.networkservices.HttpRouteRuleActionArrgs(
+                    fault_injection_policy=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyArrgs(
+                        delay=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyDelayArrgs(
                             fixed_delay="1s",
                             percentage=1,
                         ),
-                        abort=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyAbortArgs(
+                        abort=gcp.networkservices.HttpRouteRuleActionFaultInjectionPolicyAbortArrgs(
                             http_status=500,
                             percentage=1,
                         ),
                     ),
-                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArgs(
+                    url_rewrite=gcp.networkservices.HttpRouteRuleActionUrlRewriteArrgs(
                         path_prefix_rewrite="new-prefix",
                         host_rewrite="new-host",
                     ),
-                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArgs(
+                    retry_policy=gcp.networkservices.HttpRouteRuleActionRetryPolicyArrgs(
                         retry_conditions=["server_error"],
                         num_retries=1,
                         per_try_timeout="1s",
                     ),
-                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArgs(
-                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArgs(
+                    request_mirror_policy=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyArrgs(
+                        destination=gcp.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestinationArrgs(
                             service_name="new",
                             weight=1,
                         ),
                     ),
-                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArgs(
+                    cors_policy=gcp.networkservices.HttpRouteRuleActionCorsPolicyArrgs(
                         allow_origins=["example"],
                         allow_methods=[
                             "GET",
@@ -866,7 +866,7 @@ class HttpRoute(pulumi.CustomResource):
                         allow_credentials=True,
                         disabled=False,
                     ),
-                    request_header_modifier=gcp.networkservices.HttpRouteRuleActionRequestHeaderModifierArgs(
+                    request_header_modifier=gcp.networkservices.HttpRouteRuleActionRequestHeaderModifierArrgs(
                         set={
                             "version": "1",
                             "type": "json",
@@ -876,7 +876,7 @@ class HttpRoute(pulumi.CustomResource):
                         },
                         removes=["arg"],
                     ),
-                    response_header_modifier=gcp.networkservices.HttpRouteRuleActionResponseHeaderModifierArgs(
+                    response_header_modifier=gcp.networkservices.HttpRouteRuleActionResponseHeaderModifierArrgs(
                         set={
                             "version": "1",
                             "type": "json",
@@ -909,9 +909,9 @@ class HttpRoute(pulumi.CustomResource):
             description="my description",
             hostnames=["example"],
             meshes=[default_mesh.id],
-            rules=[gcp.networkservices.HttpRouteRuleArgs(
-                matches=[gcp.networkservices.HttpRouteRuleMatchArgs(
-                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArgs(
+            rules=[gcp.networkservices.HttpRouteRuleArrgs(
+                matches=[gcp.networkservices.HttpRouteRuleMatchArrgs(
+                    query_parameters=[gcp.networkservices.HttpRouteRuleMatchQueryParameterArrgs(
                         query_parameter="key",
                         exact_match="value",
                     )],
@@ -938,12 +938,12 @@ class HttpRoute(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param HttpRouteArgs args: The arguments to use to populate this resource's properties.
+        :param HttpRouteArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(HttpRouteArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(HttpRouteArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -959,7 +959,7 @@ class HttpRoute(pulumi.CustomResource):
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -967,7 +967,7 @@ class HttpRoute(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = HttpRouteArgs.__new__(HttpRouteArgs)
+            __props__ = HttpRouteArrgs.__new__(HttpRouteArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["gateways"] = gateways
@@ -1008,7 +1008,7 @@ class HttpRoute(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArrgs']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'HttpRoute':
         """
@@ -1035,7 +1035,7 @@ class HttpRoute(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArgs']]]] rules: Rules that define how traffic is routed and handled.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HttpRouteRuleArrgs']]]] rules: Rules that define how traffic is routed and handled.
                Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] update_time: Time the HttpRoute was updated in UTC.

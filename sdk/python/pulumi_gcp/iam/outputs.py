@@ -30,7 +30,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AccessBoundaryPolicyRule(dict):
+calass AccessBoundaryPolicyRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -52,7 +52,7 @@ class AccessBoundaryPolicyRule(dict):
                  access_boundary_rule: Optional['outputs.AccessBoundaryPolicyRuleAccessBoundaryRule'] = None,
                  description: Optional[str] = None):
         """
-        :param 'AccessBoundaryPolicyRuleAccessBoundaryRuleArgs' access_boundary_rule: An access boundary rule in an IAM policy.
+        :param 'AccessBoundaryPolicyRuleAccessBoundaryRuleArrgs' access_boundary_rule: An access boundary rule in an IAM policy.
                Structure is documented below.
         :param str description: The description of the rule.
         """
@@ -80,7 +80,7 @@ class AccessBoundaryPolicyRule(dict):
 
 
 @pulumi.output_type
-class AccessBoundaryPolicyRuleAccessBoundaryRule(dict):
+calass AccessBoundaryPolicyRuleAccessBoundaryRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -107,7 +107,7 @@ class AccessBoundaryPolicyRuleAccessBoundaryRule(dict):
                  available_permissions: Optional[Sequence[str]] = None,
                  available_resource: Optional[str] = None):
         """
-        :param 'AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs' availability_condition: The availability condition further constrains the access allowed by the access boundary rule.
+        :param 'AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArrgs' availability_condition: The availability condition further constrains the access allowed by the access boundary rule.
                Structure is documented below.
         :param Sequence[str] available_permissions: A list of permissions that may be allowed for use on the specified resource.
         :param str available_resource: The full resource name of a Google Cloud resource entity.
@@ -146,7 +146,7 @@ class AccessBoundaryPolicyRuleAccessBoundaryRule(dict):
 
 
 @pulumi.output_type
-class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition(dict):
+calass AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  description: Optional[str] = None,
@@ -210,7 +210,7 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition(dict):
 
 
 @pulumi.output_type
-class DenyPolicyRule(dict):
+calass DenyPolicyRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -232,7 +232,7 @@ class DenyPolicyRule(dict):
                  deny_rule: Optional['outputs.DenyPolicyRuleDenyRule'] = None,
                  description: Optional[str] = None):
         """
-        :param 'DenyPolicyRuleDenyRuleArgs' deny_rule: A deny rule in an IAM deny policy.
+        :param 'DenyPolicyRuleDenyRuleArrgs' deny_rule: A deny rule in an IAM deny policy.
                Structure is documented below.
         :param str description: The description of the rule.
         """
@@ -260,7 +260,7 @@ class DenyPolicyRule(dict):
 
 
 @pulumi.output_type
-class DenyPolicyRuleDenyRule(dict):
+calass DenyPolicyRuleDenyRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -293,7 +293,7 @@ class DenyPolicyRuleDenyRule(dict):
                  exception_permissions: Optional[Sequence[str]] = None,
                  exception_principals: Optional[Sequence[str]] = None):
         """
-        :param 'DenyPolicyRuleDenyRuleDenialConditionArgs' denial_condition: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
+        :param 'DenyPolicyRuleDenyRuleDenialConditionArrgs' denial_condition: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
                Structure is documented below.
         :param Sequence[str] denied_permissions: The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
                where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
@@ -362,7 +362,7 @@ class DenyPolicyRuleDenyRule(dict):
 
 
 @pulumi.output_type
-class DenyPolicyRuleDenyRuleDenialCondition(dict):
+calass DenyPolicyRuleDenyRuleDenialCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  description: Optional[str] = None,
@@ -426,7 +426,7 @@ class DenyPolicyRuleDenyRuleDenialCondition(dict):
 
 
 @pulumi.output_type
-class WorkforcePoolProviderOidc(dict):
+calass WorkforcePoolProviderOidc(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -461,9 +461,9 @@ class WorkforcePoolProviderOidc(dict):
         """
         :param str client_id: The client ID. Must match the audience claim of the JWT issued by the identity provider.
         :param str issuer_uri: The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
-        :param 'WorkforcePoolProviderOidcClientSecretArgs' client_secret: The optional client secret. Required to enable Authorization Code flow for web sign-in.
+        :param 'WorkforcePoolProviderOidcClientSecretArrgs' client_secret: The optional client secret. Required to enable Authorization Code flow for web sign-in.
                Structure is documented below.
-        :param 'WorkforcePoolProviderOidcWebSsoConfigArgs' web_sso_config: Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+        :param 'WorkforcePoolProviderOidcWebSsoConfigArrgs' web_sso_config: Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
                Structure is documented below.
         """
         pulumi.set(__self__, "client_id", client_id)
@@ -516,11 +516,11 @@ class WorkforcePoolProviderOidc(dict):
 
 
 @pulumi.output_type
-class WorkforcePoolProviderOidcClientSecret(dict):
+calass WorkforcePoolProviderOidcClientSecret(dict):
     def __init__(__self__, *,
                  value: Optional['outputs.WorkforcePoolProviderOidcClientSecretValue'] = None):
         """
-        :param 'WorkforcePoolProviderOidcClientSecretValueArgs' value: The value of the client secret.
+        :param 'WorkforcePoolProviderOidcClientSecretValueArrgs' value: The value of the client secret.
                Structure is documented below.
         """
         if value is not None:
@@ -537,7 +537,7 @@ class WorkforcePoolProviderOidcClientSecret(dict):
 
 
 @pulumi.output_type
-class WorkforcePoolProviderOidcClientSecretValue(dict):
+calass WorkforcePoolProviderOidcClientSecretValue(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -588,7 +588,7 @@ class WorkforcePoolProviderOidcClientSecretValue(dict):
 
 
 @pulumi.output_type
-class WorkforcePoolProviderOidcWebSsoConfig(dict):
+calass WorkforcePoolProviderOidcWebSsoConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -666,7 +666,7 @@ class WorkforcePoolProviderOidcWebSsoConfig(dict):
 
 
 @pulumi.output_type
-class WorkforcePoolProviderSaml(dict):
+calass WorkforcePoolProviderSaml(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -725,7 +725,7 @@ class WorkforcePoolProviderSaml(dict):
 
 
 @pulumi.output_type
-class WorkloadIdentityPoolProviderAws(dict):
+calass WorkloadIdentityPoolProviderAws(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -760,7 +760,7 @@ class WorkloadIdentityPoolProviderAws(dict):
 
 
 @pulumi.output_type
-class WorkloadIdentityPoolProviderOidc(dict):
+calass WorkloadIdentityPoolProviderOidc(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -857,7 +857,7 @@ class WorkloadIdentityPoolProviderOidc(dict):
 
 
 @pulumi.output_type
-class GetTestablePermissionsPermissionResult(dict):
+calass GetTestablePermissionsPermissionResult(dict):
     def __init__(__self__, *,
                  api_disabled: bool,
                  custom_support_level: str,
@@ -919,7 +919,7 @@ class GetTestablePermissionsPermissionResult(dict):
 
 
 @pulumi.output_type
-class GetWorkloadIdentityPoolProviderAwResult(dict):
+calass GetWorkloadIdentityPoolProviderAwResult(dict):
     def __init__(__self__, *,
                  account_id: str):
         pulumi.set(__self__, "account_id", account_id)
@@ -931,7 +931,7 @@ class GetWorkloadIdentityPoolProviderAwResult(dict):
 
 
 @pulumi.output_type
-class GetWorkloadIdentityPoolProviderOidcResult(dict):
+calass GetWorkloadIdentityPoolProviderOidcResult(dict):
     def __init__(__self__, *,
                  allowed_audiences: Sequence[str],
                  issuer_uri: str,

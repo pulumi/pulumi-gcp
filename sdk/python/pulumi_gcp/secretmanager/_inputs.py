@@ -10,20 +10,20 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'SecretIamBindingConditionArgs',
-    'SecretIamMemberConditionArgs',
-    'SecretReplicationArgs',
-    'SecretReplicationAutoArgs',
-    'SecretReplicationAutoCustomerManagedEncryptionArgs',
-    'SecretReplicationUserManagedArgs',
-    'SecretReplicationUserManagedReplicaArgs',
-    'SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs',
-    'SecretRotationArgs',
-    'SecretTopicArgs',
+    'SecretIamBindingConditionArrgs',
+    'SecretIamMemberConditionArrgs',
+    'SecretReplicationArrgs',
+    'SecretReplicationAutoArrgs',
+    'SecretReplicationAutoCustomerManagedEncryptionArrgs',
+    'SecretReplicationUserManagedArrgs',
+    'SecretReplicationUserManagedReplicaArrgs',
+    'SecretReplicationUserManagedReplicaCustomerManagedEncryptionArrgs',
+    'SecretRotationArrgs',
+    'SecretTopicArrgs',
 ]
 
 @pulumi.input_type
-class SecretIamBindingConditionArgs:
+calass SecretIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -62,7 +62,7 @@ class SecretIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class SecretIamMemberConditionArgs:
+calass SecretIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -101,14 +101,14 @@ class SecretIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class SecretReplicationArgs:
+calass SecretReplicationArrgs:
     def __init__(__self__, *,
-                 auto: Optional[pulumi.Input['SecretReplicationAutoArgs']] = None,
-                 user_managed: Optional[pulumi.Input['SecretReplicationUserManagedArgs']] = None):
+                 auto: Optional[pulumi.Input['SecretReplicationAutoArrgs']] = None,
+                 user_managed: Optional[pulumi.Input['SecretReplicationUserManagedArrgs']] = None):
         """
-        :param pulumi.Input['SecretReplicationAutoArgs'] auto: The Secret will automatically be replicated without any restrictions.
+        :param pulumi.Input['SecretReplicationAutoArrgs'] auto: The Secret will automatically be replicated without any restrictions.
                Structure is documented below.
-        :param pulumi.Input['SecretReplicationUserManagedArgs'] user_managed: The Secret will be replicated to the regions specified by the user.
+        :param pulumi.Input['SecretReplicationUserManagedArrgs'] user_managed: The Secret will be replicated to the regions specified by the user.
                Structure is documented below.
         """
         if auto is not None:
@@ -118,7 +118,7 @@ class SecretReplicationArgs:
 
     @property
     @pulumi.getter
-    def auto(self) -> Optional[pulumi.Input['SecretReplicationAutoArgs']]:
+    def auto(self) -> Optional[pulumi.Input['SecretReplicationAutoArrgs']]:
         """
         The Secret will automatically be replicated without any restrictions.
         Structure is documented below.
@@ -126,12 +126,12 @@ class SecretReplicationArgs:
         return pulumi.get(self, "auto")
 
     @auto.setter
-    def auto(self, value: Optional[pulumi.Input['SecretReplicationAutoArgs']]):
+    def auto(self, value: Optional[pulumi.Input['SecretReplicationAutoArrgs']]):
         pulumi.set(self, "auto", value)
 
     @property
     @pulumi.getter(name="userManaged")
-    def user_managed(self) -> Optional[pulumi.Input['SecretReplicationUserManagedArgs']]:
+    def user_managed(self) -> Optional[pulumi.Input['SecretReplicationUserManagedArrgs']]:
         """
         The Secret will be replicated to the regions specified by the user.
         Structure is documented below.
@@ -139,16 +139,16 @@ class SecretReplicationArgs:
         return pulumi.get(self, "user_managed")
 
     @user_managed.setter
-    def user_managed(self, value: Optional[pulumi.Input['SecretReplicationUserManagedArgs']]):
+    def user_managed(self, value: Optional[pulumi.Input['SecretReplicationUserManagedArrgs']]):
         pulumi.set(self, "user_managed", value)
 
 
 @pulumi.input_type
-class SecretReplicationAutoArgs:
+calass SecretReplicationAutoArrgs:
     def __init__(__self__, *,
-                 customer_managed_encryption: Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs']] = None):
+                 customer_managed_encryption: Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArrgs']] = None):
         """
-        :param pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs'] customer_managed_encryption: The customer-managed encryption configuration of the Secret.
+        :param pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArrgs'] customer_managed_encryption: The customer-managed encryption configuration of the Secret.
                If no configuration is provided, Google-managed default
                encryption is used.
                Structure is documented below.
@@ -158,7 +158,7 @@ class SecretReplicationAutoArgs:
 
     @property
     @pulumi.getter(name="customerManagedEncryption")
-    def customer_managed_encryption(self) -> Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs']]:
+    def customer_managed_encryption(self) -> Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArrgs']]:
         """
         The customer-managed encryption configuration of the Secret.
         If no configuration is provided, Google-managed default
@@ -168,12 +168,12 @@ class SecretReplicationAutoArgs:
         return pulumi.get(self, "customer_managed_encryption")
 
     @customer_managed_encryption.setter
-    def customer_managed_encryption(self, value: Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs']]):
+    def customer_managed_encryption(self, value: Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArrgs']]):
         pulumi.set(self, "customer_managed_encryption", value)
 
 
 @pulumi.input_type
-class SecretReplicationAutoCustomerManagedEncryptionArgs:
+calass SecretReplicationAutoCustomerManagedEncryptionArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str]):
         """
@@ -199,18 +199,18 @@ class SecretReplicationAutoCustomerManagedEncryptionArgs:
 
 
 @pulumi.input_type
-class SecretReplicationUserManagedArgs:
+calass SecretReplicationUserManagedArrgs:
     def __init__(__self__, *,
-                 replicas: pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]]):
+                 replicas: pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]] replicas: The list of Replicas for this Secret. Cannot be empty.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArrgs']]] replicas: The list of Replicas for this Secret. Cannot be empty.
                Structure is documented below.
         """
         pulumi.set(__self__, "replicas", replicas)
 
     @property
     @pulumi.getter
-    def replicas(self) -> pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]]:
+    def replicas(self) -> pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArrgs']]]:
         """
         The list of Replicas for this Secret. Cannot be empty.
         Structure is documented below.
@@ -218,18 +218,18 @@ class SecretReplicationUserManagedArgs:
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArgs']]]):
+    def replicas(self, value: pulumi.Input[Sequence[pulumi.Input['SecretReplicationUserManagedReplicaArrgs']]]):
         pulumi.set(self, "replicas", value)
 
 
 @pulumi.input_type
-class SecretReplicationUserManagedReplicaArgs:
+calass SecretReplicationUserManagedReplicaArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 customer_managed_encryption: Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']] = None):
+                 customer_managed_encryption: Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArrgs']] = None):
         """
         :param pulumi.Input[str] location: The canonical IDs of the location to replicate data. For example: "us-east1".
-        :param pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs'] customer_managed_encryption: Customer Managed Encryption for the secret.
+        :param pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArrgs'] customer_managed_encryption: Customer Managed Encryption for the secret.
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
@@ -250,7 +250,7 @@ class SecretReplicationUserManagedReplicaArgs:
 
     @property
     @pulumi.getter(name="customerManagedEncryption")
-    def customer_managed_encryption(self) -> Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']]:
+    def customer_managed_encryption(self) -> Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArrgs']]:
         """
         Customer Managed Encryption for the secret.
         Structure is documented below.
@@ -258,12 +258,12 @@ class SecretReplicationUserManagedReplicaArgs:
         return pulumi.get(self, "customer_managed_encryption")
 
     @customer_managed_encryption.setter
-    def customer_managed_encryption(self, value: Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']]):
+    def customer_managed_encryption(self, value: Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArrgs']]):
         pulumi.set(self, "customer_managed_encryption", value)
 
 
 @pulumi.input_type
-class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
+calass SecretReplicationUserManagedReplicaCustomerManagedEncryptionArrgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[str]):
         """
@@ -289,7 +289,7 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
 
 
 @pulumi.input_type
-class SecretRotationArgs:
+calass SecretRotationArrgs:
     def __init__(__self__, *,
                  next_rotation_time: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None):
@@ -332,7 +332,7 @@ class SecretRotationArgs:
 
 
 @pulumi.input_type
-class SecretTopicArgs:
+calass SecretTopicArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """

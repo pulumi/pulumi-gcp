@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['RegionTargetHttpsProxyArgs', 'RegionTargetHttpsProxy']
+__all__ = ['RegionTargetHttpsProxyArrgs', 'RegionTargetHttpsProxy']
 
 @pulumi.input_type
-class RegionTargetHttpsProxyArgs:
+calass RegionTargetHttpsProxyArrgs:
     def __init__(__self__, *,
                  ssl_certificates: pulumi.Input[Sequence[pulumi.Input[str]]],
                  url_map: pulumi.Input[str],
@@ -162,7 +162,7 @@ class RegionTargetHttpsProxyArgs:
 
 
 @pulumi.input_type
-class _RegionTargetHttpsProxyState:
+calass _RegionTargetHttpsProxyState:
     def __init__(__self__, *,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -361,7 +361,7 @@ class _RegionTargetHttpsProxyState:
         pulumi.set(self, "url_map", value)
 
 
-class RegionTargetHttpsProxy(pulumi.CustomResource):
+calass RegionTargetHttpsProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -436,7 +436,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionTargetHttpsProxyArgs,
+                 args: RegionTargetHttpsProxyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents a RegionTargetHttpsProxy resource, which is used by one or more
@@ -471,12 +471,12 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RegionTargetHttpsProxyArgs args: The arguments to use to populate this resource's properties.
+        :param RegionTargetHttpsProxyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionTargetHttpsProxyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegionTargetHttpsProxyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -499,7 +499,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionTargetHttpsProxyArgs.__new__(RegionTargetHttpsProxyArgs)
+            __props__ = RegionTargetHttpsProxyArrgs.__new__(RegionTargetHttpsProxyArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name

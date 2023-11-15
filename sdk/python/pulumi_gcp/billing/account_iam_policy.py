@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AccountIamPolicyArgs', 'AccountIamPolicy']
+__all__ = ['AccountIamPolicyArrgs', 'AccountIamPolicy']
 
 @pulumi.input_type
-class AccountIamPolicyArgs:
+calass AccountIamPolicyArrgs:
     def __init__(__self__, *,
                  billing_account_id: pulumi.Input[str],
                  policy_data: pulumi.Input[str]):
@@ -72,7 +72,7 @@ class AccountIamPolicyArgs:
 
 
 @pulumi.input_type
-class _AccountIamPolicyState:
+calass _AccountIamPolicyState:
     def __init__(__self__, *,
                  billing_account_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -149,7 +149,7 @@ class _AccountIamPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
-class AccountIamPolicy(pulumi.CustomResource):
+calass AccountIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -174,7 +174,7 @@ class AccountIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/billing.viewer",
             members=["user:jane@example.com"],
         )])
@@ -247,7 +247,7 @@ class AccountIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccountIamPolicyArgs,
+                 args: AccountIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage IAM policies on billing accounts. Each of these resources serves a different use case:
@@ -266,7 +266,7 @@ class AccountIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/billing.viewer",
             members=["user:jane@example.com"],
         )])
@@ -320,12 +320,12 @@ class AccountIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `organizations/my-org-id/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param AccountIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param AccountIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AccountIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AccountIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -343,7 +343,7 @@ class AccountIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AccountIamPolicyArgs.__new__(AccountIamPolicyArgs)
+            __props__ = AccountIamPolicyArrgs.__new__(AccountIamPolicyArrgs)
 
             if billing_account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account_id'")

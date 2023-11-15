@@ -11,15 +11,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SubscriptionIAMBindingArgs', 'SubscriptionIAMBinding']
+__all__ = ['SubscriptionIAMBindingArrgs', 'SubscriptionIAMBinding']
 
 @pulumi.input_type
-class SubscriptionIAMBindingArgs:
+calass SubscriptionIAMBindingArrgs:
     def __init__(__self__, *,
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
                  subscription: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['SubscriptionIAMBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['SubscriptionIAMBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SubscriptionIAMBinding resource.
@@ -93,11 +93,11 @@ class SubscriptionIAMBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SubscriptionIAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SubscriptionIAMBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SubscriptionIAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SubscriptionIAMBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -115,9 +115,9 @@ class SubscriptionIAMBindingArgs:
 
 
 @pulumi.input_type
-class _SubscriptionIAMBindingState:
+calass _SubscriptionIAMBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['SubscriptionIAMBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['SubscriptionIAMBindingConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -157,11 +157,11 @@ class _SubscriptionIAMBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SubscriptionIAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SubscriptionIAMBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SubscriptionIAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SubscriptionIAMBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -234,12 +234,12 @@ class _SubscriptionIAMBindingState:
         pulumi.set(self, "subscription", value)
 
 
-class SubscriptionIAMBinding(pulumi.CustomResource):
+calass SubscriptionIAMBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -262,7 +262,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -337,7 +337,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SubscriptionIAMBindingArgs,
+                 args: SubscriptionIAMBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
@@ -356,7 +356,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -410,12 +410,12 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param SubscriptionIAMBindingArgs args: The arguments to use to populate this resource's properties.
+        :param SubscriptionIAMBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SubscriptionIAMBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SubscriptionIAMBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -424,7 +424,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMBindingConditionArrgs']]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -436,7 +436,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SubscriptionIAMBindingArgs.__new__(SubscriptionIAMBindingArgs)
+            __props__ = SubscriptionIAMBindingArrgs.__new__(SubscriptionIAMBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if members is None and not opts.urn:
@@ -460,7 +460,7 @@ class SubscriptionIAMBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMBindingConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,

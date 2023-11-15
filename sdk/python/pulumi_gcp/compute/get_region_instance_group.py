@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetRegionInstanceGroupResult:
+calass GetRegionInstanceGroupResult:
     """
     A collection of values returned by getRegionInstanceGroup.
     """
@@ -93,7 +93,7 @@ class GetRegionInstanceGroupResult:
         return pulumi.get(self, "size")
 
 
-class AwaitableGetRegionInstanceGroupResult(GetRegionInstanceGroupResult):
+calass AwaitableGetRegionInstanceGroupResult(GetRegionInstanceGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

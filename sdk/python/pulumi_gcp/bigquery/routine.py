@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RoutineArgs', 'Routine']
+__all__ = ['RoutineArrgs', 'Routine']
 
 @pulumi.input_type
-class RoutineArgs:
+calass RoutineArrgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  definition_body: pulumi.Input[str],
                  routine_id: pulumi.Input[str],
                  routine_type: pulumi.Input[str],
-                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]] = None,
+                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArrgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  determinism_level: Optional[pulumi.Input[str]] = None,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -39,7 +39,7 @@ class RoutineArgs:
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
                Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
-        :param pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]] arguments: Input/output argument of a function or a stored procedure.
+        :param pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArrgs']]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the routine if defined.
         :param pulumi.Input[str] determinism_level: The determinism level of the JavaScript UDF if defined.
@@ -140,7 +140,7 @@ class RoutineArgs:
 
     @property
     @pulumi.getter
-    def arguments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]]:
+    def arguments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArrgs']]]]:
         """
         Input/output argument of a function or a stored procedure.
         Structure is documented below.
@@ -148,7 +148,7 @@ class RoutineArgs:
         return pulumi.get(self, "arguments")
 
     @arguments.setter
-    def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]]):
+    def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArrgs']]]]):
         pulumi.set(self, "arguments", value)
 
     @property
@@ -252,9 +252,9 @@ class RoutineArgs:
 
 
 @pulumi.input_type
-class _RoutineState:
+calass _RoutineState:
     def __init__(__self__, *,
-                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]] = None,
+                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArrgs']]]] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
@@ -270,7 +270,7 @@ class _RoutineState:
                  routine_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Routine resources.
-        :param pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]] arguments: Input/output argument of a function or a stored procedure.
+        :param pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArrgs']]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
         :param pulumi.Input[int] creation_time: The time when this routine was created, in milliseconds since the
                epoch.
@@ -339,7 +339,7 @@ class _RoutineState:
 
     @property
     @pulumi.getter
-    def arguments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]]:
+    def arguments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArrgs']]]]:
         """
         Input/output argument of a function or a stored procedure.
         Structure is documented below.
@@ -347,7 +347,7 @@ class _RoutineState:
         return pulumi.get(self, "arguments")
 
     @arguments.setter
-    def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]]]):
+    def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArrgs']]]]):
         pulumi.set(self, "arguments", value)
 
     @property
@@ -529,12 +529,12 @@ class _RoutineState:
         pulumi.set(self, "routine_type", value)
 
 
-class Routine(pulumi.CustomResource):
+calass Routine(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]]] = None,
+                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArrgs']]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -585,11 +585,11 @@ class Routine(pulumi.CustomResource):
             language="JAVASCRIPT",
             definition_body="CREATE FUNCTION multiplyInputs return x*y;",
             arguments=[
-                gcp.bigquery.RoutineArgumentArgs(
+                gcp.bigquery.RoutineArgumentArrgs(
                     name="x",
                     data_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
                 ),
-                gcp.bigquery.RoutineArgumentArgs(
+                gcp.bigquery.RoutineArgumentArrgs(
                     name="y",
                     data_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
                 ),
@@ -610,7 +610,7 @@ class Routine(pulumi.CustomResource):
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
             definition_body="SELECT 1 + value AS value\\n",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
+            arguments=[gcp.bigquery.RoutineArgumentArrgs(
                 name="value",
                 argument_kind="FIXED_TYPE",
                 data_type=json.dumps({
@@ -645,7 +645,7 @@ class Routine(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]] arguments: Input/output argument of a function or a stored procedure.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArrgs']]]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
@@ -683,7 +683,7 @@ class Routine(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RoutineArgs,
+                 args: RoutineArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A user-defined function or a stored procedure that belongs to a Dataset
@@ -723,11 +723,11 @@ class Routine(pulumi.CustomResource):
             language="JAVASCRIPT",
             definition_body="CREATE FUNCTION multiplyInputs return x*y;",
             arguments=[
-                gcp.bigquery.RoutineArgumentArgs(
+                gcp.bigquery.RoutineArgumentArrgs(
                     name="x",
                     data_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
                 ),
-                gcp.bigquery.RoutineArgumentArgs(
+                gcp.bigquery.RoutineArgumentArrgs(
                     name="y",
                     data_type="{\\"typeKind\\" :  \\"FLOAT64\\"}",
                 ),
@@ -748,7 +748,7 @@ class Routine(pulumi.CustomResource):
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
             definition_body="SELECT 1 + value AS value\\n",
-            arguments=[gcp.bigquery.RoutineArgumentArgs(
+            arguments=[gcp.bigquery.RoutineArgumentArrgs(
                 name="value",
                 argument_kind="FIXED_TYPE",
                 data_type=json.dumps({
@@ -782,12 +782,12 @@ class Routine(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RoutineArgs args: The arguments to use to populate this resource's properties.
+        :param RoutineArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RoutineArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RoutineArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -796,7 +796,7 @@ class Routine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]]] = None,
+                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArrgs']]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  definition_body: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -815,7 +815,7 @@ class Routine(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RoutineArgs.__new__(RoutineArgs)
+            __props__ = RoutineArrgs.__new__(RoutineArrgs)
 
             __props__.__dict__["arguments"] = arguments
             if dataset_id is None and not opts.urn:
@@ -849,7 +849,7 @@ class Routine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]]] = None,
+            arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArrgs']]]]] = None,
             creation_time: Optional[pulumi.Input[int]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
             definition_body: Optional[pulumi.Input[str]] = None,
@@ -870,7 +870,7 @@ class Routine(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]] arguments: Input/output argument of a function or a stored procedure.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArrgs']]]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
         :param pulumi.Input[int] creation_time: The time when this routine was created, in milliseconds since the
                epoch.

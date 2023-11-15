@@ -14,7 +14,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class Batching(dict):
+calass Batching(dict):
     def __init__(__self__, *,
                  enable_batching: Optional[bool] = None,
                  send_after: Optional[str] = None):

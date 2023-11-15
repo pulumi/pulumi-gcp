@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['NetworkPeeringArgs', 'NetworkPeering']
+__all__ = ['NetworkPeeringArrgs', 'NetworkPeering']
 
 @pulumi.input_type
-class NetworkPeeringArgs:
+calass NetworkPeeringArrgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
                  peer_network: pulumi.Input[str],
@@ -148,7 +148,7 @@ class NetworkPeeringArgs:
 
 
 @pulumi.input_type
-class _NetworkPeeringState:
+calass _NetworkPeeringState:
     def __init__(__self__, *,
                  export_custom_routes: Optional[pulumi.Input[bool]] = None,
                  export_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
@@ -319,7 +319,7 @@ class _NetworkPeeringState:
         pulumi.set(self, "state_details", value)
 
 
-class NetworkPeering(pulumi.CustomResource):
+calass NetworkPeering(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -384,7 +384,7 @@ class NetworkPeering(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NetworkPeeringArgs,
+                 args: NetworkPeeringArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a network peering within GCE. For more information see
@@ -422,12 +422,12 @@ class NetworkPeering(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param NetworkPeeringArgs args: The arguments to use to populate this resource's properties.
+        :param NetworkPeeringArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NetworkPeeringArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NetworkPeeringArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -451,7 +451,7 @@ class NetworkPeering(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NetworkPeeringArgs.__new__(NetworkPeeringArgs)
+            __props__ = NetworkPeeringArrgs.__new__(NetworkPeeringArrgs)
 
             __props__.__dict__["export_custom_routes"] = export_custom_routes
             __props__.__dict__["export_subnet_routes_with_public_ip"] = export_subnet_routes_with_public_ip

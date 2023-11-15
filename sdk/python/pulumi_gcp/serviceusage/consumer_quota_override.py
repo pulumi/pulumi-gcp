@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ConsumerQuotaOverrideArgs', 'ConsumerQuotaOverride']
+__all__ = ['ConsumerQuotaOverrideArrgs', 'ConsumerQuotaOverride']
 
 @pulumi.input_type
-class ConsumerQuotaOverrideArgs:
+calass ConsumerQuotaOverrideArrgs:
     def __init__(__self__, *,
                  limit: pulumi.Input[str],
                  metric: pulumi.Input[str],
@@ -142,7 +142,7 @@ class ConsumerQuotaOverrideArgs:
 
 
 @pulumi.input_type
-class _ConsumerQuotaOverrideState:
+calass _ConsumerQuotaOverrideState:
     def __init__(__self__, *,
                  dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -291,7 +291,7 @@ class _ConsumerQuotaOverrideState:
         pulumi.set(self, "service", value)
 
 
-class ConsumerQuotaOverride(pulumi.CustomResource):
+calass ConsumerQuotaOverride(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -354,7 +354,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConsumerQuotaOverrideArgs,
+                 args: ConsumerQuotaOverrideArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A consumer override is applied to the consumer on its own authority to limit its own quota usage.
@@ -386,12 +386,12 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ConsumerQuotaOverrideArgs args: The arguments to use to populate this resource's properties.
+        :param ConsumerQuotaOverrideArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConsumerQuotaOverrideArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConsumerQuotaOverrideArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -414,7 +414,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConsumerQuotaOverrideArgs.__new__(ConsumerQuotaOverrideArgs)
+            __props__ = ConsumerQuotaOverrideArrgs.__new__(ConsumerQuotaOverrideArrgs)
 
             __props__.__dict__["dimensions"] = dimensions
             __props__.__dict__["force"] = force

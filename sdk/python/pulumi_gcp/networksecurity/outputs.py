@@ -31,15 +31,15 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AuthorizationPolicyRule(dict):
+calass AuthorizationPolicyRule(dict):
     def __init__(__self__, *,
                  destinations: Optional[Sequence['outputs.AuthorizationPolicyRuleDestination']] = None,
                  sources: Optional[Sequence['outputs.AuthorizationPolicyRuleSource']] = None):
         """
-        :param Sequence['AuthorizationPolicyRuleDestinationArgs'] destinations: List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
+        :param Sequence['AuthorizationPolicyRuleDestinationArrgs'] destinations: List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
                If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
                Structure is documented below.
-        :param Sequence['AuthorizationPolicyRuleSourceArgs'] sources: List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
+        :param Sequence['AuthorizationPolicyRuleSourceArrgs'] sources: List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
                If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
                Structure is documented below.
         """
@@ -70,7 +70,7 @@ class AuthorizationPolicyRule(dict):
 
 
 @pulumi.output_type
-class AuthorizationPolicyRuleDestination(dict):
+calass AuthorizationPolicyRuleDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -97,7 +97,7 @@ class AuthorizationPolicyRuleDestination(dict):
         :param Sequence[str] hosts: List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
         :param Sequence[str] methods: A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
         :param Sequence[int] ports: List of destination ports to match. At least one port should match.
-        :param 'AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs' http_header_match: Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
+        :param 'AuthorizationPolicyRuleDestinationHttpHeaderMatchArrgs' http_header_match: Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
                Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
                Structure is documented below.
         """
@@ -143,7 +143,7 @@ class AuthorizationPolicyRuleDestination(dict):
 
 
 @pulumi.output_type
-class AuthorizationPolicyRuleDestinationHttpHeaderMatch(dict):
+calass AuthorizationPolicyRuleDestinationHttpHeaderMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -191,7 +191,7 @@ class AuthorizationPolicyRuleDestinationHttpHeaderMatch(dict):
 
 
 @pulumi.output_type
-class AuthorizationPolicyRuleSource(dict):
+calass AuthorizationPolicyRuleSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -243,7 +243,7 @@ class AuthorizationPolicyRuleSource(dict):
 
 
 @pulumi.output_type
-class ClientTlsPolicyClientCertificate(dict):
+calass ClientTlsPolicyClientCertificate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -267,9 +267,9 @@ class ClientTlsPolicyClientCertificate(dict):
                  certificate_provider_instance: Optional['outputs.ClientTlsPolicyClientCertificateCertificateProviderInstance'] = None,
                  grpc_endpoint: Optional['outputs.ClientTlsPolicyClientCertificateGrpcEndpoint'] = None):
         """
-        :param 'ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs' certificate_provider_instance: The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
+        :param 'ClientTlsPolicyClientCertificateCertificateProviderInstanceArrgs' certificate_provider_instance: The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
                Structure is documented below.
-        :param 'ClientTlsPolicyClientCertificateGrpcEndpointArgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        :param 'ClientTlsPolicyClientCertificateGrpcEndpointArrgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
                Structure is documented below.
         """
         if certificate_provider_instance is not None:
@@ -297,7 +297,7 @@ class ClientTlsPolicyClientCertificate(dict):
 
 
 @pulumi.output_type
-class ClientTlsPolicyClientCertificateCertificateProviderInstance(dict):
+calass ClientTlsPolicyClientCertificateCertificateProviderInstance(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -332,7 +332,7 @@ class ClientTlsPolicyClientCertificateCertificateProviderInstance(dict):
 
 
 @pulumi.output_type
-class ClientTlsPolicyClientCertificateGrpcEndpoint(dict):
+calass ClientTlsPolicyClientCertificateGrpcEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -367,7 +367,7 @@ class ClientTlsPolicyClientCertificateGrpcEndpoint(dict):
 
 
 @pulumi.output_type
-class ClientTlsPolicyServerValidationCa(dict):
+calass ClientTlsPolicyServerValidationCa(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -391,9 +391,9 @@ class ClientTlsPolicyServerValidationCa(dict):
                  certificate_provider_instance: Optional['outputs.ClientTlsPolicyServerValidationCaCertificateProviderInstance'] = None,
                  grpc_endpoint: Optional['outputs.ClientTlsPolicyServerValidationCaGrpcEndpoint'] = None):
         """
-        :param 'ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs' certificate_provider_instance: The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
+        :param 'ClientTlsPolicyServerValidationCaCertificateProviderInstanceArrgs' certificate_provider_instance: The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
                Structure is documented below.
-        :param 'ClientTlsPolicyServerValidationCaGrpcEndpointArgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        :param 'ClientTlsPolicyServerValidationCaGrpcEndpointArrgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
                Structure is documented below.
         """
         if certificate_provider_instance is not None:
@@ -421,7 +421,7 @@ class ClientTlsPolicyServerValidationCa(dict):
 
 
 @pulumi.output_type
-class ClientTlsPolicyServerValidationCaCertificateProviderInstance(dict):
+calass ClientTlsPolicyServerValidationCaCertificateProviderInstance(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -456,7 +456,7 @@ class ClientTlsPolicyServerValidationCaCertificateProviderInstance(dict):
 
 
 @pulumi.output_type
-class ClientTlsPolicyServerValidationCaGrpcEndpoint(dict):
+calass ClientTlsPolicyServerValidationCaGrpcEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -491,7 +491,7 @@ class ClientTlsPolicyServerValidationCaGrpcEndpoint(dict):
 
 
 @pulumi.output_type
-class ServerTlsPolicyMtlsPolicy(dict):
+calass ServerTlsPolicyMtlsPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -518,7 +518,7 @@ class ServerTlsPolicyMtlsPolicy(dict):
                  client_validation_mode: Optional[str] = None,
                  client_validation_trust_config: Optional[str] = None):
         """
-        :param Sequence['ServerTlsPolicyMtlsPolicyClientValidationCaArgs'] client_validation_cas: Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+        :param Sequence['ServerTlsPolicyMtlsPolicyClientValidationCaArrgs'] client_validation_cas: Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
                Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
                Structure is documented below.
         :param str client_validation_mode: When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
@@ -567,7 +567,7 @@ class ServerTlsPolicyMtlsPolicy(dict):
 
 
 @pulumi.output_type
-class ServerTlsPolicyMtlsPolicyClientValidationCa(dict):
+calass ServerTlsPolicyMtlsPolicyClientValidationCa(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -591,10 +591,10 @@ class ServerTlsPolicyMtlsPolicyClientValidationCa(dict):
                  certificate_provider_instance: Optional['outputs.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance'] = None,
                  grpc_endpoint: Optional['outputs.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint'] = None):
         """
-        :param 'ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs' certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+        :param 'ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArrgs' certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
                Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
                Structure is documented below.
-        :param 'ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        :param 'ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArrgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
                Structure is documented below.
         """
         if certificate_provider_instance is not None:
@@ -623,7 +623,7 @@ class ServerTlsPolicyMtlsPolicyClientValidationCa(dict):
 
 
 @pulumi.output_type
-class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance(dict):
+calass ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -658,7 +658,7 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance(dic
 
 
 @pulumi.output_type
-class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint(dict):
+calass ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -693,7 +693,7 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint(dict):
 
 
 @pulumi.output_type
-class ServerTlsPolicyServerCertificate(dict):
+calass ServerTlsPolicyServerCertificate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -717,10 +717,10 @@ class ServerTlsPolicyServerCertificate(dict):
                  certificate_provider_instance: Optional['outputs.ServerTlsPolicyServerCertificateCertificateProviderInstance'] = None,
                  grpc_endpoint: Optional['outputs.ServerTlsPolicyServerCertificateGrpcEndpoint'] = None):
         """
-        :param 'ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs' certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+        :param 'ServerTlsPolicyServerCertificateCertificateProviderInstanceArrgs' certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
                Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
                Structure is documented below.
-        :param 'ServerTlsPolicyServerCertificateGrpcEndpointArgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        :param 'ServerTlsPolicyServerCertificateGrpcEndpointArrgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
                Structure is documented below.
         """
         if certificate_provider_instance is not None:
@@ -749,7 +749,7 @@ class ServerTlsPolicyServerCertificate(dict):
 
 
 @pulumi.output_type
-class ServerTlsPolicyServerCertificateCertificateProviderInstance(dict):
+calass ServerTlsPolicyServerCertificateCertificateProviderInstance(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -784,7 +784,7 @@ class ServerTlsPolicyServerCertificateCertificateProviderInstance(dict):
 
 
 @pulumi.output_type
-class ServerTlsPolicyServerCertificateGrpcEndpoint(dict):
+calass ServerTlsPolicyServerCertificateGrpcEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

@@ -11,12 +11,12 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RegionAutoscalerArgs', 'RegionAutoscaler']
+__all__ = ['RegionAutoscalerArrgs', 'RegionAutoscaler']
 
 @pulumi.input_type
-class RegionAutoscalerArgs:
+calass RegionAutoscalerArrgs:
     def __init__(__self__, *,
-                 autoscaling_policy: pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs'],
+                 autoscaling_policy: pulumi.Input['RegionAutoscalerAutoscalingPolicyArrgs'],
                  target: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -24,7 +24,7 @@ class RegionAutoscalerArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegionAutoscaler resource.
-        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs'] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
+        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyArrgs'] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
@@ -54,7 +54,7 @@ class RegionAutoscalerArgs:
 
     @property
     @pulumi.getter(name="autoscalingPolicy")
-    def autoscaling_policy(self) -> pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs']:
+    def autoscaling_policy(self) -> pulumi.Input['RegionAutoscalerAutoscalingPolicyArrgs']:
         """
         The configuration parameters for the autoscaling algorithm. You can
         define one or more of the policies for an autoscaler: cpuUtilization,
@@ -66,7 +66,7 @@ class RegionAutoscalerArgs:
         return pulumi.get(self, "autoscaling_policy")
 
     @autoscaling_policy.setter
-    def autoscaling_policy(self, value: pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs']):
+    def autoscaling_policy(self, value: pulumi.Input['RegionAutoscalerAutoscalingPolicyArrgs']):
         pulumi.set(self, "autoscaling_policy", value)
 
     @property
@@ -136,9 +136,9 @@ class RegionAutoscalerArgs:
 
 
 @pulumi.input_type
-class _RegionAutoscalerState:
+calass _RegionAutoscalerState:
     def __init__(__self__, *,
-                 autoscaling_policy: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs']] = None,
+                 autoscaling_policy: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyArrgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -148,7 +148,7 @@ class _RegionAutoscalerState:
                  target: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegionAutoscaler resources.
-        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs'] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
+        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyArrgs'] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
@@ -186,7 +186,7 @@ class _RegionAutoscalerState:
 
     @property
     @pulumi.getter(name="autoscalingPolicy")
-    def autoscaling_policy(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs']]:
+    def autoscaling_policy(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyArrgs']]:
         """
         The configuration parameters for the autoscaling algorithm. You can
         define one or more of the policies for an autoscaler: cpuUtilization,
@@ -198,7 +198,7 @@ class _RegionAutoscalerState:
         return pulumi.get(self, "autoscaling_policy")
 
     @autoscaling_policy.setter
-    def autoscaling_policy(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs']]):
+    def autoscaling_policy(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyArrgs']]):
         pulumi.set(self, "autoscaling_policy", value)
 
     @property
@@ -291,12 +291,12 @@ class _RegionAutoscalerState:
         pulumi.set(self, "target", value)
 
 
-class RegionAutoscaler(pulumi.CustomResource):
+calass RegionAutoscaler(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArgs']]] = None,
+                 autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -325,17 +325,17 @@ class RegionAutoscaler(pulumi.CustomResource):
 
         foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
             machine_type="e2-standard-4",
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
+            disks=[gcp.compute.InstanceTemplateDiskArrgs(
                 source_image="debian-cloud/debian-11",
                 disk_size_gb=250,
             )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArrgs(
                 network="default",
-                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArrgs(
                     network_tier="PREMIUM",
                 )],
             )],
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+            service_account=gcp.compute.InstanceTemplateServiceAccountArrgs(
                 scopes=[
                     "https://www.googleapis.com/auth/devstorage.read_only",
                     "https://www.googleapis.com/auth/logging.write",
@@ -349,7 +349,7 @@ class RegionAutoscaler(pulumi.CustomResource):
         foobar_target_pool = gcp.compute.TargetPool("foobarTargetPool")
         foobar_region_instance_group_manager = gcp.compute.RegionInstanceGroupManager("foobarRegionInstanceGroupManager",
             region="us-central1",
-            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArrgs(
                 instance_template=foobar_instance_template.id,
                 name="primary",
             )],
@@ -358,11 +358,11 @@ class RegionAutoscaler(pulumi.CustomResource):
         foobar_region_autoscaler = gcp.compute.RegionAutoscaler("foobarRegionAutoscaler",
             region="us-central1",
             target=foobar_region_instance_group_manager.id,
-            autoscaling_policy=gcp.compute.RegionAutoscalerAutoscalingPolicyArgs(
+            autoscaling_policy=gcp.compute.RegionAutoscalerAutoscalingPolicyArrgs(
                 max_replicas=5,
                 min_replicas=1,
                 cooldown_period=60,
-                cpu_utilization=gcp.compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs(
+                cpu_utilization=gcp.compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArrgs(
                     target=0.5,
                 ),
             ))
@@ -392,7 +392,7 @@ class RegionAutoscaler(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArgs']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
+        :param pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArrgs']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based
@@ -413,7 +413,7 @@ class RegionAutoscaler(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionAutoscalerArgs,
+                 args: RegionAutoscalerArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Represents an Autoscaler resource.
@@ -437,17 +437,17 @@ class RegionAutoscaler(pulumi.CustomResource):
 
         foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
             machine_type="e2-standard-4",
-            disks=[gcp.compute.InstanceTemplateDiskArgs(
+            disks=[gcp.compute.InstanceTemplateDiskArrgs(
                 source_image="debian-cloud/debian-11",
                 disk_size_gb=250,
             )],
-            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArrgs(
                 network="default",
-                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArgs(
+                access_configs=[gcp.compute.InstanceTemplateNetworkInterfaceAccessConfigArrgs(
                     network_tier="PREMIUM",
                 )],
             )],
-            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+            service_account=gcp.compute.InstanceTemplateServiceAccountArrgs(
                 scopes=[
                     "https://www.googleapis.com/auth/devstorage.read_only",
                     "https://www.googleapis.com/auth/logging.write",
@@ -461,7 +461,7 @@ class RegionAutoscaler(pulumi.CustomResource):
         foobar_target_pool = gcp.compute.TargetPool("foobarTargetPool")
         foobar_region_instance_group_manager = gcp.compute.RegionInstanceGroupManager("foobarRegionInstanceGroupManager",
             region="us-central1",
-            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArrgs(
                 instance_template=foobar_instance_template.id,
                 name="primary",
             )],
@@ -470,11 +470,11 @@ class RegionAutoscaler(pulumi.CustomResource):
         foobar_region_autoscaler = gcp.compute.RegionAutoscaler("foobarRegionAutoscaler",
             region="us-central1",
             target=foobar_region_instance_group_manager.id,
-            autoscaling_policy=gcp.compute.RegionAutoscalerAutoscalingPolicyArgs(
+            autoscaling_policy=gcp.compute.RegionAutoscalerAutoscalingPolicyArrgs(
                 max_replicas=5,
                 min_replicas=1,
                 cooldown_period=60,
-                cpu_utilization=gcp.compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs(
+                cpu_utilization=gcp.compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArrgs(
                     target=0.5,
                 ),
             ))
@@ -503,12 +503,12 @@ class RegionAutoscaler(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RegionAutoscalerArgs args: The arguments to use to populate this resource's properties.
+        :param RegionAutoscalerArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionAutoscalerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegionAutoscalerArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -517,7 +517,7 @@ class RegionAutoscaler(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArgs']]] = None,
+                 autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -530,7 +530,7 @@ class RegionAutoscaler(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionAutoscalerArgs.__new__(RegionAutoscalerArgs)
+            __props__ = RegionAutoscalerArrgs.__new__(RegionAutoscalerArrgs)
 
             if autoscaling_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'autoscaling_policy'")
@@ -554,7 +554,7 @@ class RegionAutoscaler(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArgs']]] = None,
+            autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArrgs']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -569,7 +569,7 @@ class RegionAutoscaler(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArgs']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
+        :param pulumi.Input[pulumi.InputType['RegionAutoscalerAutoscalingPolicyArrgs']] autoscaling_policy: The configuration parameters for the autoscaling algorithm. You can
                define one or more of the policies for an autoscaler: cpuUtilization,
                customMetricUtilizations, and loadBalancingUtilization.
                If none of these are specified, the default will be to autoscale based

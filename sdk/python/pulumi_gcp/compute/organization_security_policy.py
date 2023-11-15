@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['OrganizationSecurityPolicyArgs', 'OrganizationSecurityPolicy']
+__all__ = ['OrganizationSecurityPolicyArrgs', 'OrganizationSecurityPolicy']
 
 @pulumi.input_type
-class OrganizationSecurityPolicyArgs:
+calass OrganizationSecurityPolicyArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  parent: pulumi.Input[str],
@@ -98,7 +98,7 @@ class OrganizationSecurityPolicyArgs:
 
 
 @pulumi.input_type
-class _OrganizationSecurityPolicyState:
+calass _OrganizationSecurityPolicyState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -219,7 +219,7 @@ class _OrganizationSecurityPolicyState:
         pulumi.set(self, "type", value)
 
 
-class OrganizationSecurityPolicy(pulumi.CustomResource):
+calass OrganizationSecurityPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -282,7 +282,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: OrganizationSecurityPolicyArgs,
+                 args: OrganizationSecurityPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Organization security policies are used to control incoming/outgoing traffic.
@@ -319,12 +319,12 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param OrganizationSecurityPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param OrganizationSecurityPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(OrganizationSecurityPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationSecurityPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -344,7 +344,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = OrganizationSecurityPolicyArgs.__new__(OrganizationSecurityPolicyArgs)
+            __props__ = OrganizationSecurityPolicyArrgs.__new__(OrganizationSecurityPolicyArrgs)
 
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:

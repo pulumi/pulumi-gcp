@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetRegistryRepositoryResult:
+calass GetRegistryRepositoryResult:
     """
     A collection of values returned by getRegistryRepository.
     """
@@ -62,7 +62,7 @@ class GetRegistryRepositoryResult:
         return pulumi.get(self, "repository_url")
 
 
-class AwaitableGetRegistryRepositoryResult(GetRegistryRepositoryResult):
+calass AwaitableGetRegistryRepositoryResult(GetRegistryRepositoryResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

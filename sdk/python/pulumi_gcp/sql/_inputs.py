@@ -10,34 +10,34 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'DatabaseInstanceCloneArgs',
-    'DatabaseInstanceIpAddressArgs',
-    'DatabaseInstanceReplicaConfigurationArgs',
-    'DatabaseInstanceRestoreBackupContextArgs',
-    'DatabaseInstanceServerCaCertArgs',
-    'DatabaseInstanceSettingsArgs',
-    'DatabaseInstanceSettingsActiveDirectoryConfigArgs',
-    'DatabaseInstanceSettingsAdvancedMachineFeaturesArgs',
-    'DatabaseInstanceSettingsBackupConfigurationArgs',
-    'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs',
-    'DatabaseInstanceSettingsDataCacheConfigArgs',
-    'DatabaseInstanceSettingsDatabaseFlagArgs',
-    'DatabaseInstanceSettingsDenyMaintenancePeriodArgs',
-    'DatabaseInstanceSettingsInsightsConfigArgs',
-    'DatabaseInstanceSettingsIpConfigurationArgs',
-    'DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs',
-    'DatabaseInstanceSettingsIpConfigurationPscConfigArgs',
-    'DatabaseInstanceSettingsLocationPreferenceArgs',
-    'DatabaseInstanceSettingsMaintenanceWindowArgs',
-    'DatabaseInstanceSettingsPasswordValidationPolicyArgs',
-    'DatabaseInstanceSettingsSqlServerAuditConfigArgs',
-    'UserPasswordPolicyArgs',
-    'UserPasswordPolicyStatusArgs',
-    'UserSqlServerUserDetailArgs',
+    'DatabaseInstanceCloneArrgs',
+    'DatabaseInstanceIpAddressArrgs',
+    'DatabaseInstanceReplicaConfigurationArrgs',
+    'DatabaseInstanceRestoreBackupContextArrgs',
+    'DatabaseInstanceServerCaCertArrgs',
+    'DatabaseInstanceSettingsArrgs',
+    'DatabaseInstanceSettingsActiveDirectoryConfigArrgs',
+    'DatabaseInstanceSettingsAdvancedMachineFeaturesArrgs',
+    'DatabaseInstanceSettingsBackupConfigurationArrgs',
+    'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArrgs',
+    'DatabaseInstanceSettingsDataCacheConfigArrgs',
+    'DatabaseInstanceSettingsDatabaseFlagArrgs',
+    'DatabaseInstanceSettingsDenyMaintenancePeriodArrgs',
+    'DatabaseInstanceSettingsInsightsConfigArrgs',
+    'DatabaseInstanceSettingsIpConfigurationArrgs',
+    'DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs',
+    'DatabaseInstanceSettingsIpConfigurationPscConfigArrgs',
+    'DatabaseInstanceSettingsLocationPreferenceArrgs',
+    'DatabaseInstanceSettingsMaintenanceWindowArrgs',
+    'DatabaseInstanceSettingsPasswordValidationPolicyArrgs',
+    'DatabaseInstanceSettingsSqlServerAuditConfigArrgs',
+    'UserPasswordPolicyArrgs',
+    'UserPasswordPolicyStatusArrgs',
+    'UserSqlServerUserDetailArrgs',
 ]
 
 @pulumi.input_type
-class DatabaseInstanceCloneArgs:
+calass DatabaseInstanceCloneArrgs:
     def __init__(__self__, *,
                  source_instance_name: pulumi.Input[str],
                  allocated_ip_range: Optional[pulumi.Input[str]] = None,
@@ -127,7 +127,7 @@ class DatabaseInstanceCloneArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceIpAddressArgs:
+calass DatabaseInstanceIpAddressArrgs:
     def __init__(__self__, *,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  time_to_retire: Optional[pulumi.Input[str]] = None,
@@ -168,7 +168,7 @@ class DatabaseInstanceIpAddressArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceReplicaConfigurationArgs:
+calass DatabaseInstanceReplicaConfigurationArrgs:
     def __init__(__self__, *,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
                  client_certificate: Optional[pulumi.Input[str]] = None,
@@ -373,7 +373,7 @@ class DatabaseInstanceReplicaConfigurationArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceRestoreBackupContextArgs:
+calass DatabaseInstanceRestoreBackupContextArrgs:
     def __init__(__self__, *,
                  backup_run_id: pulumi.Input[int],
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -429,7 +429,7 @@ class DatabaseInstanceRestoreBackupContextArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceServerCaCertArgs:
+calass DatabaseInstanceServerCaCertArrgs:
     def __init__(__self__, *,
                  cert: Optional[pulumi.Input[str]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
@@ -502,32 +502,32 @@ class DatabaseInstanceServerCaCertArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsArgs:
+calass DatabaseInstanceSettingsArrgs:
     def __init__(__self__, *,
                  tier: pulumi.Input[str],
                  activation_policy: Optional[pulumi.Input[str]] = None,
-                 active_directory_config: Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']] = None,
-                 advanced_machine_features: Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']] = None,
+                 active_directory_config: Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArrgs']] = None,
+                 advanced_machine_features: Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArrgs']] = None,
                  availability_type: Optional[pulumi.Input[str]] = None,
-                 backup_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']] = None,
+                 backup_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArrgs']] = None,
                  collation: Optional[pulumi.Input[str]] = None,
                  connector_enforcement: Optional[pulumi.Input[str]] = None,
-                 data_cache_config: Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']] = None,
-                 database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]] = None,
+                 data_cache_config: Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArrgs']] = None,
+                 database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArrgs']]]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
-                 deny_maintenance_period: Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']] = None,
+                 deny_maintenance_period: Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArrgs']] = None,
                  disk_autoresize: Optional[pulumi.Input[bool]] = None,
                  disk_autoresize_limit: Optional[pulumi.Input[int]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
-                 insights_config: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']] = None,
-                 ip_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgs']] = None,
-                 location_preference: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']] = None,
-                 maintenance_window: Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs']] = None,
-                 password_validation_policy: Optional[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArgs']] = None,
+                 insights_config: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArrgs']] = None,
+                 ip_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArrgs']] = None,
+                 location_preference: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArrgs']] = None,
+                 maintenance_window: Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArrgs']] = None,
+                 password_validation_policy: Optional[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArrgs']] = None,
                  pricing_plan: Optional[pulumi.Input[str]] = None,
-                 sql_server_audit_config: Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']] = None,
+                 sql_server_audit_config: Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArrgs']] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[int]] = None):
@@ -637,20 +637,20 @@ class DatabaseInstanceSettingsArgs:
 
     @property
     @pulumi.getter(name="activeDirectoryConfig")
-    def active_directory_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']]:
+    def active_directory_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArrgs']]:
         return pulumi.get(self, "active_directory_config")
 
     @active_directory_config.setter
-    def active_directory_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']]):
+    def active_directory_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArrgs']]):
         pulumi.set(self, "active_directory_config", value)
 
     @property
     @pulumi.getter(name="advancedMachineFeatures")
-    def advanced_machine_features(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']]:
+    def advanced_machine_features(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArrgs']]:
         return pulumi.get(self, "advanced_machine_features")
 
     @advanced_machine_features.setter
-    def advanced_machine_features(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']]):
+    def advanced_machine_features(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArrgs']]):
         pulumi.set(self, "advanced_machine_features", value)
 
     @property
@@ -672,11 +672,11 @@ class DatabaseInstanceSettingsArgs:
 
     @property
     @pulumi.getter(name="backupConfiguration")
-    def backup_configuration(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']]:
+    def backup_configuration(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArrgs']]:
         return pulumi.get(self, "backup_configuration")
 
     @backup_configuration.setter
-    def backup_configuration(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']]):
+    def backup_configuration(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArrgs']]):
         pulumi.set(self, "backup_configuration", value)
 
     @property
@@ -705,20 +705,20 @@ class DatabaseInstanceSettingsArgs:
 
     @property
     @pulumi.getter(name="dataCacheConfig")
-    def data_cache_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']]:
+    def data_cache_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArrgs']]:
         return pulumi.get(self, "data_cache_config")
 
     @data_cache_config.setter
-    def data_cache_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']]):
+    def data_cache_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArrgs']]):
         pulumi.set(self, "data_cache_config", value)
 
     @property
     @pulumi.getter(name="databaseFlags")
-    def database_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]:
+    def database_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArrgs']]]]:
         return pulumi.get(self, "database_flags")
 
     @database_flags.setter
-    def database_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]):
+    def database_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArrgs']]]]):
         pulumi.set(self, "database_flags", value)
 
     @property
@@ -732,11 +732,11 @@ class DatabaseInstanceSettingsArgs:
 
     @property
     @pulumi.getter(name="denyMaintenancePeriod")
-    def deny_maintenance_period(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']]:
+    def deny_maintenance_period(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArrgs']]:
         return pulumi.get(self, "deny_maintenance_period")
 
     @deny_maintenance_period.setter
-    def deny_maintenance_period(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']]):
+    def deny_maintenance_period(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArrgs']]):
         pulumi.set(self, "deny_maintenance_period", value)
 
     @property
@@ -801,47 +801,47 @@ class DatabaseInstanceSettingsArgs:
 
     @property
     @pulumi.getter(name="insightsConfig")
-    def insights_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']]:
+    def insights_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArrgs']]:
         return pulumi.get(self, "insights_config")
 
     @insights_config.setter
-    def insights_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']]):
+    def insights_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArrgs']]):
         pulumi.set(self, "insights_config", value)
 
     @property
     @pulumi.getter(name="ipConfiguration")
-    def ip_configuration(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgs']]:
+    def ip_configuration(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArrgs']]:
         return pulumi.get(self, "ip_configuration")
 
     @ip_configuration.setter
-    def ip_configuration(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgs']]):
+    def ip_configuration(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArrgs']]):
         pulumi.set(self, "ip_configuration", value)
 
     @property
     @pulumi.getter(name="locationPreference")
-    def location_preference(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']]:
+    def location_preference(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArrgs']]:
         return pulumi.get(self, "location_preference")
 
     @location_preference.setter
-    def location_preference(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']]):
+    def location_preference(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArrgs']]):
         pulumi.set(self, "location_preference", value)
 
     @property
     @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs']]:
+    def maintenance_window(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArrgs']]:
         return pulumi.get(self, "maintenance_window")
 
     @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs']]):
+    def maintenance_window(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArrgs']]):
         pulumi.set(self, "maintenance_window", value)
 
     @property
     @pulumi.getter(name="passwordValidationPolicy")
-    def password_validation_policy(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArgs']]:
+    def password_validation_policy(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArrgs']]:
         return pulumi.get(self, "password_validation_policy")
 
     @password_validation_policy.setter
-    def password_validation_policy(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArgs']]):
+    def password_validation_policy(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsPasswordValidationPolicyArrgs']]):
         pulumi.set(self, "password_validation_policy", value)
 
     @property
@@ -858,11 +858,11 @@ class DatabaseInstanceSettingsArgs:
 
     @property
     @pulumi.getter(name="sqlServerAuditConfig")
-    def sql_server_audit_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']]:
+    def sql_server_audit_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArrgs']]:
         return pulumi.get(self, "sql_server_audit_config")
 
     @sql_server_audit_config.setter
-    def sql_server_audit_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArgs']]):
+    def sql_server_audit_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsSqlServerAuditConfigArrgs']]):
         pulumi.set(self, "sql_server_audit_config", value)
 
     @property
@@ -900,7 +900,7 @@ class DatabaseInstanceSettingsArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsActiveDirectoryConfigArgs:
+calass DatabaseInstanceSettingsActiveDirectoryConfigArrgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[str]):
         """
@@ -924,7 +924,7 @@ class DatabaseInstanceSettingsActiveDirectoryConfigArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsAdvancedMachineFeaturesArgs:
+calass DatabaseInstanceSettingsAdvancedMachineFeaturesArrgs:
     def __init__(__self__, *,
                  threads_per_core: Optional[pulumi.Input[int]] = None):
         """
@@ -947,9 +947,9 @@ class DatabaseInstanceSettingsAdvancedMachineFeaturesArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsBackupConfigurationArgs:
+calass DatabaseInstanceSettingsBackupConfigurationArrgs:
     def __init__(__self__, *,
-                 backup_retention_settings: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']] = None,
+                 backup_retention_settings: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArrgs']] = None,
                  binary_log_enabled: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -957,7 +957,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
                  start_time: Optional[pulumi.Input[str]] = None,
                  transaction_log_retention_days: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs'] backup_retention_settings: Backup retention settings. The configuration is detailed below.
+        :param pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArrgs'] backup_retention_settings: Backup retention settings. The configuration is detailed below.
         :param pulumi.Input[bool] binary_log_enabled: True if binary logging is enabled.
                Can only be used with MySQL.
         :param pulumi.Input[bool] enabled: True if backup configuration is enabled.
@@ -984,14 +984,14 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
 
     @property
     @pulumi.getter(name="backupRetentionSettings")
-    def backup_retention_settings(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']]:
+    def backup_retention_settings(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArrgs']]:
         """
         Backup retention settings. The configuration is detailed below.
         """
         return pulumi.get(self, "backup_retention_settings")
 
     @backup_retention_settings.setter
-    def backup_retention_settings(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']]):
+    def backup_retention_settings(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArrgs']]):
         pulumi.set(self, "backup_retention_settings", value)
 
     @property
@@ -1070,7 +1070,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs:
+calass DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArrgs:
     def __init__(__self__, *,
                  retained_backups: pulumi.Input[int],
                  retention_unit: Optional[pulumi.Input[str]] = None):
@@ -1110,7 +1110,7 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsDataCacheConfigArgs:
+calass DatabaseInstanceSettingsDataCacheConfigArrgs:
     def __init__(__self__, *,
                  data_cache_enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -1135,7 +1135,7 @@ class DatabaseInstanceSettingsDataCacheConfigArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsDatabaseFlagArgs:
+calass DatabaseInstanceSettingsDatabaseFlagArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: pulumi.Input[str]):
@@ -1172,7 +1172,7 @@ class DatabaseInstanceSettingsDatabaseFlagArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsDenyMaintenancePeriodArgs:
+calass DatabaseInstanceSettingsDenyMaintenancePeriodArrgs:
     def __init__(__self__, *,
                  end_date: pulumi.Input[str],
                  start_date: pulumi.Input[str],
@@ -1224,7 +1224,7 @@ class DatabaseInstanceSettingsDenyMaintenancePeriodArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsInsightsConfigArgs:
+calass DatabaseInstanceSettingsInsightsConfigArrgs:
     def __init__(__self__, *,
                  query_insights_enabled: Optional[pulumi.Input[bool]] = None,
                  query_plans_per_minute: Optional[pulumi.Input[int]] = None,
@@ -1315,14 +1315,14 @@ class DatabaseInstanceSettingsInsightsConfigArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsIpConfigurationArgs:
+calass DatabaseInstanceSettingsIpConfigurationArrgs:
     def __init__(__self__, *,
                  allocated_ip_range: Optional[pulumi.Input[str]] = None,
-                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]] = None,
+                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs']]]] = None,
                  enable_private_path_for_google_cloud_services: Optional[pulumi.Input[bool]] = None,
                  ipv4_enabled: Optional[pulumi.Input[bool]] = None,
                  private_network: Optional[pulumi.Input[str]] = None,
-                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]] = None,
+                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArrgs']]]] = None,
                  require_ssl: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -1366,11 +1366,11 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
 
     @property
     @pulumi.getter(name="authorizedNetworks")
-    def authorized_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]]:
+    def authorized_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs']]]]:
         return pulumi.get(self, "authorized_networks")
 
     @authorized_networks.setter
-    def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]]):
+    def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs']]]]):
         pulumi.set(self, "authorized_networks", value)
 
     @property
@@ -1417,11 +1417,11 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
 
     @property
     @pulumi.getter(name="pscConfigs")
-    def psc_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]]:
+    def psc_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArrgs']]]]:
         return pulumi.get(self, "psc_configs")
 
     @psc_configs.setter
-    def psc_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]]):
+    def psc_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArrgs']]]]):
         pulumi.set(self, "psc_configs", value)
 
     @property
@@ -1438,7 +1438,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs:
+calass DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrgs:
     def __init__(__self__, *,
                  value: pulumi.Input[str],
                  expiration_time: Optional[pulumi.Input[str]] = None,
@@ -1498,7 +1498,7 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
+calass DatabaseInstanceSettingsIpConfigurationPscConfigArrgs:
     def __init__(__self__, *,
                  allowed_consumer_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  psc_enabled: Optional[pulumi.Input[bool]] = None):
@@ -1537,7 +1537,7 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsLocationPreferenceArgs:
+calass DatabaseInstanceSettingsLocationPreferenceArrgs:
     def __init__(__self__, *,
                  follow_gae_application: Optional[pulumi.Input[str]] = None,
                  secondary_zone: Optional[pulumi.Input[str]] = None,
@@ -1604,7 +1604,7 @@ class DatabaseInstanceSettingsLocationPreferenceArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsMaintenanceWindowArgs:
+calass DatabaseInstanceSettingsMaintenanceWindowArrgs:
     def __init__(__self__, *,
                  day: Optional[pulumi.Input[int]] = None,
                  hour: Optional[pulumi.Input[int]] = None,
@@ -1665,7 +1665,7 @@ class DatabaseInstanceSettingsMaintenanceWindowArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsPasswordValidationPolicyArgs:
+calass DatabaseInstanceSettingsPasswordValidationPolicyArrgs:
     def __init__(__self__, *,
                  enable_password_policy: pulumi.Input[bool],
                  complexity: Optional[pulumi.Input[str]] = None,
@@ -1773,7 +1773,7 @@ class DatabaseInstanceSettingsPasswordValidationPolicyArgs:
 
 
 @pulumi.input_type
-class DatabaseInstanceSettingsSqlServerAuditConfigArgs:
+calass DatabaseInstanceSettingsSqlServerAuditConfigArrgs:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
                  retention_interval: Optional[pulumi.Input[str]] = None,
@@ -1828,13 +1828,13 @@ class DatabaseInstanceSettingsSqlServerAuditConfigArgs:
 
 
 @pulumi.input_type
-class UserPasswordPolicyArgs:
+calass UserPasswordPolicyArrgs:
     def __init__(__self__, *,
                  allowed_failed_attempts: Optional[pulumi.Input[int]] = None,
                  enable_failed_attempts_check: Optional[pulumi.Input[bool]] = None,
                  enable_password_verification: Optional[pulumi.Input[bool]] = None,
                  password_expiration_duration: Optional[pulumi.Input[str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]] = None):
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArrgs']]]] = None):
         """
         :param pulumi.Input[int] allowed_failed_attempts: Number of failed attempts allowed before the user get locked.
         :param pulumi.Input[bool] enable_failed_attempts_check: If true, the check that will lock user after too many failed login attempts will be enabled.
@@ -1902,16 +1902,16 @@ class UserPasswordPolicyArgs:
 
     @property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]]:
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArrgs']]]]:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]]):
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPasswordPolicyStatusArrgs']]]]):
         pulumi.set(self, "statuses", value)
 
 
 @pulumi.input_type
-class UserPasswordPolicyStatusArgs:
+calass UserPasswordPolicyStatusArrgs:
     def __init__(__self__, *,
                  locked: Optional[pulumi.Input[bool]] = None,
                  password_expiration_time: Optional[pulumi.Input[str]] = None):
@@ -1950,7 +1950,7 @@ class UserPasswordPolicyStatusArgs:
 
 
 @pulumi.input_type
-class UserSqlServerUserDetailArgs:
+calass UserSqlServerUserDetailArrgs:
     def __init__(__self__, *,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  server_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):

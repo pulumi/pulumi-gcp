@@ -10,33 +10,33 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'RepositoryCleanupPolicyArgs',
-    'RepositoryCleanupPolicyConditionArgs',
-    'RepositoryCleanupPolicyMostRecentVersionsArgs',
-    'RepositoryDockerConfigArgs',
-    'RepositoryIamBindingConditionArgs',
-    'RepositoryIamMemberConditionArgs',
-    'RepositoryMavenConfigArgs',
-    'RepositoryRemoteRepositoryConfigArgs',
-    'RepositoryRemoteRepositoryConfigAptRepositoryArgs',
-    'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs',
-    'RepositoryRemoteRepositoryConfigDockerRepositoryArgs',
-    'RepositoryRemoteRepositoryConfigMavenRepositoryArgs',
-    'RepositoryRemoteRepositoryConfigNpmRepositoryArgs',
-    'RepositoryRemoteRepositoryConfigPythonRepositoryArgs',
-    'RepositoryRemoteRepositoryConfigYumRepositoryArgs',
-    'RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs',
-    'RepositoryVirtualRepositoryConfigArgs',
-    'RepositoryVirtualRepositoryConfigUpstreamPolicyArgs',
+    'RepositoryCleanupPolicyArrgs',
+    'RepositoryCleanupPolicyConditionArrgs',
+    'RepositoryCleanupPolicyMostRecentVersionsArrgs',
+    'RepositoryDockerConfigArrgs',
+    'RepositoryIamBindingConditionArrgs',
+    'RepositoryIamMemberConditionArrgs',
+    'RepositoryMavenConfigArrgs',
+    'RepositoryRemoteRepositoryConfigArrgs',
+    'RepositoryRemoteRepositoryConfigAptRepositoryArrgs',
+    'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrgs',
+    'RepositoryRemoteRepositoryConfigDockerRepositoryArrgs',
+    'RepositoryRemoteRepositoryConfigMavenRepositoryArrgs',
+    'RepositoryRemoteRepositoryConfigNpmRepositoryArrgs',
+    'RepositoryRemoteRepositoryConfigPythonRepositoryArrgs',
+    'RepositoryRemoteRepositoryConfigYumRepositoryArrgs',
+    'RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArrgs',
+    'RepositoryVirtualRepositoryConfigArrgs',
+    'RepositoryVirtualRepositoryConfigUpstreamPolicyArrgs',
 ]
 
 @pulumi.input_type
-class RepositoryCleanupPolicyArgs:
+calass RepositoryCleanupPolicyArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  action: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['RepositoryCleanupPolicyConditionArgs']] = None,
-                 most_recent_versions: Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArgs']] = None):
+                 condition: Optional[pulumi.Input['RepositoryCleanupPolicyConditionArrgs']] = None,
+                 most_recent_versions: Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArrgs']] = None):
         """
         :param pulumi.Input[str] id: The identifier for this object. Format specified above.
         """
@@ -71,25 +71,25 @@ class RepositoryCleanupPolicyArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['RepositoryCleanupPolicyConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['RepositoryCleanupPolicyConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['RepositoryCleanupPolicyConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['RepositoryCleanupPolicyConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
     @pulumi.getter(name="mostRecentVersions")
-    def most_recent_versions(self) -> Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArgs']]:
+    def most_recent_versions(self) -> Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArrgs']]:
         return pulumi.get(self, "most_recent_versions")
 
     @most_recent_versions.setter
-    def most_recent_versions(self, value: Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArgs']]):
+    def most_recent_versions(self, value: Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArrgs']]):
         pulumi.set(self, "most_recent_versions", value)
 
 
 @pulumi.input_type
-class RepositoryCleanupPolicyConditionArgs:
+calass RepositoryCleanupPolicyConditionArrgs:
     def __init__(__self__, *,
                  newer_than: Optional[pulumi.Input[str]] = None,
                  older_than: Optional[pulumi.Input[str]] = None,
@@ -166,7 +166,7 @@ class RepositoryCleanupPolicyConditionArgs:
 
 
 @pulumi.input_type
-class RepositoryCleanupPolicyMostRecentVersionsArgs:
+calass RepositoryCleanupPolicyMostRecentVersionsArrgs:
     def __init__(__self__, *,
                  keep_count: Optional[pulumi.Input[int]] = None,
                  package_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -195,7 +195,7 @@ class RepositoryCleanupPolicyMostRecentVersionsArgs:
 
 
 @pulumi.input_type
-class RepositoryDockerConfigArgs:
+calass RepositoryDockerConfigArrgs:
     def __init__(__self__, *,
                  immutable_tags: Optional[pulumi.Input[bool]] = None):
         """
@@ -218,7 +218,7 @@ class RepositoryDockerConfigArgs:
 
 
 @pulumi.input_type
-class RepositoryIamBindingConditionArgs:
+calass RepositoryIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -257,7 +257,7 @@ class RepositoryIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class RepositoryIamMemberConditionArgs:
+calass RepositoryIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -296,7 +296,7 @@ class RepositoryIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class RepositoryMavenConfigArgs:
+calass RepositoryMavenConfigArrgs:
     def __init__(__self__, *,
                  allow_snapshot_overwrites: Optional[pulumi.Input[bool]] = None,
                  version_policy: Optional[pulumi.Input[str]] = None):
@@ -341,28 +341,28 @@ class RepositoryMavenConfigArgs:
 
 
 @pulumi.input_type
-class RepositoryRemoteRepositoryConfigArgs:
+calass RepositoryRemoteRepositoryConfigArrgs:
     def __init__(__self__, *,
-                 apt_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']] = None,
+                 apt_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 docker_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']] = None,
-                 maven_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']] = None,
-                 npm_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']] = None,
-                 python_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']] = None,
-                 yum_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs']] = None):
+                 docker_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArrgs']] = None,
+                 maven_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArrgs']] = None,
+                 npm_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArrgs']] = None,
+                 python_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArrgs']] = None,
+                 yum_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArrgs']] = None):
         """
-        :param pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs'] apt_repository: Specific settings for an Apt remote repository.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArrgs'] apt_repository: Specific settings for an Apt remote repository.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the remote source.
-        :param pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs'] docker_repository: Specific settings for a Docker remote repository.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArrgs'] docker_repository: Specific settings for a Docker remote repository.
                Structure is documented below.
-        :param pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs'] maven_repository: Specific settings for a Maven remote repository.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArrgs'] maven_repository: Specific settings for a Maven remote repository.
                Structure is documented below.
-        :param pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs'] npm_repository: Specific settings for an Npm remote repository.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArrgs'] npm_repository: Specific settings for an Npm remote repository.
                Structure is documented below.
-        :param pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs'] python_repository: Specific settings for a Python remote repository.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArrgs'] python_repository: Specific settings for a Python remote repository.
                Structure is documented below.
-        :param pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs'] yum_repository: Specific settings for an Yum remote repository.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArrgs'] yum_repository: Specific settings for an Yum remote repository.
                Structure is documented below.
         """
         if apt_repository is not None:
@@ -382,7 +382,7 @@ class RepositoryRemoteRepositoryConfigArgs:
 
     @property
     @pulumi.getter(name="aptRepository")
-    def apt_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']]:
+    def apt_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArrgs']]:
         """
         Specific settings for an Apt remote repository.
         Structure is documented below.
@@ -390,7 +390,7 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "apt_repository")
 
     @apt_repository.setter
-    def apt_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']]):
+    def apt_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArrgs']]):
         pulumi.set(self, "apt_repository", value)
 
     @property
@@ -407,7 +407,7 @@ class RepositoryRemoteRepositoryConfigArgs:
 
     @property
     @pulumi.getter(name="dockerRepository")
-    def docker_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']]:
+    def docker_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArrgs']]:
         """
         Specific settings for a Docker remote repository.
         Structure is documented below.
@@ -415,12 +415,12 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "docker_repository")
 
     @docker_repository.setter
-    def docker_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']]):
+    def docker_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArrgs']]):
         pulumi.set(self, "docker_repository", value)
 
     @property
     @pulumi.getter(name="mavenRepository")
-    def maven_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']]:
+    def maven_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArrgs']]:
         """
         Specific settings for a Maven remote repository.
         Structure is documented below.
@@ -428,12 +428,12 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "maven_repository")
 
     @maven_repository.setter
-    def maven_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']]):
+    def maven_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArrgs']]):
         pulumi.set(self, "maven_repository", value)
 
     @property
     @pulumi.getter(name="npmRepository")
-    def npm_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']]:
+    def npm_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArrgs']]:
         """
         Specific settings for an Npm remote repository.
         Structure is documented below.
@@ -441,12 +441,12 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "npm_repository")
 
     @npm_repository.setter
-    def npm_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']]):
+    def npm_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArrgs']]):
         pulumi.set(self, "npm_repository", value)
 
     @property
     @pulumi.getter(name="pythonRepository")
-    def python_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']]:
+    def python_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArrgs']]:
         """
         Specific settings for a Python remote repository.
         Structure is documented below.
@@ -454,12 +454,12 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "python_repository")
 
     @python_repository.setter
-    def python_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']]):
+    def python_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArrgs']]):
         pulumi.set(self, "python_repository", value)
 
     @property
     @pulumi.getter(name="yumRepository")
-    def yum_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs']]:
+    def yum_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArrgs']]:
         """
         Specific settings for an Yum remote repository.
         Structure is documented below.
@@ -467,16 +467,16 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "yum_repository")
 
     @yum_repository.setter
-    def yum_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs']]):
+    def yum_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArrgs']]):
         pulumi.set(self, "yum_repository", value)
 
 
 @pulumi.input_type
-class RepositoryRemoteRepositoryConfigAptRepositoryArgs:
+calass RepositoryRemoteRepositoryConfigAptRepositoryArrgs:
     def __init__(__self__, *,
-                 public_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']] = None):
+                 public_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrgs']] = None):
         """
-        :param pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs'] public_repository: One of the publicly available Apt repositories supported by Artifact Registry.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrgs'] public_repository: One of the publicly available Apt repositories supported by Artifact Registry.
                Structure is documented below.
         """
         if public_repository is not None:
@@ -484,7 +484,7 @@ class RepositoryRemoteRepositoryConfigAptRepositoryArgs:
 
     @property
     @pulumi.getter(name="publicRepository")
-    def public_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]:
+    def public_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrgs']]:
         """
         One of the publicly available Apt repositories supported by Artifact Registry.
         Structure is documented below.
@@ -492,12 +492,12 @@ class RepositoryRemoteRepositoryConfigAptRepositoryArgs:
         return pulumi.get(self, "public_repository")
 
     @public_repository.setter
-    def public_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]):
+    def public_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrgs']]):
         pulumi.set(self, "public_repository", value)
 
 
 @pulumi.input_type
-class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs:
+calass RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrgs:
     def __init__(__self__, *,
                  repository_base: pulumi.Input[str],
                  repository_path: pulumi.Input[str]):
@@ -536,7 +536,7 @@ class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs:
 
 
 @pulumi.input_type
-class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
+calass RepositoryRemoteRepositoryConfigDockerRepositoryArrgs:
     def __init__(__self__, *,
                  public_repository: Optional[pulumi.Input[str]] = None):
         """
@@ -563,7 +563,7 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
 
 
 @pulumi.input_type
-class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
+calass RepositoryRemoteRepositoryConfigMavenRepositoryArrgs:
     def __init__(__self__, *,
                  public_repository: Optional[pulumi.Input[str]] = None):
         """
@@ -590,7 +590,7 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
 
 
 @pulumi.input_type
-class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
+calass RepositoryRemoteRepositoryConfigNpmRepositoryArrgs:
     def __init__(__self__, *,
                  public_repository: Optional[pulumi.Input[str]] = None):
         """
@@ -617,7 +617,7 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
 
 
 @pulumi.input_type
-class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
+calass RepositoryRemoteRepositoryConfigPythonRepositoryArrgs:
     def __init__(__self__, *,
                  public_repository: Optional[pulumi.Input[str]] = None):
         """
@@ -644,11 +644,11 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
 
 
 @pulumi.input_type
-class RepositoryRemoteRepositoryConfigYumRepositoryArgs:
+calass RepositoryRemoteRepositoryConfigYumRepositoryArrgs:
     def __init__(__self__, *,
-                 public_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']] = None):
+                 public_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArrgs']] = None):
         """
-        :param pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs'] public_repository: One of the publicly available Yum repositories supported by Artifact Registry.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArrgs'] public_repository: One of the publicly available Yum repositories supported by Artifact Registry.
                Structure is documented below.
         """
         if public_repository is not None:
@@ -656,7 +656,7 @@ class RepositoryRemoteRepositoryConfigYumRepositoryArgs:
 
     @property
     @pulumi.getter(name="publicRepository")
-    def public_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]:
+    def public_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArrgs']]:
         """
         One of the publicly available Yum repositories supported by Artifact Registry.
         Structure is documented below.
@@ -664,12 +664,12 @@ class RepositoryRemoteRepositoryConfigYumRepositoryArgs:
         return pulumi.get(self, "public_repository")
 
     @public_repository.setter
-    def public_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]):
+    def public_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArrgs']]):
         pulumi.set(self, "public_repository", value)
 
 
 @pulumi.input_type
-class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs:
+calass RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArrgs:
     def __init__(__self__, *,
                  repository_base: pulumi.Input[str],
                  repository_path: pulumi.Input[str]):
@@ -708,11 +708,11 @@ class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs:
 
 
 @pulumi.input_type
-class RepositoryVirtualRepositoryConfigArgs:
+calass RepositoryVirtualRepositoryConfigArrgs:
     def __init__(__self__, *,
-                 upstream_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]] = None):
+                 upstream_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]] upstream_policies: Policies that configure the upstream artifacts distributed by the Virtual
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArrgs']]] upstream_policies: Policies that configure the upstream artifacts distributed by the Virtual
                Repository. Upstream policies cannot be set on a standard repository.
                Structure is documented below.
         """
@@ -721,7 +721,7 @@ class RepositoryVirtualRepositoryConfigArgs:
 
     @property
     @pulumi.getter(name="upstreamPolicies")
-    def upstream_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]]:
+    def upstream_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArrgs']]]]:
         """
         Policies that configure the upstream artifacts distributed by the Virtual
         Repository. Upstream policies cannot be set on a standard repository.
@@ -730,12 +730,12 @@ class RepositoryVirtualRepositoryConfigArgs:
         return pulumi.get(self, "upstream_policies")
 
     @upstream_policies.setter
-    def upstream_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]]):
+    def upstream_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArrgs']]]]):
         pulumi.set(self, "upstream_policies", value)
 
 
 @pulumi.input_type
-class RepositoryVirtualRepositoryConfigUpstreamPolicyArgs:
+calass RepositoryVirtualRepositoryConfigUpstreamPolicyArrgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,

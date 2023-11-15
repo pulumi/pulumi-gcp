@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['WorkstationIamMemberArgs', 'WorkstationIamMember']
+__all__ = ['WorkstationIamMemberArrgs', 'WorkstationIamMember']
 
 @pulumi.input_type
-class WorkstationIamMemberArgs:
+calass WorkstationIamMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
                  workstation_cluster_id: pulumi.Input[str],
                  workstation_config_id: pulumi.Input[str],
                  workstation_id: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['WorkstationIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['WorkstationIamMemberConditionArrgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -110,11 +110,11 @@ class WorkstationIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WorkstationIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['WorkstationIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WorkstationIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['WorkstationIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -157,9 +157,9 @@ class WorkstationIamMemberArgs:
 
 
 @pulumi.input_type
-class _WorkstationIamMemberState:
+calass _WorkstationIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['WorkstationIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['WorkstationIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -212,11 +212,11 @@ class _WorkstationIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WorkstationIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['WorkstationIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WorkstationIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['WorkstationIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -320,12 +320,12 @@ class _WorkstationIamMemberState:
         pulumi.set(self, "workstation_id", value)
 
 
-class WorkstationIamMember(pulumi.CustomResource):
+calass WorkstationIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['WorkstationIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['WorkstationIamMemberConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -385,7 +385,7 @@ class WorkstationIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: WorkstationIamMemberArgs,
+                 args: WorkstationIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -413,12 +413,12 @@ class WorkstationIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param WorkstationIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param WorkstationIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(WorkstationIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WorkstationIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -427,7 +427,7 @@ class WorkstationIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['WorkstationIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['WorkstationIamMemberConditionArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -442,7 +442,7 @@ class WorkstationIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = WorkstationIamMemberArgs.__new__(WorkstationIamMemberArgs)
+            __props__ = WorkstationIamMemberArrgs.__new__(WorkstationIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
@@ -473,7 +473,7 @@ class WorkstationIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['WorkstationIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['WorkstationIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

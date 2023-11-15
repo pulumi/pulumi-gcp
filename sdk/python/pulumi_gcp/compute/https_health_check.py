@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['HttpsHealthCheckArgs', 'HttpsHealthCheck']
+__all__ = ['HttpsHealthCheckArrgs', 'HttpsHealthCheck']
 
 @pulumi.input_type
-class HttpsHealthCheckArgs:
+calass HttpsHealthCheckArrgs:
     def __init__(__self__, *,
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -220,7 +220,7 @@ class HttpsHealthCheckArgs:
 
 
 @pulumi.input_type
-class _HttpsHealthCheckState:
+calass _HttpsHealthCheckState:
     def __init__(__self__, *,
                  check_interval_sec: Optional[pulumi.Input[int]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
@@ -459,7 +459,7 @@ class _HttpsHealthCheckState:
         pulumi.set(self, "unhealthy_threshold", value)
 
 
-class HttpsHealthCheck(pulumi.CustomResource):
+calass HttpsHealthCheck(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -557,7 +557,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[HttpsHealthCheckArgs] = None,
+                 args: Optional[HttpsHealthCheckArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An HttpsHealthCheck resource. This resource defines a template for how
@@ -605,12 +605,12 @@ class HttpsHealthCheck(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param HttpsHealthCheckArgs args: The arguments to use to populate this resource's properties.
+        :param HttpsHealthCheckArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(HttpsHealthCheckArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(HttpsHealthCheckArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -636,7 +636,7 @@ class HttpsHealthCheck(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = HttpsHealthCheckArgs.__new__(HttpsHealthCheckArgs)
+            __props__ = HttpsHealthCheckArrgs.__new__(HttpsHealthCheckArrgs)
 
             __props__.__dict__["check_interval_sec"] = check_interval_sec
             __props__.__dict__["description"] = description

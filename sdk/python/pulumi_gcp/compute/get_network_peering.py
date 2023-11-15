@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetNetworkPeeringResult:
+calass GetNetworkPeeringResult:
     """
     A collection of values returned by getNetworkPeering.
     """
@@ -115,7 +115,7 @@ class GetNetworkPeeringResult:
         return pulumi.get(self, "state_details")
 
 
-class AwaitableGetNetworkPeeringResult(GetNetworkPeeringResult):
+calass AwaitableGetNetworkPeeringResult(GetNetworkPeeringResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

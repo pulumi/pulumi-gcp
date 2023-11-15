@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetCryptoKeyIamPolicyResult:
+calass GetCryptoKeyIamPolicyResult:
     """
     A collection of values returned by getCryptoKeyIamPolicy.
     """
@@ -65,7 +65,7 @@ class GetCryptoKeyIamPolicyResult:
         return pulumi.get(self, "policy_data")
 
 
-class AwaitableGetCryptoKeyIamPolicyResult(GetCryptoKeyIamPolicyResult):
+calass AwaitableGetCryptoKeyIamPolicyResult(GetCryptoKeyIamPolicyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

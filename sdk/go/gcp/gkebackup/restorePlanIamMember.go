@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Restore Plan instance.
@@ -657,12 +656,6 @@ func (i *RestorePlanIamMember) ToRestorePlanIamMemberOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamMemberOutput)
 }
 
-func (i *RestorePlanIamMember) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamMember] {
-	return pulumix.Output[*RestorePlanIamMember]{
-		OutputState: i.ToRestorePlanIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RestorePlanIamMemberArrayInput is an input type that accepts RestorePlanIamMemberArray and RestorePlanIamMemberArrayOutput values.
 // You can construct a concrete instance of `RestorePlanIamMemberArrayInput` via:
 //
@@ -686,12 +679,6 @@ func (i RestorePlanIamMemberArray) ToRestorePlanIamMemberArrayOutput() RestorePl
 
 func (i RestorePlanIamMemberArray) ToRestorePlanIamMemberArrayOutputWithContext(ctx context.Context) RestorePlanIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamMemberArrayOutput)
-}
-
-func (i RestorePlanIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*RestorePlanIamMember] {
-	return pulumix.Output[[]*RestorePlanIamMember]{
-		OutputState: i.ToRestorePlanIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RestorePlanIamMemberMapInput is an input type that accepts RestorePlanIamMemberMap and RestorePlanIamMemberMapOutput values.
@@ -719,12 +706,6 @@ func (i RestorePlanIamMemberMap) ToRestorePlanIamMemberMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePlanIamMemberMapOutput)
 }
 
-func (i RestorePlanIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RestorePlanIamMember] {
-	return pulumix.Output[map[string]*RestorePlanIamMember]{
-		OutputState: i.ToRestorePlanIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePlanIamMemberOutput struct{ *pulumi.OutputState }
 
 func (RestorePlanIamMemberOutput) ElementType() reflect.Type {
@@ -737,12 +718,6 @@ func (o RestorePlanIamMemberOutput) ToRestorePlanIamMemberOutput() RestorePlanIa
 
 func (o RestorePlanIamMemberOutput) ToRestorePlanIamMemberOutputWithContext(ctx context.Context) RestorePlanIamMemberOutput {
 	return o
-}
-
-func (o RestorePlanIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePlanIamMember] {
-	return pulumix.Output[*RestorePlanIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanIamMemberOutput) Condition() RestorePlanIamMemberConditionPtrOutput {
@@ -791,12 +766,6 @@ func (o RestorePlanIamMemberArrayOutput) ToRestorePlanIamMemberArrayOutputWithCo
 	return o
 }
 
-func (o RestorePlanIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RestorePlanIamMember] {
-	return pulumix.Output[[]*RestorePlanIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RestorePlanIamMemberArrayOutput) Index(i pulumi.IntInput) RestorePlanIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RestorePlanIamMember {
 		return vs[0].([]*RestorePlanIamMember)[vs[1].(int)]
@@ -815,12 +784,6 @@ func (o RestorePlanIamMemberMapOutput) ToRestorePlanIamMemberMapOutput() Restore
 
 func (o RestorePlanIamMemberMapOutput) ToRestorePlanIamMemberMapOutputWithContext(ctx context.Context) RestorePlanIamMemberMapOutput {
 	return o
-}
-
-func (o RestorePlanIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RestorePlanIamMember] {
-	return pulumix.Output[map[string]*RestorePlanIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePlanIamMemberMapOutput) MapIndex(k pulumi.StringInput) RestorePlanIamMemberOutput {

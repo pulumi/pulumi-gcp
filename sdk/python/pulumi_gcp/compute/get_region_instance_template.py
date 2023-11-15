@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetRegionInstanceTemplateResult:
+calass GetRegionInstanceTemplateResult:
     """
     A collection of values returned by getRegionInstanceTemplate.
     """
@@ -382,7 +382,7 @@ class GetRegionInstanceTemplateResult:
         return pulumi.get(self, "tags_fingerprint")
 
 
-class AwaitableGetRegionInstanceTemplateResult(GetRegionInstanceTemplateResult):
+calass AwaitableGetRegionInstanceTemplateResult(GetRegionInstanceTemplateResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['BackupArgs', 'Backup']
+__all__ = ['BackupArrgs', 'Backup']
 
 @pulumi.input_type
-class BackupArgs:
+calass BackupArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  source_file_share: pulumi.Input[str],
@@ -155,7 +155,7 @@ class BackupArgs:
 
 
 @pulumi.input_type
-class _BackupState:
+calass _BackupState:
     def __init__(__self__, *,
                  capacity_gb: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -446,7 +446,7 @@ class _BackupState:
         pulumi.set(self, "storage_bytes", value)
 
 
-class Backup(pulumi.CustomResource):
+calass Backup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -479,11 +479,11 @@ class Backup(pulumi.CustomResource):
         instance = gcp.filestore.Instance("instance",
             location="us-central1-b",
             tier="BASIC_HDD",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
+            file_shares=gcp.filestore.InstanceFileSharesArrgs(
                 capacity_gb=1024,
                 name="share1",
             ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
+            networks=[gcp.filestore.InstanceNetworkArrgs(
                 network="default",
                 modes=["MODE_IPV4"],
                 connect_mode="DIRECT_PEERING",
@@ -542,7 +542,7 @@ class Backup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BackupArgs,
+                 args: BackupArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Google Cloud Filestore backup.
@@ -564,11 +564,11 @@ class Backup(pulumi.CustomResource):
         instance = gcp.filestore.Instance("instance",
             location="us-central1-b",
             tier="BASIC_HDD",
-            file_shares=gcp.filestore.InstanceFileSharesArgs(
+            file_shares=gcp.filestore.InstanceFileSharesArrgs(
                 capacity_gb=1024,
                 name="share1",
             ),
-            networks=[gcp.filestore.InstanceNetworkArgs(
+            networks=[gcp.filestore.InstanceNetworkArrgs(
                 network="default",
                 modes=["MODE_IPV4"],
                 connect_mode="DIRECT_PEERING",
@@ -601,12 +601,12 @@ class Backup(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param BackupArgs args: The arguments to use to populate this resource's properties.
+        :param BackupArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BackupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BackupArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -629,7 +629,7 @@ class Backup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BackupArgs.__new__(BackupArgs)
+            __props__ = BackupArrgs.__new__(BackupArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels

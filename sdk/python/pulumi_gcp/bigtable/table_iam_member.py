@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TableIamMemberArgs', 'TableIamMember']
+__all__ = ['TableIamMemberArrgs', 'TableIamMember']
 
 @pulumi.input_type
-class TableIamMemberArgs:
+calass TableIamMemberArrgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
                  table: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['TableIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['TableIamMemberConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TableIamMember resource.
@@ -116,11 +116,11 @@ class TableIamMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['TableIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['TableIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['TableIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['TableIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -138,9 +138,9 @@ class TableIamMemberArgs:
 
 
 @pulumi.input_type
-class _TableIamMemberState:
+calass _TableIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['TableIamMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['TableIamMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -188,11 +188,11 @@ class _TableIamMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['TableIamMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['TableIamMemberConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['TableIamMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['TableIamMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -281,12 +281,12 @@ class _TableIamMemberState:
         pulumi.set(self, "table", value)
 
 
-class TableIamMember(pulumi.CustomResource):
+calass TableIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TableIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['TableIamMemberConditionArrgs']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -310,7 +310,7 @@ class TableIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/bigtable.user",
             members=["user:jane@example.com"],
         )])
@@ -394,7 +394,7 @@ class TableIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TableIamMemberArgs,
+                 args: TableIamMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage IAM policies on bigtable tables. Each of these resources serves a different use case:
@@ -413,7 +413,7 @@ class TableIamMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/bigtable.user",
             members=["user:jane@example.com"],
         )])
@@ -471,12 +471,12 @@ class TableIamMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param TableIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param TableIamMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TableIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TableIamMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -485,7 +485,7 @@ class TableIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['TableIamMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['TableIamMemberConditionArrgs']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -498,7 +498,7 @@ class TableIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TableIamMemberArgs.__new__(TableIamMemberArgs)
+            __props__ = TableIamMemberArrgs.__new__(TableIamMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if instance is None and not opts.urn:
@@ -525,7 +525,7 @@ class TableIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['TableIamMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['TableIamMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,

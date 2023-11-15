@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetImageResult:
+calass GetImageResult:
     """
     A collection of values returned by getImage.
     """
@@ -250,7 +250,7 @@ class GetImageResult:
         return pulumi.get(self, "status")
 
 
-class AwaitableGetImageResult(GetImageResult):
+calass AwaitableGetImageResult(GetImageResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
@@ -298,8 +298,8 @@ def get_image(family: Optional[str] = None,
     my_image = gcp.compute.get_image(family="debian-11",
         project="debian-cloud")
     # ...
-    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
-        initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArrgs(
+        initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
             image=my_image.self_link,
         ),
     ))
@@ -374,8 +374,8 @@ def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
     my_image = gcp.compute.get_image(family="debian-11",
         project="debian-cloud")
     # ...
-    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArgs(
-        initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+    default = gcp.compute.Instance("default", boot_disk=gcp.compute.InstanceBootDiskArrgs(
+        initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
             image=my_image.self_link,
         ),
     ))

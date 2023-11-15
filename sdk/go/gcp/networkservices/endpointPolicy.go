@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -362,12 +361,6 @@ func (i *EndpointPolicy) ToEndpointPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyOutput)
 }
 
-func (i *EndpointPolicy) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicy] {
-	return pulumix.Output[*EndpointPolicy]{
-		OutputState: i.ToEndpointPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EndpointPolicyArrayInput is an input type that accepts EndpointPolicyArray and EndpointPolicyArrayOutput values.
 // You can construct a concrete instance of `EndpointPolicyArrayInput` via:
 //
@@ -391,12 +384,6 @@ func (i EndpointPolicyArray) ToEndpointPolicyArrayOutput() EndpointPolicyArrayOu
 
 func (i EndpointPolicyArray) ToEndpointPolicyArrayOutputWithContext(ctx context.Context) EndpointPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyArrayOutput)
-}
-
-func (i EndpointPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*EndpointPolicy] {
-	return pulumix.Output[[]*EndpointPolicy]{
-		OutputState: i.ToEndpointPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EndpointPolicyMapInput is an input type that accepts EndpointPolicyMap and EndpointPolicyMapOutput values.
@@ -424,12 +411,6 @@ func (i EndpointPolicyMap) ToEndpointPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyMapOutput)
 }
 
-func (i EndpointPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EndpointPolicy] {
-	return pulumix.Output[map[string]*EndpointPolicy]{
-		OutputState: i.ToEndpointPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EndpointPolicyOutput struct{ *pulumi.OutputState }
 
 func (EndpointPolicyOutput) ElementType() reflect.Type {
@@ -442,12 +423,6 @@ func (o EndpointPolicyOutput) ToEndpointPolicyOutput() EndpointPolicyOutput {
 
 func (o EndpointPolicyOutput) ToEndpointPolicyOutputWithContext(ctx context.Context) EndpointPolicyOutput {
 	return o
-}
-
-func (o EndpointPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointPolicy] {
-	return pulumix.Output[*EndpointPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
@@ -541,12 +516,6 @@ func (o EndpointPolicyArrayOutput) ToEndpointPolicyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o EndpointPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EndpointPolicy] {
-	return pulumix.Output[[]*EndpointPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EndpointPolicyArrayOutput) Index(i pulumi.IntInput) EndpointPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EndpointPolicy {
 		return vs[0].([]*EndpointPolicy)[vs[1].(int)]
@@ -565,12 +534,6 @@ func (o EndpointPolicyMapOutput) ToEndpointPolicyMapOutput() EndpointPolicyMapOu
 
 func (o EndpointPolicyMapOutput) ToEndpointPolicyMapOutputWithContext(ctx context.Context) EndpointPolicyMapOutput {
 	return o
-}
-
-func (o EndpointPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EndpointPolicy] {
-	return pulumix.Output[map[string]*EndpointPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointPolicyMapOutput) MapIndex(k pulumi.StringInput) EndpointPolicyOutput {

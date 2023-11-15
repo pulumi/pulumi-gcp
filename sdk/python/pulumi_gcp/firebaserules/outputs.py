@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class RulesetMetadata(dict):
+calass RulesetMetadata(dict):
     def __init__(__self__, *,
                  services: Optional[Sequence[str]] = None):
         if services is not None:
@@ -30,12 +30,12 @@ class RulesetMetadata(dict):
 
 
 @pulumi.output_type
-class RulesetSource(dict):
+calass RulesetSource(dict):
     def __init__(__self__, *,
                  files: Sequence['outputs.RulesetSourceFile'],
                  language: Optional[str] = None):
         """
-        :param Sequence['RulesetSourceFileArgs'] files: `File` set constituting the `Source` bundle.
+        :param Sequence['RulesetSourceFileArrgs'] files: `File` set constituting the `Source` bundle.
         :param str language: `Language` of the `Source` bundle. If unspecified, the language will default to `FIREBASE_RULES`. Possible values: LANGUAGE_UNSPECIFIED, FIREBASE_RULES, EVENT_FLOW_TRIGGERS
         """
         pulumi.set(__self__, "files", files)
@@ -60,7 +60,7 @@ class RulesetSource(dict):
 
 
 @pulumi.output_type
-class RulesetSourceFile(dict):
+calass RulesetSourceFile(dict):
     def __init__(__self__, *,
                  content: str,
                  name: str,

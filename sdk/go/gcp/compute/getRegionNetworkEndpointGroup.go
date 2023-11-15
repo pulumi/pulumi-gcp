@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access a Region Network Endpoint Group's attributes.
@@ -136,12 +135,6 @@ func (o LookupRegionNetworkEndpointGroupResultOutput) ToLookupRegionNetworkEndpo
 
 func (o LookupRegionNetworkEndpointGroupResultOutput) ToLookupRegionNetworkEndpointGroupResultOutputWithContext(ctx context.Context) LookupRegionNetworkEndpointGroupResultOutput {
 	return o
-}
-
-func (o LookupRegionNetworkEndpointGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegionNetworkEndpointGroupResult] {
-	return pulumix.Output[LookupRegionNetworkEndpointGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupRegionNetworkEndpointGroupResultOutput) AppEngines() GetRegionNetworkEndpointGroupAppEngineArrayOutput {

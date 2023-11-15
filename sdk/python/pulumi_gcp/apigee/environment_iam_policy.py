@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['EnvironmentIamPolicyArgs', 'EnvironmentIamPolicy']
+__all__ = ['EnvironmentIamPolicyArrgs', 'EnvironmentIamPolicy']
 
 @pulumi.input_type
-class EnvironmentIamPolicyArgs:
+calass EnvironmentIamPolicyArrgs:
     def __init__(__self__, *,
                  env_id: pulumi.Input[str],
                  org_id: pulumi.Input[str],
@@ -87,7 +87,7 @@ class EnvironmentIamPolicyArgs:
 
 
 @pulumi.input_type
-class _EnvironmentIamPolicyState:
+calass _EnvironmentIamPolicyState:
     def __init__(__self__, *,
                  env_id: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -180,7 +180,7 @@ class _EnvironmentIamPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
-class EnvironmentIamPolicy(pulumi.CustomResource):
+calass EnvironmentIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -210,7 +210,7 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -292,7 +292,7 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EnvironmentIamPolicyArgs,
+                 args: EnvironmentIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Apigee Environment. Each of these resources serves a different use case:
@@ -315,7 +315,7 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
@@ -376,12 +376,12 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param EnvironmentIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param EnvironmentIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EnvironmentIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EnvironmentIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -400,7 +400,7 @@ class EnvironmentIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EnvironmentIamPolicyArgs.__new__(EnvironmentIamPolicyArgs)
+            __props__ = EnvironmentIamPolicyArrgs.__new__(EnvironmentIamPolicyArrgs)
 
             if env_id is None and not opts.urn:
                 raise TypeError("Missing required property 'env_id'")

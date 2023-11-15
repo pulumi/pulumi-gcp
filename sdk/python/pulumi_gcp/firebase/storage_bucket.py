@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['StorageBucketArgs', 'StorageBucket']
+__all__ = ['StorageBucketArrgs', 'StorageBucket']
 
 @pulumi.input_type
-class StorageBucketArgs:
+calass StorageBucketArrgs:
     def __init__(__self__, *,
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -54,7 +54,7 @@ class StorageBucketArgs:
 
 
 @pulumi.input_type
-class _StorageBucketState:
+calass _StorageBucketState:
     def __init__(__self__, *,
                  bucket_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class _StorageBucketState:
         pulumi.set(self, "project", value)
 
 
-class StorageBucket(pulumi.CustomResource):
+calass StorageBucket(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -163,7 +163,7 @@ class StorageBucket(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[StorageBucketArgs] = None,
+                 args: Optional[StorageBucketArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -200,12 +200,12 @@ class StorageBucket(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param StorageBucketArgs args: The arguments to use to populate this resource's properties.
+        :param StorageBucketArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(StorageBucketArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(StorageBucketArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -223,7 +223,7 @@ class StorageBucket(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = StorageBucketArgs.__new__(StorageBucketArgs)
+            __props__ = StorageBucketArrgs.__new__(StorageBucketArrgs)
 
             __props__.__dict__["bucket_id"] = bucket_id
             __props__.__dict__["project"] = project

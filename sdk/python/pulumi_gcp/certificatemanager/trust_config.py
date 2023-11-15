@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TrustConfigArgs', 'TrustConfig']
+__all__ = ['TrustConfigArrgs', 'TrustConfig']
 
 @pulumi.input_type
-class TrustConfigArgs:
+calass TrustConfigArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArgs']]]] = None):
+                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArrgs']]]] = None):
         """
         The set of arguments for constructing a TrustConfig resource.
         :param pulumi.Input[str] location: The trust config location.
@@ -35,7 +35,7 @@ class TrustConfigArgs:
         :param pulumi.Input[str] name: A user-defined name of the trust config. Trust config names must be unique globally.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArgs']]] trust_stores: Set of trust stores to perform validation against.
+        :param pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArrgs']]] trust_stores: Set of trust stores to perform validation against.
                This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
                Structure is documented below.
         """
@@ -119,7 +119,7 @@ class TrustConfigArgs:
 
     @property
     @pulumi.getter(name="trustStores")
-    def trust_stores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArgs']]]]:
+    def trust_stores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArrgs']]]]:
         """
         Set of trust stores to perform validation against.
         This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
@@ -128,12 +128,12 @@ class TrustConfigArgs:
         return pulumi.get(self, "trust_stores")
 
     @trust_stores.setter
-    def trust_stores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArgs']]]]):
+    def trust_stores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArrgs']]]]):
         pulumi.set(self, "trust_stores", value)
 
 
 @pulumi.input_type
-class _TrustConfigState:
+calass _TrustConfigState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class _TrustConfigState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArgs']]]] = None,
+                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArrgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TrustConfig resources.
@@ -164,7 +164,7 @@ class _TrustConfigState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArgs']]] trust_stores: Set of trust stores to perform validation against.
+        :param pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArrgs']]] trust_stores: Set of trust stores to perform validation against.
                This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
                Structure is documented below.
         :param pulumi.Input[str] update_time: The last update timestamp of a TrustConfig.
@@ -299,7 +299,7 @@ class _TrustConfigState:
 
     @property
     @pulumi.getter(name="trustStores")
-    def trust_stores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArgs']]]]:
+    def trust_stores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArrgs']]]]:
         """
         Set of trust stores to perform validation against.
         This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
@@ -308,7 +308,7 @@ class _TrustConfigState:
         return pulumi.get(self, "trust_stores")
 
     @trust_stores.setter
-    def trust_stores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArgs']]]]):
+    def trust_stores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreArrgs']]]]):
         pulumi.set(self, "trust_stores", value)
 
     @property
@@ -326,7 +326,7 @@ class _TrustConfigState:
         pulumi.set(self, "update_time", value)
 
 
-class TrustConfig(pulumi.CustomResource):
+calass TrustConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -336,7 +336,7 @@ class TrustConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustConfigTrustStoreArgs']]]]] = None,
+                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustConfigTrustStoreArrgs']]]]] = None,
                  __props__=None):
         """
         TrustConfig represents a resource that represents your Public Key Infrastructure (PKI) configuration in Certificate Manager for use in mutual TLS authentication scenarios.
@@ -361,11 +361,11 @@ class TrustConfig(pulumi.CustomResource):
         default = gcp.certificatemanager.TrustConfig("default",
             description="sample description for the trust config",
             location="us-central1",
-            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
-                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
+            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArrgs(
+                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArrgs(
                     pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
                 )],
-                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
+                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArrgs(
                     pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
                 )],
             )],
@@ -403,7 +403,7 @@ class TrustConfig(pulumi.CustomResource):
         :param pulumi.Input[str] name: A user-defined name of the trust config. Trust config names must be unique globally.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustConfigTrustStoreArgs']]]] trust_stores: Set of trust stores to perform validation against.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustConfigTrustStoreArrgs']]]] trust_stores: Set of trust stores to perform validation against.
                This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
                Structure is documented below.
         """
@@ -411,7 +411,7 @@ class TrustConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: TrustConfigArgs,
+                 args: TrustConfigArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         TrustConfig represents a resource that represents your Public Key Infrastructure (PKI) configuration in Certificate Manager for use in mutual TLS authentication scenarios.
@@ -436,11 +436,11 @@ class TrustConfig(pulumi.CustomResource):
         default = gcp.certificatemanager.TrustConfig("default",
             description="sample description for the trust config",
             location="us-central1",
-            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArgs(
-                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArgs(
+            trust_stores=[gcp.certificatemanager.TrustConfigTrustStoreArrgs(
+                trust_anchors=[gcp.certificatemanager.TrustConfigTrustStoreTrustAnchorArrgs(
                     pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
                 )],
-                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArgs(
+                intermediate_cas=[gcp.certificatemanager.TrustConfigTrustStoreIntermediateCaArrgs(
                     pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
                 )],
             )],
@@ -466,12 +466,12 @@ class TrustConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param TrustConfigArgs args: The arguments to use to populate this resource's properties.
+        :param TrustConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(TrustConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(TrustConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -485,7 +485,7 @@ class TrustConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustConfigTrustStoreArgs']]]]] = None,
+                 trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustConfigTrustStoreArrgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -493,7 +493,7 @@ class TrustConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = TrustConfigArgs.__new__(TrustConfigArgs)
+            __props__ = TrustConfigArrgs.__new__(TrustConfigArrgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
@@ -527,7 +527,7 @@ class TrustConfig(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustConfigTrustStoreArgs']]]]] = None,
+            trust_stores: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustConfigTrustStoreArrgs']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'TrustConfig':
         """
         Get an existing TrustConfig resource's state with the given name, id, and optional extra
@@ -553,7 +553,7 @@ class TrustConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustConfigTrustStoreArgs']]]] trust_stores: Set of trust stores to perform validation against.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrustConfigTrustStoreArrgs']]]] trust_stores: Set of trust stores to perform validation against.
                This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation.
                Structure is documented below.
         :param pulumi.Input[str] update_time: The last update timestamp of a TrustConfig.

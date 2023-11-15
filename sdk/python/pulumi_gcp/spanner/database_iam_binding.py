@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DatabaseIAMBindingArgs', 'DatabaseIAMBinding']
+__all__ = ['DatabaseIAMBindingArrgs', 'DatabaseIAMBinding']
 
 @pulumi.input_type
-class DatabaseIAMBindingArgs:
+calass DatabaseIAMBindingArrgs:
     def __init__(__self__, *,
                  database: pulumi.Input[str],
                  instance: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['DatabaseIAMBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['DatabaseIAMBindingConditionArrgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DatabaseIAMBinding resource.
@@ -108,11 +108,11 @@ class DatabaseIAMBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DatabaseIAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['DatabaseIAMBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DatabaseIAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['DatabaseIAMBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -130,9 +130,9 @@ class DatabaseIAMBindingArgs:
 
 
 @pulumi.input_type
-class _DatabaseIAMBindingState:
+calass _DatabaseIAMBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['DatabaseIAMBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['DatabaseIAMBindingConditionArrgs']] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -176,11 +176,11 @@ class _DatabaseIAMBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DatabaseIAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['DatabaseIAMBindingConditionArrgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DatabaseIAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['DatabaseIAMBindingConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -265,12 +265,12 @@ class _DatabaseIAMBindingState:
         pulumi.set(self, "role", value)
 
 
-class DatabaseIAMBinding(pulumi.CustomResource):
+calass DatabaseIAMBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DatabaseIAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['DatabaseIAMBindingConditionArrgs']]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -297,7 +297,7 @@ class DatabaseIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -380,7 +380,7 @@ class DatabaseIAMBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DatabaseIAMBindingArgs,
+                 args: DatabaseIAMBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
@@ -402,7 +402,7 @@ class DatabaseIAMBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -463,12 +463,12 @@ class DatabaseIAMBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param DatabaseIAMBindingArgs args: The arguments to use to populate this resource's properties.
+        :param DatabaseIAMBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DatabaseIAMBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseIAMBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -477,7 +477,7 @@ class DatabaseIAMBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['DatabaseIAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['DatabaseIAMBindingConditionArrgs']]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -490,7 +490,7 @@ class DatabaseIAMBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DatabaseIAMBindingArgs.__new__(DatabaseIAMBindingArgs)
+            __props__ = DatabaseIAMBindingArrgs.__new__(DatabaseIAMBindingArrgs)
 
             __props__.__dict__["condition"] = condition
             if database is None and not opts.urn:
@@ -517,7 +517,7 @@ class DatabaseIAMBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['DatabaseIAMBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['DatabaseIAMBindingConditionArrgs']]] = None,
             database: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             instance: Optional[pulumi.Input[str]] = None,

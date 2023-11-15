@@ -84,7 +84,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class EdgeCacheKeysetPublicKey(dict):
+calass EdgeCacheKeysetPublicKey(dict):
     def __init__(__self__, *,
                  id: str,
                  managed: Optional[bool] = None,
@@ -134,7 +134,7 @@ class EdgeCacheKeysetPublicKey(dict):
 
 
 @pulumi.output_type
-class EdgeCacheKeysetValidationSharedKey(dict):
+calass EdgeCacheKeysetValidationSharedKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -179,7 +179,7 @@ class EdgeCacheKeysetValidationSharedKey(dict):
 
 
 @pulumi.output_type
-class EdgeCacheOriginAwsV4Authentication(dict):
+calass EdgeCacheOriginAwsV4Authentication(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -242,7 +242,7 @@ class EdgeCacheOriginAwsV4Authentication(dict):
 
 
 @pulumi.output_type
-class EdgeCacheOriginOriginOverrideAction(dict):
+calass EdgeCacheOriginOriginOverrideAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -266,10 +266,10 @@ class EdgeCacheOriginOriginOverrideAction(dict):
                  header_action: Optional['outputs.EdgeCacheOriginOriginOverrideActionHeaderAction'] = None,
                  url_rewrite: Optional['outputs.EdgeCacheOriginOriginOverrideActionUrlRewrite'] = None):
         """
-        :param 'EdgeCacheOriginOriginOverrideActionHeaderActionArgs' header_action: The header actions, including adding and removing
+        :param 'EdgeCacheOriginOriginOverrideActionHeaderActionArrgs' header_action: The header actions, including adding and removing
                headers, for request handled by this origin.
                Structure is documented below.
-        :param 'EdgeCacheOriginOriginOverrideActionUrlRewriteArgs' url_rewrite: The URL rewrite configuration for request that are
+        :param 'EdgeCacheOriginOriginOverrideActionUrlRewriteArrgs' url_rewrite: The URL rewrite configuration for request that are
                handled by this origin.
                Structure is documented below.
         """
@@ -300,7 +300,7 @@ class EdgeCacheOriginOriginOverrideAction(dict):
 
 
 @pulumi.output_type
-class EdgeCacheOriginOriginOverrideActionHeaderAction(dict):
+calass EdgeCacheOriginOriginOverrideActionHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -321,7 +321,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction(dict):
     def __init__(__self__, *,
                  request_headers_to_adds: Optional[Sequence['outputs.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd']] = None):
         """
-        :param Sequence['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Describes a header to add.
+        :param Sequence['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrgs'] request_headers_to_adds: Describes a header to add.
                You may add a maximum of 25 request headers.
                Structure is documented below.
         """
@@ -340,7 +340,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction(dict):
 
 
 @pulumi.output_type
-class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd(dict):
+calass EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -410,7 +410,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd(dict):
 
 
 @pulumi.output_type
-class EdgeCacheOriginOriginOverrideActionUrlRewrite(dict):
+calass EdgeCacheOriginOriginOverrideActionUrlRewrite(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -452,7 +452,7 @@ class EdgeCacheOriginOriginOverrideActionUrlRewrite(dict):
 
 
 @pulumi.output_type
-class EdgeCacheOriginOriginRedirect(dict):
+calass EdgeCacheOriginOriginRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -494,7 +494,7 @@ class EdgeCacheOriginOriginRedirect(dict):
 
 
 @pulumi.output_type
-class EdgeCacheOriginTimeout(dict):
+calass EdgeCacheOriginTimeout(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -598,7 +598,7 @@ class EdgeCacheOriginTimeout(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceLogConfig(dict):
+calass EdgeCacheServiceLogConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -648,7 +648,7 @@ class EdgeCacheServiceLogConfig(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceRouting(dict):
+calass EdgeCacheServiceRouting(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -672,9 +672,9 @@ class EdgeCacheServiceRouting(dict):
                  host_rules: Sequence['outputs.EdgeCacheServiceRoutingHostRule'],
                  path_matchers: Sequence['outputs.EdgeCacheServiceRoutingPathMatcher']):
         """
-        :param Sequence['EdgeCacheServiceRoutingHostRuleArgs'] host_rules: The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
+        :param Sequence['EdgeCacheServiceRoutingHostRuleArrgs'] host_rules: The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
                Structure is documented below.
-        :param Sequence['EdgeCacheServiceRoutingPathMatcherArgs'] path_matchers: The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
+        :param Sequence['EdgeCacheServiceRoutingPathMatcherArrgs'] path_matchers: The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
                Structure is documented below.
         """
         pulumi.set(__self__, "host_rules", host_rules)
@@ -700,7 +700,7 @@ class EdgeCacheServiceRouting(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingHostRule(dict):
+calass EdgeCacheServiceRoutingHostRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -778,7 +778,7 @@ class EdgeCacheServiceRoutingHostRule(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcher(dict):
+calass EdgeCacheServiceRoutingPathMatcher(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -802,7 +802,7 @@ class EdgeCacheServiceRoutingPathMatcher(dict):
                  description: Optional[str] = None):
         """
         :param str name: The name to which this PathMatcher is referred by the HostRule.
-        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleArgs'] route_rules: The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
+        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs'] route_rules: The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
                Structure is documented below.
         :param str description: A human-readable description of the resource.
         """
@@ -838,7 +838,7 @@ class EdgeCacheServiceRoutingPathMatcher(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRule(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -871,7 +871,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule(dict):
                  route_action: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction'] = None,
                  url_redirect: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect'] = None):
         """
-        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs'] match_rules: The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates
+        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs'] match_rules: The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates
                within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
                Structure is documented below.
         :param str priority: The priority of this route rule, where 1 is the highest priority.
@@ -879,13 +879,13 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule(dict):
                Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers
                to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
         :param str description: A human-readable description of the routeRule.
-        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs' header_action: The header actions, including adding & removing headers, for requests that match this route.
+        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs' header_action: The header actions, including adding & removing headers, for requests that match this route.
                Structure is documented below.
         :param str origin: The Origin resource that requests to this route should fetch from when a matching response is not in cache. Origins can be defined as short names ("my-origin") or fully-qualified resource URLs - e.g. "networkservices.googleapis.com/projects/my-project/global/edgecacheorigins/my-origin"
                Only one of origin or urlRedirect can be set.
-        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs' route_action: In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
+        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs' route_action: In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
                Structure is documented below.
-        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs' url_redirect: The URL redirect configuration for requests that match this route.
+        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArrgs' url_redirect: The URL redirect configuration for requests that match this route.
                Structure is documented below.
         """
         pulumi.set(__self__, "match_rules", match_rules)
@@ -968,7 +968,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -998,14 +998,14 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction(dict):
                  response_header_to_adds: Optional[Sequence['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd']] = None,
                  response_header_to_removes: Optional[Sequence['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove']] = None):
         """
-        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs'] request_header_to_adds: Describes a header to add.
+        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrgs'] request_header_to_adds: Describes a header to add.
                Structure is documented below.
-        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs'] request_header_to_removes: A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
+        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrgs'] request_header_to_removes: A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
                Structure is documented below.
-        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs'] response_header_to_adds: Headers to add to the response prior to sending it back to the client.
+        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs'] response_header_to_adds: Headers to add to the response prior to sending it back to the client.
                Response headers are only sent to the client, and do not have an effect on the cache serving the response.
                Structure is documented below.
-        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs'] response_header_to_removes: A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
+        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrgs'] response_header_to_removes: A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
                Structure is documented below.
         """
         if request_header_to_adds is not None:
@@ -1056,7 +1056,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1116,7 +1116,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd(
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1151,7 +1151,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemo
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1211,7 +1211,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1248,7 +1248,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRem
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1285,7 +1285,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule(dict):
                  query_parameter_matches: Optional[Sequence['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch']] = None):
         """
         :param str full_path_match: For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL.
-        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs'] header_matches: Specifies a list of header match criteria, all of which must match corresponding headers in the request.
+        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrgs'] header_matches: Specifies a list of header match criteria, all of which must match corresponding headers in the request.
                Structure is documented below.
         :param bool ignore_case: Specifies that prefixMatch and fullPathMatch matches are case sensitive.
         :param str path_template_match: For satisfying the matchRule condition, the path of the request
@@ -1297,7 +1297,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule(dict):
                have at most 5 wildcard operators and at most 5 variable
                captures in total.
         :param str prefix_match: For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
-        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs'] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
+        :param Sequence['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs'] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
                Structure is documented below.
         """
         if full_path_match is not None:
@@ -1372,7 +1372,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1479,7 +1479,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1540,7 +1540,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch(di
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1567,11 +1567,11 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(dict):
                  cors_policy: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy'] = None,
                  url_rewrite: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite'] = None):
         """
-        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs' cdn_policy: The policy to use for defining caching and signed request behaviour for requests that match this route.
+        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs' cdn_policy: The policy to use for defining caching and signed request behaviour for requests that match this route.
                Structure is documented below.
-        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs' cors_policy: CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
+        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArrgs' cors_policy: CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
                Structure is documented below.
-        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs' url_rewrite: The URL rewrite configuration for requests that match this route.
+        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArrgs' url_rewrite: The URL rewrite configuration for requests that match this route.
                Structure is documented below.
         """
         if cdn_policy is not None:
@@ -1610,7 +1610,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1664,10 +1664,10 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy(dict):
                  signed_request_mode: Optional[str] = None,
                  signed_token_options: Optional['outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions'] = None):
         """
-        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs' add_signatures: Enable signature generation or propagation on this route.
+        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArrgs' add_signatures: Enable signature generation or propagation on this route.
                This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
                Structure is documented below.
-        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs' cache_key_policy: Defines the request parameters that contribute to the cache key.
+        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArrgs' cache_key_policy: Defines the request parameters that contribute to the cache key.
                Structure is documented below.
         :param str cache_mode: Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
                For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
@@ -1718,7 +1718,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy(dict):
                You must also set a signedRequestKeyset to enable signed requests.
                When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
                Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
-        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs' signed_token_options: Additional options for signed tokens.
+        :param 'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArrgs' signed_token_options: Additional options for signed tokens.
                signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
                Structure is documented below.
         """
@@ -1890,7 +1890,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1999,7 +1999,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2155,7 +2155,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2215,7 +2215,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedToken
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2344,7 +2344,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2428,7 +2428,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite(dict):
 
 
 @pulumi.output_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect(dict):
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2548,7 +2548,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect(dict):
 
 
 @pulumi.output_type
-class EndpointPolicyEndpointMatcher(dict):
+calass EndpointPolicyEndpointMatcher(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2569,7 +2569,7 @@ class EndpointPolicyEndpointMatcher(dict):
     def __init__(__self__, *,
                  metadata_label_matcher: 'outputs.EndpointPolicyEndpointMatcherMetadataLabelMatcher'):
         """
-        :param 'EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs' metadata_label_matcher: The matcher is based on node metadata presented by xDS clients.
+        :param 'EndpointPolicyEndpointMatcherMetadataLabelMatcherArrgs' metadata_label_matcher: The matcher is based on node metadata presented by xDS clients.
                Structure is documented below.
         """
         pulumi.set(__self__, "metadata_label_matcher", metadata_label_matcher)
@@ -2585,7 +2585,7 @@ class EndpointPolicyEndpointMatcher(dict):
 
 
 @pulumi.output_type
-class EndpointPolicyEndpointMatcherMetadataLabelMatcher(dict):
+calass EndpointPolicyEndpointMatcherMetadataLabelMatcher(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2611,7 +2611,7 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcher(dict):
         """
         :param str metadata_label_match_criteria: Specifies how matching should be done.
                Possible values are: `MATCH_ANY`, `MATCH_ALL`.
-        :param Sequence['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs'] metadata_labels: The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
+        :param Sequence['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrgs'] metadata_labels: The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
                Structure is documented below.
         """
         pulumi.set(__self__, "metadata_label_match_criteria", metadata_label_match_criteria)
@@ -2638,7 +2638,7 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcher(dict):
 
 
 @pulumi.output_type
-class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel(dict):
+calass EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2690,7 +2690,7 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel(dict):
 
 
 @pulumi.output_type
-class EndpointPolicyTrafficPortSelector(dict):
+calass EndpointPolicyTrafficPortSelector(dict):
     def __init__(__self__, *,
                  ports: Sequence[str]):
         """
@@ -2708,14 +2708,14 @@ class EndpointPolicyTrafficPortSelector(dict):
 
 
 @pulumi.output_type
-class GrpcRouteRule(dict):
+calass GrpcRouteRule(dict):
     def __init__(__self__, *,
                  action: Optional['outputs.GrpcRouteRuleAction'] = None,
                  matches: Optional[Sequence['outputs.GrpcRouteRuleMatch']] = None):
         """
-        :param 'GrpcRouteRuleActionArgs' action: Required. A detailed rule defining how to route traffic.
+        :param 'GrpcRouteRuleActionArrgs' action: Required. A detailed rule defining how to route traffic.
                Structure is documented below.
-        :param Sequence['GrpcRouteRuleMatchArgs'] matches: Matches define conditions used for matching the rule against incoming gRPC requests.
+        :param Sequence['GrpcRouteRuleMatchArrgs'] matches: Matches define conditions used for matching the rule against incoming gRPC requests.
                Structure is documented below.
         """
         if action is not None:
@@ -2743,7 +2743,7 @@ class GrpcRouteRule(dict):
 
 
 @pulumi.output_type
-class GrpcRouteRuleAction(dict):
+calass GrpcRouteRuleAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2769,11 +2769,11 @@ class GrpcRouteRuleAction(dict):
                  retry_policy: Optional['outputs.GrpcRouteRuleActionRetryPolicy'] = None,
                  timeout: Optional[str] = None):
         """
-        :param Sequence['GrpcRouteRuleActionDestinationArgs'] destinations: The destination to which traffic should be forwarded.
+        :param Sequence['GrpcRouteRuleActionDestinationArrgs'] destinations: The destination to which traffic should be forwarded.
                Structure is documented below.
-        :param 'GrpcRouteRuleActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        :param 'GrpcRouteRuleActionFaultInjectionPolicyArrgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                Structure is documented below.
-        :param 'GrpcRouteRuleActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
+        :param 'GrpcRouteRuleActionRetryPolicyArrgs' retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
         :param str timeout: Specifies the timeout for selected route.
         """
@@ -2823,7 +2823,7 @@ class GrpcRouteRuleAction(dict):
 
 
 @pulumi.output_type
-class GrpcRouteRuleActionDestination(dict):
+calass GrpcRouteRuleActionDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2871,14 +2871,14 @@ class GrpcRouteRuleActionDestination(dict):
 
 
 @pulumi.output_type
-class GrpcRouteRuleActionFaultInjectionPolicy(dict):
+calass GrpcRouteRuleActionFaultInjectionPolicy(dict):
     def __init__(__self__, *,
                  abort: Optional['outputs.GrpcRouteRuleActionFaultInjectionPolicyAbort'] = None,
                  delay: Optional['outputs.GrpcRouteRuleActionFaultInjectionPolicyDelay'] = None):
         """
-        :param 'GrpcRouteRuleActionFaultInjectionPolicyAbortArgs' abort: Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+        :param 'GrpcRouteRuleActionFaultInjectionPolicyAbortArrgs' abort: Specification of how client requests are aborted as part of fault injection before being sent to a destination.
                Structure is documented below.
-        :param 'GrpcRouteRuleActionFaultInjectionPolicyDelayArgs' delay: Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+        :param 'GrpcRouteRuleActionFaultInjectionPolicyDelayArrgs' delay: Specification of how client requests are delayed as part of fault injection before being sent to a destination.
                Structure is documented below.
         """
         if abort is not None:
@@ -2906,7 +2906,7 @@ class GrpcRouteRuleActionFaultInjectionPolicy(dict):
 
 
 @pulumi.output_type
-class GrpcRouteRuleActionFaultInjectionPolicyAbort(dict):
+calass GrpcRouteRuleActionFaultInjectionPolicyAbort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2954,7 +2954,7 @@ class GrpcRouteRuleActionFaultInjectionPolicyAbort(dict):
 
 
 @pulumi.output_type
-class GrpcRouteRuleActionFaultInjectionPolicyDelay(dict):
+calass GrpcRouteRuleActionFaultInjectionPolicyDelay(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3002,7 +3002,7 @@ class GrpcRouteRuleActionFaultInjectionPolicyDelay(dict):
 
 
 @pulumi.output_type
-class GrpcRouteRuleActionRetryPolicy(dict):
+calass GrpcRouteRuleActionRetryPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3058,14 +3058,14 @@ class GrpcRouteRuleActionRetryPolicy(dict):
 
 
 @pulumi.output_type
-class GrpcRouteRuleMatch(dict):
+calass GrpcRouteRuleMatch(dict):
     def __init__(__self__, *,
                  headers: Optional[Sequence['outputs.GrpcRouteRuleMatchHeader']] = None,
                  method: Optional['outputs.GrpcRouteRuleMatchMethod'] = None):
         """
-        :param Sequence['GrpcRouteRuleMatchHeaderArgs'] headers: Specifies a list of HTTP request headers to match against.
+        :param Sequence['GrpcRouteRuleMatchHeaderArrgs'] headers: Specifies a list of HTTP request headers to match against.
                Structure is documented below.
-        :param 'GrpcRouteRuleMatchMethodArgs' method: A gRPC method to match against. If this field is empty or omitted, will match all methods.
+        :param 'GrpcRouteRuleMatchMethodArrgs' method: A gRPC method to match against. If this field is empty or omitted, will match all methods.
                Structure is documented below.
         """
         if headers is not None:
@@ -3093,7 +3093,7 @@ class GrpcRouteRuleMatch(dict):
 
 
 @pulumi.output_type
-class GrpcRouteRuleMatchHeader(dict):
+calass GrpcRouteRuleMatchHeader(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str,
@@ -3138,7 +3138,7 @@ class GrpcRouteRuleMatchHeader(dict):
 
 
 @pulumi.output_type
-class GrpcRouteRuleMatchMethod(dict):
+calass GrpcRouteRuleMatchMethod(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3200,14 +3200,14 @@ class GrpcRouteRuleMatchMethod(dict):
 
 
 @pulumi.output_type
-class HttpRouteRule(dict):
+calass HttpRouteRule(dict):
     def __init__(__self__, *,
                  action: Optional['outputs.HttpRouteRuleAction'] = None,
                  matches: Optional[Sequence['outputs.HttpRouteRuleMatch']] = None):
         """
-        :param 'HttpRouteRuleActionArgs' action: The detailed rule defining how to route matched traffic.
+        :param 'HttpRouteRuleActionArrgs' action: The detailed rule defining how to route matched traffic.
                Structure is documented below.
-        :param Sequence['HttpRouteRuleMatchArgs'] matches: A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
+        :param Sequence['HttpRouteRuleMatchArrgs'] matches: A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
                If no matches field is specified, this rule will unconditionally match traffic.
                If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
                Structure is documented below.
@@ -3239,7 +3239,7 @@ class HttpRouteRule(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleAction(dict):
+calass HttpRouteRuleAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3281,24 +3281,24 @@ class HttpRouteRuleAction(dict):
                  timeout: Optional[str] = None,
                  url_rewrite: Optional['outputs.HttpRouteRuleActionUrlRewrite'] = None):
         """
-        :param 'HttpRouteRuleActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests.
+        :param 'HttpRouteRuleActionCorsPolicyArrgs' cors_policy: The specification for allowing client side cross-origin requests.
                Structure is documented below.
-        :param Sequence['HttpRouteRuleActionDestinationArgs'] destinations: The destination to which traffic should be forwarded.
+        :param Sequence['HttpRouteRuleActionDestinationArrgs'] destinations: The destination to which traffic should be forwarded.
                Structure is documented below.
-        :param 'HttpRouteRuleActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        :param 'HttpRouteRuleActionFaultInjectionPolicyArrgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                Structure is documented below.
-        :param 'HttpRouteRuleActionRedirectArgs' redirect: If set, the request is directed as configured by this field.
+        :param 'HttpRouteRuleActionRedirectArrgs' redirect: If set, the request is directed as configured by this field.
                Structure is documented below.
-        :param 'HttpRouteRuleActionRequestHeaderModifierArgs' request_header_modifier: The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+        :param 'HttpRouteRuleActionRequestHeaderModifierArrgs' request_header_modifier: The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
                Structure is documented below.
-        :param 'HttpRouteRuleActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
+        :param 'HttpRouteRuleActionRequestMirrorPolicyArrgs' request_mirror_policy: Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
                Structure is documented below.
-        :param 'HttpRouteRuleActionResponseHeaderModifierArgs' response_header_modifier: The specification for modifying the headers of a response prior to sending the response back to the client.
+        :param 'HttpRouteRuleActionResponseHeaderModifierArrgs' response_header_modifier: The specification for modifying the headers of a response prior to sending the response back to the client.
                Structure is documented below.
-        :param 'HttpRouteRuleActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
+        :param 'HttpRouteRuleActionRetryPolicyArrgs' retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
         :param str timeout: Specifies the timeout for selected route.
-        :param 'HttpRouteRuleActionUrlRewriteArgs' url_rewrite: The specification for rewrite URL before forwarding requests to the destination.
+        :param 'HttpRouteRuleActionUrlRewriteArrgs' url_rewrite: The specification for rewrite URL before forwarding requests to the destination.
                Structure is documented below.
         """
         if cors_policy is not None:
@@ -3413,7 +3413,7 @@ class HttpRouteRuleAction(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleActionCorsPolicy(dict):
+calass HttpRouteRuleActionCorsPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3549,7 +3549,7 @@ class HttpRouteRuleActionCorsPolicy(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleActionDestination(dict):
+calass HttpRouteRuleActionDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3603,14 +3603,14 @@ class HttpRouteRuleActionDestination(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleActionFaultInjectionPolicy(dict):
+calass HttpRouteRuleActionFaultInjectionPolicy(dict):
     def __init__(__self__, *,
                  abort: Optional['outputs.HttpRouteRuleActionFaultInjectionPolicyAbort'] = None,
                  delay: Optional['outputs.HttpRouteRuleActionFaultInjectionPolicyDelay'] = None):
         """
-        :param 'HttpRouteRuleActionFaultInjectionPolicyAbortArgs' abort: Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+        :param 'HttpRouteRuleActionFaultInjectionPolicyAbortArrgs' abort: Specification of how client requests are aborted as part of fault injection before being sent to a destination.
                Structure is documented below.
-        :param 'HttpRouteRuleActionFaultInjectionPolicyDelayArgs' delay: Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+        :param 'HttpRouteRuleActionFaultInjectionPolicyDelayArrgs' delay: Specification of how client requests are delayed as part of fault injection before being sent to a destination.
                Structure is documented below.
         """
         if abort is not None:
@@ -3638,7 +3638,7 @@ class HttpRouteRuleActionFaultInjectionPolicy(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleActionFaultInjectionPolicyAbort(dict):
+calass HttpRouteRuleActionFaultInjectionPolicyAbort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3686,7 +3686,7 @@ class HttpRouteRuleActionFaultInjectionPolicyAbort(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleActionFaultInjectionPolicyDelay(dict):
+calass HttpRouteRuleActionFaultInjectionPolicyDelay(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3734,7 +3734,7 @@ class HttpRouteRuleActionFaultInjectionPolicyDelay(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleActionRedirect(dict):
+calass HttpRouteRuleActionRedirect(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3854,7 +3854,7 @@ class HttpRouteRuleActionRedirect(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleActionRequestHeaderModifier(dict):
+calass HttpRouteRuleActionRequestHeaderModifier(dict):
     def __init__(__self__, *,
                  add: Optional[Mapping[str, str]] = None,
                  removes: Optional[Sequence[str]] = None,
@@ -3897,11 +3897,11 @@ class HttpRouteRuleActionRequestHeaderModifier(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleActionRequestMirrorPolicy(dict):
+calass HttpRouteRuleActionRequestMirrorPolicy(dict):
     def __init__(__self__, *,
                  destination: Optional['outputs.HttpRouteRuleActionRequestMirrorPolicyDestination'] = None):
         """
-        :param 'HttpRouteRuleActionRequestMirrorPolicyDestinationArgs' destination: The destination the requests will be mirrored to.
+        :param 'HttpRouteRuleActionRequestMirrorPolicyDestinationArrgs' destination: The destination the requests will be mirrored to.
                Structure is documented below.
         """
         if destination is not None:
@@ -3918,7 +3918,7 @@ class HttpRouteRuleActionRequestMirrorPolicy(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleActionRequestMirrorPolicyDestination(dict):
+calass HttpRouteRuleActionRequestMirrorPolicyDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3972,7 +3972,7 @@ class HttpRouteRuleActionRequestMirrorPolicyDestination(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleActionResponseHeaderModifier(dict):
+calass HttpRouteRuleActionResponseHeaderModifier(dict):
     def __init__(__self__, *,
                  add: Optional[Mapping[str, str]] = None,
                  removes: Optional[Sequence[str]] = None,
@@ -4015,7 +4015,7 @@ class HttpRouteRuleActionResponseHeaderModifier(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleActionRetryPolicy(dict):
+calass HttpRouteRuleActionRetryPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4079,7 +4079,7 @@ class HttpRouteRuleActionRetryPolicy(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleActionUrlRewrite(dict):
+calass HttpRouteRuleActionUrlRewrite(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4129,7 +4129,7 @@ class HttpRouteRuleActionUrlRewrite(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleMatch(dict):
+calass HttpRouteRuleMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4164,11 +4164,11 @@ class HttpRouteRuleMatch(dict):
                  regex_match: Optional[str] = None):
         """
         :param str full_path_match: The HTTP request path value should exactly match this value.
-        :param Sequence['HttpRouteRuleMatchHeaderArgs'] headers: Specifies a list of HTTP request headers to match against.
+        :param Sequence['HttpRouteRuleMatchHeaderArrgs'] headers: Specifies a list of HTTP request headers to match against.
                Structure is documented below.
         :param bool ignore_case: Specifies if prefixMatch and fullPathMatch matches are case sensitive. The default value is false.
         :param str prefix_match: The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
-        :param Sequence['HttpRouteRuleMatchQueryParameterArgs'] query_parameters: Specifies a list of query parameters to match against.
+        :param Sequence['HttpRouteRuleMatchQueryParameterArrgs'] query_parameters: Specifies a list of query parameters to match against.
                Structure is documented below.
         :param str regex_match: The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
         """
@@ -4237,7 +4237,7 @@ class HttpRouteRuleMatch(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleMatchHeader(dict):
+calass HttpRouteRuleMatchHeader(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4282,7 +4282,7 @@ class HttpRouteRuleMatchHeader(dict):
         :param bool invert_match: If specified, the match result will be inverted before checking. Default value is set to false.
         :param str prefix_match: The value of the header must start with the contents of prefixMatch.
         :param bool present_match: A header with headerName must exist. The match takes place whether or not the header has a value.
-        :param 'HttpRouteRuleMatchHeaderRangeMatchArgs' range_match: If specified, the rule will match if the request header value is within the range.
+        :param 'HttpRouteRuleMatchHeaderRangeMatchArrgs' range_match: If specified, the rule will match if the request header value is within the range.
                Structure is documented below.
         :param str regex_match: The value of the header must match the regular expression specified in regexMatch.
         :param str suffix_match: The value of the header must end with the contents of suffixMatch.
@@ -4371,7 +4371,7 @@ class HttpRouteRuleMatchHeader(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleMatchHeaderRangeMatch(dict):
+calass HttpRouteRuleMatchHeaderRangeMatch(dict):
     def __init__(__self__, *,
                  end: int,
                  start: int):
@@ -4400,7 +4400,7 @@ class HttpRouteRuleMatchHeaderRangeMatch(dict):
 
 
 @pulumi.output_type
-class HttpRouteRuleMatchQueryParameter(dict):
+calass HttpRouteRuleMatchQueryParameter(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4478,14 +4478,14 @@ class HttpRouteRuleMatchQueryParameter(dict):
 
 
 @pulumi.output_type
-class TcpRouteRule(dict):
+calass TcpRouteRule(dict):
     def __init__(__self__, *,
                  action: 'outputs.TcpRouteRuleAction',
                  matches: Optional[Sequence['outputs.TcpRouteRuleMatch']] = None):
         """
-        :param 'TcpRouteRuleActionArgs' action: A detailed rule defining how to route traffic.
+        :param 'TcpRouteRuleActionArrgs' action: A detailed rule defining how to route traffic.
                Structure is documented below.
-        :param Sequence['TcpRouteRuleMatchArgs'] matches: RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
+        :param Sequence['TcpRouteRuleMatchArrgs'] matches: RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
                If no routeMatch field is specified, this rule will unconditionally match traffic.
                Structure is documented below.
         """
@@ -4514,7 +4514,7 @@ class TcpRouteRule(dict):
 
 
 @pulumi.output_type
-class TcpRouteRuleAction(dict):
+calass TcpRouteRuleAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4536,7 +4536,7 @@ class TcpRouteRuleAction(dict):
                  destinations: Optional[Sequence['outputs.TcpRouteRuleActionDestination']] = None,
                  original_destination: Optional[bool] = None):
         """
-        :param Sequence['TcpRouteRuleActionDestinationArgs'] destinations: The destination services to which traffic should be forwarded. At least one destination service is required.
+        :param Sequence['TcpRouteRuleActionDestinationArrgs'] destinations: The destination services to which traffic should be forwarded. At least one destination service is required.
                Structure is documented below.
         :param bool original_destination: If true, Router will use the destination IP and port of the original connection as the destination of the request.
         """
@@ -4564,7 +4564,7 @@ class TcpRouteRuleAction(dict):
 
 
 @pulumi.output_type
-class TcpRouteRuleActionDestination(dict):
+calass TcpRouteRuleActionDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4622,7 +4622,7 @@ class TcpRouteRuleActionDestination(dict):
 
 
 @pulumi.output_type
-class TcpRouteRuleMatch(dict):
+calass TcpRouteRuleMatch(dict):
     def __init__(__self__, *,
                  address: str,
                  port: str):
@@ -4653,14 +4653,14 @@ class TcpRouteRuleMatch(dict):
 
 
 @pulumi.output_type
-class TlsRouteRule(dict):
+calass TlsRouteRule(dict):
     def __init__(__self__, *,
                  action: 'outputs.TlsRouteRuleAction',
                  matches: Sequence['outputs.TlsRouteRuleMatch']):
         """
-        :param 'TlsRouteRuleActionArgs' action: Required. A detailed rule defining how to route traffic.
+        :param 'TlsRouteRuleActionArrgs' action: Required. A detailed rule defining how to route traffic.
                Structure is documented below.
-        :param Sequence['TlsRouteRuleMatchArgs'] matches: Matches define the predicate used to match requests to a given action.
+        :param Sequence['TlsRouteRuleMatchArrgs'] matches: Matches define the predicate used to match requests to a given action.
                Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
@@ -4686,11 +4686,11 @@ class TlsRouteRule(dict):
 
 
 @pulumi.output_type
-class TlsRouteRuleAction(dict):
+calass TlsRouteRuleAction(dict):
     def __init__(__self__, *,
                  destinations: Optional[Sequence['outputs.TlsRouteRuleActionDestination']] = None):
         """
-        :param Sequence['TlsRouteRuleActionDestinationArgs'] destinations: The destination to which traffic should be forwarded.
+        :param Sequence['TlsRouteRuleActionDestinationArrgs'] destinations: The destination to which traffic should be forwarded.
                Structure is documented below.
         """
         if destinations is not None:
@@ -4707,7 +4707,7 @@ class TlsRouteRuleAction(dict):
 
 
 @pulumi.output_type
-class TlsRouteRuleActionDestination(dict):
+calass TlsRouteRuleActionDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4759,7 +4759,7 @@ class TlsRouteRuleActionDestination(dict):
 
 
 @pulumi.output_type
-class TlsRouteRuleMatch(dict):
+calass TlsRouteRuleMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

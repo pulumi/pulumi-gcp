@@ -22,7 +22,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AttestorAttestationAuthorityNote(dict):
+calass AttestorAttestationAuthorityNote(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -66,7 +66,7 @@ class AttestorAttestationAuthorityNote(dict):
                callers should not make any other assumptions about the service
                account email; future versions may use an email based on a
                different naming pattern.
-        :param Sequence['AttestorAttestationAuthorityNotePublicKeyArgs'] public_keys: Public keys that verify attestations signed by this attestor. This
+        :param Sequence['AttestorAttestationAuthorityNotePublicKeyArrgs'] public_keys: Public keys that verify attestations signed by this attestor. This
                field may be updated.
                If this field is non-empty, one of the specified public keys must
                verify that an attestation was signed by this attestor for the
@@ -129,7 +129,7 @@ class AttestorAttestationAuthorityNote(dict):
 
 
 @pulumi.output_type
-class AttestorAttestationAuthorityNotePublicKey(dict):
+calass AttestorAttestationAuthorityNotePublicKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -171,7 +171,7 @@ class AttestorAttestationAuthorityNotePublicKey(dict):
                field exactly. Additional restrictions on this field can
                be imposed based on which public key type is encapsulated.
                See the documentation on publicKey cases below for details.
-        :param 'AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs' pkix_public_key: A raw PKIX SubjectPublicKeyInfo format public key.
+        :param 'AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArrgs' pkix_public_key: A raw PKIX SubjectPublicKeyInfo format public key.
                NOTE: id may be explicitly provided by the caller when using this
                type of public key, but it MUST be a valid RFC3986 URI. If id is left
                blank, a default one will be computed based on the digest of the DER
@@ -239,7 +239,7 @@ class AttestorAttestationAuthorityNotePublicKey(dict):
 
 
 @pulumi.output_type
-class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(dict):
+calass AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -303,7 +303,7 @@ class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey(dict):
 
 
 @pulumi.output_type
-class AttestorIamBindingCondition(dict):
+calass AttestorIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -330,7 +330,7 @@ class AttestorIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class AttestorIamMemberCondition(dict):
+calass AttestorIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -357,7 +357,7 @@ class AttestorIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class PolicyAdmissionWhitelistPattern(dict):
+calass PolicyAdmissionWhitelistPattern(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -398,7 +398,7 @@ class PolicyAdmissionWhitelistPattern(dict):
 
 
 @pulumi.output_type
-class PolicyClusterAdmissionRule(dict):
+calass PolicyClusterAdmissionRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -489,7 +489,7 @@ class PolicyClusterAdmissionRule(dict):
 
 
 @pulumi.output_type
-class PolicyDefaultAdmissionRule(dict):
+calass PolicyDefaultAdmissionRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

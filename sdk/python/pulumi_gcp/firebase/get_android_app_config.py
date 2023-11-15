@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetAndroidAppConfigResult:
+calass GetAndroidAppConfigResult:
     """
     A collection of values returned by getAndroidAppConfig.
     """
@@ -64,7 +64,7 @@ class GetAndroidAppConfigResult:
         return pulumi.get(self, "project")
 
 
-class AwaitableGetAndroidAppConfigResult(GetAndroidAppConfigResult):
+calass AwaitableGetAndroidAppConfigResult(GetAndroidAppConfigResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

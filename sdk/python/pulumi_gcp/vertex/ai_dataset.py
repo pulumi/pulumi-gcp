@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AiDatasetArgs', 'AiDataset']
+__all__ = ['AiDatasetArrgs', 'AiDataset']
 
 @pulumi.input_type
-class AiDatasetArgs:
+calass AiDatasetArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  metadata_schema_uri: pulumi.Input[str],
-                 encryption_spec: Optional[pulumi.Input['AiDatasetEncryptionSpecArgs']] = None,
+                 encryption_spec: Optional[pulumi.Input['AiDatasetEncryptionSpecArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -29,7 +29,7 @@ class AiDatasetArgs:
                
                
                - - -
-        :param pulumi.Input['AiDatasetEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
+        :param pulumi.Input['AiDatasetEncryptionSpecArrgs'] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
                
@@ -79,7 +79,7 @@ class AiDatasetArgs:
 
     @property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiDatasetEncryptionSpecArgs']]:
+    def encryption_spec(self) -> Optional[pulumi.Input['AiDatasetEncryptionSpecArrgs']]:
         """
         Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
         Structure is documented below.
@@ -87,7 +87,7 @@ class AiDatasetArgs:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiDatasetEncryptionSpecArgs']]):
+    def encryption_spec(self, value: Optional[pulumi.Input['AiDatasetEncryptionSpecArrgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @property
@@ -132,12 +132,12 @@ class AiDatasetArgs:
 
 
 @pulumi.input_type
-class _AiDatasetState:
+calass _AiDatasetState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiDatasetEncryptionSpecArgs']] = None,
+                 encryption_spec: Optional[pulumi.Input['AiDatasetEncryptionSpecArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata_schema_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -150,7 +150,7 @@ class _AiDatasetState:
         :param pulumi.Input[str] create_time: The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] display_name: The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['AiDatasetEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
+        :param pulumi.Input['AiDatasetEncryptionSpecArrgs'] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
                
@@ -229,7 +229,7 @@ class _AiDatasetState:
 
     @property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiDatasetEncryptionSpecArgs']]:
+    def encryption_spec(self) -> Optional[pulumi.Input['AiDatasetEncryptionSpecArrgs']]:
         """
         Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
         Structure is documented below.
@@ -237,7 +237,7 @@ class _AiDatasetState:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiDatasetEncryptionSpecArgs']]):
+    def encryption_spec(self, value: Optional[pulumi.Input['AiDatasetEncryptionSpecArrgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @property
@@ -333,13 +333,13 @@ class _AiDatasetState:
         pulumi.set(self, "update_time", value)
 
 
-class AiDataset(pulumi.CustomResource):
+calass AiDataset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata_schema_uri: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -377,7 +377,7 @@ class AiDataset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
-        :param pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
+        :param pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArrgs']] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
                
@@ -395,7 +395,7 @@ class AiDataset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AiDatasetArgs,
+                 args: AiDatasetArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A collection of DataItems and Annotations on them.
@@ -427,12 +427,12 @@ class AiDataset(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param AiDatasetArgs args: The arguments to use to populate this resource's properties.
+        :param AiDatasetArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AiDatasetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AiDatasetArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -442,7 +442,7 @@ class AiDataset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata_schema_uri: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -454,7 +454,7 @@ class AiDataset(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AiDatasetArgs.__new__(AiDatasetArgs)
+            __props__ = AiDatasetArrgs.__new__(AiDatasetArrgs)
 
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -486,7 +486,7 @@ class AiDataset(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArgs']]] = None,
+            encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArrgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             metadata_schema_uri: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -504,7 +504,7 @@ class AiDataset(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] display_name: The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
+        :param pulumi.Input[pulumi.InputType['AiDatasetEncryptionSpecArrgs']] encryption_spec: Customer-managed encryption key spec for a Dataset. If set, this Dataset and all sub-resources of this Dataset will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
                

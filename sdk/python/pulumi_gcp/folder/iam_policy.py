@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['IAMPolicyArgs', 'IAMPolicy']
+__all__ = ['IAMPolicyArrgs', 'IAMPolicy']
 
 @pulumi.input_type
-class IAMPolicyArgs:
+calass IAMPolicyArrgs:
     def __init__(__self__, *,
                  folder: pulumi.Input[str],
                  policy_data: pulumi.Input[str]):
@@ -64,7 +64,7 @@ class IAMPolicyArgs:
 
 
 @pulumi.input_type
-class _IAMPolicyState:
+calass _IAMPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class _IAMPolicyState:
         pulumi.set(self, "policy_data", value)
 
 
-class IAMPolicy(pulumi.CustomResource):
+calass IAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -170,7 +170,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -185,8 +185,8 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -218,7 +218,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         folder = gcp.folder.IAMBinding("folder",
-            condition=gcp.folder.IAMBindingConditionArgs(
+            condition=gcp.folder.IAMBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -247,7 +247,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         folder = gcp.folder.IAMMember("folder",
-            condition=gcp.folder.IAMMemberConditionArgs(
+            condition=gcp.folder.IAMMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -265,10 +265,10 @@ class IAMPolicy(pulumi.CustomResource):
 
         folder = gcp.folder.IamAuditConfig("folder",
             audit_log_configs=[
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
+                gcp.folder.IamAuditConfigAuditLogConfigArrgs(
                     log_type="ADMIN_READ",
                 ),
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
+                gcp.folder.IamAuditConfigAuditLogConfigArrgs(
                     exempted_members=["user:joebloggs@hashicorp.com"],
                     log_type="DATA_READ",
                 ),
@@ -333,7 +333,7 @@ class IAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IAMPolicyArgs,
+                 args: IAMPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
@@ -364,7 +364,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -379,8 +379,8 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -412,7 +412,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         folder = gcp.folder.IAMBinding("folder",
-            condition=gcp.folder.IAMBindingConditionArgs(
+            condition=gcp.folder.IAMBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -441,7 +441,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         folder = gcp.folder.IAMMember("folder",
-            condition=gcp.folder.IAMMemberConditionArgs(
+            condition=gcp.folder.IAMMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -459,10 +459,10 @@ class IAMPolicy(pulumi.CustomResource):
 
         folder = gcp.folder.IamAuditConfig("folder",
             audit_log_configs=[
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
+                gcp.folder.IamAuditConfigAuditLogConfigArrgs(
                     log_type="ADMIN_READ",
                 ),
-                gcp.folder.IamAuditConfigAuditLogConfigArgs(
+                gcp.folder.IamAuditConfigAuditLogConfigArrgs(
                     exempted_members=["user:joebloggs@hashicorp.com"],
                     log_type="DATA_READ",
                 ),
@@ -512,12 +512,12 @@ class IAMPolicy(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param IAMPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param IAMPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IAMPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IAMPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -535,7 +535,7 @@ class IAMPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IAMPolicyArgs.__new__(IAMPolicyArgs)
+            __props__ = IAMPolicyArrgs.__new__(IAMPolicyArrgs)
 
             if folder is None and not opts.urn:
                 raise TypeError("Missing required property 'folder'")

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i ApiConfigGatewayConfigArgs) ToApiConfigGatewayConfigOutput() ApiConfigGa
 
 func (i ApiConfigGatewayConfigArgs) ToApiConfigGatewayConfigOutputWithContext(ctx context.Context) ApiConfigGatewayConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigGatewayConfigOutput)
-}
-
-func (i ApiConfigGatewayConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ApiConfigGatewayConfig] {
-	return pulumix.Output[ApiConfigGatewayConfig]{
-		OutputState: i.ToApiConfigGatewayConfigOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ApiConfigGatewayConfigArgs) ToApiConfigGatewayConfigPtrOutput() ApiConfigGatewayConfigPtrOutput {
@@ -96,12 +89,6 @@ func (i *apiConfigGatewayConfigPtrType) ToApiConfigGatewayConfigPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigGatewayConfigPtrOutput)
 }
 
-func (i *apiConfigGatewayConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigGatewayConfig] {
-	return pulumix.Output[*ApiConfigGatewayConfig]{
-		OutputState: i.ToApiConfigGatewayConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiConfigGatewayConfigOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigGatewayConfigOutput) ElementType() reflect.Type {
@@ -126,12 +113,6 @@ func (o ApiConfigGatewayConfigOutput) ToApiConfigGatewayConfigPtrOutputWithConte
 	}).(ApiConfigGatewayConfigPtrOutput)
 }
 
-func (o ApiConfigGatewayConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigGatewayConfig] {
-	return pulumix.Output[ApiConfigGatewayConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Backend settings that are applied to all backends of the Gateway.
 // Structure is documented below.
 func (o ApiConfigGatewayConfigOutput) BackendConfig() ApiConfigGatewayConfigBackendConfigOutput {
@@ -150,12 +131,6 @@ func (o ApiConfigGatewayConfigPtrOutput) ToApiConfigGatewayConfigPtrOutput() Api
 
 func (o ApiConfigGatewayConfigPtrOutput) ToApiConfigGatewayConfigPtrOutputWithContext(ctx context.Context) ApiConfigGatewayConfigPtrOutput {
 	return o
-}
-
-func (o ApiConfigGatewayConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigGatewayConfig] {
-	return pulumix.Output[*ApiConfigGatewayConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigGatewayConfigPtrOutput) Elem() ApiConfigGatewayConfigOutput {
@@ -214,12 +189,6 @@ func (i ApiConfigGatewayConfigBackendConfigArgs) ToApiConfigGatewayConfigBackend
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigGatewayConfigBackendConfigOutput)
 }
 
-func (i ApiConfigGatewayConfigBackendConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ApiConfigGatewayConfigBackendConfig] {
-	return pulumix.Output[ApiConfigGatewayConfigBackendConfig]{
-		OutputState: i.ToApiConfigGatewayConfigBackendConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApiConfigGatewayConfigBackendConfigArgs) ToApiConfigGatewayConfigBackendConfigPtrOutput() ApiConfigGatewayConfigBackendConfigPtrOutput {
 	return i.ToApiConfigGatewayConfigBackendConfigPtrOutputWithContext(context.Background())
 }
@@ -261,12 +230,6 @@ func (i *apiConfigGatewayConfigBackendConfigPtrType) ToApiConfigGatewayConfigBac
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigGatewayConfigBackendConfigPtrOutput)
 }
 
-func (i *apiConfigGatewayConfigBackendConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigGatewayConfigBackendConfig] {
-	return pulumix.Output[*ApiConfigGatewayConfigBackendConfig]{
-		OutputState: i.ToApiConfigGatewayConfigBackendConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiConfigGatewayConfigBackendConfigOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigGatewayConfigBackendConfigOutput) ElementType() reflect.Type {
@@ -291,12 +254,6 @@ func (o ApiConfigGatewayConfigBackendConfigOutput) ToApiConfigGatewayConfigBacke
 	}).(ApiConfigGatewayConfigBackendConfigPtrOutput)
 }
 
-func (o ApiConfigGatewayConfigBackendConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigGatewayConfigBackendConfig] {
-	return pulumix.Output[ApiConfigGatewayConfigBackendConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
 // (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
 func (o ApiConfigGatewayConfigBackendConfigOutput) GoogleServiceAccount() pulumi.StringOutput {
@@ -315,12 +272,6 @@ func (o ApiConfigGatewayConfigBackendConfigPtrOutput) ToApiConfigGatewayConfigBa
 
 func (o ApiConfigGatewayConfigBackendConfigPtrOutput) ToApiConfigGatewayConfigBackendConfigPtrOutputWithContext(ctx context.Context) ApiConfigGatewayConfigBackendConfigPtrOutput {
 	return o
-}
-
-func (o ApiConfigGatewayConfigBackendConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigGatewayConfigBackendConfig] {
-	return pulumix.Output[*ApiConfigGatewayConfigBackendConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigGatewayConfigBackendConfigPtrOutput) Elem() ApiConfigGatewayConfigBackendConfigOutput {
@@ -389,12 +340,6 @@ func (i ApiConfigGrpcServiceArgs) ToApiConfigGrpcServiceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigGrpcServiceOutput)
 }
 
-func (i ApiConfigGrpcServiceArgs) ToOutput(ctx context.Context) pulumix.Output[ApiConfigGrpcService] {
-	return pulumix.Output[ApiConfigGrpcService]{
-		OutputState: i.ToApiConfigGrpcServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiConfigGrpcServiceArrayInput is an input type that accepts ApiConfigGrpcServiceArray and ApiConfigGrpcServiceArrayOutput values.
 // You can construct a concrete instance of `ApiConfigGrpcServiceArrayInput` via:
 //
@@ -420,12 +365,6 @@ func (i ApiConfigGrpcServiceArray) ToApiConfigGrpcServiceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigGrpcServiceArrayOutput)
 }
 
-func (i ApiConfigGrpcServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]ApiConfigGrpcService] {
-	return pulumix.Output[[]ApiConfigGrpcService]{
-		OutputState: i.ToApiConfigGrpcServiceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiConfigGrpcServiceOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigGrpcServiceOutput) ElementType() reflect.Type {
@@ -438,12 +377,6 @@ func (o ApiConfigGrpcServiceOutput) ToApiConfigGrpcServiceOutput() ApiConfigGrpc
 
 func (o ApiConfigGrpcServiceOutput) ToApiConfigGrpcServiceOutputWithContext(ctx context.Context) ApiConfigGrpcServiceOutput {
 	return o
-}
-
-func (o ApiConfigGrpcServiceOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigGrpcService] {
-	return pulumix.Output[ApiConfigGrpcService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Input only. File descriptor set, generated by protoc.
@@ -472,12 +405,6 @@ func (o ApiConfigGrpcServiceArrayOutput) ToApiConfigGrpcServiceArrayOutput() Api
 
 func (o ApiConfigGrpcServiceArrayOutput) ToApiConfigGrpcServiceArrayOutputWithContext(ctx context.Context) ApiConfigGrpcServiceArrayOutput {
 	return o
-}
-
-func (o ApiConfigGrpcServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApiConfigGrpcService] {
-	return pulumix.Output[[]ApiConfigGrpcService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigGrpcServiceArrayOutput) Index(i pulumi.IntInput) ApiConfigGrpcServiceOutput {
@@ -523,12 +450,6 @@ func (i ApiConfigGrpcServiceFileDescriptorSetArgs) ToApiConfigGrpcServiceFileDes
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigGrpcServiceFileDescriptorSetOutput)
 }
 
-func (i ApiConfigGrpcServiceFileDescriptorSetArgs) ToOutput(ctx context.Context) pulumix.Output[ApiConfigGrpcServiceFileDescriptorSet] {
-	return pulumix.Output[ApiConfigGrpcServiceFileDescriptorSet]{
-		OutputState: i.ToApiConfigGrpcServiceFileDescriptorSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiConfigGrpcServiceFileDescriptorSetOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigGrpcServiceFileDescriptorSetOutput) ElementType() reflect.Type {
@@ -541,12 +462,6 @@ func (o ApiConfigGrpcServiceFileDescriptorSetOutput) ToApiConfigGrpcServiceFileD
 
 func (o ApiConfigGrpcServiceFileDescriptorSetOutput) ToApiConfigGrpcServiceFileDescriptorSetOutputWithContext(ctx context.Context) ApiConfigGrpcServiceFileDescriptorSetOutput {
 	return o
-}
-
-func (o ApiConfigGrpcServiceFileDescriptorSetOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigGrpcServiceFileDescriptorSet] {
-	return pulumix.Output[ApiConfigGrpcServiceFileDescriptorSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base64 encoded content of the file.
@@ -596,12 +511,6 @@ func (i ApiConfigGrpcServiceSourceArgs) ToApiConfigGrpcServiceSourceOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigGrpcServiceSourceOutput)
 }
 
-func (i ApiConfigGrpcServiceSourceArgs) ToOutput(ctx context.Context) pulumix.Output[ApiConfigGrpcServiceSource] {
-	return pulumix.Output[ApiConfigGrpcServiceSource]{
-		OutputState: i.ToApiConfigGrpcServiceSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiConfigGrpcServiceSourceArrayInput is an input type that accepts ApiConfigGrpcServiceSourceArray and ApiConfigGrpcServiceSourceArrayOutput values.
 // You can construct a concrete instance of `ApiConfigGrpcServiceSourceArrayInput` via:
 //
@@ -627,12 +536,6 @@ func (i ApiConfigGrpcServiceSourceArray) ToApiConfigGrpcServiceSourceArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigGrpcServiceSourceArrayOutput)
 }
 
-func (i ApiConfigGrpcServiceSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]ApiConfigGrpcServiceSource] {
-	return pulumix.Output[[]ApiConfigGrpcServiceSource]{
-		OutputState: i.ToApiConfigGrpcServiceSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiConfigGrpcServiceSourceOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigGrpcServiceSourceOutput) ElementType() reflect.Type {
@@ -645,12 +548,6 @@ func (o ApiConfigGrpcServiceSourceOutput) ToApiConfigGrpcServiceSourceOutput() A
 
 func (o ApiConfigGrpcServiceSourceOutput) ToApiConfigGrpcServiceSourceOutputWithContext(ctx context.Context) ApiConfigGrpcServiceSourceOutput {
 	return o
-}
-
-func (o ApiConfigGrpcServiceSourceOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigGrpcServiceSource] {
-	return pulumix.Output[ApiConfigGrpcServiceSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base64 encoded content of the file.
@@ -675,12 +572,6 @@ func (o ApiConfigGrpcServiceSourceArrayOutput) ToApiConfigGrpcServiceSourceArray
 
 func (o ApiConfigGrpcServiceSourceArrayOutput) ToApiConfigGrpcServiceSourceArrayOutputWithContext(ctx context.Context) ApiConfigGrpcServiceSourceArrayOutput {
 	return o
-}
-
-func (o ApiConfigGrpcServiceSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApiConfigGrpcServiceSource] {
-	return pulumix.Output[[]ApiConfigGrpcServiceSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigGrpcServiceSourceArrayOutput) Index(i pulumi.IntInput) ApiConfigGrpcServiceSourceOutput {
@@ -724,12 +615,6 @@ func (i ApiConfigIamBindingConditionArgs) ToApiConfigIamBindingConditionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamBindingConditionOutput)
 }
 
-func (i ApiConfigIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ApiConfigIamBindingCondition] {
-	return pulumix.Output[ApiConfigIamBindingCondition]{
-		OutputState: i.ToApiConfigIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApiConfigIamBindingConditionArgs) ToApiConfigIamBindingConditionPtrOutput() ApiConfigIamBindingConditionPtrOutput {
 	return i.ToApiConfigIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -771,12 +656,6 @@ func (i *apiConfigIamBindingConditionPtrType) ToApiConfigIamBindingConditionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamBindingConditionPtrOutput)
 }
 
-func (i *apiConfigIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigIamBindingCondition] {
-	return pulumix.Output[*ApiConfigIamBindingCondition]{
-		OutputState: i.ToApiConfigIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiConfigIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigIamBindingConditionOutput) ElementType() reflect.Type {
@@ -799,12 +678,6 @@ func (o ApiConfigIamBindingConditionOutput) ToApiConfigIamBindingConditionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfigIamBindingCondition) *ApiConfigIamBindingCondition {
 		return &v
 	}).(ApiConfigIamBindingConditionPtrOutput)
-}
-
-func (o ApiConfigIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigIamBindingCondition] {
-	return pulumix.Output[ApiConfigIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -831,12 +704,6 @@ func (o ApiConfigIamBindingConditionPtrOutput) ToApiConfigIamBindingConditionPtr
 
 func (o ApiConfigIamBindingConditionPtrOutput) ToApiConfigIamBindingConditionPtrOutputWithContext(ctx context.Context) ApiConfigIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o ApiConfigIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigIamBindingCondition] {
-	return pulumix.Output[*ApiConfigIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigIamBindingConditionPtrOutput) Elem() ApiConfigIamBindingConditionOutput {
@@ -911,12 +778,6 @@ func (i ApiConfigIamMemberConditionArgs) ToApiConfigIamMemberConditionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamMemberConditionOutput)
 }
 
-func (i ApiConfigIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ApiConfigIamMemberCondition] {
-	return pulumix.Output[ApiConfigIamMemberCondition]{
-		OutputState: i.ToApiConfigIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApiConfigIamMemberConditionArgs) ToApiConfigIamMemberConditionPtrOutput() ApiConfigIamMemberConditionPtrOutput {
 	return i.ToApiConfigIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -958,12 +819,6 @@ func (i *apiConfigIamMemberConditionPtrType) ToApiConfigIamMemberConditionPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamMemberConditionPtrOutput)
 }
 
-func (i *apiConfigIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigIamMemberCondition] {
-	return pulumix.Output[*ApiConfigIamMemberCondition]{
-		OutputState: i.ToApiConfigIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiConfigIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigIamMemberConditionOutput) ElementType() reflect.Type {
@@ -986,12 +841,6 @@ func (o ApiConfigIamMemberConditionOutput) ToApiConfigIamMemberConditionPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiConfigIamMemberCondition) *ApiConfigIamMemberCondition {
 		return &v
 	}).(ApiConfigIamMemberConditionPtrOutput)
-}
-
-func (o ApiConfigIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigIamMemberCondition] {
-	return pulumix.Output[ApiConfigIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1018,12 +867,6 @@ func (o ApiConfigIamMemberConditionPtrOutput) ToApiConfigIamMemberConditionPtrOu
 
 func (o ApiConfigIamMemberConditionPtrOutput) ToApiConfigIamMemberConditionPtrOutputWithContext(ctx context.Context) ApiConfigIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o ApiConfigIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiConfigIamMemberCondition] {
-	return pulumix.Output[*ApiConfigIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigIamMemberConditionPtrOutput) Elem() ApiConfigIamMemberConditionOutput {
@@ -1100,12 +943,6 @@ func (i ApiConfigManagedServiceConfigArgs) ToApiConfigManagedServiceConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigManagedServiceConfigOutput)
 }
 
-func (i ApiConfigManagedServiceConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ApiConfigManagedServiceConfig] {
-	return pulumix.Output[ApiConfigManagedServiceConfig]{
-		OutputState: i.ToApiConfigManagedServiceConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiConfigManagedServiceConfigArrayInput is an input type that accepts ApiConfigManagedServiceConfigArray and ApiConfigManagedServiceConfigArrayOutput values.
 // You can construct a concrete instance of `ApiConfigManagedServiceConfigArrayInput` via:
 //
@@ -1131,12 +968,6 @@ func (i ApiConfigManagedServiceConfigArray) ToApiConfigManagedServiceConfigArray
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigManagedServiceConfigArrayOutput)
 }
 
-func (i ApiConfigManagedServiceConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]ApiConfigManagedServiceConfig] {
-	return pulumix.Output[[]ApiConfigManagedServiceConfig]{
-		OutputState: i.ToApiConfigManagedServiceConfigArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiConfigManagedServiceConfigOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigManagedServiceConfigOutput) ElementType() reflect.Type {
@@ -1149,12 +980,6 @@ func (o ApiConfigManagedServiceConfigOutput) ToApiConfigManagedServiceConfigOutp
 
 func (o ApiConfigManagedServiceConfigOutput) ToApiConfigManagedServiceConfigOutputWithContext(ctx context.Context) ApiConfigManagedServiceConfigOutput {
 	return o
-}
-
-func (o ApiConfigManagedServiceConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigManagedServiceConfig] {
-	return pulumix.Output[ApiConfigManagedServiceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base64 encoded content of the file.
@@ -1179,12 +1004,6 @@ func (o ApiConfigManagedServiceConfigArrayOutput) ToApiConfigManagedServiceConfi
 
 func (o ApiConfigManagedServiceConfigArrayOutput) ToApiConfigManagedServiceConfigArrayOutputWithContext(ctx context.Context) ApiConfigManagedServiceConfigArrayOutput {
 	return o
-}
-
-func (o ApiConfigManagedServiceConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApiConfigManagedServiceConfig] {
-	return pulumix.Output[[]ApiConfigManagedServiceConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigManagedServiceConfigArrayOutput) Index(i pulumi.IntInput) ApiConfigManagedServiceConfigOutput {
@@ -1228,12 +1047,6 @@ func (i ApiConfigOpenapiDocumentArgs) ToApiConfigOpenapiDocumentOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigOpenapiDocumentOutput)
 }
 
-func (i ApiConfigOpenapiDocumentArgs) ToOutput(ctx context.Context) pulumix.Output[ApiConfigOpenapiDocument] {
-	return pulumix.Output[ApiConfigOpenapiDocument]{
-		OutputState: i.ToApiConfigOpenapiDocumentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiConfigOpenapiDocumentArrayInput is an input type that accepts ApiConfigOpenapiDocumentArray and ApiConfigOpenapiDocumentArrayOutput values.
 // You can construct a concrete instance of `ApiConfigOpenapiDocumentArrayInput` via:
 //
@@ -1259,12 +1072,6 @@ func (i ApiConfigOpenapiDocumentArray) ToApiConfigOpenapiDocumentArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigOpenapiDocumentArrayOutput)
 }
 
-func (i ApiConfigOpenapiDocumentArray) ToOutput(ctx context.Context) pulumix.Output[[]ApiConfigOpenapiDocument] {
-	return pulumix.Output[[]ApiConfigOpenapiDocument]{
-		OutputState: i.ToApiConfigOpenapiDocumentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiConfigOpenapiDocumentOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigOpenapiDocumentOutput) ElementType() reflect.Type {
@@ -1277,12 +1084,6 @@ func (o ApiConfigOpenapiDocumentOutput) ToApiConfigOpenapiDocumentOutput() ApiCo
 
 func (o ApiConfigOpenapiDocumentOutput) ToApiConfigOpenapiDocumentOutputWithContext(ctx context.Context) ApiConfigOpenapiDocumentOutput {
 	return o
-}
-
-func (o ApiConfigOpenapiDocumentOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigOpenapiDocument] {
-	return pulumix.Output[ApiConfigOpenapiDocument]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The OpenAPI Specification document file.
@@ -1303,12 +1104,6 @@ func (o ApiConfigOpenapiDocumentArrayOutput) ToApiConfigOpenapiDocumentArrayOutp
 
 func (o ApiConfigOpenapiDocumentArrayOutput) ToApiConfigOpenapiDocumentArrayOutputWithContext(ctx context.Context) ApiConfigOpenapiDocumentArrayOutput {
 	return o
-}
-
-func (o ApiConfigOpenapiDocumentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApiConfigOpenapiDocument] {
-	return pulumix.Output[[]ApiConfigOpenapiDocument]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiConfigOpenapiDocumentArrayOutput) Index(i pulumi.IntInput) ApiConfigOpenapiDocumentOutput {
@@ -1354,12 +1149,6 @@ func (i ApiConfigOpenapiDocumentDocumentArgs) ToApiConfigOpenapiDocumentDocument
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigOpenapiDocumentDocumentOutput)
 }
 
-func (i ApiConfigOpenapiDocumentDocumentArgs) ToOutput(ctx context.Context) pulumix.Output[ApiConfigOpenapiDocumentDocument] {
-	return pulumix.Output[ApiConfigOpenapiDocumentDocument]{
-		OutputState: i.ToApiConfigOpenapiDocumentDocumentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiConfigOpenapiDocumentDocumentOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigOpenapiDocumentDocumentOutput) ElementType() reflect.Type {
@@ -1372,12 +1161,6 @@ func (o ApiConfigOpenapiDocumentDocumentOutput) ToApiConfigOpenapiDocumentDocume
 
 func (o ApiConfigOpenapiDocumentDocumentOutput) ToApiConfigOpenapiDocumentDocumentOutputWithContext(ctx context.Context) ApiConfigOpenapiDocumentDocumentOutput {
 	return o
-}
-
-func (o ApiConfigOpenapiDocumentDocumentOutput) ToOutput(ctx context.Context) pulumix.Output[ApiConfigOpenapiDocumentDocument] {
-	return pulumix.Output[ApiConfigOpenapiDocumentDocument]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base64 encoded content of the file.
@@ -1425,12 +1208,6 @@ func (i ApiIamBindingConditionArgs) ToApiIamBindingConditionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIamBindingConditionOutput)
 }
 
-func (i ApiIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ApiIamBindingCondition] {
-	return pulumix.Output[ApiIamBindingCondition]{
-		OutputState: i.ToApiIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApiIamBindingConditionArgs) ToApiIamBindingConditionPtrOutput() ApiIamBindingConditionPtrOutput {
 	return i.ToApiIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1472,12 +1249,6 @@ func (i *apiIamBindingConditionPtrType) ToApiIamBindingConditionPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIamBindingConditionPtrOutput)
 }
 
-func (i *apiIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApiIamBindingCondition] {
-	return pulumix.Output[*ApiIamBindingCondition]{
-		OutputState: i.ToApiIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (ApiIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1500,12 +1271,6 @@ func (o ApiIamBindingConditionOutput) ToApiIamBindingConditionPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiIamBindingCondition) *ApiIamBindingCondition {
 		return &v
 	}).(ApiIamBindingConditionPtrOutput)
-}
-
-func (o ApiIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ApiIamBindingCondition] {
-	return pulumix.Output[ApiIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1532,12 +1297,6 @@ func (o ApiIamBindingConditionPtrOutput) ToApiIamBindingConditionPtrOutput() Api
 
 func (o ApiIamBindingConditionPtrOutput) ToApiIamBindingConditionPtrOutputWithContext(ctx context.Context) ApiIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o ApiIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiIamBindingCondition] {
-	return pulumix.Output[*ApiIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiIamBindingConditionPtrOutput) Elem() ApiIamBindingConditionOutput {
@@ -1612,12 +1371,6 @@ func (i ApiIamMemberConditionArgs) ToApiIamMemberConditionOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIamMemberConditionOutput)
 }
 
-func (i ApiIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ApiIamMemberCondition] {
-	return pulumix.Output[ApiIamMemberCondition]{
-		OutputState: i.ToApiIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApiIamMemberConditionArgs) ToApiIamMemberConditionPtrOutput() ApiIamMemberConditionPtrOutput {
 	return i.ToApiIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -1659,12 +1412,6 @@ func (i *apiIamMemberConditionPtrType) ToApiIamMemberConditionPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIamMemberConditionPtrOutput)
 }
 
-func (i *apiIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApiIamMemberCondition] {
-	return pulumix.Output[*ApiIamMemberCondition]{
-		OutputState: i.ToApiIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (ApiIamMemberConditionOutput) ElementType() reflect.Type {
@@ -1687,12 +1434,6 @@ func (o ApiIamMemberConditionOutput) ToApiIamMemberConditionPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiIamMemberCondition) *ApiIamMemberCondition {
 		return &v
 	}).(ApiIamMemberConditionPtrOutput)
-}
-
-func (o ApiIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ApiIamMemberCondition] {
-	return pulumix.Output[ApiIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1719,12 +1460,6 @@ func (o ApiIamMemberConditionPtrOutput) ToApiIamMemberConditionPtrOutput() ApiIa
 
 func (o ApiIamMemberConditionPtrOutput) ToApiIamMemberConditionPtrOutputWithContext(ctx context.Context) ApiIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o ApiIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiIamMemberCondition] {
-	return pulumix.Output[*ApiIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiIamMemberConditionPtrOutput) Elem() ApiIamMemberConditionOutput {
@@ -1799,12 +1534,6 @@ func (i GatewayIamBindingConditionArgs) ToGatewayIamBindingConditionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamBindingConditionOutput)
 }
 
-func (i GatewayIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GatewayIamBindingCondition] {
-	return pulumix.Output[GatewayIamBindingCondition]{
-		OutputState: i.ToGatewayIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GatewayIamBindingConditionArgs) ToGatewayIamBindingConditionPtrOutput() GatewayIamBindingConditionPtrOutput {
 	return i.ToGatewayIamBindingConditionPtrOutputWithContext(context.Background())
 }
@@ -1846,12 +1575,6 @@ func (i *gatewayIamBindingConditionPtrType) ToGatewayIamBindingConditionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamBindingConditionPtrOutput)
 }
 
-func (i *gatewayIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GatewayIamBindingCondition] {
-	return pulumix.Output[*GatewayIamBindingCondition]{
-		OutputState: i.ToGatewayIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewayIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (GatewayIamBindingConditionOutput) ElementType() reflect.Type {
@@ -1874,12 +1597,6 @@ func (o GatewayIamBindingConditionOutput) ToGatewayIamBindingConditionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayIamBindingCondition) *GatewayIamBindingCondition {
 		return &v
 	}).(GatewayIamBindingConditionPtrOutput)
-}
-
-func (o GatewayIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayIamBindingCondition] {
-	return pulumix.Output[GatewayIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -1906,12 +1623,6 @@ func (o GatewayIamBindingConditionPtrOutput) ToGatewayIamBindingConditionPtrOutp
 
 func (o GatewayIamBindingConditionPtrOutput) ToGatewayIamBindingConditionPtrOutputWithContext(ctx context.Context) GatewayIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o GatewayIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayIamBindingCondition] {
-	return pulumix.Output[*GatewayIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayIamBindingConditionPtrOutput) Elem() GatewayIamBindingConditionOutput {
@@ -1986,12 +1697,6 @@ func (i GatewayIamMemberConditionArgs) ToGatewayIamMemberConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamMemberConditionOutput)
 }
 
-func (i GatewayIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[GatewayIamMemberCondition] {
-	return pulumix.Output[GatewayIamMemberCondition]{
-		OutputState: i.ToGatewayIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GatewayIamMemberConditionArgs) ToGatewayIamMemberConditionPtrOutput() GatewayIamMemberConditionPtrOutput {
 	return i.ToGatewayIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -2033,12 +1738,6 @@ func (i *gatewayIamMemberConditionPtrType) ToGatewayIamMemberConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamMemberConditionPtrOutput)
 }
 
-func (i *gatewayIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GatewayIamMemberCondition] {
-	return pulumix.Output[*GatewayIamMemberCondition]{
-		OutputState: i.ToGatewayIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewayIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (GatewayIamMemberConditionOutput) ElementType() reflect.Type {
@@ -2061,12 +1760,6 @@ func (o GatewayIamMemberConditionOutput) ToGatewayIamMemberConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayIamMemberCondition) *GatewayIamMemberCondition {
 		return &v
 	}).(GatewayIamMemberConditionPtrOutput)
-}
-
-func (o GatewayIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayIamMemberCondition] {
-	return pulumix.Output[GatewayIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -2093,12 +1786,6 @@ func (o GatewayIamMemberConditionPtrOutput) ToGatewayIamMemberConditionPtrOutput
 
 func (o GatewayIamMemberConditionPtrOutput) ToGatewayIamMemberConditionPtrOutputWithContext(ctx context.Context) GatewayIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o GatewayIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayIamMemberCondition] {
-	return pulumix.Output[*GatewayIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayIamMemberConditionPtrOutput) Elem() GatewayIamMemberConditionOutput {

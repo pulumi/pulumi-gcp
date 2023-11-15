@@ -11,40 +11,40 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AwsNodePoolArgs', 'AwsNodePool']
+__all__ = ['AwsNodePoolArrgs', 'AwsNodePool']
 
 @pulumi.input_type
-class AwsNodePoolArgs:
+calass AwsNodePoolArrgs:
     def __init__(__self__, *,
-                 autoscaling: pulumi.Input['AwsNodePoolAutoscalingArgs'],
+                 autoscaling: pulumi.Input['AwsNodePoolAutoscalingArrgs'],
                  cluster: pulumi.Input[str],
-                 config: pulumi.Input['AwsNodePoolConfigArgs'],
+                 config: pulumi.Input['AwsNodePoolConfigArrgs'],
                  location: pulumi.Input[str],
-                 max_pods_constraint: pulumi.Input['AwsNodePoolMaxPodsConstraintArgs'],
+                 max_pods_constraint: pulumi.Input['AwsNodePoolMaxPodsConstraintArrgs'],
                  subnet_id: pulumi.Input[str],
                  version: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 management: Optional[pulumi.Input['AwsNodePoolManagementArgs']] = None,
+                 management: Optional[pulumi.Input['AwsNodePoolManagementArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 update_settings: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']] = None):
+                 update_settings: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArrgs']] = None):
         """
         The set of arguments for constructing a AwsNodePool resource.
-        :param pulumi.Input['AwsNodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this node pool.
+        :param pulumi.Input['AwsNodePoolAutoscalingArrgs'] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
-        :param pulumi.Input['AwsNodePoolConfigArgs'] config: The configuration of the node pool.
+        :param pulumi.Input['AwsNodePoolConfigArrgs'] config: The configuration of the node pool.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AwsNodePoolMaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input['AwsNodePoolMaxPodsConstraintArrgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['AwsNodePoolManagementArgs'] management: The Management configuration for this node pool.
+        :param pulumi.Input['AwsNodePoolManagementArrgs'] management: The Management configuration for this node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input['AwsNodePoolUpdateSettingsArgs'] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        :param pulumi.Input['AwsNodePoolUpdateSettingsArrgs'] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
         """
         pulumi.set(__self__, "autoscaling", autoscaling)
         pulumi.set(__self__, "cluster", cluster)
@@ -66,14 +66,14 @@ class AwsNodePoolArgs:
 
     @property
     @pulumi.getter
-    def autoscaling(self) -> pulumi.Input['AwsNodePoolAutoscalingArgs']:
+    def autoscaling(self) -> pulumi.Input['AwsNodePoolAutoscalingArrgs']:
         """
         Autoscaler configuration for this node pool.
         """
         return pulumi.get(self, "autoscaling")
 
     @autoscaling.setter
-    def autoscaling(self, value: pulumi.Input['AwsNodePoolAutoscalingArgs']):
+    def autoscaling(self, value: pulumi.Input['AwsNodePoolAutoscalingArrgs']):
         pulumi.set(self, "autoscaling", value)
 
     @property
@@ -90,14 +90,14 @@ class AwsNodePoolArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Input['AwsNodePoolConfigArgs']:
+    def config(self) -> pulumi.Input['AwsNodePoolConfigArrgs']:
         """
         The configuration of the node pool.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: pulumi.Input['AwsNodePoolConfigArgs']):
+    def config(self, value: pulumi.Input['AwsNodePoolConfigArrgs']):
         pulumi.set(self, "config", value)
 
     @property
@@ -114,14 +114,14 @@ class AwsNodePoolArgs:
 
     @property
     @pulumi.getter(name="maxPodsConstraint")
-    def max_pods_constraint(self) -> pulumi.Input['AwsNodePoolMaxPodsConstraintArgs']:
+    def max_pods_constraint(self) -> pulumi.Input['AwsNodePoolMaxPodsConstraintArrgs']:
         """
         The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         """
         return pulumi.get(self, "max_pods_constraint")
 
     @max_pods_constraint.setter
-    def max_pods_constraint(self, value: pulumi.Input['AwsNodePoolMaxPodsConstraintArgs']):
+    def max_pods_constraint(self, value: pulumi.Input['AwsNodePoolMaxPodsConstraintArrgs']):
         pulumi.set(self, "max_pods_constraint", value)
 
     @property
@@ -165,14 +165,14 @@ class AwsNodePoolArgs:
 
     @property
     @pulumi.getter
-    def management(self) -> Optional[pulumi.Input['AwsNodePoolManagementArgs']]:
+    def management(self) -> Optional[pulumi.Input['AwsNodePoolManagementArrgs']]:
         """
         The Management configuration for this node pool.
         """
         return pulumi.get(self, "management")
 
     @management.setter
-    def management(self, value: Optional[pulumi.Input['AwsNodePoolManagementArgs']]):
+    def management(self, value: Optional[pulumi.Input['AwsNodePoolManagementArrgs']]):
         pulumi.set(self, "management", value)
 
     @property
@@ -201,37 +201,37 @@ class AwsNodePoolArgs:
 
     @property
     @pulumi.getter(name="updateSettings")
-    def update_settings(self) -> Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']]:
+    def update_settings(self) -> Optional[pulumi.Input['AwsNodePoolUpdateSettingsArrgs']]:
         """
         (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
         """
         return pulumi.get(self, "update_settings")
 
     @update_settings.setter
-    def update_settings(self, value: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']]):
+    def update_settings(self, value: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArrgs']]):
         pulumi.set(self, "update_settings", value)
 
 
 @pulumi.input_type
-class _AwsNodePoolState:
+calass _AwsNodePoolState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 autoscaling: Optional[pulumi.Input['AwsNodePoolAutoscalingArgs']] = None,
+                 autoscaling: Optional[pulumi.Input['AwsNodePoolAutoscalingArrgs']] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input['AwsNodePoolConfigArgs']] = None,
+                 config: Optional[pulumi.Input['AwsNodePoolConfigArrgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management: Optional[pulumi.Input['AwsNodePoolManagementArgs']] = None,
-                 max_pods_constraint: Optional[pulumi.Input['AwsNodePoolMaxPodsConstraintArgs']] = None,
+                 management: Optional[pulumi.Input['AwsNodePoolManagementArrgs']] = None,
+                 max_pods_constraint: Optional[pulumi.Input['AwsNodePoolMaxPodsConstraintArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
-                 update_settings: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']] = None,
+                 update_settings: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArrgs']] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -240,23 +240,23 @@ class _AwsNodePoolState:
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['AwsNodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this node pool.
+        :param pulumi.Input['AwsNodePoolAutoscalingArrgs'] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
-        :param pulumi.Input['AwsNodePoolConfigArgs'] config: The configuration of the node pool.
+        :param pulumi.Input['AwsNodePoolConfigArrgs'] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AwsNodePoolManagementArgs'] management: The Management configuration for this node pool.
-        :param pulumi.Input['AwsNodePoolMaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input['AwsNodePoolManagementArrgs'] management: The Management configuration for this node pool.
+        :param pulumi.Input['AwsNodePoolMaxPodsConstraintArrgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the node pool.
         :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
-        :param pulumi.Input['AwsNodePoolUpdateSettingsArgs'] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        :param pulumi.Input['AwsNodePoolUpdateSettingsArrgs'] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
@@ -316,14 +316,14 @@ class _AwsNodePoolState:
 
     @property
     @pulumi.getter
-    def autoscaling(self) -> Optional[pulumi.Input['AwsNodePoolAutoscalingArgs']]:
+    def autoscaling(self) -> Optional[pulumi.Input['AwsNodePoolAutoscalingArrgs']]:
         """
         Autoscaler configuration for this node pool.
         """
         return pulumi.get(self, "autoscaling")
 
     @autoscaling.setter
-    def autoscaling(self, value: Optional[pulumi.Input['AwsNodePoolAutoscalingArgs']]):
+    def autoscaling(self, value: Optional[pulumi.Input['AwsNodePoolAutoscalingArrgs']]):
         pulumi.set(self, "autoscaling", value)
 
     @property
@@ -340,14 +340,14 @@ class _AwsNodePoolState:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['AwsNodePoolConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['AwsNodePoolConfigArrgs']]:
         """
         The configuration of the node pool.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['AwsNodePoolConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['AwsNodePoolConfigArrgs']]):
         pulumi.set(self, "config", value)
 
     @property
@@ -401,26 +401,26 @@ class _AwsNodePoolState:
 
     @property
     @pulumi.getter
-    def management(self) -> Optional[pulumi.Input['AwsNodePoolManagementArgs']]:
+    def management(self) -> Optional[pulumi.Input['AwsNodePoolManagementArrgs']]:
         """
         The Management configuration for this node pool.
         """
         return pulumi.get(self, "management")
 
     @management.setter
-    def management(self, value: Optional[pulumi.Input['AwsNodePoolManagementArgs']]):
+    def management(self, value: Optional[pulumi.Input['AwsNodePoolManagementArrgs']]):
         pulumi.set(self, "management", value)
 
     @property
     @pulumi.getter(name="maxPodsConstraint")
-    def max_pods_constraint(self) -> Optional[pulumi.Input['AwsNodePoolMaxPodsConstraintArgs']]:
+    def max_pods_constraint(self) -> Optional[pulumi.Input['AwsNodePoolMaxPodsConstraintArrgs']]:
         """
         The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         """
         return pulumi.get(self, "max_pods_constraint")
 
     @max_pods_constraint.setter
-    def max_pods_constraint(self, value: Optional[pulumi.Input['AwsNodePoolMaxPodsConstraintArgs']]):
+    def max_pods_constraint(self, value: Optional[pulumi.Input['AwsNodePoolMaxPodsConstraintArrgs']]):
         pulumi.set(self, "max_pods_constraint", value)
 
     @property
@@ -497,14 +497,14 @@ class _AwsNodePoolState:
 
     @property
     @pulumi.getter(name="updateSettings")
-    def update_settings(self) -> Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']]:
+    def update_settings(self) -> Optional[pulumi.Input['AwsNodePoolUpdateSettingsArrgs']]:
         """
         (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
         """
         return pulumi.get(self, "update_settings")
 
     @update_settings.setter
-    def update_settings(self, value: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']]):
+    def update_settings(self, value: Optional[pulumi.Input['AwsNodePoolUpdateSettingsArrgs']]):
         pulumi.set(self, "update_settings", value)
 
     @property
@@ -532,22 +532,22 @@ class _AwsNodePoolState:
         pulumi.set(self, "version", value)
 
 
-class AwsNodePool(pulumi.CustomResource):
+calass AwsNodePool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 autoscaling: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']]] = None,
+                 autoscaling: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArrgs']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolConfigArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']]] = None,
-                 max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']]] = None,
+                 management: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolManagementArrgs']]] = None,
+                 max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
-                 update_settings: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']]] = None,
+                 update_settings: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArrgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -565,56 +565,56 @@ class AwsNodePool(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AwsClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArrgs(
                     username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
+            control_plane=gcp.container.AwsClusterControlPlaneArrgs(
+                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArrgs(
                     role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
                     role_session_name="my--1p-dev-session",
                 ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
+                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
+                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
                 subnet_ids=["subnet-00000000000000000"],
                 version=versions.valid_versions[0],
                 instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
+                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
+                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
+                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
+                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "owner": "my@service-account.com",
                 },
             ),
-            fleet=gcp.container.AwsClusterFleetArgs(
+            fleet=gcp.container.AwsClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
+            networking=gcp.container.AwsClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
@@ -625,13 +625,13 @@ class AwsNodePool(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primaryAwsNodePool",
-            autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
+            autoscaling=gcp.container.AwsNodePoolAutoscalingArrgs(
                 max_node_count=5,
                 min_node_count=1,
             ),
             cluster=primary_aws_cluster.name,
-            config=gcp.container.AwsNodePoolConfigArgs(
-                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
+            config=gcp.container.AwsNodePoolConfigArrgs(
+                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-nodepool",
@@ -639,31 +639,31 @@ class AwsNodePool(pulumi.CustomResource):
                 labels={
                     "label-one": "value-one",
                 },
-                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArgs(
+                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
+                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
+                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "tag-one": "value-one",
                 },
-                taints=[gcp.container.AwsNodePoolConfigTaintArgs(
+                taints=[gcp.container.AwsNodePoolConfigTaintArrgs(
                     effect="PREFER_NO_SCHEDULE",
                     key="taint-key",
                     value="taint-value",
                 )],
             ),
             location="us-west1",
-            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
+            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArrgs(
                 max_pods_per_node=110,
             ),
             subnet_id="subnet-00000000000000000",
@@ -671,7 +671,7 @@ class AwsNodePool(pulumi.CustomResource):
             annotations={
                 "label-one": "value-one",
             },
-            management=gcp.container.AwsNodePoolManagementArgs(
+            management=gcp.container.AwsNodePoolManagementArrgs(
                 auto_repair=True,
             ),
             project="my-project-name")
@@ -685,56 +685,56 @@ class AwsNodePool(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AwsClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArrgs(
                     username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
+            control_plane=gcp.container.AwsClusterControlPlaneArrgs(
+                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArrgs(
                     role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
                     role_session_name="my--1p-dev-session",
                 ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
+                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
+                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
                 subnet_ids=["subnet-00000000000000000"],
                 version=versions.valid_versions[0],
                 instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
+                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
+                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
+                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
+                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "owner": "my@service-account.com",
                 },
             ),
-            fleet=gcp.container.AwsClusterFleetArgs(
+            fleet=gcp.container.AwsClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
+            networking=gcp.container.AwsClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
@@ -745,13 +745,13 @@ class AwsNodePool(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primaryAwsNodePool",
-            autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
+            autoscaling=gcp.container.AwsNodePoolAutoscalingArrgs(
                 max_node_count=5,
                 min_node_count=1,
             ),
             cluster=primary_aws_cluster.name,
-            config=gcp.container.AwsNodePoolConfigArgs(
-                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
+            config=gcp.container.AwsNodePoolConfigArrgs(
+                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-nodepool",
@@ -759,31 +759,31 @@ class AwsNodePool(pulumi.CustomResource):
                 labels={
                     "label-one": "value-one",
                 },
-                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArgs(
+                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="gp3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
+                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
+                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "tag-one": "value-one",
                 },
-                taints=[gcp.container.AwsNodePoolConfigTaintArgs(
+                taints=[gcp.container.AwsNodePoolConfigTaintArrgs(
                     effect="prefer_no_schedule",
                     key="taint-key",
                     value="taint-value",
                 )],
             ),
             location="us-west1",
-            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
+            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArrgs(
                 max_pods_per_node=110,
             ),
             subnet_id="subnet-00000000000000000",
@@ -802,56 +802,56 @@ class AwsNodePool(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AwsClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArrgs(
                     username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
+            control_plane=gcp.container.AwsClusterControlPlaneArrgs(
+                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArrgs(
                     role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
                     role_session_name="my--1p-dev-session",
                 ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
+                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
+                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
                 subnet_ids=["subnet-00000000000000000"],
                 version=versions.valid_versions[0],
                 instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
+                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
+                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
+                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
+                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "owner": "my@service-account.com",
                 },
             ),
-            fleet=gcp.container.AwsClusterFleetArgs(
+            fleet=gcp.container.AwsClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
+            networking=gcp.container.AwsClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
@@ -863,13 +863,13 @@ class AwsNodePool(pulumi.CustomResource):
             project="my-project-name",
             opts=pulumi.ResourceOptions(provider=google_beta))
         primary_aws_node_pool = gcp.container.AwsNodePool("primaryAwsNodePool",
-            autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
+            autoscaling=gcp.container.AwsNodePoolAutoscalingArrgs(
                 max_node_count=5,
                 min_node_count=1,
             ),
             cluster=primary_aws_cluster.name,
-            config=gcp.container.AwsNodePoolConfigArgs(
-                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
+            config=gcp.container.AwsNodePoolConfigArrgs(
+                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-nodepool",
@@ -877,35 +877,35 @@ class AwsNodePool(pulumi.CustomResource):
                 labels={
                     "label-one": "value-one",
                 },
-                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArgs(
+                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="gp3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
+                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
+                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "tag-one": "value-one",
                 },
-                taints=[gcp.container.AwsNodePoolConfigTaintArgs(
+                taints=[gcp.container.AwsNodePoolConfigTaintArrgs(
                     effect="prefer_no_schedule",
                     key="taint-key",
                     value="taint-value",
                 )],
-                instance_placement=gcp.container.AwsNodePoolConfigInstancePlacementArgs(
+                instance_placement=gcp.container.AwsNodePoolConfigInstancePlacementArrgs(
                     tenancy="dedicated",
                 ),
                 image_type="ubuntu",
             ),
             location="us-west1",
-            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
+            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArrgs(
                 max_pods_per_node=110,
             ),
             subnet_id="subnet-00000000000000000",
@@ -939,23 +939,23 @@ class AwsNodePool(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArrgs']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']] config: The configuration of the node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArrgs']] config: The configuration of the node pool.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']] management: The Management configuration for this node pool.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolManagementArrgs']] management: The Management configuration for this node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArrgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArrgs']] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AwsNodePoolArgs,
+                 args: AwsNodePoolArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An Anthos node pool running on AWS.
@@ -972,56 +972,56 @@ class AwsNodePool(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AwsClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArrgs(
                     username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
+            control_plane=gcp.container.AwsClusterControlPlaneArrgs(
+                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArrgs(
                     role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
                     role_session_name="my--1p-dev-session",
                 ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
+                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
+                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
                 subnet_ids=["subnet-00000000000000000"],
                 version=versions.valid_versions[0],
                 instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
+                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
+                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
+                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
+                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "owner": "my@service-account.com",
                 },
             ),
-            fleet=gcp.container.AwsClusterFleetArgs(
+            fleet=gcp.container.AwsClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
+            networking=gcp.container.AwsClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
@@ -1032,13 +1032,13 @@ class AwsNodePool(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primaryAwsNodePool",
-            autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
+            autoscaling=gcp.container.AwsNodePoolAutoscalingArrgs(
                 max_node_count=5,
                 min_node_count=1,
             ),
             cluster=primary_aws_cluster.name,
-            config=gcp.container.AwsNodePoolConfigArgs(
-                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
+            config=gcp.container.AwsNodePoolConfigArrgs(
+                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-nodepool",
@@ -1046,31 +1046,31 @@ class AwsNodePool(pulumi.CustomResource):
                 labels={
                     "label-one": "value-one",
                 },
-                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArgs(
+                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
+                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
+                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "tag-one": "value-one",
                 },
-                taints=[gcp.container.AwsNodePoolConfigTaintArgs(
+                taints=[gcp.container.AwsNodePoolConfigTaintArrgs(
                     effect="PREFER_NO_SCHEDULE",
                     key="taint-key",
                     value="taint-value",
                 )],
             ),
             location="us-west1",
-            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
+            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArrgs(
                 max_pods_per_node=110,
             ),
             subnet_id="subnet-00000000000000000",
@@ -1078,7 +1078,7 @@ class AwsNodePool(pulumi.CustomResource):
             annotations={
                 "label-one": "value-one",
             },
-            management=gcp.container.AwsNodePoolManagementArgs(
+            management=gcp.container.AwsNodePoolManagementArrgs(
                 auto_repair=True,
             ),
             project="my-project-name")
@@ -1092,56 +1092,56 @@ class AwsNodePool(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AwsClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArrgs(
                     username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
+            control_plane=gcp.container.AwsClusterControlPlaneArrgs(
+                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArrgs(
                     role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
                     role_session_name="my--1p-dev-session",
                 ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
+                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
+                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
                 subnet_ids=["subnet-00000000000000000"],
                 version=versions.valid_versions[0],
                 instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
+                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
+                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
+                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
+                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "owner": "my@service-account.com",
                 },
             ),
-            fleet=gcp.container.AwsClusterFleetArgs(
+            fleet=gcp.container.AwsClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
+            networking=gcp.container.AwsClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
@@ -1152,13 +1152,13 @@ class AwsNodePool(pulumi.CustomResource):
             description="A sample aws cluster",
             project="my-project-name")
         primary_aws_node_pool = gcp.container.AwsNodePool("primaryAwsNodePool",
-            autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
+            autoscaling=gcp.container.AwsNodePoolAutoscalingArrgs(
                 max_node_count=5,
                 min_node_count=1,
             ),
             cluster=primary_aws_cluster.name,
-            config=gcp.container.AwsNodePoolConfigArgs(
-                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
+            config=gcp.container.AwsNodePoolConfigArrgs(
+                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-nodepool",
@@ -1166,31 +1166,31 @@ class AwsNodePool(pulumi.CustomResource):
                 labels={
                     "label-one": "value-one",
                 },
-                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArgs(
+                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="gp3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
+                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
+                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "tag-one": "value-one",
                 },
-                taints=[gcp.container.AwsNodePoolConfigTaintArgs(
+                taints=[gcp.container.AwsNodePoolConfigTaintArrgs(
                     effect="prefer_no_schedule",
                     key="taint-key",
                     value="taint-value",
                 )],
             ),
             location="us-west1",
-            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
+            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArrgs(
                 max_pods_per_node=110,
             ),
             subnet_id="subnet-00000000000000000",
@@ -1209,56 +1209,56 @@ class AwsNodePool(pulumi.CustomResource):
         versions = gcp.container.get_aws_versions(project="my-project-name",
             location="us-west1")
         primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
-            authorization=gcp.container.AwsClusterAuthorizationArgs(
-                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
+            authorization=gcp.container.AwsClusterAuthorizationArrgs(
+                admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArrgs(
                     username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
-            control_plane=gcp.container.AwsClusterControlPlaneArgs(
-                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArgs(
+            control_plane=gcp.container.AwsClusterControlPlaneArrgs(
+                aws_services_authentication=gcp.container.AwsClusterControlPlaneAwsServicesAuthenticationArrgs(
                     role_arn="arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
                     role_session_name="my--1p-dev-session",
                 ),
-                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArgs(
+                config_encryption=gcp.container.AwsClusterControlPlaneConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
-                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArgs(
+                database_encryption=gcp.container.AwsClusterControlPlaneDatabaseEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-controlplane",
                 subnet_ids=["subnet-00000000000000000"],
                 version=versions.valid_versions[0],
                 instance_type="t3.medium",
-                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArgs(
+                main_volume=gcp.container.AwsClusterControlPlaneMainVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
-                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArgs(
+                proxy_config=gcp.container.AwsClusterControlPlaneProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArgs(
+                root_volume=gcp.container.AwsClusterControlPlaneRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="GP3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArgs(
+                ssh_config=gcp.container.AwsClusterControlPlaneSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "owner": "my@service-account.com",
                 },
             ),
-            fleet=gcp.container.AwsClusterFleetArgs(
+            fleet=gcp.container.AwsClusterFleetArrgs(
                 project="my-project-number",
             ),
             location="us-west1",
-            networking=gcp.container.AwsClusterNetworkingArgs(
+            networking=gcp.container.AwsClusterNetworkingArrgs(
                 pod_address_cidr_blocks=["10.2.0.0/16"],
                 service_address_cidr_blocks=["10.1.0.0/16"],
                 vpc_id="vpc-00000000000000000",
@@ -1270,13 +1270,13 @@ class AwsNodePool(pulumi.CustomResource):
             project="my-project-name",
             opts=pulumi.ResourceOptions(provider=google_beta))
         primary_aws_node_pool = gcp.container.AwsNodePool("primaryAwsNodePool",
-            autoscaling=gcp.container.AwsNodePoolAutoscalingArgs(
+            autoscaling=gcp.container.AwsNodePoolAutoscalingArrgs(
                 max_node_count=5,
                 min_node_count=1,
             ),
             cluster=primary_aws_cluster.name,
-            config=gcp.container.AwsNodePoolConfigArgs(
-                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArgs(
+            config=gcp.container.AwsNodePoolConfigArrgs(
+                config_encryption=gcp.container.AwsNodePoolConfigConfigEncryptionArrgs(
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                 ),
                 iam_instance_profile="my--1p-dev-nodepool",
@@ -1284,35 +1284,35 @@ class AwsNodePool(pulumi.CustomResource):
                 labels={
                     "label-one": "value-one",
                 },
-                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArgs(
+                root_volume=gcp.container.AwsNodePoolConfigRootVolumeArrgs(
                     iops=3000,
                     kms_key_arn="arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
                     size_gib=10,
                     volume_type="gp3",
                 ),
                 security_group_ids=["sg-00000000000000000"],
-                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArgs(
+                proxy_config=gcp.container.AwsNodePoolConfigProxyConfigArrgs(
                     secret_arn="arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
                     secret_version="12345678-ABCD-EFGH-IJKL-987654321098",
                 ),
-                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArgs(
+                ssh_config=gcp.container.AwsNodePoolConfigSshConfigArrgs(
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
                     "tag-one": "value-one",
                 },
-                taints=[gcp.container.AwsNodePoolConfigTaintArgs(
+                taints=[gcp.container.AwsNodePoolConfigTaintArrgs(
                     effect="prefer_no_schedule",
                     key="taint-key",
                     value="taint-value",
                 )],
-                instance_placement=gcp.container.AwsNodePoolConfigInstancePlacementArgs(
+                instance_placement=gcp.container.AwsNodePoolConfigInstancePlacementArrgs(
                     tenancy="dedicated",
                 ),
                 image_type="ubuntu",
             ),
             location="us-west1",
-            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArgs(
+            max_pods_constraint=gcp.container.AwsNodePoolMaxPodsConstraintArrgs(
                 max_pods_per_node=110,
             ),
             subnet_id="subnet-00000000000000000",
@@ -1341,12 +1341,12 @@ class AwsNodePool(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AwsNodePoolArgs args: The arguments to use to populate this resource's properties.
+        :param AwsNodePoolArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AwsNodePoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AwsNodePoolArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1356,16 +1356,16 @@ class AwsNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 autoscaling: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']]] = None,
+                 autoscaling: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArrgs']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolConfigArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 management: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']]] = None,
-                 max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']]] = None,
+                 management: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolManagementArrgs']]] = None,
+                 max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None,
-                 update_settings: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']]] = None,
+                 update_settings: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArrgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1374,7 +1374,7 @@ class AwsNodePool(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AwsNodePoolArgs.__new__(AwsNodePoolArgs)
+            __props__ = AwsNodePoolArrgs.__new__(AwsNodePoolArrgs)
 
             __props__.__dict__["annotations"] = annotations
             if autoscaling is None and not opts.urn:
@@ -1420,22 +1420,22 @@ class AwsNodePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            autoscaling: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']]] = None,
+            autoscaling: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArrgs']]] = None,
             cluster: Optional[pulumi.Input[str]] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']]] = None,
+            config: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolConfigArrgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            management: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']]] = None,
-            max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']]] = None,
+            management: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolManagementArrgs']]] = None,
+            max_pods_constraint: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             subnet_id: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
-            update_settings: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']]] = None,
+            update_settings: Optional[pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArrgs']]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'AwsNodePool':
         """
@@ -1449,23 +1449,23 @@ class AwsNodePool(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolAutoscalingArrgs']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']] config: The configuration of the node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArrgs']] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolManagementArgs']] management: The Management configuration for this node pool.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolManagementArrgs']] management: The Management configuration for this node pool.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArrgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the node pool.
         :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArrgs']] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['ApiArgs', 'Api']
+__all__ = ['ApiArrgs', 'Api']
 
 @pulumi.input_type
-class ApiArgs:
+calass ApiArrgs:
     def __init__(__self__, *,
                  api_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -115,7 +115,7 @@ class ApiArgs:
 
 
 @pulumi.input_type
-class _ApiState:
+calass _ApiState:
     def __init__(__self__, *,
                  api_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -284,7 +284,7 @@ class _ApiState:
         pulumi.set(self, "pulumi_labels", value)
 
 
-class Api(pulumi.CustomResource):
+calass Api(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -351,7 +351,7 @@ class Api(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApiArgs,
+                 args: ApiArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A consumable API that can be used by multiple Gateways.
@@ -390,12 +390,12 @@ class Api(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ApiArgs args: The arguments to use to populate this resource's properties.
+        :param ApiArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApiArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApiArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -416,7 +416,7 @@ class Api(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApiArgs.__new__(ApiArgs)
+            __props__ = ApiArrgs.__new__(ApiArrgs)
 
             if api_id is None and not opts.urn:
                 raise TypeError("Missing required property 'api_id'")

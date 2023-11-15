@@ -11,22 +11,22 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IAMMemberArgs', 'IAMMember']
+__all__ = ['IAMMemberArrgs', 'IAMMember']
 
 @pulumi.input_type
-class IAMMemberArgs:
+calass IAMMemberArrgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  org_id: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['IAMMemberConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['IAMMemberConditionArrgs']] = None):
         """
         The set of arguments for constructing a IAMMember resource.
         :param pulumi.Input[str] org_id: The organization id of the target organization.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
                `organizations/{{org_id}}/roles/{{role_id}}`.
-        :param pulumi.Input['IAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['IAMMemberConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         """
         pulumi.set(__self__, "member", member)
@@ -72,7 +72,7 @@ class IAMMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['IAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['IAMMemberConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -80,21 +80,21 @@ class IAMMemberArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['IAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['IAMMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _IAMMemberState:
+calass _IAMMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['IAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['IAMMemberConditionArrgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IAMMember resources.
-        :param pulumi.Input['IAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['IAMMemberConditionArrgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the organization's IAM policy.
         :param pulumi.Input[str] org_id: The organization id of the target organization.
@@ -115,7 +115,7 @@ class _IAMMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['IAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['IAMMemberConditionArrgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -123,7 +123,7 @@ class _IAMMemberState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['IAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['IAMMemberConditionArrgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -174,12 +174,12 @@ class _IAMMemberState:
         pulumi.set(self, "role", value)
 
 
-class IAMMember(pulumi.CustomResource):
+calass IAMMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['IAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['IAMMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -214,7 +214,7 @@ class IAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -229,8 +229,8 @@ class IAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -264,7 +264,7 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IAMBinding("organization",
-            condition=gcp.organizations.IAMBindingConditionArgs(
+            condition=gcp.organizations.IAMBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -293,7 +293,7 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IAMMember("organization",
-            condition=gcp.organizations.IAMMemberConditionArgs(
+            condition=gcp.organizations.IAMMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -311,10 +311,10 @@ class IAMMember(pulumi.CustomResource):
 
         organization = gcp.organizations.IamAuditConfig("organization",
             audit_log_configs=[
-                gcp.organizations.IamAuditConfigAuditLogConfigArgs(
+                gcp.organizations.IamAuditConfigAuditLogConfigArrgs(
                     log_type="ADMIN_READ",
                 ),
-                gcp.organizations.IamAuditConfigAuditLogConfigArgs(
+                gcp.organizations.IamAuditConfigAuditLogConfigArrgs(
                     exempted_members=["user:joebloggs@hashicorp.com"],
                     log_type="DATA_READ",
                 ),
@@ -365,7 +365,7 @@ class IAMMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['IAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['IAMMemberConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] org_id: The organization id of the target organization.
         :param pulumi.Input[str] role: The role that should be applied. Only one
@@ -376,7 +376,7 @@ class IAMMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IAMMemberArgs,
+                 args: IAMMemberArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
@@ -408,7 +408,7 @@ class IAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -423,8 +423,8 @@ class IAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -458,7 +458,7 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IAMBinding("organization",
-            condition=gcp.organizations.IAMBindingConditionArgs(
+            condition=gcp.organizations.IAMBindingConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -487,7 +487,7 @@ class IAMMember(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         organization = gcp.organizations.IAMMember("organization",
-            condition=gcp.organizations.IAMMemberConditionArgs(
+            condition=gcp.organizations.IAMMemberConditionArrgs(
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
                 title="expires_after_2019_12_31",
@@ -505,10 +505,10 @@ class IAMMember(pulumi.CustomResource):
 
         organization = gcp.organizations.IamAuditConfig("organization",
             audit_log_configs=[
-                gcp.organizations.IamAuditConfigAuditLogConfigArgs(
+                gcp.organizations.IamAuditConfigAuditLogConfigArrgs(
                     log_type="ADMIN_READ",
                 ),
-                gcp.organizations.IamAuditConfigAuditLogConfigArgs(
+                gcp.organizations.IamAuditConfigAuditLogConfigArrgs(
                     exempted_members=["user:joebloggs@hashicorp.com"],
                     log_type="DATA_READ",
                 ),
@@ -558,12 +558,12 @@ class IAMMember(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param IAMMemberArgs args: The arguments to use to populate this resource's properties.
+        :param IAMMemberArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IAMMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IAMMemberArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -572,7 +572,7 @@ class IAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['IAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['IAMMemberConditionArrgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -583,7 +583,7 @@ class IAMMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IAMMemberArgs.__new__(IAMMemberArgs)
+            __props__ = IAMMemberArrgs.__new__(IAMMemberArrgs)
 
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
@@ -606,7 +606,7 @@ class IAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['IAMMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['IAMMemberConditionArrgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -618,7 +618,7 @@ class IAMMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['IAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['IAMMemberConditionArrgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the organization's IAM policy.
         :param pulumi.Input[str] org_id: The organization id of the target organization.

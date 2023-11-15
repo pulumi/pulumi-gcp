@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetZonesResult:
+calass GetZonesResult:
     """
     A collection of values returned by getZones.
     """
@@ -70,7 +70,7 @@ class GetZonesResult:
         return pulumi.get(self, "status")
 
 
-class AwaitableGetZonesResult(GetZonesResult):
+calass AwaitableGetZonesResult(GetZonesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

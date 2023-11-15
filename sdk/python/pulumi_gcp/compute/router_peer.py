@@ -11,19 +11,19 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RouterPeerArgs', 'RouterPeer']
+__all__ = ['RouterPeerArrgs', 'RouterPeer']
 
 @pulumi.input_type
-class RouterPeerArgs:
+calass RouterPeerArrgs:
     def __init__(__self__, *,
                  interface: pulumi.Input[str],
                  peer_asn: pulumi.Input[int],
                  router: pulumi.Input[str],
                  advertise_mode: Optional[pulumi.Input[str]] = None,
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
+                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArrgs']]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
-                 bfd: Optional[pulumi.Input['RouterPeerBfdArgs']] = None,
+                 bfd: Optional[pulumi.Input['RouterPeerBfdArrgs']] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
@@ -49,7 +49,7 @@ class RouterPeerArgs:
                Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which currently supports the following option:
-        :param pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+        :param pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArrgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
                ranges will be advertised in addition to any specified groups.
@@ -58,7 +58,7 @@ class RouterPeerArgs:
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
-        :param pulumi.Input['RouterPeerBfdArgs'] bfd: BFD configuration for the BGP peering.
+        :param pulumi.Input['RouterPeerBfdArrgs'] bfd: BFD configuration for the BGP peering.
                Structure is documented below.
         :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
@@ -196,7 +196,7 @@ class RouterPeerArgs:
 
     @property
     @pulumi.getter(name="advertisedIpRanges")
-    def advertised_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]:
+    def advertised_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArrgs']]]]:
         """
         User-specified list of individual IP ranges to advertise in
         custom mode. This field can only be populated if advertiseMode
@@ -208,7 +208,7 @@ class RouterPeerArgs:
         return pulumi.get(self, "advertised_ip_ranges")
 
     @advertised_ip_ranges.setter
-    def advertised_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]):
+    def advertised_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArrgs']]]]):
         pulumi.set(self, "advertised_ip_ranges", value)
 
     @property
@@ -227,7 +227,7 @@ class RouterPeerArgs:
 
     @property
     @pulumi.getter
-    def bfd(self) -> Optional[pulumi.Input['RouterPeerBfdArgs']]:
+    def bfd(self) -> Optional[pulumi.Input['RouterPeerBfdArrgs']]:
         """
         BFD configuration for the BGP peering.
         Structure is documented below.
@@ -235,7 +235,7 @@ class RouterPeerArgs:
         return pulumi.get(self, "bfd")
 
     @bfd.setter
-    def bfd(self, value: Optional[pulumi.Input['RouterPeerBfdArgs']]):
+    def bfd(self, value: Optional[pulumi.Input['RouterPeerBfdArrgs']]):
         pulumi.set(self, "bfd", value)
 
     @property
@@ -381,13 +381,13 @@ class RouterPeerArgs:
 
 
 @pulumi.input_type
-class _RouterPeerState:
+calass _RouterPeerState:
     def __init__(__self__, *,
                  advertise_mode: Optional[pulumi.Input[str]] = None,
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]] = None,
+                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArrgs']]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
-                 bfd: Optional[pulumi.Input['RouterPeerBfdArgs']] = None,
+                 bfd: Optional[pulumi.Input['RouterPeerBfdArrgs']] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
@@ -410,7 +410,7 @@ class _RouterPeerState:
                Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which currently supports the following option:
-        :param pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+        :param pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArrgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
                ranges will be advertised in addition to any specified groups.
@@ -419,7 +419,7 @@ class _RouterPeerState:
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
-        :param pulumi.Input['RouterPeerBfdArgs'] bfd: BFD configuration for the BGP peering.
+        :param pulumi.Input['RouterPeerBfdArrgs'] bfd: BFD configuration for the BGP peering.
                Structure is documented below.
         :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
@@ -530,7 +530,7 @@ class _RouterPeerState:
 
     @property
     @pulumi.getter(name="advertisedIpRanges")
-    def advertised_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]:
+    def advertised_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArrgs']]]]:
         """
         User-specified list of individual IP ranges to advertise in
         custom mode. This field can only be populated if advertiseMode
@@ -542,7 +542,7 @@ class _RouterPeerState:
         return pulumi.get(self, "advertised_ip_ranges")
 
     @advertised_ip_ranges.setter
-    def advertised_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]]]):
+    def advertised_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArrgs']]]]):
         pulumi.set(self, "advertised_ip_ranges", value)
 
     @property
@@ -561,7 +561,7 @@ class _RouterPeerState:
 
     @property
     @pulumi.getter
-    def bfd(self) -> Optional[pulumi.Input['RouterPeerBfdArgs']]:
+    def bfd(self) -> Optional[pulumi.Input['RouterPeerBfdArrgs']]:
         """
         BFD configuration for the BGP peering.
         Structure is documented below.
@@ -569,7 +569,7 @@ class _RouterPeerState:
         return pulumi.get(self, "bfd")
 
     @bfd.setter
-    def bfd(self, value: Optional[pulumi.Input['RouterPeerBfdArgs']]):
+    def bfd(self, value: Optional[pulumi.Input['RouterPeerBfdArrgs']]):
         pulumi.set(self, "bfd", value)
 
     @property
@@ -766,16 +766,16 @@ class _RouterPeerState:
         pulumi.set(self, "router_appliance_instance", value)
 
 
-class RouterPeer(pulumi.CustomResource):
+calass RouterPeer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advertise_mode: Optional[pulumi.Input[str]] = None,
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]]] = None,
+                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArrgs']]]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
-                 bfd: Optional[pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']]] = None,
+                 bfd: Optional[pulumi.Input[pulumi.InputType['RouterPeerBfdArrgs']]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
@@ -839,7 +839,7 @@ class RouterPeer(pulumi.CustomResource):
 
         peer = gcp.compute.RouterPeer("peer",
             advertised_route_priority=100,
-            bfd=gcp.compute.RouterPeerBfdArgs(
+            bfd=gcp.compute.RouterPeerBfdArrgs(
                 min_receive_interval=1000,
                 min_transmit_interval=1000,
                 multiplier=5,
@@ -878,12 +878,12 @@ class RouterPeer(pulumi.CustomResource):
             zone="us-central1-a",
             machine_type="e2-medium",
             can_ip_forward=True,
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network_ip=addr_peer.address,
                 subnetwork=subnetwork.self_link,
             )])
@@ -891,8 +891,8 @@ class RouterPeer(pulumi.CustomResource):
         spoke = gcp.networkconnectivity.Spoke("spoke",
             location=subnetwork.region,
             hub=hub.id,
-            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
-                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs(
+            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArrgs(
+                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArrgs(
                     virtual_machine=instance.self_link,
                     ip_address=addr_peer.address,
                 )],
@@ -901,7 +901,7 @@ class RouterPeer(pulumi.CustomResource):
         router = gcp.compute.Router("router",
             region=subnetwork.region,
             network=network.self_link,
-            bgp=gcp.compute.RouterBgpArgs(
+            bgp=gcp.compute.RouterBgpArrgs(
                 asn=64514,
             ))
         interface_redundant = gcp.compute.RouterInterface("interfaceRedundant",
@@ -952,7 +952,7 @@ class RouterPeer(pulumi.CustomResource):
                Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which currently supports the following option:
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArrgs']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
                ranges will be advertised in addition to any specified groups.
@@ -961,7 +961,7 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
-        :param pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']] bfd: BFD configuration for the BGP peering.
+        :param pulumi.Input[pulumi.InputType['RouterPeerBfdArrgs']] bfd: BFD configuration for the BGP peering.
                Structure is documented below.
         :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.
@@ -1006,7 +1006,7 @@ class RouterPeer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RouterPeerArgs,
+                 args: RouterPeerArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         BGP information that must be configured into the routing stack to
@@ -1057,7 +1057,7 @@ class RouterPeer(pulumi.CustomResource):
 
         peer = gcp.compute.RouterPeer("peer",
             advertised_route_priority=100,
-            bfd=gcp.compute.RouterPeerBfdArgs(
+            bfd=gcp.compute.RouterPeerBfdArrgs(
                 min_receive_interval=1000,
                 min_transmit_interval=1000,
                 multiplier=5,
@@ -1096,12 +1096,12 @@ class RouterPeer(pulumi.CustomResource):
             zone="us-central1-a",
             machine_type="e2-medium",
             can_ip_forward=True,
-            boot_disk=gcp.compute.InstanceBootDiskArgs(
-                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+            boot_disk=gcp.compute.InstanceBootDiskArrgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArrgs(
                     image="debian-cloud/debian-11",
                 ),
             ),
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArrgs(
                 network_ip=addr_peer.address,
                 subnetwork=subnetwork.self_link,
             )])
@@ -1109,8 +1109,8 @@ class RouterPeer(pulumi.CustomResource):
         spoke = gcp.networkconnectivity.Spoke("spoke",
             location=subnetwork.region,
             hub=hub.id,
-            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs(
-                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs(
+            linked_router_appliance_instances=gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesArrgs(
+                instances=[gcp.networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArrgs(
                     virtual_machine=instance.self_link,
                     ip_address=addr_peer.address,
                 )],
@@ -1119,7 +1119,7 @@ class RouterPeer(pulumi.CustomResource):
         router = gcp.compute.Router("router",
             region=subnetwork.region,
             network=network.self_link,
-            bgp=gcp.compute.RouterBgpArgs(
+            bgp=gcp.compute.RouterBgpArrgs(
                 asn=64514,
             ))
         interface_redundant = gcp.compute.RouterInterface("interfaceRedundant",
@@ -1163,12 +1163,12 @@ class RouterPeer(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RouterPeerArgs args: The arguments to use to populate this resource's properties.
+        :param RouterPeerArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RouterPeerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RouterPeerArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1179,9 +1179,9 @@ class RouterPeer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advertise_mode: Optional[pulumi.Input[str]] = None,
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]]] = None,
+                 advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArrgs']]]]] = None,
                  advertised_route_priority: Optional[pulumi.Input[int]] = None,
-                 bfd: Optional[pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']]] = None,
+                 bfd: Optional[pulumi.Input[pulumi.InputType['RouterPeerBfdArrgs']]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
@@ -1202,7 +1202,7 @@ class RouterPeer(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RouterPeerArgs.__new__(RouterPeerArgs)
+            __props__ = RouterPeerArrgs.__new__(RouterPeerArrgs)
 
             __props__.__dict__["advertise_mode"] = advertise_mode
             __props__.__dict__["advertised_groups"] = advertised_groups
@@ -1241,9 +1241,9 @@ class RouterPeer(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             advertise_mode: Optional[pulumi.Input[str]] = None,
             advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]]] = None,
+            advertised_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArrgs']]]]] = None,
             advertised_route_priority: Optional[pulumi.Input[int]] = None,
-            bfd: Optional[pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']]] = None,
+            bfd: Optional[pulumi.Input[pulumi.InputType['RouterPeerBfdArrgs']]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
             enable_ipv6: Optional[pulumi.Input[bool]] = None,
             interface: Optional[pulumi.Input[str]] = None,
@@ -1271,7 +1271,7 @@ class RouterPeer(pulumi.CustomResource):
                Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which currently supports the following option:
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArrgs']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
                ranges will be advertised in addition to any specified groups.
@@ -1280,7 +1280,7 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer.
                Where there is more than one matching route of maximum
                length, the routes with the lowest priority value win.
-        :param pulumi.Input[pulumi.InputType['RouterPeerBfdArgs']] bfd: BFD configuration for the BGP peering.
+        :param pulumi.Input[pulumi.InputType['RouterPeerBfdArrgs']] bfd: BFD configuration for the BGP peering.
                Structure is documented below.
         :param pulumi.Input[bool] enable: The status of the BGP peer connection. If set to false, any active session
                with the peer is terminated and all associated routing information is removed.

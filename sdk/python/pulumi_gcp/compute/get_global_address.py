@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetGlobalAddressResult:
+calass GetGlobalAddressResult:
     """
     A collection of values returned by getGlobalAddress.
     """
@@ -140,7 +140,7 @@ class GetGlobalAddressResult:
         return pulumi.get(self, "users")
 
 
-class AwaitableGetGlobalAddressResult(GetGlobalAddressResult):
+calass AwaitableGetGlobalAddressResult(GetGlobalAddressResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

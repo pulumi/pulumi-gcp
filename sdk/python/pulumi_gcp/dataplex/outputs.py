@@ -77,7 +77,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class AssetDiscoverySpec(dict):
+calass AssetDiscoverySpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -110,10 +110,10 @@ class AssetDiscoverySpec(dict):
                  schedule: Optional[str] = None):
         """
         :param bool enabled: Required. Whether discovery is enabled.
-        :param 'AssetDiscoverySpecCsvOptionsArgs' csv_options: Optional. Configuration for CSV data.
+        :param 'AssetDiscoverySpecCsvOptionsArrgs' csv_options: Optional. Configuration for CSV data.
         :param Sequence[str] exclude_patterns: Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
         :param Sequence[str] include_patterns: Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
-        :param 'AssetDiscoverySpecJsonOptionsArgs' json_options: Optional. Configuration for Json data.
+        :param 'AssetDiscoverySpecJsonOptionsArrgs' json_options: Optional. Configuration for Json data.
         :param str schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -178,7 +178,7 @@ class AssetDiscoverySpec(dict):
 
 
 @pulumi.output_type
-class AssetDiscoverySpecCsvOptions(dict):
+calass AssetDiscoverySpecCsvOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -252,7 +252,7 @@ class AssetDiscoverySpecCsvOptions(dict):
 
 
 @pulumi.output_type
-class AssetDiscoverySpecJsonOptions(dict):
+calass AssetDiscoverySpecJsonOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -300,7 +300,7 @@ class AssetDiscoverySpecJsonOptions(dict):
 
 
 @pulumi.output_type
-class AssetDiscoveryStatus(dict):
+calass AssetDiscoveryStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -384,7 +384,7 @@ class AssetDiscoveryStatus(dict):
 
 
 @pulumi.output_type
-class AssetDiscoveryStatusStat(dict):
+calass AssetDiscoveryStatusStat(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -440,7 +440,7 @@ class AssetDiscoveryStatusStat(dict):
 
 
 @pulumi.output_type
-class AssetIamBindingCondition(dict):
+calass AssetIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -467,7 +467,7 @@ class AssetIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class AssetIamMemberCondition(dict):
+calass AssetIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -494,7 +494,7 @@ class AssetIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class AssetResourceSpec(dict):
+calass AssetResourceSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -557,7 +557,7 @@ class AssetResourceSpec(dict):
 
 
 @pulumi.output_type
-class AssetResourceStatus(dict):
+calass AssetResourceStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -613,7 +613,7 @@ class AssetResourceStatus(dict):
 
 
 @pulumi.output_type
-class AssetSecurityStatus(dict):
+calass AssetSecurityStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -669,7 +669,7 @@ class AssetSecurityStatus(dict):
 
 
 @pulumi.output_type
-class DatascanData(dict):
+calass DatascanData(dict):
     def __init__(__self__, *,
                  entity: Optional[str] = None,
                  resource: Optional[str] = None):
@@ -702,7 +702,7 @@ class DatascanData(dict):
 
 
 @pulumi.output_type
-class DatascanDataProfileSpec(dict):
+calass DatascanDataProfileSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -735,13 +735,13 @@ class DatascanDataProfileSpec(dict):
                  row_filter: Optional[str] = None,
                  sampling_percent: Optional[float] = None):
         """
-        :param 'DatascanDataProfileSpecExcludeFieldsArgs' exclude_fields: The fields to exclude from data profile.
+        :param 'DatascanDataProfileSpecExcludeFieldsArrgs' exclude_fields: The fields to exclude from data profile.
                If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
                Structure is documented below.
-        :param 'DatascanDataProfileSpecIncludeFieldsArgs' include_fields: The fields to include in data profile.
+        :param 'DatascanDataProfileSpecIncludeFieldsArrgs' include_fields: The fields to include in data profile.
                If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
                Structure is documented below.
-        :param 'DatascanDataProfileSpecPostScanActionsArgs' post_scan_actions: Actions to take upon job completion.
+        :param 'DatascanDataProfileSpecPostScanActionsArrgs' post_scan_actions: Actions to take upon job completion.
                Structure is documented below.
         :param str row_filter: A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param float sampling_percent: The percentage of the records to be selected from the dataset for DataScan.
@@ -808,7 +808,7 @@ class DatascanDataProfileSpec(dict):
 
 
 @pulumi.output_type
-class DatascanDataProfileSpecExcludeFields(dict):
+calass DatascanDataProfileSpecExcludeFields(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -848,7 +848,7 @@ class DatascanDataProfileSpecExcludeFields(dict):
 
 
 @pulumi.output_type
-class DatascanDataProfileSpecIncludeFields(dict):
+calass DatascanDataProfileSpecIncludeFields(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -888,7 +888,7 @@ class DatascanDataProfileSpecIncludeFields(dict):
 
 
 @pulumi.output_type
-class DatascanDataProfileSpecPostScanActions(dict):
+calass DatascanDataProfileSpecPostScanActions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -909,7 +909,7 @@ class DatascanDataProfileSpecPostScanActions(dict):
     def __init__(__self__, *,
                  bigquery_export: Optional['outputs.DatascanDataProfileSpecPostScanActionsBigqueryExport'] = None):
         """
-        :param 'DatascanDataProfileSpecPostScanActionsBigqueryExportArgs' bigquery_export: If set, results will be exported to the provided BigQuery table.
+        :param 'DatascanDataProfileSpecPostScanActionsBigqueryExportArrgs' bigquery_export: If set, results will be exported to the provided BigQuery table.
                Structure is documented below.
         """
         if bigquery_export is not None:
@@ -926,7 +926,7 @@ class DatascanDataProfileSpecPostScanActions(dict):
 
 
 @pulumi.output_type
-class DatascanDataProfileSpecPostScanActionsBigqueryExport(dict):
+calass DatascanDataProfileSpecPostScanActionsBigqueryExport(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -964,7 +964,7 @@ class DatascanDataProfileSpecPostScanActionsBigqueryExport(dict):
 
 
 @pulumi.output_type
-class DatascanDataQualitySpec(dict):
+calass DatascanDataQualitySpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -992,10 +992,10 @@ class DatascanDataQualitySpec(dict):
                  rules: Optional[Sequence['outputs.DatascanDataQualitySpecRule']] = None,
                  sampling_percent: Optional[float] = None):
         """
-        :param 'DatascanDataQualitySpecPostScanActionsArgs' post_scan_actions: Actions to take upon job completion.
+        :param 'DatascanDataQualitySpecPostScanActionsArrgs' post_scan_actions: Actions to take upon job completion.
                Structure is documented below.
         :param str row_filter: A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
-        :param Sequence['DatascanDataQualitySpecRuleArgs'] rules: The list of rules to evaluate against a data source. At least one rule is required.
+        :param Sequence['DatascanDataQualitySpecRuleArrgs'] rules: The list of rules to evaluate against a data source. At least one rule is required.
                Structure is documented below.
         :param float sampling_percent: The percentage of the records to be selected from the dataset for DataScan.
                Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
@@ -1048,7 +1048,7 @@ class DatascanDataQualitySpec(dict):
 
 
 @pulumi.output_type
-class DatascanDataQualitySpecPostScanActions(dict):
+calass DatascanDataQualitySpecPostScanActions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1069,7 +1069,7 @@ class DatascanDataQualitySpecPostScanActions(dict):
     def __init__(__self__, *,
                  bigquery_export: Optional['outputs.DatascanDataQualitySpecPostScanActionsBigqueryExport'] = None):
         """
-        :param 'DatascanDataQualitySpecPostScanActionsBigqueryExportArgs' bigquery_export: If set, results will be exported to the provided BigQuery table.
+        :param 'DatascanDataQualitySpecPostScanActionsBigqueryExportArrgs' bigquery_export: If set, results will be exported to the provided BigQuery table.
                Structure is documented below.
         """
         if bigquery_export is not None:
@@ -1086,7 +1086,7 @@ class DatascanDataQualitySpecPostScanActions(dict):
 
 
 @pulumi.output_type
-class DatascanDataQualitySpecPostScanActionsBigqueryExport(dict):
+calass DatascanDataQualitySpecPostScanActionsBigqueryExport(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1124,7 +1124,7 @@ class DatascanDataQualitySpecPostScanActionsBigqueryExport(dict):
 
 
 @pulumi.output_type
-class DatascanDataQualitySpecRule(dict):
+calass DatascanDataQualitySpecRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1184,21 +1184,21 @@ class DatascanDataQualitySpecRule(dict):
                The maximum length is 63 characters.
                Must start with a letter.
                Must end with a number or a letter.
-        :param 'DatascanDataQualitySpecRuleNonNullExpectationArgs' non_null_expectation: ColumnMap rule which evaluates whether each column value is null.
-        :param 'DatascanDataQualitySpecRuleRangeExpectationArgs' range_expectation: ColumnMap rule which evaluates whether each column value lies between a specified range.
+        :param 'DatascanDataQualitySpecRuleNonNullExpectationArrgs' non_null_expectation: ColumnMap rule which evaluates whether each column value is null.
+        :param 'DatascanDataQualitySpecRuleRangeExpectationArrgs' range_expectation: ColumnMap rule which evaluates whether each column value lies between a specified range.
                Structure is documented below.
-        :param 'DatascanDataQualitySpecRuleRegexExpectationArgs' regex_expectation: ColumnMap rule which evaluates whether each column value matches a specified regex.
+        :param 'DatascanDataQualitySpecRuleRegexExpectationArrgs' regex_expectation: ColumnMap rule which evaluates whether each column value matches a specified regex.
                Structure is documented below.
-        :param 'DatascanDataQualitySpecRuleRowConditionExpectationArgs' row_condition_expectation: Table rule which evaluates whether each row passes the specified condition.
+        :param 'DatascanDataQualitySpecRuleRowConditionExpectationArrgs' row_condition_expectation: Table rule which evaluates whether each row passes the specified condition.
                Structure is documented below.
-        :param 'DatascanDataQualitySpecRuleSetExpectationArgs' set_expectation: ColumnMap rule which evaluates whether each column value is contained by a specified set.
+        :param 'DatascanDataQualitySpecRuleSetExpectationArrgs' set_expectation: ColumnMap rule which evaluates whether each column value is contained by a specified set.
                Structure is documented below.
-        :param 'DatascanDataQualitySpecRuleStatisticRangeExpectationArgs' statistic_range_expectation: ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        :param 'DatascanDataQualitySpecRuleStatisticRangeExpectationArrgs' statistic_range_expectation: ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
                Structure is documented below.
-        :param 'DatascanDataQualitySpecRuleTableConditionExpectationArgs' table_condition_expectation: Table rule which evaluates whether the provided expression is true.
+        :param 'DatascanDataQualitySpecRuleTableConditionExpectationArrgs' table_condition_expectation: Table rule which evaluates whether the provided expression is true.
                Structure is documented below.
         :param float threshold: The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
-        :param 'DatascanDataQualitySpecRuleUniquenessExpectationArgs' uniqueness_expectation: Row-level rule which evaluates whether each column value is unique.
+        :param 'DatascanDataQualitySpecRuleUniquenessExpectationArrgs' uniqueness_expectation: Row-level rule which evaluates whether each column value is unique.
         """
         pulumi.set(__self__, "dimension", dimension)
         if column is not None:
@@ -1353,13 +1353,13 @@ class DatascanDataQualitySpecRule(dict):
 
 
 @pulumi.output_type
-class DatascanDataQualitySpecRuleNonNullExpectation(dict):
+calass DatascanDataQualitySpecRuleNonNullExpectation(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DatascanDataQualitySpecRuleRangeExpectation(dict):
+calass DatascanDataQualitySpecRuleRangeExpectation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1441,7 +1441,7 @@ class DatascanDataQualitySpecRuleRangeExpectation(dict):
 
 
 @pulumi.output_type
-class DatascanDataQualitySpecRuleRegexExpectation(dict):
+calass DatascanDataQualitySpecRuleRegexExpectation(dict):
     def __init__(__self__, *,
                  regex: str):
         """
@@ -1459,7 +1459,7 @@ class DatascanDataQualitySpecRuleRegexExpectation(dict):
 
 
 @pulumi.output_type
-class DatascanDataQualitySpecRuleRowConditionExpectation(dict):
+calass DatascanDataQualitySpecRuleRowConditionExpectation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1494,7 +1494,7 @@ class DatascanDataQualitySpecRuleRowConditionExpectation(dict):
 
 
 @pulumi.output_type
-class DatascanDataQualitySpecRuleSetExpectation(dict):
+calass DatascanDataQualitySpecRuleSetExpectation(dict):
     def __init__(__self__, *,
                  values: Sequence[str]):
         """
@@ -1512,7 +1512,7 @@ class DatascanDataQualitySpecRuleSetExpectation(dict):
 
 
 @pulumi.output_type
-class DatascanDataQualitySpecRuleStatisticRangeExpectation(dict):
+calass DatascanDataQualitySpecRuleStatisticRangeExpectation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1611,7 +1611,7 @@ class DatascanDataQualitySpecRuleStatisticRangeExpectation(dict):
 
 
 @pulumi.output_type
-class DatascanDataQualitySpecRuleTableConditionExpectation(dict):
+calass DatascanDataQualitySpecRuleTableConditionExpectation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1646,18 +1646,18 @@ class DatascanDataQualitySpecRuleTableConditionExpectation(dict):
 
 
 @pulumi.output_type
-class DatascanDataQualitySpecRuleUniquenessExpectation(dict):
+calass DatascanDataQualitySpecRuleUniquenessExpectation(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DatascanExecutionSpec(dict):
+calass DatascanExecutionSpec(dict):
     def __init__(__self__, *,
                  trigger: 'outputs.DatascanExecutionSpecTrigger',
                  field: Optional[str] = None):
         """
-        :param 'DatascanExecutionSpecTriggerArgs' trigger: Spec related to how often and when a scan should be triggered.
+        :param 'DatascanExecutionSpecTriggerArrgs' trigger: Spec related to how often and when a scan should be triggered.
                Structure is documented below.
         :param str field: The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
         """
@@ -1684,7 +1684,7 @@ class DatascanExecutionSpec(dict):
 
 
 @pulumi.output_type
-class DatascanExecutionSpecTrigger(dict):
+calass DatascanExecutionSpecTrigger(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1706,8 +1706,8 @@ class DatascanExecutionSpecTrigger(dict):
                  on_demand: Optional['outputs.DatascanExecutionSpecTriggerOnDemand'] = None,
                  schedule: Optional['outputs.DatascanExecutionSpecTriggerSchedule'] = None):
         """
-        :param 'DatascanExecutionSpecTriggerOnDemandArgs' on_demand: The scan runs once via dataScans.run API.
-        :param 'DatascanExecutionSpecTriggerScheduleArgs' schedule: The scan is scheduled to run periodically.
+        :param 'DatascanExecutionSpecTriggerOnDemandArrgs' on_demand: The scan runs once via dataScans.run API.
+        :param 'DatascanExecutionSpecTriggerScheduleArrgs' schedule: The scan is scheduled to run periodically.
                Structure is documented below.
         """
         if on_demand is not None:
@@ -1734,13 +1734,13 @@ class DatascanExecutionSpecTrigger(dict):
 
 
 @pulumi.output_type
-class DatascanExecutionSpecTriggerOnDemand(dict):
+calass DatascanExecutionSpecTriggerOnDemand(dict):
     def __init__(__self__):
         pass
 
 
 @pulumi.output_type
-class DatascanExecutionSpecTriggerSchedule(dict):
+calass DatascanExecutionSpecTriggerSchedule(dict):
     def __init__(__self__, *,
                  cron: str):
         """
@@ -1762,7 +1762,7 @@ class DatascanExecutionSpecTriggerSchedule(dict):
 
 
 @pulumi.output_type
-class DatascanExecutionStatus(dict):
+calass DatascanExecutionStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1816,7 +1816,7 @@ class DatascanExecutionStatus(dict):
 
 
 @pulumi.output_type
-class DatascanIamBindingCondition(dict):
+calass DatascanIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1843,7 +1843,7 @@ class DatascanIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class DatascanIamMemberCondition(dict):
+calass DatascanIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1870,7 +1870,7 @@ class DatascanIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class LakeAssetStatus(dict):
+calass LakeAssetStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1926,7 +1926,7 @@ class LakeAssetStatus(dict):
 
 
 @pulumi.output_type
-class LakeIamBindingCondition(dict):
+calass LakeIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1953,7 +1953,7 @@ class LakeIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class LakeIamMemberCondition(dict):
+calass LakeIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1980,7 +1980,7 @@ class LakeIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class LakeMetastore(dict):
+calass LakeMetastore(dict):
     def __init__(__self__, *,
                  service: Optional[str] = None):
         """
@@ -1999,7 +1999,7 @@ class LakeMetastore(dict):
 
 
 @pulumi.output_type
-class LakeMetastoreStatus(dict):
+calass LakeMetastoreStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2063,7 +2063,7 @@ class LakeMetastoreStatus(dict):
 
 
 @pulumi.output_type
-class TaskExecutionSpec(dict):
+calass TaskExecutionSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2156,7 +2156,7 @@ class TaskExecutionSpec(dict):
 
 
 @pulumi.output_type
-class TaskExecutionStatus(dict):
+calass TaskExecutionStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2180,7 +2180,7 @@ class TaskExecutionStatus(dict):
                  latest_jobs: Optional[Sequence['outputs.TaskExecutionStatusLatestJob']] = None,
                  update_time: Optional[str] = None):
         """
-        :param Sequence['TaskExecutionStatusLatestJobArgs'] latest_jobs: (Output)
+        :param Sequence['TaskExecutionStatusLatestJobArrgs'] latest_jobs: (Output)
                latest job execution.
                Structure is documented below.
         :param str update_time: (Output)
@@ -2212,7 +2212,7 @@ class TaskExecutionStatus(dict):
 
 
 @pulumi.output_type
-class TaskExecutionStatusLatestJob(dict):
+calass TaskExecutionStatusLatestJob(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2366,7 +2366,7 @@ class TaskExecutionStatusLatestJob(dict):
 
 
 @pulumi.output_type
-class TaskIamBindingCondition(dict):
+calass TaskIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -2393,7 +2393,7 @@ class TaskIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class TaskIamMemberCondition(dict):
+calass TaskIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -2420,7 +2420,7 @@ class TaskIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class TaskNotebook(dict):
+calass TaskNotebook(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2451,7 +2451,7 @@ class TaskNotebook(dict):
         :param str notebook: Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
         :param Sequence[str] archive_uris: Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         :param Sequence[str] file_uris: Cloud Storage URIs of files to be placed in the working directory of each executor.
-        :param 'TaskNotebookInfrastructureSpecArgs' infrastructure_spec: Infrastructure specification for the execution.
+        :param 'TaskNotebookInfrastructureSpecArrgs' infrastructure_spec: Infrastructure specification for the execution.
                Structure is documented below.
         """
         pulumi.set(__self__, "notebook", notebook)
@@ -2497,7 +2497,7 @@ class TaskNotebook(dict):
 
 
 @pulumi.output_type
-class TaskNotebookInfrastructureSpec(dict):
+calass TaskNotebookInfrastructureSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2522,11 +2522,11 @@ class TaskNotebookInfrastructureSpec(dict):
                  container_image: Optional['outputs.TaskNotebookInfrastructureSpecContainerImage'] = None,
                  vpc_network: Optional['outputs.TaskNotebookInfrastructureSpecVpcNetwork'] = None):
         """
-        :param 'TaskNotebookInfrastructureSpecBatchArgs' batch: Compute resources needed for a Task when using Dataproc Serverless.
+        :param 'TaskNotebookInfrastructureSpecBatchArrgs' batch: Compute resources needed for a Task when using Dataproc Serverless.
                Structure is documented below.
-        :param 'TaskNotebookInfrastructureSpecContainerImageArgs' container_image: Container Image Runtime Configuration.
+        :param 'TaskNotebookInfrastructureSpecContainerImageArrgs' container_image: Container Image Runtime Configuration.
                Structure is documented below.
-        :param 'TaskNotebookInfrastructureSpecVpcNetworkArgs' vpc_network: Vpc network.
+        :param 'TaskNotebookInfrastructureSpecVpcNetworkArrgs' vpc_network: Vpc network.
                Structure is documented below.
         """
         if batch is not None:
@@ -2565,7 +2565,7 @@ class TaskNotebookInfrastructureSpec(dict):
 
 
 @pulumi.output_type
-class TaskNotebookInfrastructureSpecBatch(dict):
+calass TaskNotebookInfrastructureSpecBatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2615,7 +2615,7 @@ class TaskNotebookInfrastructureSpecBatch(dict):
 
 
 @pulumi.output_type
-class TaskNotebookInfrastructureSpecContainerImage(dict):
+calass TaskNotebookInfrastructureSpecContainerImage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2689,7 +2689,7 @@ class TaskNotebookInfrastructureSpecContainerImage(dict):
 
 
 @pulumi.output_type
-class TaskNotebookInfrastructureSpecVpcNetwork(dict):
+calass TaskNotebookInfrastructureSpecVpcNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2751,7 +2751,7 @@ class TaskNotebookInfrastructureSpecVpcNetwork(dict):
 
 
 @pulumi.output_type
-class TaskSpark(dict):
+calass TaskSpark(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2795,7 +2795,7 @@ class TaskSpark(dict):
         """
         :param Sequence[str] archive_uris: Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         :param Sequence[str] file_uris: Cloud Storage URIs of files to be placed in the working directory of each executor.
-        :param 'TaskSparkInfrastructureSpecArgs' infrastructure_spec: Infrastructure specification for the execution.
+        :param 'TaskSparkInfrastructureSpecArrgs' infrastructure_spec: Infrastructure specification for the execution.
                Structure is documented below.
         :param str main_class: The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value).
         :param str main_jar_file_uri: The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value).
@@ -2887,7 +2887,7 @@ class TaskSpark(dict):
 
 
 @pulumi.output_type
-class TaskSparkInfrastructureSpec(dict):
+calass TaskSparkInfrastructureSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2912,11 +2912,11 @@ class TaskSparkInfrastructureSpec(dict):
                  container_image: Optional['outputs.TaskSparkInfrastructureSpecContainerImage'] = None,
                  vpc_network: Optional['outputs.TaskSparkInfrastructureSpecVpcNetwork'] = None):
         """
-        :param 'TaskSparkInfrastructureSpecBatchArgs' batch: Compute resources needed for a Task when using Dataproc Serverless.
+        :param 'TaskSparkInfrastructureSpecBatchArrgs' batch: Compute resources needed for a Task when using Dataproc Serverless.
                Structure is documented below.
-        :param 'TaskSparkInfrastructureSpecContainerImageArgs' container_image: Container Image Runtime Configuration.
+        :param 'TaskSparkInfrastructureSpecContainerImageArrgs' container_image: Container Image Runtime Configuration.
                Structure is documented below.
-        :param 'TaskSparkInfrastructureSpecVpcNetworkArgs' vpc_network: Vpc network.
+        :param 'TaskSparkInfrastructureSpecVpcNetworkArrgs' vpc_network: Vpc network.
                Structure is documented below.
         """
         if batch is not None:
@@ -2955,7 +2955,7 @@ class TaskSparkInfrastructureSpec(dict):
 
 
 @pulumi.output_type
-class TaskSparkInfrastructureSpecBatch(dict):
+calass TaskSparkInfrastructureSpecBatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3005,7 +3005,7 @@ class TaskSparkInfrastructureSpecBatch(dict):
 
 
 @pulumi.output_type
-class TaskSparkInfrastructureSpecContainerImage(dict):
+calass TaskSparkInfrastructureSpecContainerImage(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3079,7 +3079,7 @@ class TaskSparkInfrastructureSpecContainerImage(dict):
 
 
 @pulumi.output_type
-class TaskSparkInfrastructureSpecVpcNetwork(dict):
+calass TaskSparkInfrastructureSpecVpcNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3141,7 +3141,7 @@ class TaskSparkInfrastructureSpecVpcNetwork(dict):
 
 
 @pulumi.output_type
-class TaskTriggerSpec(dict):
+calass TaskTriggerSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3228,7 +3228,7 @@ class TaskTriggerSpec(dict):
 
 
 @pulumi.output_type
-class ZoneAssetStatus(dict):
+calass ZoneAssetStatus(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3284,7 +3284,7 @@ class ZoneAssetStatus(dict):
 
 
 @pulumi.output_type
-class ZoneDiscoverySpec(dict):
+calass ZoneDiscoverySpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3317,10 +3317,10 @@ class ZoneDiscoverySpec(dict):
                  schedule: Optional[str] = None):
         """
         :param bool enabled: Required. Whether discovery is enabled.
-        :param 'ZoneDiscoverySpecCsvOptionsArgs' csv_options: Optional. Configuration for CSV data.
+        :param 'ZoneDiscoverySpecCsvOptionsArrgs' csv_options: Optional. Configuration for CSV data.
         :param Sequence[str] exclude_patterns: Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
         :param Sequence[str] include_patterns: Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
-        :param 'ZoneDiscoverySpecJsonOptionsArgs' json_options: Optional. Configuration for Json data.
+        :param 'ZoneDiscoverySpecJsonOptionsArrgs' json_options: Optional. Configuration for Json data.
         :param str schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -3385,7 +3385,7 @@ class ZoneDiscoverySpec(dict):
 
 
 @pulumi.output_type
-class ZoneDiscoverySpecCsvOptions(dict):
+calass ZoneDiscoverySpecCsvOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3459,7 +3459,7 @@ class ZoneDiscoverySpecCsvOptions(dict):
 
 
 @pulumi.output_type
-class ZoneDiscoverySpecJsonOptions(dict):
+calass ZoneDiscoverySpecJsonOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3507,7 +3507,7 @@ class ZoneDiscoverySpecJsonOptions(dict):
 
 
 @pulumi.output_type
-class ZoneIamBindingCondition(dict):
+calass ZoneIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -3534,7 +3534,7 @@ class ZoneIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class ZoneIamMemberCondition(dict):
+calass ZoneIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -3561,7 +3561,7 @@ class ZoneIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class ZoneResourceSpec(dict):
+calass ZoneResourceSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

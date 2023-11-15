@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CaPoolArgs', 'CaPool']
+__all__ = ['CaPoolArrgs', 'CaPool']
 
 @pulumi.input_type
-class CaPoolArgs:
+calass CaPoolArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  tier: pulumi.Input[str],
-                 issuance_policy: Optional[pulumi.Input['CaPoolIssuancePolicyArgs']] = None,
+                 issuance_policy: Optional[pulumi.Input['CaPoolIssuancePolicyArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publishing_options: Optional[pulumi.Input['CaPoolPublishingOptionsArgs']] = None):
+                 publishing_options: Optional[pulumi.Input['CaPoolPublishingOptionsArrgs']] = None):
         """
         The set of arguments for constructing a CaPool resource.
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
@@ -32,7 +32,7 @@ class CaPoolArgs:
                - - -
         :param pulumi.Input[str] tier: The Tier of this CaPool.
                Possible values are: `ENTERPRISE`, `DEVOPS`.
-        :param pulumi.Input['CaPoolIssuancePolicyArgs'] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
+        :param pulumi.Input['CaPoolIssuancePolicyArrgs'] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -43,7 +43,7 @@ class CaPoolArgs:
         :param pulumi.Input[str] name: The name for this CaPool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['CaPoolPublishingOptionsArgs'] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
+        :param pulumi.Input['CaPoolPublishingOptionsArrgs'] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
@@ -90,7 +90,7 @@ class CaPoolArgs:
 
     @property
     @pulumi.getter(name="issuancePolicy")
-    def issuance_policy(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyArgs']]:
+    def issuance_policy(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyArrgs']]:
         """
         The IssuancePolicy to control how Certificates will be issued from this CaPool.
         Structure is documented below.
@@ -98,7 +98,7 @@ class CaPoolArgs:
         return pulumi.get(self, "issuance_policy")
 
     @issuance_policy.setter
-    def issuance_policy(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyArgs']]):
+    def issuance_policy(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyArrgs']]):
         pulumi.set(self, "issuance_policy", value)
 
     @property
@@ -145,7 +145,7 @@ class CaPoolArgs:
 
     @property
     @pulumi.getter(name="publishingOptions")
-    def publishing_options(self) -> Optional[pulumi.Input['CaPoolPublishingOptionsArgs']]:
+    def publishing_options(self) -> Optional[pulumi.Input['CaPoolPublishingOptionsArrgs']]:
         """
         The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
         Structure is documented below.
@@ -153,26 +153,26 @@ class CaPoolArgs:
         return pulumi.get(self, "publishing_options")
 
     @publishing_options.setter
-    def publishing_options(self, value: Optional[pulumi.Input['CaPoolPublishingOptionsArgs']]):
+    def publishing_options(self, value: Optional[pulumi.Input['CaPoolPublishingOptionsArrgs']]):
         pulumi.set(self, "publishing_options", value)
 
 
 @pulumi.input_type
-class _CaPoolState:
+calass _CaPoolState:
     def __init__(__self__, *,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 issuance_policy: Optional[pulumi.Input['CaPoolIssuancePolicyArgs']] = None,
+                 issuance_policy: Optional[pulumi.Input['CaPoolIssuancePolicyArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publishing_options: Optional[pulumi.Input['CaPoolPublishingOptionsArgs']] = None,
+                 publishing_options: Optional[pulumi.Input['CaPoolPublishingOptionsArrgs']] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tier: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CaPool resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['CaPoolIssuancePolicyArgs'] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
+        :param pulumi.Input['CaPoolIssuancePolicyArrgs'] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -188,7 +188,7 @@ class _CaPoolState:
         :param pulumi.Input[str] name: The name for this CaPool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['CaPoolPublishingOptionsArgs'] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
+        :param pulumi.Input['CaPoolPublishingOptionsArrgs'] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
@@ -228,7 +228,7 @@ class _CaPoolState:
 
     @property
     @pulumi.getter(name="issuancePolicy")
-    def issuance_policy(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyArgs']]:
+    def issuance_policy(self) -> Optional[pulumi.Input['CaPoolIssuancePolicyArrgs']]:
         """
         The IssuancePolicy to control how Certificates will be issued from this CaPool.
         Structure is documented below.
@@ -236,7 +236,7 @@ class _CaPoolState:
         return pulumi.get(self, "issuance_policy")
 
     @issuance_policy.setter
-    def issuance_policy(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyArgs']]):
+    def issuance_policy(self, value: Optional[pulumi.Input['CaPoolIssuancePolicyArrgs']]):
         pulumi.set(self, "issuance_policy", value)
 
     @property
@@ -299,7 +299,7 @@ class _CaPoolState:
 
     @property
     @pulumi.getter(name="publishingOptions")
-    def publishing_options(self) -> Optional[pulumi.Input['CaPoolPublishingOptionsArgs']]:
+    def publishing_options(self) -> Optional[pulumi.Input['CaPoolPublishingOptionsArrgs']]:
         """
         The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
         Structure is documented below.
@@ -307,7 +307,7 @@ class _CaPoolState:
         return pulumi.get(self, "publishing_options")
 
     @publishing_options.setter
-    def publishing_options(self, value: Optional[pulumi.Input['CaPoolPublishingOptionsArgs']]):
+    def publishing_options(self, value: Optional[pulumi.Input['CaPoolPublishingOptionsArrgs']]):
         pulumi.set(self, "publishing_options", value)
 
     @property
@@ -337,17 +337,17 @@ class _CaPoolState:
         pulumi.set(self, "tier", value)
 
 
-class CaPool(pulumi.CustomResource):
+calass CaPool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 issuance_policy: Optional[pulumi.Input[pulumi.InputType['CaPoolIssuancePolicyArgs']]] = None,
+                 issuance_policy: Optional[pulumi.Input[pulumi.InputType['CaPoolIssuancePolicyArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publishing_options: Optional[pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArgs']]] = None,
+                 publishing_options: Optional[pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArrgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -367,7 +367,7 @@ class CaPool(pulumi.CustomResource):
                 "foo": "bar",
             },
             location="us-central1",
-            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArrgs(
                 publish_ca_cert=True,
                 publish_crl=True,
             ),
@@ -392,7 +392,7 @@ class CaPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CaPoolIssuancePolicyArgs']] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
+        :param pulumi.Input[pulumi.InputType['CaPoolIssuancePolicyArrgs']] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -408,7 +408,7 @@ class CaPool(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name for this CaPool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArgs']] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
+        :param pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArrgs']] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
         :param pulumi.Input[str] tier: The Tier of this CaPool.
                Possible values are: `ENTERPRISE`, `DEVOPS`.
@@ -417,7 +417,7 @@ class CaPool(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CaPoolArgs,
+                 args: CaPoolArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A CaPool represents a group of CertificateAuthorities that form a trust anchor. A CaPool can be used to manage
@@ -436,7 +436,7 @@ class CaPool(pulumi.CustomResource):
                 "foo": "bar",
             },
             location="us-central1",
-            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArrgs(
                 publish_ca_cert=True,
                 publish_crl=True,
             ),
@@ -460,12 +460,12 @@ class CaPool(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CaPoolArgs args: The arguments to use to populate this resource's properties.
+        :param CaPoolArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CaPoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CaPoolArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -474,12 +474,12 @@ class CaPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 issuance_policy: Optional[pulumi.Input[pulumi.InputType['CaPoolIssuancePolicyArgs']]] = None,
+                 issuance_policy: Optional[pulumi.Input[pulumi.InputType['CaPoolIssuancePolicyArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 publishing_options: Optional[pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArgs']]] = None,
+                 publishing_options: Optional[pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArrgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -488,7 +488,7 @@ class CaPool(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CaPoolArgs.__new__(CaPoolArgs)
+            __props__ = CaPoolArrgs.__new__(CaPoolArrgs)
 
             __props__.__dict__["issuance_policy"] = issuance_policy
             __props__.__dict__["labels"] = labels
@@ -516,12 +516,12 @@ class CaPool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            issuance_policy: Optional[pulumi.Input[pulumi.InputType['CaPoolIssuancePolicyArgs']]] = None,
+            issuance_policy: Optional[pulumi.Input[pulumi.InputType['CaPoolIssuancePolicyArrgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            publishing_options: Optional[pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArgs']]] = None,
+            publishing_options: Optional[pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArrgs']]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tier: Optional[pulumi.Input[str]] = None) -> 'CaPool':
         """
@@ -532,7 +532,7 @@ class CaPool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['CaPoolIssuancePolicyArgs']] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
+        :param pulumi.Input[pulumi.InputType['CaPoolIssuancePolicyArrgs']] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -548,7 +548,7 @@ class CaPool(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name for this CaPool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArgs']] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
+        :param pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArrgs']] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.

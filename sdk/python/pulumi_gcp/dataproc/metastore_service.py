@@ -11,26 +11,26 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MetastoreServiceArgs', 'MetastoreService']
+__all__ = ['MetastoreServiceArrgs', 'MetastoreService']
 
 @pulumi.input_type
-class MetastoreServiceArgs:
+calass MetastoreServiceArrgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[str],
                  database_type: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
-                 hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
+                 encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArrgs']] = None,
+                 hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_window: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']] = None,
-                 metadata_integration: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']] = None,
+                 maintenance_window: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArrgs']] = None,
+                 metadata_integration: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArrgs']] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']] = None,
+                 network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArrgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
-                 scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
-                 telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
+                 scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArrgs']] = None,
+                 telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArrgs']] = None,
                  tier: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MetastoreService resource.
@@ -43,24 +43,24 @@ class MetastoreServiceArgs:
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
-        :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
+        :param pulumi.Input['MetastoreServiceEncryptionConfigArrgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
-        :param pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
+        :param pulumi.Input['MetastoreServiceHiveMetastoreConfigArrgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the metastore service should reside.
                The default value is `global`.
-        :param pulumi.Input['MetastoreServiceMaintenanceWindowArgs'] maintenance_window: The one hour maintenance window of the metastore service.
+        :param pulumi.Input['MetastoreServiceMaintenanceWindowArrgs'] maintenance_window: The one hour maintenance window of the metastore service.
                This specifies when the service can be restarted for maintenance purposes in UTC time.
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
-        :param pulumi.Input['MetastoreServiceMetadataIntegrationArgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+        :param pulumi.Input['MetastoreServiceMetadataIntegrationArrgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
-        :param pulumi.Input['MetastoreServiceNetworkConfigArgs'] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
+        :param pulumi.Input['MetastoreServiceNetworkConfigArrgs'] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
                Structure is documented below.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -68,9 +68,9 @@ class MetastoreServiceArgs:
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
-        :param pulumi.Input['MetastoreServiceScalingConfigArgs'] scaling_config: Represents the scaling configuration of a metastore service.
+        :param pulumi.Input['MetastoreServiceScalingConfigArrgs'] scaling_config: Represents the scaling configuration of a metastore service.
                Structure is documented below.
-        :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        :param pulumi.Input['MetastoreServiceTelemetryConfigArrgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are: `DEVELOPER`, `ENTERPRISE`.
@@ -140,7 +140,7 @@ class MetastoreServiceArgs:
 
     @property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']]:
+    def encryption_config(self) -> Optional[pulumi.Input['MetastoreServiceEncryptionConfigArrgs']]:
         """
         Information used to configure the Dataproc Metastore service to encrypt
         customer data at rest.
@@ -149,12 +149,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']]):
+    def encryption_config(self, value: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArrgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter(name="hiveMetastoreConfig")
-    def hive_metastore_config(self) -> Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']]:
+    def hive_metastore_config(self) -> Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArrgs']]:
         """
         Configuration information specific to running Hive metastore software as the metastore service.
         Structure is documented below.
@@ -162,7 +162,7 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "hive_metastore_config")
 
     @hive_metastore_config.setter
-    def hive_metastore_config(self, value: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']]):
+    def hive_metastore_config(self, value: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArrgs']]):
         pulumi.set(self, "hive_metastore_config", value)
 
     @property
@@ -194,7 +194,7 @@ class MetastoreServiceArgs:
 
     @property
     @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']]:
+    def maintenance_window(self) -> Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArrgs']]:
         """
         The one hour maintenance window of the metastore service.
         This specifies when the service can be restarted for maintenance purposes in UTC time.
@@ -204,19 +204,19 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "maintenance_window")
 
     @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']]):
+    def maintenance_window(self, value: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArrgs']]):
         pulumi.set(self, "maintenance_window", value)
 
     @property
     @pulumi.getter(name="metadataIntegration")
-    def metadata_integration(self) -> Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]:
+    def metadata_integration(self) -> Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArrgs']]:
         """
         The setting that defines how metastore metadata should be integrated with external services and systems.
         """
         return pulumi.get(self, "metadata_integration")
 
     @metadata_integration.setter
-    def metadata_integration(self, value: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]):
+    def metadata_integration(self, value: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArrgs']]):
         pulumi.set(self, "metadata_integration", value)
 
     @property
@@ -234,7 +234,7 @@ class MetastoreServiceArgs:
 
     @property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']]:
+    def network_config(self) -> Optional[pulumi.Input['MetastoreServiceNetworkConfigArrgs']]:
         """
         The configuration specifying the network settings for the Dataproc Metastore service.
         Structure is documented below.
@@ -242,7 +242,7 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']]):
+    def network_config(self, value: Optional[pulumi.Input['MetastoreServiceNetworkConfigArrgs']]):
         pulumi.set(self, "network_config", value)
 
     @property
@@ -286,7 +286,7 @@ class MetastoreServiceArgs:
 
     @property
     @pulumi.getter(name="scalingConfig")
-    def scaling_config(self) -> Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']]:
+    def scaling_config(self) -> Optional[pulumi.Input['MetastoreServiceScalingConfigArrgs']]:
         """
         Represents the scaling configuration of a metastore service.
         Structure is documented below.
@@ -294,12 +294,12 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "scaling_config")
 
     @scaling_config.setter
-    def scaling_config(self, value: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']]):
+    def scaling_config(self, value: Optional[pulumi.Input['MetastoreServiceScalingConfigArrgs']]):
         pulumi.set(self, "scaling_config", value)
 
     @property
     @pulumi.getter(name="telemetryConfig")
-    def telemetry_config(self) -> Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]:
+    def telemetry_config(self) -> Optional[pulumi.Input['MetastoreServiceTelemetryConfigArrgs']]:
         """
         The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
         Structure is documented below.
@@ -307,7 +307,7 @@ class MetastoreServiceArgs:
         return pulumi.get(self, "telemetry_config")
 
     @telemetry_config.setter
-    def telemetry_config(self, value: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]):
+    def telemetry_config(self, value: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArrgs']]):
         pulumi.set(self, "telemetry_config", value)
 
     @property
@@ -325,30 +325,30 @@ class MetastoreServiceArgs:
 
 
 @pulumi.input_type
-class _MetastoreServiceState:
+calass _MetastoreServiceState:
     def __init__(__self__, *,
                  artifact_gcs_uri: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
+                 encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArrgs']] = None,
                  endpoint_uri: Optional[pulumi.Input[str]] = None,
-                 hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
+                 hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_window: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']] = None,
-                 metadata_integration: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']] = None,
+                 maintenance_window: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArrgs']] = None,
+                 metadata_integration: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']] = None,
+                 network_config: Optional[pulumi.Input['MetastoreServiceNetworkConfigArrgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
-                 scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
+                 scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArrgs']] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_message: Optional[pulumi.Input[str]] = None,
-                 telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
+                 telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArrgs']] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
@@ -358,27 +358,27 @@ class _MetastoreServiceState:
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
+        :param pulumi.Input['MetastoreServiceEncryptionConfigArrgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
         :param pulumi.Input[str] endpoint_uri: (Output)
                The URI of the endpoint used to access the metastore service.
-        :param pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
+        :param pulumi.Input['MetastoreServiceHiveMetastoreConfigArrgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the metastore service should reside.
                The default value is `global`.
-        :param pulumi.Input['MetastoreServiceMaintenanceWindowArgs'] maintenance_window: The one hour maintenance window of the metastore service.
+        :param pulumi.Input['MetastoreServiceMaintenanceWindowArrgs'] maintenance_window: The one hour maintenance window of the metastore service.
                This specifies when the service can be restarted for maintenance purposes in UTC time.
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
-        :param pulumi.Input['MetastoreServiceMetadataIntegrationArgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+        :param pulumi.Input['MetastoreServiceMetadataIntegrationArrgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: The relative resource name of the metastore service.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
-        :param pulumi.Input['MetastoreServiceNetworkConfigArgs'] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
+        :param pulumi.Input['MetastoreServiceNetworkConfigArrgs'] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
                Structure is documented below.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -388,7 +388,7 @@ class _MetastoreServiceState:
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
-        :param pulumi.Input['MetastoreServiceScalingConfigArgs'] scaling_config: Represents the scaling configuration of a metastore service.
+        :param pulumi.Input['MetastoreServiceScalingConfigArrgs'] scaling_config: Represents the scaling configuration of a metastore service.
                Structure is documented below.
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -398,7 +398,7 @@ class _MetastoreServiceState:
                - - -
         :param pulumi.Input[str] state: The current state of the metastore service.
         :param pulumi.Input[str] state_message: Additional information about the current state of the metastore service, if available.
-        :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        :param pulumi.Input['MetastoreServiceTelemetryConfigArrgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are: `DEVELOPER`, `ENTERPRISE`.
@@ -493,7 +493,7 @@ class _MetastoreServiceState:
 
     @property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']]:
+    def encryption_config(self) -> Optional[pulumi.Input['MetastoreServiceEncryptionConfigArrgs']]:
         """
         Information used to configure the Dataproc Metastore service to encrypt
         customer data at rest.
@@ -502,7 +502,7 @@ class _MetastoreServiceState:
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']]):
+    def encryption_config(self, value: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArrgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @property
@@ -520,7 +520,7 @@ class _MetastoreServiceState:
 
     @property
     @pulumi.getter(name="hiveMetastoreConfig")
-    def hive_metastore_config(self) -> Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']]:
+    def hive_metastore_config(self) -> Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArrgs']]:
         """
         Configuration information specific to running Hive metastore software as the metastore service.
         Structure is documented below.
@@ -528,7 +528,7 @@ class _MetastoreServiceState:
         return pulumi.get(self, "hive_metastore_config")
 
     @hive_metastore_config.setter
-    def hive_metastore_config(self, value: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']]):
+    def hive_metastore_config(self, value: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArrgs']]):
         pulumi.set(self, "hive_metastore_config", value)
 
     @property
@@ -560,7 +560,7 @@ class _MetastoreServiceState:
 
     @property
     @pulumi.getter(name="maintenanceWindow")
-    def maintenance_window(self) -> Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']]:
+    def maintenance_window(self) -> Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArrgs']]:
         """
         The one hour maintenance window of the metastore service.
         This specifies when the service can be restarted for maintenance purposes in UTC time.
@@ -570,19 +570,19 @@ class _MetastoreServiceState:
         return pulumi.get(self, "maintenance_window")
 
     @maintenance_window.setter
-    def maintenance_window(self, value: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArgs']]):
+    def maintenance_window(self, value: Optional[pulumi.Input['MetastoreServiceMaintenanceWindowArrgs']]):
         pulumi.set(self, "maintenance_window", value)
 
     @property
     @pulumi.getter(name="metadataIntegration")
-    def metadata_integration(self) -> Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]:
+    def metadata_integration(self) -> Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArrgs']]:
         """
         The setting that defines how metastore metadata should be integrated with external services and systems.
         """
         return pulumi.get(self, "metadata_integration")
 
     @metadata_integration.setter
-    def metadata_integration(self, value: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]):
+    def metadata_integration(self, value: Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArrgs']]):
         pulumi.set(self, "metadata_integration", value)
 
     @property
@@ -612,7 +612,7 @@ class _MetastoreServiceState:
 
     @property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']]:
+    def network_config(self) -> Optional[pulumi.Input['MetastoreServiceNetworkConfigArrgs']]:
         """
         The configuration specifying the network settings for the Dataproc Metastore service.
         Structure is documented below.
@@ -620,7 +620,7 @@ class _MetastoreServiceState:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['MetastoreServiceNetworkConfigArgs']]):
+    def network_config(self, value: Optional[pulumi.Input['MetastoreServiceNetworkConfigArrgs']]):
         pulumi.set(self, "network_config", value)
 
     @property
@@ -677,7 +677,7 @@ class _MetastoreServiceState:
 
     @property
     @pulumi.getter(name="scalingConfig")
-    def scaling_config(self) -> Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']]:
+    def scaling_config(self) -> Optional[pulumi.Input['MetastoreServiceScalingConfigArrgs']]:
         """
         Represents the scaling configuration of a metastore service.
         Structure is documented below.
@@ -685,7 +685,7 @@ class _MetastoreServiceState:
         return pulumi.get(self, "scaling_config")
 
     @scaling_config.setter
-    def scaling_config(self, value: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']]):
+    def scaling_config(self, value: Optional[pulumi.Input['MetastoreServiceScalingConfigArrgs']]):
         pulumi.set(self, "scaling_config", value)
 
     @property
@@ -731,7 +731,7 @@ class _MetastoreServiceState:
 
     @property
     @pulumi.getter(name="telemetryConfig")
-    def telemetry_config(self) -> Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]:
+    def telemetry_config(self) -> Optional[pulumi.Input['MetastoreServiceTelemetryConfigArrgs']]:
         """
         The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
         Structure is documented below.
@@ -739,7 +739,7 @@ class _MetastoreServiceState:
         return pulumi.get(self, "telemetry_config")
 
     @telemetry_config.setter
-    def telemetry_config(self, value: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]):
+    def telemetry_config(self, value: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArrgs']]):
         pulumi.set(self, "telemetry_config", value)
 
     @property
@@ -768,26 +768,26 @@ class _MetastoreServiceState:
         pulumi.set(self, "uid", value)
 
 
-class MetastoreService(pulumi.CustomResource):
+calass MetastoreService(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']]] = None,
-                 hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArrgs']]] = None,
+                 hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']]] = None,
-                 metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArrgs']]] = None,
+                 metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArrgs']]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArrgs']]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
-                 scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']]] = None,
+                 scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArrgs']]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']]] = None,
+                 telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArrgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -807,14 +807,14 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.dataproc.MetastoreService("default",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="2.3.6",
             ),
             labels={
                 "env": "test",
             },
             location="us-central1",
-            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
+            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArrgs(
                 day_of_week="SUNDAY",
                 hour_of_day=2,
             ),
@@ -837,10 +837,10 @@ class MetastoreService(pulumi.CustomResource):
         default = gcp.dataproc.MetastoreService("default",
             service_id="example-service",
             location="us-central1",
-            encryption_config=gcp.dataproc.MetastoreServiceEncryptionConfigArgs(
+            encryption_config=gcp.dataproc.MetastoreServiceEncryptionConfigArrgs(
                 kms_key=crypto_key.id,
             ),
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="3.1.2",
             ))
         ```
@@ -859,11 +859,11 @@ class MetastoreService(pulumi.CustomResource):
         default = gcp.dataproc.MetastoreService("default",
             service_id="metastore-srv",
             location="us-central1",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="3.1.2",
             ),
-            network_config=gcp.dataproc.MetastoreServiceNetworkConfigArgs(
-                consumers=[gcp.dataproc.MetastoreServiceNetworkConfigConsumerArgs(
+            network_config=gcp.dataproc.MetastoreServiceNetworkConfigArrgs(
+                consumers=[gcp.dataproc.MetastoreServiceNetworkConfigConsumerArrgs(
                     subnetwork=subnet.id,
                 )],
             ))
@@ -876,11 +876,11 @@ class MetastoreService(pulumi.CustomResource):
 
         dpms2 = gcp.dataproc.MetastoreService("dpms2",
             database_type="SPANNER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="3.1.2",
             ),
             location="us-central1",
-            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArrgs(
                 instance_size="EXTRA_SMALL",
             ),
             service_id="dpms2")
@@ -893,11 +893,11 @@ class MetastoreService(pulumi.CustomResource):
 
         dpms2_scaling_factor = gcp.dataproc.MetastoreService("dpms2ScalingFactor",
             database_type="SPANNER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="3.1.2",
             ),
             location="us-central1",
-            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArrgs(
                 scaling_factor=2,
             ),
             service_id="dpms2sf")
@@ -924,24 +924,24 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArrgs']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArrgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the metastore service should reside.
                The default value is `global`.
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']] maintenance_window: The one hour maintenance window of the metastore service.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArrgs']] maintenance_window: The one hour maintenance window of the metastore service.
                This specifies when the service can be restarted for maintenance purposes in UTC time.
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArrgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArrgs']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
                Structure is documented below.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -949,7 +949,7 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']] scaling_config: Represents the scaling configuration of a metastore service.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArrgs']] scaling_config: Represents the scaling configuration of a metastore service.
                Structure is documented below.
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -957,7 +957,7 @@ class MetastoreService(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArrgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are: `DEVELOPER`, `ENTERPRISE`.
@@ -966,7 +966,7 @@ class MetastoreService(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MetastoreServiceArgs,
+                 args: MetastoreServiceArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A managed metastore service that serves metadata queries.
@@ -985,14 +985,14 @@ class MetastoreService(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.dataproc.MetastoreService("default",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="2.3.6",
             ),
             labels={
                 "env": "test",
             },
             location="us-central1",
-            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
+            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArrgs(
                 day_of_week="SUNDAY",
                 hour_of_day=2,
             ),
@@ -1015,10 +1015,10 @@ class MetastoreService(pulumi.CustomResource):
         default = gcp.dataproc.MetastoreService("default",
             service_id="example-service",
             location="us-central1",
-            encryption_config=gcp.dataproc.MetastoreServiceEncryptionConfigArgs(
+            encryption_config=gcp.dataproc.MetastoreServiceEncryptionConfigArrgs(
                 kms_key=crypto_key.id,
             ),
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="3.1.2",
             ))
         ```
@@ -1037,11 +1037,11 @@ class MetastoreService(pulumi.CustomResource):
         default = gcp.dataproc.MetastoreService("default",
             service_id="metastore-srv",
             location="us-central1",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="3.1.2",
             ),
-            network_config=gcp.dataproc.MetastoreServiceNetworkConfigArgs(
-                consumers=[gcp.dataproc.MetastoreServiceNetworkConfigConsumerArgs(
+            network_config=gcp.dataproc.MetastoreServiceNetworkConfigArrgs(
+                consumers=[gcp.dataproc.MetastoreServiceNetworkConfigConsumerArrgs(
                     subnetwork=subnet.id,
                 )],
             ))
@@ -1054,11 +1054,11 @@ class MetastoreService(pulumi.CustomResource):
 
         dpms2 = gcp.dataproc.MetastoreService("dpms2",
             database_type="SPANNER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="3.1.2",
             ),
             location="us-central1",
-            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArrgs(
                 instance_size="EXTRA_SMALL",
             ),
             service_id="dpms2")
@@ -1071,11 +1071,11 @@ class MetastoreService(pulumi.CustomResource):
 
         dpms2_scaling_factor = gcp.dataproc.MetastoreService("dpms2ScalingFactor",
             database_type="SPANNER",
-            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArrgs(
                 version="3.1.2",
             ),
             location="us-central1",
-            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArrgs(
                 scaling_factor=2,
             ),
             service_id="dpms2sf")
@@ -1098,12 +1098,12 @@ class MetastoreService(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param MetastoreServiceArgs args: The arguments to use to populate this resource's properties.
+        :param MetastoreServiceArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MetastoreServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MetastoreServiceArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1113,20 +1113,20 @@ class MetastoreService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
-                 encryption_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']]] = None,
-                 hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']]] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArrgs']]] = None,
+                 hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']]] = None,
-                 metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArrgs']]] = None,
+                 metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArrgs']]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 network_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']]] = None,
+                 network_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArrgs']]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
-                 scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']]] = None,
+                 scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArrgs']]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']]] = None,
+                 telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArrgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1135,7 +1135,7 @@ class MetastoreService(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MetastoreServiceArgs.__new__(MetastoreServiceArgs)
+            __props__ = MetastoreServiceArrgs.__new__(MetastoreServiceArrgs)
 
             __props__.__dict__["database_type"] = database_type
             __props__.__dict__["encryption_config"] = encryption_config
@@ -1178,25 +1178,25 @@ class MetastoreService(pulumi.CustomResource):
             artifact_gcs_uri: Optional[pulumi.Input[str]] = None,
             database_type: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            encryption_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']]] = None,
+            encryption_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArrgs']]] = None,
             endpoint_uri: Optional[pulumi.Input[str]] = None,
-            hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']]] = None,
+            hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArrgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            maintenance_window: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']]] = None,
-            metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']]] = None,
+            maintenance_window: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArrgs']]] = None,
+            metadata_integration: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
-            network_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']]] = None,
+            network_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArrgs']]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             release_channel: Optional[pulumi.Input[str]] = None,
-            scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']]] = None,
+            scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArrgs']]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_message: Optional[pulumi.Input[str]] = None,
-            telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']]] = None,
+            telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArrgs']]] = None,
             tier: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'MetastoreService':
         """
@@ -1211,27 +1211,27 @@ class MetastoreService(pulumi.CustomResource):
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArrgs']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
         :param pulumi.Input[str] endpoint_uri: (Output)
                The URI of the endpoint used to access the metastore service.
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceHiveMetastoreConfigArrgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the metastore service should reside.
                The default value is `global`.
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArgs']] maintenance_window: The one hour maintenance window of the metastore service.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceMaintenanceWindowArrgs']] maintenance_window: The one hour maintenance window of the metastore service.
                This specifies when the service can be restarted for maintenance purposes in UTC time.
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArrgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
         :param pulumi.Input[str] name: The relative resource name of the metastore service.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArrgs']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
                Structure is documented below.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1241,7 +1241,7 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']] scaling_config: Represents the scaling configuration of a metastore service.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArrgs']] scaling_config: Represents the scaling configuration of a metastore service.
                Structure is documented below.
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -1251,7 +1251,7 @@ class MetastoreService(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] state: The current state of the metastore service.
         :param pulumi.Input[str] state_message: Additional information about the current state of the metastore service, if available.
-        :param pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArrgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
                Possible values are: `DEVELOPER`, `ENTERPRISE`.

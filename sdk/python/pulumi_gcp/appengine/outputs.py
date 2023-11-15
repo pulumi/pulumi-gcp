@@ -58,7 +58,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class ApplicationFeatureSettings(dict):
+calass ApplicationFeatureSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -95,7 +95,7 @@ class ApplicationFeatureSettings(dict):
 
 
 @pulumi.output_type
-class ApplicationIap(dict):
+calass ApplicationIap(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -173,7 +173,7 @@ class ApplicationIap(dict):
 
 
 @pulumi.output_type
-class ApplicationUrlDispatchRule(dict):
+calass ApplicationUrlDispatchRule(dict):
     def __init__(__self__, *,
                  domain: Optional[str] = None,
                  path: Optional[str] = None,
@@ -202,7 +202,7 @@ class ApplicationUrlDispatchRule(dict):
 
 
 @pulumi.output_type
-class ApplicationUrlDispatchRulesDispatchRule(dict):
+calass ApplicationUrlDispatchRulesDispatchRule(dict):
     def __init__(__self__, *,
                  path: str,
                  service: str,
@@ -253,7 +253,7 @@ class ApplicationUrlDispatchRulesDispatchRule(dict):
 
 
 @pulumi.output_type
-class DomainMappingResourceRecord(dict):
+calass DomainMappingResourceRecord(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  rrdata: Optional[str] = None,
@@ -298,7 +298,7 @@ class DomainMappingResourceRecord(dict):
 
 
 @pulumi.output_type
-class DomainMappingSslSettings(dict):
+calass DomainMappingSslSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -385,7 +385,7 @@ class DomainMappingSslSettings(dict):
 
 
 @pulumi.output_type
-class EngineSplitTrafficSplit(dict):
+calass EngineSplitTrafficSplit(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -438,7 +438,7 @@ class EngineSplitTrafficSplit(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionApiConfig(dict):
+calass FlexibleAppVersionApiConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -533,7 +533,7 @@ class FlexibleAppVersionApiConfig(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionAutomaticScaling(dict):
+calass FlexibleAppVersionAutomaticScaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -587,12 +587,12 @@ class FlexibleAppVersionAutomaticScaling(dict):
                  network_utilization: Optional['outputs.FlexibleAppVersionAutomaticScalingNetworkUtilization'] = None,
                  request_utilization: Optional['outputs.FlexibleAppVersionAutomaticScalingRequestUtilization'] = None):
         """
-        :param 'FlexibleAppVersionAutomaticScalingCpuUtilizationArgs' cpu_utilization: Target scaling by CPU usage.
+        :param 'FlexibleAppVersionAutomaticScalingCpuUtilizationArrgs' cpu_utilization: Target scaling by CPU usage.
                Structure is documented below.
         :param str cool_down_period: The time period that the Autoscaler should wait before it starts collecting information from a new instance.
                This prevents the autoscaler from collecting information when the instance is initializing,
                during which the collected usage would not be reliable. Default: 120s
-        :param 'FlexibleAppVersionAutomaticScalingDiskUtilizationArgs' disk_utilization: Target scaling by disk usage.
+        :param 'FlexibleAppVersionAutomaticScalingDiskUtilizationArrgs' disk_utilization: Target scaling by disk usage.
                Structure is documented below.
         :param int max_concurrent_requests: Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
                Defaults to a runtime-specific value.
@@ -602,9 +602,9 @@ class FlexibleAppVersionAutomaticScaling(dict):
         :param int min_idle_instances: Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
         :param str min_pending_latency: Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
         :param int min_total_instances: Minimum number of running instances that should be maintained for this version. Default: 2
-        :param 'FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs' network_utilization: Target scaling by network usage.
+        :param 'FlexibleAppVersionAutomaticScalingNetworkUtilizationArrgs' network_utilization: Target scaling by network usage.
                Structure is documented below.
-        :param 'FlexibleAppVersionAutomaticScalingRequestUtilizationArgs' request_utilization: Target scaling by request utilization.
+        :param 'FlexibleAppVersionAutomaticScalingRequestUtilizationArrgs' request_utilization: Target scaling by request utilization.
                Structure is documented below.
         """
         pulumi.set(__self__, "cpu_utilization", cpu_utilization)
@@ -736,7 +736,7 @@ class FlexibleAppVersionAutomaticScaling(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionAutomaticScalingCpuUtilization(dict):
+calass FlexibleAppVersionAutomaticScalingCpuUtilization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -785,7 +785,7 @@ class FlexibleAppVersionAutomaticScalingCpuUtilization(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionAutomaticScalingDiskUtilization(dict):
+calass FlexibleAppVersionAutomaticScalingDiskUtilization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -863,7 +863,7 @@ class FlexibleAppVersionAutomaticScalingDiskUtilization(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionAutomaticScalingNetworkUtilization(dict):
+calass FlexibleAppVersionAutomaticScalingNetworkUtilization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -941,7 +941,7 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilization(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionAutomaticScalingRequestUtilization(dict):
+calass FlexibleAppVersionAutomaticScalingRequestUtilization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -991,7 +991,7 @@ class FlexibleAppVersionAutomaticScalingRequestUtilization(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionDeployment(dict):
+calass FlexibleAppVersionDeployment(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1015,14 +1015,14 @@ class FlexibleAppVersionDeployment(dict):
                  files: Optional[Sequence['outputs.FlexibleAppVersionDeploymentFile']] = None,
                  zip: Optional['outputs.FlexibleAppVersionDeploymentZip'] = None):
         """
-        :param 'FlexibleAppVersionDeploymentCloudBuildOptionsArgs' cloud_build_options: Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
+        :param 'FlexibleAppVersionDeploymentCloudBuildOptionsArrgs' cloud_build_options: Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
                Structure is documented below.
-        :param 'FlexibleAppVersionDeploymentContainerArgs' container: The Docker image for the container that runs the version.
+        :param 'FlexibleAppVersionDeploymentContainerArrgs' container: The Docker image for the container that runs the version.
                Structure is documented below.
-        :param Sequence['FlexibleAppVersionDeploymentFileArgs'] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+        :param Sequence['FlexibleAppVersionDeploymentFileArrgs'] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
                All files must be readable using the credentials supplied with this call.
                Structure is documented below.
-        :param 'FlexibleAppVersionDeploymentZipArgs' zip: Zip File
+        :param 'FlexibleAppVersionDeploymentZipArrgs' zip: Zip File
                Structure is documented below.
         """
         if cloud_build_options is not None:
@@ -1073,7 +1073,7 @@ class FlexibleAppVersionDeployment(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionDeploymentCloudBuildOptions(dict):
+calass FlexibleAppVersionDeploymentCloudBuildOptions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1124,7 +1124,7 @@ class FlexibleAppVersionDeploymentCloudBuildOptions(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionDeploymentContainer(dict):
+calass FlexibleAppVersionDeploymentContainer(dict):
     def __init__(__self__, *,
                  image: str):
         """
@@ -1144,7 +1144,7 @@ class FlexibleAppVersionDeploymentContainer(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionDeploymentFile(dict):
+calass FlexibleAppVersionDeploymentFile(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1204,7 +1204,7 @@ class FlexibleAppVersionDeploymentFile(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionDeploymentZip(dict):
+calass FlexibleAppVersionDeploymentZip(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1253,7 +1253,7 @@ class FlexibleAppVersionDeploymentZip(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionEndpointsApiService(dict):
+calass FlexibleAppVersionEndpointsApiService(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1344,7 +1344,7 @@ class FlexibleAppVersionEndpointsApiService(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionEntrypoint(dict):
+calass FlexibleAppVersionEntrypoint(dict):
     def __init__(__self__, *,
                  shell: str):
         """
@@ -1362,7 +1362,7 @@ class FlexibleAppVersionEntrypoint(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionHandler(dict):
+calass FlexibleAppVersionHandler(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1403,12 +1403,12 @@ class FlexibleAppVersionHandler(dict):
                Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
         :param str redirect_http_response_code: 30x code to use when performing redirects for the secure field.
                Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
-        :param 'FlexibleAppVersionHandlerScriptArgs' script: Executes a script to handle the requests that match this URL pattern.
+        :param 'FlexibleAppVersionHandlerScriptArrgs' script: Executes a script to handle the requests that match this URL pattern.
                Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
                Structure is documented below.
         :param str security_level: Security (HTTPS) enforcement for this URL.
                Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
-        :param 'FlexibleAppVersionHandlerStaticFilesArgs' static_files: Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
+        :param 'FlexibleAppVersionHandlerStaticFilesArrgs' static_files: Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
                Static file handlers describe which files in the application directory are static files, and which URLs serve them.
                Structure is documented below.
         :param str url_regex: URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
@@ -1496,7 +1496,7 @@ class FlexibleAppVersionHandler(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionHandlerScript(dict):
+calass FlexibleAppVersionHandlerScript(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1531,7 +1531,7 @@ class FlexibleAppVersionHandlerScript(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionHandlerStaticFiles(dict):
+calass FlexibleAppVersionHandlerStaticFiles(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1661,7 +1661,7 @@ class FlexibleAppVersionHandlerStaticFiles(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionLivenessCheck(dict):
+calass FlexibleAppVersionLivenessCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1778,7 +1778,7 @@ class FlexibleAppVersionLivenessCheck(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionManualScaling(dict):
+calass FlexibleAppVersionManualScaling(dict):
     def __init__(__self__, *,
                  instances: int):
         """
@@ -1800,7 +1800,7 @@ class FlexibleAppVersionManualScaling(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionNetwork(dict):
+calass FlexibleAppVersionNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1895,7 +1895,7 @@ class FlexibleAppVersionNetwork(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionReadinessCheck(dict):
+calass FlexibleAppVersionReadinessCheck(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2010,7 +2010,7 @@ class FlexibleAppVersionReadinessCheck(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionResources(dict):
+calass FlexibleAppVersionResources(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2039,7 +2039,7 @@ class FlexibleAppVersionResources(dict):
         :param int cpu: Number of CPU cores needed.
         :param int disk_gb: Disk size (GB) needed.
         :param float memory_gb: Memory (GB) needed.
-        :param Sequence['FlexibleAppVersionResourcesVolumeArgs'] volumes: List of ports, or port pairs, to forward from the virtual machine to the application container.
+        :param Sequence['FlexibleAppVersionResourcesVolumeArrgs'] volumes: List of ports, or port pairs, to forward from the virtual machine to the application container.
                Structure is documented below.
         """
         if cpu is not None:
@@ -2086,7 +2086,7 @@ class FlexibleAppVersionResources(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionResourcesVolume(dict):
+calass FlexibleAppVersionResourcesVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2145,7 +2145,7 @@ class FlexibleAppVersionResourcesVolume(dict):
 
 
 @pulumi.output_type
-class FlexibleAppVersionVpcAccessConnector(dict):
+calass FlexibleAppVersionVpcAccessConnector(dict):
     def __init__(__self__, *,
                  name: str):
         """
@@ -2163,7 +2163,7 @@ class FlexibleAppVersionVpcAccessConnector(dict):
 
 
 @pulumi.output_type
-class ServiceNetworkSettingsNetworkSettings(dict):
+calass ServiceNetworkSettingsNetworkSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2207,7 +2207,7 @@ class ServiceNetworkSettingsNetworkSettings(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionAutomaticScaling(dict):
+calass StandardAppVersionAutomaticScaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2251,7 +2251,7 @@ class StandardAppVersionAutomaticScaling(dict):
         :param int min_idle_instances: Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
         :param str min_pending_latency: Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        :param 'StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs' standard_scheduler_settings: Scheduler settings for standard environment.
+        :param 'StandardAppVersionAutomaticScalingStandardSchedulerSettingsArrgs' standard_scheduler_settings: Scheduler settings for standard environment.
                Structure is documented below.
         """
         if max_concurrent_requests is not None:
@@ -2321,7 +2321,7 @@ class StandardAppVersionAutomaticScaling(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionAutomaticScalingStandardSchedulerSettings(dict):
+calass StandardAppVersionAutomaticScalingStandardSchedulerSettings(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2399,7 +2399,7 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettings(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionBasicScaling(dict):
+calass StandardAppVersionBasicScaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2450,15 +2450,15 @@ class StandardAppVersionBasicScaling(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionDeployment(dict):
+calass StandardAppVersionDeployment(dict):
     def __init__(__self__, *,
                  files: Optional[Sequence['outputs.StandardAppVersionDeploymentFile']] = None,
                  zip: Optional['outputs.StandardAppVersionDeploymentZip'] = None):
         """
-        :param Sequence['StandardAppVersionDeploymentFileArgs'] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
+        :param Sequence['StandardAppVersionDeploymentFileArrgs'] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
                All files must be readable using the credentials supplied with this call.
                Structure is documented below.
-        :param 'StandardAppVersionDeploymentZipArgs' zip: Zip File
+        :param 'StandardAppVersionDeploymentZipArrgs' zip: Zip File
                Structure is documented below.
         """
         if files is not None:
@@ -2487,7 +2487,7 @@ class StandardAppVersionDeployment(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionDeploymentFile(dict):
+calass StandardAppVersionDeploymentFile(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2547,7 +2547,7 @@ class StandardAppVersionDeploymentFile(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionDeploymentZip(dict):
+calass StandardAppVersionDeploymentZip(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2596,7 +2596,7 @@ class StandardAppVersionDeploymentZip(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionEntrypoint(dict):
+calass StandardAppVersionEntrypoint(dict):
     def __init__(__self__, *,
                  shell: str):
         """
@@ -2618,7 +2618,7 @@ class StandardAppVersionEntrypoint(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionHandler(dict):
+calass StandardAppVersionHandler(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2659,12 +2659,12 @@ class StandardAppVersionHandler(dict):
                Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
         :param str redirect_http_response_code: 30x code to use when performing redirects for the secure field.
                Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
-        :param 'StandardAppVersionHandlerScriptArgs' script: Executes a script to handle the requests that match this URL pattern.
+        :param 'StandardAppVersionHandlerScriptArrgs' script: Executes a script to handle the requests that match this URL pattern.
                Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
                Structure is documented below.
         :param str security_level: Security (HTTPS) enforcement for this URL.
                Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
-        :param 'StandardAppVersionHandlerStaticFilesArgs' static_files: Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
+        :param 'StandardAppVersionHandlerStaticFilesArrgs' static_files: Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
                Structure is documented below.
         :param str url_regex: URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
                All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
@@ -2750,7 +2750,7 @@ class StandardAppVersionHandler(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionHandlerScript(dict):
+calass StandardAppVersionHandlerScript(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2785,7 +2785,7 @@ class StandardAppVersionHandlerScript(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionHandlerStaticFiles(dict):
+calass StandardAppVersionHandlerStaticFiles(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2911,7 +2911,7 @@ class StandardAppVersionHandlerStaticFiles(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionLibrary(dict):
+calass StandardAppVersionLibrary(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  version: Optional[str] = None):
@@ -2942,7 +2942,7 @@ class StandardAppVersionLibrary(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionManualScaling(dict):
+calass StandardAppVersionManualScaling(dict):
     def __init__(__self__, *,
                  instances: int):
         """
@@ -2964,7 +2964,7 @@ class StandardAppVersionManualScaling(dict):
 
 
 @pulumi.output_type
-class StandardAppVersionVpcAccessConnector(dict):
+calass StandardAppVersionVpcAccessConnector(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

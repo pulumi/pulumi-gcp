@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AiTensorboardArgs', 'AiTensorboard']
+__all__ = ['AiTensorboardArrgs', 'AiTensorboard']
 
 @pulumi.input_type
-class AiTensorboardArgs:
+calass AiTensorboardArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiTensorboardEncryptionSpecArgs']] = None,
+                 encryption_spec: Optional[pulumi.Input['AiTensorboardEncryptionSpecArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
@@ -29,7 +29,7 @@ class AiTensorboardArgs:
                
                - - -
         :param pulumi.Input[str] description: Description of this Tensorboard.
-        :param pulumi.Input['AiTensorboardEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
+        :param pulumi.Input['AiTensorboardEncryptionSpecArrgs'] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Tensorboards.
                
@@ -80,7 +80,7 @@ class AiTensorboardArgs:
 
     @property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiTensorboardEncryptionSpecArgs']]:
+    def encryption_spec(self) -> Optional[pulumi.Input['AiTensorboardEncryptionSpecArrgs']]:
         """
         Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
         Structure is documented below.
@@ -88,7 +88,7 @@ class AiTensorboardArgs:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiTensorboardEncryptionSpecArgs']]):
+    def encryption_spec(self, value: Optional[pulumi.Input['AiTensorboardEncryptionSpecArrgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @property
@@ -133,14 +133,14 @@ class AiTensorboardArgs:
 
 
 @pulumi.input_type
-class _AiTensorboardState:
+calass _AiTensorboardState:
     def __init__(__self__, *,
                  blob_storage_path_prefix: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiTensorboardEncryptionSpecArgs']] = None,
+                 encryption_spec: Optional[pulumi.Input['AiTensorboardEncryptionSpecArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -158,7 +158,7 @@ class _AiTensorboardState:
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input['AiTensorboardEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
+        :param pulumi.Input['AiTensorboardEncryptionSpecArrgs'] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Tensorboards.
                
@@ -265,7 +265,7 @@ class _AiTensorboardState:
 
     @property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiTensorboardEncryptionSpecArgs']]:
+    def encryption_spec(self) -> Optional[pulumi.Input['AiTensorboardEncryptionSpecArrgs']]:
         """
         Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
         Structure is documented below.
@@ -273,7 +273,7 @@ class _AiTensorboardState:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiTensorboardEncryptionSpecArgs']]):
+    def encryption_spec(self, value: Optional[pulumi.Input['AiTensorboardEncryptionSpecArrgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @property
@@ -366,14 +366,14 @@ class _AiTensorboardState:
         pulumi.set(self, "update_time", value)
 
 
-class AiTensorboard(pulumi.CustomResource):
+calass AiTensorboard(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -422,7 +422,7 @@ class AiTensorboard(pulumi.CustomResource):
                 "key2": "value2",
             },
             region="us-central1",
-            encryption_spec=gcp.vertex.AiTensorboardEncryptionSpecArgs(
+            encryption_spec=gcp.vertex.AiTensorboardEncryptionSpecArrgs(
                 kms_key_name="kms-name",
             ),
             opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
@@ -455,7 +455,7 @@ class AiTensorboard(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
+        :param pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArrgs']] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Tensorboards.
                
@@ -469,7 +469,7 @@ class AiTensorboard(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AiTensorboardArgs,
+                 args: AiTensorboardArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Tensorboard is a physical database that stores users' training metrics. A default Tensorboard is provided in each region of a GCP project. If needed users can also create extra Tensorboards in their projects.
@@ -515,7 +515,7 @@ class AiTensorboard(pulumi.CustomResource):
                 "key2": "value2",
             },
             region="us-central1",
-            encryption_spec=gcp.vertex.AiTensorboardEncryptionSpecArgs(
+            encryption_spec=gcp.vertex.AiTensorboardEncryptionSpecArrgs(
                 kms_key_name="kms-name",
             ),
             opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
@@ -542,12 +542,12 @@ class AiTensorboard(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AiTensorboardArgs args: The arguments to use to populate this resource's properties.
+        :param AiTensorboardArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AiTensorboardArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AiTensorboardArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -558,7 +558,7 @@ class AiTensorboard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArgs']]] = None,
+                 encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArrgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -569,7 +569,7 @@ class AiTensorboard(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AiTensorboardArgs.__new__(AiTensorboardArgs)
+            __props__ = AiTensorboardArrgs.__new__(AiTensorboardArrgs)
 
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
@@ -603,7 +603,7 @@ class AiTensorboard(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArgs']]] = None,
+            encryption_spec: Optional[pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArrgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -626,7 +626,7 @@ class AiTensorboard(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
+        :param pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArrgs']] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Tensorboards.
                

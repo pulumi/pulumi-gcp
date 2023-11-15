@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['MachineImageIamPolicyArgs', 'MachineImageIamPolicy']
+__all__ = ['MachineImageIamPolicyArrgs', 'MachineImageIamPolicy']
 
 @pulumi.input_type
-class MachineImageIamPolicyArgs:
+calass MachineImageIamPolicyArrgs:
     def __init__(__self__, *,
                  machine_image: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
@@ -94,7 +94,7 @@ class MachineImageIamPolicyArgs:
 
 
 @pulumi.input_type
-class _MachineImageIamPolicyState:
+calass _MachineImageIamPolicyState:
     def __init__(__self__, *,
                  etag: Optional[pulumi.Input[str]] = None,
                  machine_image: Optional[pulumi.Input[str]] = None,
@@ -193,7 +193,7 @@ class _MachineImageIamPolicyState:
         pulumi.set(self, "project", value)
 
 
-class MachineImageIamPolicy(pulumi.CustomResource):
+calass MachineImageIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -224,7 +224,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.admin",
             members=["user:jane@example.com"],
         )])
@@ -241,10 +241,10 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.admin",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -281,7 +281,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             machine_image=google_compute_machine_image["image"]["name"],
             role="roles/compute.admin",
             members=["user:jane@example.com"],
-            condition=gcp.compute.MachineImageIamBindingConditionArgs(
+            condition=gcp.compute.MachineImageIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -313,7 +313,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             machine_image=google_compute_machine_image["image"]["name"],
             role="roles/compute.admin",
             member="user:jane@example.com",
-            condition=gcp.compute.MachineImageIamMemberConditionArgs(
+            condition=gcp.compute.MachineImageIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -369,7 +369,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MachineImageIamPolicyArgs,
+                 args: MachineImageIamPolicyArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
@@ -393,7 +393,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.admin",
             members=["user:jane@example.com"],
         )])
@@ -410,10 +410,10 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArrgs(
             role="roles/compute.admin",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -450,7 +450,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             machine_image=google_compute_machine_image["image"]["name"],
             role="roles/compute.admin",
             members=["user:jane@example.com"],
-            condition=gcp.compute.MachineImageIamBindingConditionArgs(
+            condition=gcp.compute.MachineImageIamBindingConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -482,7 +482,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
             machine_image=google_compute_machine_image["image"]["name"],
             role="roles/compute.admin",
             member="user:jane@example.com",
-            condition=gcp.compute.MachineImageIamMemberConditionArgs(
+            condition=gcp.compute.MachineImageIamMemberConditionArrgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -515,12 +515,12 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param MachineImageIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param MachineImageIamPolicyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MachineImageIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MachineImageIamPolicyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -539,7 +539,7 @@ class MachineImageIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MachineImageIamPolicyArgs.__new__(MachineImageIamPolicyArgs)
+            __props__ = MachineImageIamPolicyArrgs.__new__(MachineImageIamPolicyArrgs)
 
             if machine_image is None and not opts.urn:
                 raise TypeError("Missing required property 'machine_image'")

@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GetTagKeyResult:
+calass GetTagKeyResult:
     """
     A collection of values returned by getTagKey.
     """
@@ -105,7 +105,7 @@ class GetTagKeyResult:
         return pulumi.get(self, "update_time")
 
 
-class AwaitableGetTagKeyResult(GetTagKeyResult):
+calass AwaitableGetTagKeyResult(GetTagKeyResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:

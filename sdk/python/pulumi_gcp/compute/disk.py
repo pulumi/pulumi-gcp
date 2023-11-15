@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DiskArgs', 'Disk']
+__all__ = ['DiskArrgs', 'Disk']
 
 @pulumi.input_type
-class DiskArgs:
+calass DiskArrgs:
     def __init__(__self__, *,
-                 async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
+                 async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
+                 disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArrgs']] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArrgs']]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -35,17 +35,17 @@ class DiskArgs:
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
-                 source_image_encryption_key: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
+                 source_image_encryption_key: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArrgs']] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArrgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Disk resource.
-        :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
+        :param pulumi.Input['DiskAsyncPrimaryDiskArrgs'] async_primary_disk: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input['DiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
+        :param pulumi.Input['DiskDiskEncryptionKeyArrgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
                After you encrypt a disk with a customer-supplied key, you must
                provide the same key if you use the disk later (e.g. to create a disk
                snapshot or an image, or to attach the disk to a virtual machine).
@@ -57,7 +57,7 @@ class DiskArgs:
                Structure is documented below.
         :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
                required when setting to true
-        :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArrgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
@@ -131,10 +131,10 @@ class DiskArgs:
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
                * regions/{region}/disks/{disk}
-        :param pulumi.Input['DiskSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+        :param pulumi.Input['DiskSourceImageEncryptionKeyArrgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
-        :param pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input['DiskSourceSnapshotEncryptionKeyArrgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
@@ -194,7 +194,7 @@ class DiskArgs:
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")
-    def async_primary_disk(self) -> Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]:
+    def async_primary_disk(self) -> Optional[pulumi.Input['DiskAsyncPrimaryDiskArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -202,7 +202,7 @@ class DiskArgs:
         return pulumi.get(self, "async_primary_disk")
 
     @async_primary_disk.setter
-    def async_primary_disk(self, value: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]):
+    def async_primary_disk(self, value: Optional[pulumi.Input['DiskAsyncPrimaryDiskArrgs']]):
         pulumi.set(self, "async_primary_disk", value)
 
     @property
@@ -220,7 +220,7 @@ class DiskArgs:
 
     @property
     @pulumi.getter(name="diskEncryptionKey")
-    def disk_encryption_key(self) -> Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']]:
+    def disk_encryption_key(self) -> Optional[pulumi.Input['DiskDiskEncryptionKeyArrgs']]:
         """
         Encrypts the disk using a customer-supplied encryption key.
         After you encrypt a disk with a customer-supplied key, you must
@@ -236,7 +236,7 @@ class DiskArgs:
         return pulumi.get(self, "disk_encryption_key")
 
     @disk_encryption_key.setter
-    def disk_encryption_key(self, value: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']]):
+    def disk_encryption_key(self, value: Optional[pulumi.Input['DiskDiskEncryptionKeyArrgs']]):
         pulumi.set(self, "disk_encryption_key", value)
 
     @property
@@ -254,7 +254,7 @@ class DiskArgs:
 
     @property
     @pulumi.getter(name="guestOsFeatures")
-    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]]:
+    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArrgs']]]]:
         """
         A list of features to enable on the guest operating system.
         Applicable only for bootable disks.
@@ -263,7 +263,7 @@ class DiskArgs:
         return pulumi.get(self, "guest_os_features")
 
     @guest_os_features.setter
-    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]]):
+    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArrgs']]]]):
         pulumi.set(self, "guest_os_features", value)
 
     @property
@@ -496,7 +496,7 @@ class DiskArgs:
 
     @property
     @pulumi.getter(name="sourceImageEncryptionKey")
-    def source_image_encryption_key(self) -> Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']]:
+    def source_image_encryption_key(self) -> Optional[pulumi.Input['DiskSourceImageEncryptionKeyArrgs']]:
         """
         The customer-supplied encryption key of the source image. Required if
         the source image is protected by a customer-supplied encryption key.
@@ -505,12 +505,12 @@ class DiskArgs:
         return pulumi.get(self, "source_image_encryption_key")
 
     @source_image_encryption_key.setter
-    def source_image_encryption_key(self, value: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']]):
+    def source_image_encryption_key(self, value: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArrgs']]):
         pulumi.set(self, "source_image_encryption_key", value)
 
     @property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
-    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']]:
+    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArrgs']]:
         """
         The customer-supplied encryption key of the source snapshot. Required
         if the source snapshot is protected by a customer-supplied encryption
@@ -520,7 +520,7 @@ class DiskArgs:
         return pulumi.get(self, "source_snapshot_encryption_key")
 
     @source_snapshot_encryption_key.setter
-    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']]):
+    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArrgs']]):
         pulumi.set(self, "source_snapshot_encryption_key", value)
 
     @property
@@ -550,15 +550,15 @@ class DiskArgs:
 
 
 @pulumi.input_type
-class _DiskState:
+calass _DiskState:
     def __init__(__self__, *,
-                 async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
+                 async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArrgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
+                 disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArrgs']] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArrgs']]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -579,21 +579,21 @@ class _DiskState:
                  snapshot: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_id: Optional[pulumi.Input[str]] = None,
-                 source_image_encryption_key: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']] = None,
+                 source_image_encryption_key: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArrgs']] = None,
                  source_image_id: Optional[pulumi.Input[str]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArrgs']] = None,
                  source_snapshot_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Disk resources.
-        :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
+        :param pulumi.Input['DiskAsyncPrimaryDiskArrgs'] async_primary_disk: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input['DiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
+        :param pulumi.Input['DiskDiskEncryptionKeyArrgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
                After you encrypt a disk with a customer-supplied key, you must
                provide the same key if you use the disk later (e.g. to create a disk
                snapshot or an image, or to attach the disk to a virtual machine).
@@ -606,7 +606,7 @@ class _DiskState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
                required when setting to true
-        :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArrgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
@@ -690,7 +690,7 @@ class _DiskState:
         :param pulumi.Input[str] source_disk_id: The ID value of the disk used to create this image. This value may
                be used to determine whether the image was taken from the current
                or a previous instance of a given disk name.
-        :param pulumi.Input['DiskSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+        :param pulumi.Input['DiskSourceImageEncryptionKeyArrgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
         :param pulumi.Input[str] source_image_id: The ID value of the image used to create this disk. This value
@@ -698,7 +698,7 @@ class _DiskState:
                disk. For example, if you created the persistent disk from an image
                that was later deleted and recreated under the same name, the source
                image ID would identify the exact version of the image that was used.
-        :param pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input['DiskSourceSnapshotEncryptionKeyArrgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
@@ -788,7 +788,7 @@ class _DiskState:
 
     @property
     @pulumi.getter(name="asyncPrimaryDisk")
-    def async_primary_disk(self) -> Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]:
+    def async_primary_disk(self) -> Optional[pulumi.Input['DiskAsyncPrimaryDiskArrgs']]:
         """
         A nested object resource
         Structure is documented below.
@@ -796,7 +796,7 @@ class _DiskState:
         return pulumi.get(self, "async_primary_disk")
 
     @async_primary_disk.setter
-    def async_primary_disk(self, value: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]):
+    def async_primary_disk(self, value: Optional[pulumi.Input['DiskAsyncPrimaryDiskArrgs']]):
         pulumi.set(self, "async_primary_disk", value)
 
     @property
@@ -826,7 +826,7 @@ class _DiskState:
 
     @property
     @pulumi.getter(name="diskEncryptionKey")
-    def disk_encryption_key(self) -> Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']]:
+    def disk_encryption_key(self) -> Optional[pulumi.Input['DiskDiskEncryptionKeyArrgs']]:
         """
         Encrypts the disk using a customer-supplied encryption key.
         After you encrypt a disk with a customer-supplied key, you must
@@ -842,7 +842,7 @@ class _DiskState:
         return pulumi.get(self, "disk_encryption_key")
 
     @disk_encryption_key.setter
-    def disk_encryption_key(self, value: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']]):
+    def disk_encryption_key(self, value: Optional[pulumi.Input['DiskDiskEncryptionKeyArrgs']]):
         pulumi.set(self, "disk_encryption_key", value)
 
     @property
@@ -872,7 +872,7 @@ class _DiskState:
 
     @property
     @pulumi.getter(name="guestOsFeatures")
-    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]]:
+    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArrgs']]]]:
         """
         A list of features to enable on the guest operating system.
         Applicable only for bootable disks.
@@ -881,7 +881,7 @@ class _DiskState:
         return pulumi.get(self, "guest_os_features")
 
     @guest_os_features.setter
-    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]]):
+    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArrgs']]]]):
         pulumi.set(self, "guest_os_features", value)
 
     @property
@@ -1190,7 +1190,7 @@ class _DiskState:
 
     @property
     @pulumi.getter(name="sourceImageEncryptionKey")
-    def source_image_encryption_key(self) -> Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']]:
+    def source_image_encryption_key(self) -> Optional[pulumi.Input['DiskSourceImageEncryptionKeyArrgs']]:
         """
         The customer-supplied encryption key of the source image. Required if
         the source image is protected by a customer-supplied encryption key.
@@ -1199,7 +1199,7 @@ class _DiskState:
         return pulumi.get(self, "source_image_encryption_key")
 
     @source_image_encryption_key.setter
-    def source_image_encryption_key(self, value: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArgs']]):
+    def source_image_encryption_key(self, value: Optional[pulumi.Input['DiskSourceImageEncryptionKeyArrgs']]):
         pulumi.set(self, "source_image_encryption_key", value)
 
     @property
@@ -1220,7 +1220,7 @@ class _DiskState:
 
     @property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
-    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']]:
+    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArrgs']]:
         """
         The customer-supplied encryption key of the source snapshot. Required
         if the source snapshot is protected by a customer-supplied encryption
@@ -1230,7 +1230,7 @@ class _DiskState:
         return pulumi.get(self, "source_snapshot_encryption_key")
 
     @source_snapshot_encryption_key.setter
-    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArgs']]):
+    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['DiskSourceSnapshotEncryptionKeyArrgs']]):
         pulumi.set(self, "source_snapshot_encryption_key", value)
 
     @property
@@ -1289,16 +1289,16 @@ class _DiskState:
         pulumi.set(self, "zone", value)
 
 
-class Disk(pulumi.CustomResource):
+calass Disk(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
+                 async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+                 disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArrgs']]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArrgs']]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1313,8 +1313,8 @@ class Disk(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
-                 source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
+                 source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArrgs']]] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArrgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1370,7 +1370,7 @@ class Disk(pulumi.CustomResource):
         secondary = gcp.compute.Disk("secondary",
             type="pd-ssd",
             zone="us-east1-c",
-            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
+            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArrgs(
                 disk=primary.id,
             ),
             physical_block_size_bytes=4096)
@@ -1383,13 +1383,13 @@ class Disk(pulumi.CustomResource):
 
         default = gcp.compute.Disk("default",
             guest_os_features=[
-                gcp.compute.DiskGuestOsFeatureArgs(
+                gcp.compute.DiskGuestOsFeatureArrgs(
                     type="SECURE_BOOT",
                 ),
-                gcp.compute.DiskGuestOsFeatureArgs(
+                gcp.compute.DiskGuestOsFeatureArrgs(
                     type="MULTI_IP_SUBNET",
                 ),
-                gcp.compute.DiskGuestOsFeatureArgs(
+                gcp.compute.DiskGuestOsFeatureArrgs(
                     type="WINDOWS",
                 ),
             ],
@@ -1424,11 +1424,11 @@ class Disk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']] async_primary_disk: A nested object resource
+        :param pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArrgs']] async_primary_disk: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
+        :param pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArrgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
                After you encrypt a disk with a customer-supplied key, you must
                provide the same key if you use the disk later (e.g. to create a disk
                snapshot or an image, or to attach the disk to a virtual machine).
@@ -1440,7 +1440,7 @@ class Disk(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
                required when setting to true
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArrgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
@@ -1514,10 +1514,10 @@ class Disk(pulumi.CustomResource):
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
                * regions/{region}/disks/{disk}
-        :param pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+        :param pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArrgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArrgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
@@ -1529,7 +1529,7 @@ class Disk(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[DiskArgs] = None,
+                 args: Optional[DiskArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Persistent disks are durable storage devices that function similarly to
@@ -1583,7 +1583,7 @@ class Disk(pulumi.CustomResource):
         secondary = gcp.compute.Disk("secondary",
             type="pd-ssd",
             zone="us-east1-c",
-            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
+            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArrgs(
                 disk=primary.id,
             ),
             physical_block_size_bytes=4096)
@@ -1596,13 +1596,13 @@ class Disk(pulumi.CustomResource):
 
         default = gcp.compute.Disk("default",
             guest_os_features=[
-                gcp.compute.DiskGuestOsFeatureArgs(
+                gcp.compute.DiskGuestOsFeatureArrgs(
                     type="SECURE_BOOT",
                 ),
-                gcp.compute.DiskGuestOsFeatureArgs(
+                gcp.compute.DiskGuestOsFeatureArrgs(
                     type="MULTI_IP_SUBNET",
                 ),
-                gcp.compute.DiskGuestOsFeatureArgs(
+                gcp.compute.DiskGuestOsFeatureArrgs(
                     type="WINDOWS",
                 ),
             ],
@@ -1636,12 +1636,12 @@ class Disk(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param DiskArgs args: The arguments to use to populate this resource's properties.
+        :param DiskArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DiskArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DiskArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1650,11 +1650,11 @@ class Disk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
+                 async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+                 disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArrgs']]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArrgs']]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1669,8 +1669,8 @@ class Disk(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
-                 source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
+                 source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArrgs']]] = None,
+                 source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArrgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1680,7 +1680,7 @@ class Disk(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DiskArgs.__new__(DiskArgs)
+            __props__ = DiskArrgs.__new__(DiskArrgs)
 
             __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["description"] = description
@@ -1728,13 +1728,13 @@ class Disk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
+            async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArrgs']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+            disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArrgs']]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
-            guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
+            guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArrgs']]]]] = None,
             image: Optional[pulumi.Input[str]] = None,
             interface: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
@@ -1755,9 +1755,9 @@ class Disk(pulumi.CustomResource):
             snapshot: Optional[pulumi.Input[str]] = None,
             source_disk: Optional[pulumi.Input[str]] = None,
             source_disk_id: Optional[pulumi.Input[str]] = None,
-            source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']]] = None,
+            source_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArrgs']]] = None,
             source_image_id: Optional[pulumi.Input[str]] = None,
-            source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']]] = None,
+            source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArrgs']]] = None,
             source_snapshot_id: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1769,12 +1769,12 @@ class Disk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']] async_primary_disk: A nested object resource
+        :param pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArrgs']] async_primary_disk: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
+        :param pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArrgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
                After you encrypt a disk with a customer-supplied key, you must
                provide the same key if you use the disk later (e.g. to create a disk
                snapshot or an image, or to attach the disk to a virtual machine).
@@ -1787,7 +1787,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
                required when setting to true
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArrgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
@@ -1871,7 +1871,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] source_disk_id: The ID value of the disk used to create this image. This value may
                be used to determine whether the image was taken from the current
                or a previous instance of a given disk name.
-        :param pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
+        :param pulumi.Input[pulumi.InputType['DiskSourceImageEncryptionKeyArrgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if
                the source image is protected by a customer-supplied encryption key.
                Structure is documented below.
         :param pulumi.Input[str] source_image_id: The ID value of the image used to create this disk. This value
@@ -1879,7 +1879,7 @@ class Disk(pulumi.CustomResource):
                disk. For example, if you created the persistent disk from an image
                that was later deleted and recreated under the same name, the source
                image ID would identify the exact version of the image that was used.
-        :param pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
+        :param pulumi.Input[pulumi.InputType['DiskSourceSnapshotEncryptionKeyArrgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.

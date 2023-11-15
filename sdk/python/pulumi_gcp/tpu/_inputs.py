@@ -10,12 +10,12 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'NodeNetworkEndpointArgs',
-    'NodeSchedulingConfigArgs',
+    'NodeNetworkEndpointArrgs',
+    'NodeSchedulingConfigArrgs',
 ]
 
 @pulumi.input_type
-class NodeNetworkEndpointArgs:
+calass NodeNetworkEndpointArrgs:
     def __init__(__self__, *,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None):
@@ -58,7 +58,7 @@ class NodeNetworkEndpointArgs:
 
 
 @pulumi.input_type
-class NodeSchedulingConfigArgs:
+calass NodeSchedulingConfigArrgs:
     def __init__(__self__, *,
                  preemptible: pulumi.Input[bool]):
         """

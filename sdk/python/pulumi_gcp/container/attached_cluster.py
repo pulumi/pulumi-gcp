@@ -11,33 +11,33 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AttachedClusterArgs', 'AttachedCluster']
+__all__ = ['AttachedClusterArrgs', 'AttachedCluster']
 
 @pulumi.input_type
-class AttachedClusterArgs:
+calass AttachedClusterArrgs:
     def __init__(__self__, *,
                  distribution: pulumi.Input[str],
-                 fleet: pulumi.Input['AttachedClusterFleetArgs'],
+                 fleet: pulumi.Input['AttachedClusterFleetArrgs'],
                  location: pulumi.Input[str],
-                 oidc_config: pulumi.Input['AttachedClusterOidcConfigArgs'],
+                 oidc_config: pulumi.Input['AttachedClusterOidcConfigArrgs'],
                  platform_version: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']] = None,
-                 binary_authorization: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']] = None,
+                 authorization: Optional[pulumi.Input['AttachedClusterAuthorizationArrgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArrgs']] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']] = None,
-                 monitoring_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['AttachedClusterLoggingConfigArrgs']] = None,
+                 monitoring_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AttachedCluster resource.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
-        :param pulumi.Input['AttachedClusterFleetArgs'] fleet: Fleet configuration.
+        :param pulumi.Input['AttachedClusterFleetArrgs'] fleet: Fleet configuration.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AttachedClusterOidcConfigArgs'] oidc_config: OIDC discovery information of the target cluster.
+        :param pulumi.Input['AttachedClusterOidcConfigArrgs'] oidc_config: OIDC discovery information of the target cluster.
                Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
                API server. This fields indicates how GCP services
                validate KSA tokens in order to allow system workloads (such as GKE Connect
@@ -57,16 +57,16 @@ class AttachedClusterArgs:
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['AttachedClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input['AttachedClusterAuthorizationArrgs'] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
-        :param pulumi.Input['AttachedClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization configuration.
+        :param pulumi.Input['AttachedClusterBinaryAuthorizationArrgs'] binary_authorization: Binary Authorization configuration.
                Structure is documented below.
         :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
-        :param pulumi.Input['AttachedClusterLoggingConfigArgs'] logging_config: Logging configuration.
+        :param pulumi.Input['AttachedClusterLoggingConfigArrgs'] logging_config: Logging configuration.
                Structure is documented below.
-        :param pulumi.Input['AttachedClusterMonitoringConfigArgs'] monitoring_config: Monitoring configuration.
+        :param pulumi.Input['AttachedClusterMonitoringConfigArrgs'] monitoring_config: Monitoring configuration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -111,7 +111,7 @@ class AttachedClusterArgs:
 
     @property
     @pulumi.getter
-    def fleet(self) -> pulumi.Input['AttachedClusterFleetArgs']:
+    def fleet(self) -> pulumi.Input['AttachedClusterFleetArrgs']:
         """
         Fleet configuration.
         Structure is documented below.
@@ -119,7 +119,7 @@ class AttachedClusterArgs:
         return pulumi.get(self, "fleet")
 
     @fleet.setter
-    def fleet(self, value: pulumi.Input['AttachedClusterFleetArgs']):
+    def fleet(self, value: pulumi.Input['AttachedClusterFleetArrgs']):
         pulumi.set(self, "fleet", value)
 
     @property
@@ -136,7 +136,7 @@ class AttachedClusterArgs:
 
     @property
     @pulumi.getter(name="oidcConfig")
-    def oidc_config(self) -> pulumi.Input['AttachedClusterOidcConfigArgs']:
+    def oidc_config(self) -> pulumi.Input['AttachedClusterOidcConfigArrgs']:
         """
         OIDC discovery information of the target cluster.
         Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
@@ -152,7 +152,7 @@ class AttachedClusterArgs:
         return pulumi.get(self, "oidc_config")
 
     @oidc_config.setter
-    def oidc_config(self, value: pulumi.Input['AttachedClusterOidcConfigArgs']):
+    def oidc_config(self, value: pulumi.Input['AttachedClusterOidcConfigArrgs']):
         pulumi.set(self, "oidc_config", value)
 
     @property
@@ -189,7 +189,7 @@ class AttachedClusterArgs:
 
     @property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input['AttachedClusterAuthorizationArgs']]:
+    def authorization(self) -> Optional[pulumi.Input['AttachedClusterAuthorizationArrgs']]:
         """
         Configuration related to the cluster RBAC settings.
         Structure is documented below.
@@ -197,12 +197,12 @@ class AttachedClusterArgs:
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']]):
+    def authorization(self, value: Optional[pulumi.Input['AttachedClusterAuthorizationArrgs']]):
         pulumi.set(self, "authorization", value)
 
     @property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArrgs']]:
         """
         Binary Authorization configuration.
         Structure is documented below.
@@ -210,7 +210,7 @@ class AttachedClusterArgs:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArrgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @property
@@ -240,7 +240,7 @@ class AttachedClusterArgs:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['AttachedClusterLoggingConfigArrgs']]:
         """
         Logging configuration.
         Structure is documented below.
@@ -248,12 +248,12 @@ class AttachedClusterArgs:
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['AttachedClusterLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
     @pulumi.getter(name="monitoringConfig")
-    def monitoring_config(self) -> Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']]:
+    def monitoring_config(self) -> Optional[pulumi.Input['AttachedClusterMonitoringConfigArrgs']]:
         """
         Monitoring configuration.
         Structure is documented below.
@@ -261,7 +261,7 @@ class AttachedClusterArgs:
         return pulumi.get(self, "monitoring_config")
 
     @monitoring_config.setter
-    def monitoring_config(self, value: Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']]):
+    def monitoring_config(self, value: Optional[pulumi.Input['AttachedClusterMonitoringConfigArrgs']]):
         pulumi.set(self, "monitoring_config", value)
 
     @property
@@ -291,32 +291,32 @@ class AttachedClusterArgs:
 
 
 @pulumi.input_type
-class _AttachedClusterState:
+calass _AttachedClusterState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']] = None,
-                 binary_authorization: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']] = None,
+                 authorization: Optional[pulumi.Input['AttachedClusterAuthorizationArrgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArrgs']] = None,
                  cluster_region: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]]] = None,
-                 fleet: Optional[pulumi.Input['AttachedClusterFleetArgs']] = None,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArrgs']]]] = None,
+                 fleet: Optional[pulumi.Input['AttachedClusterFleetArrgs']] = None,
                  kubernetes_version: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']] = None,
-                 monitoring_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['AttachedClusterLoggingConfigArrgs']] = None,
+                 monitoring_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigArrgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 oidc_config: Optional[pulumi.Input['AttachedClusterOidcConfigArgs']] = None,
+                 oidc_config: Optional[pulumi.Input['AttachedClusterOidcConfigArrgs']] = None,
                  platform_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArgs']]]] = None):
+                 workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArrgs']]]] = None):
         """
         Input properties used for looking up and filtering AttachedCluster resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same
@@ -328,9 +328,9 @@ class _AttachedClusterState:
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input['AttachedClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input['AttachedClusterAuthorizationArrgs'] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
-        :param pulumi.Input['AttachedClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization configuration.
+        :param pulumi.Input['AttachedClusterBinaryAuthorizationArrgs'] binary_authorization: Binary Authorization configuration.
                Structure is documented below.
         :param pulumi.Input[str] cluster_region: Output only. The region where this cluster runs.
                For EKS clusters, this is an AWS region. For AKS clusters,
@@ -343,18 +343,18 @@ class _AttachedClusterState:
                "eks", "aks".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]] errors: A set of errors found in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArrgs']]] errors: A set of errors found in the cluster.
                Structure is documented below.
-        :param pulumi.Input['AttachedClusterFleetArgs'] fleet: Fleet configuration.
+        :param pulumi.Input['AttachedClusterFleetArrgs'] fleet: Fleet configuration.
                Structure is documented below.
         :param pulumi.Input[str] kubernetes_version: The Kubernetes version of the cluster.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AttachedClusterLoggingConfigArgs'] logging_config: Logging configuration.
+        :param pulumi.Input['AttachedClusterLoggingConfigArrgs'] logging_config: Logging configuration.
                Structure is documented below.
-        :param pulumi.Input['AttachedClusterMonitoringConfigArgs'] monitoring_config: Monitoring configuration.
+        :param pulumi.Input['AttachedClusterMonitoringConfigArrgs'] monitoring_config: Monitoring configuration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input['AttachedClusterOidcConfigArgs'] oidc_config: OIDC discovery information of the target cluster.
+        :param pulumi.Input['AttachedClusterOidcConfigArrgs'] oidc_config: OIDC discovery information of the target cluster.
                Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
                API server. This fields indicates how GCP services
                validate KSA tokens in order to allow system workloads (such as GKE Connect
@@ -373,7 +373,7 @@ class _AttachedClusterState:
                DEGRADED
         :param pulumi.Input[str] uid: A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: The time at which this cluster was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArgs']]] workload_identity_configs: Workload Identity settings.
+        :param pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArrgs']]] workload_identity_configs: Workload Identity settings.
                Structure is documented below.
         """
         if annotations is not None:
@@ -447,7 +447,7 @@ class _AttachedClusterState:
 
     @property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input['AttachedClusterAuthorizationArgs']]:
+    def authorization(self) -> Optional[pulumi.Input['AttachedClusterAuthorizationArrgs']]:
         """
         Configuration related to the cluster RBAC settings.
         Structure is documented below.
@@ -455,12 +455,12 @@ class _AttachedClusterState:
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input['AttachedClusterAuthorizationArgs']]):
+    def authorization(self, value: Optional[pulumi.Input['AttachedClusterAuthorizationArrgs']]):
         pulumi.set(self, "authorization", value)
 
     @property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArrgs']]:
         """
         Binary Authorization configuration.
         Structure is documented below.
@@ -468,7 +468,7 @@ class _AttachedClusterState:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: Optional[pulumi.Input['AttachedClusterBinaryAuthorizationArrgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @property
@@ -550,7 +550,7 @@ class _AttachedClusterState:
 
     @property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]]]:
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArrgs']]]]:
         """
         A set of errors found in the cluster.
         Structure is documented below.
@@ -558,12 +558,12 @@ class _AttachedClusterState:
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]]]):
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArrgs']]]]):
         pulumi.set(self, "errors", value)
 
     @property
     @pulumi.getter
-    def fleet(self) -> Optional[pulumi.Input['AttachedClusterFleetArgs']]:
+    def fleet(self) -> Optional[pulumi.Input['AttachedClusterFleetArrgs']]:
         """
         Fleet configuration.
         Structure is documented below.
@@ -571,7 +571,7 @@ class _AttachedClusterState:
         return pulumi.get(self, "fleet")
 
     @fleet.setter
-    def fleet(self, value: Optional[pulumi.Input['AttachedClusterFleetArgs']]):
+    def fleet(self, value: Optional[pulumi.Input['AttachedClusterFleetArrgs']]):
         pulumi.set(self, "fleet", value)
 
     @property
@@ -600,7 +600,7 @@ class _AttachedClusterState:
 
     @property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']]:
+    def logging_config(self) -> Optional[pulumi.Input['AttachedClusterLoggingConfigArrgs']]:
         """
         Logging configuration.
         Structure is documented below.
@@ -608,12 +608,12 @@ class _AttachedClusterState:
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']]):
+    def logging_config(self, value: Optional[pulumi.Input['AttachedClusterLoggingConfigArrgs']]):
         pulumi.set(self, "logging_config", value)
 
     @property
     @pulumi.getter(name="monitoringConfig")
-    def monitoring_config(self) -> Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']]:
+    def monitoring_config(self) -> Optional[pulumi.Input['AttachedClusterMonitoringConfigArrgs']]:
         """
         Monitoring configuration.
         Structure is documented below.
@@ -621,7 +621,7 @@ class _AttachedClusterState:
         return pulumi.get(self, "monitoring_config")
 
     @monitoring_config.setter
-    def monitoring_config(self, value: Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']]):
+    def monitoring_config(self, value: Optional[pulumi.Input['AttachedClusterMonitoringConfigArrgs']]):
         pulumi.set(self, "monitoring_config", value)
 
     @property
@@ -638,7 +638,7 @@ class _AttachedClusterState:
 
     @property
     @pulumi.getter(name="oidcConfig")
-    def oidc_config(self) -> Optional[pulumi.Input['AttachedClusterOidcConfigArgs']]:
+    def oidc_config(self) -> Optional[pulumi.Input['AttachedClusterOidcConfigArrgs']]:
         """
         OIDC discovery information of the target cluster.
         Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
@@ -654,7 +654,7 @@ class _AttachedClusterState:
         return pulumi.get(self, "oidc_config")
 
     @oidc_config.setter
-    def oidc_config(self, value: Optional[pulumi.Input['AttachedClusterOidcConfigArgs']]):
+    def oidc_config(self, value: Optional[pulumi.Input['AttachedClusterOidcConfigArrgs']]):
         pulumi.set(self, "oidc_config", value)
 
     @property
@@ -734,7 +734,7 @@ class _AttachedClusterState:
 
     @property
     @pulumi.getter(name="workloadIdentityConfigs")
-    def workload_identity_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArgs']]]]:
+    def workload_identity_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArrgs']]]]:
         """
         Workload Identity settings.
         Structure is documented below.
@@ -742,27 +742,27 @@ class _AttachedClusterState:
         return pulumi.get(self, "workload_identity_configs")
 
     @workload_identity_configs.setter
-    def workload_identity_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArgs']]]]):
+    def workload_identity_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArrgs']]]]):
         pulumi.set(self, "workload_identity_configs", value)
 
 
-class AttachedCluster(pulumi.CustomResource):
+calass AttachedCluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']]] = None,
+                 authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArrgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArrgs']]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,
-                 fleet: Optional[pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']]] = None,
+                 fleet: Optional[pulumi.Input[pulumi.InputType['AttachedClusterFleetArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArgs']]] = None,
-                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArrgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 oidc_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']]] = None,
+                 oidc_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArrgs']]] = None,
                  platform_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -791,11 +791,11 @@ class AttachedCluster(pulumi.CustomResource):
             project=project.project_id,
             description="Test cluster",
             distribution="aks",
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
+            oidc_config=gcp.container.AttachedClusterOidcConfigArrgs(
                 issuer_url="https://oidc.issuer.url",
             ),
             platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
+            fleet=gcp.container.AttachedClusterFleetArrgs(
                 project=f"projects/{project.number}",
             ))
         ```
@@ -813,11 +813,11 @@ class AttachedCluster(pulumi.CustomResource):
             project=project.project_id,
             description="Test cluster",
             distribution="aks",
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
+            oidc_config=gcp.container.AttachedClusterOidcConfigArrgs(
                 issuer_url="https://oidc.issuer.url",
             ),
             platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
+            fleet=gcp.container.AttachedClusterFleetArrgs(
                 project=f"projects/{project.number}",
             ),
             deletion_policy="DELETE_IGNORE_ERRORS")
@@ -850,24 +850,24 @@ class AttachedCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArrgs']] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization configuration.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArrgs']] binary_authorization: Binary Authorization configuration.
                Structure is documented below.
         :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
-        :param pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']] fleet: Fleet configuration.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterFleetArrgs']] fleet: Fleet configuration.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArgs']] logging_config: Logging configuration.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArrgs']] logging_config: Logging configuration.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArgs']] monitoring_config: Monitoring configuration.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArrgs']] monitoring_config: Monitoring configuration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']] oidc_config: OIDC discovery information of the target cluster.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArrgs']] oidc_config: OIDC discovery information of the target cluster.
                Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
                API server. This fields indicates how GCP services
                validate KSA tokens in order to allow system workloads (such as GKE Connect
@@ -885,7 +885,7 @@ class AttachedCluster(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AttachedClusterArgs,
+                 args: AttachedClusterArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An Anthos cluster running on customer owned infrastructure.
@@ -912,11 +912,11 @@ class AttachedCluster(pulumi.CustomResource):
             project=project.project_id,
             description="Test cluster",
             distribution="aks",
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
+            oidc_config=gcp.container.AttachedClusterOidcConfigArrgs(
                 issuer_url="https://oidc.issuer.url",
             ),
             platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
+            fleet=gcp.container.AttachedClusterFleetArrgs(
                 project=f"projects/{project.number}",
             ))
         ```
@@ -934,11 +934,11 @@ class AttachedCluster(pulumi.CustomResource):
             project=project.project_id,
             description="Test cluster",
             distribution="aks",
-            oidc_config=gcp.container.AttachedClusterOidcConfigArgs(
+            oidc_config=gcp.container.AttachedClusterOidcConfigArrgs(
                 issuer_url="https://oidc.issuer.url",
             ),
             platform_version=versions.valid_versions[0],
-            fleet=gcp.container.AttachedClusterFleetArgs(
+            fleet=gcp.container.AttachedClusterFleetArrgs(
                 project=f"projects/{project.number}",
             ),
             deletion_policy="DELETE_IGNORE_ERRORS")
@@ -961,12 +961,12 @@ class AttachedCluster(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AttachedClusterArgs args: The arguments to use to populate this resource's properties.
+        :param AttachedClusterArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AttachedClusterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AttachedClusterArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -976,17 +976,17 @@ class AttachedCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']]] = None,
+                 authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArrgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArrgs']]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution: Optional[pulumi.Input[str]] = None,
-                 fleet: Optional[pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']]] = None,
+                 fleet: Optional[pulumi.Input[pulumi.InputType['AttachedClusterFleetArrgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 logging_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArgs']]] = None,
-                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArgs']]] = None,
+                 logging_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArrgs']]] = None,
+                 monitoring_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArrgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 oidc_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']]] = None,
+                 oidc_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArrgs']]] = None,
                  platform_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -996,7 +996,7 @@ class AttachedCluster(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AttachedClusterArgs.__new__(AttachedClusterArgs)
+            __props__ = AttachedClusterArrgs.__new__(AttachedClusterArrgs)
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["authorization"] = authorization
@@ -1043,29 +1043,29 @@ class AttachedCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']]] = None,
-            binary_authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']]] = None,
+            authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArrgs']]] = None,
+            binary_authorization: Optional[pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArrgs']]] = None,
             cluster_region: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             deletion_policy: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             distribution: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterErrorArgs']]]]] = None,
-            fleet: Optional[pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']]] = None,
+            errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterErrorArrgs']]]]] = None,
+            fleet: Optional[pulumi.Input[pulumi.InputType['AttachedClusterFleetArrgs']]] = None,
             kubernetes_version: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
-            logging_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArgs']]] = None,
-            monitoring_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArgs']]] = None,
+            logging_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArrgs']]] = None,
+            monitoring_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArrgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            oidc_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']]] = None,
+            oidc_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArrgs']]] = None,
             platform_version: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterWorkloadIdentityConfigArgs']]]]] = None) -> 'AttachedCluster':
+            workload_identity_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterWorkloadIdentityConfigArrgs']]]]] = None) -> 'AttachedCluster':
         """
         Get an existing AttachedCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1082,9 +1082,9 @@ class AttachedCluster(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArrgs']] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArgs']] binary_authorization: Binary Authorization configuration.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterBinaryAuthorizationArrgs']] binary_authorization: Binary Authorization configuration.
                Structure is documented below.
         :param pulumi.Input[str] cluster_region: Output only. The region where this cluster runs.
                For EKS clusters, this is an AWS region. For AKS clusters,
@@ -1097,18 +1097,18 @@ class AttachedCluster(pulumi.CustomResource):
                "eks", "aks".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterErrorArgs']]]] errors: A set of errors found in the cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterErrorArrgs']]]] errors: A set of errors found in the cluster.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']] fleet: Fleet configuration.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterFleetArrgs']] fleet: Fleet configuration.
                Structure is documented below.
         :param pulumi.Input[str] kubernetes_version: The Kubernetes version of the cluster.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArgs']] logging_config: Logging configuration.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterLoggingConfigArrgs']] logging_config: Logging configuration.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArgs']] monitoring_config: Monitoring configuration.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterMonitoringConfigArrgs']] monitoring_config: Monitoring configuration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']] oidc_config: OIDC discovery information of the target cluster.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArrgs']] oidc_config: OIDC discovery information of the target cluster.
                Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
                API server. This fields indicates how GCP services
                validate KSA tokens in order to allow system workloads (such as GKE Connect
@@ -1127,7 +1127,7 @@ class AttachedCluster(pulumi.CustomResource):
                DEGRADED
         :param pulumi.Input[str] uid: A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: The time at which this cluster was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterWorkloadIdentityConfigArgs']]]] workload_identity_configs: Workload Identity settings.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterWorkloadIdentityConfigArrgs']]]] workload_identity_configs: Workload Identity settings.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

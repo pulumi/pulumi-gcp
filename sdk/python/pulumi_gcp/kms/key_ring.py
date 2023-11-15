@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['KeyRingArgs', 'KeyRing']
+__all__ = ['KeyRingArrgs', 'KeyRing']
 
 @pulumi.input_type
-class KeyRingArgs:
+calass KeyRingArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
@@ -77,7 +77,7 @@ class KeyRingArgs:
 
 
 @pulumi.input_type
-class _KeyRingState:
+calass _KeyRingState:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -142,7 +142,7 @@ class _KeyRingState:
         pulumi.set(self, "project", value)
 
 
-class KeyRing(pulumi.CustomResource):
+calass KeyRing(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -205,7 +205,7 @@ class KeyRing(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: KeyRingArgs,
+                 args: KeyRingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A `KeyRing` is a toplevel logical grouping of `CryptoKeys`.
@@ -247,12 +247,12 @@ class KeyRing(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param KeyRingArgs args: The arguments to use to populate this resource's properties.
+        :param KeyRingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(KeyRingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(KeyRingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -271,7 +271,7 @@ class KeyRing(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = KeyRingArgs.__new__(KeyRingArgs)
+            __props__ = KeyRingArrgs.__new__(KeyRingArrgs)
 
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

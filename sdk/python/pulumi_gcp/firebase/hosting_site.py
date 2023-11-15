@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['HostingSiteArgs', 'HostingSite']
+__all__ = ['HostingSiteArrgs', 'HostingSite']
 
 @pulumi.input_type
-class HostingSiteArgs:
+calass HostingSiteArrgs:
     def __init__(__self__, *,
                  app_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -76,7 +76,7 @@ class HostingSiteArgs:
 
 
 @pulumi.input_type
-class _HostingSiteState:
+calass _HostingSiteState:
     def __init__(__self__, *,
                  app_id: Optional[pulumi.Input[str]] = None,
                  default_url: Optional[pulumi.Input[str]] = None,
@@ -183,7 +183,7 @@ class _HostingSiteState:
         pulumi.set(self, "site_id", value)
 
 
-class HostingSite(pulumi.CustomResource):
+calass HostingSite(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -256,7 +256,7 @@ class HostingSite(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[HostingSiteArgs] = None,
+                 args: Optional[HostingSiteArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -309,12 +309,12 @@ class HostingSite(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param HostingSiteArgs args: The arguments to use to populate this resource's properties.
+        :param HostingSiteArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(HostingSiteArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(HostingSiteArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -333,7 +333,7 @@ class HostingSite(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = HostingSiteArgs.__new__(HostingSiteArgs)
+            __props__ = HostingSiteArrgs.__new__(HostingSiteArrgs)
 
             __props__.__dict__["app_id"] = app_id
             __props__.__dict__["project"] = project

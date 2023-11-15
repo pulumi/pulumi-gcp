@@ -10,80 +10,80 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'EdgeCacheKeysetPublicKeyArgs',
-    'EdgeCacheKeysetValidationSharedKeyArgs',
-    'EdgeCacheOriginAwsV4AuthenticationArgs',
-    'EdgeCacheOriginOriginOverrideActionArgs',
-    'EdgeCacheOriginOriginOverrideActionHeaderActionArgs',
-    'EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs',
-    'EdgeCacheOriginOriginOverrideActionUrlRewriteArgs',
-    'EdgeCacheOriginOriginRedirectArgs',
-    'EdgeCacheOriginTimeoutArgs',
-    'EdgeCacheServiceLogConfigArgs',
-    'EdgeCacheServiceRoutingArgs',
-    'EdgeCacheServiceRoutingHostRuleArgs',
-    'EdgeCacheServiceRoutingPathMatcherArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs',
-    'EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs',
-    'EndpointPolicyEndpointMatcherArgs',
-    'EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs',
-    'EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs',
-    'EndpointPolicyTrafficPortSelectorArgs',
-    'GrpcRouteRuleArgs',
-    'GrpcRouteRuleActionArgs',
-    'GrpcRouteRuleActionDestinationArgs',
-    'GrpcRouteRuleActionFaultInjectionPolicyArgs',
-    'GrpcRouteRuleActionFaultInjectionPolicyAbortArgs',
-    'GrpcRouteRuleActionFaultInjectionPolicyDelayArgs',
-    'GrpcRouteRuleActionRetryPolicyArgs',
-    'GrpcRouteRuleMatchArgs',
-    'GrpcRouteRuleMatchHeaderArgs',
-    'GrpcRouteRuleMatchMethodArgs',
-    'HttpRouteRuleArgs',
-    'HttpRouteRuleActionArgs',
-    'HttpRouteRuleActionCorsPolicyArgs',
-    'HttpRouteRuleActionDestinationArgs',
-    'HttpRouteRuleActionFaultInjectionPolicyArgs',
-    'HttpRouteRuleActionFaultInjectionPolicyAbortArgs',
-    'HttpRouteRuleActionFaultInjectionPolicyDelayArgs',
-    'HttpRouteRuleActionRedirectArgs',
-    'HttpRouteRuleActionRequestHeaderModifierArgs',
-    'HttpRouteRuleActionRequestMirrorPolicyArgs',
-    'HttpRouteRuleActionRequestMirrorPolicyDestinationArgs',
-    'HttpRouteRuleActionResponseHeaderModifierArgs',
-    'HttpRouteRuleActionRetryPolicyArgs',
-    'HttpRouteRuleActionUrlRewriteArgs',
-    'HttpRouteRuleMatchArgs',
-    'HttpRouteRuleMatchHeaderArgs',
-    'HttpRouteRuleMatchHeaderRangeMatchArgs',
-    'HttpRouteRuleMatchQueryParameterArgs',
-    'TcpRouteRuleArgs',
-    'TcpRouteRuleActionArgs',
-    'TcpRouteRuleActionDestinationArgs',
-    'TcpRouteRuleMatchArgs',
-    'TlsRouteRuleArgs',
-    'TlsRouteRuleActionArgs',
-    'TlsRouteRuleActionDestinationArgs',
-    'TlsRouteRuleMatchArgs',
+    'EdgeCacheKeysetPublicKeyArrgs',
+    'EdgeCacheKeysetValidationSharedKeyArrgs',
+    'EdgeCacheOriginAwsV4AuthenticationArrgs',
+    'EdgeCacheOriginOriginOverrideActionArrgs',
+    'EdgeCacheOriginOriginOverrideActionHeaderActionArrgs',
+    'EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrgs',
+    'EdgeCacheOriginOriginOverrideActionUrlRewriteArrgs',
+    'EdgeCacheOriginOriginRedirectArrgs',
+    'EdgeCacheOriginTimeoutArrgs',
+    'EdgeCacheServiceLogConfigArrgs',
+    'EdgeCacheServiceRoutingArrgs',
+    'EdgeCacheServiceRoutingHostRuleArrgs',
+    'EdgeCacheServiceRoutingPathMatcherArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArrgs',
+    'EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArrgs',
+    'EndpointPolicyEndpointMatcherArrgs',
+    'EndpointPolicyEndpointMatcherMetadataLabelMatcherArrgs',
+    'EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrgs',
+    'EndpointPolicyTrafficPortSelectorArrgs',
+    'GrpcRouteRuleArrgs',
+    'GrpcRouteRuleActionArrgs',
+    'GrpcRouteRuleActionDestinationArrgs',
+    'GrpcRouteRuleActionFaultInjectionPolicyArrgs',
+    'GrpcRouteRuleActionFaultInjectionPolicyAbortArrgs',
+    'GrpcRouteRuleActionFaultInjectionPolicyDelayArrgs',
+    'GrpcRouteRuleActionRetryPolicyArrgs',
+    'GrpcRouteRuleMatchArrgs',
+    'GrpcRouteRuleMatchHeaderArrgs',
+    'GrpcRouteRuleMatchMethodArrgs',
+    'HttpRouteRuleArrgs',
+    'HttpRouteRuleActionArrgs',
+    'HttpRouteRuleActionCorsPolicyArrgs',
+    'HttpRouteRuleActionDestinationArrgs',
+    'HttpRouteRuleActionFaultInjectionPolicyArrgs',
+    'HttpRouteRuleActionFaultInjectionPolicyAbortArrgs',
+    'HttpRouteRuleActionFaultInjectionPolicyDelayArrgs',
+    'HttpRouteRuleActionRedirectArrgs',
+    'HttpRouteRuleActionRequestHeaderModifierArrgs',
+    'HttpRouteRuleActionRequestMirrorPolicyArrgs',
+    'HttpRouteRuleActionRequestMirrorPolicyDestinationArrgs',
+    'HttpRouteRuleActionResponseHeaderModifierArrgs',
+    'HttpRouteRuleActionRetryPolicyArrgs',
+    'HttpRouteRuleActionUrlRewriteArrgs',
+    'HttpRouteRuleMatchArrgs',
+    'HttpRouteRuleMatchHeaderArrgs',
+    'HttpRouteRuleMatchHeaderRangeMatchArrgs',
+    'HttpRouteRuleMatchQueryParameterArrgs',
+    'TcpRouteRuleArrgs',
+    'TcpRouteRuleActionArrgs',
+    'TcpRouteRuleActionDestinationArrgs',
+    'TcpRouteRuleMatchArrgs',
+    'TlsRouteRuleArrgs',
+    'TlsRouteRuleActionArrgs',
+    'TlsRouteRuleActionDestinationArrgs',
+    'TlsRouteRuleMatchArrgs',
 ]
 
 @pulumi.input_type
-class EdgeCacheKeysetPublicKeyArgs:
+calass EdgeCacheKeysetPublicKeyArrgs:
     def __init__(__self__, *,
                  id: pulumi.Input[str],
                  managed: Optional[pulumi.Input[bool]] = None,
@@ -145,7 +145,7 @@ class EdgeCacheKeysetPublicKeyArgs:
 
 
 @pulumi.input_type
-class EdgeCacheKeysetValidationSharedKeyArgs:
+calass EdgeCacheKeysetValidationSharedKeyArrgs:
     def __init__(__self__, *,
                  secret_version: pulumi.Input[str]):
         """
@@ -177,7 +177,7 @@ class EdgeCacheKeysetValidationSharedKeyArgs:
 
 
 @pulumi.input_type
-class EdgeCacheOriginAwsV4AuthenticationArgs:
+calass EdgeCacheOriginAwsV4AuthenticationArrgs:
     def __init__(__self__, *,
                  access_key_id: pulumi.Input[str],
                  origin_region: pulumi.Input[str],
@@ -231,15 +231,15 @@ class EdgeCacheOriginAwsV4AuthenticationArgs:
 
 
 @pulumi.input_type
-class EdgeCacheOriginOriginOverrideActionArgs:
+calass EdgeCacheOriginOriginOverrideActionArrgs:
     def __init__(__self__, *,
-                 header_action: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArgs']] = None,
-                 url_rewrite: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArgs']] = None):
+                 header_action: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArrgs']] = None,
+                 url_rewrite: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArrgs']] = None):
         """
-        :param pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArgs'] header_action: The header actions, including adding and removing
+        :param pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArrgs'] header_action: The header actions, including adding and removing
                headers, for request handled by this origin.
                Structure is documented below.
-        :param pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArgs'] url_rewrite: The URL rewrite configuration for request that are
+        :param pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArrgs'] url_rewrite: The URL rewrite configuration for request that are
                handled by this origin.
                Structure is documented below.
         """
@@ -250,7 +250,7 @@ class EdgeCacheOriginOriginOverrideActionArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArrgs']]:
         """
         The header actions, including adding and removing
         headers, for request handled by this origin.
@@ -259,12 +259,12 @@ class EdgeCacheOriginOriginOverrideActionArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
     @property
     @pulumi.getter(name="urlRewrite")
-    def url_rewrite(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArgs']]:
+    def url_rewrite(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArrgs']]:
         """
         The URL rewrite configuration for request that are
         handled by this origin.
@@ -273,16 +273,16 @@ class EdgeCacheOriginOriginOverrideActionArgs:
         return pulumi.get(self, "url_rewrite")
 
     @url_rewrite.setter
-    def url_rewrite(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArgs']]):
+    def url_rewrite(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArrgs']]):
         pulumi.set(self, "url_rewrite", value)
 
 
 @pulumi.input_type
-class EdgeCacheOriginOriginOverrideActionHeaderActionArgs:
+calass EdgeCacheOriginOriginOverrideActionHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs']]]] = None):
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Describes a header to add.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrgs']]] request_headers_to_adds: Describes a header to add.
                You may add a maximum of 25 request headers.
                Structure is documented below.
         """
@@ -291,7 +291,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionArgs:
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs']]]]:
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrgs']]]]:
         """
         Describes a header to add.
         You may add a maximum of 25 request headers.
@@ -300,12 +300,12 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionArgs:
         return pulumi.get(self, "request_headers_to_adds")
 
     @request_headers_to_adds.setter
-    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs']]]]):
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrgs']]]]):
         pulumi.set(self, "request_headers_to_adds", value)
 
 
 @pulumi.input_type
-class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs:
+calass EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -368,7 +368,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs:
 
 
 @pulumi.input_type
-class EdgeCacheOriginOriginOverrideActionUrlRewriteArgs:
+calass EdgeCacheOriginOriginOverrideActionUrlRewriteArrgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None):
         """
@@ -397,7 +397,7 @@ class EdgeCacheOriginOriginOverrideActionUrlRewriteArgs:
 
 
 @pulumi.input_type
-class EdgeCacheOriginOriginRedirectArgs:
+calass EdgeCacheOriginOriginRedirectArrgs:
     def __init__(__self__, *,
                  redirect_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -426,7 +426,7 @@ class EdgeCacheOriginOriginRedirectArgs:
 
 
 @pulumi.input_type
-class EdgeCacheOriginTimeoutArgs:
+calass EdgeCacheOriginTimeoutArrgs:
     def __init__(__self__, *,
                  connect_timeout: Optional[pulumi.Input[str]] = None,
                  max_attempts_timeout: Optional[pulumi.Input[str]] = None,
@@ -523,7 +523,7 @@ class EdgeCacheOriginTimeoutArgs:
 
 
 @pulumi.input_type
-class EdgeCacheServiceLogConfigArgs:
+calass EdgeCacheServiceLogConfigArrgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None,
                  sample_rate: Optional[pulumi.Input[float]] = None):
@@ -564,14 +564,14 @@ class EdgeCacheServiceLogConfigArgs:
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingArgs:
+calass EdgeCacheServiceRoutingArrgs:
     def __init__(__self__, *,
-                 host_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingHostRuleArgs']]],
-                 path_matchers: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArgs']]]):
+                 host_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingHostRuleArrgs']]],
+                 path_matchers: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArrgs']]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingHostRuleArgs']]] host_rules: The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingHostRuleArrgs']]] host_rules: The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArgs']]] path_matchers: The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArrgs']]] path_matchers: The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
                Structure is documented below.
         """
         pulumi.set(__self__, "host_rules", host_rules)
@@ -579,7 +579,7 @@ class EdgeCacheServiceRoutingArgs:
 
     @property
     @pulumi.getter(name="hostRules")
-    def host_rules(self) -> pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingHostRuleArgs']]]:
+    def host_rules(self) -> pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingHostRuleArrgs']]]:
         """
         The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
         Structure is documented below.
@@ -587,12 +587,12 @@ class EdgeCacheServiceRoutingArgs:
         return pulumi.get(self, "host_rules")
 
     @host_rules.setter
-    def host_rules(self, value: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingHostRuleArgs']]]):
+    def host_rules(self, value: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingHostRuleArrgs']]]):
         pulumi.set(self, "host_rules", value)
 
     @property
     @pulumi.getter(name="pathMatchers")
-    def path_matchers(self) -> pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArgs']]]:
+    def path_matchers(self) -> pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArrgs']]]:
         """
         The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
         Structure is documented below.
@@ -600,12 +600,12 @@ class EdgeCacheServiceRoutingArgs:
         return pulumi.get(self, "path_matchers")
 
     @path_matchers.setter
-    def path_matchers(self, value: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArgs']]]):
+    def path_matchers(self, value: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArrgs']]]):
         pulumi.set(self, "path_matchers", value)
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingHostRuleArgs:
+calass EdgeCacheServiceRoutingHostRuleArrgs:
     def __init__(__self__, *,
                  hosts: pulumi.Input[Sequence[pulumi.Input[str]]],
                  path_matcher: pulumi.Input[str],
@@ -678,14 +678,14 @@ class EdgeCacheServiceRoutingHostRuleArgs:
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherArgs:
+calass EdgeCacheServiceRoutingPathMatcherArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 route_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleArgs']]],
+                 route_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs']]],
                  description: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The name to which this PathMatcher is referred by the HostRule.
-        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleArgs']]] route_rules: The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs']]] route_rules: The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         """
@@ -708,7 +708,7 @@ class EdgeCacheServiceRoutingPathMatcherArgs:
 
     @property
     @pulumi.getter(name="routeRules")
-    def route_rules(self) -> pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleArgs']]]:
+    def route_rules(self) -> pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs']]]:
         """
         The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
         Structure is documented below.
@@ -716,7 +716,7 @@ class EdgeCacheServiceRoutingPathMatcherArgs:
         return pulumi.get(self, "route_rules")
 
     @route_rules.setter
-    def route_rules(self, value: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleArgs']]]):
+    def route_rules(self, value: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs']]]):
         pulumi.set(self, "route_rules", value)
 
     @property
@@ -733,17 +733,17 @@ class EdgeCacheServiceRoutingPathMatcherArgs:
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleArrgs:
     def __init__(__self__, *,
-                 match_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs']]],
+                 match_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs']]],
                  priority: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 header_action: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs']] = None,
+                 header_action: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs']] = None,
                  origin: Optional[pulumi.Input[str]] = None,
-                 route_action: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs']] = None,
-                 url_redirect: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs']] = None):
+                 route_action: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs']] = None,
+                 url_redirect: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArrgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs']]] match_rules: The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs']]] match_rules: The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates
                within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
                Structure is documented below.
         :param pulumi.Input[str] priority: The priority of this route rule, where 1 is the highest priority.
@@ -751,13 +751,13 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
                Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers
                to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
         :param pulumi.Input[str] description: A human-readable description of the routeRule.
-        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs'] header_action: The header actions, including adding & removing headers, for requests that match this route.
+        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs'] header_action: The header actions, including adding & removing headers, for requests that match this route.
                Structure is documented below.
         :param pulumi.Input[str] origin: The Origin resource that requests to this route should fetch from when a matching response is not in cache. Origins can be defined as short names ("my-origin") or fully-qualified resource URLs - e.g. "networkservices.googleapis.com/projects/my-project/global/edgecacheorigins/my-origin"
                Only one of origin or urlRedirect can be set.
-        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs'] route_action: In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
+        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs'] route_action: In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
                Structure is documented below.
-        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs'] url_redirect: The URL redirect configuration for requests that match this route.
+        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArrgs'] url_redirect: The URL redirect configuration for requests that match this route.
                Structure is documented below.
         """
         pulumi.set(__self__, "match_rules", match_rules)
@@ -775,7 +775,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
 
     @property
     @pulumi.getter(name="matchRules")
-    def match_rules(self) -> pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs']]]:
+    def match_rules(self) -> pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs']]]:
         """
         The list of criteria for matching attributes of a request to this routeRule. This list has OR semantics: the request matches this routeRule when any of the matchRules are satisfied. However predicates
         within a given matchRule have AND semantics. All predicates within a matchRule must match for the request to match the rule.
@@ -784,7 +784,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
         return pulumi.get(self, "match_rules")
 
     @match_rules.setter
-    def match_rules(self, value: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs']]]):
+    def match_rules(self, value: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs']]]):
         pulumi.set(self, "match_rules", value)
 
     @property
@@ -816,7 +816,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
 
     @property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs']]:
+    def header_action(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs']]:
         """
         The header actions, including adding & removing headers, for requests that match this route.
         Structure is documented below.
@@ -824,7 +824,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs']]):
+    def header_action(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs']]):
         pulumi.set(self, "header_action", value)
 
     @property
@@ -842,7 +842,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
 
     @property
     @pulumi.getter(name="routeAction")
-    def route_action(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs']]:
+    def route_action(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs']]:
         """
         In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
         Structure is documented below.
@@ -850,12 +850,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
         return pulumi.get(self, "route_action")
 
     @route_action.setter
-    def route_action(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs']]):
+    def route_action(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs']]):
         pulumi.set(self, "route_action", value)
 
     @property
     @pulumi.getter(name="urlRedirect")
-    def url_redirect(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs']]:
+    def url_redirect(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArrgs']]:
         """
         The URL redirect configuration for requests that match this route.
         Structure is documented below.
@@ -863,26 +863,26 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
         return pulumi.get(self, "url_redirect")
 
     @url_redirect.setter
-    def url_redirect(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs']]):
+    def url_redirect(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArrgs']]):
         pulumi.set(self, "url_redirect", value)
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArrgs:
     def __init__(__self__, *,
-                 request_header_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs']]]] = None,
-                 request_header_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs']]]] = None,
-                 response_header_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs']]]] = None,
-                 response_header_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs']]]] = None):
+                 request_header_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrgs']]]] = None,
+                 request_header_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrgs']]]] = None,
+                 response_header_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs']]]] = None,
+                 response_header_to_removes: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs']]] request_header_to_adds: Describes a header to add.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrgs']]] request_header_to_adds: Describes a header to add.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs']]] request_header_to_removes: A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrgs']]] request_header_to_removes: A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs']]] response_header_to_adds: Headers to add to the response prior to sending it back to the client.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs']]] response_header_to_adds: Headers to add to the response prior to sending it back to the client.
                Response headers are only sent to the client, and do not have an effect on the cache serving the response.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs']]] response_header_to_removes: A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrgs']]] response_header_to_removes: A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
                Structure is documented below.
         """
         if request_header_to_adds is not None:
@@ -896,7 +896,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs:
 
     @property
     @pulumi.getter(name="requestHeaderToAdds")
-    def request_header_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs']]]]:
+    def request_header_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrgs']]]]:
         """
         Describes a header to add.
         Structure is documented below.
@@ -904,12 +904,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs:
         return pulumi.get(self, "request_header_to_adds")
 
     @request_header_to_adds.setter
-    def request_header_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs']]]]):
+    def request_header_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrgs']]]]):
         pulumi.set(self, "request_header_to_adds", value)
 
     @property
     @pulumi.getter(name="requestHeaderToRemoves")
-    def request_header_to_removes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs']]]]:
+    def request_header_to_removes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrgs']]]]:
         """
         A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
         Structure is documented below.
@@ -917,12 +917,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs:
         return pulumi.get(self, "request_header_to_removes")
 
     @request_header_to_removes.setter
-    def request_header_to_removes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs']]]]):
+    def request_header_to_removes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrgs']]]]):
         pulumi.set(self, "request_header_to_removes", value)
 
     @property
     @pulumi.getter(name="responseHeaderToAdds")
-    def response_header_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs']]]]:
+    def response_header_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs']]]]:
         """
         Headers to add to the response prior to sending it back to the client.
         Response headers are only sent to the client, and do not have an effect on the cache serving the response.
@@ -931,12 +931,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs:
         return pulumi.get(self, "response_header_to_adds")
 
     @response_header_to_adds.setter
-    def response_header_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs']]]]):
+    def response_header_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs']]]]):
         pulumi.set(self, "response_header_to_adds", value)
 
     @property
     @pulumi.getter(name="responseHeaderToRemoves")
-    def response_header_to_removes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs']]]]:
+    def response_header_to_removes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrgs']]]]:
         """
         A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
         Structure is documented below.
@@ -944,12 +944,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs:
         return pulumi.get(self, "response_header_to_removes")
 
     @response_header_to_removes.setter
-    def response_header_to_removes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs']]]]):
+    def response_header_to_removes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrgs']]]]):
         pulumi.set(self, "response_header_to_removes", value)
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -1002,7 +1002,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddA
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str]):
         """
@@ -1024,7 +1024,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemo
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  header_value: pulumi.Input[str],
@@ -1077,7 +1077,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str]):
         """
@@ -1101,17 +1101,17 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRem
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrgs:
     def __init__(__self__, *,
                  full_path_match: Optional[pulumi.Input[str]] = None,
-                 header_matches: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]]] = None,
+                 header_matches: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrgs']]]] = None,
                  ignore_case: Optional[pulumi.Input[bool]] = None,
                  path_template_match: Optional[pulumi.Input[str]] = None,
                  prefix_match: Optional[pulumi.Input[str]] = None,
-                 query_parameter_matches: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]] = None):
+                 query_parameter_matches: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs']]]] = None):
         """
         :param pulumi.Input[str] full_path_match: For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL.
-        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]] header_matches: Specifies a list of header match criteria, all of which must match corresponding headers in the request.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrgs']]] header_matches: Specifies a list of header match criteria, all of which must match corresponding headers in the request.
                Structure is documented below.
         :param pulumi.Input[bool] ignore_case: Specifies that prefixMatch and fullPathMatch matches are case sensitive.
         :param pulumi.Input[str] path_template_match: For satisfying the matchRule condition, the path of the request
@@ -1123,7 +1123,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs:
                have at most 5 wildcard operators and at most 5 variable
                captures in total.
         :param pulumi.Input[str] prefix_match: For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
-        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs']]] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
                Structure is documented below.
         """
         if full_path_match is not None:
@@ -1153,7 +1153,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs:
 
     @property
     @pulumi.getter(name="headerMatches")
-    def header_matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]]]:
+    def header_matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrgs']]]]:
         """
         Specifies a list of header match criteria, all of which must match corresponding headers in the request.
         Structure is documented below.
@@ -1161,7 +1161,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs:
         return pulumi.get(self, "header_matches")
 
     @header_matches.setter
-    def header_matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]]]):
+    def header_matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrgs']]]]):
         pulumi.set(self, "header_matches", value)
 
     @property
@@ -1209,7 +1209,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs:
 
     @property
     @pulumi.getter(name="queryParameterMatches")
-    def query_parameter_matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]]:
+    def query_parameter_matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs']]]]:
         """
         Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
         Structure is documented below.
@@ -1217,12 +1217,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs:
         return pulumi.get(self, "query_parameter_matches")
 
     @query_parameter_matches.setter
-    def query_parameter_matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]]):
+    def query_parameter_matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs']]]]):
         pulumi.set(self, "query_parameter_matches", value)
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArrgs:
     def __init__(__self__, *,
                  header_name: pulumi.Input[str],
                  exact_match: Optional[pulumi.Input[str]] = None,
@@ -1326,7 +1326,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArrgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  exact_match: Optional[pulumi.Input[str]] = None,
@@ -1380,17 +1380,17 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArg
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArrgs:
     def __init__(__self__, *,
-                 cdn_policy: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs']] = None,
-                 cors_policy: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs']] = None,
-                 url_rewrite: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs']] = None):
+                 cdn_policy: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs']] = None,
+                 cors_policy: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArrgs']] = None,
+                 url_rewrite: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArrgs']] = None):
         """
-        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs'] cdn_policy: The policy to use for defining caching and signed request behaviour for requests that match this route.
+        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs'] cdn_policy: The policy to use for defining caching and signed request behaviour for requests that match this route.
                Structure is documented below.
-        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs'] cors_policy: CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
+        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArrgs'] cors_policy: CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
                Structure is documented below.
-        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs'] url_rewrite: The URL rewrite configuration for requests that match this route.
+        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArrgs'] url_rewrite: The URL rewrite configuration for requests that match this route.
                Structure is documented below.
         """
         if cdn_policy is not None:
@@ -1402,7 +1402,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs:
 
     @property
     @pulumi.getter(name="cdnPolicy")
-    def cdn_policy(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs']]:
+    def cdn_policy(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs']]:
         """
         The policy to use for defining caching and signed request behaviour for requests that match this route.
         Structure is documented below.
@@ -1410,12 +1410,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "cdn_policy")
 
     @cdn_policy.setter
-    def cdn_policy(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs']]):
+    def cdn_policy(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs']]):
         pulumi.set(self, "cdn_policy", value)
 
     @property
     @pulumi.getter(name="corsPolicy")
-    def cors_policy(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs']]:
+    def cors_policy(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArrgs']]:
         """
         CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
         Structure is documented below.
@@ -1423,12 +1423,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "cors_policy")
 
     @cors_policy.setter
-    def cors_policy(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs']]):
+    def cors_policy(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArrgs']]):
         pulumi.set(self, "cors_policy", value)
 
     @property
     @pulumi.getter(name="urlRewrite")
-    def url_rewrite(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs']]:
+    def url_rewrite(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArrgs']]:
         """
         The URL rewrite configuration for requests that match this route.
         Structure is documented below.
@@ -1436,15 +1436,15 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs:
         return pulumi.get(self, "url_rewrite")
 
     @url_rewrite.setter
-    def url_rewrite(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs']]):
+    def url_rewrite(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArrgs']]):
         pulumi.set(self, "url_rewrite", value)
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArrgs:
     def __init__(__self__, *,
-                 add_signatures: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs']] = None,
-                 cache_key_policy: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs']] = None,
+                 add_signatures: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArrgs']] = None,
+                 cache_key_policy: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArrgs']] = None,
                  cache_mode: Optional[pulumi.Input[str]] = None,
                  client_ttl: Optional[pulumi.Input[str]] = None,
                  default_ttl: Optional[pulumi.Input[str]] = None,
@@ -1454,12 +1454,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
                  signed_request_keyset: Optional[pulumi.Input[str]] = None,
                  signed_request_maximum_expiration_ttl: Optional[pulumi.Input[str]] = None,
                  signed_request_mode: Optional[pulumi.Input[str]] = None,
-                 signed_token_options: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs']] = None):
+                 signed_token_options: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArrgs']] = None):
         """
-        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs'] add_signatures: Enable signature generation or propagation on this route.
+        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArrgs'] add_signatures: Enable signature generation or propagation on this route.
                This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
                Structure is documented below.
-        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs'] cache_key_policy: Defines the request parameters that contribute to the cache key.
+        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArrgs'] cache_key_policy: Defines the request parameters that contribute to the cache key.
                Structure is documented below.
         :param pulumi.Input[str] cache_mode: Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
                For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
@@ -1510,7 +1510,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
                You must also set a signedRequestKeyset to enable signed requests.
                When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
                Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
-        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs'] signed_token_options: Additional options for signed tokens.
+        :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArrgs'] signed_token_options: Additional options for signed tokens.
                signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
                Structure is documented below.
         """
@@ -1541,7 +1541,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
 
     @property
     @pulumi.getter(name="addSignatures")
-    def add_signatures(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs']]:
+    def add_signatures(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArrgs']]:
         """
         Enable signature generation or propagation on this route.
         This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
@@ -1550,12 +1550,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         return pulumi.get(self, "add_signatures")
 
     @add_signatures.setter
-    def add_signatures(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs']]):
+    def add_signatures(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArrgs']]):
         pulumi.set(self, "add_signatures", value)
 
     @property
     @pulumi.getter(name="cacheKeyPolicy")
-    def cache_key_policy(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs']]:
+    def cache_key_policy(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArrgs']]:
         """
         Defines the request parameters that contribute to the cache key.
         Structure is documented below.
@@ -1563,7 +1563,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         return pulumi.get(self, "cache_key_policy")
 
     @cache_key_policy.setter
-    def cache_key_policy(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs']]):
+    def cache_key_policy(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArrgs']]):
         pulumi.set(self, "cache_key_policy", value)
 
     @property
@@ -1716,7 +1716,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
 
     @property
     @pulumi.getter(name="signedTokenOptions")
-    def signed_token_options(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs']]:
+    def signed_token_options(self) -> Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArrgs']]:
         """
         Additional options for signed tokens.
         signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
@@ -1725,12 +1725,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         return pulumi.get(self, "signed_token_options")
 
     @signed_token_options.setter
-    def signed_token_options(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs']]):
+    def signed_token_options(self, value: Optional[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArrgs']]):
         pulumi.set(self, "signed_token_options", value)
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArrgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[str],
                  copied_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1838,7 +1838,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArrgs:
     def __init__(__self__, *,
                  exclude_host: Optional[pulumi.Input[bool]] = None,
                  exclude_query_string: Optional[pulumi.Input[bool]] = None,
@@ -1993,7 +1993,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArrgs:
     def __init__(__self__, *,
                  allowed_signature_algorithms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  token_query_parameter: Optional[pulumi.Input[str]] = None):
@@ -2042,7 +2042,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedToken
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArrgs:
     def __init__(__self__, *,
                  max_age: pulumi.Input[str],
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
@@ -2172,7 +2172,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs:
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArrgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None,
                  path_prefix_rewrite: Optional[pulumi.Input[str]] = None,
@@ -2247,7 +2247,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs:
 
 
 @pulumi.input_type
-class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs:
+calass EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArrgs:
     def __init__(__self__, *,
                  host_redirect: Optional[pulumi.Input[str]] = None,
                  https_redirect: Optional[pulumi.Input[bool]] = None,
@@ -2364,18 +2364,18 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs:
 
 
 @pulumi.input_type
-class EndpointPolicyEndpointMatcherArgs:
+calass EndpointPolicyEndpointMatcherArrgs:
     def __init__(__self__, *,
-                 metadata_label_matcher: pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs']):
+                 metadata_label_matcher: pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherArrgs']):
         """
-        :param pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs'] metadata_label_matcher: The matcher is based on node metadata presented by xDS clients.
+        :param pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherArrgs'] metadata_label_matcher: The matcher is based on node metadata presented by xDS clients.
                Structure is documented below.
         """
         pulumi.set(__self__, "metadata_label_matcher", metadata_label_matcher)
 
     @property
     @pulumi.getter(name="metadataLabelMatcher")
-    def metadata_label_matcher(self) -> pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs']:
+    def metadata_label_matcher(self) -> pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherArrgs']:
         """
         The matcher is based on node metadata presented by xDS clients.
         Structure is documented below.
@@ -2383,19 +2383,19 @@ class EndpointPolicyEndpointMatcherArgs:
         return pulumi.get(self, "metadata_label_matcher")
 
     @metadata_label_matcher.setter
-    def metadata_label_matcher(self, value: pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs']):
+    def metadata_label_matcher(self, value: pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherArrgs']):
         pulumi.set(self, "metadata_label_matcher", value)
 
 
 @pulumi.input_type
-class EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs:
+calass EndpointPolicyEndpointMatcherMetadataLabelMatcherArrgs:
     def __init__(__self__, *,
                  metadata_label_match_criteria: pulumi.Input[str],
-                 metadata_labels: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs']]]] = None):
+                 metadata_labels: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrgs']]]] = None):
         """
         :param pulumi.Input[str] metadata_label_match_criteria: Specifies how matching should be done.
                Possible values are: `MATCH_ANY`, `MATCH_ALL`.
-        :param pulumi.Input[Sequence[pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs']]] metadata_labels: The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
+        :param pulumi.Input[Sequence[pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrgs']]] metadata_labels: The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
                Structure is documented below.
         """
         pulumi.set(__self__, "metadata_label_match_criteria", metadata_label_match_criteria)
@@ -2417,7 +2417,7 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs:
 
     @property
     @pulumi.getter(name="metadataLabels")
-    def metadata_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs']]]]:
+    def metadata_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrgs']]]]:
         """
         The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
         Structure is documented below.
@@ -2425,12 +2425,12 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs:
         return pulumi.get(self, "metadata_labels")
 
     @metadata_labels.setter
-    def metadata_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs']]]]):
+    def metadata_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrgs']]]]):
         pulumi.set(self, "metadata_labels", value)
 
 
 @pulumi.input_type
-class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs:
+calass EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrgs:
     def __init__(__self__, *,
                  label_name: pulumi.Input[str],
                  label_value: pulumi.Input[str]):
@@ -2471,7 +2471,7 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs:
 
 
 @pulumi.input_type
-class EndpointPolicyTrafficPortSelectorArgs:
+calass EndpointPolicyTrafficPortSelectorArrgs:
     def __init__(__self__, *,
                  ports: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
@@ -2493,14 +2493,14 @@ class EndpointPolicyTrafficPortSelectorArgs:
 
 
 @pulumi.input_type
-class GrpcRouteRuleArgs:
+calass GrpcRouteRuleArrgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input['GrpcRouteRuleActionArgs']] = None,
-                 matches: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchArgs']]]] = None):
+                 action: Optional[pulumi.Input['GrpcRouteRuleActionArrgs']] = None,
+                 matches: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchArrgs']]]] = None):
         """
-        :param pulumi.Input['GrpcRouteRuleActionArgs'] action: Required. A detailed rule defining how to route traffic.
+        :param pulumi.Input['GrpcRouteRuleActionArrgs'] action: Required. A detailed rule defining how to route traffic.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchArgs']]] matches: Matches define conditions used for matching the rule against incoming gRPC requests.
+        :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchArrgs']]] matches: Matches define conditions used for matching the rule against incoming gRPC requests.
                Structure is documented below.
         """
         if action is not None:
@@ -2510,7 +2510,7 @@ class GrpcRouteRuleArgs:
 
     @property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input['GrpcRouteRuleActionArgs']]:
+    def action(self) -> Optional[pulumi.Input['GrpcRouteRuleActionArrgs']]:
         """
         Required. A detailed rule defining how to route traffic.
         Structure is documented below.
@@ -2518,12 +2518,12 @@ class GrpcRouteRuleArgs:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input['GrpcRouteRuleActionArgs']]):
+    def action(self, value: Optional[pulumi.Input['GrpcRouteRuleActionArrgs']]):
         pulumi.set(self, "action", value)
 
     @property
     @pulumi.getter
-    def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchArgs']]]]:
+    def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchArrgs']]]]:
         """
         Matches define conditions used for matching the rule against incoming gRPC requests.
         Structure is documented below.
@@ -2531,23 +2531,23 @@ class GrpcRouteRuleArgs:
         return pulumi.get(self, "matches")
 
     @matches.setter
-    def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchArgs']]]]):
+    def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchArrgs']]]]):
         pulumi.set(self, "matches", value)
 
 
 @pulumi.input_type
-class GrpcRouteRuleActionArgs:
+calass GrpcRouteRuleActionArrgs:
     def __init__(__self__, *,
-                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArgs']]]] = None,
-                 fault_injection_policy: Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyArgs']] = None,
-                 retry_policy: Optional[pulumi.Input['GrpcRouteRuleActionRetryPolicyArgs']] = None,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArrgs']]]] = None,
+                 fault_injection_policy: Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyArrgs']] = None,
+                 retry_policy: Optional[pulumi.Input['GrpcRouteRuleActionRetryPolicyArrgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArgs']]] destinations: The destination to which traffic should be forwarded.
+        :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArrgs']]] destinations: The destination to which traffic should be forwarded.
                Structure is documented below.
-        :param pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        :param pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyArrgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                Structure is documented below.
-        :param pulumi.Input['GrpcRouteRuleActionRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
+        :param pulumi.Input['GrpcRouteRuleActionRetryPolicyArrgs'] retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
         :param pulumi.Input[str] timeout: Specifies the timeout for selected route.
         """
@@ -2562,7 +2562,7 @@ class GrpcRouteRuleActionArgs:
 
     @property
     @pulumi.getter
-    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArgs']]]]:
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArrgs']]]]:
         """
         The destination to which traffic should be forwarded.
         Structure is documented below.
@@ -2570,12 +2570,12 @@ class GrpcRouteRuleActionArgs:
         return pulumi.get(self, "destinations")
 
     @destinations.setter
-    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArgs']]]]):
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArrgs']]]]):
         pulumi.set(self, "destinations", value)
 
     @property
     @pulumi.getter(name="faultInjectionPolicy")
-    def fault_injection_policy(self) -> Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyArgs']]:
+    def fault_injection_policy(self) -> Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyArrgs']]:
         """
         The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
         Structure is documented below.
@@ -2583,12 +2583,12 @@ class GrpcRouteRuleActionArgs:
         return pulumi.get(self, "fault_injection_policy")
 
     @fault_injection_policy.setter
-    def fault_injection_policy(self, value: Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyArgs']]):
+    def fault_injection_policy(self, value: Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyArrgs']]):
         pulumi.set(self, "fault_injection_policy", value)
 
     @property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['GrpcRouteRuleActionRetryPolicyArgs']]:
+    def retry_policy(self) -> Optional[pulumi.Input['GrpcRouteRuleActionRetryPolicyArrgs']]:
         """
         Specifies the retry policy associated with this route.
         Structure is documented below.
@@ -2596,7 +2596,7 @@ class GrpcRouteRuleActionArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['GrpcRouteRuleActionRetryPolicyArgs']]):
+    def retry_policy(self, value: Optional[pulumi.Input['GrpcRouteRuleActionRetryPolicyArrgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @property
@@ -2613,7 +2613,7 @@ class GrpcRouteRuleActionArgs:
 
 
 @pulumi.input_type
-class GrpcRouteRuleActionDestinationArgs:
+calass GrpcRouteRuleActionDestinationArrgs:
     def __init__(__self__, *,
                  service_name: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
@@ -2652,14 +2652,14 @@ class GrpcRouteRuleActionDestinationArgs:
 
 
 @pulumi.input_type
-class GrpcRouteRuleActionFaultInjectionPolicyArgs:
+calass GrpcRouteRuleActionFaultInjectionPolicyArrgs:
     def __init__(__self__, *,
-                 abort: Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyAbortArgs']] = None,
-                 delay: Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyDelayArgs']] = None):
+                 abort: Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyAbortArrgs']] = None,
+                 delay: Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyDelayArrgs']] = None):
         """
-        :param pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyAbortArgs'] abort: Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+        :param pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyAbortArrgs'] abort: Specification of how client requests are aborted as part of fault injection before being sent to a destination.
                Structure is documented below.
-        :param pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyDelayArgs'] delay: Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+        :param pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyDelayArrgs'] delay: Specification of how client requests are delayed as part of fault injection before being sent to a destination.
                Structure is documented below.
         """
         if abort is not None:
@@ -2669,7 +2669,7 @@ class GrpcRouteRuleActionFaultInjectionPolicyArgs:
 
     @property
     @pulumi.getter
-    def abort(self) -> Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyAbortArgs']]:
+    def abort(self) -> Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyAbortArrgs']]:
         """
         Specification of how client requests are aborted as part of fault injection before being sent to a destination.
         Structure is documented below.
@@ -2677,12 +2677,12 @@ class GrpcRouteRuleActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "abort")
 
     @abort.setter
-    def abort(self, value: Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyAbortArgs']]):
+    def abort(self, value: Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyAbortArrgs']]):
         pulumi.set(self, "abort", value)
 
     @property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyDelayArgs']]:
+    def delay(self) -> Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyDelayArrgs']]:
         """
         Specification of how client requests are delayed as part of fault injection before being sent to a destination.
         Structure is documented below.
@@ -2690,12 +2690,12 @@ class GrpcRouteRuleActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyDelayArgs']]):
+    def delay(self, value: Optional[pulumi.Input['GrpcRouteRuleActionFaultInjectionPolicyDelayArrgs']]):
         pulumi.set(self, "delay", value)
 
 
 @pulumi.input_type
-class GrpcRouteRuleActionFaultInjectionPolicyAbortArgs:
+calass GrpcRouteRuleActionFaultInjectionPolicyAbortArrgs:
     def __init__(__self__, *,
                  http_status: Optional[pulumi.Input[int]] = None,
                  percentage: Optional[pulumi.Input[int]] = None):
@@ -2734,7 +2734,7 @@ class GrpcRouteRuleActionFaultInjectionPolicyAbortArgs:
 
 
 @pulumi.input_type
-class GrpcRouteRuleActionFaultInjectionPolicyDelayArgs:
+calass GrpcRouteRuleActionFaultInjectionPolicyDelayArrgs:
     def __init__(__self__, *,
                  fixed_delay: Optional[pulumi.Input[str]] = None,
                  percentage: Optional[pulumi.Input[int]] = None):
@@ -2773,7 +2773,7 @@ class GrpcRouteRuleActionFaultInjectionPolicyDelayArgs:
 
 
 @pulumi.input_type
-class GrpcRouteRuleActionRetryPolicyArgs:
+calass GrpcRouteRuleActionRetryPolicyArrgs:
     def __init__(__self__, *,
                  num_retries: Optional[pulumi.Input[int]] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2818,14 +2818,14 @@ class GrpcRouteRuleActionRetryPolicyArgs:
 
 
 @pulumi.input_type
-class GrpcRouteRuleMatchArgs:
+calass GrpcRouteRuleMatchArrgs:
     def __init__(__self__, *,
-                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchHeaderArgs']]]] = None,
-                 method: Optional[pulumi.Input['GrpcRouteRuleMatchMethodArgs']] = None):
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchHeaderArrgs']]]] = None,
+                 method: Optional[pulumi.Input['GrpcRouteRuleMatchMethodArrgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchHeaderArgs']]] headers: Specifies a list of HTTP request headers to match against.
+        :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchHeaderArrgs']]] headers: Specifies a list of HTTP request headers to match against.
                Structure is documented below.
-        :param pulumi.Input['GrpcRouteRuleMatchMethodArgs'] method: A gRPC method to match against. If this field is empty or omitted, will match all methods.
+        :param pulumi.Input['GrpcRouteRuleMatchMethodArrgs'] method: A gRPC method to match against. If this field is empty or omitted, will match all methods.
                Structure is documented below.
         """
         if headers is not None:
@@ -2835,7 +2835,7 @@ class GrpcRouteRuleMatchArgs:
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchHeaderArgs']]]]:
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchHeaderArrgs']]]]:
         """
         Specifies a list of HTTP request headers to match against.
         Structure is documented below.
@@ -2843,12 +2843,12 @@ class GrpcRouteRuleMatchArgs:
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchHeaderArgs']]]]):
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRuleMatchHeaderArrgs']]]]):
         pulumi.set(self, "headers", value)
 
     @property
     @pulumi.getter
-    def method(self) -> Optional[pulumi.Input['GrpcRouteRuleMatchMethodArgs']]:
+    def method(self) -> Optional[pulumi.Input['GrpcRouteRuleMatchMethodArrgs']]:
         """
         A gRPC method to match against. If this field is empty or omitted, will match all methods.
         Structure is documented below.
@@ -2856,12 +2856,12 @@ class GrpcRouteRuleMatchArgs:
         return pulumi.get(self, "method")
 
     @method.setter
-    def method(self, value: Optional[pulumi.Input['GrpcRouteRuleMatchMethodArgs']]):
+    def method(self, value: Optional[pulumi.Input['GrpcRouteRuleMatchMethodArrgs']]):
         pulumi.set(self, "method", value)
 
 
 @pulumi.input_type
-class GrpcRouteRuleMatchHeaderArgs:
+calass GrpcRouteRuleMatchHeaderArrgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str],
@@ -2918,7 +2918,7 @@ class GrpcRouteRuleMatchHeaderArgs:
 
 
 @pulumi.input_type
-class GrpcRouteRuleMatchMethodArgs:
+calass GrpcRouteRuleMatchMethodArrgs:
     def __init__(__self__, *,
                  grpc_method: pulumi.Input[str],
                  grpc_service: pulumi.Input[str],
@@ -2971,14 +2971,14 @@ class GrpcRouteRuleMatchMethodArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleArgs:
+calass HttpRouteRuleArrgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input['HttpRouteRuleActionArgs']] = None,
-                 matches: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchArgs']]]] = None):
+                 action: Optional[pulumi.Input['HttpRouteRuleActionArrgs']] = None,
+                 matches: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchArrgs']]]] = None):
         """
-        :param pulumi.Input['HttpRouteRuleActionArgs'] action: The detailed rule defining how to route matched traffic.
+        :param pulumi.Input['HttpRouteRuleActionArrgs'] action: The detailed rule defining how to route matched traffic.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchArgs']]] matches: A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchArrgs']]] matches: A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
                If no matches field is specified, this rule will unconditionally match traffic.
                If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
                Structure is documented below.
@@ -2990,7 +2990,7 @@ class HttpRouteRuleArgs:
 
     @property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input['HttpRouteRuleActionArgs']]:
+    def action(self) -> Optional[pulumi.Input['HttpRouteRuleActionArrgs']]:
         """
         The detailed rule defining how to route matched traffic.
         Structure is documented below.
@@ -2998,12 +2998,12 @@ class HttpRouteRuleArgs:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input['HttpRouteRuleActionArgs']]):
+    def action(self, value: Optional[pulumi.Input['HttpRouteRuleActionArrgs']]):
         pulumi.set(self, "action", value)
 
     @property
     @pulumi.getter
-    def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchArgs']]]]:
+    def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchArrgs']]]]:
         """
         A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
         If no matches field is specified, this rule will unconditionally match traffic.
@@ -3013,42 +3013,42 @@ class HttpRouteRuleArgs:
         return pulumi.get(self, "matches")
 
     @matches.setter
-    def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchArgs']]]]):
+    def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchArrgs']]]]):
         pulumi.set(self, "matches", value)
 
 
 @pulumi.input_type
-class HttpRouteRuleActionArgs:
+calass HttpRouteRuleActionArrgs:
     def __init__(__self__, *,
-                 cors_policy: Optional[pulumi.Input['HttpRouteRuleActionCorsPolicyArgs']] = None,
-                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArgs']]]] = None,
-                 fault_injection_policy: Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyArgs']] = None,
-                 redirect: Optional[pulumi.Input['HttpRouteRuleActionRedirectArgs']] = None,
-                 request_header_modifier: Optional[pulumi.Input['HttpRouteRuleActionRequestHeaderModifierArgs']] = None,
-                 request_mirror_policy: Optional[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyArgs']] = None,
-                 response_header_modifier: Optional[pulumi.Input['HttpRouteRuleActionResponseHeaderModifierArgs']] = None,
-                 retry_policy: Optional[pulumi.Input['HttpRouteRuleActionRetryPolicyArgs']] = None,
+                 cors_policy: Optional[pulumi.Input['HttpRouteRuleActionCorsPolicyArrgs']] = None,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArrgs']]]] = None,
+                 fault_injection_policy: Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyArrgs']] = None,
+                 redirect: Optional[pulumi.Input['HttpRouteRuleActionRedirectArrgs']] = None,
+                 request_header_modifier: Optional[pulumi.Input['HttpRouteRuleActionRequestHeaderModifierArrgs']] = None,
+                 request_mirror_policy: Optional[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyArrgs']] = None,
+                 response_header_modifier: Optional[pulumi.Input['HttpRouteRuleActionResponseHeaderModifierArrgs']] = None,
+                 retry_policy: Optional[pulumi.Input['HttpRouteRuleActionRetryPolicyArrgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
-                 url_rewrite: Optional[pulumi.Input['HttpRouteRuleActionUrlRewriteArgs']] = None):
+                 url_rewrite: Optional[pulumi.Input['HttpRouteRuleActionUrlRewriteArrgs']] = None):
         """
-        :param pulumi.Input['HttpRouteRuleActionCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests.
+        :param pulumi.Input['HttpRouteRuleActionCorsPolicyArrgs'] cors_policy: The specification for allowing client side cross-origin requests.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArgs']]] destinations: The destination to which traffic should be forwarded.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArrgs']]] destinations: The destination to which traffic should be forwarded.
                Structure is documented below.
-        :param pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        :param pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyArrgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
                Structure is documented below.
-        :param pulumi.Input['HttpRouteRuleActionRedirectArgs'] redirect: If set, the request is directed as configured by this field.
+        :param pulumi.Input['HttpRouteRuleActionRedirectArrgs'] redirect: If set, the request is directed as configured by this field.
                Structure is documented below.
-        :param pulumi.Input['HttpRouteRuleActionRequestHeaderModifierArgs'] request_header_modifier: The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+        :param pulumi.Input['HttpRouteRuleActionRequestHeaderModifierArrgs'] request_header_modifier: The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
                Structure is documented below.
-        :param pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
+        :param pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyArrgs'] request_mirror_policy: Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
                Structure is documented below.
-        :param pulumi.Input['HttpRouteRuleActionResponseHeaderModifierArgs'] response_header_modifier: The specification for modifying the headers of a response prior to sending the response back to the client.
+        :param pulumi.Input['HttpRouteRuleActionResponseHeaderModifierArrgs'] response_header_modifier: The specification for modifying the headers of a response prior to sending the response back to the client.
                Structure is documented below.
-        :param pulumi.Input['HttpRouteRuleActionRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
+        :param pulumi.Input['HttpRouteRuleActionRetryPolicyArrgs'] retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
         :param pulumi.Input[str] timeout: Specifies the timeout for selected route.
-        :param pulumi.Input['HttpRouteRuleActionUrlRewriteArgs'] url_rewrite: The specification for rewrite URL before forwarding requests to the destination.
+        :param pulumi.Input['HttpRouteRuleActionUrlRewriteArrgs'] url_rewrite: The specification for rewrite URL before forwarding requests to the destination.
                Structure is documented below.
         """
         if cors_policy is not None:
@@ -3074,7 +3074,7 @@ class HttpRouteRuleActionArgs:
 
     @property
     @pulumi.getter(name="corsPolicy")
-    def cors_policy(self) -> Optional[pulumi.Input['HttpRouteRuleActionCorsPolicyArgs']]:
+    def cors_policy(self) -> Optional[pulumi.Input['HttpRouteRuleActionCorsPolicyArrgs']]:
         """
         The specification for allowing client side cross-origin requests.
         Structure is documented below.
@@ -3082,12 +3082,12 @@ class HttpRouteRuleActionArgs:
         return pulumi.get(self, "cors_policy")
 
     @cors_policy.setter
-    def cors_policy(self, value: Optional[pulumi.Input['HttpRouteRuleActionCorsPolicyArgs']]):
+    def cors_policy(self, value: Optional[pulumi.Input['HttpRouteRuleActionCorsPolicyArrgs']]):
         pulumi.set(self, "cors_policy", value)
 
     @property
     @pulumi.getter
-    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArgs']]]]:
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArrgs']]]]:
         """
         The destination to which traffic should be forwarded.
         Structure is documented below.
@@ -3095,12 +3095,12 @@ class HttpRouteRuleActionArgs:
         return pulumi.get(self, "destinations")
 
     @destinations.setter
-    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArgs']]]]):
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArrgs']]]]):
         pulumi.set(self, "destinations", value)
 
     @property
     @pulumi.getter(name="faultInjectionPolicy")
-    def fault_injection_policy(self) -> Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyArgs']]:
+    def fault_injection_policy(self) -> Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyArrgs']]:
         """
         The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
         Structure is documented below.
@@ -3108,12 +3108,12 @@ class HttpRouteRuleActionArgs:
         return pulumi.get(self, "fault_injection_policy")
 
     @fault_injection_policy.setter
-    def fault_injection_policy(self, value: Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyArgs']]):
+    def fault_injection_policy(self, value: Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyArrgs']]):
         pulumi.set(self, "fault_injection_policy", value)
 
     @property
     @pulumi.getter
-    def redirect(self) -> Optional[pulumi.Input['HttpRouteRuleActionRedirectArgs']]:
+    def redirect(self) -> Optional[pulumi.Input['HttpRouteRuleActionRedirectArrgs']]:
         """
         If set, the request is directed as configured by this field.
         Structure is documented below.
@@ -3121,12 +3121,12 @@ class HttpRouteRuleActionArgs:
         return pulumi.get(self, "redirect")
 
     @redirect.setter
-    def redirect(self, value: Optional[pulumi.Input['HttpRouteRuleActionRedirectArgs']]):
+    def redirect(self, value: Optional[pulumi.Input['HttpRouteRuleActionRedirectArrgs']]):
         pulumi.set(self, "redirect", value)
 
     @property
     @pulumi.getter(name="requestHeaderModifier")
-    def request_header_modifier(self) -> Optional[pulumi.Input['HttpRouteRuleActionRequestHeaderModifierArgs']]:
+    def request_header_modifier(self) -> Optional[pulumi.Input['HttpRouteRuleActionRequestHeaderModifierArrgs']]:
         """
         The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
         Structure is documented below.
@@ -3134,12 +3134,12 @@ class HttpRouteRuleActionArgs:
         return pulumi.get(self, "request_header_modifier")
 
     @request_header_modifier.setter
-    def request_header_modifier(self, value: Optional[pulumi.Input['HttpRouteRuleActionRequestHeaderModifierArgs']]):
+    def request_header_modifier(self, value: Optional[pulumi.Input['HttpRouteRuleActionRequestHeaderModifierArrgs']]):
         pulumi.set(self, "request_header_modifier", value)
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
-    def request_mirror_policy(self) -> Optional[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyArgs']]:
+    def request_mirror_policy(self) -> Optional[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyArrgs']]:
         """
         Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
         Structure is documented below.
@@ -3147,12 +3147,12 @@ class HttpRouteRuleActionArgs:
         return pulumi.get(self, "request_mirror_policy")
 
     @request_mirror_policy.setter
-    def request_mirror_policy(self, value: Optional[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyArgs']]):
+    def request_mirror_policy(self, value: Optional[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyArrgs']]):
         pulumi.set(self, "request_mirror_policy", value)
 
     @property
     @pulumi.getter(name="responseHeaderModifier")
-    def response_header_modifier(self) -> Optional[pulumi.Input['HttpRouteRuleActionResponseHeaderModifierArgs']]:
+    def response_header_modifier(self) -> Optional[pulumi.Input['HttpRouteRuleActionResponseHeaderModifierArrgs']]:
         """
         The specification for modifying the headers of a response prior to sending the response back to the client.
         Structure is documented below.
@@ -3160,12 +3160,12 @@ class HttpRouteRuleActionArgs:
         return pulumi.get(self, "response_header_modifier")
 
     @response_header_modifier.setter
-    def response_header_modifier(self, value: Optional[pulumi.Input['HttpRouteRuleActionResponseHeaderModifierArgs']]):
+    def response_header_modifier(self, value: Optional[pulumi.Input['HttpRouteRuleActionResponseHeaderModifierArrgs']]):
         pulumi.set(self, "response_header_modifier", value)
 
     @property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['HttpRouteRuleActionRetryPolicyArgs']]:
+    def retry_policy(self) -> Optional[pulumi.Input['HttpRouteRuleActionRetryPolicyArrgs']]:
         """
         Specifies the retry policy associated with this route.
         Structure is documented below.
@@ -3173,7 +3173,7 @@ class HttpRouteRuleActionArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['HttpRouteRuleActionRetryPolicyArgs']]):
+    def retry_policy(self, value: Optional[pulumi.Input['HttpRouteRuleActionRetryPolicyArrgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @property
@@ -3190,7 +3190,7 @@ class HttpRouteRuleActionArgs:
 
     @property
     @pulumi.getter(name="urlRewrite")
-    def url_rewrite(self) -> Optional[pulumi.Input['HttpRouteRuleActionUrlRewriteArgs']]:
+    def url_rewrite(self) -> Optional[pulumi.Input['HttpRouteRuleActionUrlRewriteArrgs']]:
         """
         The specification for rewrite URL before forwarding requests to the destination.
         Structure is documented below.
@@ -3198,12 +3198,12 @@ class HttpRouteRuleActionArgs:
         return pulumi.get(self, "url_rewrite")
 
     @url_rewrite.setter
-    def url_rewrite(self, value: Optional[pulumi.Input['HttpRouteRuleActionUrlRewriteArgs']]):
+    def url_rewrite(self, value: Optional[pulumi.Input['HttpRouteRuleActionUrlRewriteArrgs']]):
         pulumi.set(self, "url_rewrite", value)
 
 
 @pulumi.input_type
-class HttpRouteRuleActionCorsPolicyArgs:
+calass HttpRouteRuleActionCorsPolicyArrgs:
     def __init__(__self__, *,
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
                  allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3342,7 +3342,7 @@ class HttpRouteRuleActionCorsPolicyArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleActionDestinationArgs:
+calass HttpRouteRuleActionDestinationArrgs:
     def __init__(__self__, *,
                  service_name: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
@@ -3387,14 +3387,14 @@ class HttpRouteRuleActionDestinationArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleActionFaultInjectionPolicyArgs:
+calass HttpRouteRuleActionFaultInjectionPolicyArrgs:
     def __init__(__self__, *,
-                 abort: Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyAbortArgs']] = None,
-                 delay: Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyDelayArgs']] = None):
+                 abort: Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyAbortArrgs']] = None,
+                 delay: Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyDelayArrgs']] = None):
         """
-        :param pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyAbortArgs'] abort: Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+        :param pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyAbortArrgs'] abort: Specification of how client requests are aborted as part of fault injection before being sent to a destination.
                Structure is documented below.
-        :param pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyDelayArgs'] delay: Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+        :param pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyDelayArrgs'] delay: Specification of how client requests are delayed as part of fault injection before being sent to a destination.
                Structure is documented below.
         """
         if abort is not None:
@@ -3404,7 +3404,7 @@ class HttpRouteRuleActionFaultInjectionPolicyArgs:
 
     @property
     @pulumi.getter
-    def abort(self) -> Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyAbortArgs']]:
+    def abort(self) -> Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyAbortArrgs']]:
         """
         Specification of how client requests are aborted as part of fault injection before being sent to a destination.
         Structure is documented below.
@@ -3412,12 +3412,12 @@ class HttpRouteRuleActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "abort")
 
     @abort.setter
-    def abort(self, value: Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyAbortArgs']]):
+    def abort(self, value: Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyAbortArrgs']]):
         pulumi.set(self, "abort", value)
 
     @property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyDelayArgs']]:
+    def delay(self) -> Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyDelayArrgs']]:
         """
         Specification of how client requests are delayed as part of fault injection before being sent to a destination.
         Structure is documented below.
@@ -3425,12 +3425,12 @@ class HttpRouteRuleActionFaultInjectionPolicyArgs:
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyDelayArgs']]):
+    def delay(self, value: Optional[pulumi.Input['HttpRouteRuleActionFaultInjectionPolicyDelayArrgs']]):
         pulumi.set(self, "delay", value)
 
 
 @pulumi.input_type
-class HttpRouteRuleActionFaultInjectionPolicyAbortArgs:
+calass HttpRouteRuleActionFaultInjectionPolicyAbortArrgs:
     def __init__(__self__, *,
                  http_status: Optional[pulumi.Input[int]] = None,
                  percentage: Optional[pulumi.Input[int]] = None):
@@ -3469,7 +3469,7 @@ class HttpRouteRuleActionFaultInjectionPolicyAbortArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleActionFaultInjectionPolicyDelayArgs:
+calass HttpRouteRuleActionFaultInjectionPolicyDelayArrgs:
     def __init__(__self__, *,
                  fixed_delay: Optional[pulumi.Input[str]] = None,
                  percentage: Optional[pulumi.Input[int]] = None):
@@ -3508,7 +3508,7 @@ class HttpRouteRuleActionFaultInjectionPolicyDelayArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleActionRedirectArgs:
+calass HttpRouteRuleActionRedirectArrgs:
     def __init__(__self__, *,
                  host_redirect: Optional[pulumi.Input[str]] = None,
                  https_redirect: Optional[pulumi.Input[bool]] = None,
@@ -3627,7 +3627,7 @@ class HttpRouteRuleActionRedirectArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleActionRequestHeaderModifierArgs:
+calass HttpRouteRuleActionRequestHeaderModifierArrgs:
     def __init__(__self__, *,
                  add: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3682,11 +3682,11 @@ class HttpRouteRuleActionRequestHeaderModifierArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleActionRequestMirrorPolicyArgs:
+calass HttpRouteRuleActionRequestMirrorPolicyArrgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyDestinationArgs']] = None):
+                 destination: Optional[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyDestinationArrgs']] = None):
         """
-        :param pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyDestinationArgs'] destination: The destination the requests will be mirrored to.
+        :param pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyDestinationArrgs'] destination: The destination the requests will be mirrored to.
                Structure is documented below.
         """
         if destination is not None:
@@ -3694,7 +3694,7 @@ class HttpRouteRuleActionRequestMirrorPolicyArgs:
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyDestinationArgs']]:
+    def destination(self) -> Optional[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyDestinationArrgs']]:
         """
         The destination the requests will be mirrored to.
         Structure is documented below.
@@ -3702,12 +3702,12 @@ class HttpRouteRuleActionRequestMirrorPolicyArgs:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyDestinationArgs']]):
+    def destination(self, value: Optional[pulumi.Input['HttpRouteRuleActionRequestMirrorPolicyDestinationArrgs']]):
         pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type
-class HttpRouteRuleActionRequestMirrorPolicyDestinationArgs:
+calass HttpRouteRuleActionRequestMirrorPolicyDestinationArrgs:
     def __init__(__self__, *,
                  service_name: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
@@ -3752,7 +3752,7 @@ class HttpRouteRuleActionRequestMirrorPolicyDestinationArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleActionResponseHeaderModifierArgs:
+calass HttpRouteRuleActionResponseHeaderModifierArrgs:
     def __init__(__self__, *,
                  add: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  removes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3807,7 +3807,7 @@ class HttpRouteRuleActionResponseHeaderModifierArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleActionRetryPolicyArgs:
+calass HttpRouteRuleActionRetryPolicyArrgs:
     def __init__(__self__, *,
                  num_retries: Optional[pulumi.Input[int]] = None,
                  per_try_timeout: Optional[pulumi.Input[str]] = None,
@@ -3862,7 +3862,7 @@ class HttpRouteRuleActionRetryPolicyArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleActionUrlRewriteArgs:
+calass HttpRouteRuleActionUrlRewriteArrgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None,
                  path_prefix_rewrite: Optional[pulumi.Input[str]] = None):
@@ -3901,21 +3901,21 @@ class HttpRouteRuleActionUrlRewriteArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleMatchArgs:
+calass HttpRouteRuleMatchArrgs:
     def __init__(__self__, *,
                  full_path_match: Optional[pulumi.Input[str]] = None,
-                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchHeaderArgs']]]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchHeaderArrgs']]]] = None,
                  ignore_case: Optional[pulumi.Input[bool]] = None,
                  prefix_match: Optional[pulumi.Input[str]] = None,
-                 query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchQueryParameterArgs']]]] = None,
+                 query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchQueryParameterArrgs']]]] = None,
                  regex_match: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] full_path_match: The HTTP request path value should exactly match this value.
-        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchHeaderArgs']]] headers: Specifies a list of HTTP request headers to match against.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchHeaderArrgs']]] headers: Specifies a list of HTTP request headers to match against.
                Structure is documented below.
         :param pulumi.Input[bool] ignore_case: Specifies if prefixMatch and fullPathMatch matches are case sensitive. The default value is false.
         :param pulumi.Input[str] prefix_match: The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
-        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchQueryParameterArgs']]] query_parameters: Specifies a list of query parameters to match against.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchQueryParameterArrgs']]] query_parameters: Specifies a list of query parameters to match against.
                Structure is documented below.
         :param pulumi.Input[str] regex_match: The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
         """
@@ -3946,7 +3946,7 @@ class HttpRouteRuleMatchArgs:
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchHeaderArgs']]]]:
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchHeaderArrgs']]]]:
         """
         Specifies a list of HTTP request headers to match against.
         Structure is documented below.
@@ -3954,7 +3954,7 @@ class HttpRouteRuleMatchArgs:
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchHeaderArgs']]]]):
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchHeaderArrgs']]]]):
         pulumi.set(self, "headers", value)
 
     @property
@@ -3983,7 +3983,7 @@ class HttpRouteRuleMatchArgs:
 
     @property
     @pulumi.getter(name="queryParameters")
-    def query_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchQueryParameterArgs']]]]:
+    def query_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchQueryParameterArrgs']]]]:
         """
         Specifies a list of query parameters to match against.
         Structure is documented below.
@@ -3991,7 +3991,7 @@ class HttpRouteRuleMatchArgs:
         return pulumi.get(self, "query_parameters")
 
     @query_parameters.setter
-    def query_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchQueryParameterArgs']]]]):
+    def query_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleMatchQueryParameterArrgs']]]]):
         pulumi.set(self, "query_parameters", value)
 
     @property
@@ -4008,14 +4008,14 @@ class HttpRouteRuleMatchArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleMatchHeaderArgs:
+calass HttpRouteRuleMatchHeaderArrgs:
     def __init__(__self__, *,
                  exact_match: Optional[pulumi.Input[str]] = None,
                  header: Optional[pulumi.Input[str]] = None,
                  invert_match: Optional[pulumi.Input[bool]] = None,
                  prefix_match: Optional[pulumi.Input[str]] = None,
                  present_match: Optional[pulumi.Input[bool]] = None,
-                 range_match: Optional[pulumi.Input['HttpRouteRuleMatchHeaderRangeMatchArgs']] = None,
+                 range_match: Optional[pulumi.Input['HttpRouteRuleMatchHeaderRangeMatchArrgs']] = None,
                  regex_match: Optional[pulumi.Input[str]] = None,
                  suffix_match: Optional[pulumi.Input[str]] = None):
         """
@@ -4024,7 +4024,7 @@ class HttpRouteRuleMatchHeaderArgs:
         :param pulumi.Input[bool] invert_match: If specified, the match result will be inverted before checking. Default value is set to false.
         :param pulumi.Input[str] prefix_match: The value of the header must start with the contents of prefixMatch.
         :param pulumi.Input[bool] present_match: A header with headerName must exist. The match takes place whether or not the header has a value.
-        :param pulumi.Input['HttpRouteRuleMatchHeaderRangeMatchArgs'] range_match: If specified, the rule will match if the request header value is within the range.
+        :param pulumi.Input['HttpRouteRuleMatchHeaderRangeMatchArrgs'] range_match: If specified, the rule will match if the request header value is within the range.
                Structure is documented below.
         :param pulumi.Input[str] regex_match: The value of the header must match the regular expression specified in regexMatch.
         :param pulumi.Input[str] suffix_match: The value of the header must end with the contents of suffixMatch.
@@ -4108,7 +4108,7 @@ class HttpRouteRuleMatchHeaderArgs:
 
     @property
     @pulumi.getter(name="rangeMatch")
-    def range_match(self) -> Optional[pulumi.Input['HttpRouteRuleMatchHeaderRangeMatchArgs']]:
+    def range_match(self) -> Optional[pulumi.Input['HttpRouteRuleMatchHeaderRangeMatchArrgs']]:
         """
         If specified, the rule will match if the request header value is within the range.
         Structure is documented below.
@@ -4116,7 +4116,7 @@ class HttpRouteRuleMatchHeaderArgs:
         return pulumi.get(self, "range_match")
 
     @range_match.setter
-    def range_match(self, value: Optional[pulumi.Input['HttpRouteRuleMatchHeaderRangeMatchArgs']]):
+    def range_match(self, value: Optional[pulumi.Input['HttpRouteRuleMatchHeaderRangeMatchArrgs']]):
         pulumi.set(self, "range_match", value)
 
     @property
@@ -4145,7 +4145,7 @@ class HttpRouteRuleMatchHeaderArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleMatchHeaderRangeMatchArgs:
+calass HttpRouteRuleMatchHeaderRangeMatchArrgs:
     def __init__(__self__, *,
                  end: pulumi.Input[int],
                  start: pulumi.Input[int]):
@@ -4182,7 +4182,7 @@ class HttpRouteRuleMatchHeaderRangeMatchArgs:
 
 
 @pulumi.input_type
-class HttpRouteRuleMatchQueryParameterArgs:
+calass HttpRouteRuleMatchQueryParameterArrgs:
     def __init__(__self__, *,
                  exact_match: Optional[pulumi.Input[str]] = None,
                  present_match: Optional[pulumi.Input[bool]] = None,
@@ -4253,14 +4253,14 @@ class HttpRouteRuleMatchQueryParameterArgs:
 
 
 @pulumi.input_type
-class TcpRouteRuleArgs:
+calass TcpRouteRuleArrgs:
     def __init__(__self__, *,
-                 action: pulumi.Input['TcpRouteRuleActionArgs'],
-                 matches: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleMatchArgs']]]] = None):
+                 action: pulumi.Input['TcpRouteRuleActionArrgs'],
+                 matches: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleMatchArrgs']]]] = None):
         """
-        :param pulumi.Input['TcpRouteRuleActionArgs'] action: A detailed rule defining how to route traffic.
+        :param pulumi.Input['TcpRouteRuleActionArrgs'] action: A detailed rule defining how to route traffic.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleMatchArgs']]] matches: RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
+        :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleMatchArrgs']]] matches: RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
                If no routeMatch field is specified, this rule will unconditionally match traffic.
                Structure is documented below.
         """
@@ -4270,7 +4270,7 @@ class TcpRouteRuleArgs:
 
     @property
     @pulumi.getter
-    def action(self) -> pulumi.Input['TcpRouteRuleActionArgs']:
+    def action(self) -> pulumi.Input['TcpRouteRuleActionArrgs']:
         """
         A detailed rule defining how to route traffic.
         Structure is documented below.
@@ -4278,12 +4278,12 @@ class TcpRouteRuleArgs:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: pulumi.Input['TcpRouteRuleActionArgs']):
+    def action(self, value: pulumi.Input['TcpRouteRuleActionArrgs']):
         pulumi.set(self, "action", value)
 
     @property
     @pulumi.getter
-    def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleMatchArgs']]]]:
+    def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleMatchArrgs']]]]:
         """
         RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
         If no routeMatch field is specified, this rule will unconditionally match traffic.
@@ -4292,17 +4292,17 @@ class TcpRouteRuleArgs:
         return pulumi.get(self, "matches")
 
     @matches.setter
-    def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleMatchArgs']]]]):
+    def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleMatchArrgs']]]]):
         pulumi.set(self, "matches", value)
 
 
 @pulumi.input_type
-class TcpRouteRuleActionArgs:
+calass TcpRouteRuleActionArrgs:
     def __init__(__self__, *,
-                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleActionDestinationArgs']]]] = None,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleActionDestinationArrgs']]]] = None,
                  original_destination: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleActionDestinationArgs']]] destinations: The destination services to which traffic should be forwarded. At least one destination service is required.
+        :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleActionDestinationArrgs']]] destinations: The destination services to which traffic should be forwarded. At least one destination service is required.
                Structure is documented below.
         :param pulumi.Input[bool] original_destination: If true, Router will use the destination IP and port of the original connection as the destination of the request.
         """
@@ -4313,7 +4313,7 @@ class TcpRouteRuleActionArgs:
 
     @property
     @pulumi.getter
-    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleActionDestinationArgs']]]]:
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleActionDestinationArrgs']]]]:
         """
         The destination services to which traffic should be forwarded. At least one destination service is required.
         Structure is documented below.
@@ -4321,7 +4321,7 @@ class TcpRouteRuleActionArgs:
         return pulumi.get(self, "destinations")
 
     @destinations.setter
-    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleActionDestinationArgs']]]]):
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRuleActionDestinationArrgs']]]]):
         pulumi.set(self, "destinations", value)
 
     @property
@@ -4338,7 +4338,7 @@ class TcpRouteRuleActionArgs:
 
 
 @pulumi.input_type
-class TcpRouteRuleActionDestinationArgs:
+calass TcpRouteRuleActionDestinationArrgs:
     def __init__(__self__, *,
                  service_name: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
@@ -4387,7 +4387,7 @@ class TcpRouteRuleActionDestinationArgs:
 
 
 @pulumi.input_type
-class TcpRouteRuleMatchArgs:
+calass TcpRouteRuleMatchArrgs:
     def __init__(__self__, *,
                  address: pulumi.Input[str],
                  port: pulumi.Input[str]):
@@ -4426,14 +4426,14 @@ class TcpRouteRuleMatchArgs:
 
 
 @pulumi.input_type
-class TlsRouteRuleArgs:
+calass TlsRouteRuleArrgs:
     def __init__(__self__, *,
-                 action: pulumi.Input['TlsRouteRuleActionArgs'],
-                 matches: pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleMatchArgs']]]):
+                 action: pulumi.Input['TlsRouteRuleActionArrgs'],
+                 matches: pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleMatchArrgs']]]):
         """
-        :param pulumi.Input['TlsRouteRuleActionArgs'] action: Required. A detailed rule defining how to route traffic.
+        :param pulumi.Input['TlsRouteRuleActionArrgs'] action: Required. A detailed rule defining how to route traffic.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleMatchArgs']]] matches: Matches define the predicate used to match requests to a given action.
+        :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleMatchArrgs']]] matches: Matches define the predicate used to match requests to a given action.
                Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
@@ -4441,7 +4441,7 @@ class TlsRouteRuleArgs:
 
     @property
     @pulumi.getter
-    def action(self) -> pulumi.Input['TlsRouteRuleActionArgs']:
+    def action(self) -> pulumi.Input['TlsRouteRuleActionArrgs']:
         """
         Required. A detailed rule defining how to route traffic.
         Structure is documented below.
@@ -4449,12 +4449,12 @@ class TlsRouteRuleArgs:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: pulumi.Input['TlsRouteRuleActionArgs']):
+    def action(self, value: pulumi.Input['TlsRouteRuleActionArrgs']):
         pulumi.set(self, "action", value)
 
     @property
     @pulumi.getter
-    def matches(self) -> pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleMatchArgs']]]:
+    def matches(self) -> pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleMatchArrgs']]]:
         """
         Matches define the predicate used to match requests to a given action.
         Structure is documented below.
@@ -4462,16 +4462,16 @@ class TlsRouteRuleArgs:
         return pulumi.get(self, "matches")
 
     @matches.setter
-    def matches(self, value: pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleMatchArgs']]]):
+    def matches(self, value: pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleMatchArrgs']]]):
         pulumi.set(self, "matches", value)
 
 
 @pulumi.input_type
-class TlsRouteRuleActionArgs:
+calass TlsRouteRuleActionArrgs:
     def __init__(__self__, *,
-                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleActionDestinationArgs']]]] = None):
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleActionDestinationArrgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleActionDestinationArgs']]] destinations: The destination to which traffic should be forwarded.
+        :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleActionDestinationArrgs']]] destinations: The destination to which traffic should be forwarded.
                Structure is documented below.
         """
         if destinations is not None:
@@ -4479,7 +4479,7 @@ class TlsRouteRuleActionArgs:
 
     @property
     @pulumi.getter
-    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleActionDestinationArgs']]]]:
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleActionDestinationArrgs']]]]:
         """
         The destination to which traffic should be forwarded.
         Structure is documented below.
@@ -4487,12 +4487,12 @@ class TlsRouteRuleActionArgs:
         return pulumi.get(self, "destinations")
 
     @destinations.setter
-    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleActionDestinationArgs']]]]):
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TlsRouteRuleActionDestinationArrgs']]]]):
         pulumi.set(self, "destinations", value)
 
 
 @pulumi.input_type
-class TlsRouteRuleActionDestinationArgs:
+calass TlsRouteRuleActionDestinationArrgs:
     def __init__(__self__, *,
                  service_name: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
@@ -4535,7 +4535,7 @@ class TlsRouteRuleActionDestinationArgs:
 
 
 @pulumi.input_type
-class TlsRouteRuleMatchArgs:
+calass TlsRouteRuleMatchArrgs:
     def __init__(__self__, *,
                  alpns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sni_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):

@@ -68,7 +68,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class JobBinaryAuthorization(dict):
+calass JobBinaryAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -118,7 +118,7 @@ class JobBinaryAuthorization(dict):
 
 
 @pulumi.output_type
-class JobCondition(dict):
+calass JobCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -260,7 +260,7 @@ class JobCondition(dict):
 
 
 @pulumi.output_type
-class JobIamBindingCondition(dict):
+calass JobIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -287,7 +287,7 @@ class JobIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class JobIamMemberCondition(dict):
+calass JobIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -314,7 +314,7 @@ class JobIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class JobLatestCreatedExecution(dict):
+calass JobLatestCreatedExecution(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -384,7 +384,7 @@ class JobLatestCreatedExecution(dict):
 
 
 @pulumi.output_type
-class JobTemplate(dict):
+calass JobTemplate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -409,7 +409,7 @@ class JobTemplate(dict):
                  parallelism: Optional[int] = None,
                  task_count: Optional[int] = None):
         """
-        :param 'JobTemplateTemplateArgs' template: Describes the task(s) that will be created when executing an execution
+        :param 'JobTemplateTemplateArrgs' template: Describes the task(s) that will be created when executing an execution
                Structure is documented below.
         :param Mapping[str, str] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
@@ -483,7 +483,7 @@ class JobTemplate(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplate(dict):
+calass JobTemplateTemplate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -519,7 +519,7 @@ class JobTemplateTemplate(dict):
                  volumes: Optional[Sequence['outputs.JobTemplateTemplateVolume']] = None,
                  vpc_access: Optional['outputs.JobTemplateTemplateVpcAccess'] = None):
         """
-        :param Sequence['JobTemplateTemplateContainerArgs'] containers: Holds the single container that defines the unit of execution for this task.
+        :param Sequence['JobTemplateTemplateContainerArrgs'] containers: Holds the single container that defines the unit of execution for this task.
                Structure is documented below.
         :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param str execution_environment: The execution environment being used to host this Task.
@@ -528,9 +528,9 @@ class JobTemplateTemplate(dict):
         :param str service_account: Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         :param str timeout: Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-        :param Sequence['JobTemplateTemplateVolumeArgs'] volumes: A list of Volumes to make available to containers.
+        :param Sequence['JobTemplateTemplateVolumeArrgs'] volumes: A list of Volumes to make available to containers.
                Structure is documented below.
-        :param 'JobTemplateTemplateVpcAccessArgs' vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        :param 'JobTemplateTemplateVpcAccessArrgs' vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
                Structure is documented below.
         """
         if containers is not None:
@@ -621,7 +621,7 @@ class JobTemplateTemplate(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateContainer(dict):
+calass JobTemplateTemplateContainer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -655,15 +655,15 @@ class JobTemplateTemplateContainer(dict):
         :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence[str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param Sequence['JobTemplateTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
+        :param Sequence['JobTemplateTemplateContainerEnvArrgs'] envs: List of environment variables to set in the container.
                Structure is documented below.
         :param str name: Name of the container specified as a DNS_LABEL.
-        :param Sequence['JobTemplateTemplateContainerPortArgs'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+        :param Sequence['JobTemplateTemplateContainerPortArrgs'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
                Structure is documented below.
-        :param 'JobTemplateTemplateContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param 'JobTemplateTemplateContainerResourcesArrgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
-        :param Sequence['JobTemplateTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
+        :param Sequence['JobTemplateTemplateContainerVolumeMountArrgs'] volume_mounts: Volume to mount into the container's filesystem.
                Structure is documented below.
         :param str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
@@ -764,7 +764,7 @@ class JobTemplateTemplateContainer(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateContainerEnv(dict):
+calass JobTemplateTemplateContainerEnv(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -789,7 +789,7 @@ class JobTemplateTemplateContainerEnv(dict):
         """
         :param str name: Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
         :param str value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
-        :param 'JobTemplateTemplateContainerEnvValueSourceArgs' value_source: Source for the environment variable's value.
+        :param 'JobTemplateTemplateContainerEnvValueSourceArrgs' value_source: Source for the environment variable's value.
                Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
@@ -825,7 +825,7 @@ class JobTemplateTemplateContainerEnv(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateContainerEnvValueSource(dict):
+calass JobTemplateTemplateContainerEnvValueSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -846,7 +846,7 @@ class JobTemplateTemplateContainerEnvValueSource(dict):
     def __init__(__self__, *,
                  secret_key_ref: Optional['outputs.JobTemplateTemplateContainerEnvValueSourceSecretKeyRef'] = None):
         """
-        :param 'JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs' secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
+        :param 'JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrgs' secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
                Structure is documented below.
         """
         if secret_key_ref is not None:
@@ -863,7 +863,7 @@ class JobTemplateTemplateContainerEnvValueSource(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateContainerEnvValueSourceSecretKeyRef(dict):
+calass JobTemplateTemplateContainerEnvValueSourceSecretKeyRef(dict):
     def __init__(__self__, *,
                  secret: str,
                  version: str):
@@ -892,7 +892,7 @@ class JobTemplateTemplateContainerEnvValueSourceSecretKeyRef(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateContainerPort(dict):
+calass JobTemplateTemplateContainerPort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -940,7 +940,7 @@ class JobTemplateTemplateContainerPort(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateContainerResources(dict):
+calass JobTemplateTemplateContainerResources(dict):
     def __init__(__self__, *,
                  limits: Optional[Mapping[str, str]] = None):
         """
@@ -959,7 +959,7 @@ class JobTemplateTemplateContainerResources(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateContainerVolumeMount(dict):
+calass JobTemplateTemplateContainerVolumeMount(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1005,7 +1005,7 @@ class JobTemplateTemplateContainerVolumeMount(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateVolume(dict):
+calass JobTemplateTemplateVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1032,9 +1032,9 @@ class JobTemplateTemplateVolume(dict):
                  secret: Optional['outputs.JobTemplateTemplateVolumeSecret'] = None):
         """
         :param str name: Volume's name.
-        :param 'JobTemplateTemplateVolumeCloudSqlInstanceArgs' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        :param 'JobTemplateTemplateVolumeCloudSqlInstanceArrgs' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
-        :param 'JobTemplateTemplateVolumeSecretArgs' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        :param 'JobTemplateTemplateVolumeSecretArrgs' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
@@ -1078,7 +1078,7 @@ class JobTemplateTemplateVolume(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateVolumeCloudSqlInstance(dict):
+calass JobTemplateTemplateVolumeCloudSqlInstance(dict):
     def __init__(__self__, *,
                  instances: Optional[Sequence[str]] = None):
         """
@@ -1097,7 +1097,7 @@ class JobTemplateTemplateVolumeCloudSqlInstance(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateVolumeEmptyDir(dict):
+calass JobTemplateTemplateVolumeEmptyDir(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1149,7 +1149,7 @@ class JobTemplateTemplateVolumeEmptyDir(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateVolumeSecret(dict):
+calass JobTemplateTemplateVolumeSecret(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1174,7 +1174,7 @@ class JobTemplateTemplateVolumeSecret(dict):
         """
         :param str secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
         :param int default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
-        :param Sequence['JobTemplateTemplateVolumeSecretItemArgs'] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+        :param Sequence['JobTemplateTemplateVolumeSecretItemArrgs'] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
                Structure is documented below.
         """
         pulumi.set(__self__, "secret", secret)
@@ -1210,7 +1210,7 @@ class JobTemplateTemplateVolumeSecret(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateVolumeSecretItem(dict):
+calass JobTemplateTemplateVolumeSecretItem(dict):
     def __init__(__self__, *,
                  path: str,
                  version: str,
@@ -1251,7 +1251,7 @@ class JobTemplateTemplateVolumeSecretItem(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateVpcAccess(dict):
+calass JobTemplateTemplateVpcAccess(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1277,7 +1277,7 @@ class JobTemplateTemplateVpcAccess(dict):
         :param str connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param str egress: Traffic VPC egress settings.
                Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
-        :param Sequence['JobTemplateTemplateVpcAccessNetworkInterfaceArgs'] network_interfaces: Direct VPC egress settings. Currently only single network interface is supported.
+        :param Sequence['JobTemplateTemplateVpcAccessNetworkInterfaceArrgs'] network_interfaces: Direct VPC egress settings. Currently only single network interface is supported.
                Structure is documented below.
         """
         if connector is not None:
@@ -1315,7 +1315,7 @@ class JobTemplateTemplateVpcAccess(dict):
 
 
 @pulumi.output_type
-class JobTemplateTemplateVpcAccessNetworkInterface(dict):
+calass JobTemplateTemplateVpcAccessNetworkInterface(dict):
     def __init__(__self__, *,
                  network: Optional[str] = None,
                  subnetwork: Optional[str] = None,
@@ -1370,7 +1370,7 @@ class JobTemplateTemplateVpcAccessNetworkInterface(dict):
 
 
 @pulumi.output_type
-class JobTerminalCondition(dict):
+calass JobTerminalCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1512,7 +1512,7 @@ class JobTerminalCondition(dict):
 
 
 @pulumi.output_type
-class ServiceBinaryAuthorization(dict):
+calass ServiceBinaryAuthorization(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1562,7 +1562,7 @@ class ServiceBinaryAuthorization(dict):
 
 
 @pulumi.output_type
-class ServiceCondition(dict):
+calass ServiceCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1704,7 +1704,7 @@ class ServiceCondition(dict):
 
 
 @pulumi.output_type
-class ServiceIamBindingCondition(dict):
+calass ServiceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1731,7 +1731,7 @@ class ServiceIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class ServiceIamMemberCondition(dict):
+calass ServiceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1758,7 +1758,7 @@ class ServiceIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class ServiceTemplate(dict):
+calass ServiceTemplate(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1805,7 +1805,7 @@ class ServiceTemplate(dict):
                Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
                This field follows Kubernetes annotations' namespacing, limits, and rules.
-        :param Sequence['ServiceTemplateContainerArgs'] containers: Holds the containers that define the unit of execution for this Service.
+        :param Sequence['ServiceTemplateContainerArrgs'] containers: Holds the containers that define the unit of execution for this Service.
                Structure is documented below.
         :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param str execution_environment: The sandbox environment to host this Revision.
@@ -1816,15 +1816,15 @@ class ServiceTemplate(dict):
                All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         :param int max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
         :param str revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
-        :param 'ServiceTemplateScalingArgs' scaling: Scaling settings for this Revision.
+        :param 'ServiceTemplateScalingArrgs' scaling: Scaling settings for this Revision.
                Structure is documented below.
         :param str service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
         :param bool session_affinity: Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
         :param str timeout: Max allowed time for an instance to respond to a request.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-        :param Sequence['ServiceTemplateVolumeArgs'] volumes: A list of Volumes to make available to containers.
+        :param Sequence['ServiceTemplateVolumeArrgs'] volumes: A list of Volumes to make available to containers.
                Structure is documented below.
-        :param 'ServiceTemplateVpcAccessArgs' vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        :param 'ServiceTemplateVpcAccessArrgs' vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
                Structure is documented below.
         """
         if annotations is not None:
@@ -1972,7 +1972,7 @@ class ServiceTemplate(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainer(dict):
+calass ServiceTemplateContainer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2015,19 +2015,19 @@ class ServiceTemplateContainer(dict):
         :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence[str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param Sequence['ServiceTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
+        :param Sequence['ServiceTemplateContainerEnvArrgs'] envs: List of environment variables to set in the container.
                Structure is documented below.
-        :param 'ServiceTemplateContainerLivenessProbeArgs' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param 'ServiceTemplateContainerLivenessProbeArrgs' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                Structure is documented below.
         :param str name: Name of the container specified as a DNS_LABEL.
-        :param Sequence['ServiceTemplateContainerPortArgs'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+        :param Sequence['ServiceTemplateContainerPortArrgs'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
                Structure is documented below.
-        :param 'ServiceTemplateContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param 'ServiceTemplateContainerResourcesArrgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
-        :param 'ServiceTemplateContainerStartupProbeArgs' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param 'ServiceTemplateContainerStartupProbeArrgs' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                Structure is documented below.
-        :param Sequence['ServiceTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
+        :param Sequence['ServiceTemplateContainerVolumeMountArrgs'] volume_mounts: Volume to mount into the container's filesystem.
                Structure is documented below.
         :param str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
@@ -2157,7 +2157,7 @@ class ServiceTemplateContainer(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerEnv(dict):
+calass ServiceTemplateContainerEnv(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2182,7 +2182,7 @@ class ServiceTemplateContainerEnv(dict):
         """
         :param str name: Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
         :param str value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
-        :param 'ServiceTemplateContainerEnvValueSourceArgs' value_source: Source for the environment variable's value.
+        :param 'ServiceTemplateContainerEnvValueSourceArrgs' value_source: Source for the environment variable's value.
                Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
@@ -2218,7 +2218,7 @@ class ServiceTemplateContainerEnv(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerEnvValueSource(dict):
+calass ServiceTemplateContainerEnvValueSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2239,7 +2239,7 @@ class ServiceTemplateContainerEnvValueSource(dict):
     def __init__(__self__, *,
                  secret_key_ref: Optional['outputs.ServiceTemplateContainerEnvValueSourceSecretKeyRef'] = None):
         """
-        :param 'ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs' secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
+        :param 'ServiceTemplateContainerEnvValueSourceSecretKeyRefArrgs' secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
                Structure is documented below.
         """
         if secret_key_ref is not None:
@@ -2256,7 +2256,7 @@ class ServiceTemplateContainerEnvValueSource(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerEnvValueSourceSecretKeyRef(dict):
+calass ServiceTemplateContainerEnvValueSourceSecretKeyRef(dict):
     def __init__(__self__, *,
                  secret: str,
                  version: Optional[str] = None):
@@ -2286,7 +2286,7 @@ class ServiceTemplateContainerEnvValueSourceSecretKeyRef(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerLivenessProbe(dict):
+calass ServiceTemplateContainerLivenessProbe(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2321,9 +2321,9 @@ class ServiceTemplateContainerLivenessProbe(dict):
                  timeout_seconds: Optional[int] = None):
         """
         :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-        :param 'ServiceTemplateContainerLivenessProbeGrpcArgs' grpc: GRPC specifies an action involving a GRPC port.
+        :param 'ServiceTemplateContainerLivenessProbeGrpcArrgs' grpc: GRPC specifies an action involving a GRPC port.
                Structure is documented below.
-        :param 'ServiceTemplateContainerLivenessProbeHttpGetArgs' http_get: HTTPGet specifies the http request to perform.
+        :param 'ServiceTemplateContainerLivenessProbeHttpGetArrgs' http_get: HTTPGet specifies the http request to perform.
                Structure is documented below.
         :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
@@ -2394,7 +2394,7 @@ class ServiceTemplateContainerLivenessProbe(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerLivenessProbeGrpc(dict):
+calass ServiceTemplateContainerLivenessProbeGrpc(dict):
     def __init__(__self__, *,
                  port: Optional[int] = None,
                  service: Optional[str] = None):
@@ -2431,7 +2431,7 @@ class ServiceTemplateContainerLivenessProbeGrpc(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerLivenessProbeHttpGet(dict):
+calass ServiceTemplateContainerLivenessProbeHttpGet(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2454,7 +2454,7 @@ class ServiceTemplateContainerLivenessProbeHttpGet(dict):
                  path: Optional[str] = None,
                  port: Optional[int] = None):
         """
-        :param Sequence['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+        :param Sequence['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param str path: Path to access on the HTTP server. Defaults to '/'.
         :param int port: Port number to access on the container. Must be in the range 1 to 65535.
@@ -2495,7 +2495,7 @@ class ServiceTemplateContainerLivenessProbeHttpGet(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerLivenessProbeHttpGetHttpHeader(dict):
+calass ServiceTemplateContainerLivenessProbeHttpGetHttpHeader(dict):
     def __init__(__self__, *,
                  name: str,
                  value: Optional[str] = None):
@@ -2525,7 +2525,7 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeader(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerPort(dict):
+calass ServiceTemplateContainerPort(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2573,7 +2573,7 @@ class ServiceTemplateContainerPort(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerResources(dict):
+calass ServiceTemplateContainerResources(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2635,7 +2635,7 @@ class ServiceTemplateContainerResources(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerStartupProbe(dict):
+calass ServiceTemplateContainerStartupProbe(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2673,13 +2673,13 @@ class ServiceTemplateContainerStartupProbe(dict):
                  timeout_seconds: Optional[int] = None):
         """
         :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-        :param 'ServiceTemplateContainerStartupProbeGrpcArgs' grpc: GRPC specifies an action involving a GRPC port.
+        :param 'ServiceTemplateContainerStartupProbeGrpcArrgs' grpc: GRPC specifies an action involving a GRPC port.
                Structure is documented below.
-        :param 'ServiceTemplateContainerStartupProbeHttpGetArgs' http_get: HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+        :param 'ServiceTemplateContainerStartupProbeHttpGetArrgs' http_get: HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
                Structure is documented below.
         :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
-        :param 'ServiceTemplateContainerStartupProbeTcpSocketArgs' tcp_socket: TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+        :param 'ServiceTemplateContainerStartupProbeTcpSocketArrgs' tcp_socket: TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
                Structure is documented below.
         :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
@@ -2759,7 +2759,7 @@ class ServiceTemplateContainerStartupProbe(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerStartupProbeGrpc(dict):
+calass ServiceTemplateContainerStartupProbeGrpc(dict):
     def __init__(__self__, *,
                  port: Optional[int] = None,
                  service: Optional[str] = None):
@@ -2796,7 +2796,7 @@ class ServiceTemplateContainerStartupProbeGrpc(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerStartupProbeHttpGet(dict):
+calass ServiceTemplateContainerStartupProbeHttpGet(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2819,7 +2819,7 @@ class ServiceTemplateContainerStartupProbeHttpGet(dict):
                  path: Optional[str] = None,
                  port: Optional[int] = None):
         """
-        :param Sequence['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+        :param Sequence['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param str path: Path to access on the HTTP server. Defaults to '/'.
         :param int port: Port number to access on the container. Must be in the range 1 to 65535.
@@ -2860,7 +2860,7 @@ class ServiceTemplateContainerStartupProbeHttpGet(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerStartupProbeHttpGetHttpHeader(dict):
+calass ServiceTemplateContainerStartupProbeHttpGetHttpHeader(dict):
     def __init__(__self__, *,
                  name: str,
                  value: Optional[str] = None):
@@ -2890,7 +2890,7 @@ class ServiceTemplateContainerStartupProbeHttpGetHttpHeader(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerStartupProbeTcpSocket(dict):
+calass ServiceTemplateContainerStartupProbeTcpSocket(dict):
     def __init__(__self__, *,
                  port: Optional[int] = None):
         """
@@ -2911,7 +2911,7 @@ class ServiceTemplateContainerStartupProbeTcpSocket(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateContainerVolumeMount(dict):
+calass ServiceTemplateContainerVolumeMount(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2957,7 +2957,7 @@ class ServiceTemplateContainerVolumeMount(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateScaling(dict):
+calass ServiceTemplateScaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3007,7 +3007,7 @@ class ServiceTemplateScaling(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateVolume(dict):
+calass ServiceTemplateVolume(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3034,9 +3034,9 @@ class ServiceTemplateVolume(dict):
                  secret: Optional['outputs.ServiceTemplateVolumeSecret'] = None):
         """
         :param str name: Volume's name.
-        :param 'ServiceTemplateVolumeCloudSqlInstanceArgs' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        :param 'ServiceTemplateVolumeCloudSqlInstanceArrgs' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
-        :param 'ServiceTemplateVolumeSecretArgs' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        :param 'ServiceTemplateVolumeSecretArrgs' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
@@ -3080,7 +3080,7 @@ class ServiceTemplateVolume(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateVolumeCloudSqlInstance(dict):
+calass ServiceTemplateVolumeCloudSqlInstance(dict):
     def __init__(__self__, *,
                  instances: Optional[Sequence[str]] = None):
         """
@@ -3099,7 +3099,7 @@ class ServiceTemplateVolumeCloudSqlInstance(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateVolumeEmptyDir(dict):
+calass ServiceTemplateVolumeEmptyDir(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3155,7 +3155,7 @@ class ServiceTemplateVolumeEmptyDir(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateVolumeSecret(dict):
+calass ServiceTemplateVolumeSecret(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3180,7 +3180,7 @@ class ServiceTemplateVolumeSecret(dict):
         """
         :param str secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
         :param int default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
-        :param Sequence['ServiceTemplateVolumeSecretItemArgs'] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+        :param Sequence['ServiceTemplateVolumeSecretItemArrgs'] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
                Structure is documented below.
         """
         pulumi.set(__self__, "secret", secret)
@@ -3216,7 +3216,7 @@ class ServiceTemplateVolumeSecret(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateVolumeSecretItem(dict):
+calass ServiceTemplateVolumeSecretItem(dict):
     def __init__(__self__, *,
                  path: str,
                  mode: Optional[int] = None,
@@ -3258,7 +3258,7 @@ class ServiceTemplateVolumeSecretItem(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateVpcAccess(dict):
+calass ServiceTemplateVpcAccess(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3284,7 +3284,7 @@ class ServiceTemplateVpcAccess(dict):
         :param str connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param str egress: Traffic VPC egress settings.
                Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
-        :param Sequence['ServiceTemplateVpcAccessNetworkInterfaceArgs'] network_interfaces: Direct VPC egress settings. Currently only single network interface is supported.
+        :param Sequence['ServiceTemplateVpcAccessNetworkInterfaceArrgs'] network_interfaces: Direct VPC egress settings. Currently only single network interface is supported.
                Structure is documented below.
         """
         if connector is not None:
@@ -3322,7 +3322,7 @@ class ServiceTemplateVpcAccess(dict):
 
 
 @pulumi.output_type
-class ServiceTemplateVpcAccessNetworkInterface(dict):
+calass ServiceTemplateVpcAccessNetworkInterface(dict):
     def __init__(__self__, *,
                  network: Optional[str] = None,
                  subnetwork: Optional[str] = None,
@@ -3373,7 +3373,7 @@ class ServiceTemplateVpcAccessNetworkInterface(dict):
 
 
 @pulumi.output_type
-class ServiceTerminalCondition(dict):
+calass ServiceTerminalCondition(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -3515,7 +3515,7 @@ class ServiceTerminalCondition(dict):
 
 
 @pulumi.output_type
-class ServiceTraffic(dict):
+calass ServiceTraffic(dict):
     def __init__(__self__, *,
                  percent: Optional[int] = None,
                  revision: Optional[str] = None,
@@ -3572,7 +3572,7 @@ class ServiceTraffic(dict):
 
 
 @pulumi.output_type
-class ServiceTrafficStatus(dict):
+calass ServiceTrafficStatus(dict):
     def __init__(__self__, *,
                  percent: Optional[int] = None,
                  revision: Optional[str] = None,

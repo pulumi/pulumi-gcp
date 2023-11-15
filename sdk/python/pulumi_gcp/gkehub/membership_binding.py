@@ -11,10 +11,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['MembershipBindingArgs', 'MembershipBinding']
+__all__ = ['MembershipBindingArrgs', 'MembershipBinding']
 
 @pulumi.input_type
-class MembershipBindingArgs:
+calass MembershipBindingArrgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  membership_binding_id: pulumi.Input[str],
@@ -130,7 +130,7 @@ class MembershipBindingArgs:
 
 
 @pulumi.input_type
-class _MembershipBindingState:
+calass _MembershipBindingState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class _MembershipBindingState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]]] = None,
+                 states: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArrgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -168,7 +168,7 @@ class _MembershipBindingState:
                and default labels configured on the provider.
         :param pulumi.Input[str] scope: A Workspace resource name in the format
                `projects/*/locations/*/scopes/*`.
-        :param pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]] states: State of the membership binding resource.
+        :param pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArrgs']]] states: State of the membership binding resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the MembershipBinding was updated in UTC.
@@ -345,7 +345,7 @@ class _MembershipBindingState:
 
     @property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]]]:
+    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArrgs']]]]:
         """
         State of the membership binding resource.
         Structure is documented below.
@@ -353,7 +353,7 @@ class _MembershipBindingState:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArgs']]]]):
+    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipBindingStateArrgs']]]]):
         pulumi.set(self, "states", value)
 
     @property
@@ -381,7 +381,7 @@ class _MembershipBindingState:
         pulumi.set(self, "update_time", value)
 
 
-class MembershipBinding(pulumi.CustomResource):
+calass MembershipBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -441,7 +441,7 @@ class MembershipBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: MembershipBindingArgs,
+                 args: MembershipBindingArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         MembershipBinding is a subresource of a Membership, representing what Fleet Scopes (or other, future Fleet resources) a Membership is bound to.
@@ -471,12 +471,12 @@ class MembershipBinding(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param MembershipBindingArgs args: The arguments to use to populate this resource's properties.
+        :param MembershipBindingArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(MembershipBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(MembershipBindingArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -498,7 +498,7 @@ class MembershipBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = MembershipBindingArgs.__new__(MembershipBindingArgs)
+            __props__ = MembershipBindingArrgs.__new__(MembershipBindingArrgs)
 
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -545,7 +545,7 @@ class MembershipBinding(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             scope: Optional[pulumi.Input[str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipBindingStateArgs']]]]] = None,
+            states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipBindingStateArrgs']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'MembershipBinding':
         """
@@ -575,7 +575,7 @@ class MembershipBinding(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] scope: A Workspace resource name in the format
                `projects/*/locations/*/scopes/*`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipBindingStateArgs']]]] states: State of the membership binding resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipBindingStateArrgs']]]] states: State of the membership binding resource.
                Structure is documented below.
         :param pulumi.Input[str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[str] update_time: Time the MembershipBinding was updated in UTC.

@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['AiIndexEndpointArgs', 'AiIndexEndpoint']
+__all__ = ['AiIndexEndpointArrgs', 'AiIndexEndpoint']
 
 @pulumi.input_type
-class AiIndexEndpointArgs:
+calass AiIndexEndpointArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -149,7 +149,7 @@ class AiIndexEndpointArgs:
 
 
 @pulumi.input_type
-class _AiIndexEndpointState:
+calass _AiIndexEndpointState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -400,7 +400,7 @@ class _AiIndexEndpointState:
         pulumi.set(self, "update_time", value)
 
 
-class AiIndexEndpoint(pulumi.CustomResource):
+calass AiIndexEndpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -507,7 +507,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AiIndexEndpointArgs,
+                 args: AiIndexEndpointArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         An endpoint indexes are deployed into. An index endpoint can have multiple deployed indexes.
@@ -581,12 +581,12 @@ class AiIndexEndpoint(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param AiIndexEndpointArgs args: The arguments to use to populate this resource's properties.
+        :param AiIndexEndpointArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AiIndexEndpointArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AiIndexEndpointArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -609,7 +609,7 @@ class AiIndexEndpoint(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AiIndexEndpointArgs.__new__(AiIndexEndpointArgs)
+            __props__ = AiIndexEndpointArrgs.__new__(AiIndexEndpointArrgs)
 
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:

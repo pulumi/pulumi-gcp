@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the email address of an organization's Access Approval service account.
@@ -120,12 +119,6 @@ func (o GetOrganizationServiceAccountResultOutput) ToGetOrganizationServiceAccou
 
 func (o GetOrganizationServiceAccountResultOutput) ToGetOrganizationServiceAccountResultOutputWithContext(ctx context.Context) GetOrganizationServiceAccountResultOutput {
 	return o
-}
-
-func (o GetOrganizationServiceAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOrganizationServiceAccountResult] {
-	return pulumix.Output[GetOrganizationServiceAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The email address of the service account. This value is

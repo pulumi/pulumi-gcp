@@ -10,19 +10,19 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AccessApprovalSettingsEnrolledServiceArgs',
-    'IAMBindingConditionArgs',
-    'IAMMemberConditionArgs',
-    'IamAuditConfigAuditLogConfigArgs',
-    'OrganizationPolicyBooleanPolicyArgs',
-    'OrganizationPolicyListPolicyArgs',
-    'OrganizationPolicyListPolicyAllowArgs',
-    'OrganizationPolicyListPolicyDenyArgs',
-    'OrganizationPolicyRestorePolicyArgs',
+    'AccessApprovalSettingsEnrolledServiceArrgs',
+    'IAMBindingConditionArrgs',
+    'IAMMemberConditionArrgs',
+    'IamAuditConfigAuditLogConfigArrgs',
+    'OrganizationPolicyBooleanPolicyArrgs',
+    'OrganizationPolicyListPolicyArrgs',
+    'OrganizationPolicyListPolicyAllowArrgs',
+    'OrganizationPolicyListPolicyDenyArrgs',
+    'OrganizationPolicyRestorePolicyArrgs',
 ]
 
 @pulumi.input_type
-class AccessApprovalSettingsEnrolledServiceArgs:
+calass AccessApprovalSettingsEnrolledServiceArrgs:
     def __init__(__self__, *,
                  cloud_product: pulumi.Input[str],
                  enrollment_level: Optional[pulumi.Input[str]] = None):
@@ -112,7 +112,7 @@ class AccessApprovalSettingsEnrolledServiceArgs:
 
 
 @pulumi.input_type
-class IAMBindingConditionArgs:
+calass IAMBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -151,7 +151,7 @@ class IAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class IAMMemberConditionArgs:
+calass IAMMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -212,7 +212,7 @@ class IAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class IamAuditConfigAuditLogConfigArgs:
+calass IamAuditConfigAuditLogConfigArrgs:
     def __init__(__self__, *,
                  log_type: pulumi.Input[str],
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -250,7 +250,7 @@ class IamAuditConfigAuditLogConfigArgs:
 
 
 @pulumi.input_type
-class OrganizationPolicyBooleanPolicyArgs:
+calass OrganizationPolicyBooleanPolicyArrgs:
     def __init__(__self__, *,
                  enforced: pulumi.Input[bool]):
         """
@@ -272,14 +272,14 @@ class OrganizationPolicyBooleanPolicyArgs:
 
 
 @pulumi.input_type
-class OrganizationPolicyListPolicyArgs:
+calass OrganizationPolicyListPolicyArrgs:
     def __init__(__self__, *,
-                 allow: Optional[pulumi.Input['OrganizationPolicyListPolicyAllowArgs']] = None,
-                 deny: Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArgs']] = None,
+                 allow: Optional[pulumi.Input['OrganizationPolicyListPolicyAllowArrgs']] = None,
+                 deny: Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArrgs']] = None,
                  inherit_from_parent: Optional[pulumi.Input[bool]] = None,
                  suggested_value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['OrganizationPolicyListPolicyAllowArgs'] allow: or `deny` - (Optional) One or the other must be set.
+        :param pulumi.Input['OrganizationPolicyListPolicyAllowArrgs'] allow: or `deny` - (Optional) One or the other must be set.
         :param pulumi.Input[bool] inherit_from_parent: If set to true, the values from the effective Policy of the parent resource
                are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
                
@@ -297,23 +297,23 @@ class OrganizationPolicyListPolicyArgs:
 
     @property
     @pulumi.getter
-    def allow(self) -> Optional[pulumi.Input['OrganizationPolicyListPolicyAllowArgs']]:
+    def allow(self) -> Optional[pulumi.Input['OrganizationPolicyListPolicyAllowArrgs']]:
         """
         or `deny` - (Optional) One or the other must be set.
         """
         return pulumi.get(self, "allow")
 
     @allow.setter
-    def allow(self, value: Optional[pulumi.Input['OrganizationPolicyListPolicyAllowArgs']]):
+    def allow(self, value: Optional[pulumi.Input['OrganizationPolicyListPolicyAllowArrgs']]):
         pulumi.set(self, "allow", value)
 
     @property
     @pulumi.getter
-    def deny(self) -> Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArgs']]:
+    def deny(self) -> Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArrgs']]:
         return pulumi.get(self, "deny")
 
     @deny.setter
-    def deny(self, value: Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArgs']]):
+    def deny(self, value: Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArrgs']]):
         pulumi.set(self, "deny", value)
 
     @property
@@ -345,7 +345,7 @@ class OrganizationPolicyListPolicyArgs:
 
 
 @pulumi.input_type
-class OrganizationPolicyListPolicyAllowArgs:
+calass OrganizationPolicyListPolicyAllowArrgs:
     def __init__(__self__, *,
                  all: Optional[pulumi.Input[bool]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -384,7 +384,7 @@ class OrganizationPolicyListPolicyAllowArgs:
 
 
 @pulumi.input_type
-class OrganizationPolicyListPolicyDenyArgs:
+calass OrganizationPolicyListPolicyDenyArrgs:
     def __init__(__self__, *,
                  all: Optional[pulumi.Input[bool]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -423,7 +423,7 @@ class OrganizationPolicyListPolicyDenyArgs:
 
 
 @pulumi.input_type
-class OrganizationPolicyRestorePolicyArgs:
+calass OrganizationPolicyRestorePolicyArrgs:
     def __init__(__self__, *,
                  default: pulumi.Input[bool]):
         """

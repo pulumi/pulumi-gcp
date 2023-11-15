@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['VpcscConfigArgs', 'VpcscConfig']
+__all__ = ['VpcscConfigArrgs', 'VpcscConfig']
 
 @pulumi.input_type
-class VpcscConfigArgs:
+calass VpcscConfigArrgs:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -72,7 +72,7 @@ class VpcscConfigArgs:
 
 
 @pulumi.input_type
-class _VpcscConfigState:
+calass _VpcscConfigState:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -149,7 +149,7 @@ class _VpcscConfigState:
         pulumi.set(self, "vpcsc_policy", value)
 
 
-class VpcscConfig(pulumi.CustomResource):
+calass VpcscConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -200,7 +200,7 @@ class VpcscConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[VpcscConfigArgs] = None,
+                 args: Optional[VpcscConfigArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -233,12 +233,12 @@ class VpcscConfig(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param VpcscConfigArgs args: The arguments to use to populate this resource's properties.
+        :param VpcscConfigArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(VpcscConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(VpcscConfigArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -257,7 +257,7 @@ class VpcscConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = VpcscConfigArgs.__new__(VpcscConfigArgs)
+            __props__ = VpcscConfigArrgs.__new__(VpcscConfigArrgs)
 
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project

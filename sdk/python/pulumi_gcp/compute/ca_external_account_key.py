@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['CaExternalAccountKeyArgs', 'CaExternalAccountKey']
+__all__ = ['CaExternalAccountKeyArrgs', 'CaExternalAccountKey']
 
 @pulumi.input_type
-class CaExternalAccountKeyArgs:
+calass CaExternalAccountKeyArrgs:
     def __init__(__self__, *,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -54,7 +54,7 @@ class CaExternalAccountKeyArgs:
 
 
 @pulumi.input_type
-class _CaExternalAccountKeyState:
+calass _CaExternalAccountKeyState:
     def __init__(__self__, *,
                  b64_mac_key: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
@@ -149,7 +149,7 @@ class _CaExternalAccountKeyState:
         pulumi.set(self, "project", value)
 
 
-class CaExternalAccountKey(pulumi.CustomResource):
+calass CaExternalAccountKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -202,7 +202,7 @@ class CaExternalAccountKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[CaExternalAccountKeyArgs] = None,
+                 args: Optional[CaExternalAccountKeyArrgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A representation of an ExternalAccountKey used for external account binding within ACME.
@@ -240,12 +240,12 @@ class CaExternalAccountKey(pulumi.CustomResource):
         This resource does not support import.
 
         :param str resource_name: The name of the resource.
-        :param CaExternalAccountKeyArgs args: The arguments to use to populate this resource's properties.
+        :param CaExternalAccountKeyArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CaExternalAccountKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CaExternalAccountKeyArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -263,7 +263,7 @@ class CaExternalAccountKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CaExternalAccountKeyArgs.__new__(CaExternalAccountKeyArgs)
+            __props__ = CaExternalAccountKeyArrgs.__new__(CaExternalAccountKeyArrgs)
 
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project

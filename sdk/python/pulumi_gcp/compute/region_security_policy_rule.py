@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRule']
+__all__ = ['RegionSecurityPolicyRuleArrgs', 'RegionSecurityPolicyRule']
 
 @pulumi.input_type
-class RegionSecurityPolicyRuleArgs:
+calass RegionSecurityPolicyRuleArrgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
                  priority: pulumi.Input[int],
                  region: pulumi.Input[str],
                  security_policy: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']] = None,
-                 network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
+                 match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArrgs']] = None,
+                 network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArrgs']] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -42,10 +42,10 @@ class RegionSecurityPolicyRuleArgs:
                
                - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input['RegionSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input['RegionSecurityPolicyRuleMatchArrgs'] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
-        :param pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs'] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+        :param pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArrgs'] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
                The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
                Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
                Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
@@ -145,7 +145,7 @@ class RegionSecurityPolicyRuleArgs:
 
     @property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']]:
+    def match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArrgs']]:
         """
         A match condition that incoming traffic is evaluated against.
         If it evaluates to true, the corresponding 'action' is enforced.
@@ -154,12 +154,12 @@ class RegionSecurityPolicyRuleArgs:
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']]):
+    def match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArrgs']]):
         pulumi.set(self, "match", value)
 
     @property
     @pulumi.getter(name="networkMatch")
-    def network_match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']]:
+    def network_match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArrgs']]:
         """
         A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
         The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
@@ -174,7 +174,7 @@ class RegionSecurityPolicyRuleArgs:
         return pulumi.get(self, "network_match")
 
     @network_match.setter
-    def network_match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']]):
+    def network_match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArrgs']]):
         pulumi.set(self, "network_match", value)
 
     @property
@@ -204,12 +204,12 @@ class RegionSecurityPolicyRuleArgs:
 
 
 @pulumi.input_type
-class _RegionSecurityPolicyRuleState:
+calass _RegionSecurityPolicyRuleState:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']] = None,
-                 network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
+                 match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArrgs']] = None,
+                 network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArrgs']] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -224,10 +224,10 @@ class _RegionSecurityPolicyRuleState:
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input['RegionSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input['RegionSecurityPolicyRuleMatchArrgs'] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
-        :param pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs'] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+        :param pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArrgs'] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
                The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
                Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
                Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
@@ -298,7 +298,7 @@ class _RegionSecurityPolicyRuleState:
 
     @property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']]:
+    def match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArrgs']]:
         """
         A match condition that incoming traffic is evaluated against.
         If it evaluates to true, the corresponding 'action' is enforced.
@@ -307,12 +307,12 @@ class _RegionSecurityPolicyRuleState:
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']]):
+    def match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArrgs']]):
         pulumi.set(self, "match", value)
 
     @property
     @pulumi.getter(name="networkMatch")
-    def network_match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']]:
+    def network_match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArrgs']]:
         """
         A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
         The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
@@ -327,7 +327,7 @@ class _RegionSecurityPolicyRuleState:
         return pulumi.get(self, "network_match")
 
     @network_match.setter
-    def network_match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']]):
+    def network_match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArrgs']]):
         pulumi.set(self, "network_match", value)
 
     @property
@@ -397,15 +397,15 @@ class _RegionSecurityPolicyRuleState:
         pulumi.set(self, "security_policy", value)
 
 
-class RegionSecurityPolicyRule(pulumi.CustomResource):
+calass RegionSecurityPolicyRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']]] = None,
-                 network_match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArrgs']]] = None,
+                 network_match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArrgs']]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -430,9 +430,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule",
             priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
+            match=gcp.compute.RegionSecurityPolicyRuleMatchArrgs(
                 versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
+                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArrgs(
                     src_ip_ranges=["10.10.0.0/16"],
                 ),
             ),
@@ -456,9 +456,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule one",
             priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
+            match=gcp.compute.RegionSecurityPolicyRuleMatchArrgs(
                 versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
+                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArrgs(
                     src_ip_ranges=["10.10.0.0/16"],
                 ),
             ),
@@ -470,9 +470,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule two",
             priority=101,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
+            match=gcp.compute.RegionSecurityPolicyRuleMatchArrgs(
                 versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
+                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArrgs(
                     src_ip_ranges=[
                         "192.168.0.0/16",
                         "10.0.0.0/8",
@@ -494,7 +494,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             region="us-west2",
             description="policy for activating network DDoS protection for the desired region",
             type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
+            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArrgs(
                 ddos_protection="ADVANCED_PREVIEW",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -508,7 +508,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             region="us-west2",
             description="region security policy for network match",
             type="CLOUD_ARMOR_NETWORK",
-            user_defined_fields=[gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
+            user_defined_fields=[gcp.compute.RegionSecurityPolicyUserDefinedFieldArrgs(
                 name="SIG1_AT_0",
                 base="TCP",
                 offset=8,
@@ -522,9 +522,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=policynetworkmatch.name,
             description="custom rule for network match",
             priority=100,
-            network_match=gcp.compute.RegionSecurityPolicyRuleNetworkMatchArgs(
+            network_match=gcp.compute.RegionSecurityPolicyRuleNetworkMatchArrgs(
                 src_ip_ranges=["10.10.0.0/16"],
-                user_defined_fields=[gcp.compute.RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs(
+                user_defined_fields=[gcp.compute.RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrgs(
                     name="SIG1_AT_0",
                     values=["0x8F00"],
                 )],
@@ -563,10 +563,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArrgs']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArrgs']] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
                The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
                Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
                Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
@@ -591,7 +591,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionSecurityPolicyRuleArgs,
+                 args: RegionSecurityPolicyRuleArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -611,9 +611,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule",
             priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
+            match=gcp.compute.RegionSecurityPolicyRuleMatchArrgs(
                 versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
+                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArrgs(
                     src_ip_ranges=["10.10.0.0/16"],
                 ),
             ),
@@ -637,9 +637,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule one",
             priority=100,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
+            match=gcp.compute.RegionSecurityPolicyRuleMatchArrgs(
                 versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
+                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArrgs(
                     src_ip_ranges=["10.10.0.0/16"],
                 ),
             ),
@@ -651,9 +651,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=default.name,
             description="new rule two",
             priority=101,
-            match=gcp.compute.RegionSecurityPolicyRuleMatchArgs(
+            match=gcp.compute.RegionSecurityPolicyRuleMatchArrgs(
                 versioned_expr="SRC_IPS_V1",
-                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArgs(
+                config=gcp.compute.RegionSecurityPolicyRuleMatchConfigArrgs(
                     src_ip_ranges=[
                         "192.168.0.0/16",
                         "10.0.0.0/8",
@@ -675,7 +675,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             region="us-west2",
             description="policy for activating network DDoS protection for the desired region",
             type="CLOUD_ARMOR_NETWORK",
-            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
+            ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArrgs(
                 ddos_protection="ADVANCED_PREVIEW",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -689,7 +689,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             region="us-west2",
             description="region security policy for network match",
             type="CLOUD_ARMOR_NETWORK",
-            user_defined_fields=[gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
+            user_defined_fields=[gcp.compute.RegionSecurityPolicyUserDefinedFieldArrgs(
                 name="SIG1_AT_0",
                 base="TCP",
                 offset=8,
@@ -703,9 +703,9 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             security_policy=policynetworkmatch.name,
             description="custom rule for network match",
             priority=100,
-            network_match=gcp.compute.RegionSecurityPolicyRuleNetworkMatchArgs(
+            network_match=gcp.compute.RegionSecurityPolicyRuleNetworkMatchArrgs(
                 src_ip_ranges=["10.10.0.0/16"],
-                user_defined_fields=[gcp.compute.RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs(
+                user_defined_fields=[gcp.compute.RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArrgs(
                     name="SIG1_AT_0",
                     values=["0x8F00"],
                 )],
@@ -736,12 +736,12 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RegionSecurityPolicyRuleArgs args: The arguments to use to populate this resource's properties.
+        :param RegionSecurityPolicyRuleArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionSecurityPolicyRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegionSecurityPolicyRuleArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -752,8 +752,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']]] = None,
-                 network_match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']]] = None,
+                 match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArrgs']]] = None,
+                 network_match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArrgs']]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -766,7 +766,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionSecurityPolicyRuleArgs.__new__(RegionSecurityPolicyRuleArgs)
+            __props__ = RegionSecurityPolicyRuleArrgs.__new__(RegionSecurityPolicyRuleArrgs)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
@@ -797,8 +797,8 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']]] = None,
-            network_match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']]] = None,
+            match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArrgs']]] = None,
+            network_match: Optional[pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArrgs']]] = None,
             preview: Optional[pulumi.Input[bool]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -818,10 +818,10 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against.
+        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleMatchArrgs']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArgs']] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+        :param pulumi.Input[pulumi.InputType['RegionSecurityPolicyRuleNetworkMatchArrgs']] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
                The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
                Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
                Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.

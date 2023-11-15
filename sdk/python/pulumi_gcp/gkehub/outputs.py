@@ -48,7 +48,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class FeatureIamBindingCondition(dict):
+calass FeatureIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -75,7 +75,7 @@ class FeatureIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class FeatureIamMemberCondition(dict):
+calass FeatureIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -102,7 +102,7 @@ class FeatureIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class FeatureMembershipConfigmanagement(dict):
+calass FeatureMembershipConfigmanagement(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -131,10 +131,10 @@ class FeatureMembershipConfigmanagement(dict):
                  policy_controller: Optional['outputs.FeatureMembershipConfigmanagementPolicyController'] = None,
                  version: Optional[str] = None):
         """
-        :param 'FeatureMembershipConfigmanagementBinauthzArgs' binauthz: Binauthz configuration for the cluster. Structure is documented below.
-        :param 'FeatureMembershipConfigmanagementConfigSyncArgs' config_sync: Config Sync configuration for the cluster. Structure is documented below.
-        :param 'FeatureMembershipConfigmanagementHierarchyControllerArgs' hierarchy_controller: Hierarchy Controller configuration for the cluster. Structure is documented below.
-        :param 'FeatureMembershipConfigmanagementPolicyControllerArgs' policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementBinauthzArrgs' binauthz: Binauthz configuration for the cluster. Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementConfigSyncArrgs' config_sync: Config Sync configuration for the cluster. Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementHierarchyControllerArrgs' hierarchy_controller: Hierarchy Controller configuration for the cluster. Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementPolicyControllerArrgs' policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
         :param str version: Version of ACM installed.
         """
         if binauthz is not None:
@@ -190,7 +190,7 @@ class FeatureMembershipConfigmanagement(dict):
 
 
 @pulumi.output_type
-class FeatureMembershipConfigmanagementBinauthz(dict):
+calass FeatureMembershipConfigmanagementBinauthz(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
@@ -209,7 +209,7 @@ class FeatureMembershipConfigmanagementBinauthz(dict):
 
 
 @pulumi.output_type
-class FeatureMembershipConfigmanagementConfigSync(dict):
+calass FeatureMembershipConfigmanagementConfigSync(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -235,8 +235,8 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
                  prevent_drift: Optional[bool] = None,
                  source_format: Optional[str] = None):
         """
-        :param 'FeatureMembershipConfigmanagementConfigSyncGitArgs' git: (Optional) Structure is documented below.
-        :param 'FeatureMembershipConfigmanagementConfigSyncOciArgs' oci: (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementConfigSyncGitArrgs' git: (Optional) Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementConfigSyncOciArrgs' oci: (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
                
                Use either `git` or `oci` config option.
         :param bool prevent_drift: Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
@@ -287,7 +287,7 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
 
 
 @pulumi.output_type
-class FeatureMembershipConfigmanagementConfigSyncGit(dict):
+calass FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -421,7 +421,7 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
 
 
 @pulumi.output_type
-class FeatureMembershipConfigmanagementConfigSyncOci(dict):
+calass FeatureMembershipConfigmanagementConfigSyncOci(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -513,7 +513,7 @@ class FeatureMembershipConfigmanagementConfigSyncOci(dict):
 
 
 @pulumi.output_type
-class FeatureMembershipConfigmanagementHierarchyController(dict):
+calass FeatureMembershipConfigmanagementHierarchyController(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -575,7 +575,7 @@ class FeatureMembershipConfigmanagementHierarchyController(dict):
 
 
 @pulumi.output_type
-class FeatureMembershipConfigmanagementPolicyController(dict):
+calass FeatureMembershipConfigmanagementPolicyController(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -617,7 +617,7 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
         :param bool enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
         :param Sequence[str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         :param bool log_denies_enabled: Logs all denies and dry run failures.
-        :param 'FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs' monitoring: Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\\"cloudmonitoring\\", \\"prometheus\\"]. Default: [\\"cloudmonitoring\\", \\"prometheus\\"]
+        :param 'FeatureMembershipConfigmanagementPolicyControllerMonitoringArrgs' monitoring: Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\\"cloudmonitoring\\", \\"prometheus\\"]. Default: [\\"cloudmonitoring\\", \\"prometheus\\"]
         :param bool mutation_enabled: Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
         :param bool referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
         :param bool template_library_installed: Installs the default template library along with Policy Controller.
@@ -705,7 +705,7 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
 
 
 @pulumi.output_type
-class FeatureMembershipConfigmanagementPolicyControllerMonitoring(dict):
+calass FeatureMembershipConfigmanagementPolicyControllerMonitoring(dict):
     def __init__(__self__, *,
                  backends: Optional[Sequence[str]] = None):
         if backends is not None:
@@ -718,7 +718,7 @@ class FeatureMembershipConfigmanagementPolicyControllerMonitoring(dict):
 
 
 @pulumi.output_type
-class FeatureMembershipMesh(dict):
+calass FeatureMembershipMesh(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -765,7 +765,7 @@ class FeatureMembershipMesh(dict):
 
 
 @pulumi.output_type
-class FeatureResourceState(dict):
+calass FeatureResourceState(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -819,14 +819,14 @@ class FeatureResourceState(dict):
 
 
 @pulumi.output_type
-class FeatureSpec(dict):
+calass FeatureSpec(dict):
     def __init__(__self__, *,
                  fleetobservability: Optional['outputs.FeatureSpecFleetobservability'] = None,
                  multiclusteringress: Optional['outputs.FeatureSpecMulticlusteringress'] = None):
         """
-        :param 'FeatureSpecFleetobservabilityArgs' fleetobservability: Fleet Observability feature spec.
+        :param 'FeatureSpecFleetobservabilityArrgs' fleetobservability: Fleet Observability feature spec.
                Structure is documented below.
-        :param 'FeatureSpecMulticlusteringressArgs' multiclusteringress: Multicluster Ingress-specific spec.
+        :param 'FeatureSpecMulticlusteringressArrgs' multiclusteringress: Multicluster Ingress-specific spec.
                Structure is documented below.
         """
         if fleetobservability is not None:
@@ -854,7 +854,7 @@ class FeatureSpec(dict):
 
 
 @pulumi.output_type
-class FeatureSpecFleetobservability(dict):
+calass FeatureSpecFleetobservability(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -875,7 +875,7 @@ class FeatureSpecFleetobservability(dict):
     def __init__(__self__, *,
                  logging_config: Optional['outputs.FeatureSpecFleetobservabilityLoggingConfig'] = None):
         """
-        :param 'FeatureSpecFleetobservabilityLoggingConfigArgs' logging_config: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        :param 'FeatureSpecFleetobservabilityLoggingConfigArrgs' logging_config: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
                Structure is documented below.
         """
         if logging_config is not None:
@@ -892,7 +892,7 @@ class FeatureSpecFleetobservability(dict):
 
 
 @pulumi.output_type
-class FeatureSpecFleetobservabilityLoggingConfig(dict):
+calass FeatureSpecFleetobservabilityLoggingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -916,9 +916,9 @@ class FeatureSpecFleetobservabilityLoggingConfig(dict):
                  default_config: Optional['outputs.FeatureSpecFleetobservabilityLoggingConfigDefaultConfig'] = None,
                  fleet_scope_logs_config: Optional['outputs.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig'] = None):
         """
-        :param 'FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs' default_config: Specified if applying the default routing config to logs not specified in other configs.
+        :param 'FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrgs' default_config: Specified if applying the default routing config to logs not specified in other configs.
                Structure is documented below.
-        :param 'FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs' fleet_scope_logs_config: Specified if applying the routing config to all logs for all fleet scopes.
+        :param 'FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrgs' fleet_scope_logs_config: Specified if applying the routing config to all logs for all fleet scopes.
                Structure is documented below.
         """
         if default_config is not None:
@@ -946,7 +946,7 @@ class FeatureSpecFleetobservabilityLoggingConfig(dict):
 
 
 @pulumi.output_type
-class FeatureSpecFleetobservabilityLoggingConfigDefaultConfig(dict):
+calass FeatureSpecFleetobservabilityLoggingConfigDefaultConfig(dict):
     def __init__(__self__, *,
                  mode: Optional[str] = None):
         """
@@ -967,7 +967,7 @@ class FeatureSpecFleetobservabilityLoggingConfigDefaultConfig(dict):
 
 
 @pulumi.output_type
-class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig(dict):
+calass FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig(dict):
     def __init__(__self__, *,
                  mode: Optional[str] = None):
         """
@@ -988,7 +988,7 @@ class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig(dict):
 
 
 @pulumi.output_type
-class FeatureSpecMulticlusteringress(dict):
+calass FeatureSpecMulticlusteringress(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1023,11 +1023,11 @@ class FeatureSpecMulticlusteringress(dict):
 
 
 @pulumi.output_type
-class FeatureState(dict):
+calass FeatureState(dict):
     def __init__(__self__, *,
                  states: Optional[Sequence['outputs.FeatureStateState']] = None):
         """
-        :param Sequence['FeatureStateStateArgs'] states: (Output)
+        :param Sequence['FeatureStateStateArrgs'] states: (Output)
                Output only. The "running state" of the Feature in this Hub.
                Structure is documented below.
         """
@@ -1046,7 +1046,7 @@ class FeatureState(dict):
 
 
 @pulumi.output_type
-class FeatureStateState(dict):
+calass FeatureStateState(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1112,7 +1112,7 @@ class FeatureStateState(dict):
 
 
 @pulumi.output_type
-class MembershipAuthority(dict):
+calass MembershipAuthority(dict):
     def __init__(__self__, *,
                  issuer: str):
         pulumi.set(__self__, "issuer", issuer)
@@ -1124,7 +1124,7 @@ class MembershipAuthority(dict):
 
 
 @pulumi.output_type
-class MembershipBindingState(dict):
+calass MembershipBindingState(dict):
     def __init__(__self__, *,
                  code: Optional[str] = None):
         """
@@ -1145,7 +1145,7 @@ class MembershipBindingState(dict):
 
 
 @pulumi.output_type
-class MembershipEndpoint(dict):
+calass MembershipEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1166,7 +1166,7 @@ class MembershipEndpoint(dict):
     def __init__(__self__, *,
                  gke_cluster: Optional['outputs.MembershipEndpointGkeCluster'] = None):
         """
-        :param 'MembershipEndpointGkeClusterArgs' gke_cluster: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+        :param 'MembershipEndpointGkeClusterArrgs' gke_cluster: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         """
         if gke_cluster is not None:
@@ -1183,7 +1183,7 @@ class MembershipEndpoint(dict):
 
 
 @pulumi.output_type
-class MembershipEndpointGkeCluster(dict):
+calass MembershipEndpointGkeCluster(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1212,7 +1212,7 @@ class MembershipEndpointGkeCluster(dict):
 
 
 @pulumi.output_type
-class MembershipIamBindingCondition(dict):
+calass MembershipIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1239,7 +1239,7 @@ class MembershipIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class MembershipIamMemberCondition(dict):
+calass MembershipIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1266,7 +1266,7 @@ class MembershipIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class MembershipRbacRoleBindingRole(dict):
+calass MembershipRbacRoleBindingRole(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1307,7 +1307,7 @@ class MembershipRbacRoleBindingRole(dict):
 
 
 @pulumi.output_type
-class MembershipRbacRoleBindingState(dict):
+calass MembershipRbacRoleBindingState(dict):
     def __init__(__self__, *,
                  code: Optional[str] = None):
         """
@@ -1328,7 +1328,7 @@ class MembershipRbacRoleBindingState(dict):
 
 
 @pulumi.output_type
-class NamespaceState(dict):
+calass NamespaceState(dict):
     def __init__(__self__, *,
                  code: Optional[str] = None):
         """
@@ -1349,7 +1349,7 @@ class NamespaceState(dict):
 
 
 @pulumi.output_type
-class ScopeIamBindingCondition(dict):
+calass ScopeIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1376,7 +1376,7 @@ class ScopeIamBindingCondition(dict):
 
 
 @pulumi.output_type
-class ScopeIamMemberCondition(dict):
+calass ScopeIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -1403,7 +1403,7 @@ class ScopeIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class ScopeRbacRoleBindingRole(dict):
+calass ScopeRbacRoleBindingRole(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1445,7 +1445,7 @@ class ScopeRbacRoleBindingRole(dict):
 
 
 @pulumi.output_type
-class ScopeRbacRoleBindingState(dict):
+calass ScopeRbacRoleBindingState(dict):
     def __init__(__self__, *,
                  code: Optional[str] = None):
         """
@@ -1466,7 +1466,7 @@ class ScopeRbacRoleBindingState(dict):
 
 
 @pulumi.output_type
-class ScopeState(dict):
+calass ScopeState(dict):
     def __init__(__self__, *,
                  code: Optional[str] = None):
         """

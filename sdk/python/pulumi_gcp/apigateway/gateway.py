@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['GatewayArgs', 'Gateway']
+__all__ = ['GatewayArrgs', 'Gateway']
 
 @pulumi.input_type
-class GatewayArgs:
+calass GatewayArrgs:
     def __init__(__self__, *,
                  api_config: pulumi.Input[str],
                  gateway_id: pulumi.Input[str],
@@ -130,7 +130,7 @@ class GatewayArgs:
 
 
 @pulumi.input_type
-class _GatewayState:
+calass _GatewayState:
     def __init__(__self__, *,
                  api_config: Optional[pulumi.Input[str]] = None,
                  default_hostname: Optional[pulumi.Input[str]] = None,
@@ -315,7 +315,7 @@ class _GatewayState:
         pulumi.set(self, "region", value)
 
 
-class Gateway(pulumi.CustomResource):
+calass Gateway(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -349,8 +349,8 @@ class Gateway(pulumi.CustomResource):
         api_gw_api_config = gcp.apigateway.ApiConfig("apiGwApiConfig",
             api=api_gw_api.api_id,
             api_config_id="my-config",
-            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
-                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
+            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArrgs(
+                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArrgs(
                     path="spec.yaml",
                     contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/openapi.yaml"),
                 ),
@@ -403,7 +403,7 @@ class Gateway(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: GatewayArgs,
+                 args: GatewayArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A consumable API that can be used by multiple Gateways.
@@ -427,8 +427,8 @@ class Gateway(pulumi.CustomResource):
         api_gw_api_config = gcp.apigateway.ApiConfig("apiGwApiConfig",
             api=api_gw_api.api_id,
             api_config_id="my-config",
-            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
-                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
+            openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArrgs(
+                document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArrgs(
                     path="spec.yaml",
                     contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/openapi.yaml"),
                 ),
@@ -461,12 +461,12 @@ class Gateway(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param GatewayArgs args: The arguments to use to populate this resource's properties.
+        :param GatewayArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(GatewayArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GatewayArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -488,7 +488,7 @@ class Gateway(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = GatewayArgs.__new__(GatewayArgs)
+            __props__ = GatewayArrgs.__new__(GatewayArrgs)
 
             if api_config is None and not opts.urn:
                 raise TypeError("Missing required property 'api_config'")

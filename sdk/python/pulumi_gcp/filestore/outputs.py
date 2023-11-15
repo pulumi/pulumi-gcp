@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class InstanceFileShares(dict):
+calass InstanceFileShares(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -48,7 +48,7 @@ class InstanceFileShares(dict):
         :param int capacity_gb: File share capacity in GiB. This must be at least 1024 GiB
                for the standard tier, or 2560 GiB for the premium tier.
         :param str name: The name of the fileshare (16 characters or less)
-        :param Sequence['InstanceFileSharesNfsExportOptionArgs'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
+        :param Sequence['InstanceFileSharesNfsExportOptionArrgs'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
                Structure is documented below.
         :param str source_backup: (Output)
                The resource name of the backup, in the format
@@ -101,7 +101,7 @@ class InstanceFileShares(dict):
 
 
 @pulumi.output_type
-class InstanceFileSharesNfsExportOption(dict):
+calass InstanceFileSharesNfsExportOption(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -217,7 +217,7 @@ class InstanceFileSharesNfsExportOption(dict):
 
 
 @pulumi.output_type
-class InstanceNetwork(dict):
+calass InstanceNetwork(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None

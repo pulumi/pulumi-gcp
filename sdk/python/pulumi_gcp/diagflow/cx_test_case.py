@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CxTestCaseArgs', 'CxTestCase']
+__all__ = ['CxTestCaseArrgs', 'CxTestCase']
 
 @pulumi.input_type
-class CxTestCaseArgs:
+calass CxTestCaseArrgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  notes: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]]] = None,
-                 test_config: Optional[pulumi.Input['CxTestCaseTestConfigArgs']] = None):
+                 test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArrgs']]]] = None,
+                 test_config: Optional[pulumi.Input['CxTestCaseTestConfigArrgs']] = None):
         """
         The set of arguments for constructing a CxTestCase resource.
         :param pulumi.Input[str] display_name: The human-readable name of the test case, unique within the agent. Limit of 200 characters.
@@ -33,9 +33,9 @@ class CxTestCaseArgs:
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
                Each tag should start with "#" and has a limit of 30 characters
-        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArrgs']]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
                Structure is documented below.
-        :param pulumi.Input['CxTestCaseTestConfigArgs'] test_config: Config for the test case.
+        :param pulumi.Input['CxTestCaseTestConfigArrgs'] test_config: Config for the test case.
                Structure is documented below.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -105,7 +105,7 @@ class CxTestCaseArgs:
 
     @property
     @pulumi.getter(name="testCaseConversationTurns")
-    def test_case_conversation_turns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]]]:
+    def test_case_conversation_turns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArrgs']]]]:
         """
         The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
         Structure is documented below.
@@ -113,12 +113,12 @@ class CxTestCaseArgs:
         return pulumi.get(self, "test_case_conversation_turns")
 
     @test_case_conversation_turns.setter
-    def test_case_conversation_turns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]]]):
+    def test_case_conversation_turns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArrgs']]]]):
         pulumi.set(self, "test_case_conversation_turns", value)
 
     @property
     @pulumi.getter(name="testConfig")
-    def test_config(self) -> Optional[pulumi.Input['CxTestCaseTestConfigArgs']]:
+    def test_config(self) -> Optional[pulumi.Input['CxTestCaseTestConfigArrgs']]:
         """
         Config for the test case.
         Structure is documented below.
@@ -126,22 +126,22 @@ class CxTestCaseArgs:
         return pulumi.get(self, "test_config")
 
     @test_config.setter
-    def test_config(self, value: Optional[pulumi.Input['CxTestCaseTestConfigArgs']]):
+    def test_config(self, value: Optional[pulumi.Input['CxTestCaseTestConfigArrgs']]):
         pulumi.set(self, "test_config", value)
 
 
 @pulumi.input_type
-class _CxTestCaseState:
+calass _CxTestCaseState:
     def __init__(__self__, *,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 last_test_results: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultArgs']]]] = None,
+                 last_test_results: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]]] = None,
-                 test_config: Optional[pulumi.Input['CxTestCaseTestConfigArgs']] = None):
+                 test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArrgs']]]] = None,
+                 test_config: Optional[pulumi.Input['CxTestCaseTestConfigArrgs']] = None):
         """
         Input properties used for looking up and filtering CxTestCase resources.
         :param pulumi.Input[str] creation_time: When the test was created. A timestamp in RFC3339 text format.
@@ -149,7 +149,7 @@ class _CxTestCaseState:
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultArgs']]] last_test_results: The latest test result.
+        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultArrgs']]] last_test_results: The latest test result.
                Structure is documented below.
         :param pulumi.Input[str] name: The unique identifier of the page.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
@@ -158,9 +158,9 @@ class _CxTestCaseState:
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
                Each tag should start with "#" and has a limit of 30 characters
-        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+        :param pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArrgs']]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
                Structure is documented below.
-        :param pulumi.Input['CxTestCaseTestConfigArgs'] test_config: Config for the test case.
+        :param pulumi.Input['CxTestCaseTestConfigArrgs'] test_config: Config for the test case.
                Structure is documented below.
         """
         if creation_time is not None:
@@ -211,7 +211,7 @@ class _CxTestCaseState:
 
     @property
     @pulumi.getter(name="lastTestResults")
-    def last_test_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultArgs']]]]:
+    def last_test_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultArrgs']]]]:
         """
         The latest test result.
         Structure is documented below.
@@ -219,7 +219,7 @@ class _CxTestCaseState:
         return pulumi.get(self, "last_test_results")
 
     @last_test_results.setter
-    def last_test_results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultArgs']]]]):
+    def last_test_results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseLastTestResultArrgs']]]]):
         pulumi.set(self, "last_test_results", value)
 
     @property
@@ -275,7 +275,7 @@ class _CxTestCaseState:
 
     @property
     @pulumi.getter(name="testCaseConversationTurns")
-    def test_case_conversation_turns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]]]:
+    def test_case_conversation_turns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArrgs']]]]:
         """
         The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
         Structure is documented below.
@@ -283,12 +283,12 @@ class _CxTestCaseState:
         return pulumi.get(self, "test_case_conversation_turns")
 
     @test_case_conversation_turns.setter
-    def test_case_conversation_turns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArgs']]]]):
+    def test_case_conversation_turns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxTestCaseTestCaseConversationTurnArrgs']]]]):
         pulumi.set(self, "test_case_conversation_turns", value)
 
     @property
     @pulumi.getter(name="testConfig")
-    def test_config(self) -> Optional[pulumi.Input['CxTestCaseTestConfigArgs']]:
+    def test_config(self) -> Optional[pulumi.Input['CxTestCaseTestConfigArrgs']]:
         """
         Config for the test case.
         Structure is documented below.
@@ -296,11 +296,11 @@ class _CxTestCaseState:
         return pulumi.get(self, "test_config")
 
     @test_config.setter
-    def test_config(self, value: Optional[pulumi.Input['CxTestCaseTestConfigArgs']]):
+    def test_config(self, value: Optional[pulumi.Input['CxTestCaseTestConfigArrgs']]):
         pulumi.set(self, "test_config", value)
 
 
-class CxTestCase(pulumi.CustomResource):
+calass CxTestCase(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -309,8 +309,8 @@ class CxTestCase(pulumi.CustomResource):
                  notes: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseTestCaseConversationTurnArgs']]]]] = None,
-                 test_config: Optional[pulumi.Input[pulumi.InputType['CxTestCaseTestConfigArgs']]] = None,
+                 test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseTestCaseConversationTurnArrgs']]]]] = None,
+                 test_config: Optional[pulumi.Input[pulumi.InputType['CxTestCaseTestConfigArrgs']]] = None,
                  __props__=None):
         """
         You can use the built-in test feature to uncover bugs and prevent regressions. A test execution verifies that agent responses have not changed for end-user inputs defined in the test case.
@@ -343,15 +343,15 @@ class CxTestCase(pulumi.CustomResource):
             avatar_uri="https://storage.cloud.google.com/dialogflow-test-host-image/cloud-logo.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArrgs(
                 enable_speech_adaptation=True,
             ))
         intent = gcp.diagflow.CxIntent("intent",
             parent=agent.id,
             display_name="MyIntent",
             priority=1,
-            training_phrases=[gcp.diagflow.CxIntentTrainingPhraseArgs(
-                parts=[gcp.diagflow.CxIntentTrainingPhrasePartArgs(
+            training_phrases=[gcp.diagflow.CxIntentTrainingPhraseArrgs(
+                parts=[gcp.diagflow.CxIntentTrainingPhrasePartArrgs(
                     text="training phrase",
                 )],
                 repeat_count=1,
@@ -359,21 +359,21 @@ class CxTestCase(pulumi.CustomResource):
         page = gcp.diagflow.CxPage("page",
             parent=agent.start_flow,
             display_name="MyPage",
-            transition_routes=[gcp.diagflow.CxPageTransitionRouteArgs(
+            transition_routes=[gcp.diagflow.CxPageTransitionRouteArrgs(
                 intent=intent.id,
-                trigger_fulfillment=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentArgs(
-                    messages=[gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                        text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs(
+                trigger_fulfillment=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentArrgs(
+                    messages=[gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                        text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArrgs(
                             texts=["Training phrase response"],
                         ),
                     )],
                 ),
             )],
-            event_handlers=[gcp.diagflow.CxPageEventHandlerArgs(
+            event_handlers=[gcp.diagflow.CxPageEventHandlerArrgs(
                 event="some-event",
-                trigger_fulfillment=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentArgs(
-                    messages=[gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                        text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTextArgs(
+                trigger_fulfillment=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentArrgs(
+                    messages=[gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                        text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTextArrgs(
                             texts=["Handling some event"],
                         ),
                     )],
@@ -384,16 +384,16 @@ class CxTestCase(pulumi.CustomResource):
             display_name="MyTestCase",
             tags=["#tag1"],
             notes="demonstrates a simple training phrase response",
-            test_config=gcp.diagflow.CxTestCaseTestConfigArgs(
+            test_config=gcp.diagflow.CxTestCaseTestConfigArrgs(
                 tracking_parameters=["some_param"],
                 page=page.id,
             ),
             test_case_conversation_turns=[
-                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
-                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
-                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
+                gcp.diagflow.CxTestCaseTestCaseConversationTurnArrgs(
+                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArrgs(
+                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArrgs(
                             language_code="en",
-                            text=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputTextArgs(
+                            text=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputTextArrgs(
                                 text="training phrase",
                             ),
                         ),
@@ -403,49 +403,49 @@ class CxTestCase(pulumi.CustomResource):
                         is_webhook_enabled=True,
                         enable_sentiment_analysis=True,
                     ),
-                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
+                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs(
                         session_parameters=json.dumps({
                             "some_param": "1",
                         }),
-                        triggered_intent=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs(
+                        triggered_intent=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArrgs(
                             name=intent.id,
                         ),
-                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs(
+                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArrgs(
                             name=page.id,
                         ),
-                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
+                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs(
                             texts=["Training phrase response"],
                         )],
                     ),
                 ),
-                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
-                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
-                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
-                            event=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputEventArgs(
+                gcp.diagflow.CxTestCaseTestCaseConversationTurnArrgs(
+                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArrgs(
+                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArrgs(
+                            event=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputEventArrgs(
                                 event="some-event",
                             ),
                         ),
                     ),
-                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
-                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs(
+                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs(
+                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArrgs(
                             name=page.id,
                         ),
-                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
+                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs(
                             texts=["Handling some event"],
                         )],
                     ),
                 ),
-                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
-                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
-                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
-                            dtmf=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs(
+                gcp.diagflow.CxTestCaseTestCaseConversationTurnArrgs(
+                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArrgs(
+                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArrgs(
+                            dtmf=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputDtmfArrgs(
                                 digits="12",
                                 finish_digit="3",
                             ),
                         ),
                     ),
-                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
-                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
+                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs(
+                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs(
                             texts=["I didn't get that. Can you say it again?"],
                         )],
                     ),
@@ -472,16 +472,16 @@ class CxTestCase(pulumi.CustomResource):
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
                Each tag should start with "#" and has a limit of 30 characters
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseTestCaseConversationTurnArgs']]]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseTestCaseConversationTurnArrgs']]]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['CxTestCaseTestConfigArgs']] test_config: Config for the test case.
+        :param pulumi.Input[pulumi.InputType['CxTestCaseTestConfigArrgs']] test_config: Config for the test case.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CxTestCaseArgs,
+                 args: CxTestCaseArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         You can use the built-in test feature to uncover bugs and prevent regressions. A test execution verifies that agent responses have not changed for end-user inputs defined in the test case.
@@ -514,15 +514,15 @@ class CxTestCase(pulumi.CustomResource):
             avatar_uri="https://storage.cloud.google.com/dialogflow-test-host-image/cloud-logo.png",
             enable_stackdriver_logging=True,
             enable_spell_correction=True,
-            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArgs(
+            speech_to_text_settings=gcp.diagflow.CxAgentSpeechToTextSettingsArrgs(
                 enable_speech_adaptation=True,
             ))
         intent = gcp.diagflow.CxIntent("intent",
             parent=agent.id,
             display_name="MyIntent",
             priority=1,
-            training_phrases=[gcp.diagflow.CxIntentTrainingPhraseArgs(
-                parts=[gcp.diagflow.CxIntentTrainingPhrasePartArgs(
+            training_phrases=[gcp.diagflow.CxIntentTrainingPhraseArrgs(
+                parts=[gcp.diagflow.CxIntentTrainingPhrasePartArrgs(
                     text="training phrase",
                 )],
                 repeat_count=1,
@@ -530,21 +530,21 @@ class CxTestCase(pulumi.CustomResource):
         page = gcp.diagflow.CxPage("page",
             parent=agent.start_flow,
             display_name="MyPage",
-            transition_routes=[gcp.diagflow.CxPageTransitionRouteArgs(
+            transition_routes=[gcp.diagflow.CxPageTransitionRouteArrgs(
                 intent=intent.id,
-                trigger_fulfillment=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentArgs(
-                    messages=[gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs(
-                        text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs(
+                trigger_fulfillment=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentArrgs(
+                    messages=[gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArrgs(
+                        text=gcp.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTextArrgs(
                             texts=["Training phrase response"],
                         ),
                     )],
                 ),
             )],
-            event_handlers=[gcp.diagflow.CxPageEventHandlerArgs(
+            event_handlers=[gcp.diagflow.CxPageEventHandlerArrgs(
                 event="some-event",
-                trigger_fulfillment=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentArgs(
-                    messages=[gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArgs(
-                        text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTextArgs(
+                trigger_fulfillment=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentArrgs(
+                    messages=[gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageArrgs(
+                        text=gcp.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTextArrgs(
                             texts=["Handling some event"],
                         ),
                     )],
@@ -555,16 +555,16 @@ class CxTestCase(pulumi.CustomResource):
             display_name="MyTestCase",
             tags=["#tag1"],
             notes="demonstrates a simple training phrase response",
-            test_config=gcp.diagflow.CxTestCaseTestConfigArgs(
+            test_config=gcp.diagflow.CxTestCaseTestConfigArrgs(
                 tracking_parameters=["some_param"],
                 page=page.id,
             ),
             test_case_conversation_turns=[
-                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
-                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
-                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
+                gcp.diagflow.CxTestCaseTestCaseConversationTurnArrgs(
+                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArrgs(
+                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArrgs(
                             language_code="en",
-                            text=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputTextArgs(
+                            text=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputTextArrgs(
                                 text="training phrase",
                             ),
                         ),
@@ -574,49 +574,49 @@ class CxTestCase(pulumi.CustomResource):
                         is_webhook_enabled=True,
                         enable_sentiment_analysis=True,
                     ),
-                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
+                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs(
                         session_parameters=json.dumps({
                             "some_param": "1",
                         }),
-                        triggered_intent=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs(
+                        triggered_intent=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArrgs(
                             name=intent.id,
                         ),
-                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs(
+                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArrgs(
                             name=page.id,
                         ),
-                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
+                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs(
                             texts=["Training phrase response"],
                         )],
                     ),
                 ),
-                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
-                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
-                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
-                            event=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputEventArgs(
+                gcp.diagflow.CxTestCaseTestCaseConversationTurnArrgs(
+                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArrgs(
+                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArrgs(
+                            event=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputEventArrgs(
                                 event="some-event",
                             ),
                         ),
                     ),
-                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
-                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs(
+                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs(
+                        current_page=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArrgs(
                             name=page.id,
                         ),
-                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
+                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs(
                             texts=["Handling some event"],
                         )],
                     ),
                 ),
-                gcp.diagflow.CxTestCaseTestCaseConversationTurnArgs(
-                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArgs(
-                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArgs(
-                            dtmf=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs(
+                gcp.diagflow.CxTestCaseTestCaseConversationTurnArrgs(
+                    user_input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputArrgs(
+                        input=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputArrgs(
+                            dtmf=gcp.diagflow.CxTestCaseTestCaseConversationTurnUserInputInputDtmfArrgs(
                                 digits="12",
                                 finish_digit="3",
                             ),
                         ),
                     ),
-                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs(
-                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs(
+                    virtual_agent_output=gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArrgs(
+                        text_responses=[gcp.diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArrgs(
                             texts=["I didn't get that. Can you say it again?"],
                         )],
                     ),
@@ -633,12 +633,12 @@ class CxTestCase(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param CxTestCaseArgs args: The arguments to use to populate this resource's properties.
+        :param CxTestCaseArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CxTestCaseArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CxTestCaseArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -651,8 +651,8 @@ class CxTestCase(pulumi.CustomResource):
                  notes: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseTestCaseConversationTurnArgs']]]]] = None,
-                 test_config: Optional[pulumi.Input[pulumi.InputType['CxTestCaseTestConfigArgs']]] = None,
+                 test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseTestCaseConversationTurnArrgs']]]]] = None,
+                 test_config: Optional[pulumi.Input[pulumi.InputType['CxTestCaseTestConfigArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -660,7 +660,7 @@ class CxTestCase(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CxTestCaseArgs.__new__(CxTestCaseArgs)
+            __props__ = CxTestCaseArrgs.__new__(CxTestCaseArrgs)
 
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -685,13 +685,13 @@ class CxTestCase(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             creation_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            last_test_results: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseLastTestResultArgs']]]]] = None,
+            last_test_results: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseLastTestResultArrgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notes: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseTestCaseConversationTurnArgs']]]]] = None,
-            test_config: Optional[pulumi.Input[pulumi.InputType['CxTestCaseTestConfigArgs']]] = None) -> 'CxTestCase':
+            test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseTestCaseConversationTurnArrgs']]]]] = None,
+            test_config: Optional[pulumi.Input[pulumi.InputType['CxTestCaseTestConfigArrgs']]] = None) -> 'CxTestCase':
         """
         Get an existing CxTestCase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -704,7 +704,7 @@ class CxTestCase(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseLastTestResultArgs']]]] last_test_results: The latest test result.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseLastTestResultArrgs']]]] last_test_results: The latest test result.
                Structure is documented below.
         :param pulumi.Input[str] name: The unique identifier of the page.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
@@ -713,9 +713,9 @@ class CxTestCase(pulumi.CustomResource):
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
                Each tag should start with "#" and has a limit of 30 characters
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseTestCaseConversationTurnArgs']]]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxTestCaseTestCaseConversationTurnArrgs']]]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['CxTestCaseTestConfigArgs']] test_config: Config for the test case.
+        :param pulumi.Input[pulumi.InputType['CxTestCaseTestConfigArrgs']] test_config: Config for the test case.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -11,16 +11,16 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RulesetArgs', 'Ruleset']
+__all__ = ['RulesetArrgs', 'Ruleset']
 
 @pulumi.input_type
-class RulesetArgs:
+calass RulesetArrgs:
     def __init__(__self__, *,
-                 source: pulumi.Input['RulesetSourceArgs'],
+                 source: pulumi.Input['RulesetSourceArrgs'],
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Ruleset resource.
-        :param pulumi.Input['RulesetSourceArgs'] source: `Source` for the `Ruleset`.
+        :param pulumi.Input['RulesetSourceArrgs'] source: `Source` for the `Ruleset`.
         :param pulumi.Input[str] project: The project for the resource
         """
         pulumi.set(__self__, "source", source)
@@ -29,14 +29,14 @@ class RulesetArgs:
 
     @property
     @pulumi.getter
-    def source(self) -> pulumi.Input['RulesetSourceArgs']:
+    def source(self) -> pulumi.Input['RulesetSourceArrgs']:
         """
         `Source` for the `Ruleset`.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: pulumi.Input['RulesetSourceArgs']):
+    def source(self, value: pulumi.Input['RulesetSourceArrgs']):
         pulumi.set(self, "source", value)
 
     @property
@@ -53,22 +53,22 @@ class RulesetArgs:
 
 
 @pulumi.input_type
-class _RulesetState:
+calass _RulesetState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetMetadataArgs']]]] = None,
+                 metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetMetadataArrgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input['RulesetSourceArgs']] = None):
+                 source: Optional[pulumi.Input['RulesetSourceArrgs']] = None):
         """
         Input properties used for looking up and filtering Ruleset resources.
         :param pulumi.Input[str] create_time: Output only. Time the `Ruleset` was created.
-        :param pulumi.Input[Sequence[pulumi.Input['RulesetMetadataArgs']]] metadatas: Output only. The metadata for this ruleset.
+        :param pulumi.Input[Sequence[pulumi.Input['RulesetMetadataArrgs']]] metadatas: Output only. The metadata for this ruleset.
         :param pulumi.Input[str] name: File name.
                
                - - -
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input['RulesetSourceArgs'] source: `Source` for the `Ruleset`.
+        :param pulumi.Input['RulesetSourceArrgs'] source: `Source` for the `Ruleset`.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -95,14 +95,14 @@ class _RulesetState:
 
     @property
     @pulumi.getter
-    def metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesetMetadataArgs']]]]:
+    def metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesetMetadataArrgs']]]]:
         """
         Output only. The metadata for this ruleset.
         """
         return pulumi.get(self, "metadatas")
 
     @metadatas.setter
-    def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetMetadataArgs']]]]):
+    def metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetMetadataArrgs']]]]):
         pulumi.set(self, "metadatas", value)
 
     @property
@@ -133,24 +133,24 @@ class _RulesetState:
 
     @property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['RulesetSourceArgs']]:
+    def source(self) -> Optional[pulumi.Input['RulesetSourceArrgs']]:
         """
         `Source` for the `Ruleset`.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input['RulesetSourceArgs']]):
+    def source(self, value: Optional[pulumi.Input['RulesetSourceArrgs']]):
         pulumi.set(self, "source", value)
 
 
-class Ruleset(pulumi.CustomResource):
+calass Ruleset(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['RulesetSourceArgs']]] = None,
+                 source: Optional[pulumi.Input[pulumi.InputType['RulesetSourceArrgs']]] = None,
                  __props__=None):
         """
         For more information, see:
@@ -164,8 +164,8 @@ class Ruleset(pulumi.CustomResource):
 
         primary = gcp.firebaserules.Ruleset("primary",
             project="my-project-name",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
+            source=gcp.firebaserules.RulesetSourceArrgs(
+                files=[gcp.firebaserules.RulesetSourceFileArrgs(
                     content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
                     fingerprint="",
                     name="firestore.rules",
@@ -181,8 +181,8 @@ class Ruleset(pulumi.CustomResource):
 
         primary = gcp.firebaserules.Ruleset("primary",
             project="my-project-name",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
+            source=gcp.firebaserules.RulesetSourceArrgs(
+                files=[gcp.firebaserules.RulesetSourceFileArrgs(
                     content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
                     name="firestore.rules",
                 )],
@@ -208,13 +208,13 @@ class Ruleset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['RulesetSourceArgs']] source: `Source` for the `Ruleset`.
+        :param pulumi.Input[pulumi.InputType['RulesetSourceArrgs']] source: `Source` for the `Ruleset`.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RulesetArgs,
+                 args: RulesetArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         For more information, see:
@@ -228,8 +228,8 @@ class Ruleset(pulumi.CustomResource):
 
         primary = gcp.firebaserules.Ruleset("primary",
             project="my-project-name",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
+            source=gcp.firebaserules.RulesetSourceArrgs(
+                files=[gcp.firebaserules.RulesetSourceFileArrgs(
                     content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
                     fingerprint="",
                     name="firestore.rules",
@@ -245,8 +245,8 @@ class Ruleset(pulumi.CustomResource):
 
         primary = gcp.firebaserules.Ruleset("primary",
             project="my-project-name",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
+            source=gcp.firebaserules.RulesetSourceArrgs(
+                files=[gcp.firebaserules.RulesetSourceFileArrgs(
                     content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
                     name="firestore.rules",
                 )],
@@ -270,12 +270,12 @@ class Ruleset(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RulesetArgs args: The arguments to use to populate this resource's properties.
+        :param RulesetArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RulesetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RulesetArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -285,7 +285,7 @@ class Ruleset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[pulumi.InputType['RulesetSourceArgs']]] = None,
+                 source: Optional[pulumi.Input[pulumi.InputType['RulesetSourceArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -293,7 +293,7 @@ class Ruleset(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RulesetArgs.__new__(RulesetArgs)
+            __props__ = RulesetArrgs.__new__(RulesetArrgs)
 
             __props__.__dict__["project"] = project
             if source is None and not opts.urn:
@@ -313,10 +313,10 @@ class Ruleset(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetMetadataArgs']]]]] = None,
+            metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetMetadataArrgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            source: Optional[pulumi.Input[pulumi.InputType['RulesetSourceArgs']]] = None) -> 'Ruleset':
+            source: Optional[pulumi.Input[pulumi.InputType['RulesetSourceArrgs']]] = None) -> 'Ruleset':
         """
         Get an existing Ruleset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -325,12 +325,12 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. Time the `Ruleset` was created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetMetadataArgs']]]] metadatas: Output only. The metadata for this ruleset.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetMetadataArrgs']]]] metadatas: Output only. The metadata for this ruleset.
         :param pulumi.Input[str] name: File name.
                
                - - -
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[pulumi.InputType['RulesetSourceArgs']] source: `Source` for the `Ruleset`.
+        :param pulumi.Input[pulumi.InputType['RulesetSourceArrgs']] source: `Source` for the `Ruleset`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

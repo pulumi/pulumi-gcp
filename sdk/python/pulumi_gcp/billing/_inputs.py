@@ -10,20 +10,20 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'AccountIamBindingConditionArgs',
-    'AccountIamMemberConditionArgs',
-    'BudgetAllUpdatesRuleArgs',
-    'BudgetAmountArgs',
-    'BudgetAmountSpecifiedAmountArgs',
-    'BudgetBudgetFilterArgs',
-    'BudgetBudgetFilterCustomPeriodArgs',
-    'BudgetBudgetFilterCustomPeriodEndDateArgs',
-    'BudgetBudgetFilterCustomPeriodStartDateArgs',
-    'BudgetThresholdRuleArgs',
+    'AccountIamBindingConditionArrgs',
+    'AccountIamMemberConditionArrgs',
+    'BudgetAllUpdatesRuleArrgs',
+    'BudgetAmountArrgs',
+    'BudgetAmountSpecifiedAmountArrgs',
+    'BudgetBudgetFilterArrgs',
+    'BudgetBudgetFilterCustomPeriodArrgs',
+    'BudgetBudgetFilterCustomPeriodEndDateArrgs',
+    'BudgetBudgetFilterCustomPeriodStartDateArrgs',
+    'BudgetThresholdRuleArrgs',
 ]
 
 @pulumi.input_type
-class AccountIamBindingConditionArgs:
+calass AccountIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -62,7 +62,7 @@ class AccountIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class AccountIamMemberConditionArgs:
+calass AccountIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -101,7 +101,7 @@ class AccountIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class BudgetAllUpdatesRuleArgs:
+calass BudgetAllUpdatesRuleArrgs:
     def __init__(__self__, *,
                  disable_default_iam_recipients: Optional[pulumi.Input[bool]] = None,
                  monitoring_notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -194,16 +194,16 @@ class BudgetAllUpdatesRuleArgs:
 
 
 @pulumi.input_type
-class BudgetAmountArgs:
+calass BudgetAmountArrgs:
     def __init__(__self__, *,
                  last_period_amount: Optional[pulumi.Input[bool]] = None,
-                 specified_amount: Optional[pulumi.Input['BudgetAmountSpecifiedAmountArgs']] = None):
+                 specified_amount: Optional[pulumi.Input['BudgetAmountSpecifiedAmountArrgs']] = None):
         """
         :param pulumi.Input[bool] last_period_amount: Configures a budget amount that is automatically set to 100% of
                last period's spend.
                Boolean. Set value to true to use. Do not set to false, instead
                use the `specified_amount` block.
-        :param pulumi.Input['BudgetAmountSpecifiedAmountArgs'] specified_amount: A specified amount to use as the budget. currencyCode is
+        :param pulumi.Input['BudgetAmountSpecifiedAmountArrgs'] specified_amount: A specified amount to use as the budget. currencyCode is
                optional. If specified, it must match the currency of the
                billing account. The currencyCode is provided on output.
                Structure is documented below.
@@ -230,7 +230,7 @@ class BudgetAmountArgs:
 
     @property
     @pulumi.getter(name="specifiedAmount")
-    def specified_amount(self) -> Optional[pulumi.Input['BudgetAmountSpecifiedAmountArgs']]:
+    def specified_amount(self) -> Optional[pulumi.Input['BudgetAmountSpecifiedAmountArrgs']]:
         """
         A specified amount to use as the budget. currencyCode is
         optional. If specified, it must match the currency of the
@@ -240,12 +240,12 @@ class BudgetAmountArgs:
         return pulumi.get(self, "specified_amount")
 
     @specified_amount.setter
-    def specified_amount(self, value: Optional[pulumi.Input['BudgetAmountSpecifiedAmountArgs']]):
+    def specified_amount(self, value: Optional[pulumi.Input['BudgetAmountSpecifiedAmountArrgs']]):
         pulumi.set(self, "specified_amount", value)
 
 
 @pulumi.input_type
-class BudgetAmountSpecifiedAmountArgs:
+calass BudgetAmountSpecifiedAmountArrgs:
     def __init__(__self__, *,
                  currency_code: Optional[pulumi.Input[str]] = None,
                  nanos: Optional[pulumi.Input[int]] = None,
@@ -318,12 +318,12 @@ class BudgetAmountSpecifiedAmountArgs:
 
 
 @pulumi.input_type
-class BudgetBudgetFilterArgs:
+calass BudgetBudgetFilterArrgs:
     def __init__(__self__, *,
                  calendar_period: Optional[pulumi.Input[str]] = None,
                  credit_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  credit_types_treatment: Optional[pulumi.Input[str]] = None,
-                 custom_period: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArgs']] = None,
+                 custom_period: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArrgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_ancestors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -343,7 +343,7 @@ class BudgetBudgetFilterArgs:
                for threshold calculations.
                Default value is `INCLUDE_ALL_CREDITS`.
                Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
-        :param pulumi.Input['BudgetBudgetFilterCustomPeriodArgs'] custom_period: Specifies to track usage from any start date (required) to any end date (optional).
+        :param pulumi.Input['BudgetBudgetFilterCustomPeriodArrgs'] custom_period: Specifies to track usage from any start date (required) to any end date (optional).
                This time period is static, it does not recur.
                Exactly one of `calendar_period`, `custom_period` must be provided.
                Structure is documented below.
@@ -439,7 +439,7 @@ class BudgetBudgetFilterArgs:
 
     @property
     @pulumi.getter(name="customPeriod")
-    def custom_period(self) -> Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArgs']]:
+    def custom_period(self) -> Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArrgs']]:
         """
         Specifies to track usage from any start date (required) to any end date (optional).
         This time period is static, it does not recur.
@@ -449,7 +449,7 @@ class BudgetBudgetFilterArgs:
         return pulumi.get(self, "custom_period")
 
     @custom_period.setter
-    def custom_period(self, value: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArgs']]):
+    def custom_period(self, value: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArrgs']]):
         pulumi.set(self, "custom_period", value)
 
     @property
@@ -533,14 +533,14 @@ class BudgetBudgetFilterArgs:
 
 
 @pulumi.input_type
-class BudgetBudgetFilterCustomPeriodArgs:
+calass BudgetBudgetFilterCustomPeriodArrgs:
     def __init__(__self__, *,
-                 start_date: pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgs'],
-                 end_date: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgs']] = None):
+                 start_date: pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArrgs'],
+                 end_date: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArrgs']] = None):
         """
-        :param pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgs'] start_date: A start date is required. The start date must be after January 1, 2017.
+        :param pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArrgs'] start_date: A start date is required. The start date must be after January 1, 2017.
                Structure is documented below.
-        :param pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgs'] end_date: Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
+        :param pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArrgs'] end_date: Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
                If unset, specifies to track all usage incurred since the startDate.
                Structure is documented below.
         """
@@ -550,7 +550,7 @@ class BudgetBudgetFilterCustomPeriodArgs:
 
     @property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgs']:
+    def start_date(self) -> pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArrgs']:
         """
         A start date is required. The start date must be after January 1, 2017.
         Structure is documented below.
@@ -558,12 +558,12 @@ class BudgetBudgetFilterCustomPeriodArgs:
         return pulumi.get(self, "start_date")
 
     @start_date.setter
-    def start_date(self, value: pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArgs']):
+    def start_date(self, value: pulumi.Input['BudgetBudgetFilterCustomPeriodStartDateArrgs']):
         pulumi.set(self, "start_date", value)
 
     @property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgs']]:
+    def end_date(self) -> Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArrgs']]:
         """
         Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
         If unset, specifies to track all usage incurred since the startDate.
@@ -572,12 +572,12 @@ class BudgetBudgetFilterCustomPeriodArgs:
         return pulumi.get(self, "end_date")
 
     @end_date.setter
-    def end_date(self, value: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArgs']]):
+    def end_date(self, value: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodEndDateArrgs']]):
         pulumi.set(self, "end_date", value)
 
 
 @pulumi.input_type
-class BudgetBudgetFilterCustomPeriodEndDateArgs:
+calass BudgetBudgetFilterCustomPeriodEndDateArrgs:
     def __init__(__self__, *,
                  day: pulumi.Input[int],
                  month: pulumi.Input[int],
@@ -629,7 +629,7 @@ class BudgetBudgetFilterCustomPeriodEndDateArgs:
 
 
 @pulumi.input_type
-class BudgetBudgetFilterCustomPeriodStartDateArgs:
+calass BudgetBudgetFilterCustomPeriodStartDateArrgs:
     def __init__(__self__, *,
                  day: pulumi.Input[int],
                  month: pulumi.Input[int],
@@ -681,7 +681,7 @@ class BudgetBudgetFilterCustomPeriodStartDateArgs:
 
 
 @pulumi.input_type
-class BudgetThresholdRuleArgs:
+calass BudgetThresholdRuleArrgs:
     def __init__(__self__, *,
                  threshold_percent: pulumi.Input[float],
                  spend_basis: Optional[pulumi.Input[str]] = None):

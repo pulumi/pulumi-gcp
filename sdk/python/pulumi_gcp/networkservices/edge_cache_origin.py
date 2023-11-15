@@ -11,32 +11,32 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EdgeCacheOriginArgs', 'EdgeCacheOrigin']
+__all__ = ['EdgeCacheOriginArrgs', 'EdgeCacheOrigin']
 
 @pulumi.input_type
-class EdgeCacheOriginArgs:
+calass EdgeCacheOriginArrgs:
     def __init__(__self__, *,
                  origin_address: pulumi.Input[str],
-                 aws_v4_authentication: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']] = None,
+                 aws_v4_authentication: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  failover_origin: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_attempts: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 origin_override_action: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']] = None,
-                 origin_redirect: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']] = None,
+                 origin_override_action: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArrgs']] = None,
+                 origin_redirect: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArrgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None):
+                 timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArrgs']] = None):
         """
         The set of arguments for constructing a EdgeCacheOrigin resource.
         :param pulumi.Input[str] origin_address: A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
                This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
                When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
                If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
-        :param pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs'] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
+        :param pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArrgs'] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] failover_origin: The Origin resource to try when the current origin cannot be reached.
@@ -60,10 +60,10 @@ class EdgeCacheOriginArgs:
                
                
                - - -
-        :param pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs'] origin_override_action: The override actions, including url rewrites and header
+        :param pulumi.Input['EdgeCacheOriginOriginOverrideActionArrgs'] origin_override_action: The override actions, including url rewrites and header
                additions, for requests that use this origin.
                Structure is documented below.
-        :param pulumi.Input['EdgeCacheOriginOriginRedirectArgs'] origin_redirect: Follow redirects from this origin.
+        :param pulumi.Input['EdgeCacheOriginOriginRedirectArrgs'] origin_redirect: Follow redirects from this origin.
                Structure is documented below.
         :param pulumi.Input[int] port: The port to connect to the origin on.
                Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
@@ -86,7 +86,7 @@ class EdgeCacheOriginArgs:
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
                Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
-        :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
+        :param pulumi.Input['EdgeCacheOriginTimeoutArrgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
         pulumi.set(__self__, "origin_address", origin_address)
@@ -134,7 +134,7 @@ class EdgeCacheOriginArgs:
 
     @property
     @pulumi.getter(name="awsV4Authentication")
-    def aws_v4_authentication(self) -> Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']]:
+    def aws_v4_authentication(self) -> Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArrgs']]:
         """
         Enable AWS Signature Version 4 origin authentication.
         Structure is documented below.
@@ -142,7 +142,7 @@ class EdgeCacheOriginArgs:
         return pulumi.get(self, "aws_v4_authentication")
 
     @aws_v4_authentication.setter
-    def aws_v4_authentication(self, value: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']]):
+    def aws_v4_authentication(self, value: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArrgs']]):
         pulumi.set(self, "aws_v4_authentication", value)
 
     @property
@@ -224,7 +224,7 @@ class EdgeCacheOriginArgs:
 
     @property
     @pulumi.getter(name="originOverrideAction")
-    def origin_override_action(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']]:
+    def origin_override_action(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArrgs']]:
         """
         The override actions, including url rewrites and header
         additions, for requests that use this origin.
@@ -233,12 +233,12 @@ class EdgeCacheOriginArgs:
         return pulumi.get(self, "origin_override_action")
 
     @origin_override_action.setter
-    def origin_override_action(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']]):
+    def origin_override_action(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArrgs']]):
         pulumi.set(self, "origin_override_action", value)
 
     @property
     @pulumi.getter(name="originRedirect")
-    def origin_redirect(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']]:
+    def origin_redirect(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArrgs']]:
         """
         Follow redirects from this origin.
         Structure is documented below.
@@ -246,7 +246,7 @@ class EdgeCacheOriginArgs:
         return pulumi.get(self, "origin_redirect")
 
     @origin_redirect.setter
-    def origin_redirect(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']]):
+    def origin_redirect(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArrgs']]):
         pulumi.set(self, "origin_redirect", value)
 
     @property
@@ -316,7 +316,7 @@ class EdgeCacheOriginArgs:
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']]:
+    def timeout(self) -> Optional[pulumi.Input['EdgeCacheOriginTimeoutArrgs']]:
         """
         The connection and HTTP timeout configuration for this origin.
         Structure is documented below.
@@ -324,14 +324,14 @@ class EdgeCacheOriginArgs:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']]):
+    def timeout(self, value: Optional[pulumi.Input['EdgeCacheOriginTimeoutArrgs']]):
         pulumi.set(self, "timeout", value)
 
 
 @pulumi.input_type
-class _EdgeCacheOriginState:
+calass _EdgeCacheOriginState:
     def __init__(__self__, *,
-                 aws_v4_authentication: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']] = None,
+                 aws_v4_authentication: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArrgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  failover_origin: Optional[pulumi.Input[str]] = None,
@@ -339,17 +339,17 @@ class _EdgeCacheOriginState:
                  max_attempts: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  origin_address: Optional[pulumi.Input[str]] = None,
-                 origin_override_action: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']] = None,
-                 origin_redirect: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']] = None,
+                 origin_override_action: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArrgs']] = None,
+                 origin_redirect: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArrgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']] = None):
+                 timeout: Optional[pulumi.Input['EdgeCacheOriginTimeoutArrgs']] = None):
         """
         Input properties used for looking up and filtering EdgeCacheOrigin resources.
-        :param pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs'] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
+        :param pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArrgs'] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -378,10 +378,10 @@ class _EdgeCacheOriginState:
                This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
                When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
                If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
-        :param pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs'] origin_override_action: The override actions, including url rewrites and header
+        :param pulumi.Input['EdgeCacheOriginOriginOverrideActionArrgs'] origin_override_action: The override actions, including url rewrites and header
                additions, for requests that use this origin.
                Structure is documented below.
-        :param pulumi.Input['EdgeCacheOriginOriginRedirectArgs'] origin_redirect: Follow redirects from this origin.
+        :param pulumi.Input['EdgeCacheOriginOriginRedirectArrgs'] origin_redirect: Follow redirects from this origin.
                Structure is documented below.
         :param pulumi.Input[int] port: The port to connect to the origin on.
                Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
@@ -406,7 +406,7 @@ class _EdgeCacheOriginState:
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
                Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
-        :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
+        :param pulumi.Input['EdgeCacheOriginTimeoutArrgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
         if aws_v4_authentication is not None:
@@ -444,7 +444,7 @@ class _EdgeCacheOriginState:
 
     @property
     @pulumi.getter(name="awsV4Authentication")
-    def aws_v4_authentication(self) -> Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']]:
+    def aws_v4_authentication(self) -> Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArrgs']]:
         """
         Enable AWS Signature Version 4 origin authentication.
         Structure is documented below.
@@ -452,7 +452,7 @@ class _EdgeCacheOriginState:
         return pulumi.get(self, "aws_v4_authentication")
 
     @aws_v4_authentication.setter
-    def aws_v4_authentication(self, value: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArgs']]):
+    def aws_v4_authentication(self, value: Optional[pulumi.Input['EdgeCacheOriginAwsV4AuthenticationArrgs']]):
         pulumi.set(self, "aws_v4_authentication", value)
 
     @property
@@ -561,7 +561,7 @@ class _EdgeCacheOriginState:
 
     @property
     @pulumi.getter(name="originOverrideAction")
-    def origin_override_action(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']]:
+    def origin_override_action(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArrgs']]:
         """
         The override actions, including url rewrites and header
         additions, for requests that use this origin.
@@ -570,12 +570,12 @@ class _EdgeCacheOriginState:
         return pulumi.get(self, "origin_override_action")
 
     @origin_override_action.setter
-    def origin_override_action(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']]):
+    def origin_override_action(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArrgs']]):
         pulumi.set(self, "origin_override_action", value)
 
     @property
     @pulumi.getter(name="originRedirect")
-    def origin_redirect(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']]:
+    def origin_redirect(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArrgs']]:
         """
         Follow redirects from this origin.
         Structure is documented below.
@@ -583,7 +583,7 @@ class _EdgeCacheOriginState:
         return pulumi.get(self, "origin_redirect")
 
     @origin_redirect.setter
-    def origin_redirect(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']]):
+    def origin_redirect(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArrgs']]):
         pulumi.set(self, "origin_redirect", value)
 
     @property
@@ -666,7 +666,7 @@ class _EdgeCacheOriginState:
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']]:
+    def timeout(self) -> Optional[pulumi.Input['EdgeCacheOriginTimeoutArrgs']]:
         """
         The connection and HTTP timeout configuration for this origin.
         Structure is documented below.
@@ -674,29 +674,29 @@ class _EdgeCacheOriginState:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input['EdgeCacheOriginTimeoutArgs']]):
+    def timeout(self, value: Optional[pulumi.Input['EdgeCacheOriginTimeoutArrgs']]):
         pulumi.set(self, "timeout", value)
 
 
-class EdgeCacheOrigin(pulumi.CustomResource):
+calass EdgeCacheOrigin(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_v4_authentication: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']]] = None,
+                 aws_v4_authentication: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  failover_origin: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_attempts: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  origin_address: Optional[pulumi.Input[str]] = None,
-                 origin_override_action: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArgs']]] = None,
-                 origin_redirect: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArgs']]] = None,
+                 origin_override_action: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArrgs']]] = None,
+                 origin_redirect: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArrgs']]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeout: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']]] = None,
+                 timeout: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArrgs']]] = None,
                  __props__=None):
         """
         EdgeCacheOrigin represents a HTTP-reachable backend for an EdgeCacheService.
@@ -734,25 +734,25 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 "HTTP_5XX",
                 "FORBIDDEN",
             ],
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArrgs(
                 connect_timeout="10s",
                 max_attempts_timeout="20s",
                 response_timeout="60s",
                 read_timeout="5s",
             ),
-            origin_override_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionArgs(
-                url_rewrite=gcp.networkservices.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs(
+            origin_override_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionArrgs(
+                url_rewrite=gcp.networkservices.EdgeCacheOriginOriginOverrideActionUrlRewriteArrgs(
                     host_rewrite="example.com",
                 ),
-                header_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionArgs(
-                    request_headers_to_adds=[gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs(
+                header_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionArrgs(
+                    request_headers_to_adds=[gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrgs(
                         header_name="x-header",
                         header_value="value",
                         replace=True,
                     )],
                 ),
             ),
-            origin_redirect=gcp.networkservices.EdgeCacheOriginOriginRedirectArgs(
+            origin_redirect=gcp.networkservices.EdgeCacheOriginOriginRedirectArrgs(
                 redirect_conditions=[
                     "MOVED_PERMANENTLY",
                     "FOUND",
@@ -769,7 +769,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             labels={
                 "a": "b",
             },
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArrgs(
                 connect_timeout="10s",
             ))
         ```
@@ -781,8 +781,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-name",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ))
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
@@ -790,7 +790,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         default = gcp.networkservices.EdgeCacheOrigin("default",
             origin_address="gs://media-edge-default",
             description="The default bucket for V4 authentication",
-            aws_v4_authentication=gcp.networkservices.EdgeCacheOriginAwsV4AuthenticationArgs(
+            aws_v4_authentication=gcp.networkservices.EdgeCacheOriginAwsV4AuthenticationArrgs(
                 access_key_id="ACCESSKEYID",
                 secret_access_key_version=secret_version_basic.id,
                 origin_region="auto",
@@ -815,7 +815,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArrgs']] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] failover_origin: The Origin resource to try when the current origin cannot be reached.
@@ -843,10 +843,10 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
                When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
                If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArgs']] origin_override_action: The override actions, including url rewrites and header
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArrgs']] origin_override_action: The override actions, including url rewrites and header
                additions, for requests that use this origin.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArgs']] origin_redirect: Follow redirects from this origin.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArrgs']] origin_redirect: Follow redirects from this origin.
                Structure is documented below.
         :param pulumi.Input[int] port: The port to connect to the origin on.
                Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
@@ -869,14 +869,14 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
                Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']] timeout: The connection and HTTP timeout configuration for this origin.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArrgs']] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: EdgeCacheOriginArgs,
+                 args: EdgeCacheOriginArrgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         EdgeCacheOrigin represents a HTTP-reachable backend for an EdgeCacheService.
@@ -914,25 +914,25 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 "HTTP_5XX",
                 "FORBIDDEN",
             ],
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArrgs(
                 connect_timeout="10s",
                 max_attempts_timeout="20s",
                 response_timeout="60s",
                 read_timeout="5s",
             ),
-            origin_override_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionArgs(
-                url_rewrite=gcp.networkservices.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs(
+            origin_override_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionArrgs(
+                url_rewrite=gcp.networkservices.EdgeCacheOriginOriginOverrideActionUrlRewriteArrgs(
                     host_rewrite="example.com",
                 ),
-                header_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionArgs(
-                    request_headers_to_adds=[gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs(
+                header_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionArrgs(
+                    request_headers_to_adds=[gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrgs(
                         header_name="x-header",
                         header_value="value",
                         replace=True,
                     )],
                 ),
             ),
-            origin_redirect=gcp.networkservices.EdgeCacheOriginOriginRedirectArgs(
+            origin_redirect=gcp.networkservices.EdgeCacheOriginOriginRedirectArrgs(
                 redirect_conditions=[
                     "MOVED_PERMANENTLY",
                     "FOUND",
@@ -949,7 +949,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             labels={
                 "a": "b",
             },
-            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArgs(
+            timeout=gcp.networkservices.EdgeCacheOriginTimeoutArrgs(
                 connect_timeout="10s",
             ))
         ```
@@ -961,8 +961,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
 
         secret_basic = gcp.secretmanager.Secret("secret-basic",
             secret_id="secret-name",
-            replication=gcp.secretmanager.SecretReplicationArgs(
-                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            replication=gcp.secretmanager.SecretReplicationArrgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArrgs(),
             ))
         secret_version_basic = gcp.secretmanager.SecretVersion("secret-version-basic",
             secret=secret_basic.id,
@@ -970,7 +970,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         default = gcp.networkservices.EdgeCacheOrigin("default",
             origin_address="gs://media-edge-default",
             description="The default bucket for V4 authentication",
-            aws_v4_authentication=gcp.networkservices.EdgeCacheOriginAwsV4AuthenticationArgs(
+            aws_v4_authentication=gcp.networkservices.EdgeCacheOriginAwsV4AuthenticationArrgs(
                 access_key_id="ACCESSKEYID",
                 secret_access_key_version=secret_version_basic.id,
                 origin_region="auto",
@@ -994,12 +994,12 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param EdgeCacheOriginArgs args: The arguments to use to populate this resource's properties.
+        :param EdgeCacheOriginArrgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(EdgeCacheOriginArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(EdgeCacheOriginArrgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1008,20 +1008,20 @@ class EdgeCacheOrigin(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_v4_authentication: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']]] = None,
+                 aws_v4_authentication: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArrgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  failover_origin: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_attempts: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  origin_address: Optional[pulumi.Input[str]] = None,
-                 origin_override_action: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArgs']]] = None,
-                 origin_redirect: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArgs']]] = None,
+                 origin_override_action: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArrgs']]] = None,
+                 origin_redirect: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArrgs']]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeout: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']]] = None,
+                 timeout: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArrgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1029,7 +1029,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = EdgeCacheOriginArgs.__new__(EdgeCacheOriginArgs)
+            __props__ = EdgeCacheOriginArrgs.__new__(EdgeCacheOriginArrgs)
 
             __props__.__dict__["aws_v4_authentication"] = aws_v4_authentication
             __props__.__dict__["description"] = description
@@ -1061,7 +1061,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws_v4_authentication: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']]] = None,
+            aws_v4_authentication: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArrgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             failover_origin: Optional[pulumi.Input[str]] = None,
@@ -1069,14 +1069,14 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             max_attempts: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             origin_address: Optional[pulumi.Input[str]] = None,
-            origin_override_action: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArgs']]] = None,
-            origin_redirect: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArgs']]] = None,
+            origin_override_action: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArrgs']]] = None,
+            origin_redirect: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArrgs']]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            timeout: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']]] = None) -> 'EdgeCacheOrigin':
+            timeout: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArrgs']]] = None) -> 'EdgeCacheOrigin':
         """
         Get an existing EdgeCacheOrigin resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1084,7 +1084,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArgs']] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginAwsV4AuthenticationArrgs']] aws_v4_authentication: Enable AWS Signature Version 4 origin authentication.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1113,10 +1113,10 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
                When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
                If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArgs']] origin_override_action: The override actions, including url rewrites and header
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArrgs']] origin_override_action: The override actions, including url rewrites and header
                additions, for requests that use this origin.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArgs']] origin_redirect: Follow redirects from this origin.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArrgs']] origin_redirect: Follow redirects from this origin.
                Structure is documented below.
         :param pulumi.Input[int] port: The port to connect to the origin on.
                Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
@@ -1141,7 +1141,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
                Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
-        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']] timeout: The connection and HTTP timeout configuration for this origin.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArrgs']] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

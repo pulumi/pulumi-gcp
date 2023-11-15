@@ -10,19 +10,19 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'GCPolicyMaxAgeArgs',
-    'GCPolicyMaxVersionArgs',
-    'InstanceClusterArgs',
-    'InstanceClusterAutoscalingConfigArgs',
-    'InstanceIamBindingConditionArgs',
-    'InstanceIamMemberConditionArgs',
-    'TableColumnFamilyArgs',
-    'TableIamBindingConditionArgs',
-    'TableIamMemberConditionArgs',
+    'GCPolicyMaxAgeArrgs',
+    'GCPolicyMaxVersionArrgs',
+    'InstanceClusterArrgs',
+    'InstanceClusterAutoscalingConfigArrgs',
+    'InstanceIamBindingConditionArrgs',
+    'InstanceIamMemberConditionArrgs',
+    'TableColumnFamilyArrgs',
+    'TableIamBindingConditionArrgs',
+    'TableIamMemberConditionArrgs',
 ]
 
 @pulumi.input_type
-class GCPolicyMaxAgeArgs:
+calass GCPolicyMaxAgeArrgs:
     def __init__(__self__, *,
                  days: Optional[pulumi.Input[int]] = None,
                  duration: Optional[pulumi.Input[str]] = None):
@@ -71,7 +71,7 @@ class GCPolicyMaxAgeArgs:
 
 
 @pulumi.input_type
-class GCPolicyMaxVersionArgs:
+calass GCPolicyMaxVersionArrgs:
     def __init__(__self__, *,
                  number: pulumi.Input[int]):
         """
@@ -99,10 +99,10 @@ class GCPolicyMaxVersionArgs:
 
 
 @pulumi.input_type
-class InstanceClusterArgs:
+calass InstanceClusterArrgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 autoscaling_config: Optional[pulumi.Input['InstanceClusterAutoscalingConfigArgs']] = None,
+                 autoscaling_config: Optional[pulumi.Input['InstanceClusterAutoscalingConfigArrgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  num_nodes: Optional[pulumi.Input[int]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -110,7 +110,7 @@ class InstanceClusterArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cluster_id: The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
-        :param pulumi.Input['InstanceClusterAutoscalingConfigArgs'] autoscaling_config: [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
+        :param pulumi.Input['InstanceClusterAutoscalingConfigArrgs'] autoscaling_config: [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
         :param pulumi.Input[str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
                
                > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
@@ -157,14 +157,14 @@ class InstanceClusterArgs:
 
     @property
     @pulumi.getter(name="autoscalingConfig")
-    def autoscaling_config(self) -> Optional[pulumi.Input['InstanceClusterAutoscalingConfigArgs']]:
+    def autoscaling_config(self) -> Optional[pulumi.Input['InstanceClusterAutoscalingConfigArrgs']]:
         """
         [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
         """
         return pulumi.get(self, "autoscaling_config")
 
     @autoscaling_config.setter
-    def autoscaling_config(self, value: Optional[pulumi.Input['InstanceClusterAutoscalingConfigArgs']]):
+    def autoscaling_config(self, value: Optional[pulumi.Input['InstanceClusterAutoscalingConfigArrgs']]):
         pulumi.set(self, "autoscaling_config", value)
 
     @property
@@ -239,7 +239,7 @@ class InstanceClusterArgs:
 
 
 @pulumi.input_type
-class InstanceClusterAutoscalingConfigArgs:
+calass InstanceClusterAutoscalingConfigArrgs:
     def __init__(__self__, *,
                  cpu_target: pulumi.Input[int],
                  max_nodes: pulumi.Input[int],
@@ -311,7 +311,7 @@ class InstanceClusterAutoscalingConfigArgs:
 
 
 @pulumi.input_type
-class InstanceIamBindingConditionArgs:
+calass InstanceIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -350,7 +350,7 @@ class InstanceIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class InstanceIamMemberConditionArgs:
+calass InstanceIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -389,7 +389,7 @@ class InstanceIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class TableColumnFamilyArgs:
+calass TableColumnFamilyArrgs:
     def __init__(__self__, *,
                  family: pulumi.Input[str]):
         """
@@ -411,7 +411,7 @@ class TableColumnFamilyArgs:
 
 
 @pulumi.input_type
-class TableIamBindingConditionArgs:
+calass TableIamBindingConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -450,7 +450,7 @@ class TableIamBindingConditionArgs:
 
 
 @pulumi.input_type
-class TableIamMemberConditionArgs:
+calass TableIamMemberConditionArrgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
