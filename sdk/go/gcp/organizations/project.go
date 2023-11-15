@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows creation and management of a Google Cloud Platform project.
@@ -371,12 +370,6 @@ func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectOutput)
 }
 
-func (i *Project) ToOutput(ctx context.Context) pulumix.Output[*Project] {
-	return pulumix.Output[*Project]{
-		OutputState: i.ToProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectArrayInput is an input type that accepts ProjectArray and ProjectArrayOutput values.
 // You can construct a concrete instance of `ProjectArrayInput` via:
 //
@@ -400,12 +393,6 @@ func (i ProjectArray) ToProjectArrayOutput() ProjectArrayOutput {
 
 func (i ProjectArray) ToProjectArrayOutputWithContext(ctx context.Context) ProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectArrayOutput)
-}
-
-func (i ProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*Project] {
-	return pulumix.Output[[]*Project]{
-		OutputState: i.ToProjectArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectMapInput is an input type that accepts ProjectMap and ProjectMapOutput values.
@@ -433,12 +420,6 @@ func (i ProjectMap) ToProjectMapOutputWithContext(ctx context.Context) ProjectMa
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMapOutput)
 }
 
-func (i ProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Project] {
-	return pulumix.Output[map[string]*Project]{
-		OutputState: i.ToProjectMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectOutput struct{ *pulumi.OutputState }
 
 func (ProjectOutput) ElementType() reflect.Type {
@@ -451,12 +432,6 @@ func (o ProjectOutput) ToProjectOutput() ProjectOutput {
 
 func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
 	return o
-}
-
-func (o ProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*Project] {
-	return pulumix.Output[*Project]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
@@ -546,12 +521,6 @@ func (o ProjectArrayOutput) ToProjectArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Project] {
-	return pulumix.Output[[]*Project]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectArrayOutput) Index(i pulumi.IntInput) ProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Project {
 		return vs[0].([]*Project)[vs[1].(int)]
@@ -570,12 +539,6 @@ func (o ProjectMapOutput) ToProjectMapOutput() ProjectMapOutput {
 
 func (o ProjectMapOutput) ToProjectMapOutputWithContext(ctx context.Context) ProjectMapOutput {
 	return o
-}
-
-func (o ProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Project] {
-	return pulumix.Output[map[string]*Project]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectMapOutput) MapIndex(k pulumi.StringInput) ProjectOutput {

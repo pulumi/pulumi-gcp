@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a VM instance resource within GCE. For more information see
@@ -624,12 +623,6 @@ func (i *InstanceFromTemplate) ToInstanceFromTemplateOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateOutput)
 }
 
-func (i *InstanceFromTemplate) ToOutput(ctx context.Context) pulumix.Output[*InstanceFromTemplate] {
-	return pulumix.Output[*InstanceFromTemplate]{
-		OutputState: i.ToInstanceFromTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceFromTemplateArrayInput is an input type that accepts InstanceFromTemplateArray and InstanceFromTemplateArrayOutput values.
 // You can construct a concrete instance of `InstanceFromTemplateArrayInput` via:
 //
@@ -653,12 +646,6 @@ func (i InstanceFromTemplateArray) ToInstanceFromTemplateArrayOutput() InstanceF
 
 func (i InstanceFromTemplateArray) ToInstanceFromTemplateArrayOutputWithContext(ctx context.Context) InstanceFromTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateArrayOutput)
-}
-
-func (i InstanceFromTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceFromTemplate] {
-	return pulumix.Output[[]*InstanceFromTemplate]{
-		OutputState: i.ToInstanceFromTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InstanceFromTemplateMapInput is an input type that accepts InstanceFromTemplateMap and InstanceFromTemplateMapOutput values.
@@ -686,12 +673,6 @@ func (i InstanceFromTemplateMap) ToInstanceFromTemplateMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateMapOutput)
 }
 
-func (i InstanceFromTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceFromTemplate] {
-	return pulumix.Output[map[string]*InstanceFromTemplate]{
-		OutputState: i.ToInstanceFromTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceFromTemplateOutput struct{ *pulumi.OutputState }
 
 func (InstanceFromTemplateOutput) ElementType() reflect.Type {
@@ -704,12 +685,6 @@ func (o InstanceFromTemplateOutput) ToInstanceFromTemplateOutput() InstanceFromT
 
 func (o InstanceFromTemplateOutput) ToInstanceFromTemplateOutputWithContext(ctx context.Context) InstanceFromTemplateOutput {
 	return o
-}
-
-func (o InstanceFromTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceFromTemplate] {
-	return pulumix.Output[*InstanceFromTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Controls for advanced machine-related behavior features.
@@ -961,12 +936,6 @@ func (o InstanceFromTemplateArrayOutput) ToInstanceFromTemplateArrayOutputWithCo
 	return o
 }
 
-func (o InstanceFromTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InstanceFromTemplate] {
-	return pulumix.Output[[]*InstanceFromTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceFromTemplateArrayOutput) Index(i pulumi.IntInput) InstanceFromTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceFromTemplate {
 		return vs[0].([]*InstanceFromTemplate)[vs[1].(int)]
@@ -985,12 +954,6 @@ func (o InstanceFromTemplateMapOutput) ToInstanceFromTemplateMapOutput() Instanc
 
 func (o InstanceFromTemplateMapOutput) ToInstanceFromTemplateMapOutputWithContext(ctx context.Context) InstanceFromTemplateMapOutput {
 	return o
-}
-
-func (o InstanceFromTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InstanceFromTemplate] {
-	return pulumix.Output[map[string]*InstanceFromTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceFromTemplateMapOutput) MapIndex(k pulumi.StringInput) InstanceFromTemplateOutput {

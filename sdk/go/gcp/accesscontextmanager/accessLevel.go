@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An AccessLevel is a label that can be applied to requests to GCP services,
@@ -275,12 +274,6 @@ func (i *AccessLevel) ToAccessLevelOutputWithContext(ctx context.Context) Access
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelOutput)
 }
 
-func (i *AccessLevel) ToOutput(ctx context.Context) pulumix.Output[*AccessLevel] {
-	return pulumix.Output[*AccessLevel]{
-		OutputState: i.ToAccessLevelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessLevelArrayInput is an input type that accepts AccessLevelArray and AccessLevelArrayOutput values.
 // You can construct a concrete instance of `AccessLevelArrayInput` via:
 //
@@ -304,12 +297,6 @@ func (i AccessLevelArray) ToAccessLevelArrayOutput() AccessLevelArrayOutput {
 
 func (i AccessLevelArray) ToAccessLevelArrayOutputWithContext(ctx context.Context) AccessLevelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelArrayOutput)
-}
-
-func (i AccessLevelArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessLevel] {
-	return pulumix.Output[[]*AccessLevel]{
-		OutputState: i.ToAccessLevelArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessLevelMapInput is an input type that accepts AccessLevelMap and AccessLevelMapOutput values.
@@ -337,12 +324,6 @@ func (i AccessLevelMap) ToAccessLevelMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelMapOutput)
 }
 
-func (i AccessLevelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessLevel] {
-	return pulumix.Output[map[string]*AccessLevel]{
-		OutputState: i.ToAccessLevelMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessLevelOutput struct{ *pulumi.OutputState }
 
 func (AccessLevelOutput) ElementType() reflect.Type {
@@ -355,12 +336,6 @@ func (o AccessLevelOutput) ToAccessLevelOutput() AccessLevelOutput {
 
 func (o AccessLevelOutput) ToAccessLevelOutputWithContext(ctx context.Context) AccessLevelOutput {
 	return o
-}
-
-func (o AccessLevelOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessLevel] {
-	return pulumix.Output[*AccessLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A set of predefined conditions for the access level and a combining function.
@@ -415,12 +390,6 @@ func (o AccessLevelArrayOutput) ToAccessLevelArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o AccessLevelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessLevel] {
-	return pulumix.Output[[]*AccessLevel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessLevelArrayOutput) Index(i pulumi.IntInput) AccessLevelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessLevel {
 		return vs[0].([]*AccessLevel)[vs[1].(int)]
@@ -439,12 +408,6 @@ func (o AccessLevelMapOutput) ToAccessLevelMapOutput() AccessLevelMapOutput {
 
 func (o AccessLevelMapOutput) ToAccessLevelMapOutputWithContext(ctx context.Context) AccessLevelMapOutput {
 	return o
-}
-
-func (o AccessLevelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessLevel] {
-	return pulumix.Output[map[string]*AccessLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessLevelMapOutput) MapIndex(k pulumi.StringInput) AccessLevelOutput {

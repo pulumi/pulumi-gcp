@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an Address resource.
@@ -706,12 +705,6 @@ func (i *Address) ToAddressOutputWithContext(ctx context.Context) AddressOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AddressOutput)
 }
 
-func (i *Address) ToOutput(ctx context.Context) pulumix.Output[*Address] {
-	return pulumix.Output[*Address]{
-		OutputState: i.ToAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AddressArrayInput is an input type that accepts AddressArray and AddressArrayOutput values.
 // You can construct a concrete instance of `AddressArrayInput` via:
 //
@@ -735,12 +728,6 @@ func (i AddressArray) ToAddressArrayOutput() AddressArrayOutput {
 
 func (i AddressArray) ToAddressArrayOutputWithContext(ctx context.Context) AddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AddressArrayOutput)
-}
-
-func (i AddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*Address] {
-	return pulumix.Output[[]*Address]{
-		OutputState: i.ToAddressArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AddressMapInput is an input type that accepts AddressMap and AddressMapOutput values.
@@ -768,12 +755,6 @@ func (i AddressMap) ToAddressMapOutputWithContext(ctx context.Context) AddressMa
 	return pulumi.ToOutputWithContext(ctx, i).(AddressMapOutput)
 }
 
-func (i AddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Address] {
-	return pulumix.Output[map[string]*Address]{
-		OutputState: i.ToAddressMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AddressOutput struct{ *pulumi.OutputState }
 
 func (AddressOutput) ElementType() reflect.Type {
@@ -786,12 +767,6 @@ func (o AddressOutput) ToAddressOutput() AddressOutput {
 
 func (o AddressOutput) ToAddressOutputWithContext(ctx context.Context) AddressOutput {
 	return o
-}
-
-func (o AddressOutput) ToOutput(ctx context.Context) pulumix.Output[*Address] {
-	return pulumix.Output[*Address]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The static external IP address represented by this resource.
@@ -951,12 +926,6 @@ func (o AddressArrayOutput) ToAddressArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o AddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Address] {
-	return pulumix.Output[[]*Address]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AddressArrayOutput) Index(i pulumi.IntInput) AddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Address {
 		return vs[0].([]*Address)[vs[1].(int)]
@@ -975,12 +944,6 @@ func (o AddressMapOutput) ToAddressMapOutput() AddressMapOutput {
 
 func (o AddressMapOutput) ToAddressMapOutputWithContext(ctx context.Context) AddressMapOutput {
 	return o
-}
-
-func (o AddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Address] {
-	return pulumix.Output[map[string]*Address]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AddressMapOutput) MapIndex(k pulumi.StringInput) AddressOutput {

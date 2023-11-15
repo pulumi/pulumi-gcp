@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for disk
@@ -121,12 +120,6 @@ func (o LookupDiskIamPolicyResultOutput) ToLookupDiskIamPolicyResultOutput() Loo
 
 func (o LookupDiskIamPolicyResultOutput) ToLookupDiskIamPolicyResultOutputWithContext(ctx context.Context) LookupDiskIamPolicyResultOutput {
 	return o
-}
-
-func (o LookupDiskIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDiskIamPolicyResult] {
-	return pulumix.Output[LookupDiskIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.

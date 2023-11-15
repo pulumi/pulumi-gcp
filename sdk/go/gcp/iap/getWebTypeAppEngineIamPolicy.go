@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current IAM policy data for webtypeappengine
@@ -111,12 +110,6 @@ func (o GetWebTypeAppEngineIamPolicyResultOutput) ToGetWebTypeAppEngineIamPolicy
 
 func (o GetWebTypeAppEngineIamPolicyResultOutput) ToGetWebTypeAppEngineIamPolicyResultOutputWithContext(ctx context.Context) GetWebTypeAppEngineIamPolicyResultOutput {
 	return o
-}
-
-func (o GetWebTypeAppEngineIamPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetWebTypeAppEngineIamPolicyResult] {
-	return pulumix.Output[GetWebTypeAppEngineIamPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetWebTypeAppEngineIamPolicyResultOutput) AppId() pulumi.StringOutput {

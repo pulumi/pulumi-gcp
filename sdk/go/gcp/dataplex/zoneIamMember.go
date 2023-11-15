@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataplex Zone. Each of these resources serves a different use case:
@@ -381,12 +380,6 @@ func (i *ZoneIamMember) ToZoneIamMemberOutputWithContext(ctx context.Context) Zo
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamMemberOutput)
 }
 
-func (i *ZoneIamMember) ToOutput(ctx context.Context) pulumix.Output[*ZoneIamMember] {
-	return pulumix.Output[*ZoneIamMember]{
-		OutputState: i.ToZoneIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ZoneIamMemberArrayInput is an input type that accepts ZoneIamMemberArray and ZoneIamMemberArrayOutput values.
 // You can construct a concrete instance of `ZoneIamMemberArrayInput` via:
 //
@@ -410,12 +403,6 @@ func (i ZoneIamMemberArray) ToZoneIamMemberArrayOutput() ZoneIamMemberArrayOutpu
 
 func (i ZoneIamMemberArray) ToZoneIamMemberArrayOutputWithContext(ctx context.Context) ZoneIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamMemberArrayOutput)
-}
-
-func (i ZoneIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneIamMember] {
-	return pulumix.Output[[]*ZoneIamMember]{
-		OutputState: i.ToZoneIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ZoneIamMemberMapInput is an input type that accepts ZoneIamMemberMap and ZoneIamMemberMapOutput values.
@@ -443,12 +430,6 @@ func (i ZoneIamMemberMap) ToZoneIamMemberMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamMemberMapOutput)
 }
 
-func (i ZoneIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneIamMember] {
-	return pulumix.Output[map[string]*ZoneIamMember]{
-		OutputState: i.ToZoneIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ZoneIamMemberOutput struct{ *pulumi.OutputState }
 
 func (ZoneIamMemberOutput) ElementType() reflect.Type {
@@ -461,12 +442,6 @@ func (o ZoneIamMemberOutput) ToZoneIamMemberOutput() ZoneIamMemberOutput {
 
 func (o ZoneIamMemberOutput) ToZoneIamMemberOutputWithContext(ctx context.Context) ZoneIamMemberOutput {
 	return o
-}
-
-func (o ZoneIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneIamMember] {
-	return pulumix.Output[*ZoneIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ZoneIamMemberOutput) Condition() ZoneIamMemberConditionPtrOutput {
@@ -534,12 +509,6 @@ func (o ZoneIamMemberArrayOutput) ToZoneIamMemberArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o ZoneIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneIamMember] {
-	return pulumix.Output[[]*ZoneIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ZoneIamMemberArrayOutput) Index(i pulumi.IntInput) ZoneIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneIamMember {
 		return vs[0].([]*ZoneIamMember)[vs[1].(int)]
@@ -558,12 +527,6 @@ func (o ZoneIamMemberMapOutput) ToZoneIamMemberMapOutput() ZoneIamMemberMapOutpu
 
 func (o ZoneIamMemberMapOutput) ToZoneIamMemberMapOutputWithContext(ctx context.Context) ZoneIamMemberMapOutput {
 	return o
-}
-
-func (o ZoneIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneIamMember] {
-	return pulumix.Output[map[string]*ZoneIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ZoneIamMemberMapOutput) MapIndex(k pulumi.StringInput) ZoneIamMemberOutput {

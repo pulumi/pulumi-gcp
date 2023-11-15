@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Dataproc metastore Service. Each of these resources serves a different use case:
@@ -362,12 +361,6 @@ func (i *MetastoreServiceIamPolicy) ToMetastoreServiceIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamPolicyOutput)
 }
 
-func (i *MetastoreServiceIamPolicy) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceIamPolicy] {
-	return pulumix.Output[*MetastoreServiceIamPolicy]{
-		OutputState: i.ToMetastoreServiceIamPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetastoreServiceIamPolicyArrayInput is an input type that accepts MetastoreServiceIamPolicyArray and MetastoreServiceIamPolicyArrayOutput values.
 // You can construct a concrete instance of `MetastoreServiceIamPolicyArrayInput` via:
 //
@@ -391,12 +384,6 @@ func (i MetastoreServiceIamPolicyArray) ToMetastoreServiceIamPolicyArrayOutput()
 
 func (i MetastoreServiceIamPolicyArray) ToMetastoreServiceIamPolicyArrayOutputWithContext(ctx context.Context) MetastoreServiceIamPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamPolicyArrayOutput)
-}
-
-func (i MetastoreServiceIamPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreServiceIamPolicy] {
-	return pulumix.Output[[]*MetastoreServiceIamPolicy]{
-		OutputState: i.ToMetastoreServiceIamPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MetastoreServiceIamPolicyMapInput is an input type that accepts MetastoreServiceIamPolicyMap and MetastoreServiceIamPolicyMapOutput values.
@@ -424,12 +411,6 @@ func (i MetastoreServiceIamPolicyMap) ToMetastoreServiceIamPolicyMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceIamPolicyMapOutput)
 }
 
-func (i MetastoreServiceIamPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreServiceIamPolicy] {
-	return pulumix.Output[map[string]*MetastoreServiceIamPolicy]{
-		OutputState: i.ToMetastoreServiceIamPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetastoreServiceIamPolicyOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceIamPolicyOutput) ElementType() reflect.Type {
@@ -442,12 +423,6 @@ func (o MetastoreServiceIamPolicyOutput) ToMetastoreServiceIamPolicyOutput() Met
 
 func (o MetastoreServiceIamPolicyOutput) ToMetastoreServiceIamPolicyOutputWithContext(ctx context.Context) MetastoreServiceIamPolicyOutput {
 	return o
-}
-
-func (o MetastoreServiceIamPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*MetastoreServiceIamPolicy] {
-	return pulumix.Output[*MetastoreServiceIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (Computed) The etag of the IAM policy.
@@ -504,12 +479,6 @@ func (o MetastoreServiceIamPolicyArrayOutput) ToMetastoreServiceIamPolicyArrayOu
 	return o
 }
 
-func (o MetastoreServiceIamPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetastoreServiceIamPolicy] {
-	return pulumix.Output[[]*MetastoreServiceIamPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetastoreServiceIamPolicyArrayOutput) Index(i pulumi.IntInput) MetastoreServiceIamPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetastoreServiceIamPolicy {
 		return vs[0].([]*MetastoreServiceIamPolicy)[vs[1].(int)]
@@ -528,12 +497,6 @@ func (o MetastoreServiceIamPolicyMapOutput) ToMetastoreServiceIamPolicyMapOutput
 
 func (o MetastoreServiceIamPolicyMapOutput) ToMetastoreServiceIamPolicyMapOutputWithContext(ctx context.Context) MetastoreServiceIamPolicyMapOutput {
 	return o
-}
-
-func (o MetastoreServiceIamPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetastoreServiceIamPolicy] {
-	return pulumix.Output[map[string]*MetastoreServiceIamPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetastoreServiceIamPolicyMapOutput) MapIndex(k pulumi.StringInput) MetastoreServiceIamPolicyOutput {

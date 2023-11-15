@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Machine Image resource. Machine images store all the configuration,
@@ -333,12 +332,6 @@ func (i *MachineImage) ToMachineImageOutputWithContext(ctx context.Context) Mach
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageOutput)
 }
 
-func (i *MachineImage) ToOutput(ctx context.Context) pulumix.Output[*MachineImage] {
-	return pulumix.Output[*MachineImage]{
-		OutputState: i.ToMachineImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MachineImageArrayInput is an input type that accepts MachineImageArray and MachineImageArrayOutput values.
 // You can construct a concrete instance of `MachineImageArrayInput` via:
 //
@@ -362,12 +355,6 @@ func (i MachineImageArray) ToMachineImageArrayOutput() MachineImageArrayOutput {
 
 func (i MachineImageArray) ToMachineImageArrayOutputWithContext(ctx context.Context) MachineImageArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageArrayOutput)
-}
-
-func (i MachineImageArray) ToOutput(ctx context.Context) pulumix.Output[[]*MachineImage] {
-	return pulumix.Output[[]*MachineImage]{
-		OutputState: i.ToMachineImageArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MachineImageMapInput is an input type that accepts MachineImageMap and MachineImageMapOutput values.
@@ -395,12 +382,6 @@ func (i MachineImageMap) ToMachineImageMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageMapOutput)
 }
 
-func (i MachineImageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MachineImage] {
-	return pulumix.Output[map[string]*MachineImage]{
-		OutputState: i.ToMachineImageMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MachineImageOutput struct{ *pulumi.OutputState }
 
 func (MachineImageOutput) ElementType() reflect.Type {
@@ -413,12 +394,6 @@ func (o MachineImageOutput) ToMachineImageOutput() MachineImageOutput {
 
 func (o MachineImageOutput) ToMachineImageOutputWithContext(ctx context.Context) MachineImageOutput {
 	return o
-}
-
-func (o MachineImageOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineImage] {
-	return pulumix.Output[*MachineImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A text description of the resource.
@@ -485,12 +460,6 @@ func (o MachineImageArrayOutput) ToMachineImageArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o MachineImageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MachineImage] {
-	return pulumix.Output[[]*MachineImage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MachineImageArrayOutput) Index(i pulumi.IntInput) MachineImageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MachineImage {
 		return vs[0].([]*MachineImage)[vs[1].(int)]
@@ -509,12 +478,6 @@ func (o MachineImageMapOutput) ToMachineImageMapOutput() MachineImageMapOutput {
 
 func (o MachineImageMapOutput) ToMachineImageMapOutputWithContext(ctx context.Context) MachineImageMapOutput {
 	return o
-}
-
-func (o MachineImageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MachineImage] {
-	return pulumix.Output[map[string]*MachineImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MachineImageMapOutput) MapIndex(k pulumi.StringInput) MachineImageOutput {

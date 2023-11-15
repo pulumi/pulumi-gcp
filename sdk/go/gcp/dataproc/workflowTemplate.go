@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Workflow Template is a reusable workflow configuration. It defines a graph of jobs with information on where to run those jobs.
@@ -330,12 +329,6 @@ func (i *WorkflowTemplate) ToWorkflowTemplateOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateOutput)
 }
 
-func (i *WorkflowTemplate) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplate] {
-	return pulumix.Output[*WorkflowTemplate]{
-		OutputState: i.ToWorkflowTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowTemplateArrayInput is an input type that accepts WorkflowTemplateArray and WorkflowTemplateArrayOutput values.
 // You can construct a concrete instance of `WorkflowTemplateArrayInput` via:
 //
@@ -359,12 +352,6 @@ func (i WorkflowTemplateArray) ToWorkflowTemplateArrayOutput() WorkflowTemplateA
 
 func (i WorkflowTemplateArray) ToWorkflowTemplateArrayOutputWithContext(ctx context.Context) WorkflowTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateArrayOutput)
-}
-
-func (i WorkflowTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkflowTemplate] {
-	return pulumix.Output[[]*WorkflowTemplate]{
-		OutputState: i.ToWorkflowTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkflowTemplateMapInput is an input type that accepts WorkflowTemplateMap and WorkflowTemplateMapOutput values.
@@ -392,12 +379,6 @@ func (i WorkflowTemplateMap) ToWorkflowTemplateMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowTemplateMapOutput)
 }
 
-func (i WorkflowTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkflowTemplate] {
-	return pulumix.Output[map[string]*WorkflowTemplate]{
-		OutputState: i.ToWorkflowTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowTemplateOutput struct{ *pulumi.OutputState }
 
 func (WorkflowTemplateOutput) ElementType() reflect.Type {
@@ -410,12 +391,6 @@ func (o WorkflowTemplateOutput) ToWorkflowTemplateOutput() WorkflowTemplateOutpu
 
 func (o WorkflowTemplateOutput) ToWorkflowTemplateOutputWithContext(ctx context.Context) WorkflowTemplateOutput {
 	return o
-}
-
-func (o WorkflowTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowTemplate] {
-	return pulumix.Output[*WorkflowTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output only. The time template was created.
@@ -500,12 +475,6 @@ func (o WorkflowTemplateArrayOutput) ToWorkflowTemplateArrayOutputWithContext(ct
 	return o
 }
 
-func (o WorkflowTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkflowTemplate] {
-	return pulumix.Output[[]*WorkflowTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkflowTemplateArrayOutput) Index(i pulumi.IntInput) WorkflowTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkflowTemplate {
 		return vs[0].([]*WorkflowTemplate)[vs[1].(int)]
@@ -524,12 +493,6 @@ func (o WorkflowTemplateMapOutput) ToWorkflowTemplateMapOutput() WorkflowTemplat
 
 func (o WorkflowTemplateMapOutput) ToWorkflowTemplateMapOutputWithContext(ctx context.Context) WorkflowTemplateMapOutput {
 	return o
-}
-
-func (o WorkflowTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkflowTemplate] {
-	return pulumix.Output[map[string]*WorkflowTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowTemplateMapOutput) MapIndex(k pulumi.StringInput) WorkflowTemplateOutput {

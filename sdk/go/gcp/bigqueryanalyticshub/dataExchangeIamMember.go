@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Bigquery Analytics Hub DataExchange. Each of these resources serves a different use case:
@@ -380,12 +379,6 @@ func (i *DataExchangeIamMember) ToDataExchangeIamMemberOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamMemberOutput)
 }
 
-func (i *DataExchangeIamMember) ToOutput(ctx context.Context) pulumix.Output[*DataExchangeIamMember] {
-	return pulumix.Output[*DataExchangeIamMember]{
-		OutputState: i.ToDataExchangeIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataExchangeIamMemberArrayInput is an input type that accepts DataExchangeIamMemberArray and DataExchangeIamMemberArrayOutput values.
 // You can construct a concrete instance of `DataExchangeIamMemberArrayInput` via:
 //
@@ -409,12 +402,6 @@ func (i DataExchangeIamMemberArray) ToDataExchangeIamMemberArrayOutput() DataExc
 
 func (i DataExchangeIamMemberArray) ToDataExchangeIamMemberArrayOutputWithContext(ctx context.Context) DataExchangeIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamMemberArrayOutput)
-}
-
-func (i DataExchangeIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*DataExchangeIamMember] {
-	return pulumix.Output[[]*DataExchangeIamMember]{
-		OutputState: i.ToDataExchangeIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DataExchangeIamMemberMapInput is an input type that accepts DataExchangeIamMemberMap and DataExchangeIamMemberMapOutput values.
@@ -442,12 +429,6 @@ func (i DataExchangeIamMemberMap) ToDataExchangeIamMemberMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DataExchangeIamMemberMapOutput)
 }
 
-func (i DataExchangeIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataExchangeIamMember] {
-	return pulumix.Output[map[string]*DataExchangeIamMember]{
-		OutputState: i.ToDataExchangeIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataExchangeIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DataExchangeIamMemberOutput) ElementType() reflect.Type {
@@ -460,12 +441,6 @@ func (o DataExchangeIamMemberOutput) ToDataExchangeIamMemberOutput() DataExchang
 
 func (o DataExchangeIamMemberOutput) ToDataExchangeIamMemberOutputWithContext(ctx context.Context) DataExchangeIamMemberOutput {
 	return o
-}
-
-func (o DataExchangeIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DataExchangeIamMember] {
-	return pulumix.Output[*DataExchangeIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataExchangeIamMemberOutput) Condition() DataExchangeIamMemberConditionPtrOutput {
@@ -531,12 +506,6 @@ func (o DataExchangeIamMemberArrayOutput) ToDataExchangeIamMemberArrayOutputWith
 	return o
 }
 
-func (o DataExchangeIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DataExchangeIamMember] {
-	return pulumix.Output[[]*DataExchangeIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataExchangeIamMemberArrayOutput) Index(i pulumi.IntInput) DataExchangeIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataExchangeIamMember {
 		return vs[0].([]*DataExchangeIamMember)[vs[1].(int)]
@@ -555,12 +524,6 @@ func (o DataExchangeIamMemberMapOutput) ToDataExchangeIamMemberMapOutput() DataE
 
 func (o DataExchangeIamMemberMapOutput) ToDataExchangeIamMemberMapOutputWithContext(ctx context.Context) DataExchangeIamMemberMapOutput {
 	return o
-}
-
-func (o DataExchangeIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataExchangeIamMember] {
-	return pulumix.Output[map[string]*DataExchangeIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataExchangeIamMemberMapOutput) MapIndex(k pulumi.StringInput) DataExchangeIamMemberOutput {

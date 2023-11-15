@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i FolderFeedConditionArgs) ToFolderFeedConditionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedConditionOutput)
 }
 
-func (i FolderFeedConditionArgs) ToOutput(ctx context.Context) pulumix.Output[FolderFeedCondition] {
-	return pulumix.Output[FolderFeedCondition]{
-		OutputState: i.ToFolderFeedConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FolderFeedConditionArgs) ToFolderFeedConditionPtrOutput() FolderFeedConditionPtrOutput {
 	return i.ToFolderFeedConditionPtrOutputWithContext(context.Background())
 }
@@ -112,12 +105,6 @@ func (i *folderFeedConditionPtrType) ToFolderFeedConditionPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedConditionPtrOutput)
 }
 
-func (i *folderFeedConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*FolderFeedCondition] {
-	return pulumix.Output[*FolderFeedCondition]{
-		OutputState: i.ToFolderFeedConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderFeedConditionOutput struct{ *pulumi.OutputState }
 
 func (FolderFeedConditionOutput) ElementType() reflect.Type {
@@ -140,12 +127,6 @@ func (o FolderFeedConditionOutput) ToFolderFeedConditionPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderFeedCondition) *FolderFeedCondition {
 		return &v
 	}).(FolderFeedConditionPtrOutput)
-}
-
-func (o FolderFeedConditionOutput) ToOutput(ctx context.Context) pulumix.Output[FolderFeedCondition] {
-	return pulumix.Output[FolderFeedCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the expression. This is a longer text which describes the expression,
@@ -183,12 +164,6 @@ func (o FolderFeedConditionPtrOutput) ToFolderFeedConditionPtrOutput() FolderFee
 
 func (o FolderFeedConditionPtrOutput) ToFolderFeedConditionPtrOutputWithContext(ctx context.Context) FolderFeedConditionPtrOutput {
 	return o
-}
-
-func (o FolderFeedConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderFeedCondition] {
-	return pulumix.Output[*FolderFeedCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderFeedConditionPtrOutput) Elem() FolderFeedConditionOutput {
@@ -279,12 +254,6 @@ func (i FolderFeedFeedOutputConfigArgs) ToFolderFeedFeedOutputConfigOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedFeedOutputConfigOutput)
 }
 
-func (i FolderFeedFeedOutputConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FolderFeedFeedOutputConfig] {
-	return pulumix.Output[FolderFeedFeedOutputConfig]{
-		OutputState: i.ToFolderFeedFeedOutputConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FolderFeedFeedOutputConfigArgs) ToFolderFeedFeedOutputConfigPtrOutput() FolderFeedFeedOutputConfigPtrOutput {
 	return i.ToFolderFeedFeedOutputConfigPtrOutputWithContext(context.Background())
 }
@@ -326,12 +295,6 @@ func (i *folderFeedFeedOutputConfigPtrType) ToFolderFeedFeedOutputConfigPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedFeedOutputConfigPtrOutput)
 }
 
-func (i *folderFeedFeedOutputConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FolderFeedFeedOutputConfig] {
-	return pulumix.Output[*FolderFeedFeedOutputConfig]{
-		OutputState: i.ToFolderFeedFeedOutputConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderFeedFeedOutputConfigOutput struct{ *pulumi.OutputState }
 
 func (FolderFeedFeedOutputConfigOutput) ElementType() reflect.Type {
@@ -356,12 +319,6 @@ func (o FolderFeedFeedOutputConfigOutput) ToFolderFeedFeedOutputConfigPtrOutputW
 	}).(FolderFeedFeedOutputConfigPtrOutput)
 }
 
-func (o FolderFeedFeedOutputConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FolderFeedFeedOutputConfig] {
-	return pulumix.Output[FolderFeedFeedOutputConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Destination on Cloud Pubsub.
 // Structure is documented below.
 func (o FolderFeedFeedOutputConfigOutput) PubsubDestination() FolderFeedFeedOutputConfigPubsubDestinationOutput {
@@ -382,12 +339,6 @@ func (o FolderFeedFeedOutputConfigPtrOutput) ToFolderFeedFeedOutputConfigPtrOutp
 
 func (o FolderFeedFeedOutputConfigPtrOutput) ToFolderFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) FolderFeedFeedOutputConfigPtrOutput {
 	return o
-}
-
-func (o FolderFeedFeedOutputConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderFeedFeedOutputConfig] {
-	return pulumix.Output[*FolderFeedFeedOutputConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderFeedFeedOutputConfigPtrOutput) Elem() FolderFeedFeedOutputConfigOutput {
@@ -448,12 +399,6 @@ func (i FolderFeedFeedOutputConfigPubsubDestinationArgs) ToFolderFeedFeedOutputC
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedFeedOutputConfigPubsubDestinationOutput)
 }
 
-func (i FolderFeedFeedOutputConfigPubsubDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[FolderFeedFeedOutputConfigPubsubDestination] {
-	return pulumix.Output[FolderFeedFeedOutputConfigPubsubDestination]{
-		OutputState: i.ToFolderFeedFeedOutputConfigPubsubDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FolderFeedFeedOutputConfigPubsubDestinationArgs) ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutput() FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
 	return i.ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Background())
 }
@@ -495,12 +440,6 @@ func (i *folderFeedFeedOutputConfigPubsubDestinationPtrType) ToFolderFeedFeedOut
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedFeedOutputConfigPubsubDestinationPtrOutput)
 }
 
-func (i *folderFeedFeedOutputConfigPubsubDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*FolderFeedFeedOutputConfigPubsubDestination] {
-	return pulumix.Output[*FolderFeedFeedOutputConfigPubsubDestination]{
-		OutputState: i.ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FolderFeedFeedOutputConfigPubsubDestinationOutput struct{ *pulumi.OutputState }
 
 func (FolderFeedFeedOutputConfigPubsubDestinationOutput) ElementType() reflect.Type {
@@ -525,12 +464,6 @@ func (o FolderFeedFeedOutputConfigPubsubDestinationOutput) ToFolderFeedFeedOutpu
 	}).(FolderFeedFeedOutputConfigPubsubDestinationPtrOutput)
 }
 
-func (o FolderFeedFeedOutputConfigPubsubDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[FolderFeedFeedOutputConfigPubsubDestination] {
-	return pulumix.Output[FolderFeedFeedOutputConfigPubsubDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Destination on Cloud Pubsub topic.
 //
 // ***
@@ -550,12 +483,6 @@ func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) ToFolderFeedFeedOu
 
 func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) ToFolderFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) FolderFeedFeedOutputConfigPubsubDestinationPtrOutput {
 	return o
-}
-
-func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FolderFeedFeedOutputConfigPubsubDestination] {
-	return pulumix.Output[*FolderFeedFeedOutputConfigPubsubDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FolderFeedFeedOutputConfigPubsubDestinationPtrOutput) Elem() FolderFeedFeedOutputConfigPubsubDestinationOutput {
@@ -631,12 +558,6 @@ func (i OrganizationFeedConditionArgs) ToOrganizationFeedConditionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedConditionOutput)
 }
 
-func (i OrganizationFeedConditionArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationFeedCondition] {
-	return pulumix.Output[OrganizationFeedCondition]{
-		OutputState: i.ToOrganizationFeedConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrganizationFeedConditionArgs) ToOrganizationFeedConditionPtrOutput() OrganizationFeedConditionPtrOutput {
 	return i.ToOrganizationFeedConditionPtrOutputWithContext(context.Background())
 }
@@ -678,12 +599,6 @@ func (i *organizationFeedConditionPtrType) ToOrganizationFeedConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedConditionPtrOutput)
 }
 
-func (i *organizationFeedConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationFeedCondition] {
-	return pulumix.Output[*OrganizationFeedCondition]{
-		OutputState: i.ToOrganizationFeedConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationFeedConditionOutput struct{ *pulumi.OutputState }
 
 func (OrganizationFeedConditionOutput) ElementType() reflect.Type {
@@ -706,12 +621,6 @@ func (o OrganizationFeedConditionOutput) ToOrganizationFeedConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationFeedCondition) *OrganizationFeedCondition {
 		return &v
 	}).(OrganizationFeedConditionPtrOutput)
-}
-
-func (o OrganizationFeedConditionOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationFeedCondition] {
-	return pulumix.Output[OrganizationFeedCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the expression. This is a longer text which describes the expression,
@@ -749,12 +658,6 @@ func (o OrganizationFeedConditionPtrOutput) ToOrganizationFeedConditionPtrOutput
 
 func (o OrganizationFeedConditionPtrOutput) ToOrganizationFeedConditionPtrOutputWithContext(ctx context.Context) OrganizationFeedConditionPtrOutput {
 	return o
-}
-
-func (o OrganizationFeedConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationFeedCondition] {
-	return pulumix.Output[*OrganizationFeedCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationFeedConditionPtrOutput) Elem() OrganizationFeedConditionOutput {
@@ -845,12 +748,6 @@ func (i OrganizationFeedFeedOutputConfigArgs) ToOrganizationFeedFeedOutputConfig
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedFeedOutputConfigOutput)
 }
 
-func (i OrganizationFeedFeedOutputConfigArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationFeedFeedOutputConfig] {
-	return pulumix.Output[OrganizationFeedFeedOutputConfig]{
-		OutputState: i.ToOrganizationFeedFeedOutputConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrganizationFeedFeedOutputConfigArgs) ToOrganizationFeedFeedOutputConfigPtrOutput() OrganizationFeedFeedOutputConfigPtrOutput {
 	return i.ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(context.Background())
 }
@@ -892,12 +789,6 @@ func (i *organizationFeedFeedOutputConfigPtrType) ToOrganizationFeedFeedOutputCo
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedFeedOutputConfigPtrOutput)
 }
 
-func (i *organizationFeedFeedOutputConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationFeedFeedOutputConfig] {
-	return pulumix.Output[*OrganizationFeedFeedOutputConfig]{
-		OutputState: i.ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationFeedFeedOutputConfigOutput struct{ *pulumi.OutputState }
 
 func (OrganizationFeedFeedOutputConfigOutput) ElementType() reflect.Type {
@@ -922,12 +813,6 @@ func (o OrganizationFeedFeedOutputConfigOutput) ToOrganizationFeedFeedOutputConf
 	}).(OrganizationFeedFeedOutputConfigPtrOutput)
 }
 
-func (o OrganizationFeedFeedOutputConfigOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationFeedFeedOutputConfig] {
-	return pulumix.Output[OrganizationFeedFeedOutputConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Destination on Cloud Pubsub.
 // Structure is documented below.
 func (o OrganizationFeedFeedOutputConfigOutput) PubsubDestination() OrganizationFeedFeedOutputConfigPubsubDestinationOutput {
@@ -948,12 +833,6 @@ func (o OrganizationFeedFeedOutputConfigPtrOutput) ToOrganizationFeedFeedOutputC
 
 func (o OrganizationFeedFeedOutputConfigPtrOutput) ToOrganizationFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) OrganizationFeedFeedOutputConfigPtrOutput {
 	return o
-}
-
-func (o OrganizationFeedFeedOutputConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationFeedFeedOutputConfig] {
-	return pulumix.Output[*OrganizationFeedFeedOutputConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationFeedFeedOutputConfigPtrOutput) Elem() OrganizationFeedFeedOutputConfigOutput {
@@ -1014,12 +893,6 @@ func (i OrganizationFeedFeedOutputConfigPubsubDestinationArgs) ToOrganizationFee
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedFeedOutputConfigPubsubDestinationOutput)
 }
 
-func (i OrganizationFeedFeedOutputConfigPubsubDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[OrganizationFeedFeedOutputConfigPubsubDestination] {
-	return pulumix.Output[OrganizationFeedFeedOutputConfigPubsubDestination]{
-		OutputState: i.ToOrganizationFeedFeedOutputConfigPubsubDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrganizationFeedFeedOutputConfigPubsubDestinationArgs) ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput() OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
 	return i.ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Background())
 }
@@ -1061,12 +934,6 @@ func (i *organizationFeedFeedOutputConfigPubsubDestinationPtrType) ToOrganizatio
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput)
 }
 
-func (i *organizationFeedFeedOutputConfigPubsubDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrganizationFeedFeedOutputConfigPubsubDestination] {
-	return pulumix.Output[*OrganizationFeedFeedOutputConfigPubsubDestination]{
-		OutputState: i.ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrganizationFeedFeedOutputConfigPubsubDestinationOutput struct{ *pulumi.OutputState }
 
 func (OrganizationFeedFeedOutputConfigPubsubDestinationOutput) ElementType() reflect.Type {
@@ -1091,12 +958,6 @@ func (o OrganizationFeedFeedOutputConfigPubsubDestinationOutput) ToOrganizationF
 	}).(OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput)
 }
 
-func (o OrganizationFeedFeedOutputConfigPubsubDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[OrganizationFeedFeedOutputConfigPubsubDestination] {
-	return pulumix.Output[OrganizationFeedFeedOutputConfigPubsubDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Destination on Cloud Pubsub topic.
 //
 // ***
@@ -1116,12 +977,6 @@ func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) ToOrganizati
 
 func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) ToOrganizationFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput {
 	return o
-}
-
-func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrganizationFeedFeedOutputConfigPubsubDestination] {
-	return pulumix.Output[*OrganizationFeedFeedOutputConfigPubsubDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrganizationFeedFeedOutputConfigPubsubDestinationPtrOutput) Elem() OrganizationFeedFeedOutputConfigPubsubDestinationOutput {
@@ -1197,12 +1052,6 @@ func (i ProjectFeedConditionArgs) ToProjectFeedConditionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedConditionOutput)
 }
 
-func (i ProjectFeedConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectFeedCondition] {
-	return pulumix.Output[ProjectFeedCondition]{
-		OutputState: i.ToProjectFeedConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectFeedConditionArgs) ToProjectFeedConditionPtrOutput() ProjectFeedConditionPtrOutput {
 	return i.ToProjectFeedConditionPtrOutputWithContext(context.Background())
 }
@@ -1244,12 +1093,6 @@ func (i *projectFeedConditionPtrType) ToProjectFeedConditionPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedConditionPtrOutput)
 }
 
-func (i *projectFeedConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectFeedCondition] {
-	return pulumix.Output[*ProjectFeedCondition]{
-		OutputState: i.ToProjectFeedConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectFeedConditionOutput struct{ *pulumi.OutputState }
 
 func (ProjectFeedConditionOutput) ElementType() reflect.Type {
@@ -1272,12 +1115,6 @@ func (o ProjectFeedConditionOutput) ToProjectFeedConditionPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectFeedCondition) *ProjectFeedCondition {
 		return &v
 	}).(ProjectFeedConditionPtrOutput)
-}
-
-func (o ProjectFeedConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectFeedCondition] {
-	return pulumix.Output[ProjectFeedCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the expression. This is a longer text which describes the expression,
@@ -1315,12 +1152,6 @@ func (o ProjectFeedConditionPtrOutput) ToProjectFeedConditionPtrOutput() Project
 
 func (o ProjectFeedConditionPtrOutput) ToProjectFeedConditionPtrOutputWithContext(ctx context.Context) ProjectFeedConditionPtrOutput {
 	return o
-}
-
-func (o ProjectFeedConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectFeedCondition] {
-	return pulumix.Output[*ProjectFeedCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectFeedConditionPtrOutput) Elem() ProjectFeedConditionOutput {
@@ -1411,12 +1242,6 @@ func (i ProjectFeedFeedOutputConfigArgs) ToProjectFeedFeedOutputConfigOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedFeedOutputConfigOutput)
 }
 
-func (i ProjectFeedFeedOutputConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectFeedFeedOutputConfig] {
-	return pulumix.Output[ProjectFeedFeedOutputConfig]{
-		OutputState: i.ToProjectFeedFeedOutputConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectFeedFeedOutputConfigArgs) ToProjectFeedFeedOutputConfigPtrOutput() ProjectFeedFeedOutputConfigPtrOutput {
 	return i.ToProjectFeedFeedOutputConfigPtrOutputWithContext(context.Background())
 }
@@ -1458,12 +1283,6 @@ func (i *projectFeedFeedOutputConfigPtrType) ToProjectFeedFeedOutputConfigPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedFeedOutputConfigPtrOutput)
 }
 
-func (i *projectFeedFeedOutputConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectFeedFeedOutputConfig] {
-	return pulumix.Output[*ProjectFeedFeedOutputConfig]{
-		OutputState: i.ToProjectFeedFeedOutputConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectFeedFeedOutputConfigOutput struct{ *pulumi.OutputState }
 
 func (ProjectFeedFeedOutputConfigOutput) ElementType() reflect.Type {
@@ -1488,12 +1307,6 @@ func (o ProjectFeedFeedOutputConfigOutput) ToProjectFeedFeedOutputConfigPtrOutpu
 	}).(ProjectFeedFeedOutputConfigPtrOutput)
 }
 
-func (o ProjectFeedFeedOutputConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectFeedFeedOutputConfig] {
-	return pulumix.Output[ProjectFeedFeedOutputConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Destination on Cloud Pubsub.
 // Structure is documented below.
 func (o ProjectFeedFeedOutputConfigOutput) PubsubDestination() ProjectFeedFeedOutputConfigPubsubDestinationOutput {
@@ -1514,12 +1327,6 @@ func (o ProjectFeedFeedOutputConfigPtrOutput) ToProjectFeedFeedOutputConfigPtrOu
 
 func (o ProjectFeedFeedOutputConfigPtrOutput) ToProjectFeedFeedOutputConfigPtrOutputWithContext(ctx context.Context) ProjectFeedFeedOutputConfigPtrOutput {
 	return o
-}
-
-func (o ProjectFeedFeedOutputConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectFeedFeedOutputConfig] {
-	return pulumix.Output[*ProjectFeedFeedOutputConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectFeedFeedOutputConfigPtrOutput) Elem() ProjectFeedFeedOutputConfigOutput {
@@ -1580,12 +1387,6 @@ func (i ProjectFeedFeedOutputConfigPubsubDestinationArgs) ToProjectFeedFeedOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedFeedOutputConfigPubsubDestinationOutput)
 }
 
-func (i ProjectFeedFeedOutputConfigPubsubDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectFeedFeedOutputConfigPubsubDestination] {
-	return pulumix.Output[ProjectFeedFeedOutputConfigPubsubDestination]{
-		OutputState: i.ToProjectFeedFeedOutputConfigPubsubDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectFeedFeedOutputConfigPubsubDestinationArgs) ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutput() ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
 	return i.ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(context.Background())
 }
@@ -1627,12 +1428,6 @@ func (i *projectFeedFeedOutputConfigPubsubDestinationPtrType) ToProjectFeedFeedO
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput)
 }
 
-func (i *projectFeedFeedOutputConfigPubsubDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectFeedFeedOutputConfigPubsubDestination] {
-	return pulumix.Output[*ProjectFeedFeedOutputConfigPubsubDestination]{
-		OutputState: i.ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectFeedFeedOutputConfigPubsubDestinationOutput struct{ *pulumi.OutputState }
 
 func (ProjectFeedFeedOutputConfigPubsubDestinationOutput) ElementType() reflect.Type {
@@ -1657,12 +1452,6 @@ func (o ProjectFeedFeedOutputConfigPubsubDestinationOutput) ToProjectFeedFeedOut
 	}).(ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput)
 }
 
-func (o ProjectFeedFeedOutputConfigPubsubDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectFeedFeedOutputConfigPubsubDestination] {
-	return pulumix.Output[ProjectFeedFeedOutputConfigPubsubDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Destination on Cloud Pubsub topic.
 //
 // ***
@@ -1682,12 +1471,6 @@ func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) ToProjectFeedFeed
 
 func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) ToProjectFeedFeedOutputConfigPubsubDestinationPtrOutputWithContext(ctx context.Context) ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput {
 	return o
-}
-
-func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectFeedFeedOutputConfigPubsubDestination] {
-	return pulumix.Output[*ProjectFeedFeedOutputConfigPubsubDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectFeedFeedOutputConfigPubsubDestinationPtrOutput) Elem() ProjectFeedFeedOutputConfigPubsubDestinationOutput {
@@ -1777,12 +1560,6 @@ func (i GetResourcesSearchAllResultArgs) ToGetResourcesSearchAllResultOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourcesSearchAllResultOutput)
 }
 
-func (i GetResourcesSearchAllResultArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourcesSearchAllResult] {
-	return pulumix.Output[GetResourcesSearchAllResult]{
-		OutputState: i.ToGetResourcesSearchAllResultOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetResourcesSearchAllResultArrayInput is an input type that accepts GetResourcesSearchAllResultArray and GetResourcesSearchAllResultArrayOutput values.
 // You can construct a concrete instance of `GetResourcesSearchAllResultArrayInput` via:
 //
@@ -1808,12 +1585,6 @@ func (i GetResourcesSearchAllResultArray) ToGetResourcesSearchAllResultArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourcesSearchAllResultArrayOutput)
 }
 
-func (i GetResourcesSearchAllResultArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourcesSearchAllResult] {
-	return pulumix.Output[[]GetResourcesSearchAllResult]{
-		OutputState: i.ToGetResourcesSearchAllResultArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetResourcesSearchAllResultOutput struct{ *pulumi.OutputState }
 
 func (GetResourcesSearchAllResultOutput) ElementType() reflect.Type {
@@ -1826,12 +1597,6 @@ func (o GetResourcesSearchAllResultOutput) ToGetResourcesSearchAllResultOutput()
 
 func (o GetResourcesSearchAllResultOutput) ToGetResourcesSearchAllResultOutputWithContext(ctx context.Context) GetResourcesSearchAllResultOutput {
 	return o
-}
-
-func (o GetResourcesSearchAllResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourcesSearchAllResult] {
-	return pulumix.Output[GetResourcesSearchAllResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional searchable attributes of this resource. Informational only. The exact set of attributes is subject to change. For example: project id, DNS name etc.
@@ -1891,12 +1656,6 @@ func (o GetResourcesSearchAllResultArrayOutput) ToGetResourcesSearchAllResultArr
 
 func (o GetResourcesSearchAllResultArrayOutput) ToGetResourcesSearchAllResultArrayOutputWithContext(ctx context.Context) GetResourcesSearchAllResultArrayOutput {
 	return o
-}
-
-func (o GetResourcesSearchAllResultArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourcesSearchAllResult] {
-	return pulumix.Output[[]GetResourcesSearchAllResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetResourcesSearchAllResultArrayOutput) Index(i pulumi.IntInput) GetResourcesSearchAllResultOutput {

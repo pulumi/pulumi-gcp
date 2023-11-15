@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A regional NEG that can support Serverless Products.
@@ -598,12 +597,6 @@ func (i *RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupOutput)
 }
 
-func (i *RegionNetworkEndpointGroup) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkEndpointGroup] {
-	return pulumix.Output[*RegionNetworkEndpointGroup]{
-		OutputState: i.ToRegionNetworkEndpointGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionNetworkEndpointGroupArrayInput is an input type that accepts RegionNetworkEndpointGroupArray and RegionNetworkEndpointGroupArrayOutput values.
 // You can construct a concrete instance of `RegionNetworkEndpointGroupArrayInput` via:
 //
@@ -627,12 +620,6 @@ func (i RegionNetworkEndpointGroupArray) ToRegionNetworkEndpointGroupArrayOutput
 
 func (i RegionNetworkEndpointGroupArray) ToRegionNetworkEndpointGroupArrayOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupArrayOutput)
-}
-
-func (i RegionNetworkEndpointGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionNetworkEndpointGroup] {
-	return pulumix.Output[[]*RegionNetworkEndpointGroup]{
-		OutputState: i.ToRegionNetworkEndpointGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionNetworkEndpointGroupMapInput is an input type that accepts RegionNetworkEndpointGroupMap and RegionNetworkEndpointGroupMapOutput values.
@@ -660,12 +647,6 @@ func (i RegionNetworkEndpointGroupMap) ToRegionNetworkEndpointGroupMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupMapOutput)
 }
 
-func (i RegionNetworkEndpointGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionNetworkEndpointGroup] {
-	return pulumix.Output[map[string]*RegionNetworkEndpointGroup]{
-		OutputState: i.ToRegionNetworkEndpointGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionNetworkEndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (RegionNetworkEndpointGroupOutput) ElementType() reflect.Type {
@@ -678,12 +659,6 @@ func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupOutput() R
 
 func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupOutput {
 	return o
-}
-
-func (o RegionNetworkEndpointGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionNetworkEndpointGroup] {
-	return pulumix.Output[*RegionNetworkEndpointGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Only valid when networkEndpointType is "SERVERLESS".
@@ -792,12 +767,6 @@ func (o RegionNetworkEndpointGroupArrayOutput) ToRegionNetworkEndpointGroupArray
 	return o
 }
 
-func (o RegionNetworkEndpointGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionNetworkEndpointGroup] {
-	return pulumix.Output[[]*RegionNetworkEndpointGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionNetworkEndpointGroupArrayOutput) Index(i pulumi.IntInput) RegionNetworkEndpointGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionNetworkEndpointGroup {
 		return vs[0].([]*RegionNetworkEndpointGroup)[vs[1].(int)]
@@ -816,12 +785,6 @@ func (o RegionNetworkEndpointGroupMapOutput) ToRegionNetworkEndpointGroupMapOutp
 
 func (o RegionNetworkEndpointGroupMapOutput) ToRegionNetworkEndpointGroupMapOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupMapOutput {
 	return o
-}
-
-func (o RegionNetworkEndpointGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionNetworkEndpointGroup] {
-	return pulumix.Output[map[string]*RegionNetworkEndpointGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionNetworkEndpointGroupMapOutput) MapIndex(k pulumi.StringInput) RegionNetworkEndpointGroupOutput {

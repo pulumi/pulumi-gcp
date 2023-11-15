@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A tag template defines a tag, which can have one or more typed fields.
@@ -256,12 +255,6 @@ func (i *TagTemplate) ToTagTemplateOutputWithContext(ctx context.Context) TagTem
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateOutput)
 }
 
-func (i *TagTemplate) ToOutput(ctx context.Context) pulumix.Output[*TagTemplate] {
-	return pulumix.Output[*TagTemplate]{
-		OutputState: i.ToTagTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TagTemplateArrayInput is an input type that accepts TagTemplateArray and TagTemplateArrayOutput values.
 // You can construct a concrete instance of `TagTemplateArrayInput` via:
 //
@@ -285,12 +278,6 @@ func (i TagTemplateArray) ToTagTemplateArrayOutput() TagTemplateArrayOutput {
 
 func (i TagTemplateArray) ToTagTemplateArrayOutputWithContext(ctx context.Context) TagTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateArrayOutput)
-}
-
-func (i TagTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*TagTemplate] {
-	return pulumix.Output[[]*TagTemplate]{
-		OutputState: i.ToTagTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TagTemplateMapInput is an input type that accepts TagTemplateMap and TagTemplateMapOutput values.
@@ -318,12 +305,6 @@ func (i TagTemplateMap) ToTagTemplateMapOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateMapOutput)
 }
 
-func (i TagTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagTemplate] {
-	return pulumix.Output[map[string]*TagTemplate]{
-		OutputState: i.ToTagTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagTemplateOutput struct{ *pulumi.OutputState }
 
 func (TagTemplateOutput) ElementType() reflect.Type {
@@ -336,12 +317,6 @@ func (o TagTemplateOutput) ToTagTemplateOutput() TagTemplateOutput {
 
 func (o TagTemplateOutput) ToTagTemplateOutputWithContext(ctx context.Context) TagTemplateOutput {
 	return o
-}
-
-func (o TagTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*TagTemplate] {
-	return pulumix.Output[*TagTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display name for this template.
@@ -396,12 +371,6 @@ func (o TagTemplateArrayOutput) ToTagTemplateArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o TagTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TagTemplate] {
-	return pulumix.Output[[]*TagTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TagTemplateArrayOutput) Index(i pulumi.IntInput) TagTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TagTemplate {
 		return vs[0].([]*TagTemplate)[vs[1].(int)]
@@ -420,12 +389,6 @@ func (o TagTemplateMapOutput) ToTagTemplateMapOutput() TagTemplateMapOutput {
 
 func (o TagTemplateMapOutput) ToTagTemplateMapOutputWithContext(ctx context.Context) TagTemplateMapOutput {
 	return o
-}
-
-func (o TagTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TagTemplate] {
-	return pulumix.Output[map[string]*TagTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagTemplateMapOutput) MapIndex(k pulumi.StringInput) TagTemplateOutput {

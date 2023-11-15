@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
@@ -379,12 +378,6 @@ func (i *DiskIamMember) ToDiskIamMemberOutputWithContext(ctx context.Context) Di
 	return pulumi.ToOutputWithContext(ctx, i).(DiskIamMemberOutput)
 }
 
-func (i *DiskIamMember) ToOutput(ctx context.Context) pulumix.Output[*DiskIamMember] {
-	return pulumix.Output[*DiskIamMember]{
-		OutputState: i.ToDiskIamMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DiskIamMemberArrayInput is an input type that accepts DiskIamMemberArray and DiskIamMemberArrayOutput values.
 // You can construct a concrete instance of `DiskIamMemberArrayInput` via:
 //
@@ -408,12 +401,6 @@ func (i DiskIamMemberArray) ToDiskIamMemberArrayOutput() DiskIamMemberArrayOutpu
 
 func (i DiskIamMemberArray) ToDiskIamMemberArrayOutputWithContext(ctx context.Context) DiskIamMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskIamMemberArrayOutput)
-}
-
-func (i DiskIamMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*DiskIamMember] {
-	return pulumix.Output[[]*DiskIamMember]{
-		OutputState: i.ToDiskIamMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DiskIamMemberMapInput is an input type that accepts DiskIamMemberMap and DiskIamMemberMapOutput values.
@@ -441,12 +428,6 @@ func (i DiskIamMemberMap) ToDiskIamMemberMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DiskIamMemberMapOutput)
 }
 
-func (i DiskIamMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DiskIamMember] {
-	return pulumix.Output[map[string]*DiskIamMember]{
-		OutputState: i.ToDiskIamMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DiskIamMemberOutput struct{ *pulumi.OutputState }
 
 func (DiskIamMemberOutput) ElementType() reflect.Type {
@@ -459,12 +440,6 @@ func (o DiskIamMemberOutput) ToDiskIamMemberOutput() DiskIamMemberOutput {
 
 func (o DiskIamMemberOutput) ToDiskIamMemberOutputWithContext(ctx context.Context) DiskIamMemberOutput {
 	return o
-}
-
-func (o DiskIamMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskIamMember] {
-	return pulumix.Output[*DiskIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskIamMemberOutput) Condition() DiskIamMemberConditionPtrOutput {
@@ -531,12 +506,6 @@ func (o DiskIamMemberArrayOutput) ToDiskIamMemberArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o DiskIamMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DiskIamMember] {
-	return pulumix.Output[[]*DiskIamMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiskIamMemberArrayOutput) Index(i pulumi.IntInput) DiskIamMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DiskIamMember {
 		return vs[0].([]*DiskIamMember)[vs[1].(int)]
@@ -555,12 +524,6 @@ func (o DiskIamMemberMapOutput) ToDiskIamMemberMapOutput() DiskIamMemberMapOutpu
 
 func (o DiskIamMemberMapOutput) ToDiskIamMemberMapOutputWithContext(ctx context.Context) DiskIamMemberMapOutput {
 	return o
-}
-
-func (o DiskIamMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DiskIamMember] {
-	return pulumix.Output[map[string]*DiskIamMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskIamMemberMapOutput) MapIndex(k pulumi.StringInput) DiskIamMemberOutput {

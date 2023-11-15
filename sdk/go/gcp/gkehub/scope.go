@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Scope represents a Scope in a Fleet.
@@ -270,12 +269,6 @@ func (i *Scope) ToScopeOutputWithContext(ctx context.Context) ScopeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeOutput)
 }
 
-func (i *Scope) ToOutput(ctx context.Context) pulumix.Output[*Scope] {
-	return pulumix.Output[*Scope]{
-		OutputState: i.ToScopeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScopeArrayInput is an input type that accepts ScopeArray and ScopeArrayOutput values.
 // You can construct a concrete instance of `ScopeArrayInput` via:
 //
@@ -299,12 +292,6 @@ func (i ScopeArray) ToScopeArrayOutput() ScopeArrayOutput {
 
 func (i ScopeArray) ToScopeArrayOutputWithContext(ctx context.Context) ScopeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeArrayOutput)
-}
-
-func (i ScopeArray) ToOutput(ctx context.Context) pulumix.Output[[]*Scope] {
-	return pulumix.Output[[]*Scope]{
-		OutputState: i.ToScopeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ScopeMapInput is an input type that accepts ScopeMap and ScopeMapOutput values.
@@ -332,12 +319,6 @@ func (i ScopeMap) ToScopeMapOutputWithContext(ctx context.Context) ScopeMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeMapOutput)
 }
 
-func (i ScopeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Scope] {
-	return pulumix.Output[map[string]*Scope]{
-		OutputState: i.ToScopeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScopeOutput struct{ *pulumi.OutputState }
 
 func (ScopeOutput) ElementType() reflect.Type {
@@ -350,12 +331,6 @@ func (o ScopeOutput) ToScopeOutput() ScopeOutput {
 
 func (o ScopeOutput) ToScopeOutputWithContext(ctx context.Context) ScopeOutput {
 	return o
-}
-
-func (o ScopeOutput) ToOutput(ctx context.Context) pulumix.Output[*Scope] {
-	return pulumix.Output[*Scope]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the Scope was created in UTC.
@@ -435,12 +410,6 @@ func (o ScopeArrayOutput) ToScopeArrayOutputWithContext(ctx context.Context) Sco
 	return o
 }
 
-func (o ScopeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Scope] {
-	return pulumix.Output[[]*Scope]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScopeArrayOutput) Index(i pulumi.IntInput) ScopeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Scope {
 		return vs[0].([]*Scope)[vs[1].(int)]
@@ -459,12 +428,6 @@ func (o ScopeMapOutput) ToScopeMapOutput() ScopeMapOutput {
 
 func (o ScopeMapOutput) ToScopeMapOutputWithContext(ctx context.Context) ScopeMapOutput {
 	return o
-}
-
-func (o ScopeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Scope] {
-	return pulumix.Output[map[string]*Scope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScopeMapOutput) MapIndex(k pulumi.StringInput) ScopeOutput {

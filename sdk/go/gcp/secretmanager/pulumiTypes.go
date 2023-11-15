@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i SecretIamBindingConditionArgs) ToSecretIamBindingConditionOutput() Secre
 
 func (i SecretIamBindingConditionArgs) ToSecretIamBindingConditionOutputWithContext(ctx context.Context) SecretIamBindingConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamBindingConditionOutput)
-}
-
-func (i SecretIamBindingConditionArgs) ToOutput(ctx context.Context) pulumix.Output[SecretIamBindingCondition] {
-	return pulumix.Output[SecretIamBindingCondition]{
-		OutputState: i.ToSecretIamBindingConditionOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i SecretIamBindingConditionArgs) ToSecretIamBindingConditionPtrOutput() SecretIamBindingConditionPtrOutput {
@@ -96,12 +89,6 @@ func (i *secretIamBindingConditionPtrType) ToSecretIamBindingConditionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamBindingConditionPtrOutput)
 }
 
-func (i *secretIamBindingConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretIamBindingCondition] {
-	return pulumix.Output[*SecretIamBindingCondition]{
-		OutputState: i.ToSecretIamBindingConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretIamBindingConditionOutput struct{ *pulumi.OutputState }
 
 func (SecretIamBindingConditionOutput) ElementType() reflect.Type {
@@ -124,12 +111,6 @@ func (o SecretIamBindingConditionOutput) ToSecretIamBindingConditionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretIamBindingCondition) *SecretIamBindingCondition {
 		return &v
 	}).(SecretIamBindingConditionPtrOutput)
-}
-
-func (o SecretIamBindingConditionOutput) ToOutput(ctx context.Context) pulumix.Output[SecretIamBindingCondition] {
-	return pulumix.Output[SecretIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
@@ -156,12 +137,6 @@ func (o SecretIamBindingConditionPtrOutput) ToSecretIamBindingConditionPtrOutput
 
 func (o SecretIamBindingConditionPtrOutput) ToSecretIamBindingConditionPtrOutputWithContext(ctx context.Context) SecretIamBindingConditionPtrOutput {
 	return o
-}
-
-func (o SecretIamBindingConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretIamBindingCondition] {
-	return pulumix.Output[*SecretIamBindingCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretIamBindingConditionPtrOutput) Elem() SecretIamBindingConditionOutput {
@@ -236,12 +211,6 @@ func (i SecretIamMemberConditionArgs) ToSecretIamMemberConditionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberConditionOutput)
 }
 
-func (i SecretIamMemberConditionArgs) ToOutput(ctx context.Context) pulumix.Output[SecretIamMemberCondition] {
-	return pulumix.Output[SecretIamMemberCondition]{
-		OutputState: i.ToSecretIamMemberConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SecretIamMemberConditionArgs) ToSecretIamMemberConditionPtrOutput() SecretIamMemberConditionPtrOutput {
 	return i.ToSecretIamMemberConditionPtrOutputWithContext(context.Background())
 }
@@ -283,12 +252,6 @@ func (i *secretIamMemberConditionPtrType) ToSecretIamMemberConditionPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberConditionPtrOutput)
 }
 
-func (i *secretIamMemberConditionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretIamMemberCondition] {
-	return pulumix.Output[*SecretIamMemberCondition]{
-		OutputState: i.ToSecretIamMemberConditionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretIamMemberConditionOutput struct{ *pulumi.OutputState }
 
 func (SecretIamMemberConditionOutput) ElementType() reflect.Type {
@@ -311,12 +274,6 @@ func (o SecretIamMemberConditionOutput) ToSecretIamMemberConditionPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretIamMemberCondition) *SecretIamMemberCondition {
 		return &v
 	}).(SecretIamMemberConditionPtrOutput)
-}
-
-func (o SecretIamMemberConditionOutput) ToOutput(ctx context.Context) pulumix.Output[SecretIamMemberCondition] {
-	return pulumix.Output[SecretIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
@@ -343,12 +300,6 @@ func (o SecretIamMemberConditionPtrOutput) ToSecretIamMemberConditionPtrOutput()
 
 func (o SecretIamMemberConditionPtrOutput) ToSecretIamMemberConditionPtrOutputWithContext(ctx context.Context) SecretIamMemberConditionPtrOutput {
 	return o
-}
-
-func (o SecretIamMemberConditionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretIamMemberCondition] {
-	return pulumix.Output[*SecretIamMemberCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretIamMemberConditionPtrOutput) Elem() SecretIamMemberConditionOutput {
@@ -429,12 +380,6 @@ func (i SecretReplicationArgs) ToSecretReplicationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationOutput)
 }
 
-func (i SecretReplicationArgs) ToOutput(ctx context.Context) pulumix.Output[SecretReplication] {
-	return pulumix.Output[SecretReplication]{
-		OutputState: i.ToSecretReplicationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SecretReplicationArgs) ToSecretReplicationPtrOutput() SecretReplicationPtrOutput {
 	return i.ToSecretReplicationPtrOutputWithContext(context.Background())
 }
@@ -476,12 +421,6 @@ func (i *secretReplicationPtrType) ToSecretReplicationPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationPtrOutput)
 }
 
-func (i *secretReplicationPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretReplication] {
-	return pulumix.Output[*SecretReplication]{
-		OutputState: i.ToSecretReplicationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretReplicationOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationOutput) ElementType() reflect.Type {
@@ -504,12 +443,6 @@ func (o SecretReplicationOutput) ToSecretReplicationPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretReplication) *SecretReplication {
 		return &v
 	}).(SecretReplicationPtrOutput)
-}
-
-func (o SecretReplicationOutput) ToOutput(ctx context.Context) pulumix.Output[SecretReplication] {
-	return pulumix.Output[SecretReplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Secret will automatically be replicated without any restrictions.
@@ -536,12 +469,6 @@ func (o SecretReplicationPtrOutput) ToSecretReplicationPtrOutput() SecretReplica
 
 func (o SecretReplicationPtrOutput) ToSecretReplicationPtrOutputWithContext(ctx context.Context) SecretReplicationPtrOutput {
 	return o
-}
-
-func (o SecretReplicationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretReplication] {
-	return pulumix.Output[*SecretReplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretReplicationPtrOutput) Elem() SecretReplicationOutput {
@@ -615,12 +542,6 @@ func (i SecretReplicationAutoArgs) ToSecretReplicationAutoOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationAutoOutput)
 }
 
-func (i SecretReplicationAutoArgs) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationAuto] {
-	return pulumix.Output[SecretReplicationAuto]{
-		OutputState: i.ToSecretReplicationAutoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SecretReplicationAutoArgs) ToSecretReplicationAutoPtrOutput() SecretReplicationAutoPtrOutput {
 	return i.ToSecretReplicationAutoPtrOutputWithContext(context.Background())
 }
@@ -662,12 +583,6 @@ func (i *secretReplicationAutoPtrType) ToSecretReplicationAutoPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationAutoPtrOutput)
 }
 
-func (i *secretReplicationAutoPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretReplicationAuto] {
-	return pulumix.Output[*SecretReplicationAuto]{
-		OutputState: i.ToSecretReplicationAutoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretReplicationAutoOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationAutoOutput) ElementType() reflect.Type {
@@ -692,12 +607,6 @@ func (o SecretReplicationAutoOutput) ToSecretReplicationAutoPtrOutputWithContext
 	}).(SecretReplicationAutoPtrOutput)
 }
 
-func (o SecretReplicationAutoOutput) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationAuto] {
-	return pulumix.Output[SecretReplicationAuto]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The customer-managed encryption configuration of the Secret.
 // If no configuration is provided, Google-managed default
 // encryption is used.
@@ -720,12 +629,6 @@ func (o SecretReplicationAutoPtrOutput) ToSecretReplicationAutoPtrOutput() Secre
 
 func (o SecretReplicationAutoPtrOutput) ToSecretReplicationAutoPtrOutputWithContext(ctx context.Context) SecretReplicationAutoPtrOutput {
 	return o
-}
-
-func (o SecretReplicationAutoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretReplicationAuto] {
-	return pulumix.Output[*SecretReplicationAuto]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretReplicationAutoPtrOutput) Elem() SecretReplicationAutoOutput {
@@ -788,12 +691,6 @@ func (i SecretReplicationAutoCustomerManagedEncryptionArgs) ToSecretReplicationA
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationAutoCustomerManagedEncryptionOutput)
 }
 
-func (i SecretReplicationAutoCustomerManagedEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationAutoCustomerManagedEncryption] {
-	return pulumix.Output[SecretReplicationAutoCustomerManagedEncryption]{
-		OutputState: i.ToSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SecretReplicationAutoCustomerManagedEncryptionArgs) ToSecretReplicationAutoCustomerManagedEncryptionPtrOutput() SecretReplicationAutoCustomerManagedEncryptionPtrOutput {
 	return i.ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(context.Background())
 }
@@ -835,12 +732,6 @@ func (i *secretReplicationAutoCustomerManagedEncryptionPtrType) ToSecretReplicat
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationAutoCustomerManagedEncryptionPtrOutput)
 }
 
-func (i *secretReplicationAutoCustomerManagedEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretReplicationAutoCustomerManagedEncryption] {
-	return pulumix.Output[*SecretReplicationAutoCustomerManagedEncryption]{
-		OutputState: i.ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretReplicationAutoCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationAutoCustomerManagedEncryptionOutput) ElementType() reflect.Type {
@@ -865,12 +756,6 @@ func (o SecretReplicationAutoCustomerManagedEncryptionOutput) ToSecretReplicatio
 	}).(SecretReplicationAutoCustomerManagedEncryptionPtrOutput)
 }
 
-func (o SecretReplicationAutoCustomerManagedEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationAutoCustomerManagedEncryption] {
-	return pulumix.Output[SecretReplicationAutoCustomerManagedEncryption]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Describes the Cloud KMS encryption key that will be used to protect destination secret.
 //
 // ***
@@ -890,12 +775,6 @@ func (o SecretReplicationAutoCustomerManagedEncryptionPtrOutput) ToSecretReplica
 
 func (o SecretReplicationAutoCustomerManagedEncryptionPtrOutput) ToSecretReplicationAutoCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) SecretReplicationAutoCustomerManagedEncryptionPtrOutput {
 	return o
-}
-
-func (o SecretReplicationAutoCustomerManagedEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretReplicationAutoCustomerManagedEncryption] {
-	return pulumix.Output[*SecretReplicationAutoCustomerManagedEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretReplicationAutoCustomerManagedEncryptionPtrOutput) Elem() SecretReplicationAutoCustomerManagedEncryptionOutput {
@@ -955,12 +834,6 @@ func (i SecretReplicationUserManagedArgs) ToSecretReplicationUserManagedOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationUserManagedOutput)
 }
 
-func (i SecretReplicationUserManagedArgs) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationUserManaged] {
-	return pulumix.Output[SecretReplicationUserManaged]{
-		OutputState: i.ToSecretReplicationUserManagedOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SecretReplicationUserManagedArgs) ToSecretReplicationUserManagedPtrOutput() SecretReplicationUserManagedPtrOutput {
 	return i.ToSecretReplicationUserManagedPtrOutputWithContext(context.Background())
 }
@@ -1002,12 +875,6 @@ func (i *secretReplicationUserManagedPtrType) ToSecretReplicationUserManagedPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationUserManagedPtrOutput)
 }
 
-func (i *secretReplicationUserManagedPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretReplicationUserManaged] {
-	return pulumix.Output[*SecretReplicationUserManaged]{
-		OutputState: i.ToSecretReplicationUserManagedPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretReplicationUserManagedOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationUserManagedOutput) ElementType() reflect.Type {
@@ -1032,12 +899,6 @@ func (o SecretReplicationUserManagedOutput) ToSecretReplicationUserManagedPtrOut
 	}).(SecretReplicationUserManagedPtrOutput)
 }
 
-func (o SecretReplicationUserManagedOutput) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationUserManaged] {
-	return pulumix.Output[SecretReplicationUserManaged]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of Replicas for this Secret. Cannot be empty.
 // Structure is documented below.
 func (o SecretReplicationUserManagedOutput) Replicas() SecretReplicationUserManagedReplicaArrayOutput {
@@ -1056,12 +917,6 @@ func (o SecretReplicationUserManagedPtrOutput) ToSecretReplicationUserManagedPtr
 
 func (o SecretReplicationUserManagedPtrOutput) ToSecretReplicationUserManagedPtrOutputWithContext(ctx context.Context) SecretReplicationUserManagedPtrOutput {
 	return o
-}
-
-func (o SecretReplicationUserManagedPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretReplicationUserManaged] {
-	return pulumix.Output[*SecretReplicationUserManaged]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretReplicationUserManagedPtrOutput) Elem() SecretReplicationUserManagedOutput {
@@ -1124,12 +979,6 @@ func (i SecretReplicationUserManagedReplicaArgs) ToSecretReplicationUserManagedR
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationUserManagedReplicaOutput)
 }
 
-func (i SecretReplicationUserManagedReplicaArgs) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationUserManagedReplica] {
-	return pulumix.Output[SecretReplicationUserManagedReplica]{
-		OutputState: i.ToSecretReplicationUserManagedReplicaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecretReplicationUserManagedReplicaArrayInput is an input type that accepts SecretReplicationUserManagedReplicaArray and SecretReplicationUserManagedReplicaArrayOutput values.
 // You can construct a concrete instance of `SecretReplicationUserManagedReplicaArrayInput` via:
 //
@@ -1155,12 +1004,6 @@ func (i SecretReplicationUserManagedReplicaArray) ToSecretReplicationUserManaged
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationUserManagedReplicaArrayOutput)
 }
 
-func (i SecretReplicationUserManagedReplicaArray) ToOutput(ctx context.Context) pulumix.Output[[]SecretReplicationUserManagedReplica] {
-	return pulumix.Output[[]SecretReplicationUserManagedReplica]{
-		OutputState: i.ToSecretReplicationUserManagedReplicaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretReplicationUserManagedReplicaOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationUserManagedReplicaOutput) ElementType() reflect.Type {
@@ -1173,12 +1016,6 @@ func (o SecretReplicationUserManagedReplicaOutput) ToSecretReplicationUserManage
 
 func (o SecretReplicationUserManagedReplicaOutput) ToSecretReplicationUserManagedReplicaOutputWithContext(ctx context.Context) SecretReplicationUserManagedReplicaOutput {
 	return o
-}
-
-func (o SecretReplicationUserManagedReplicaOutput) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationUserManagedReplica] {
-	return pulumix.Output[SecretReplicationUserManagedReplica]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Customer Managed Encryption for the secret.
@@ -1206,12 +1043,6 @@ func (o SecretReplicationUserManagedReplicaArrayOutput) ToSecretReplicationUserM
 
 func (o SecretReplicationUserManagedReplicaArrayOutput) ToSecretReplicationUserManagedReplicaArrayOutputWithContext(ctx context.Context) SecretReplicationUserManagedReplicaArrayOutput {
 	return o
-}
-
-func (o SecretReplicationUserManagedReplicaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecretReplicationUserManagedReplica] {
-	return pulumix.Output[[]SecretReplicationUserManagedReplica]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretReplicationUserManagedReplicaArrayOutput) Index(i pulumi.IntInput) SecretReplicationUserManagedReplicaOutput {
@@ -1257,12 +1088,6 @@ func (i SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToSecr
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput)
 }
 
-func (i SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationUserManagedReplicaCustomerManagedEncryption] {
-	return pulumix.Output[SecretReplicationUserManagedReplicaCustomerManagedEncryption]{
-		OutputState: i.ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput() SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput {
 	return i.ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(context.Background())
 }
@@ -1304,12 +1129,6 @@ func (i *secretReplicationUserManagedReplicaCustomerManagedEncryptionPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput)
 }
 
-func (i *secretReplicationUserManagedReplicaCustomerManagedEncryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretReplicationUserManagedReplicaCustomerManagedEncryption] {
-	return pulumix.Output[*SecretReplicationUserManagedReplicaCustomerManagedEncryption]{
-		OutputState: i.ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
 
 func (SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ElementType() reflect.Type {
@@ -1334,12 +1153,6 @@ func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToSe
 	}).(SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput)
 }
 
-func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[SecretReplicationUserManagedReplicaCustomerManagedEncryption] {
-	return pulumix.Output[SecretReplicationUserManagedReplicaCustomerManagedEncryption]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Describes the Cloud KMS encryption key that will be used to protect destination secret.
 //
 // ***
@@ -1359,12 +1172,6 @@ func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) T
 
 func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) ToSecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput {
 	return o
-}
-
-func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretReplicationUserManagedReplicaCustomerManagedEncryption] {
-	return pulumix.Output[*SecretReplicationUserManagedReplicaCustomerManagedEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) Elem() SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
@@ -1430,12 +1237,6 @@ func (i SecretRotationArgs) ToSecretRotationOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationOutput)
 }
 
-func (i SecretRotationArgs) ToOutput(ctx context.Context) pulumix.Output[SecretRotation] {
-	return pulumix.Output[SecretRotation]{
-		OutputState: i.ToSecretRotationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SecretRotationArgs) ToSecretRotationPtrOutput() SecretRotationPtrOutput {
 	return i.ToSecretRotationPtrOutputWithContext(context.Background())
 }
@@ -1477,12 +1278,6 @@ func (i *secretRotationPtrType) ToSecretRotationPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SecretRotationPtrOutput)
 }
 
-func (i *secretRotationPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretRotation] {
-	return pulumix.Output[*SecretRotation]{
-		OutputState: i.ToSecretRotationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretRotationOutput struct{ *pulumi.OutputState }
 
 func (SecretRotationOutput) ElementType() reflect.Type {
@@ -1505,12 +1300,6 @@ func (o SecretRotationOutput) ToSecretRotationPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretRotation) *SecretRotation {
 		return &v
 	}).(SecretRotationPtrOutput)
-}
-
-func (o SecretRotationOutput) ToOutput(ctx context.Context) pulumix.Output[SecretRotation] {
-	return pulumix.Output[SecretRotation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp in UTC at which the Secret is scheduled to rotate.
@@ -1537,12 +1326,6 @@ func (o SecretRotationPtrOutput) ToSecretRotationPtrOutput() SecretRotationPtrOu
 
 func (o SecretRotationPtrOutput) ToSecretRotationPtrOutputWithContext(ctx context.Context) SecretRotationPtrOutput {
 	return o
-}
-
-func (o SecretRotationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretRotation] {
-	return pulumix.Output[*SecretRotation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretRotationPtrOutput) Elem() SecretRotationOutput {
@@ -1612,12 +1395,6 @@ func (i SecretTopicArgs) ToSecretTopicOutputWithContext(ctx context.Context) Sec
 	return pulumi.ToOutputWithContext(ctx, i).(SecretTopicOutput)
 }
 
-func (i SecretTopicArgs) ToOutput(ctx context.Context) pulumix.Output[SecretTopic] {
-	return pulumix.Output[SecretTopic]{
-		OutputState: i.ToSecretTopicOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecretTopicArrayInput is an input type that accepts SecretTopicArray and SecretTopicArrayOutput values.
 // You can construct a concrete instance of `SecretTopicArrayInput` via:
 //
@@ -1643,12 +1420,6 @@ func (i SecretTopicArray) ToSecretTopicArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SecretTopicArrayOutput)
 }
 
-func (i SecretTopicArray) ToOutput(ctx context.Context) pulumix.Output[[]SecretTopic] {
-	return pulumix.Output[[]SecretTopic]{
-		OutputState: i.ToSecretTopicArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretTopicOutput struct{ *pulumi.OutputState }
 
 func (SecretTopicOutput) ElementType() reflect.Type {
@@ -1661,12 +1432,6 @@ func (o SecretTopicOutput) ToSecretTopicOutput() SecretTopicOutput {
 
 func (o SecretTopicOutput) ToSecretTopicOutputWithContext(ctx context.Context) SecretTopicOutput {
 	return o
-}
-
-func (o SecretTopicOutput) ToOutput(ctx context.Context) pulumix.Output[SecretTopic] {
-	return pulumix.Output[SecretTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
@@ -1687,12 +1452,6 @@ func (o SecretTopicArrayOutput) ToSecretTopicArrayOutput() SecretTopicArrayOutpu
 
 func (o SecretTopicArrayOutput) ToSecretTopicArrayOutputWithContext(ctx context.Context) SecretTopicArrayOutput {
 	return o
-}
-
-func (o SecretTopicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecretTopic] {
-	return pulumix.Output[[]SecretTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretTopicArrayOutput) Index(i pulumi.IntInput) SecretTopicOutput {
@@ -1734,12 +1493,6 @@ func (i GetSecretReplicationArgs) ToGetSecretReplicationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationOutput)
 }
 
-func (i GetSecretReplicationArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplication] {
-	return pulumix.Output[GetSecretReplication]{
-		OutputState: i.ToGetSecretReplicationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSecretReplicationArrayInput is an input type that accepts GetSecretReplicationArray and GetSecretReplicationArrayOutput values.
 // You can construct a concrete instance of `GetSecretReplicationArrayInput` via:
 //
@@ -1765,12 +1518,6 @@ func (i GetSecretReplicationArray) ToGetSecretReplicationArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationArrayOutput)
 }
 
-func (i GetSecretReplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplication] {
-	return pulumix.Output[[]GetSecretReplication]{
-		OutputState: i.ToGetSecretReplicationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSecretReplicationOutput struct{ *pulumi.OutputState }
 
 func (GetSecretReplicationOutput) ElementType() reflect.Type {
@@ -1783,12 +1530,6 @@ func (o GetSecretReplicationOutput) ToGetSecretReplicationOutput() GetSecretRepl
 
 func (o GetSecretReplicationOutput) ToGetSecretReplicationOutputWithContext(ctx context.Context) GetSecretReplicationOutput {
 	return o
-}
-
-func (o GetSecretReplicationOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplication] {
-	return pulumix.Output[GetSecretReplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretReplicationOutput) Autos() GetSecretReplicationAutoArrayOutput {
@@ -1811,12 +1552,6 @@ func (o GetSecretReplicationArrayOutput) ToGetSecretReplicationArrayOutput() Get
 
 func (o GetSecretReplicationArrayOutput) ToGetSecretReplicationArrayOutputWithContext(ctx context.Context) GetSecretReplicationArrayOutput {
 	return o
-}
-
-func (o GetSecretReplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplication] {
-	return pulumix.Output[[]GetSecretReplication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretReplicationArrayOutput) Index(i pulumi.IntInput) GetSecretReplicationOutput {
@@ -1856,12 +1591,6 @@ func (i GetSecretReplicationAutoArgs) ToGetSecretReplicationAutoOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationAutoOutput)
 }
 
-func (i GetSecretReplicationAutoArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationAuto] {
-	return pulumix.Output[GetSecretReplicationAuto]{
-		OutputState: i.ToGetSecretReplicationAutoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSecretReplicationAutoArrayInput is an input type that accepts GetSecretReplicationAutoArray and GetSecretReplicationAutoArrayOutput values.
 // You can construct a concrete instance of `GetSecretReplicationAutoArrayInput` via:
 //
@@ -1887,12 +1616,6 @@ func (i GetSecretReplicationAutoArray) ToGetSecretReplicationAutoArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationAutoArrayOutput)
 }
 
-func (i GetSecretReplicationAutoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationAuto] {
-	return pulumix.Output[[]GetSecretReplicationAuto]{
-		OutputState: i.ToGetSecretReplicationAutoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSecretReplicationAutoOutput struct{ *pulumi.OutputState }
 
 func (GetSecretReplicationAutoOutput) ElementType() reflect.Type {
@@ -1905,12 +1628,6 @@ func (o GetSecretReplicationAutoOutput) ToGetSecretReplicationAutoOutput() GetSe
 
 func (o GetSecretReplicationAutoOutput) ToGetSecretReplicationAutoOutputWithContext(ctx context.Context) GetSecretReplicationAutoOutput {
 	return o
-}
-
-func (o GetSecretReplicationAutoOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationAuto] {
-	return pulumix.Output[GetSecretReplicationAuto]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretReplicationAutoOutput) CustomerManagedEncryptions() GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput {
@@ -1931,12 +1648,6 @@ func (o GetSecretReplicationAutoArrayOutput) ToGetSecretReplicationAutoArrayOutp
 
 func (o GetSecretReplicationAutoArrayOutput) ToGetSecretReplicationAutoArrayOutputWithContext(ctx context.Context) GetSecretReplicationAutoArrayOutput {
 	return o
-}
-
-func (o GetSecretReplicationAutoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationAuto] {
-	return pulumix.Output[[]GetSecretReplicationAuto]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretReplicationAutoArrayOutput) Index(i pulumi.IntInput) GetSecretReplicationAutoOutput {
@@ -1976,12 +1687,6 @@ func (i GetSecretReplicationAutoCustomerManagedEncryptionArgs) ToGetSecretReplic
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationAutoCustomerManagedEncryptionOutput)
 }
 
-func (i GetSecretReplicationAutoCustomerManagedEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationAutoCustomerManagedEncryption] {
-	return pulumix.Output[GetSecretReplicationAutoCustomerManagedEncryption]{
-		OutputState: i.ToGetSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSecretReplicationAutoCustomerManagedEncryptionArrayInput is an input type that accepts GetSecretReplicationAutoCustomerManagedEncryptionArray and GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput values.
 // You can construct a concrete instance of `GetSecretReplicationAutoCustomerManagedEncryptionArrayInput` via:
 //
@@ -2007,12 +1712,6 @@ func (i GetSecretReplicationAutoCustomerManagedEncryptionArray) ToGetSecretRepli
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput)
 }
 
-func (i GetSecretReplicationAutoCustomerManagedEncryptionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationAutoCustomerManagedEncryption] {
-	return pulumix.Output[[]GetSecretReplicationAutoCustomerManagedEncryption]{
-		OutputState: i.ToGetSecretReplicationAutoCustomerManagedEncryptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSecretReplicationAutoCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
 
 func (GetSecretReplicationAutoCustomerManagedEncryptionOutput) ElementType() reflect.Type {
@@ -2025,12 +1724,6 @@ func (o GetSecretReplicationAutoCustomerManagedEncryptionOutput) ToGetSecretRepl
 
 func (o GetSecretReplicationAutoCustomerManagedEncryptionOutput) ToGetSecretReplicationAutoCustomerManagedEncryptionOutputWithContext(ctx context.Context) GetSecretReplicationAutoCustomerManagedEncryptionOutput {
 	return o
-}
-
-func (o GetSecretReplicationAutoCustomerManagedEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationAutoCustomerManagedEncryption] {
-	return pulumix.Output[GetSecretReplicationAutoCustomerManagedEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretReplicationAutoCustomerManagedEncryptionOutput) KmsKeyName() pulumi.StringOutput {
@@ -2049,12 +1742,6 @@ func (o GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput) ToGetSecre
 
 func (o GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput) ToGetSecretReplicationAutoCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput {
 	return o
-}
-
-func (o GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationAutoCustomerManagedEncryption] {
-	return pulumix.Output[[]GetSecretReplicationAutoCustomerManagedEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput) Index(i pulumi.IntInput) GetSecretReplicationAutoCustomerManagedEncryptionOutput {
@@ -2094,12 +1781,6 @@ func (i GetSecretReplicationUserManagedArgs) ToGetSecretReplicationUserManagedOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationUserManagedOutput)
 }
 
-func (i GetSecretReplicationUserManagedArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationUserManaged] {
-	return pulumix.Output[GetSecretReplicationUserManaged]{
-		OutputState: i.ToGetSecretReplicationUserManagedOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSecretReplicationUserManagedArrayInput is an input type that accepts GetSecretReplicationUserManagedArray and GetSecretReplicationUserManagedArrayOutput values.
 // You can construct a concrete instance of `GetSecretReplicationUserManagedArrayInput` via:
 //
@@ -2125,12 +1806,6 @@ func (i GetSecretReplicationUserManagedArray) ToGetSecretReplicationUserManagedA
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationUserManagedArrayOutput)
 }
 
-func (i GetSecretReplicationUserManagedArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationUserManaged] {
-	return pulumix.Output[[]GetSecretReplicationUserManaged]{
-		OutputState: i.ToGetSecretReplicationUserManagedArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSecretReplicationUserManagedOutput struct{ *pulumi.OutputState }
 
 func (GetSecretReplicationUserManagedOutput) ElementType() reflect.Type {
@@ -2143,12 +1818,6 @@ func (o GetSecretReplicationUserManagedOutput) ToGetSecretReplicationUserManaged
 
 func (o GetSecretReplicationUserManagedOutput) ToGetSecretReplicationUserManagedOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedOutput {
 	return o
-}
-
-func (o GetSecretReplicationUserManagedOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationUserManaged] {
-	return pulumix.Output[GetSecretReplicationUserManaged]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretReplicationUserManagedOutput) Replicas() GetSecretReplicationUserManagedReplicaArrayOutput {
@@ -2167,12 +1836,6 @@ func (o GetSecretReplicationUserManagedArrayOutput) ToGetSecretReplicationUserMa
 
 func (o GetSecretReplicationUserManagedArrayOutput) ToGetSecretReplicationUserManagedArrayOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedArrayOutput {
 	return o
-}
-
-func (o GetSecretReplicationUserManagedArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationUserManaged] {
-	return pulumix.Output[[]GetSecretReplicationUserManaged]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretReplicationUserManagedArrayOutput) Index(i pulumi.IntInput) GetSecretReplicationUserManagedOutput {
@@ -2214,12 +1877,6 @@ func (i GetSecretReplicationUserManagedReplicaArgs) ToGetSecretReplicationUserMa
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationUserManagedReplicaOutput)
 }
 
-func (i GetSecretReplicationUserManagedReplicaArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationUserManagedReplica] {
-	return pulumix.Output[GetSecretReplicationUserManagedReplica]{
-		OutputState: i.ToGetSecretReplicationUserManagedReplicaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSecretReplicationUserManagedReplicaArrayInput is an input type that accepts GetSecretReplicationUserManagedReplicaArray and GetSecretReplicationUserManagedReplicaArrayOutput values.
 // You can construct a concrete instance of `GetSecretReplicationUserManagedReplicaArrayInput` via:
 //
@@ -2245,12 +1902,6 @@ func (i GetSecretReplicationUserManagedReplicaArray) ToGetSecretReplicationUserM
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationUserManagedReplicaArrayOutput)
 }
 
-func (i GetSecretReplicationUserManagedReplicaArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationUserManagedReplica] {
-	return pulumix.Output[[]GetSecretReplicationUserManagedReplica]{
-		OutputState: i.ToGetSecretReplicationUserManagedReplicaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSecretReplicationUserManagedReplicaOutput struct{ *pulumi.OutputState }
 
 func (GetSecretReplicationUserManagedReplicaOutput) ElementType() reflect.Type {
@@ -2263,12 +1914,6 @@ func (o GetSecretReplicationUserManagedReplicaOutput) ToGetSecretReplicationUser
 
 func (o GetSecretReplicationUserManagedReplicaOutput) ToGetSecretReplicationUserManagedReplicaOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedReplicaOutput {
 	return o
-}
-
-func (o GetSecretReplicationUserManagedReplicaOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationUserManagedReplica] {
-	return pulumix.Output[GetSecretReplicationUserManagedReplica]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretReplicationUserManagedReplicaOutput) CustomerManagedEncryptions() GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput {
@@ -2293,12 +1938,6 @@ func (o GetSecretReplicationUserManagedReplicaArrayOutput) ToGetSecretReplicatio
 
 func (o GetSecretReplicationUserManagedReplicaArrayOutput) ToGetSecretReplicationUserManagedReplicaArrayOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedReplicaArrayOutput {
 	return o
-}
-
-func (o GetSecretReplicationUserManagedReplicaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationUserManagedReplica] {
-	return pulumix.Output[[]GetSecretReplicationUserManagedReplica]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretReplicationUserManagedReplicaArrayOutput) Index(i pulumi.IntInput) GetSecretReplicationUserManagedReplicaOutput {
@@ -2338,12 +1977,6 @@ func (i GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToG
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput)
 }
 
-func (i GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationUserManagedReplicaCustomerManagedEncryption] {
-	return pulumix.Output[GetSecretReplicationUserManagedReplicaCustomerManagedEncryption]{
-		OutputState: i.ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayInput is an input type that accepts GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArray and GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput values.
 // You can construct a concrete instance of `GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayInput` via:
 //
@@ -2369,12 +2002,6 @@ func (i GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArray) To
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput)
 }
 
-func (i GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationUserManagedReplicaCustomerManagedEncryption] {
-	return pulumix.Output[[]GetSecretReplicationUserManagedReplicaCustomerManagedEncryption]{
-		OutputState: i.ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
 
 func (GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ElementType() reflect.Type {
@@ -2387,12 +2014,6 @@ func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) T
 
 func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
 	return o
-}
-
-func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretReplicationUserManagedReplicaCustomerManagedEncryption] {
-	return pulumix.Output[GetSecretReplicationUserManagedReplicaCustomerManagedEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) KmsKeyName() pulumi.StringOutput {
@@ -2411,12 +2032,6 @@ func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutp
 
 func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput) ToGetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput {
 	return o
-}
-
-func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretReplicationUserManagedReplicaCustomerManagedEncryption] {
-	return pulumix.Output[[]GetSecretReplicationUserManagedReplicaCustomerManagedEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput) Index(i pulumi.IntInput) GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput {
@@ -2458,12 +2073,6 @@ func (i GetSecretRotationArgs) ToGetSecretRotationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretRotationOutput)
 }
 
-func (i GetSecretRotationArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretRotation] {
-	return pulumix.Output[GetSecretRotation]{
-		OutputState: i.ToGetSecretRotationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSecretRotationArrayInput is an input type that accepts GetSecretRotationArray and GetSecretRotationArrayOutput values.
 // You can construct a concrete instance of `GetSecretRotationArrayInput` via:
 //
@@ -2489,12 +2098,6 @@ func (i GetSecretRotationArray) ToGetSecretRotationArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretRotationArrayOutput)
 }
 
-func (i GetSecretRotationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretRotation] {
-	return pulumix.Output[[]GetSecretRotation]{
-		OutputState: i.ToGetSecretRotationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSecretRotationOutput struct{ *pulumi.OutputState }
 
 func (GetSecretRotationOutput) ElementType() reflect.Type {
@@ -2507,12 +2110,6 @@ func (o GetSecretRotationOutput) ToGetSecretRotationOutput() GetSecretRotationOu
 
 func (o GetSecretRotationOutput) ToGetSecretRotationOutputWithContext(ctx context.Context) GetSecretRotationOutput {
 	return o
-}
-
-func (o GetSecretRotationOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretRotation] {
-	return pulumix.Output[GetSecretRotation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretRotationOutput) NextRotationTime() pulumi.StringOutput {
@@ -2535,12 +2132,6 @@ func (o GetSecretRotationArrayOutput) ToGetSecretRotationArrayOutput() GetSecret
 
 func (o GetSecretRotationArrayOutput) ToGetSecretRotationArrayOutputWithContext(ctx context.Context) GetSecretRotationArrayOutput {
 	return o
-}
-
-func (o GetSecretRotationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretRotation] {
-	return pulumix.Output[[]GetSecretRotation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretRotationArrayOutput) Index(i pulumi.IntInput) GetSecretRotationOutput {
@@ -2580,12 +2171,6 @@ func (i GetSecretTopicArgs) ToGetSecretTopicOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretTopicOutput)
 }
 
-func (i GetSecretTopicArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretTopic] {
-	return pulumix.Output[GetSecretTopic]{
-		OutputState: i.ToGetSecretTopicOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSecretTopicArrayInput is an input type that accepts GetSecretTopicArray and GetSecretTopicArrayOutput values.
 // You can construct a concrete instance of `GetSecretTopicArrayInput` via:
 //
@@ -2611,12 +2196,6 @@ func (i GetSecretTopicArray) ToGetSecretTopicArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretTopicArrayOutput)
 }
 
-func (i GetSecretTopicArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretTopic] {
-	return pulumix.Output[[]GetSecretTopic]{
-		OutputState: i.ToGetSecretTopicArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSecretTopicOutput struct{ *pulumi.OutputState }
 
 func (GetSecretTopicOutput) ElementType() reflect.Type {
@@ -2629,12 +2208,6 @@ func (o GetSecretTopicOutput) ToGetSecretTopicOutput() GetSecretTopicOutput {
 
 func (o GetSecretTopicOutput) ToGetSecretTopicOutputWithContext(ctx context.Context) GetSecretTopicOutput {
 	return o
-}
-
-func (o GetSecretTopicOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretTopic] {
-	return pulumix.Output[GetSecretTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretTopicOutput) Name() pulumi.StringOutput {
@@ -2653,12 +2226,6 @@ func (o GetSecretTopicArrayOutput) ToGetSecretTopicArrayOutput() GetSecretTopicA
 
 func (o GetSecretTopicArrayOutput) ToGetSecretTopicArrayOutputWithContext(ctx context.Context) GetSecretTopicArrayOutput {
 	return o
-}
-
-func (o GetSecretTopicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretTopic] {
-	return pulumix.Output[[]GetSecretTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSecretTopicArrayOutput) Index(i pulumi.IntInput) GetSecretTopicOutput {

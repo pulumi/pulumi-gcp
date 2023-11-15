@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a collection of external workload identities. You can define IAM policies to
@@ -299,12 +298,6 @@ func (i *WorkloadIdentityPool) ToWorkloadIdentityPoolOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolOutput)
 }
 
-func (i *WorkloadIdentityPool) ToOutput(ctx context.Context) pulumix.Output[*WorkloadIdentityPool] {
-	return pulumix.Output[*WorkloadIdentityPool]{
-		OutputState: i.ToWorkloadIdentityPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkloadIdentityPoolArrayInput is an input type that accepts WorkloadIdentityPoolArray and WorkloadIdentityPoolArrayOutput values.
 // You can construct a concrete instance of `WorkloadIdentityPoolArrayInput` via:
 //
@@ -328,12 +321,6 @@ func (i WorkloadIdentityPoolArray) ToWorkloadIdentityPoolArrayOutput() WorkloadI
 
 func (i WorkloadIdentityPoolArray) ToWorkloadIdentityPoolArrayOutputWithContext(ctx context.Context) WorkloadIdentityPoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolArrayOutput)
-}
-
-func (i WorkloadIdentityPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkloadIdentityPool] {
-	return pulumix.Output[[]*WorkloadIdentityPool]{
-		OutputState: i.ToWorkloadIdentityPoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkloadIdentityPoolMapInput is an input type that accepts WorkloadIdentityPoolMap and WorkloadIdentityPoolMapOutput values.
@@ -361,12 +348,6 @@ func (i WorkloadIdentityPoolMap) ToWorkloadIdentityPoolMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolMapOutput)
 }
 
-func (i WorkloadIdentityPoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkloadIdentityPool] {
-	return pulumix.Output[map[string]*WorkloadIdentityPool]{
-		OutputState: i.ToWorkloadIdentityPoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadIdentityPoolOutput struct{ *pulumi.OutputState }
 
 func (WorkloadIdentityPoolOutput) ElementType() reflect.Type {
@@ -379,12 +360,6 @@ func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutput() WorkloadIdent
 
 func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutputWithContext(ctx context.Context) WorkloadIdentityPoolOutput {
 	return o
-}
-
-func (o WorkloadIdentityPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadIdentityPool] {
-	return pulumix.Output[*WorkloadIdentityPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description of the pool. Cannot exceed 256 characters.
@@ -452,12 +427,6 @@ func (o WorkloadIdentityPoolArrayOutput) ToWorkloadIdentityPoolArrayOutputWithCo
 	return o
 }
 
-func (o WorkloadIdentityPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkloadIdentityPool] {
-	return pulumix.Output[[]*WorkloadIdentityPool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkloadIdentityPoolArrayOutput) Index(i pulumi.IntInput) WorkloadIdentityPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkloadIdentityPool {
 		return vs[0].([]*WorkloadIdentityPool)[vs[1].(int)]
@@ -476,12 +445,6 @@ func (o WorkloadIdentityPoolMapOutput) ToWorkloadIdentityPoolMapOutput() Workloa
 
 func (o WorkloadIdentityPoolMapOutput) ToWorkloadIdentityPoolMapOutputWithContext(ctx context.Context) WorkloadIdentityPoolMapOutput {
 	return o
-}
-
-func (o WorkloadIdentityPoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkloadIdentityPool] {
-	return pulumix.Output[map[string]*WorkloadIdentityPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkloadIdentityPoolMapOutput) MapIndex(k pulumi.StringInput) WorkloadIdentityPoolOutput {

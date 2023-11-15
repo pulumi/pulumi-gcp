@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Dialogflow intent. Intents convert a number of user expressions or patterns into an action. An action
@@ -484,12 +483,6 @@ func (i *Intent) ToIntentOutputWithContext(ctx context.Context) IntentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntentOutput)
 }
 
-func (i *Intent) ToOutput(ctx context.Context) pulumix.Output[*Intent] {
-	return pulumix.Output[*Intent]{
-		OutputState: i.ToIntentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IntentArrayInput is an input type that accepts IntentArray and IntentArrayOutput values.
 // You can construct a concrete instance of `IntentArrayInput` via:
 //
@@ -513,12 +506,6 @@ func (i IntentArray) ToIntentArrayOutput() IntentArrayOutput {
 
 func (i IntentArray) ToIntentArrayOutputWithContext(ctx context.Context) IntentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntentArrayOutput)
-}
-
-func (i IntentArray) ToOutput(ctx context.Context) pulumix.Output[[]*Intent] {
-	return pulumix.Output[[]*Intent]{
-		OutputState: i.ToIntentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IntentMapInput is an input type that accepts IntentMap and IntentMapOutput values.
@@ -546,12 +533,6 @@ func (i IntentMap) ToIntentMapOutputWithContext(ctx context.Context) IntentMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(IntentMapOutput)
 }
 
-func (i IntentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Intent] {
-	return pulumix.Output[map[string]*Intent]{
-		OutputState: i.ToIntentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntentOutput struct{ *pulumi.OutputState }
 
 func (IntentOutput) ElementType() reflect.Type {
@@ -564,12 +545,6 @@ func (o IntentOutput) ToIntentOutput() IntentOutput {
 
 func (o IntentOutput) ToIntentOutputWithContext(ctx context.Context) IntentOutput {
 	return o
-}
-
-func (o IntentOutput) ToOutput(ctx context.Context) pulumix.Output[*Intent] {
-	return pulumix.Output[*Intent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the action associated with the intent.
@@ -685,12 +660,6 @@ func (o IntentArrayOutput) ToIntentArrayOutputWithContext(ctx context.Context) I
 	return o
 }
 
-func (o IntentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Intent] {
-	return pulumix.Output[[]*Intent]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IntentArrayOutput) Index(i pulumi.IntInput) IntentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Intent {
 		return vs[0].([]*Intent)[vs[1].(int)]
@@ -709,12 +678,6 @@ func (o IntentMapOutput) ToIntentMapOutput() IntentMapOutput {
 
 func (o IntentMapOutput) ToIntentMapOutputWithContext(ctx context.Context) IntentMapOutput {
 	return o
-}
-
-func (o IntentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Intent] {
-	return pulumix.Output[map[string]*Intent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntentMapOutput) MapIndex(k pulumi.StringInput) IntentOutput {
