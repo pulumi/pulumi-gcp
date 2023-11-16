@@ -96,17 +96,22 @@ install_nodejs_sdk:
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
 install_plugins: .pulumi/bin/pulumi
-	.pulumi/bin/pulumi plugin install resource random 4.14.0
-	.pulumi/bin/pulumi plugin install resource kubernetes 4.5.4
-	.pulumi/bin/pulumi plugin install resource tls 4.11.1
+	.pulumi/bin/pulumi plugin install resource random 4.8.2
+	.pulumi/bin/pulumi plugin install resource kubernetes 3.20.0
+	.pulumi/bin/pulumi plugin install resource tls 4.6.0
 	.pulumi/bin/pulumi plugin install resource http 0.0.1
 	.pulumi/bin/pulumi plugin install resource time 0.0.15
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml
 
-provider: tfgen install_plugins
+# `make provider_no_deps` builds the provider binary directly, without ensuring that 
+# `cmd/pulumi-resource-gcp/schema.json` is valid and up to date. 
+# To create a release ready binary, you should use `make provider`.
+provider_no_deps:
 	(cd provider && go build $(PULUMI_PROVIDER_BUILD_PARALLELISM) -o $(WORKING_DIR)/bin/$(PROVIDER) -ldflags "-X $(PROJECT)/$(VERSION_PATH)=$(VERSION) -X github.com/hashicorp/terraform-provider-google-beta/version.ProviderVersion=$(VERSION)" $(PROJECT)/$(PROVIDER_PATH)/cmd/$(PROVIDER))
+
+provider: tfgen provider_no_deps
 
 test:
 	cd examples && go test -v -tags=all -parallel $(TESTPARALLELISM) -timeout 2h
@@ -157,4 +162,4 @@ ci-mgmt: .ci-mgmt.yaml
 	@mkdir -p .pulumi
 	@cd provider && go list -f "{{slice .Version 1}}" -m github.com/pulumi/pulumi/pkg/v3 | tee ../$@
 
-.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase ci-mgmt test_provider
+.PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider provider_no_deps test tfgen upstream upstream.finalize upstream.rebase ci-mgmt test_provider
