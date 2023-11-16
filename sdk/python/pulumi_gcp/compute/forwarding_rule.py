@@ -186,7 +186,6 @@ class ForwardingRuleArgs:
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
                cannot have overlapping `portRange`s.
-               @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
                Only packets addressed to ports in the specified range will be forwarded
                to the backends configured with this forwarding rule.
@@ -204,7 +203,6 @@ class ForwardingRuleArgs:
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
                they share at least one port number.
-               @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] recreate_closed_psc: This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
@@ -605,7 +603,6 @@ class ForwardingRuleArgs:
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
         cannot have overlapping `portRange`s.
-        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "port_range")
 
@@ -634,7 +631,6 @@ class ForwardingRuleArgs:
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
         they share at least one port number.
-        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "ports")
 
@@ -954,7 +950,6 @@ class _ForwardingRuleState:
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
                cannot have overlapping `portRange`s.
-               @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
                Only packets addressed to ports in the specified range will be forwarded
                to the backends configured with this forwarding rule.
@@ -972,7 +967,6 @@ class _ForwardingRuleState:
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
                they share at least one port number.
-               @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
@@ -1447,7 +1441,6 @@ class _ForwardingRuleState:
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
         cannot have overlapping `portRange`s.
-        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "port_range")
 
@@ -1476,7 +1469,6 @@ class _ForwardingRuleState:
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
         they share at least one port number.
-        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "ports")
 
@@ -1925,7 +1917,6 @@ class ForwardingRule(pulumi.CustomResource):
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
                cannot have overlapping `portRange`s.
-               @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
                Only packets addressed to ports in the specified range will be forwarded
                to the backends configured with this forwarding rule.
@@ -1943,7 +1934,6 @@ class ForwardingRule(pulumi.CustomResource):
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
                they share at least one port number.
-               @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] recreate_closed_psc: This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
@@ -2349,7 +2339,6 @@ class ForwardingRule(pulumi.CustomResource):
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
                cannot have overlapping `portRange`s.
-               @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
                Only packets addressed to ports in the specified range will be forwarded
                to the backends configured with this forwarding rule.
@@ -2367,7 +2356,6 @@ class ForwardingRule(pulumi.CustomResource):
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
                they share at least one port number.
-               @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
@@ -2737,7 +2725,6 @@ class ForwardingRule(pulumi.CustomResource):
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
         cannot have overlapping `portRange`s.
-        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "port_range")
 
@@ -2762,7 +2749,6 @@ class ForwardingRule(pulumi.CustomResource):
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
         they share at least one port number.
-        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "ports")
 

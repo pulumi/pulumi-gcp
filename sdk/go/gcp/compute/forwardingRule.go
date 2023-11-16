@@ -315,7 +315,6 @@ type ForwardingRule struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
-	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringOutput `pulumi:"portRange"`
 	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded
@@ -334,7 +333,6 @@ type ForwardingRule struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
 	//   they share at least one port number.
-	//   @pattern: \d+(?:-\d+)?
 	Ports pulumi.StringArrayOutput `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -595,7 +593,6 @@ type forwardingRuleState struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
-	//   @pattern: \d+(?:-\d+)?
 	PortRange *string `pulumi:"portRange"`
 	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded
@@ -614,7 +611,6 @@ type forwardingRuleState struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
 	//   they share at least one port number.
-	//   @pattern: \d+(?:-\d+)?
 	Ports []string `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -841,7 +837,6 @@ type ForwardingRuleState struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
-	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringPtrInput
 	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded
@@ -860,7 +855,6 @@ type ForwardingRuleState struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
 	//   they share at least one port number.
-	//   @pattern: \d+(?:-\d+)?
 	Ports pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1082,7 +1076,6 @@ type forwardingRuleArgs struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
-	//   @pattern: \d+(?:-\d+)?
 	PortRange *string `pulumi:"portRange"`
 	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded
@@ -1101,7 +1094,6 @@ type forwardingRuleArgs struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
 	//   they share at least one port number.
-	//   @pattern: \d+(?:-\d+)?
 	Ports []string `pulumi:"ports"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1308,7 +1300,6 @@ type ForwardingRuleArgs struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
-	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringPtrInput
 	// The `ports`, `portRange`, and `allPorts` fields are mutually exclusive.
 	// Only packets addressed to ports in the specified range will be forwarded
@@ -1327,7 +1318,6 @@ type ForwardingRuleArgs struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
 	//   they share at least one port number.
-	//   @pattern: \d+(?:-\d+)?
 	Ports pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1685,7 +1675,6 @@ func (o ForwardingRuleOutput) NoAutomateDnsZone() pulumi.BoolPtrOutput {
 //     For internal forwarding rules within the same VPC network, two or more
 //     forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 //     cannot have overlapping `portRange`s.
-//     @pattern: \d+(?:-\d+)?
 func (o ForwardingRuleOutput) PortRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.PortRange }).(pulumi.StringOutput)
 }
@@ -1707,7 +1696,6 @@ func (o ForwardingRuleOutput) PortRange() pulumi.StringOutput {
 //     For internal forwarding rules within the same VPC network, two or more
 //     forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
 //     they share at least one port number.
-//     @pattern: \d+(?:-\d+)?
 func (o ForwardingRuleOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringArrayOutput { return v.Ports }).(pulumi.StringArrayOutput)
 }
