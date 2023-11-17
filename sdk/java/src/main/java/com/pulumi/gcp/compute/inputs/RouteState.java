@@ -81,16 +81,12 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
     /**
      * The network that this route applies to.
      * 
-     * ***
-     * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
      * @return The network that this route applies to.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> network() {
@@ -101,10 +97,6 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
      * URL to a gateway that should handle matching packets.
      * Currently, you can only specify the internet gateway, using a full or
      * partial valid URL:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-     * * `projects/project/global/gateways/default-internet-gateway`
-     * * `global/gateways/default-internet-gateway`
-     * * The string `default-internet-gateway`.
      * 
      */
     @Import(name="nextHopGateway")
@@ -114,10 +106,6 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
      * @return URL to a gateway that should handle matching packets.
      * Currently, you can only specify the internet gateway, using a full or
      * partial valid URL:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-     * * `projects/project/global/gateways/default-internet-gateway`
-     * * `global/gateways/default-internet-gateway`
-     * * The string `default-internet-gateway`.
      * 
      */
     public Optional<Output<String>> nextHopGateway() {
@@ -166,10 +154,6 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
     /**
      * URL to an instance that should handle matching packets.
      * You can specify this as a full or partial URL. For example:
-     * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-     * * `projects/project/zones/zone/instances/instance`
-     * * `zones/zone/instances/instance`
-     * * Just the instance name, with the zone in `next_hop_instance_zone`.
      * 
      */
     @Import(name="nextHopInstance")
@@ -178,10 +162,6 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return URL to an instance that should handle matching packets.
      * You can specify this as a full or partial URL. For example:
-     * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-     * * `projects/project/zones/zone/instances/instance`
-     * * `zones/zone/instances/instance`
-     * * Just the instance name, with the zone in `next_hop_instance_zone`.
      * 
      */
     public Optional<Output<String>> nextHopInstance() {
@@ -189,8 +169,7 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional when `next_hop_instance` is
-     * specified)  The zone of the instance specified in
+     * The zone of the instance specified in
      * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
      * a URL.
      * 
@@ -199,8 +178,7 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> nextHopInstanceZone;
 
     /**
-     * @return (Optional when `next_hop_instance` is
-     * specified)  The zone of the instance specified in
+     * @return The zone of the instance specified in
      * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
      * a URL.
      * 
@@ -444,8 +422,6 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param network The network that this route applies to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -456,8 +432,6 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network The network that this route applies to.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -470,10 +444,6 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
          * @param nextHopGateway URL to a gateway that should handle matching packets.
          * Currently, you can only specify the internet gateway, using a full or
          * partial valid URL:
-         * * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-         * * `projects/project/global/gateways/default-internet-gateway`
-         * * `global/gateways/default-internet-gateway`
-         * * The string `default-internet-gateway`.
          * 
          * @return builder
          * 
@@ -487,10 +457,6 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
          * @param nextHopGateway URL to a gateway that should handle matching packets.
          * Currently, you can only specify the internet gateway, using a full or
          * partial valid URL:
-         * * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-         * * `projects/project/global/gateways/default-internet-gateway`
-         * * `global/gateways/default-internet-gateway`
-         * * The string `default-internet-gateway`.
          * 
          * @return builder
          * 
@@ -547,10 +513,6 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param nextHopInstance URL to an instance that should handle matching packets.
          * You can specify this as a full or partial URL. For example:
-         * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-         * * `projects/project/zones/zone/instances/instance`
-         * * `zones/zone/instances/instance`
-         * * Just the instance name, with the zone in `next_hop_instance_zone`.
          * 
          * @return builder
          * 
@@ -563,10 +525,6 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param nextHopInstance URL to an instance that should handle matching packets.
          * You can specify this as a full or partial URL. For example:
-         * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-         * * `projects/project/zones/zone/instances/instance`
-         * * `zones/zone/instances/instance`
-         * * Just the instance name, with the zone in `next_hop_instance_zone`.
          * 
          * @return builder
          * 
@@ -576,8 +534,7 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nextHopInstanceZone (Optional when `next_hop_instance` is
-         * specified)  The zone of the instance specified in
+         * @param nextHopInstanceZone The zone of the instance specified in
          * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
          * a URL.
          * 
@@ -590,8 +547,7 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nextHopInstanceZone (Optional when `next_hop_instance` is
-         * specified)  The zone of the instance specified in
+         * @param nextHopInstanceZone The zone of the instance specified in
          * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
          * a URL.
          * 

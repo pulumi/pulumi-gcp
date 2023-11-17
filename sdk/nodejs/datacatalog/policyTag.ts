@@ -137,9 +137,6 @@ export class PolicyTag extends pulumi.CustomResource {
     public readonly parentPolicyTag!: pulumi.Output<string | undefined>;
     /**
      * Taxonomy the policy tag is associated with
-     *
-     *
-     * - - -
      */
     public readonly taxonomy!: pulumi.Output<string>;
 
@@ -216,9 +213,6 @@ export interface PolicyTagState {
     parentPolicyTag?: pulumi.Input<string>;
     /**
      * Taxonomy the policy tag is associated with
-     *
-     *
-     * - - -
      */
     taxonomy?: pulumi.Input<string>;
 }
@@ -248,9 +242,6 @@ export interface PolicyTagArgs {
     parentPolicyTag?: pulumi.Input<string>;
     /**
      * Taxonomy the policy tag is associated with
-     *
-     *
-     * - - -
      */
     taxonomy: pulumi.Input<string>;
 }

@@ -160,9 +160,6 @@ export class Database extends pulumi.CustomResource {
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     *
-     *
-     * - - -
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -314,9 +311,6 @@ export interface DatabaseState {
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     *
-     *
-     * - - -
      */
     type?: pulumi.Input<string>;
     /**
@@ -389,9 +383,6 @@ export interface DatabaseArgs {
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     *
-     *
-     * - - -
      */
     type: pulumi.Input<string>;
 }

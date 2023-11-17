@@ -20,6 +20,11 @@ public final class ServiceTemplateVolume {
      * 
      */
     private @Nullable ServiceTemplateVolumeCloudSqlInstance cloudSqlInstance;
+    /**
+     * @return Ephemeral storage used as a shared volume.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable ServiceTemplateVolumeEmptyDir emptyDir;
     /**
      * @return Volume&#39;s name.
@@ -42,6 +47,11 @@ public final class ServiceTemplateVolume {
     public Optional<ServiceTemplateVolumeCloudSqlInstance> cloudSqlInstance() {
         return Optional.ofNullable(this.cloudSqlInstance);
     }
+    /**
+     * @return Ephemeral storage used as a shared volume.
+     * Structure is documented below.
+     * 
+     */
     public Optional<ServiceTemplateVolumeEmptyDir> emptyDir() {
         return Optional.ofNullable(this.emptyDir);
     }

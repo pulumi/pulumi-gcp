@@ -13,18 +13,25 @@ namespace Pulumi.Gcp.Datastream.Inputs
     public sealed class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Column collation.`collation` -
+        /// (Optional)
         /// Column collation.
         /// </summary>
         [Input("collation")]
         public Input<string>? Collation { get; set; }
 
         /// <summary>
+        /// Column name.`column` -
+        /// (Optional)
         /// Column name.
         /// </summary>
         [Input("column")]
         public Input<string>? Column { get; set; }
 
         /// <summary>
+        /// The MySQL data type. Full data types list can be found here:
+        /// https://dev.mysql.com/doc/refman/8.0/en/data-types.html`data_type` -
+        /// (Optional)
         /// The MySQL data type. Full data types list can be found here:
         /// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
         /// </summary>
@@ -33,24 +40,32 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// (Output)
+        /// Column length.`length` -
+        /// (Output)
         /// Column length.
         /// </summary>
         [Input("length")]
         public Input<int>? Length { get; set; }
 
         /// <summary>
+        /// Whether or not the column can accept a null value.`nullable` -
+        /// (Optional)
         /// Whether or not the column can accept a null value.
         /// </summary>
         [Input("nullable")]
         public Input<bool>? Nullable { get; set; }
 
         /// <summary>
+        /// The ordinal position of the column in the table.`ordinal_position` -
+        /// (Optional)
         /// The ordinal position of the column in the table.
         /// </summary>
         [Input("ordinalPosition")]
         public Input<int>? OrdinalPosition { get; set; }
 
         /// <summary>
+        /// Whether or not the column represents a primary key.`primary_key` -
+        /// (Optional)
         /// Whether or not the column represents a primary key.
         /// </summary>
         [Input("primaryKey")]

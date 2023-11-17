@@ -281,9 +281,6 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The name of the location this connection profile is located in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -435,9 +432,6 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The name of the location this connection profile is located in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -549,9 +543,6 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The name of the location this connection profile is located in.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

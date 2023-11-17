@@ -27,8 +27,6 @@ type GroupAdditionalGroupKey struct {
 	// If specified, the EntityKey represents an external-identity-mapped group.
 	// The namespace must correspond to an identity source created in Admin Console
 	// and must be in the form of `identitysources/{identity_source_id}`.
-	//
-	// ***
 	Namespace *string `pulumi:"namespace"`
 }
 
@@ -57,8 +55,6 @@ type GroupAdditionalGroupKeyArgs struct {
 	// If specified, the EntityKey represents an external-identity-mapped group.
 	// The namespace must correspond to an identity source created in Admin Console
 	// and must be in the form of `identitysources/{identity_source_id}`.
-	//
-	// ***
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
 
@@ -129,8 +125,6 @@ func (o GroupAdditionalGroupKeyOutput) Id() pulumi.StringPtrOutput {
 // If specified, the EntityKey represents an external-identity-mapped group.
 // The namespace must correspond to an identity source created in Admin Console
 // and must be in the form of `identitysources/{identity_source_id}`.
-//
-// ***
 func (o GroupAdditionalGroupKeyOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupAdditionalGroupKey) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -169,8 +163,6 @@ type GroupGroupKey struct {
 	// If specified, the EntityKey represents an external-identity-mapped group.
 	// The namespace must correspond to an identity source created in Admin Console
 	// and must be in the form of `identitysources/{identity_source_id}`.
-	//
-	// ***
 	Namespace *string `pulumi:"namespace"`
 }
 
@@ -199,8 +191,6 @@ type GroupGroupKeyArgs struct {
 	// If specified, the EntityKey represents an external-identity-mapped group.
 	// The namespace must correspond to an identity source created in Admin Console
 	// and must be in the form of `identitysources/{identity_source_id}`.
-	//
-	// ***
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
 
@@ -297,8 +287,6 @@ func (o GroupGroupKeyOutput) Id() pulumi.StringOutput {
 // If specified, the EntityKey represents an external-identity-mapped group.
 // The namespace must correspond to an identity source created in Admin Console
 // and must be in the form of `identitysources/{identity_source_id}`.
-//
-// ***
 func (o GroupGroupKeyOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupGroupKey) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -348,8 +336,6 @@ func (o GroupGroupKeyPtrOutput) Id() pulumi.StringPtrOutput {
 // If specified, the EntityKey represents an external-identity-mapped group.
 // The namespace must correspond to an identity source created in Admin Console
 // and must be in the form of `identitysources/{identity_source_id}`.
-//
-// ***
 func (o GroupGroupKeyPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupGroupKey) *string {
 		if v == nil {
@@ -754,8 +740,6 @@ func (o GroupMembershipPreferredMemberKeyPtrOutput) Namespace() pulumi.StringPtr
 type GroupMembershipRole struct {
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 	// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-	//
-	// ***
 	Name string `pulumi:"name"`
 }
 
@@ -773,8 +757,6 @@ type GroupMembershipRoleInput interface {
 type GroupMembershipRoleArgs struct {
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 	// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -831,8 +813,6 @@ func (o GroupMembershipRoleOutput) ToGroupMembershipRoleOutputWithContext(ctx co
 
 // The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 // Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-//
-// ***
 func (o GroupMembershipRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupMembershipRole) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -858,12 +838,12 @@ func (o GroupMembershipRoleArrayOutput) Index(i pulumi.IntInput) GroupMembership
 }
 
 type GetGroupLookupGroupKey struct {
-	// (Required) The ID of the entity.
+	// The ID of the entity.
 	// For Google-managed entities, the id is the email address of an existing group or user.
 	// For external-identity-mapped entities, the id is a string conforming
 	// to the Identity Source's requirements.
 	Id string `pulumi:"id"`
-	// (Optional) The namespace in which the entity exists.
+	// The namespace in which the entity exists.
 	// If not populated, the EntityKey represents a Google-managed entity
 	// such as a Google user or a Google Group.
 	// If populated, the EntityKey represents an external-identity-mapped group.
@@ -884,12 +864,12 @@ type GetGroupLookupGroupKeyInput interface {
 }
 
 type GetGroupLookupGroupKeyArgs struct {
-	// (Required) The ID of the entity.
+	// The ID of the entity.
 	// For Google-managed entities, the id is the email address of an existing group or user.
 	// For external-identity-mapped entities, the id is a string conforming
 	// to the Identity Source's requirements.
 	Id pulumi.StringInput `pulumi:"id"`
-	// (Optional) The namespace in which the entity exists.
+	// The namespace in which the entity exists.
 	// If not populated, the EntityKey represents a Google-managed entity
 	// such as a Google user or a Google Group.
 	// If populated, the EntityKey represents an external-identity-mapped group.
@@ -924,7 +904,7 @@ func (o GetGroupLookupGroupKeyOutput) ToGetGroupLookupGroupKeyOutputWithContext(
 	return o
 }
 
-// (Required) The ID of the entity.
+// The ID of the entity.
 // For Google-managed entities, the id is the email address of an existing group or user.
 // For external-identity-mapped entities, the id is a string conforming
 // to the Identity Source's requirements.
@@ -932,7 +912,7 @@ func (o GetGroupLookupGroupKeyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupLookupGroupKey) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (Optional) The namespace in which the entity exists.
+// The namespace in which the entity exists.
 // If not populated, the EntityKey represents a Google-managed entity
 // such as a Google user or a Google Group.
 // If populated, the EntityKey represents an external-identity-mapped group.

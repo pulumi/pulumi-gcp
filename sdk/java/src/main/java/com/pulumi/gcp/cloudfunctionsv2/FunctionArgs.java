@@ -113,16 +113,12 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The location of this cloud function.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location of this cloud function.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -336,8 +332,6 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location of this cloud function.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -348,8 +342,6 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location of this cloud function.
-         * 
-         * ***
          * 
          * @return builder
          * 

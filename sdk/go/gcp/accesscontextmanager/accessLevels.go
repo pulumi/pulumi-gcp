@@ -145,8 +145,6 @@ type AccessLevels struct {
 	AccessLevels AccessLevelsAccessLevelArrayOutput `pulumi:"accessLevels"`
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 }
 
@@ -188,8 +186,6 @@ type accessLevelsState struct {
 	AccessLevels []AccessLevelsAccessLevel `pulumi:"accessLevels"`
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 }
 
@@ -199,8 +195,6 @@ type AccessLevelsState struct {
 	AccessLevels AccessLevelsAccessLevelArrayInput
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 }
 
@@ -214,8 +208,6 @@ type accessLevelsArgs struct {
 	AccessLevels []AccessLevelsAccessLevel `pulumi:"accessLevels"`
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 }
 
@@ -226,8 +218,6 @@ type AccessLevelsArgs struct {
 	AccessLevels AccessLevelsAccessLevelArrayInput
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
-	//
-	// ***
 	Parent pulumi.StringInput
 }
 
@@ -326,8 +316,6 @@ func (o AccessLevelsOutput) AccessLevels() AccessLevelsAccessLevelArrayOutput {
 
 // The AccessPolicy this AccessLevel lives in.
 // Format: accessPolicies/{policy_id}
-//
-// ***
 func (o AccessLevelsOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessLevels) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

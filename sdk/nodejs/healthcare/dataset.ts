@@ -80,9 +80,6 @@ export class Dataset extends pulumi.CustomResource {
 
     /**
      * The location for the Dataset.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -145,9 +142,6 @@ export class Dataset extends pulumi.CustomResource {
 export interface DatasetState {
     /**
      * The location for the Dataset.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -177,9 +171,6 @@ export interface DatasetState {
 export interface DatasetArgs {
     /**
      * The location for the Dataset.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

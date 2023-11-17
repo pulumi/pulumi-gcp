@@ -30,9 +30,6 @@ class OrganizationArgs:
         """
         The set of arguments for constructing a Organization resource.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input[str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
                See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
@@ -88,9 +85,6 @@ class OrganizationArgs:
     def project_id(self) -> pulumi.Input[str]:
         """
         The project ID associated with the Apigee organization.
-
-
-        - - -
         """
         return pulumi.get(self, "project_id")
 
@@ -273,9 +267,6 @@ class _OrganizationState:
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] name: Name of the property.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input['OrganizationPropertiesArgs'] properties: Properties defined in the Apigee organization profile.
                Structure is documented below.
         :param pulumi.Input[str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
@@ -445,9 +436,6 @@ class _OrganizationState:
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
         The project ID associated with the Apigee organization.
-
-
-        - - -
         """
         return pulumi.get(self, "project_id")
 
@@ -692,9 +680,6 @@ class Organization(pulumi.CustomResource):
                of any Apigee runtime instance and can be updated only when there are no runtime instances.
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['OrganizationPropertiesArgs']] properties: Properties defined in the Apigee organization profile.
                Structure is documented below.
         :param pulumi.Input[str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
@@ -950,9 +935,6 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] name: Name of the property.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['OrganizationPropertiesArgs']] properties: Properties defined in the Apigee organization profile.
                Structure is documented below.
         :param pulumi.Input[str] retention: Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
@@ -1076,9 +1058,6 @@ class Organization(pulumi.CustomResource):
     def project_id(self) -> pulumi.Output[str]:
         """
         The project ID associated with the Apigee organization.
-
-
-        - - -
         """
         return pulumi.get(self, "project_id")
 

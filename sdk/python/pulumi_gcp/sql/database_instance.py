@@ -67,8 +67,6 @@ class DatabaseInstanceArgs:
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
-               
-               - - -
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
@@ -245,8 +243,6 @@ class DatabaseInstanceArgs:
         """
         The region the instance will sit in. If a region is not provided in the resource definition,
         the provider region will be used instead.
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -381,8 +377,6 @@ class _DatabaseInstanceState:
         :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
         :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
-               
-               - - -
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
@@ -679,8 +673,6 @@ class _DatabaseInstanceState:
         """
         The region the instance will sit in. If a region is not provided in the resource definition,
         the provider region will be used instead.
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -938,8 +930,6 @@ class DatabaseInstance(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']] restore_backup_context: The context needed to restore the database to a backup run. This field will
@@ -1213,8 +1203,6 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
         :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']] replica_configuration: The configuration for replication. The
                configuration is detailed below. Valid only for MySQL instances.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']] restore_backup_context: The context needed to restore the database to a backup run. This field will
@@ -1423,8 +1411,6 @@ class DatabaseInstance(pulumi.CustomResource):
         """
         The region the instance will sit in. If a region is not provided in the resource definition,
         the provider region will be used instead.
-
-        - - -
         """
         return pulumi.get(self, "region")
 

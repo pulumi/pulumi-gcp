@@ -764,7 +764,6 @@ class InboundSamlConfigSpConfigArgs:
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
                
-               
                <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         :param pulumi.Input[str] sp_entity_id: Unique identifier for all SAML entities.
         """
@@ -795,7 +794,6 @@ class InboundSamlConfigSpConfigArgs:
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
 
-
         <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
         return pulumi.get(self, "sp_certificates")
@@ -822,7 +820,8 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
     def __init__(__self__, *,
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] x509_certificate: The IdP's x509 certificate.
+        :param pulumi.Input[str] x509_certificate: (Output)
+               The x509 certificate
         """
         if x509_certificate is not None:
             pulumi.set(__self__, "x509_certificate", x509_certificate)
@@ -831,7 +830,8 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
     @pulumi.getter(name="x509Certificate")
     def x509_certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        The IdP's x509 certificate.
+        (Output)
+        The x509 certificate
         """
         return pulumi.get(self, "x509_certificate")
 
@@ -1248,7 +1248,6 @@ class TenantInboundSamlConfigSpConfigArgs:
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
                
-               
                <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
         pulumi.set(__self__, "callback_uri", callback_uri)
@@ -1288,7 +1287,6 @@ class TenantInboundSamlConfigSpConfigArgs:
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
 
-
         <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
         return pulumi.get(self, "sp_certificates")
@@ -1303,7 +1301,8 @@ class TenantInboundSamlConfigSpConfigSpCertificateArgs:
     def __init__(__self__, *,
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] x509_certificate: The x509 certificate
+        :param pulumi.Input[str] x509_certificate: (Output)
+               The x509 certificate
         """
         if x509_certificate is not None:
             pulumi.set(__self__, "x509_certificate", x509_certificate)
@@ -1312,6 +1311,7 @@ class TenantInboundSamlConfigSpConfigSpCertificateArgs:
     @pulumi.getter(name="x509Certificate")
     def x509_certificate(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         The x509 certificate
         """
         return pulumi.get(self, "x509_certificate")

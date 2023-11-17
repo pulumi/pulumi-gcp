@@ -16,8 +16,6 @@ public final class IndexField {
      * be specified.
      * Possible values are: `CONTAINS`.
      * 
-     * ***
-     * 
      */
     private @Nullable String arrayConfig;
     /**
@@ -38,8 +36,6 @@ public final class IndexField {
      * @return Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
      * be specified.
      * Possible values are: `CONTAINS`.
-     * 
-     * ***
      * 
      */
     public Optional<String> arrayConfig() {

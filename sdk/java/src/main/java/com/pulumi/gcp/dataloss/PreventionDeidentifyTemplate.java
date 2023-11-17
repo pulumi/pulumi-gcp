@@ -300,10 +300,6 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
     }
     /**
      * The parent of the template in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
@@ -311,10 +307,6 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
 
     /**
      * @return The parent of the template in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
      */
     public Output<String> parent() {

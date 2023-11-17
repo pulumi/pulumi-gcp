@@ -71,8 +71,6 @@ namespace Pulumi.Gcp.VMwareEngine
     {
         /// <summary>
         /// Location of the resource.
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -100,8 +98,6 @@ namespace Pulumi.Gcp.VMwareEngine
     {
         /// <summary>
         /// Location of the resource.
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

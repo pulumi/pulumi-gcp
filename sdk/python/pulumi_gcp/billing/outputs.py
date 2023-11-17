@@ -271,8 +271,6 @@ class BudgetAmountSpecifiedAmount(dict):
                negative. If units is negative, nanos must be negative or
                zero. For example $-1.75 is represented as units=-1 and
                nanos=-750,000,000.
-               
-               - - -
         :param str units: The whole units of the amount. For example if currencyCode
                is "USD", then 1 unit is one US dollar.
         """
@@ -302,8 +300,6 @@ class BudgetAmountSpecifiedAmount(dict):
         negative. If units is negative, nanos must be negative or
         zero. For example $-1.75 is represented as units=-1 and
         nanos=-750,000,000.
-
-        - - -
         """
         return pulumi.get(self, "nanos")
 

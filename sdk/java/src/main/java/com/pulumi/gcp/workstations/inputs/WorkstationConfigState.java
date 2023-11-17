@@ -264,16 +264,12 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
     /**
      * The location where the workstation cluster config should reside.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location where the workstation cluster config should reside.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -808,8 +804,6 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         /**
          * @param location The location where the workstation cluster config should reside.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -820,8 +814,6 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
 
         /**
          * @param location The location where the workstation cluster config should reside.
-         * 
-         * ***
          * 
          * @return builder
          * 

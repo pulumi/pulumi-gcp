@@ -141,8 +141,6 @@ type RegionBackendService struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -179,8 +177,8 @@ type RegionBackendService struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity pulumi.StringOutput `pulumi:"sessionAffinity"`
-	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-	// and Internal HTTP(S) load balancing.
+	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+	// Structure is documented below.
 	Subsetting RegionBackendServiceSubsettingPtrOutput `pulumi:"subsetting"`
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -292,8 +290,6 @@ type regionBackendServiceState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -330,8 +326,8 @@ type regionBackendServiceState struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
-	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-	// and Internal HTTP(S) load balancing.
+	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+	// Structure is documented below.
 	Subsetting *RegionBackendServiceSubsetting `pulumi:"subsetting"`
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -414,8 +410,6 @@ type RegionBackendServiceState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -452,8 +446,8 @@ type RegionBackendServiceState struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity pulumi.StringPtrInput
-	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-	// and Internal HTTP(S) load balancing.
+	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+	// Structure is documented below.
 	Subsetting RegionBackendServiceSubsettingPtrInput
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -535,8 +529,6 @@ type regionBackendServiceArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -571,8 +563,8 @@ type regionBackendServiceArgs struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
-	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-	// and Internal HTTP(S) load balancing.
+	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+	// Structure is documented below.
 	Subsetting *RegionBackendServiceSubsetting `pulumi:"subsetting"`
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -651,8 +643,6 @@ type RegionBackendServiceArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -687,8 +677,8 @@ type RegionBackendServiceArgs struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity pulumi.StringPtrInput
-	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-	// and Internal HTTP(S) load balancing.
+	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+	// Structure is documented below.
 	Subsetting RegionBackendServiceSubsettingPtrInput
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -910,8 +900,6 @@ func (o RegionBackendServiceOutput) LogConfig() RegionBackendServiceLogConfigOut
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-//
-// ***
 func (o RegionBackendServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -978,8 +966,8 @@ func (o RegionBackendServiceOutput) SessionAffinity() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.SessionAffinity }).(pulumi.StringOutput)
 }
 
-// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-// and Internal HTTP(S) load balancing.
+// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+// Structure is documented below.
 func (o RegionBackendServiceOutput) Subsetting() RegionBackendServiceSubsettingPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceSubsettingPtrOutput { return v.Subsetting }).(RegionBackendServiceSubsettingPtrOutput)
 }

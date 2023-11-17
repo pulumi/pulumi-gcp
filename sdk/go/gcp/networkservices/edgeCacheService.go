@@ -394,7 +394,7 @@ import (
 type EdgeCacheService struct {
 	pulumi.CustomResourceState
 
-	// A human-readable description of the hostRule.
+	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disables HTTP/2.
 	// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
@@ -480,7 +480,7 @@ func GetEdgeCacheService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EdgeCacheService resources.
 type edgeCacheServiceState struct {
-	// A human-readable description of the hostRule.
+	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// Disables HTTP/2.
 	// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
@@ -529,7 +529,7 @@ type edgeCacheServiceState struct {
 }
 
 type EdgeCacheServiceState struct {
-	// A human-readable description of the hostRule.
+	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// Disables HTTP/2.
 	// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
@@ -582,7 +582,7 @@ func (EdgeCacheServiceState) ElementType() reflect.Type {
 }
 
 type edgeCacheServiceArgs struct {
-	// A human-readable description of the hostRule.
+	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// Disables HTTP/2.
 	// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
@@ -623,7 +623,7 @@ type edgeCacheServiceArgs struct {
 
 // The set of arguments for constructing a EdgeCacheService resource.
 type EdgeCacheServiceArgs struct {
-	// A human-readable description of the hostRule.
+	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// Disables HTTP/2.
 	// HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
@@ -749,7 +749,7 @@ func (o EdgeCacheServiceOutput) ToEdgeCacheServiceOutputWithContext(ctx context.
 	return o
 }
 
-// A human-readable description of the hostRule.
+// A human-readable description of the resource.
 func (o EdgeCacheServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

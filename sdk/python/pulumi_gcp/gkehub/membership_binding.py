@@ -25,9 +25,6 @@ class MembershipBindingArgs:
         """
         The set of arguments for constructing a MembershipBinding resource.
         :param pulumi.Input[str] location: Location of the membership
-               
-               
-               - - -
         :param pulumi.Input[str] membership_binding_id: The client-provided identifier of the membership binding.
         :param pulumi.Input[str] membership_id: Id of the membership
         :param pulumi.Input[str] scope: A Workspace resource name in the format
@@ -53,9 +50,6 @@ class MembershipBindingArgs:
     def location(self) -> pulumi.Input[str]:
         """
         Location of the membership
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -156,9 +150,6 @@ class _MembershipBindingState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the membership
-               
-               
-               - - -
         :param pulumi.Input[str] membership_binding_id: The client-provided identifier of the membership binding.
         :param pulumi.Input[str] membership_id: Id of the membership
         :param pulumi.Input[str] name: The resource name for the membershipbinding itself
@@ -258,9 +249,6 @@ class _MembershipBindingState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         Location of the membership
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -435,9 +423,6 @@ class MembershipBinding(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the membership
-               
-               
-               - - -
         :param pulumi.Input[str] membership_binding_id: The client-provided identifier of the membership binding.
         :param pulumi.Input[str] membership_id: Id of the membership
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -579,9 +564,6 @@ class MembershipBinding(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: Location of the membership
-               
-               
-               - - -
         :param pulumi.Input[str] membership_binding_id: The client-provided identifier of the membership binding.
         :param pulumi.Input[str] membership_id: Id of the membership
         :param pulumi.Input[str] name: The resource name for the membershipbinding itself
@@ -656,9 +638,6 @@ class MembershipBinding(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         Location of the membership
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

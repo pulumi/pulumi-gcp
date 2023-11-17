@@ -182,8 +182,8 @@ export class Disk extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      */
     public readonly enableConfidentialCompute!: pulumi.Output<boolean>;
     /**
@@ -205,7 +205,6 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly image!: pulumi.Output<string | undefined>;
     /**
-     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
      * > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -249,9 +248,6 @@ export class Disk extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -312,10 +308,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<number>;
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-     * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-     * * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-     * 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. If the snapshot is in another
+     * project than this disk, you must supply a full URL. For example, the
+     * following are valid values:
      */
     public readonly snapshot!: pulumi.Output<string | undefined>;
     /**
@@ -507,8 +503,8 @@ export interface DiskState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      */
     enableConfidentialCompute?: pulumi.Input<boolean>;
     /**
@@ -530,7 +526,6 @@ export interface DiskState {
      */
     image?: pulumi.Input<string>;
     /**
-     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
      * > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -574,9 +569,6 @@ export interface DiskState {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -637,10 +629,10 @@ export interface DiskState {
      */
     size?: pulumi.Input<number>;
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-     * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-     * * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-     * 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. If the snapshot is in another
+     * project than this disk, you must supply a full URL. For example, the
+     * following are valid values:
      */
     snapshot?: pulumi.Input<string>;
     /**
@@ -734,8 +726,8 @@ export interface DiskArgs {
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
     /**
-     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      */
     enableConfidentialCompute?: pulumi.Input<boolean>;
     /**
@@ -757,7 +749,6 @@ export interface DiskArgs {
      */
     image?: pulumi.Input<string>;
     /**
-     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
      * > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -788,9 +779,6 @@ export interface DiskArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -842,10 +830,10 @@ export interface DiskArgs {
      */
     size?: pulumi.Input<number>;
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-     * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-     * * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-     * 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. If the snapshot is in another
+     * project than this disk, you must supply a full URL. For example, the
+     * following are valid values:
      */
     snapshot?: pulumi.Input<string>;
     /**

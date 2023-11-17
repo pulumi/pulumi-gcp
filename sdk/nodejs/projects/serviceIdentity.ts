@@ -82,8 +82,6 @@ export class ServiceIdentity extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The service to generate identity for.
-     *
-     * - - -
      */
     public readonly service!: pulumi.Output<string>;
 
@@ -132,8 +130,6 @@ export interface ServiceIdentityState {
     project?: pulumi.Input<string>;
     /**
      * The service to generate identity for.
-     *
-     * - - -
      */
     service?: pulumi.Input<string>;
 }
@@ -149,8 +145,6 @@ export interface ServiceIdentityArgs {
     project?: pulumi.Input<string>;
     /**
      * The service to generate identity for.
-     *
-     * - - -
      */
     service: pulumi.Input<string>;
 }

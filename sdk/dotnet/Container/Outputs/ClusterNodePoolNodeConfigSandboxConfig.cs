@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// Which sandbox to use for pods in the node pool.
         /// Accepted values are:
-        /// 
-        /// * `"gvisor"`: Pods run within a gVisor sandbox.
         /// </summary>
         public readonly string SandboxType;
 

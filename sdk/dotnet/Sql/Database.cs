@@ -141,9 +141,6 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project
         /// ID.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -246,9 +243,6 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project
         /// ID.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -307,9 +301,6 @@ namespace Pulumi.Gcp.Sql
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project
         /// ID.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// table. The BigQuery Service Account associated with your project requires access to this
         /// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
         /// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? KmsKeyName;
         /// <summary>

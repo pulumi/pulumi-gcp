@@ -27,8 +27,6 @@ class TransferJobArgs:
         The set of arguments for constructing a TransferJob resource.
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
         :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below.
-               
-               - - -
         :param pulumi.Input['TransferJobEventStreamArgs'] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
         :param pulumi.Input['TransferJobNotificationConfigArgs'] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
@@ -66,8 +64,6 @@ class TransferJobArgs:
     def transfer_spec(self) -> pulumi.Input['TransferJobTransferSpecArgs']:
         """
         Transfer specification. Structure documented below.
-
-        - - -
         """
         return pulumi.get(self, "transfer_spec")
 
@@ -165,8 +161,6 @@ class _TransferJobState:
         :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below.
-               
-               - - -
         """
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
@@ -317,8 +311,6 @@ class _TransferJobState:
     def transfer_spec(self) -> Optional[pulumi.Input['TransferJobTransferSpecArgs']]:
         """
         Transfer specification. Structure documented below.
-
-        - - -
         """
         return pulumi.get(self, "transfer_spec")
 
@@ -455,8 +447,6 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']] transfer_spec: Transfer specification. Structure documented below.
-               
-               - - -
         """
         ...
     @overload
@@ -655,8 +645,6 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']] transfer_spec: Transfer specification. Structure documented below.
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -761,8 +749,6 @@ class TransferJob(pulumi.CustomResource):
     def transfer_spec(self) -> pulumi.Output['outputs.TransferJobTransferSpec']:
         """
         Transfer specification. Structure documented below.
-
-        - - -
         """
         return pulumi.get(self, "transfer_spec")
 

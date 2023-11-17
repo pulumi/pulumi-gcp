@@ -91,9 +91,6 @@ export class NetworkEdgeSecurityService extends pulumi.CustomResource {
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -182,9 +179,6 @@ export interface NetworkEdgeSecurityServiceState {
     fingerprint?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -224,9 +218,6 @@ export interface NetworkEdgeSecurityServiceArgs {
     description?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -33,16 +33,22 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
     }
 
     /**
-     * The service-level to be provided for IPv6 traffic when the
-     * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+     * The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance.
+     * This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
+     * not specified, it is assumed to be PREMIUM.
+     * 
+     * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
      * 
      */
     @Import(name="networkTier")
     private @Nullable Output<String> networkTier;
 
     /**
-     * @return The service-level to be provided for IPv6 traffic when the
-     * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+     * @return The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance.
+     * This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
+     * not specified, it is assumed to be PREMIUM.
+     * 
+     * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
      * 
      */
     public Optional<Output<String>> networkTier() {
@@ -50,16 +56,20 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
     }
 
     /**
-     * The domain name to be used when creating DNSv6
-     * records for the external IPv6 ranges..
+     * The DNS domain name for the public PTR record.
+     * To set this field on an instance, you must be verified as the owner of the domain.
+     * See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
+     * to become verified as a domain owner.
      * 
      */
     @Import(name="publicPtrDomainName")
     private @Nullable Output<String> publicPtrDomainName;
 
     /**
-     * @return The domain name to be used when creating DNSv6
-     * records for the external IPv6 ranges..
+     * @return The DNS domain name for the public PTR record.
+     * To set this field on an instance, you must be verified as the owner of the domain.
+     * See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
+     * to become verified as a domain owner.
      * 
      */
     public Optional<Output<String>> publicPtrDomainName() {
@@ -124,8 +134,11 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param networkTier The service-level to be provided for IPv6 traffic when the
-         * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+         * @param networkTier The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance.
+         * This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
+         * not specified, it is assumed to be PREMIUM.
+         * 
+         * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
          * 
          * @return builder
          * 
@@ -136,8 +149,11 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param networkTier The service-level to be provided for IPv6 traffic when the
-         * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+         * @param networkTier The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance.
+         * This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
+         * not specified, it is assumed to be PREMIUM.
+         * 
+         * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
          * 
          * @return builder
          * 
@@ -147,8 +163,10 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param publicPtrDomainName The domain name to be used when creating DNSv6
-         * records for the external IPv6 ranges..
+         * @param publicPtrDomainName The DNS domain name for the public PTR record.
+         * To set this field on an instance, you must be verified as the owner of the domain.
+         * See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
+         * to become verified as a domain owner.
          * 
          * @return builder
          * 
@@ -159,8 +177,10 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param publicPtrDomainName The domain name to be used when creating DNSv6
-         * records for the external IPv6 ranges..
+         * @param publicPtrDomainName The DNS domain name for the public PTR record.
+         * To set this field on an instance, you must be verified as the owner of the domain.
+         * See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
+         * to become verified as a domain owner.
          * 
          * @return builder
          * 

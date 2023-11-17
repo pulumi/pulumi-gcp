@@ -50,8 +50,6 @@ func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.
 // A collection of arguments for invoking getNetwork.
 type LookupNetworkArgs struct {
 	// Location of the resource.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Name of the resource.
 	Name string `pulumi:"name"`
@@ -89,8 +87,6 @@ func LookupNetworkOutput(ctx *pulumi.Context, args LookupNetworkOutputArgs, opts
 // A collection of arguments for invoking getNetwork.
 type LookupNetworkOutputArgs struct {
 	// Location of the resource.
-	//
-	// ***
 	Location pulumi.StringInput `pulumi:"location"`
 	// Name of the resource.
 	Name pulumi.StringInput `pulumi:"name"`

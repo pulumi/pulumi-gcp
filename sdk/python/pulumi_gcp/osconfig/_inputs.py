@@ -254,8 +254,6 @@ class GuestPoliciesAssignmentOsTypeArgs:
                  os_version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] os_architecture: Targets VM instances with OS Inventory enabled and having the following OS architecture.
-               
-               - - -
         :param pulumi.Input[str] os_short_name: Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
         :param pulumi.Input[str] os_version: Targets VM instances with OS Inventory enabled and having the following following OS version.
         """
@@ -271,8 +269,6 @@ class GuestPoliciesAssignmentOsTypeArgs:
     def os_architecture(self) -> Optional[pulumi.Input[str]]:
         """
         Targets VM instances with OS Inventory enabled and having the following OS architecture.
-
-        - - -
         """
         return pulumi.get(self, "os_architecture")
 
@@ -2226,12 +2222,11 @@ class OsPolicyAssignmentOsPolicyArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] id: The id of the OS policy with the following restrictions:
-               
-               *   Must contain only lowercase letters, numbers, and hyphens.
-               *   Must start with a letter.
-               *   Must be between 1-63 characters.
-               *   Must end with a number or a letter.
-               *   Must be unique within the assignment.
+               * Must contain only lowercase letters, numbers, and hyphens.
+               * Must start with a letter.
+               * Must be between 1-63 characters.
+               * Must end with a number or a letter.
+               * Must be unique within the assignment.
         :param pulumi.Input[str] mode: Policy mode Possible values are: `MODE_UNSPECIFIED`,
                `VALIDATION`, `ENFORCEMENT`.
         :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArgs']]] resource_groups: List of resource groups for the policy. For a
@@ -2246,7 +2241,8 @@ class OsPolicyAssignmentOsPolicyArgs:
                are applicable for a VM. Set this value to `true` if the policy needs to be
                reported as compliant even if the policy has nothing to validate or enforce.
         :param pulumi.Input[str] description: Policy description. Length of the description is
-               limited to 1024 characters.
+               limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
+               description is limited to 1024 characters.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "mode", mode)
@@ -2261,12 +2257,11 @@ class OsPolicyAssignmentOsPolicyArgs:
     def id(self) -> pulumi.Input[str]:
         """
         The id of the OS policy with the following restrictions:
-
-        *   Must contain only lowercase letters, numbers, and hyphens.
-        *   Must start with a letter.
-        *   Must be between 1-63 characters.
-        *   Must end with a number or a letter.
-        *   Must be unique within the assignment.
+        * Must contain only lowercase letters, numbers, and hyphens.
+        * Must start with a letter.
+        * Must be between 1-63 characters.
+        * Must end with a number or a letter.
+        * Must be unique within the assignment.
         """
         return pulumi.get(self, "id")
 
@@ -2325,7 +2320,8 @@ class OsPolicyAssignmentOsPolicyArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Policy description. Length of the description is
-        limited to 1024 characters.
+        limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
+        description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
 
@@ -2446,12 +2442,11 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
                  repository: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']] = None):
         """
         :param pulumi.Input[str] id: The id of the resource with the following restrictions:
-               
-               *   Must contain only lowercase letters, numbers, and hyphens.
-               *   Must start with a letter.
-               *   Must be between 1-63 characters.
-               *   Must end with a number or a letter.
-               *   Must be unique within the OS policy.
+               * Must contain only lowercase letters, numbers, and hyphens.
+               * Must start with a letter.
+               * Must be between 1-63 characters.
+               * Must end with a number or a letter.
+               * Must be unique within the OS policy.
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs'] exec_: Exec resource Structure is
                documented below.
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs'] file: File resource Structure is
@@ -2476,12 +2471,11 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
     def id(self) -> pulumi.Input[str]:
         """
         The id of the resource with the following restrictions:
-
-        *   Must contain only lowercase letters, numbers, and hyphens.
-        *   Must start with a letter.
-        *   Must be between 1-63 characters.
-        *   Must end with a number or a letter.
-        *   Must be unique within the OS policy.
+        * Must contain only lowercase letters, numbers, and hyphens.
+        * Must start with a letter.
+        * Must be between 1-63 characters.
+        * Must end with a number or a letter.
+        * Must be unique within the OS policy.
         """
         return pulumi.get(self, "id")
 
@@ -3158,7 +3152,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
                is limited to 1024 characters.
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs'] file: A remote or local source. Structure is
                documented below.
-        :param pulumi.Input[str] permissions: Consists of three octal digits which represent, in
+        :param pulumi.Input[str] permissions: (Output) Consists of three octal digits which represent, in
                order, the permissions of the owner, group, and other users for the file
                (similarly to the numeric mode used in the linux chmod utility). Each digit
                represents a three bit number with the 4 bit corresponding to the read
@@ -3231,7 +3225,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[str]]:
         """
-        Consists of three octal digits which represent, in
+        (Output) Consists of three octal digits which represent, in
         order, the permissions of the owner, group, and other users for the file
         (similarly to the numeric mode used in the linux chmod utility). Each digit
         represents a three bit number with the 4 bit corresponding to the read
@@ -4720,8 +4714,6 @@ class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
         :param pulumi.Input[int] fixed: Specifies a fixed value.
         :param pulumi.Input[int] percent: Specifies the relative value defined as a percentage,
                which will be multiplied by a reference value.
-               
-               --------------------------------------------------------------------------------
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -4746,8 +4738,6 @@ class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
         """
         Specifies the relative value defined as a percentage,
         which will be multiplied by a reference value.
-
-        --------------------------------------------------------------------------------
         """
         return pulumi.get(self, "percent")
 
@@ -4857,8 +4847,6 @@ class PatchDeploymentInstanceFilterGroupLabelArgs:
                  labels: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-               
-               - - -
         """
         pulumi.set(__self__, "labels", labels)
 
@@ -4867,8 +4855,6 @@ class PatchDeploymentInstanceFilterGroupLabelArgs:
     def labels(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
         Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-
-        - - -
         """
         return pulumi.get(self, "labels")
 

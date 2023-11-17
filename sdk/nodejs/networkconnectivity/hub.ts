@@ -98,10 +98,6 @@ export class Hub extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-     *
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -199,10 +195,6 @@ export interface HubState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -248,10 +240,6 @@ export interface HubArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

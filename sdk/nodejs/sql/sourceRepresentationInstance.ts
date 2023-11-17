@@ -124,9 +124,6 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
     public readonly dumpFilePath!: pulumi.Output<string | undefined>;
     /**
      * The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-     *
-     *
-     * - - -
      */
     public readonly host!: pulumi.Output<string>;
     /**
@@ -238,9 +235,6 @@ export interface SourceRepresentationInstanceState {
     dumpFilePath?: pulumi.Input<string>;
     /**
      * The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-     *
-     *
-     * - - -
      */
     host?: pulumi.Input<string>;
     /**
@@ -300,9 +294,6 @@ export interface SourceRepresentationInstanceArgs {
     dumpFilePath?: pulumi.Input<string>;
     /**
      * The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-     *
-     *
-     * - - -
      */
     host: pulumi.Input<string>;
     /**

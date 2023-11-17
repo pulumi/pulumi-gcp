@@ -20,8 +20,7 @@ public final class AttachedClusterFleet {
      */
     private @Nullable String membership;
     /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * @return The number of the Fleet host project where this cluster will be registered.
      * 
      */
     private String project;
@@ -38,8 +37,7 @@ public final class AttachedClusterFleet {
         return Optional.ofNullable(this.membership);
     }
     /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * @return The number of the Fleet host project where this cluster will be registered.
      * 
      */
     public String project() {

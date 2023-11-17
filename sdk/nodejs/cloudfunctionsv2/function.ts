@@ -309,9 +309,6 @@ export class Function extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location of this cloud function.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -445,9 +442,6 @@ export interface FunctionState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of this cloud function.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -518,9 +512,6 @@ export interface FunctionArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location of this cloud function.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

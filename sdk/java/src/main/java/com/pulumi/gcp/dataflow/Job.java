@@ -475,16 +475,12 @@ public class Job extends com.pulumi.resources.CustomResource {
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      * 
-     * ***
-     * 
      */
     @Export(name="tempGcsLocation", refs={String.class}, tree="[0]")
     private Output<String> tempGcsLocation;
 
     /**
      * @return A writeable location on GCS for the Dataflow job to dump its temporary data.
-     * 
-     * ***
      * 
      */
     public Output<String> tempGcsLocation() {

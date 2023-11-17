@@ -180,8 +180,6 @@ public class GlobalNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * Type of network endpoints in this network endpoint group.
      * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
      * 
-     * ***
-     * 
      */
     @Export(name="networkEndpointType", refs={String.class}, tree="[0]")
     private Output<String> networkEndpointType;
@@ -189,8 +187,6 @@ public class GlobalNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     /**
      * @return Type of network endpoints in this network endpoint group.
      * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
-     * 
-     * ***
      * 
      */
     public Output<String> networkEndpointType() {

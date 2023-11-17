@@ -73,8 +73,6 @@ namespace Pulumi.Gcp.Beyondcorp
     {
         /// <summary>
         /// The name of the App Gateway.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -103,8 +101,6 @@ namespace Pulumi.Gcp.Beyondcorp
     {
         /// <summary>
         /// The name of the App Gateway.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

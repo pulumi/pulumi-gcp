@@ -62,20 +62,12 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
-     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-     * 
-     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-     * 
      */
     @Import(name="effectiveLabels")
     private @Nullable Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     * 
-     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-     * 
-     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
      * 
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
@@ -421,10 +413,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
          * 
-         * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-         * 
-         * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-         * 
          * @return builder
          * 
          */
@@ -435,10 +423,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-         * 
-         * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-         * 
-         * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
          * 
          * @return builder
          * 

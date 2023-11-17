@@ -331,8 +331,6 @@ export class ManagedZone extends pulumi.CustomResource {
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -501,8 +499,6 @@ export interface ManagedZoneState {
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -595,8 +591,6 @@ export interface ManagedZoneArgs {
     /**
      * User assigned name for this resource.
      * Must be unique within the project.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

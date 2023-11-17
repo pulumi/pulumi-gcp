@@ -48,16 +48,12 @@ public final class DocumentArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The client-assigned document ID to use for this document during creation.
      * 
-     * ***
-     * 
      */
     @Import(name="documentId", required=true)
     private Output<String> documentId;
 
     /**
      * @return The client-assigned document ID to use for this document during creation.
-     * 
-     * ***
      * 
      */
     public Output<String> documentId() {
@@ -169,8 +165,6 @@ public final class DocumentArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param documentId The client-assigned document ID to use for this document during creation.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -181,8 +175,6 @@ public final class DocumentArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param documentId The client-assigned document ID to use for this document during creation.
-         * 
-         * ***
          * 
          * @return builder
          * 

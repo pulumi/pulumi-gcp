@@ -37,7 +37,6 @@ class ServiceArgs:
         :param pulumi.Input[str] name: Name must be unique within a Google Cloud project and region.
                Is required when creating resources. Name is primarily intended
                for creation idempotence and configuration definition. Cannot be updated.
-               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ServiceTemplateArgs'] template: template holds the latest specification for the Revision to
@@ -117,7 +116,6 @@ class ServiceArgs:
         Name must be unique within a Google Cloud project and region.
         Is required when creating resources. Name is primarily intended
         for creation idempotence and configuration definition. Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -199,7 +197,6 @@ class _ServiceState:
         :param pulumi.Input[str] name: Name must be unique within a Google Cloud project and region.
                Is required when creating resources. Name is primarily intended
                for creation idempotence and configuration definition. Cannot be updated.
-               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceStatusArgs']]] statuses: (Output)
@@ -284,7 +281,6 @@ class _ServiceState:
         Name must be unique within a Google Cloud project and region.
         Is required when creating resources. Name is primarily intended
         for creation idempotence and configuration definition. Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -636,7 +632,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name must be unique within a Google Cloud project and region.
                Is required when creating resources. Name is primarily intended
                for creation idempotence and configuration definition. Cannot be updated.
-               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ServiceTemplateArgs']] template: template holds the latest specification for the Revision to
@@ -992,7 +987,6 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name must be unique within a Google Cloud project and region.
                Is required when creating resources. Name is primarily intended
                for creation idempotence and configuration definition. Cannot be updated.
-               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceStatusArgs']]]] statuses: (Output)
@@ -1062,7 +1056,6 @@ class Service(pulumi.CustomResource):
         Name must be unique within a Google Cloud project and region.
         Is required when creating resources. Name is primarily intended
         for creation idempotence and configuration definition. Cannot be updated.
-        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 

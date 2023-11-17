@@ -27,8 +27,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
         /// No more than 10 labels can be associated with a given finding.
         /// Examples:
-        /// * `"environment" : "production"`
-        /// * `"pipeline" : "etl"`
         /// </summary>
         public InputMap<string> Labels
         {

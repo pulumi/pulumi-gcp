@@ -24,9 +24,6 @@ class PolicyTagArgs:
                taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
                not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
         :param pulumi.Input[str] taxonomy: Taxonomy the policy tag is associated with
-               
-               
-               - - -
         :param pulumi.Input[str] description: Description of this policy tag. It must: contain only unicode characters, tabs,
                newlines, carriage returns and page breaks; and be at most 2000 bytes long when
                encoded in UTF-8. If not set, defaults to an empty description.
@@ -61,9 +58,6 @@ class PolicyTagArgs:
     def taxonomy(self) -> pulumi.Input[str]:
         """
         Taxonomy the policy tag is associated with
-
-
-        - - -
         """
         return pulumi.get(self, "taxonomy")
 
@@ -126,9 +120,6 @@ class _PolicyTagState:
                If empty, it means this policy tag is a top level policy tag.
                If not set, defaults to an empty string.
         :param pulumi.Input[str] taxonomy: Taxonomy the policy tag is associated with
-               
-               
-               - - -
         """
         if child_policy_tags is not None:
             pulumi.set(__self__, "child_policy_tags", child_policy_tags)
@@ -216,9 +207,6 @@ class _PolicyTagState:
     def taxonomy(self) -> Optional[pulumi.Input[str]]:
         """
         Taxonomy the policy tag is associated with
-
-
-        - - -
         """
         return pulumi.get(self, "taxonomy")
 
@@ -318,9 +306,6 @@ class PolicyTag(pulumi.CustomResource):
                If empty, it means this policy tag is a top level policy tag.
                If not set, defaults to an empty string.
         :param pulumi.Input[str] taxonomy: Taxonomy the policy tag is associated with
-               
-               
-               - - -
         """
         ...
     @overload
@@ -471,9 +456,6 @@ class PolicyTag(pulumi.CustomResource):
                If empty, it means this policy tag is a top level policy tag.
                If not set, defaults to an empty string.
         :param pulumi.Input[str] taxonomy: Taxonomy the policy tag is associated with
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -540,9 +522,6 @@ class PolicyTag(pulumi.CustomResource):
     def taxonomy(self) -> pulumi.Output[str]:
         """
         Taxonomy the policy tag is associated with
-
-
-        - - -
         """
         return pulumi.get(self, "taxonomy")
 

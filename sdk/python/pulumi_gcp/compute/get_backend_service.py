@@ -370,8 +370,6 @@ def get_backend_service(name: Optional[str] = None,
 
 
     :param str name: The name of the Backend Service.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it is not provided, the provider project is used.
     """
     __args__ = dict()
@@ -426,8 +424,6 @@ def get_backend_service_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: The name of the Backend Service.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it is not provided, the provider project is used.
     """
     ...

@@ -140,9 +140,6 @@ export class VpnConnection extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Google Cloud Platform location.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -274,9 +271,6 @@ export interface VpnConnectionState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Google Cloud Platform location.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -337,9 +331,6 @@ export interface VpnConnectionArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Google Cloud Platform location.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

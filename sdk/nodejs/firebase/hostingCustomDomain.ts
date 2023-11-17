@@ -177,9 +177,6 @@ export class HostingCustomDomain extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-     *
-     *
-     * - - -
      */
     public readonly customDomain!: pulumi.Output<string>;
     /**
@@ -395,9 +392,6 @@ export interface HostingCustomDomainState {
     createTime?: pulumi.Input<string>;
     /**
      * The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-     *
-     *
-     * - - -
      */
     customDomain?: pulumi.Input<string>;
     /**
@@ -539,9 +533,6 @@ export interface HostingCustomDomainArgs {
     certPreference?: pulumi.Input<string>;
     /**
      * The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
-     *
-     *
-     * - - -
      */
     customDomain: pulumi.Input<string>;
     /**

@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly int Count;
         /// <summary>
         /// Interval over which the threshold is computed.
+        /// 
+        /// 
+        /// * &lt;a  name="nested_exceed_redirect_options"&gt;&lt;/a&gt;The `exceed_redirect_options` block supports:
         /// </summary>
         public readonly int IntervalSec;
 

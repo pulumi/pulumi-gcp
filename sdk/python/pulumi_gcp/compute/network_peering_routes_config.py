@@ -24,9 +24,6 @@ class NetworkPeeringRoutesConfigArgs:
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network.
         :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes to the peer network.
         :param pulumi.Input[str] network: The name of the primary network for the peering.
-               
-               
-               - - -
         :param pulumi.Input[str] peering: Name of the peering.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -67,9 +64,6 @@ class NetworkPeeringRoutesConfigArgs:
     def network(self) -> pulumi.Input[str]:
         """
         The name of the primary network for the peering.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -116,9 +110,6 @@ class _NetworkPeeringRoutesConfigState:
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network.
         :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes to the peer network.
         :param pulumi.Input[str] network: The name of the primary network for the peering.
-               
-               
-               - - -
         :param pulumi.Input[str] peering: Name of the peering.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -163,9 +154,6 @@ class _NetworkPeeringRoutesConfigState:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the primary network for the peering.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -319,9 +307,6 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network.
         :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes to the peer network.
         :param pulumi.Input[str] network: The name of the primary network for the peering.
-               
-               
-               - - -
         :param pulumi.Input[str] peering: Name of the peering.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -503,9 +488,6 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
         :param pulumi.Input[bool] export_custom_routes: Whether to export the custom routes to the peer network.
         :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes to the peer network.
         :param pulumi.Input[str] network: The name of the primary network for the peering.
-               
-               
-               - - -
         :param pulumi.Input[str] peering: Name of the peering.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -542,9 +524,6 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
     def network(self) -> pulumi.Output[str]:
         """
         The name of the primary network for the peering.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 

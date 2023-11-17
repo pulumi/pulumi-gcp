@@ -120,8 +120,6 @@ type Channel struct {
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Required. The resource name of the channel. Must be unique within the location on the project.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -179,8 +177,6 @@ type channelState struct {
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// Required. The resource name of the channel. Must be unique within the location on the project.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -206,8 +202,6 @@ type ChannelState struct {
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// Required. The resource name of the channel. Must be unique within the location on the project.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -233,8 +227,6 @@ type channelArgs struct {
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// Required. The resource name of the channel. Must be unique within the location on the project.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -249,8 +241,6 @@ type ChannelArgs struct {
 	// The location for the resource
 	Location pulumi.StringInput
 	// Required. The resource name of the channel. Must be unique within the location on the project.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -366,8 +356,6 @@ func (o ChannelOutput) Location() pulumi.StringOutput {
 }
 
 // Required. The resource name of the channel. Must be unique within the location on the project.
-//
-// ***
 func (o ChannelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

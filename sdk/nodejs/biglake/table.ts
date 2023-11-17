@@ -154,9 +154,6 @@ export class Table extends pulumi.CustomResource {
     /**
      * Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -255,9 +252,6 @@ export interface TableState {
     /**
      * Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -290,9 +284,6 @@ export interface TableArgs {
     /**
      * Output only. The name of the Table. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

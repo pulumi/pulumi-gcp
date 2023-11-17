@@ -160,10 +160,10 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      * * Full resource URL, as in
      *   `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
      * * Partial URL or by name, as in:
-     * * `projects/project_id/regions/region/addresses/address-name`
-     * * `regions/region/addresses/address-name`
-     * * `global/addresses/address-name`
-     * * `address-name`
+     *   * `projects/project_id/regions/region/addresses/address-name`
+     *   * `regions/region/addresses/address-name`
+     *   * `global/addresses/address-name`
+     *   * `address-name`
      * 
      * The forwarding rule&#39;s `target` or `backendService`,
      * and in most cases, also the `loadBalancingScheme`, determine the
@@ -199,10 +199,10 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      * * Full resource URL, as in
      *   `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
      * * Partial URL or by name, as in:
-     * * `projects/project_id/regions/region/addresses/address-name`
-     * * `regions/region/addresses/address-name`
-     * * `global/addresses/address-name`
-     * * `address-name`
+     *   * `projects/project_id/regions/region/addresses/address-name`
+     *   * `regions/region/addresses/address-name`
+     *   * `global/addresses/address-name`
+     *   * `address-name`
      * 
      * The forwarding rule&#39;s `target` or `backendService`,
      * and in most cases, also the `loadBalancingScheme`, determine the
@@ -357,8 +357,6 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -375,8 +373,6 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      * For Private Service Connect forwarding rules that forward traffic to Google
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -705,12 +701,8 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      * forwarding rule. For global forwarding rules, this target must be a global
      * load balancing resource.
      * The forwarded traffic must be of a type appropriate to the target object.
-     * *  For load balancers, see the &#34;Target&#34; column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-     * *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
-     * *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
-     * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-     * 
-     * For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+     * * For load balancers, see the &#34;Target&#34; column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+     * * For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
      * 
      */
     @Import(name="target")
@@ -722,12 +714,8 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      * forwarding rule. For global forwarding rules, this target must be a global
      * load balancing resource.
      * The forwarded traffic must be of a type appropriate to the target object.
-     * *  For load balancers, see the &#34;Target&#34; column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-     * *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
-     * *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
-     * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-     * 
-     * For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+     * * For load balancers, see the &#34;Target&#34; column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+     * * For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
      * 
      */
     public Optional<Output<String>> target() {
@@ -953,10 +941,10 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          * * Full resource URL, as in
          *   `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
          * * Partial URL or by name, as in:
-         * * `projects/project_id/regions/region/addresses/address-name`
-         * * `regions/region/addresses/address-name`
-         * * `global/addresses/address-name`
-         * * `address-name`
+         *   * `projects/project_id/regions/region/addresses/address-name`
+         *   * `regions/region/addresses/address-name`
+         *   * `global/addresses/address-name`
+         *   * `address-name`
          * 
          * The forwarding rule&#39;s `target` or `backendService`,
          * and in most cases, also the `loadBalancingScheme`, determine the
@@ -996,10 +984,10 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          * * Full resource URL, as in
          *   `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
          * * Partial URL or by name, as in:
-         * * `projects/project_id/regions/region/addresses/address-name`
-         * * `regions/region/addresses/address-name`
-         * * `global/addresses/address-name`
-         * * `address-name`
+         *   * `projects/project_id/regions/region/addresses/address-name`
+         *   * `regions/region/addresses/address-name`
+         *   * `global/addresses/address-name`
+         *   * `address-name`
          * 
          * The forwarding rule&#39;s `target` or `backendService`,
          * and in most cases, also the `loadBalancingScheme`, determine the
@@ -1186,8 +1174,6 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          * APIs, the forwarding rule name must be a 1-20 characters string with
          * lowercase letters and numbers and must start with a letter.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1208,8 +1194,6 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          * For Private Service Connect forwarding rules that forward traffic to Google
          * APIs, the forwarding rule name must be a 1-20 characters string with
          * lowercase letters and numbers and must start with a letter.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1648,12 +1632,8 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          * forwarding rule. For global forwarding rules, this target must be a global
          * load balancing resource.
          * The forwarded traffic must be of a type appropriate to the target object.
-         * *  For load balancers, see the &#34;Target&#34; column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-         * *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
-         * *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
-         * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-         * 
-         * For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+         * * For load balancers, see the &#34;Target&#34; column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+         * * For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
          * 
          * @return builder
          * 
@@ -1669,12 +1649,8 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          * forwarding rule. For global forwarding rules, this target must be a global
          * load balancing resource.
          * The forwarded traffic must be of a type appropriate to the target object.
-         * *  For load balancers, see the &#34;Target&#34; column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-         * *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
-         * *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
-         * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
-         * 
-         * For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+         * * For load balancers, see the &#34;Target&#34; column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+         * * For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
          * 
          * @return builder
          * 

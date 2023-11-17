@@ -126,8 +126,6 @@ type BitbucketServerConfigSecrets struct {
 	ReadAccessTokenVersionName string `pulumi:"readAccessTokenVersionName"`
 	// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
 	// Changing this field will result in deleting/ recreating the resource.
-	//
-	// ***
 	WebhookSecretVersionName string `pulumi:"webhookSecretVersionName"`
 }
 
@@ -149,8 +147,6 @@ type BitbucketServerConfigSecretsArgs struct {
 	ReadAccessTokenVersionName pulumi.StringInput `pulumi:"readAccessTokenVersionName"`
 	// Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
 	// Changing this field will result in deleting/ recreating the resource.
-	//
-	// ***
 	WebhookSecretVersionName pulumi.StringInput `pulumi:"webhookSecretVersionName"`
 }
 
@@ -243,8 +239,6 @@ func (o BitbucketServerConfigSecretsOutput) ReadAccessTokenVersionName() pulumi.
 
 // Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
 // Changing this field will result in deleting/ recreating the resource.
-//
-// ***
 func (o BitbucketServerConfigSecretsOutput) WebhookSecretVersionName() pulumi.StringOutput {
 	return o.ApplyT(func(v BitbucketServerConfigSecrets) string { return v.WebhookSecretVersionName }).(pulumi.StringOutput)
 }
@@ -295,8 +289,6 @@ func (o BitbucketServerConfigSecretsPtrOutput) ReadAccessTokenVersionName() pulu
 
 // Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
 // Changing this field will result in deleting/ recreating the resource.
-//
-// ***
 func (o BitbucketServerConfigSecretsPtrOutput) WebhookSecretVersionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BitbucketServerConfigSecrets) *string {
 		if v == nil {
@@ -7357,8 +7349,6 @@ func (o GetTriggerBuildArtifactArrayOutput) Index(i pulumi.IntInput) GetTriggerB
 
 type GetTriggerBuildArtifactObject struct {
 	// The Cloud Build location for the trigger.
-	//
-	// ***
 	Location string                                `pulumi:"location"`
 	Paths    []string                              `pulumi:"paths"`
 	Timings  []GetTriggerBuildArtifactObjectTiming `pulumi:"timings"`
@@ -7377,8 +7367,6 @@ type GetTriggerBuildArtifactObjectInput interface {
 
 type GetTriggerBuildArtifactObjectArgs struct {
 	// The Cloud Build location for the trigger.
-	//
-	// ***
 	Location pulumi.StringInput                            `pulumi:"location"`
 	Paths    pulumi.StringArrayInput                       `pulumi:"paths"`
 	Timings  GetTriggerBuildArtifactObjectTimingArrayInput `pulumi:"timings"`
@@ -7436,8 +7424,6 @@ func (o GetTriggerBuildArtifactObjectOutput) ToGetTriggerBuildArtifactObjectOutp
 }
 
 // The Cloud Build location for the trigger.
-//
-// ***
 func (o GetTriggerBuildArtifactObjectOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggerBuildArtifactObject) string { return v.Location }).(pulumi.StringOutput)
 }

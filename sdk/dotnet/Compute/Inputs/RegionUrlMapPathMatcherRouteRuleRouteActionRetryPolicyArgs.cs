@@ -13,15 +13,13 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
+        /// Specifies the allowed number retries. This number must be &gt; 0.
         /// </summary>
         [Input("numRetries", required: true)]
         public Input<int> NumRetries { get; set; } = null!;
 
         /// <summary>
         /// Specifies a non-zero timeout per retry attempt.
-        /// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-        /// will use the largest timeout among all backend services associated with the route.
         /// Structure is documented below.
         /// </summary>
         [Input("perTryTimeout")]

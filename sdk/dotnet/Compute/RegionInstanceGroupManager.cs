@@ -149,7 +149,6 @@ namespace Pulumi.Gcp.Compute
     public partial class RegionInstanceGroupManager : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// )
         /// Properties to set on all instances in the group. After setting
         /// allInstancesConfig on the group, you must update the group's instances to
         /// apply the configuration.
@@ -249,8 +248,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the managed instance group resides. If not provided, the provider region is used.
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -269,8 +266,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         [Output("statefulExternalIps")]
         public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerStatefulExternalIp>> StatefulExternalIps { get; private set; } = null!;
@@ -380,7 +375,6 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionInstanceGroupManagerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// )
         /// Properties to set on all instances in the group. After setting
         /// allInstancesConfig on the group, you must update the group's instances to
         /// apply the configuration.
@@ -480,8 +474,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the managed instance group resides. If not provided, the provider region is used.
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -503,8 +495,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpArgs> StatefulExternalIps
         {
@@ -591,7 +581,6 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionInstanceGroupManagerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// )
         /// Properties to set on all instances in the group. After setting
         /// allInstancesConfig on the group, you must update the group's instances to
         /// apply the configuration.
@@ -703,8 +692,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the managed instance group resides. If not provided, the provider region is used.
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -732,8 +719,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-        /// 
-        /// - - -
         /// </summary>
         public InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpGetArgs> StatefulExternalIps
         {

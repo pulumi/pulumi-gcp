@@ -169,9 +169,6 @@ export class V2Vm extends pulumi.CustomResource {
     public /*out*/ readonly queuedResource!: pulumi.Output<string>;
     /**
      * Runtime version for the TPU.
-     *
-     *
-     * - - -
      */
     public readonly runtimeVersion!: pulumi.Output<string>;
     /**
@@ -380,9 +377,6 @@ export interface V2VmState {
     queuedResource?: pulumi.Input<string>;
     /**
      * Runtime version for the TPU.
-     *
-     *
-     * - - -
      */
     runtimeVersion?: pulumi.Input<string>;
     /**
@@ -479,9 +473,6 @@ export interface V2VmArgs {
     project?: pulumi.Input<string>;
     /**
      * Runtime version for the TPU.
-     *
-     *
-     * - - -
      */
     runtimeVersion: pulumi.Input<string>;
     /**

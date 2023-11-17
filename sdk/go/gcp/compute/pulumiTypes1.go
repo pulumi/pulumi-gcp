@@ -483,11 +483,11 @@ func (o URLMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyPtrOutput) Backe
 }
 
 type URLMapPathMatcherRouteRuleRouteActionRetryPolicy struct {
-	// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+	// Specifies the allowed number retries. This number must be > 0.
 	NumRetries int `pulumi:"numRetries"`
 	// Specifies a non-zero timeout per retry attempt.
-	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-	// will use the largest timeout among all backend services associated with the route.
+	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+	// is not set, will use the largest timeout among all backend services associated with the route.
 	// Structure is documented below.
 	PerTryTimeout *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout `pulumi:"perTryTimeout"`
 	// Specfies one or more conditions when this retry rule applies. Valid values are:
@@ -520,11 +520,11 @@ type URLMapPathMatcherRouteRuleRouteActionRetryPolicyInput interface {
 }
 
 type URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs struct {
-	// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+	// Specifies the allowed number retries. This number must be > 0.
 	NumRetries pulumi.IntInput `pulumi:"numRetries"`
 	// Specifies a non-zero timeout per retry attempt.
-	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-	// will use the largest timeout among all backend services associated with the route.
+	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+	// is not set, will use the largest timeout among all backend services associated with the route.
 	// Structure is documented below.
 	PerTryTimeout URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrInput `pulumi:"perTryTimeout"`
 	// Specfies one or more conditions when this retry rule applies. Valid values are:
@@ -622,14 +622,14 @@ func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) ToURLMapPathMatc
 	}).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput)
 }
 
-// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+// Specifies the allowed number retries. This number must be > 0.
 func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) NumRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionRetryPolicy) int { return v.NumRetries }).(pulumi.IntOutput)
 }
 
 // Specifies a non-zero timeout per retry attempt.
-// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-// will use the largest timeout among all backend services associated with the route.
+// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+// is not set, will use the largest timeout among all backend services associated with the route.
 // Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) PerTryTimeout() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionRetryPolicy) *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
@@ -680,7 +680,7 @@ func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) Elem() URLMap
 	}).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput)
 }
 
-// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+// Specifies the allowed number retries. This number must be > 0.
 func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) NumRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionRetryPolicy) *int {
 		if v == nil {
@@ -691,8 +691,8 @@ func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) NumRetries() 
 }
 
 // Specifies a non-zero timeout per retry attempt.
-// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-// will use the largest timeout among all backend services associated with the route.
+// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+// is not set, will use the largest timeout among all backend services associated with the route.
 // Structure is documented below.
 func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) PerTryTimeout() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionRetryPolicy) *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
@@ -1925,9 +1925,10 @@ type URLMapPathMatcherRouteRuleUrlRedirect struct {
 	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
 	// * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed
-	// prior to redirecting the request. If set to false, the query portion of the
-	// original URL is retained. Defaults to false.
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained. The default is set to false.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
 	StripQuery *bool `pulumi:"stripQuery"`
 }
 
@@ -1965,9 +1966,10 @@ type URLMapPathMatcherRouteRuleUrlRedirectArgs struct {
 	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
 	// * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
-	// If set to true, any accompanying query portion of the original URL is removed
-	// prior to redirecting the request. If set to false, the query portion of the
-	// original URL is retained. Defaults to false.
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained. The default is set to false.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
 	StripQuery pulumi.BoolPtrInput `pulumi:"stripQuery"`
 }
 
@@ -2085,9 +2087,10 @@ func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) RedirectResponseCode() pulu
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed
-// prior to redirecting the request. If set to false, the query portion of the
-// original URL is retained. Defaults to false.
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained. The default is set to false.
+// This field is required to ensure an empty block is not set. The normal default value is false.
 func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *bool { return v.StripQuery }).(pulumi.BoolPtrOutput)
 }
@@ -2178,9 +2181,10 @@ func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) RedirectResponseCode() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// If set to true, any accompanying query portion of the original URL is removed
-// prior to redirecting the request. If set to false, the query portion of the
-// original URL is retained. Defaults to false.
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained. The default is set to false.
+// This field is required to ensure an empty block is not set. The normal default value is false.
 func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *bool {
 		if v == nil {
@@ -3900,8 +3904,6 @@ func (o GetBackendServiceConsistentHashArrayOutput) Index(i pulumi.IntInput) Get
 
 type GetBackendServiceConsistentHashHttpCooky struct {
 	// The name of the Backend Service.
-	//
-	// ***
 	Name string                                        `pulumi:"name"`
 	Path string                                        `pulumi:"path"`
 	Ttls []GetBackendServiceConsistentHashHttpCookyTtl `pulumi:"ttls"`
@@ -3920,8 +3922,6 @@ type GetBackendServiceConsistentHashHttpCookyInput interface {
 
 type GetBackendServiceConsistentHashHttpCookyArgs struct {
 	// The name of the Backend Service.
-	//
-	// ***
 	Name pulumi.StringInput                                    `pulumi:"name"`
 	Path pulumi.StringInput                                    `pulumi:"path"`
 	Ttls GetBackendServiceConsistentHashHttpCookyTtlArrayInput `pulumi:"ttls"`
@@ -3979,8 +3979,6 @@ func (o GetBackendServiceConsistentHashHttpCookyOutput) ToGetBackendServiceConsi
 }
 
 // The name of the Backend Service.
-//
-// ***
 func (o GetBackendServiceConsistentHashHttpCookyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceConsistentHashHttpCooky) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4326,8 +4324,6 @@ func (o GetBackendServiceLocalityLbPolicyArrayOutput) Index(i pulumi.IntInput) G
 type GetBackendServiceLocalityLbPolicyCustomPolicy struct {
 	Data string `pulumi:"data"`
 	// The name of the Backend Service.
-	//
-	// ***
 	Name string `pulumi:"name"`
 }
 
@@ -4345,8 +4341,6 @@ type GetBackendServiceLocalityLbPolicyCustomPolicyInput interface {
 type GetBackendServiceLocalityLbPolicyCustomPolicyArgs struct {
 	Data pulumi.StringInput `pulumi:"data"`
 	// The name of the Backend Service.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -4406,8 +4400,6 @@ func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) Data() pulumi.Strin
 }
 
 // The name of the Backend Service.
-//
-// ***
 func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyCustomPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4434,8 +4426,6 @@ func (o GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput) Index(i pulumi
 
 type GetBackendServiceLocalityLbPolicyPolicy struct {
 	// The name of the Backend Service.
-	//
-	// ***
 	Name string `pulumi:"name"`
 }
 
@@ -4452,8 +4442,6 @@ type GetBackendServiceLocalityLbPolicyPolicyInput interface {
 
 type GetBackendServiceLocalityLbPolicyPolicyArgs struct {
 	// The name of the Backend Service.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -4509,8 +4497,6 @@ func (o GetBackendServiceLocalityLbPolicyPolicyOutput) ToGetBackendServiceLocali
 }
 
 // The name of the Backend Service.
-//
-// ***
 func (o GetBackendServiceLocalityLbPolicyPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5833,8 +5819,6 @@ func (o GetGlobalForwardingRuleMetadataFilterArrayOutput) Index(i pulumi.IntInpu
 
 type GetGlobalForwardingRuleMetadataFilterFilterLabel struct {
 	// The name of the global forwarding rule.
-	//
-	// ***
 	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
@@ -5852,8 +5836,6 @@ type GetGlobalForwardingRuleMetadataFilterFilterLabelInput interface {
 
 type GetGlobalForwardingRuleMetadataFilterFilterLabelArgs struct {
 	// The name of the global forwarding rule.
-	//
-	// ***
 	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -5910,8 +5892,6 @@ func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) ToGetGlobalForwa
 }
 
 // The name of the global forwarding rule.
-//
-// ***
 func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilterFilterLabel) string { return v.Name }).(pulumi.StringOutput)
 }

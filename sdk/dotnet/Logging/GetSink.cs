@@ -84,11 +84,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The identifier for the resource. 
         /// Examples:
-        /// 
-        /// - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
-        /// - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-        /// -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
-        /// - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
@@ -104,11 +99,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The identifier for the resource. 
         /// Examples:
-        /// 
-        /// - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
-        /// - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-        /// -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
-        /// - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

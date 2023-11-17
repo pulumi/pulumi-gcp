@@ -111,7 +111,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      * 
      */
@@ -119,7 +119,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Boolean> enableDisplay;
 
     /**
-     * @return ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      * 
      */
@@ -187,8 +187,6 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
      * 
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
      * 
-     * ***
-     * 
      */
     @Import(name="machineType", required=true)
     private Output<String> machineType;
@@ -197,8 +195,6 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
      * @return The machine type to create.
      * 
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-     * 
-     * ***
      * 
      */
     public Output<String> machineType() {
@@ -398,14 +394,14 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<String> resourcePolicies;
 
     /**
-     * @return - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * @return A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<Output<String>> resourcePolicies() {
@@ -648,7 +644,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableDisplay ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+         * @param enableDisplay Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
          * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
          * 
          * @return builder
@@ -660,7 +656,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enableDisplay ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+         * @param enableDisplay Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
          * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
          * 
          * @return builder
@@ -758,8 +754,6 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
          * 
          * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -772,8 +766,6 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
          * @param machineType The machine type to create.
          * 
          * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1047,7 +1039,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourcePolicies - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -1058,7 +1050,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resourcePolicies - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 

@@ -25,8 +25,6 @@ class PolicyArgs:
         """
         The set of arguments for constructing a Policy resource.
         :param pulumi.Input[str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-               
-               - - -
         :param pulumi.Input[str] org_id: The numeric ID of the organization to set the policy for.
         :param pulumi.Input['PolicyBooleanPolicyArgs'] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented
                below.
@@ -35,8 +33,6 @@ class PolicyArgs:
                
                > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
                effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-               
-               - - -
         :param pulumi.Input[int] version: Version of the Policy. Default version is 0.
         """
         pulumi.set(__self__, "constraint", constraint)
@@ -55,8 +51,6 @@ class PolicyArgs:
     def constraint(self) -> pulumi.Input[str]:
         """
         The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-
-        - - -
         """
         return pulumi.get(self, "constraint")
 
@@ -109,8 +103,6 @@ class PolicyArgs:
 
         > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
         effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-
-        - - -
         """
         return pulumi.get(self, "restore_policy")
 
@@ -147,8 +139,6 @@ class _PolicyState:
         :param pulumi.Input['PolicyBooleanPolicyArgs'] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented
                below.
         :param pulumi.Input[str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-               
-               - - -
         :param pulumi.Input[str] etag: (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
         :param pulumi.Input['PolicyListPolicyArgs'] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[str] org_id: The numeric ID of the organization to set the policy for.
@@ -156,8 +146,6 @@ class _PolicyState:
                
                > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
                effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-               
-               - - -
         :param pulumi.Input[str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
         :param pulumi.Input[int] version: Version of the Policy. Default version is 0.
         """
@@ -196,8 +184,6 @@ class _PolicyState:
     def constraint(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-
-        - - -
         """
         return pulumi.get(self, "constraint")
 
@@ -249,8 +235,6 @@ class _PolicyState:
 
         > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
         effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-
-        - - -
         """
         return pulumi.get(self, "restore_policy")
 
@@ -392,16 +376,12 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PolicyBooleanPolicyArgs']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented
                below.
         :param pulumi.Input[str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['PolicyListPolicyArgs']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[str] org_id: The numeric ID of the organization to set the policy for.
         :param pulumi.Input[pulumi.InputType['PolicyRestorePolicyArgs']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
                
                > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
                effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-               
-               - - -
         :param pulumi.Input[int] version: Version of the Policy. Default version is 0.
         """
         ...
@@ -572,8 +552,6 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PolicyBooleanPolicyArgs']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented
                below.
         :param pulumi.Input[str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-               
-               - - -
         :param pulumi.Input[str] etag: (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
         :param pulumi.Input[pulumi.InputType['PolicyListPolicyArgs']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[str] org_id: The numeric ID of the organization to set the policy for.
@@ -581,8 +559,6 @@ class Policy(pulumi.CustomResource):
                
                > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
                effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-               
-               - - -
         :param pulumi.Input[str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
         :param pulumi.Input[int] version: Version of the Policy. Default version is 0.
         """
@@ -614,8 +590,6 @@ class Policy(pulumi.CustomResource):
     def constraint(self) -> pulumi.Output[str]:
         """
         The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-
-        - - -
         """
         return pulumi.get(self, "constraint")
 
@@ -651,8 +625,6 @@ class Policy(pulumi.CustomResource):
 
         > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
         effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-
-        - - -
         """
         return pulumi.get(self, "restore_policy")
 

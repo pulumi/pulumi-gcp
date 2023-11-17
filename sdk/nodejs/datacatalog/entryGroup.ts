@@ -90,9 +90,6 @@ export class EntryGroup extends pulumi.CustomResource {
     /**
      * The id of the entry group to create. The id must begin with a letter or underscore,
      * contain only English letters, numbers and underscores, and be at most 64 characters.
-     *
-     *
-     * - - -
      */
     public readonly entryGroupId!: pulumi.Output<string>;
     /**
@@ -160,9 +157,6 @@ export interface EntryGroupState {
     /**
      * The id of the entry group to create. The id must begin with a letter or underscore,
      * contain only English letters, numbers and underscores, and be at most 64 characters.
-     *
-     *
-     * - - -
      */
     entryGroupId?: pulumi.Input<string>;
     /**
@@ -195,9 +189,6 @@ export interface EntryGroupArgs {
     /**
      * The id of the entry group to create. The id must begin with a letter or underscore,
      * contain only English letters, numbers and underscores, and be at most 64 characters.
-     *
-     *
-     * - - -
      */
     entryGroupId: pulumi.Input<string>;
     /**

@@ -34,7 +34,7 @@ public final class SecurityPolicyAdvancedOptionsConfig {
      */
     private @Nullable String logLevel;
     /**
-     * @return ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+     * @return An optional list of case-insensitive request header names to use for resolving the callers client IP address.
      * 
      */
     private @Nullable List<String> userIpRequestHeaders;
@@ -67,7 +67,7 @@ public final class SecurityPolicyAdvancedOptionsConfig {
         return Optional.ofNullable(this.logLevel);
     }
     /**
-     * @return ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+     * @return An optional list of case-insensitive request header names to use for resolving the callers client IP address.
      * 
      */
     public List<String> userIpRequestHeaders() {

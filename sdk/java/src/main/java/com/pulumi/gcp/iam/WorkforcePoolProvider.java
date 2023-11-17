@@ -299,63 +299,6 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * to Google Cloud attributes, such as `subject` and `segment`.
      * Each key must be a string specifying the Google Cloud IAM attribute to map to.
      * The following keys are supported:
-     * * `google.subject`: The principal IAM is authenticating. You can reference this value in IAM bindings.
-     *   This is also the subject that appears in Cloud Logging logs. This is a required field and
-     *   the mapped subject cannot exceed 127 bytes.
-     * * `google.groups`: Groups the authenticating user belongs to. You can grant groups access to
-     *   resources using an IAM `principalSet` binding; access applies to all members of the group.
-     * * `google.display_name`: The name of the authenticated user. This is an optional field and
-     *   the mapped display name cannot exceed 100 bytes. If not set, `google.subject` will be displayed instead.
-     *   This attribute cannot be referenced in IAM bindings.
-     * * `google.profile_photo`: The URL that specifies the authenticated user&#39;s thumbnail photo.
-     *   This is an optional field. When set, the image will be visible as the user&#39;s profile picture.
-     *   If not set, a generic user icon will be displayed instead.
-     *   This attribute cannot be referenced in IAM bindings.
-     *   You can also provide custom attributes by specifying `attribute.{custom_attribute}`, where {custom_attribute}
-     *   is the name of the custom attribute to be mapped. You can define a maximum of 50 custom attributes.
-     *   The maximum length of a mapped attribute key is 100 characters, and the key may only contain the characters [a-z0-9_].
-     *   You can reference these attributes in IAM policies to define fine-grained access for a workforce pool
-     *   to Google Cloud resources. For example:
-     * * `google.subject`:
-     *   `principal://iam.googleapis.com/locations/{location}/workforcePools/{pool}/subject/{value}`
-     * * `google.groups`:
-     *   `principalSet://iam.googleapis.com/locations/{location}/workforcePools/{pool}/group/{value}`
-     * * `attribute.{custom_attribute}`:
-     *   `principalSet://iam.googleapis.com/locations/{location}/workforcePools/{pool}/attribute.{custom_attribute}/{value}`
-     *   Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
-     *   function that maps an identity provider credential to the normalized attribute specified
-     *   by the corresponding map key.
-     *   You can use the `assertion` keyword in the expression to access a JSON representation of
-     *   the authentication credential issued by the provider.
-     *   The maximum length of an attribute mapping expression is 2048 characters. When evaluated,
-     *   the total size of all mapped attributes must not exceed 8KB.
-     *   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
-     *   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
-     *   on a Google token:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * An object containing a list of `&#34;key&#34;: value` pairs.
-     * Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
      * 
      */
     @Export(name="attributeMapping", refs={Map.class,String.class}, tree="[0,1,1]")
@@ -366,63 +309,6 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * to Google Cloud attributes, such as `subject` and `segment`.
      * Each key must be a string specifying the Google Cloud IAM attribute to map to.
      * The following keys are supported:
-     * * `google.subject`: The principal IAM is authenticating. You can reference this value in IAM bindings.
-     *   This is also the subject that appears in Cloud Logging logs. This is a required field and
-     *   the mapped subject cannot exceed 127 bytes.
-     * * `google.groups`: Groups the authenticating user belongs to. You can grant groups access to
-     *   resources using an IAM `principalSet` binding; access applies to all members of the group.
-     * * `google.display_name`: The name of the authenticated user. This is an optional field and
-     *   the mapped display name cannot exceed 100 bytes. If not set, `google.subject` will be displayed instead.
-     *   This attribute cannot be referenced in IAM bindings.
-     * * `google.profile_photo`: The URL that specifies the authenticated user&#39;s thumbnail photo.
-     *   This is an optional field. When set, the image will be visible as the user&#39;s profile picture.
-     *   If not set, a generic user icon will be displayed instead.
-     *   This attribute cannot be referenced in IAM bindings.
-     *   You can also provide custom attributes by specifying `attribute.{custom_attribute}`, where {custom_attribute}
-     *   is the name of the custom attribute to be mapped. You can define a maximum of 50 custom attributes.
-     *   The maximum length of a mapped attribute key is 100 characters, and the key may only contain the characters [a-z0-9_].
-     *   You can reference these attributes in IAM policies to define fine-grained access for a workforce pool
-     *   to Google Cloud resources. For example:
-     * * `google.subject`:
-     *   `principal://iam.googleapis.com/locations/{location}/workforcePools/{pool}/subject/{value}`
-     * * `google.groups`:
-     *   `principalSet://iam.googleapis.com/locations/{location}/workforcePools/{pool}/group/{value}`
-     * * `attribute.{custom_attribute}`:
-     *   `principalSet://iam.googleapis.com/locations/{location}/workforcePools/{pool}/attribute.{custom_attribute}/{value}`
-     *   Each value must be a [Common Expression Language](https://opensource.google/projects/cel)
-     *   function that maps an identity provider credential to the normalized attribute specified
-     *   by the corresponding map key.
-     *   You can use the `assertion` keyword in the expression to access a JSON representation of
-     *   the authentication credential issued by the provider.
-     *   The maximum length of an attribute mapping expression is 2048 characters. When evaluated,
-     *   the total size of all mapped attributes must not exceed 8KB.
-     *   For OIDC providers, you must supply a custom mapping that includes the `google.subject` attribute.
-     *   For example, the following maps the sub claim of the incoming credential to the `subject` attribute
-     *   on a Google token:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * An object containing a list of `&#34;key&#34;: value` pairs.
-     * Example: `{ &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }`.
      * 
      */
     public Output<Optional<Map<String,String>>> attributeMapping() {
@@ -523,8 +409,6 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
      * 
-     * ***
-     * 
      */
     @Export(name="providerId", refs={String.class}, tree="[0]")
     private Output<String> providerId;
@@ -533,8 +417,6 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * @return The ID for the provider, which becomes the final component of the resource name.
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
-     * 
-     * ***
      * 
      */
     public Output<String> providerId() {

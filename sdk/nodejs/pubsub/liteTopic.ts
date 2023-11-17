@@ -103,9 +103,6 @@ export class LiteTopic extends pulumi.CustomResource {
 
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -178,9 +175,6 @@ export class LiteTopic extends pulumi.CustomResource {
 export interface LiteTopicState {
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -219,9 +213,6 @@ export interface LiteTopicState {
 export interface LiteTopicArgs {
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -328,16 +328,12 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * The location where the alloydb cluster should reside.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location where the alloydb cluster should reside.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -377,7 +373,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Deprecated)
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
      * 
@@ -392,8 +387,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> network;
 
     /**
-     * @return (Optional, Deprecated)
-     * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+     * @return The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
      * 
      * &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
@@ -1045,8 +1039,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location where the alloydb cluster should reside.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1057,8 +1049,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location where the alloydb cluster should reside.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1123,8 +1113,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network (Optional, Deprecated)
-         * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+         * @param network The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
          * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
          * 
          * &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
@@ -1142,8 +1131,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network (Optional, Deprecated)
-         * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+         * @param network The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
          * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
          * 
          * &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.

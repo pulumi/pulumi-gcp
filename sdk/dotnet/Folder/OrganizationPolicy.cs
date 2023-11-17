@@ -155,8 +155,6 @@ namespace Pulumi.Gcp.Folder
 
         /// <summary>
         /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-        /// 
-        /// - - -
         /// </summary>
         [Output("constraint")]
         public Output<string> Constraint { get; private set; } = null!;
@@ -185,8 +183,6 @@ namespace Pulumi.Gcp.Folder
         /// 
         /// &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
         /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-        /// 
-        /// - - -
         /// </summary>
         [Output("restorePolicy")]
         public Output<Outputs.OrganizationPolicyRestorePolicy?> RestorePolicy { get; private set; } = null!;
@@ -257,8 +253,6 @@ namespace Pulumi.Gcp.Folder
 
         /// <summary>
         /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-        /// 
-        /// - - -
         /// </summary>
         [Input("constraint", required: true)]
         public Input<string> Constraint { get; set; } = null!;
@@ -281,8 +275,6 @@ namespace Pulumi.Gcp.Folder
         /// 
         /// &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
         /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-        /// 
-        /// - - -
         /// </summary>
         [Input("restorePolicy")]
         public Input<Inputs.OrganizationPolicyRestorePolicyArgs>? RestorePolicy { get; set; }
@@ -309,8 +301,6 @@ namespace Pulumi.Gcp.Folder
 
         /// <summary>
         /// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
-        /// 
-        /// - - -
         /// </summary>
         [Input("constraint")]
         public Input<string>? Constraint { get; set; }
@@ -339,8 +329,6 @@ namespace Pulumi.Gcp.Folder
         /// 
         /// &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
         /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-        /// 
-        /// - - -
         /// </summary>
         [Input("restorePolicy")]
         public Input<Inputs.OrganizationPolicyRestorePolicyGetArgs>? RestorePolicy { get; set; }

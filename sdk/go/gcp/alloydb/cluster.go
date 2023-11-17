@@ -425,15 +425,12 @@ type Cluster struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Cluster created via DMS migration.
 	// Structure is documented below.
 	MigrationSources ClusterMigrationSourceArrayOutput `pulumi:"migrationSources"`
 	// The name of the cluster resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Optional, Deprecated)
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
 	//
@@ -565,15 +562,12 @@ type clusterState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Cluster created via DMS migration.
 	// Structure is documented below.
 	MigrationSources []ClusterMigrationSource `pulumi:"migrationSources"`
 	// The name of the cluster resource.
 	Name *string `pulumi:"name"`
-	// (Optional, Deprecated)
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
 	//
@@ -665,15 +659,12 @@ type ClusterState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Cluster created via DMS migration.
 	// Structure is documented below.
 	MigrationSources ClusterMigrationSourceArrayInput
 	// The name of the cluster resource.
 	Name pulumi.StringPtrInput
-	// (Optional, Deprecated)
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
 	//
@@ -752,10 +743,7 @@ type clusterArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location string `pulumi:"location"`
-	// (Optional, Deprecated)
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
 	//
@@ -820,10 +808,7 @@ type ClusterArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb cluster should reside.
-	//
-	// ***
 	Location pulumi.StringInput
-	// (Optional, Deprecated)
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
 	//
@@ -1041,8 +1026,6 @@ func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the alloydb cluster should reside.
-//
-// ***
 func (o ClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -1058,7 +1041,6 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional, Deprecated)
 // The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 // "projects/{projectNumber}/global/networks/{network_id}".
 //

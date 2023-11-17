@@ -132,7 +132,8 @@ namespace Pulumi.Gcp.Monitoring
         /// The name of the Istio service underlying this service.
         /// Corresponds to the destination_service_name metric label in Istio metrics.
         /// 
-        /// - - -
+        /// 
+        /// 
         /// 
         /// Other optional fields include:
         /// </summary>
@@ -179,7 +180,8 @@ namespace Pulumi.Gcp.Monitoring
         /// The name of the Istio service underlying this service.
         /// Corresponds to the destination_service_name metric label in Istio metrics.
         /// 
-        /// - - -
+        /// 
+        /// 
         /// 
         /// Other optional fields include:
         /// </summary>

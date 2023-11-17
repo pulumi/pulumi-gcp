@@ -136,16 +136,12 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
     /**
      * The client-provided identifier of the scope.
      * 
-     * ***
-     * 
      */
     @Import(name="scopeId")
     private @Nullable Output<String> scopeId;
 
     /**
      * @return The client-provided identifier of the scope.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> scopeId() {
@@ -393,8 +389,6 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param scopeId The client-provided identifier of the scope.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -405,8 +399,6 @@ public final class ScopeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scopeId The client-provided identifier of the scope.
-         * 
-         * ***
          * 
          * @return builder
          * 

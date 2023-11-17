@@ -2300,7 +2300,9 @@ type JobTemplateTemplateVolume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance *JobTemplateTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
-	EmptyDir         *JobTemplateTemplateVolumeEmptyDir         `pulumi:"emptyDir"`
+	// Ephemeral storage used as a shared volume.
+	// Structure is documented below.
+	EmptyDir *JobTemplateTemplateVolumeEmptyDir `pulumi:"emptyDir"`
 	// Volume's name.
 	Name string `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -2323,7 +2325,9 @@ type JobTemplateTemplateVolumeArgs struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance JobTemplateTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
-	EmptyDir         JobTemplateTemplateVolumeEmptyDirPtrInput         `pulumi:"emptyDir"`
+	// Ephemeral storage used as a shared volume.
+	// Structure is documented below.
+	EmptyDir JobTemplateTemplateVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -2390,6 +2394,8 @@ func (o JobTemplateTemplateVolumeOutput) CloudSqlInstance() JobTemplateTemplateV
 	}).(JobTemplateTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
+// Ephemeral storage used as a shared volume.
+// Structure is documented below.
 func (o JobTemplateTemplateVolumeOutput) EmptyDir() JobTemplateTemplateVolumeEmptyDirPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeEmptyDir { return v.EmptyDir }).(JobTemplateTemplateVolumeEmptyDirPtrOutput)
 }
@@ -3215,8 +3221,6 @@ type JobTemplateTemplateVpcAccessNetworkInterface struct {
 	// subnetwork with the same name with the network will be used.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// Network tags applied to this Cloud Run job.
-	//
-	// ***
 	Tags []string `pulumi:"tags"`
 }
 
@@ -3241,8 +3245,6 @@ type JobTemplateTemplateVpcAccessNetworkInterfaceArgs struct {
 	// subnetwork with the same name with the network will be used.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 	// Network tags applied to this Cloud Run job.
-	//
-	// ***
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -3312,8 +3314,6 @@ func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) Subnetwork() pulumi.
 }
 
 // Network tags applied to this Cloud Run job.
-//
-// ***
 func (o JobTemplateTemplateVpcAccessNetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVpcAccessNetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -4611,7 +4611,8 @@ type ServiceTemplateContainer struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Commands   []string `pulumi:"commands"`
+	Commands []string `pulumi:"commands"`
+	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
 	DependsOns []string `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
@@ -4655,7 +4656,8 @@ type ServiceTemplateContainerArgs struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Commands   pulumi.StringArrayInput `pulumi:"commands"`
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
 	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
@@ -4745,6 +4747,7 @@ func (o ServiceTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
+// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
 func (o ServiceTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
@@ -7355,7 +7358,9 @@ type ServiceTemplateVolume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance *ServiceTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
-	EmptyDir         *ServiceTemplateVolumeEmptyDir         `pulumi:"emptyDir"`
+	// Ephemeral storage used as a shared volume.
+	// Structure is documented below.
+	EmptyDir *ServiceTemplateVolumeEmptyDir `pulumi:"emptyDir"`
 	// Volume's name.
 	Name string `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -7378,7 +7383,9 @@ type ServiceTemplateVolumeArgs struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance ServiceTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
-	EmptyDir         ServiceTemplateVolumeEmptyDirPtrInput         `pulumi:"emptyDir"`
+	// Ephemeral storage used as a shared volume.
+	// Structure is documented below.
+	EmptyDir ServiceTemplateVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -7443,6 +7450,8 @@ func (o ServiceTemplateVolumeOutput) CloudSqlInstance() ServiceTemplateVolumeClo
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeCloudSqlInstance { return v.CloudSqlInstance }).(ServiceTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
+// Ephemeral storage used as a shared volume.
+// Structure is documented below.
 func (o ServiceTemplateVolumeOutput) EmptyDir() ServiceTemplateVolumeEmptyDirPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeEmptyDir { return v.EmptyDir }).(ServiceTemplateVolumeEmptyDirPtrOutput)
 }
@@ -7621,8 +7630,6 @@ type ServiceTemplateVolumeEmptyDir struct {
 	// Possible values are: `MEMORY`.
 	Medium *string `pulumi:"medium"`
 	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-	//
-	// ***
 	SizeLimit *string `pulumi:"sizeLimit"`
 }
 
@@ -7643,8 +7650,6 @@ type ServiceTemplateVolumeEmptyDirArgs struct {
 	// Possible values are: `MEMORY`.
 	Medium pulumi.StringPtrInput `pulumi:"medium"`
 	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-	//
-	// ***
 	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
 }
 
@@ -7733,8 +7738,6 @@ func (o ServiceTemplateVolumeEmptyDirOutput) Medium() pulumi.StringPtrOutput {
 }
 
 // Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-//
-// ***
 func (o ServiceTemplateVolumeEmptyDirOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeEmptyDir) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
 }
@@ -7776,8 +7779,6 @@ func (o ServiceTemplateVolumeEmptyDirPtrOutput) Medium() pulumi.StringPtrOutput 
 }
 
 // Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-//
-// ***
 func (o ServiceTemplateVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateVolumeEmptyDir) *string {
 		if v == nil {

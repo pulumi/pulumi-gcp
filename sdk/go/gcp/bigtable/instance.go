@@ -146,8 +146,6 @@ type Instance struct {
 	// A block of cluster configuration options. This can be specified at least once, and up
 	// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
 	// to default to the backend value. See structure below.
-	//
-	// ***
 	Clusters InstanceClusterArrayOutput `pulumi:"clusters"`
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -155,8 +153,6 @@ type Instance struct {
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	//
-	// ***
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -218,8 +214,6 @@ type instanceState struct {
 	// A block of cluster configuration options. This can be specified at least once, and up
 	// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
 	// to default to the backend value. See structure below.
-	//
-	// ***
 	Clusters []InstanceCluster `pulumi:"clusters"`
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -227,8 +221,6 @@ type instanceState struct {
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	//
-	// ***
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -256,8 +248,6 @@ type InstanceState struct {
 	// A block of cluster configuration options. This can be specified at least once, and up
 	// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
 	// to default to the backend value. See structure below.
-	//
-	// ***
 	Clusters InstanceClusterArrayInput
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -265,8 +255,6 @@ type InstanceState struct {
 	// The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-	//
-	// ***
 	EffectiveLabels pulumi.StringMapInput
 	// The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
 	// It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
@@ -298,8 +286,6 @@ type instanceArgs struct {
 	// A block of cluster configuration options. This can be specified at least once, and up
 	// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
 	// to default to the backend value. See structure below.
-	//
-	// ***
 	Clusters []InstanceCluster `pulumi:"clusters"`
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -331,8 +317,6 @@ type InstanceArgs struct {
 	// A block of cluster configuration options. This can be specified at least once, and up
 	// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
 	// to default to the backend value. See structure below.
-	//
-	// ***
 	Clusters InstanceClusterArrayInput
 	// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
 	// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
@@ -449,8 +433,6 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 // A block of cluster configuration options. This can be specified at least once, and up
 // to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
 // to default to the backend value. See structure below.
-//
-// ***
 func (o InstanceOutput) Clusters() InstanceClusterArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceClusterArrayOutput { return v.Clusters }).(InstanceClusterArrayOutput)
 }
@@ -467,8 +449,6 @@ func (o InstanceOutput) DisplayName() pulumi.StringOutput {
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-//
-// ***
 func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

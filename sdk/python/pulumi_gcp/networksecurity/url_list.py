@@ -22,9 +22,6 @@ class UrlListArgs:
         """
         The set of arguments for constructing a UrlList resource.
         :param pulumi.Input[str] location: The location of the url lists.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: FQDNs and URLs.
         :param pulumi.Input[str] description: Free-text description of the resource.
         :param pulumi.Input[str] name: Short name of the UrlList resource to be created.
@@ -46,9 +43,6 @@ class UrlListArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location of the url lists.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -124,9 +118,6 @@ class _UrlListState:
                Examples: '2014-10-02T15:01:23Z' and '2014-10-02T15:01:23.045123456Z'
         :param pulumi.Input[str] description: Free-text description of the resource.
         :param pulumi.Input[str] location: The location of the url lists.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Short name of the UrlList resource to be created.
                This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. 'urlList'.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -182,9 +173,6 @@ class _UrlListState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location of the url lists.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -320,9 +308,6 @@ class UrlList(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Free-text description of the resource.
         :param pulumi.Input[str] location: The location of the url lists.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Short name of the UrlList resource to be created.
                This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. 'urlList'.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -464,9 +449,6 @@ class UrlList(pulumi.CustomResource):
                Examples: '2014-10-02T15:01:23Z' and '2014-10-02T15:01:23.045123456Z'
         :param pulumi.Input[str] description: Free-text description of the resource.
         :param pulumi.Input[str] location: The location of the url lists.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Short name of the UrlList resource to be created.
                This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. 'urlList'.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -512,9 +494,6 @@ class UrlList(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location of the url lists.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

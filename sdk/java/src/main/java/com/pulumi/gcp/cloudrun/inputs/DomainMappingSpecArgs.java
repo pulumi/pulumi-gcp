@@ -21,8 +21,6 @@ public final class DomainMappingSpecArgs extends com.pulumi.resources.ResourceAr
      * Default value is `AUTOMATIC`.
      * Possible values are: `NONE`, `AUTOMATIC`.
      * 
-     * ***
-     * 
      */
     @Import(name="certificateMode")
     private @Nullable Output<String> certificateMode;
@@ -31,8 +29,6 @@ public final class DomainMappingSpecArgs extends com.pulumi.resources.ResourceAr
      * @return The mode of the certificate.
      * Default value is `AUTOMATIC`.
      * Possible values are: `NONE`, `AUTOMATIC`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> certificateMode() {
@@ -108,8 +104,6 @@ public final class DomainMappingSpecArgs extends com.pulumi.resources.ResourceAr
          * Default value is `AUTOMATIC`.
          * Possible values are: `NONE`, `AUTOMATIC`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -122,8 +116,6 @@ public final class DomainMappingSpecArgs extends com.pulumi.resources.ResourceAr
          * @param certificateMode The mode of the certificate.
          * Default value is `AUTOMATIC`.
          * Possible values are: `NONE`, `AUTOMATIC`.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -51,8 +51,6 @@ func LookupVPNGateway(ctx *pulumi.Context, args *LookupVPNGatewayArgs, opts ...p
 // A collection of arguments for invoking getVPNGateway.
 type LookupVPNGatewayArgs struct {
 	// The name of the VPN gateway.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -94,8 +92,6 @@ func LookupVPNGatewayOutput(ctx *pulumi.Context, args LookupVPNGatewayOutputArgs
 // A collection of arguments for invoking getVPNGateway.
 type LookupVPNGatewayOutputArgs struct {
 	// The name of the VPN gateway.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

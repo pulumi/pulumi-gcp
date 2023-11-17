@@ -34,16 +34,12 @@ public final class GetProjectServicePlainArgs extends com.pulumi.resources.Invok
     /**
      * The name of the Google Platform project service.
      * 
-     * ***
-     * 
      */
     @Import(name="service", required=true)
     private String service;
 
     /**
      * @return The name of the Google Platform project service.
-     * 
-     * ***
      * 
      */
     public String service() {
@@ -89,8 +85,6 @@ public final class GetProjectServicePlainArgs extends com.pulumi.resources.Invok
 
         /**
          * @param service The name of the Google Platform project service.
-         * 
-         * ***
          * 
          * @return builder
          * 

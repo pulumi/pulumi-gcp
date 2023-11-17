@@ -1189,8 +1189,6 @@ class RestorePlanRestoreConfigTransformationRuleFieldAction(dict):
                location within the target document where the operation is performed.
         :param str value: A string that specifies the desired value in string format
                to use for transformation.
-               
-               - - -
         """
         pulumi.set(__self__, "op", op)
         if from_path is not None:
@@ -1233,8 +1231,6 @@ class RestorePlanRestoreConfigTransformationRuleFieldAction(dict):
         """
         A string that specifies the desired value in string format
         to use for transformation.
-
-        - - -
         """
         return pulumi.get(self, "value")
 

@@ -134,16 +134,12 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
     /**
      * `name` or `self_link` of the disk that will be attached.
      * 
-     * ***
-     * 
      */
     @Export(name="disk", refs={String.class}, tree="[0]")
     private Output<String> disk;
 
     /**
      * @return `name` or `self_link` of the disk that will be attached.
-     * 
-     * ***
      * 
      */
     public Output<String> disk() {

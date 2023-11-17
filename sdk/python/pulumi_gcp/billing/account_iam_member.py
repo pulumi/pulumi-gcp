@@ -25,13 +25,6 @@ class AccountIamMemberArgs:
         :param pulumi.Input[str] billing_account_id: The billing account id.
                
                For `billing.AccountIamMember` or `billing.AccountIamBinding`:
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -51,13 +44,6 @@ class AccountIamMemberArgs:
         The billing account id.
 
         For `billing.AccountIamMember` or `billing.AccountIamBinding`:
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "billing_account_id")
 
@@ -113,13 +99,6 @@ class _AccountIamMemberState:
         :param pulumi.Input[str] billing_account_id: The billing account id.
                
                For `billing.AccountIamMember` or `billing.AccountIamBinding`:
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] etag: (Computed) The etag of the billing account's IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
@@ -145,13 +124,6 @@ class _AccountIamMemberState:
         The billing account id.
 
         For `billing.AccountIamMember` or `billing.AccountIamBinding`:
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "billing_account_id")
 
@@ -287,13 +259,6 @@ class AccountIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] billing_account_id: The billing account id.
                
                For `billing.AccountIamMember` or `billing.AccountIamBinding`:
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
@@ -436,13 +401,6 @@ class AccountIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] billing_account_id: The billing account id.
                
                For `billing.AccountIamMember` or `billing.AccountIamBinding`:
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] etag: (Computed) The etag of the billing account's IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
@@ -468,13 +426,6 @@ class AccountIamMember(pulumi.CustomResource):
         The billing account id.
 
         For `billing.AccountIamMember` or `billing.AccountIamBinding`:
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "billing_account_id")
 

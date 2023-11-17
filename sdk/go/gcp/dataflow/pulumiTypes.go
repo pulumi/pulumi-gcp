@@ -1343,9 +1343,8 @@ type PipelineWorkloadDataflowLaunchTemplateRequest struct {
 	// The regional endpoint to which to direct the request.
 	Location *string `pulumi:"location"`
 	// The ID of the Cloud Platform project that the job belongs to.
-	ProjectId string `pulumi:"projectId"`
-	// (Optional)
-	ValidateOnly *bool `pulumi:"validateOnly"`
+	ProjectId    string `pulumi:"projectId"`
+	ValidateOnly *bool  `pulumi:"validateOnly"`
 }
 
 // PipelineWorkloadDataflowLaunchTemplateRequestInput is an input type that accepts PipelineWorkloadDataflowLaunchTemplateRequestArgs and PipelineWorkloadDataflowLaunchTemplateRequestOutput values.
@@ -1369,8 +1368,7 @@ type PipelineWorkloadDataflowLaunchTemplateRequestArgs struct {
 	// The regional endpoint to which to direct the request.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The ID of the Cloud Platform project that the job belongs to.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// (Optional)
+	ProjectId    pulumi.StringInput  `pulumi:"projectId"`
 	ValidateOnly pulumi.BoolPtrInput `pulumi:"validateOnly"`
 }
 
@@ -1475,7 +1473,6 @@ func (o PipelineWorkloadDataflowLaunchTemplateRequestOutput) ProjectId() pulumi.
 	return o.ApplyT(func(v PipelineWorkloadDataflowLaunchTemplateRequest) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// (Optional)
 func (o PipelineWorkloadDataflowLaunchTemplateRequestOutput) ValidateOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PipelineWorkloadDataflowLaunchTemplateRequest) *bool { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
@@ -1546,7 +1543,6 @@ func (o PipelineWorkloadDataflowLaunchTemplateRequestPtrOutput) ProjectId() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional)
 func (o PipelineWorkloadDataflowLaunchTemplateRequestPtrOutput) ValidateOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PipelineWorkloadDataflowLaunchTemplateRequest) *bool {
 		if v == nil {

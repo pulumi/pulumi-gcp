@@ -165,8 +165,6 @@ type LocationTagBinding struct {
 	pulumi.CustomResourceState
 
 	// Location of the target resource.
-	//
-	// ***
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -213,8 +211,6 @@ func GetLocationTagBinding(ctx *pulumi.Context,
 // Input properties used for looking up and filtering LocationTagBinding resources.
 type locationTagBindingState struct {
 	// Location of the target resource.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
 	Name *string `pulumi:"name"`
@@ -226,8 +222,6 @@ type locationTagBindingState struct {
 
 type LocationTagBindingState struct {
 	// Location of the target resource.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The generated id for the TagBinding. This is a string of the form: `tagBindings/{parent}/{tag-value-name}`
 	Name pulumi.StringPtrInput
@@ -243,8 +237,6 @@ func (LocationTagBindingState) ElementType() reflect.Type {
 
 type locationTagBindingArgs struct {
 	// Location of the target resource.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent string `pulumi:"parent"`
@@ -255,8 +247,6 @@ type locationTagBindingArgs struct {
 // The set of arguments for constructing a LocationTagBinding resource.
 type LocationTagBindingArgs struct {
 	// Location of the target resource.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent pulumi.StringInput
@@ -352,8 +342,6 @@ func (o LocationTagBindingOutput) ToLocationTagBindingOutputWithContext(ctx cont
 }
 
 // Location of the target resource.
-//
-// ***
 func (o LocationTagBindingOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocationTagBinding) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }

@@ -93,9 +93,6 @@ namespace Pulumi.Gcp.SourceRepo
         /// <summary>
         /// Resource name of the repository, of the form `{{repo}}`.
         /// The repo name may contain slashes. eg, `name/with/slash`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -176,9 +173,6 @@ namespace Pulumi.Gcp.SourceRepo
         /// <summary>
         /// Resource name of the repository, of the form `{{repo}}`.
         /// The repo name may contain slashes. eg, `name/with/slash`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -215,9 +209,6 @@ namespace Pulumi.Gcp.SourceRepo
         /// <summary>
         /// Resource name of the repository, of the form `{{repo}}`.
         /// The repo name may contain slashes. eg, `name/with/slash`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

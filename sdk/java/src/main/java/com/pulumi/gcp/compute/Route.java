@@ -372,16 +372,12 @@ public class Route extends com.pulumi.resources.CustomResource {
     /**
      * The network that this route applies to.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
      * @return The network that this route applies to.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {
@@ -391,10 +387,6 @@ public class Route extends com.pulumi.resources.CustomResource {
      * URL to a gateway that should handle matching packets.
      * Currently, you can only specify the internet gateway, using a full or
      * partial valid URL:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-     * * `projects/project/global/gateways/default-internet-gateway`
-     * * `global/gateways/default-internet-gateway`
-     * * The string `default-internet-gateway`.
      * 
      */
     @Export(name="nextHopGateway", refs={String.class}, tree="[0]")
@@ -404,10 +396,6 @@ public class Route extends com.pulumi.resources.CustomResource {
      * @return URL to a gateway that should handle matching packets.
      * Currently, you can only specify the internet gateway, using a full or
      * partial valid URL:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-     * * `projects/project/global/gateways/default-internet-gateway`
-     * * `global/gateways/default-internet-gateway`
-     * * The string `default-internet-gateway`.
      * 
      */
     public Output<Optional<String>> nextHopGateway() {
@@ -454,10 +442,6 @@ public class Route extends com.pulumi.resources.CustomResource {
     /**
      * URL to an instance that should handle matching packets.
      * You can specify this as a full or partial URL. For example:
-     * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-     * * `projects/project/zones/zone/instances/instance`
-     * * `zones/zone/instances/instance`
-     * * Just the instance name, with the zone in `next_hop_instance_zone`.
      * 
      */
     @Export(name="nextHopInstance", refs={String.class}, tree="[0]")
@@ -466,18 +450,13 @@ public class Route extends com.pulumi.resources.CustomResource {
     /**
      * @return URL to an instance that should handle matching packets.
      * You can specify this as a full or partial URL. For example:
-     * * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-     * * `projects/project/zones/zone/instances/instance`
-     * * `zones/zone/instances/instance`
-     * * Just the instance name, with the zone in `next_hop_instance_zone`.
      * 
      */
     public Output<Optional<String>> nextHopInstance() {
         return Codegen.optional(this.nextHopInstance);
     }
     /**
-     * (Optional when `next_hop_instance` is
-     * specified)  The zone of the instance specified in
+     * The zone of the instance specified in
      * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
      * a URL.
      * 
@@ -486,8 +465,7 @@ public class Route extends com.pulumi.resources.CustomResource {
     private Output<String> nextHopInstanceZone;
 
     /**
-     * @return (Optional when `next_hop_instance` is
-     * specified)  The zone of the instance specified in
+     * @return The zone of the instance specified in
      * `next_hop_instance`.  Omit if `next_hop_instance` is specified as
      * a URL.
      * 

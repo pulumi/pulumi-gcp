@@ -226,8 +226,6 @@ export class Function extends pulumi.CustomResource {
     /**
      * The runtime in which the function is going to run.
      * Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-     *
-     * - - -
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
@@ -463,8 +461,6 @@ export interface FunctionState {
     /**
      * The runtime in which the function is going to run.
      * Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-     *
-     * - - -
      */
     runtime?: pulumi.Input<string>;
     /**
@@ -601,8 +597,6 @@ export interface FunctionArgs {
     /**
      * The runtime in which the function is going to run.
      * Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-     *
-     * - - -
      */
     runtime: pulumi.Input<string>;
     /**

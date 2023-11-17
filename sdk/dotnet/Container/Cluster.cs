@@ -250,7 +250,6 @@ namespace Pulumi.Gcp.Container
         public Output<bool?> EnableAutopilot { get; private set; } = null!;
 
         /// <summary>
-        /// )
         /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         /// </summary>
         [Output("enableFqdnNetworkPolicy")]
@@ -293,7 +292,6 @@ namespace Pulumi.Gcp.Container
         public Output<bool?> EnableLegacyAbac { get; private set; } = null!;
 
         /// <summary>
-        /// )
         /// Whether multi-networking is enabled for this cluster.
         /// </summary>
         [Output("enableMultiNetworking")]
@@ -471,8 +469,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// location.
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -574,7 +570,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Operation { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -602,7 +598,6 @@ namespace Pulumi.Gcp.Container
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// )
         /// Enable/Disable Protect API features for the cluster. Structure is documented below.
         /// </summary>
         [Output("protectConfig")]
@@ -632,7 +627,8 @@ namespace Pulumi.Gcp.Container
         public Output<bool?> RemoveDefaultNodePool { get; private set; } = null!;
 
         /// <summary>
-        /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        /// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        /// for how these labels are applied to clusters, node pools and nodes.
         /// </summary>
         [Output("resourceLabels")]
         public Output<ImmutableDictionary<string, string>?> ResourceLabels { get; private set; } = null!;
@@ -881,7 +877,6 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableAutopilot { get; set; }
 
         /// <summary>
-        /// )
         /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         /// </summary>
         [Input("enableFqdnNetworkPolicy")]
@@ -924,7 +919,6 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableLegacyAbac { get; set; }
 
         /// <summary>
-        /// )
         /// Whether multi-networking is enabled for this cluster.
         /// </summary>
         [Input("enableMultiNetworking")]
@@ -1082,8 +1076,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// location.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1194,7 +1186,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterNotificationConfigArgs>? NotificationConfig { get; set; }
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -1222,7 +1214,6 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// )
         /// Enable/Disable Protect API features for the cluster. Structure is documented below.
         /// </summary>
         [Input("protectConfig")]
@@ -1255,7 +1246,8 @@ namespace Pulumi.Gcp.Container
         private InputMap<string>? _resourceLabels;
 
         /// <summary>
-        /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        /// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        /// for how these labels are applied to clusters, node pools and nodes.
         /// </summary>
         public InputMap<string> ResourceLabels
         {
@@ -1446,7 +1438,6 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableAutopilot { get; set; }
 
         /// <summary>
-        /// )
         /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         /// </summary>
         [Input("enableFqdnNetworkPolicy")]
@@ -1489,7 +1480,6 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableLegacyAbac { get; set; }
 
         /// <summary>
-        /// )
         /// Whether multi-networking is enabled for this cluster.
         /// </summary>
         [Input("enableMultiNetworking")]
@@ -1667,8 +1657,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// location.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1782,7 +1770,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Operation { get; set; }
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -1810,7 +1798,6 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// )
         /// Enable/Disable Protect API features for the cluster. Structure is documented below.
         /// </summary>
         [Input("protectConfig")]
@@ -1843,7 +1830,8 @@ namespace Pulumi.Gcp.Container
         private InputMap<string>? _resourceLabels;
 
         /// <summary>
-        /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        /// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        /// for how these labels are applied to clusters, node pools and nodes.
         /// </summary>
         public InputMap<string> ResourceLabels
         {

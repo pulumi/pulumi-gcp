@@ -125,9 +125,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -268,9 +265,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -367,9 +361,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

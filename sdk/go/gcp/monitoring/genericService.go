@@ -111,8 +111,6 @@ type GenericService struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
-	//
-	// ***
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// Configuration for how to query telemetry on a Service.
 	// Structure is documented below.
@@ -174,8 +172,6 @@ type genericServiceState struct {
 	Project *string `pulumi:"project"`
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
-	//
-	// ***
 	ServiceId *string `pulumi:"serviceId"`
 	// Configuration for how to query telemetry on a Service.
 	// Structure is documented below.
@@ -205,8 +201,6 @@ type GenericServiceState struct {
 	Project pulumi.StringPtrInput
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
-	//
-	// ***
 	ServiceId pulumi.StringPtrInput
 	// Configuration for how to query telemetry on a Service.
 	// Structure is documented below.
@@ -237,8 +231,6 @@ type genericServiceArgs struct {
 	Project *string `pulumi:"project"`
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
-	//
-	// ***
 	ServiceId string `pulumi:"serviceId"`
 	// Labels which have been used to annotate the service. Label keys must start
 	// with a letter. Label keys and values may contain lowercase letters,
@@ -263,8 +255,6 @@ type GenericServiceArgs struct {
 	Project pulumi.StringPtrInput
 	// An optional service ID to use. If not given, the server will generate a
 	// service ID.
-	//
-	// ***
 	ServiceId pulumi.StringInput
 	// Labels which have been used to annotate the service. Label keys must start
 	// with a letter. Label keys and values may contain lowercase letters,
@@ -389,8 +379,6 @@ func (o GenericServiceOutput) Project() pulumi.StringOutput {
 
 // An optional service ID to use. If not given, the server will generate a
 // service ID.
-//
-// ***
 func (o GenericServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GenericService) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

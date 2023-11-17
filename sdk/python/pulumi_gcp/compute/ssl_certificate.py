@@ -28,9 +28,6 @@ class SSLCertificateArgs:
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -78,9 +75,6 @@ class SSLCertificateArgs:
         """
         The write-only private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
-
-
-        - - -
         """
         return pulumi.get(self, "private_key")
 
@@ -183,9 +177,6 @@ class _SSLCertificateState:
                specified prefix. Conflicts with `name`.
         :param pulumi.Input[str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -313,9 +304,6 @@ class _SSLCertificateState:
         """
         The write-only private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
-
-
-        - - -
         """
         return pulumi.get(self, "private_key")
 
@@ -459,9 +447,6 @@ class SSLCertificate(pulumi.CustomResource):
                specified prefix. Conflicts with `name`.
         :param pulumi.Input[str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -643,9 +628,6 @@ class SSLCertificate(pulumi.CustomResource):
                specified prefix. Conflicts with `name`.
         :param pulumi.Input[str] private_key: The write-only private key in PEM format.
                **Note**: This property is sensitive and will not be displayed in the plan.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -740,9 +722,6 @@ class SSLCertificate(pulumi.CustomResource):
         """
         The write-only private key in PEM format.
         **Note**: This property is sensitive and will not be displayed in the plan.
-
-
-        - - -
         """
         return pulumi.get(self, "private_key")
 

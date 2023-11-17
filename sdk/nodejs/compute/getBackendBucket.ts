@@ -35,8 +35,6 @@ export function getBackendBucket(args: GetBackendBucketArgs, opts?: pulumi.Invok
 export interface GetBackendBucketArgs {
     /**
      * Name of the resource.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -90,8 +88,6 @@ export function getBackendBucketOutput(args: GetBackendBucketOutputArgs, opts?: 
 export interface GetBackendBucketOutputArgs {
     /**
      * Name of the resource.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

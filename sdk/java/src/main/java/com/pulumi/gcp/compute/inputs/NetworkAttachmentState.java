@@ -195,16 +195,12 @@ public final class NetworkAttachmentState extends com.pulumi.resources.ResourceA
     /**
      * URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      * 
-     * ***
-     * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
      * @return URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> region() {
@@ -569,8 +565,6 @@ public final class NetworkAttachmentState extends com.pulumi.resources.ResourceA
         /**
          * @param region URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -581,8 +575,6 @@ public final class NetworkAttachmentState extends com.pulumi.resources.ResourceA
 
         /**
          * @param region URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-         * 
-         * ***
          * 
          * @return builder
          * 

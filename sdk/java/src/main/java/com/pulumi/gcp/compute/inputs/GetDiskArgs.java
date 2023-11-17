@@ -18,16 +18,12 @@ public final class GetDiskArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The name of a specific disk.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return The name of a specific disk.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -95,8 +91,6 @@ public final class GetDiskArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param name The name of a specific disk.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -107,8 +101,6 @@ public final class GetDiskArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name The name of a specific disk.
-         * 
-         * ***
          * 
          * @return builder
          * 

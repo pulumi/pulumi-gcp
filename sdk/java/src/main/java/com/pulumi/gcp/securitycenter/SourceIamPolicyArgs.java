@@ -17,8 +17,6 @@ public final class SourceIamPolicyArgs extends com.pulumi.resources.ResourceArgs
      * The organization whose Cloud Security Command Center the Source
      * lives in.
      * 
-     * ***
-     * 
      */
     @Import(name="organization", required=true)
     private Output<String> organization;
@@ -26,8 +24,6 @@ public final class SourceIamPolicyArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return The organization whose Cloud Security Command Center the Source
      * lives in.
-     * 
-     * ***
      * 
      */
     public Output<String> organization() {
@@ -78,8 +74,6 @@ public final class SourceIamPolicyArgs extends com.pulumi.resources.ResourceArgs
          * @param organization The organization whose Cloud Security Command Center the Source
          * lives in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -91,8 +85,6 @@ public final class SourceIamPolicyArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param organization The organization whose Cloud Security Command Center the Source
          * lives in.
-         * 
-         * ***
          * 
          * @return builder
          * 

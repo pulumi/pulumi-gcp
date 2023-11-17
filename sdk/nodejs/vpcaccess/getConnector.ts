@@ -47,8 +47,6 @@ export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions
 export interface GetConnectorArgs {
     /**
      * Name of the resource.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -121,8 +119,6 @@ export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.I
 export interface GetConnectorOutputArgs {
     /**
      * Name of the resource.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

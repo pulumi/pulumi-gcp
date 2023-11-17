@@ -16,14 +16,14 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
     public static final SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs Empty = new SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs();
 
     /**
-     * Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+     * External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+     * @return External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
      * 
      */
     public Optional<Output<String>> target() {
@@ -71,7 +71,7 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
         }
 
         /**
-         * @param target Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+         * @param target External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
         }
 
         /**
-         * @param target Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+         * @param target External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
          * 
          * @return builder
          * 

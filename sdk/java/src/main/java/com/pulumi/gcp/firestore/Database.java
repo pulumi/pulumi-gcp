@@ -299,8 +299,6 @@ public class Database extends com.pulumi.resources.CustomResource {
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
      * 
-     * ***
-     * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
@@ -310,8 +308,6 @@ public class Database extends com.pulumi.resources.CustomResource {
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-     * 
-     * ***
      * 
      */
     public Output<String> type() {

@@ -173,7 +173,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager")
 public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResource {
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
@@ -183,8 +182,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ RegionInstanceGroupManagerAllInstancesConfig> allInstancesConfig;
 
     /**
-     * @return )
-     * Properties to set on all instances in the group. After setting
+     * @return Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
      * 
@@ -399,16 +397,12 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
      * 
-     * ***
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return The region where the managed instance group resides. If not provided, the provider region is used.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {
@@ -445,16 +439,12 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Export(name="statefulExternalIps", refs={List.class,RegionInstanceGroupManagerStatefulExternalIp.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RegionInstanceGroupManagerStatefulExternalIp>> statefulExternalIps;
 
     /**
      * @return External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Output<Optional<List<RegionInstanceGroupManagerStatefulExternalIp>>> statefulExternalIps() {

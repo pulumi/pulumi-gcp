@@ -17,16 +17,12 @@ public final class GetSubscriptionPlainArgs extends com.pulumi.resources.InvokeA
     /**
      * The name of the Cloud Pub/Sub Subscription.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the Cloud Pub/Sub Subscription.
-     * 
-     * ***
      * 
      */
     public String name() {
@@ -77,8 +73,6 @@ public final class GetSubscriptionPlainArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param name The name of the Cloud Pub/Sub Subscription.
-         * 
-         * ***
          * 
          * @return builder
          * 

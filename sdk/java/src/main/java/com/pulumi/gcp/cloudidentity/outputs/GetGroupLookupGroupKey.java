@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGroupLookupGroupKey {
     /**
-     * @return (Required) The ID of the entity.
+     * @return The ID of the entity.
      * For Google-managed entities, the id is the email address of an existing group or user.
      * For external-identity-mapped entities, the id is a string conforming
      * to the Identity Source&#39;s requirements.
@@ -20,7 +20,7 @@ public final class GetGroupLookupGroupKey {
      */
     private String id;
     /**
-     * @return (Optional) The namespace in which the entity exists.
+     * @return The namespace in which the entity exists.
      * If not populated, the EntityKey represents a Google-managed entity
      * such as a Google user or a Google Group.
      * If populated, the EntityKey represents an external-identity-mapped group.
@@ -32,7 +32,7 @@ public final class GetGroupLookupGroupKey {
 
     private GetGroupLookupGroupKey() {}
     /**
-     * @return (Required) The ID of the entity.
+     * @return The ID of the entity.
      * For Google-managed entities, the id is the email address of an existing group or user.
      * For external-identity-mapped entities, the id is a string conforming
      * to the Identity Source&#39;s requirements.
@@ -42,7 +42,7 @@ public final class GetGroupLookupGroupKey {
         return this.id;
     }
     /**
-     * @return (Optional) The namespace in which the entity exists.
+     * @return The namespace in which the entity exists.
      * If not populated, the EntityKey represents a Google-managed entity
      * such as a Google user or a Google Group.
      * If populated, the EntityKey represents an external-identity-mapped group.

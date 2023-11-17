@@ -32,7 +32,7 @@ class EdgeCacheServiceArgs:
         The set of arguments for constructing a EdgeCacheService resource.
         :param pulumi.Input['EdgeCacheServiceRoutingArgs'] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
-        :param pulumi.Input[str] description: A human-readable description of the hostRule.
+        :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
                HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
                Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
@@ -97,7 +97,7 @@ class EdgeCacheServiceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human-readable description of the hostRule.
+        A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -259,7 +259,7 @@ class _EdgeCacheServiceState:
                  ssl_policy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EdgeCacheService resources.
-        :param pulumi.Input[str] description: A human-readable description of the hostRule.
+        :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
                HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
                Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
@@ -327,7 +327,7 @@ class _EdgeCacheServiceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human-readable description of the hostRule.
+        A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -821,7 +821,7 @@ class EdgeCacheService(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A human-readable description of the hostRule.
+        :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
                HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
                Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
@@ -1213,7 +1213,7 @@ class EdgeCacheService(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A human-readable description of the hostRule.
+        :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
                HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
                Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
@@ -1270,7 +1270,7 @@ class EdgeCacheService(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A human-readable description of the hostRule.
+        A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 

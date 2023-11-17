@@ -24,8 +24,6 @@ public final class RulesetSourceFile {
     /**
      * @return File name.
      * 
-     * ***
-     * 
      */
     private String name;
 
@@ -46,8 +44,6 @@ public final class RulesetSourceFile {
     }
     /**
      * @return File name.
-     * 
-     * ***
      * 
      */
     public String name() {

@@ -53,9 +53,6 @@ class GatewayArgs:
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
                For example: `projects/*/global/networks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -225,9 +222,6 @@ class GatewayArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the Gateway resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -349,9 +343,6 @@ class _GatewayState:
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
                For example: `projects/*/global/networks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -539,9 +530,6 @@ class _GatewayState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the Gateway resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -893,9 +881,6 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
                For example: `projects/*/global/networks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -1213,9 +1198,6 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
                For example: `projects/*/global/networks/network-1`.
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -1352,9 +1334,6 @@ class Gateway(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Short name of the Gateway resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

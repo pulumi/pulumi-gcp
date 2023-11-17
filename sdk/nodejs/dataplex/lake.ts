@@ -120,10 +120,6 @@ export class Lake extends pulumi.CustomResource {
     public /*out*/ readonly metastoreStatuses!: pulumi.Output<outputs.dataplex.LakeMetastoreStatus[]>;
     /**
      * The name of the lake.
-     *
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -254,10 +250,6 @@ export interface LakeState {
     metastoreStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.LakeMetastoreStatus>[]>;
     /**
      * The name of the lake.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -315,10 +307,6 @@ export interface LakeArgs {
     metastore?: pulumi.Input<inputs.dataplex.LakeMetastore>;
     /**
      * The name of the lake.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

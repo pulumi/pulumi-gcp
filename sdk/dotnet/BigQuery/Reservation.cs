@@ -115,9 +115,6 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The name of the reservation. This field must only contain alphanumeric characters or dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -225,9 +222,6 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The name of the reservation. This field must only contain alphanumeric characters or dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -297,9 +291,6 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The name of the reservation. This field must only contain alphanumeric characters or dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

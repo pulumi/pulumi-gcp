@@ -64,9 +64,6 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("importJobId")]
         public Output<string> ImportJobId { get; private set; } = null!;
@@ -160,9 +157,6 @@ namespace Pulumi.Gcp.Kms
     {
         /// <summary>
         /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("importJobId", required: true)]
         public Input<string> ImportJobId { get; set; } = null!;
@@ -221,9 +215,6 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("importJobId")]
         public Input<string>? ImportJobId { get; set; }

@@ -17,8 +17,6 @@ public final class BareMetalClusterStorageLvpNodeMountsConfig {
     /**
      * @return The StorageClass name that PVs will be created with.
      * 
-     * ***
-     * 
      */
     private String storageClass;
 
@@ -32,8 +30,6 @@ public final class BareMetalClusterStorageLvpNodeMountsConfig {
     }
     /**
      * @return The StorageClass name that PVs will be created with.
-     * 
-     * ***
      * 
      */
     public String storageClass() {

@@ -412,16 +412,12 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
     /**
      * A reference to a Topic resource.
      * 
-     * ***
-     * 
      */
     @Import(name="topic")
     private @Nullable Output<String> topic;
 
     /**
      * @return A reference to a Topic resource.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> topic() {
@@ -959,8 +955,6 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param topic A reference to a Topic resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -971,8 +965,6 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param topic A reference to a Topic resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

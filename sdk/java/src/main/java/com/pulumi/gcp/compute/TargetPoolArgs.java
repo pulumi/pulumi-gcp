@@ -110,8 +110,6 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
      * A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -119,8 +117,6 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -162,14 +158,14 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ) The resource URL for the security policy associated with this target pool.
+     * The resource URL for the security policy associated with this target pool.
      * 
      */
     @Import(name="securityPolicy")
     private @Nullable Output<String> securityPolicy;
 
     /**
-     * @return ) The resource URL for the security policy associated with this target pool.
+     * @return The resource URL for the security policy associated with this target pool.
      * 
      */
     public Optional<Output<String>> securityPolicy() {
@@ -365,8 +361,6 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
          * @param name A unique name for the resource, required by GCE. Changing
          * this forces a new resource to be created.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -378,8 +372,6 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name A unique name for the resource, required by GCE. Changing
          * this forces a new resource to be created.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -435,7 +427,7 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityPolicy ) The resource URL for the security policy associated with this target pool.
+         * @param securityPolicy The resource URL for the security policy associated with this target pool.
          * 
          * @return builder
          * 
@@ -446,7 +438,7 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityPolicy ) The resource URL for the security policy associated with this target pool.
+         * @param securityPolicy The resource URL for the security policy associated with this target pool.
          * 
          * @return builder
          * 

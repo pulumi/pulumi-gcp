@@ -130,9 +130,6 @@ export class AuthorizedOrgsDesc extends pulumi.CustomResource {
      * The `authorizedOrgsDesc` component must begin with a letter, followed by
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -234,9 +231,6 @@ export interface AuthorizedOrgsDescState {
      * The `authorizedOrgsDesc` component must begin with a letter, followed by
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -295,9 +289,6 @@ export interface AuthorizedOrgsDescArgs {
      * The `authorizedOrgsDesc` component must begin with a letter, followed by
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

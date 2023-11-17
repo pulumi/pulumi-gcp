@@ -19,16 +19,12 @@ public final class BrandState extends com.pulumi.resources.ResourceArgs {
     /**
      * Application name displayed on OAuth consent screen.
      * 
-     * ***
-     * 
      */
     @Import(name="applicationTitle")
     private @Nullable Output<String> applicationTitle;
 
     /**
      * @return Application name displayed on OAuth consent screen.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> applicationTitle() {
@@ -142,8 +138,6 @@ public final class BrandState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param applicationTitle Application name displayed on OAuth consent screen.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -154,8 +148,6 @@ public final class BrandState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param applicationTitle Application name displayed on OAuth consent screen.
-         * 
-         * ***
          * 
          * @return builder
          * 

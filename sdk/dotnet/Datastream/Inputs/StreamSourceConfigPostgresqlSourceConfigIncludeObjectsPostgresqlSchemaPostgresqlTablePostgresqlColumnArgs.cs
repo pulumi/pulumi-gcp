@@ -13,12 +13,17 @@ namespace Pulumi.Gcp.Datastream.Inputs
     public sealed class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Column name.`column` -
+        /// (Optional)
         /// Column name.
         /// </summary>
         [Input("column")]
         public Input<string>? Column { get; set; }
 
         /// <summary>
+        /// The PostgreSQL data type. Full data types list can be found here:
+        /// https://www.postgresql.org/docs/current/datatype.html`data_type` -
+        /// (Optional)
         /// The PostgreSQL data type. Full data types list can be found here:
         /// https://www.postgresql.org/docs/current/datatype.html
         /// </summary>
@@ -27,18 +32,24 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// (Output)
+        /// Column length.`length` -
+        /// (Output)
         /// Column length.
         /// </summary>
         [Input("length")]
         public Input<int>? Length { get; set; }
 
         /// <summary>
+        /// Whether or not the column can accept a null value.`nullable` -
+        /// (Optional)
         /// Whether or not the column can accept a null value.
         /// </summary>
         [Input("nullable")]
         public Input<bool>? Nullable { get; set; }
 
         /// <summary>
+        /// The ordinal position of the column in the table.`ordinal_position` -
+        /// (Optional)
         /// The ordinal position of the column in the table.
         /// </summary>
         [Input("ordinalPosition")]
@@ -46,18 +57,24 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// (Output)
+        /// Column precision.`precision` -
+        /// (Output)
         /// Column precision.
         /// </summary>
         [Input("precision")]
         public Input<int>? Precision { get; set; }
 
         /// <summary>
+        /// Whether or not the column represents a primary key.`primary_key` -
+        /// (Optional)
         /// Whether or not the column represents a primary key.
         /// </summary>
         [Input("primaryKey")]
         public Input<bool>? PrimaryKey { get; set; }
 
         /// <summary>
+        /// (Output)
+        /// Column scale.`scale` -
         /// (Output)
         /// Column scale.
         /// </summary>

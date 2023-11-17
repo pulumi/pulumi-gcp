@@ -28,8 +28,6 @@ public final class OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
      * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and
      * [&#34;12345-12349&#34;].
      * 
-     * ***
-     * 
      */
     private @Nullable List<String> ports;
 
@@ -52,8 +50,6 @@ public final class OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
      * applies to connections through any port.
      * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and
      * [&#34;12345-12349&#34;].
-     * 
-     * ***
      * 
      */
     public List<String> ports() {

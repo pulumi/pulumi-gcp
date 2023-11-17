@@ -24,8 +24,6 @@ func GetAppleAppConfig(ctx *pulumi.Context, args *GetAppleAppConfigArgs, opts ..
 // A collection of arguments for invoking getAppleAppConfig.
 type GetAppleAppConfigArgs struct {
 	// The id of the Firebase iOS App.
-	//
-	// ***
 	AppId string `pulumi:"appId"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -59,8 +57,6 @@ func GetAppleAppConfigOutput(ctx *pulumi.Context, args GetAppleAppConfigOutputAr
 // A collection of arguments for invoking getAppleAppConfig.
 type GetAppleAppConfigOutputArgs struct {
 	// The id of the Firebase iOS App.
-	//
-	// ***
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

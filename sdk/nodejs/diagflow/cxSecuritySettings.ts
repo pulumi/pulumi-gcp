@@ -155,9 +155,6 @@ export class CxSecuritySettings extends pulumi.CustomResource {
     public readonly deidentifyTemplate!: pulumi.Output<string | undefined>;
     /**
      * The human-readable name of the security settings, unique within the location.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -195,19 +192,19 @@ export class CxSecuritySettings extends pulumi.CustomResource {
     /**
      * Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
      * * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-     * Possible values are: `REDACT_DISK_STORAGE`.
+     *   Possible values are: `REDACT_DISK_STORAGE`.
      */
     public readonly redactionScope!: pulumi.Output<string | undefined>;
     /**
      * Defines how we redact data. If not set, defaults to not redacting.
      * * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-     * Possible values are: `REDACT_WITH_SERVICE`.
+     *   Possible values are: `REDACT_WITH_SERVICE`.
      */
     public readonly redactionStrategy!: pulumi.Output<string | undefined>;
     /**
      * Defines how long we retain persisted data that contains sensitive info. Only one of `retentionWindowDays` and `retentionStrategy` may be set.
      * * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-     * Possible values are: `REMOVE_AFTER_CONVERSATION`.
+     *   Possible values are: `REMOVE_AFTER_CONVERSATION`.
      */
     public readonly retentionStrategy!: pulumi.Output<string | undefined>;
     /**
@@ -289,9 +286,6 @@ export interface CxSecuritySettingsState {
     deidentifyTemplate?: pulumi.Input<string>;
     /**
      * The human-readable name of the security settings, unique within the location.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -329,19 +323,19 @@ export interface CxSecuritySettingsState {
     /**
      * Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
      * * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-     * Possible values are: `REDACT_DISK_STORAGE`.
+     *   Possible values are: `REDACT_DISK_STORAGE`.
      */
     redactionScope?: pulumi.Input<string>;
     /**
      * Defines how we redact data. If not set, defaults to not redacting.
      * * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-     * Possible values are: `REDACT_WITH_SERVICE`.
+     *   Possible values are: `REDACT_WITH_SERVICE`.
      */
     redactionStrategy?: pulumi.Input<string>;
     /**
      * Defines how long we retain persisted data that contains sensitive info. Only one of `retentionWindowDays` and `retentionStrategy` may be set.
      * * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-     * Possible values are: `REMOVE_AFTER_CONVERSATION`.
+     *   Possible values are: `REMOVE_AFTER_CONVERSATION`.
      */
     retentionStrategy?: pulumi.Input<string>;
     /**
@@ -371,9 +365,6 @@ export interface CxSecuritySettingsArgs {
     deidentifyTemplate?: pulumi.Input<string>;
     /**
      * The human-readable name of the security settings, unique within the location.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**
@@ -406,19 +397,19 @@ export interface CxSecuritySettingsArgs {
     /**
      * Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
      * * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-     * Possible values are: `REDACT_DISK_STORAGE`.
+     *   Possible values are: `REDACT_DISK_STORAGE`.
      */
     redactionScope?: pulumi.Input<string>;
     /**
      * Defines how we redact data. If not set, defaults to not redacting.
      * * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-     * Possible values are: `REDACT_WITH_SERVICE`.
+     *   Possible values are: `REDACT_WITH_SERVICE`.
      */
     redactionStrategy?: pulumi.Input<string>;
     /**
      * Defines how long we retain persisted data that contains sensitive info. Only one of `retentionWindowDays` and `retentionStrategy` may be set.
      * * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-     * Possible values are: `REMOVE_AFTER_CONVERSATION`.
+     *   Possible values are: `REMOVE_AFTER_CONVERSATION`.
      */
     retentionStrategy?: pulumi.Input<string>;
     /**

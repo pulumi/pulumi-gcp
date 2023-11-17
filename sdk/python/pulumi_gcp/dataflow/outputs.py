@@ -635,7 +635,6 @@ class PipelineWorkloadDataflowLaunchTemplateRequest(dict):
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
                Structure is documented below.
         :param str location: The regional endpoint to which to direct the request.
-        :param bool validate_only: (Optional)
         """
         pulumi.set(__self__, "project_id", project_id)
         if gcs_path is not None:
@@ -684,9 +683,6 @@ class PipelineWorkloadDataflowLaunchTemplateRequest(dict):
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[bool]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "validate_only")
 
 

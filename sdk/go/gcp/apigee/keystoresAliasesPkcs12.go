@@ -56,8 +56,6 @@ type KeystoresAliasesPkcs12 struct {
 	// Environment associated with the alias
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// PKCS12 file content
-	//
-	// ***
 	File pulumi.StringOutput `pulumi:"file"`
 	// Hash of the pkcs file
 	Filehash pulumi.StringOutput `pulumi:"filehash"`
@@ -127,8 +125,6 @@ type keystoresAliasesPkcs12State struct {
 	// Environment associated with the alias
 	Environment *string `pulumi:"environment"`
 	// PKCS12 file content
-	//
-	// ***
 	File *string `pulumi:"file"`
 	// Hash of the pkcs file
 	Filehash *string `pulumi:"filehash"`
@@ -151,8 +147,6 @@ type KeystoresAliasesPkcs12State struct {
 	// Environment associated with the alias
 	Environment pulumi.StringPtrInput
 	// PKCS12 file content
-	//
-	// ***
 	File pulumi.StringPtrInput
 	// Hash of the pkcs file
 	Filehash pulumi.StringPtrInput
@@ -176,8 +170,6 @@ type keystoresAliasesPkcs12Args struct {
 	// Environment associated with the alias
 	Environment string `pulumi:"environment"`
 	// PKCS12 file content
-	//
-	// ***
 	File string `pulumi:"file"`
 	// Hash of the pkcs file
 	Filehash string `pulumi:"filehash"`
@@ -196,8 +188,6 @@ type KeystoresAliasesPkcs12Args struct {
 	// Environment associated with the alias
 	Environment pulumi.StringInput
 	// PKCS12 file content
-	//
-	// ***
 	File pulumi.StringInput
 	// Hash of the pkcs file
 	Filehash pulumi.StringInput
@@ -313,8 +303,6 @@ func (o KeystoresAliasesPkcs12Output) Environment() pulumi.StringOutput {
 }
 
 // PKCS12 file content
-//
-// ***
 func (o KeystoresAliasesPkcs12Output) File() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeystoresAliasesPkcs12) pulumi.StringOutput { return v.File }).(pulumi.StringOutput)
 }

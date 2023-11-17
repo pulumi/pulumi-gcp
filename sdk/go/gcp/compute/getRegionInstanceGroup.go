@@ -62,8 +62,6 @@ type GetRegionInstanceGroupArgs struct {
 	// provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The link to the instance group.  One of `name` or `selfLink` must be provided.
-	//
-	// ***
 	SelfLink *string `pulumi:"selfLink"`
 }
 
@@ -108,8 +106,6 @@ type GetRegionInstanceGroupOutputArgs struct {
 	// provided, the provider region is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The link to the instance group.  One of `name` or `selfLink` must be provided.
-	//
-	// ***
 	SelfLink pulumi.StringPtrInput `pulumi:"selfLink"`
 }
 

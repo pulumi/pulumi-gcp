@@ -14,9 +14,17 @@ public final class JobPysparkConfigLoggingConfigArgs extends com.pulumi.resource
 
     public static final JobPysparkConfigLoggingConfigArgs Empty = new JobPysparkConfigLoggingConfigArgs();
 
+    /**
+     * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
+     * 
+     */
     @Import(name="driverLogLevels", required=true)
     private Output<Map<String,String>> driverLogLevels;
 
+    /**
+     * @return `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
+     * 
+     */
     public Output<Map<String,String>> driverLogLevels() {
         return this.driverLogLevels;
     }
@@ -45,11 +53,23 @@ public final class JobPysparkConfigLoggingConfigArgs extends com.pulumi.resource
             $ = new JobPysparkConfigLoggingConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param driverLogLevels `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
+         * 
+         * @return builder
+         * 
+         */
         public Builder driverLogLevels(Output<Map<String,String>> driverLogLevels) {
             $.driverLogLevels = driverLogLevels;
             return this;
         }
 
+        /**
+         * @param driverLogLevels `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
+         * 
+         * @return builder
+         * 
+         */
         public Builder driverLogLevels(Map<String,String> driverLogLevels) {
             return driverLogLevels(Output.of(driverLogLevels));
         }

@@ -59,9 +59,6 @@ class ImageArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ImageRawDiskArgs'] raw_disk: The parameters of the raw disk image.
@@ -223,9 +220,6 @@ class ImageArgs:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -381,9 +375,6 @@ class _ImageState:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -610,9 +601,6 @@ class _ImageState:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -875,9 +863,6 @@ class Image(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ImageRawDiskArgs']] raw_disk: The parameters of the raw disk image.
@@ -1129,9 +1114,6 @@ class Image(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -1299,9 +1281,6 @@ class Image(pulumi.CustomResource):
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the
         last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

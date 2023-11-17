@@ -54,7 +54,7 @@ func LookupOrganizationPolicy(ctx *pulumi.Context, args *LookupOrganizationPolic
 
 // A collection of arguments for invoking getOrganizationPolicy.
 type LookupOrganizationPolicyArgs struct {
-	// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint string `pulumi:"constraint"`
 	// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
 	Folder string `pulumi:"folder"`
@@ -89,7 +89,7 @@ func LookupOrganizationPolicyOutput(ctx *pulumi.Context, args LookupOrganization
 
 // A collection of arguments for invoking getOrganizationPolicy.
 type LookupOrganizationPolicyOutputArgs struct {
-	// (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 	Constraint pulumi.StringInput `pulumi:"constraint"`
 	// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
 	Folder pulumi.StringInput `pulumi:"folder"`

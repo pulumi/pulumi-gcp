@@ -146,9 +146,6 @@ namespace Pulumi.Gcp.VpcAccess
 
         /// <summary>
         /// The name of the resource (Max 25 characters).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -275,9 +272,6 @@ namespace Pulumi.Gcp.VpcAccess
 
         /// <summary>
         /// The name of the resource (Max 25 characters).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -366,9 +360,6 @@ namespace Pulumi.Gcp.VpcAccess
 
         /// <summary>
         /// The name of the resource (Max 25 characters).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

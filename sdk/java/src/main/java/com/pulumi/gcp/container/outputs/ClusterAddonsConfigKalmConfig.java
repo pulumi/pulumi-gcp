@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterAddonsConfigKalmConfig {
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      */
     private Boolean enabled;
 
     private ClusterAddonsConfigKalmConfig() {}
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      */
     public Boolean enabled() {

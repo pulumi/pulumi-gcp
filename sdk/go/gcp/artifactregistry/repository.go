@@ -395,11 +395,14 @@ import (
 type Repository struct {
 	pulumi.CustomResourceState
 
-	// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-	// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-	// under 128 characters in length.
+	// Cleanup policies for this repository. Cleanup policies indicate when
+	// certain package versions can be automatically deleted.
+	// Map keys are policy IDs supplied by users during policy creation. They must
+	// unique within a repository and be under 128 characters in length.
+	// Structure is documented below.
 	CleanupPolicies RepositoryCleanupPolicyArrayOutput `pulumi:"cleanupPolicies"`
-	// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	// If true, the cleanup pipeline is prevented from deleting versions in this
+	// repository.
 	CleanupPolicyDryRun pulumi.BoolPtrOutput `pulumi:"cleanupPolicyDryRun"`
 	// The time when the repository was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -414,8 +417,6 @@ type Repository struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	//
-	// ***
 	Format pulumi.StringOutput `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -505,11 +506,14 @@ func GetRepository(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Repository resources.
 type repositoryState struct {
-	// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-	// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-	// under 128 characters in length.
+	// Cleanup policies for this repository. Cleanup policies indicate when
+	// certain package versions can be automatically deleted.
+	// Map keys are policy IDs supplied by users during policy creation. They must
+	// unique within a repository and be under 128 characters in length.
+	// Structure is documented below.
 	CleanupPolicies []RepositoryCleanupPolicy `pulumi:"cleanupPolicies"`
-	// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	// If true, the cleanup pipeline is prevented from deleting versions in this
+	// repository.
 	CleanupPolicyDryRun *bool `pulumi:"cleanupPolicyDryRun"`
 	// The time when the repository was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -524,8 +528,6 @@ type repositoryState struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	//
-	// ***
 	Format *string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -575,11 +577,14 @@ type repositoryState struct {
 }
 
 type RepositoryState struct {
-	// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-	// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-	// under 128 characters in length.
+	// Cleanup policies for this repository. Cleanup policies indicate when
+	// certain package versions can be automatically deleted.
+	// Map keys are policy IDs supplied by users during policy creation. They must
+	// unique within a repository and be under 128 characters in length.
+	// Structure is documented below.
 	CleanupPolicies RepositoryCleanupPolicyArrayInput
-	// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	// If true, the cleanup pipeline is prevented from deleting versions in this
+	// repository.
 	CleanupPolicyDryRun pulumi.BoolPtrInput
 	// The time when the repository was created.
 	CreateTime pulumi.StringPtrInput
@@ -594,8 +599,6 @@ type RepositoryState struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	//
-	// ***
 	Format pulumi.StringPtrInput
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -649,11 +652,14 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
-	// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-	// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-	// under 128 characters in length.
+	// Cleanup policies for this repository. Cleanup policies indicate when
+	// certain package versions can be automatically deleted.
+	// Map keys are policy IDs supplied by users during policy creation. They must
+	// unique within a repository and be under 128 characters in length.
+	// Structure is documented below.
 	CleanupPolicies []RepositoryCleanupPolicy `pulumi:"cleanupPolicies"`
-	// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	// If true, the cleanup pipeline is prevented from deleting versions in this
+	// repository.
 	CleanupPolicyDryRun *bool `pulumi:"cleanupPolicyDryRun"`
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
@@ -664,8 +670,6 @@ type repositoryArgs struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	//
-	// ***
 	Format string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -708,11 +712,14 @@ type repositoryArgs struct {
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
-	// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-	// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-	// under 128 characters in length.
+	// Cleanup policies for this repository. Cleanup policies indicate when
+	// certain package versions can be automatically deleted.
+	// Map keys are policy IDs supplied by users during policy creation. They must
+	// unique within a repository and be under 128 characters in length.
+	// Structure is documented below.
 	CleanupPolicies RepositoryCleanupPolicyArrayInput
-	// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	// If true, the cleanup pipeline is prevented from deleting versions in this
+	// repository.
 	CleanupPolicyDryRun pulumi.BoolPtrInput
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
@@ -723,8 +730,6 @@ type RepositoryArgs struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	//
-	// ***
 	Format pulumi.StringInput
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -852,14 +857,17 @@ func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) Rep
 	return o
 }
 
-// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-// under 128 characters in length.
+// Cleanup policies for this repository. Cleanup policies indicate when
+// certain package versions can be automatically deleted.
+// Map keys are policy IDs supplied by users during policy creation. They must
+// unique within a repository and be under 128 characters in length.
+// Structure is documented below.
 func (o RepositoryOutput) CleanupPolicies() RepositoryCleanupPolicyArrayOutput {
 	return o.ApplyT(func(v *Repository) RepositoryCleanupPolicyArrayOutput { return v.CleanupPolicies }).(RepositoryCleanupPolicyArrayOutput)
 }
 
-// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+// If true, the cleanup pipeline is prevented from deleting versions in this
+// repository.
 func (o RepositoryOutput) CleanupPolicyDryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Repository) pulumi.BoolPtrOutput { return v.CleanupPolicyDryRun }).(pulumi.BoolPtrOutput)
 }
@@ -889,8 +897,6 @@ func (o RepositoryOutput) EffectiveLabels() pulumi.StringMapOutput {
 // can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 // You can only create alpha formats if you are a member of the
 // [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-//
-// ***
 func (o RepositoryOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
 }

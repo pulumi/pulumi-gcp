@@ -17,8 +17,6 @@ namespace Pulumi.Gcp.Firestore.Outputs
         /// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
         /// be specified.
         /// Possible values are: `CONTAINS`.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? ArrayConfig;
         /// <summary>

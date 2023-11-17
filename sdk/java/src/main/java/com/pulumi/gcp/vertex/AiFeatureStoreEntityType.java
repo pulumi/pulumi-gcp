@@ -242,16 +242,12 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
      * 
-     * ***
-     * 
      */
     @Export(name="featurestore", refs={String.class}, tree="[0]")
     private Output<String> featurestore;
 
     /**
      * @return The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-     * 
-     * ***
      * 
      */
     public Output<String> featurestore() {
@@ -310,18 +306,14 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
         return this.name;
     }
     /**
-     * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-     * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-     * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+     * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
      * 
      */
     @Export(name="offlineStorageTtlDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> offlineStorageTtlDays;
 
     /**
-     * @return Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-     * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-     * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+     * @return Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
      * 
      */
     public Output<Optional<Integer>> offlineStorageTtlDays() {

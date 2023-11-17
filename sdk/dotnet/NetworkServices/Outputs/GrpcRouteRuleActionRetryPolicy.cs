@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
     {
         /// <summary>
         /// Specifies the allowed number of retries.
-        /// 
-        /// - - -
         /// </summary>
         public readonly int? NumRetries;
         /// <summary>

@@ -21,9 +21,6 @@ class ClientArgs:
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
                `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
-               
-               
-               - - -
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         """
         pulumi.set(__self__, "brand", brand)
@@ -36,9 +33,6 @@ class ClientArgs:
         Identifier of the brand to which this client
         is attached to. The format is
         `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
-
-
-        - - -
         """
         return pulumi.get(self, "brand")
 
@@ -71,9 +65,6 @@ class _ClientState:
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
                `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
-               
-               
-               - - -
         :param pulumi.Input[str] client_id: The OAuth2 ID of the client.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         :param pulumi.Input[str] secret: Output only. Client secret of the OAuth client.
@@ -95,9 +86,6 @@ class _ClientState:
         Identifier of the brand to which this client
         is attached to. The format is
         `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
-
-
-        - - -
         """
         return pulumi.get(self, "brand")
 
@@ -214,9 +202,6 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
                `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
-               
-               
-               - - -
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         """
         ...
@@ -343,9 +328,6 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
                `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
-               
-               
-               - - -
         :param pulumi.Input[str] client_id: The OAuth2 ID of the client.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         :param pulumi.Input[str] secret: Output only. Client secret of the OAuth client.
@@ -368,9 +350,6 @@ class Client(pulumi.CustomResource):
         Identifier of the brand to which this client
         is attached to. The format is
         `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
-
-
-        - - -
         """
         return pulumi.get(self, "brand")
 

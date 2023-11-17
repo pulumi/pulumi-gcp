@@ -110,16 +110,12 @@ public final class ConnectorArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the resource (Max 25 characters).
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the resource (Max 25 characters).
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -353,8 +349,6 @@ public final class ConnectorArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The name of the resource (Max 25 characters).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -365,8 +359,6 @@ public final class ConnectorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The name of the resource (Max 25 characters).
-         * 
-         * ***
          * 
          * @return builder
          * 

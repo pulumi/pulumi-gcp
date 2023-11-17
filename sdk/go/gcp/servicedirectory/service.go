@@ -105,8 +105,6 @@ type Service struct {
 	Namespace pulumi.StringOutput `pulumi:"namespace"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 }
 
@@ -158,8 +156,6 @@ type serviceState struct {
 	Namespace *string `pulumi:"namespace"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	ServiceId *string `pulumi:"serviceId"`
 }
 
@@ -176,8 +172,6 @@ type ServiceState struct {
 	Namespace pulumi.StringPtrInput
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	ServiceId pulumi.StringPtrInput
 }
 
@@ -195,8 +189,6 @@ type serviceArgs struct {
 	Namespace string `pulumi:"namespace"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	ServiceId string `pulumi:"serviceId"`
 }
 
@@ -211,8 +203,6 @@ type ServiceArgs struct {
 	Namespace pulumi.StringInput
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
-	//
-	// ***
 	ServiceId pulumi.StringInput
 }
 
@@ -324,8 +314,6 @@ func (o ServiceOutput) Namespace() pulumi.StringOutput {
 
 // The Resource ID must be 1-63 characters long, including digits,
 // lowercase letters or the hyphen character.
-//
-// ***
 func (o ServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

@@ -220,9 +220,6 @@ namespace Pulumi.Gcp.Tpu
 
         /// <summary>
         /// The version of Tensorflow running in the Node.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("tensorflowVersion")]
         public Output<string> TensorflowVersion { get; private set; } = null!;
@@ -363,9 +360,6 @@ namespace Pulumi.Gcp.Tpu
 
         /// <summary>
         /// The version of Tensorflow running in the Node.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("tensorflowVersion", required: true)]
         public Input<string> TensorflowVersion { get; set; } = null!;
@@ -520,9 +514,6 @@ namespace Pulumi.Gcp.Tpu
 
         /// <summary>
         /// The version of Tensorflow running in the Node.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("tensorflowVersion")]
         public Input<string>? TensorflowVersion { get; set; }

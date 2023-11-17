@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterAddonsConfigConfigConnectorConfig
     {
         /// <summary>
-        /// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        /// (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
         /// </summary>
         public readonly bool Enabled;
 

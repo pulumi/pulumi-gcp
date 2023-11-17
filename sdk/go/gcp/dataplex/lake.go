@@ -103,8 +103,6 @@ type Lake struct {
 	// Output only. Metastore status of the lake.
 	MetastoreStatuses LakeMetastoreStatusArrayOutput `pulumi:"metastoreStatuses"`
 	// The name of the lake.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -180,8 +178,6 @@ type lakeState struct {
 	// Output only. Metastore status of the lake.
 	MetastoreStatuses []LakeMetastoreStatus `pulumi:"metastoreStatuses"`
 	// The name of the lake.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -220,8 +216,6 @@ type LakeState struct {
 	// Output only. Metastore status of the lake.
 	MetastoreStatuses LakeMetastoreStatusArrayInput
 	// The name of the lake.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -256,8 +250,6 @@ type lakeArgs struct {
 	// Optional. Settings to manage lake and Dataproc Metastore service instance association.
 	Metastore *LakeMetastore `pulumi:"metastore"`
 	// The name of the lake.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -279,8 +271,6 @@ type LakeArgs struct {
 	// Optional. Settings to manage lake and Dataproc Metastore service instance association.
 	Metastore LakeMetastorePtrInput
 	// The name of the lake.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -422,8 +412,6 @@ func (o LakeOutput) MetastoreStatuses() LakeMetastoreStatusArrayOutput {
 }
 
 // The name of the lake.
-//
-// ***
 func (o LakeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

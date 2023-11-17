@@ -177,8 +177,6 @@ def get_workload_identity_pool_provider(project: Optional[str] = None,
            final component of the pool resource name.
     :param str workload_identity_pool_provider_id: The id of the provider which is the
            final component of the resource name.
-           
-           - - -
     """
     __args__ = dict()
     __args__['project'] = project
@@ -228,7 +226,5 @@ def get_workload_identity_pool_provider_output(project: Optional[pulumi.Input[Op
            final component of the pool resource name.
     :param str workload_identity_pool_provider_id: The id of the provider which is the
            final component of the resource name.
-           
-           - - -
     """
     ...

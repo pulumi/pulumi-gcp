@@ -154,7 +154,7 @@ class EdgeCacheKeysetValidationSharedKeyArgs:
                The secrets must be at least 16 bytes large.  The recommended secret size depends on the signature algorithm you are using.
                * If you are using HMAC-SHA1, we suggest 20-byte secrets.
                * If you are using HMAC-SHA256, we suggest 32-byte secrets.
-               See RFC 2104, Section 3 for more details on these recommendations.
+                 See RFC 2104, Section 3 for more details on these recommendations.
         """
         pulumi.set(__self__, "secret_version", secret_version)
 
@@ -167,7 +167,7 @@ class EdgeCacheKeysetValidationSharedKeyArgs:
         The secrets must be at least 16 bytes large.  The recommended secret size depends on the signature algorithm you are using.
         * If you are using HMAC-SHA1, we suggest 20-byte secrets.
         * If you are using HMAC-SHA256, we suggest 32-byte secrets.
-        See RFC 2104, Section 3 for more details on these recommendations.
+          See RFC 2104, Section 3 for more details on these recommendations.
         """
         return pulumi.get(self, "secret_version")
 
@@ -614,14 +614,14 @@ class EdgeCacheServiceRoutingHostRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: The list of host patterns to match.
                Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
                When multiple hosts are specified, hosts are matched in the following priority:
-               1. Exact domain names: ``www.foo.com``.
-               2. Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
-               3. Prefix domain wildcards: ``foo.*`` or ``foo-*``.
-               4. Special wildcard ``*`` matching any domain.
-               Notes:
-               The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
-               Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
-               You may specify up to 10 hosts.
+               . Exact domain names: ``www.foo.com``.
+               . Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
+               . Prefix domain wildcards: ``foo.*`` or ``foo-*``.
+               . Special wildcard ``*`` matching any domain.
+                 Notes:
+                 The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
+                 Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
+                 You may specify up to 10 hosts.
         :param pulumi.Input[str] path_matcher: The name of the pathMatcher associated with this hostRule.
         :param pulumi.Input[str] description: A human-readable description of the hostRule.
         """
@@ -637,14 +637,14 @@ class EdgeCacheServiceRoutingHostRuleArgs:
         The list of host patterns to match.
         Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
         When multiple hosts are specified, hosts are matched in the following priority:
-        1. Exact domain names: ``www.foo.com``.
-        2. Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
-        3. Prefix domain wildcards: ``foo.*`` or ``foo-*``.
-        4. Special wildcard ``*`` matching any domain.
-        Notes:
-        The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
-        Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
-        You may specify up to 10 hosts.
+        . Exact domain names: ``www.foo.com``.
+        . Suffix domain wildcards: ``*.foo.com`` or ``*-bar.foo.com``.
+        . Prefix domain wildcards: ``foo.*`` or ``foo-*``.
+        . Special wildcard ``*`` matching any domain.
+          Notes:
+          The wildcard will not match the empty string. e.g. ``*-bar.foo.com`` will match ``baz-bar.foo.com`` but not ``-bar.foo.com``. The longest wildcards match first. Only a single host in the entire service can match on ``*``. A domain must be unique across all configured hosts within a service.
+          Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
+          You may specify up to 10 hosts.
         """
         return pulumi.get(self, "hosts")
 
@@ -1468,9 +1468,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
                - The TTL must be > 0 and <= 86400s (1 day)
                - The clientTtl cannot be larger than the defaultTtl (if set)
                - Fractions of a second are not allowed.
-               Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
-               When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-               A duration in seconds terminated by 's'. Example: "3s".
+                 Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
+                 When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+                 A duration in seconds terminated by 's'. Example: "3s".
         :param pulumi.Input[str] default_ttl: Specifies the default TTL for cached content served by this origin for responses that do not have an existing valid TTL (max-age or s-max-age).
                Defaults to 3600s (1 hour).
                - The TTL must be >= 0 and <= 31,536,000 seconds (1 year)
@@ -1478,9 +1478,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
                - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
                - Fractions of a second are not allowed.
                - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
-               Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
-               When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-               A duration in seconds terminated by 's'. Example: "3s".
+                 Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
+                 When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+                 A duration in seconds terminated by 's'. Example: "3s".
         :param pulumi.Input[str] max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
                Defaults to 86400s (1 day).
                Cache directives that attempt to set a max-age or s-maxage higher than this, or an Expires header more than maxTtl seconds in the future will be capped at the value of maxTTL, as if it were the value of an s-maxage Cache-Control directive.
@@ -1488,24 +1488,24 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
                - Setting a TTL of "0" means "always revalidate"
                - The value of maxTtl must be equal to or greater than defaultTtl.
                - Fractions of a second are not allowed.
-               When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
-               A duration in seconds terminated by 's'. Example: "3s".
+                 When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
+                 A duration in seconds terminated by 's'. Example: "3s".
         :param pulumi.Input[bool] negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects. This can reduce the load on your origin and improve end-user experience by reducing response latency.
                By default, the CDNPolicy will apply the following default TTLs to these status codes:
                - HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
                - HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s
                - HTTP 405 (Method Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s
-               These defaults can be overridden in negativeCachingPolicy
+                 These defaults can be overridden in negativeCachingPolicy
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] negative_caching_policy: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
                - Omitting the policy and leaving negativeCaching enabled will use the default TTLs for each status code, defined in negativeCaching.
                - TTLs must be >= 0 (where 0 is "always revalidate") and <= 86400s (1 day)
-               Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
+                 Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
         :param pulumi.Input[str] signed_request_keyset: The EdgeCacheKeyset containing the set of public keys used to validate signed requests at the edge.
         :param pulumi.Input[str] signed_request_maximum_expiration_ttl: Limit how far into the future the expiration time of a signed request may be.
                When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
                - The TTL must be > 0.
                - Fractions of a second are not allowed.
-               By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+                 By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
         :param pulumi.Input[str] signed_request_mode: Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
                You must also set a signedRequestKeyset to enable signed requests.
                When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
@@ -1588,9 +1588,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         - The TTL must be > 0 and <= 86400s (1 day)
         - The clientTtl cannot be larger than the defaultTtl (if set)
         - Fractions of a second are not allowed.
-        Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
-        When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-        A duration in seconds terminated by 's'. Example: "3s".
+          Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
+          When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+          A duration in seconds terminated by 's'. Example: "3s".
         """
         return pulumi.get(self, "client_ttl")
 
@@ -1609,9 +1609,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
         - Fractions of a second are not allowed.
         - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
-        Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
-        When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-        A duration in seconds terminated by 's'. Example: "3s".
+          Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
+          When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+          A duration in seconds terminated by 's'. Example: "3s".
         """
         return pulumi.get(self, "default_ttl")
 
@@ -1630,8 +1630,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         - Setting a TTL of "0" means "always revalidate"
         - The value of maxTtl must be equal to or greater than defaultTtl.
         - Fractions of a second are not allowed.
-        When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
-        A duration in seconds terminated by 's'. Example: "3s".
+          When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
+          A duration in seconds terminated by 's'. Example: "3s".
         """
         return pulumi.get(self, "max_ttl")
 
@@ -1648,7 +1648,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         - HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
         - HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s
         - HTTP 405 (Method Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s
-        These defaults can be overridden in negativeCachingPolicy
+          These defaults can be overridden in negativeCachingPolicy
         """
         return pulumi.get(self, "negative_caching")
 
@@ -1663,7 +1663,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
         - Omitting the policy and leaving negativeCaching enabled will use the default TTLs for each status code, defined in negativeCaching.
         - TTLs must be >= 0 (where 0 is "always revalidate") and <= 86400s (1 day)
-        Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
+          Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
         """
         return pulumi.get(self, "negative_caching_policy")
 
@@ -1691,7 +1691,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
         - The TTL must be > 0.
         - Fractions of a second are not allowed.
-        By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+          By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
         """
         return pulumi.get(self, "signed_request_maximum_expiration_ttl")
 
@@ -1744,7 +1744,6 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
                Only the following parameters may be copied:
         :param pulumi.Input[str] keyset: The keyset to use for signature generation.
                The following are both valid paths to an EdgeCacheKeyset resource:
-               * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
         :param pulumi.Input[str] token_query_parameter: The query parameter in which to put the generated token.
                If not specified, defaults to `edge-cache-token`.
                If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
@@ -1797,7 +1796,6 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
         """
         The keyset to use for signature generation.
         The following are both valid paths to an EdgeCacheKeyset resource:
-        * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
         """
         return pulumi.get(self, "keyset")
 
@@ -1864,13 +1862,13 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
                - must be valid RFC 6265 "cookie-name" tokens
                - are case sensitive
                - cannot start with "Edge-Cache-" (case insensitive)
-               Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
-               You may specify up to three cookie names.
+                 Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+                 You may specify up to three cookie names.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_header_names: Names of HTTP request headers to include in cache keys. The value of the header field will be used as part of the cache key.
                - Header names must be valid HTTP RFC 7230 header field values.
                - Header field names are case insensitive
                - To include the HTTP method, use ":method"
-               Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+                 Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_query_parameters: Names of query string parameters to include in cache keys. All other parameters will be excluded.
                Either specify includedQueryParameters or excludedQueryParameters, not both. '&' and '=' will be percent encoded and not treated as delimiters.
         """
@@ -1953,8 +1951,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
         - must be valid RFC 6265 "cookie-name" tokens
         - are case sensitive
         - cannot start with "Edge-Cache-" (case insensitive)
-        Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
-        You may specify up to three cookie names.
+          Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+          You may specify up to three cookie names.
         """
         return pulumi.get(self, "included_cookie_names")
 
@@ -1970,7 +1968,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
         - Header names must be valid HTTP RFC 7230 header field values.
         - Header field names are case insensitive
         - To include the HTTP method, use ":method"
-        Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+          Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
         """
         return pulumi.get(self, "included_header_names")
 
@@ -2056,7 +2054,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs:
                - Setting the value to -1 forces a pre-flight check for all requests (not recommended)
                - A maximum TTL of 86400s can be set, but note that (as above) some clients may force pre-flight checks at a more regular interval.
                - This translates to the Access-Control-Max-Age header.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+                 A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[bool] allow_credentials: In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
                This translates to the Access-Control-Allow-Credentials response header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: Specifies the content for the Access-Control-Allow-Headers response header.
@@ -2088,7 +2086,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs:
         - Setting the value to -1 forces a pre-flight check for all requests (not recommended)
         - A maximum TTL of 86400s can be set, but note that (as above) some clients may force pre-flight checks at a more regular interval.
         - This translates to the Access-Control-Max-Age header.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+          A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "max_age")
 
@@ -2267,8 +2265,6 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs:
         :param pulumi.Input[str] redirect_response_code: The HTTP Status code to use for this RedirectAction.
                The supported values are:
         :param pulumi.Input[bool] strip_query: If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
-               
-               - - -
         """
         if host_redirect is not None:
             pulumi.set(__self__, "host_redirect", host_redirect)
@@ -2353,8 +2349,6 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs:
     def strip_query(self) -> Optional[pulumi.Input[bool]]:
         """
         If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
-
-        - - -
         """
         return pulumi.get(self, "strip_query")
 
@@ -2437,8 +2431,6 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs:
         """
         :param pulumi.Input[str] label_name: Required. Label name presented as key in xDS Node Metadata.
         :param pulumi.Input[str] label_value: Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
-               
-               - - -
         """
         pulumi.set(__self__, "label_name", label_name)
         pulumi.set(__self__, "label_value", label_value)
@@ -2460,8 +2452,6 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs:
     def label_value(self) -> pulumi.Input[str]:
         """
         Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
-
-        - - -
         """
         return pulumi.get(self, "label_value")
 
@@ -2779,8 +2769,6 @@ class GrpcRouteRuleActionRetryPolicyArgs:
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[int] num_retries: Specifies the allowed number of retries.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: Specifies one or more conditions when this retry policy applies.
                Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
         """
@@ -2794,8 +2782,6 @@ class GrpcRouteRuleActionRetryPolicyArgs:
     def num_retries(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the allowed number of retries.
-
-        - - -
         """
         return pulumi.get(self, "num_retries")
 
@@ -3220,8 +3206,6 @@ class HttpRouteRuleActionCorsPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
         :param pulumi.Input[bool] disabled: If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: Specifies the content for Access-Control-Expose-Headers header.
         :param pulumi.Input[str] max_age: Specifies how long result of a preflight request can be cached in seconds.
         """
@@ -3307,8 +3291,6 @@ class HttpRouteRuleActionCorsPolicyArgs:
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-
-        - - -
         """
         return pulumi.get(self, "disabled")
 
@@ -4348,8 +4330,6 @@ class TcpRouteRuleActionDestinationArgs:
                If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
                If weights are specified for any one service name, they need to be specified for all of them.
                If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
-               
-               - - -
         """
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
@@ -4376,8 +4356,6 @@ class TcpRouteRuleActionDestinationArgs:
         If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
         If weights are specified for any one service name, they need to be specified for all of them.
         If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
-
-        - - -
         """
         return pulumi.get(self, "weight")
 
@@ -4499,8 +4477,6 @@ class TlsRouteRuleActionDestinationArgs:
         """
         :param pulumi.Input[str] service_name: The URL of a BackendService to route traffic to.
         :param pulumi.Input[int] weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-               
-               - - -
         """
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
@@ -4524,8 +4500,6 @@ class TlsRouteRuleActionDestinationArgs:
     def weight(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-
-        - - -
         """
         return pulumi.get(self, "weight")
 

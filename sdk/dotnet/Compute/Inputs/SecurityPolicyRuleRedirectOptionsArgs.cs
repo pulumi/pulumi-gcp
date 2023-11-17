@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Type of redirect action.
-        /// 
         /// * EXTERNAL_302: Redirect to an external address, configured in 'target'.
         /// * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
         /// </summary>

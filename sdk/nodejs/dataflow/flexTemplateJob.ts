@@ -118,8 +118,6 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     /**
      * The GCS path to the Dataflow job Flex
      * Template.
-     *
-     * - - -
      */
     public readonly containerSpecGcsPath!: pulumi.Output<string>;
     /**
@@ -343,8 +341,6 @@ export interface FlexTemplateJobState {
     /**
      * The GCS path to the Dataflow job Flex
      * Template.
-     *
-     * - - -
      */
     containerSpecGcsPath?: pulumi.Input<string>;
     /**
@@ -485,8 +481,6 @@ export interface FlexTemplateJobArgs {
     /**
      * The GCS path to the Dataflow job Flex
      * Template.
-     *
-     * - - -
      */
     containerSpecGcsPath: pulumi.Input<string>;
     /**

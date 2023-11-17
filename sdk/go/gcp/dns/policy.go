@@ -130,8 +130,6 @@ type Policy struct {
 	// Defaults to no logging if not set.
 	EnableLogging pulumi.BoolPtrOutput `pulumi:"enableLogging"`
 	// User assigned name for this policy.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of network names specifying networks to which this policy is applied.
 	// Structure is documented below.
@@ -187,8 +185,6 @@ type policyState struct {
 	// Defaults to no logging if not set.
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// User assigned name for this policy.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// List of network names specifying networks to which this policy is applied.
 	// Structure is documented below.
@@ -215,8 +211,6 @@ type PolicyState struct {
 	// Defaults to no logging if not set.
 	EnableLogging pulumi.BoolPtrInput
 	// User assigned name for this policy.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// List of network names specifying networks to which this policy is applied.
 	// Structure is documented below.
@@ -247,8 +241,6 @@ type policyArgs struct {
 	// Defaults to no logging if not set.
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// User assigned name for this policy.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// List of network names specifying networks to which this policy is applied.
 	// Structure is documented below.
@@ -276,8 +268,6 @@ type PolicyArgs struct {
 	// Defaults to no logging if not set.
 	EnableLogging pulumi.BoolPtrInput
 	// User assigned name for this policy.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// List of network names specifying networks to which this policy is applied.
 	// Structure is documented below.
@@ -402,8 +392,6 @@ func (o PolicyOutput) EnableLogging() pulumi.BoolPtrOutput {
 }
 
 // User assigned name for this policy.
-//
-// ***
 func (o PolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

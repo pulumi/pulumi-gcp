@@ -17,16 +17,12 @@ public final class GetCertificatePlainArgs extends com.pulumi.resources.InvokeAr
     /**
      * The name of the certificate.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the certificate.
-     * 
-     * ***
      * 
      */
     public String name() {
@@ -77,8 +73,6 @@ public final class GetCertificatePlainArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param name The name of the certificate.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class UserPasswordPolicyStatus
     {
         /// <summary>
-        /// If true, user does not have login privileges.
+        /// (read only) If true, user does not have login privileges.
         /// </summary>
         public readonly bool? Locked;
         /// <summary>
-        /// Password expiration duration with one week grace period.
+        /// (read only) Password expiration duration with one week grace period.
         /// </summary>
         public readonly string? PasswordExpirationTime;
 

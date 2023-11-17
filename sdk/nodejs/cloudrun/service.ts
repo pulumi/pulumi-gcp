@@ -325,7 +325,6 @@ export class Service extends pulumi.CustomResource {
      * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
-     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -424,7 +423,6 @@ export interface ServiceState {
      * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
-     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      */
     name?: pulumi.Input<string>;
     /**
@@ -484,7 +482,6 @@ export interface ServiceArgs {
      * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
-     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      */
     name?: pulumi.Input<string>;
     /**

@@ -30,11 +30,6 @@ public final class RegionInstanceTemplateScheduling {
      */
     private @Nullable String instanceTerminationAction;
     private @Nullable List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
-    /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.\
-     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
-     * 
-     */
     private @Nullable String maintenanceInterval;
     /**
      * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
@@ -93,11 +88,6 @@ public final class RegionInstanceTemplateScheduling {
     public List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts() {
         return this.localSsdRecoveryTimeouts == null ? List.of() : this.localSsdRecoveryTimeouts;
     }
-    /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.\
-     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
-     * 
-     */
     public Optional<String> maintenanceInterval() {
         return Optional.ofNullable(this.maintenanceInterval);
     }

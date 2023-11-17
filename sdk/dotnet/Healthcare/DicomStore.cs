@@ -160,9 +160,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("dataset")]
         public Output<string> Dataset { get; private set; } = null!;
@@ -278,9 +275,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataset", required: true)]
         public Input<string> Dataset { get; set; } = null!;
@@ -346,9 +340,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }

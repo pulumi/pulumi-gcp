@@ -173,8 +173,6 @@ type TlsInspectionPolicy struct {
 	// The location of the tls inspection policy.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Short name of the TlsInspectionPolicy resource to be created.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -227,8 +225,6 @@ type tlsInspectionPolicyState struct {
 	// The location of the tls inspection policy.
 	Location *string `pulumi:"location"`
 	// Short name of the TlsInspectionPolicy resource to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -249,8 +245,6 @@ type TlsInspectionPolicyState struct {
 	// The location of the tls inspection policy.
 	Location pulumi.StringPtrInput
 	// Short name of the TlsInspectionPolicy resource to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -273,8 +267,6 @@ type tlsInspectionPolicyArgs struct {
 	// The location of the tls inspection policy.
 	Location *string `pulumi:"location"`
 	// Short name of the TlsInspectionPolicy resource to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -292,8 +284,6 @@ type TlsInspectionPolicyArgs struct {
 	// The location of the tls inspection policy.
 	Location pulumi.StringPtrInput
 	// Short name of the TlsInspectionPolicy resource to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -413,8 +403,6 @@ func (o TlsInspectionPolicyOutput) Location() pulumi.StringPtrOutput {
 }
 
 // Short name of the TlsInspectionPolicy resource to be created.
-//
-// ***
 func (o TlsInspectionPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TlsInspectionPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

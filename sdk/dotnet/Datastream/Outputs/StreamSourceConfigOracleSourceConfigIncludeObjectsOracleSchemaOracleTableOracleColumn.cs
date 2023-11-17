@@ -14,45 +14,64 @@ namespace Pulumi.Gcp.Datastream.Outputs
     public sealed class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn
     {
         /// <summary>
+        /// Column name.`column` -
+        /// (Optional)
         /// Column name.
         /// </summary>
         public readonly string? Column;
         /// <summary>
+        /// The Oracle data type. Full data types list can be found here:
+        /// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+        /// (Optional)
         /// The Oracle data type. Full data types list can be found here:
         /// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
         /// </summary>
         public readonly string? DataType;
         /// <summary>
         /// (Output)
+        /// Column encoding.`encoding` -
+        /// (Output)
         /// Column encoding.
         /// </summary>
         public readonly string? Encoding;
         /// <summary>
+        /// (Output)
+        /// Column length.`length` -
         /// (Output)
         /// Column length.
         /// </summary>
         public readonly int? Length;
         /// <summary>
         /// (Output)
+        /// Whether or not the column can accept a null value.`nullable` -
+        /// (Output)
         /// Whether or not the column can accept a null value.
         /// </summary>
         public readonly bool? Nullable;
         /// <summary>
+        /// (Output)
+        /// The ordinal position of the column in the table.`ordinal_position` -
         /// (Output)
         /// The ordinal position of the column in the table.
         /// </summary>
         public readonly int? OrdinalPosition;
         /// <summary>
         /// (Output)
+        /// Column precision.`precision` -
+        /// (Output)
         /// Column precision.
         /// </summary>
         public readonly int? Precision;
         /// <summary>
         /// (Output)
+        /// Whether or not the column represents a primary key.`primary_key` -
+        /// (Output)
         /// Whether or not the column represents a primary key.
         /// </summary>
         public readonly bool? PrimaryKey;
         /// <summary>
+        /// (Output)
+        /// Column scale.`scale` -
         /// (Output)
         /// Column scale.
         /// </summary>

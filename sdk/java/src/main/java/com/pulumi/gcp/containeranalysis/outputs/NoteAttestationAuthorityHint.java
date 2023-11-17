@@ -13,8 +13,6 @@ public final class NoteAttestationAuthorityHint {
      * @return The human readable name of this Attestation Authority, for
      * example &#34;qa&#34;.
      * 
-     * ***
-     * 
      */
     private String humanReadableName;
 
@@ -22,8 +20,6 @@ public final class NoteAttestationAuthorityHint {
     /**
      * @return The human readable name of this Attestation Authority, for
      * example &#34;qa&#34;.
-     * 
-     * ***
      * 
      */
     public String humanReadableName() {

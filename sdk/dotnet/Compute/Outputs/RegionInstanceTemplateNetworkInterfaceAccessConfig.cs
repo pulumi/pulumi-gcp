@@ -19,8 +19,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? NatIp;
         /// <summary>
-        /// The service-level to be provided for IPv6 traffic when the
-        /// subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        /// The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring
+        /// this instance template. This field can take the following values: PREMIUM,
+        /// STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        /// 
+        /// &lt;a name="nested_ipv6_access_config"&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
         /// </summary>
         public readonly string? NetworkTier;
         public readonly string? PublicPtrDomainName;

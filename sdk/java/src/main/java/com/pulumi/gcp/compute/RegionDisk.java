@@ -335,7 +335,6 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
         return this.guestOsFeatures;
     }
     /**
-     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -349,8 +348,7 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> interface_;
 
     /**
-     * @return (Optional, Deprecated)
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     * @return Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      * 
@@ -533,16 +531,12 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
     /**
      * URLs of the zones where the disk should be replicated to.
      * 
-     * ***
-     * 
      */
     @Export(name="replicaZones", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> replicaZones;
 
     /**
      * @return URLs of the zones where the disk should be replicated to.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> replicaZones() {
@@ -589,20 +583,18 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
         return this.size;
     }
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-     * example, the following are valid values: *
-     * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
-     * &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. For example, the following are
+     * valid values:
      * 
      */
     @Export(name="snapshot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshot;
 
     /**
-     * @return The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-     * example, the following are valid values: *
-     * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
-     * &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
+     * @return The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. For example, the following are
+     * valid values:
      * 
      */
     public Output<Optional<String>> snapshot() {

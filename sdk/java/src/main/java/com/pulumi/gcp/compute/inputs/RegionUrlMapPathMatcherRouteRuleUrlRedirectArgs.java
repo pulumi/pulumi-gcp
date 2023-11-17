@@ -136,9 +136,9 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
     }
 
     /**
-     * If set to true, any accompanying query portion of the original URL is removed
-     * prior to redirecting the request. If set to false, the query portion of the
-     * original URL is retained.
+     * If set to true, any accompanying query portion of the original URL is removed prior
+     * to redirecting the request. If set to false, the query portion of the original URL is
+     * retained.
      * This field is required to ensure an empty block is not set. The normal default value is false.
      * 
      */
@@ -146,9 +146,9 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
     private @Nullable Output<Boolean> stripQuery;
 
     /**
-     * @return If set to true, any accompanying query portion of the original URL is removed
-     * prior to redirecting the request. If set to false, the query portion of the
-     * original URL is retained.
+     * @return If set to true, any accompanying query portion of the original URL is removed prior
+     * to redirecting the request. If set to false, the query portion of the original URL is
+     * retained.
      * This field is required to ensure an empty block is not set. The normal default value is false.
      * 
      */
@@ -335,9 +335,9 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
         }
 
         /**
-         * @param stripQuery If set to true, any accompanying query portion of the original URL is removed
-         * prior to redirecting the request. If set to false, the query portion of the
-         * original URL is retained.
+         * @param stripQuery If set to true, any accompanying query portion of the original URL is removed prior
+         * to redirecting the request. If set to false, the query portion of the original URL is
+         * retained.
          * This field is required to ensure an empty block is not set. The normal default value is false.
          * 
          * @return builder
@@ -349,9 +349,9 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
         }
 
         /**
-         * @param stripQuery If set to true, any accompanying query portion of the original URL is removed
-         * prior to redirecting the request. If set to false, the query portion of the
-         * original URL is retained.
+         * @param stripQuery If set to true, any accompanying query portion of the original URL is removed prior
+         * to redirecting the request. If set to false, the query portion of the original URL is
+         * retained.
          * This field is required to ensure an empty block is not set. The normal default value is false.
          * 
          * @return builder

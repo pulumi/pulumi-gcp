@@ -139,9 +139,6 @@ export class TargetServer extends pulumi.CustomResource {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly envId!: pulumi.Output<string>;
     /**
@@ -228,9 +225,6 @@ export interface TargetServerState {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     envId?: pulumi.Input<string>;
     /**
@@ -272,9 +266,6 @@ export interface TargetServerArgs {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     envId: pulumi.Input<string>;
     /**

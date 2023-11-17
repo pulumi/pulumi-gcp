@@ -49,9 +49,6 @@ class InstanceArgs:
                disrupt service.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-               
-               
-               - - -
         :param pulumi.Input['InstanceOauthConfigArgs'] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
@@ -60,8 +57,8 @@ class InstanceArgs:
                - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
                - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
                - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-               Default value is `LOOKER_CORE_TRIAL`.
-               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+                 Default value is `LOOKER_CORE_TRIAL`.
+                 Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -183,9 +180,6 @@ class InstanceArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -216,8 +210,8 @@ class InstanceArgs:
         - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        Default value is `LOOKER_CORE_TRIAL`.
-        Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+          Default value is `LOOKER_CORE_TRIAL`.
+          Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         """
         return pulumi.get(self, "platform_edition")
 
@@ -357,9 +351,6 @@ class _InstanceState:
                disrupt service.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-               
-               
-               - - -
         :param pulumi.Input['InstanceOauthConfigArgs'] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
@@ -368,8 +359,8 @@ class _InstanceState:
                - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
                - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
                - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-               Default value is `LOOKER_CORE_TRIAL`.
-               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+                 Default value is `LOOKER_CORE_TRIAL`.
+                 Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -580,9 +571,6 @@ class _InstanceState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -613,8 +601,8 @@ class _InstanceState:
         - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        Default value is `LOOKER_CORE_TRIAL`.
-        Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+          Default value is `LOOKER_CORE_TRIAL`.
+          Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         """
         return pulumi.get(self, "platform_edition")
 
@@ -927,9 +915,6 @@ class Instance(pulumi.CustomResource):
                disrupt service.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['InstanceOauthConfigArgs']] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
@@ -938,8 +923,8 @@ class Instance(pulumi.CustomResource):
                - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
                - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
                - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-               Default value is `LOOKER_CORE_TRIAL`.
-               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+                 Default value is `LOOKER_CORE_TRIAL`.
+                 Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1254,9 +1239,6 @@ class Instance(pulumi.CustomResource):
                disrupt service.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['InstanceOauthConfigArgs']] oauth_config: Looker Instance OAuth login settings.
                Structure is documented below.
         :param pulumi.Input[str] platform_edition: Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
@@ -1265,8 +1247,8 @@ class Instance(pulumi.CustomResource):
                - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
                - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
                - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-               Default value is `LOOKER_CORE_TRIAL`.
-               Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+                 Default value is `LOOKER_CORE_TRIAL`.
+                 Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1417,9 +1399,6 @@ class Instance(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1442,8 +1421,8 @@ class Instance(pulumi.CustomResource):
         - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        Default value is `LOOKER_CORE_TRIAL`.
-        Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+          Default value is `LOOKER_CORE_TRIAL`.
+          Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         """
         return pulumi.get(self, "platform_edition")
 

@@ -203,8 +203,8 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-        /// required when setting to true
+        /// Whether this disk is using confidential compute mode.
+        /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         /// </summary>
         [Output("enableConfidentialCompute")]
         public Output<bool> EnableConfidentialCompute { get; private set; } = null!;
@@ -232,7 +232,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Image { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
         /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -288,9 +287,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -369,10 +365,10 @@ namespace Pulumi.Gcp.Compute
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-        /// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-        /// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        /// The source snapshot used to create this disk. You can provide this as
+        /// a partial or full URL to the resource. If the snapshot is in another
+        /// project than this disk, you must supply a full URL. For example, the
+        /// following are valid values:
         /// </summary>
         [Output("snapshot")]
         public Output<string?> Snapshot { get; private set; } = null!;
@@ -537,8 +533,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.DiskDiskEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
 
         /// <summary>
-        /// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-        /// required when setting to true
+        /// Whether this disk is using confidential compute mode.
+        /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }
@@ -572,7 +568,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
         /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -621,9 +616,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -695,10 +687,10 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-        /// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-        /// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        /// The source snapshot used to create this disk. You can provide this as
+        /// a partial or full URL to the resource. If the snapshot is in another
+        /// project than this disk, you must supply a full URL. For example, the
+        /// following are valid values:
         /// </summary>
         [Input("snapshot")]
         public Input<string>? Snapshot { get; set; }
@@ -806,8 +798,8 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-        /// required when setting to true
+        /// Whether this disk is using confidential compute mode.
+        /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }
@@ -841,7 +833,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
         /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -909,9 +900,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1006,10 +994,10 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-        /// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-        /// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        /// The source snapshot used to create this disk. You can provide this as
+        /// a partial or full URL to the resource. If the snapshot is in another
+        /// project than this disk, you must supply a full URL. For example, the
+        /// following are valid values:
         /// </summary>
         [Input("snapshot")]
         public Input<string>? Snapshot { get; set; }

@@ -28,9 +28,6 @@ class FunctionArgs:
         """
         The set of arguments for constructing a Function resource.
         :param pulumi.Input[str] location: The location of this cloud function.
-               
-               
-               - - -
         :param pulumi.Input['FunctionBuildConfigArgs'] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
@@ -74,9 +71,6 @@ class FunctionArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location of this cloud function.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -228,9 +222,6 @@ class _FunctionState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of this cloud function.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -371,9 +362,6 @@ class _FunctionState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location of this cloud function.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -714,9 +702,6 @@ class Function(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of this cloud function.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1043,9 +1028,6 @@ class Function(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of this cloud function.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1148,9 +1130,6 @@ class Function(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location of this cloud function.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

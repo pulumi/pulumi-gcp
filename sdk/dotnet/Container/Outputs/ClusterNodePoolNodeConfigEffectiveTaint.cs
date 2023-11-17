@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? Effect;
         /// <summary>
-        /// The default or custom node affinity label key name.
+        /// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         /// </summary>
         public readonly string? Key;
         /// <summary>

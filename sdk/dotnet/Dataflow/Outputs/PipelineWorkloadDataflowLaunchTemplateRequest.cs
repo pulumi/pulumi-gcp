@@ -31,9 +31,6 @@ namespace Pulumi.Gcp.Dataflow.Outputs
         /// The ID of the Cloud Platform project that the job belongs to.
         /// </summary>
         public readonly string ProjectId;
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         public readonly bool? ValidateOnly;
 
         [OutputConstructor]

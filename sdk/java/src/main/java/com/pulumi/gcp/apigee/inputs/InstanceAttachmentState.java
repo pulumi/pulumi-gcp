@@ -34,8 +34,6 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
      * 
-     * ***
-     * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
@@ -43,8 +41,6 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
     /**
      * @return The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -117,8 +113,6 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
          * @param instanceId The Apigee instance associated with the Apigee environment,
          * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -130,8 +124,6 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
         /**
          * @param instanceId The Apigee instance associated with the Apigee environment,
          * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-         * 
-         * ***
          * 
          * @return builder
          * 

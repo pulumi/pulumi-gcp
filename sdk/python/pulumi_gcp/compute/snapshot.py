@@ -29,9 +29,6 @@ class SnapshotArgs:
         """
         The set of arguments for constructing a Snapshot resource.
         :param pulumi.Input[str] source_disk: A reference to the disk used to create this snapshot.
-               
-               
-               - - -
         :param pulumi.Input[str] chain_name: Creates the new snapshot in the snapshot chain labeled with the
                specified name. The chain name must be 1-63 characters long and
                comply with RFC1035. This is an uncommon option only for advanced
@@ -94,9 +91,6 @@ class SnapshotArgs:
     def source_disk(self) -> pulumi.Input[str]:
         """
         A reference to the disk used to create this snapshot.
-
-
-        - - -
         """
         return pulumi.get(self, "source_disk")
 
@@ -308,9 +302,6 @@ class _SnapshotState:
                Structure is documented below.
         :param pulumi.Input[int] snapshot_id: The unique identifier for the resource.
         :param pulumi.Input[str] source_disk: A reference to the disk used to create this snapshot.
-               
-               
-               - - -
         :param pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
@@ -562,9 +553,6 @@ class _SnapshotState:
     def source_disk(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to the disk used to create this snapshot.
-
-
-        - - -
         """
         return pulumi.get(self, "source_disk")
 
@@ -767,9 +755,6 @@ class Snapshot(pulumi.CustomResource):
                key and you do not need to provide a key to use the snapshot later.
                Structure is documented below.
         :param pulumi.Input[str] source_disk: A reference to the disk used to create this snapshot.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
@@ -1012,9 +997,6 @@ class Snapshot(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] snapshot_id: The unique identifier for the resource.
         :param pulumi.Input[str] source_disk: A reference to the disk used to create this snapshot.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['SnapshotSourceDiskEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
@@ -1196,9 +1178,6 @@ class Snapshot(pulumi.CustomResource):
     def source_disk(self) -> pulumi.Output[str]:
         """
         A reference to the disk used to create this snapshot.
-
-
-        - - -
         """
         return pulumi.get(self, "source_disk")
 

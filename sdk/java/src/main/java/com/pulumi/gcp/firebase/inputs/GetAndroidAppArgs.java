@@ -18,16 +18,12 @@ public final class GetAndroidAppArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The app_id of name of the Firebase androidApp.
      * 
-     * ***
-     * 
      */
     @Import(name="appId", required=true)
     private Output<String> appId;
 
     /**
      * @return The app_id of name of the Firebase androidApp.
-     * 
-     * ***
      * 
      */
     public Output<String> appId() {
@@ -79,8 +75,6 @@ public final class GetAndroidAppArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param appId The app_id of name of the Firebase androidApp.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -91,8 +85,6 @@ public final class GetAndroidAppArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param appId The app_id of name of the Firebase androidApp.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -377,18 +377,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/subnetwork:Subnetwork")
 public class Subnetwork extends com.pulumi.resources.CustomResource {
     /**
-     * Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-     * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-     * BGP even if their destinations match existing subnet ranges.
+     * Typically packets destined to IPs within the subnetwork range that do not match
+     * existing resources are dropped and prevented from leaving the VPC.
+     * Setting this field to true will allow these packets to match dynamic routes injected
+     * via BGP even if their destinations match existing subnet ranges.
      * 
      */
     @Export(name="allowSubnetCidrRoutesOverlap", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowSubnetCidrRoutesOverlap;
 
     /**
-     * @return Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-     * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-     * BGP even if their destinations match existing subnet ranges.
+     * @return Typically packets destined to IPs within the subnetwork range that do not match
+     * existing resources are dropped and prevented from leaving the VPC.
+     * Setting this field to true will allow these packets to match dynamic routes injected
+     * via BGP even if their destinations match existing subnet ranges.
      * 
      */
     public Output<Boolean> allowSubnetCidrRoutesOverlap() {
@@ -594,8 +596,6 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
@@ -603,8 +603,6 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     /**
      * @return The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {

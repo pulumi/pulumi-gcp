@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Represents kinds of entities.
         /// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
         /// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-        /// Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+        ///   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         /// </summary>
         [Output("autoExpansionMode")]
         public Output<string?> AutoExpansionMode { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
         /// * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
         /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        /// Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+        ///   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Represents kinds of entities.
         /// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
         /// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-        /// Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+        ///   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         /// </summary>
         [Input("autoExpansionMode")]
         public Input<string>? AutoExpansionMode { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
         /// * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
         /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        /// Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+        ///   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -322,7 +322,7 @@ namespace Pulumi.Gcp.Diagflow
         /// Represents kinds of entities.
         /// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
         /// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-        /// Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+        ///   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         /// </summary>
         [Input("autoExpansionMode")]
         public Input<string>? AutoExpansionMode { get; set; }
@@ -371,7 +371,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
         /// * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
         /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        /// Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+        ///   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

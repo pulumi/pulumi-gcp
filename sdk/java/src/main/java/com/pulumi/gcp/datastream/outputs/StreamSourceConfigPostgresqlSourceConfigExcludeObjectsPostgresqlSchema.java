@@ -14,12 +14,17 @@ import javax.annotation.Nullable;
 public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema {
     /**
      * @return Tables in the schema.
+     * Structure is documented below.`postgresql_tables` -
+     * (Optional)
+     * Tables in the schema.
      * Structure is documented below.
      * 
      */
     private @Nullable List<StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable> postgresqlTables;
     /**
-     * @return Database name.
+     * @return Database name.`schema` -
+     * (Required)
+     * Database name.
      * 
      */
     private String schema;
@@ -27,6 +32,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
     private StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema() {}
     /**
      * @return Tables in the schema.
+     * Structure is documented below.`postgresql_tables` -
+     * (Optional)
+     * Tables in the schema.
      * Structure is documented below.
      * 
      */
@@ -34,7 +42,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
         return this.postgresqlTables == null ? List.of() : this.postgresqlTables;
     }
     /**
-     * @return Database name.
+     * @return Database name.`schema` -
+     * (Required)
+     * Database name.
      * 
      */
     public String schema() {

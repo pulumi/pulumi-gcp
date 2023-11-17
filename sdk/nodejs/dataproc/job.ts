@@ -100,10 +100,6 @@ export class Job extends pulumi.CustomResource {
     public /*out*/ readonly driverOutputResourceUri!: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     *
-     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-     *
-     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -255,10 +251,6 @@ export interface JobState {
     driverOutputResourceUri?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     *
-     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-     *
-     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

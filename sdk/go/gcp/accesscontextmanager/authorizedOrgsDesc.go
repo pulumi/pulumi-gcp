@@ -128,8 +128,6 @@ type AuthorizedOrgsDesc struct {
 	// The `authorizedOrgsDesc` component must begin with a letter, followed by
 	// alphanumeric characters or `_`.
 	// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The list of organization ids in this AuthorizedOrgsDesc.
 	// Format: `organizations/<org_number>`
@@ -205,8 +203,6 @@ type authorizedOrgsDescState struct {
 	// The `authorizedOrgsDesc` component must begin with a letter, followed by
 	// alphanumeric characters or `_`.
 	// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The list of organization ids in this AuthorizedOrgsDesc.
 	// Format: `organizations/<org_number>`
@@ -250,8 +246,6 @@ type AuthorizedOrgsDescState struct {
 	// The `authorizedOrgsDesc` component must begin with a letter, followed by
 	// alphanumeric characters or `_`.
 	// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The list of organization ids in this AuthorizedOrgsDesc.
 	// Format: `organizations/<org_number>`
@@ -297,8 +291,6 @@ type authorizedOrgsDescArgs struct {
 	// The `authorizedOrgsDesc` component must begin with a letter, followed by
 	// alphanumeric characters or `_`.
 	// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The list of organization ids in this AuthorizedOrgsDesc.
 	// Format: `organizations/<org_number>`
@@ -339,8 +331,6 @@ type AuthorizedOrgsDescArgs struct {
 	// The `authorizedOrgsDesc` component must begin with a letter, followed by
 	// alphanumeric characters or `_`.
 	// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The list of organization ids in this AuthorizedOrgsDesc.
 	// Format: `organizations/<org_number>`
@@ -480,8 +470,6 @@ func (o AuthorizedOrgsDescOutput) CreateTime() pulumi.StringOutput {
 // The `authorizedOrgsDesc` component must begin with a letter, followed by
 // alphanumeric characters or `_`.
 // After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-//
-// ***
 func (o AuthorizedOrgsDescOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizedOrgsDesc) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

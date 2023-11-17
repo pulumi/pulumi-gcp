@@ -38,9 +38,6 @@ class DataTransferConfigArgs:
                section for each data source. For example the parameters for Cloud Storage transfers are listed here:
                https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
                **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-               
-               
-               - - -
         :param pulumi.Input[int] data_refresh_window_days: The number of days to look back to automatically refresh the data.
                For example, if dataRefreshWindowDays = 10, then every day BigQuery
                reingests data for [today-10, today-1], rather than ingesting data for
@@ -136,9 +133,6 @@ class DataTransferConfigArgs:
         section for each data source. For example the parameters for Cloud Storage transfers are listed here:
         https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -349,9 +343,6 @@ class _DataTransferConfigState:
                section for each data source. For example the parameters for Cloud Storage transfers are listed here:
                https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
                **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom
@@ -534,9 +525,6 @@ class _DataTransferConfigState:
         section for each data source. For example the parameters for Cloud Storage transfers are listed here:
         https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -726,9 +714,6 @@ class DataTransferConfig(pulumi.CustomResource):
                section for each data source. For example the parameters for Cloud Storage transfers are listed here:
                https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
                **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom
@@ -936,9 +921,6 @@ class DataTransferConfig(pulumi.CustomResource):
                section for each data source. For example the parameters for Cloud Storage transfers are listed here:
                https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
                **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom
@@ -1075,9 +1057,6 @@ class DataTransferConfig(pulumi.CustomResource):
         section for each data source. For example the parameters for Cloud Storage transfers are listed here:
         https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-
-
-        - - -
         """
         return pulumi.get(self, "params")
 

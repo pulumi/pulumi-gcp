@@ -22,8 +22,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// <summary>
         /// (Output)
         /// The Vsphere tag name.
-        /// 
-        /// - - -
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }

@@ -24,20 +24,7 @@ class TenantDefaultSupportedIdpConfigArgs:
         The set of arguments for constructing a TenantDefaultSupportedIdpConfig resource.
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
-               
-               
-               - - -
         :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
-               * `apple.com`
-               * `facebook.com`
-               * `gc.apple.com`
-               * `github.com`
-               * `google.com`
-               * `linkedin.com`
-               * `microsoft.com`
-               * `playgames.google.com`
-               * `twitter.com`
-               * `yahoo.com`
         :param pulumi.Input[str] tenant: The name of the tenant where this DefaultSupportedIdpConfig resource exists
         :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -69,9 +56,6 @@ class TenantDefaultSupportedIdpConfigArgs:
     def client_secret(self) -> pulumi.Input[str]:
         """
         OAuth client secret
-
-
-        - - -
         """
         return pulumi.get(self, "client_secret")
 
@@ -84,16 +68,6 @@ class TenantDefaultSupportedIdpConfigArgs:
     def idp_id(self) -> pulumi.Input[str]:
         """
         ID of the IDP. Possible values include:
-        * `apple.com`
-        * `facebook.com`
-        * `gc.apple.com`
-        * `github.com`
-        * `google.com`
-        * `linkedin.com`
-        * `microsoft.com`
-        * `playgames.google.com`
-        * `twitter.com`
-        * `yahoo.com`
         """
         return pulumi.get(self, "idp_id")
 
@@ -153,21 +127,8 @@ class _TenantDefaultSupportedIdpConfigState:
         Input properties used for looking up and filtering TenantDefaultSupportedIdpConfig resources.
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
-               
-               
-               - - -
         :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
         :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
-               * `apple.com`
-               * `facebook.com`
-               * `gc.apple.com`
-               * `github.com`
-               * `google.com`
-               * `linkedin.com`
-               * `microsoft.com`
-               * `playgames.google.com`
-               * `twitter.com`
-               * `yahoo.com`
         :param pulumi.Input[str] name: The name of the default supported IDP config resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -205,9 +166,6 @@ class _TenantDefaultSupportedIdpConfigState:
     def client_secret(self) -> Optional[pulumi.Input[str]]:
         """
         OAuth client secret
-
-
-        - - -
         """
         return pulumi.get(self, "client_secret")
 
@@ -232,16 +190,6 @@ class _TenantDefaultSupportedIdpConfigState:
     def idp_id(self) -> Optional[pulumi.Input[str]]:
         """
         ID of the IDP. Possible values include:
-        * `apple.com`
-        * `facebook.com`
-        * `gc.apple.com`
-        * `github.com`
-        * `google.com`
-        * `linkedin.com`
-        * `microsoft.com`
-        * `playgames.google.com`
-        * `twitter.com`
-        * `yahoo.com`
         """
         return pulumi.get(self, "idp_id")
 
@@ -350,21 +298,8 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
-               
-               
-               - - -
         :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
         :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
-               * `apple.com`
-               * `facebook.com`
-               * `gc.apple.com`
-               * `github.com`
-               * `google.com`
-               * `linkedin.com`
-               * `microsoft.com`
-               * `playgames.google.com`
-               * `twitter.com`
-               * `yahoo.com`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tenant: The name of the tenant where this DefaultSupportedIdpConfig resource exists
@@ -493,21 +428,8 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
-               
-               
-               - - -
         :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
         :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
-               * `apple.com`
-               * `facebook.com`
-               * `gc.apple.com`
-               * `github.com`
-               * `google.com`
-               * `linkedin.com`
-               * `microsoft.com`
-               * `playgames.google.com`
-               * `twitter.com`
-               * `yahoo.com`
         :param pulumi.Input[str] name: The name of the default supported IDP config resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -539,9 +461,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
     def client_secret(self) -> pulumi.Output[str]:
         """
         OAuth client secret
-
-
-        - - -
         """
         return pulumi.get(self, "client_secret")
 
@@ -558,16 +477,6 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
     def idp_id(self) -> pulumi.Output[str]:
         """
         ID of the IDP. Possible values include:
-        * `apple.com`
-        * `facebook.com`
-        * `gc.apple.com`
-        * `github.com`
-        * `google.com`
-        * `linkedin.com`
-        * `microsoft.com`
-        * `playgames.google.com`
-        * `twitter.com`
-        * `yahoo.com`
         """
         return pulumi.get(self, "idp_id")
 

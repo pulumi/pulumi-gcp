@@ -267,8 +267,6 @@ type ServerTlsPolicy struct {
 	// Structure is documented below.
 	MtlsPolicy ServerTlsPolicyMtlsPolicyPtrOutput `pulumi:"mtlsPolicy"`
 	// Name of the ServerTlsPolicy resource.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -340,8 +338,6 @@ type serverTlsPolicyState struct {
 	// Structure is documented below.
 	MtlsPolicy *ServerTlsPolicyMtlsPolicy `pulumi:"mtlsPolicy"`
 	// Name of the ServerTlsPolicy resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -379,8 +375,6 @@ type ServerTlsPolicyState struct {
 	// Structure is documented below.
 	MtlsPolicy ServerTlsPolicyMtlsPolicyPtrInput
 	// Name of the ServerTlsPolicy resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -418,8 +412,6 @@ type serverTlsPolicyArgs struct {
 	// Structure is documented below.
 	MtlsPolicy *ServerTlsPolicyMtlsPolicy `pulumi:"mtlsPolicy"`
 	// Name of the ServerTlsPolicy resource.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -449,8 +441,6 @@ type ServerTlsPolicyArgs struct {
 	// Structure is documented below.
 	MtlsPolicy ServerTlsPolicyMtlsPolicyPtrInput
 	// Name of the ServerTlsPolicy resource.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -590,8 +580,6 @@ func (o ServerTlsPolicyOutput) MtlsPolicy() ServerTlsPolicyMtlsPolicyPtrOutput {
 }
 
 // Name of the ServerTlsPolicy resource.
-//
-// ***
 func (o ServerTlsPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

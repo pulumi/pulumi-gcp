@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string Name;
         /// <summary>
         /// The port number.
-        /// - - -
         /// </summary>
         public readonly int Port;
 

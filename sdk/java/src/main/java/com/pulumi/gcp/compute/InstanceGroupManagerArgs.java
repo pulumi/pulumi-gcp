@@ -28,7 +28,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     public static final InstanceGroupManagerArgs Empty = new InstanceGroupManagerArgs();
 
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
@@ -38,8 +37,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<InstanceGroupManagerAllInstancesConfigArgs> allInstancesConfig;
 
     /**
-     * @return )
-     * Properties to set on all instances in the group. After setting
+     * @return Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
      * 
@@ -286,16 +284,12 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
      * 
-     * ***
-     * 
      */
     @Import(name="updatePolicy")
     private @Nullable Output<InstanceGroupManagerUpdatePolicyArgs> updatePolicy;
 
     /**
      * @return The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-     * 
-     * ***
      * 
      */
     public Optional<Output<InstanceGroupManagerUpdatePolicyArgs>> updatePolicy() {
@@ -365,8 +359,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
      * The zone that instances in this group should be created
      * in.
      * 
-     * ***
-     * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
@@ -374,8 +366,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     /**
      * @return The zone that instances in this group should be created
      * in.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> zone() {
@@ -425,8 +415,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allInstancesConfig )
-         * Properties to set on all instances in the group. After setting
+         * @param allInstancesConfig Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group&#39;s instances to
          * apply the configuration.
          * 
@@ -439,8 +428,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allInstancesConfig )
-         * Properties to set on all instances in the group. After setting
+         * @param allInstancesConfig Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group&#39;s instances to
          * apply the configuration.
          * 
@@ -820,8 +808,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         /**
          * @param updatePolicy The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -832,8 +818,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param updatePolicy The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -935,8 +919,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
          * @param zone The zone that instances in this group should be created
          * in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -948,8 +930,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         /**
          * @param zone The zone that instances in this group should be created
          * in.
-         * 
-         * ***
          * 
          * @return builder
          * 

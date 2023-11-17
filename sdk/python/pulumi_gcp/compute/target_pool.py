@@ -40,13 +40,11 @@ class TargetPoolArgs:
                target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
                region.
-        :param pulumi.Input[str] security_policy: ) The resource URL for the security policy associated with this target pool.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
                "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
@@ -145,8 +143,6 @@ class TargetPoolArgs:
         """
         A unique name for the resource, required by GCE. Changing
         this forces a new resource to be created.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -184,7 +180,7 @@ class TargetPoolArgs:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        ) The resource URL for the security policy associated with this target pool.
+        The resource URL for the security policy associated with this target pool.
         """
         return pulumi.get(self, "security_policy")
 
@@ -237,13 +233,11 @@ class _TargetPoolState:
                target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
                region.
-        :param pulumi.Input[str] security_policy: ) The resource URL for the security policy associated with this target pool.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
@@ -345,8 +339,6 @@ class _TargetPoolState:
         """
         A unique name for the resource, required by GCE. Changing
         this forces a new resource to be created.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -384,7 +376,7 @@ class _TargetPoolState:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        ) The resource URL for the security policy associated with this target pool.
+        The resource URL for the security policy associated with this target pool.
         """
         return pulumi.get(self, "security_policy")
 
@@ -486,13 +478,11 @@ class TargetPool(pulumi.CustomResource):
                target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
                region.
-        :param pulumi.Input[str] security_policy: ) The resource URL for the security policy associated with this target pool.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
                "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
@@ -625,13 +615,11 @@ class TargetPool(pulumi.CustomResource):
                target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
                region.
-        :param pulumi.Input[str] security_policy: ) The resource URL for the security policy associated with this target pool.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
@@ -707,8 +695,6 @@ class TargetPool(pulumi.CustomResource):
         """
         A unique name for the resource, required by GCE. Changing
         this forces a new resource to be created.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -734,7 +720,7 @@ class TargetPool(pulumi.CustomResource):
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        ) The resource URL for the security policy associated with this target pool.
+        The resource URL for the security policy associated with this target pool.
         """
         return pulumi.get(self, "security_policy")
 

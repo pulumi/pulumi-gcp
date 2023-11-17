@@ -254,9 +254,6 @@ export class WorkstationCluster extends pulumi.CustomResource {
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
      * ID to use for the workstation cluster.
-     *
-     *
-     * - - -
      */
     public readonly workstationClusterId!: pulumi.Output<string>;
 
@@ -422,9 +419,6 @@ export interface WorkstationClusterState {
     uid?: pulumi.Input<string>;
     /**
      * ID to use for the workstation cluster.
-     *
-     *
-     * - - -
      */
     workstationClusterId?: pulumi.Input<string>;
 }
@@ -480,9 +474,6 @@ export interface WorkstationClusterArgs {
     subnetwork: pulumi.Input<string>;
     /**
      * ID to use for the workstation cluster.
-     *
-     *
-     * - - -
      */
     workstationClusterId: pulumi.Input<string>;
 }

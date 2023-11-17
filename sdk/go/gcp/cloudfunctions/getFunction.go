@@ -53,8 +53,6 @@ func LookupFunction(ctx *pulumi.Context, args *LookupFunctionArgs, opts ...pulum
 // A collection of arguments for invoking getFunction.
 type LookupFunctionArgs struct {
 	// The name of a Cloud Function.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -137,8 +135,6 @@ func LookupFunctionOutput(ctx *pulumi.Context, args LookupFunctionOutputArgs, op
 // A collection of arguments for invoking getFunction.
 type LookupFunctionOutputArgs struct {
 	// The name of a Cloud Function.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

@@ -20,8 +20,6 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
      * The action to take if this rule matches.
      * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
      * 
-     * ***
-     * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
@@ -29,8 +27,6 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The action to take if this rule matches.
      * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> action() {
@@ -139,8 +135,6 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
          * @param action The action to take if this rule matches.
          * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -152,8 +146,6 @@ public final class FirewallRuleState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param action The action to take if this rule matches.
          * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
-         * 
-         * ***
          * 
          * @return builder
          * 

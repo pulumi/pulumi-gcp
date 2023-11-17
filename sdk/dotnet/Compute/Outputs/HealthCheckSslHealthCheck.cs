@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class HealthCheckSslHealthCheck
     {
         /// <summary>
-        /// The TCP port number for the HTTP2 health check request.
+        /// The TCP port number for the SSL health check request.
         /// The default value is 443.
         /// </summary>
         public readonly int? Port;

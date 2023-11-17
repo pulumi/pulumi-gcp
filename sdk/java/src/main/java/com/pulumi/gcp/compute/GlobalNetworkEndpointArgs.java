@@ -36,16 +36,12 @@ public final class GlobalNetworkEndpointArgs extends com.pulumi.resources.Resour
     /**
      * The global network endpoint group this endpoint is part of.
      * 
-     * ***
-     * 
      */
     @Import(name="globalNetworkEndpointGroup", required=true)
     private Output<String> globalNetworkEndpointGroup;
 
     /**
      * @return The global network endpoint group this endpoint is part of.
-     * 
-     * ***
      * 
      */
     public Output<String> globalNetworkEndpointGroup() {
@@ -153,8 +149,6 @@ public final class GlobalNetworkEndpointArgs extends com.pulumi.resources.Resour
         /**
          * @param globalNetworkEndpointGroup The global network endpoint group this endpoint is part of.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -165,8 +159,6 @@ public final class GlobalNetworkEndpointArgs extends com.pulumi.resources.Resour
 
         /**
          * @param globalNetworkEndpointGroup The global network endpoint group this endpoint is part of.
-         * 
-         * ***
          * 
          * @return builder
          * 

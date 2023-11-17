@@ -31,9 +31,6 @@ class BackupArgs:
         :param pulumi.Input[str] backup_id: The ID of the alloydb backup.
         :param pulumi.Input[str] cluster_name: The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
         :param pulumi.Input[str] location: The location where the alloydb backup should reside.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -99,9 +96,6 @@ class BackupArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location where the alloydb backup should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -267,9 +261,6 @@ class _BackupState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb backup should reside.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -550,9 +541,6 @@ class _BackupState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location where the alloydb backup should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -810,9 +798,6 @@ class Backup(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb backup should reside.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The backup type, which suggests the trigger for the backup.
@@ -1069,9 +1054,6 @@ class Backup(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb backup should reside.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1267,9 +1249,6 @@ class Backup(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location where the alloydb backup should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

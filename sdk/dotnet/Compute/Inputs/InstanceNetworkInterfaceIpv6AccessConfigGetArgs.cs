@@ -29,7 +29,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// A unique name for the resource, required by GCE.
-        /// Changing this forces a new resource to be created.
+        /// Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+        /// is "External IPv6".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

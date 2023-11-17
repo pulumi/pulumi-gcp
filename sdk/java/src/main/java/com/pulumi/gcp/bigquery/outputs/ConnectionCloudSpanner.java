@@ -39,8 +39,7 @@ public final class ConnectionCloudSpanner {
      */
     private @Nullable Boolean useParallelism;
     /**
-     * @return (Optional, Deprecated)
-     * If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+     * @return If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
      * 
      * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 
@@ -88,8 +87,7 @@ public final class ConnectionCloudSpanner {
         return Optional.ofNullable(this.useParallelism);
     }
     /**
-     * @return (Optional, Deprecated)
-     * If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+     * @return If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
      * 
      * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 

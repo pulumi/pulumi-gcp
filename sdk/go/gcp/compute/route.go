@@ -124,16 +124,10 @@ type Route struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network that this route applies to.
-	//
-	// ***
 	Network pulumi.StringOutput `pulumi:"network"`
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
 	// partial valid URL:
-	// * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-	// * `projects/project/global/gateways/default-internet-gateway`
-	// * `global/gateways/default-internet-gateway`
-	// * The string `default-internet-gateway`.
 	NextHopGateway pulumi.StringPtrOutput `pulumi:"nextHopGateway"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
@@ -151,13 +145,8 @@ type Route struct {
 	NextHopIlb pulumi.StringPtrOutput `pulumi:"nextHopIlb"`
 	// URL to an instance that should handle matching packets.
 	// You can specify this as a full or partial URL. For example:
-	// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-	// * `projects/project/zones/zone/instances/instance`
-	// * `zones/zone/instances/instance`
-	// * Just the instance name, with the zone in `nextHopInstanceZone`.
 	NextHopInstance pulumi.StringPtrOutput `pulumi:"nextHopInstance"`
-	// (Optional when `nextHopInstance` is
-	// specified)  The zone of the instance specified in
+	// The zone of the instance specified in
 	// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 	// a URL.
 	NextHopInstanceZone pulumi.StringOutput `pulumi:"nextHopInstanceZone"`
@@ -233,16 +222,10 @@ type routeState struct {
 	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The network that this route applies to.
-	//
-	// ***
 	Network *string `pulumi:"network"`
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
 	// partial valid URL:
-	// * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-	// * `projects/project/global/gateways/default-internet-gateway`
-	// * `global/gateways/default-internet-gateway`
-	// * The string `default-internet-gateway`.
 	NextHopGateway *string `pulumi:"nextHopGateway"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
@@ -260,13 +243,8 @@ type routeState struct {
 	NextHopIlb *string `pulumi:"nextHopIlb"`
 	// URL to an instance that should handle matching packets.
 	// You can specify this as a full or partial URL. For example:
-	// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-	// * `projects/project/zones/zone/instances/instance`
-	// * `zones/zone/instances/instance`
-	// * Just the instance name, with the zone in `nextHopInstanceZone`.
 	NextHopInstance *string `pulumi:"nextHopInstance"`
-	// (Optional when `nextHopInstance` is
-	// specified)  The zone of the instance specified in
+	// The zone of the instance specified in
 	// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 	// a URL.
 	NextHopInstanceZone *string `pulumi:"nextHopInstanceZone"`
@@ -307,16 +285,10 @@ type RouteState struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The network that this route applies to.
-	//
-	// ***
 	Network pulumi.StringPtrInput
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
 	// partial valid URL:
-	// * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-	// * `projects/project/global/gateways/default-internet-gateway`
-	// * `global/gateways/default-internet-gateway`
-	// * The string `default-internet-gateway`.
 	NextHopGateway pulumi.StringPtrInput
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
@@ -334,13 +306,8 @@ type RouteState struct {
 	NextHopIlb pulumi.StringPtrInput
 	// URL to an instance that should handle matching packets.
 	// You can specify this as a full or partial URL. For example:
-	// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-	// * `projects/project/zones/zone/instances/instance`
-	// * `zones/zone/instances/instance`
-	// * Just the instance name, with the zone in `nextHopInstanceZone`.
 	NextHopInstance pulumi.StringPtrInput
-	// (Optional when `nextHopInstance` is
-	// specified)  The zone of the instance specified in
+	// The zone of the instance specified in
 	// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 	// a URL.
 	NextHopInstanceZone pulumi.StringPtrInput
@@ -385,16 +352,10 @@ type routeArgs struct {
 	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The network that this route applies to.
-	//
-	// ***
 	Network string `pulumi:"network"`
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
 	// partial valid URL:
-	// * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-	// * `projects/project/global/gateways/default-internet-gateway`
-	// * `global/gateways/default-internet-gateway`
-	// * The string `default-internet-gateway`.
 	NextHopGateway *string `pulumi:"nextHopGateway"`
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
@@ -412,13 +373,8 @@ type routeArgs struct {
 	NextHopIlb *string `pulumi:"nextHopIlb"`
 	// URL to an instance that should handle matching packets.
 	// You can specify this as a full or partial URL. For example:
-	// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-	// * `projects/project/zones/zone/instances/instance`
-	// * `zones/zone/instances/instance`
-	// * Just the instance name, with the zone in `nextHopInstanceZone`.
 	NextHopInstance *string `pulumi:"nextHopInstance"`
-	// (Optional when `nextHopInstance` is
-	// specified)  The zone of the instance specified in
+	// The zone of the instance specified in
 	// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 	// a URL.
 	NextHopInstanceZone *string `pulumi:"nextHopInstanceZone"`
@@ -456,16 +412,10 @@ type RouteArgs struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The network that this route applies to.
-	//
-	// ***
 	Network pulumi.StringInput
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
 	// partial valid URL:
-	// * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-	// * `projects/project/global/gateways/default-internet-gateway`
-	// * `global/gateways/default-internet-gateway`
-	// * The string `default-internet-gateway`.
 	NextHopGateway pulumi.StringPtrInput
 	// The IP address or URL to a forwarding rule of type
 	// loadBalancingScheme=INTERNAL that should handle matching
@@ -483,13 +433,8 @@ type RouteArgs struct {
 	NextHopIlb pulumi.StringPtrInput
 	// URL to an instance that should handle matching packets.
 	// You can specify this as a full or partial URL. For example:
-	// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-	// * `projects/project/zones/zone/instances/instance`
-	// * `zones/zone/instances/instance`
-	// * Just the instance name, with the zone in `nextHopInstanceZone`.
 	NextHopInstance pulumi.StringPtrInput
-	// (Optional when `nextHopInstance` is
-	// specified)  The zone of the instance specified in
+	// The zone of the instance specified in
 	// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 	// a URL.
 	NextHopInstanceZone pulumi.StringPtrInput
@@ -621,8 +566,6 @@ func (o RouteOutput) Name() pulumi.StringOutput {
 }
 
 // The network that this route applies to.
-//
-// ***
 func (o RouteOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
@@ -630,10 +573,6 @@ func (o RouteOutput) Network() pulumi.StringOutput {
 // URL to a gateway that should handle matching packets.
 // Currently, you can only specify the internet gateway, using a full or
 // partial valid URL:
-// * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-// * `projects/project/global/gateways/default-internet-gateway`
-// * `global/gateways/default-internet-gateway`
-// * The string `default-internet-gateway`.
 func (o RouteOutput) NextHopGateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.NextHopGateway }).(pulumi.StringPtrOutput)
 }
@@ -657,16 +596,11 @@ func (o RouteOutput) NextHopIlb() pulumi.StringPtrOutput {
 
 // URL to an instance that should handle matching packets.
 // You can specify this as a full or partial URL. For example:
-// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-// * `projects/project/zones/zone/instances/instance`
-// * `zones/zone/instances/instance`
-// * Just the instance name, with the zone in `nextHopInstanceZone`.
 func (o RouteOutput) NextHopInstance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.NextHopInstance }).(pulumi.StringPtrOutput)
 }
 
-// (Optional when `nextHopInstance` is
-// specified)  The zone of the instance specified in
+// The zone of the instance specified in
 // `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 // a URL.
 func (o RouteOutput) NextHopInstanceZone() pulumi.StringOutput {

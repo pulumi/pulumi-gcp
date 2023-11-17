@@ -97,9 +97,6 @@ export class Group extends pulumi.CustomResource {
     /**
      * The filter used to determine which monitored resources
      * belong to this group.
-     *
-     *
-     * - - -
      */
     public readonly filter!: pulumi.Output<string>;
     /**
@@ -176,9 +173,6 @@ export interface GroupState {
     /**
      * The filter used to determine which monitored resources
      * belong to this group.
-     *
-     *
-     * - - -
      */
     filter?: pulumi.Input<string>;
     /**
@@ -217,9 +211,6 @@ export interface GroupArgs {
     /**
      * The filter used to determine which monitored resources
      * belong to this group.
-     *
-     *
-     * - - -
      */
     filter: pulumi.Input<string>;
     /**

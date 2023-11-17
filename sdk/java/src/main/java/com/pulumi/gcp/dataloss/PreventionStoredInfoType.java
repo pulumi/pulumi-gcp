@@ -301,12 +301,6 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
     }
     /**
      * The parent of the info type in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
@@ -314,12 +308,6 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
 
     /**
      * @return The parent of the info type in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

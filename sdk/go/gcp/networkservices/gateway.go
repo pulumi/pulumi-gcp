@@ -388,8 +388,6 @@ type Gateway struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Short name of the Gateway resource to be created.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The relative resource name identifying the VPC network that is using this configuration.
 	// For example: `projects/*/global/networks/network-1`.
@@ -495,8 +493,6 @@ type gatewayState struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Short name of the Gateway resource to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The relative resource name identifying the VPC network that is using this configuration.
 	// For example: `projects/*/global/networks/network-1`.
@@ -562,8 +558,6 @@ type GatewayState struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Short name of the Gateway resource to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The relative resource name identifying the VPC network that is using this configuration.
 	// For example: `projects/*/global/networks/network-1`.
@@ -629,8 +623,6 @@ type gatewayArgs struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Short name of the Gateway resource to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The relative resource name identifying the VPC network that is using this configuration.
 	// For example: `projects/*/global/networks/network-1`.
@@ -686,8 +678,6 @@ type GatewayArgs struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Short name of the Gateway resource to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The relative resource name identifying the VPC network that is using this configuration.
 	// For example: `projects/*/global/networks/network-1`.
@@ -859,8 +849,6 @@ func (o GatewayOutput) Location() pulumi.StringPtrOutput {
 }
 
 // Short name of the Gateway resource to be created.
-//
-// ***
 func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

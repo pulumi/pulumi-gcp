@@ -253,9 +253,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("dataset")]
         public Output<string> Dataset { get; private set; } = null!;
@@ -350,6 +347,7 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        /// Structure is documented below.
         /// </summary>
         [Output("notificationConfigs")]
         public Output<ImmutableArray<Outputs.FhirStoreNotificationConfig>> NotificationConfigs { get; private set; } = null!;
@@ -448,9 +446,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataset", required: true)]
         public Input<string> Dataset { get; set; } = null!;
@@ -548,6 +543,7 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FhirStoreNotificationConfigArgs> NotificationConfigs
         {
@@ -599,9 +595,6 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }
@@ -715,6 +708,7 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FhirStoreNotificationConfigGetArgs> NotificationConfigs
         {

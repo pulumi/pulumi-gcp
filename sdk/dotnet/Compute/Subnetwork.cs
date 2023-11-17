@@ -283,9 +283,10 @@ namespace Pulumi.Gcp.Compute
     public partial class Subnetwork : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-        /// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-        /// BGP even if their destinations match existing subnet ranges.
+        /// Typically packets destined to IPs within the subnetwork range that do not match
+        /// existing resources are dropped and prevented from leaving the VPC.
+        /// Setting this field to true will allow these packets to match dynamic routes injected
+        /// via BGP even if their destinations match existing subnet ranges.
         /// </summary>
         [Output("allowSubnetCidrRoutesOverlap")]
         public Output<bool> AllowSubnetCidrRoutesOverlap { get; private set; } = null!;
@@ -378,9 +379,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The network this subnet belongs to.
         /// Only networks that are in the distributed mode can have subnetworks.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -507,9 +505,10 @@ namespace Pulumi.Gcp.Compute
     public sealed class SubnetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-        /// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-        /// BGP even if their destinations match existing subnet ranges.
+        /// Typically packets destined to IPs within the subnetwork range that do not match
+        /// existing resources are dropped and prevented from leaving the VPC.
+        /// Setting this field to true will allow these packets to match dynamic routes injected
+        /// via BGP even if their destinations match existing subnet ranges.
         /// </summary>
         [Input("allowSubnetCidrRoutesOverlap")]
         public Input<bool>? AllowSubnetCidrRoutesOverlap { get; set; }
@@ -565,9 +564,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The network this subnet belongs to.
         /// Only networks that are in the distributed mode can have subnetworks.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -656,9 +652,10 @@ namespace Pulumi.Gcp.Compute
     public sealed class SubnetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-        /// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-        /// BGP even if their destinations match existing subnet ranges.
+        /// Typically packets destined to IPs within the subnetwork range that do not match
+        /// existing resources are dropped and prevented from leaving the VPC.
+        /// Setting this field to true will allow these packets to match dynamic routes injected
+        /// via BGP even if their destinations match existing subnet ranges.
         /// </summary>
         [Input("allowSubnetCidrRoutesOverlap")]
         public Input<bool>? AllowSubnetCidrRoutesOverlap { get; set; }
@@ -751,9 +748,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The network this subnet belongs to.
         /// Only networks that are in the distributed mode can have subnetworks.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

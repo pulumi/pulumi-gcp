@@ -22,8 +22,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// in the future.
         /// This field is optional. If this field is not empty, then it must be a
         /// valid Prometheus label name.
-        /// 
-        /// - - -
         /// </summary>
         [Input("alertRule")]
         public Input<string>? AlertRule { get; set; }

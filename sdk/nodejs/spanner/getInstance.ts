@@ -39,8 +39,6 @@ export interface GetInstanceArgs {
     displayName?: string;
     /**
      * The name of the spanner instance.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -97,8 +95,6 @@ export interface GetInstanceOutputArgs {
     displayName?: pulumi.Input<string>;
     /**
      * The name of the spanner instance.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

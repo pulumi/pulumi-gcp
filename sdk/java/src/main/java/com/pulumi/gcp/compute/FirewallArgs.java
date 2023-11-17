@@ -213,16 +213,12 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name or self_link of the network to attach this firewall to.
      * 
-     * ***
-     * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
      * @return The name or self_link of the network to attach this firewall to.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {
@@ -741,8 +737,6 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param network The name or self_link of the network to attach this firewall to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -753,8 +747,6 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network The name or self_link of the network to attach this firewall to.
-         * 
-         * ***
          * 
          * @return builder
          * 

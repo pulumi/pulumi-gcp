@@ -38,12 +38,11 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string? DiskType;
         public readonly ImmutableArray<Outputs.ClusterNodeConfigEffectiveTaint> EffectiveTaints;
         /// <summary>
-        /// )
         /// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         /// </summary>
         public readonly bool? EnableConfidentialStorage;
         /// <summary>
-        /// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -107,7 +106,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
         /// GKE node version 1.15.11-gke.15 or later
         /// Structure is documented below.
-        /// 
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

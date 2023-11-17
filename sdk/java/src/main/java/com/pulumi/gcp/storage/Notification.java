@@ -217,8 +217,6 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.
      * 
-     * ***
-     * 
      */
     @Export(name="topic", refs={String.class}, tree="[0]")
     private Output<String> topic;
@@ -228,8 +226,6 @@ public class Notification extends com.pulumi.resources.CustomResource {
      * topic name, assumed to belong to the default GCP provider project, or the project-level name,
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.
-     * 
-     * ***
      * 
      */
     public Output<String> topic() {

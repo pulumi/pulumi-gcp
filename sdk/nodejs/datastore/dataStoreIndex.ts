@@ -107,9 +107,6 @@ export class DataStoreIndex extends pulumi.CustomResource {
     public /*out*/ readonly indexId!: pulumi.Output<string>;
     /**
      * The entity kind which the index applies to.
-     *
-     *
-     * - - -
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -173,9 +170,6 @@ export interface DataStoreIndexState {
     indexId?: pulumi.Input<string>;
     /**
      * The entity kind which the index applies to.
-     *
-     *
-     * - - -
      */
     kind?: pulumi.Input<string>;
     /**
@@ -202,9 +196,6 @@ export interface DataStoreIndexArgs {
     ancestor?: pulumi.Input<string>;
     /**
      * The entity kind which the index applies to.
-     *
-     *
-     * - - -
      */
     kind: pulumi.Input<string>;
     /**

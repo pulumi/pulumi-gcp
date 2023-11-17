@@ -79,7 +79,6 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Optional, Deprecated)
      * Project id.
      * 
      * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
@@ -93,8 +92,7 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> project;
 
     /**
-     * @return (Optional, Deprecated)
-     * Project id.
+     * @return Project id.
      * 
      * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      * 
@@ -256,8 +254,7 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param project (Optional, Deprecated)
-         * Project id.
+         * @param project Project id.
          * 
          * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
          * 
@@ -274,8 +271,7 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param project (Optional, Deprecated)
-         * Project id.
+         * @param project Project id.
          * 
          * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
          * 

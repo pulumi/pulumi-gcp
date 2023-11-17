@@ -17,7 +17,6 @@ public final class RegionInstanceGroupManagerNamedPort {
     private String name;
     /**
      * @return The port number.
-     * ***
      * 
      */
     private Integer port;
@@ -32,7 +31,6 @@ public final class RegionInstanceGroupManagerNamedPort {
     }
     /**
      * @return The port number.
-     * ***
      * 
      */
     public Integer port() {

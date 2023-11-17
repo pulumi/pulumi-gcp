@@ -611,18 +611,16 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
+     * Configures a query job.
+     * Structure is documented below.
      * 
      */
     @Export(name="query", refs={JobQuery.class}, tree="[0]")
     private Output</* @Nullable */ JobQuery> query;
 
     /**
-     * @return SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
+     * @return Configures a query job.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<JobQuery>> query() {

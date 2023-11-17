@@ -169,8 +169,6 @@ type TargetServer struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId pulumi.StringOutput `pulumi:"envId"`
 	// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
 	Host pulumi.StringOutput `pulumi:"host"`
@@ -231,8 +229,6 @@ type targetServerState struct {
 	Description *string `pulumi:"description"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId *string `pulumi:"envId"`
 	// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
 	Host *string `pulumi:"host"`
@@ -255,8 +251,6 @@ type TargetServerState struct {
 	Description pulumi.StringPtrInput
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId pulumi.StringPtrInput
 	// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
 	Host pulumi.StringPtrInput
@@ -283,8 +277,6 @@ type targetServerArgs struct {
 	Description *string `pulumi:"description"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId string `pulumi:"envId"`
 	// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
 	Host string `pulumi:"host"`
@@ -308,8 +300,6 @@ type TargetServerArgs struct {
 	Description pulumi.StringPtrInput
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId pulumi.StringInput
 	// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
 	Host pulumi.StringInput
@@ -421,8 +411,6 @@ func (o TargetServerOutput) Description() pulumi.StringPtrOutput {
 
 // The Apigee environment group associated with the Apigee environment,
 // in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-//
-// ***
 func (o TargetServerOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetServer) pulumi.StringOutput { return v.EnvId }).(pulumi.StringOutput)
 }

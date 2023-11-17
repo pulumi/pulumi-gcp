@@ -328,8 +328,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -342,8 +340,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -505,16 +501,16 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      * 
      */
     @Import(name="subsetting")
     private @Nullable Output<RegionBackendServiceSubsettingArgs> subsetting;
 
     /**
-     * @return Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * @return Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RegionBackendServiceSubsettingArgs>> subsetting() {
@@ -988,8 +984,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1006,8 +1000,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
          * first character must be a lowercase letter, and all following
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1219,8 +1211,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param subsetting Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-         * and Internal HTTP(S) load balancing.
+         * @param subsetting Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1231,8 +1223,8 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param subsetting Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-         * and Internal HTTP(S) load balancing.
+         * @param subsetting Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -29,12 +29,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResource {
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFile file;
     /**
      * @return The id of the resource with the following restrictions:
-     * 
-     * *   Must contain only lowercase letters, numbers, and hyphens.
-     * *   Must start with a letter.
-     * *   Must be between 1-63 characters.
-     * *   Must end with a number or a letter.
-     * *   Must be unique within the OS policy.
+     * * Must contain only lowercase letters, numbers, and hyphens.
+     * * Must start with a letter.
+     * * Must be between 1-63 characters.
+     * * Must end with a number or a letter.
+     * * Must be unique within the OS policy.
      * 
      */
     private String id;
@@ -70,12 +69,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResource {
     }
     /**
      * @return The id of the resource with the following restrictions:
-     * 
-     * *   Must contain only lowercase letters, numbers, and hyphens.
-     * *   Must start with a letter.
-     * *   Must be between 1-63 characters.
-     * *   Must end with a number or a letter.
-     * *   Must be unique within the OS policy.
+     * * Must contain only lowercase letters, numbers, and hyphens.
+     * * Must start with a letter.
+     * * Must be between 1-63 characters.
+     * * Must end with a number or a letter.
+     * * Must be unique within the OS policy.
      * 
      */
     public String id() {

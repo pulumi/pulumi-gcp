@@ -33,8 +33,6 @@ public final class RestorePlanRestoreConfigTransformationRuleFieldAction {
      * @return A string that specifies the desired value in string format
      * to use for transformation.
      * 
-     * ***
-     * 
      */
     private @Nullable String value;
 
@@ -66,8 +64,6 @@ public final class RestorePlanRestoreConfigTransformationRuleFieldAction {
     /**
      * @return A string that specifies the desired value in string format
      * to use for transformation.
-     * 
-     * ***
      * 
      */
     public Optional<String> value() {

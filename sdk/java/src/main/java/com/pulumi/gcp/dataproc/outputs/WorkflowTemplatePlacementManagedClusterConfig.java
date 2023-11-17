@@ -98,8 +98,6 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
     /**
      * @return The Compute Engine config settings for additional worker instances in a cluster.
      * 
-     * ***
-     * 
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfig workerConfig;
 
@@ -204,8 +202,6 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
     }
     /**
      * @return The Compute Engine config settings for additional worker instances in a cluster.
-     * 
-     * ***
      * 
      */
     public Optional<WorkflowTemplatePlacementManagedClusterConfigWorkerConfig> workerConfig() {

@@ -17,16 +17,12 @@ public final class OrganizationCustomModuleCustomConfigResourceSelectorArgs exte
     /**
      * The resource types to run the detector on.
      * 
-     * ***
-     * 
      */
     @Import(name="resourceTypes", required=true)
     private Output<List<String>> resourceTypes;
 
     /**
      * @return The resource types to run the detector on.
-     * 
-     * ***
      * 
      */
     public Output<List<String>> resourceTypes() {
@@ -60,8 +56,6 @@ public final class OrganizationCustomModuleCustomConfigResourceSelectorArgs exte
         /**
          * @param resourceTypes The resource types to run the detector on.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -73,8 +67,6 @@ public final class OrganizationCustomModuleCustomConfigResourceSelectorArgs exte
         /**
          * @param resourceTypes The resource types to run the detector on.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -84,8 +76,6 @@ public final class OrganizationCustomModuleCustomConfigResourceSelectorArgs exte
 
         /**
          * @param resourceTypes The resource types to run the detector on.
-         * 
-         * ***
          * 
          * @return builder
          * 

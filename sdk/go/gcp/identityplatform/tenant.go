@@ -90,8 +90,6 @@ type Tenant struct {
 	// are not able to manage its users.
 	DisableAuth pulumi.BoolPtrOutput `pulumi:"disableAuth"`
 	// Human friendly display name of the tenant.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Whether to enable email link user authentication.
 	EnableEmailLinkSignin pulumi.BoolPtrOutput `pulumi:"enableEmailLinkSignin"`
@@ -142,8 +140,6 @@ type tenantState struct {
 	// are not able to manage its users.
 	DisableAuth *bool `pulumi:"disableAuth"`
 	// Human friendly display name of the tenant.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// Whether to enable email link user authentication.
 	EnableEmailLinkSignin *bool `pulumi:"enableEmailLinkSignin"`
@@ -162,8 +158,6 @@ type TenantState struct {
 	// are not able to manage its users.
 	DisableAuth pulumi.BoolPtrInput
 	// Human friendly display name of the tenant.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// Whether to enable email link user authentication.
 	EnableEmailLinkSignin pulumi.BoolPtrInput
@@ -186,8 +180,6 @@ type tenantArgs struct {
 	// are not able to manage its users.
 	DisableAuth *bool `pulumi:"disableAuth"`
 	// Human friendly display name of the tenant.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Whether to enable email link user authentication.
 	EnableEmailLinkSignin *bool `pulumi:"enableEmailLinkSignin"`
@@ -205,8 +197,6 @@ type TenantArgs struct {
 	// are not able to manage its users.
 	DisableAuth pulumi.BoolPtrInput
 	// Human friendly display name of the tenant.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// Whether to enable email link user authentication.
 	EnableEmailLinkSignin pulumi.BoolPtrInput
@@ -315,8 +305,6 @@ func (o TenantOutput) DisableAuth() pulumi.BoolPtrOutput {
 }
 
 // Human friendly display name of the tenant.
-//
-// ***
 func (o TenantOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

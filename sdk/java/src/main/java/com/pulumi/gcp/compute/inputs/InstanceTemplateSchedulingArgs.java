@@ -69,19 +69,9 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.maintenanceInterval);
     }
 
-    /**
-     * Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-     * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
-     * 
-     */
     @Import(name="maxRunDuration")
     private @Nullable Output<InstanceTemplateSchedulingMaxRunDurationArgs> maxRunDuration;
 
-    /**
-     * @return Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-     * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
-     * 
-     */
     public Optional<Output<InstanceTemplateSchedulingMaxRunDurationArgs>> maxRunDuration() {
         return Optional.ofNullable(this.maxRunDuration);
     }
@@ -274,25 +264,11 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
             return maintenanceInterval(Output.of(maintenanceInterval));
         }
 
-        /**
-         * @param maxRunDuration Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-         * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxRunDuration(@Nullable Output<InstanceTemplateSchedulingMaxRunDurationArgs> maxRunDuration) {
             $.maxRunDuration = maxRunDuration;
             return this;
         }
 
-        /**
-         * @param maxRunDuration Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-         * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxRunDuration(InstanceTemplateSchedulingMaxRunDurationArgs maxRunDuration) {
             return maxRunDuration(Output.of(maxRunDuration));
         }

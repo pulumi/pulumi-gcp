@@ -65,16 +65,12 @@ public final class AwsClusterNetworkingArgs extends com.pulumi.resources.Resourc
     /**
      * The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
      * 
-     * ***
-     * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
      * @return The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-     * 
-     * ***
      * 
      */
     public Output<String> vpcId() {
@@ -194,8 +190,6 @@ public final class AwsClusterNetworkingArgs extends com.pulumi.resources.Resourc
         /**
          * @param vpcId The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -206,8 +200,6 @@ public final class AwsClusterNetworkingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param vpcId The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
-         * 
-         * ***
          * 
          * @return builder
          * 

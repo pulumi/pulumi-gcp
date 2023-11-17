@@ -1084,6 +1084,8 @@ class JobTemplateTemplateVolume(dict):
         :param str name: Volume's name.
         :param 'JobTemplateTemplateVolumeCloudSqlInstanceArgs' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
+        :param 'JobTemplateTemplateVolumeEmptyDirArgs' empty_dir: Ephemeral storage used as a shared volume.
+               Structure is documented below.
         :param 'JobTemplateTemplateVolumeSecretArgs' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
         """
@@ -1115,6 +1117,10 @@ class JobTemplateTemplateVolume(dict):
     @property
     @pulumi.getter(name="emptyDir")
     def empty_dir(self) -> Optional['outputs.JobTemplateTemplateVolumeEmptyDir']:
+        """
+        Ephemeral storage used as a shared volume.
+        Structure is documented below.
+        """
         return pulumi.get(self, "empty_dir")
 
     @property
@@ -1378,8 +1384,6 @@ class JobTemplateTemplateVpcAccessNetworkInterface(dict):
                network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
                subnetwork with the same name with the network will be used.
         :param Sequence[str] tags: Network tags applied to this Cloud Run job.
-               
-               - - -
         """
         if network is not None:
             pulumi.set(__self__, "network", network)
@@ -1413,8 +1417,6 @@ class JobTemplateTemplateVpcAccessNetworkInterface(dict):
     def tags(self) -> Optional[Sequence[str]]:
         """
         Network tags applied to this Cloud Run job.
-
-        - - -
         """
         return pulumi.get(self, "tags")
 
@@ -2065,6 +2067,7 @@ class ServiceTemplateContainer(dict):
         :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence[str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence[str] depends_ons: Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
         :param Sequence['ServiceTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
                Structure is documented below.
         :param 'ServiceTemplateContainerLivenessProbeArgs' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -2132,6 +2135,9 @@ class ServiceTemplateContainer(dict):
     @property
     @pulumi.getter(name="dependsOns")
     def depends_ons(self) -> Optional[Sequence[str]]:
+        """
+        Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+        """
         return pulumi.get(self, "depends_ons")
 
     @property
@@ -3086,6 +3092,8 @@ class ServiceTemplateVolume(dict):
         :param str name: Volume's name.
         :param 'ServiceTemplateVolumeCloudSqlInstanceArgs' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
+        :param 'ServiceTemplateVolumeEmptyDirArgs' empty_dir: Ephemeral storage used as a shared volume.
+               Structure is documented below.
         :param 'ServiceTemplateVolumeSecretArgs' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
         """
@@ -3117,6 +3125,10 @@ class ServiceTemplateVolume(dict):
     @property
     @pulumi.getter(name="emptyDir")
     def empty_dir(self) -> Optional['outputs.ServiceTemplateVolumeEmptyDir']:
+        """
+        Ephemeral storage used as a shared volume.
+        Structure is documented below.
+        """
         return pulumi.get(self, "empty_dir")
 
     @property
@@ -3175,8 +3187,6 @@ class ServiceTemplateVolumeEmptyDir(dict):
                Default value is `MEMORY`.
                Possible values are: `MEMORY`.
         :param str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-               
-               - - -
         """
         if medium is not None:
             pulumi.set(__self__, "medium", medium)
@@ -3198,8 +3208,6 @@ class ServiceTemplateVolumeEmptyDir(dict):
     def size_limit(self) -> Optional[str]:
         """
         Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-
-        - - -
         """
         return pulumi.get(self, "size_limit")
 

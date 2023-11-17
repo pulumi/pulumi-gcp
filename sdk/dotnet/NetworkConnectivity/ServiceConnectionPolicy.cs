@@ -128,9 +128,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location of the ServiceConnectionPolicy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -262,9 +259,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location of the ServiceConnectionPolicy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -367,9 +361,6 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The location of the ServiceConnectionPolicy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

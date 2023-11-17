@@ -16,14 +16,14 @@ public final class InstanceTemplateShieldedInstanceConfigArgs extends com.pulumi
     public static final InstanceTemplateShieldedInstanceConfigArgs Empty = new InstanceTemplateShieldedInstanceConfigArgs();
 
     /**
-     * - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+     * Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
      * 
      */
     @Import(name="enableIntegrityMonitoring")
     private @Nullable Output<Boolean> enableIntegrityMonitoring;
 
     /**
-     * @return - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+     * @return Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
      * 
      */
     public Optional<Output<Boolean>> enableIntegrityMonitoring() {
@@ -31,14 +31,14 @@ public final class InstanceTemplateShieldedInstanceConfigArgs extends com.pulumi
     }
 
     /**
-     * - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+     * Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
      * 
      */
     @Import(name="enableSecureBoot")
     private @Nullable Output<Boolean> enableSecureBoot;
 
     /**
-     * @return - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+     * @return Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
      * 
      */
     public Optional<Output<Boolean>> enableSecureBoot() {
@@ -46,14 +46,14 @@ public final class InstanceTemplateShieldedInstanceConfigArgs extends com.pulumi
     }
 
     /**
-     * - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+     * Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
      * 
      */
     @Import(name="enableVtpm")
     private @Nullable Output<Boolean> enableVtpm;
 
     /**
-     * @return - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+     * @return Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
      * 
      */
     public Optional<Output<Boolean>> enableVtpm() {
@@ -87,7 +87,7 @@ public final class InstanceTemplateShieldedInstanceConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enableIntegrityMonitoring - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+         * @param enableIntegrityMonitoring Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class InstanceTemplateShieldedInstanceConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enableIntegrityMonitoring - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+         * @param enableIntegrityMonitoring Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class InstanceTemplateShieldedInstanceConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enableSecureBoot - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+         * @param enableSecureBoot Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class InstanceTemplateShieldedInstanceConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enableSecureBoot - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+         * @param enableSecureBoot Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class InstanceTemplateShieldedInstanceConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enableVtpm - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+         * @param enableVtpm Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class InstanceTemplateShieldedInstanceConfigArgs extends com.pulumi
         }
 
         /**
-         * @param enableVtpm - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+         * @param enableVtpm Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
          * 
          * @return builder
          * 

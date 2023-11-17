@@ -212,9 +212,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly gceZone!: pulumi.Output<string | undefined>;
     /**
      * The ID of the alloydb instance.
-     *
-     *
-     * - - -
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -415,9 +412,6 @@ export interface InstanceState {
     gceZone?: pulumi.Input<string>;
     /**
      * The ID of the alloydb instance.
-     *
-     *
-     * - - -
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -528,9 +522,6 @@ export interface InstanceArgs {
     gceZone?: pulumi.Input<string>;
     /**
      * The ID of the alloydb instance.
-     *
-     *
-     * - - -
      */
     instanceId: pulumi.Input<string>;
     /**

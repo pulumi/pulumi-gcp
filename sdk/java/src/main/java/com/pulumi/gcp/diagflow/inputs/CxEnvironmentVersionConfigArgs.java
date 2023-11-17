@@ -16,16 +16,12 @@ public final class CxEnvironmentVersionConfigArgs extends com.pulumi.resources.R
     /**
      * Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
      * 
-     * ***
-     * 
      */
     @Import(name="version", required=true)
     private Output<String> version;
 
     /**
      * @return Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-     * 
-     * ***
      * 
      */
     public Output<String> version() {
@@ -59,8 +55,6 @@ public final class CxEnvironmentVersionConfigArgs extends com.pulumi.resources.R
         /**
          * @param version Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -71,8 +65,6 @@ public final class CxEnvironmentVersionConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param version Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-         * 
-         * ***
          * 
          * @return builder
          * 

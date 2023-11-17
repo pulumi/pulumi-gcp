@@ -186,8 +186,6 @@ export class Bucket extends pulumi.CustomResource {
     public readonly lifecycleRules!: pulumi.Output<outputs.storage.BucketLifecycleRule[] | undefined>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -367,8 +365,6 @@ export interface BucketState {
     lifecycleRules?: pulumi.Input<pulumi.Input<inputs.storage.BucketLifecycleRule>[]>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -470,8 +466,6 @@ export interface BucketArgs {
     lifecycleRules?: pulumi.Input<pulumi.Input<inputs.storage.BucketLifecycleRule>[]>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -339,9 +339,6 @@ export class Cluster extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the alloydb cluster should reside.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -354,7 +351,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * (Optional, Deprecated)
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".
      *
@@ -591,9 +587,6 @@ export interface ClusterState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the alloydb cluster should reside.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -606,7 +599,6 @@ export interface ClusterState {
      */
     name?: pulumi.Input<string>;
     /**
-     * (Optional, Deprecated)
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".
      *
@@ -726,13 +718,9 @@ export interface ClusterArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the alloydb cluster should reside.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**
-     * (Optional, Deprecated)
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".
      *

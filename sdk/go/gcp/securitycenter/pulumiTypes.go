@@ -962,8 +962,6 @@ func (o FolderCustomModuleCustomConfigPredicatePtrOutput) Title() pulumi.StringP
 
 type FolderCustomModuleCustomConfigResourceSelector struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes []string `pulumi:"resourceTypes"`
 }
 
@@ -980,8 +978,6 @@ type FolderCustomModuleCustomConfigResourceSelectorInput interface {
 
 type FolderCustomModuleCustomConfigResourceSelectorArgs struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
 }
 
@@ -1063,8 +1059,6 @@ func (o FolderCustomModuleCustomConfigResourceSelectorOutput) ToFolderCustomModu
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o FolderCustomModuleCustomConfigResourceSelectorOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FolderCustomModuleCustomConfigResourceSelector) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
 }
@@ -1094,8 +1088,6 @@ func (o FolderCustomModuleCustomConfigResourceSelectorPtrOutput) Elem() FolderCu
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o FolderCustomModuleCustomConfigResourceSelectorPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FolderCustomModuleCustomConfigResourceSelector) []string {
 		if v == nil {
@@ -1459,8 +1451,6 @@ type NotificationConfigStreamingConfig struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter string `pulumi:"filter"`
 }
 
@@ -1495,8 +1485,6 @@ type NotificationConfigStreamingConfigArgs struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
-	//
-	// ***
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
@@ -1596,8 +1584,6 @@ func (o NotificationConfigStreamingConfigOutput) ToNotificationConfigStreamingCo
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o NotificationConfigStreamingConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationConfigStreamingConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -1645,8 +1631,6 @@ func (o NotificationConfigStreamingConfigPtrOutput) Elem() NotificationConfigStr
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
-//
-// ***
 func (o NotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationConfigStreamingConfig) *string {
 		if v == nil {
@@ -2613,8 +2597,6 @@ func (o OrganizationCustomModuleCustomConfigPredicatePtrOutput) Title() pulumi.S
 
 type OrganizationCustomModuleCustomConfigResourceSelector struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes []string `pulumi:"resourceTypes"`
 }
 
@@ -2631,8 +2613,6 @@ type OrganizationCustomModuleCustomConfigResourceSelectorInput interface {
 
 type OrganizationCustomModuleCustomConfigResourceSelectorArgs struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
 }
 
@@ -2714,8 +2694,6 @@ func (o OrganizationCustomModuleCustomConfigResourceSelectorOutput) ToOrganizati
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o OrganizationCustomModuleCustomConfigResourceSelectorOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OrganizationCustomModuleCustomConfigResourceSelector) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
 }
@@ -2745,8 +2723,6 @@ func (o OrganizationCustomModuleCustomConfigResourceSelectorPtrOutput) Elem() Or
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o OrganizationCustomModuleCustomConfigResourceSelectorPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrganizationCustomModuleCustomConfigResourceSelector) []string {
 		if v == nil {
@@ -3705,8 +3681,6 @@ func (o ProjectCustomModuleCustomConfigPredicatePtrOutput) Title() pulumi.String
 
 type ProjectCustomModuleCustomConfigResourceSelector struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes []string `pulumi:"resourceTypes"`
 }
 
@@ -3723,8 +3697,6 @@ type ProjectCustomModuleCustomConfigResourceSelectorInput interface {
 
 type ProjectCustomModuleCustomConfigResourceSelectorArgs struct {
 	// The resource types to run the detector on.
-	//
-	// ***
 	ResourceTypes pulumi.StringArrayInput `pulumi:"resourceTypes"`
 }
 
@@ -3806,8 +3778,6 @@ func (o ProjectCustomModuleCustomConfigResourceSelectorOutput) ToProjectCustomMo
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o ProjectCustomModuleCustomConfigResourceSelectorOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ProjectCustomModuleCustomConfigResourceSelector) []string { return v.ResourceTypes }).(pulumi.StringArrayOutput)
 }
@@ -3837,8 +3807,6 @@ func (o ProjectCustomModuleCustomConfigResourceSelectorPtrOutput) Elem() Project
 }
 
 // The resource types to run the detector on.
-//
-// ***
 func (o ProjectCustomModuleCustomConfigResourceSelectorPtrOutput) ResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ProjectCustomModuleCustomConfigResourceSelector) []string {
 		if v == nil {

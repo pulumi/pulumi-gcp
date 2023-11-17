@@ -28,9 +28,6 @@ class EnvironmentArgs:
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
                the Environment and cannot be changed.
                Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
@@ -75,9 +72,6 @@ class EnvironmentArgs:
         """
         The Apigee Organization associated with the Apigee environment,
         in the format `organizations/{{org_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "org_id")
 
@@ -215,9 +209,6 @@ class _EnvironmentState:
                Structure is documented below.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] type: Types that can be selected for an Environment. Each of the types are
                limited by capability and capacity. Refer to Apigee's public documentation
                to understand about each of these types in details.
@@ -329,9 +320,6 @@ class _EnvironmentState:
         """
         The Apigee Organization associated with the Apigee environment,
         in the format `organizations/{{org_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "org_id")
 
@@ -448,9 +436,6 @@ class Environment(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] type: Types that can be selected for an Environment. Each of the types are
                limited by capability and capacity. Refer to Apigee's public documentation
                to understand about each of these types in details.
@@ -606,9 +591,6 @@ class Environment(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] type: Types that can be selected for an Environment. Each of the types are
                limited by capability and capacity. Refer to Apigee's public documentation
                to understand about each of these types in details.
@@ -693,9 +675,6 @@ class Environment(pulumi.CustomResource):
         """
         The Apigee Organization associated with the Apigee environment,
         in the format `organizations/{{org_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "org_id")
 

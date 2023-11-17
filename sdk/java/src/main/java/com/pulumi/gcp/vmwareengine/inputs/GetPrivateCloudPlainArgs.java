@@ -17,16 +17,12 @@ public final class GetPrivateCloudPlainArgs extends com.pulumi.resources.InvokeA
     /**
      * Location of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private String location;
 
     /**
      * @return Location of the resource.
-     * 
-     * ***
      * 
      */
     public String location() {
@@ -93,8 +89,6 @@ public final class GetPrivateCloudPlainArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param location Location of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

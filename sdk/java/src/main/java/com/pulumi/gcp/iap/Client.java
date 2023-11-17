@@ -112,8 +112,6 @@ public class Client extends com.pulumi.resources.CustomResource {
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
      * 
-     * ***
-     * 
      */
     @Export(name="brand", refs={String.class}, tree="[0]")
     private Output<String> brand;
@@ -122,8 +120,6 @@ public class Client extends com.pulumi.resources.CustomResource {
      * @return Identifier of the brand to which this client
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
-     * 
-     * ***
      * 
      */
     public Output<String> brand() {

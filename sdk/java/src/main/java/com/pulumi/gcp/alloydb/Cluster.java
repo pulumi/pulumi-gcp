@@ -659,16 +659,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The location where the alloydb cluster should reside.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location where the alloydb cluster should reside.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -705,7 +701,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * (Optional, Deprecated)
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
      * 
@@ -720,8 +715,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<String> network;
 
     /**
-     * @return (Optional, Deprecated)
-     * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+     * @return The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * &#34;projects/{projectNumber}/global/networks/{network_id}&#34;.
      * 
      * &gt; **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.

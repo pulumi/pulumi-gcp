@@ -209,8 +209,8 @@ type Disk struct {
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-	// required when setting to true
+	// Whether this disk is using confidential compute mode.
+	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute pulumi.BoolOutput `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -226,7 +226,6 @@ type Disk struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrOutput `pulumi:"image"`
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -256,8 +255,6 @@ type Disk struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
@@ -300,10 +297,10 @@ type Disk struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. If the snapshot is in another
+	// project than this disk, you must supply a full URL. For example, the
+	// following are valid values:
 	Snapshot pulumi.StringPtrOutput `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -406,8 +403,8 @@ type diskState struct {
 	DiskEncryptionKey *DiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-	// required when setting to true
+	// Whether this disk is using confidential compute mode.
+	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -423,7 +420,6 @@ type diskState struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -453,8 +449,6 @@ type diskState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
@@ -497,10 +491,10 @@ type diskState struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size *int `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. If the snapshot is in another
+	// project than this disk, you must supply a full URL. For example, the
+	// following are valid values:
 	Snapshot *string `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -569,8 +563,8 @@ type DiskState struct {
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-	// required when setting to true
+	// Whether this disk is using confidential compute mode.
+	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute pulumi.BoolPtrInput
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -586,7 +580,6 @@ type DiskState struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -616,8 +609,6 @@ type DiskState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
@@ -660,10 +651,10 @@ type DiskState struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size pulumi.IntPtrInput
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. If the snapshot is in another
+	// project than this disk, you must supply a full URL. For example, the
+	// following are valid values:
 	Snapshot pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -732,8 +723,8 @@ type diskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *DiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
-	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-	// required when setting to true
+	// Whether this disk is using confidential compute mode.
+	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -749,7 +740,6 @@ type diskArgs struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -772,8 +762,6 @@ type diskArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
@@ -811,10 +799,10 @@ type diskArgs struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size *int `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. If the snapshot is in another
+	// project than this disk, you must supply a full URL. For example, the
+	// following are valid values:
 	Snapshot *string `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -860,8 +848,8 @@ type DiskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrInput
-	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-	// required when setting to true
+	// Whether this disk is using confidential compute mode.
+	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute pulumi.BoolPtrInput
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -877,7 +865,6 @@ type DiskArgs struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -900,8 +887,6 @@ type DiskArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Physical block size of the persistent disk, in bytes. If not present
 	// in a request, a default value is used. Currently supported sizes
@@ -939,10 +924,10 @@ type DiskArgs struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size pulumi.IntPtrInput
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. If the snapshot is in another
+	// project than this disk, you must supply a full URL. For example, the
+	// following are valid values:
 	Snapshot pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -1092,8 +1077,8 @@ func (o DiskOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-// required when setting to true
+// Whether this disk is using confidential compute mode.
+// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 func (o DiskOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -1118,7 +1103,6 @@ func (o DiskOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Image }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Deprecated)
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 //
 // > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -1169,8 +1153,6 @@ func (o DiskOutput) MultiWriter() pulumi.BoolPtrOutput {
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-//
-// ***
 func (o DiskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -1240,10 +1222,10 @@ func (o DiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Disk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-//   - 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-//     'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+// The source snapshot used to create this disk. You can provide this as
+// a partial or full URL to the resource. If the snapshot is in another
+// project than this disk, you must supply a full URL. For example, the
+// following are valid values:
 func (o DiskOutput) Snapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Snapshot }).(pulumi.StringPtrOutput)
 }

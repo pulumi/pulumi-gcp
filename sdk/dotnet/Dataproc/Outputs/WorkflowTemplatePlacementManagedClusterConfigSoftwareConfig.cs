@@ -25,7 +25,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// The properties to set on daemon config files.
         /// 
         /// Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings:
-        /// 
         /// * capacity-scheduler: `capacity-scheduler.xml`
         /// * core: `core-site.xml`
         /// * distcp: `distcp-default.xml`
@@ -35,7 +34,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// * pig: `pig.properties`
         /// * spark: `spark-defaults.conf`
         /// * yarn: `yarn-site.xml`
-        /// 
         /// 
         /// For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
         /// </summary>

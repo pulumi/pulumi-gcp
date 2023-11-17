@@ -35,8 +35,6 @@ export function getPrivateCloud(args: GetPrivateCloudArgs, opts?: pulumi.InvokeO
 export interface GetPrivateCloudArgs {
     /**
      * Location of the resource.
-     *
-     * - - -
      */
     location: string;
     /**
@@ -93,8 +91,6 @@ export function getPrivateCloudOutput(args: GetPrivateCloudOutputArgs, opts?: pu
 export interface GetPrivateCloudOutputArgs {
     /**
      * Location of the resource.
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

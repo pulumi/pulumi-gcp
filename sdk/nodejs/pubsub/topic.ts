@@ -175,9 +175,6 @@ export class Topic extends pulumi.CustomResource {
     public readonly messageStoragePolicy!: pulumi.Output<outputs.pubsub.TopicMessageStoragePolicy>;
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -280,9 +277,6 @@ export interface TopicState {
     messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -341,9 +335,6 @@ export interface TopicArgs {
     messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
     /**
      * Name of the topic.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

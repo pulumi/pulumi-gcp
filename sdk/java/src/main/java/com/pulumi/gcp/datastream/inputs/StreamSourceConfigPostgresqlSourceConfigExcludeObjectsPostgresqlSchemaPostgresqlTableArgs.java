@@ -19,6 +19,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
 
     /**
      * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+     * Structure is documented below.`postgresql_columns` -
+     * (Optional)
+     * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
      * Structure is documented below.
      * 
      */
@@ -27,6 +30,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
 
     /**
      * @return PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+     * Structure is documented below.`postgresql_columns` -
+     * (Optional)
+     * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
      * Structure is documented below.
      * 
      */
@@ -35,6 +41,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
     }
 
     /**
+     * Table name.`table` -
+     * (Required)
      * Table name.
      * 
      */
@@ -42,7 +50,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
     private Output<String> table;
 
     /**
-     * @return Table name.
+     * @return Table name.`table` -
+     * (Required)
+     * Table name.
      * 
      */
     public Output<String> table() {
@@ -76,6 +86,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
 
         /**
          * @param postgresqlColumns PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.`postgresql_columns` -
+         * (Optional)
+         * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
          * Structure is documented below.
          * 
          * @return builder
@@ -88,6 +101,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
 
         /**
          * @param postgresqlColumns PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.`postgresql_columns` -
+         * (Optional)
+         * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
          * Structure is documented below.
          * 
          * @return builder
@@ -99,6 +115,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
 
         /**
          * @param postgresqlColumns PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+         * Structure is documented below.`postgresql_columns` -
+         * (Optional)
+         * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
          * Structure is documented below.
          * 
          * @return builder
@@ -109,7 +128,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
         }
 
         /**
-         * @param table Table name.
+         * @param table Table name.`table` -
+         * (Required)
+         * Table name.
          * 
          * @return builder
          * 
@@ -120,7 +141,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
         }
 
         /**
-         * @param table Table name.
+         * @param table Table name.`table` -
+         * (Required)
+         * Table name.
          * 
          * @return builder
          * 

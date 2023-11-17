@@ -95,10 +95,6 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
 
     /**
      * The parent of the template in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
      */
     @Import(name="parent")
@@ -106,10 +102,6 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
 
     /**
      * @return The parent of the template in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
      */
     public Optional<Output<String>> parent() {
@@ -290,10 +282,6 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
 
         /**
          * @param parent The parent of the template in any of the following formats:
-         * * `projects/{{project}}`
-         * * `projects/{{project}}/locations/{{location}}`
-         * * `organizations/{{organization_id}}`
-         * * `organizations/{{organization_id}}/locations/{{location}}`
          * 
          * @return builder
          * 
@@ -305,10 +293,6 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
 
         /**
          * @param parent The parent of the template in any of the following formats:
-         * * `projects/{{project}}`
-         * * `projects/{{project}}/locations/{{location}}`
-         * * `organizations/{{organization_id}}`
-         * * `organizations/{{organization_id}}/locations/{{location}}`
          * 
          * @return builder
          * 

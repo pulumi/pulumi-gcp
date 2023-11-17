@@ -372,8 +372,6 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      * 
-     * ***
-     * 
      */
     @Export(name="source", refs={AssetOrArchive.class}, tree="[0]")
     private Output</* @Nullable */ AssetOrArchive> source;
@@ -381,8 +379,6 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
     /**
      * @return A path to the data you want to upload. Must be defined
      * if `content` is not.
-     * 
-     * ***
      * 
      */
     public Output<Optional<AssetOrArchive>> source() {

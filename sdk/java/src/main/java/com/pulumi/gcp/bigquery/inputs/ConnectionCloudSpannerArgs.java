@@ -93,7 +93,6 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Optional, Deprecated)
      * If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
      * 
      * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
@@ -107,8 +106,7 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
     private @Nullable Output<Boolean> useServerlessAnalytics;
 
     /**
-     * @return (Optional, Deprecated)
-     * If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+     * @return If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
      * 
      * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
      * 
@@ -256,8 +254,7 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param useServerlessAnalytics (Optional, Deprecated)
-         * If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+         * @param useServerlessAnalytics If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
          * 
          * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
          * 
@@ -274,8 +271,7 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param useServerlessAnalytics (Optional, Deprecated)
-         * If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+         * @param useServerlessAnalytics If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
          * 
          * &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
          * 

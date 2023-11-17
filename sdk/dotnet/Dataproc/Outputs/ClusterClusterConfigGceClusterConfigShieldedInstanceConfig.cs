@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     {
         /// <summary>
         /// Defines whether instances have integrity monitoring enabled.
-        /// 
-        /// - - -
         /// </summary>
         public readonly bool? EnableIntegrityMonitoring;
         /// <summary>

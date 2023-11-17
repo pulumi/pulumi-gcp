@@ -154,8 +154,6 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -163,8 +161,6 @@ public class Catalog extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

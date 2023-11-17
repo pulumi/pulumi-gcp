@@ -19,6 +19,9 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
 
     /**
      * Tables in the database.
+     * Structure is documented below.`oracle_tables` -
+     * (Optional)
+     * Tables in the database.
      * Structure is documented below.
      * 
      */
@@ -27,6 +30,9 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
 
     /**
      * @return Tables in the database.
+     * Structure is documented below.`oracle_tables` -
+     * (Optional)
+     * Tables in the database.
      * Structure is documented below.
      * 
      */
@@ -35,6 +41,8 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
     }
 
     /**
+     * Schema name.`schema` -
+     * (Required)
      * Schema name.
      * 
      */
@@ -42,7 +50,9 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
     private Output<String> schema;
 
     /**
-     * @return Schema name.
+     * @return Schema name.`schema` -
+     * (Required)
+     * Schema name.
      * 
      */
     public Output<String> schema() {
@@ -76,6 +86,9 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
 
         /**
          * @param oracleTables Tables in the database.
+         * Structure is documented below.`oracle_tables` -
+         * (Optional)
+         * Tables in the database.
          * Structure is documented below.
          * 
          * @return builder
@@ -88,6 +101,9 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
 
         /**
          * @param oracleTables Tables in the database.
+         * Structure is documented below.`oracle_tables` -
+         * (Optional)
+         * Tables in the database.
          * Structure is documented below.
          * 
          * @return builder
@@ -99,6 +115,9 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
 
         /**
          * @param oracleTables Tables in the database.
+         * Structure is documented below.`oracle_tables` -
+         * (Optional)
+         * Tables in the database.
          * Structure is documented below.
          * 
          * @return builder
@@ -109,7 +128,9 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
         }
 
         /**
-         * @param schema Schema name.
+         * @param schema Schema name.`schema` -
+         * (Required)
+         * Schema name.
          * 
          * @return builder
          * 
@@ -120,7 +141,9 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
         }
 
         /**
-         * @param schema Schema name.
+         * @param schema Schema name.`schema` -
+         * (Required)
+         * Schema name.
          * 
          * @return builder
          * 

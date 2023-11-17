@@ -412,7 +412,7 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * A description of the job trigger.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -518,7 +518,7 @@ export interface PreventionJobTriggerState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * A description of the job trigger.
      */
     description?: pulumi.Input<string>;
     /**
@@ -571,7 +571,7 @@ export interface PreventionJobTriggerState {
  */
 export interface PreventionJobTriggerArgs {
     /**
-     * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * A description of the job trigger.
      */
     description?: pulumi.Input<string>;
     /**

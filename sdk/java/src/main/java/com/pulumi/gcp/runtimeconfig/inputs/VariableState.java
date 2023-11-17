@@ -72,8 +72,6 @@ public final class VariableState extends com.pulumi.resources.ResourceArgs {
      * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
      * is specified, it must be base64 encoded and less than 4096 bytes in length.
      * 
-     * ***
-     * 
      */
     @Import(name="text")
     private @Nullable Output<String> text;
@@ -83,8 +81,6 @@ public final class VariableState extends com.pulumi.resources.ResourceArgs {
      * Exactly one of `text` or `variable` must be specified. If `text` is specified,
      * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
      * is specified, it must be base64 encoded and less than 4096 bytes in length.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> text() {
@@ -221,8 +217,6 @@ public final class VariableState extends com.pulumi.resources.ResourceArgs {
          * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
          * is specified, it must be base64 encoded and less than 4096 bytes in length.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -236,8 +230,6 @@ public final class VariableState extends com.pulumi.resources.ResourceArgs {
          * Exactly one of `text` or `variable` must be specified. If `text` is specified,
          * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
          * is specified, it must be base64 encoded and less than 4096 bytes in length.
-         * 
-         * ***
          * 
          * @return builder
          * 

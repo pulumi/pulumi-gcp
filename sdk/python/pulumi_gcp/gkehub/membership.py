@@ -26,15 +26,11 @@ class MembershipArgs:
         """
         The set of arguments for constructing a Membership resource.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
-               
-               
-               - - -
         :param pulumi.Input['MembershipAuthorityArgs'] authority: Authority encodes how Google will recognize identities from this Membership.
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: (Optional, Deprecated)
-               The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
                > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
@@ -70,9 +66,6 @@ class MembershipArgs:
     def membership_id(self) -> pulumi.Input[str]:
         """
         The client-provided identifier of the membership.
-
-
-        - - -
         """
         return pulumi.get(self, "membership_id")
 
@@ -99,7 +92,6 @@ class MembershipArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 
         > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -187,8 +179,7 @@ class _MembershipState:
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: (Optional, Deprecated)
-               The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
                > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -201,9 +192,6 @@ class _MembershipState:
         :param pulumi.Input[str] location: Location of the membership.
                The default value is `global`.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The unique identifier of the membership.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -253,7 +241,6 @@ class _MembershipState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 
         > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -325,9 +312,6 @@ class _MembershipState:
     def membership_id(self) -> Optional[pulumi.Input[str]]:
         """
         The client-provided identifier of the membership.
-
-
-        - - -
         """
         return pulumi.get(self, "membership_id")
 
@@ -492,8 +476,7 @@ class Membership(pulumi.CustomResource):
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: (Optional, Deprecated)
-               The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
                > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
@@ -505,9 +488,6 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[str] location: Location of the membership.
                The default value is `global`.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -692,8 +672,7 @@ class Membership(pulumi.CustomResource):
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: (Optional, Deprecated)
-               The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
                > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -706,9 +685,6 @@ class Membership(pulumi.CustomResource):
         :param pulumi.Input[str] location: Location of the membership.
                The default value is `global`.
         :param pulumi.Input[str] membership_id: The client-provided identifier of the membership.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The unique identifier of the membership.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -746,7 +722,6 @@ class Membership(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional, Deprecated)
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 
         > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -798,9 +773,6 @@ class Membership(pulumi.CustomResource):
     def membership_id(self) -> pulumi.Output[str]:
         """
         The client-provided identifier of the membership.
-
-
-        - - -
         """
         return pulumi.get(self, "membership_id")
 

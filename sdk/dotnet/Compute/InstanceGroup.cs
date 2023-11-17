@@ -158,8 +158,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The zone that this instance group should be created in.
-        /// 
-        /// - - -
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -270,8 +268,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The zone that this instance group should be created in.
-        /// 
-        /// - - -
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -356,8 +352,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The zone that this instance group should be created in.
-        /// 
-        /// - - -
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

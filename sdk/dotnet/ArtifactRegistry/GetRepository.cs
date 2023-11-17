@@ -79,8 +79,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     {
         /// <summary>
         /// The location of the artifact registry repository. eg us-central1
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -108,8 +106,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     {
         /// <summary>
         /// The location of the artifact registry repository. eg us-central1
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

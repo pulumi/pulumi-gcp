@@ -34,8 +34,6 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
      * The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -43,8 +41,6 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -119,8 +115,6 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          * @param name The name of the Catalog. Format:
          * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -132,8 +126,6 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The name of the Catalog. Format:
          * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-         * 
-         * ***
          * 
          * @return builder
          * 

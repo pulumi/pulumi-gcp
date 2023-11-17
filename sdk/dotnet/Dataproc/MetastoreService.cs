@@ -290,6 +290,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// Structure is documented below.
         /// </summary>
         [Output("metadataIntegration")]
         public Output<Outputs.MetastoreServiceMetadataIntegration?> MetadataIntegration { get; private set; } = null!;
@@ -353,9 +354,6 @@ namespace Pulumi.Gcp.Dataproc
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -498,6 +496,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// Structure is documented below.
         /// </summary>
         [Input("metadataIntegration")]
         public Input<Inputs.MetastoreServiceMetadataIntegrationArgs>? MetadataIntegration { get; set; }
@@ -548,9 +547,6 @@ namespace Pulumi.Gcp.Dataproc
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -661,6 +657,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// Structure is documented below.
         /// </summary>
         [Input("metadataIntegration")]
         public Input<Inputs.MetastoreServiceMetadataIntegrationGetArgs>? MetadataIntegration { get; set; }
@@ -734,9 +731,6 @@ namespace Pulumi.Gcp.Dataproc
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

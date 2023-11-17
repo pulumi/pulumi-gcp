@@ -82,12 +82,6 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
 
     /**
      * The parent of the inspect template in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     @Import(name="parent")
@@ -95,12 +89,6 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
 
     /**
      * @return The parent of the inspect template in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -245,12 +233,6 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
 
         /**
          * @param parent The parent of the inspect template in any of the following formats:
-         * * `projects/{{project}}`
-         * * `projects/{{project}}/locations/{{location}}`
-         * * `organizations/{{organization_id}}`
-         * * `organizations/{{organization_id}}/locations/{{location}}`
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -262,12 +244,6 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
 
         /**
          * @param parent The parent of the inspect template in any of the following formats:
-         * * `projects/{{project}}`
-         * * `projects/{{project}}/locations/{{location}}`
-         * * `organizations/{{organization_id}}`
-         * * `organizations/{{organization_id}}/locations/{{location}}`
-         * 
-         * ***
          * 
          * @return builder
          * 

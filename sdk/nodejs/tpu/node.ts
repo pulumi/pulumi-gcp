@@ -192,9 +192,6 @@ export class Node extends pulumi.CustomResource {
     public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
     /**
      * The version of Tensorflow running in the Node.
-     *
-     *
-     * - - -
      */
     public readonly tensorflowVersion!: pulumi.Output<string>;
     /**
@@ -343,9 +340,6 @@ export interface NodeState {
     serviceAccount?: pulumi.Input<string>;
     /**
      * The version of Tensorflow running in the Node.
-     *
-     *
-     * - - -
      */
     tensorflowVersion?: pulumi.Input<string>;
     /**
@@ -413,9 +407,6 @@ export interface NodeArgs {
     schedulingConfig?: pulumi.Input<inputs.tpu.NodeSchedulingConfig>;
     /**
      * The version of Tensorflow running in the Node.
-     *
-     *
-     * - - -
      */
     tensorflowVersion: pulumi.Input<string>;
     /**

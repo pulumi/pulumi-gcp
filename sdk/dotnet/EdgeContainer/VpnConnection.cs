@@ -163,9 +163,6 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// Google Cloud Platform location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -301,9 +298,6 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// Google Cloud Platform location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -418,9 +412,6 @@ namespace Pulumi.Gcp.EdgeContainer
 
         /// <summary>
         /// Google Cloud Platform location.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

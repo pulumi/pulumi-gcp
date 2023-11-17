@@ -266,8 +266,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of the cluster, unique within the project and
      * zone.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -275,8 +273,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the cluster, unique within the project and
      * zone.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

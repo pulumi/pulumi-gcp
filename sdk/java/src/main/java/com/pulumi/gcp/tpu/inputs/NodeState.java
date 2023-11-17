@@ -245,16 +245,12 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     /**
      * The version of Tensorflow running in the Node.
      * 
-     * ***
-     * 
      */
     @Import(name="tensorflowVersion")
     private @Nullable Output<String> tensorflowVersion;
 
     /**
      * @return The version of Tensorflow running in the Node.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> tensorflowVersion() {
@@ -645,8 +641,6 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tensorflowVersion The version of Tensorflow running in the Node.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -657,8 +651,6 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tensorflowVersion The version of Tensorflow running in the Node.
-         * 
-         * ***
          * 
          * @return builder
          * 

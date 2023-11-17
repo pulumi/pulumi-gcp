@@ -56,11 +56,6 @@ func GetSink(ctx *pulumi.Context, args *GetSinkArgs, opts ...pulumi.InvokeOption
 type GetSinkArgs struct {
 	// The identifier for the resource.
 	// Examples:
-	//
-	// - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
-	// - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-	// -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
-	// - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
 	Id string `pulumi:"id"`
 }
 
@@ -102,11 +97,6 @@ func GetSinkOutput(ctx *pulumi.Context, args GetSinkOutputArgs, opts ...pulumi.I
 type GetSinkOutputArgs struct {
 	// The identifier for the resource.
 	// Examples:
-	//
-	// - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
-	// - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-	// -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
-	// - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
 	Id pulumi.StringInput `pulumi:"id"`
 }
 

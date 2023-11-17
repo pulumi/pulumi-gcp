@@ -251,7 +251,7 @@ type AzureCluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworkingOutput `pulumi:"networking"`
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
@@ -354,7 +354,7 @@ type azureClusterState struct {
 	Name *string `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking *AzureClusterNetworking `pulumi:"networking"`
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling *bool `pulumi:"reconciling"`
@@ -407,7 +407,7 @@ type AzureClusterState struct {
 	Name pulumi.StringPtrInput
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworkingPtrInput
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolPtrInput
@@ -455,7 +455,7 @@ type azureClusterArgs struct {
 	Name *string `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworking `pulumi:"networking"`
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
 	ResourceGroupId string `pulumi:"resourceGroupId"`
@@ -490,7 +490,7 @@ type AzureClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworkingInput
-	// The number of the Fleet host project where this cluster will be registered.
+	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
 	ResourceGroupId pulumi.StringInput
@@ -669,7 +669,7 @@ func (o AzureClusterOutput) Networking() AzureClusterNetworkingOutput {
 	return o.ApplyT(func(v *AzureCluster) AzureClusterNetworkingOutput { return v.Networking }).(AzureClusterNetworkingOutput)
 }
 
-// The number of the Fleet host project where this cluster will be registered.
+// The project for the resource
 func (o AzureClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

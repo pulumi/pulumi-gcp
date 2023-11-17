@@ -50,9 +50,10 @@ public final class URLMapPathMatcherRouteRuleUrlRedirect {
      */
     private @Nullable String redirectResponseCode;
     /**
-     * @return If set to true, any accompanying query portion of the original URL is removed
-     * prior to redirecting the request. If set to false, the query portion of the
-     * original URL is retained. Defaults to false.
+     * @return If set to true, any accompanying query portion of the original URL is removed prior
+     * to redirecting the request. If set to false, the query portion of the original URL is
+     * retained. The default is set to false.
+     * This field is required to ensure an empty block is not set. The normal default value is false.
      * 
      */
     private @Nullable Boolean stripQuery;
@@ -106,9 +107,10 @@ public final class URLMapPathMatcherRouteRuleUrlRedirect {
         return Optional.ofNullable(this.redirectResponseCode);
     }
     /**
-     * @return If set to true, any accompanying query portion of the original URL is removed
-     * prior to redirecting the request. If set to false, the query portion of the
-     * original URL is retained. Defaults to false.
+     * @return If set to true, any accompanying query portion of the original URL is removed prior
+     * to redirecting the request. If set to false, the query portion of the original URL is
+     * retained. The default is set to false.
+     * This field is required to ensure an empty block is not set. The normal default value is false.
      * 
      */
     public Optional<Boolean> stripQuery() {

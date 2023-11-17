@@ -50,8 +50,6 @@ func LookupPrivateCloud(ctx *pulumi.Context, args *LookupPrivateCloudArgs, opts 
 // A collection of arguments for invoking getPrivateCloud.
 type LookupPrivateCloudArgs struct {
 	// Location of the resource.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Name of the resource.
 	Name string `pulumi:"name"`
@@ -93,8 +91,6 @@ func LookupPrivateCloudOutput(ctx *pulumi.Context, args LookupPrivateCloudOutput
 // A collection of arguments for invoking getPrivateCloud.
 type LookupPrivateCloudOutputArgs struct {
 	// Location of the resource.
-	//
-	// ***
 	Location pulumi.StringInput `pulumi:"location"`
 	// Name of the resource.
 	Name pulumi.StringInput `pulumi:"name"`

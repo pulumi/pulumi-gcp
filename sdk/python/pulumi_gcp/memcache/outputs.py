@@ -150,7 +150,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
                - FRIDAY: Friday
                - SATURDAY: Saturday
                - SUNDAY: Sunday
-               Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+                 Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param str duration: Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
                A duration in seconds with up to nine fractional digits,
                terminated by 's'. Example: "3.5s".
@@ -174,7 +174,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
         - FRIDAY: Friday
         - SATURDAY: Saturday
         - SUNDAY: Sunday
-        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+          Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day")
 
@@ -491,8 +491,6 @@ class InstanceNodeConfig(dict):
         """
         :param int cpu_count: Number of CPUs per node.
         :param int memory_size_mb: Memory size in Mebibytes for each memcache node.
-               
-               - - -
         """
         pulumi.set(__self__, "cpu_count", cpu_count)
         pulumi.set(__self__, "memory_size_mb", memory_size_mb)
@@ -510,8 +508,6 @@ class InstanceNodeConfig(dict):
     def memory_size_mb(self) -> int:
         """
         Memory size in Mebibytes for each memcache node.
-
-        - - -
         """
         return pulumi.get(self, "memory_size_mb")
 

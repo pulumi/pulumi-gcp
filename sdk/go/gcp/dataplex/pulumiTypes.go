@@ -1169,8 +1169,6 @@ type AssetResourceSpec struct {
 	// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
 	ReadAccessMode *string `pulumi:"readAccessMode"`
 	// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-	//
-	// ***
 	Type string `pulumi:"type"`
 }
 
@@ -1191,8 +1189,6 @@ type AssetResourceSpecArgs struct {
 	// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
 	ReadAccessMode pulumi.StringPtrInput `pulumi:"readAccessMode"`
 	// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-	//
-	// ***
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1284,8 +1280,6 @@ func (o AssetResourceSpecOutput) ReadAccessMode() pulumi.StringPtrOutput {
 }
 
 // Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-//
-// ***
 func (o AssetResourceSpecOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AssetResourceSpec) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1335,8 +1329,6 @@ func (o AssetResourceSpecPtrOutput) ReadAccessMode() pulumi.StringPtrOutput {
 }
 
 // Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-//
-// ***
 func (o AssetResourceSpecPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AssetResourceSpec) *string {
 		if v == nil {
@@ -4961,8 +4953,6 @@ func (o DatascanExecutionSpecTriggerOnDemandPtrOutput) Elem() DatascanExecutionS
 
 type DatascanExecutionSpecTriggerSchedule struct {
 	// Cron schedule for running scans periodically. This field is required for Schedule scans.
-	//
-	// ***
 	Cron string `pulumi:"cron"`
 }
 
@@ -4979,8 +4969,6 @@ type DatascanExecutionSpecTriggerScheduleInput interface {
 
 type DatascanExecutionSpecTriggerScheduleArgs struct {
 	// Cron schedule for running scans periodically. This field is required for Schedule scans.
-	//
-	// ***
 	Cron pulumi.StringInput `pulumi:"cron"`
 }
 
@@ -5062,8 +5050,6 @@ func (o DatascanExecutionSpecTriggerScheduleOutput) ToDatascanExecutionSpecTrigg
 }
 
 // Cron schedule for running scans periodically. This field is required for Schedule scans.
-//
-// ***
 func (o DatascanExecutionSpecTriggerScheduleOutput) Cron() pulumi.StringOutput {
 	return o.ApplyT(func(v DatascanExecutionSpecTriggerSchedule) string { return v.Cron }).(pulumi.StringOutput)
 }
@@ -5093,8 +5079,6 @@ func (o DatascanExecutionSpecTriggerSchedulePtrOutput) Elem() DatascanExecutionS
 }
 
 // Cron schedule for running scans periodically. This field is required for Schedule scans.
-//
-// ***
 func (o DatascanExecutionSpecTriggerSchedulePtrOutput) Cron() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatascanExecutionSpecTriggerSchedule) *string {
 		if v == nil {
@@ -6236,13 +6220,10 @@ type TaskExecutionSpec struct {
 	// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
 	Args map[string]string `pulumi:"args"`
 	// The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-	//
-	// ***
 	KmsKey *string `pulumi:"kmsKey"`
 	// The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
 	MaxJobExecutionLifetime *string `pulumi:"maxJobExecutionLifetime"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 	Project *string `pulumi:"project"`
 	// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
 	ServiceAccount string `pulumi:"serviceAccount"`
@@ -6263,13 +6244,10 @@ type TaskExecutionSpecArgs struct {
 	// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
 	Args pulumi.StringMapInput `pulumi:"args"`
 	// The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-	//
-	// ***
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
 	MaxJobExecutionLifetime pulumi.StringPtrInput `pulumi:"maxJobExecutionLifetime"`
-	// The ID of the project in which the resource belongs.
-	// If it is not provided, the provider project is used.
+	// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
@@ -6358,8 +6336,6 @@ func (o TaskExecutionSpecOutput) Args() pulumi.StringMapOutput {
 }
 
 // The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-//
-// ***
 func (o TaskExecutionSpecOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskExecutionSpec) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
@@ -6369,8 +6345,7 @@ func (o TaskExecutionSpecOutput) MaxJobExecutionLifetime() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v TaskExecutionSpec) *string { return v.MaxJobExecutionLifetime }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
+// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 func (o TaskExecutionSpecOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskExecutionSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -6415,8 +6390,6 @@ func (o TaskExecutionSpecPtrOutput) Args() pulumi.StringMapOutput {
 }
 
 // The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-//
-// ***
 func (o TaskExecutionSpecPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TaskExecutionSpec) *string {
 		if v == nil {
@@ -6436,8 +6409,7 @@ func (o TaskExecutionSpecPtrOutput) MaxJobExecutionLifetime() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project in which the resource belongs.
-// If it is not provided, the provider project is used.
+// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 func (o TaskExecutionSpecPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TaskExecutionSpec) *string {
 		if v == nil {
@@ -10227,8 +10199,6 @@ func (o ZoneIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type ZoneResourceSpec struct {
 	// Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-	//
-	// ***
 	LocationType string `pulumi:"locationType"`
 }
 
@@ -10245,8 +10215,6 @@ type ZoneResourceSpecInput interface {
 
 type ZoneResourceSpecArgs struct {
 	// Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-	//
-	// ***
 	LocationType pulumi.StringInput `pulumi:"locationType"`
 }
 
@@ -10328,8 +10296,6 @@ func (o ZoneResourceSpecOutput) ToZoneResourceSpecPtrOutputWithContext(ctx conte
 }
 
 // Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-//
-// ***
 func (o ZoneResourceSpecOutput) LocationType() pulumi.StringOutput {
 	return o.ApplyT(func(v ZoneResourceSpec) string { return v.LocationType }).(pulumi.StringOutput)
 }
@@ -10359,8 +10325,6 @@ func (o ZoneResourceSpecPtrOutput) Elem() ZoneResourceSpecOutput {
 }
 
 // Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-//
-// ***
 func (o ZoneResourceSpecPtrOutput) LocationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneResourceSpec) *string {
 		if v == nil {

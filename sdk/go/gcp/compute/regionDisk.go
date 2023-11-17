@@ -243,7 +243,6 @@ type RegionDisk struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures RegionDiskGuestOsFeatureArrayOutput `pulumi:"guestOsFeatures"`
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -287,8 +286,6 @@ type RegionDisk struct {
 	// A reference to the region where the disk resides.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones pulumi.StringArrayOutput `pulumi:"replicaZones"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -300,10 +297,9 @@ type RegionDisk struct {
 	// the value of sizeGb must not be less than the size of the sourceImage
 	// or the size of the snapshot.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-	// example, the following are valid values: *
-	// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. For example, the following are
+	// valid values:
 	Snapshot pulumi.StringPtrOutput `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -401,7 +397,6 @@ type regionDiskState struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures []RegionDiskGuestOsFeature `pulumi:"guestOsFeatures"`
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -445,8 +440,6 @@ type regionDiskState struct {
 	// A reference to the region where the disk resides.
 	Region *string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -458,10 +451,9 @@ type regionDiskState struct {
 	// the value of sizeGb must not be less than the size of the sourceImage
 	// or the size of the snapshot.
 	Size *int `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-	// example, the following are valid values: *
-	// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. For example, the following are
+	// valid values:
 	Snapshot *string `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -522,7 +514,6 @@ type RegionDiskState struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures RegionDiskGuestOsFeatureArrayInput
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -566,8 +557,6 @@ type RegionDiskState struct {
 	// A reference to the region where the disk resides.
 	Region pulumi.StringPtrInput
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones pulumi.StringArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -579,10 +568,9 @@ type RegionDiskState struct {
 	// the value of sizeGb must not be less than the size of the sourceImage
 	// or the size of the snapshot.
 	Size pulumi.IntPtrInput
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-	// example, the following are valid values: *
-	// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. For example, the following are
+	// valid values:
 	Snapshot pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -643,7 +631,6 @@ type regionDiskArgs struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures []RegionDiskGuestOsFeature `pulumi:"guestOsFeatures"`
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -677,8 +664,6 @@ type regionDiskArgs struct {
 	// A reference to the region where the disk resides.
 	Region *string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones []string `pulumi:"replicaZones"`
 	// Size of the persistent disk, specified in GB. You can specify this
 	// field when creating a persistent disk using the sourceImage or
@@ -688,10 +673,9 @@ type regionDiskArgs struct {
 	// the value of sizeGb must not be less than the size of the sourceImage
 	// or the size of the snapshot.
 	Size *int `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-	// example, the following are valid values: *
-	// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. For example, the following are
+	// valid values:
 	Snapshot *string `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -735,7 +719,6 @@ type RegionDiskArgs struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures RegionDiskGuestOsFeatureArrayInput
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -769,8 +752,6 @@ type RegionDiskArgs struct {
 	// A reference to the region where the disk resides.
 	Region pulumi.StringPtrInput
 	// URLs of the zones where the disk should be replicated to.
-	//
-	// ***
 	ReplicaZones pulumi.StringArrayInput
 	// Size of the persistent disk, specified in GB. You can specify this
 	// field when creating a persistent disk using the sourceImage or
@@ -780,10 +761,9 @@ type RegionDiskArgs struct {
 	// the value of sizeGb must not be less than the size of the sourceImage
 	// or the size of the snapshot.
 	Size pulumi.IntPtrInput
-	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-	// example, the following are valid values: *
-	// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-	// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+	// The source snapshot used to create this disk. You can provide this as
+	// a partial or full URL to the resource. For example, the following are
+	// valid values:
 	Snapshot pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -934,7 +914,6 @@ func (o RegionDiskOutput) GuestOsFeatures() RegionDiskGuestOsFeatureArrayOutput 
 	return o.ApplyT(func(v *RegionDisk) RegionDiskGuestOsFeatureArrayOutput { return v.GuestOsFeatures }).(RegionDiskGuestOsFeatureArrayOutput)
 }
 
-// (Optional, Deprecated)
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 //
 // > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -1011,8 +990,6 @@ func (o RegionDiskOutput) Region() pulumi.StringOutput {
 }
 
 // URLs of the zones where the disk should be replicated to.
-//
-// ***
 func (o RegionDiskOutput) ReplicaZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringArrayOutput { return v.ReplicaZones }).(pulumi.StringArrayOutput)
 }
@@ -1033,10 +1010,9 @@ func (o RegionDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-// example, the following are valid values: *
-// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+// The source snapshot used to create this disk. You can provide this as
+// a partial or full URL to the resource. For example, the following are
+// valid values:
 func (o RegionDiskOutput) Snapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringPtrOutput { return v.Snapshot }).(pulumi.StringPtrOutput)
 }

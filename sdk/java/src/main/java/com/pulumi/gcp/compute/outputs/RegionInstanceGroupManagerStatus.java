@@ -16,8 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionInstanceGroupManagerStatus {
     /**
-     * @return )
-     * Properties to set on all instances in the group. After setting
+     * @return Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
      * 
@@ -41,8 +40,7 @@ public final class RegionInstanceGroupManagerStatus {
 
     private RegionInstanceGroupManagerStatus() {}
     /**
-     * @return )
-     * Properties to set on all instances in the group. After setting
+     * @return Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
      * 

@@ -1367,7 +1367,7 @@ class AutoscalerAutoscalingPolicyScalingSchedule(dict):
         :param int min_required_replicas: Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
         :param str name: The identifier for this object. Format specified above.
         :param str schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
-        :param str description: An optional description of this resource.
+        :param str description: A description of a scaling schedule.
         :param bool disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
         :param str time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
         """
@@ -1418,7 +1418,7 @@ class AutoscalerAutoscalingPolicyScalingSchedule(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        An optional description of this resource.
+        A description of a scaling schedule.
         """
         return pulumi.get(self, "description")
 
@@ -3546,8 +3546,6 @@ class DiskAsyncReplicationSecondaryDisk(dict):
         """
         :param str disk: The secondary disk.
         :param str state: Output-only. Status of replication on the secondary disk.
-               
-               - - -
         """
         pulumi.set(__self__, "disk", disk)
         if state is not None:
@@ -3566,8 +3564,6 @@ class DiskAsyncReplicationSecondaryDisk(dict):
     def state(self) -> Optional[str]:
         """
         Output-only. Status of replication on the secondary disk.
-
-        - - -
         """
         return pulumi.get(self, "state")
 
@@ -3969,9 +3965,6 @@ class ExternalVpnGatewayInterface(dict):
         """
         :param int id: The numeric ID for this interface. Allowed values are based on the redundancy type
                of this external VPN gateway
-               * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
-               * `0, 1 - TWO_IPS_REDUNDANCY`
-               * `0, 1, 2, 3 - FOUR_IPS_REDUNDANCY`
         :param str ip_address: IP address of the interface in the external VPN gateway.
                Only IPv4 is supported. This IP address can be either from
                your on-premise gateway or another Cloud provider's VPN gateway,
@@ -3988,9 +3981,6 @@ class ExternalVpnGatewayInterface(dict):
         """
         The numeric ID for this interface. Allowed values are based on the redundancy type
         of this external VPN gateway
-        * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
-        * `0, 1 - TWO_IPS_REDUNDANCY`
-        * `0, 1, 2, 3 - FOUR_IPS_REDUNDANCY`
         """
         return pulumi.get(self, "id")
 
@@ -4322,8 +4312,6 @@ class FirewallPolicyRuleMatchLayer4Config(dict):
         """
         :param str ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
         :param Sequence[str] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
-               
-               - - -
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -4342,8 +4330,6 @@ class FirewallPolicyRuleMatchLayer4Config(dict):
     def ports(self) -> Optional[Sequence[str]]:
         """
         An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
-
-        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -4585,7 +4571,7 @@ class HealthCheckGrpcHealthCheck(dict):
                The value of grpcServiceName has the following meanings by convention:
                - Empty serviceName means the overall status of all services at the backend.
                - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
-               The grpcServiceName can only be ASCII.
+                 The grpcServiceName can only be ASCII.
         :param int port: The port number for the health check request.
                Must be specified if portName and portSpecification are not set
                or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
@@ -4611,7 +4597,7 @@ class HealthCheckGrpcHealthCheck(dict):
         The value of grpcServiceName has the following meanings by convention:
         - Empty serviceName means the overall status of all services at the backend.
         - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
-        The grpcServiceName can only be ASCII.
+          The grpcServiceName can only be ASCII.
         """
         return pulumi.get(self, "grpc_service_name")
 
@@ -4678,12 +4664,11 @@ class HealthCheckHttp2HealthCheck(dict):
                  request_path: Optional[str] = None,
                  response: Optional[str] = None):
         """
-        :param str host: The value of the host header in the HTTP health check request.
+        :param str host: The value of the host header in the HTTP2 health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
-        :param int port: The port number for the health check request.
-               Must be specified if portName and portSpecification are not set
-               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        :param int port: The TCP port number for the HTTP2 health check request.
+               The default value is 443.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
@@ -4692,7 +4677,7 @@ class HealthCheckHttp2HealthCheck(dict):
                backend.
                Default value is `NONE`.
                Possible values are: `NONE`, `PROXY_V1`.
-        :param str request_path: The request path of the HTTP health check request.
+        :param str request_path: The request path of the HTTP2 health check request.
                The default value is /.
         :param str response: The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
@@ -4717,7 +4702,7 @@ class HealthCheckHttp2HealthCheck(dict):
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
-        The value of the host header in the HTTP health check request.
+        The value of the host header in the HTTP2 health check request.
         If left empty (default value), the public IP on behalf of which this health
         check is performed will be used.
         """
@@ -4727,9 +4712,8 @@ class HealthCheckHttp2HealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        The port number for the health check request.
-        Must be specified if portName and portSpecification are not set
-        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        The TCP port number for the HTTP2 health check request.
+        The default value is 443.
         """
         return pulumi.get(self, "port")
 
@@ -4766,7 +4750,7 @@ class HealthCheckHttp2HealthCheck(dict):
     @pulumi.getter(name="requestPath")
     def request_path(self) -> Optional[str]:
         """
-        The request path of the HTTP health check request.
+        The request path of the HTTP2 health check request.
         The default value is /.
         """
         return pulumi.get(self, "request_path")
@@ -5106,7 +5090,7 @@ class HealthCheckSslHealthCheck(dict):
                  request: Optional[str] = None,
                  response: Optional[str] = None):
         """
-        :param int port: The TCP port number for the HTTP2 health check request.
+        :param int port: The TCP port number for the SSL health check request.
                The default value is 443.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
@@ -5141,7 +5125,7 @@ class HealthCheckSslHealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        The TCP port number for the HTTP2 health check request.
+        The TCP port number for the SSL health check request.
         The default value is 443.
         """
         return pulumi.get(self, "port")
@@ -8296,10 +8280,8 @@ class InstanceGroupManagerAllInstancesConfig(dict):
                  labels: Optional[Mapping[str, str]] = None,
                  metadata: Optional[Mapping[str, str]] = None):
         """
-        :param Mapping[str, str] labels: ), The label key-value pairs that you want to patch onto the instance.
-               
-               - - -
-        :param Mapping[str, str] metadata: ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        :param Mapping[str, str] labels: , The label key-value pairs that you want to patch onto the instance.
+        :param Mapping[str, str] metadata: , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -8310,9 +8292,7 @@ class InstanceGroupManagerAllInstancesConfig(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
-        ), The label key-value pairs that you want to patch onto the instance.
-
-        - - -
+        , The label key-value pairs that you want to patch onto the instance.
         """
         return pulumi.get(self, "labels")
 
@@ -8320,7 +8300,7 @@ class InstanceGroupManagerAllInstancesConfig(dict):
     @pulumi.getter
     def metadata(self) -> Optional[Mapping[str, str]]:
         """
-        ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         return pulumi.get(self, "metadata")
 
@@ -8397,9 +8377,7 @@ class InstanceGroupManagerInstanceLifecyclePolicy(dict):
     def __init__(__self__, *,
                  force_update_on_repair: Optional[str] = None):
         """
-        :param str force_update_on_repair: ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
-               
-               - - -
+        :param str force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         """
         if force_update_on_repair is not None:
             pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
@@ -8408,9 +8386,7 @@ class InstanceGroupManagerInstanceLifecyclePolicy(dict):
     @pulumi.getter(name="forceUpdateOnRepair")
     def force_update_on_repair(self) -> Optional[str]:
         """
-        ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
-
-        - - -
+        , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         """
         return pulumi.get(self, "force_update_on_repair")
 
@@ -8423,7 +8399,6 @@ class InstanceGroupManagerNamedPort(dict):
         """
         :param str name: The name of the port.
         :param int port: The port number.
-               - - -
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "port", port)
@@ -8441,7 +8416,6 @@ class InstanceGroupManagerNamedPort(dict):
     def port(self) -> int:
         """
         The port number.
-        - - -
         """
         return pulumi.get(self, "port")
 
@@ -8624,8 +8598,7 @@ class InstanceGroupManagerStatus(dict):
                  statefuls: Optional[Sequence['outputs.InstanceGroupManagerStatusStateful']] = None,
                  version_targets: Optional[Sequence['outputs.InstanceGroupManagerStatusVersionTarget']] = None):
         """
-        :param Sequence['InstanceGroupManagerStatusAllInstancesConfigArgs'] all_instances_configs: )
-               Properties to set on all instances in the group. After setting
+        :param Sequence['InstanceGroupManagerStatusAllInstancesConfigArgs'] all_instances_configs: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param bool is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
@@ -8645,7 +8618,6 @@ class InstanceGroupManagerStatus(dict):
     @pulumi.getter(name="allInstancesConfigs")
     def all_instances_configs(self) -> Optional[Sequence['outputs.InstanceGroupManagerStatusAllInstancesConfig']]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.
@@ -8856,10 +8828,9 @@ class InstanceGroupManagerUpdatePolicy(dict):
         :param int max_surge_percent: , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
         :param int max_unavailable_fixed: , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
         :param int max_unavailable_percent: , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
-        :param int min_ready_sec: ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        :param int min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         :param str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param str replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-               - - -
         """
         pulumi.set(__self__, "minimal_action", minimal_action)
         pulumi.set(__self__, "type", type)
@@ -8930,7 +8901,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="minReadySec")
     def min_ready_sec(self) -> Optional[int]:
         """
-        ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         """
         return pulumi.get(self, "min_ready_sec")
 
@@ -8947,7 +8918,6 @@ class InstanceGroupManagerUpdatePolicy(dict):
     def replacement_method(self) -> Optional[str]:
         """
         , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-        - - -
         """
         return pulumi.get(self, "replacement_method")
 
@@ -9280,7 +9250,8 @@ class InstanceNetworkInterface(dict):
         :param str ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet.
                This field is always inherited from its subnetwork.
         :param str name: A unique name for the resource, required by GCE.
-               Changing this forces a new resource to be created.
+               Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+               is "External IPv6".
         :param str network: The name or self_link of the network to attach this interface to.
                Either `network` or `subnetwork` must be provided. If network isn't provided it will
                be inferred from the subnetwork.
@@ -9383,7 +9354,8 @@ class InstanceNetworkInterface(dict):
     def name(self) -> Optional[str]:
         """
         A unique name for the resource, required by GCE.
-        Changing this forces a new resource to be created.
+        Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+        is "External IPv6".
         """
         return pulumi.get(self, "name")
 
@@ -9499,10 +9471,15 @@ class InstanceNetworkInterfaceAccessConfig(dict):
         """
         :param str nat_ip: The IP address that will be 1:1 mapped to the instance's
                network ip. If not given, one will be generated.
-        :param str network_tier: The service-level to be provided for IPv6 traffic when the
-               subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
-        :param str public_ptr_domain_name: The domain name to be used when creating DNSv6
-               records for the external IPv6 ranges..
+        :param str network_tier: The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance.
+               This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
+               not specified, it is assumed to be PREMIUM.
+               
+               <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
+        :param str public_ptr_domain_name: The DNS domain name for the public PTR record.
+               To set this field on an instance, you must be verified as the owner of the domain.
+               See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
+               to become verified as a domain owner.
         """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
@@ -9526,8 +9503,11 @@ class InstanceNetworkInterfaceAccessConfig(dict):
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> Optional[str]:
         """
-        The service-level to be provided for IPv6 traffic when the
-        subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+        The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance.
+        This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
+        not specified, it is assumed to be PREMIUM.
+
+        <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
         """
         return pulumi.get(self, "network_tier")
 
@@ -9535,8 +9515,10 @@ class InstanceNetworkInterfaceAccessConfig(dict):
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[str]:
         """
-        The domain name to be used when creating DNSv6
-        records for the external IPv6 ranges..
+        The DNS domain name for the public PTR record.
+        To set this field on an instance, you must be verified as the owner of the domain.
+        See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
+        to become verified as a domain owner.
         """
         return pulumi.get(self, "public_ptr_domain_name")
 
@@ -9648,7 +9630,8 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
                If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
         :param str external_ipv6_prefix_length: The prefix length of the external IPv6 range.
         :param str name: A unique name for the resource, required by GCE.
-               Changing this forces a new resource to be created.
+               Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+               is "External IPv6".
         :param str public_ptr_domain_name: The domain name to be used when creating DNSv6
                records for the external IPv6 ranges..
         """
@@ -9697,7 +9680,8 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
     def name(self) -> Optional[str]:
         """
         A unique name for the resource, required by GCE.
-        Changing this forces a new resource to be created.
+        Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+        is "External IPv6".
         """
         return pulumi.get(self, "name")
 
@@ -10305,11 +10289,11 @@ class InstanceShieldedInstanceConfig(dict):
                  enable_secure_boot: Optional[bool] = None,
                  enable_vtpm: Optional[bool] = None):
         """
-        :param bool enable_integrity_monitoring: - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        :param bool enable_integrity_monitoring: Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param bool enable_secure_boot: - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        :param bool enable_secure_boot: Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param bool enable_vtpm: - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        :param bool enable_vtpm: Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         """
         if enable_integrity_monitoring is not None:
@@ -10323,7 +10307,7 @@ class InstanceShieldedInstanceConfig(dict):
     @pulumi.getter(name="enableIntegrityMonitoring")
     def enable_integrity_monitoring(self) -> Optional[bool]:
         """
-        - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
         **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         """
         return pulumi.get(self, "enable_integrity_monitoring")
@@ -10332,7 +10316,7 @@ class InstanceShieldedInstanceConfig(dict):
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> Optional[bool]:
         """
-        - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
         **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         """
         return pulumi.get(self, "enable_secure_boot")
@@ -10341,7 +10325,7 @@ class InstanceShieldedInstanceConfig(dict):
     @pulumi.getter(name="enableVtpm")
     def enable_vtpm(self) -> Optional[bool]:
         """
-        - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
         **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         """
         return pulumi.get(self, "enable_vtpm")
@@ -10377,7 +10361,7 @@ class InstanceTemplateAdvancedMachineFeatures(dict):
         """
         :param bool enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param int threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
-        :param int visible_core_count: ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        :param int visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
@@ -10406,7 +10390,7 @@ class InstanceTemplateAdvancedMachineFeatures(dict):
     @pulumi.getter(name="visibleCoreCount")
     def visible_core_count(self) -> Optional[int]:
         """
-        ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         """
         return pulumi.get(self, "visible_core_count")
 
@@ -10542,7 +10526,7 @@ class InstanceTemplateDisk(dict):
                sets the number of I/O operations per second that the disk can handle.
                Values must be between 10,000 and 120,000. For more details, see the
                [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
-        :param str resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        :param str resource_policies: A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
                > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
@@ -10722,7 +10706,7 @@ class InstanceTemplateDisk(dict):
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[str]:
         """
-        - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 
@@ -11045,7 +11029,7 @@ class InstanceTemplateNetworkInterface(dict):
         :param str network: The name or self_link of the network to attach this interface to.
                Use `network` attribute for Legacy or Auto subnetted networks and
                `subnetwork` for custom subnetted networks.
-        :param str network_attachment: ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        :param str network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param str nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
@@ -11159,7 +11143,7 @@ class InstanceTemplateNetworkInterface(dict):
     @pulumi.getter(name="networkAttachment")
     def network_attachment(self) -> Optional[str]:
         """
-        ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         """
         return pulumi.get(self, "network_attachment")
 
@@ -11246,8 +11230,11 @@ class InstanceTemplateNetworkInterfaceAccessConfig(dict):
         """
         :param str nat_ip: The IP address that will be 1:1 mapped to the instance's
                network ip. If not given, one will be generated.
-        :param str network_tier: The service-level to be provided for IPv6 traffic when the
-               subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        :param str network_tier: The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring
+               this instance template. This field can take the following values: PREMIUM,
+               STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+               
+               <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
         """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
@@ -11269,8 +11256,11 @@ class InstanceTemplateNetworkInterfaceAccessConfig(dict):
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> Optional[str]:
         """
-        The service-level to be provided for IPv6 traffic when the
-        subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring
+        this instance template. This field can take the following values: PREMIUM,
+        STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+
+        <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
         """
         return pulumi.get(self, "network_tier")
 
@@ -11586,8 +11576,6 @@ class InstanceTemplateScheduling(dict):
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param 'InstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-               <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param Sequence['InstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
@@ -11655,10 +11643,6 @@ class InstanceTemplateScheduling(dict):
     @property
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional['outputs.InstanceTemplateSchedulingMaxRunDuration']:
-        """
-        Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
-        <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
-        """
         return pulumi.get(self, "max_run_duration")
 
     @property
@@ -11909,9 +11893,9 @@ class InstanceTemplateShieldedInstanceConfig(dict):
                  enable_secure_boot: Optional[bool] = None,
                  enable_vtpm: Optional[bool] = None):
         """
-        :param bool enable_integrity_monitoring: - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
-        :param bool enable_secure_boot: - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
-        :param bool enable_vtpm: - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        :param bool enable_integrity_monitoring: Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        :param bool enable_secure_boot: Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        :param bool enable_vtpm: Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
         """
         if enable_integrity_monitoring is not None:
             pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
@@ -11924,7 +11908,7 @@ class InstanceTemplateShieldedInstanceConfig(dict):
     @pulumi.getter(name="enableIntegrityMonitoring")
     def enable_integrity_monitoring(self) -> Optional[bool]:
         """
-        - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
         """
         return pulumi.get(self, "enable_integrity_monitoring")
 
@@ -11932,7 +11916,7 @@ class InstanceTemplateShieldedInstanceConfig(dict):
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> Optional[bool]:
         """
-        - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
         """
         return pulumi.get(self, "enable_secure_boot")
 
@@ -11940,7 +11924,7 @@ class InstanceTemplateShieldedInstanceConfig(dict):
     @pulumi.getter(name="enableVtpm")
     def enable_vtpm(self) -> Optional[bool]:
         """
-        - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
         """
         return pulumi.get(self, "enable_vtpm")
 
@@ -12561,8 +12545,6 @@ class NetworkFirewallPolicyRuleMatchLayer4Config(dict):
         """
         :param str ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
         :param Sequence[str] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
-               
-               - - -
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -12581,8 +12563,6 @@ class NetworkFirewallPolicyRuleMatchLayer4Config(dict):
     def ports(self) -> Optional[Sequence[str]]:
         """
         An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
-
-        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -12681,9 +12661,9 @@ class NodeGroupAutoscalingPolicy(dict):
                - OFF: Disables the autoscaler.
                - ON: Enables scaling in and scaling out.
                - ONLY_SCALE_OUT: Enables only scaling out.
-               You must use this mode if your node groups are configured to
-               restart their hosted VMs on minimal servers.
-               Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
+                 You must use this mode if your node groups are configured to
+                 restart their hosted VMs on minimal servers.
+                 Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
         """
         if max_nodes is not None:
             pulumi.set(__self__, "max_nodes", max_nodes)
@@ -12718,9 +12698,9 @@ class NodeGroupAutoscalingPolicy(dict):
         - OFF: Disables the autoscaler.
         - ON: Enables scaling in and scaling out.
         - ONLY_SCALE_OUT: Enables only scaling out.
-        You must use this mode if your node groups are configured to
-        restart their hosted VMs on minimal servers.
-        Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
+          You must use this mode if your node groups are configured to
+          restart their hosted VMs on minimal servers.
+          Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
         """
         return pulumi.get(self, "mode")
 
@@ -13059,7 +13039,6 @@ class OrganizationSecurityPolicyRuleMatchConfig(dict):
         :param Sequence['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
                Structure is documented below.
                
-               
                <a name="nested_layer4_config"></a>The `layer4_config` block supports:
         :param Sequence[str] dest_ip_ranges: Destination IP address range in CIDR format. Required for
                EGRESS rules.
@@ -13078,7 +13057,6 @@ class OrganizationSecurityPolicyRuleMatchConfig(dict):
         """
         Pairs of IP protocols and ports that the rule should match.
         Structure is documented below.
-
 
         <a name="nested_layer4_config"></a>The `layer4_config` block supports:
         """
@@ -13137,8 +13115,6 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4Config(dict):
                applies to connections through any port.
                Example inputs include: ["22"], ["80","443"], and
                ["12345-12349"].
-               
-               - - -
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -13166,8 +13142,6 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4Config(dict):
         applies to connections through any port.
         Example inputs include: ["22"], ["80","443"], and
         ["12345-12349"].
-
-        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -13311,8 +13285,6 @@ class PacketMirroringMirroredResourcesInstance(dict):
                  url: str):
         """
         :param str url: The URL of the instances where this rule should be active.
-               
-               - - -
         """
         pulumi.set(__self__, "url", url)
 
@@ -13321,8 +13293,6 @@ class PacketMirroringMirroredResourcesInstance(dict):
     def url(self) -> str:
         """
         The URL of the instances where this rule should be active.
-
-        - - -
         """
         return pulumi.get(self, "url")
 
@@ -14403,7 +14373,7 @@ class RegionAutoscalerAutoscalingPolicyScalingSchedule(dict):
         :param int min_required_replicas: Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
         :param str name: The identifier for this object. Format specified above.
         :param str schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
-        :param str description: An optional description of this resource.
+        :param str description: A description of a scaling schedule.
         :param bool disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
         :param str time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
         """
@@ -14454,7 +14424,7 @@ class RegionAutoscalerAutoscalingPolicyScalingSchedule(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        An optional description of this resource.
+        A description of a scaling schedule.
         """
         return pulumi.get(self, "description")
 
@@ -16578,7 +16548,7 @@ class RegionHealthCheckGrpcHealthCheck(dict):
                The value of grpcServiceName has the following meanings by convention:
                * Empty serviceName means the overall status of all services at the backend.
                * Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
-               The grpcServiceName can only be ASCII.
+                 The grpcServiceName can only be ASCII.
         :param int port: The port number for the health check request.
                Must be specified if portName and portSpecification are not set
                or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
@@ -16604,7 +16574,7 @@ class RegionHealthCheckGrpcHealthCheck(dict):
         The value of grpcServiceName has the following meanings by convention:
         * Empty serviceName means the overall status of all services at the backend.
         * Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
-        The grpcServiceName can only be ASCII.
+          The grpcServiceName can only be ASCII.
         """
         return pulumi.get(self, "grpc_service_name")
 
@@ -16671,12 +16641,11 @@ class RegionHealthCheckHttp2HealthCheck(dict):
                  request_path: Optional[str] = None,
                  response: Optional[str] = None):
         """
-        :param str host: The value of the host header in the HTTP health check request.
+        :param str host: The value of the host header in the HTTP2 health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
-        :param int port: The port number for the health check request.
-               Must be specified if portName and portSpecification are not set
-               or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        :param int port: The TCP port number for the HTTP2 health check request.
+               The default value is 443.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
         :param str port_specification: Specifies how port is selected for health checking, can be one of the
@@ -16685,7 +16654,7 @@ class RegionHealthCheckHttp2HealthCheck(dict):
                backend.
                Default value is `NONE`.
                Possible values are: `NONE`, `PROXY_V1`.
-        :param str request_path: The request path of the HTTP health check request.
+        :param str request_path: The request path of the HTTP2 health check request.
                The default value is /.
         :param str response: The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
@@ -16710,7 +16679,7 @@ class RegionHealthCheckHttp2HealthCheck(dict):
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
-        The value of the host header in the HTTP health check request.
+        The value of the host header in the HTTP2 health check request.
         If left empty (default value), the public IP on behalf of which this health
         check is performed will be used.
         """
@@ -16720,9 +16689,8 @@ class RegionHealthCheckHttp2HealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        The port number for the health check request.
-        Must be specified if portName and portSpecification are not set
-        or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+        The TCP port number for the HTTP2 health check request.
+        The default value is 443.
         """
         return pulumi.get(self, "port")
 
@@ -16759,7 +16727,7 @@ class RegionHealthCheckHttp2HealthCheck(dict):
     @pulumi.getter(name="requestPath")
     def request_path(self) -> Optional[str]:
         """
-        The request path of the HTTP health check request.
+        The request path of the HTTP2 health check request.
         The default value is /.
         """
         return pulumi.get(self, "request_path")
@@ -17099,7 +17067,7 @@ class RegionHealthCheckSslHealthCheck(dict):
                  request: Optional[str] = None,
                  response: Optional[str] = None):
         """
-        :param int port: The TCP port number for the HTTP2 health check request.
+        :param int port: The TCP port number for the SSL health check request.
                The default value is 443.
         :param str port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
@@ -17134,7 +17102,7 @@ class RegionHealthCheckSslHealthCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        The TCP port number for the HTTP2 health check request.
+        The TCP port number for the SSL health check request.
         The default value is 443.
         """
         return pulumi.get(self, "port")
@@ -17318,10 +17286,8 @@ class RegionInstanceGroupManagerAllInstancesConfig(dict):
                  labels: Optional[Mapping[str, str]] = None,
                  metadata: Optional[Mapping[str, str]] = None):
         """
-        :param Mapping[str, str] labels: ), The label key-value pairs that you want to patch onto the instance.
-               
-               - - -
-        :param Mapping[str, str] metadata: ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        :param Mapping[str, str] labels: , The label key-value pairs that you want to patch onto the instance.
+        :param Mapping[str, str] metadata: , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -17332,9 +17298,7 @@ class RegionInstanceGroupManagerAllInstancesConfig(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
-        ), The label key-value pairs that you want to patch onto the instance.
-
-        - - -
+        , The label key-value pairs that you want to patch onto the instance.
         """
         return pulumi.get(self, "labels")
 
@@ -17342,7 +17306,7 @@ class RegionInstanceGroupManagerAllInstancesConfig(dict):
     @pulumi.getter
     def metadata(self) -> Optional[Mapping[str, str]]:
         """
-        ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         return pulumi.get(self, "metadata")
 
@@ -17419,8 +17383,7 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicy(dict):
     def __init__(__self__, *,
                  force_update_on_repair: Optional[str] = None):
         """
-        :param str force_update_on_repair: ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
-               - - -
+        :param str force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
         """
         if force_update_on_repair is not None:
             pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
@@ -17429,8 +17392,7 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicy(dict):
     @pulumi.getter(name="forceUpdateOnRepair")
     def force_update_on_repair(self) -> Optional[str]:
         """
-        ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
-        - - -
+        , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
         """
         return pulumi.get(self, "force_update_on_repair")
 
@@ -17443,7 +17405,6 @@ class RegionInstanceGroupManagerNamedPort(dict):
         """
         :param str name: The name of the port.
         :param int port: The port number.
-               - - -
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "port", port)
@@ -17461,7 +17422,6 @@ class RegionInstanceGroupManagerNamedPort(dict):
     def port(self) -> int:
         """
         The port number.
-        - - -
         """
         return pulumi.get(self, "port")
 
@@ -17644,8 +17604,7 @@ class RegionInstanceGroupManagerStatus(dict):
                  statefuls: Optional[Sequence['outputs.RegionInstanceGroupManagerStatusStateful']] = None,
                  version_targets: Optional[Sequence['outputs.RegionInstanceGroupManagerStatusVersionTarget']] = None):
         """
-        :param Sequence['RegionInstanceGroupManagerStatusAllInstancesConfigArgs'] all_instances_configs: )
-               Properties to set on all instances in the group. After setting
+        :param Sequence['RegionInstanceGroupManagerStatusAllInstancesConfigArgs'] all_instances_configs: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param bool is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
@@ -17665,7 +17624,6 @@ class RegionInstanceGroupManagerStatus(dict):
     @pulumi.getter(name="allInstancesConfigs")
     def all_instances_configs(self) -> Optional[Sequence['outputs.RegionInstanceGroupManagerStatusAllInstancesConfig']]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.
@@ -17880,10 +17838,9 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
         :param int max_surge_percent: , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
         :param int max_unavailable_fixed: , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
         :param int max_unavailable_percent: , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
-        :param int min_ready_sec: ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        :param int min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         :param str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param str replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-               - - -
         """
         pulumi.set(__self__, "minimal_action", minimal_action)
         pulumi.set(__self__, "type", type)
@@ -17964,7 +17921,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
     @pulumi.getter(name="minReadySec")
     def min_ready_sec(self) -> Optional[int]:
         """
-        ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         """
         return pulumi.get(self, "min_ready_sec")
 
@@ -17981,7 +17938,6 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
     def replacement_method(self) -> Optional[str]:
         """
         , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-        - - -
         """
         return pulumi.get(self, "replacement_method")
 
@@ -18283,7 +18239,7 @@ class RegionInstanceTemplateDisk(dict):
                sets the number of I/O operations per second that the disk can handle.
                Values must be between 10,000 and 120,000. For more details, see the
                [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
-        :param str resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        :param str resource_policies: A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
                > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
@@ -18463,7 +18419,7 @@ class RegionInstanceTemplateDisk(dict):
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[str]:
         """
-        - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 
@@ -18953,8 +18909,11 @@ class RegionInstanceTemplateNetworkInterfaceAccessConfig(dict):
         """
         :param str nat_ip: The IP address that will be 1:1 mapped to the instance's
                network ip. If not given, one will be generated.
-        :param str network_tier: The service-level to be provided for IPv6 traffic when the
-               subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        :param str network_tier: The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring
+               this instance template. This field can take the following values: PREMIUM,
+               STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+               
+               <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
         """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
@@ -18976,8 +18935,11 @@ class RegionInstanceTemplateNetworkInterfaceAccessConfig(dict):
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> Optional[str]:
         """
-        The service-level to be provided for IPv6 traffic when the
-        subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring
+        this instance template. This field can take the following values: PREMIUM,
+        STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+
+        <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
         """
         return pulumi.get(self, "network_tier")
 
@@ -19287,8 +19249,6 @@ class RegionInstanceTemplateScheduling(dict):
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
-               <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         :param 'RegionInstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         :param Sequence['RegionInstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
@@ -19352,10 +19312,6 @@ class RegionInstanceTemplateScheduling(dict):
     @property
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[str]:
-        """
-        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
-        <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
-        """
         return pulumi.get(self, "maintenance_interval")
 
     @property
@@ -19614,9 +19570,9 @@ class RegionInstanceTemplateShieldedInstanceConfig(dict):
                  enable_secure_boot: Optional[bool] = None,
                  enable_vtpm: Optional[bool] = None):
         """
-        :param bool enable_integrity_monitoring: - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
-        :param bool enable_secure_boot: - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
-        :param bool enable_vtpm: - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        :param bool enable_integrity_monitoring: Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        :param bool enable_secure_boot: Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        :param bool enable_vtpm: Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
         """
         if enable_integrity_monitoring is not None:
             pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
@@ -19629,7 +19585,7 @@ class RegionInstanceTemplateShieldedInstanceConfig(dict):
     @pulumi.getter(name="enableIntegrityMonitoring")
     def enable_integrity_monitoring(self) -> Optional[bool]:
         """
-        - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
         """
         return pulumi.get(self, "enable_integrity_monitoring")
 
@@ -19637,7 +19593,7 @@ class RegionInstanceTemplateShieldedInstanceConfig(dict):
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> Optional[bool]:
         """
-        - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
         """
         return pulumi.get(self, "enable_secure_boot")
 
@@ -19645,7 +19601,7 @@ class RegionInstanceTemplateShieldedInstanceConfig(dict):
     @pulumi.getter(name="enableVtpm")
     def enable_vtpm(self) -> Optional[bool]:
         """
-        - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
         """
         return pulumi.get(self, "enable_vtpm")
 
@@ -20177,8 +20133,6 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4Config(dict):
         """
         :param str ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
         :param Sequence[str] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
-               
-               - - -
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -20197,8 +20151,6 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4Config(dict):
     def ports(self) -> Optional[Sequence[str]]:
         """
         An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
-
-        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -20635,7 +20587,7 @@ class RegionSecurityPolicyDdosProtectionConfig(dict):
                - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
                - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
                - ADVANCED_PREVIEW: flag to enable the security policy in preview mode.
-               Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
+                 Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
         """
         pulumi.set(__self__, "ddos_protection", ddos_protection)
 
@@ -20647,7 +20599,7 @@ class RegionSecurityPolicyDdosProtectionConfig(dict):
         - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
         - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
         - ADVANCED_PREVIEW: flag to enable the security policy in preview mode.
-        Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
+          Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
         """
         return pulumi.get(self, "ddos_protection")
 
@@ -20925,7 +20877,7 @@ class RegionSecurityPolicyUserDefinedField(dict):
                - IPV6: Points to the beginning of the IPv6 header.
                - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
                - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
-               Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
+                 Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
         :param str mask: If specified, apply this mask (bitwise AND) to the field to ignore bits before matching.
                Encoded as a hexadecimal number (starting with "0x").
                The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
@@ -20952,7 +20904,7 @@ class RegionSecurityPolicyUserDefinedField(dict):
         - IPV6: Points to the beginning of the IPv6 header.
         - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
         - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
-        Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
+          Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
         """
         return pulumi.get(self, "base")
 
@@ -21531,10 +21483,8 @@ class RegionUrlMapDefaultRouteActionRetryPolicy(dict):
                  per_try_timeout: Optional['outputs.RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout'] = None,
                  retry_conditions: Optional[Sequence[str]] = None):
         """
-        :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        :param int num_retries: Specifies the allowed number retries. This number must be > 0.
         :param 'RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
-               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-               will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
         :param Sequence[str] retry_conditions: Specifies one or more conditions when this retry policy applies.
                Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
@@ -21560,7 +21510,7 @@ class RegionUrlMapDefaultRouteActionRetryPolicy(dict):
     @pulumi.getter(name="numRetries")
     def num_retries(self) -> Optional[int]:
         """
-        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        Specifies the allowed number retries. This number must be > 0.
         """
         return pulumi.get(self, "num_retries")
 
@@ -21569,8 +21519,6 @@ class RegionUrlMapDefaultRouteActionRetryPolicy(dict):
     def per_try_timeout(self) -> Optional['outputs.RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout']:
         """
         Specifies a non-zero timeout per retry attempt.
-        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-        will use the largest timeout among all backend services associated with the route.
         Structure is documented below.
         """
         return pulumi.get(self, "per_try_timeout")
@@ -22061,9 +22009,9 @@ class RegionUrlMapDefaultUrlRedirect(dict):
                * FOUND, which corresponds to 302.
                * SEE_OTHER which corresponds to 303.
                * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-               will be retained.
+                 will be retained.
                * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-               the request method will be retained.
+                 the request method will be retained.
         """
         pulumi.set(__self__, "strip_query", strip_query)
         if host_redirect is not None:
@@ -22141,9 +22089,9 @@ class RegionUrlMapDefaultUrlRedirect(dict):
         * FOUND, which corresponds to 302.
         * SEE_OTHER which corresponds to 303.
         * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-        will be retained.
+          will be retained.
         * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-        the request method will be retained.
+          the request method will be retained.
         """
         return pulumi.get(self, "redirect_response_code")
 
@@ -22413,9 +22361,9 @@ class RegionUrlMapPathMatcherDefaultUrlRedirect(dict):
                * FOUND, which corresponds to 302.
                * SEE_OTHER which corresponds to 303.
                * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-               will be retained.
+                 will be retained.
                * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-               the request method will be retained.
+                 the request method will be retained.
         """
         pulumi.set(__self__, "strip_query", strip_query)
         if host_redirect is not None:
@@ -22493,9 +22441,9 @@ class RegionUrlMapPathMatcherDefaultUrlRedirect(dict):
         * FOUND, which corresponds to 302.
         * SEE_OTHER which corresponds to 303.
         * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-        will be retained.
+          will be retained.
         * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-        the request method will be retained.
+          the request method will be retained.
         """
         return pulumi.get(self, "redirect_response_code")
 
@@ -23160,10 +23108,8 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
                  per_try_timeout: Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout'] = None,
                  retry_conditions: Optional[Sequence[str]] = None):
         """
-        :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        :param int num_retries: Specifies the allowed number retries. This number must be > 0.
         :param 'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
-               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-               will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
         :param Sequence[str] retry_conditions: Specifies one or more conditions when this retry policy applies.
                Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
@@ -23189,7 +23135,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
     @pulumi.getter(name="numRetries")
     def num_retries(self) -> Optional[int]:
         """
-        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        Specifies the allowed number retries. This number must be > 0.
         """
         return pulumi.get(self, "num_retries")
 
@@ -23198,8 +23144,6 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
     def per_try_timeout(self) -> Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout']:
         """
         Specifies a non-zero timeout per retry attempt.
-        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-        will use the largest timeout among all backend services associated with the route.
         Structure is documented below.
         """
         return pulumi.get(self, "per_try_timeout")
@@ -23655,9 +23599,9 @@ class RegionUrlMapPathMatcherPathRuleUrlRedirect(dict):
                  prefix_redirect: Optional[str] = None,
                  redirect_response_code: Optional[str] = None):
         """
-        :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed
-               prior to redirecting the request. If set to false, the query portion of the
-               original URL is retained.
+        :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed prior
+               to redirecting the request. If set to false, the query portion of the original URL is
+               retained.
                This field is required to ensure an empty block is not set. The normal default value is false.
         :param str host_redirect: The host that will be used in the redirect response instead of the one
                that was supplied in the request. The value must be between 1 and 255
@@ -23683,9 +23627,9 @@ class RegionUrlMapPathMatcherPathRuleUrlRedirect(dict):
                * FOUND, which corresponds to 302.
                * SEE_OTHER which corresponds to 303.
                * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-               will be retained.
+                 will be retained.
                * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-               the request method will be retained.
+                 the request method will be retained.
         """
         pulumi.set(__self__, "strip_query", strip_query)
         if host_redirect is not None:
@@ -23703,9 +23647,9 @@ class RegionUrlMapPathMatcherPathRuleUrlRedirect(dict):
     @pulumi.getter(name="stripQuery")
     def strip_query(self) -> bool:
         """
-        If set to true, any accompanying query portion of the original URL is removed
-        prior to redirecting the request. If set to false, the query portion of the
-        original URL is retained.
+        If set to true, any accompanying query portion of the original URL is removed prior
+        to redirecting the request. If set to false, the query portion of the original URL is
+        retained.
         This field is required to ensure an empty block is not set. The normal default value is false.
         """
         return pulumi.get(self, "strip_query")
@@ -23766,9 +23710,9 @@ class RegionUrlMapPathMatcherPathRuleUrlRedirect(dict):
         * FOUND, which corresponds to 302.
         * SEE_OTHER which corresponds to 303.
         * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-        will be retained.
+          will be retained.
         * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-        the request method will be retained.
+          the request method will be retained.
         """
         return pulumi.get(self, "redirect_response_code")
 
@@ -24380,9 +24324,9 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
                * 0 will not match
                * 0.25 will not match
                * -3someString will not match.
-               Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
-               rangeMatch must be set.
-               Structure is documented below.
+                 Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+                 rangeMatch must be set.
+                 Structure is documented below.
         :param str regex_match: The value of the header must match the regular expression specified in
                regexMatch. For regular expression grammar, please see:
                en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
@@ -24470,9 +24414,9 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch(dict):
         * 0 will not match
         * 0.25 will not match
         * -3someString will not match.
-        Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
-        rangeMatch must be set.
-        Structure is documented below.
+          Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+          rangeMatch must be set.
+          Structure is documented below.
         """
         return pulumi.get(self, "range_match")
 
@@ -24581,10 +24525,10 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter(dict):
         :param str filter_match_criteria: Specifies how individual filterLabel matches within the list of filterLabels
                contribute towards the overall metadataFilter match. Supported values are:
                * MATCH_ANY: At least one of the filterLabels must have a matching label in the
-               provided metadata.
+                 provided metadata.
                * MATCH_ALL: All filterLabels must have matching labels in
-               the provided metadata.
-               Possible values are: `MATCH_ALL`, `MATCH_ANY`.
+                 the provided metadata.
+                 Possible values are: `MATCH_ALL`, `MATCH_ANY`.
         """
         pulumi.set(__self__, "filter_labels", filter_labels)
         pulumi.set(__self__, "filter_match_criteria", filter_match_criteria)
@@ -24607,10 +24551,10 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter(dict):
         Specifies how individual filterLabel matches within the list of filterLabels
         contribute towards the overall metadataFilter match. Supported values are:
         * MATCH_ANY: At least one of the filterLabels must have a matching label in the
-        provided metadata.
+          provided metadata.
         * MATCH_ALL: All filterLabels must have matching labels in
-        the provided metadata.
-        Possible values are: `MATCH_ALL`, `MATCH_ANY`.
+          the provided metadata.
+          Possible values are: `MATCH_ALL`, `MATCH_ANY`.
         """
         return pulumi.get(self, "filter_match_criteria")
 
@@ -25295,10 +25239,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
                  per_try_timeout: Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout'] = None,
                  retry_conditions: Optional[Sequence[str]] = None):
         """
-        :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        :param int num_retries: Specifies the allowed number retries. This number must be > 0.
         :param 'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
-               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-               will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
         :param Sequence[str] retry_conditions: Specifies one or more conditions when this retry policy applies.
                Valid values are listed below. Only the following codes are supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true: cancelled, deadline-exceeded, internal, resource-exhausted, unavailable.
@@ -25323,7 +25265,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
     @pulumi.getter(name="numRetries")
     def num_retries(self) -> int:
         """
-        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        Specifies the allowed number retries. This number must be > 0.
         """
         return pulumi.get(self, "num_retries")
 
@@ -25332,8 +25274,6 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
     def per_try_timeout(self) -> Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout']:
         """
         Specifies a non-zero timeout per retry attempt.
-        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-        will use the largest timeout among all backend services associated with the route.
         Structure is documented below.
         """
         return pulumi.get(self, "per_try_timeout")
@@ -25813,12 +25753,12 @@ class RegionUrlMapPathMatcherRouteRuleUrlRedirect(dict):
                * FOUND, which corresponds to 302.
                * SEE_OTHER which corresponds to 303.
                * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-               will be retained.
+                 will be retained.
                * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-               the request method will be retained.
-        :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed
-               prior to redirecting the request. If set to false, the query portion of the
-               original URL is retained.
+                 the request method will be retained.
+        :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed prior
+               to redirecting the request. If set to false, the query portion of the original URL is
+               retained.
                This field is required to ensure an empty block is not set. The normal default value is false.
         """
         if host_redirect is not None:
@@ -25890,9 +25830,9 @@ class RegionUrlMapPathMatcherRouteRuleUrlRedirect(dict):
         * FOUND, which corresponds to 302.
         * SEE_OTHER which corresponds to 303.
         * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-        will be retained.
+          will be retained.
         * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-        the request method will be retained.
+          the request method will be retained.
         """
         return pulumi.get(self, "redirect_response_code")
 
@@ -25900,9 +25840,9 @@ class RegionUrlMapPathMatcherRouteRuleUrlRedirect(dict):
     @pulumi.getter(name="stripQuery")
     def strip_query(self) -> Optional[bool]:
         """
-        If set to true, any accompanying query portion of the original URL is removed
-        prior to redirecting the request. If set to false, the query portion of the
-        original URL is retained.
+        If set to true, any accompanying query portion of the original URL is removed prior
+        to redirecting the request. If set to false, the query portion of the original URL is
+        retained.
         This field is required to ensure an empty block is not set. The normal default value is false.
         """
         return pulumi.get(self, "strip_query")
@@ -26294,8 +26234,6 @@ class ReservationSpecificReservationInstancePropertiesLocalSsd(dict):
                  interface: Optional[str] = None):
         """
         :param int disk_size_gb: The size of the disk in base-2 GB.
-               
-               - - -
         :param str interface: The disk interface to use for attaching this disk.
                Default value is `SCSI`.
                Possible values are: `SCSI`, `NVME`.
@@ -26309,8 +26247,6 @@ class ReservationSpecificReservationInstancePropertiesLocalSsd(dict):
     def disk_size_gb(self) -> int:
         """
         The size of the disk in base-2 GB.
-
-        - - -
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -26379,6 +26315,7 @@ class ResourcePolicyGroupPlacementPolicy(dict):
                with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
                attached.
                Possible values are: `COLLOCATED`.
+        :param int max_distance: Specifies the number of max logical switches.
         :param int vm_count: Number of VMs in this placement group. Google does not recommend that you use this field
                unless you use a compact policy and you want your policy to work only if it contains this
                exact number of VMs.
@@ -26416,6 +26353,9 @@ class ResourcePolicyGroupPlacementPolicy(dict):
     @property
     @pulumi.getter(name="maxDistance")
     def max_distance(self) -> Optional[int]:
+        """
+        Specifies the number of max logical switches.
+        """
         return pulumi.get(self, "max_distance")
 
     @property
@@ -27347,10 +27287,16 @@ class RouterNatRuleAction(dict):
         :param Sequence[str] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule.
                These IP addresses must be valid static external IP addresses assigned to the project.
                This field is used for public NAT.
+        :param Sequence[str] source_nat_active_ranges: A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+               These subnetworks must have purpose set to PRIVATE_NAT.
+               This field is used for private NAT.
         :param Sequence[str] source_nat_drain_ips: A list of URLs of the IP resources to be drained.
                These IPs must be valid static external IPs that have been assigned to the NAT.
                These IPs should be used for updating/patching a NAT rule only.
                This field is used for public NAT.
+        :param Sequence[str] source_nat_drain_ranges: A list of URLs of subnetworks representing source ranges to be drained.
+               This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+               This field is used for private NAT.
         """
         if source_nat_active_ips is not None:
             pulumi.set(__self__, "source_nat_active_ips", source_nat_active_ips)
@@ -27374,6 +27320,11 @@ class RouterNatRuleAction(dict):
     @property
     @pulumi.getter(name="sourceNatActiveRanges")
     def source_nat_active_ranges(self) -> Optional[Sequence[str]]:
+        """
+        A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+        These subnetworks must have purpose set to PRIVATE_NAT.
+        This field is used for private NAT.
+        """
         return pulumi.get(self, "source_nat_active_ranges")
 
     @property
@@ -27390,6 +27341,11 @@ class RouterNatRuleAction(dict):
     @property
     @pulumi.getter(name="sourceNatDrainRanges")
     def source_nat_drain_ranges(self) -> Optional[Sequence[str]]:
+        """
+        A list of URLs of subnetworks representing source ranges to be drained.
+        This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+        This field is used for private NAT.
+        """
         return pulumi.get(self, "source_nat_drain_ranges")
 
 
@@ -27883,7 +27839,7 @@ class SecurityPolicyAdaptiveProtectionConfig(dict):
                  auto_deploy_config: Optional['outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig'] = None,
                  layer7_ddos_defense_config: Optional['outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig'] = None):
         """
-        :param 'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs' auto_deploy_config: ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+        :param 'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs' auto_deploy_config: Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
                
                <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
         :param 'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs' layer7_ddos_defense_config: Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -27897,7 +27853,7 @@ class SecurityPolicyAdaptiveProtectionConfig(dict):
     @pulumi.getter(name="autoDeployConfig")
     def auto_deploy_config(self) -> Optional['outputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig']:
         """
-        ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+        Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
 
         <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
         """
@@ -28077,7 +28033,7 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
         :param str log_level: Log level to use. Defaults to `NORMAL`.
                * NORMAL - Normal log level.
                * VERBOSE - Verbose log level.
-        :param Sequence[str] user_ip_request_headers: ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        :param Sequence[str] user_ip_request_headers: An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         """
         if json_custom_config is not None:
             pulumi.set(__self__, "json_custom_config", json_custom_config)
@@ -28121,7 +28077,7 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
     @pulumi.getter(name="userIpRequestHeaders")
     def user_ip_request_headers(self) -> Optional[Sequence[str]]:
         """
-        ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         """
         return pulumi.get(self, "user_ip_request_headers")
 
@@ -28250,7 +28206,7 @@ class SecurityPolicyRule(dict):
                Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
         :param str description: An optional description of this rule. Max size is 64.
         :param 'SecurityPolicyRuleHeaderActionArgs' header_action: Additional actions that are performed on headers. Structure is documented below.
-        :param 'SecurityPolicyRulePreconfiguredWafConfigArgs' preconfigured_waf_config: ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+        :param 'SecurityPolicyRulePreconfiguredWafConfigArgs' preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
         :param bool preview: When set to true, the `action` specified above is not enforced.
                Stackdriver logs for requests that trigger a preview action are annotated as such.
         :param 'SecurityPolicyRuleRateLimitOptionsArgs' rate_limit_options: Must be specified if the `action` is "rate_based_ban" or "throttle". Cannot be specified for other actions. Structure is documented below.
@@ -28323,7 +28279,7 @@ class SecurityPolicyRule(dict):
     @pulumi.getter(name="preconfiguredWafConfig")
     def preconfigured_waf_config(self) -> Optional['outputs.SecurityPolicyRulePreconfiguredWafConfig']:
         """
-        ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+        Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
         """
         return pulumi.get(self, "preconfigured_waf_config")
 
@@ -28703,7 +28659,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky(dict):
                  value: Optional[str] = None):
         """
         :param str operator: You can specify an exact match or a partial match by using a field operator and a field value.
-               
                * EQUALS: The operator matches if the field value equals the specified value.
                * STARTS_WITH: The operator matches if the field value starts with the specified value.
                * ENDS_WITH: The operator matches if the field value ends with the specified value.
@@ -28721,7 +28676,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky(dict):
     def operator(self) -> str:
         """
         You can specify an exact match or a partial match by using a field operator and a field value.
-
         * EQUALS: The operator matches if the field value equals the specified value.
         * STARTS_WITH: The operator matches if the field value starts with the specified value.
         * ENDS_WITH: The operator matches if the field value ends with the specified value.
@@ -28747,7 +28701,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader(dict):
                  value: Optional[str] = None):
         """
         :param str operator: You can specify an exact match or a partial match by using a field operator and a field value.
-               
                * EQUALS: The operator matches if the field value equals the specified value.
                * STARTS_WITH: The operator matches if the field value starts with the specified value.
                * ENDS_WITH: The operator matches if the field value ends with the specified value.
@@ -28765,7 +28718,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader(dict):
     def operator(self) -> str:
         """
         You can specify an exact match or a partial match by using a field operator and a field value.
-
         * EQUALS: The operator matches if the field value equals the specified value.
         * STARTS_WITH: The operator matches if the field value starts with the specified value.
         * ENDS_WITH: The operator matches if the field value ends with the specified value.
@@ -28791,7 +28743,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam(dict):
                  value: Optional[str] = None):
         """
         :param str operator: You can specify an exact match or a partial match by using a field operator and a field value.
-               
                * EQUALS: The operator matches if the field value equals the specified value.
                * STARTS_WITH: The operator matches if the field value starts with the specified value.
                * ENDS_WITH: The operator matches if the field value ends with the specified value.
@@ -28809,7 +28760,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam(dict):
     def operator(self) -> str:
         """
         You can specify an exact match or a partial match by using a field operator and a field value.
-
         * EQUALS: The operator matches if the field value equals the specified value.
         * STARTS_WITH: The operator matches if the field value starts with the specified value.
         * ENDS_WITH: The operator matches if the field value ends with the specified value.
@@ -28835,7 +28785,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri(dict):
                  value: Optional[str] = None):
         """
         :param str operator: You can specify an exact match or a partial match by using a field operator and a field value.
-               
                * EQUALS: The operator matches if the field value equals the specified value.
                * STARTS_WITH: The operator matches if the field value starts with the specified value.
                * ENDS_WITH: The operator matches if the field value ends with the specified value.
@@ -28853,7 +28802,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri(dict):
     def operator(self) -> str:
         """
         You can specify an exact match or a partial match by using a field operator and a field value.
-
         * EQUALS: The operator matches if the field value equals the specified value.
         * STARTS_WITH: The operator matches if the field value starts with the specified value.
         * ENDS_WITH: The operator matches if the field value ends with the specified value.
@@ -28928,7 +28876,6 @@ class SecurityPolicyRuleRateLimitOptions(dict):
                If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
                exceed this 'ban_threshold'. Structure is documented below.
         :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
-               
                * ALL: A single rate limit threshold is applied to all the requests matching this rule.
                * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
                * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
@@ -28937,7 +28884,7 @@ class SecurityPolicyRuleRateLimitOptions(dict):
                * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
                * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
                * REGION_CODE: The country/region from which the request originates.
-        :param Sequence['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs'] enforce_on_key_configs: ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+        :param Sequence['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs'] enforce_on_key_configs: If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
                
                **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
@@ -29010,7 +28957,6 @@ class SecurityPolicyRuleRateLimitOptions(dict):
     def enforce_on_key(self) -> Optional[str]:
         """
         Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
-
         * ALL: A single rate limit threshold is applied to all the requests matching this rule.
         * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
         * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
@@ -29026,7 +28972,7 @@ class SecurityPolicyRuleRateLimitOptions(dict):
     @pulumi.getter(name="enforceOnKeyConfigs")
     def enforce_on_key_configs(self) -> Optional[Sequence['outputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig']]:
         """
-        ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+        If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
 
         **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
         """
@@ -29076,6 +29022,9 @@ class SecurityPolicyRuleRateLimitOptionsBanThreshold(dict):
         """
         :param int count: Number of HTTP(S) requests for calculating the threshold.
         :param int interval_sec: Interval over which the threshold is computed.
+               
+               
+               * <a  name="nested_exceed_redirect_options"></a>The `exceed_redirect_options` block supports:
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "interval_sec", interval_sec)
@@ -29093,6 +29042,9 @@ class SecurityPolicyRuleRateLimitOptionsBanThreshold(dict):
     def interval_sec(self) -> int:
         """
         Interval over which the threshold is computed.
+
+
+        * <a  name="nested_exceed_redirect_options"></a>The `exceed_redirect_options` block supports:
         """
         return pulumi.get(self, "interval_sec")
 
@@ -29124,7 +29076,6 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
         """
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER: Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE: Name of the HTTP cookie whose value is taken as the key value.
         :param str enforce_on_key_type: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
-               
                * ALL: A single rate limit threshold is applied to all the requests matching this rule.
                * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
                * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
@@ -29152,7 +29103,6 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(dict):
     def enforce_on_key_type(self) -> Optional[str]:
         """
         Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
-
         * ALL: A single rate limit threshold is applied to all the requests matching this rule.
         * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
         * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
@@ -29172,7 +29122,7 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions(dict):
                  target: Optional[str] = None):
         """
         :param str type: Type of the redirect action.
-        :param str target: Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+        :param str target: External redirection target when "EXTERNAL_302" is set in 'type'.
         """
         pulumi.set(__self__, "type", type)
         if target is not None:
@@ -29190,7 +29140,7 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions(dict):
     @pulumi.getter
     def target(self) -> Optional[str]:
         """
-        Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+        External redirection target when "EXTERNAL_302" is set in 'type'.
         """
         return pulumi.get(self, "target")
 
@@ -29220,6 +29170,9 @@ class SecurityPolicyRuleRateLimitOptionsRateLimitThreshold(dict):
         """
         :param int count: Number of HTTP(S) requests for calculating the threshold.
         :param int interval_sec: Interval over which the threshold is computed.
+               
+               
+               * <a  name="nested_exceed_redirect_options"></a>The `exceed_redirect_options` block supports:
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "interval_sec", interval_sec)
@@ -29237,6 +29190,9 @@ class SecurityPolicyRuleRateLimitOptionsRateLimitThreshold(dict):
     def interval_sec(self) -> int:
         """
         Interval over which the threshold is computed.
+
+
+        * <a  name="nested_exceed_redirect_options"></a>The `exceed_redirect_options` block supports:
         """
         return pulumi.get(self, "interval_sec")
 
@@ -29248,7 +29204,6 @@ class SecurityPolicyRuleRedirectOptions(dict):
                  target: Optional[str] = None):
         """
         :param str type: Type of redirect action.
-               
                * EXTERNAL_302: Redirect to an external address, configured in 'target'.
                * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
         :param str target: External redirection target when "EXTERNAL_302" is set in 'type'.
@@ -29262,7 +29217,6 @@ class SecurityPolicyRuleRedirectOptions(dict):
     def type(self) -> str:
         """
         Type of redirect action.
-
         * EXTERNAL_302: Redirect to an external address, configured in 'target'.
         * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
         """
@@ -30582,22 +30536,22 @@ class URLMapDefaultRouteActionRetryPolicy(dict):
                  per_try_timeout: Optional['outputs.URLMapDefaultRouteActionRetryPolicyPerTryTimeout'] = None,
                  retry_conditions: Optional[Sequence[str]] = None):
         """
-        :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        :param int num_retries: Specifies the allowed number retries. This number must be > 0.
         :param 'URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
-               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-               will use the largest timeout among all backend services associated with the route.
+               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+               is not set, will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
         :param Sequence[str] retry_conditions: Specfies one or more conditions when this retry rule applies. Valid values are:
                * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
-               or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+                 or if the backend service does not respond at all, example: disconnects, reset, read timeout,
                * connection failure, and refused streams.
                * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
                * connect-failure: Loadbalancer will retry on failures connecting to backend services,
-               for example due to connection timeouts.
+                 for example due to connection timeouts.
                * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-               Currently the only retriable error supported is 409.
+                 Currently the only retriable error supported is 409.
                * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
-               This reset type indicates that it is safe to retry.
+                 This reset type indicates that it is safe to retry.
                * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
                * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
                * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
@@ -30614,7 +30568,7 @@ class URLMapDefaultRouteActionRetryPolicy(dict):
     @pulumi.getter(name="numRetries")
     def num_retries(self) -> Optional[int]:
         """
-        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        Specifies the allowed number retries. This number must be > 0.
         """
         return pulumi.get(self, "num_retries")
 
@@ -30623,8 +30577,8 @@ class URLMapDefaultRouteActionRetryPolicy(dict):
     def per_try_timeout(self) -> Optional['outputs.URLMapDefaultRouteActionRetryPolicyPerTryTimeout']:
         """
         Specifies a non-zero timeout per retry attempt.
-        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-        will use the largest timeout among all backend services associated with the route.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+        is not set, will use the largest timeout among all backend services associated with the route.
         Structure is documented below.
         """
         return pulumi.get(self, "per_try_timeout")
@@ -30635,15 +30589,15 @@ class URLMapDefaultRouteActionRetryPolicy(dict):
         """
         Specfies one or more conditions when this retry rule applies. Valid values are:
         * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
-        or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+          or if the backend service does not respond at all, example: disconnects, reset, read timeout,
         * connection failure, and refused streams.
         * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
         * connect-failure: Loadbalancer will retry on failures connecting to backend services,
-        for example due to connection timeouts.
+          for example due to connection timeouts.
         * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-        Currently the only retriable error supported is 409.
+          Currently the only retriable error supported is 409.
         * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
-        This reset type indicates that it is safe to retry.
+          This reset type indicates that it is safe to retry.
         * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
         * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
         * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
@@ -31140,9 +31094,9 @@ class URLMapDefaultUrlRedirect(dict):
                * FOUND, which corresponds to 302.
                * SEE_OTHER which corresponds to 303.
                * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-               will be retained.
+                 will be retained.
                * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-               the request method will be retained.
+                 the request method will be retained.
         """
         pulumi.set(__self__, "strip_query", strip_query)
         if host_redirect is not None:
@@ -31220,9 +31174,9 @@ class URLMapDefaultUrlRedirect(dict):
         * FOUND, which corresponds to 302.
         * SEE_OTHER which corresponds to 303.
         * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-        will be retained.
+          will be retained.
         * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-        the request method will be retained.
+          the request method will be retained.
         """
         return pulumi.get(self, "redirect_response_code")
 
@@ -32219,22 +32173,22 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicy(dict):
                  per_try_timeout: Optional['outputs.URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeout'] = None,
                  retry_conditions: Optional[Sequence[str]] = None):
         """
-        :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        :param int num_retries: Specifies the allowed number retries. This number must be > 0.
         :param 'URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
-               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-               will use the largest timeout among all backend services associated with the route.
+               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+               is not set, will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
         :param Sequence[str] retry_conditions: Specfies one or more conditions when this retry rule applies. Valid values are:
                * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
-               or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+                 or if the backend service does not respond at all, example: disconnects, reset, read timeout,
                * connection failure, and refused streams.
                * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
                * connect-failure: Loadbalancer will retry on failures connecting to backend services,
-               for example due to connection timeouts.
+                 for example due to connection timeouts.
                * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-               Currently the only retriable error supported is 409.
+                 Currently the only retriable error supported is 409.
                * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
-               This reset type indicates that it is safe to retry.
+                 This reset type indicates that it is safe to retry.
                * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
                * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
                * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
@@ -32251,7 +32205,7 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicy(dict):
     @pulumi.getter(name="numRetries")
     def num_retries(self) -> Optional[int]:
         """
-        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        Specifies the allowed number retries. This number must be > 0.
         """
         return pulumi.get(self, "num_retries")
 
@@ -32260,8 +32214,8 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicy(dict):
     def per_try_timeout(self) -> Optional['outputs.URLMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeout']:
         """
         Specifies a non-zero timeout per retry attempt.
-        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-        will use the largest timeout among all backend services associated with the route.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+        is not set, will use the largest timeout among all backend services associated with the route.
         Structure is documented below.
         """
         return pulumi.get(self, "per_try_timeout")
@@ -32272,15 +32226,15 @@ class URLMapPathMatcherDefaultRouteActionRetryPolicy(dict):
         """
         Specfies one or more conditions when this retry rule applies. Valid values are:
         * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
-        or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+          or if the backend service does not respond at all, example: disconnects, reset, read timeout,
         * connection failure, and refused streams.
         * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
         * connect-failure: Loadbalancer will retry on failures connecting to backend services,
-        for example due to connection timeouts.
+          for example due to connection timeouts.
         * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-        Currently the only retriable error supported is 409.
+          Currently the only retriable error supported is 409.
         * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
-        This reset type indicates that it is safe to retry.
+          This reset type indicates that it is safe to retry.
         * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
         * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
         * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
@@ -32777,9 +32731,9 @@ class URLMapPathMatcherDefaultUrlRedirect(dict):
                * FOUND, which corresponds to 302.
                * SEE_OTHER which corresponds to 303.
                * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-               will be retained.
+                 will be retained.
                * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-               the request method will be retained.
+                 the request method will be retained.
         """
         pulumi.set(__self__, "strip_query", strip_query)
         if host_redirect is not None:
@@ -32857,9 +32811,9 @@ class URLMapPathMatcherDefaultUrlRedirect(dict):
         * FOUND, which corresponds to 302.
         * SEE_OTHER which corresponds to 303.
         * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-        will be retained.
+          will be retained.
         * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-        the request method will be retained.
+          the request method will be retained.
         """
         return pulumi.get(self, "redirect_response_code")
 
@@ -33716,22 +33670,22 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
                  per_try_timeout: Optional['outputs.URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout'] = None,
                  retry_conditions: Optional[Sequence[str]] = None):
         """
-        :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        :param int num_retries: Specifies the allowed number retries. This number must be > 0.
         :param 'URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
-               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-               will use the largest timeout among all backend services associated with the route.
+               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+               is not set, will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
         :param Sequence[str] retry_conditions: Specfies one or more conditions when this retry rule applies. Valid values are:
                * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
-               or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+                 or if the backend service does not respond at all, example: disconnects, reset, read timeout,
                * connection failure, and refused streams.
                * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
                * connect-failure: Loadbalancer will retry on failures connecting to backend services,
-               for example due to connection timeouts.
+                 for example due to connection timeouts.
                * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-               Currently the only retriable error supported is 409.
+                 Currently the only retriable error supported is 409.
                * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
-               This reset type indicates that it is safe to retry.
+                 This reset type indicates that it is safe to retry.
                * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
                * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
                * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
@@ -33748,7 +33702,7 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
     @pulumi.getter(name="numRetries")
     def num_retries(self) -> Optional[int]:
         """
-        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        Specifies the allowed number retries. This number must be > 0.
         """
         return pulumi.get(self, "num_retries")
 
@@ -33757,8 +33711,8 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
     def per_try_timeout(self) -> Optional['outputs.URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout']:
         """
         Specifies a non-zero timeout per retry attempt.
-        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-        will use the largest timeout among all backend services associated with the route.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+        is not set, will use the largest timeout among all backend services associated with the route.
         Structure is documented below.
         """
         return pulumi.get(self, "per_try_timeout")
@@ -33769,15 +33723,15 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicy(dict):
         """
         Specfies one or more conditions when this retry rule applies. Valid values are:
         * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
-        or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+          or if the backend service does not respond at all, example: disconnects, reset, read timeout,
         * connection failure, and refused streams.
         * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
         * connect-failure: Loadbalancer will retry on failures connecting to backend services,
-        for example due to connection timeouts.
+          for example due to connection timeouts.
         * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-        Currently the only retriable error supported is 409.
+          Currently the only retriable error supported is 409.
         * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
-        This reset type indicates that it is safe to retry.
+          This reset type indicates that it is safe to retry.
         * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
         * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
         * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
@@ -34239,9 +34193,10 @@ class URLMapPathMatcherPathRuleUrlRedirect(dict):
                  prefix_redirect: Optional[str] = None,
                  redirect_response_code: Optional[str] = None):
         """
-        :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed
-               prior to redirecting the request. If set to false, the query portion of the
-               original URL is retained. Defaults to false.
+        :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed prior
+               to redirecting the request. If set to false, the query portion of the original URL is
+               retained. The default is set to false.
+               This field is required to ensure an empty block is not set. The normal default value is false.
         :param str host_redirect: The host that will be used in the redirect response instead of the one that was
                supplied in the request. The value must be between 1 and 255 characters.
         :param bool https_redirect: If set to true, the URL scheme in the redirected request is set to https. If set
@@ -34276,9 +34231,10 @@ class URLMapPathMatcherPathRuleUrlRedirect(dict):
     @pulumi.getter(name="stripQuery")
     def strip_query(self) -> bool:
         """
-        If set to true, any accompanying query portion of the original URL is removed
-        prior to redirecting the request. If set to false, the query portion of the
-        original URL is retained. Defaults to false.
+        If set to true, any accompanying query portion of the original URL is removed prior
+        to redirecting the request. If set to false, the query portion of the original URL is
+        retained. The default is set to false.
+        This field is required to ensure an empty block is not set. The normal default value is false.
         """
         return pulumi.get(self, "strip_query")
 
@@ -35169,10 +35125,10 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter(dict):
         :param str filter_match_criteria: Specifies how individual filterLabel matches within the list of filterLabels
                contribute towards the overall metadataFilter match. Supported values are:
                - MATCH_ANY: At least one of the filterLabels must have a matching label in the
-               provided metadata.
+                 provided metadata.
                - MATCH_ALL: All filterLabels must have matching labels in
-               the provided metadata.
-               Possible values are: `MATCH_ALL`, `MATCH_ANY`.
+                 the provided metadata.
+                 Possible values are: `MATCH_ALL`, `MATCH_ANY`.
         """
         pulumi.set(__self__, "filter_labels", filter_labels)
         pulumi.set(__self__, "filter_match_criteria", filter_match_criteria)
@@ -35195,10 +35151,10 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter(dict):
         Specifies how individual filterLabel matches within the list of filterLabels
         contribute towards the overall metadataFilter match. Supported values are:
         - MATCH_ANY: At least one of the filterLabels must have a matching label in the
-        provided metadata.
+          provided metadata.
         - MATCH_ALL: All filterLabels must have matching labels in
-        the provided metadata.
-        Possible values are: `MATCH_ALL`, `MATCH_ANY`.
+          the provided metadata.
+          Possible values are: `MATCH_ALL`, `MATCH_ANY`.
         """
         return pulumi.get(self, "filter_match_criteria")
 
@@ -35879,22 +35835,22 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
                  per_try_timeout: Optional['outputs.URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout'] = None,
                  retry_conditions: Optional[Sequence[str]] = None):
         """
-        :param int num_retries: Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        :param int num_retries: Specifies the allowed number retries. This number must be > 0.
         :param 'URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs' per_try_timeout: Specifies a non-zero timeout per retry attempt.
-               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-               will use the largest timeout among all backend services associated with the route.
+               If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+               is not set, will use the largest timeout among all backend services associated with the route.
                Structure is documented below.
         :param Sequence[str] retry_conditions: Specfies one or more conditions when this retry rule applies. Valid values are:
                * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
-               or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+                 or if the backend service does not respond at all, example: disconnects, reset, read timeout,
                * connection failure, and refused streams.
                * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
                * connect-failure: Loadbalancer will retry on failures connecting to backend services,
-               for example due to connection timeouts.
+                 for example due to connection timeouts.
                * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-               Currently the only retriable error supported is 409.
+                 Currently the only retriable error supported is 409.
                * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
-               This reset type indicates that it is safe to retry.
+                 This reset type indicates that it is safe to retry.
                * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
                * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
                * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
@@ -35910,7 +35866,7 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
     @pulumi.getter(name="numRetries")
     def num_retries(self) -> int:
         """
-        Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+        Specifies the allowed number retries. This number must be > 0.
         """
         return pulumi.get(self, "num_retries")
 
@@ -35919,8 +35875,8 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
     def per_try_timeout(self) -> Optional['outputs.URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout']:
         """
         Specifies a non-zero timeout per retry attempt.
-        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-        will use the largest timeout among all backend services associated with the route.
+        If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+        is not set, will use the largest timeout among all backend services associated with the route.
         Structure is documented below.
         """
         return pulumi.get(self, "per_try_timeout")
@@ -35931,15 +35887,15 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicy(dict):
         """
         Specfies one or more conditions when this retry rule applies. Valid values are:
         * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
-        or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+          or if the backend service does not respond at all, example: disconnects, reset, read timeout,
         * connection failure, and refused streams.
         * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
         * connect-failure: Loadbalancer will retry on failures connecting to backend services,
-        for example due to connection timeouts.
+          for example due to connection timeouts.
         * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
-        Currently the only retriable error supported is 409.
+          Currently the only retriable error supported is 409.
         * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
-        This reset type indicates that it is safe to retry.
+          This reset type indicates that it is safe to retry.
         * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
         * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
         * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
@@ -36452,9 +36408,10 @@ class URLMapPathMatcherRouteRuleUrlRedirect(dict):
                * SEE_OTHER which corresponds to 303.
                * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
                * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
-        :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed
-               prior to redirecting the request. If set to false, the query portion of the
-               original URL is retained. Defaults to false.
+        :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed prior
+               to redirecting the request. If set to false, the query portion of the original URL is
+               retained. The default is set to false.
+               This field is required to ensure an empty block is not set. The normal default value is false.
         """
         if host_redirect is not None:
             pulumi.set(__self__, "host_redirect", host_redirect)
@@ -36525,9 +36482,10 @@ class URLMapPathMatcherRouteRuleUrlRedirect(dict):
     @pulumi.getter(name="stripQuery")
     def strip_query(self) -> Optional[bool]:
         """
-        If set to true, any accompanying query portion of the original URL is removed
-        prior to redirecting the request. If set to false, the query portion of the
-        original URL is retained. Defaults to false.
+        If set to true, any accompanying query portion of the original URL is removed prior
+        to redirecting the request. If set to false, the query portion of the original URL is
+        retained. The default is set to false.
+        This field is required to ensure an empty block is not set. The normal default value is false.
         """
         return pulumi.get(self, "strip_query")
 
@@ -37161,8 +37119,6 @@ class GetBackendServiceConsistentHashHttpCookyResult(dict):
                  ttls: Sequence['outputs.GetBackendServiceConsistentHashHttpCookyTtlResult']):
         """
         :param str name: The name of the Backend Service.
-               
-               - - -
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "path", path)
@@ -37173,8 +37129,6 @@ class GetBackendServiceConsistentHashHttpCookyResult(dict):
     def name(self) -> str:
         """
         The name of the Backend Service.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -37260,8 +37214,6 @@ class GetBackendServiceLocalityLbPolicyCustomPolicyResult(dict):
                  name: str):
         """
         :param str name: The name of the Backend Service.
-               
-               - - -
         """
         pulumi.set(__self__, "data", data)
         pulumi.set(__self__, "name", name)
@@ -37276,8 +37228,6 @@ class GetBackendServiceLocalityLbPolicyCustomPolicyResult(dict):
     def name(self) -> str:
         """
         The name of the Backend Service.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -37288,8 +37238,6 @@ class GetBackendServiceLocalityLbPolicyPolicyResult(dict):
                  name: str):
         """
         :param str name: The name of the Backend Service.
-               
-               - - -
         """
         pulumi.set(__self__, "name", name)
 
@@ -37298,8 +37246,6 @@ class GetBackendServiceLocalityLbPolicyPolicyResult(dict):
     def name(self) -> str:
         """
         The name of the Backend Service.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -37645,8 +37591,6 @@ class GetGlobalForwardingRuleMetadataFilterFilterLabelResult(dict):
                  value: str):
         """
         :param str name: The name of the global forwarding rule.
-               
-               - - -
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -37656,8 +37600,6 @@ class GetGlobalForwardingRuleMetadataFilterFilterLabelResult(dict):
     def name(self) -> str:
         """
         The name of the global forwarding rule.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

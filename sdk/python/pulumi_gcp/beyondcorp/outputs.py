@@ -31,8 +31,6 @@ class AppConnectionApplicationEndpoint(dict):
         """
         :param str host: Hostname or IP address of the remote application endpoint.
         :param int port: Port of the remote application endpoint.
-               
-               - - -
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
@@ -50,8 +48,6 @@ class AppConnectionApplicationEndpoint(dict):
     def port(self) -> int:
         """
         Port of the remote application endpoint.
-
-        - - -
         """
         return pulumi.get(self, "port")
 
@@ -180,8 +176,6 @@ class AppConnectorPrincipalInfoServiceAccount(dict):
                  email: str):
         """
         :param str email: Email address of the service account.
-               
-               - - -
         """
         pulumi.set(__self__, "email", email)
 
@@ -190,8 +184,6 @@ class AppConnectorPrincipalInfoServiceAccount(dict):
     def email(self) -> str:
         """
         Email address of the service account.
-
-        - - -
         """
         return pulumi.get(self, "email")
 

@@ -193,9 +193,6 @@ export class FhirStore extends pulumi.CustomResource {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
@@ -270,6 +267,7 @@ export class FhirStore extends pulumi.CustomResource {
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig | undefined>;
     /**
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * Structure is documented below.
      */
     public readonly notificationConfigs!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig[] | undefined>;
     /**
@@ -368,9 +366,6 @@ export interface FhirStoreState {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     dataset?: pulumi.Input<string>;
     /**
@@ -445,6 +440,7 @@ export interface FhirStoreState {
     notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
     /**
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * Structure is documented below.
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[]>;
     /**
@@ -486,9 +482,6 @@ export interface FhirStoreArgs {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     dataset: pulumi.Input<string>;
     /**
@@ -559,6 +552,7 @@ export interface FhirStoreArgs {
     notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
     /**
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * Structure is documented below.
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[]>;
     /**

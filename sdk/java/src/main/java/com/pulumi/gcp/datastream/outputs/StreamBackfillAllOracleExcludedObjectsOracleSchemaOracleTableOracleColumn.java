@@ -14,54 +14,73 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn {
     /**
-     * @return Column name.
+     * @return Column name.`column` -
+     * (Optional)
+     * Column name.
      * 
      */
     private @Nullable String column;
     /**
      * @return The Oracle data type. Full data types list can be found here:
+     * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+     * (Optional)
+     * The Oracle data type. Full data types list can be found here:
      * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
      * 
      */
     private @Nullable String dataType;
     /**
      * @return (Output)
+     * Column encoding.`encoding` -
+     * (Output)
      * Column encoding.
      * 
      */
     private @Nullable String encoding;
     /**
      * @return (Output)
+     * Column length.`length` -
+     * (Output)
      * Column length.
      * 
      */
     private @Nullable Integer length;
     /**
      * @return (Output)
+     * Whether or not the column can accept a null value.`nullable` -
+     * (Output)
      * Whether or not the column can accept a null value.
      * 
      */
     private @Nullable Boolean nullable;
     /**
      * @return (Output)
+     * The ordinal position of the column in the table.`ordinal_position` -
+     * (Output)
      * The ordinal position of the column in the table.
      * 
      */
     private @Nullable Integer ordinalPosition;
     /**
      * @return (Output)
+     * Column precision.`precision` -
+     * (Output)
      * Column precision.
      * 
      */
     private @Nullable Integer precision;
     /**
      * @return (Output)
+     * Whether or not the column represents a primary key.`primary_key` -
+     * (Output)
      * Whether or not the column represents a primary key.
      * 
      */
     private @Nullable Boolean primaryKey;
     /**
      * @return (Output)
+     * Column scale.`scale` -
+     * (Output)
      * Column scale.
      * 
      */
@@ -69,7 +88,9 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
 
     private StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn() {}
     /**
-     * @return Column name.
+     * @return Column name.`column` -
+     * (Optional)
+     * Column name.
      * 
      */
     public Optional<String> column() {
@@ -77,6 +98,9 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
     /**
      * @return The Oracle data type. Full data types list can be found here:
+     * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+     * (Optional)
+     * The Oracle data type. Full data types list can be found here:
      * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
      * 
      */
@@ -85,6 +109,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
     /**
      * @return (Output)
+     * Column encoding.`encoding` -
+     * (Output)
      * Column encoding.
      * 
      */
@@ -93,6 +119,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
     /**
      * @return (Output)
+     * Column length.`length` -
+     * (Output)
      * Column length.
      * 
      */
@@ -101,6 +129,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
     /**
      * @return (Output)
+     * Whether or not the column can accept a null value.`nullable` -
+     * (Output)
      * Whether or not the column can accept a null value.
      * 
      */
@@ -109,6 +139,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
     /**
      * @return (Output)
+     * The ordinal position of the column in the table.`ordinal_position` -
+     * (Output)
      * The ordinal position of the column in the table.
      * 
      */
@@ -117,6 +149,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
     /**
      * @return (Output)
+     * Column precision.`precision` -
+     * (Output)
      * Column precision.
      * 
      */
@@ -125,6 +159,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
     /**
      * @return (Output)
+     * Whether or not the column represents a primary key.`primary_key` -
+     * (Output)
      * Whether or not the column represents a primary key.
      * 
      */
@@ -133,6 +169,8 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
     }
     /**
      * @return (Output)
+     * Column scale.`scale` -
+     * (Output)
      * Column scale.
      * 
      */

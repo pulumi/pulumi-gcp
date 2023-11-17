@@ -52,8 +52,6 @@ public final class DataPolicyArgs extends com.pulumi.resources.ResourceArgs {
      * The enrollment level of the service.
      * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
      * 
-     * ***
-     * 
      */
     @Import(name="dataPolicyType", required=true)
     private Output<String> dataPolicyType;
@@ -61,8 +59,6 @@ public final class DataPolicyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The enrollment level of the service.
      * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-     * 
-     * ***
      * 
      */
     public Output<String> dataPolicyType() {
@@ -193,8 +189,6 @@ public final class DataPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * @param dataPolicyType The enrollment level of the service.
          * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -206,8 +200,6 @@ public final class DataPolicyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dataPolicyType The enrollment level of the service.
          * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
-         * 
-         * ***
          * 
          * @return builder
          * 

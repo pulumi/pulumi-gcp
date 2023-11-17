@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// - Setting the value to -1 forces a pre-flight check for all requests (not recommended)
         /// - A maximum TTL of 86400s can be set, but note that (as above) some clients may force pre-flight checks at a more regular interval.
         /// - This translates to the Access-Control-Max-Age header.
-        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        ///   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         /// </summary>
         public readonly string MaxAge;
 

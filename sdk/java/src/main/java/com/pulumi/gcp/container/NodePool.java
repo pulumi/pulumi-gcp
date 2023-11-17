@@ -184,16 +184,12 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      * 
-     * ***
-     * 
      */
     @Export(name="cluster", refs={String.class}, tree="[0]")
     private Output<String> cluster;
 
     /**
      * @return The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
-     * 
-     * ***
      * 
      */
     public Output<String> cluster() {
@@ -242,16 +238,12 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * The location (region or zone) of the cluster.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The location (region or zone) of the cluster.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

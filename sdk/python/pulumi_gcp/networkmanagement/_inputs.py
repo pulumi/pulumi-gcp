@@ -33,13 +33,11 @@ class ConnectivityTestDestinationArgs:
         :param pulumi.Input[str] project_id: Project ID where the endpoint is located. The Project ID can be
                derived from the URI if you provide a VM instance or network URI.
                The following are two cases where you must provide the project ID:
-               1. Only the IP address is specified, and the IP address is within
-               a GCP project. 2. When you are using Shared VPC and the IP address
-               that you provide is from the service project. In this case, the
-               network that the IP address resides in is defined in the host
-               project.
-               
-               - - -
+               . Only the IP address is specified, and the IP address is within
+                 a GCP project. 2. When you are using Shared VPC and the IP address
+                 that you provide is from the service project. In this case, the
+                 network that the IP address resides in is defined in the host
+                 project.
         """
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
@@ -110,13 +108,11 @@ class ConnectivityTestDestinationArgs:
         Project ID where the endpoint is located. The Project ID can be
         derived from the URI if you provide a VM instance or network URI.
         The following are two cases where you must provide the project ID:
-        1. Only the IP address is specified, and the IP address is within
-        a GCP project. 2. When you are using Shared VPC and the IP address
-        that you provide is from the service project. In this case, the
-        network that the IP address resides in is defined in the host
-        project.
-
-        - - -
+        . Only the IP address is specified, and the IP address is within
+          a GCP project. 2. When you are using Shared VPC and the IP address
+          that you provide is from the service project. In this case, the
+          network that the IP address resides in is defined in the host
+          project.
         """
         return pulumi.get(self, "project_id")
 
@@ -147,12 +143,12 @@ class ConnectivityTestSourceArgs:
         :param pulumi.Input[str] project_id: Project ID where the endpoint is located. The Project ID can be
                derived from the URI if you provide a VM instance or network URI.
                The following are two cases where you must provide the project ID:
-               1. Only the IP address is specified, and the IP address is
-               within a GCP project.
-               2. When you are using Shared VPC and the IP address
-               that you provide is from the service project. In this case,
-               the network that the IP address resides in is defined in the
-               host project.
+               . Only the IP address is specified, and the IP address is
+                 within a GCP project.
+               . When you are using Shared VPC and the IP address
+                 that you provide is from the service project. In this case,
+                 the network that the IP address resides in is defined in the
+                 host project.
         """
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
@@ -238,12 +234,12 @@ class ConnectivityTestSourceArgs:
         Project ID where the endpoint is located. The Project ID can be
         derived from the URI if you provide a VM instance or network URI.
         The following are two cases where you must provide the project ID:
-        1. Only the IP address is specified, and the IP address is
-        within a GCP project.
-        2. When you are using Shared VPC and the IP address
-        that you provide is from the service project. In this case,
-        the network that the IP address resides in is defined in the
-        host project.
+        . Only the IP address is specified, and the IP address is
+          within a GCP project.
+        . When you are using Shared VPC and the IP address
+          that you provide is from the service project. In this case,
+          the network that the IP address resides in is defined in the
+          host project.
         """
         return pulumi.get(self, "project_id")
 

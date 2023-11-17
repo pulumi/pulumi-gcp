@@ -29,7 +29,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     public static final RegionInstanceGroupManagerState Empty = new RegionInstanceGroupManagerState();
 
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
@@ -39,8 +38,7 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     private @Nullable Output<RegionInstanceGroupManagerAllInstancesConfigArgs> allInstancesConfig;
 
     /**
-     * @return )
-     * Properties to set on all instances in the group. After setting
+     * @return Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
      * 
@@ -268,16 +266,12 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
      * 
-     * ***
-     * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
      * @return The region where the managed instance group resides. If not provided, the provider region is used.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> region() {
@@ -317,16 +311,12 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Import(name="statefulExternalIps")
     private @Nullable Output<List<RegionInstanceGroupManagerStatefulExternalIpArgs>> statefulExternalIps;
 
     /**
      * @return External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<RegionInstanceGroupManagerStatefulExternalIpArgs>>> statefulExternalIps() {
@@ -522,8 +512,7 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         }
 
         /**
-         * @param allInstancesConfig )
-         * Properties to set on all instances in the group. After setting
+         * @param allInstancesConfig Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group&#39;s instances to
          * apply the configuration.
          * 
@@ -536,8 +525,7 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         }
 
         /**
-         * @param allInstancesConfig )
-         * Properties to set on all instances in the group. After setting
+         * @param allInstancesConfig Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group&#39;s instances to
          * apply the configuration.
          * 
@@ -861,8 +849,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         /**
          * @param region The region where the managed instance group resides. If not provided, the provider region is used.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -873,8 +859,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
 
         /**
          * @param region The region where the managed instance group resides. If not provided, the provider region is used.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -938,8 +922,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         /**
          * @param statefulExternalIps External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -951,8 +933,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         /**
          * @param statefulExternalIps External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -962,8 +942,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
 
         /**
          * @param statefulExternalIps External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -360,7 +360,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * )
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      * 
      */
@@ -368,8 +367,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> enableFqdnNetworkPolicy;
 
     /**
-     * @return )
-     * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+     * @return Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      * 
      */
     public Optional<Output<Boolean>> enableFqdnNetworkPolicy() {
@@ -464,7 +462,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * )
      * Whether multi-networking is enabled for this cluster.
      * 
      */
@@ -472,8 +469,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> enableMultiNetworking;
 
     /**
-     * @return )
-     * Whether multi-networking is enabled for this cluster.
+     * @return Whether multi-networking is enabled for this cluster.
      * 
      */
     public Optional<Output<Boolean>> enableMultiNetworking() {
@@ -882,8 +878,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      * The name of the cluster, unique within the project and
      * location.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -891,8 +885,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The name of the cluster, unique within the project and
      * location.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -1123,7 +1115,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      * 
@@ -1132,7 +1124,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterPodSecurityPolicyConfigArgs> podSecurityPolicyConfig;
 
     /**
-     * @return ) Configuration for the
+     * @return Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      * 
@@ -1191,7 +1183,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
      */
@@ -1199,8 +1190,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterProtectConfigArgs> protectConfig;
 
     /**
-     * @return )
-     * Enable/Disable Protect API features for the cluster. Structure is documented below.
+     * @return Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterProtectConfigArgs>> protectConfig() {
@@ -1260,14 +1250,16 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
      * 
      */
     @Import(name="resourceLabels")
     private @Nullable Output<Map<String,String>> resourceLabels;
 
     /**
-     * @return The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     * @return The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
      * 
      */
     public Optional<Output<Map<String,String>>> resourceLabels() {
@@ -1949,8 +1941,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableFqdnNetworkPolicy )
-         * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+         * @param enableFqdnNetworkPolicy Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
          * 
          * @return builder
          * 
@@ -1961,8 +1952,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableFqdnNetworkPolicy )
-         * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+         * @param enableFqdnNetworkPolicy Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
          * 
          * @return builder
          * 
@@ -2089,8 +2079,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableMultiNetworking )
-         * Whether multi-networking is enabled for this cluster.
+         * @param enableMultiNetworking Whether multi-networking is enabled for this cluster.
          * 
          * @return builder
          * 
@@ -2101,8 +2090,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableMultiNetworking )
-         * Whether multi-networking is enabled for this cluster.
+         * @param enableMultiNetworking Whether multi-networking is enabled for this cluster.
          * 
          * @return builder
          * 
@@ -2633,8 +2621,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * @param name The name of the cluster, unique within the project and
          * location.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -2646,8 +2632,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The name of the cluster, unique within the project and
          * location.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -2977,7 +2961,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param podSecurityPolicyConfig ) Configuration for the
+         * @param podSecurityPolicyConfig Configuration for the
          * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
          * Structure is documented below.
          * 
@@ -2990,7 +2974,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param podSecurityPolicyConfig ) Configuration for the
+         * @param podSecurityPolicyConfig Configuration for the
          * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
          * Structure is documented below.
          * 
@@ -3069,8 +3053,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protectConfig )
-         * Enable/Disable Protect API features for the cluster. Structure is documented below.
+         * @param protectConfig Enable/Disable Protect API features for the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -3081,8 +3064,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protectConfig )
-         * Enable/Disable Protect API features for the cluster. Structure is documented below.
+         * @param protectConfig Enable/Disable Protect API features for the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -3156,7 +3138,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceLabels The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+         * @param resourceLabels The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+         * for how these labels are applied to clusters, node pools and nodes.
          * 
          * @return builder
          * 
@@ -3167,7 +3150,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceLabels The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+         * @param resourceLabels The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+         * for how these labels are applied to clusters, node pools and nodes.
          * 
          * @return builder
          * 

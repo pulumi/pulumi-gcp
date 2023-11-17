@@ -371,8 +371,7 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string> DataScanId { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the rule.
-        /// The maximum length is 1,024 characters.
+        /// Description of the scan.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -545,8 +544,7 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string> DataScanId { get; set; } = null!;
 
         /// <summary>
-        /// Description of the rule.
-        /// The maximum length is 1,024 characters.
+        /// Description of the scan.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -634,8 +632,7 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? DataScanId { get; set; }
 
         /// <summary>
-        /// Description of the rule.
-        /// The maximum length is 1,024 characters.
+        /// Description of the scan.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

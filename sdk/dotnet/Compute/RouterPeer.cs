@@ -386,9 +386,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Cloud Router in which this BgpPeer will be configured.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("router")]
         public Output<string> Router { get; private set; } = null!;
@@ -589,9 +586,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Cloud Router in which this BgpPeer will be configured.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("router", required: true)]
         public Input<string> Router { get; set; } = null!;
@@ -760,9 +754,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Cloud Router in which this BgpPeer will be configured.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("router")]
         public Input<string>? Router { get; set; }

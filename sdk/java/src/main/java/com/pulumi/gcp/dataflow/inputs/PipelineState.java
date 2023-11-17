@@ -192,8 +192,6 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
      * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
      * Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
      * 
-     * ***
-     * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
@@ -202,8 +200,6 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
      * @return The state of the pipeline. When the pipeline is created, the state is set to &#39;PIPELINE_STATE_ACTIVE&#39; by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
      * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
      * Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> state() {
@@ -517,8 +513,6 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
          * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
          * Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -531,8 +525,6 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
          * @param state The state of the pipeline. When the pipeline is created, the state is set to &#39;PIPELINE_STATE_ACTIVE&#39; by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
          * https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
          * Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
-         * 
-         * ***
          * 
          * @return builder
          * 

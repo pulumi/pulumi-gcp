@@ -19,8 +19,6 @@ class ServiceIdentityArgs:
         """
         The set of arguments for constructing a ServiceIdentity resource.
         :param pulumi.Input[str] service: The service to generate identity for.
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -33,8 +31,6 @@ class ServiceIdentityArgs:
     def service(self) -> pulumi.Input[str]:
         """
         The service to generate identity for.
-
-        - - -
         """
         return pulumi.get(self, "service")
 
@@ -68,8 +64,6 @@ class _ServiceIdentityState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The service to generate identity for.
-               
-               - - -
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -108,8 +102,6 @@ class _ServiceIdentityState:
     def service(self) -> Optional[pulumi.Input[str]]:
         """
         The service to generate identity for.
-
-        - - -
         """
         return pulumi.get(self, "service")
 
@@ -167,8 +159,6 @@ class ServiceIdentity(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The service to generate identity for.
-               
-               - - -
         """
         ...
     @overload
@@ -267,8 +257,6 @@ class ServiceIdentity(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The service to generate identity for.
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -301,8 +289,6 @@ class ServiceIdentity(pulumi.CustomResource):
     def service(self) -> pulumi.Output[str]:
         """
         The service to generate identity for.
-
-        - - -
         """
         return pulumi.get(self, "service")
 

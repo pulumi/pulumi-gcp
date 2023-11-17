@@ -373,8 +373,6 @@ func (o GuestPoliciesAssignmentGroupLabelArrayOutput) Index(i pulumi.IntInput) G
 
 type GuestPoliciesAssignmentOsType struct {
 	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
-	//
-	// ***
 	OsArchitecture *string `pulumi:"osArchitecture"`
 	// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
 	OsShortName *string `pulumi:"osShortName"`
@@ -395,8 +393,6 @@ type GuestPoliciesAssignmentOsTypeInput interface {
 
 type GuestPoliciesAssignmentOsTypeArgs struct {
 	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
-	//
-	// ***
 	OsArchitecture pulumi.StringPtrInput `pulumi:"osArchitecture"`
 	// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
 	OsShortName pulumi.StringPtrInput `pulumi:"osShortName"`
@@ -456,8 +452,6 @@ func (o GuestPoliciesAssignmentOsTypeOutput) ToGuestPoliciesAssignmentOsTypeOutp
 }
 
 // Targets VM instances with OS Inventory enabled and having the following OS architecture.
-//
-// ***
 func (o GuestPoliciesAssignmentOsTypeOutput) OsArchitecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesAssignmentOsType) *string { return v.OsArchitecture }).(pulumi.StringPtrOutput)
 }
@@ -5588,15 +5582,15 @@ type OsPolicyAssignmentOsPolicy struct {
 	// reported as compliant even if the policy has nothing to validate or enforce.
 	AllowNoResourceGroupMatch *bool `pulumi:"allowNoResourceGroupMatch"`
 	// Policy description. Length of the description is
-	// limited to 1024 characters.
+	// limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
+	// description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// The id of the OS policy with the following restrictions:
-	//
-	// *   Must contain only lowercase letters, numbers, and hyphens.
-	// *   Must start with a letter.
-	// *   Must be between 1-63 characters.
-	// *   Must end with a number or a letter.
-	// *   Must be unique within the assignment.
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the assignment.
 	Id string `pulumi:"id"`
 	// Policy mode Possible values are: `MODE_UNSPECIFIED`,
 	// `VALIDATION`, `ENFORCEMENT`.
@@ -5629,15 +5623,15 @@ type OsPolicyAssignmentOsPolicyArgs struct {
 	// reported as compliant even if the policy has nothing to validate or enforce.
 	AllowNoResourceGroupMatch pulumi.BoolPtrInput `pulumi:"allowNoResourceGroupMatch"`
 	// Policy description. Length of the description is
-	// limited to 1024 characters.
+	// limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
+	// description is limited to 1024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The id of the OS policy with the following restrictions:
-	//
-	// *   Must contain only lowercase letters, numbers, and hyphens.
-	// *   Must start with a letter.
-	// *   Must be between 1-63 characters.
-	// *   Must end with a number or a letter.
-	// *   Must be unique within the assignment.
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the assignment.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Policy mode Possible values are: `MODE_UNSPECIFIED`,
 	// `VALIDATION`, `ENFORCEMENT`.
@@ -5712,18 +5706,18 @@ func (o OsPolicyAssignmentOsPolicyOutput) AllowNoResourceGroupMatch() pulumi.Boo
 }
 
 // Policy description. Length of the description is
-// limited to 1024 characters.
+// limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
+// description is limited to 1024 characters.
 func (o OsPolicyAssignmentOsPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The id of the OS policy with the following restrictions:
-//
-// *   Must contain only lowercase letters, numbers, and hyphens.
-// *   Must start with a letter.
-// *   Must be between 1-63 characters.
-// *   Must end with a number or a letter.
-// *   Must be unique within the assignment.
+// * Must contain only lowercase letters, numbers, and hyphens.
+// * Must start with a letter.
+// * Must be between 1-63 characters.
+// * Must end with a number or a letter.
+// * Must be unique within the assignment.
 func (o OsPolicyAssignmentOsPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -6028,12 +6022,11 @@ type OsPolicyAssignmentOsPolicyResourceGroupResource struct {
 	// documented below.
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceFile `pulumi:"file"`
 	// The id of the resource with the following restrictions:
-	//
-	// *   Must contain only lowercase letters, numbers, and hyphens.
-	// *   Must start with a letter.
-	// *   Must be between 1-63 characters.
-	// *   Must end with a number or a letter.
-	// *   Must be unique within the OS policy.
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the OS policy.
 	Id string `pulumi:"id"`
 	// Package resource Structure is
 	// documented below.
@@ -6062,12 +6055,11 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceArgs struct {
 	// documented below.
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrInput `pulumi:"file"`
 	// The id of the resource with the following restrictions:
-	//
-	// *   Must contain only lowercase letters, numbers, and hyphens.
-	// *   Must start with a letter.
-	// *   Must be between 1-63 characters.
-	// *   Must end with a number or a letter.
-	// *   Must be unique within the OS policy.
+	// * Must contain only lowercase letters, numbers, and hyphens.
+	// * Must start with a letter.
+	// * Must be between 1-63 characters.
+	// * Must end with a number or a letter.
+	// * Must be unique within the OS policy.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Package resource Structure is
 	// documented below.
@@ -6145,12 +6137,11 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) File() OsPolicyAs
 }
 
 // The id of the resource with the following restrictions:
-//
-// *   Must contain only lowercase letters, numbers, and hyphens.
-// *   Must start with a letter.
-// *   Must be between 1-63 characters.
-// *   Must end with a number or a letter.
-// *   Must be unique within the OS policy.
+// * Must contain only lowercase letters, numbers, and hyphens.
+// * Must start with a letter.
+// * Must be between 1-63 characters.
+// * Must end with a number or a letter.
+// * Must be unique within the OS policy.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -7984,7 +7975,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFile struct {
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile `pulumi:"file"`
 	// The absolute path of the file within the VM.
 	Path string `pulumi:"path"`
-	// Consists of three octal digits which represent, in
+	// (Output) Consists of three octal digits which represent, in
 	// order, the permissions of the owner, group, and other users for the file
 	// (similarly to the numeric mode used in the linux chmod utility). Each digit
 	// represents a three bit number with the 4 bit corresponding to the read
@@ -8018,7 +8009,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs struct {
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrInput `pulumi:"file"`
 	// The absolute path of the file within the VM.
 	Path pulumi.StringInput `pulumi:"path"`
-	// Consists of three octal digits which represent, in
+	// (Output) Consists of three octal digits which represent, in
 	// order, the permissions of the owner, group, and other users for the file
 	// (similarly to the numeric mode used in the linux chmod utility). Each digit
 	// represents a three bit number with the 4 bit corresponding to the read
@@ -8128,7 +8119,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) Path() pulumi
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Consists of three octal digits which represent, in
+// (Output) Consists of three octal digits which represent, in
 // order, the permissions of the owner, group, and other users for the file
 // (similarly to the numeric mode used in the linux chmod utility). Each digit
 // represents a three bit number with the 4 bit corresponding to the read
@@ -8202,7 +8193,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Path() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Consists of three octal digits which represent, in
+// (Output) Consists of three octal digits which represent, in
 // order, the permissions of the owner, group, and other users for the file
 // (similarly to the numeric mode used in the linux chmod utility). Each digit
 // represents a three bit number with the 4 bit corresponding to the read
@@ -13006,8 +12997,6 @@ type OsPolicyAssignmentRolloutDisruptionBudget struct {
 	Fixed *int `pulumi:"fixed"`
 	// Specifies the relative value defined as a percentage,
 	// which will be multiplied by a reference value.
-	//
-	// ***
 	Percent *int `pulumi:"percent"`
 }
 
@@ -13027,8 +13016,6 @@ type OsPolicyAssignmentRolloutDisruptionBudgetArgs struct {
 	Fixed pulumi.IntPtrInput `pulumi:"fixed"`
 	// Specifies the relative value defined as a percentage,
 	// which will be multiplied by a reference value.
-	//
-	// ***
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
 }
 
@@ -13116,8 +13103,6 @@ func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Fixed() pulumi.IntPtrOu
 
 // Specifies the relative value defined as a percentage,
 // which will be multiplied by a reference value.
-//
-// ***
 func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentRolloutDisruptionBudget) *int { return v.Percent }).(pulumi.IntPtrOutput)
 }
@@ -13158,8 +13143,6 @@ func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Fixed() pulumi.IntPt
 
 // Specifies the relative value defined as a percentage,
 // which will be multiplied by a reference value.
-//
-// ***
 func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentRolloutDisruptionBudget) *int {
 		if v == nil {
@@ -13400,8 +13383,6 @@ func (o PatchDeploymentInstanceFilterPtrOutput) Zones() pulumi.StringArrayOutput
 
 type PatchDeploymentInstanceFilterGroupLabel struct {
 	// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-	//
-	// ***
 	Labels map[string]string `pulumi:"labels"`
 }
 
@@ -13418,8 +13399,6 @@ type PatchDeploymentInstanceFilterGroupLabelInput interface {
 
 type PatchDeploymentInstanceFilterGroupLabelArgs struct {
 	// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-	//
-	// ***
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
 
@@ -13475,8 +13454,6 @@ func (o PatchDeploymentInstanceFilterGroupLabelOutput) ToPatchDeploymentInstance
 }
 
 // Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
-//
-// ***
 func (o PatchDeploymentInstanceFilterGroupLabelOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PatchDeploymentInstanceFilterGroupLabel) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

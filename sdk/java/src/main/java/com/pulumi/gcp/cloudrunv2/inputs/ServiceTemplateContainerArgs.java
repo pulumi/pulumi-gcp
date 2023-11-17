@@ -52,9 +52,17 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.commands);
     }
 
+    /**
+     * Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+     * 
+     */
     @Import(name="dependsOns")
     private @Nullable Output<List<String>> dependsOns;
 
+    /**
+     * @return Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+     * 
+     */
     public Optional<Output<List<String>>> dependsOns() {
         return Optional.ofNullable(this.dependsOns);
     }
@@ -305,15 +313,33 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
             return commands(List.of(commands));
         }
 
+        /**
+         * @param dependsOns Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependsOns(@Nullable Output<List<String>> dependsOns) {
             $.dependsOns = dependsOns;
             return this;
         }
 
+        /**
+         * @param dependsOns Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependsOns(List<String> dependsOns) {
             return dependsOns(Output.of(dependsOns));
         }
 
+        /**
+         * @param dependsOns Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dependsOns(String... dependsOns) {
             return dependsOns(List.of(dependsOns));
         }

@@ -91,16 +91,12 @@ public class Config extends com.pulumi.resources.CustomResource {
     /**
      * The name of the runtime config.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of the runtime config.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

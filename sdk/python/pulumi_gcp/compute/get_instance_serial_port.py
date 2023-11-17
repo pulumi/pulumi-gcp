@@ -158,8 +158,6 @@ def get_instance_serial_port(instance: Optional[str] = None,
 
     :param str instance: The name of the Compute Instance to read output from.
     :param int port: The number of the serial port to read output from. Possible values are 1-4.
-           
-           - - -
     :param str project: The project in which the Compute Instance exists. If it
            is not provided, the provider project is used.
     :param str zone: The zone in which the Compute Instance exists.
@@ -249,8 +247,6 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
 
     :param str instance: The name of the Compute Instance to read output from.
     :param int port: The number of the serial port to read output from. Possible values are 1-4.
-           
-           - - -
     :param str project: The project in which the Compute Instance exists. If it
            is not provided, the provider project is used.
     :param str zone: The zone in which the Compute Instance exists.

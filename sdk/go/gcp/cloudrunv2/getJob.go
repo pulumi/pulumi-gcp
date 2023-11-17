@@ -54,8 +54,6 @@ func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getJob.
 type LookupJobArgs struct {
 	// The location of the instance. eg us-central1
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The name of the Cloud Run v2 Job.
 	Name string `pulumi:"name"`
@@ -114,8 +112,6 @@ func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulu
 // A collection of arguments for invoking getJob.
 type LookupJobOutputArgs struct {
 	// The location of the instance. eg us-central1
-	//
-	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// The name of the Cloud Run v2 Job.
 	Name pulumi.StringInput `pulumi:"name"`

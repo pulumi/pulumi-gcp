@@ -172,8 +172,6 @@ def get_instance(config: Optional[str] = None,
 
 
     :param str name: The name of the spanner instance.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -221,8 +219,6 @@ def get_instance_output(config: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str name: The name of the spanner instance.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

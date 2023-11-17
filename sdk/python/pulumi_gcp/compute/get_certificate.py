@@ -154,8 +154,6 @@ def get_certificate(name: Optional[str] = None,
 
 
     :param str name: The name of the certificate.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -200,8 +198,6 @@ def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: The name of the certificate.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

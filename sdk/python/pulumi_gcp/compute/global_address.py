@@ -32,8 +32,8 @@ class GlobalAddressArgs:
         :param pulumi.Input[str] address_type: The type of the address to reserve.
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
-               Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `INTERNAL`.
+                 Default value is `EXTERNAL`.
+                 Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
@@ -48,9 +48,6 @@ class GlobalAddressArgs:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the IP range. The IP range
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
@@ -107,8 +104,8 @@ class GlobalAddressArgs:
         The type of the address to reserve.
         * EXTERNAL indicates public/external single IP address.
         * INTERNAL indicates internal IP ranges belonging to some network.
-        Default value is `EXTERNAL`.
-        Possible values are: `EXTERNAL`, `INTERNAL`.
+          Default value is `EXTERNAL`.
+          Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "address_type")
 
@@ -167,9 +164,6 @@ class GlobalAddressArgs:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -261,8 +255,8 @@ class _GlobalAddressState:
         :param pulumi.Input[str] address_type: The type of the address to reserve.
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
-               Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `INTERNAL`.
+                 Default value is `EXTERNAL`.
+                 Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
@@ -281,9 +275,6 @@ class _GlobalAddressState:
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the IP range. The IP range
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
@@ -352,8 +343,8 @@ class _GlobalAddressState:
         The type of the address to reserve.
         * EXTERNAL indicates public/external single IP address.
         * INTERNAL indicates internal IP ranges belonging to some network.
-        Default value is `EXTERNAL`.
-        Possible values are: `EXTERNAL`, `INTERNAL`.
+          Default value is `EXTERNAL`.
+          Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "address_type")
 
@@ -449,9 +440,6 @@ class _GlobalAddressState:
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -624,8 +612,8 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] address_type: The type of the address to reserve.
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
-               Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `INTERNAL`.
+                 Default value is `EXTERNAL`.
+                 Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
@@ -640,9 +628,6 @@ class GlobalAddress(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the IP range. The IP range
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
@@ -811,8 +796,8 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[str] address_type: The type of the address to reserve.
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
-               Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `INTERNAL`.
+                 Default value is `EXTERNAL`.
+                 Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
@@ -831,9 +816,6 @@ class GlobalAddress(pulumi.CustomResource):
                the first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the IP range. The IP range
                must be in RFC1918 space. The network cannot be deleted if there are
                any reserved IP ranges referring to it.
@@ -888,8 +870,8 @@ class GlobalAddress(pulumi.CustomResource):
         The type of the address to reserve.
         * EXTERNAL indicates public/external single IP address.
         * INTERNAL indicates internal IP ranges belonging to some network.
-        Default value is `EXTERNAL`.
-        Possible values are: `EXTERNAL`, `INTERNAL`.
+          Default value is `EXTERNAL`.
+          Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "address_type")
 
@@ -957,9 +939,6 @@ class GlobalAddress(pulumi.CustomResource):
         the first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -30,9 +30,6 @@ class TargetHttpsProxyArgs:
         The set of arguments for constructing a TargetHttpsProxy resource.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_manager_certificates: URLs to certificate manager certificate resources that are used to authenticate connections between users and the load balancer.
                Currently, you may specify up to 15 certificates. Certificate manager certificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
                sslCertificates and certificateManagerCertificates fields can not be defined together.
@@ -110,9 +107,6 @@ class TargetHttpsProxyArgs:
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -359,9 +353,6 @@ class _TargetHttpsProxyState:
                resource will not have any SSL policy configured.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         if certificate_manager_certificates is not None:
             pulumi.set(__self__, "certificate_manager_certificates", certificate_manager_certificates)
@@ -603,9 +594,6 @@ class _TargetHttpsProxyState:
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -755,9 +743,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
                resource will not have any SSL policy configured.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -974,9 +959,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
                resource will not have any SSL policy configured.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1152,9 +1134,6 @@ class TargetHttpsProxy(pulumi.CustomResource):
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
-
-
-        - - -
         """
         return pulumi.get(self, "url_map")
 

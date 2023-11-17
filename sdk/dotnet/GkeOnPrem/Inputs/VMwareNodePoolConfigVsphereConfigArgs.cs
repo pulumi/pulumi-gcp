@@ -27,7 +27,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// Tags to apply to VMs.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="nested_tags"&gt;&lt;/a&gt;The `tags` block contains:
         /// </summary>
         public InputList<Inputs.VMwareNodePoolConfigVsphereConfigTagArgs> Tags

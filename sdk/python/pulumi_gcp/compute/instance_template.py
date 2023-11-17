@@ -49,14 +49,12 @@ class InstanceTemplateArgs:
         :param pulumi.Input[str] machine_type: The machine type to create.
                
                To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-               
-               - - -
         :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
         :param pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[str] description: A brief description of this resource.
-        :param pulumi.Input[bool] enable_display: ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
@@ -97,7 +95,7 @@ class InstanceTemplateArgs:
                Provider if no value is given.
         :param pulumi.Input['InstanceTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
-        :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceTemplateSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input['InstanceTemplateServiceAccountArgs'] service_account: Service account to attach to the instance. Structure is documented below.
@@ -175,8 +173,6 @@ class InstanceTemplateArgs:
         The machine type to create.
 
         To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-
-        - - -
         """
         return pulumi.get(self, "machine_type")
 
@@ -237,7 +233,7 @@ class InstanceTemplateArgs:
     @pulumi.getter(name="enableDisplay")
     def enable_display(self) -> Optional[pulumi.Input[bool]]:
         """
-        ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         """
         return pulumi.get(self, "enable_display")
@@ -432,7 +428,7 @@ class InstanceTemplateArgs:
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[str]]:
         """
-        - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 
@@ -536,7 +532,7 @@ class _InstanceTemplateState:
                This can be specified multiple times for multiple disks. Structure is
                documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[bool] enable_display: ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
@@ -549,8 +545,6 @@ class _InstanceTemplateState:
         :param pulumi.Input[str] machine_type: The machine type to create.
                
                To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-               
-               - - -
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -584,7 +578,7 @@ class _InstanceTemplateState:
                Provider if no value is given.
         :param pulumi.Input['InstanceTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
-        :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceTemplateSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -738,7 +732,7 @@ class _InstanceTemplateState:
     @pulumi.getter(name="enableDisplay")
     def enable_display(self) -> Optional[pulumi.Input[bool]]:
         """
-        ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         """
         return pulumi.get(self, "enable_display")
@@ -795,8 +789,6 @@ class _InstanceTemplateState:
         The machine type to create.
 
         To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-
-        - - -
         """
         return pulumi.get(self, "machine_type")
 
@@ -973,7 +965,7 @@ class _InstanceTemplateState:
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[str]]:
         """
-        - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 
@@ -1261,7 +1253,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
                documented below.
-        :param pulumi.Input[bool] enable_display: ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
@@ -1274,8 +1266,6 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] machine_type: The machine type to create.
                
                To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-               
-               - - -
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
@@ -1307,7 +1297,7 @@ class InstanceTemplate(pulumi.CustomResource):
                Provider if no value is given.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
-        :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']] service_account: Service account to attach to the instance. Structure is documented below.
@@ -1615,7 +1605,7 @@ class InstanceTemplate(pulumi.CustomResource):
                This can be specified multiple times for multiple disks. Structure is
                documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[bool] enable_display: ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
@@ -1628,8 +1618,6 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] machine_type: The machine type to create.
                
                To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-               
-               - - -
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -1663,7 +1651,7 @@ class InstanceTemplate(pulumi.CustomResource):
                Provider if no value is given.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
-        :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -1767,7 +1755,7 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter(name="enableDisplay")
     def enable_display(self) -> pulumi.Output[Optional[bool]]:
         """
-        ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+        Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
         """
         return pulumi.get(self, "enable_display")
@@ -1808,8 +1796,6 @@ class InstanceTemplate(pulumi.CustomResource):
         The machine type to create.
 
         To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-
-        - - -
         """
         return pulumi.get(self, "machine_type")
 
@@ -1934,7 +1920,7 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> pulumi.Output[Optional[str]]:
         """
-        - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 

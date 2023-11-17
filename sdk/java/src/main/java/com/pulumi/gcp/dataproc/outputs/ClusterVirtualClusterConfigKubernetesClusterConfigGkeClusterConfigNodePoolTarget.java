@@ -19,7 +19,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
      */
     private String nodePool;
     /**
-     * @return The configuration for the GKE node pool.
+     * @return (Input only) The configuration for the GKE node pool.
      * If specified, Dataproc attempts to create a node pool with the specified shape.
      * If one with the same name already exists, it is verified against all specified fields.
      * If a field differs, the virtual cluster creation will fail.
@@ -42,7 +42,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         return this.nodePool;
     }
     /**
-     * @return The configuration for the GKE node pool.
+     * @return (Input only) The configuration for the GKE node pool.
      * If specified, Dataproc attempts to create a node pool with the specified shape.
      * If one with the same name already exists, it is verified against all specified fields.
      * If a field differs, the virtual cluster creation will fail.

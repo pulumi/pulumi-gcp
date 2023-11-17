@@ -18,16 +18,12 @@ public final class DocumentAiProcessorDefaultVersionState extends com.pulumi.res
     /**
      * The processor to set the version on.
      * 
-     * ***
-     * 
      */
     @Import(name="processor")
     private @Nullable Output<String> processor;
 
     /**
      * @return The processor to set the version on.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> processor() {
@@ -79,8 +75,6 @@ public final class DocumentAiProcessorDefaultVersionState extends com.pulumi.res
         /**
          * @param processor The processor to set the version on.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -91,8 +85,6 @@ public final class DocumentAiProcessorDefaultVersionState extends com.pulumi.res
 
         /**
          * @param processor The processor to set the version on.
-         * 
-         * ***
          * 
          * @return builder
          * 

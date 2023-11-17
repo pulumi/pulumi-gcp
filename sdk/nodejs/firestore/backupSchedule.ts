@@ -126,9 +126,6 @@ export class BackupSchedule extends pulumi.CustomResource {
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      * For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
-     *
-     *
-     * - - -
      */
     public readonly retention!: pulumi.Output<string>;
     /**
@@ -199,9 +196,6 @@ export interface BackupScheduleState {
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      * For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
-     *
-     *
-     * - - -
      */
     retention?: pulumi.Input<string>;
     /**
@@ -232,9 +226,6 @@ export interface BackupScheduleArgs {
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      * For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
-     *
-     *
-     * - - -
      */
     retention: pulumi.Input<string>;
     /**

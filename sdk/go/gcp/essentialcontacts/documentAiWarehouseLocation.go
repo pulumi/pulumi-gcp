@@ -79,8 +79,6 @@ type DocumentAiWarehouseLocation struct {
 	// encryption will be enforced.
 	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
 	// The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The unique identifier of the project.
 	ProjectNumber pulumi.StringOutput `pulumi:"projectNumber"`
@@ -144,8 +142,6 @@ type documentAiWarehouseLocationState struct {
 	// encryption will be enforced.
 	KmsKey *string `pulumi:"kmsKey"`
 	// The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The unique identifier of the project.
 	ProjectNumber *string `pulumi:"projectNumber"`
@@ -168,8 +164,6 @@ type DocumentAiWarehouseLocationState struct {
 	// encryption will be enforced.
 	KmsKey pulumi.StringPtrInput
 	// The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The unique identifier of the project.
 	ProjectNumber pulumi.StringPtrInput
@@ -196,8 +190,6 @@ type documentAiWarehouseLocationArgs struct {
 	// encryption will be enforced.
 	KmsKey *string `pulumi:"kmsKey"`
 	// The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The unique identifier of the project.
 	ProjectNumber string `pulumi:"projectNumber"`
@@ -221,8 +213,6 @@ type DocumentAiWarehouseLocationArgs struct {
 	// encryption will be enforced.
 	KmsKey pulumi.StringPtrInput
 	// The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The unique identifier of the project.
 	ProjectNumber pulumi.StringInput
@@ -343,8 +333,6 @@ func (o DocumentAiWarehouseLocationOutput) KmsKey() pulumi.StringPtrOutput {
 }
 
 // The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-//
-// ***
 func (o DocumentAiWarehouseLocationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DocumentAiWarehouseLocation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

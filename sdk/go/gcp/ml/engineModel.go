@@ -128,8 +128,6 @@ type EngineModel struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name specified for the model.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
 	OnlinePredictionConsoleLogging pulumi.BoolPtrOutput `pulumi:"onlinePredictionConsoleLogging"`
@@ -194,8 +192,6 @@ type engineModelState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name specified for the model.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
 	OnlinePredictionConsoleLogging *bool `pulumi:"onlinePredictionConsoleLogging"`
@@ -226,8 +222,6 @@ type EngineModelState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name specified for the model.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
 	OnlinePredictionConsoleLogging pulumi.BoolPtrInput
@@ -260,8 +254,6 @@ type engineModelArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The name specified for the model.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
 	OnlinePredictionConsoleLogging *bool `pulumi:"onlinePredictionConsoleLogging"`
@@ -288,8 +280,6 @@ type EngineModelArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The name specified for the model.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
 	OnlinePredictionConsoleLogging pulumi.BoolPtrInput
@@ -415,8 +405,6 @@ func (o EngineModelOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The name specified for the model.
-//
-// ***
 func (o EngineModelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EngineModel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

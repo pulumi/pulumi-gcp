@@ -68,8 +68,6 @@ class RulesetSourceFile(dict):
         """
         :param str content: Textual Content.
         :param str name: File name.
-               
-               - - -
         :param str fingerprint: Fingerprint (e.g. github sha) associated with the `File`.
         """
         pulumi.set(__self__, "content", content)
@@ -90,8 +88,6 @@ class RulesetSourceFile(dict):
     def name(self) -> str:
         """
         File name.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -34,16 +34,12 @@ public final class DefaultSupportedIdpConfigState extends com.pulumi.resources.R
     /**
      * OAuth client secret
      * 
-     * ***
-     * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
      * @return OAuth client secret
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -67,16 +63,6 @@ public final class DefaultSupportedIdpConfigState extends com.pulumi.resources.R
 
     /**
      * ID of the IDP. Possible values include:
-     * * `apple.com`
-     * * `facebook.com`
-     * * `gc.apple.com`
-     * * `github.com`
-     * * `google.com`
-     * * `linkedin.com`
-     * * `microsoft.com`
-     * * `playgames.google.com`
-     * * `twitter.com`
-     * * `yahoo.com`
      * 
      */
     @Import(name="idpId")
@@ -84,16 +70,6 @@ public final class DefaultSupportedIdpConfigState extends com.pulumi.resources.R
 
     /**
      * @return ID of the IDP. Possible values include:
-     * * `apple.com`
-     * * `facebook.com`
-     * * `gc.apple.com`
-     * * `github.com`
-     * * `google.com`
-     * * `linkedin.com`
-     * * `microsoft.com`
-     * * `playgames.google.com`
-     * * `twitter.com`
-     * * `yahoo.com`
      * 
      */
     public Optional<Output<String>> idpId() {
@@ -185,8 +161,6 @@ public final class DefaultSupportedIdpConfigState extends com.pulumi.resources.R
         /**
          * @param clientSecret OAuth client secret
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -197,8 +171,6 @@ public final class DefaultSupportedIdpConfigState extends com.pulumi.resources.R
 
         /**
          * @param clientSecret OAuth client secret
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -230,16 +202,6 @@ public final class DefaultSupportedIdpConfigState extends com.pulumi.resources.R
 
         /**
          * @param idpId ID of the IDP. Possible values include:
-         * * `apple.com`
-         * * `facebook.com`
-         * * `gc.apple.com`
-         * * `github.com`
-         * * `google.com`
-         * * `linkedin.com`
-         * * `microsoft.com`
-         * * `playgames.google.com`
-         * * `twitter.com`
-         * * `yahoo.com`
          * 
          * @return builder
          * 
@@ -251,16 +213,6 @@ public final class DefaultSupportedIdpConfigState extends com.pulumi.resources.R
 
         /**
          * @param idpId ID of the IDP. Possible values include:
-         * * `apple.com`
-         * * `facebook.com`
-         * * `gc.apple.com`
-         * * `github.com`
-         * * `google.com`
-         * * `linkedin.com`
-         * * `microsoft.com`
-         * * `playgames.google.com`
-         * * `twitter.com`
-         * * `yahoo.com`
          * 
          * @return builder
          * 

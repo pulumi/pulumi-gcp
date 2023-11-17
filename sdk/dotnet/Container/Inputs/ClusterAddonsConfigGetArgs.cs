@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Container.Inputs
         /// .
         /// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
         /// 
-        /// 
         /// This example `addons_config` disables two addons:
         /// 
         /// ```csharp
@@ -34,7 +33,6 @@ namespace Pulumi.Gcp.Container.Inputs
         /// {
         /// });
         /// ```
-        /// &lt;a name="nested_binary_authorization"&gt;&lt;/a&gt;The `binary_authorization` block supports:
         /// </summary>
         [Input("configConnectorConfig")]
         public Input<Inputs.ClusterAddonsConfigConfigConnectorConfigGetArgs>? ConfigConnectorConfig { get; set; }

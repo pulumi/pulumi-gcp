@@ -3460,8 +3460,6 @@ type RestorePlanRestoreConfigTransformationRuleFieldAction struct {
 	Path *string `pulumi:"path"`
 	// A string that specifies the desired value in string format
 	// to use for transformation.
-	//
-	// ***
 	Value *string `pulumi:"value"`
 }
 
@@ -3488,8 +3486,6 @@ type RestorePlanRestoreConfigTransformationRuleFieldActionArgs struct {
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// A string that specifies the desired value in string format
 	// to use for transformation.
-	//
-	// ***
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -3564,8 +3560,6 @@ func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) Path() pulu
 
 // A string that specifies the desired value in string format
 // to use for transformation.
-//
-// ***
 func (o RestorePlanRestoreConfigTransformationRuleFieldActionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestorePlanRestoreConfigTransformationRuleFieldAction) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

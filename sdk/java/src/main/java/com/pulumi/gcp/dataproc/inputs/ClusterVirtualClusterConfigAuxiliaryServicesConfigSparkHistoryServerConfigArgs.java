@@ -17,7 +17,6 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistor
 
     /**
      * Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-     * ***
      * 
      */
     @Import(name="dataprocCluster")
@@ -25,7 +24,6 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistor
 
     /**
      * @return Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-     * ***
      * 
      */
     public Optional<Output<String>> dataprocCluster() {
@@ -58,7 +56,6 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistor
 
         /**
          * @param dataprocCluster Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-         * ***
          * 
          * @return builder
          * 
@@ -70,7 +67,6 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistor
 
         /**
          * @param dataprocCluster Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-         * ***
          * 
          * @return builder
          * 

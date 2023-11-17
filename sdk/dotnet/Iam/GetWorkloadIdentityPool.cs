@@ -81,8 +81,6 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// The id of the pool which is the
         /// final component of the resource name.
-        /// 
-        /// - - -
         /// </summary>
         [Input("workloadIdentityPoolId", required: true)]
         public string WorkloadIdentityPoolId { get; set; } = null!;
@@ -105,8 +103,6 @@ namespace Pulumi.Gcp.Iam
         /// <summary>
         /// The id of the pool which is the
         /// final component of the resource name.
-        /// 
-        /// - - -
         /// </summary>
         [Input("workloadIdentityPoolId", required: true)]
         public Input<string> WorkloadIdentityPoolId { get; set; } = null!;

@@ -39,7 +39,7 @@ class AccessApprovalSettingsEnrolledServiceArgs:
                * Cloud Pub/Sub
                * Cloud Storage
                * Persistent Disk
-               Note: These values are supported as input, but considered a legacy format:
+                 Note: These values are supported as input, but considered a legacy format:
                * all
                * appengine.googleapis.com
                * bigquery.googleapis.com
@@ -53,8 +53,6 @@ class AccessApprovalSettingsEnrolledServiceArgs:
         :param pulumi.Input[str] enrollment_level: The enrollment level of the service.
                Default value is `BLOCK_ALL`.
                Possible values are: `BLOCK_ALL`.
-               
-               - - -
         """
         pulumi.set(__self__, "cloud_product", cloud_product)
         if enrollment_level is not None:
@@ -76,7 +74,7 @@ class AccessApprovalSettingsEnrolledServiceArgs:
         * Cloud Pub/Sub
         * Cloud Storage
         * Persistent Disk
-        Note: These values are supported as input, but considered a legacy format:
+          Note: These values are supported as input, but considered a legacy format:
         * all
         * appengine.googleapis.com
         * bigquery.googleapis.com
@@ -101,8 +99,6 @@ class AccessApprovalSettingsEnrolledServiceArgs:
         The enrollment level of the service.
         Default value is `BLOCK_ALL`.
         Possible values are: `BLOCK_ALL`.
-
-        - - -
         """
         return pulumi.get(self, "enrollment_level")
 

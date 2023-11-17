@@ -19,60 +19,12 @@ public final class ClusterResourceUsageExportConfigArgs extends com.pulumi.resou
     /**
      * Parameters for using BigQuery as the destination of resource usage export.
      * 
-     * * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * 
      */
     @Import(name="bigqueryDestination", required=true)
     private Output<ClusterResourceUsageExportConfigBigqueryDestinationArgs> bigqueryDestination;
 
     /**
      * @return Parameters for using BigQuery as the destination of resource usage export.
-     * 
-     * * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     public Output<ClusterResourceUsageExportConfigBigqueryDestinationArgs> bigqueryDestination() {
@@ -148,30 +100,6 @@ public final class ClusterResourceUsageExportConfigArgs extends com.pulumi.resou
         /**
          * @param bigqueryDestination Parameters for using BigQuery as the destination of resource usage export.
          * 
-         * * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
-         * 
          * @return builder
          * 
          */
@@ -182,30 +110,6 @@ public final class ClusterResourceUsageExportConfigArgs extends com.pulumi.resou
 
         /**
          * @param bigqueryDestination Parameters for using BigQuery as the destination of resource usage export.
-         * 
-         * * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
          * 
          * @return builder
          * 

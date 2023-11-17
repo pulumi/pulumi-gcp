@@ -138,6 +138,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Structure is documented below.
      * 
      */
     @Import(name="metadataIntegration")
@@ -145,6 +146,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<MetastoreServiceMetadataIntegrationArgs>> metadataIntegration() {
@@ -258,8 +260,6 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
      * 
-     * ***
-     * 
      */
     @Import(name="serviceId", required=true)
     private Output<String> serviceId;
@@ -268,8 +268,6 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
      * @return The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceId() {
@@ -499,6 +497,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param metadataIntegration The setting that defines how metastore metadata should be integrated with external services and systems.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -510,6 +509,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param metadataIntegration The setting that defines how metastore metadata should be integrated with external services and systems.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -661,8 +661,6 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
          * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
          * 3 and 63 characters.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -675,8 +673,6 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
          * @param serviceId The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
          * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
          * 3 and 63 characters.
-         * 
-         * ***
          * 
          * @return builder
          * 

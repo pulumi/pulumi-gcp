@@ -96,16 +96,12 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * User assigned name for this policy.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return User assigned name for this policy.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -277,8 +273,6 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name User assigned name for this policy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -289,8 +283,6 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name User assigned name for this policy.
-         * 
-         * ***
          * 
          * @return builder
          * 

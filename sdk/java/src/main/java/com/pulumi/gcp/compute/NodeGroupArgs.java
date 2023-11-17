@@ -71,22 +71,20 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-     * migrations and terminations, on individual VMs. Possible values: [&#34;AS_NEEDED&#34;, &#34;RECURRENT&#34;]
+     * Specifies the frequency of planned maintenance events. Set to one of the following:
+     * - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+     * - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+     *   Possible values are: `AS_NEEDED`, `RECURRENT`.
      * 
      */
     @Import(name="maintenanceInterval")
     private @Nullable Output<String> maintenanceInterval;
 
     /**
-     * @return Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-     * migrations and terminations, on individual VMs. Possible values: [&#34;AS_NEEDED&#34;, &#34;RECURRENT&#34;]
+     * @return Specifies the frequency of planned maintenance events. Set to one of the following:
+     * - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+     * - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+     *   Possible values are: `AS_NEEDED`, `RECURRENT`.
      * 
      */
     public Optional<Output<String>> maintenanceInterval() {
@@ -143,16 +141,12 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The URL of the node template to which this node group belongs.
      * 
-     * ***
-     * 
      */
     @Import(name="nodeTemplate", required=true)
     private Output<String> nodeTemplate;
 
     /**
      * @return The URL of the node template to which this node group belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> nodeTemplate() {
@@ -312,11 +306,10 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-         * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-         * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-         * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-         * migrations and terminations, on individual VMs. Possible values: [&#34;AS_NEEDED&#34;, &#34;RECURRENT&#34;]
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. Set to one of the following:
+         * - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+         * - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+         *   Possible values are: `AS_NEEDED`, `RECURRENT`.
          * 
          * @return builder
          * 
@@ -327,11 +320,10 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-         * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-         * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-         * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-         * migrations and terminations, on individual VMs. Possible values: [&#34;AS_NEEDED&#34;, &#34;RECURRENT&#34;]
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. Set to one of the following:
+         * - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+         * - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+         *   Possible values are: `AS_NEEDED`, `RECURRENT`.
          * 
          * @return builder
          * 
@@ -408,8 +400,6 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param nodeTemplate The URL of the node template to which this node group belongs.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -420,8 +410,6 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param nodeTemplate The URL of the node template to which this node group belongs.
-         * 
-         * ***
          * 
          * @return builder
          * 

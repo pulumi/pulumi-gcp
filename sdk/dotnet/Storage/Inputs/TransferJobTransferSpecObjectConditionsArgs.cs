@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         private InputList<string>? _excludePrefixes;
 
         /// <summary>
-        /// `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        /// must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         /// </summary>
         public InputList<string> ExcludePrefixes
         {

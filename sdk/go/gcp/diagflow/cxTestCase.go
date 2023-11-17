@@ -248,8 +248,6 @@ type CxTestCase struct {
 	// When the test was created. A timestamp in RFC3339 text format.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The latest test result.
 	// Structure is documented below.
@@ -309,8 +307,6 @@ type cxTestCaseState struct {
 	// When the test was created. A timestamp in RFC3339 text format.
 	CreationTime *string `pulumi:"creationTime"`
 	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// The latest test result.
 	// Structure is documented below.
@@ -338,8 +334,6 @@ type CxTestCaseState struct {
 	// When the test was created. A timestamp in RFC3339 text format.
 	CreationTime pulumi.StringPtrInput
 	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// The latest test result.
 	// Structure is documented below.
@@ -369,8 +363,6 @@ func (CxTestCaseState) ElementType() reflect.Type {
 
 type cxTestCaseArgs struct {
 	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Additional freeform notes about the test case. Limit of 400 characters.
 	Notes *string `pulumi:"notes"`
@@ -391,8 +383,6 @@ type cxTestCaseArgs struct {
 // The set of arguments for constructing a CxTestCase resource.
 type CxTestCaseArgs struct {
 	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// Additional freeform notes about the test case. Limit of 400 characters.
 	Notes pulumi.StringPtrInput
@@ -503,8 +493,6 @@ func (o CxTestCaseOutput) CreationTime() pulumi.StringOutput {
 }
 
 // The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-//
-// ***
 func (o CxTestCaseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxTestCase) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

@@ -36,8 +36,6 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
      * (Output)
      * The Vsphere storage policy used by the control plane Node.
      * 
-     * ***
-     * 
      */
     @Import(name="storagePolicyName")
     private @Nullable Output<String> storagePolicyName;
@@ -45,8 +43,6 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
     /**
      * @return (Output)
      * The Vsphere storage policy used by the control plane Node.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> storagePolicyName() {
@@ -105,8 +101,6 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
          * @param storagePolicyName (Output)
          * The Vsphere storage policy used by the control plane Node.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -118,8 +112,6 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
         /**
          * @param storagePolicyName (Output)
          * The Vsphere storage policy used by the control plane Node.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -34,12 +34,10 @@ class GCPolicyArgs:
                Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
                
                Possible values are: `ABANDON`.
-               
-               -----
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
-        :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+        :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "column_family", column_family)
@@ -102,8 +100,6 @@ class GCPolicyArgs:
         Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 
         Possible values are: `ABANDON`.
-
-        -----
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -151,7 +147,7 @@ class GCPolicyArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+        If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
         """
         return pulumi.get(self, "mode")
 
@@ -191,13 +187,11 @@ class _GCPolicyState:
                Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
                
                Possible values are: `ABANDON`.
-               
-               -----
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
-        :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+        :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] table: The name of the table.
         """
@@ -240,8 +234,6 @@ class _GCPolicyState:
         Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 
         Possible values are: `ABANDON`.
-
-        -----
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -301,7 +293,7 @@ class _GCPolicyState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+        If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
         """
         return pulumi.get(self, "mode")
 
@@ -478,13 +470,11 @@ class GCPolicy(pulumi.CustomResource):
                Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
                
                Possible values are: `ABANDON`.
-               
-               -----
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']] max_age: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GCPolicyMaxVersionArgs']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
-        :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+        :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] table: The name of the table.
         """
@@ -695,13 +685,11 @@ class GCPolicy(pulumi.CustomResource):
                Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
                
                Possible values are: `ABANDON`.
-               
-               -----
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']] max_age: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GCPolicyMaxVersionArgs']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
-        :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+        :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         :param pulumi.Input[str] table: The name of the table.
         """
@@ -736,8 +724,6 @@ class GCPolicy(pulumi.CustomResource):
         Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 
         Possible values are: `ABANDON`.
-
-        -----
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -777,7 +763,7 @@ class GCPolicy(pulumi.CustomResource):
     @pulumi.getter
     def mode(self) -> pulumi.Output[Optional[str]]:
         """
-        If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+        If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
         """
         return pulumi.get(self, "mode")
 

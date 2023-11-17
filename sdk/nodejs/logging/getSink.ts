@@ -39,11 +39,6 @@ export interface GetSinkArgs {
     /**
      * The identifier for the resource. 
      * Examples:
-     *
-     * - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
-     * - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-     * -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
-     * - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
      */
     id: string;
 }
@@ -115,11 +110,6 @@ export interface GetSinkOutputArgs {
     /**
      * The identifier for the resource. 
      * Examples:
-     *
-     * - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
-     * - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
-     * -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
-     * - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
      */
     id: pulumi.Input<string>;
 }

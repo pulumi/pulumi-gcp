@@ -209,18 +209,14 @@ type Instance struct {
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	MinCpuPlatform pulumi.StringOutput `pulumi:"minCpuPlatform"`
 	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
+	// Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+	// is "External IPv6".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
-	//
-	// ***
 	NetworkInterfaces InstanceNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
-	// Configures network performance settings for the instance. Structure is
-	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-	// in order for this setting to take effect.
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
 	NetworkPerformanceConfig InstanceNetworkPerformanceConfigPtrOutput `pulumi:"networkPerformanceConfig"`
 	// Additional instance parameters.
 	// .
@@ -233,7 +229,7 @@ type Instance struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityOutput `pulumi:"reservationAffinity"`
-	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrOutput `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -391,18 +387,14 @@ type instanceState struct {
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
+	// Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+	// is "External IPv6".
 	Name *string `pulumi:"name"`
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
-	//
-	// ***
 	NetworkInterfaces []InstanceNetworkInterface `pulumi:"networkInterfaces"`
-	// Configures network performance settings for the instance. Structure is
-	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-	// in order for this setting to take effect.
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
 	NetworkPerformanceConfig *InstanceNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Additional instance parameters.
 	// .
@@ -415,7 +407,7 @@ type instanceState struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
-	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -530,18 +522,14 @@ type InstanceState struct {
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	MinCpuPlatform pulumi.StringPtrInput
 	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
+	// Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+	// is "External IPv6".
 	Name pulumi.StringPtrInput
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
-	//
-	// ***
 	NetworkInterfaces InstanceNetworkInterfaceArrayInput
-	// Configures network performance settings for the instance. Structure is
-	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-	// in order for this setting to take effect.
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
 	NetworkPerformanceConfig InstanceNetworkPerformanceConfigPtrInput
 	// Additional instance parameters.
 	// .
@@ -554,7 +542,7 @@ type InstanceState struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrInput
-	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -661,18 +649,14 @@ type instanceArgs struct {
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
+	// Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+	// is "External IPv6".
 	Name *string `pulumi:"name"`
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
-	//
-	// ***
 	NetworkInterfaces []InstanceNetworkInterface `pulumi:"networkInterfaces"`
-	// Configures network performance settings for the instance. Structure is
-	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-	// in order for this setting to take effect.
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
 	NetworkPerformanceConfig *InstanceNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// Additional instance parameters.
 	// .
@@ -683,7 +667,7 @@ type instanceArgs struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
-	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -783,18 +767,14 @@ type InstanceArgs struct {
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
 	MinCpuPlatform pulumi.StringPtrInput
 	// A unique name for the resource, required by GCE.
-	// Changing this forces a new resource to be created.
+	// Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+	// is "External IPv6".
 	Name pulumi.StringPtrInput
 	// Networks to attach to the instance. This can
 	// be specified multiple times. Structure is documented below.
-	//
-	// ***
 	NetworkInterfaces InstanceNetworkInterfaceArrayInput
-	// Configures network performance settings for the instance. Structure is
-	// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-	// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-	// in order for this setting to take effect.
+	// Configures network performance settings for the instance. If not specified, the instance will be created with its
+	// default network performance configuration.
 	NetworkPerformanceConfig InstanceNetworkPerformanceConfigPtrInput
 	// Additional instance parameters.
 	// .
@@ -805,7 +785,7 @@ type InstanceArgs struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrInput
-	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -1071,24 +1051,20 @@ func (o InstanceOutput) MinCpuPlatform() pulumi.StringOutput {
 }
 
 // A unique name for the resource, required by GCE.
-// Changing this forces a new resource to be created.
+// Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+// is "External IPv6".
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Networks to attach to the instance. This can
 // be specified multiple times. Structure is documented below.
-//
-// ***
 func (o InstanceOutput) NetworkInterfaces() InstanceNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceNetworkInterfaceArrayOutput { return v.NetworkInterfaces }).(InstanceNetworkInterfaceArrayOutput)
 }
 
-// Configures network performance settings for the instance. Structure is
-// documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-// the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-// in order for this setting to take effect.
+// Configures network performance settings for the instance. If not specified, the instance will be created with its
+// default network performance configuration.
 func (o InstanceOutput) NetworkPerformanceConfig() InstanceNetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceNetworkPerformanceConfigPtrOutput { return v.NetworkPerformanceConfig }).(InstanceNetworkPerformanceConfigPtrOutput)
 }
@@ -1116,7 +1092,7 @@ func (o InstanceOutput) ReservationAffinity() InstanceReservationAffinityOutput 
 	return o.ApplyT(func(v *Instance) InstanceReservationAffinityOutput { return v.ReservationAffinity }).(InstanceReservationAffinityOutput)
 }
 
-// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+// A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 func (o InstanceOutput) ResourcePolicies() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ResourcePolicies }).(pulumi.StringPtrOutput)
 }

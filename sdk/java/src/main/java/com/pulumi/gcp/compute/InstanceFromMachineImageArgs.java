@@ -425,8 +425,6 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
      * Name or self link of a machine
      * image to create the instance based on.
      * 
-     * ***
-     * 
      */
     @Import(name="sourceMachineImage", required=true)
     private Output<String> sourceMachineImage;
@@ -434,8 +432,6 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
     /**
      * @return Name or self link of a machine
      * image to create the instance based on.
-     * 
-     * ***
      * 
      */
     public Output<String> sourceMachineImage() {
@@ -1104,8 +1100,6 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
          * @param sourceMachineImage Name or self link of a machine
          * image to create the instance based on.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1117,8 +1111,6 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         /**
          * @param sourceMachineImage Name or self link of a machine
          * image to create the instance based on.
-         * 
-         * ***
          * 
          * @return builder
          * 

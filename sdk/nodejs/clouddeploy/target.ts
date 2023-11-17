@@ -222,10 +222,6 @@ export class Target extends pulumi.CustomResource {
     public readonly multiTarget!: pulumi.Output<outputs.clouddeploy.TargetMultiTarget | undefined>;
     /**
      * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-     *
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -390,10 +386,6 @@ export interface TargetState {
     multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget>;
     /**
      * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -474,10 +466,6 @@ export interface TargetArgs {
     multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget>;
     /**
      * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

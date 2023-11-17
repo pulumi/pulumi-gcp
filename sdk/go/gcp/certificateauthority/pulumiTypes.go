@@ -2877,8 +2877,6 @@ type AuthorityKeySpec struct {
 	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 	// experience. All managed keys will be have their ProtectionLevel as HSM.
 	// Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-	//
-	// ***
 	Algorithm *string `pulumi:"algorithm"`
 	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
 	// `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
@@ -2900,8 +2898,6 @@ type AuthorityKeySpecArgs struct {
 	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 	// experience. All managed keys will be have their ProtectionLevel as HSM.
 	// Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-	//
-	// ***
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
 	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
 	// `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
@@ -2988,8 +2984,6 @@ func (o AuthorityKeySpecOutput) ToAuthorityKeySpecPtrOutputWithContext(ctx conte
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 // experience. All managed keys will be have their ProtectionLevel as HSM.
 // Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-//
-// ***
 func (o AuthorityKeySpecOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorityKeySpec) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
@@ -3027,8 +3021,6 @@ func (o AuthorityKeySpecPtrOutput) Elem() AuthorityKeySpecOutput {
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 // experience. All managed keys will be have their ProtectionLevel as HSM.
 // Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-//
-// ***
 func (o AuthorityKeySpecPtrOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorityKeySpec) *string {
 		if v == nil {
@@ -14167,8 +14159,6 @@ func (o CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput) Index
 
 type CertificateTemplatePredefinedValuesAdditionalExtensionObjectId struct {
 	// Required. The parts of an OID path. The most significant parts of the path come first.
-	//
-	// ***
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
 }
 
@@ -14185,8 +14175,6 @@ type CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdInput interfa
 
 type CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs struct {
 	// Required. The parts of an OID path. The most significant parts of the path come first.
-	//
-	// ***
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
 }
 
@@ -14217,8 +14205,6 @@ func (o CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput) To
 }
 
 // Required. The parts of an OID path. The most significant parts of the path come first.
-//
-// ***
 func (o CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CertificateTemplatePredefinedValuesAdditionalExtensionObjectId) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
 }

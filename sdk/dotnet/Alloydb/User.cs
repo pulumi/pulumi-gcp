@@ -232,9 +232,6 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// The type of this user.
         /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("userType")]
         public Output<string> UserType { get; private set; } = null!;
@@ -319,9 +316,6 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// The type of this user.
         /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("userType", required: true)]
         public Input<string> UserType { get; set; } = null!;
@@ -374,9 +368,6 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// The type of this user.
         /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("userType")]
         public Input<string>? UserType { get; set; }

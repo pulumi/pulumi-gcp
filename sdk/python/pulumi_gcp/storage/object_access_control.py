@@ -35,9 +35,6 @@ class ObjectAccessControlArgs:
         :param pulumi.Input[str] object: The name of the object to apply the access control to.
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`.
-               
-               
-               - - -
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "entity", entity)
@@ -94,9 +91,6 @@ class ObjectAccessControlArgs:
         """
         The access permission for the entity.
         Possible values are: `OWNER`, `READER`.
-
-
-        - - -
         """
         return pulumi.get(self, "role")
 
@@ -138,9 +132,6 @@ class _ObjectAccessControlState:
                Structure is documented below.
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`.
-               
-               
-               - - -
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
@@ -272,9 +263,6 @@ class _ObjectAccessControlState:
         """
         The access permission for the entity.
         Possible values are: `OWNER`, `READER`.
-
-
-        - - -
         """
         return pulumi.get(self, "role")
 
@@ -362,9 +350,6 @@ class ObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] object: The name of the object to apply the access control to.
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -516,9 +501,6 @@ class ObjectAccessControl(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -614,9 +596,6 @@ class ObjectAccessControl(pulumi.CustomResource):
         """
         The access permission for the entity.
         Possible values are: `OWNER`, `READER`.
-
-
-        - - -
         """
         return pulumi.get(self, "role")
 

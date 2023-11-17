@@ -130,9 +130,6 @@ export class NetworkEndpoint extends pulumi.CustomResource {
     public readonly ipAddress!: pulumi.Output<string>;
     /**
      * The network endpoint group this endpoint is part of.
-     *
-     *
-     * - - -
      */
     public readonly networkEndpointGroup!: pulumi.Output<string>;
     /**
@@ -208,9 +205,6 @@ export interface NetworkEndpointState {
     ipAddress?: pulumi.Input<string>;
     /**
      * The network endpoint group this endpoint is part of.
-     *
-     *
-     * - - -
      */
     networkEndpointGroup?: pulumi.Input<string>;
     /**
@@ -248,9 +242,6 @@ export interface NetworkEndpointArgs {
     ipAddress: pulumi.Input<string>;
     /**
      * The network endpoint group this endpoint is part of.
-     *
-     *
-     * - - -
      */
     networkEndpointGroup: pulumi.Input<string>;
     /**

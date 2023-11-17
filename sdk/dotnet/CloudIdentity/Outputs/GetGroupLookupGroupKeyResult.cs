@@ -14,14 +14,14 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     public sealed class GetGroupLookupGroupKeyResult
     {
         /// <summary>
-        /// (Required) The ID of the entity.
+        /// The ID of the entity.
         /// For Google-managed entities, the id is the email address of an existing group or user.
         /// For external-identity-mapped entities, the id is a string conforming
         /// to the Identity Source's requirements.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (Optional) The namespace in which the entity exists.
+        /// The namespace in which the entity exists.
         /// If not populated, the EntityKey represents a Google-managed entity
         /// such as a Google user or a Google Group.
         /// If populated, the EntityKey represents an external-identity-mapped group.

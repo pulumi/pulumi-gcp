@@ -12,9 +12,17 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
 
     public sealed class RepositoryCleanupPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Policy action.
+        /// Possible values are: `DELETE`, `KEEP`.
+        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
+        /// <summary>
+        /// Policy condition for matching versions.
+        /// Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.RepositoryCleanupPolicyConditionArgs>? Condition { get; set; }
 
@@ -24,6 +32,11 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// Policy condition for retaining a minimum number of versions. May only be
+        /// specified with a Keep action.
+        /// Structure is documented below.
+        /// </summary>
         [Input("mostRecentVersions")]
         public Input<Inputs.RepositoryCleanupPolicyMostRecentVersionsArgs>? MostRecentVersions { get; set; }
 

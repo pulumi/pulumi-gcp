@@ -42,9 +42,6 @@ class CxAgentArgs:
                Another options is to use global location so you don't need to manually configure location settings.
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
-               
-               
-               - - -
         :param pulumi.Input['CxAgentAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
@@ -136,9 +133,6 @@ class CxAgentArgs:
         """
         The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         Europe/Paris.
-
-
-        - - -
         """
         return pulumi.get(self, "time_zone")
 
@@ -335,9 +329,6 @@ class _CxAgentState:
                Structure is documented below.
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
-               
-               
-               - - -
         """
         if advanced_settings is not None:
             pulumi.set(__self__, "advanced_settings", advanced_settings)
@@ -582,9 +573,6 @@ class _CxAgentState:
         """
         The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         Europe/Paris.
-
-
-        - - -
         """
         return pulumi.get(self, "time_zone")
 
@@ -742,9 +730,6 @@ class CxAgent(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -978,9 +963,6 @@ class CxAgent(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1149,9 +1131,6 @@ class CxAgent(pulumi.CustomResource):
         """
         The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         Europe/Paris.
-
-
-        - - -
         """
         return pulumi.get(self, "time_zone")
 

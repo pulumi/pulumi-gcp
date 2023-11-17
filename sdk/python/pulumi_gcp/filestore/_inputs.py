@@ -224,8 +224,6 @@ class InstanceNetworkArgs:
                DIRECT_PEERING.
                Default value is `DIRECT_PEERING`.
                Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: (Output)
                A list of IPv4 or IPv6 addresses.
         :param pulumi.Input[str] reserved_ip_range: A /29 CIDR block that identifies the range of IP
@@ -276,8 +274,6 @@ class InstanceNetworkArgs:
         DIRECT_PEERING.
         Default value is `DIRECT_PEERING`.
         Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-
-        - - -
         """
         return pulumi.get(self, "connect_mode")
 

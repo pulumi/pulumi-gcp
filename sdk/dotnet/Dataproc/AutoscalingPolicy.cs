@@ -108,9 +108,6 @@ namespace Pulumi.Gcp.Dataproc
         /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 50 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("policyId")]
         public Output<string> PolicyId { get; private set; } = null!;
@@ -200,9 +197,6 @@ namespace Pulumi.Gcp.Dataproc
         /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 50 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("policyId", required: true)]
         public Input<string> PolicyId { get; set; } = null!;
@@ -260,9 +254,6 @@ namespace Pulumi.Gcp.Dataproc
         /// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 50 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }

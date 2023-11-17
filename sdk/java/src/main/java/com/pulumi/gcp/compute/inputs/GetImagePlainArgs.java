@@ -62,8 +62,6 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
      * filter must return exactly one image unless you use `most_recent`.
      * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable String name;
@@ -75,8 +73,6 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
      * that is part of an image family and is not deprecated. If you specify `filter`, your
      * filter must return exactly one image unless you use `most_recent`.
      * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
-     * 
-     * ***
      * 
      */
     public Optional<String> name() {
@@ -165,8 +161,6 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
          * that is part of an image family and is not deprecated. If you specify `filter`, your
          * filter must return exactly one image unless you use `most_recent`.
          * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
-         * 
-         * ***
          * 
          * @return builder
          * 

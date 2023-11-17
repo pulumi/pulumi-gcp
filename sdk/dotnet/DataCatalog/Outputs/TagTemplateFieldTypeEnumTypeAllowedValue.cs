@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
     public sealed class TagTemplateFieldTypeEnumTypeAllowedValue
     {
         /// <summary>
-        /// The display name for this template.
+        /// The display name of the enum value.
         /// </summary>
         public readonly string DisplayName;
 

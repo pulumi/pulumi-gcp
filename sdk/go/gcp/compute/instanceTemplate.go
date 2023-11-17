@@ -262,7 +262,7 @@ type InstanceTemplate struct {
 	Disks InstanceTemplateDiskArrayOutput `pulumi:"disks"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay pulumi.BoolPtrOutput `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -279,8 +279,6 @@ type InstanceTemplate struct {
 	// The machine type to create.
 	//
 	// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-	//
-	// ***
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
@@ -327,7 +325,7 @@ type InstanceTemplate struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceTemplateReservationAffinityPtrOutput `pulumi:"reservationAffinity"`
-	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrOutput `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -404,7 +402,7 @@ type instanceTemplateState struct {
 	Disks []InstanceTemplateDisk `pulumi:"disks"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -421,8 +419,6 @@ type instanceTemplateState struct {
 	// The machine type to create.
 	//
 	// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-	//
-	// ***
 	MachineType *string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
@@ -469,7 +465,7 @@ type instanceTemplateState struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity *InstanceTemplateReservationAffinity `pulumi:"reservationAffinity"`
-	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -506,7 +502,7 @@ type InstanceTemplateState struct {
 	Disks InstanceTemplateDiskArrayInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -523,8 +519,6 @@ type InstanceTemplateState struct {
 	// The machine type to create.
 	//
 	// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-	//
-	// ***
 	MachineType pulumi.StringPtrInput
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
@@ -571,7 +565,7 @@ type InstanceTemplateState struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceTemplateReservationAffinityPtrInput
-	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -610,7 +604,7 @@ type instanceTemplateArgs struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks []InstanceTemplateDisk `pulumi:"disks"`
-	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -627,8 +621,6 @@ type instanceTemplateArgs struct {
 	// The machine type to create.
 	//
 	// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-	//
-	// ***
 	MachineType string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
@@ -671,7 +663,7 @@ type instanceTemplateArgs struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity *InstanceTemplateReservationAffinity `pulumi:"reservationAffinity"`
-	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -700,7 +692,7 @@ type InstanceTemplateArgs struct {
 	// This can be specified multiple times for multiple disks. Structure is
 	// documented below.
 	Disks InstanceTemplateDiskArrayInput
-	// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 	EnableDisplay pulumi.BoolPtrInput
 	// List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -717,8 +709,6 @@ type InstanceTemplateArgs struct {
 	// The machine type to create.
 	//
 	// To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-	//
-	// ***
 	MachineType pulumi.StringInput
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
@@ -761,7 +751,7 @@ type InstanceTemplateArgs struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceTemplateReservationAffinityPtrInput
-	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -899,7 +889,7 @@ func (o InstanceTemplateOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 // **Note**: `allowStoppingForUpdate` must be set to true in order to update this field.
 func (o InstanceTemplateOutput) EnableDisplay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.BoolPtrOutput { return v.EnableDisplay }).(pulumi.BoolPtrOutput)
@@ -928,8 +918,6 @@ func (o InstanceTemplateOutput) Labels() pulumi.StringMapOutput {
 // The machine type to create.
 //
 // To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-//
-// ***
 func (o InstanceTemplateOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringOutput { return v.MachineType }).(pulumi.StringOutput)
 }
@@ -1017,7 +1005,7 @@ func (o InstanceTemplateOutput) ReservationAffinity() InstanceTemplateReservatio
 	return o.ApplyT(func(v *InstanceTemplate) InstanceTemplateReservationAffinityPtrOutput { return v.ReservationAffinity }).(InstanceTemplateReservationAffinityPtrOutput)
 }
 
-// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+// A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 func (o InstanceTemplateOutput) ResourcePolicies() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringPtrOutput { return v.ResourcePolicies }).(pulumi.StringPtrOutput)
 }

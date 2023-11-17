@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Sql.Inputs
     public sealed class UserPasswordPolicyStatusGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, user does not have login privileges.
+        /// (read only) If true, user does not have login privileges.
         /// </summary>
         [Input("locked")]
         public Input<bool>? Locked { get; set; }
 
         /// <summary>
-        /// Password expiration duration with one week grace period.
+        /// (read only) Password expiration duration with one week grace period.
         /// </summary>
         [Input("passwordExpirationTime")]
         public Input<string>? PasswordExpirationTime { get; set; }

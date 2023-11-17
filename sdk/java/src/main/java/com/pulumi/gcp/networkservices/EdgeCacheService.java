@@ -502,14 +502,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:networkservices/edgeCacheService:EdgeCacheService")
 public class EdgeCacheService extends com.pulumi.resources.CustomResource {
     /**
-     * A human-readable description of the hostRule.
+     * A human-readable description of the resource.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return A human-readable description of the hostRule.
+     * @return A human-readable description of the resource.
      * 
      */
     public Output<Optional<String>> description() {

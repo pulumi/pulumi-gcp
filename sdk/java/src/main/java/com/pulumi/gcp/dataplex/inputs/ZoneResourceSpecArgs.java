@@ -16,16 +16,12 @@ public final class ZoneResourceSpecArgs extends com.pulumi.resources.ResourceArg
     /**
      * Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
      * 
-     * ***
-     * 
      */
     @Import(name="locationType", required=true)
     private Output<String> locationType;
 
     /**
      * @return Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-     * 
-     * ***
      * 
      */
     public Output<String> locationType() {
@@ -59,8 +55,6 @@ public final class ZoneResourceSpecArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param locationType Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -71,8 +65,6 @@ public final class ZoneResourceSpecArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param locationType Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-         * 
-         * ***
          * 
          * @return builder
          * 

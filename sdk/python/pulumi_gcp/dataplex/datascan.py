@@ -38,8 +38,7 @@ class DatascanArgs:
                Structure is documented below.
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
-        :param pulumi.Input[str] description: Description of the rule.
-               The maximum length is 1,024 characters.
+        :param pulumi.Input[str] description: Description of the scan.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
                
@@ -145,8 +144,7 @@ class DatascanArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the rule.
-        The maximum length is 1,024 characters.
+        Description of the scan.
         """
         return pulumi.get(self, "description")
 
@@ -227,8 +225,7 @@ class _DatascanState:
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
-        :param pulumi.Input[str] description: Description of the rule.
-               The maximum length is 1,024 characters.
+        :param pulumi.Input[str] description: Description of the scan.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['DatascanExecutionSpecArgs'] execution_spec: DataScan execution settings.
@@ -360,8 +357,7 @@ class _DatascanState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the rule.
-        The maximum length is 1,024 characters.
+        Description of the scan.
         """
         return pulumi.get(self, "description")
 
@@ -797,8 +793,7 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
-        :param pulumi.Input[str] description: Description of the rule.
-               The maximum length is 1,024 characters.
+        :param pulumi.Input[str] description: Description of the scan.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
                Structure is documented below.
@@ -1158,8 +1153,7 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
-        :param pulumi.Input[str] description: Description of the rule.
-               The maximum length is 1,024 characters.
+        :param pulumi.Input[str] description: Description of the scan.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
@@ -1257,8 +1251,7 @@ class Datascan(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the rule.
-        The maximum length is 1,024 characters.
+        Description of the scan.
         """
         return pulumi.get(self, "description")
 

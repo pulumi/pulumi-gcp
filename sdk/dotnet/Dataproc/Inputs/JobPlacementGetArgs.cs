@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
     public sealed class JobPlacementGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the cluster where the job 
+        /// will be submitted.
+        /// </summary>
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
 

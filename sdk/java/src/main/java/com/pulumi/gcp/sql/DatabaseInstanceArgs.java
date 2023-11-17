@@ -207,8 +207,6 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
      * 
-     * ***
-     * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
@@ -216,8 +214,6 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> region() {
@@ -572,8 +568,6 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          * @param region The region the instance will sit in. If a region is not provided in the resource definition,
          * the provider region will be used instead.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -585,8 +579,6 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param region The region the instance will sit in. If a region is not provided in the resource definition,
          * the provider region will be used instead.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -35,9 +35,6 @@ class SubscriptionArgs:
         """
         The set of arguments for constructing a Subscription resource.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
-               
-               
-               - - -
         :param pulumi.Input[int] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message
                before the subscriber should acknowledge the message. After message
                delivery but before the ack deadline expires and before the message is
@@ -73,8 +70,8 @@ class SubscriptionArgs:
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
                - An acknowledged message will not be resent to a subscriber.
-               Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-               is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+                 Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+                 is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
@@ -155,9 +152,6 @@ class SubscriptionArgs:
     def topic(self) -> pulumi.Input[str]:
         """
         A reference to a Topic resource.
-
-
-        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -248,8 +242,8 @@ class SubscriptionArgs:
         of a message with a given value of messageId on this Subscriptions':
         - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
         - An acknowledged message will not be resent to a subscriber.
-        Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-        is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+          Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+          is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         """
         return pulumi.get(self, "enable_exactly_once_delivery")
 
@@ -469,8 +463,8 @@ class _SubscriptionState:
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
                - An acknowledged message will not be resent to a subscriber.
-               Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-               is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+                 Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+                 is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
@@ -516,9 +510,6 @@ class _SubscriptionState:
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
-               
-               
-               - - -
         """
         if ack_deadline_seconds is not None:
             pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
@@ -652,8 +643,8 @@ class _SubscriptionState:
         of a message with a given value of messageId on this Subscriptions':
         - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
         - An acknowledged message will not be resent to a subscriber.
-        Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-        is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+          Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+          is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         """
         return pulumi.get(self, "enable_exactly_once_delivery")
 
@@ -831,9 +822,6 @@ class _SubscriptionState:
     def topic(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to a Topic resource.
-
-
-        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -1049,8 +1037,8 @@ class Subscription(pulumi.CustomResource):
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
                - An acknowledged message will not be resent to a subscriber.
-               Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-               is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+                 Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+                 is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
@@ -1094,9 +1082,6 @@ class Subscription(pulumi.CustomResource):
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -1385,8 +1370,8 @@ class Subscription(pulumi.CustomResource):
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
                - An acknowledged message will not be resent to a subscriber.
-               Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-               is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+                 Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+                 is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
                the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
                may be delivered in any order.
@@ -1432,9 +1417,6 @@ class Subscription(pulumi.CustomResource):
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1535,8 +1517,8 @@ class Subscription(pulumi.CustomResource):
         of a message with a given value of messageId on this Subscriptions':
         - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
         - An acknowledged message will not be resent to a subscriber.
-        Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-        is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+          Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+          is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         """
         return pulumi.get(self, "enable_exactly_once_delivery")
 
@@ -1666,9 +1648,6 @@ class Subscription(pulumi.CustomResource):
     def topic(self) -> pulumi.Output[str]:
         """
         A reference to a Topic resource.
-
-
-        - - -
         """
         return pulumi.get(self, "topic")
 

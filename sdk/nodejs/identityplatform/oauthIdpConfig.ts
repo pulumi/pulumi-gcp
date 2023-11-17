@@ -81,9 +81,6 @@ export class OauthIdpConfig extends pulumi.CustomResource {
 
     /**
      * The client id of an OAuth client.
-     *
-     *
-     * - - -
      */
     public readonly clientId!: pulumi.Output<string>;
     /**
@@ -159,9 +156,6 @@ export class OauthIdpConfig extends pulumi.CustomResource {
 export interface OauthIdpConfigState {
     /**
      * The client id of an OAuth client.
-     *
-     *
-     * - - -
      */
     clientId?: pulumi.Input<string>;
     /**
@@ -197,9 +191,6 @@ export interface OauthIdpConfigState {
 export interface OauthIdpConfigArgs {
     /**
      * The client id of an OAuth client.
-     *
-     *
-     * - - -
      */
     clientId: pulumi.Input<string>;
     /**

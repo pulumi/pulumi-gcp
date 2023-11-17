@@ -18,16 +18,12 @@ public final class GetPrivateCloudArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Location of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return Location of the resource.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -95,8 +91,6 @@ public final class GetPrivateCloudArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param location Location of the resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -107,8 +101,6 @@ public final class GetPrivateCloudArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param location Location of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -37,9 +37,6 @@ class MetastoreServiceArgs:
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
@@ -58,6 +55,7 @@ class MetastoreServiceArgs:
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
         :param pulumi.Input['MetastoreServiceMetadataIntegrationArgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+               Structure is documented below.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input['MetastoreServiceNetworkConfigArgs'] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
@@ -114,9 +112,6 @@ class MetastoreServiceArgs:
         The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         3 and 63 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -212,6 +207,7 @@ class MetastoreServiceArgs:
     def metadata_integration(self) -> Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]:
         """
         The setting that defines how metastore metadata should be integrated with external services and systems.
+        Structure is documented below.
         """
         return pulumi.get(self, "metadata_integration")
 
@@ -375,6 +371,7 @@ class _MetastoreServiceState:
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
         :param pulumi.Input['MetastoreServiceMetadataIntegrationArgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+               Structure is documented below.
         :param pulumi.Input[str] name: The relative resource name of the metastore service.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
@@ -393,9 +390,6 @@ class _MetastoreServiceState:
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] state: The current state of the metastore service.
         :param pulumi.Input[str] state_message: Additional information about the current state of the metastore service, if available.
         :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
@@ -578,6 +572,7 @@ class _MetastoreServiceState:
     def metadata_integration(self) -> Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]:
         """
         The setting that defines how metastore metadata should be integrated with external services and systems.
+        Structure is documented below.
         """
         return pulumi.get(self, "metadata_integration")
 
@@ -695,9 +690,6 @@ class _MetastoreServiceState:
         The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         3 and 63 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 
@@ -947,6 +939,7 @@ class MetastoreService(pulumi.CustomResource):
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+               Structure is documented below.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
@@ -962,9 +955,6 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
@@ -1244,6 +1234,7 @@ class MetastoreService(pulumi.CustomResource):
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+               Structure is documented below.
         :param pulumi.Input[str] name: The relative resource name of the metastore service.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
@@ -1262,9 +1253,6 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
-               
-               
-               - - -
         :param pulumi.Input[str] state: The current state of the metastore service.
         :param pulumi.Input[str] state_message: Additional information about the current state of the metastore service, if available.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
@@ -1392,6 +1380,7 @@ class MetastoreService(pulumi.CustomResource):
     def metadata_integration(self) -> pulumi.Output[Optional['outputs.MetastoreServiceMetadataIntegration']]:
         """
         The setting that defines how metastore metadata should be integrated with external services and systems.
+        Structure is documented below.
         """
         return pulumi.get(self, "metadata_integration")
 
@@ -1473,9 +1462,6 @@ class MetastoreService(pulumi.CustomResource):
         The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         3 and 63 characters.
-
-
-        - - -
         """
         return pulumi.get(self, "service_id")
 

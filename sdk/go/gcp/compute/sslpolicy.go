@@ -130,8 +130,6 @@ type SSLPolicy struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -211,8 +209,6 @@ type sslpolicyState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -263,8 +259,6 @@ type SSLPolicyState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -312,8 +306,6 @@ type sslpolicyArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -356,8 +348,6 @@ type SSLPolicyArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// Profile specifies the set of SSL features that can be used by the
 	// load balancer when negotiating SSL with clients. If using `CUSTOM`,
@@ -510,8 +500,6 @@ func (o SSLPolicyOutput) MinTlsVersion() pulumi.StringPtrOutput {
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
-//
-// ***
 func (o SSLPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SSLPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

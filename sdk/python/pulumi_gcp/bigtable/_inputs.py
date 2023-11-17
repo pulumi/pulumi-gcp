@@ -29,8 +29,6 @@ class GCPolicyMaxAgeArgs:
         """
         :param pulumi.Input[int] days: Number of days before applying GC policy.
         :param pulumi.Input[str] duration: Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-               
-               -----
         """
         if days is not None:
             warnings.warn("""Deprecated in favor of duration""", DeprecationWarning)
@@ -60,8 +58,6 @@ class GCPolicyMaxAgeArgs:
     def duration(self) -> Optional[pulumi.Input[str]]:
         """
         Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-
-        -----
         """
         return pulumi.get(self, "duration")
 
@@ -77,7 +73,7 @@ class GCPolicyMaxVersionArgs:
         """
         :param pulumi.Input[int] number: Number of version before applying the GC policy.
                
-               -----
+               
                `gc_rules` include 2 fields:
         """
         pulumi.set(__self__, "number", number)
@@ -88,7 +84,7 @@ class GCPolicyMaxVersionArgs:
         """
         Number of version before applying the GC policy.
 
-        -----
+
         `gc_rules` include 2 fields:
         """
         return pulumi.get(self, "number")

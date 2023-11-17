@@ -14,12 +14,17 @@ import javax.annotation.Nullable;
 public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable {
     /**
      * @return PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+     * Structure is documented below.`postgresql_columns` -
+     * (Optional)
+     * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
      * Structure is documented below.
      * 
      */
     private @Nullable List<StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn> postgresqlColumns;
     /**
-     * @return Table name.
+     * @return Table name.`table` -
+     * (Required)
+     * Table name.
      * 
      */
     private String table;
@@ -27,6 +32,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
     private StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable() {}
     /**
      * @return PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+     * Structure is documented below.`postgresql_columns` -
+     * (Optional)
+     * PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
      * Structure is documented below.
      * 
      */
@@ -34,7 +42,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
         return this.postgresqlColumns == null ? List.of() : this.postgresqlColumns;
     }
     /**
-     * @return Table name.
+     * @return Table name.`table` -
+     * (Required)
+     * Table name.
      * 
      */
     public String table() {

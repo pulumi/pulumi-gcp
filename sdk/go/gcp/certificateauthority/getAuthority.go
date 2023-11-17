@@ -54,8 +54,6 @@ func LookupAuthority(ctx *pulumi.Context, args *LookupAuthorityArgs, opts ...pul
 // A collection of arguments for invoking getAuthority.
 type LookupAuthorityArgs struct {
 	// ID of the certificate authority.
-	//
-	// ***
 	CertificateAuthorityId *string `pulumi:"certificateAuthorityId"`
 	// The location the certificate authority exists in.
 	Location *string `pulumi:"location"`
@@ -114,8 +112,6 @@ func LookupAuthorityOutput(ctx *pulumi.Context, args LookupAuthorityOutputArgs, 
 // A collection of arguments for invoking getAuthority.
 type LookupAuthorityOutputArgs struct {
 	// ID of the certificate authority.
-	//
-	// ***
 	CertificateAuthorityId pulumi.StringPtrInput `pulumi:"certificateAuthorityId"`
 	// The location the certificate authority exists in.
 	Location pulumi.StringPtrInput `pulumi:"location"`

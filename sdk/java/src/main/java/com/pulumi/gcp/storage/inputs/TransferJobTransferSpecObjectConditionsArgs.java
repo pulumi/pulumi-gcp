@@ -17,14 +17,14 @@ public final class TransferJobTransferSpecObjectConditionsArgs extends com.pulum
     public static final TransferJobTransferSpecObjectConditionsArgs Empty = new TransferJobTransferSpecObjectConditionsArgs();
 
     /**
-     * `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+     * must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
      * 
      */
     @Import(name="excludePrefixes")
     private @Nullable Output<List<String>> excludePrefixes;
 
     /**
-     * @return `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+     * @return must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
      * 
      */
     public Optional<Output<List<String>>> excludePrefixes() {
@@ -136,7 +136,7 @@ public final class TransferJobTransferSpecObjectConditionsArgs extends com.pulum
         }
 
         /**
-         * @param excludePrefixes `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+         * @param excludePrefixes must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class TransferJobTransferSpecObjectConditionsArgs extends com.pulum
         }
 
         /**
-         * @param excludePrefixes `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+         * @param excludePrefixes must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class TransferJobTransferSpecObjectConditionsArgs extends com.pulum
         }
 
         /**
-         * @param excludePrefixes `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+         * @param excludePrefixes must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
          * 
          * @return builder
          * 

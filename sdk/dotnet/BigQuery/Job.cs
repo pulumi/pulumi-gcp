@@ -451,9 +451,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-        /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-        /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        /// Configures a query job.
+        /// Structure is documented below.
         /// </summary>
         [Output("query")]
         public Output<Outputs.JobQuery?> Query { get; private set; } = null!;
@@ -584,9 +583,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-        /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-        /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        /// Configures a query job.
+        /// Structure is documented below.
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobQueryArgs>? Query { get; set; }
@@ -703,9 +701,8 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-        /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-        /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        /// Configures a query job.
+        /// Structure is documented below.
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobQueryGetArgs>? Query { get; set; }

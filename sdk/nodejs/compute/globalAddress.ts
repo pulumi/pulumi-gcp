@@ -104,8 +104,8 @@ export class GlobalAddress extends pulumi.CustomResource {
      * The type of the address to reserve.
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
-     * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     *   Default value is `EXTERNAL`.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
      */
     public readonly addressType!: pulumi.Output<string | undefined>;
     /**
@@ -145,9 +145,6 @@ export class GlobalAddress extends pulumi.CustomResource {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -251,8 +248,8 @@ export interface GlobalAddressState {
      * The type of the address to reserve.
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
-     * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     *   Default value is `EXTERNAL`.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
      */
     addressType?: pulumi.Input<string>;
     /**
@@ -292,9 +289,6 @@ export interface GlobalAddressState {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -346,8 +340,8 @@ export interface GlobalAddressArgs {
      * The type of the address to reserve.
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
-     * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `INTERNAL`.
+     *   Default value is `EXTERNAL`.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
      */
     addressType?: pulumi.Input<string>;
     /**
@@ -374,9 +368,6 @@ export interface GlobalAddressArgs {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

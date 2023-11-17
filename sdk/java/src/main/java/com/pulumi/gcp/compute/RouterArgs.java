@@ -94,16 +94,12 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A reference to the network to which this router belongs.
      * 
-     * ***
-     * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
      * @return A reference to the network to which this router belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {
@@ -273,8 +269,6 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param network A reference to the network to which this router belongs.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -285,8 +279,6 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network A reference to the network to which this router belongs.
-         * 
-         * ***
          * 
          * @return builder
          * 

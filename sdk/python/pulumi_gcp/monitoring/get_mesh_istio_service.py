@@ -176,7 +176,8 @@ def get_mesh_istio_service(mesh_uid: Optional[str] = None,
     :param str service_name: The name of the Istio service underlying this service.
            Corresponds to the destination_service_name metric label in Istio metrics.
            
-           - - -
+           
+           
            
            Other optional fields include:
     :param str service_namespace: The namespace of the Istio service underlying this service.
@@ -244,7 +245,8 @@ def get_mesh_istio_service_output(mesh_uid: Optional[pulumi.Input[str]] = None,
     :param str service_name: The name of the Istio service underlying this service.
            Corresponds to the destination_service_name metric label in Istio metrics.
            
-           - - -
+           
+           
            
            Other optional fields include:
     :param str service_namespace: The namespace of the Istio service underlying this service.

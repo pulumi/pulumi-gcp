@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionAutoscalerAutoscalingPolicyScalingSchedule
     {
         /// <summary>
-        /// An optional description of this resource.
+        /// A description of a scaling schedule.
         /// </summary>
         public readonly string? Description;
         /// <summary>

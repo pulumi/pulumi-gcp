@@ -167,16 +167,12 @@ public class AzureClient extends com.pulumi.resources.CustomResource {
     /**
      * The Azure Active Directory Tenant ID.
      * 
-     * ***
-     * 
      */
     @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
      * @return The Azure Active Directory Tenant ID.
-     * 
-     * ***
      * 
      */
     public Output<String> tenantId() {

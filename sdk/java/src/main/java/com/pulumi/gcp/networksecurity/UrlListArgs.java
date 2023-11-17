@@ -34,16 +34,12 @@ public final class UrlListArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The location of the url lists.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location of the url lists.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -151,8 +147,6 @@ public final class UrlListArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location of the url lists.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -163,8 +157,6 @@ public final class UrlListArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location of the url lists.
-         * 
-         * ***
          * 
          * @return builder
          * 

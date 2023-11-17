@@ -17,16 +17,12 @@ public final class GetAppConnectorPlainArgs extends com.pulumi.resources.InvokeA
     /**
      * The name of the App Connector.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the App Connector.
-     * 
-     * ***
      * 
      */
     public String name() {
@@ -95,8 +91,6 @@ public final class GetAppConnectorPlainArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param name The name of the App Connector.
-         * 
-         * ***
          * 
          * @return builder
          * 

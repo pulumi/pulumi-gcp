@@ -16,7 +16,6 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
     public static final CertificateSelfManagedArgs Empty = new CertificateSelfManagedArgs();
 
     /**
-     * (Optional, Deprecated)
      * The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -32,8 +31,7 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> certificatePem;
 
     /**
-     * @return (Optional, Deprecated)
-     * The certificate chain in PEM-encoded form.
+     * @return The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
@@ -85,7 +83,6 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Optional, Deprecated)
      * The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
@@ -100,8 +97,7 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> privateKeyPem;
 
     /**
-     * @return (Optional, Deprecated)
-     * The private key of the leaf certificate in PEM-encoded form.
+     * @return The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      * &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
@@ -143,8 +139,7 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param certificatePem (Optional, Deprecated)
-         * The certificate chain in PEM-encoded form.
+         * @param certificatePem The certificate chain in PEM-encoded form.
          * Leaf certificate comes first, followed by intermediate ones if any.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
@@ -163,8 +158,7 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param certificatePem (Optional, Deprecated)
-         * The certificate chain in PEM-encoded form.
+         * @param certificatePem The certificate chain in PEM-encoded form.
          * Leaf certificate comes first, followed by intermediate ones if any.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
@@ -230,8 +224,7 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param privateKeyPem (Optional, Deprecated)
-         * The private key of the leaf certificate in PEM-encoded form.
+         * @param privateKeyPem The private key of the leaf certificate in PEM-encoded form.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
@@ -249,8 +242,7 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param privateKeyPem (Optional, Deprecated)
-         * The private key of the leaf certificate in PEM-encoded form.
+         * @param privateKeyPem The private key of the leaf certificate in PEM-encoded form.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.

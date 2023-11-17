@@ -98,7 +98,8 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
 
     /**
      * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
+     * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+     * is &#34;External IPv6&#34;.
      * 
      */
     @Import(name="name")
@@ -106,7 +107,8 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
 
     /**
      * @return A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
+     * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+     * is &#34;External IPv6&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -425,7 +427,8 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
 
         /**
          * @param name A unique name for the resource, required by GCE.
-         * Changing this forces a new resource to be created.
+         * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+         * is &#34;External IPv6&#34;.
          * 
          * @return builder
          * 
@@ -437,7 +440,8 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
 
         /**
          * @param name A unique name for the resource, required by GCE.
-         * Changing this forces a new resource to be created.
+         * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+         * is &#34;External IPv6&#34;.
          * 
          * @return builder
          * 

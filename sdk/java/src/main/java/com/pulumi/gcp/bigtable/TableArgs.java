@@ -20,16 +20,12 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
      * 
-     * ***
-     * 
      */
     @Import(name="changeStreamRetention")
     private @Nullable Output<String> changeStreamRetention;
 
     /**
      * @return Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> changeStreamRetention() {
@@ -165,8 +161,6 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param changeStreamRetention Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -177,8 +171,6 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param changeStreamRetention Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-         * 
-         * ***
          * 
          * @return builder
          * 

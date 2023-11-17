@@ -22,9 +22,6 @@ class InstanceSettingsArgs:
         """
         The set of arguments for constructing a InstanceSettings resource.
         :param pulumi.Input[str] zone: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input['InstanceSettingsMetadataArgs'] metadata: The metadata key/value pairs assigned to all the instances in the corresponding scope.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -41,9 +38,6 @@ class InstanceSettingsArgs:
     def zone(self) -> pulumi.Input[str]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "zone")
 
@@ -94,9 +88,6 @@ class _InstanceSettingsState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: A reference to the zone where the machine resides.
-               
-               
-               - - -
         """
         if fingerprint is not None:
             pulumi.set(__self__, "fingerprint", fingerprint)
@@ -151,9 +142,6 @@ class _InstanceSettingsState:
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "zone")
 
@@ -220,9 +208,6 @@ class InstanceSettings(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: A reference to the zone where the machine resides.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -333,9 +318,6 @@ class InstanceSettings(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: A reference to the zone where the machine resides.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -379,9 +361,6 @@ class InstanceSettings(pulumi.CustomResource):
     def zone(self) -> pulumi.Output[str]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "zone")
 

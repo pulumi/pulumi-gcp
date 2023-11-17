@@ -31,14 +31,14 @@ public final class ClusterNodeConfigEffectiveTaintArgs extends com.pulumi.resour
     }
 
     /**
-     * The default or custom node affinity label key name.
+     * The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The default or custom node affinity label key name.
+     * @return The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
      * 
      */
     public Optional<Output<String>> key() {
@@ -108,7 +108,7 @@ public final class ClusterNodeConfigEffectiveTaintArgs extends com.pulumi.resour
         }
 
         /**
-         * @param key The default or custom node affinity label key name.
+         * @param key The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ClusterNodeConfigEffectiveTaintArgs extends com.pulumi.resour
         }
 
         /**
-         * @param key The default or custom node affinity label key name.
+         * @param key The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
          * 
          * @return builder
          * 

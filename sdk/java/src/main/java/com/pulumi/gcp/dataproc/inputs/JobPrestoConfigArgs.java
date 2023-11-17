@@ -59,16 +59,12 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The format in which query output will be displayed. See the Presto documentation for supported output formats.
      * 
-     * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
-     * 
      */
     @Import(name="outputFormat")
     private @Nullable Output<String> outputFormat;
 
     /**
      * @return The format in which query output will be displayed. See the Presto documentation for supported output formats.
-     * 
-     * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
      * 
      */
     public Optional<Output<String>> outputFormat() {
@@ -218,8 +214,6 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param outputFormat The format in which query output will be displayed. See the Presto documentation for supported output formats.
          * 
-         * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
-         * 
          * @return builder
          * 
          */
@@ -230,8 +224,6 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param outputFormat The format in which query output will be displayed. See the Presto documentation for supported output formats.
-         * 
-         * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
          * 
          * @return builder
          * 

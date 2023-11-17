@@ -90,8 +90,6 @@ export class ProjectMetadata extends pulumi.CustomResource {
 
     /**
      * A series of key value pairs.
-     *
-     * - - -
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -134,8 +132,6 @@ export class ProjectMetadata extends pulumi.CustomResource {
 export interface ProjectMetadataState {
     /**
      * A series of key value pairs.
-     *
-     * - - -
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -151,8 +147,6 @@ export interface ProjectMetadataState {
 export interface ProjectMetadataArgs {
     /**
      * A series of key value pairs.
-     *
-     * - - -
      */
     metadata: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

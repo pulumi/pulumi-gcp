@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
     /**
-     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
      */
     private @Nullable String bootDiskKmsKey;
@@ -32,7 +32,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      */
     private @Nullable String diskType;
     /**
-     * @return The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+     * @return The image type to use for this node. Note that changing the image type
+     * will delete and recreate all nodes in the node pool.
      * 
      */
     private @Nullable String imageType;
@@ -56,7 +57,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      */
     private @Nullable List<String> oauthScopes;
     /**
-     * @return The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+     * @return The service account to be used by the Node VMs.
+     * If not specified, the &#34;default&#34; service account is used.
      * 
      */
     private @Nullable String serviceAccount;
@@ -73,7 +75,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
 
     private ClusterClusterAutoscalingAutoProvisioningDefaults() {}
     /**
-     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
      */
     public Optional<String> bootDiskKmsKey() {
@@ -94,7 +96,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         return Optional.ofNullable(this.diskType);
     }
     /**
-     * @return The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+     * @return The image type to use for this node. Note that changing the image type
+     * will delete and recreate all nodes in the node pool.
      * 
      */
     public Optional<String> imageType() {
@@ -126,7 +129,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         return this.oauthScopes == null ? List.of() : this.oauthScopes;
     }
     /**
-     * @return The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+     * @return The service account to be used by the Node VMs.
+     * If not specified, the &#34;default&#34; service account is used.
      * 
      */
     public Optional<String> serviceAccount() {

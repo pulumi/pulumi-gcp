@@ -30,9 +30,6 @@ class CxIntentArgs:
         """
         The set of arguments for constructing a CxIntent resource.
         :param pulumi.Input[str] display_name: The human-readable name of the intent, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[str] description: Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         :param pulumi.Input[bool] is_default_negative_intent: Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
                The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
@@ -91,9 +88,6 @@ class CxIntentArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         The human-readable name of the intent, unique within the agent.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -263,9 +257,6 @@ class _CxIntentState:
         Input properties used for looking up and filtering CxIntent resources.
         :param pulumi.Input[str] description: Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         :param pulumi.Input[str] display_name: The human-readable name of the intent, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] is_default_negative_intent: Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
                The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
@@ -347,9 +338,6 @@ class _CxIntentState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         The human-readable name of the intent, unique within the agent.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -627,9 +615,6 @@ class CxIntent(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         :param pulumi.Input[str] display_name: The human-readable name of the intent, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[bool] is_default_negative_intent: Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
                The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
                
@@ -834,9 +819,6 @@ class CxIntent(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         :param pulumi.Input[str] display_name: The human-readable name of the intent, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] is_default_negative_intent: Marks this as the [Default Negative Intent](https://cloud.google.com/dialogflow/cx/docs/concept/intent#negative) for an agent. When you create an agent, a Default Negative Intent is created automatically.
                The Default Negative Intent cannot be deleted; deleting the `diagflow.CxIntent` resource does nothing to the underlying GCP resources.
@@ -905,9 +887,6 @@ class CxIntent(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         The human-readable name of the intent, unique within the agent.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

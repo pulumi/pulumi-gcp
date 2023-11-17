@@ -39,8 +39,6 @@ public final class PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs 
      * Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
      * No more than 10 labels can be associated with a given finding.
      * Examples:
-     * * `&#34;environment&#34; : &#34;production&#34;`
-     * * `&#34;pipeline&#34; : &#34;etl&#34;`
      * 
      */
     @Import(name="labels")
@@ -52,8 +50,6 @@ public final class PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs 
      * Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
      * No more than 10 labels can be associated with a given finding.
      * Examples:
-     * * `&#34;environment&#34; : &#34;production&#34;`
-     * * `&#34;pipeline&#34; : &#34;etl&#34;`
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -152,8 +148,6 @@ public final class PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs 
          * Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
          * No more than 10 labels can be associated with a given finding.
          * Examples:
-         * * `&#34;environment&#34; : &#34;production&#34;`
-         * * `&#34;pipeline&#34; : &#34;etl&#34;`
          * 
          * @return builder
          * 
@@ -169,8 +163,6 @@ public final class PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs 
          * Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
          * No more than 10 labels can be associated with a given finding.
          * Examples:
-         * * `&#34;environment&#34; : &#34;production&#34;`
-         * * `&#34;pipeline&#34; : &#34;etl&#34;`
          * 
          * @return builder
          * 

@@ -196,8 +196,6 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -208,8 +206,6 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * The `authorized_orgs_desc` component must begin with a letter, followed by
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

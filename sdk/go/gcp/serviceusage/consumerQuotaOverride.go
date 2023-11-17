@@ -66,8 +66,6 @@ type ConsumerQuotaOverride struct {
 	// The limit on the metric, e.g. `/project/region`.
 	// > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
 	// E.g. use `/project/user` instead of `1/{project}/{user}`.
-	//
-	// ***
 	Limit pulumi.StringOutput `pulumi:"limit"`
 	// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
 	Metric pulumi.StringOutput `pulumi:"metric"`
@@ -132,8 +130,6 @@ type consumerQuotaOverrideState struct {
 	// The limit on the metric, e.g. `/project/region`.
 	// > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
 	// E.g. use `/project/user` instead of `1/{project}/{user}`.
-	//
-	// ***
 	Limit *string `pulumi:"limit"`
 	// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
 	Metric *string `pulumi:"metric"`
@@ -157,8 +153,6 @@ type ConsumerQuotaOverrideState struct {
 	// The limit on the metric, e.g. `/project/region`.
 	// > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
 	// E.g. use `/project/user` instead of `1/{project}/{user}`.
-	//
-	// ***
 	Limit pulumi.StringPtrInput
 	// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
 	Metric pulumi.StringPtrInput
@@ -186,8 +180,6 @@ type consumerQuotaOverrideArgs struct {
 	// The limit on the metric, e.g. `/project/region`.
 	// > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
 	// E.g. use `/project/user` instead of `1/{project}/{user}`.
-	//
-	// ***
 	Limit string `pulumi:"limit"`
 	// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
 	Metric string `pulumi:"metric"`
@@ -210,8 +202,6 @@ type ConsumerQuotaOverrideArgs struct {
 	// The limit on the metric, e.g. `/project/region`.
 	// > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
 	// E.g. use `/project/user` instead of `1/{project}/{user}`.
-	//
-	// ***
 	Limit pulumi.StringInput
 	// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
 	Metric pulumi.StringInput
@@ -325,8 +315,6 @@ func (o ConsumerQuotaOverrideOutput) Force() pulumi.BoolPtrOutput {
 // The limit on the metric, e.g. `/project/region`.
 // > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
 // E.g. use `/project/user` instead of `1/{project}/{user}`.
-//
-// ***
 func (o ConsumerQuotaOverrideOutput) Limit() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConsumerQuotaOverride) pulumi.StringOutput { return v.Limit }).(pulumi.StringOutput)
 }

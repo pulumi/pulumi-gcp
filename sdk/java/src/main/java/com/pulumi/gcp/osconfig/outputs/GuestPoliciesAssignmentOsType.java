@@ -14,8 +14,6 @@ public final class GuestPoliciesAssignmentOsType {
     /**
      * @return Targets VM instances with OS Inventory enabled and having the following OS architecture.
      * 
-     * ***
-     * 
      */
     private @Nullable String osArchitecture;
     /**
@@ -32,8 +30,6 @@ public final class GuestPoliciesAssignmentOsType {
     private GuestPoliciesAssignmentOsType() {}
     /**
      * @return Targets VM instances with OS Inventory enabled and having the following OS architecture.
-     * 
-     * ***
      * 
      */
     public Optional<String> osArchitecture() {

@@ -123,9 +123,6 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -236,9 +233,6 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -303,9 +297,6 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

@@ -220,42 +220,12 @@ public class Table extends com.pulumi.resources.CustomResource {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
-     * * &lt;a name=&#34;schema&#34;&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
-     * 
-     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn&#39;t changed.
-     * If the API returns a different value for the same schema, e.g. it
-     * switched the order of values or replaced `STRUCT` field type with `RECORD`
-     * field type, we currently cannot suppress the recurring diff this causes.
-     * As a workaround, we recommend using the schema as returned by the API.
-     * 
-     * ~&gt;**NOTE:**  If you use `external_data_configuration`
-     * documented below and do **not** set
-     * `external_data_configuration.connection_id`, schemas must be specified
-     * with `external_data_configuration.schema`. Otherwise, schemas must be
-     * specified with this top-level field.
-     * 
      */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
     /**
      * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     * 
-     * * &lt;a name=&#34;schema&#34;&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
-     * 
-     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn&#39;t changed.
-     * If the API returns a different value for the same schema, e.g. it
-     * switched the order of values or replaced `STRUCT` field type with `RECORD`
-     * field type, we currently cannot suppress the recurring diff this causes.
-     * As a workaround, we recommend using the schema as returned by the API.
-     * 
-     * ~&gt;**NOTE:**  If you use `external_data_configuration`
-     * documented below and do **not** set
-     * `external_data_configuration.connection_id`, schemas must be specified
-     * with `external_data_configuration.schema`. Otherwise, schemas must be
-     * specified with this top-level field.
      * 
      */
     public Output<Map<String,String>> effectiveLabels() {
@@ -538,42 +508,40 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.requirePartitionFilter);
     }
     /**
-     * A JSON schema for the external table. Schema is required
-     * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
+     * &lt;a name=&#34;schema&#34;&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+     * 
      * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
      * string will create a diff, even if the JSON itself hasn&#39;t changed.
-     * Furthermore drift for this field cannot not be detected because BigQuery
-     * only uses this schema to compute the effective schema for the table, therefore
-     * any changes on the configured value will force the table to be recreated.
-     * This schema is effectively only applied when creating a table from an external
-     * datasource, after creation the computed schema will be stored in
-     * `google_bigquery_table.schema`
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced `STRUCT` field type with `RECORD`
+     * field type, we currently cannot suppress the recurring diff this causes.
+     * As a workaround, we recommend using the schema as returned by the API.
      * 
-     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     * ~&gt;**NOTE:**  If you use `external_data_configuration`
+     * documented below and do **not** set
+     * `external_data_configuration.connection_id`, schemas must be specified
+     * with `external_data_configuration.schema`. Otherwise, schemas must be
+     * specified with this top-level field.
      * 
      */
     @Export(name="schema", refs={String.class}, tree="[0]")
     private Output<String> schema;
 
     /**
-     * @return A JSON schema for the external table. Schema is required
-     * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
+     * @return &lt;a name=&#34;schema&#34;&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+     * 
      * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
      * string will create a diff, even if the JSON itself hasn&#39;t changed.
-     * Furthermore drift for this field cannot not be detected because BigQuery
-     * only uses this schema to compute the effective schema for the table, therefore
-     * any changes on the configured value will force the table to be recreated.
-     * This schema is effectively only applied when creating a table from an external
-     * datasource, after creation the computed schema will be stored in
-     * `google_bigquery_table.schema`
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced `STRUCT` field type with `RECORD`
+     * field type, we currently cannot suppress the recurring diff this causes.
+     * As a workaround, we recommend using the schema as returned by the API.
      * 
-     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
-     * table schema must be specified using the top-level `schema` field
-     * documented above.
+     * ~&gt;**NOTE:**  If you use `external_data_configuration`
+     * documented below and do **not** set
+     * `external_data_configuration.connection_id`, schemas must be specified
+     * with `external_data_configuration.schema`. Otherwise, schemas must be
+     * specified with this top-level field.
      * 
      */
     public Output<String> schema() {

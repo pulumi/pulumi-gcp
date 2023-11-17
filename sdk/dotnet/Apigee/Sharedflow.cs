@@ -43,8 +43,6 @@ namespace Pulumi.Gcp.Apigee
     {
         /// <summary>
         /// Path to the config zip bundle.
-        /// 
-        /// - - -
         /// </summary>
         [Output("configBundle")]
         public Output<string> ConfigBundle { get; private set; } = null!;
@@ -141,8 +139,6 @@ namespace Pulumi.Gcp.Apigee
     {
         /// <summary>
         /// Path to the config zip bundle.
-        /// 
-        /// - - -
         /// </summary>
         [Input("configBundle", required: true)]
         public Input<string> ConfigBundle { get; set; } = null!;
@@ -176,8 +172,6 @@ namespace Pulumi.Gcp.Apigee
     {
         /// <summary>
         /// Path to the config zip bundle.
-        /// 
-        /// - - -
         /// </summary>
         [Input("configBundle")]
         public Input<string>? ConfigBundle { get; set; }

@@ -34,8 +34,6 @@ export function getSSLPolicy(args: GetSSLPolicyArgs, opts?: pulumi.InvokeOptions
 export interface GetSSLPolicyArgs {
     /**
      * The name of the SSL Policy.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -112,8 +110,6 @@ export function getSSLPolicyOutput(args: GetSSLPolicyOutputArgs, opts?: pulumi.I
 export interface GetSSLPolicyOutputArgs {
     /**
      * The name of the SSL Policy.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

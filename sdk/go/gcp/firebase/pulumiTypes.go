@@ -37,8 +37,6 @@ type ExtensionsInstanceConfig struct {
 	// with actual values. These strings include: ${param:FOO},
 	// ${function:myFunc.url},
 	// ${function:myFunc.name}, and ${function:myFunc.location}
-	//
-	// ***
 	PopulatedPostinstallContent *string `pulumi:"populatedPostinstallContent"`
 	// Params whose values are only available at deployment time.
 	// Unlike other params, these will not be set as environment variables on
@@ -81,8 +79,6 @@ type ExtensionsInstanceConfigArgs struct {
 	// with actual values. These strings include: ${param:FOO},
 	// ${function:myFunc.url},
 	// ${function:myFunc.name}, and ${function:myFunc.location}
-	//
-	// ***
 	PopulatedPostinstallContent pulumi.StringPtrInput `pulumi:"populatedPostinstallContent"`
 	// Params whose values are only available at deployment time.
 	// Unlike other params, these will not be set as environment variables on
@@ -211,8 +207,6 @@ func (o ExtensionsInstanceConfigOutput) Params() pulumi.StringMapOutput {
 // with actual values. These strings include: ${param:FOO},
 // ${function:myFunc.url},
 // ${function:myFunc.name}, and ${function:myFunc.location}
-//
-// ***
 func (o ExtensionsInstanceConfigOutput) PopulatedPostinstallContent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtensionsInstanceConfig) *string { return v.PopulatedPostinstallContent }).(pulumi.StringPtrOutput)
 }
@@ -327,8 +321,6 @@ func (o ExtensionsInstanceConfigPtrOutput) Params() pulumi.StringMapOutput {
 // with actual values. These strings include: ${param:FOO},
 // ${function:myFunc.url},
 // ${function:myFunc.name}, and ${function:myFunc.location}
-//
-// ***
 func (o ExtensionsInstanceConfigPtrOutput) PopulatedPostinstallContent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExtensionsInstanceConfig) *string {
 		if v == nil {
@@ -3034,6 +3026,7 @@ type HostingVersionConfigRedirect struct {
 	// The value to put in the HTTP location header of the response.
 	// The location can contain capture group values from the pattern using a : prefix to identify
 	// the segment and an optional * to capture the rest of the URL. For example:
+	//
 	// ```go
 	// package main
 	//
@@ -3071,6 +3064,7 @@ type HostingVersionConfigRedirectArgs struct {
 	// The value to put in the HTTP location header of the response.
 	// The location can contain capture group values from the pattern using a : prefix to identify
 	// the segment and an optional * to capture the rest of the URL. For example:
+	//
 	// ```go
 	// package main
 	//
@@ -3150,6 +3144,7 @@ func (o HostingVersionConfigRedirectOutput) Glob() pulumi.StringPtrOutput {
 // The value to put in the HTTP location header of the response.
 // The location can contain capture group values from the pattern using a : prefix to identify
 // the segment and an optional * to capture the rest of the URL. For example:
+//
 // ```go
 // package main
 //

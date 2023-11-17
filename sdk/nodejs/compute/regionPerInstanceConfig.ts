@@ -183,9 +183,6 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The region instance group manager this instance config is part of.
-     *
-     *
-     * - - -
      */
     public readonly regionInstanceGroupManager!: pulumi.Output<string>;
     /**
@@ -277,9 +274,6 @@ export interface RegionPerInstanceConfigState {
     region?: pulumi.Input<string>;
     /**
      * The region instance group manager this instance config is part of.
-     *
-     *
-     * - - -
      */
     regionInstanceGroupManager?: pulumi.Input<string>;
     /**
@@ -332,9 +326,6 @@ export interface RegionPerInstanceConfigArgs {
     region?: pulumi.Input<string>;
     /**
      * The region instance group manager this instance config is part of.
-     *
-     *
-     * - - -
      */
     regionInstanceGroupManager: pulumi.Input<string>;
     /**

@@ -28,9 +28,6 @@ class CxWebhookArgs:
         """
         The set of arguments for constructing a CxWebhook resource.
         :param pulumi.Input[str] display_name: The human-readable name of the webhook, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
@@ -66,9 +63,6 @@ class CxWebhookArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         The human-readable name of the webhook, unique within the agent.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -194,9 +188,6 @@ class _CxWebhookState:
         Input properties used for looking up and filtering CxWebhook resources.
         :param pulumi.Input[bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[str] display_name: The human-readable name of the webhook, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
         :param pulumi.Input['CxWebhookGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
@@ -251,9 +242,6 @@ class _CxWebhookState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         The human-readable name of the webhook, unique within the agent.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -454,9 +442,6 @@ class CxWebhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[str] display_name: The human-readable name of the webhook, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
         :param pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArgs']] generic_web_service: Configuration for a generic web service.
@@ -611,9 +596,6 @@ class CxWebhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[str] display_name: The human-readable name of the webhook, unique within the agent.
-               
-               
-               - - -
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
         :param pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArgs']] generic_web_service: Configuration for a generic web service.
@@ -658,9 +640,6 @@ class CxWebhook(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         The human-readable name of the webhook, unique within the agent.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

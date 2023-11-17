@@ -256,22 +256,13 @@ import (
 type CryptoKeyIAMBinding struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition CryptoKeyIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
 	// the provider's project setting will be used as a fallback.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	CryptoKeyId pulumi.StringOutput `pulumi:"cryptoKeyId"`
 	// (Computed) The etag of the project's IAM policy.
 	Etag    pulumi.StringOutput      `pulumi:"etag"`
@@ -320,22 +311,13 @@ func GetCryptoKeyIAMBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CryptoKeyIAMBinding resources.
 type cryptoKeyIAMBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *CryptoKeyIAMBindingCondition `pulumi:"condition"`
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
 	// the provider's project setting will be used as a fallback.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	CryptoKeyId *string `pulumi:"cryptoKeyId"`
 	// (Computed) The etag of the project's IAM policy.
 	Etag    *string  `pulumi:"etag"`
@@ -346,22 +328,13 @@ type cryptoKeyIAMBindingState struct {
 }
 
 type CryptoKeyIAMBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition CryptoKeyIAMBindingConditionPtrInput
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
 	// the provider's project setting will be used as a fallback.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	CryptoKeyId pulumi.StringPtrInput
 	// (Computed) The etag of the project's IAM policy.
 	Etag    pulumi.StringPtrInput
@@ -376,22 +349,13 @@ func (CryptoKeyIAMBindingState) ElementType() reflect.Type {
 }
 
 type cryptoKeyIAMBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *CryptoKeyIAMBindingCondition `pulumi:"condition"`
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
 	// the provider's project setting will be used as a fallback.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	CryptoKeyId string   `pulumi:"cryptoKeyId"`
 	Members     []string `pulumi:"members"`
 	// The role that should be applied. Note that custom roles must be of the format
@@ -401,22 +365,13 @@ type cryptoKeyIAMBindingArgs struct {
 
 // The set of arguments for constructing a CryptoKeyIAMBinding resource.
 type CryptoKeyIAMBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition CryptoKeyIAMBindingConditionPtrInput
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
 	// the provider's project setting will be used as a fallback.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	CryptoKeyId pulumi.StringInput
 	Members     pulumi.StringArrayInput
 	// The role that should be applied. Note that custom roles must be of the format
@@ -511,7 +466,7 @@ func (o CryptoKeyIAMBindingOutput) ToCryptoKeyIAMBindingOutputWithContext(ctx co
 	return o
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o CryptoKeyIAMBindingOutput) Condition() CryptoKeyIAMBindingConditionPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyIAMBinding) CryptoKeyIAMBindingConditionPtrOutput { return v.Condition }).(CryptoKeyIAMBindingConditionPtrOutput)
@@ -521,15 +476,6 @@ func (o CryptoKeyIAMBindingOutput) Condition() CryptoKeyIAMBindingConditionPtrOu
 // `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 // `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
 // the provider's project setting will be used as a fallback.
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o CryptoKeyIAMBindingOutput) CryptoKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyIAMBinding) pulumi.StringOutput { return v.CryptoKeyId }).(pulumi.StringOutput)
 }

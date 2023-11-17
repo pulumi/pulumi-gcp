@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
         /// * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
         /// * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-        /// Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
+        ///   Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
         /// </summary>
         public readonly string AssertionClaimsBehavior;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
         /// * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
         /// * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-        /// Possible values are: `CODE`, `ID_TOKEN`.
+        ///   Possible values are: `CODE`, `ID_TOKEN`.
         /// </summary>
         public readonly string ResponseType;
 

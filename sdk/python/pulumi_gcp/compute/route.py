@@ -32,9 +32,6 @@ class RouteArgs:
         :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to.
                Only IPv4 is supported.
         :param pulumi.Input[str] network: The network that this route applies to.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property
                when you create the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -47,10 +44,6 @@ class RouteArgs:
         :param pulumi.Input[str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
-               * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-               * `projects/project/global/gateways/default-internet-gateway`
-               * `global/gateways/default-internet-gateway`
-               * The string `default-internet-gateway`.
         :param pulumi.Input[str] next_hop_ilb: The IP address or URL to a forwarding rule of type
                loadBalancingScheme=INTERNAL that should handle matching
                packets.
@@ -60,18 +53,13 @@ class RouteArgs:
                * 10.128.0.56
                * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
                * regions/region/forwardingRules/forwardingRule
-               When the beta provider, you can also specify the IP address
-               of a forwarding rule from the same VPC or any peered VPC.
-               Note that this can only be used when the destinationRange is
-               a public (non-RFC 1918) IP CIDR range.
+                 When the beta provider, you can also specify the IP address
+                 of a forwarding rule from the same VPC or any peered VPC.
+                 Note that this can only be used when the destinationRange is
+                 a public (non-RFC 1918) IP CIDR range.
         :param pulumi.Input[str] next_hop_instance: URL to an instance that should handle matching packets.
                You can specify this as a full or partial URL. For example:
-               * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-               * `projects/project/zones/zone/instances/instance`
-               * `zones/zone/instances/instance`
-               * Just the instance name, with the zone in `next_hop_instance_zone`.
-        :param pulumi.Input[str] next_hop_instance_zone: (Optional when `next_hop_instance` is
-               specified)  The zone of the instance specified in
+        :param pulumi.Input[str] next_hop_instance_zone: The zone of the instance specified in
                `next_hop_instance`.  Omit if `next_hop_instance` is specified as
                a URL.
         :param pulumi.Input[str] next_hop_ip: Network IP address of an instance that should handle matching packets.
@@ -128,9 +116,6 @@ class RouteArgs:
     def network(self) -> pulumi.Input[str]:
         """
         The network that this route applies to.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -176,10 +161,6 @@ class RouteArgs:
         URL to a gateway that should handle matching packets.
         Currently, you can only specify the internet gateway, using a full or
         partial valid URL:
-        * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-        * `projects/project/global/gateways/default-internet-gateway`
-        * `global/gateways/default-internet-gateway`
-        * The string `default-internet-gateway`.
         """
         return pulumi.get(self, "next_hop_gateway")
 
@@ -200,10 +181,10 @@ class RouteArgs:
         * 10.128.0.56
         * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
         * regions/region/forwardingRules/forwardingRule
-        When the beta provider, you can also specify the IP address
-        of a forwarding rule from the same VPC or any peered VPC.
-        Note that this can only be used when the destinationRange is
-        a public (non-RFC 1918) IP CIDR range.
+          When the beta provider, you can also specify the IP address
+          of a forwarding rule from the same VPC or any peered VPC.
+          Note that this can only be used when the destinationRange is
+          a public (non-RFC 1918) IP CIDR range.
         """
         return pulumi.get(self, "next_hop_ilb")
 
@@ -217,10 +198,6 @@ class RouteArgs:
         """
         URL to an instance that should handle matching packets.
         You can specify this as a full or partial URL. For example:
-        * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-        * `projects/project/zones/zone/instances/instance`
-        * `zones/zone/instances/instance`
-        * Just the instance name, with the zone in `next_hop_instance_zone`.
         """
         return pulumi.get(self, "next_hop_instance")
 
@@ -232,8 +209,7 @@ class RouteArgs:
     @pulumi.getter(name="nextHopInstanceZone")
     def next_hop_instance_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional when `next_hop_instance` is
-        specified)  The zone of the instance specified in
+        The zone of the instance specified in
         `next_hop_instance`.  Omit if `next_hop_instance` is specified as
         a URL.
         """
@@ -341,16 +317,9 @@ class _RouteState:
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network that this route applies to.
-               
-               
-               - - -
         :param pulumi.Input[str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
-               * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-               * `projects/project/global/gateways/default-internet-gateway`
-               * `global/gateways/default-internet-gateway`
-               * The string `default-internet-gateway`.
         :param pulumi.Input[str] next_hop_ilb: The IP address or URL to a forwarding rule of type
                loadBalancingScheme=INTERNAL that should handle matching
                packets.
@@ -360,18 +329,13 @@ class _RouteState:
                * 10.128.0.56
                * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
                * regions/region/forwardingRules/forwardingRule
-               When the beta provider, you can also specify the IP address
-               of a forwarding rule from the same VPC or any peered VPC.
-               Note that this can only be used when the destinationRange is
-               a public (non-RFC 1918) IP CIDR range.
+                 When the beta provider, you can also specify the IP address
+                 of a forwarding rule from the same VPC or any peered VPC.
+                 Note that this can only be used when the destinationRange is
+                 a public (non-RFC 1918) IP CIDR range.
         :param pulumi.Input[str] next_hop_instance: URL to an instance that should handle matching packets.
                You can specify this as a full or partial URL. For example:
-               * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-               * `projects/project/zones/zone/instances/instance`
-               * `zones/zone/instances/instance`
-               * Just the instance name, with the zone in `next_hop_instance_zone`.
-        :param pulumi.Input[str] next_hop_instance_zone: (Optional when `next_hop_instance` is
-               specified)  The zone of the instance specified in
+        :param pulumi.Input[str] next_hop_instance_zone: The zone of the instance specified in
                `next_hop_instance`.  Omit if `next_hop_instance` is specified as
                a URL.
         :param pulumi.Input[str] next_hop_ip: Network IP address of an instance that should handle matching packets.
@@ -467,9 +431,6 @@ class _RouteState:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The network that this route applies to.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -484,10 +445,6 @@ class _RouteState:
         URL to a gateway that should handle matching packets.
         Currently, you can only specify the internet gateway, using a full or
         partial valid URL:
-        * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-        * `projects/project/global/gateways/default-internet-gateway`
-        * `global/gateways/default-internet-gateway`
-        * The string `default-internet-gateway`.
         """
         return pulumi.get(self, "next_hop_gateway")
 
@@ -508,10 +465,10 @@ class _RouteState:
         * 10.128.0.56
         * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
         * regions/region/forwardingRules/forwardingRule
-        When the beta provider, you can also specify the IP address
-        of a forwarding rule from the same VPC or any peered VPC.
-        Note that this can only be used when the destinationRange is
-        a public (non-RFC 1918) IP CIDR range.
+          When the beta provider, you can also specify the IP address
+          of a forwarding rule from the same VPC or any peered VPC.
+          Note that this can only be used when the destinationRange is
+          a public (non-RFC 1918) IP CIDR range.
         """
         return pulumi.get(self, "next_hop_ilb")
 
@@ -525,10 +482,6 @@ class _RouteState:
         """
         URL to an instance that should handle matching packets.
         You can specify this as a full or partial URL. For example:
-        * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-        * `projects/project/zones/zone/instances/instance`
-        * `zones/zone/instances/instance`
-        * Just the instance name, with the zone in `next_hop_instance_zone`.
         """
         return pulumi.get(self, "next_hop_instance")
 
@@ -540,8 +493,7 @@ class _RouteState:
     @pulumi.getter(name="nextHopInstanceZone")
     def next_hop_instance_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional when `next_hop_instance` is
-        specified)  The zone of the instance specified in
+        The zone of the instance specified in
         `next_hop_instance`.  Omit if `next_hop_instance` is specified as
         a URL.
         """
@@ -743,16 +695,9 @@ class Route(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network that this route applies to.
-               
-               
-               - - -
         :param pulumi.Input[str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
-               * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-               * `projects/project/global/gateways/default-internet-gateway`
-               * `global/gateways/default-internet-gateway`
-               * The string `default-internet-gateway`.
         :param pulumi.Input[str] next_hop_ilb: The IP address or URL to a forwarding rule of type
                loadBalancingScheme=INTERNAL that should handle matching
                packets.
@@ -762,18 +707,13 @@ class Route(pulumi.CustomResource):
                * 10.128.0.56
                * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
                * regions/region/forwardingRules/forwardingRule
-               When the beta provider, you can also specify the IP address
-               of a forwarding rule from the same VPC or any peered VPC.
-               Note that this can only be used when the destinationRange is
-               a public (non-RFC 1918) IP CIDR range.
+                 When the beta provider, you can also specify the IP address
+                 of a forwarding rule from the same VPC or any peered VPC.
+                 Note that this can only be used when the destinationRange is
+                 a public (non-RFC 1918) IP CIDR range.
         :param pulumi.Input[str] next_hop_instance: URL to an instance that should handle matching packets.
                You can specify this as a full or partial URL. For example:
-               * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-               * `projects/project/zones/zone/instances/instance`
-               * `zones/zone/instances/instance`
-               * Just the instance name, with the zone in `next_hop_instance_zone`.
-        :param pulumi.Input[str] next_hop_instance_zone: (Optional when `next_hop_instance` is
-               specified)  The zone of the instance specified in
+        :param pulumi.Input[str] next_hop_instance_zone: The zone of the instance specified in
                `next_hop_instance`.  Omit if `next_hop_instance` is specified as
                a URL.
         :param pulumi.Input[str] next_hop_ip: Network IP address of an instance that should handle matching packets.
@@ -962,16 +902,9 @@ class Route(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network that this route applies to.
-               
-               
-               - - -
         :param pulumi.Input[str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
-               * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-               * `projects/project/global/gateways/default-internet-gateway`
-               * `global/gateways/default-internet-gateway`
-               * The string `default-internet-gateway`.
         :param pulumi.Input[str] next_hop_ilb: The IP address or URL to a forwarding rule of type
                loadBalancingScheme=INTERNAL that should handle matching
                packets.
@@ -981,18 +914,13 @@ class Route(pulumi.CustomResource):
                * 10.128.0.56
                * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
                * regions/region/forwardingRules/forwardingRule
-               When the beta provider, you can also specify the IP address
-               of a forwarding rule from the same VPC or any peered VPC.
-               Note that this can only be used when the destinationRange is
-               a public (non-RFC 1918) IP CIDR range.
+                 When the beta provider, you can also specify the IP address
+                 of a forwarding rule from the same VPC or any peered VPC.
+                 Note that this can only be used when the destinationRange is
+                 a public (non-RFC 1918) IP CIDR range.
         :param pulumi.Input[str] next_hop_instance: URL to an instance that should handle matching packets.
                You can specify this as a full or partial URL. For example:
-               * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-               * `projects/project/zones/zone/instances/instance`
-               * `zones/zone/instances/instance`
-               * Just the instance name, with the zone in `next_hop_instance_zone`.
-        :param pulumi.Input[str] next_hop_instance_zone: (Optional when `next_hop_instance` is
-               specified)  The zone of the instance specified in
+        :param pulumi.Input[str] next_hop_instance_zone: The zone of the instance specified in
                `next_hop_instance`.  Omit if `next_hop_instance` is specified as
                a URL.
         :param pulumi.Input[str] next_hop_ip: Network IP address of an instance that should handle matching packets.
@@ -1066,9 +994,6 @@ class Route(pulumi.CustomResource):
     def network(self) -> pulumi.Output[str]:
         """
         The network that this route applies to.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -1079,10 +1004,6 @@ class Route(pulumi.CustomResource):
         URL to a gateway that should handle matching packets.
         Currently, you can only specify the internet gateway, using a full or
         partial valid URL:
-        * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-        * `projects/project/global/gateways/default-internet-gateway`
-        * `global/gateways/default-internet-gateway`
-        * The string `default-internet-gateway`.
         """
         return pulumi.get(self, "next_hop_gateway")
 
@@ -1099,10 +1020,10 @@ class Route(pulumi.CustomResource):
         * 10.128.0.56
         * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
         * regions/region/forwardingRules/forwardingRule
-        When the beta provider, you can also specify the IP address
-        of a forwarding rule from the same VPC or any peered VPC.
-        Note that this can only be used when the destinationRange is
-        a public (non-RFC 1918) IP CIDR range.
+          When the beta provider, you can also specify the IP address
+          of a forwarding rule from the same VPC or any peered VPC.
+          Note that this can only be used when the destinationRange is
+          a public (non-RFC 1918) IP CIDR range.
         """
         return pulumi.get(self, "next_hop_ilb")
 
@@ -1112,10 +1033,6 @@ class Route(pulumi.CustomResource):
         """
         URL to an instance that should handle matching packets.
         You can specify this as a full or partial URL. For example:
-        * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-        * `projects/project/zones/zone/instances/instance`
-        * `zones/zone/instances/instance`
-        * Just the instance name, with the zone in `next_hop_instance_zone`.
         """
         return pulumi.get(self, "next_hop_instance")
 
@@ -1123,8 +1040,7 @@ class Route(pulumi.CustomResource):
     @pulumi.getter(name="nextHopInstanceZone")
     def next_hop_instance_zone(self) -> pulumi.Output[str]:
         """
-        (Optional when `next_hop_instance` is
-        specified)  The zone of the instance specified in
+        The zone of the instance specified in
         `next_hop_instance`.  Omit if `next_hop_instance` is specified as
         a URL.
         """

@@ -74,8 +74,6 @@ class AccessApprovalSettingsEnrolledService(dict):
         :param str enrollment_level: The enrollment level of the service.
                Default value is `BLOCK_ALL`.
                Possible values are: `BLOCK_ALL`.
-               
-               - - -
         """
         pulumi.set(__self__, "cloud_product", cloud_product)
         if enrollment_level is not None:
@@ -106,8 +104,6 @@ class AccessApprovalSettingsEnrolledService(dict):
         The enrollment level of the service.
         Default value is `BLOCK_ALL`.
         Possible values are: `BLOCK_ALL`.
-
-        - - -
         """
         return pulumi.get(self, "enrollment_level")
 
@@ -266,8 +262,6 @@ class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication(dict):
         """
         :param str package_name: The package name of the application.
         :param str sha1_fingerprint: The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
-               
-               - - -
         """
         pulumi.set(__self__, "package_name", package_name)
         pulumi.set(__self__, "sha1_fingerprint", sha1_fingerprint)
@@ -285,8 +279,6 @@ class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication(dict):
     def sha1_fingerprint(self) -> str:
         """
         The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
-
-        - - -
         """
         return pulumi.get(self, "sha1_fingerprint")
 

@@ -140,8 +140,6 @@ type InstanceFromMachineImage struct {
 	ShieldedInstanceConfig InstanceFromMachineImageShieldedInstanceConfigOutput `pulumi:"shieldedInstanceConfig"`
 	// Name or self link of a machine
 	// image to create the instance based on.
-	//
-	// ***
 	SourceMachineImage pulumi.StringOutput `pulumi:"sourceMachineImage"`
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -282,8 +280,6 @@ type instanceFromMachineImageState struct {
 	ShieldedInstanceConfig *InstanceFromMachineImageShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Name or self link of a machine
 	// image to create the instance based on.
-	//
-	// ***
 	SourceMachineImage *string `pulumi:"sourceMachineImage"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
@@ -387,8 +383,6 @@ type InstanceFromMachineImageState struct {
 	ShieldedInstanceConfig InstanceFromMachineImageShieldedInstanceConfigPtrInput
 	// Name or self link of a machine
 	// image to create the instance based on.
-	//
-	// ***
 	SourceMachineImage pulumi.StringPtrInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
@@ -471,8 +465,6 @@ type instanceFromMachineImageArgs struct {
 	ShieldedInstanceConfig *InstanceFromMachineImageShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Name or self link of a machine
 	// image to create the instance based on.
-	//
-	// ***
 	SourceMachineImage string `pulumi:"sourceMachineImage"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
@@ -550,8 +542,6 @@ type InstanceFromMachineImageArgs struct {
 	ShieldedInstanceConfig InstanceFromMachineImageShieldedInstanceConfigPtrInput
 	// Name or self link of a machine
 	// image to create the instance based on.
-	//
-	// ***
 	SourceMachineImage pulumi.StringInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
@@ -867,8 +857,6 @@ func (o InstanceFromMachineImageOutput) ShieldedInstanceConfig() InstanceFromMac
 
 // Name or self link of a machine
 // image to create the instance based on.
-//
-// ***
 func (o InstanceFromMachineImageOutput) SourceMachineImage() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.SourceMachineImage }).(pulumi.StringOutput)
 }

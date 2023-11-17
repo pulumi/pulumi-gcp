@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     {
         /// <summary>
         /// Targets VM instances with OS Inventory enabled and having the following OS architecture.
-        /// 
-        /// - - -
         /// </summary>
         [Input("osArchitecture")]
         public Input<string>? OsArchitecture { get; set; }

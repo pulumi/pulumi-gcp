@@ -118,9 +118,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network that this route applies to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -129,10 +126,6 @@ namespace Pulumi.Gcp.Compute
         /// URL to a gateway that should handle matching packets.
         /// Currently, you can only specify the internet gateway, using a full or
         /// partial valid URL:
-        /// * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-        /// * `projects/project/global/gateways/default-internet-gateway`
-        /// * `global/gateways/default-internet-gateway`
-        /// * The string `default-internet-gateway`.
         /// </summary>
         [Output("nextHopGateway")]
         public Output<string?> NextHopGateway { get; private set; } = null!;
@@ -147,10 +140,10 @@ namespace Pulumi.Gcp.Compute
         /// * 10.128.0.56
         /// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
         /// * regions/region/forwardingRules/forwardingRule
-        /// When the beta provider, you can also specify the IP address
-        /// of a forwarding rule from the same VPC or any peered VPC.
-        /// Note that this can only be used when the destinationRange is
-        /// a public (non-RFC 1918) IP CIDR range.
+        ///   When the beta provider, you can also specify the IP address
+        ///   of a forwarding rule from the same VPC or any peered VPC.
+        ///   Note that this can only be used when the destinationRange is
+        ///   a public (non-RFC 1918) IP CIDR range.
         /// </summary>
         [Output("nextHopIlb")]
         public Output<string?> NextHopIlb { get; private set; } = null!;
@@ -158,17 +151,12 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// URL to an instance that should handle matching packets.
         /// You can specify this as a full or partial URL. For example:
-        /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-        /// * `projects/project/zones/zone/instances/instance`
-        /// * `zones/zone/instances/instance`
-        /// * Just the instance name, with the zone in `next_hop_instance_zone`.
         /// </summary>
         [Output("nextHopInstance")]
         public Output<string?> NextHopInstance { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional when `next_hop_instance` is
-        /// specified)  The zone of the instance specified in
+        /// The zone of the instance specified in
         /// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
         /// a URL.
         /// </summary>
@@ -296,9 +284,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network that this route applies to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -307,10 +292,6 @@ namespace Pulumi.Gcp.Compute
         /// URL to a gateway that should handle matching packets.
         /// Currently, you can only specify the internet gateway, using a full or
         /// partial valid URL:
-        /// * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-        /// * `projects/project/global/gateways/default-internet-gateway`
-        /// * `global/gateways/default-internet-gateway`
-        /// * The string `default-internet-gateway`.
         /// </summary>
         [Input("nextHopGateway")]
         public Input<string>? NextHopGateway { get; set; }
@@ -325,10 +306,10 @@ namespace Pulumi.Gcp.Compute
         /// * 10.128.0.56
         /// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
         /// * regions/region/forwardingRules/forwardingRule
-        /// When the beta provider, you can also specify the IP address
-        /// of a forwarding rule from the same VPC or any peered VPC.
-        /// Note that this can only be used when the destinationRange is
-        /// a public (non-RFC 1918) IP CIDR range.
+        ///   When the beta provider, you can also specify the IP address
+        ///   of a forwarding rule from the same VPC or any peered VPC.
+        ///   Note that this can only be used when the destinationRange is
+        ///   a public (non-RFC 1918) IP CIDR range.
         /// </summary>
         [Input("nextHopIlb")]
         public Input<string>? NextHopIlb { get; set; }
@@ -336,17 +317,12 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// URL to an instance that should handle matching packets.
         /// You can specify this as a full or partial URL. For example:
-        /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-        /// * `projects/project/zones/zone/instances/instance`
-        /// * `zones/zone/instances/instance`
-        /// * Just the instance name, with the zone in `next_hop_instance_zone`.
         /// </summary>
         [Input("nextHopInstance")]
         public Input<string>? NextHopInstance { get; set; }
 
         /// <summary>
-        /// (Optional when `next_hop_instance` is
-        /// specified)  The zone of the instance specified in
+        /// The zone of the instance specified in
         /// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
         /// a URL.
         /// </summary>
@@ -430,9 +406,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network that this route applies to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -441,10 +414,6 @@ namespace Pulumi.Gcp.Compute
         /// URL to a gateway that should handle matching packets.
         /// Currently, you can only specify the internet gateway, using a full or
         /// partial valid URL:
-        /// * `https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway`
-        /// * `projects/project/global/gateways/default-internet-gateway`
-        /// * `global/gateways/default-internet-gateway`
-        /// * The string `default-internet-gateway`.
         /// </summary>
         [Input("nextHopGateway")]
         public Input<string>? NextHopGateway { get; set; }
@@ -459,10 +428,10 @@ namespace Pulumi.Gcp.Compute
         /// * 10.128.0.56
         /// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
         /// * regions/region/forwardingRules/forwardingRule
-        /// When the beta provider, you can also specify the IP address
-        /// of a forwarding rule from the same VPC or any peered VPC.
-        /// Note that this can only be used when the destinationRange is
-        /// a public (non-RFC 1918) IP CIDR range.
+        ///   When the beta provider, you can also specify the IP address
+        ///   of a forwarding rule from the same VPC or any peered VPC.
+        ///   Note that this can only be used when the destinationRange is
+        ///   a public (non-RFC 1918) IP CIDR range.
         /// </summary>
         [Input("nextHopIlb")]
         public Input<string>? NextHopIlb { get; set; }
@@ -470,17 +439,12 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// URL to an instance that should handle matching packets.
         /// You can specify this as a full or partial URL. For example:
-        /// * `https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance`
-        /// * `projects/project/zones/zone/instances/instance`
-        /// * `zones/zone/instances/instance`
-        /// * Just the instance name, with the zone in `next_hop_instance_zone`.
         /// </summary>
         [Input("nextHopInstance")]
         public Input<string>? NextHopInstance { get; set; }
 
         /// <summary>
-        /// (Optional when `next_hop_instance` is
-        /// specified)  The zone of the instance specified in
+        /// The zone of the instance specified in
         /// `next_hop_instance`.  Omit if `next_hop_instance` is specified as
         /// a URL.
         /// </summary>

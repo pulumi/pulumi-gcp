@@ -170,7 +170,8 @@ def get_app_engine_service(module_id: Optional[str] = None,
     :param str module_id: The ID of the App Engine module underlying this
            service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
            
-           - - -
+           
+           
            
            Other optional fields include:
     :param str project: The ID of the project in which the resource belongs.
@@ -246,7 +247,8 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
     :param str module_id: The ID of the App Engine module underlying this
            service. Corresponds to the moduleId resource label in the [gae_app](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
            
-           - - -
+           
+           
            
            Other optional fields include:
     :param str project: The ID of the project in which the resource belongs.

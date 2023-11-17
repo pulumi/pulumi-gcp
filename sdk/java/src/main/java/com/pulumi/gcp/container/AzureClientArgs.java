@@ -78,16 +78,12 @@ public final class AzureClientArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The Azure Active Directory Tenant ID.
      * 
-     * ***
-     * 
      */
     @Import(name="tenantId", required=true)
     private Output<String> tenantId;
 
     /**
      * @return The Azure Active Directory Tenant ID.
-     * 
-     * ***
      * 
      */
     public Output<String> tenantId() {
@@ -209,8 +205,6 @@ public final class AzureClientArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tenantId The Azure Active Directory Tenant ID.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -221,8 +215,6 @@ public final class AzureClientArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tenantId The Azure Active Directory Tenant ID.
-         * 
-         * ***
          * 
          * @return builder
          * 

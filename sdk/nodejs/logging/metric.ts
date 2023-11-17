@@ -197,9 +197,6 @@ export class Metric extends pulumi.CustomResource {
     /**
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
-     *
-     *
-     * - - -
      */
     public readonly filter!: pulumi.Output<string>;
     /**
@@ -312,9 +309,6 @@ export interface MetricState {
     /**
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
-     *
-     *
-     * - - -
      */
     filter?: pulumi.Input<string>;
     /**
@@ -384,9 +378,6 @@ export interface MetricArgs {
     /**
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
-     *
-     *
-     * - - -
      */
     filter: pulumi.Input<string>;
     /**

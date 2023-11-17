@@ -102,8 +102,6 @@ public final class ClusterClusterConfigSecurityConfigKerberosConfig {
      * @return The Cloud Storage URI of the truststore file used for
      * SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
      * 
-     * ***
-     * 
      */
     private @Nullable String truststoreUri;
 
@@ -224,8 +222,6 @@ public final class ClusterClusterConfigSecurityConfigKerberosConfig {
     /**
      * @return The Cloud Storage URI of the truststore file used for
      * SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-     * 
-     * ***
      * 
      */
     public Optional<String> truststoreUri() {

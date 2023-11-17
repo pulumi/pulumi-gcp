@@ -362,7 +362,7 @@ export class AwsCluster extends pulumi.CustomResource {
      */
     public readonly networking!: pulumi.Output<outputs.container.AwsClusterNetworking>;
     /**
-     * The number of the Fleet host project where this cluster will be registered.
+     * The project for the resource
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -536,7 +536,7 @@ export interface AwsClusterState {
      */
     networking?: pulumi.Input<inputs.container.AwsClusterNetworking>;
     /**
-     * The number of the Fleet host project where this cluster will be registered.
+     * The project for the resource
      */
     project?: pulumi.Input<string>;
     /**
@@ -613,7 +613,7 @@ export interface AwsClusterArgs {
      */
     networking: pulumi.Input<inputs.container.AwsClusterNetworking>;
     /**
-     * The number of the Fleet host project where this cluster will be registered.
+     * The project for the resource
      */
     project?: pulumi.Input<string>;
 }

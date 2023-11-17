@@ -38,7 +38,7 @@ export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pu
  */
 export interface GetOrganizationPolicyArgs {
     /**
-     * (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      */
     constraint: string;
     /**
@@ -91,7 +91,7 @@ export function getOrganizationPolicyOutput(args: GetOrganizationPolicyOutputArg
  */
 export interface GetOrganizationPolicyOutputArgs {
     /**
-     * (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      */
     constraint: pulumi.Input<string>;
     /**

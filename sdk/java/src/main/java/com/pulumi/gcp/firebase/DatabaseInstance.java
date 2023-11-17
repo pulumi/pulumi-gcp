@@ -215,8 +215,6 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
      * 
-     * ***
-     * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
@@ -224,8 +222,6 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     /**
      * @return The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
-     * 
-     * ***
      * 
      */
     public Output<String> instanceId() {

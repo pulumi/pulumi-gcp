@@ -34,11 +34,11 @@ class CxEntityTypeArgs:
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
                * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-               Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+                 Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         :param pulumi.Input[str] auto_expansion_mode: Represents kinds of entities.
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-               Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+                 Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeExcludedPhraseArgs']]] excluded_phrases: Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
                If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
@@ -101,7 +101,7 @@ class CxEntityTypeArgs:
         * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
         * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
         * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+          Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         """
         return pulumi.get(self, "kind")
 
@@ -116,7 +116,7 @@ class CxEntityTypeArgs:
         Represents kinds of entities.
         * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
         * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-        Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+          Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         """
         return pulumi.get(self, "auto_expansion_mode")
 
@@ -210,7 +210,7 @@ class _CxEntityTypeState:
         :param pulumi.Input[str] auto_expansion_mode: Represents kinds of entities.
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-               Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+                 Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         :param pulumi.Input[str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input['CxEntityTypeEntityArgs']]] entities: The collection of entity entries associated with the entity type.
@@ -222,7 +222,7 @@ class _CxEntityTypeState:
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
                * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-               Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+                 Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         :param pulumi.Input[str] language_code: The language of the following fields in entityType:
                EntityType.entities.value
                EntityType.entities.synonyms
@@ -262,7 +262,7 @@ class _CxEntityTypeState:
         Represents kinds of entities.
         * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
         * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-        Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+          Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         """
         return pulumi.get(self, "auto_expansion_mode")
 
@@ -329,7 +329,7 @@ class _CxEntityTypeState:
         * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
         * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
         * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+          Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         """
         return pulumi.get(self, "kind")
 
@@ -489,7 +489,7 @@ class CxEntityType(pulumi.CustomResource):
         :param pulumi.Input[str] auto_expansion_mode: Represents kinds of entities.
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-               Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+                 Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         :param pulumi.Input[str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArgs']]]] entities: The collection of entity entries associated with the entity type.
@@ -501,7 +501,7 @@ class CxEntityType(pulumi.CustomResource):
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
                * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-               Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+                 Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         :param pulumi.Input[str] language_code: The language of the following fields in entityType:
                EntityType.entities.value
                EntityType.entities.synonyms
@@ -673,7 +673,7 @@ class CxEntityType(pulumi.CustomResource):
         :param pulumi.Input[str] auto_expansion_mode: Represents kinds of entities.
                * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
                * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-               Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+                 Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         :param pulumi.Input[str] display_name: The human-readable name of the entity type, unique within the agent.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxEntityTypeEntityArgs']]]] entities: The collection of entity entries associated with the entity type.
@@ -685,7 +685,7 @@ class CxEntityType(pulumi.CustomResource):
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
                * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-               Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+                 Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         :param pulumi.Input[str] language_code: The language of the following fields in entityType:
                EntityType.entities.value
                EntityType.entities.synonyms
@@ -720,7 +720,7 @@ class CxEntityType(pulumi.CustomResource):
         Represents kinds of entities.
         * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
         * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-        Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+          Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
         """
         return pulumi.get(self, "auto_expansion_mode")
 
@@ -767,7 +767,7 @@ class CxEntityType(pulumi.CustomResource):
         * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
         * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
         * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+          Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         """
         return pulumi.get(self, "kind")
 

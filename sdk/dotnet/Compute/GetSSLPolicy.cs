@@ -75,8 +75,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the SSL Policy.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -98,8 +96,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the SSL Policy.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

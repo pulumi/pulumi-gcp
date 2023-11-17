@@ -29,9 +29,6 @@ class CxFlowArgs:
         """
         The set of arguments for constructing a CxFlow resource.
         :param pulumi.Input[str] display_name: The human-readable name of the flow.
-               
-               
-               - - -
         :param pulumi.Input['CxFlowAdvancedSettingsArgs'] advanced_settings: Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
                Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
                Structure is documented below.
@@ -93,9 +90,6 @@ class CxFlowArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         The human-readable name of the flow.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -259,9 +253,6 @@ class _CxFlowState:
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the flow.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]] event_handlers: A flow's event handlers serve two purposes:
                They are responsible for handling events (e.g. no match, webhook errors) in the flow.
                They are inherited by every page's [event handlers][Page.event_handlers], which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow.
@@ -350,9 +341,6 @@ class _CxFlowState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         The human-readable name of the flow.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -885,9 +873,6 @@ class CxFlow(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the flow.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowEventHandlerArgs']]]] event_handlers: A flow's event handlers serve two purposes:
                They are responsible for handling events (e.g. no match, webhook errors) in the flow.
                They are inherited by every page's [event handlers][Page.event_handlers], which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow.
@@ -1386,9 +1371,6 @@ class CxFlow(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the flow.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxFlowEventHandlerArgs']]]] event_handlers: A flow's event handlers serve two purposes:
                They are responsible for handling events (e.g. no match, webhook errors) in the flow.
                They are inherited by every page's [event handlers][Page.event_handlers], which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow.
@@ -1463,9 +1445,6 @@ class CxFlow(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         The human-readable name of the flow.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

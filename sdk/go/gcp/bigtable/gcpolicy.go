@@ -233,8 +233,6 @@ type GCPolicy struct {
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules pulumi.StringPtrOutput `pulumi:"gcRules"`
@@ -244,7 +242,7 @@ type GCPolicy struct {
 	MaxAge GCPolicyMaxAgePtrOutput `pulumi:"maxAge"`
 	// GC policy that applies to all versions of a cell except for the most recent.
 	MaxVersions GCPolicyMaxVersionArrayOutput `pulumi:"maxVersions"`
-	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
 	Mode pulumi.StringPtrOutput `pulumi:"mode"`
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -297,8 +295,6 @@ type gcpolicyState struct {
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules *string `pulumi:"gcRules"`
@@ -308,7 +304,7 @@ type gcpolicyState struct {
 	MaxAge *GCPolicyMaxAge `pulumi:"maxAge"`
 	// GC policy that applies to all versions of a cell except for the most recent.
 	MaxVersions []GCPolicyMaxVersion `pulumi:"maxVersions"`
-	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
 	Mode *string `pulumi:"mode"`
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -323,8 +319,6 @@ type GCPolicyState struct {
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy pulumi.StringPtrInput
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules pulumi.StringPtrInput
@@ -334,7 +328,7 @@ type GCPolicyState struct {
 	MaxAge GCPolicyMaxAgePtrInput
 	// GC policy that applies to all versions of a cell except for the most recent.
 	MaxVersions GCPolicyMaxVersionArrayInput
-	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
 	Mode pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -353,8 +347,6 @@ type gcpolicyArgs struct {
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules *string `pulumi:"gcRules"`
@@ -364,7 +356,7 @@ type gcpolicyArgs struct {
 	MaxAge *GCPolicyMaxAge `pulumi:"maxAge"`
 	// GC policy that applies to all versions of a cell except for the most recent.
 	MaxVersions []GCPolicyMaxVersion `pulumi:"maxVersions"`
-	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
 	Mode *string `pulumi:"mode"`
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -380,8 +372,6 @@ type GCPolicyArgs struct {
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy pulumi.StringPtrInput
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules pulumi.StringPtrInput
@@ -391,7 +381,7 @@ type GCPolicyArgs struct {
 	MaxAge GCPolicyMaxAgePtrInput
 	// GC policy that applies to all versions of a cell except for the most recent.
 	MaxVersions GCPolicyMaxVersionArrayInput
-	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
 	Mode pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -495,8 +485,6 @@ func (o GCPolicyOutput) ColumnFamily() pulumi.StringOutput {
 // Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
 //
 // Possible values are: `ABANDON`.
-//
-// ***
 func (o GCPolicyOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GCPolicy) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
@@ -521,7 +509,7 @@ func (o GCPolicyOutput) MaxVersions() GCPolicyMaxVersionArrayOutput {
 	return o.ApplyT(func(v *GCPolicy) GCPolicyMaxVersionArrayOutput { return v.MaxVersions }).(GCPolicyMaxVersionArrayOutput)
 }
 
-// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
 func (o GCPolicyOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GCPolicy) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
 }

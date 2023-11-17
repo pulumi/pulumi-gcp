@@ -19,8 +19,6 @@ public final class InstanceNetwork {
      * Default value is `DIRECT_PEERING`.
      * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
      * 
-     * ***
-     * 
      */
     private @Nullable String connectMode;
     /**
@@ -56,8 +54,6 @@ public final class InstanceNetwork {
      * DIRECT_PEERING.
      * Default value is `DIRECT_PEERING`.
      * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-     * 
-     * ***
      * 
      */
     public Optional<String> connectMode() {

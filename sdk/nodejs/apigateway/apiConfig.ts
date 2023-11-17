@@ -94,9 +94,6 @@ export class ApiConfig extends pulumi.CustomResource {
 
     /**
      * The API to attach the config to.
-     *
-     *
-     * - - -
      */
     public readonly api!: pulumi.Output<string>;
     /**
@@ -224,9 +221,6 @@ export class ApiConfig extends pulumi.CustomResource {
 export interface ApiConfigState {
     /**
      * The API to attach the config to.
-     *
-     *
-     * - - -
      */
     api?: pulumi.Input<string>;
     /**
@@ -301,9 +295,6 @@ export interface ApiConfigState {
 export interface ApiConfigArgs {
     /**
      * The API to attach the config to.
-     *
-     *
-     * - - -
      */
     api: pulumi.Input<string>;
     /**

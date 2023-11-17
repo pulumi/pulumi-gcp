@@ -131,8 +131,6 @@ public class ServicePerimeters extends com.pulumi.resources.CustomResource {
      * The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
@@ -140,8 +138,6 @@ public class ServicePerimeters extends com.pulumi.resources.CustomResource {
     /**
      * @return The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

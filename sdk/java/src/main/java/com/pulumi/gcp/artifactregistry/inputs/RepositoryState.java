@@ -24,18 +24,22 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     public static final RepositoryState Empty = new RepositoryState();
 
     /**
-     * Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-     * under 128 characters in length.
+     * Cleanup policies for this repository. Cleanup policies indicate when
+     * certain package versions can be automatically deleted.
+     * Map keys are policy IDs supplied by users during policy creation. They must
+     * unique within a repository and be under 128 characters in length.
+     * Structure is documented below.
      * 
      */
     @Import(name="cleanupPolicies")
     private @Nullable Output<List<RepositoryCleanupPolicyArgs>> cleanupPolicies;
 
     /**
-     * @return Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-     * under 128 characters in length.
+     * @return Cleanup policies for this repository. Cleanup policies indicate when
+     * certain package versions can be automatically deleted.
+     * Map keys are policy IDs supplied by users during policy creation. They must
+     * unique within a repository and be under 128 characters in length.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<RepositoryCleanupPolicyArgs>>> cleanupPolicies() {
@@ -43,14 +47,16 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * If true, the cleanup pipeline is prevented from deleting versions in this
+     * repository.
      * 
      */
     @Import(name="cleanupPolicyDryRun")
     private @Nullable Output<Boolean> cleanupPolicyDryRun;
 
     /**
-     * @return If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * @return If true, the cleanup pipeline is prevented from deleting versions in this
+     * repository.
      * 
      */
     public Optional<Output<Boolean>> cleanupPolicyDryRun() {
@@ -125,8 +131,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
      * 
-     * ***
-     * 
      */
     @Import(name="format")
     private @Nullable Output<String> format;
@@ -136,8 +140,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> format() {
@@ -409,9 +411,11 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-         * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-         * under 128 characters in length.
+         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when
+         * certain package versions can be automatically deleted.
+         * Map keys are policy IDs supplied by users during policy creation. They must
+         * unique within a repository and be under 128 characters in length.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -422,9 +426,11 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-         * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-         * under 128 characters in length.
+         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when
+         * certain package versions can be automatically deleted.
+         * Map keys are policy IDs supplied by users during policy creation. They must
+         * unique within a repository and be under 128 characters in length.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -434,9 +440,11 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-         * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-         * under 128 characters in length.
+         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when
+         * certain package versions can be automatically deleted.
+         * Map keys are policy IDs supplied by users during policy creation. They must
+         * unique within a repository and be under 128 characters in length.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -446,7 +454,8 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicyDryRun If true, the cleanup pipeline is prevented from deleting versions in this repository.
+         * @param cleanupPolicyDryRun If true, the cleanup pipeline is prevented from deleting versions in this
+         * repository.
          * 
          * @return builder
          * 
@@ -457,7 +466,8 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicyDryRun If true, the cleanup pipeline is prevented from deleting versions in this repository.
+         * @param cleanupPolicyDryRun If true, the cleanup pipeline is prevented from deleting versions in this
+         * repository.
          * 
          * @return builder
          * 
@@ -558,8 +568,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          * You can only create alpha formats if you are a member of the
          * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -573,8 +581,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
          * You can only create alpha formats if you are a member of the
          * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-         * 
-         * ***
          * 
          * @return builder
          * 

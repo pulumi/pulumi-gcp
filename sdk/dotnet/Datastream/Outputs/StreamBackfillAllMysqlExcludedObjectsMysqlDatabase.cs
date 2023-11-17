@@ -14,10 +14,15 @@ namespace Pulumi.Gcp.Datastream.Outputs
     public sealed class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase
     {
         /// <summary>
+        /// Database name.`database` -
+        /// (Required)
         /// Database name.
         /// </summary>
         public readonly string Database;
         /// <summary>
+        /// Tables in the database.
+        /// Structure is documented below.`mysql_tables` -
+        /// (Optional)
         /// Tables in the database.
         /// Structure is documented below.
         /// </summary>

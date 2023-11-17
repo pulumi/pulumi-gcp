@@ -433,9 +433,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Cloud Router in which this NAT will be configured.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("router")]
         public Output<string> Router { get; private set; } = null!;
@@ -493,9 +490,12 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> TcpTransitoryIdleTimeoutSec { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-        /// 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-        /// Possible values: ["PUBLIC", "PRIVATE"]
+        /// Indicates whether this NAT is used for public or private IP translation.
+        /// If unspecified, it defaults to PUBLIC.
+        /// If `PUBLIC` NAT used for public IP translation.
+        /// If `PRIVATE` NAT used for private IP translation.
+        /// Default value is `PUBLIC`.
+        /// Possible values are: `PUBLIC`, `PRIVATE`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -653,9 +653,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Cloud Router in which this NAT will be configured.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("router", required: true)]
         public Input<string> Router { get; set; } = null!;
@@ -725,9 +722,12 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? TcpTransitoryIdleTimeoutSec { get; set; }
 
         /// <summary>
-        /// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-        /// 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-        /// Possible values: ["PUBLIC", "PRIVATE"]
+        /// Indicates whether this NAT is used for public or private IP translation.
+        /// If unspecified, it defaults to PUBLIC.
+        /// If `PUBLIC` NAT used for public IP translation.
+        /// If `PRIVATE` NAT used for private IP translation.
+        /// Default value is `PUBLIC`.
+        /// Possible values are: `PUBLIC`, `PRIVATE`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -847,9 +847,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Cloud Router in which this NAT will be configured.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("router")]
         public Input<string>? Router { get; set; }
@@ -919,9 +916,12 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? TcpTransitoryIdleTimeoutSec { get; set; }
 
         /// <summary>
-        /// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-        /// 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-        /// Possible values: ["PUBLIC", "PRIVATE"]
+        /// Indicates whether this NAT is used for public or private IP translation.
+        /// If unspecified, it defaults to PUBLIC.
+        /// If `PUBLIC` NAT used for public IP translation.
+        /// If `PRIVATE` NAT used for private IP translation.
+        /// Default value is `PUBLIC`.
+        /// Possible values are: `PUBLIC`, `PRIVATE`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

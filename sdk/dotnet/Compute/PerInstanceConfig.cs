@@ -155,9 +155,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The instance group manager this instance config is part of.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceGroupManager")]
         public Output<string> InstanceGroupManager { get; private set; } = null!;
@@ -266,9 +263,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The instance group manager this instance config is part of.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceGroupManager", required: true)]
         public Input<string> InstanceGroupManager { get; set; } = null!;
@@ -339,9 +333,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The instance group manager this instance config is part of.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceGroupManager")]
         public Input<string>? InstanceGroupManager { get; set; }

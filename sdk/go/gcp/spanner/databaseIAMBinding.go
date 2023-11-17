@@ -155,15 +155,6 @@ type DatabaseIAMBinding struct {
 	// (Computed) The etag of the database's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the Spanner instance the database belongs to.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance pulumi.StringOutput      `pulumi:"instance"`
 	Members  pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
@@ -223,15 +214,6 @@ type databaseIAMBindingState struct {
 	// (Computed) The etag of the database's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name of the Spanner instance the database belongs to.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance *string  `pulumi:"instance"`
 	Members  []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
@@ -250,15 +232,6 @@ type DatabaseIAMBindingState struct {
 	// (Computed) The etag of the database's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The name of the Spanner instance the database belongs to.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance pulumi.StringPtrInput
 	Members  pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs. If it
@@ -279,15 +252,6 @@ type databaseIAMBindingArgs struct {
 	// The name of the Spanner database.
 	Database string `pulumi:"database"`
 	// The name of the Spanner instance the database belongs to.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance string   `pulumi:"instance"`
 	Members  []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
@@ -305,15 +269,6 @@ type DatabaseIAMBindingArgs struct {
 	// The name of the Spanner database.
 	Database pulumi.StringInput
 	// The name of the Spanner instance the database belongs to.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance pulumi.StringInput
 	Members  pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs. If it
@@ -427,15 +382,6 @@ func (o DatabaseIAMBindingOutput) Etag() pulumi.StringOutput {
 }
 
 // The name of the Spanner instance the database belongs to.
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o DatabaseIAMBindingOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseIAMBinding) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }

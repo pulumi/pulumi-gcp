@@ -570,8 +570,6 @@ type PrivateCloudManagementClusterNodeTypeConfig struct {
 	// This number must always be one of `nodeType.availableCustomCoreCounts`.
 	// If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
 	// This cannot be changed once the PrivateCloud is created.
-	//
-	// ***
 	CustomCoreCount *int `pulumi:"customCoreCount"`
 	// The number of nodes of this type in the cluster.
 	NodeCount int `pulumi:"nodeCount"`
@@ -595,8 +593,6 @@ type PrivateCloudManagementClusterNodeTypeConfigArgs struct {
 	// This number must always be one of `nodeType.availableCustomCoreCounts`.
 	// If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
 	// This cannot be changed once the PrivateCloud is created.
-	//
-	// ***
 	CustomCoreCount pulumi.IntPtrInput `pulumi:"customCoreCount"`
 	// The number of nodes of this type in the cluster.
 	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
@@ -659,8 +655,6 @@ func (o PrivateCloudManagementClusterNodeTypeConfigOutput) ToPrivateCloudManagem
 // This number must always be one of `nodeType.availableCustomCoreCounts`.
 // If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
 // This cannot be changed once the PrivateCloud is created.
-//
-// ***
 func (o PrivateCloudManagementClusterNodeTypeConfigOutput) CustomCoreCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PrivateCloudManagementClusterNodeTypeConfig) *int { return v.CustomCoreCount }).(pulumi.IntPtrOutput)
 }

@@ -15,10 +15,15 @@ namespace Pulumi.Gcp.Datastream.Outputs
     {
         /// <summary>
         /// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        /// Structure is documented below.`postgresql_columns` -
+        /// (Optional)
+        /// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn> PostgresqlColumns;
         /// <summary>
+        /// Table name.`table` -
+        /// (Required)
         /// Table name.
         /// </summary>
         public readonly string Table;

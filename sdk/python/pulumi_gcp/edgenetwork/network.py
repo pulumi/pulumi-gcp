@@ -25,9 +25,6 @@ class NetworkArgs:
         The set of arguments for constructing a Network resource.
         :param pulumi.Input[str] location: The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
         :param pulumi.Input[str] network_id: A unique ID that identifies this network.
-               
-               
-               - - -
         :param pulumi.Input[str] zone: The name of the target Distributed Cloud Edge zone.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this resource.
@@ -64,9 +61,6 @@ class NetworkArgs:
     def network_id(self) -> pulumi.Input[str]:
         """
         A unique ID that identifies this network.
-
-
-        - - -
         """
         return pulumi.get(self, "network_id")
 
@@ -161,9 +155,6 @@ class _NetworkState:
         :param pulumi.Input[str] name: The canonical name of this resource, with format
                `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
         :param pulumi.Input[str] network_id: A unique ID that identifies this network.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: The time when the subnet was last updated.
@@ -272,9 +263,6 @@ class _NetworkState:
     def network_id(self) -> Optional[pulumi.Input[str]]:
         """
         A unique ID that identifies this network.
-
-
-        - - -
         """
         return pulumi.get(self, "network_id")
 
@@ -401,9 +389,6 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] location: The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
         :param pulumi.Input[int] mtu: IP (L3) MTU value of the network. Default value is `1500`. Possible values are: `1500`, `9000`.
         :param pulumi.Input[str] network_id: A unique ID that identifies this network.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: The name of the target Distributed Cloud Edge zone.
@@ -557,9 +542,6 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] name: The canonical name of this resource, with format
                `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
         :param pulumi.Input[str] network_id: A unique ID that identifies this network.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: The time when the subnet was last updated.
@@ -639,9 +621,6 @@ class Network(pulumi.CustomResource):
     def network_id(self) -> pulumi.Output[str]:
         """
         A unique ID that identifies this network.
-
-
-        - - -
         """
         return pulumi.get(self, "network_id")
 

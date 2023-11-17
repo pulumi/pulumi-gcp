@@ -14,37 +14,54 @@ namespace Pulumi.Gcp.Datastream.Outputs
     public sealed class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn
     {
         /// <summary>
+        /// Column name.`column` -
+        /// (Optional)
         /// Column name.
         /// </summary>
         public readonly string? Column;
         /// <summary>
+        /// The PostgreSQL data type. Full data types list can be found here:
+        /// https://www.postgresql.org/docs/current/datatype.html`data_type` -
+        /// (Optional)
         /// The PostgreSQL data type. Full data types list can be found here:
         /// https://www.postgresql.org/docs/current/datatype.html
         /// </summary>
         public readonly string? DataType;
         /// <summary>
         /// (Output)
+        /// Column length.`length` -
+        /// (Output)
         /// Column length.
         /// </summary>
         public readonly int? Length;
         /// <summary>
+        /// Whether or not the column can accept a null value.`nullable` -
+        /// (Optional)
         /// Whether or not the column can accept a null value.
         /// </summary>
         public readonly bool? Nullable;
         /// <summary>
+        /// The ordinal position of the column in the table.`ordinal_position` -
+        /// (Optional)
         /// The ordinal position of the column in the table.
         /// </summary>
         public readonly int? OrdinalPosition;
         /// <summary>
         /// (Output)
+        /// Column precision.`precision` -
+        /// (Output)
         /// Column precision.
         /// </summary>
         public readonly int? Precision;
         /// <summary>
+        /// Whether or not the column represents a primary key.`primary_key` -
+        /// (Optional)
         /// Whether or not the column represents a primary key.
         /// </summary>
         public readonly bool? PrimaryKey;
         /// <summary>
+        /// (Output)
+        /// Column scale.`scale` -
         /// (Output)
         /// Column scale.
         /// </summary>

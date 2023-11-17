@@ -29,8 +29,6 @@ public final class JobPrestoConfig {
     /**
      * @return The format in which query output will be displayed. See the Presto documentation for supported output formats.
      * 
-     * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
-     * 
      */
     private @Nullable String outputFormat;
     /**
@@ -71,8 +69,6 @@ public final class JobPrestoConfig {
     }
     /**
      * @return The format in which query output will be displayed. See the Presto documentation for supported output formats.
-     * 
-     * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
      * 
      */
     public Optional<String> outputFormat() {

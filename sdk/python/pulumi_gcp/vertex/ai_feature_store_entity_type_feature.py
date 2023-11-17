@@ -22,9 +22,6 @@ class AiFeatureStoreEntityTypeFeatureArgs:
         """
         The set of arguments for constructing a AiFeatureStoreEntityTypeFeature resource.
         :param pulumi.Input[str] entitytype: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-               
-               
-               - - -
         :param pulumi.Input[str] value_type: Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
         :param pulumi.Input[str] description: Description of the feature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the feature.
@@ -47,9 +44,6 @@ class AiFeatureStoreEntityTypeFeatureArgs:
     def entitytype(self) -> pulumi.Input[str]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-
-
-        - - -
         """
         return pulumi.get(self, "entitytype")
 
@@ -129,9 +123,6 @@ class _AiFeatureStoreEntityTypeFeatureState:
         :param pulumi.Input[str] description: Description of the feature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] entitytype: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-               
-               
-               - - -
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the feature.
                
@@ -208,9 +199,6 @@ class _AiFeatureStoreEntityTypeFeatureState:
     def entitytype(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-
-
-        - - -
         """
         return pulumi.get(self, "entitytype")
 
@@ -416,9 +404,6 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the feature.
         :param pulumi.Input[str] entitytype: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the feature.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -604,9 +589,6 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the feature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] entitytype: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-               
-               
-               - - -
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the feature.
                
@@ -665,9 +647,6 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
     def entitytype(self) -> pulumi.Output[str]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-
-
-        - - -
         """
         return pulumi.get(self, "entitytype")
 

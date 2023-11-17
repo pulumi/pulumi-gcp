@@ -208,7 +208,6 @@ type Cluster struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot pulumi.BoolPtrOutput `pulumi:"enableAutopilot"`
-	// )
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy pulumi.BoolPtrOutput `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -227,7 +226,6 @@ type Cluster struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrOutput `pulumi:"enableLegacyAbac"`
-	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking pulumi.BoolPtrOutput `pulumi:"enableMultiNetworking"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -321,8 +319,6 @@ type Cluster struct {
 	MonitoringService pulumi.StringOutput `pulumi:"monitoringService"`
 	// The name of the cluster, unique within the project and
 	// location.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name or selfLink of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -378,7 +374,7 @@ type Cluster struct {
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigOutput `pulumi:"notificationConfig"`
 	Operation          pulumi.StringOutput             `pulumi:"operation"`
-	// ) Configuration for the
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrOutput `pulumi:"podSecurityPolicyConfig"`
@@ -390,7 +386,6 @@ type Cluster struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig ClusterProtectConfigOutput `pulumi:"protectConfig"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -408,7 +403,8 @@ type Cluster struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool pulumi.BoolPtrOutput `pulumi:"removeDefaultNodePool"`
-	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels pulumi.StringMapOutput `pulumi:"resourceLabels"`
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -531,7 +527,6 @@ type clusterState struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot *bool `pulumi:"enableAutopilot"`
-	// )
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy *bool `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -550,7 +545,6 @@ type clusterState struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac *bool `pulumi:"enableLegacyAbac"`
-	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking *bool `pulumi:"enableMultiNetworking"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -644,8 +638,6 @@ type clusterState struct {
 	MonitoringService *string `pulumi:"monitoringService"`
 	// The name of the cluster, unique within the project and
 	// location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The name or selfLink of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -701,7 +693,7 @@ type clusterState struct {
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig *ClusterNotificationConfig `pulumi:"notificationConfig"`
 	Operation          *string                    `pulumi:"operation"`
-	// ) Configuration for the
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig *ClusterPodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
@@ -713,7 +705,6 @@ type clusterState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig *ClusterProtectConfig `pulumi:"protectConfig"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -731,7 +722,8 @@ type clusterState struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool *bool `pulumi:"removeDefaultNodePool"`
-	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -825,7 +817,6 @@ type ClusterState struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot pulumi.BoolPtrInput
-	// )
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy pulumi.BoolPtrInput
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -844,7 +835,6 @@ type ClusterState struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrInput
-	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking pulumi.BoolPtrInput
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -938,8 +928,6 @@ type ClusterState struct {
 	MonitoringService pulumi.StringPtrInput
 	// The name of the cluster, unique within the project and
 	// location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The name or selfLink of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -995,7 +983,7 @@ type ClusterState struct {
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigPtrInput
 	Operation          pulumi.StringPtrInput
-	// ) Configuration for the
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrInput
@@ -1007,7 +995,6 @@ type ClusterState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig ClusterProtectConfigPtrInput
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -1025,7 +1012,8 @@ type ClusterState struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool pulumi.BoolPtrInput
-	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels pulumi.StringMapInput
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1123,7 +1111,6 @@ type clusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot *bool `pulumi:"enableAutopilot"`
-	// )
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy *bool `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -1142,7 +1129,6 @@ type clusterArgs struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac *bool `pulumi:"enableLegacyAbac"`
-	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking *bool `pulumi:"enableMultiNetworking"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -1228,8 +1214,6 @@ type clusterArgs struct {
 	MonitoringService *string `pulumi:"monitoringService"`
 	// The name of the cluster, unique within the project and
 	// location.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The name or selfLink of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -1284,7 +1268,7 @@ type clusterArgs struct {
 	NodeVersion *string `pulumi:"nodeVersion"`
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig *ClusterNotificationConfig `pulumi:"notificationConfig"`
-	// ) Configuration for the
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig *ClusterPodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
@@ -1296,7 +1280,6 @@ type clusterArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig *ClusterProtectConfig `pulumi:"protectConfig"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -1314,7 +1297,8 @@ type clusterArgs struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool *bool `pulumi:"removeDefaultNodePool"`
-	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1398,7 +1382,6 @@ type ClusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot pulumi.BoolPtrInput
-	// )
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy pulumi.BoolPtrInput
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -1417,7 +1400,6 @@ type ClusterArgs struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrInput
-	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking pulumi.BoolPtrInput
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -1503,8 +1485,6 @@ type ClusterArgs struct {
 	MonitoringService pulumi.StringPtrInput
 	// The name of the cluster, unique within the project and
 	// location.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The name or selfLink of the Google Compute Engine
 	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -1559,7 +1539,7 @@ type ClusterArgs struct {
 	NodeVersion pulumi.StringPtrInput
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigPtrInput
-	// ) Configuration for the
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrInput
@@ -1571,7 +1551,6 @@ type ClusterArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig ClusterProtectConfigPtrInput
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -1589,7 +1568,8 @@ type ClusterArgs struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool pulumi.BoolPtrInput
-	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels pulumi.StringMapInput
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1809,7 +1789,6 @@ func (o ClusterOutput) EnableAutopilot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableAutopilot }).(pulumi.BoolPtrOutput)
 }
 
-// )
 // Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 func (o ClusterOutput) EnableFqdnNetworkPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableFqdnNetworkPolicy }).(pulumi.BoolPtrOutput)
@@ -1846,7 +1825,6 @@ func (o ClusterOutput) EnableLegacyAbac() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableLegacyAbac }).(pulumi.BoolPtrOutput)
 }
 
-// )
 // Whether multi-networking is enabled for this cluster.
 func (o ClusterOutput) EnableMultiNetworking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableMultiNetworking }).(pulumi.BoolPtrOutput)
@@ -2003,8 +1981,6 @@ func (o ClusterOutput) MonitoringService() pulumi.StringOutput {
 
 // The name of the cluster, unique within the project and
 // location.
-//
-// ***
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -2096,7 +2072,7 @@ func (o ClusterOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Operation }).(pulumi.StringOutput)
 }
 
-// ) Configuration for the
+// Configuration for the
 // [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 // Structure is documented below.
 func (o ClusterOutput) PodSecurityPolicyConfig() ClusterPodSecurityPolicyConfigPtrOutput {
@@ -2120,7 +2096,6 @@ func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// )
 // Enable/Disable Protect API features for the cluster. Structure is documented below.
 func (o ClusterOutput) ProtectConfig() ClusterProtectConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterProtectConfigOutput { return v.ProtectConfig }).(ClusterProtectConfigOutput)
@@ -2147,7 +2122,8 @@ func (o ClusterOutput) RemoveDefaultNodePool() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.RemoveDefaultNodePool }).(pulumi.BoolPtrOutput)
 }
 
-// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+// for how these labels are applied to clusters, node pools and nodes.
 func (o ClusterOutput) ResourceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }

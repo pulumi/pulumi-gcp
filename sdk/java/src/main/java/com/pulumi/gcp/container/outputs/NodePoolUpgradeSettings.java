@@ -36,7 +36,7 @@ public final class NodePoolUpgradeSettings {
      */
     private @Nullable Integer maxUnavailable;
     /**
-     * @return The upgrade stragey to be used for upgrading the nodes.
+     * @return (Default `SURGE`) The upgrade stragey to be used for upgrading the nodes.
      * 
      */
     private @Nullable String strategy;
@@ -71,7 +71,7 @@ public final class NodePoolUpgradeSettings {
         return Optional.ofNullable(this.maxUnavailable);
     }
     /**
-     * @return The upgrade stragey to be used for upgrading the nodes.
+     * @return (Default `SURGE`) The upgrade stragey to be used for upgrading the nodes.
      * 
      */
     public Optional<String> strategy() {

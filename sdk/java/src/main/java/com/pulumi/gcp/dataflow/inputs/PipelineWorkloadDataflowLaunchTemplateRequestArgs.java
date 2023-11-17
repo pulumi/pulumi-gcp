@@ -81,17 +81,9 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestArgs extends com
         return this.projectId;
     }
 
-    /**
-     * (Optional)
-     * 
-     */
     @Import(name="validateOnly")
     private @Nullable Output<Boolean> validateOnly;
 
-    /**
-     * @return (Optional)
-     * 
-     */
     public Optional<Output<Boolean>> validateOnly() {
         return Optional.ofNullable(this.validateOnly);
     }
@@ -212,23 +204,11 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestArgs extends com
             return projectId(Output.of(projectId));
         }
 
-        /**
-         * @param validateOnly (Optional)
-         * 
-         * @return builder
-         * 
-         */
         public Builder validateOnly(@Nullable Output<Boolean> validateOnly) {
             $.validateOnly = validateOnly;
             return this;
         }
 
-        /**
-         * @param validateOnly (Optional)
-         * 
-         * @return builder
-         * 
-         */
         public Builder validateOnly(Boolean validateOnly) {
             return validateOnly(Output.of(validateOnly));
         }

@@ -142,9 +142,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network endpoint group this endpoint is part of.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("networkEndpointGroup")]
         public Output<string> NetworkEndpointGroup { get; private set; } = null!;
@@ -234,9 +231,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network endpoint group this endpoint is part of.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("networkEndpointGroup", required: true)]
         public Input<string> NetworkEndpointGroup { get; set; } = null!;
@@ -288,9 +282,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network endpoint group this endpoint is part of.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("networkEndpointGroup")]
         public Input<string>? NetworkEndpointGroup { get; set; }

@@ -17,9 +17,19 @@ public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.Re
 
     public static final ServiceTemplateSpecVolumeArgs Empty = new ServiceTemplateSpecVolumeArgs();
 
+    /**
+     * Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+     * Structure is documented below.
+     * 
+     */
     @Import(name="emptyDir")
     private @Nullable Output<ServiceTemplateSpecVolumeEmptyDirArgs> emptyDir;
 
+    /**
+     * @return Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<ServiceTemplateSpecVolumeEmptyDirArgs>> emptyDir() {
         return Optional.ofNullable(this.emptyDir);
     }
@@ -86,11 +96,25 @@ public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.Re
             $ = new ServiceTemplateSpecVolumeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param emptyDir Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emptyDir(@Nullable Output<ServiceTemplateSpecVolumeEmptyDirArgs> emptyDir) {
             $.emptyDir = emptyDir;
             return this;
         }
 
+        /**
+         * @param emptyDir Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emptyDir(ServiceTemplateSpecVolumeEmptyDirArgs emptyDir) {
             return emptyDir(Output.of(emptyDir));
         }

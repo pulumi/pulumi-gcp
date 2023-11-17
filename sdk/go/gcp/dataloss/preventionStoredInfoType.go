@@ -223,12 +223,6 @@ type PreventionStoredInfoType struct {
 	// Name describing the field.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the info type in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -285,12 +279,6 @@ type preventionStoredInfoTypeState struct {
 	// Name describing the field.
 	Name *string `pulumi:"name"`
 	// The parent of the info type in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -315,12 +303,6 @@ type PreventionStoredInfoTypeState struct {
 	// Name describing the field.
 	Name pulumi.StringPtrInput
 	// The parent of the info type in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -347,12 +329,6 @@ type preventionStoredInfoTypeArgs struct {
 	// Structure is documented below.
 	LargeCustomDictionary *PreventionStoredInfoTypeLargeCustomDictionary `pulumi:"largeCustomDictionary"`
 	// The parent of the info type in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -376,12 +352,6 @@ type PreventionStoredInfoTypeArgs struct {
 	// Structure is documented below.
 	LargeCustomDictionary PreventionStoredInfoTypeLargeCustomDictionaryPtrInput
 	// The parent of the info type in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent pulumi.StringInput
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -509,12 +479,6 @@ func (o PreventionStoredInfoTypeOutput) Name() pulumi.StringOutput {
 }
 
 // The parent of the info type in any of the following formats:
-// * `projects/{{project}}`
-// * `projects/{{project}}/locations/{{location}}`
-// * `organizations/{{organization_id}}`
-// * `organizations/{{organization_id}}/locations/{{location}}`
-//
-// ***
 func (o PreventionStoredInfoTypeOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionStoredInfoType) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

@@ -190,8 +190,6 @@ type Cluster struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the cluster, unique within the project and
 	// zone.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the `cluster` will exist. If it
 	// is not provided, the provider project is used.
@@ -257,8 +255,6 @@ type clusterState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the cluster, unique within the project and
 	// zone.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the `cluster` will exist. If it
 	// is not provided, the provider project is used.
@@ -290,8 +286,6 @@ type ClusterState struct {
 	Labels pulumi.StringMapInput
 	// The name of the cluster, unique within the project and
 	// zone.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the `cluster` will exist. If it
 	// is not provided, the provider project is used.
@@ -323,8 +317,6 @@ type clusterArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the cluster, unique within the project and
 	// zone.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the `cluster` will exist. If it
 	// is not provided, the provider project is used.
@@ -351,8 +343,6 @@ type ClusterArgs struct {
 	Labels pulumi.StringMapInput
 	// The name of the cluster, unique within the project and
 	// zone.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the `cluster` will exist. If it
 	// is not provided, the provider project is used.
@@ -480,8 +470,6 @@ func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 
 // The name of the cluster, unique within the project and
 // zone.
-//
-// ***
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

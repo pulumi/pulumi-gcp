@@ -272,8 +272,6 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
      * 
-     * ***
-     * 
      */
     @Export(name="dataset", refs={String.class}, tree="[0]")
     private Output<String> dataset;
@@ -281,8 +279,6 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
     /**
      * @return Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-     * 
-     * ***
      * 
      */
     public Output<String> dataset() {
@@ -353,7 +349,6 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
      * 
@@ -368,8 +363,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Hl7StoreNotificationConfig> notificationConfig;
 
     /**
-     * @return (Optional, Deprecated)
-     * A nested object resource
+     * @return A nested object resource
      * Structure is documented below.
      * 
      * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.

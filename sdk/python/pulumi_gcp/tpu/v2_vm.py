@@ -35,9 +35,6 @@ class V2VmArgs:
         """
         The set of arguments for constructing a V2Vm resource.
         :param pulumi.Input[str] runtime_version: Runtime version for the TPU.
-               
-               
-               - - -
         :param pulumi.Input['V2VmAcceleratorConfigArgs'] accelerator_config: The AccleratorConfig for the TPU Node. `accelerator_config` cannot be used at the same time
                as `accelerator_type`. If neither is specified, `accelerator_type` defaults to 'v2-8'.
                Structure is documented below.
@@ -108,9 +105,6 @@ class V2VmArgs:
     def runtime_version(self) -> pulumi.Input[str]:
         """
         Runtime version for the TPU.
-
-
-        - - -
         """
         return pulumi.get(self, "runtime_version")
 
@@ -382,9 +376,6 @@ class _V2VmState:
                and default labels configured on the provider.
         :param pulumi.Input[str] queued_resource: The qualified name of the QueuedResource that requested this Node.
         :param pulumi.Input[str] runtime_version: Runtime version for the TPU.
-               
-               
-               - - -
         :param pulumi.Input['V2VmSchedulingConfigArgs'] scheduling_config: The scheduling options for this node.
                Structure is documented below.
         :param pulumi.Input['V2VmServiceAccountArgs'] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
@@ -688,9 +679,6 @@ class _V2VmState:
     def runtime_version(self) -> Optional[pulumi.Input[str]]:
         """
         Runtime version for the TPU.
-
-
-        - - -
         """
         return pulumi.get(self, "runtime_version")
 
@@ -879,9 +867,6 @@ class V2Vm(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] runtime_version: Runtime version for the TPU.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['V2VmSchedulingConfigArgs']] scheduling_config: The scheduling options for this node.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['V2VmServiceAccountArgs']] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
@@ -1089,9 +1074,6 @@ class V2Vm(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] queued_resource: The qualified name of the QueuedResource that requested this Node.
         :param pulumi.Input[str] runtime_version: Runtime version for the TPU.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['V2VmSchedulingConfigArgs']] scheduling_config: The scheduling options for this node.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['V2VmServiceAccountArgs']] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is
@@ -1302,9 +1284,6 @@ class V2Vm(pulumi.CustomResource):
     def runtime_version(self) -> pulumi.Output[str]:
         """
         Runtime version for the TPU.
-
-
-        - - -
         """
         return pulumi.get(self, "runtime_version")
 

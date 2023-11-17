@@ -359,7 +359,6 @@ class FunctionSourceRepository(dict):
                  deployed_url: Optional[str] = None):
         """
         :param str url: The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
-               
                * To refer to a specific commit: `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`
                * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*`. To refer to HEAD, use the `master` moveable alias.
                * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*`
@@ -373,7 +372,6 @@ class FunctionSourceRepository(dict):
     def url(self) -> str:
         """
         The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
-
         * To refer to a specific commit: `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`
         * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*`. To refer to HEAD, use the `master` moveable alias.
         * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*`

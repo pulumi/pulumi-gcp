@@ -54,8 +54,6 @@ func LookupRegionSslCertificate(ctx *pulumi.Context, args *LookupRegionSslCertif
 // A collection of arguments for invoking getRegionSslCertificate.
 type LookupRegionSslCertificateArgs struct {
 	// The name of the certificate.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -98,8 +96,6 @@ func LookupRegionSslCertificateOutput(ctx *pulumi.Context, args LookupRegionSslC
 // A collection of arguments for invoking getRegionSslCertificate.
 type LookupRegionSslCertificateOutputArgs struct {
 	// The name of the certificate.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

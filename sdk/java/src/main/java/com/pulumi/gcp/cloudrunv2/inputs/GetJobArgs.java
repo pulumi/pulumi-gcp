@@ -18,16 +18,12 @@ public final class GetJobArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The location of the instance. eg us-central1
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location of the instance. eg us-central1
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -95,8 +91,6 @@ public final class GetJobArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param location The location of the instance. eg us-central1
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -107,8 +101,6 @@ public final class GetJobArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param location The location of the instance. eg us-central1
-         * 
-         * ***
          * 
          * @return builder
          * 

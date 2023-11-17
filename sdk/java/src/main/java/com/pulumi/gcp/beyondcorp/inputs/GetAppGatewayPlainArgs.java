@@ -17,16 +17,12 @@ public final class GetAppGatewayPlainArgs extends com.pulumi.resources.InvokeArg
     /**
      * The name of the App Gateway.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the App Gateway.
-     * 
-     * ***
      * 
      */
     public String name() {
@@ -95,8 +91,6 @@ public final class GetAppGatewayPlainArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param name The name of the App Gateway.
-         * 
-         * ***
          * 
          * @return builder
          * 

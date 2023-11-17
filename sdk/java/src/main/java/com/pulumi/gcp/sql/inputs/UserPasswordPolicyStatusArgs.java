@@ -17,14 +17,14 @@ public final class UserPasswordPolicyStatusArgs extends com.pulumi.resources.Res
     public static final UserPasswordPolicyStatusArgs Empty = new UserPasswordPolicyStatusArgs();
 
     /**
-     * If true, user does not have login privileges.
+     * (read only) If true, user does not have login privileges.
      * 
      */
     @Import(name="locked")
     private @Nullable Output<Boolean> locked;
 
     /**
-     * @return If true, user does not have login privileges.
+     * @return (read only) If true, user does not have login privileges.
      * 
      */
     public Optional<Output<Boolean>> locked() {
@@ -32,14 +32,14 @@ public final class UserPasswordPolicyStatusArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Password expiration duration with one week grace period.
+     * (read only) Password expiration duration with one week grace period.
      * 
      */
     @Import(name="passwordExpirationTime")
     private @Nullable Output<String> passwordExpirationTime;
 
     /**
-     * @return Password expiration duration with one week grace period.
+     * @return (read only) Password expiration duration with one week grace period.
      * 
      */
     public Optional<Output<String>> passwordExpirationTime() {
@@ -72,7 +72,7 @@ public final class UserPasswordPolicyStatusArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param locked If true, user does not have login privileges.
+         * @param locked (read only) If true, user does not have login privileges.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class UserPasswordPolicyStatusArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param locked If true, user does not have login privileges.
+         * @param locked (read only) If true, user does not have login privileges.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class UserPasswordPolicyStatusArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param passwordExpirationTime Password expiration duration with one week grace period.
+         * @param passwordExpirationTime (read only) Password expiration duration with one week grace period.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class UserPasswordPolicyStatusArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param passwordExpirationTime Password expiration duration with one week grace period.
+         * @param passwordExpirationTime (read only) Password expiration duration with one week grace period.
          * 
          * @return builder
          * 

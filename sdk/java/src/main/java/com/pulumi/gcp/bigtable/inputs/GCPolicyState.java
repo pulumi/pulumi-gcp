@@ -39,8 +39,6 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
      * 
      * Possible values are: `ABANDON`.
      * 
-     * ***
-     * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
@@ -50,8 +48,6 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
      * 
      * Possible values are: `ABANDON`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -119,14 +115,14 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+     * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+     * @return If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -222,8 +218,6 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
          * 
          * Possible values are: `ABANDON`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -237,8 +231,6 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
          * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
          * 
          * Possible values are: `ABANDON`.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -342,7 +334,7 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+         * @param mode If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
          * 
          * @return builder
          * 
@@ -353,7 +345,7 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+         * @param mode If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
          * 
          * @return builder
          * 

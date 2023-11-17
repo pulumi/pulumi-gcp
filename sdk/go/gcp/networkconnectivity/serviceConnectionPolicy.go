@@ -121,8 +121,6 @@ type ServiceConnectionPolicy struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the ServiceConnectionPolicy.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -207,8 +205,6 @@ type serviceConnectionPolicyState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the ServiceConnectionPolicy.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
 	Name *string `pulumi:"name"`
@@ -250,8 +246,6 @@ type ServiceConnectionPolicyState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the ServiceConnectionPolicy.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
 	Name pulumi.StringPtrInput
@@ -289,8 +283,6 @@ type serviceConnectionPolicyArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the ServiceConnectionPolicy.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
 	Name *string `pulumi:"name"`
@@ -317,8 +309,6 @@ type ServiceConnectionPolicyArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the ServiceConnectionPolicy.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
 	Name pulumi.StringPtrInput
@@ -456,8 +446,6 @@ func (o ServiceConnectionPolicyOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location of the ServiceConnectionPolicy.
-//
-// ***
 func (o ServiceConnectionPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

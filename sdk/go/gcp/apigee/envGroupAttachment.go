@@ -169,8 +169,6 @@ type EnvGroupAttachment struct {
 
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-	//
-	// ***
 	EnvgroupId pulumi.StringOutput `pulumi:"envgroupId"`
 	// The resource ID of the environment.
 	Environment pulumi.StringOutput `pulumi:"environment"`
@@ -216,8 +214,6 @@ func GetEnvGroupAttachment(ctx *pulumi.Context,
 type envGroupAttachmentState struct {
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-	//
-	// ***
 	EnvgroupId *string `pulumi:"envgroupId"`
 	// The resource ID of the environment.
 	Environment *string `pulumi:"environment"`
@@ -228,8 +224,6 @@ type envGroupAttachmentState struct {
 type EnvGroupAttachmentState struct {
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-	//
-	// ***
 	EnvgroupId pulumi.StringPtrInput
 	// The resource ID of the environment.
 	Environment pulumi.StringPtrInput
@@ -244,8 +238,6 @@ func (EnvGroupAttachmentState) ElementType() reflect.Type {
 type envGroupAttachmentArgs struct {
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-	//
-	// ***
 	EnvgroupId string `pulumi:"envgroupId"`
 	// The resource ID of the environment.
 	Environment string `pulumi:"environment"`
@@ -255,8 +247,6 @@ type envGroupAttachmentArgs struct {
 type EnvGroupAttachmentArgs struct {
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-	//
-	// ***
 	EnvgroupId pulumi.StringInput
 	// The resource ID of the environment.
 	Environment pulumi.StringInput
@@ -351,8 +341,6 @@ func (o EnvGroupAttachmentOutput) ToEnvGroupAttachmentOutputWithContext(ctx cont
 
 // The Apigee environment group associated with the Apigee environment,
 // in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-//
-// ***
 func (o EnvGroupAttachmentOutput) EnvgroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvGroupAttachment) pulumi.StringOutput { return v.EnvgroupId }).(pulumi.StringOutput)
 }

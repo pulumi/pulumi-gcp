@@ -266,8 +266,6 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
      * 
      * Possible values are: `ABANDON`.
      * 
-     * ***
-     * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
@@ -277,8 +275,6 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
      * 
      * Possible values are: `ABANDON`.
-     * 
-     * ***
      * 
      */
     public Output<Optional<String>> deletionPolicy() {
@@ -341,14 +337,14 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxVersions);
     }
     /**
-     * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+     * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mode;
 
     /**
-     * @return If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+     * @return If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
      * 
      */
     public Output<Optional<String>> mode() {

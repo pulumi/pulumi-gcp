@@ -162,9 +162,6 @@ export class Workstation extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the workstation parent resources reside.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -316,9 +313,6 @@ export interface WorkstationState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the workstation parent resources reside.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -383,9 +377,6 @@ export interface WorkstationArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the workstation parent resources reside.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

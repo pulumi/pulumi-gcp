@@ -153,8 +153,6 @@ type Release struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-	//
-	// ***
 	RulesetName pulumi.StringOutput `pulumi:"rulesetName"`
 	// Output only. Time the release was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -202,8 +200,6 @@ type releaseState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-	//
-	// ***
 	RulesetName *string `pulumi:"rulesetName"`
 	// Output only. Time the release was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -219,8 +215,6 @@ type ReleaseState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-	//
-	// ***
 	RulesetName pulumi.StringPtrInput
 	// Output only. Time the release was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -236,8 +230,6 @@ type releaseArgs struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-	//
-	// ***
 	RulesetName string `pulumi:"rulesetName"`
 }
 
@@ -248,8 +240,6 @@ type ReleaseArgs struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-	//
-	// ***
 	RulesetName pulumi.StringInput
 }
 
@@ -361,8 +351,6 @@ func (o ReleaseOutput) Project() pulumi.StringOutput {
 }
 
 // Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-//
-// ***
 func (o ReleaseOutput) RulesetName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.RulesetName }).(pulumi.StringOutput)
 }

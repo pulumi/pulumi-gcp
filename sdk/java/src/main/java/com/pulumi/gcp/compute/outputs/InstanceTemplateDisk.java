@@ -97,7 +97,7 @@ public final class InstanceTemplateDisk {
      */
     private @Nullable Integer provisionedIops;
     /**
-     * @return - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+     * @return A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
      */
     private @Nullable String resourcePolicies;
@@ -254,7 +254,7 @@ public final class InstanceTemplateDisk {
         return Optional.ofNullable(this.provisionedIops);
     }
     /**
-     * @return - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+     * @return A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<String> resourcePolicies() {

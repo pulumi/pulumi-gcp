@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Folder.Inputs
         /// * Cloud Pub/Sub
         /// * Cloud Storage
         /// * Persistent Disk
-        /// Note: These values are supported as input, but considered a legacy format:
+        ///   Note: These values are supported as input, but considered a legacy format:
         /// * all
         /// * appengine.googleapis.com
         /// * bigquery.googleapis.com
@@ -44,8 +44,6 @@ namespace Pulumi.Gcp.Folder.Inputs
         /// The enrollment level of the service.
         /// Default value is `BLOCK_ALL`.
         /// Possible values are: `BLOCK_ALL`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("enrollmentLevel")]
         public Input<string>? EnrollmentLevel { get; set; }

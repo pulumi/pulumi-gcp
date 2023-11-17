@@ -82,16 +82,12 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
      * 
-     * ***
-     * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
      * @return The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
-     * 
-     * ***
      * 
      */
     public Output<String> serviceName() {
@@ -217,8 +213,6 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serviceName The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -229,8 +223,6 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serviceName The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
-         * 
-         * ***
          * 
          * @return builder
          * 

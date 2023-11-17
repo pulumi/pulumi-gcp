@@ -59,8 +59,6 @@ type TargetTCPProxy struct {
 	pulumi.CustomResourceState
 
 	// A reference to the BackendService resource.
-	//
-	// ***
 	BackendService pulumi.StringOutput `pulumi:"backendService"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -125,8 +123,6 @@ func GetTargetTCPProxy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TargetTCPProxy resources.
 type targetTCPProxyState struct {
 	// A reference to the BackendService resource.
-	//
-	// ***
 	BackendService *string `pulumi:"backendService"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -159,8 +155,6 @@ type targetTCPProxyState struct {
 
 type TargetTCPProxyState struct {
 	// A reference to the BackendService resource.
-	//
-	// ***
 	BackendService pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -197,8 +191,6 @@ func (TargetTCPProxyState) ElementType() reflect.Type {
 
 type targetTCPProxyArgs struct {
 	// A reference to the BackendService resource.
-	//
-	// ***
 	BackendService string `pulumi:"backendService"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -226,8 +218,6 @@ type targetTCPProxyArgs struct {
 // The set of arguments for constructing a TargetTCPProxy resource.
 type TargetTCPProxyArgs struct {
 	// A reference to the BackendService resource.
-	//
-	// ***
 	BackendService pulumi.StringInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -340,8 +330,6 @@ func (o TargetTCPProxyOutput) ToTargetTCPProxyOutputWithContext(ctx context.Cont
 }
 
 // A reference to the BackendService resource.
-//
-// ***
 func (o TargetTCPProxyOutput) BackendService() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetTCPProxy) pulumi.StringOutput { return v.BackendService }).(pulumi.StringOutput)
 }

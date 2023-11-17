@@ -32,7 +32,6 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
 
     /**
      * Type of redirect action.
-     * 
      * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
      * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
      * 
@@ -42,7 +41,6 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
 
     /**
      * @return Type of redirect action.
-     * 
      * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
      * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
      * 
@@ -99,7 +97,6 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
 
         /**
          * @param type Type of redirect action.
-         * 
          * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
          * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
          * 
@@ -113,7 +110,6 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
 
         /**
          * @param type Type of redirect action.
-         * 
          * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
          * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
          * 

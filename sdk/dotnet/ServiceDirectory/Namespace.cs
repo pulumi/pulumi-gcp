@@ -109,9 +109,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("namespaceId")]
         public Output<string> NamespaceId { get; private set; } = null!;
@@ -209,9 +206,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
@@ -282,9 +276,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("namespaceId")]
         public Input<string>? NamespaceId { get; set; }

@@ -272,9 +272,6 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The ID of the alloydb instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -482,9 +479,6 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The ID of the alloydb instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -647,9 +641,6 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The ID of the alloydb instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

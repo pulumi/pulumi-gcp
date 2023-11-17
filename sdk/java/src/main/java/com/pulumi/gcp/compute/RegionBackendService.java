@@ -852,8 +852,6 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -866,8 +864,6 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -1034,16 +1030,16 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return this.sessionAffinity;
     }
     /**
-     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      * 
      */
     @Export(name="subsetting", refs={RegionBackendServiceSubsetting.class}, tree="[0]")
     private Output</* @Nullable */ RegionBackendServiceSubsetting> subsetting;
 
     /**
-     * @return Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * @return Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<RegionBackendServiceSubsetting>> subsetting() {

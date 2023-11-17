@@ -151,8 +151,6 @@ type VpnConnection struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Google Cloud Platform location.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of VPN connection
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -233,8 +231,6 @@ type vpnConnectionState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Google Cloud Platform location.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name of VPN connection
 	Name *string `pulumi:"name"`
@@ -275,8 +271,6 @@ type VpnConnectionState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Google Cloud Platform location.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name of VPN connection
 	Name pulumi.StringPtrInput
@@ -314,8 +308,6 @@ type vpnConnectionArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Google Cloud Platform location.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The resource name of VPN connection
 	Name *string `pulumi:"name"`
@@ -345,8 +337,6 @@ type VpnConnectionArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Google Cloud Platform location.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The resource name of VPN connection
 	Name pulumi.StringPtrInput
@@ -486,8 +476,6 @@ func (o VpnConnectionOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Google Cloud Platform location.
-//
-// ***
 func (o VpnConnectionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

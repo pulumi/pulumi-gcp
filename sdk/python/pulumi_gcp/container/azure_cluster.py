@@ -48,7 +48,7 @@ class AzureClusterArgs:
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+        :param pulumi.Input[str] project: The project for the resource
         """
         pulumi.set(__self__, "authorization", authorization)
         pulumi.set(__self__, "azure_region", azure_region)
@@ -235,7 +235,7 @@ class AzureClusterArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The number of the Fleet host project where this cluster will be registered.
+        The project for the resource
         """
         return pulumi.get(self, "project")
 
@@ -292,7 +292,7 @@ class _AzureClusterState:
         :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input['AzureClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+        :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
@@ -547,7 +547,7 @@ class _AzureClusterState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The number of the Fleet host project where this cluster will be registered.
+        The project for the resource
         """
         return pulumi.get(self, "project")
 
@@ -789,7 +789,7 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+        :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         """
         ...
@@ -1057,7 +1057,7 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+        :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
@@ -1230,7 +1230,7 @@ class AzureCluster(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The number of the Fleet host project where this cluster will be registered.
+        The project for the resource
         """
         return pulumi.get(self, "project")
 

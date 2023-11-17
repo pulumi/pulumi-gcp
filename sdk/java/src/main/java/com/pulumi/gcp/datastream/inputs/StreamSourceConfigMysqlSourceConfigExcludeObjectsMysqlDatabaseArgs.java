@@ -18,6 +18,8 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
     public static final StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs Empty = new StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs();
 
     /**
+     * Database name.`database` -
+     * (Required)
      * Database name.
      * 
      */
@@ -25,7 +27,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
     private Output<String> database;
 
     /**
-     * @return Database name.
+     * @return Database name.`database` -
+     * (Required)
+     * Database name.
      * 
      */
     public Output<String> database() {
@@ -33,6 +37,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
     }
 
     /**
+     * Tables in the database.
+     * Structure is documented below.`mysql_tables` -
+     * (Optional)
      * Tables in the database.
      * Structure is documented below.
      * 
@@ -42,6 +49,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
 
     /**
      * @return Tables in the database.
+     * Structure is documented below.`mysql_tables` -
+     * (Optional)
+     * Tables in the database.
      * Structure is documented below.
      * 
      */
@@ -75,7 +85,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
         }
 
         /**
-         * @param database Database name.
+         * @param database Database name.`database` -
+         * (Required)
+         * Database name.
          * 
          * @return builder
          * 
@@ -86,7 +98,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
         }
 
         /**
-         * @param database Database name.
+         * @param database Database name.`database` -
+         * (Required)
+         * Database name.
          * 
          * @return builder
          * 
@@ -97,6 +111,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
 
         /**
          * @param mysqlTables Tables in the database.
+         * Structure is documented below.`mysql_tables` -
+         * (Optional)
+         * Tables in the database.
          * Structure is documented below.
          * 
          * @return builder
@@ -109,6 +126,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
 
         /**
          * @param mysqlTables Tables in the database.
+         * Structure is documented below.`mysql_tables` -
+         * (Optional)
+         * Tables in the database.
          * Structure is documented below.
          * 
          * @return builder
@@ -120,6 +140,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
 
         /**
          * @param mysqlTables Tables in the database.
+         * Structure is documented below.`mysql_tables` -
+         * (Optional)
+         * Tables in the database.
          * Structure is documented below.
          * 
          * @return builder

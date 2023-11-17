@@ -27,7 +27,6 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
      * @return The properties to set on daemon config files.
      * 
      * Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings:
-     * 
      * * capacity-scheduler: `capacity-scheduler.xml`
      * * core: `core-site.xml`
      * * distcp: `distcp-default.xml`
@@ -62,7 +61,6 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
      * @return The properties to set on daemon config files.
      * 
      * Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings:
-     * 
      * * capacity-scheduler: `capacity-scheduler.xml`
      * * core: `core-site.xml`
      * * distcp: `distcp-default.xml`

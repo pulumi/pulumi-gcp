@@ -112,9 +112,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Id of the scope
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("scopeId")]
         public Output<string> ScopeId { get; private set; } = null!;
@@ -241,9 +238,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Id of the scope
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("scopeId", required: true)]
         public Input<string> ScopeId { get; set; } = null!;
@@ -359,9 +353,6 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Id of the scope
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("scopeId")]
         public Input<string>? ScopeId { get; set; }

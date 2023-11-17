@@ -100,16 +100,12 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
     /**
      * OAuth client secret
      * 
-     * ***
-     * 
      */
     @Export(name="clientSecret", refs={String.class}, tree="[0]")
     private Output<String> clientSecret;
 
     /**
      * @return OAuth client secret
-     * 
-     * ***
      * 
      */
     public Output<String> clientSecret() {
@@ -131,16 +127,6 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
     }
     /**
      * ID of the IDP. Possible values include:
-     * * `apple.com`
-     * * `facebook.com`
-     * * `gc.apple.com`
-     * * `github.com`
-     * * `google.com`
-     * * `linkedin.com`
-     * * `microsoft.com`
-     * * `playgames.google.com`
-     * * `twitter.com`
-     * * `yahoo.com`
      * 
      */
     @Export(name="idpId", refs={String.class}, tree="[0]")
@@ -148,16 +134,6 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
 
     /**
      * @return ID of the IDP. Possible values include:
-     * * `apple.com`
-     * * `facebook.com`
-     * * `gc.apple.com`
-     * * `github.com`
-     * * `google.com`
-     * * `linkedin.com`
-     * * `microsoft.com`
-     * * `playgames.google.com`
-     * * `twitter.com`
-     * * `yahoo.com`
      * 
      */
     public Output<String> idpId() {

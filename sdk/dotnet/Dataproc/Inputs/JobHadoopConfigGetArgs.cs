@@ -80,8 +80,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..
-        /// 
-        /// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
         /// </summary>
         public InputMap<string> Properties
         {

@@ -52,8 +52,6 @@ type EnvKeystore struct {
 	Aliases pulumi.StringArrayOutput `pulumi:"aliases"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId pulumi.StringOutput `pulumi:"envId"`
 	// The name of the newly created keystore.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -96,8 +94,6 @@ type envKeystoreState struct {
 	Aliases []string `pulumi:"aliases"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId *string `pulumi:"envId"`
 	// The name of the newly created keystore.
 	Name *string `pulumi:"name"`
@@ -108,8 +104,6 @@ type EnvKeystoreState struct {
 	Aliases pulumi.StringArrayInput
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId pulumi.StringPtrInput
 	// The name of the newly created keystore.
 	Name pulumi.StringPtrInput
@@ -122,8 +116,6 @@ func (EnvKeystoreState) ElementType() reflect.Type {
 type envKeystoreArgs struct {
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId string `pulumi:"envId"`
 	// The name of the newly created keystore.
 	Name *string `pulumi:"name"`
@@ -133,8 +125,6 @@ type envKeystoreArgs struct {
 type EnvKeystoreArgs struct {
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-	//
-	// ***
 	EnvId pulumi.StringInput
 	// The name of the newly created keystore.
 	Name pulumi.StringPtrInput
@@ -234,8 +224,6 @@ func (o EnvKeystoreOutput) Aliases() pulumi.StringArrayOutput {
 
 // The Apigee environment group associated with the Apigee environment,
 // in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-//
-// ***
 func (o EnvKeystoreOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvKeystore) pulumi.StringOutput { return v.EnvId }).(pulumi.StringOutput)
 }

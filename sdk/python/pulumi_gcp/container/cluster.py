@@ -126,8 +126,7 @@ class ClusterArgs:
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
                for available features.
-        :param pulumi.Input[bool] enable_fqdn_network_policy: )
-               Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+        :param pulumi.Input[bool] enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input['ClusterEnableK8sBetaApisArgs'] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
                Structure is documented below.
@@ -139,8 +138,7 @@ class ClusterArgs:
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_multi_networking: )
-               Whether multi-networking is enabled for this cluster.
+        :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -207,8 +205,6 @@ class ClusterArgs:
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
-               
-               - - -
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -252,7 +248,7 @@ class ClusterArgs:
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: ) Configuration for the
+        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterPrivateClusterConfigArgs'] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -260,8 +256,7 @@ class ClusterArgs:
         :param pulumi.Input[str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: )
-               Enable/Disable Protect API features for the cluster. Structure is documented below.
+        :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterReleaseChannelArgs'] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -275,7 +270,8 @@ class ClusterArgs:
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+               for how these labels are applied to clusters, node pools and nodes.
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
@@ -657,7 +653,6 @@ class ClusterArgs:
     @pulumi.getter(name="enableFqdnNetworkPolicy")
     def enable_fqdn_network_policy(self) -> Optional[pulumi.Input[bool]]:
         """
-        )
         Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         """
         return pulumi.get(self, "enable_fqdn_network_policy")
@@ -736,7 +731,6 @@ class ClusterArgs:
     @pulumi.getter(name="enableMultiNetworking")
     def enable_multi_networking(self) -> Optional[pulumi.Input[bool]]:
         """
-        )
         Whether multi-networking is enabled for this cluster.
         """
         return pulumi.get(self, "enable_multi_networking")
@@ -1002,8 +996,6 @@ class ClusterArgs:
         """
         The name of the cluster, unique within the project and
         location.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1168,7 +1160,7 @@ class ClusterArgs:
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]:
         """
-        ) Configuration for the
+        Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
         """
@@ -1220,7 +1212,6 @@ class ClusterArgs:
     @pulumi.getter(name="protectConfig")
     def protect_config(self) -> Optional[pulumi.Input['ClusterProtectConfigArgs']]:
         """
-        )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "protect_config")
@@ -1268,7 +1259,8 @@ class ClusterArgs:
     @pulumi.getter(name="resourceLabels")
     def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        for how these labels are applied to clusters, node pools and nodes.
         """
         return pulumi.get(self, "resource_labels")
 
@@ -1487,8 +1479,7 @@ class _ClusterState:
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
                for available features.
-        :param pulumi.Input[bool] enable_fqdn_network_policy: )
-               Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+        :param pulumi.Input[bool] enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input['ClusterEnableK8sBetaApisArgs'] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
                Structure is documented below.
@@ -1500,8 +1491,7 @@ class _ClusterState:
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_multi_networking: )
-               Whether multi-networking is enabled for this cluster.
+        :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -1573,8 +1563,6 @@ class _ClusterState:
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
-               
-               - - -
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -1618,7 +1606,7 @@ class _ClusterState:
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: ) Configuration for the
+        :param pulumi.Input['ClusterPodSecurityPolicyConfigArgs'] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterPrivateClusterConfigArgs'] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -1626,8 +1614,7 @@ class _ClusterState:
         :param pulumi.Input[str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: )
-               Enable/Disable Protect API features for the cluster. Structure is documented below.
+        :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterReleaseChannelArgs'] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -1641,7 +1628,8 @@ class _ClusterState:
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+               for how these labels are applied to clusters, node pools and nodes.
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
@@ -2045,7 +2033,6 @@ class _ClusterState:
     @pulumi.getter(name="enableFqdnNetworkPolicy")
     def enable_fqdn_network_policy(self) -> Optional[pulumi.Input[bool]]:
         """
-        )
         Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         """
         return pulumi.get(self, "enable_fqdn_network_policy")
@@ -2124,7 +2111,6 @@ class _ClusterState:
     @pulumi.getter(name="enableMultiNetworking")
     def enable_multi_networking(self) -> Optional[pulumi.Input[bool]]:
         """
-        )
         Whether multi-networking is enabled for this cluster.
         """
         return pulumi.get(self, "enable_multi_networking")
@@ -2428,8 +2414,6 @@ class _ClusterState:
         """
         The name of the cluster, unique within the project and
         location.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -2603,7 +2587,7 @@ class _ClusterState:
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]:
         """
-        ) Configuration for the
+        Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
         """
@@ -2655,7 +2639,6 @@ class _ClusterState:
     @pulumi.getter(name="protectConfig")
     def protect_config(self) -> Optional[pulumi.Input['ClusterProtectConfigArgs']]:
         """
-        )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "protect_config")
@@ -2703,7 +2686,8 @@ class _ClusterState:
     @pulumi.getter(name="resourceLabels")
     def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        for how these labels are applied to clusters, node pools and nodes.
         """
         return pulumi.get(self, "resource_labels")
 
@@ -3041,8 +3025,7 @@ class Cluster(pulumi.CustomResource):
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
                for available features.
-        :param pulumi.Input[bool] enable_fqdn_network_policy: )
-               Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+        :param pulumi.Input[bool] enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
                Structure is documented below.
@@ -3054,8 +3037,7 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_multi_networking: )
-               Whether multi-networking is enabled for this cluster.
+        :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -3122,8 +3104,6 @@ class Cluster(pulumi.CustomResource):
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
-               
-               - - -
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -3167,7 +3147,7 @@ class Cluster(pulumi.CustomResource):
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: ) Configuration for the
+        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -3175,8 +3155,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ClusterProtectConfigArgs']] protect_config: )
-               Enable/Disable Protect API features for the cluster. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterProtectConfigArgs']] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -3190,7 +3169,8 @@ class Cluster(pulumi.CustomResource):
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+               for how these labels are applied to clusters, node pools and nodes.
         :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
@@ -3590,8 +3570,7 @@ class Cluster(pulumi.CustomResource):
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
                for available features.
-        :param pulumi.Input[bool] enable_fqdn_network_policy: )
-               Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+        :param pulumi.Input[bool] enable_fqdn_network_policy: Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
                Structure is documented below.
@@ -3603,8 +3582,7 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_multi_networking: )
-               Whether multi-networking is enabled for this cluster.
+        :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -3676,8 +3654,6 @@ class Cluster(pulumi.CustomResource):
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
-               
-               - - -
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -3721,7 +3697,7 @@ class Cluster(pulumi.CustomResource):
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: ) Configuration for the
+        :param pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']] pod_security_policy_config: Configuration for the
                [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
@@ -3729,8 +3705,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['ClusterProtectConfigArgs']] protect_config: )
-               Enable/Disable Protect API features for the cluster. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterProtectConfigArgs']] protect_config: Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -3744,7 +3719,8 @@ class Cluster(pulumi.CustomResource):
                pool upon cluster creation. If you're using `container.NodePool`
                resources with no default node pool, this should be set to `true`, alongside
                setting `initial_node_count` to at least `1`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_labels: The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+               for how these labels are applied to clusters, node pools and nodes.
         :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
@@ -4011,7 +3987,6 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="enableFqdnNetworkPolicy")
     def enable_fqdn_network_policy(self) -> pulumi.Output[Optional[bool]]:
         """
-        )
         Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         """
         return pulumi.get(self, "enable_fqdn_network_policy")
@@ -4066,7 +4041,6 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="enableMultiNetworking")
     def enable_multi_networking(self) -> pulumi.Output[Optional[bool]]:
         """
-        )
         Whether multi-networking is enabled for this cluster.
         """
         return pulumi.get(self, "enable_multi_networking")
@@ -4286,8 +4260,6 @@ class Cluster(pulumi.CustomResource):
         """
         The name of the cluster, unique within the project and
         location.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -4413,7 +4385,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="podSecurityPolicyConfig")
     def pod_security_policy_config(self) -> pulumi.Output[Optional['outputs.ClusterPodSecurityPolicyConfig']]:
         """
-        ) Configuration for the
+        Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         Structure is documented below.
         """
@@ -4449,7 +4421,6 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="protectConfig")
     def protect_config(self) -> pulumi.Output['outputs.ClusterProtectConfig']:
         """
-        )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "protect_config")
@@ -4485,7 +4456,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="resourceLabels")
     def resource_labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        for how these labels are applied to clusters, node pools and nodes.
         """
         return pulumi.get(self, "resource_labels")
 

@@ -19,14 +19,14 @@ public final class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs extends co
     public static final URLMapPathMatcherDefaultRouteActionRetryPolicyArgs Empty = new URLMapPathMatcherDefaultRouteActionRetryPolicyArgs();
 
     /**
-     * Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
+     * Specifies the allowed number retries. This number must be &gt; 0.
      * 
      */
     @Import(name="numRetries")
     private @Nullable Output<Integer> numRetries;
 
     /**
-     * @return Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
+     * @return Specifies the allowed number retries. This number must be &gt; 0.
      * 
      */
     public Optional<Output<Integer>> numRetries() {
@@ -35,8 +35,8 @@ public final class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs extends co
 
     /**
      * Specifies a non-zero timeout per retry attempt.
-     * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-     * will use the largest timeout among all backend services associated with the route.
+     * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+     * is not set, will use the largest timeout among all backend services associated with the route.
      * Structure is documented below.
      * 
      */
@@ -45,8 +45,8 @@ public final class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs extends co
 
     /**
      * @return Specifies a non-zero timeout per retry attempt.
-     * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-     * will use the largest timeout among all backend services associated with the route.
+     * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+     * is not set, will use the largest timeout among all backend services associated with the route.
      * Structure is documented below.
      * 
      */
@@ -124,7 +124,7 @@ public final class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs extends co
         }
 
         /**
-         * @param numRetries Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
+         * @param numRetries Specifies the allowed number retries. This number must be &gt; 0.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs extends co
         }
 
         /**
-         * @param numRetries Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
+         * @param numRetries Specifies the allowed number retries. This number must be &gt; 0.
          * 
          * @return builder
          * 
@@ -146,8 +146,8 @@ public final class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs extends co
 
         /**
          * @param perTryTimeout Specifies a non-zero timeout per retry attempt.
-         * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-         * will use the largest timeout among all backend services associated with the route.
+         * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+         * is not set, will use the largest timeout among all backend services associated with the route.
          * Structure is documented below.
          * 
          * @return builder
@@ -160,8 +160,8 @@ public final class URLMapPathMatcherDefaultRouteActionRetryPolicyArgs extends co
 
         /**
          * @param perTryTimeout Specifies a non-zero timeout per retry attempt.
-         * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-         * will use the largest timeout among all backend services associated with the route.
+         * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction
+         * is not set, will use the largest timeout among all backend services associated with the route.
          * Structure is documented below.
          * 
          * @return builder

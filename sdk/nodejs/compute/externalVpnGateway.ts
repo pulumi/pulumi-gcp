@@ -184,9 +184,6 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -288,9 +285,6 @@ export interface ExternalVpnGatewayState {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -341,9 +335,6 @@ export interface ExternalVpnGatewayArgs {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionAutoscalerAutoscalingPolicyScalingSchedule {
     /**
-     * @return An optional description of this resource.
+     * @return A description of a scaling schedule.
      * 
      */
     private @Nullable String description;
@@ -51,7 +51,7 @@ public final class RegionAutoscalerAutoscalingPolicyScalingSchedule {
 
     private RegionAutoscalerAutoscalingPolicyScalingSchedule() {}
     /**
-     * @return An optional description of this resource.
+     * @return A description of a scaling schedule.
      * 
      */
     public Optional<String> description() {

@@ -23,8 +23,6 @@ public final class ClusterClusterConfigInitializationAction {
      * allowed to take to execute its action. GCP will default to a predetermined
      * computed value if not set (currently 300).
      * 
-     * ***
-     * 
      */
     private @Nullable Integer timeoutSec;
 
@@ -41,8 +39,6 @@ public final class ClusterClusterConfigInitializationAction {
      * @return The maximum duration (in seconds) which `script` is
      * allowed to take to execute its action. GCP will default to a predetermined
      * computed value if not set (currently 300).
-     * 
-     * ***
      * 
      */
     public Optional<Integer> timeoutSec() {

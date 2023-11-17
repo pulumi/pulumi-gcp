@@ -17,16 +17,12 @@ public final class GetGlobalForwardingRulePlainArgs extends com.pulumi.resources
     /**
      * The name of the global forwarding rule.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the global forwarding rule.
-     * 
-     * ***
      * 
      */
     public String name() {
@@ -77,8 +73,6 @@ public final class GetGlobalForwardingRulePlainArgs extends com.pulumi.resources
 
         /**
          * @param name The name of the global forwarding rule.
-         * 
-         * ***
          * 
          * @return builder
          * 

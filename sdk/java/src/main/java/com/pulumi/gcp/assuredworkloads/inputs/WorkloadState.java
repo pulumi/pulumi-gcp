@@ -245,16 +245,12 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
     /**
      * The organization for the resource
      * 
-     * ***
-     * 
      */
     @Import(name="organization")
     private @Nullable Output<String> organization;
 
     /**
      * @return The organization for the resource
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> organization() {
@@ -760,8 +756,6 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param organization The organization for the resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -772,8 +766,6 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param organization The organization for the resource
-         * 
-         * ***
          * 
          * @return builder
          * 

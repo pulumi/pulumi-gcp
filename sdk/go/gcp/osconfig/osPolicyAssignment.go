@@ -188,7 +188,8 @@ type OsPolicyAssignment struct {
 	// Output only. Indicates that this revision deletes the OS policy
 	// assignment.
 	Deleted pulumi.BoolOutput `pulumi:"deleted"`
-	// OS policy assignment description. Length of the
+	// Policy description. Length of the description is
+	// limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
 	// description is limited to 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The etag for this OS policy assignment. If this is provided on
@@ -282,7 +283,8 @@ type osPolicyAssignmentState struct {
 	// Output only. Indicates that this revision deletes the OS policy
 	// assignment.
 	Deleted *bool `pulumi:"deleted"`
-	// OS policy assignment description. Length of the
+	// Policy description. Length of the description is
+	// limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
 	// description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// The etag for this OS policy assignment. If this is provided on
@@ -335,7 +337,8 @@ type OsPolicyAssignmentState struct {
 	// Output only. Indicates that this revision deletes the OS policy
 	// assignment.
 	Deleted pulumi.BoolPtrInput
-	// OS policy assignment description. Length of the
+	// Policy description. Length of the description is
+	// limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
 	// description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// The etag for this OS policy assignment. If this is provided on
@@ -384,7 +387,8 @@ func (OsPolicyAssignmentState) ElementType() reflect.Type {
 }
 
 type osPolicyAssignmentArgs struct {
-	// OS policy assignment description. Length of the
+	// Policy description. Length of the description is
+	// limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
 	// description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// Filter to select VMs. Structure is
@@ -413,7 +417,8 @@ type osPolicyAssignmentArgs struct {
 
 // The set of arguments for constructing a OsPolicyAssignment resource.
 type OsPolicyAssignmentArgs struct {
-	// OS policy assignment description. Length of the
+	// Policy description. Length of the description is
+	// limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
 	// description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// Filter to select VMs. Structure is
@@ -541,7 +546,8 @@ func (o OsPolicyAssignmentOutput) Deleted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.BoolOutput { return v.Deleted }).(pulumi.BoolOutput)
 }
 
-// OS policy assignment description. Length of the
+// Policy description. Length of the description is
+// limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
 // description is limited to 1024 characters.
 func (o OsPolicyAssignmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)

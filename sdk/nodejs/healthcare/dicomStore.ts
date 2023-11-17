@@ -132,9 +132,6 @@ export class DicomStore extends pulumi.CustomResource {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
@@ -230,9 +227,6 @@ export interface DicomStoreState {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     dataset?: pulumi.Input<string>;
     /**
@@ -287,9 +281,6 @@ export interface DicomStoreArgs {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
-     *
-     *
-     * - - -
      */
     dataset: pulumi.Input<string>;
     /**

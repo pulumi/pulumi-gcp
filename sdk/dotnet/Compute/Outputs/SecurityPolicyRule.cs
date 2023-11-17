@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleMatch Match;
         /// <summary>
-        /// ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+        /// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityPolicyRulePreconfiguredWafConfig? PreconfiguredWafConfig;
         /// <summary>

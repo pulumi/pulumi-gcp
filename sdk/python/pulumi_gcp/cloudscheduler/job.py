@@ -41,7 +41,7 @@ class JobArgs:
                * For HTTP targets, between 15 seconds and 30 minutes.
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
                * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+                 A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[str] description: A human-readable description for the job.
                This string must not contain more than 500 characters.
         :param pulumi.Input['JobHttpTargetArgs'] http_target: HTTP target.
@@ -49,9 +49,6 @@ class JobArgs:
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
-               
-               
-               - - -
         :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -119,7 +116,7 @@ class JobArgs:
         * For HTTP targets, between 15 seconds and 30 minutes.
         * For App Engine HTTP targets, between 15 seconds and 24 hours.
         * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+          A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         """
         return pulumi.get(self, "attempt_deadline")
 
@@ -160,9 +157,6 @@ class JobArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the job.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -292,7 +286,7 @@ class _JobState:
                * For HTTP targets, between 15 seconds and 30 minutes.
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
                * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+                 A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[str] description: A human-readable description for the job.
                This string must not contain more than 500 characters.
         :param pulumi.Input['JobHttpTargetArgs'] http_target: HTTP target.
@@ -300,9 +294,6 @@ class _JobState:
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
-               
-               
-               - - -
         :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -373,7 +364,7 @@ class _JobState:
         * For HTTP targets, between 15 seconds and 30 minutes.
         * For App Engine HTTP targets, between 15 seconds and 24 hours.
         * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+          A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         """
         return pulumi.get(self, "attempt_deadline")
 
@@ -414,9 +405,6 @@ class _JobState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the job.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -667,7 +655,7 @@ class Job(pulumi.CustomResource):
                * For HTTP targets, between 15 seconds and 30 minutes.
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
                * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+                 A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[str] description: A human-readable description for the job.
                This string must not contain more than 500 characters.
         :param pulumi.Input[pulumi.InputType['JobHttpTargetArgs']] http_target: HTTP target.
@@ -675,9 +663,6 @@ class Job(pulumi.CustomResource):
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
-               
-               
-               - - -
         :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -897,7 +882,7 @@ class Job(pulumi.CustomResource):
                * For HTTP targets, between 15 seconds and 30 minutes.
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
                * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+                 A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[str] description: A human-readable description for the job.
                This string must not contain more than 500 characters.
         :param pulumi.Input[pulumi.InputType['JobHttpTargetArgs']] http_target: HTTP target.
@@ -905,9 +890,6 @@ class Job(pulumi.CustomResource):
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
-               
-               
-               - - -
         :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -966,7 +948,7 @@ class Job(pulumi.CustomResource):
         * For HTTP targets, between 15 seconds and 30 minutes.
         * For App Engine HTTP targets, between 15 seconds and 24 hours.
         * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+          A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         """
         return pulumi.get(self, "attempt_deadline")
 
@@ -995,9 +977,6 @@ class Job(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the job.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

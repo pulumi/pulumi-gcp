@@ -15,10 +15,15 @@ namespace Pulumi.Gcp.Datastream.Outputs
     {
         /// <summary>
         /// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        /// Structure is documented below.`oracle_columns` -
+        /// (Optional)
+        /// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn> OracleColumns;
         /// <summary>
+        /// Table name.`table` -
+        /// (Required)
         /// Table name.
         /// </summary>
         public readonly string Table;

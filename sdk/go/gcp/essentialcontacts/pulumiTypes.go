@@ -406,8 +406,6 @@ type DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions struct {
 	// List of possible enum values.
 	PossibleValues []string `pulumi:"possibleValues"`
 	// Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-	//
-	// ***
 	ValidationCheckDisabled *bool `pulumi:"validationCheckDisabled"`
 }
 
@@ -426,8 +424,6 @@ type DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs stru
 	// List of possible enum values.
 	PossibleValues pulumi.StringArrayInput `pulumi:"possibleValues"`
 	// Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-	//
-	// ***
 	ValidationCheckDisabled pulumi.BoolPtrInput `pulumi:"validationCheckDisabled"`
 }
 
@@ -516,8 +512,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsOutput
 }
 
 // Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-//
-// ***
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsOutput) ValidationCheckDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions) *bool {
 		return v.ValidationCheckDisabled
@@ -559,8 +553,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOut
 }
 
 // Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-//
-// ***
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsPtrOutput) ValidationCheckDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions) *bool {
 		if v == nil {
@@ -1462,8 +1454,6 @@ type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPrope
 	// List of possible enum values.
 	PossibleValues []string `pulumi:"possibleValues"`
 	// Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-	//
-	// ***
 	ValidationCheckDisabled *bool `pulumi:"validationCheckDisabled"`
 }
 
@@ -1482,8 +1472,6 @@ type DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPrope
 	// List of possible enum values.
 	PossibleValues pulumi.StringArrayInput `pulumi:"possibleValues"`
 	// Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-	//
-	// ***
 	ValidationCheckDisabled pulumi.BoolPtrInput `pulumi:"validationCheckDisabled"`
 }
 
@@ -1572,8 +1560,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 }
 
 // Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-//
-// ***
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsOutput) ValidationCheckDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions) *bool {
 		return v.ValidationCheckDisabled
@@ -1615,8 +1601,6 @@ func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPr
 }
 
 // Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-//
-// ***
 func (o DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsPtrOutput) ValidationCheckDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions) *bool {
 		if v == nil {

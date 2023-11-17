@@ -87,16 +87,12 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
     /**
      * The user-assigned display name of the App.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return The user-assigned display name of the App.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -272,8 +268,6 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The user-assigned display name of the App.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -284,8 +278,6 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The user-assigned display name of the App.
-         * 
-         * ***
          * 
          * @return builder
          * 

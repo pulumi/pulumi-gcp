@@ -89,9 +89,6 @@ export class Fulfillment extends pulumi.CustomResource {
 
     /**
      * The human-readable name of the fulfillment, unique within the agent.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -161,9 +158,6 @@ export class Fulfillment extends pulumi.CustomResource {
 export interface FulfillmentState {
     /**
      * The human-readable name of the fulfillment, unique within the agent.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -198,9 +192,6 @@ export interface FulfillmentState {
 export interface FulfillmentArgs {
     /**
      * The human-readable name of the fulfillment, unique within the agent.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

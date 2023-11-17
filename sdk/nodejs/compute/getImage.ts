@@ -57,11 +57,9 @@ export interface GetImageArgs {
      * , `family` or `filter` - (Required) The name of a specific image or a family.
      * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
      * the corresponding image. If `family` is specified, it will return the latest image
-     * that is part of an image family and is not deprecated. If you specify `filter`, your
-     * filter must return exactly one image unless you use `mostRecent`.
+     * that is part of an image family and is not deprecated. If you specify `filter`, your 
+     * filter must return exactly one image unless you use `mostRecent`. 
      * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
-     *
-     * - - -
      */
     name?: string;
     /**
@@ -200,11 +198,9 @@ export interface GetImageOutputArgs {
      * , `family` or `filter` - (Required) The name of a specific image or a family.
      * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
      * the corresponding image. If `family` is specified, it will return the latest image
-     * that is part of an image family and is not deprecated. If you specify `filter`, your
-     * filter must return exactly one image unless you use `mostRecent`.
+     * that is part of an image family and is not deprecated. If you specify `filter`, your 
+     * filter must return exactly one image unless you use `mostRecent`. 
      * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

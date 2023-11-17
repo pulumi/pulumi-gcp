@@ -50,9 +50,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// * 0 will not match
         /// * 0.25 will not match
         /// * -3someString will not match.
-        /// Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
-        /// rangeMatch must be set.
-        /// Structure is documented below.
+        ///   Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        ///   rangeMatch must be set.
+        ///   Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch? RangeMatch;
         /// <summary>

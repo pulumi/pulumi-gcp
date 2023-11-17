@@ -331,8 +331,6 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] possible_values: List of possible enum values.
         :param pulumi.Input[bool] validation_check_disabled: Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-               
-               - - -
         """
         pulumi.set(__self__, "possible_values", possible_values)
         if validation_check_disabled is not None:
@@ -355,8 +353,6 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs:
     def validation_check_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-
-        - - -
         """
         return pulumi.get(self, "validation_check_disabled")
 
@@ -689,8 +685,6 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] possible_values: List of possible enum values.
         :param pulumi.Input[bool] validation_check_disabled: Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-               
-               - - -
         """
         pulumi.set(__self__, "possible_values", possible_values)
         if validation_check_disabled is not None:
@@ -713,8 +707,6 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     def validation_check_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-
-        - - -
         """
         return pulumi.get(self, "validation_check_disabled")
 

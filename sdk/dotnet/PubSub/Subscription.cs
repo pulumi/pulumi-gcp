@@ -302,8 +302,8 @@ namespace Pulumi.Gcp.PubSub
         /// of a message with a given value of messageId on this Subscriptions':
         /// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
         /// - An acknowledged message will not be resent to a subscriber.
-        /// Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-        /// is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+        ///   Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+        ///   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         /// </summary>
         [Output("enableExactlyOnceDelivery")]
         public Output<bool?> EnableExactlyOnceDelivery { get; private set; } = null!;
@@ -409,9 +409,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// A reference to a Topic resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("topic")]
         public Output<string> Topic { get; private set; } = null!;
@@ -523,8 +520,8 @@ namespace Pulumi.Gcp.PubSub
         /// of a message with a given value of messageId on this Subscriptions':
         /// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
         /// - An acknowledged message will not be resent to a subscriber.
-        /// Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-        /// is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+        ///   Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+        ///   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         /// </summary>
         [Input("enableExactlyOnceDelivery")]
         public Input<bool>? EnableExactlyOnceDelivery { get; set; }
@@ -629,9 +626,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// A reference to a Topic resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
@@ -716,8 +710,8 @@ namespace Pulumi.Gcp.PubSub
         /// of a message with a given value of messageId on this Subscriptions':
         /// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
         /// - An acknowledged message will not be resent to a subscriber.
-        /// Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
-        /// is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+        ///   Note that subscribers may still receive multiple copies of a message when `enable_exactly_once_delivery`
+        ///   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
         /// </summary>
         [Input("enableExactlyOnceDelivery")]
         public Input<bool>? EnableExactlyOnceDelivery { get; set; }
@@ -839,9 +833,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// A reference to a Topic resource.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }

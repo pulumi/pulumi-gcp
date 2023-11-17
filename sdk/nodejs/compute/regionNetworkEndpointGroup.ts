@@ -261,9 +261,6 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     public readonly pscTargetService!: pulumi.Output<string | undefined>;
     /**
      * A reference to the region where the Serverless NEGs Reside.
-     *
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -271,8 +268,9 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-     * serverlessDeployment may be set.
+     * Only valid when networkEndpointType is "SERVERLESS".
+     * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Structure is documented below.
      */
     public readonly serverlessDeployment!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupServerlessDeployment | undefined>;
     /**
@@ -392,9 +390,6 @@ export interface RegionNetworkEndpointGroupState {
     pscTargetService?: pulumi.Input<string>;
     /**
      * A reference to the region where the Serverless NEGs Reside.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -402,8 +397,9 @@ export interface RegionNetworkEndpointGroupState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-     * serverlessDeployment may be set.
+     * Only valid when networkEndpointType is "SERVERLESS".
+     * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Structure is documented below.
      */
     serverlessDeployment?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupServerlessDeployment>;
     /**
@@ -474,14 +470,12 @@ export interface RegionNetworkEndpointGroupArgs {
     pscTargetService?: pulumi.Input<string>;
     /**
      * A reference to the region where the Serverless NEGs Reside.
-     *
-     *
-     * - - -
      */
     region: pulumi.Input<string>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-     * serverlessDeployment may be set.
+     * Only valid when networkEndpointType is "SERVERLESS".
+     * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Structure is documented below.
      */
     serverlessDeployment?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupServerlessDeployment>;
     /**

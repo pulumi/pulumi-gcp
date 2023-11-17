@@ -559,7 +559,7 @@ type PreventionJobTrigger struct {
 	// (Output)
 	// The creation timestamp of an inspectTemplate. Set by the server.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+	// A description of the job trigger.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User set display name of the job trigger.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -627,7 +627,7 @@ type preventionJobTriggerState struct {
 	// (Output)
 	// The creation timestamp of an inspectTemplate. Set by the server.
 	CreateTime *string `pulumi:"createTime"`
-	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+	// A description of the job trigger.
 	Description *string `pulumi:"description"`
 	// User set display name of the job trigger.
 	DisplayName *string `pulumi:"displayName"`
@@ -660,7 +660,7 @@ type PreventionJobTriggerState struct {
 	// (Output)
 	// The creation timestamp of an inspectTemplate. Set by the server.
 	CreateTime pulumi.StringPtrInput
-	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+	// A description of the job trigger.
 	Description pulumi.StringPtrInput
 	// User set display name of the job trigger.
 	DisplayName pulumi.StringPtrInput
@@ -694,7 +694,7 @@ func (PreventionJobTriggerState) ElementType() reflect.Type {
 }
 
 type preventionJobTriggerArgs struct {
-	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+	// A description of the job trigger.
 	Description *string `pulumi:"description"`
 	// User set display name of the job trigger.
 	DisplayName *string `pulumi:"displayName"`
@@ -719,7 +719,7 @@ type preventionJobTriggerArgs struct {
 
 // The set of arguments for constructing a PreventionJobTrigger resource.
 type PreventionJobTriggerArgs struct {
-	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+	// A description of the job trigger.
 	Description pulumi.StringPtrInput
 	// User set display name of the job trigger.
 	DisplayName pulumi.StringPtrInput
@@ -835,7 +835,7 @@ func (o PreventionJobTriggerOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+// A description of the job trigger.
 func (o PreventionJobTriggerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

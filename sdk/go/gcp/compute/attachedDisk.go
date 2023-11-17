@@ -109,8 +109,6 @@ type AttachedDisk struct {
 	// assigned by Google Compute Engine.
 	DeviceName pulumi.StringOutput `pulumi:"deviceName"`
 	// `name` or `selfLink` of the disk that will be attached.
-	//
-	// ***
 	Disk pulumi.StringOutput `pulumi:"disk"`
 	// `name` or `selfLink` of the compute instance that the disk will be attached to.
 	// If the `selfLink` is provided then `zone` and `project` are extracted from the
@@ -180,8 +178,6 @@ type attachedDiskState struct {
 	// assigned by Google Compute Engine.
 	DeviceName *string `pulumi:"deviceName"`
 	// `name` or `selfLink` of the disk that will be attached.
-	//
-	// ***
 	Disk *string `pulumi:"disk"`
 	// `name` or `selfLink` of the compute instance that the disk will be attached to.
 	// If the `selfLink` is provided then `zone` and `project` are extracted from the
@@ -216,8 +212,6 @@ type AttachedDiskState struct {
 	// assigned by Google Compute Engine.
 	DeviceName pulumi.StringPtrInput
 	// `name` or `selfLink` of the disk that will be attached.
-	//
-	// ***
 	Disk pulumi.StringPtrInput
 	// `name` or `selfLink` of the compute instance that the disk will be attached to.
 	// If the `selfLink` is provided then `zone` and `project` are extracted from the
@@ -256,8 +250,6 @@ type attachedDiskArgs struct {
 	// assigned by Google Compute Engine.
 	DeviceName *string `pulumi:"deviceName"`
 	// `name` or `selfLink` of the disk that will be attached.
-	//
-	// ***
 	Disk string `pulumi:"disk"`
 	// `name` or `selfLink` of the compute instance that the disk will be attached to.
 	// If the `selfLink` is provided then `zone` and `project` are extracted from the
@@ -293,8 +285,6 @@ type AttachedDiskArgs struct {
 	// assigned by Google Compute Engine.
 	DeviceName pulumi.StringPtrInput
 	// `name` or `selfLink` of the disk that will be attached.
-	//
-	// ***
 	Disk pulumi.StringInput
 	// `name` or `selfLink` of the compute instance that the disk will be attached to.
 	// If the `selfLink` is provided then `zone` and `project` are extracted from the
@@ -418,8 +408,6 @@ func (o AttachedDiskOutput) DeviceName() pulumi.StringOutput {
 }
 
 // `name` or `selfLink` of the disk that will be attached.
-//
-// ***
 func (o AttachedDiskOutput) Disk() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedDisk) pulumi.StringOutput { return v.Disk }).(pulumi.StringOutput)
 }

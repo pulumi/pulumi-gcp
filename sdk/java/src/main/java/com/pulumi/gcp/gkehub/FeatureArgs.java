@@ -57,16 +57,12 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The location for the resource
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -202,8 +198,6 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location for the resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -214,8 +208,6 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location for the resource
-         * 
-         * ***
          * 
          * @return builder
          * 

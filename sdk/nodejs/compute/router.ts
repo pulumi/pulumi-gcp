@@ -141,9 +141,6 @@ export class Router extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * A reference to the network to which this router belongs.
-     *
-     *
-     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -235,9 +232,6 @@ export interface RouterState {
     name?: pulumi.Input<string>;
     /**
      * A reference to the network to which this router belongs.
-     *
-     *
-     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -284,9 +278,6 @@ export interface RouterArgs {
     name?: pulumi.Input<string>;
     /**
      * A reference to the network to which this router belongs.
-     *
-     *
-     * - - -
      */
     network: pulumi.Input<string>;
     /**

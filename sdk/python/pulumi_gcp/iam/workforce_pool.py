@@ -25,9 +25,6 @@ class WorkforcePoolArgs:
         The set of arguments for constructing a WorkforcePool resource.
         :param pulumi.Input[str] location: The location for the resource.
         :param pulumi.Input[str] parent: Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-               
-               
-               - - -
         :param pulumi.Input[str] workforce_pool_id: The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
                digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen.
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
@@ -70,9 +67,6 @@ class WorkforcePoolArgs:
     def parent(self) -> pulumi.Input[str]:
         """
         Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -170,9 +164,6 @@ class _WorkforcePoolState:
         :param pulumi.Input[str] name: Output only. The resource name of the pool.
                Format: `locations/{location}/workforcePools/{workforcePoolId}`
         :param pulumi.Input[str] parent: Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-               
-               
-               - - -
         :param pulumi.Input[str] session_duration: Duration that the Google Cloud access tokens, console sign-in sessions,
                and `gcloud` sign-in sessions from this pool are valid.
                Must be greater than 15 minutes (900s) and less than 12 hours (43200s).
@@ -278,9 +269,6 @@ class _WorkforcePoolState:
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -422,9 +410,6 @@ class WorkforcePool(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
         :param pulumi.Input[str] location: The location for the resource.
         :param pulumi.Input[str] parent: Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-               
-               
-               - - -
         :param pulumi.Input[str] session_duration: Duration that the Google Cloud access tokens, console sign-in sessions,
                and `gcloud` sign-in sessions from this pool are valid.
                Must be greater than 15 minutes (900s) and less than 12 hours (43200s).
@@ -581,9 +566,6 @@ class WorkforcePool(pulumi.CustomResource):
         :param pulumi.Input[str] name: Output only. The resource name of the pool.
                Format: `locations/{location}/workforcePools/{workforcePoolId}`
         :param pulumi.Input[str] parent: Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-               
-               
-               - - -
         :param pulumi.Input[str] session_duration: Duration that the Google Cloud access tokens, console sign-in sessions,
                and `gcloud` sign-in sessions from this pool are valid.
                Must be greater than 15 minutes (900s) and less than 12 hours (43200s).
@@ -665,9 +647,6 @@ class WorkforcePool(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[str]:
         """
         Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

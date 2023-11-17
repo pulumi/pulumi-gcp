@@ -17,7 +17,7 @@ public final class RegionHealthCheckSslHealthCheckArgs extends com.pulumi.resour
     public static final RegionHealthCheckSslHealthCheckArgs Empty = new RegionHealthCheckSslHealthCheckArgs();
 
     /**
-     * The TCP port number for the HTTP2 health check request.
+     * The TCP port number for the SSL health check request.
      * The default value is 443.
      * 
      */
@@ -25,7 +25,7 @@ public final class RegionHealthCheckSslHealthCheckArgs extends com.pulumi.resour
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The TCP port number for the HTTP2 health check request.
+     * @return The TCP port number for the SSL health check request.
      * The default value is 443.
      * 
      */
@@ -158,7 +158,7 @@ public final class RegionHealthCheckSslHealthCheckArgs extends com.pulumi.resour
         }
 
         /**
-         * @param port The TCP port number for the HTTP2 health check request.
+         * @param port The TCP port number for the SSL health check request.
          * The default value is 443.
          * 
          * @return builder
@@ -170,7 +170,7 @@ public final class RegionHealthCheckSslHealthCheckArgs extends com.pulumi.resour
         }
 
         /**
-         * @param port The TCP port number for the HTTP2 health check request.
+         * @param port The TCP port number for the SSL health check request.
          * The default value is 443.
          * 
          * @return builder

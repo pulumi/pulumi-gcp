@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.CloudIdentity.Inputs
         /// <summary>
         /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
         /// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

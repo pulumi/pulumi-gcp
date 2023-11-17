@@ -47,10 +47,6 @@ class TargetArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['TargetMultiTargetArgs'] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
         :param pulumi.Input['TargetRunArgs'] run: Information specifying a Cloud Run deployment target.
@@ -200,10 +196,6 @@ class TargetArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -295,10 +287,6 @@ class _TargetState:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['TargetMultiTargetArgs'] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
@@ -518,10 +506,6 @@ class _TargetState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -773,10 +757,6 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
         :param pulumi.Input[pulumi.InputType['TargetRunArgs']] run: Information specifying a Cloud Run deployment target.
@@ -1030,10 +1010,6 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
@@ -1185,10 +1161,6 @@ class Target(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

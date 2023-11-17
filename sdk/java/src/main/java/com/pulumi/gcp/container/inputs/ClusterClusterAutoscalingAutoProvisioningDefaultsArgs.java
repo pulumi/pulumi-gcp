@@ -21,14 +21,14 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
     public static final ClusterClusterAutoscalingAutoProvisioningDefaultsArgs Empty = new ClusterClusterAutoscalingAutoProvisioningDefaultsArgs();
 
     /**
-     * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+     * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
      */
     @Import(name="bootDiskKmsKey")
     private @Nullable Output<String> bootDiskKmsKey;
 
     /**
-     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
      */
     public Optional<Output<String>> bootDiskKmsKey() {
@@ -66,14 +66,16 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
     }
 
     /**
-     * The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+     * The image type to use for this node. Note that changing the image type
+     * will delete and recreate all nodes in the node pool.
      * 
      */
     @Import(name="imageType")
     private @Nullable Output<String> imageType;
 
     /**
-     * @return The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+     * @return The image type to use for this node. Note that changing the image type
+     * will delete and recreate all nodes in the node pool.
      * 
      */
     public Optional<Output<String>> imageType() {
@@ -134,14 +136,16 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
     }
 
     /**
-     * The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+     * The service account to be used by the Node VMs.
+     * If not specified, the &#34;default&#34; service account is used.
      * 
      */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+     * @return The service account to be used by the Node VMs.
+     * If not specified, the &#34;default&#34; service account is used.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -212,7 +216,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
-         * @param bootDiskKmsKey The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+         * @param bootDiskKmsKey The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
          * 
          * @return builder
          * 
@@ -223,7 +227,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
-         * @param bootDiskKmsKey The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+         * @param bootDiskKmsKey The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
          * 
          * @return builder
          * 
@@ -275,7 +279,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
-         * @param imageType The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+         * @param imageType The image type to use for this node. Note that changing the image type
+         * will delete and recreate all nodes in the node pool.
          * 
          * @return builder
          * 
@@ -286,7 +291,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
-         * @param imageType The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+         * @param imageType The image type to use for this node. Note that changing the image type
+         * will delete and recreate all nodes in the node pool.
          * 
          * @return builder
          * 
@@ -379,7 +385,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
-         * @param serviceAccount The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+         * @param serviceAccount The service account to be used by the Node VMs.
+         * If not specified, the &#34;default&#34; service account is used.
          * 
          * @return builder
          * 
@@ -390,7 +397,8 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         }
 
         /**
-         * @param serviceAccount The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+         * @param serviceAccount The service account to be used by the Node VMs.
+         * If not specified, the &#34;default&#34; service account is used.
          * 
          * @return builder
          * 

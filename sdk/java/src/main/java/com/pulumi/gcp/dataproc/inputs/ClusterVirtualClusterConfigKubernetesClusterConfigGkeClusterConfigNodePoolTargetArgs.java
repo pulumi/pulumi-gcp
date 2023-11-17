@@ -33,7 +33,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     }
 
     /**
-     * The configuration for the GKE node pool.
+     * (Input only) The configuration for the GKE node pool.
      * If specified, Dataproc attempts to create a node pool with the specified shape.
      * If one with the same name already exists, it is verified against all specified fields.
      * If a field differs, the virtual cluster creation will fail.
@@ -43,7 +43,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     private @Nullable Output<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs> nodePoolConfig;
 
     /**
-     * @return The configuration for the GKE node pool.
+     * @return (Input only) The configuration for the GKE node pool.
      * If specified, Dataproc attempts to create a node pool with the specified shape.
      * If one with the same name already exists, it is verified against all specified fields.
      * If a field differs, the virtual cluster creation will fail.
@@ -118,7 +118,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param nodePoolConfig The configuration for the GKE node pool.
+         * @param nodePoolConfig (Input only) The configuration for the GKE node pool.
          * If specified, Dataproc attempts to create a node pool with the specified shape.
          * If one with the same name already exists, it is verified against all specified fields.
          * If a field differs, the virtual cluster creation will fail.
@@ -132,7 +132,7 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param nodePoolConfig The configuration for the GKE node pool.
+         * @param nodePoolConfig (Input only) The configuration for the GKE node pool.
          * If specified, Dataproc attempts to create a node pool with the specified shape.
          * If one with the same name already exists, it is verified against all specified fields.
          * If a field differs, the virtual cluster creation will fail.

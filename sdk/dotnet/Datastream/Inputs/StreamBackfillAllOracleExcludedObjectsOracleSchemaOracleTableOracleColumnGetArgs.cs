@@ -13,12 +13,17 @@ namespace Pulumi.Gcp.Datastream.Inputs
     public sealed class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Column name.`column` -
+        /// (Optional)
         /// Column name.
         /// </summary>
         [Input("column")]
         public Input<string>? Column { get; set; }
 
         /// <summary>
+        /// The Oracle data type. Full data types list can be found here:
+        /// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+        /// (Optional)
         /// The Oracle data type. Full data types list can be found here:
         /// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
         /// </summary>
@@ -27,12 +32,16 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// (Output)
+        /// Column encoding.`encoding` -
+        /// (Output)
         /// Column encoding.
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
 
         /// <summary>
+        /// (Output)
+        /// Column length.`length` -
         /// (Output)
         /// Column length.
         /// </summary>
@@ -41,12 +50,16 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// (Output)
+        /// Whether or not the column can accept a null value.`nullable` -
+        /// (Output)
         /// Whether or not the column can accept a null value.
         /// </summary>
         [Input("nullable")]
         public Input<bool>? Nullable { get; set; }
 
         /// <summary>
+        /// (Output)
+        /// The ordinal position of the column in the table.`ordinal_position` -
         /// (Output)
         /// The ordinal position of the column in the table.
         /// </summary>
@@ -55,6 +68,8 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// (Output)
+        /// Column precision.`precision` -
+        /// (Output)
         /// Column precision.
         /// </summary>
         [Input("precision")]
@@ -62,12 +77,16 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// (Output)
+        /// Whether or not the column represents a primary key.`primary_key` -
+        /// (Output)
         /// Whether or not the column represents a primary key.
         /// </summary>
         [Input("primaryKey")]
         public Input<bool>? PrimaryKey { get; set; }
 
         /// <summary>
+        /// (Output)
+        /// Column scale.`scale` -
         /// (Output)
         /// Column scale.
         /// </summary>

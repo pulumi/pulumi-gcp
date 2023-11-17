@@ -363,7 +363,7 @@ class InstanceMaintenanceWindowArgs:
                - FRIDAY: Friday
                - SATURDAY: Saturday
                - SUNDAY: Sunday
-               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+                 Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param pulumi.Input['InstanceMaintenanceWindowStartTimeArgs'] start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
@@ -382,7 +382,7 @@ class InstanceMaintenanceWindowArgs:
         - FRIDAY: Friday
         - SATURDAY: Saturday
         - SUNDAY: Sunday
-        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+          Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week")
 

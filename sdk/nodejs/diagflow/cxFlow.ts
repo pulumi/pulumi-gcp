@@ -430,9 +430,6 @@ export class CxFlow extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The human-readable name of the flow.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -555,9 +552,6 @@ export interface CxFlowState {
     description?: pulumi.Input<string>;
     /**
      * The human-readable name of the flow.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -635,9 +629,6 @@ export interface CxFlowArgs {
     description?: pulumi.Input<string>;
     /**
      * The human-readable name of the flow.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

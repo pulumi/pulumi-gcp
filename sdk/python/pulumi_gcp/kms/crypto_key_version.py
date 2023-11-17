@@ -22,9 +22,6 @@ class CryptoKeyVersionArgs:
         The set of arguments for constructing a CryptoKeyVersion resource.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-               
-               
-               - - -
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
                Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
@@ -38,9 +35,6 @@ class CryptoKeyVersionArgs:
         """
         The name of the cryptoKey associated with the CryptoKeyVersions.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-
-
-        - - -
         """
         return pulumi.get(self, "crypto_key")
 
@@ -80,9 +74,6 @@ class _CryptoKeyVersionState:
                Structure is documented below.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-               
-               
-               - - -
         :param pulumi.Input[str] generate_time: The time this CryptoKeyVersion key material was generated
         :param pulumi.Input[str] name: The resource name for this CryptoKeyVersion.
         :param pulumi.Input[str] protection_level: The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
@@ -136,9 +127,6 @@ class _CryptoKeyVersionState:
         """
         The name of the cryptoKey associated with the CryptoKeyVersions.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-
-
-        - - -
         """
         return pulumi.get(self, "crypto_key")
 
@@ -249,9 +237,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-               
-               
-               - - -
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
                Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
@@ -367,9 +352,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-               
-               
-               - - -
         :param pulumi.Input[str] generate_time: The time this CryptoKeyVersion key material was generated
         :param pulumi.Input[str] name: The resource name for this CryptoKeyVersion.
         :param pulumi.Input[str] protection_level: The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
@@ -413,9 +395,6 @@ class CryptoKeyVersion(pulumi.CustomResource):
         """
         The name of the cryptoKey associated with the CryptoKeyVersions.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-
-
-        - - -
         """
         return pulumi.get(self, "crypto_key")
 

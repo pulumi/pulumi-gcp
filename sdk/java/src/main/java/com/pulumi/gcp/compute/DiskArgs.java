@@ -92,16 +92,16 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
      * 
      */
     @Import(name="enableConfidentialCompute")
     private @Nullable Output<Boolean> enableConfidentialCompute;
 
     /**
-     * @return Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * @return Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
      * 
      */
     public Optional<Output<Boolean>> enableConfidentialCompute() {
@@ -159,7 +159,6 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -173,8 +172,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> interface_;
 
     /**
-     * @return (Optional, Deprecated)
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     * @return Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      * 
@@ -247,8 +245,6 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -261,8 +257,6 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -408,20 +402,20 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-     * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-     * * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
-     *   &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. If the snapshot is in another
+     * project than this disk, you must supply a full URL. For example, the
+     * following are valid values:
      * 
      */
     @Import(name="snapshot")
     private @Nullable Output<String> snapshot;
 
     /**
-     * @return The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-     * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-     * * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
-     *   &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
+     * @return The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. If the snapshot is in another
+     * project than this disk, you must supply a full URL. For example, the
+     * following are valid values:
      * 
      */
     public Optional<Output<String>> snapshot() {
@@ -661,8 +655,8 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableConfidentialCompute Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-         * required when setting to true
+         * @param enableConfidentialCompute Whether this disk is using confidential compute mode.
+         * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
          * 
          * @return builder
          * 
@@ -673,8 +667,8 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableConfidentialCompute Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-         * required when setting to true
+         * @param enableConfidentialCompute Whether this disk is using confidential compute mode.
+         * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
          * 
          * @return builder
          * 
@@ -758,8 +752,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ (Optional, Deprecated)
-         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * @param interface_ Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
          * 
          * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
          * 
@@ -776,8 +769,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ (Optional, Deprecated)
-         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * @param interface_ Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
          * 
          * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
          * 
@@ -880,8 +872,6 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -898,8 +888,6 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          * first character must be a lowercase letter, and all following
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1098,10 +1086,10 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshot The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-         * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-         * * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
-         *   &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
+         * @param snapshot The source snapshot used to create this disk. You can provide this as
+         * a partial or full URL to the resource. If the snapshot is in another
+         * project than this disk, you must supply a full URL. For example, the
+         * following are valid values:
          * 
          * @return builder
          * 
@@ -1112,10 +1100,10 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshot The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-         * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-         * * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
-         *   &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
+         * @param snapshot The source snapshot used to create this disk. You can provide this as
+         * a partial or full URL to the resource. If the snapshot is in another
+         * project than this disk, you must supply a full URL. For example, the
+         * following are valid values:
          * 
          * @return builder
          * 

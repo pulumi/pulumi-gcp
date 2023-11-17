@@ -62,19 +62,9 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         return Optional.ofNullable(this.localSsdRecoveryTimeouts);
     }
 
-    /**
-     * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.\
-     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
-     * 
-     */
     @Import(name="maintenanceInterval")
     private @Nullable Output<String> maintenanceInterval;
 
-    /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.\
-     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
-     * 
-     */
     public Optional<Output<String>> maintenanceInterval() {
         return Optional.ofNullable(this.maintenanceInterval);
     }
@@ -273,25 +263,11 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
             return localSsdRecoveryTimeouts(List.of(localSsdRecoveryTimeouts));
         }
 
-        /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.\
-         * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
-         * 
-         * @return builder
-         * 
-         */
         public Builder maintenanceInterval(@Nullable Output<String> maintenanceInterval) {
             $.maintenanceInterval = maintenanceInterval;
             return this;
         }
 
-        /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.\
-         * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
-         * 
-         * @return builder
-         * 
-         */
         public Builder maintenanceInterval(String maintenanceInterval) {
             return maintenanceInterval(Output.of(maintenanceInterval));
         }

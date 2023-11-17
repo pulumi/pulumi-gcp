@@ -36,15 +36,15 @@ class RepositoryArgs:
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-               
-               
-               - - -
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
-        :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-               deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-               under 128 characters in length.
-        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
+               certain package versions can be automatically deleted.
+               Map keys are policy IDs supplied by users during policy creation. They must
+               unique within a repository and be under 128 characters in length.
+               Structure is documented below.
+        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
+               repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
@@ -110,9 +110,6 @@ class RepositoryArgs:
         can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         You can only create alpha formats if you are a member of the
         [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-
-
-        - - -
         """
         return pulumi.get(self, "format")
 
@@ -137,9 +134,11 @@ class RepositoryArgs:
     @pulumi.getter(name="cleanupPolicies")
     def cleanup_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]]:
         """
-        Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-        deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-        under 128 characters in length.
+        Cleanup policies for this repository. Cleanup policies indicate when
+        certain package versions can be automatically deleted.
+        Map keys are policy IDs supplied by users during policy creation. They must
+        unique within a repository and be under 128 characters in length.
+        Structure is documented below.
         """
         return pulumi.get(self, "cleanup_policies")
 
@@ -151,7 +150,8 @@ class RepositoryArgs:
     @pulumi.getter(name="cleanupPolicyDryRun")
     def cleanup_policy_dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        If true, the cleanup pipeline is prevented from deleting versions in this
+        repository.
         """
         return pulumi.get(self, "cleanup_policy_dry_run")
 
@@ -323,10 +323,13 @@ class _RepositoryState:
                  virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Repository resources.
-        :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-               deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-               under 128 characters in length.
-        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
+               certain package versions can be automatically deleted.
+               Map keys are policy IDs supplied by users during policy creation. They must
+               unique within a repository and be under 128 characters in length.
+               Structure is documented below.
+        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
+               repository.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
@@ -336,9 +339,6 @@ class _RepositoryState:
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -416,9 +416,11 @@ class _RepositoryState:
     @pulumi.getter(name="cleanupPolicies")
     def cleanup_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]]:
         """
-        Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-        deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-        under 128 characters in length.
+        Cleanup policies for this repository. Cleanup policies indicate when
+        certain package versions can be automatically deleted.
+        Map keys are policy IDs supplied by users during policy creation. They must
+        unique within a repository and be under 128 characters in length.
+        Structure is documented below.
         """
         return pulumi.get(self, "cleanup_policies")
 
@@ -430,7 +432,8 @@ class _RepositoryState:
     @pulumi.getter(name="cleanupPolicyDryRun")
     def cleanup_policy_dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        If true, the cleanup pipeline is prevented from deleting versions in this
+        repository.
         """
         return pulumi.get(self, "cleanup_policy_dry_run")
 
@@ -495,9 +498,6 @@ class _RepositoryState:
         can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         You can only create alpha formats if you are a member of the
         [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-
-
-        - - -
         """
         return pulumi.get(self, "format")
 
@@ -919,10 +919,13 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-               deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-               under 128 characters in length.
-        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
+               certain package versions can be automatically deleted.
+               Map keys are policy IDs supplied by users during policy creation. They must
+               unique within a repository and be under 128 characters in length.
+               Structure is documented below.
+        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
+               repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
@@ -930,9 +933,6 @@ class Repository(pulumi.CustomResource):
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -1293,10 +1293,13 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-               deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-               under 128 characters in length.
-        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
+               certain package versions can be automatically deleted.
+               Map keys are policy IDs supplied by users during policy creation. They must
+               unique within a repository and be under 128 characters in length.
+               Structure is documented below.
+        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
+               repository.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
@@ -1306,9 +1309,6 @@ class Repository(pulumi.CustomResource):
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -1372,9 +1372,11 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter(name="cleanupPolicies")
     def cleanup_policies(self) -> pulumi.Output[Optional[Sequence['outputs.RepositoryCleanupPolicy']]]:
         """
-        Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-        deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-        under 128 characters in length.
+        Cleanup policies for this repository. Cleanup policies indicate when
+        certain package versions can be automatically deleted.
+        Map keys are policy IDs supplied by users during policy creation. They must
+        unique within a repository and be under 128 characters in length.
+        Structure is documented below.
         """
         return pulumi.get(self, "cleanup_policies")
 
@@ -1382,7 +1384,8 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter(name="cleanupPolicyDryRun")
     def cleanup_policy_dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        If true, the cleanup pipeline is prevented from deleting versions in this
+        repository.
         """
         return pulumi.get(self, "cleanup_policy_dry_run")
 
@@ -1427,9 +1430,6 @@ class Repository(pulumi.CustomResource):
         can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         You can only create alpha formats if you are a member of the
         [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-
-
-        - - -
         """
         return pulumi.get(self, "format")
 

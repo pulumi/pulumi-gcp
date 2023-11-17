@@ -19,8 +19,6 @@ type GCPolicyMaxAge struct {
 	// Deprecated: Deprecated in favor of duration
 	Days *int `pulumi:"days"`
 	// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-	//
-	// ***
 	Duration *string `pulumi:"duration"`
 }
 
@@ -41,8 +39,6 @@ type GCPolicyMaxAgeArgs struct {
 	// Deprecated: Deprecated in favor of duration
 	Days pulumi.IntPtrInput `pulumi:"days"`
 	// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-	//
-	// ***
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
 }
 
@@ -131,8 +127,6 @@ func (o GCPolicyMaxAgeOutput) Days() pulumi.IntPtrOutput {
 }
 
 // Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-//
-// ***
 func (o GCPolicyMaxAgeOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GCPolicyMaxAge) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
@@ -174,8 +168,6 @@ func (o GCPolicyMaxAgePtrOutput) Days() pulumi.IntPtrOutput {
 }
 
 // Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-//
-// ***
 func (o GCPolicyMaxAgePtrOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GCPolicyMaxAge) *string {
 		if v == nil {
@@ -188,7 +180,6 @@ func (o GCPolicyMaxAgePtrOutput) Duration() pulumi.StringPtrOutput {
 type GCPolicyMaxVersion struct {
 	// Number of version before applying the GC policy.
 	//
-	// ***
 	// `gcRules` include 2 fields:
 	Number int `pulumi:"number"`
 }
@@ -207,7 +198,6 @@ type GCPolicyMaxVersionInput interface {
 type GCPolicyMaxVersionArgs struct {
 	// Number of version before applying the GC policy.
 	//
-	// ***
 	// `gcRules` include 2 fields:
 	Number pulumi.IntInput `pulumi:"number"`
 }
@@ -265,7 +255,6 @@ func (o GCPolicyMaxVersionOutput) ToGCPolicyMaxVersionOutputWithContext(ctx cont
 
 // Number of version before applying the GC policy.
 //
-// ***
 // `gcRules` include 2 fields:
 func (o GCPolicyMaxVersionOutput) Number() pulumi.IntOutput {
 	return o.ApplyT(func(v GCPolicyMaxVersion) int { return v.Number }).(pulumi.IntOutput)

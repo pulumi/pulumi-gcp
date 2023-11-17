@@ -77,10 +77,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name for an association.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -151,10 +147,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name for an association.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -181,10 +173,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name for an association.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

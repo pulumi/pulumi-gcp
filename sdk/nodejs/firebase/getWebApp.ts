@@ -22,9 +22,6 @@ export function getWebApp(args: GetWebAppArgs, opts?: pulumi.InvokeOptions): Pro
 export interface GetWebAppArgs {
     /**
      * The appIp of name of the Firebase webApp.
-     *
-     *
-     * - - -
      */
     appId: string;
     /**
@@ -71,9 +68,6 @@ export function getWebAppOutput(args: GetWebAppOutputArgs, opts?: pulumi.InvokeO
 export interface GetWebAppOutputArgs {
     /**
      * The appIp of name of the Firebase webApp.
-     *
-     *
-     * - - -
      */
     appId: pulumi.Input<string>;
     /**

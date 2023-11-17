@@ -236,8 +236,6 @@ type User struct {
 	UserId pulumi.StringOutput `pulumi:"userId"`
 	// The type of this user.
 	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-	//
-	// ***
 	UserType pulumi.StringOutput `pulumi:"userType"`
 }
 
@@ -293,8 +291,6 @@ type userState struct {
 	UserId *string `pulumi:"userId"`
 	// The type of this user.
 	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-	//
-	// ***
 	UserType *string `pulumi:"userType"`
 }
 
@@ -312,8 +308,6 @@ type UserState struct {
 	UserId pulumi.StringPtrInput
 	// The type of this user.
 	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-	//
-	// ***
 	UserType pulumi.StringPtrInput
 }
 
@@ -333,8 +327,6 @@ type userArgs struct {
 	UserId string `pulumi:"userId"`
 	// The type of this user.
 	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-	//
-	// ***
 	UserType string `pulumi:"userType"`
 }
 
@@ -351,8 +343,6 @@ type UserArgs struct {
 	UserId pulumi.StringInput
 	// The type of this user.
 	// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-	//
-	// ***
 	UserType pulumi.StringInput
 }
 
@@ -471,8 +461,6 @@ func (o UserOutput) UserId() pulumi.StringOutput {
 
 // The type of this user.
 // Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-//
-// ***
 func (o UserOutput) UserType() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserType }).(pulumi.StringOutput)
 }

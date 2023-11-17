@@ -39,8 +39,6 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
 export interface GetInstanceArgs {
     /**
      * The name of a Redis instance.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -126,8 +124,6 @@ export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.Inv
 export interface GetInstanceOutputArgs {
     /**
      * The name of a Redis instance.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

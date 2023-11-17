@@ -12,16 +12,12 @@ public final class GetBackendServiceLocalityLbPolicyPolicy {
     /**
      * @return The name of the Backend Service.
      * 
-     * ***
-     * 
      */
     private String name;
 
     private GetBackendServiceLocalityLbPolicyPolicy() {}
     /**
      * @return The name of the Backend Service.
-     * 
-     * ***
      * 
      */
     public String name() {

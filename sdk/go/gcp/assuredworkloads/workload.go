@@ -176,8 +176,6 @@ type Workload struct {
 	// Output only. The resource name of the workload.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The organization for the resource
-	//
-	// ***
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
 	Partner pulumi.StringPtrOutput `pulumi:"partner"`
@@ -276,8 +274,6 @@ type workloadState struct {
 	// Output only. The resource name of the workload.
 	Name *string `pulumi:"name"`
 	// The organization for the resource
-	//
-	// ***
 	Organization *string `pulumi:"organization"`
 	// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
 	Partner *string `pulumi:"partner"`
@@ -330,8 +326,6 @@ type WorkloadState struct {
 	// Output only. The resource name of the workload.
 	Name pulumi.StringPtrInput
 	// The organization for the resource
-	//
-	// ***
 	Organization pulumi.StringPtrInput
 	// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
 	Partner pulumi.StringPtrInput
@@ -374,8 +368,6 @@ type workloadArgs struct {
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// The organization for the resource
-	//
-	// ***
 	Organization string `pulumi:"organization"`
 	// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
 	Partner *string `pulumi:"partner"`
@@ -409,8 +401,6 @@ type WorkloadArgs struct {
 	// The location for the resource
 	Location pulumi.StringInput
 	// The organization for the resource
-	//
-	// ***
 	Organization pulumi.StringInput
 	// Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
 	Partner pulumi.StringPtrInput
@@ -585,8 +575,6 @@ func (o WorkloadOutput) Name() pulumi.StringOutput {
 }
 
 // The organization for the resource
-//
-// ***
 func (o WorkloadOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }

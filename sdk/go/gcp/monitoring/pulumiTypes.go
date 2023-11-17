@@ -2165,8 +2165,6 @@ type AlertPolicyConditionConditionPrometheusQueryLanguage struct {
 	// in the future.
 	// This field is optional. If this field is not empty, then it must be a
 	// valid Prometheus label name.
-	//
-	// ***
 	AlertRule *string `pulumi:"alertRule"`
 	// Alerts are considered firing once their PromQL expression evaluated
 	// to be "true" for this long. Alerts whose PromQL expression was not
@@ -2221,8 +2219,6 @@ type AlertPolicyConditionConditionPrometheusQueryLanguageArgs struct {
 	// in the future.
 	// This field is optional. If this field is not empty, then it must be a
 	// valid Prometheus label name.
-	//
-	// ***
 	AlertRule pulumi.StringPtrInput `pulumi:"alertRule"`
 	// Alerts are considered firing once their PromQL expression evaluated
 	// to be "true" for this long. Alerts whose PromQL expression was not
@@ -2342,8 +2338,6 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) ToAlertPolic
 // in the future.
 // This field is optional. If this field is not empty, then it must be a
 // valid Prometheus label name.
-//
-// ***
 func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) AlertRule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionPrometheusQueryLanguage) *string { return v.AlertRule }).(pulumi.StringPtrOutput)
 }
@@ -2426,8 +2420,6 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) Elem() Al
 // in the future.
 // This field is optional. If this field is not empty, then it must be a
 // valid Prometheus label name.
-//
-// ***
 func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) AlertRule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionPrometheusQueryLanguage) *string {
 		if v == nil {

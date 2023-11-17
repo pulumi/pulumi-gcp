@@ -30,9 +30,6 @@ class TargetInstanceArgs:
                name is given, the zone will default to the given zone or
                the provider-default zone and the project will default to the
                provider-level project.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -77,9 +74,6 @@ class TargetInstanceArgs:
         name is given, the zone will default to the given zone or
         the provider-default zone and the project will default to the
         provider-level project.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -205,9 +199,6 @@ class _TargetInstanceState:
                name is given, the zone will default to the given zone or
                the provider-default zone and the project will default to the
                provider-level project.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -281,9 +272,6 @@ class _TargetInstanceState:
         name is given, the zone will default to the given zone or
         the provider-default zone and the project will default to the
         provider-level project.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -500,9 +488,6 @@ class TargetInstance(pulumi.CustomResource):
                name is given, the zone will default to the given zone or
                the provider-default zone and the project will default to the
                provider-level project.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -696,9 +681,6 @@ class TargetInstance(pulumi.CustomResource):
                name is given, the zone will default to the given zone or
                the provider-default zone and the project will default to the
                provider-level project.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -759,9 +741,6 @@ class TargetInstance(pulumi.CustomResource):
         name is given, the zone will default to the given zone or
         the provider-default zone and the project will default to the
         provider-level project.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 

@@ -77,14 +77,14 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The upgrade stragey to be used for upgrading the nodes.
+     * (Default `SURGE`) The upgrade stragey to be used for upgrading the nodes.
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return The upgrade stragey to be used for upgrading the nodes.
+     * @return (Default `SURGE`) The upgrade stragey to be used for upgrading the nodes.
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -196,7 +196,7 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param strategy The upgrade stragey to be used for upgrading the nodes.
+         * @param strategy (Default `SURGE`) The upgrade stragey to be used for upgrading the nodes.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class NodePoolUpgradeSettingsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param strategy The upgrade stragey to be used for upgrading the nodes.
+         * @param strategy (Default `SURGE`) The upgrade stragey to be used for upgrading the nodes.
          * 
          * @return builder
          * 

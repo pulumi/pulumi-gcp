@@ -53,7 +53,6 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     /**
      * The keyset to use for signature generation.
      * The following are both valid paths to an EdgeCacheKeyset resource:
-     * * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
      * 
      */
     @Import(name="keyset")
@@ -62,7 +61,6 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     /**
      * @return The keyset to use for signature generation.
      * The following are both valid paths to an EdgeCacheKeyset resource:
-     * * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
      * 
      */
     public Optional<Output<String>> keyset() {
@@ -201,7 +199,6 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         /**
          * @param keyset The keyset to use for signature generation.
          * The following are both valid paths to an EdgeCacheKeyset resource:
-         * * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
          * 
          * @return builder
          * 
@@ -214,7 +211,6 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         /**
          * @param keyset The keyset to use for signature generation.
          * The following are both valid paths to an EdgeCacheKeyset resource:
-         * * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
          * 
          * @return builder
          * 

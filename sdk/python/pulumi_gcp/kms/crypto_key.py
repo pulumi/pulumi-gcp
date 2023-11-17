@@ -29,9 +29,6 @@ class CryptoKeyArgs:
         The set of arguments for constructing a CryptoKey resource.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-               
-               
-               - - -
         :param pulumi.Input[str] destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 24 hours.
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
@@ -77,9 +74,6 @@ class CryptoKeyArgs:
         """
         The KeyRing that this key belongs to.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-
-
-        - - -
         """
         return pulumi.get(self, "key_ring")
 
@@ -218,9 +212,6 @@ class _CryptoKeyState:
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -307,9 +298,6 @@ class _CryptoKeyState:
         """
         The KeyRing that this key belongs to.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-
-
-        - - -
         """
         return pulumi.get(self, "key_ring")
 
@@ -500,9 +488,6 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -673,9 +658,6 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.Input[bool] import_only: Whether this key may contain imported versions only.
         :param pulumi.Input[str] key_ring: The KeyRing that this key belongs to.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -744,9 +726,6 @@ class CryptoKey(pulumi.CustomResource):
         """
         The KeyRing that this key belongs to.
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
-
-
-        - - -
         """
         return pulumi.get(self, "key_ring")
 

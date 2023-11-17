@@ -32,8 +32,7 @@ public final class ServiceTemplateSpecContainer {
      */
     private @Nullable List<String> commands;
     /**
-     * @return (Optional, Deprecated)
-     * List of sources to populate environment variables in the container.
+     * @return List of sources to populate environment variables in the container.
      * All invalid keys will be reported as an event when the container is starting.
      * When a key exists in multiple sources, the value associated with the last source will
      * take precedence. Values defined by an Env with a duplicate key will take
@@ -100,8 +99,7 @@ public final class ServiceTemplateSpecContainer {
      */
     private @Nullable List<ServiceTemplateSpecContainerVolumeMount> volumeMounts;
     /**
-     * @return (Optional, Deprecated)
-     * Container&#39;s working directory.
+     * @return Container&#39;s working directory.
      * If not specified, the container runtime&#39;s default will be used, which
      * might be configured in the container image.
      * 
@@ -132,8 +130,7 @@ public final class ServiceTemplateSpecContainer {
         return this.commands == null ? List.of() : this.commands;
     }
     /**
-     * @return (Optional, Deprecated)
-     * List of sources to populate environment variables in the container.
+     * @return List of sources to populate environment variables in the container.
      * All invalid keys will be reported as an event when the container is starting.
      * When a key exists in multiple sources, the value associated with the last source will
      * take precedence. Values defined by an Env with a duplicate key will take
@@ -218,8 +215,7 @@ public final class ServiceTemplateSpecContainer {
         return this.volumeMounts == null ? List.of() : this.volumeMounts;
     }
     /**
-     * @return (Optional, Deprecated)
-     * Container&#39;s working directory.
+     * @return Container&#39;s working directory.
      * If not specified, the container runtime&#39;s default will be used, which
      * might be configured in the container image.
      * 

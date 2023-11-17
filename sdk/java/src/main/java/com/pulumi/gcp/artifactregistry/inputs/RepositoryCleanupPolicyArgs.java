@@ -17,16 +17,36 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
 
     public static final RepositoryCleanupPolicyArgs Empty = new RepositoryCleanupPolicyArgs();
 
+    /**
+     * Policy action.
+     * Possible values are: `DELETE`, `KEEP`.
+     * 
+     */
     @Import(name="action")
     private @Nullable Output<String> action;
 
+    /**
+     * @return Policy action.
+     * Possible values are: `DELETE`, `KEEP`.
+     * 
+     */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
     }
 
+    /**
+     * Policy condition for matching versions.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="condition")
     private @Nullable Output<RepositoryCleanupPolicyConditionArgs> condition;
 
+    /**
+     * @return Policy condition for matching versions.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<RepositoryCleanupPolicyConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -46,9 +66,21 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
         return this.id;
     }
 
+    /**
+     * Policy condition for retaining a minimum number of versions. May only be
+     * specified with a Keep action.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="mostRecentVersions")
     private @Nullable Output<RepositoryCleanupPolicyMostRecentVersionsArgs> mostRecentVersions;
 
+    /**
+     * @return Policy condition for retaining a minimum number of versions. May only be
+     * specified with a Keep action.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<RepositoryCleanupPolicyMostRecentVersionsArgs>> mostRecentVersions() {
         return Optional.ofNullable(this.mostRecentVersions);
     }
@@ -80,20 +112,48 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
             $ = new RepositoryCleanupPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param action Policy action.
+         * Possible values are: `DELETE`, `KEEP`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(@Nullable Output<String> action) {
             $.action = action;
             return this;
         }
 
+        /**
+         * @param action Policy action.
+         * Possible values are: `DELETE`, `KEEP`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(String action) {
             return action(Output.of(action));
         }
 
+        /**
+         * @param condition Policy condition for matching versions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(@Nullable Output<RepositoryCleanupPolicyConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
+        /**
+         * @param condition Policy condition for matching versions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(RepositoryCleanupPolicyConditionArgs condition) {
             return condition(Output.of(condition));
         }
@@ -119,11 +179,27 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
             return id(Output.of(id));
         }
 
+        /**
+         * @param mostRecentVersions Policy condition for retaining a minimum number of versions. May only be
+         * specified with a Keep action.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mostRecentVersions(@Nullable Output<RepositoryCleanupPolicyMostRecentVersionsArgs> mostRecentVersions) {
             $.mostRecentVersions = mostRecentVersions;
             return this;
         }
 
+        /**
+         * @param mostRecentVersions Policy condition for retaining a minimum number of versions. May only be
+         * specified with a Keep action.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mostRecentVersions(RepositoryCleanupPolicyMostRecentVersionsArgs mostRecentVersions) {
             return mostRecentVersions(Output.of(mostRecentVersions));
         }

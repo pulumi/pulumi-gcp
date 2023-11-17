@@ -58,7 +58,7 @@ export class ProjectSink extends pulumi.CustomResource {
     /**
      * A user managed service account that will be used to write
      * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
-     * routing logs to a destination outside this sink's project. If not specified, a Logging service account
+     * routing logs to a destination outside this sink's project. If not specified, a Logging service account 
      * will automatically be generated.
      */
     public readonly customWriterIdentity!: pulumi.Output<string | undefined>;
@@ -69,14 +69,6 @@ export class ProjectSink extends pulumi.CustomResource {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-     *
-     * - `storage.googleapis.com/[GCS_BUCKET]`
-     * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
-     * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]`
-     *
-     * The writer associated with the sink must have access to write to the above resource.
      */
     public readonly destination!: pulumi.Output<string>;
     /**
@@ -171,7 +163,7 @@ export interface ProjectSinkState {
     /**
      * A user managed service account that will be used to write
      * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
-     * routing logs to a destination outside this sink's project. If not specified, a Logging service account
+     * routing logs to a destination outside this sink's project. If not specified, a Logging service account 
      * will automatically be generated.
      */
     customWriterIdentity?: pulumi.Input<string>;
@@ -182,14 +174,6 @@ export interface ProjectSinkState {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-     *
-     * - `storage.googleapis.com/[GCS_BUCKET]`
-     * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
-     * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]`
-     *
-     * The writer associated with the sink must have access to write to the above resource.
      */
     destination?: pulumi.Input<string>;
     /**
@@ -239,7 +223,7 @@ export interface ProjectSinkArgs {
     /**
      * A user managed service account that will be used to write
      * the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
-     * routing logs to a destination outside this sink's project. If not specified, a Logging service account
+     * routing logs to a destination outside this sink's project. If not specified, a Logging service account 
      * will automatically be generated.
      */
     customWriterIdentity?: pulumi.Input<string>;
@@ -250,14 +234,6 @@ export interface ProjectSinkArgs {
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-     *
-     * - `storage.googleapis.com/[GCS_BUCKET]`
-     * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
-     * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]`
-     *
-     * The writer associated with the sink must have access to write to the above resource.
      */
     destination: pulumi.Input<string>;
     /**

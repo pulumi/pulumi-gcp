@@ -135,9 +135,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// User assigned name for this policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -235,9 +232,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// User assigned name for this policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -303,9 +297,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// User assigned name for this policy.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -567,16 +567,12 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     /**
      * A reference to the region where the Serverless NEGs Reside.
      * 
-     * ***
-     * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
      * @return A reference to the region where the Serverless NEGs Reside.
-     * 
-     * ***
      * 
      */
     public Output<String> region() {
@@ -597,16 +593,18 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return this.selfLink;
     }
     /**
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;. Only one of cloudRun, appEngine, cloudFunction or
-     * serverlessDeployment may be set.
+     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Structure is documented below.
      * 
      */
     @Export(name="serverlessDeployment", refs={RegionNetworkEndpointGroupServerlessDeployment.class}, tree="[0]")
     private Output</* @Nullable */ RegionNetworkEndpointGroupServerlessDeployment> serverlessDeployment;
 
     /**
-     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;. Only one of cloudRun, appEngine, cloudFunction or
-     * serverlessDeployment may be set.
+     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<RegionNetworkEndpointGroupServerlessDeployment>> serverlessDeployment() {

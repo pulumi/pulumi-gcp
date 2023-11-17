@@ -53,8 +53,6 @@ func LookupSSLPolicy(ctx *pulumi.Context, args *LookupSSLPolicyArgs, opts ...pul
 // A collection of arguments for invoking getSSLPolicy.
 type LookupSSLPolicyArgs struct {
 	// The name of the SSL Policy.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -102,8 +100,6 @@ func LookupSSLPolicyOutput(ctx *pulumi.Context, args LookupSSLPolicyOutputArgs, 
 // A collection of arguments for invoking getSSLPolicy.
 type LookupSSLPolicyOutputArgs struct {
 	// The name of the SSL Policy.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

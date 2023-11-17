@@ -19,8 +19,6 @@ export function getAppleAppConfig(args: GetAppleAppConfigArgs, opts?: pulumi.Inv
 export interface GetAppleAppConfigArgs {
     /**
      * The id of the Firebase iOS App.
-     *
-     * - - -
      */
     appId: string;
     /**
@@ -56,8 +54,6 @@ export function getAppleAppConfigOutput(args: GetAppleAppConfigOutputArgs, opts?
 export interface GetAppleAppConfigOutputArgs {
     /**
      * The id of the Firebase iOS App.
-     *
-     * - - -
      */
     appId: pulumi.Input<string>;
     /**

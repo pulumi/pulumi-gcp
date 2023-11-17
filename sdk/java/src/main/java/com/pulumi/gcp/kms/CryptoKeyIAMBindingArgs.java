@@ -18,7 +18,7 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
     public static final CryptoKeyIAMBindingArgs Empty = new CryptoKeyIAMBindingArgs();
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
     private @Nullable Output<CryptoKeyIAMBindingConditionArgs> condition;
 
     /**
-     * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -40,15 +40,6 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
      * `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
      * the provider&#39;s project setting will be used as a fallback.
      * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-     * 
      */
     @Import(name="cryptoKeyId", required=true)
     private Output<String> cryptoKeyId;
@@ -58,15 +49,6 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
      * `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
      * the provider&#39;s project setting will be used as a fallback.
-     * 
-     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-     *   Each entry can have one of the following values:
-     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-     * * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
     public Output<String> cryptoKeyId() {
@@ -125,7 +107,7 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder
@@ -137,7 +119,7 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder
@@ -153,15 +135,6 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
          * `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
          * the provider&#39;s project setting will be used as a fallback.
          * 
-         * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-         *   Each entry can have one of the following values:
-         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-         * 
          * @return builder
          * 
          */
@@ -175,15 +148,6 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
          * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
          * `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
          * the provider&#39;s project setting will be used as a fallback.
-         * 
-         * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-         *   Each entry can have one of the following values:
-         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-         * * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-         * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-         * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-         * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
          * 
          * @return builder
          * 

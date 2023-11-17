@@ -16,8 +16,6 @@ namespace Pulumi.Gcp.Firestore.Inputs
         /// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
         /// be specified.
         /// Possible values are: `CONTAINS`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("arrayConfig")]
         public Input<string>? ArrayConfig { get; set; }

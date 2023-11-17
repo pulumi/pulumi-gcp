@@ -46,9 +46,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? RedirectResponseCode;
         /// <summary>
-        /// If set to true, any accompanying query portion of the original URL is removed
-        /// prior to redirecting the request. If set to false, the query portion of the
-        /// original URL is retained. Defaults to false.
+        /// If set to true, any accompanying query portion of the original URL is removed prior
+        /// to redirecting the request. If set to false, the query portion of the original URL is
+        /// retained. The default is set to false.
+        /// This field is required to ensure an empty block is not set. The normal default value is false.
         /// </summary>
         public readonly bool? StripQuery;
 

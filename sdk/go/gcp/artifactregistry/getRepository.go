@@ -54,8 +54,6 @@ func LookupRepository(ctx *pulumi.Context, args *LookupRepositoryArgs, opts ...p
 // A collection of arguments for invoking getRepository.
 type LookupRepositoryArgs struct {
 	// The location of the artifact registry repository. eg us-central1
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -105,8 +103,6 @@ func LookupRepositoryOutput(ctx *pulumi.Context, args LookupRepositoryOutputArgs
 // A collection of arguments for invoking getRepository.
 type LookupRepositoryOutputArgs struct {
 	// The location of the artifact registry repository. eg us-central1
-	//
-	// ***
 	Location pulumi.StringInput `pulumi:"location"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

@@ -137,8 +137,6 @@ type V2Vm struct {
 	// The qualified name of the QueuedResource that requested this Node.
 	QueuedResource pulumi.StringOutput `pulumi:"queuedResource"`
 	// Runtime version for the TPU.
-	//
-	// ***
 	RuntimeVersion pulumi.StringOutput `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
 	// Structure is documented below.
@@ -252,8 +250,6 @@ type v2vmState struct {
 	// The qualified name of the QueuedResource that requested this Node.
 	QueuedResource *string `pulumi:"queuedResource"`
 	// Runtime version for the TPU.
-	//
-	// ***
 	RuntimeVersion *string `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
 	// Structure is documented below.
@@ -330,8 +326,6 @@ type V2VmState struct {
 	// The qualified name of the QueuedResource that requested this Node.
 	QueuedResource pulumi.StringPtrInput
 	// Runtime version for the TPU.
-	//
-	// ***
 	RuntimeVersion pulumi.StringPtrInput
 	// The scheduling options for this node.
 	// Structure is documented below.
@@ -393,8 +387,6 @@ type v2vmArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Runtime version for the TPU.
-	//
-	// ***
 	RuntimeVersion string `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
 	// Structure is documented below.
@@ -448,8 +440,6 @@ type V2VmArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Runtime version for the TPU.
-	//
-	// ***
 	RuntimeVersion pulumi.StringInput
 	// The scheduling options for this node.
 	// Structure is documented below.
@@ -661,8 +651,6 @@ func (o V2VmOutput) QueuedResource() pulumi.StringOutput {
 }
 
 // Runtime version for the TPU.
-//
-// ***
 func (o V2VmOutput) RuntimeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2Vm) pulumi.StringOutput { return v.RuntimeVersion }).(pulumi.StringOutput)
 }

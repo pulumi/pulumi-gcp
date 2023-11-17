@@ -35,7 +35,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// <summary>
         /// The keyset to use for signature generation.
         /// The following are both valid paths to an EdgeCacheKeyset resource:
-        /// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
         /// </summary>
         [Input("keyset")]
         public Input<string>? Keyset { get; set; }

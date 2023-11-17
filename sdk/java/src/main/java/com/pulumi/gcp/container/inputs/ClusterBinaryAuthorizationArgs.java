@@ -17,7 +17,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
     public static final ClusterBinaryAuthorizationArgs Empty = new ClusterBinaryAuthorizationArgs();
 
     /**
-     * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      * @deprecated
      * Deprecated in favor of evaluation_mode.
@@ -28,7 +28,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      * @deprecated
      * Deprecated in favor of evaluation_mode.
@@ -82,7 +82,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+         * @param enabled (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+         * @param enabled (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
          * 
          * @return builder
          * 

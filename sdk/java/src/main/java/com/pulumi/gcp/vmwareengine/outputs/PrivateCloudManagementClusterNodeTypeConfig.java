@@ -18,8 +18,6 @@ public final class PrivateCloudManagementClusterNodeTypeConfig {
      * If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
      * This cannot be changed once the PrivateCloud is created.
      * 
-     * ***
-     * 
      */
     private @Nullable Integer customCoreCount;
     /**
@@ -39,8 +37,6 @@ public final class PrivateCloudManagementClusterNodeTypeConfig {
      * This number must always be one of `nodeType.availableCustomCoreCounts`.
      * If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
      * This cannot be changed once the PrivateCloud is created.
-     * 
-     * ***
      * 
      */
     public Optional<Integer> customCoreCount() {

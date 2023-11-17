@@ -21,8 +21,6 @@ public final class VMwareClusterControlPlaneNodeVsphereConfig {
      * @return (Output)
      * The Vsphere storage policy used by the control plane Node.
      * 
-     * ***
-     * 
      */
     private @Nullable String storagePolicyName;
 
@@ -38,8 +36,6 @@ public final class VMwareClusterControlPlaneNodeVsphereConfig {
     /**
      * @return (Output)
      * The Vsphere storage policy used by the control plane Node.
-     * 
-     * ***
      * 
      */
     public Optional<String> storagePolicyName() {

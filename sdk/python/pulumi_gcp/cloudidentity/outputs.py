@@ -44,8 +44,6 @@ class GroupAdditionalGroupKey(dict):
                If specified, the EntityKey represents an external-identity-mapped group.
                The namespace must correspond to an identity source created in Admin Console
                and must be in the form of `identitysources/{identity_source_id}`.
-               
-               - - -
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -75,8 +73,6 @@ class GroupAdditionalGroupKey(dict):
         If specified, the EntityKey represents an external-identity-mapped group.
         The namespace must correspond to an identity source created in Admin Console
         and must be in the form of `identitysources/{identity_source_id}`.
-
-        - - -
         """
         return pulumi.get(self, "namespace")
 
@@ -99,8 +95,6 @@ class GroupGroupKey(dict):
                If specified, the EntityKey represents an external-identity-mapped group.
                The namespace must correspond to an identity source created in Admin Console
                and must be in the form of `identitysources/{identity_source_id}`.
-               
-               - - -
         """
         pulumi.set(__self__, "id", id)
         if namespace is not None:
@@ -129,8 +123,6 @@ class GroupGroupKey(dict):
         If specified, the EntityKey represents an external-identity-mapped group.
         The namespace must correspond to an identity source created in Admin Console
         and must be in the form of `identitysources/{identity_source_id}`.
-
-        - - -
         """
         return pulumi.get(self, "namespace")
 
@@ -242,8 +234,6 @@ class GroupMembershipRole(dict):
         """
         :param str name: The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
                Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-               
-               - - -
         """
         pulumi.set(__self__, "name", name)
 
@@ -253,8 +243,6 @@ class GroupMembershipRole(dict):
         """
         The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
         Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -265,11 +253,11 @@ class GetGroupLookupGroupKeyResult(dict):
                  id: str,
                  namespace: Optional[str] = None):
         """
-        :param str id: (Required) The ID of the entity.
+        :param str id: The ID of the entity.
                For Google-managed entities, the id is the email address of an existing group or user.
                For external-identity-mapped entities, the id is a string conforming
                to the Identity Source's requirements.
-        :param str namespace: (Optional) The namespace in which the entity exists.
+        :param str namespace: The namespace in which the entity exists.
                If not populated, the EntityKey represents a Google-managed entity
                such as a Google user or a Google Group.
                If populated, the EntityKey represents an external-identity-mapped group.
@@ -284,7 +272,7 @@ class GetGroupLookupGroupKeyResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        (Required) The ID of the entity.
+        The ID of the entity.
         For Google-managed entities, the id is the email address of an existing group or user.
         For external-identity-mapped entities, the id is a string conforming
         to the Identity Source's requirements.
@@ -295,7 +283,7 @@ class GetGroupLookupGroupKeyResult(dict):
     @pulumi.getter
     def namespace(self) -> Optional[str]:
         """
-        (Optional) The namespace in which the entity exists.
+        The namespace in which the entity exists.
         If not populated, the EntityKey represents a Google-managed entity
         such as a Google user or a Google Group.
         If populated, the EntityKey represents an external-identity-mapped group.

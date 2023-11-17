@@ -247,8 +247,6 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
      * The location of the gateway security policy.
      * The default value is `global`.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
@@ -256,8 +254,6 @@ public class AddressGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return The location of the gateway security policy.
      * The default value is `global`.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

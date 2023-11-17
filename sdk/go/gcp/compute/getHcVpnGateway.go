@@ -51,8 +51,6 @@ func GetHcVpnGateway(ctx *pulumi.Context, args *GetHcVpnGatewayArgs, opts ...pul
 // A collection of arguments for invoking getHcVpnGateway.
 type GetHcVpnGatewayArgs struct {
 	// The name of the forwarding rule.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -92,8 +90,6 @@ func GetHcVpnGatewayOutput(ctx *pulumi.Context, args GetHcVpnGatewayOutputArgs, 
 // A collection of arguments for invoking getHcVpnGateway.
 type GetHcVpnGatewayOutputArgs struct {
 	// The name of the forwarding rule.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

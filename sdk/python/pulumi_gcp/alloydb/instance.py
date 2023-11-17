@@ -34,9 +34,6 @@ class InstanceArgs:
         :param pulumi.Input[str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
-               
-               
-               - - -
         :param pulumi.Input[str] instance_type: The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
                'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
                secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
@@ -113,9 +110,6 @@ class InstanceArgs:
     def instance_id(self) -> pulumi.Input[str]:
         """
         The ID of the alloydb instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -328,9 +322,6 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
-               
-               
-               - - -
         :param pulumi.Input[str] instance_type: The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
                'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
                secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
@@ -541,9 +532,6 @@ class _InstanceState:
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the alloydb instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -860,9 +848,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
-               
-               
-               - - -
         :param pulumi.Input[str] instance_type: The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
                'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
                secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
@@ -1129,9 +1114,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
-               
-               
-               - - -
         :param pulumi.Input[str] instance_type: The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the
                'depends_on' meta-data attribute. If the instance type is SECONDARY, point to the cluster_type of the associated
                secondary cluster instead of mentioning SECONDARY. Example: {instance_type =
@@ -1284,9 +1266,6 @@ class Instance(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the alloydb instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 

@@ -76,8 +76,6 @@ type TargetPool struct {
 	Instances pulumi.StringArrayOutput `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -85,7 +83,7 @@ type TargetPool struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// ) The resource URL for the security policy associated with this target pool.
+	// The resource URL for the security policy associated with this target pool.
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -144,8 +142,6 @@ type targetPoolState struct {
 	Instances []string `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -153,7 +149,7 @@ type targetPoolState struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region *string `pulumi:"region"`
-	// ) The resource URL for the security policy associated with this target pool.
+	// The resource URL for the security policy associated with this target pool.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -183,8 +179,6 @@ type TargetPoolState struct {
 	Instances pulumi.StringArrayInput
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -192,7 +186,7 @@ type TargetPoolState struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region pulumi.StringPtrInput
-	// ) The resource URL for the security policy associated with this target pool.
+	// The resource URL for the security policy associated with this target pool.
 	SecurityPolicy pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -226,8 +220,6 @@ type targetPoolArgs struct {
 	Instances []string `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -235,7 +227,7 @@ type targetPoolArgs struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region *string `pulumi:"region"`
-	// ) The resource URL for the security policy associated with this target pool.
+	// The resource URL for the security policy associated with this target pool.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// How to distribute load. Options are "NONE" (no
 	// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
@@ -264,8 +256,6 @@ type TargetPoolArgs struct {
 	Instances pulumi.StringArrayInput
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -273,7 +263,7 @@ type TargetPoolArgs struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region pulumi.StringPtrInput
-	// ) The resource URL for the security policy associated with this target pool.
+	// The resource URL for the security policy associated with this target pool.
 	SecurityPolicy pulumi.StringPtrInput
 	// How to distribute load. Options are "NONE" (no
 	// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
@@ -402,8 +392,6 @@ func (o TargetPoolOutput) Instances() pulumi.StringArrayOutput {
 
 // A unique name for the resource, required by GCE. Changing
 // this forces a new resource to be created.
-//
-// ***
 func (o TargetPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -420,7 +408,7 @@ func (o TargetPoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// ) The resource URL for the security policy associated with this target pool.
+// The resource URL for the security policy associated with this target pool.
 func (o TargetPoolOutput) SecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringPtrOutput { return v.SecurityPolicy }).(pulumi.StringPtrOutput)
 }

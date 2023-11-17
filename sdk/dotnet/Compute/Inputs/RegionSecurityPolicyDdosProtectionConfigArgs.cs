@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
         /// - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
         /// - ADVANCED_PREVIEW: flag to enable the security policy in preview mode.
-        /// Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
+        ///   Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
         /// </summary>
         [Input("ddosProtection", required: true)]
         public Input<string> DdosProtection { get; set; } = null!;

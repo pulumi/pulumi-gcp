@@ -160,8 +160,6 @@ type Cluster struct {
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management pulumi.BoolOutput `pulumi:"management"`
 	// The ID of the Cluster.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -214,8 +212,6 @@ type clusterState struct {
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management *bool `pulumi:"management"`
 	// The ID of the Cluster.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -236,8 +232,6 @@ type ClusterState struct {
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management pulumi.BoolPtrInput
 	// The ID of the Cluster.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -259,8 +253,6 @@ func (ClusterState) ElementType() reflect.Type {
 
 type clusterArgs struct {
 	// The ID of the Cluster.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -275,8 +267,6 @@ type clusterArgs struct {
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
 	// The ID of the Cluster.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The map of cluster node types in this cluster,
 	// where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -382,8 +372,6 @@ func (o ClusterOutput) Management() pulumi.BoolOutput {
 }
 
 // The ID of the Cluster.
-//
-// ***
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

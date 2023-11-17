@@ -93,8 +93,6 @@ class BitbucketServerConfigSecretsArgs:
         :param pulumi.Input[str] read_access_token_version_name: The resource name for the read access token's secret version.
         :param pulumi.Input[str] webhook_secret_version_name: Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
                Changing this field will result in deleting/ recreating the resource.
-               
-               - - -
         """
         pulumi.set(__self__, "admin_access_token_version_name", admin_access_token_version_name)
         pulumi.set(__self__, "read_access_token_version_name", read_access_token_version_name)
@@ -130,8 +128,6 @@ class BitbucketServerConfigSecretsArgs:
         """
         Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
         Changing this field will result in deleting/ recreating the resource.
-
-        - - -
         """
         return pulumi.get(self, "webhook_secret_version_name")
 
@@ -672,7 +668,6 @@ class TriggerBuildArtifactsObjectsArgs:
                Output only. Stores timing information for pushing all artifact objects.
                Structure is documented below.
                
-               
                <a name="nested_timing"></a>The `timing` block contains:
         """
         if location is not None:
@@ -715,7 +710,6 @@ class TriggerBuildArtifactsObjectsArgs:
         (Output)
         Output only. Stores timing information for pushing all artifact objects.
         Structure is documented below.
-
 
         <a name="nested_timing"></a>The `timing` block contains:
         """

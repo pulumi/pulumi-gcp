@@ -22,7 +22,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The configuration for running the Dataproc cluster on Kubernetes.
         /// Structure defined below.
-        /// - - -
         /// </summary>
         [Input("kubernetesClusterConfig")]
         public Input<Inputs.ClusterVirtualClusterConfigKubernetesClusterConfigGetArgs>? KubernetesClusterConfig { get; set; }

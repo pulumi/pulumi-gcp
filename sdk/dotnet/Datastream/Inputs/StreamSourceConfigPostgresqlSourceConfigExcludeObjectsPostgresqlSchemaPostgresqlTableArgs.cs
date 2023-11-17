@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        /// Structure is documented below.`postgresql_columns` -
+        /// (Optional)
+        /// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs> PostgresqlColumns
@@ -26,6 +29,8 @@ namespace Pulumi.Gcp.Datastream.Inputs
         }
 
         /// <summary>
+        /// Table name.`table` -
+        /// (Required)
         /// Table name.
         /// </summary>
         [Input("table", required: true)]

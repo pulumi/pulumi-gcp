@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.SourceRepo.Inputs
         /// The format of the Cloud Pub/Sub messages.
         /// - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
         /// - JSON: The message payload is a JSON string of SourceRepoEvent.
-        /// Possible values are: `PROTOBUF`, `JSON`.
+        ///   Possible values are: `PROTOBUF`, `JSON`.
         /// </summary>
         [Input("messageFormat", required: true)]
         public Input<string> MessageFormat { get; set; } = null!;

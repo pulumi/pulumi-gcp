@@ -288,8 +288,6 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
      * 
-     * ***
-     * 
      */
     @Export(name="plan", refs={String.class}, tree="[0]")
     private Output<String> plan;
@@ -298,8 +296,6 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
      * @return The plan for this commitment, which determines duration and discount rate.
      * The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
      * Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-     * 
-     * ***
      * 
      */
     public Output<String> plan() {

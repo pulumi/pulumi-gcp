@@ -350,8 +350,6 @@ type ServicePerimeter struct {
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
@@ -444,8 +442,6 @@ type servicePerimeterState struct {
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
@@ -503,8 +499,6 @@ type ServicePerimeterState struct {
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
@@ -564,8 +558,6 @@ type servicePerimeterArgs struct {
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
@@ -620,8 +612,6 @@ type ServicePerimeterArgs struct {
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
@@ -769,8 +759,6 @@ func (o ServicePerimeterOutput) Description() pulumi.StringPtrOutput {
 // Resource name for the ServicePerimeter. The shortName component must
 // begin with a letter and only include alphanumeric and '_'.
 // Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
-//
-// ***
 func (o ServicePerimeterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeter) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

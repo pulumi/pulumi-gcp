@@ -100,8 +100,7 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
     }
 
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
-     * 'bypassResponsePolicy'
+     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
     public readonly behavior!: pulumi.Output<string | undefined>;
     /**
@@ -121,9 +120,6 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Identifies the response policy addressed by this request.
-     *
-     *
-     * - - -
      */
     public readonly responsePolicy!: pulumi.Output<string>;
     /**
@@ -178,8 +174,7 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
  */
 export interface ResponsePolicyRuleState {
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
-     * 'bypassResponsePolicy'
+     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
     behavior?: pulumi.Input<string>;
     /**
@@ -199,9 +194,6 @@ export interface ResponsePolicyRuleState {
     project?: pulumi.Input<string>;
     /**
      * Identifies the response policy addressed by this request.
-     *
-     *
-     * - - -
      */
     responsePolicy?: pulumi.Input<string>;
     /**
@@ -215,8 +207,7 @@ export interface ResponsePolicyRuleState {
  */
 export interface ResponsePolicyRuleArgs {
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
-     * 'bypassResponsePolicy'
+     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
     behavior?: pulumi.Input<string>;
     /**
@@ -236,9 +227,6 @@ export interface ResponsePolicyRuleArgs {
     project?: pulumi.Input<string>;
     /**
      * Identifies the response policy addressed by this request.
-     *
-     *
-     * - - -
      */
     responsePolicy: pulumi.Input<string>;
     /**

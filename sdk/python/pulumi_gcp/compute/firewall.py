@@ -36,9 +36,6 @@ class FirewallArgs:
         """
         The set of arguments for constructing a Firewall resource.
         :param pulumi.Input[str] network: The name or self_link of the network to attach this firewall to.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]] allows: The list of ALLOW rules specified by this firewall. Each rule
                specifies a protocol and port-range tuple that describes a permitted
                connection.
@@ -163,9 +160,6 @@ class FirewallArgs:
     def network(self) -> pulumi.Input[str]:
         """
         The name or self_link of the network to attach this firewall to.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -492,9 +486,6 @@ class _FirewallState:
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[str] network: The name or self_link of the network to attach this firewall to.
-               
-               
-               - - -
         :param pulumi.Input[int] priority: Priority for this rule. This is an integer between 0 and 65535, both
                inclusive. When not specified, the value assumed is 1000. Relative
                priorities determine precedence of conflicting rules. Lower value of
@@ -739,9 +730,6 @@ class _FirewallState:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The name or self_link of the network to attach this firewall to.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -1037,9 +1025,6 @@ class Firewall(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[str] network: The name or self_link of the network to attach this firewall to.
-               
-               
-               - - -
         :param pulumi.Input[int] priority: Priority for this rule. This is an integer between 0 and 65535, both
                inclusive. When not specified, the value assumed is 1000. Relative
                priorities determine precedence of conflicting rules. Lower value of
@@ -1319,9 +1304,6 @@ class Firewall(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[str] network: The name or self_link of the network to attach this firewall to.
-               
-               
-               - - -
         :param pulumi.Input[int] priority: Priority for this rule. This is an integer between 0 and 65535, both
                inclusive. When not specified, the value assumed is 1000. Relative
                priorities determine precedence of conflicting rules. Lower value of
@@ -1509,9 +1491,6 @@ class Firewall(pulumi.CustomResource):
     def network(self) -> pulumi.Output[str]:
         """
         The name or self_link of the network to attach this firewall to.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 

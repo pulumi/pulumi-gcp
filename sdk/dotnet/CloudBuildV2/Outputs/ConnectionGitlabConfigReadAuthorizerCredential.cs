@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.CloudBuildV2.Outputs
         public readonly string UserTokenSecretVersion;
         /// <summary>
         /// Output only. The username associated to this token.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Username;
 

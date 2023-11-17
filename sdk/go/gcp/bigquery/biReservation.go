@@ -83,8 +83,6 @@ type BiReservation struct {
 	pulumi.CustomResourceState
 
 	// LOCATION_DESCRIPTION
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -135,8 +133,6 @@ func GetBiReservation(ctx *pulumi.Context,
 // Input properties used for looking up and filtering BiReservation resources.
 type biReservationState struct {
 	// LOCATION_DESCRIPTION
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
 	Name *string `pulumi:"name"`
@@ -155,8 +151,6 @@ type biReservationState struct {
 
 type BiReservationState struct {
 	// LOCATION_DESCRIPTION
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
 	Name pulumi.StringPtrInput
@@ -179,8 +173,6 @@ func (BiReservationState) ElementType() reflect.Type {
 
 type biReservationArgs struct {
 	// LOCATION_DESCRIPTION
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Preferred tables to use BI capacity for.
 	// Structure is documented below.
@@ -195,8 +187,6 @@ type biReservationArgs struct {
 // The set of arguments for constructing a BiReservation resource.
 type BiReservationArgs struct {
 	// LOCATION_DESCRIPTION
-	//
-	// ***
 	Location pulumi.StringInput
 	// Preferred tables to use BI capacity for.
 	// Structure is documented below.
@@ -296,8 +286,6 @@ func (o BiReservationOutput) ToBiReservationOutputWithContext(ctx context.Contex
 }
 
 // LOCATION_DESCRIPTION
-//
-// ***
 func (o BiReservationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *BiReservation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

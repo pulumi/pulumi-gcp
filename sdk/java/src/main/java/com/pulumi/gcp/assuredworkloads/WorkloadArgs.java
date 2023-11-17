@@ -135,16 +135,12 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The organization for the resource
      * 
-     * ***
-     * 
      */
     @Import(name="organization", required=true)
     private Output<String> organization;
 
     /**
      * @return The organization for the resource
-     * 
-     * ***
      * 
      */
     public Output<String> organization() {
@@ -418,8 +414,6 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param organization The organization for the resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -430,8 +424,6 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param organization The organization for the resource
-         * 
-         * ***
          * 
          * @return builder
          * 

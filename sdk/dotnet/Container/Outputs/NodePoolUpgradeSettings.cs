@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int? MaxUnavailable;
         /// <summary>
-        /// The upgrade stragey to be used for upgrading the nodes.
+        /// (Default `SURGE`) The upgrade stragey to be used for upgrading the nodes.
         /// </summary>
         public readonly string? Strategy;
 

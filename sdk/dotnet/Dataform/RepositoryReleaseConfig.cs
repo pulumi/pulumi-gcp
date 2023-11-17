@@ -145,9 +145,6 @@ namespace Pulumi.Gcp.Dataform
 
         /// <summary>
         /// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("gitCommitish")]
         public Output<string> GitCommitish { get; private set; } = null!;
@@ -251,9 +248,6 @@ namespace Pulumi.Gcp.Dataform
 
         /// <summary>
         /// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("gitCommitish", required: true)]
         public Input<string> GitCommitish { get; set; } = null!;
@@ -312,9 +306,6 @@ namespace Pulumi.Gcp.Dataform
 
         /// <summary>
         /// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("gitCommitish")]
         public Input<string>? GitCommitish { get; set; }

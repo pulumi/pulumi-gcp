@@ -406,8 +406,7 @@ class ConnectionCloudSpannerArgs:
         :param pulumi.Input[int] max_parallelism: Allows setting max parallelism per query when executing on Spanner independent compute resources. If unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance configuration. `useParallelism` and `useDataBoost` must be set when setting max parallelism.
         :param pulumi.Input[bool] use_data_boost: If set, the request will be executed via Spanner independent compute resources. `use_parallelism` must be set when using data boost.
         :param pulumi.Input[bool] use_parallelism: If parallelism should be used when reading from Cloud Spanner.
-        :param pulumi.Input[bool] use_serverless_analytics: (Optional, Deprecated)
-               If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
+        :param pulumi.Input[bool] use_serverless_analytics: If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
                
                > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
         """
@@ -490,7 +489,6 @@ class ConnectionCloudSpannerArgs:
     @pulumi.getter(name="useServerlessAnalytics")
     def use_serverless_analytics(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional, Deprecated)
         If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
 
         > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
@@ -1940,8 +1938,6 @@ class JobExtractSourceModelArgs:
         """
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this model.
         :param pulumi.Input[str] model_id: The ID of the model.
-               
-               - - -
         :param pulumi.Input[str] project_id: The ID of the project containing this model.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
@@ -1965,8 +1961,6 @@ class JobExtractSourceModelArgs:
     def model_id(self) -> pulumi.Input[str]:
         """
         The ID of the model.
-
-        - - -
         """
         return pulumi.get(self, "model_id")
 
@@ -4239,9 +4233,9 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgs:
                reading data. The following modes are supported.
                * AUTO: automatically infer partition key name(s) and type(s).
                * STRINGS: automatically infer partition key name(s). All types are
-               Not all storage formats support hive partitioning. Requesting hive
-               partitioning on an unsupported format will lead to an error.
-               Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+                 Not all storage formats support hive partitioning. Requesting hive
+                 partitioning on an unsupported format will lead to an error.
+                 Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
                * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
         :param pulumi.Input[bool] require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
@@ -4270,9 +4264,9 @@ class TableExternalDataConfigurationHivePartitioningOptionsArgs:
         reading data. The following modes are supported.
         * AUTO: automatically infer partition key name(s) and type(s).
         * STRINGS: automatically infer partition key name(s). All types are
-        Not all storage formats support hive partitioning. Requesting hive
-        partitioning on an unsupported format will lead to an error.
-        Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+          Not all storage formats support hive partitioning. Requesting hive
+          partitioning on an unsupported format will lead to an error.
+          Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
         * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
         """
         return pulumi.get(self, "mode")

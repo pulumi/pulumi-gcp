@@ -14,12 +14,17 @@ import javax.annotation.Nullable;
 public final class StreamBackfillAllOracleExcludedObjectsOracleSchema {
     /**
      * @return Tables in the database.
+     * Structure is documented below.`oracle_tables` -
+     * (Optional)
+     * Tables in the database.
      * Structure is documented below.
      * 
      */
     private @Nullable List<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable> oracleTables;
     /**
-     * @return Schema name.
+     * @return Schema name.`schema` -
+     * (Required)
+     * Schema name.
      * 
      */
     private String schema;
@@ -27,6 +32,9 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchema {
     private StreamBackfillAllOracleExcludedObjectsOracleSchema() {}
     /**
      * @return Tables in the database.
+     * Structure is documented below.`oracle_tables` -
+     * (Optional)
+     * Tables in the database.
      * Structure is documented below.
      * 
      */
@@ -34,7 +42,9 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchema {
         return this.oracleTables == null ? List.of() : this.oracleTables;
     }
     /**
-     * @return Schema name.
+     * @return Schema name.`schema` -
+     * (Required)
+     * Schema name.
      * 
      */
     public String schema() {

@@ -120,10 +120,6 @@ type PreventionDeidentifyTemplate struct {
 	// Name describing the field.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the template in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -181,10 +177,6 @@ type preventionDeidentifyTemplateState struct {
 	// Name describing the field.
 	Name *string `pulumi:"name"`
 	// The parent of the template in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent *string `pulumi:"parent"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -207,10 +199,6 @@ type PreventionDeidentifyTemplateState struct {
 	// Name describing the field.
 	Name pulumi.StringPtrInput
 	// The parent of the template in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent pulumi.StringPtrInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -233,10 +221,6 @@ type preventionDeidentifyTemplateArgs struct {
 	// User set display name of the template.
 	DisplayName *string `pulumi:"displayName"`
 	// The parent of the template in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent string `pulumi:"parent"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -254,10 +238,6 @@ type PreventionDeidentifyTemplateArgs struct {
 	// User set display name of the template.
 	DisplayName pulumi.StringPtrInput
 	// The parent of the template in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent pulumi.StringInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -381,10 +361,6 @@ func (o PreventionDeidentifyTemplateOutput) Name() pulumi.StringOutput {
 }
 
 // The parent of the template in any of the following formats:
-// * `projects/{{project}}`
-// * `projects/{{project}}/locations/{{location}}`
-// * `organizations/{{organization_id}}`
-// * `organizations/{{organization_id}}/locations/{{location}}`
 func (o PreventionDeidentifyTemplateOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplate) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

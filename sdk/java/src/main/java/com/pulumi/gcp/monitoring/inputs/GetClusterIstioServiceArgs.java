@@ -70,8 +70,6 @@ public final class GetClusterIstioServiceArgs extends com.pulumi.resources.Invok
      * The name of the Istio service underlying this service.
      * Corresponds to the destination_service_name metric label in Istio metrics.
      * 
-     * ***
-     * 
      * Other optional fields include:
      * 
      */
@@ -81,8 +79,6 @@ public final class GetClusterIstioServiceArgs extends com.pulumi.resources.Invok
     /**
      * @return The name of the Istio service underlying this service.
      * Corresponds to the destination_service_name metric label in Istio metrics.
-     * 
-     * ***
      * 
      * Other optional fields include:
      * 
@@ -209,8 +205,6 @@ public final class GetClusterIstioServiceArgs extends com.pulumi.resources.Invok
          * @param serviceName The name of the Istio service underlying this service.
          * Corresponds to the destination_service_name metric label in Istio metrics.
          * 
-         * ***
-         * 
          * Other optional fields include:
          * 
          * @return builder
@@ -224,8 +218,6 @@ public final class GetClusterIstioServiceArgs extends com.pulumi.resources.Invok
         /**
          * @param serviceName The name of the Istio service underlying this service.
          * Corresponds to the destination_service_name metric label in Istio metrics.
-         * 
-         * ***
          * 
          * Other optional fields include:
          * 

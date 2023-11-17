@@ -211,13 +211,6 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The parent of the inspect template in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -287,13 +280,6 @@ export interface PreventionInspectTemplateState {
     name?: pulumi.Input<string>;
     /**
      * The parent of the inspect template in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -323,13 +309,6 @@ export interface PreventionInspectTemplateArgs {
     inspectConfig?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfig>;
     /**
      * The parent of the inspect template in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
     /**

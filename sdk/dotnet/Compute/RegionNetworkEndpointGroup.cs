@@ -334,9 +334,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the region where the Serverless NEGs Reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -348,8 +345,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-        /// serverlessDeployment may be set.
+        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+        /// Structure is documented below.
         /// </summary>
         [Output("serverlessDeployment")]
         public Output<Outputs.RegionNetworkEndpointGroupServerlessDeployment?> ServerlessDeployment { get; private set; } = null!;
@@ -482,16 +480,14 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the region where the Serverless NEGs Reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-        /// serverlessDeployment may be set.
+        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+        /// Structure is documented below.
         /// </summary>
         [Input("serverlessDeployment")]
         public Input<Inputs.RegionNetworkEndpointGroupServerlessDeploymentArgs>? ServerlessDeployment { get; set; }
@@ -586,9 +582,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the region where the Serverless NEGs Reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -600,8 +593,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-        /// serverlessDeployment may be set.
+        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+        /// Structure is documented below.
         /// </summary>
         [Input("serverlessDeployment")]
         public Input<Inputs.RegionNetworkEndpointGroupServerlessDeploymentGetArgs>? ServerlessDeployment { get; set; }

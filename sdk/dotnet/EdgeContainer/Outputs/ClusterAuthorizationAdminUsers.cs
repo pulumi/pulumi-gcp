@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.EdgeContainer.Outputs
     {
         /// <summary>
         /// An active Google username.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Username;
 

@@ -111,8 +111,6 @@ def get_project_service(project: Optional[str] = None,
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str service: The name of the Google Platform project service.
-           
-           - - -
     """
     __args__ = dict()
     __args__['project'] = project
@@ -160,7 +158,5 @@ def get_project_service_output(project: Optional[pulumi.Input[Optional[str]]] = 
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str service: The name of the Google Platform project service.
-           
-           - - -
     """
     ...

@@ -19,8 +19,6 @@ public final class DiskAsyncReplicationSecondaryDisk {
     /**
      * @return Output-only. Status of replication on the secondary disk.
      * 
-     * ***
-     * 
      */
     private @Nullable String state;
 
@@ -34,8 +32,6 @@ public final class DiskAsyncReplicationSecondaryDisk {
     }
     /**
      * @return Output-only. Status of replication on the secondary disk.
-     * 
-     * ***
      * 
      */
     public Optional<String> state() {

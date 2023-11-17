@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigWorkerConfig
     {
         /// <summary>
-        /// The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+        /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.`accelerators` (Optional) The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterClusterConfigWorkerConfigAccelerator> Accelerators;
         /// <summary>

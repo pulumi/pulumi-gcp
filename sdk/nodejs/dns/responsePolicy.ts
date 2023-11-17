@@ -148,9 +148,6 @@ export class ResponsePolicy extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The user assigned name for this Response Policy, such as `myresponsepolicy`.
-     *
-     *
-     * - - -
      */
     public readonly responsePolicyName!: pulumi.Output<string>;
 
@@ -213,9 +210,6 @@ export interface ResponsePolicyState {
     project?: pulumi.Input<string>;
     /**
      * The user assigned name for this Response Policy, such as `myresponsepolicy`.
-     *
-     *
-     * - - -
      */
     responsePolicyName?: pulumi.Input<string>;
 }
@@ -245,9 +239,6 @@ export interface ResponsePolicyArgs {
     project?: pulumi.Input<string>;
     /**
      * The user assigned name for this Response Policy, such as `myresponsepolicy`.
-     *
-     *
-     * - - -
      */
     responsePolicyName: pulumi.Input<string>;
 }

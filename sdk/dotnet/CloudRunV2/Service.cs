@@ -562,9 +562,8 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> Creator { get; private set; } = null!;
 
         /// <summary>
-        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-        /// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-        /// https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+        /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         /// </summary>
         [Output("customAudiences")]
         public Output<ImmutableArray<string>> CustomAudiences { get; private set; } = null!;
@@ -836,9 +835,8 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputList<string>? _customAudiences;
 
         /// <summary>
-        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-        /// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-        /// https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+        /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         /// </summary>
         public InputList<string> CustomAudiences
         {
@@ -997,9 +995,8 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputList<string>? _customAudiences;
 
         /// <summary>
-        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-        /// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-        /// https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+        /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         /// </summary>
         public InputList<string> CustomAudiences
         {

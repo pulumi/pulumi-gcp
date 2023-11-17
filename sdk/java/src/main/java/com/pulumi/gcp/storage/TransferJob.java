@@ -322,16 +322,12 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
     /**
      * Transfer specification. Structure documented below.
      * 
-     * ***
-     * 
      */
     @Export(name="transferSpec", refs={TransferJobTransferSpec.class}, tree="[0]")
     private Output<TransferJobTransferSpec> transferSpec;
 
     /**
      * @return Transfer specification. Structure documented below.
-     * 
-     * ***
      * 
      */
     public Output<TransferJobTransferSpec> transferSpec() {

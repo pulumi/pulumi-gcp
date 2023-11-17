@@ -528,7 +528,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableAutopilot);
     }
     /**
-     * )
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      * 
      */
@@ -536,8 +535,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> enableFqdnNetworkPolicy;
 
     /**
-     * @return )
-     * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+     * @return Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      * 
      */
     public Output<Optional<Boolean>> enableFqdnNetworkPolicy() {
@@ -626,7 +624,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableLegacyAbac);
     }
     /**
-     * )
      * Whether multi-networking is enabled for this cluster.
      * 
      */
@@ -634,8 +631,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> enableMultiNetworking;
 
     /**
-     * @return )
-     * Whether multi-networking is enabled for this cluster.
+     * @return Whether multi-networking is enabled for this cluster.
      * 
      */
     public Output<Optional<Boolean>> enableMultiNetworking() {
@@ -1023,8 +1019,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of the cluster, unique within the project and
      * location.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -1032,8 +1026,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the cluster, unique within the project and
      * location.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -1252,7 +1244,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.operation;
     }
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      * 
@@ -1261,7 +1253,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ClusterPodSecurityPolicyConfig> podSecurityPolicyConfig;
 
     /**
-     * @return ) Configuration for the
+     * @return Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      * 
@@ -1316,7 +1308,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
      */
@@ -1324,8 +1315,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<ClusterProtectConfig> protectConfig;
 
     /**
-     * @return )
-     * Enable/Disable Protect API features for the cluster. Structure is documented below.
+     * @return Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
      */
     public Output<ClusterProtectConfig> protectConfig() {
@@ -1382,14 +1372,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.removeDefaultNodePool);
     }
     /**
-     * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
      * 
      */
     @Export(name="resourceLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> resourceLabels;
 
     /**
-     * @return The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     * @return The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
      * 
      */
     public Output<Optional<Map<String,String>>> resourceLabels() {

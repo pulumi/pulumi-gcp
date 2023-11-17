@@ -188,9 +188,6 @@ export class RegionBackendService extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -247,8 +244,8 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
     /**
-     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      */
     public readonly subsetting!: pulumi.Output<outputs.compute.RegionBackendServiceSubsetting | undefined>;
     /**
@@ -450,9 +447,6 @@ export interface RegionBackendServiceState {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -509,8 +503,8 @@ export interface RegionBackendServiceState {
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      */
     subsetting?: pulumi.Input<inputs.compute.RegionBackendServiceSubsetting>;
     /**
@@ -625,9 +619,6 @@ export interface RegionBackendServiceArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -680,8 +671,8 @@ export interface RegionBackendServiceArgs {
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      */
     subsetting?: pulumi.Input<inputs.compute.RegionBackendServiceSubsetting>;
     /**

@@ -38,9 +38,6 @@ namespace Pulumi.Gcp.Dataflow.Inputs
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("validateOnly")]
         public Input<bool>? ValidateOnly { get; set; }
 

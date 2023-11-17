@@ -112,8 +112,6 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      * The machine type to create.
      *
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-     *
-     * - - -
      */
     public readonly machineType!: pulumi.Output<string>;
     /**
@@ -181,7 +179,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      */
     public readonly reservationAffinity!: pulumi.Output<outputs.compute.RegionInstanceTemplateReservationAffinity | undefined>;
     /**
-     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
     public readonly resourcePolicies!: pulumi.Output<string | undefined>;
     /**
@@ -357,8 +355,6 @@ export interface RegionInstanceTemplateState {
      * The machine type to create.
      *
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-     *
-     * - - -
      */
     machineType?: pulumi.Input<string>;
     /**
@@ -426,7 +422,7 @@ export interface RegionInstanceTemplateState {
      */
     reservationAffinity?: pulumi.Input<inputs.compute.RegionInstanceTemplateReservationAffinity>;
     /**
-     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
     resourcePolicies?: pulumi.Input<string>;
     /**
@@ -510,8 +506,6 @@ export interface RegionInstanceTemplateArgs {
      * The machine type to create.
      *
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-     *
-     * - - -
      */
     machineType: pulumi.Input<string>;
     /**
@@ -571,7 +565,7 @@ export interface RegionInstanceTemplateArgs {
      */
     reservationAffinity?: pulumi.Input<inputs.compute.RegionInstanceTemplateReservationAffinity>;
     /**
-     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
     resourcePolicies?: pulumi.Input<string>;
     /**

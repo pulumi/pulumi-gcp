@@ -169,8 +169,6 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
      * A user-defined name of the Certificate Map. Certificate Map names must be unique
      * globally and match the pattern `projects/*{@literal /}locations/*{@literal /}certificateMaps/*`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -178,8 +176,6 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
     /**
      * @return A user-defined name of the Certificate Map. Certificate Map names must be unique
      * globally and match the pattern `projects/*{@literal /}locations/*{@literal /}certificateMaps/*`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

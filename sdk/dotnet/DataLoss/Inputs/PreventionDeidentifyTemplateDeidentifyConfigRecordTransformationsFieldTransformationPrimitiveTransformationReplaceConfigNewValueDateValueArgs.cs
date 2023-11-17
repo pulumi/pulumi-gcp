@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     {
         /// <summary>
         /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-        /// 
-        /// - - -
         /// </summary>
         [Input("day")]
         public Input<int>? Day { get; set; }

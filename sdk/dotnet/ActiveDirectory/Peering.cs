@@ -128,9 +128,6 @@ namespace Pulumi.Gcp.ActiveDirectory
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// - - -
-        /// </summary>
         [Output("peeringId")]
         public Output<string> PeeringId { get; private set; } = null!;
 
@@ -237,9 +234,6 @@ namespace Pulumi.Gcp.ActiveDirectory
             set => _labels = value;
         }
 
-        /// <summary>
-        /// - - -
-        /// </summary>
         [Input("peeringId", required: true)]
         public Input<string> PeeringId { get; set; } = null!;
 
@@ -318,9 +312,6 @@ namespace Pulumi.Gcp.ActiveDirectory
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// - - -
-        /// </summary>
         [Input("peeringId")]
         public Input<string>? PeeringId { get; set; }
 

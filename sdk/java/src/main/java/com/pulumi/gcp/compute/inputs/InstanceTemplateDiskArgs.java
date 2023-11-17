@@ -235,14 +235,14 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+     * A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<String> resourcePolicies;
 
     /**
-     * @return - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+     * @return A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<Output<String>> resourcePolicies() {
@@ -698,7 +698,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param resourcePolicies - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -709,7 +709,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param resourcePolicies - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 

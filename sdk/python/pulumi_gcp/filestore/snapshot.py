@@ -23,9 +23,6 @@ class SnapshotArgs:
         """
         The set of arguments for constructing a Snapshot resource.
         :param pulumi.Input[str] instance: The resource name of the filestore instance.
-               
-               
-               - - -
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] description: A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
@@ -58,9 +55,6 @@ class SnapshotArgs:
     def instance(self) -> pulumi.Input[str]:
         """
         The resource name of the filestore instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -160,9 +154,6 @@ class _SnapshotState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] filesystem_used_bytes: The amount of bytes needed to allocate a full copy of the snapshot content.
         :param pulumi.Input[str] instance: The resource name of the filestore instance.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -257,9 +248,6 @@ class _SnapshotState:
     def instance(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the filestore instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 
@@ -449,9 +437,6 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[str] instance: The resource name of the filestore instance.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -635,9 +620,6 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] filesystem_used_bytes: The amount of bytes needed to allocate a full copy of the snapshot content.
         :param pulumi.Input[str] instance: The resource name of the filestore instance.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -710,9 +692,6 @@ class Snapshot(pulumi.CustomResource):
     def instance(self) -> pulumi.Output[str]:
         """
         The resource name of the filestore instance.
-
-
-        - - -
         """
         return pulumi.get(self, "instance")
 

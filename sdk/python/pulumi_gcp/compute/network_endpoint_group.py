@@ -26,9 +26,6 @@ class NetworkEndpointGroupArgs:
         The set of arguments for constructing a NetworkEndpointGroup resource.
         :param pulumi.Input[str] network: The network to which all network endpoints in the NEG belong.
                Uses "default" project network if unspecified.
-               
-               
-               - - -
         :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the
                network endpoint.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -77,9 +74,6 @@ class NetworkEndpointGroupArgs:
         """
         The network to which all network endpoints in the NEG belong.
         Uses "default" project network if unspecified.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -218,9 +212,6 @@ class _NetworkEndpointGroupState:
                character, which cannot be a dash.
         :param pulumi.Input[str] network: The network to which all network endpoints in the NEG belong.
                Uses "default" project network if unspecified.
-               
-               
-               - - -
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group.
                NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
                endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
@@ -309,9 +300,6 @@ class _NetworkEndpointGroupState:
         """
         The network to which all network endpoints in the NEG belong.
         Uses "default" project network if unspecified.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -517,9 +505,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] network: The network to which all network endpoints in the NEG belong.
                Uses "default" project network if unspecified.
-               
-               
-               - - -
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group.
                NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
                endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
@@ -711,9 +696,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] network: The network to which all network endpoints in the NEG belong.
                Uses "default" project network if unspecified.
-               
-               
-               - - -
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group.
                NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
                endpoint groups (see https://cloud.google.com/load-balancing/docs/hybrid).
@@ -785,9 +767,6 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         """
         The network to which all network endpoints in the NEG belong.
         Uses "default" project network if unspecified.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 

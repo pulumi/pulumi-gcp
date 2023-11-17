@@ -147,7 +147,6 @@ export class Membership extends pulumi.CustomResource {
      */
     public readonly authority!: pulumi.Output<outputs.gkehub.MembershipAuthority | undefined>;
     /**
-     * (Optional, Deprecated)
      * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
      *
      * > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -178,9 +177,6 @@ export class Membership extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The client-provided identifier of the membership.
-     *
-     *
-     * - - -
      */
     public readonly membershipId!: pulumi.Output<string>;
     /**
@@ -256,7 +252,6 @@ export interface MembershipState {
      */
     authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
     /**
-     * (Optional, Deprecated)
      * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
      *
      * > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -287,9 +282,6 @@ export interface MembershipState {
     location?: pulumi.Input<string>;
     /**
      * The client-provided identifier of the membership.
-     *
-     *
-     * - - -
      */
     membershipId?: pulumi.Input<string>;
     /**
@@ -320,7 +312,6 @@ export interface MembershipArgs {
      */
     authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
     /**
-     * (Optional, Deprecated)
      * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
      *
      * > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -347,9 +338,6 @@ export interface MembershipArgs {
     location?: pulumi.Input<string>;
     /**
      * The client-provided identifier of the membership.
-     *
-     *
-     * - - -
      */
     membershipId: pulumi.Input<string>;
     /**

@@ -290,16 +290,16 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
      * 
      */
     @Export(name="enableConfidentialCompute", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableConfidentialCompute;
 
     /**
-     * @return Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * @return Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
      * 
      */
     public Output<Boolean> enableConfidentialCompute() {
@@ -354,7 +354,6 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.image);
     }
     /**
-     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -368,8 +367,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> interface_;
 
     /**
-     * @return (Optional, Deprecated)
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     * @return Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      * 
@@ -478,8 +476,6 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -492,8 +488,6 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -662,20 +656,20 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.size;
     }
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-     * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-     * * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
-     *   &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. If the snapshot is in another
+     * project than this disk, you must supply a full URL. For example, the
+     * following are valid values:
      * 
      */
     @Export(name="snapshot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshot;
 
     /**
-     * @return The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-     * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-     * * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
-     *   &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
+     * @return The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. If the snapshot is in another
+     * project than this disk, you must supply a full URL. For example, the
+     * following are valid values:
      * 
      */
     public Output<Optional<String>> snapshot() {

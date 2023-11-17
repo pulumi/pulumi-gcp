@@ -21,7 +21,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// The configuration for running the Dataproc cluster on Kubernetes.
         /// Structure defined below.
-        /// - - -
         /// </summary>
         public readonly Outputs.ClusterVirtualClusterConfigKubernetesClusterConfig? KubernetesClusterConfig;
         /// <summary>

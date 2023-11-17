@@ -163,9 +163,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("endpointId")]
         public Output<string> EndpointId { get; private set; } = null!;
@@ -260,9 +257,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("endpointId", required: true)]
         public Input<string> EndpointId { get; set; } = null!;
@@ -318,9 +312,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("endpointId")]
         public Input<string>? EndpointId { get; set; }

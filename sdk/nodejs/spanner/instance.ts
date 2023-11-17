@@ -135,9 +135,6 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -267,9 +264,6 @@ export interface InstanceState {
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -347,9 +341,6 @@ export interface InstanceArgs {
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

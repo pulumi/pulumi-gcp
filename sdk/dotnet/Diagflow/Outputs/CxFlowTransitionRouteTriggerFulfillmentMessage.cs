@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// You may set this, for example:
         /// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
         /// * In a webhook response when you determine that you handled the customer issue.
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         public readonly Outputs.CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess? ConversationSuccess;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// You may set this, for example:
         /// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
         /// * In a webhook response when you determine that the customer issue can only be handled by a human.
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         public readonly Outputs.CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff? LiveAgentHandoff;
         /// <summary>

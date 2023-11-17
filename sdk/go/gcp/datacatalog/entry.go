@@ -212,8 +212,6 @@ type Entry struct {
 	// The name of the entry group this entry is in.
 	EntryGroup pulumi.StringOutput `pulumi:"entryGroup"`
 	// The id of the entry to create.
-	//
-	// ***
 	EntryId pulumi.StringOutput `pulumi:"entryId"`
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	// Structure is documented below.
@@ -303,8 +301,6 @@ type entryState struct {
 	// The name of the entry group this entry is in.
 	EntryGroup *string `pulumi:"entryGroup"`
 	// The id of the entry to create.
-	//
-	// ***
 	EntryId *string `pulumi:"entryId"`
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	// Structure is documented below.
@@ -359,8 +355,6 @@ type EntryState struct {
 	// The name of the entry group this entry is in.
 	EntryGroup pulumi.StringPtrInput
 	// The id of the entry to create.
-	//
-	// ***
 	EntryId pulumi.StringPtrInput
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	// Structure is documented below.
@@ -412,8 +406,6 @@ type entryArgs struct {
 	// The name of the entry group this entry is in.
 	EntryGroup string `pulumi:"entryGroup"`
 	// The id of the entry to create.
-	//
-	// ***
 	EntryId string `pulumi:"entryId"`
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	// Structure is documented below.
@@ -456,8 +448,6 @@ type EntryArgs struct {
 	// The name of the entry group this entry is in.
 	EntryGroup pulumi.StringInput
 	// The id of the entry to create.
-	//
-	// ***
 	EntryId pulumi.StringInput
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	// Structure is documented below.
@@ -607,8 +597,6 @@ func (o EntryOutput) EntryGroup() pulumi.StringOutput {
 }
 
 // The id of the entry to create.
-//
-// ***
 func (o EntryOutput) EntryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.EntryId }).(pulumi.StringOutput)
 }

@@ -127,8 +127,6 @@ export class Instance extends pulumi.CustomResource {
      * A block of cluster configuration options. This can be specified at least once, and up 
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
-     *
-     * -----
      */
     public readonly clusters!: pulumi.Output<outputs.bigtable.InstanceCluster[]>;
     /**
@@ -142,8 +140,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     *
-     * -----
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -226,8 +222,6 @@ export interface InstanceState {
      * A block of cluster configuration options. This can be specified at least once, and up 
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
-     *
-     * -----
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
@@ -241,8 +235,6 @@ export interface InstanceState {
     displayName?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-     *
-     * -----
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -285,8 +277,6 @@ export interface InstanceArgs {
      * A block of cluster configuration options. This can be specified at least once, and up 
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
-     *
-     * -----
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**

@@ -87,8 +87,6 @@ export interface GetInstanceSerialPortArgs {
     instance: string;
     /**
      * The number of the serial port to read output from. Possible values are 1-4.
-     *
-     * - - -
      */
     port: number;
     /**
@@ -196,8 +194,6 @@ export interface GetInstanceSerialPortOutputArgs {
     instance: pulumi.Input<string>;
     /**
      * The number of the serial port to read output from. Possible values are 1-4.
-     *
-     * - - -
      */
     port: pulumi.Input<number>;
     /**

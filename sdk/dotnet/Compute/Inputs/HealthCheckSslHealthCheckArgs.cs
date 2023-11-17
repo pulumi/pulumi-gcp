@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class HealthCheckSslHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The TCP port number for the HTTP2 health check request.
+        /// The TCP port number for the SSL health check request.
         /// The default value is 443.
         /// </summary>
         [Input("port")]

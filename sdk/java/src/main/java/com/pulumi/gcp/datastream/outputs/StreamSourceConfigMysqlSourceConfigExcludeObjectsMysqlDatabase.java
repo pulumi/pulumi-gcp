@@ -13,12 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase {
     /**
-     * @return Database name.
+     * @return Database name.`database` -
+     * (Required)
+     * Database name.
      * 
      */
     private String database;
     /**
      * @return Tables in the database.
+     * Structure is documented below.`mysql_tables` -
+     * (Optional)
+     * Tables in the database.
      * Structure is documented below.
      * 
      */
@@ -26,7 +31,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
 
     private StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase() {}
     /**
-     * @return Database name.
+     * @return Database name.`database` -
+     * (Required)
+     * Database name.
      * 
      */
     public String database() {
@@ -34,6 +41,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
     }
     /**
      * @return Tables in the database.
+     * Structure is documented below.`mysql_tables` -
+     * (Optional)
+     * Tables in the database.
      * Structure is documented below.
      * 
      */

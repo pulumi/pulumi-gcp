@@ -172,9 +172,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("entitytype")]
         public Output<string> Entitytype { get; private set; } = null!;
@@ -284,9 +281,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entitytype", required: true)]
         public Input<string> Entitytype { get; set; } = null!;
@@ -356,9 +350,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entitytype")]
         public Input<string>? Entitytype { get; set; }

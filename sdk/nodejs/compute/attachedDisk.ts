@@ -105,9 +105,6 @@ export class AttachedDisk extends pulumi.CustomResource {
     public readonly deviceName!: pulumi.Output<string>;
     /**
      * `name` or `selfLink` of the disk that will be attached.
-     *
-     *
-     * - - -
      */
     public readonly disk!: pulumi.Output<string>;
     /**
@@ -195,9 +192,6 @@ export interface AttachedDiskState {
     deviceName?: pulumi.Input<string>;
     /**
      * `name` or `selfLink` of the disk that will be attached.
-     *
-     *
-     * - - -
      */
     disk?: pulumi.Input<string>;
     /**
@@ -247,9 +241,6 @@ export interface AttachedDiskArgs {
     deviceName?: pulumi.Input<string>;
     /**
      * `name` or `selfLink` of the disk that will be attached.
-     *
-     *
-     * - - -
      */
     disk: pulumi.Input<string>;
     /**

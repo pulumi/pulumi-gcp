@@ -31,8 +31,6 @@ export function getConfig(args: GetConfigArgs, opts?: pulumi.InvokeOptions): Pro
 export interface GetConfigArgs {
     /**
      * The name of the Runtime Configurator configuration.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -76,8 +74,6 @@ export function getConfigOutput(args: GetConfigOutputArgs, opts?: pulumi.InvokeO
 export interface GetConfigOutputArgs {
     /**
      * The name of the Runtime Configurator configuration.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

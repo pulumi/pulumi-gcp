@@ -224,11 +224,10 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> InitialSize { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-        /// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-        /// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-        /// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-        /// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+        /// Specifies the frequency of planned maintenance events. Set to one of the following:
+        /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+        /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+        ///   Possible values are: `AS_NEEDED`, `RECURRENT`.
         /// </summary>
         [Output("maintenanceInterval")]
         public Output<string> MaintenanceInterval { get; private set; } = null!;
@@ -254,9 +253,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URL of the node template to which this node group belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("nodeTemplate")]
         public Output<string> NodeTemplate { get; private set; } = null!;
@@ -361,11 +357,10 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? InitialSize { get; set; }
 
         /// <summary>
-        /// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-        /// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-        /// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-        /// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-        /// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+        /// Specifies the frequency of planned maintenance events. Set to one of the following:
+        /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+        /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+        ///   Possible values are: `AS_NEEDED`, `RECURRENT`.
         /// </summary>
         [Input("maintenanceInterval")]
         public Input<string>? MaintenanceInterval { get; set; }
@@ -391,9 +386,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URL of the node template to which this node group belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("nodeTemplate", required: true)]
         public Input<string> NodeTemplate { get; set; } = null!;
@@ -454,11 +446,10 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? InitialSize { get; set; }
 
         /// <summary>
-        /// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-        /// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-        /// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-        /// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-        /// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+        /// Specifies the frequency of planned maintenance events. Set to one of the following:
+        /// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+        /// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+        ///   Possible values are: `AS_NEEDED`, `RECURRENT`.
         /// </summary>
         [Input("maintenanceInterval")]
         public Input<string>? MaintenanceInterval { get; set; }
@@ -484,9 +475,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URL of the node template to which this node group belongs.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("nodeTemplate")]
         public Input<string>? NodeTemplate { get; set; }

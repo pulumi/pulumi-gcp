@@ -196,8 +196,6 @@ def get_address(name: Optional[str] = None,
 
 
     :param str name: A unique name for the resource, required by GCE.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The Region in which the created address reside.
@@ -254,8 +252,6 @@ def get_address_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: A unique name for the resource, required by GCE.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The Region in which the created address reside.

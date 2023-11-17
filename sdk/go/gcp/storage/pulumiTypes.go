@@ -1630,8 +1630,6 @@ type BucketObjectRetention struct {
 	// The retention policy mode. Either `Locked` or `Unlocked`.
 	Mode string `pulumi:"mode"`
 	// The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
-	//
-	// <a name>
 	RetainUntilTime string `pulumi:"retainUntilTime"`
 }
 
@@ -1650,8 +1648,6 @@ type BucketObjectRetentionArgs struct {
 	// The retention policy mode. Either `Locked` or `Unlocked`.
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
-	//
-	// <a name>
 	RetainUntilTime pulumi.StringInput `pulumi:"retainUntilTime"`
 }
 
@@ -1738,8 +1734,6 @@ func (o BucketObjectRetentionOutput) Mode() pulumi.StringOutput {
 }
 
 // The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
-//
-// <a name>
 func (o BucketObjectRetentionOutput) RetainUntilTime() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketObjectRetention) string { return v.RetainUntilTime }).(pulumi.StringOutput)
 }
@@ -1779,8 +1773,6 @@ func (o BucketObjectRetentionPtrOutput) Mode() pulumi.StringPtrOutput {
 }
 
 // The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
-//
-// <a name>
 func (o BucketObjectRetentionPtrOutput) RetainUntilTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObjectRetention) *string {
 		if v == nil {
@@ -2360,8 +2352,6 @@ type InsightsReportConfigCsvOptions struct {
 	// The delimiter used to separate the fields in the inventory report CSV file.
 	Delimiter *string `pulumi:"delimiter"`
 	// The boolean that indicates whether or not headers are included in the inventory report CSV file.
-	//
-	// ***
 	HeaderRequired *bool `pulumi:"headerRequired"`
 	// The character used to separate the records in the inventory report CSV file.
 	RecordSeparator *string `pulumi:"recordSeparator"`
@@ -2382,8 +2372,6 @@ type InsightsReportConfigCsvOptionsArgs struct {
 	// The delimiter used to separate the fields in the inventory report CSV file.
 	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
 	// The boolean that indicates whether or not headers are included in the inventory report CSV file.
-	//
-	// ***
 	HeaderRequired pulumi.BoolPtrInput `pulumi:"headerRequired"`
 	// The character used to separate the records in the inventory report CSV file.
 	RecordSeparator pulumi.StringPtrInput `pulumi:"recordSeparator"`
@@ -2472,8 +2460,6 @@ func (o InsightsReportConfigCsvOptionsOutput) Delimiter() pulumi.StringPtrOutput
 }
 
 // The boolean that indicates whether or not headers are included in the inventory report CSV file.
-//
-// ***
 func (o InsightsReportConfigCsvOptionsOutput) HeaderRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InsightsReportConfigCsvOptions) *bool { return v.HeaderRequired }).(pulumi.BoolPtrOutput)
 }
@@ -2518,8 +2504,6 @@ func (o InsightsReportConfigCsvOptionsPtrOutput) Delimiter() pulumi.StringPtrOut
 }
 
 // The boolean that indicates whether or not headers are included in the inventory report CSV file.
-//
-// ***
 func (o InsightsReportConfigCsvOptionsPtrOutput) HeaderRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfigCsvOptions) *bool {
 		if v == nil {
@@ -5246,7 +5230,7 @@ func (o TransferJobTransferSpecPtrOutput) TransferOptions() TransferJobTransferS
 type TransferJobTransferSpecAwsS3DataSource struct {
 	// AWS credentials block.
 	AwsAccessKey *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey `pulumi:"awsAccessKey"`
-	// Google Cloud Storage bucket name.
+	// S3 Bucket name.
 	BucketName string `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path *string `pulumi:"path"`
@@ -5268,7 +5252,7 @@ type TransferJobTransferSpecAwsS3DataSourceInput interface {
 type TransferJobTransferSpecAwsS3DataSourceArgs struct {
 	// AWS credentials block.
 	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
-	// Google Cloud Storage bucket name.
+	// S3 Bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -5360,7 +5344,7 @@ func (o TransferJobTransferSpecAwsS3DataSourceOutput) AwsAccessKey() TransferJob
 	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput)
 }
 
-// Google Cloud Storage bucket name.
+// S3 Bucket name.
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
@@ -5409,7 +5393,7 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) AwsAccessKey() Transfer
 	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput)
 }
 
-// Google Cloud Storage bucket name.
+// S3 Bucket name.
 func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) *string {
 		if v == nil {
@@ -6386,7 +6370,7 @@ func (o TransferJobTransferSpecHttpDataSourcePtrOutput) ListUrl() pulumi.StringP
 }
 
 type TransferJobTransferSpecObjectConditions struct {
-	// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+	// must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 	ExcludePrefixes []string `pulumi:"excludePrefixes"`
 	// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 	IncludePrefixes []string `pulumi:"includePrefixes"`
@@ -6412,7 +6396,7 @@ type TransferJobTransferSpecObjectConditionsInput interface {
 }
 
 type TransferJobTransferSpecObjectConditionsArgs struct {
-	// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+	// must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
 	// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 	IncludePrefixes pulumi.StringArrayInput `pulumi:"includePrefixes"`
@@ -6503,7 +6487,7 @@ func (o TransferJobTransferSpecObjectConditionsOutput) ToTransferJobTransferSpec
 	}).(TransferJobTransferSpecObjectConditionsPtrOutput)
 }
 
-// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+// must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 func (o TransferJobTransferSpecObjectConditionsOutput) ExcludePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.ExcludePrefixes }).(pulumi.StringArrayOutput)
 }
@@ -6557,7 +6541,7 @@ func (o TransferJobTransferSpecObjectConditionsPtrOutput) Elem() TransferJobTran
 	}).(TransferJobTransferSpecObjectConditionsOutput)
 }
 
-// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+// must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 func (o TransferJobTransferSpecObjectConditionsPtrOutput) ExcludePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) []string {
 		if v == nil {

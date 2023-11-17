@@ -13,8 +13,6 @@ public final class ClusterNodeConfigSandboxConfig {
      * @return Which sandbox to use for pods in the node pool.
      * Accepted values are:
      * 
-     * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
-     * 
      */
     private String sandboxType;
 
@@ -22,8 +20,6 @@ public final class ClusterNodeConfigSandboxConfig {
     /**
      * @return Which sandbox to use for pods in the node pool.
      * Accepted values are:
-     * 
-     * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
      * 
      */
     public String sandboxType() {

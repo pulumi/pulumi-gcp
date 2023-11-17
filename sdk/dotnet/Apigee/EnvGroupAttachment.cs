@@ -155,9 +155,6 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee environment group associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("envgroupId")]
         public Output<string> EnvgroupId { get; private set; } = null!;
@@ -223,9 +220,6 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee environment group associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("envgroupId", required: true)]
         public Input<string> EnvgroupId { get; set; } = null!;
@@ -247,9 +241,6 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee environment group associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("envgroupId")]
         public Input<string>? EnvgroupId { get; set; }

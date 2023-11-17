@@ -66,16 +66,12 @@ public final class EntryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The id of the entry to create.
      * 
-     * ***
-     * 
      */
     @Import(name="entryId", required=true)
     private Output<String> entryId;
 
     /**
      * @return The id of the entry to create.
-     * 
-     * ***
      * 
      */
     public Output<String> entryId() {
@@ -307,8 +303,6 @@ public final class EntryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param entryId The id of the entry to create.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -319,8 +313,6 @@ public final class EntryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param entryId The id of the entry to create.
-         * 
-         * ***
          * 
          * @return builder
          * 

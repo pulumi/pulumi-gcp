@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Firebase.Inputs
         /// The value to put in the HTTP location header of the response.
         /// The location can contain capture group values from the pattern using a : prefix to identify
         /// the segment and an optional * to capture the rest of the URL. For example:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

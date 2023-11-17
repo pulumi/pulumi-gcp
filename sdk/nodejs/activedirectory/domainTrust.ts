@@ -89,9 +89,6 @@ export class DomainTrust extends pulumi.CustomResource {
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
      * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     *
-     *
-     * - - -
      */
     public readonly domain!: pulumi.Output<string>;
     /**
@@ -191,9 +188,6 @@ export interface DomainTrustState {
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
      * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     *
-     *
-     * - - -
      */
     domain?: pulumi.Input<string>;
     /**
@@ -237,9 +231,6 @@ export interface DomainTrustArgs {
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
      * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-     *
-     *
-     * - - -
      */
     domain: pulumi.Input<string>;
     /**

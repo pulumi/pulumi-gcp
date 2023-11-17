@@ -32,14 +32,14 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
     }
 
     /**
-     * Google Cloud Storage bucket name.
+     * S3 Bucket name.
      * 
      */
     @Import(name="bucketName", required=true)
     private Output<String> bucketName;
 
     /**
-     * @return Google Cloud Storage bucket name.
+     * @return S3 Bucket name.
      * 
      */
     public Output<String> bucketName() {
@@ -125,7 +125,7 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
         }
 
         /**
-         * @param bucketName Google Cloud Storage bucket name.
+         * @param bucketName S3 Bucket name.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class TransferJobTransferSpecAwsS3DataSourceArgs extends com.pulumi
         }
 
         /**
-         * @param bucketName Google Cloud Storage bucket name.
+         * @param bucketName S3 Bucket name.
          * 
          * @return builder
          * 

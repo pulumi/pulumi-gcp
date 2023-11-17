@@ -182,7 +182,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/instanceGroupManager:InstanceGroupManager")
 public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
@@ -192,8 +191,7 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ InstanceGroupManagerAllInstancesConfig> allInstancesConfig;
 
     /**
-     * @return )
-     * Properties to set on all instances in the group. After setting
+     * @return Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
      * 
@@ -488,16 +486,12 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
      * 
-     * ***
-     * 
      */
     @Export(name="updatePolicy", refs={InstanceGroupManagerUpdatePolicy.class}, tree="[0]")
     private Output<InstanceGroupManagerUpdatePolicy> updatePolicy;
 
     /**
      * @return The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-     * 
-     * ***
      * 
      */
     public Output<InstanceGroupManagerUpdatePolicy> updatePolicy() {
@@ -563,8 +557,6 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
      * The zone that instances in this group should be created
      * in.
      * 
-     * ***
-     * 
      */
     @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
@@ -572,8 +564,6 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     /**
      * @return The zone that instances in this group should be created
      * in.
-     * 
-     * ***
      * 
      */
     public Output<String> zone() {

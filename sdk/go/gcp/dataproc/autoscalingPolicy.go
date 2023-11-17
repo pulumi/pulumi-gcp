@@ -108,8 +108,6 @@ type AutoscalingPolicy struct {
 	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 50 characters.
-	//
-	// ***
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -166,8 +164,6 @@ type autoscalingPolicyState struct {
 	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 50 characters.
-	//
-	// ***
 	PolicyId *string `pulumi:"policyId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -192,8 +188,6 @@ type AutoscalingPolicyState struct {
 	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 50 characters.
-	//
-	// ***
 	PolicyId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -220,8 +214,6 @@ type autoscalingPolicyArgs struct {
 	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 50 characters.
-	//
-	// ***
 	PolicyId string `pulumi:"policyId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -245,8 +237,6 @@ type AutoscalingPolicyArgs struct {
 	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 50 characters.
-	//
-	// ***
 	PolicyId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -366,8 +356,6 @@ func (o AutoscalingPolicyOutput) Name() pulumi.StringOutput {
 // The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 // and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 // 3 and 50 characters.
-//
-// ***
 func (o AutoscalingPolicyOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
 }

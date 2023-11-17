@@ -15,10 +15,15 @@ namespace Pulumi.Gcp.Datastream.Outputs
     {
         /// <summary>
         /// Tables in the database.
+        /// Structure is documented below.`oracle_tables` -
+        /// (Optional)
+        /// Tables in the database.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable> OracleTables;
         /// <summary>
+        /// Schema name.`schema` -
+        /// (Required)
         /// Schema name.
         /// </summary>
         public readonly string Schema;

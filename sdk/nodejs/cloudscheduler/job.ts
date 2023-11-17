@@ -159,7 +159,7 @@ export class Job extends pulumi.CustomResource {
      * * For HTTP targets, between 15 seconds and 30 minutes.
      * * For App Engine HTTP targets, between 15 seconds and 24 hours.
      * * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-     * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+     *   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
      */
     public readonly attemptDeadline!: pulumi.Output<string | undefined>;
     /**
@@ -176,9 +176,6 @@ export class Job extends pulumi.CustomResource {
     public readonly httpTarget!: pulumi.Output<outputs.cloudscheduler.JobHttpTarget | undefined>;
     /**
      * The name of the job.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -288,7 +285,7 @@ export interface JobState {
      * * For HTTP targets, between 15 seconds and 30 minutes.
      * * For App Engine HTTP targets, between 15 seconds and 24 hours.
      * * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-     * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+     *   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
      */
     attemptDeadline?: pulumi.Input<string>;
     /**
@@ -305,9 +302,6 @@ export interface JobState {
     httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
     /**
      * The name of the job.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -371,7 +365,7 @@ export interface JobArgs {
      * * For HTTP targets, between 15 seconds and 30 minutes.
      * * For App Engine HTTP targets, between 15 seconds and 24 hours.
      * * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-     * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+     *   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
      */
     attemptDeadline?: pulumi.Input<string>;
     /**
@@ -388,9 +382,6 @@ export interface JobArgs {
     httpTarget?: pulumi.Input<inputs.cloudscheduler.JobHttpTarget>;
     /**
      * The name of the job.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

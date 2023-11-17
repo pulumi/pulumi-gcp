@@ -441,8 +441,6 @@ type RecordSet struct {
 	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
 	// The DNS record set type.
-	//
-	// ***
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -505,8 +503,6 @@ type recordSetState struct {
 	// The time-to-live of this record set (seconds).
 	Ttl *int `pulumi:"ttl"`
 	// The DNS record set type.
-	//
-	// ***
 	Type *string `pulumi:"type"`
 }
 
@@ -531,8 +527,6 @@ type RecordSetState struct {
 	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrInput
 	// The DNS record set type.
-	//
-	// ***
 	Type pulumi.StringPtrInput
 }
 
@@ -561,8 +555,6 @@ type recordSetArgs struct {
 	// The time-to-live of this record set (seconds).
 	Ttl *int `pulumi:"ttl"`
 	// The DNS record set type.
-	//
-	// ***
 	Type string `pulumi:"type"`
 }
 
@@ -588,8 +580,6 @@ type RecordSetArgs struct {
 	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrInput
 	// The DNS record set type.
-	//
-	// ***
 	Type pulumi.StringInput
 }
 
@@ -718,8 +708,6 @@ func (o RecordSetOutput) Ttl() pulumi.IntPtrOutput {
 }
 
 // The DNS record set type.
-//
-// ***
 func (o RecordSetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

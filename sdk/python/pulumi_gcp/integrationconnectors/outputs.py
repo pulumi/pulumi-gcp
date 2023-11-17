@@ -436,8 +436,8 @@ class ConnectionAuthConfigOauth2AuthCodeFlow(dict):
                  scopes: Optional[Sequence[str]] = None):
         """
         :param str auth_uri: Auth URL for Authorization Code Flow.
-        :param str client_id: Secret version of Password for Authentication.
-        :param 'ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs' client_secret: Secret version reference containing the client secret.
+        :param str client_id: Client ID for user-provided OAuth app.
+        :param 'ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs' client_secret: Client secret for user-provided OAuth app.
                Structure is documented below.
         :param bool enable_pkce: Whether to enable PKCE when the user performs the auth code flow.
         :param Sequence[str] scopes: Scopes the connection will request when the user performs the auth code flow.
@@ -465,7 +465,7 @@ class ConnectionAuthConfigOauth2AuthCodeFlow(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
         """
-        Secret version of Password for Authentication.
+        Client ID for user-provided OAuth app.
         """
         return pulumi.get(self, "client_id")
 
@@ -473,7 +473,7 @@ class ConnectionAuthConfigOauth2AuthCodeFlow(dict):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional['outputs.ConnectionAuthConfigOauth2AuthCodeFlowClientSecret']:
         """
-        Secret version reference containing the client secret.
+        Client secret for user-provided OAuth app.
         Structure is documented below.
         """
         return pulumi.get(self, "client_secret")
@@ -557,8 +557,8 @@ class ConnectionAuthConfigOauth2ClientCredentials(dict):
                  client_id: str,
                  client_secret: Optional['outputs.ConnectionAuthConfigOauth2ClientCredentialsClientSecret'] = None):
         """
-        :param str client_id: Secret version of Password for Authentication.
-        :param 'ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs' client_secret: Secret version reference containing the client secret.
+        :param str client_id: Client ID for user-provided OAuth app.
+        :param 'ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs' client_secret: Client secret for user-provided OAuth app.
                Structure is documented below.
         """
         pulumi.set(__self__, "client_id", client_id)
@@ -569,7 +569,7 @@ class ConnectionAuthConfigOauth2ClientCredentials(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
         """
-        Secret version of Password for Authentication.
+        Client ID for user-provided OAuth app.
         """
         return pulumi.get(self, "client_id")
 
@@ -577,7 +577,7 @@ class ConnectionAuthConfigOauth2ClientCredentials(dict):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional['outputs.ConnectionAuthConfigOauth2ClientCredentialsClientSecret']:
         """
-        Secret version reference containing the client secret.
+        Client secret for user-provided OAuth app.
         Structure is documented below.
         """
         return pulumi.get(self, "client_secret")

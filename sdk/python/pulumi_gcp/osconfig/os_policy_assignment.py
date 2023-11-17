@@ -36,7 +36,8 @@ class OsPolicyAssignmentArgs:
                2) OSPolicyAssignment is updated and the update contains changes to one of
                the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
                is deleted. Structure is documented below.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the
+        :param pulumi.Input[str] description: Policy description. Length of the description is
+               limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
                description is limited to 1024 characters.
         :param pulumi.Input[str] name: Resource name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -115,7 +116,8 @@ class OsPolicyAssignmentArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        OS policy assignment description. Length of the
+        Policy description. Length of the description is
+        limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
         description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
@@ -190,7 +192,8 @@ class _OsPolicyAssignmentState:
                a value of `true` for this field.
         :param pulumi.Input[bool] deleted: Output only. Indicates that this revision deletes the OS policy
                assignment.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the
+        :param pulumi.Input[str] description: Policy description. Length of the description is
+               limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
                description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on
                update, it must match the server's etag.
@@ -284,7 +287,8 @@ class _OsPolicyAssignmentState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        OS policy assignment description. Length of the
+        Policy description. Length of the description is
+        limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
         description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
@@ -604,7 +608,8 @@ class OsPolicyAssignment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the
+        :param pulumi.Input[str] description: Policy description. Length of the description is
+               limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
                description is limited to 1024 characters.
         :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']] instance_filter: Filter to select VMs. Structure is
                documented below.
@@ -848,7 +853,8 @@ class OsPolicyAssignment(pulumi.CustomResource):
                a value of `true` for this field.
         :param pulumi.Input[bool] deleted: Output only. Indicates that this revision deletes the OS policy
                assignment.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the
+        :param pulumi.Input[str] description: Policy description. Length of the description is
+               limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
                description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on
                update, it must match the server's etag.
@@ -923,7 +929,8 @@ class OsPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        OS policy assignment description. Length of the
+        Policy description. Length of the description is
+        limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
         description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")

@@ -21,30 +21,32 @@ public final class ServiceTemplateMetadata {
      * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
      * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
      * Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
+     * keys to configure features on a Revision template:`annotations` -
+     * (Optional)
+     * Annotations is a key value map stored with a resource that
+     * may be set by external tools to store and retrieve arbitrary metadata. More
+     * info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+     * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+     * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+     * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+     * Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
      * keys to configure features on a Service:
-     * - `run.googleapis.com/binary-authorization-breakglass` sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
-     * - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
-     * - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
-     * - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
-     *   that can be used in the audience field of ID token for authenticated requests.
-     * - `run.googleapis.com/description` sets a user defined description for the Service.
-     * - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-     *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
-     * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
-     *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
-     *   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     *   Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     private @Nullable Map<String,String> annotations;
     /**
      * @return (Output)
+     * A sequence number representing a specific generation of the desired state.`generation` -
+     * (Output)
      * A sequence number representing a specific generation of the desired state.
      * 
      */
     private @Nullable Integer generation;
     /**
      * @return Map of string keys and values that can be used to organize and categorize
+     * (scope and select) objects.`labels` -
+     * (Optional)
+     * Map of string keys and values that can be used to organize and categorize
      * (scope and select) objects. May match selectors of replication controllers
      * and routes.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -61,6 +63,9 @@ public final class ServiceTemplateMetadata {
     private @Nullable String name;
     /**
      * @return In Cloud Run the namespace must be equal to either the
+     * project ID or project number. It will default to the resource&#39;s project.`namespace` -
+     * (Optional)
+     * In Cloud Run the namespace must be equal to either the
      * project ID or project number.
      * 
      */
@@ -71,18 +76,29 @@ public final class ServiceTemplateMetadata {
      * can be used by clients to determine when objects have changed. May be used
      * for optimistic concurrency, change detection, and the watch operation on a
      * resource or set of resources. They may only be valid for a
+     * particular resource or set of resources.`resource_version` -
+     * (Output)
+     * An opaque value that represents the internal version of this object that
+     * can be used by clients to determine when objects have changed. May be used
+     * for optimistic concurrency, change detection, and the watch operation on a
+     * resource or set of resources. They may only be valid for a
      * particular resource or set of resources.
      * 
      */
     private @Nullable String resourceVersion;
     /**
      * @return (Output)
+     * SelfLink is a URL representing this object.`self_link` -
+     * (Output)
      * SelfLink is a URL representing this object.
      * 
      */
     private @Nullable String selfLink;
     /**
      * @return (Output)
+     * UID is a unique id generated by the server on successful creation of a resource and is not
+     * allowed to change on PUT operations.`uid` -
+     * (Output)
      * UID is a unique id generated by the server on successful creation of a resource and is not
      * allowed to change on PUT operations.
      * 
@@ -98,19 +114,16 @@ public final class ServiceTemplateMetadata {
      * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
      * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
      * Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
+     * keys to configure features on a Revision template:`annotations` -
+     * (Optional)
+     * Annotations is a key value map stored with a resource that
+     * may be set by external tools to store and retrieve arbitrary metadata. More
+     * info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+     * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+     * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+     * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+     * Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
      * keys to configure features on a Service:
-     * - `run.googleapis.com/binary-authorization-breakglass` sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
-     * - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
-     * - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
-     * - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
-     *   that can be used in the audience field of ID token for authenticated requests.
-     * - `run.googleapis.com/description` sets a user defined description for the Service.
-     * - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-     *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
-     * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
-     *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
-     *   **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-     *   Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
      */
     public Map<String,String> annotations() {
@@ -118,6 +131,8 @@ public final class ServiceTemplateMetadata {
     }
     /**
      * @return (Output)
+     * A sequence number representing a specific generation of the desired state.`generation` -
+     * (Output)
      * A sequence number representing a specific generation of the desired state.
      * 
      */
@@ -126,6 +141,9 @@ public final class ServiceTemplateMetadata {
     }
     /**
      * @return Map of string keys and values that can be used to organize and categorize
+     * (scope and select) objects.`labels` -
+     * (Optional)
+     * Map of string keys and values that can be used to organize and categorize
      * (scope and select) objects. May match selectors of replication controllers
      * and routes.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -146,6 +164,9 @@ public final class ServiceTemplateMetadata {
     }
     /**
      * @return In Cloud Run the namespace must be equal to either the
+     * project ID or project number. It will default to the resource&#39;s project.`namespace` -
+     * (Optional)
+     * In Cloud Run the namespace must be equal to either the
      * project ID or project number.
      * 
      */
@@ -158,6 +179,12 @@ public final class ServiceTemplateMetadata {
      * can be used by clients to determine when objects have changed. May be used
      * for optimistic concurrency, change detection, and the watch operation on a
      * resource or set of resources. They may only be valid for a
+     * particular resource or set of resources.`resource_version` -
+     * (Output)
+     * An opaque value that represents the internal version of this object that
+     * can be used by clients to determine when objects have changed. May be used
+     * for optimistic concurrency, change detection, and the watch operation on a
+     * resource or set of resources. They may only be valid for a
      * particular resource or set of resources.
      * 
      */
@@ -166,6 +193,8 @@ public final class ServiceTemplateMetadata {
     }
     /**
      * @return (Output)
+     * SelfLink is a URL representing this object.`self_link` -
+     * (Output)
      * SelfLink is a URL representing this object.
      * 
      */
@@ -174,6 +203,9 @@ public final class ServiceTemplateMetadata {
     }
     /**
      * @return (Output)
+     * UID is a unique id generated by the server on successful creation of a resource and is not
+     * allowed to change on PUT operations.`uid` -
+     * (Output)
      * UID is a unique id generated by the server on successful creation of a resource and is not
      * allowed to change on PUT operations.
      * 

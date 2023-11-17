@@ -14,14 +14,14 @@ public final class GetOrganizationPolicyArgs extends com.pulumi.resources.Invoke
     public static final GetOrganizationPolicyArgs Empty = new GetOrganizationPolicyArgs();
 
     /**
-     * (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      * 
      */
     @Import(name="constraint", required=true)
     private Output<String> constraint;
 
     /**
-     * @return (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * @return The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      * 
      */
     public Output<String> constraint() {
@@ -69,7 +69,7 @@ public final class GetOrganizationPolicyArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param constraint (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+         * @param constraint The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class GetOrganizationPolicyArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param constraint (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+         * @param constraint The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
          * 
          * @return builder
          * 

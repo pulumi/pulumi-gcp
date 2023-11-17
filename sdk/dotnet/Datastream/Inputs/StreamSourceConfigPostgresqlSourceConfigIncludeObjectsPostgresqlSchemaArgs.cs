@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// Tables in the schema.
+        /// Structure is documented below.`postgresql_tables` -
+        /// (Optional)
+        /// Tables in the schema.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs> PostgresqlTables
@@ -26,6 +29,8 @@ namespace Pulumi.Gcp.Datastream.Inputs
         }
 
         /// <summary>
+        /// Database name.`schema` -
+        /// (Required)
         /// Database name.
         /// </summary>
         [Input("schema", required: true)]

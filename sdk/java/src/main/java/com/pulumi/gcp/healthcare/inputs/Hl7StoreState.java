@@ -24,8 +24,6 @@ public final class Hl7StoreState extends com.pulumi.resources.ResourceArgs {
      * Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
      * 
-     * ***
-     * 
      */
     @Import(name="dataset")
     private @Nullable Output<String> dataset;
@@ -33,8 +31,6 @@ public final class Hl7StoreState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> dataset() {
@@ -109,7 +105,6 @@ public final class Hl7StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
      * 
@@ -124,8 +119,7 @@ public final class Hl7StoreState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Hl7StoreNotificationConfigArgs> notificationConfig;
 
     /**
-     * @return (Optional, Deprecated)
-     * A nested object resource
+     * @return A nested object resource
      * Structure is documented below.
      * 
      * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -245,8 +239,6 @@ public final class Hl7StoreState extends com.pulumi.resources.ResourceArgs {
          * @param dataset Identifies the dataset addressed by this request. Must be in the format
          * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -258,8 +250,6 @@ public final class Hl7StoreState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dataset Identifies the dataset addressed by this request. Must be in the format
          * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -354,8 +344,7 @@ public final class Hl7StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationConfig (Optional, Deprecated)
-         * A nested object resource
+         * @param notificationConfig A nested object resource
          * Structure is documented below.
          * 
          * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -373,8 +362,7 @@ public final class Hl7StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationConfig (Optional, Deprecated)
-         * A nested object resource
+         * @param notificationConfig A nested object resource
          * Structure is documented below.
          * 
          * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.

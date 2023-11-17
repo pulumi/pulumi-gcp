@@ -73,8 +73,6 @@ export class User extends pulumi.CustomResource {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      *
      * Possible values are: `ABANDON`.
-     *
-     * - - -
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -168,8 +166,6 @@ export interface UserState {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      *
      * Possible values are: `ABANDON`.
-     *
-     * - - -
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -220,8 +216,6 @@ export interface UserArgs {
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      *
      * Possible values are: `ABANDON`.
-     *
-     * - - -
      */
     deletionPolicy?: pulumi.Input<string>;
     /**

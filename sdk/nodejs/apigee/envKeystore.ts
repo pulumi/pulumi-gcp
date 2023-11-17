@@ -68,9 +68,6 @@ export class EnvKeystore extends pulumi.CustomResource {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     public readonly envId!: pulumi.Output<string>;
     /**
@@ -119,9 +116,6 @@ export interface EnvKeystoreState {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     envId?: pulumi.Input<string>;
     /**
@@ -137,9 +131,6 @@ export interface EnvKeystoreArgs {
     /**
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-     *
-     *
-     * - - -
      */
     envId: pulumi.Input<string>;
     /**

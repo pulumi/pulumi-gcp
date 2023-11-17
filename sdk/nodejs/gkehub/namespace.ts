@@ -116,9 +116,6 @@ export class Namespace extends pulumi.CustomResource {
     public readonly scope!: pulumi.Output<string>;
     /**
      * Id of the scope
-     *
-     *
-     * - - -
      */
     public readonly scopeId!: pulumi.Output<string>;
     /**
@@ -250,9 +247,6 @@ export interface NamespaceState {
     scope?: pulumi.Input<string>;
     /**
      * Id of the scope
-     *
-     *
-     * - - -
      */
     scopeId?: pulumi.Input<string>;
     /**
@@ -304,9 +298,6 @@ export interface NamespaceArgs {
     scope: pulumi.Input<string>;
     /**
      * Id of the scope
-     *
-     *
-     * - - -
      */
     scopeId: pulumi.Input<string>;
     /**

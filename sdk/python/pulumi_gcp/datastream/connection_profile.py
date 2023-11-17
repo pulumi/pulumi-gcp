@@ -33,9 +33,6 @@ class ConnectionProfileArgs:
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[str] location: The name of the location this connection profile is located in.
-               
-               
-               - - -
         :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input['ConnectionProfileForwardSshConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
@@ -106,9 +103,6 @@ class ConnectionProfileArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The name of the location this connection profile is located in.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -266,9 +260,6 @@ class _ConnectionProfileState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this connection profile is located in.
-               
-               
-               - - -
         :param pulumi.Input['ConnectionProfileMysqlProfileArgs'] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource's name.
@@ -407,9 +398,6 @@ class _ConnectionProfileState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the location this connection profile is located in.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -695,9 +683,6 @@ class ConnectionProfile(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this connection profile is located in.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArgs']] oracle_profile: Oracle database profile.
@@ -974,9 +959,6 @@ class ConnectionProfile(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The name of the location this connection profile is located in.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource's name.
@@ -1077,9 +1059,6 @@ class ConnectionProfile(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The name of the location this connection profile is located in.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

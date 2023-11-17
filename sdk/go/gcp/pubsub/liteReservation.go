@@ -94,8 +94,6 @@ type LiteReservation struct {
 	pulumi.CustomResourceState
 
 	// Name of the reservation.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -142,8 +140,6 @@ func GetLiteReservation(ctx *pulumi.Context,
 // Input properties used for looking up and filtering LiteReservation resources.
 type liteReservationState struct {
 	// Name of the reservation.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -158,8 +154,6 @@ type liteReservationState struct {
 
 type LiteReservationState struct {
 	// Name of the reservation.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -178,8 +172,6 @@ func (LiteReservationState) ElementType() reflect.Type {
 
 type liteReservationArgs struct {
 	// Name of the reservation.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -195,8 +187,6 @@ type liteReservationArgs struct {
 // The set of arguments for constructing a LiteReservation resource.
 type LiteReservationArgs struct {
 	// Name of the reservation.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -297,8 +287,6 @@ func (o LiteReservationOutput) ToLiteReservationOutputWithContext(ctx context.Co
 }
 
 // Name of the reservation.
-//
-// ***
 func (o LiteReservationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LiteReservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

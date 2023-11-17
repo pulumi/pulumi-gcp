@@ -107,9 +107,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -184,9 +181,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -230,9 +224,6 @@ namespace Pulumi.Gcp.ServiceDirectory
         /// <summary>
         /// The Resource ID must be 1-63 characters long, including digits,
         /// lowercase letters or the hyphen character.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

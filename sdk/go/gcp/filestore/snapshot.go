@@ -160,8 +160,6 @@ type Snapshot struct {
 	// The amount of bytes needed to allocate a full copy of the snapshot content.
 	FilesystemUsedBytes pulumi.StringOutput `pulumi:"filesystemUsedBytes"`
 	// The resource name of the filestore instance.
-	//
-	// ***
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// Resource labels to represent user-provided metadata.
 	//
@@ -238,8 +236,6 @@ type snapshotState struct {
 	// The amount of bytes needed to allocate a full copy of the snapshot content.
 	FilesystemUsedBytes *string `pulumi:"filesystemUsedBytes"`
 	// The resource name of the filestore instance.
-	//
-	// ***
 	Instance *string `pulumi:"instance"`
 	// Resource labels to represent user-provided metadata.
 	//
@@ -276,8 +272,6 @@ type SnapshotState struct {
 	// The amount of bytes needed to allocate a full copy of the snapshot content.
 	FilesystemUsedBytes pulumi.StringPtrInput
 	// The resource name of the filestore instance.
-	//
-	// ***
 	Instance pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
 	//
@@ -312,8 +306,6 @@ type snapshotArgs struct {
 	// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description *string `pulumi:"description"`
 	// The resource name of the filestore instance.
-	//
-	// ***
 	Instance string `pulumi:"instance"`
 	// Resource labels to represent user-provided metadata.
 	//
@@ -340,8 +332,6 @@ type SnapshotArgs struct {
 	// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrInput
 	// The resource name of the filestore instance.
-	//
-	// ***
 	Instance pulumi.StringInput
 	// Resource labels to represent user-provided metadata.
 	//
@@ -471,8 +461,6 @@ func (o SnapshotOutput) FilesystemUsedBytes() pulumi.StringOutput {
 }
 
 // The resource name of the filestore instance.
-//
-// ***
 func (o SnapshotOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }

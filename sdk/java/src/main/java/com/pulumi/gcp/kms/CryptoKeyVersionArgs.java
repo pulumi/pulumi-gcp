@@ -19,8 +19,6 @@ public final class CryptoKeyVersionArgs extends com.pulumi.resources.ResourceArg
      * The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}&#39;`
      * 
-     * ***
-     * 
      */
     @Import(name="cryptoKey", required=true)
     private Output<String> cryptoKey;
@@ -28,8 +26,6 @@ public final class CryptoKeyVersionArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}&#39;`
-     * 
-     * ***
      * 
      */
     public Output<String> cryptoKey() {
@@ -82,8 +78,6 @@ public final class CryptoKeyVersionArgs extends com.pulumi.resources.ResourceArg
          * @param cryptoKey The name of the cryptoKey associated with the CryptoKeyVersions.
          * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}&#39;`
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -95,8 +89,6 @@ public final class CryptoKeyVersionArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param cryptoKey The name of the cryptoKey associated with the CryptoKeyVersions.
          * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}&#39;`
-         * 
-         * ***
          * 
          * @return builder
          * 

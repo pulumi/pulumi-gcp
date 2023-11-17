@@ -20,8 +20,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
 
         /// <summary>
         /// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-        /// 
-        /// - - -
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }

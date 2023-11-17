@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<Inputs.RegionInstanceGroupManagerStatusAllInstancesConfigGetArgs>? _allInstancesConfigs;
 
         /// <summary>
-        /// )
         /// Properties to set on all instances in the group. After setting
         /// allInstancesConfig on the group, you must update the group's instances to
         /// apply the configuration.

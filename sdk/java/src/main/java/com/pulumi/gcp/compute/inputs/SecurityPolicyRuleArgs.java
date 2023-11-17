@@ -95,14 +95,14 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+     * Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
      * 
      */
     @Import(name="preconfiguredWafConfig")
     private @Nullable Output<SecurityPolicyRulePreconfiguredWafConfigArgs> preconfiguredWafConfig;
 
     /**
-     * @return ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+     * @return Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
      * 
      */
     public Optional<Output<SecurityPolicyRulePreconfiguredWafConfigArgs>> preconfiguredWafConfig() {
@@ -302,7 +302,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param preconfiguredWafConfig ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+         * @param preconfiguredWafConfig Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param preconfiguredWafConfig ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+         * @param preconfiguredWafConfig Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
          * 
          * @return builder
          * 

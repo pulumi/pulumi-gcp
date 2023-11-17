@@ -87,16 +87,12 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
     /**
      * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
      * 
-     * ***
-     * 
      */
     @Import(name="plan", required=true)
     private Output<String> plan;
 
     /**
      * @return Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-     * 
-     * ***
      * 
      */
     public Output<String> plan() {
@@ -276,8 +272,6 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
         /**
          * @param plan Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -288,8 +282,6 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param plan Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -54,9 +54,6 @@ class AddressArgs:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -69,16 +66,16 @@ class AddressArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values.
                * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-               ranges, load balancers, and similar resources.
+                 ranges, load balancers, and similar resources.
                * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-               internal load balancers.
+                 internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
                * IPSEC_INTERCONNECT for addresses created from a private IP range that
-               are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-               configuration. These addresses are regional resources.
+                 are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+                 configuration. These addresses are regional resources.
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-               configure Private Service Connect. Only global internal addresses can use
-               this purpose.
+                 configure Private Service Connect. Only global internal addresses can use
+                 this purpose.
                
                This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
@@ -211,9 +208,6 @@ class AddressArgs:
         which means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -281,16 +275,16 @@ class AddressArgs:
         """
         The purpose of this resource, which can be one of the following values.
         * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-        ranges, load balancers, and similar resources.
+          ranges, load balancers, and similar resources.
         * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-        internal load balancers.
+          internal load balancers.
         * VPC_PEERING for addresses that are reserved for VPC peer networks.
         * IPSEC_INTERCONNECT for addresses created from a private IP range that
-        are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-        configuration. These addresses are regional resources.
+          are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+          configuration. These addresses are regional resources.
         * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-        configure Private Service Connect. Only global internal addresses can use
-        this purpose.
+          configure Private Service Connect. Only global internal addresses can use
+          this purpose.
 
         This should only be set when using an Internal address.
         """
@@ -382,9 +376,6 @@ class _AddressState:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -399,16 +390,16 @@ class _AddressState:
                and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values.
                * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-               ranges, load balancers, and similar resources.
+                 ranges, load balancers, and similar resources.
                * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-               internal load balancers.
+                 internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
                * IPSEC_INTERCONNECT for addresses created from a private IP range that
-               are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-               configuration. These addresses are regional resources.
+                 are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+                 configuration. These addresses are regional resources.
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-               configure Private Service Connect. Only global internal addresses can use
-               this purpose.
+                 configure Private Service Connect. Only global internal addresses can use
+                 this purpose.
                
                This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
@@ -592,9 +583,6 @@ class _AddressState:
         which means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -675,16 +663,16 @@ class _AddressState:
         """
         The purpose of this resource, which can be one of the following values.
         * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-        ranges, load balancers, and similar resources.
+          ranges, load balancers, and similar resources.
         * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-        internal load balancers.
+          internal load balancers.
         * VPC_PEERING for addresses that are reserved for VPC peer networks.
         * IPSEC_INTERCONNECT for addresses created from a private IP range that
-        are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-        configuration. These addresses are regional resources.
+          are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+          configuration. These addresses are regional resources.
         * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-        configure Private Service Connect. Only global internal addresses can use
-        this purpose.
+          configure Private Service Connect. Only global internal addresses can use
+          this purpose.
 
         This should only be set when using an Internal address.
         """
@@ -918,9 +906,6 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -933,16 +918,16 @@ class Address(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values.
                * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-               ranges, load balancers, and similar resources.
+                 ranges, load balancers, and similar resources.
                * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-               internal load balancers.
+                 internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
                * IPSEC_INTERCONNECT for addresses created from a private IP range that
-               are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-               configuration. These addresses are regional resources.
+                 are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+                 configuration. These addresses are regional resources.
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-               configure Private Service Connect. Only global internal addresses can use
-               this purpose.
+                 configure Private Service Connect. Only global internal addresses can use
+                 this purpose.
                
                This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
@@ -1208,9 +1193,6 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -1225,16 +1207,16 @@ class Address(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The purpose of this resource, which can be one of the following values.
                * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-               ranges, load balancers, and similar resources.
+                 ranges, load balancers, and similar resources.
                * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-               internal load balancers.
+                 internal load balancers.
                * VPC_PEERING for addresses that are reserved for VPC peer networks.
                * IPSEC_INTERCONNECT for addresses created from a private IP range that
-               are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-               configuration. These addresses are regional resources.
+                 are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+                 configuration. These addresses are regional resources.
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-               configure Private Service Connect. Only global internal addresses can use
-               this purpose.
+                 configure Private Service Connect. Only global internal addresses can use
+                 this purpose.
                
                This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
@@ -1367,9 +1349,6 @@ class Address(pulumi.CustomResource):
         which means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1426,16 +1405,16 @@ class Address(pulumi.CustomResource):
         """
         The purpose of this resource, which can be one of the following values.
         * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-        ranges, load balancers, and similar resources.
+          ranges, load balancers, and similar resources.
         * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-        internal load balancers.
+          internal load balancers.
         * VPC_PEERING for addresses that are reserved for VPC peer networks.
         * IPSEC_INTERCONNECT for addresses created from a private IP range that
-        are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-        configuration. These addresses are regional resources.
+          are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+          configuration. These addresses are regional resources.
         * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-        configure Private Service Connect. Only global internal addresses can use
-        this purpose.
+          configure Private Service Connect. Only global internal addresses can use
+          this purpose.
 
         This should only be set when using an Internal address.
         """

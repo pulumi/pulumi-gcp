@@ -32,7 +32,6 @@ public final class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs exte
 
     /**
      * Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
-     * 
      * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
      * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
      * * HTTP_HEADER: The value of the HTTP header whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
@@ -48,7 +47,6 @@ public final class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs exte
 
     /**
      * @return Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
-     * 
      * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
      * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
      * * HTTP_HEADER: The value of the HTTP header whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
@@ -111,7 +109,6 @@ public final class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs exte
 
         /**
          * @param enforceOnKeyType Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
-         * 
          * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
          * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
          * * HTTP_HEADER: The value of the HTTP header whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
@@ -131,7 +128,6 @@ public final class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs exte
 
         /**
          * @param enforceOnKeyType Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
-         * 
          * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
          * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
          * * HTTP_HEADER: The value of the HTTP header whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.

@@ -169,8 +169,6 @@ namespace Pulumi.Gcp.CloudIdentity
         /// <summary>
         /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
         /// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -312,8 +310,6 @@ namespace Pulumi.Gcp.CloudIdentity
         /// <summary>
         /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
         /// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

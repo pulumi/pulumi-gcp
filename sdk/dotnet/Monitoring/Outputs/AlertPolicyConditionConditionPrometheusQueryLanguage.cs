@@ -23,8 +23,6 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// in the future.
         /// This field is optional. If this field is not empty, then it must be a
         /// valid Prometheus label name.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? AlertRule;
         /// <summary>

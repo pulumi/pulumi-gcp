@@ -347,8 +347,7 @@ type Datascan struct {
 	DataQualitySpec DatascanDataQualitySpecPtrOutput `pulumi:"dataQualitySpec"`
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringOutput `pulumi:"dataScanId"`
-	// Description of the rule.
-	// The maximum length is 1,024 characters.
+	// Description of the scan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -449,8 +448,7 @@ type datascanState struct {
 	DataQualitySpec *DatascanDataQualitySpec `pulumi:"dataQualitySpec"`
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId *string `pulumi:"dataScanId"`
-	// Description of the rule.
-	// The maximum length is 1,024 characters.
+	// Description of the scan.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
@@ -505,8 +503,7 @@ type DatascanState struct {
 	DataQualitySpec DatascanDataQualitySpecPtrInput
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringPtrInput
-	// Description of the rule.
-	// The maximum length is 1,024 characters.
+	// Description of the scan.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
 	DisplayName pulumi.StringPtrInput
@@ -563,8 +560,7 @@ type datascanArgs struct {
 	DataQualitySpec *DatascanDataQualitySpec `pulumi:"dataQualitySpec"`
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId string `pulumi:"dataScanId"`
-	// Description of the rule.
-	// The maximum length is 1,024 characters.
+	// Description of the scan.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
@@ -596,8 +592,7 @@ type DatascanArgs struct {
 	DataQualitySpec DatascanDataQualitySpecPtrInput
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringInput
-	// Description of the rule.
-	// The maximum length is 1,024 characters.
+	// Description of the scan.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
 	DisplayName pulumi.StringPtrInput
@@ -731,8 +726,7 @@ func (o DatascanOutput) DataScanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.DataScanId }).(pulumi.StringOutput)
 }
 
-// Description of the rule.
-// The maximum length is 1,024 characters.
+// Description of the scan.
 func (o DatascanOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

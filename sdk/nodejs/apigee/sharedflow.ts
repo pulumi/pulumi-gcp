@@ -65,8 +65,6 @@ export class Sharedflow extends pulumi.CustomResource {
 
     /**
      * Path to the config zip bundle.
-     *
-     * - - -
      */
     public readonly configBundle!: pulumi.Output<string>;
     /**
@@ -149,8 +147,6 @@ export class Sharedflow extends pulumi.CustomResource {
 export interface SharedflowState {
     /**
      * Path to the config zip bundle.
-     *
-     * - - -
      */
     configBundle?: pulumi.Input<string>;
     /**
@@ -191,8 +187,6 @@ export interface SharedflowState {
 export interface SharedflowArgs {
     /**
      * Path to the config zip bundle.
-     *
-     * - - -
      */
     configBundle: pulumi.Input<string>;
     /**

@@ -25,9 +25,6 @@ class TrustConfigArgs:
         """
         The set of arguments for constructing a TrustConfig resource.
         :param pulumi.Input[str] location: The trust config location.
-               
-               
-               - - -
         :param pulumi.Input[str] description: One or more paragraphs of text description of a trust config.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the trust config.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -56,9 +53,6 @@ class TrustConfigArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The trust config location.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -156,9 +150,6 @@ class _TrustConfigState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The trust config location.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A user-defined name of the trust config. Trust config names must be unique globally.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -249,9 +240,6 @@ class _TrustConfigState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The trust config location.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -405,9 +393,6 @@ class TrustConfig(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The trust config location.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A user-defined name of the trust config. Trust config names must be unique globally.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -561,9 +546,6 @@ class TrustConfig(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The trust config location.
-               
-               
-               - - -
         :param pulumi.Input[str] name: A user-defined name of the trust config. Trust config names must be unique globally.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -633,9 +615,6 @@ class TrustConfig(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The trust config location.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

@@ -240,7 +240,6 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.RegionDiskGuestOsFeature>> GuestOsFeatures { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
         /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -326,9 +325,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URLs of the zones where the disk should be replicated to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("replicaZones")]
         public Output<ImmutableArray<string>> ReplicaZones { get; private set; } = null!;
@@ -352,10 +348,9 @@ namespace Pulumi.Gcp.Compute
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-        /// example, the following are valid values: *
-        /// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        /// The source snapshot used to create this disk. You can provide this as
+        /// a partial or full URL to the resource. For example, the following are
+        /// valid values:
         /// </summary>
         [Output("snapshot")]
         public Output<string?> Snapshot { get; private set; } = null!;
@@ -510,7 +505,6 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
         /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -585,9 +579,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URLs of the zones where the disk should be replicated to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> ReplicaZones
         {
@@ -608,10 +599,9 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-        /// example, the following are valid values: *
-        /// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        /// The source snapshot used to create this disk. You can provide this as
+        /// a partial or full URL to the resource. For example, the following are
+        /// valid values:
         /// </summary>
         [Input("snapshot")]
         public Input<string>? Snapshot { get; set; }
@@ -719,7 +709,6 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// 
         /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -830,9 +819,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URLs of the zones where the disk should be replicated to.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> ReplicaZones
         {
@@ -859,10 +845,9 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-        /// example, the following are valid values: *
-        /// 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        /// The source snapshot used to create this disk. You can provide this as
+        /// a partial or full URL to the resource. For example, the following are
+        /// valid values:
         /// </summary>
         [Input("snapshot")]
         public Input<string>? Snapshot { get; set; }

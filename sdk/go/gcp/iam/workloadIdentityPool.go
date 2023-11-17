@@ -137,8 +137,6 @@ type WorkloadIdentityPool struct {
 	// The ID to use for the pool, which becomes the final component of the resource name. This
 	// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolId pulumi.StringOutput `pulumi:"workloadIdentityPoolId"`
 }
 
@@ -202,8 +200,6 @@ type workloadIdentityPoolState struct {
 	// The ID to use for the pool, which becomes the final component of the resource name. This
 	// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolId *string `pulumi:"workloadIdentityPoolId"`
 }
 
@@ -235,8 +231,6 @@ type WorkloadIdentityPoolState struct {
 	// The ID to use for the pool, which becomes the final component of the resource name. This
 	// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolId pulumi.StringPtrInput
 }
 
@@ -259,8 +253,6 @@ type workloadIdentityPoolArgs struct {
 	// The ID to use for the pool, which becomes the final component of the resource name. This
 	// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolId string `pulumi:"workloadIdentityPoolId"`
 }
 
@@ -280,8 +272,6 @@ type WorkloadIdentityPoolArgs struct {
 	// The ID to use for the pool, which becomes the final component of the resource name. This
 	// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
-	//
-	// ***
 	WorkloadIdentityPoolId pulumi.StringInput
 }
 
@@ -417,8 +407,6 @@ func (o WorkloadIdentityPoolOutput) State() pulumi.StringOutput {
 // The ID to use for the pool, which becomes the final component of the resource name. This
 // value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 // `gcp-` is reserved for use by Google, and may not be specified.
-//
-// ***
 func (o WorkloadIdentityPoolOutput) WorkloadIdentityPoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.WorkloadIdentityPoolId }).(pulumi.StringOutput)
 }

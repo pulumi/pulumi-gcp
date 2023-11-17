@@ -46,8 +46,7 @@ class InstanceArgs:
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] zone: (Optional, Deprecated)
-               The name of the Filestore zone of the instance.
+        :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
                
                > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
@@ -193,7 +192,6 @@ class InstanceArgs:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         The name of the Filestore zone of the instance.
 
         > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
@@ -251,8 +249,7 @@ class _InstanceState:
                and default labels configured on the provider.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
-        :param pulumi.Input[str] zone: (Optional, Deprecated)
-               The name of the Filestore zone of the instance.
+        :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
                
                > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
@@ -459,7 +456,6 @@ class _InstanceState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         The name of the Filestore zone of the instance.
 
         > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
@@ -619,8 +615,7 @@ class Instance(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
-        :param pulumi.Input[str] zone: (Optional, Deprecated)
-               The name of the Filestore zone of the instance.
+        :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
                
                > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
@@ -850,8 +845,7 @@ class Instance(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
-        :param pulumi.Input[str] zone: (Optional, Deprecated)
-               The name of the Filestore zone of the instance.
+        :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
                
                > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
@@ -994,7 +988,6 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        (Optional, Deprecated)
         The name of the Filestore zone of the instance.
 
         > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.

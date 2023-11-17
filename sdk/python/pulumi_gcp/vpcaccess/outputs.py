@@ -71,8 +71,6 @@ class GetConnectorSubnetResult(dict):
                  project_id: str):
         """
         :param str name: Name of the resource.
-               
-               - - -
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project_id", project_id)
@@ -82,8 +80,6 @@ class GetConnectorSubnetResult(dict):
     def name(self) -> str:
         """
         Name of the resource.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

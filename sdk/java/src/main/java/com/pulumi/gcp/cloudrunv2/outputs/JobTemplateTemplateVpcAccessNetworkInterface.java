@@ -29,8 +29,6 @@ public final class JobTemplateTemplateVpcAccessNetworkInterface {
     /**
      * @return Network tags applied to this Cloud Run job.
      * 
-     * ***
-     * 
      */
     private @Nullable List<String> tags;
 
@@ -55,8 +53,6 @@ public final class JobTemplateTemplateVpcAccessNetworkInterface {
     }
     /**
      * @return Network tags applied to this Cloud Run job.
-     * 
-     * ***
      * 
      */
     public List<String> tags() {

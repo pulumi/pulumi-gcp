@@ -54,8 +54,6 @@ class BucketObjectArgs:
         :param pulumi.Input['BucketObjectRetentionArgs'] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
-               
-               - - -
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -270,8 +268,6 @@ class BucketObjectArgs:
         """
         A path to the data you want to upload. Must be defined
         if `content` is not.
-
-        - - -
         """
         return pulumi.get(self, "source")
 
@@ -358,8 +354,6 @@ class _BucketObjectState:
         :param pulumi.Input[str] self_link: (Computed) A url reference to this object.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
-               
-               - - -
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -646,8 +640,6 @@ class _BucketObjectState:
         """
         A path to the data you want to upload. Must be defined
         if `content` is not.
-
-        - - -
         """
         return pulumi.get(self, "source")
 
@@ -763,8 +755,6 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketObjectRetentionArgs']] retention: The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
-               
-               - - -
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -944,8 +934,6 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: (Computed) A url reference to this object.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
-               
-               - - -
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -1139,8 +1127,6 @@ class BucketObject(pulumi.CustomResource):
         """
         A path to the data you want to upload. Must be defined
         if `content` is not.
-
-        - - -
         """
         return pulumi.get(self, "source")
 

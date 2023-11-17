@@ -26,18 +26,9 @@ class CryptoKeyIAMBindingArgs:
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
                `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
                the provider's project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input['CryptoKeyIAMBindingConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['CryptoKeyIAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         """
         pulumi.set(__self__, "crypto_key_id", crypto_key_id)
@@ -54,15 +45,6 @@ class CryptoKeyIAMBindingArgs:
         `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
         `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
         the provider's project setting will be used as a fallback.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "crypto_key_id")
 
@@ -96,7 +78,7 @@ class CryptoKeyIAMBindingArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['CryptoKeyIAMBindingConditionArgs']]:
         """
-        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -116,21 +98,12 @@ class _CryptoKeyIAMBindingState:
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CryptoKeyIAMBinding resources.
-        :param pulumi.Input['CryptoKeyIAMBindingConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['CryptoKeyIAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
                `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
                the provider's project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -150,7 +123,7 @@ class _CryptoKeyIAMBindingState:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['CryptoKeyIAMBindingConditionArgs']]:
         """
-        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -167,15 +140,6 @@ class _CryptoKeyIAMBindingState:
         `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
         `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
         the provider's project setting will be used as a fallback.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "crypto_key_id")
 
@@ -345,21 +309,12 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMBindingConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
                `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
                the provider's project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
@@ -545,21 +500,12 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMBindingConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMBindingConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
                `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
                the provider's project setting will be used as a fallback.
-               
-               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-               Each entry can have one of the following values:
-               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] etag: (Computed) The etag of the project's IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -579,7 +525,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.CryptoKeyIAMBindingCondition']]:
         """
-        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -592,15 +538,6 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
         `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
         the provider's project setting will be used as a fallback.
-
-        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-        Each entry can have one of the following values:
-        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, jane@example.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "crypto_key_id")
 

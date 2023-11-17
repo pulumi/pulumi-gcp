@@ -58,8 +58,8 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// - must be valid RFC 6265 "cookie-name" tokens
         /// - are case sensitive
         /// - cannot start with "Edge-Cache-" (case insensitive)
-        /// Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
-        /// You may specify up to three cookie names.
+        ///   Note that specifying several cookies, and/or cookies that have a large range of values (e.g., per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+        ///   You may specify up to three cookie names.
         /// </summary>
         public InputList<string> IncludedCookieNames
         {
@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// - Header names must be valid HTTP RFC 7230 header field values.
         /// - Header field names are case insensitive
         /// - To include the HTTP method, use ":method"
-        /// Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
+        ///   Note that specifying several headers, and/or headers that have a large range of values (e.g. per-user) will dramatically impact the cache hit rate, and may result in a higher eviction rate and reduced performance.
         /// </summary>
         public InputList<string> IncludedHeaderNames
         {

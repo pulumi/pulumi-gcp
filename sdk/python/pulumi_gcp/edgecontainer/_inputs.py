@@ -68,8 +68,6 @@ class ClusterAuthorizationAdminUsersArgs:
                  username: pulumi.Input[str]):
         """
         :param pulumi.Input[str] username: An active Google username.
-               
-               - - -
         """
         pulumi.set(__self__, "username", username)
 
@@ -78,8 +76,6 @@ class ClusterAuthorizationAdminUsersArgs:
     def username(self) -> pulumi.Input[str]:
         """
         An active Google username.
-
-        - - -
         """
         return pulumi.get(self, "username")
 
@@ -157,7 +153,6 @@ class ClusterControlPlaneEncryptionArgs:
                If populated, this field contains the error status reported by Cloud KMS.
                Structure is documented below.
                
-               
                <a name="nested_kms_status"></a>The `kms_status` block contains:
         """
         if kms_key is not None:
@@ -223,7 +218,6 @@ class ClusterControlPlaneEncryptionArgs:
         populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
         If populated, this field contains the error status reported by Cloud KMS.
         Structure is documented below.
-
 
         <a name="nested_kms_status"></a>The `kms_status` block contains:
         """

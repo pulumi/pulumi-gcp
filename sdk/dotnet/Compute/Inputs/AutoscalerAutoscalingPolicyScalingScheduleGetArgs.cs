@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class AutoscalerAutoscalingPolicyScalingScheduleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional description of this resource.
+        /// A description of a scaling schedule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

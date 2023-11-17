@@ -143,9 +143,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The starting URLs from which the scanner finds site pages.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("startingUrls")]
         public Output<ImmutableArray<string>> StartingUrls { get; private set; } = null!;
@@ -272,9 +269,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The starting URLs from which the scanner finds site pages.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> StartingUrls
         {
@@ -379,9 +373,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The starting URLs from which the scanner finds site pages.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> StartingUrls
         {

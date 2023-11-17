@@ -89,16 +89,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      * Cannot be specified with subnetwork. If neither `network` nor
      * `subnet` is specified, the &#34;default&#34; network of the project is
      * used, if it exists. A full URL or partial URI. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/
-     *   regions/global/default`
-     * * `projects/[project_id]/regions/global/default`
-     *   Runtimes are managed resources inside Google Infrastructure.
-     *   Runtimes support the following network configurations:
-     * * Google Managed Network (Network &amp; subnet are empty)
-     * * Consumer Project VPC (network &amp; subnet are required). Requires
-     *   configuring Private Service Access.
-     * * Shared VPC (network &amp; subnet are required). Requires
-     *   configuring Private Service Access.
      * 
      */
     private @Nullable String network;
@@ -125,9 +115,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      * @return The Compute Engine subnetwork to be used for machine
      * communications. Cannot be specified with network. A full URL or
      * partial URI are valid. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/
-     *   regions/us-east1/subnetworks/sub0`
-     * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
      * 
      */
     private @Nullable String subnet;
@@ -234,16 +221,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      * Cannot be specified with subnetwork. If neither `network` nor
      * `subnet` is specified, the &#34;default&#34; network of the project is
      * used, if it exists. A full URL or partial URI. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/
-     *   regions/global/default`
-     * * `projects/[project_id]/regions/global/default`
-     *   Runtimes are managed resources inside Google Infrastructure.
-     *   Runtimes support the following network configurations:
-     * * Google Managed Network (Network &amp; subnet are empty)
-     * * Consumer Project VPC (network &amp; subnet are required). Requires
-     *   configuring Private Service Access.
-     * * Shared VPC (network &amp; subnet are required). Requires
-     *   configuring Private Service Access.
      * 
      */
     public Optional<String> network() {
@@ -278,9 +255,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      * @return The Compute Engine subnetwork to be used for machine
      * communications. Cannot be specified with network. A full URL or
      * partial URI are valid. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/
-     *   regions/us-east1/subnetworks/sub0`
-     * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
      * 
      */
     public Optional<String> subnet() {

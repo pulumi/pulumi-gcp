@@ -289,6 +289,7 @@ type MetastoreService struct {
 	// Structure is documented below.
 	MaintenanceWindow MetastoreServiceMaintenanceWindowPtrOutput `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Structure is documented below.
 	MetadataIntegration MetastoreServiceMetadataIntegrationPtrOutput `pulumi:"metadataIntegration"`
 	// The relative resource name of the metastore service.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -316,8 +317,6 @@ type MetastoreService struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// The current state of the metastore service.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -402,6 +401,7 @@ type metastoreServiceState struct {
 	// Structure is documented below.
 	MaintenanceWindow *MetastoreServiceMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Structure is documented below.
 	MetadataIntegration *MetastoreServiceMetadataIntegration `pulumi:"metadataIntegration"`
 	// The relative resource name of the metastore service.
 	Name *string `pulumi:"name"`
@@ -429,8 +429,6 @@ type metastoreServiceState struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId *string `pulumi:"serviceId"`
 	// The current state of the metastore service.
 	State *string `pulumi:"state"`
@@ -478,6 +476,7 @@ type MetastoreServiceState struct {
 	// Structure is documented below.
 	MaintenanceWindow MetastoreServiceMaintenanceWindowPtrInput
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Structure is documented below.
 	MetadataIntegration MetastoreServiceMetadataIntegrationPtrInput
 	// The relative resource name of the metastore service.
 	Name pulumi.StringPtrInput
@@ -505,8 +504,6 @@ type MetastoreServiceState struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId pulumi.StringPtrInput
 	// The current state of the metastore service.
 	State pulumi.StringPtrInput
@@ -551,6 +548,7 @@ type metastoreServiceArgs struct {
 	// Structure is documented below.
 	MaintenanceWindow *MetastoreServiceMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Structure is documented below.
 	MetadataIntegration *MetastoreServiceMetadataIntegration `pulumi:"metadataIntegration"`
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
@@ -573,8 +571,6 @@ type metastoreServiceArgs struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId string `pulumi:"serviceId"`
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
@@ -610,6 +606,7 @@ type MetastoreServiceArgs struct {
 	// Structure is documented below.
 	MaintenanceWindow MetastoreServiceMaintenanceWindowPtrInput
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Structure is documented below.
 	MetadataIntegration MetastoreServiceMetadataIntegrationPtrInput
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
@@ -632,8 +629,6 @@ type MetastoreServiceArgs struct {
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
-	//
-	// ***
 	ServiceId pulumi.StringInput
 	// The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
 	// Structure is documented below.
@@ -788,6 +783,7 @@ func (o MetastoreServiceOutput) MaintenanceWindow() MetastoreServiceMaintenanceW
 }
 
 // The setting that defines how metastore metadata should be integrated with external services and systems.
+// Structure is documented below.
 func (o MetastoreServiceOutput) MetadataIntegration() MetastoreServiceMetadataIntegrationPtrOutput {
 	return o.ApplyT(func(v *MetastoreService) MetastoreServiceMetadataIntegrationPtrOutput { return v.MetadataIntegration }).(MetastoreServiceMetadataIntegrationPtrOutput)
 }
@@ -842,8 +838,6 @@ func (o MetastoreServiceOutput) ScalingConfig() MetastoreServiceScalingConfigPtr
 // The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 // and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 // 3 and 63 characters.
-//
-// ***
 func (o MetastoreServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
 }

@@ -20,16 +20,12 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the Cluster.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The ID of the Cluster.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -103,8 +99,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The ID of the Cluster.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -115,8 +109,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The ID of the Cluster.
-         * 
-         * ***
          * 
          * @return builder
          * 

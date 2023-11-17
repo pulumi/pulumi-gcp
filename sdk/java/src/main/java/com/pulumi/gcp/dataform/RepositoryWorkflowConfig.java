@@ -281,16 +281,12 @@ public class RepositoryWorkflowConfig extends com.pulumi.resources.CustomResourc
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}releaseConfigs/*.
      * 
-     * ***
-     * 
      */
     @Export(name="releaseConfig", refs={String.class}, tree="[0]")
     private Output<String> releaseConfig;
 
     /**
      * @return The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*{@literal /}locations/*{@literal /}repositories/*{@literal /}releaseConfigs/*.
-     * 
-     * ***
      * 
      */
     public Output<String> releaseConfig() {

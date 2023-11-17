@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterResourceUsageExportConfigBigqueryDestinationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 

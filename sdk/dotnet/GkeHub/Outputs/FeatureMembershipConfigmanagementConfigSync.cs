@@ -14,12 +14,12 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipConfigmanagementConfigSync
     {
         /// <summary>
-        /// (Optional) Structure is documented below.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncGit? Git;
         public readonly string? MetricsGcpServiceAccountEmail;
         /// <summary>
-        /// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        /// Supported from ACM versions 1.12.0 onwards. Structure is documented below.
         /// 
         /// Use either `git` or `oci` config option.
         /// </summary>

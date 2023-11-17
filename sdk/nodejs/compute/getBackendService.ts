@@ -26,8 +26,6 @@ export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.Inv
 export interface GetBackendServiceArgs {
     /**
      * The name of the Backend Service.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -127,8 +125,6 @@ export function getBackendServiceOutput(args: GetBackendServiceOutputArgs, opts?
 export interface GetBackendServiceOutputArgs {
     /**
      * The name of the Backend Service.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

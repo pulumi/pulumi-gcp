@@ -400,8 +400,6 @@ type Subscription struct {
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrOutput `pulumi:"retryPolicy"`
 	// A reference to a Topic resource.
-	//
-	// ***
 	Topic pulumi.StringOutput `pulumi:"topic"`
 }
 
@@ -543,8 +541,6 @@ type subscriptionState struct {
 	// Structure is documented below.
 	RetryPolicy *SubscriptionRetryPolicy `pulumi:"retryPolicy"`
 	// A reference to a Topic resource.
-	//
-	// ***
 	Topic *string `pulumi:"topic"`
 }
 
@@ -649,8 +645,6 @@ type SubscriptionState struct {
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrInput
 	// A reference to a Topic resource.
-	//
-	// ***
 	Topic pulumi.StringPtrInput
 }
 
@@ -754,8 +748,6 @@ type subscriptionArgs struct {
 	// Structure is documented below.
 	RetryPolicy *SubscriptionRetryPolicy `pulumi:"retryPolicy"`
 	// A reference to a Topic resource.
-	//
-	// ***
 	Topic string `pulumi:"topic"`
 }
 
@@ -856,8 +848,6 @@ type SubscriptionArgs struct {
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrInput
 	// A reference to a Topic resource.
-	//
-	// ***
 	Topic pulumi.StringInput
 }
 
@@ -1099,8 +1089,6 @@ func (o SubscriptionOutput) RetryPolicy() SubscriptionRetryPolicyPtrOutput {
 }
 
 // A reference to a Topic resource.
-//
-// ***
 func (o SubscriptionOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
 }

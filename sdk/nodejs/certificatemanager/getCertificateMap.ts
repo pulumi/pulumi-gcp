@@ -35,8 +35,6 @@ export function getCertificateMap(args: GetCertificateMapArgs, opts?: pulumi.Inv
 export interface GetCertificateMapArgs {
     /**
      * The name of the certificate map.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -88,8 +86,6 @@ export function getCertificateMapOutput(args: GetCertificateMapOutputArgs, opts?
 export interface GetCertificateMapOutputArgs {
     /**
      * The name of the certificate map.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

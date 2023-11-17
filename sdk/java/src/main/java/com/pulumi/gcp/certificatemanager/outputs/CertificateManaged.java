@@ -51,7 +51,7 @@ public final class CertificateManaged {
     private @Nullable List<CertificateManagedProvisioningIssue> provisioningIssues;
     /**
      * @return (Output)
-     * State of the domain for managed certificate issuance.
+     * A state of this Managed Certificate.
      * 
      */
     private @Nullable String state;
@@ -104,7 +104,7 @@ public final class CertificateManaged {
     }
     /**
      * @return (Output)
-     * State of the domain for managed certificate issuance.
+     * A state of this Managed Certificate.
      * 
      */
     public Optional<String> state() {

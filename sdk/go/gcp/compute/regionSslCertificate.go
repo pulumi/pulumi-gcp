@@ -194,8 +194,6 @@ type RegionSslCertificate struct {
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	//
-	// ***
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -282,8 +280,6 @@ type regionSslCertificateState struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	//
-	// ***
 	PrivateKey *string `pulumi:"privateKey"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -324,8 +320,6 @@ type RegionSslCertificateState struct {
 	NamePrefix pulumi.StringPtrInput
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	//
-	// ***
 	PrivateKey pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -364,8 +358,6 @@ type regionSslCertificateArgs struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	//
-	// ***
 	PrivateKey string `pulumi:"privateKey"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -399,8 +391,6 @@ type RegionSslCertificateArgs struct {
 	NamePrefix pulumi.StringPtrInput
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	//
-	// ***
 	PrivateKey pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -546,8 +536,6 @@ func (o RegionSslCertificateOutput) NamePrefix() pulumi.StringOutput {
 
 // The write-only private key in PEM format.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-//
-// ***
 func (o RegionSslCertificateOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
 }

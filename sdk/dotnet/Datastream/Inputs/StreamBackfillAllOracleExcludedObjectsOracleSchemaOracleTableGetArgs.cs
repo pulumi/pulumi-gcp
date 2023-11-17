@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        /// Structure is documented below.`oracle_columns` -
+        /// (Optional)
+        /// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnGetArgs> OracleColumns
@@ -26,6 +29,8 @@ namespace Pulumi.Gcp.Datastream.Inputs
         }
 
         /// <summary>
+        /// Table name.`table` -
+        /// (Required)
         /// Table name.
         /// </summary>
         [Input("table", required: true)]

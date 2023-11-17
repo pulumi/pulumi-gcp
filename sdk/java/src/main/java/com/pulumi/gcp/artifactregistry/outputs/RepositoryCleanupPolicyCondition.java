@@ -12,29 +12,81 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RepositoryCleanupPolicyCondition {
+    /**
+     * @return Match versions newer than a duration.
+     * 
+     */
     private @Nullable String newerThan;
+    /**
+     * @return Match versions older than a duration.
+     * 
+     */
     private @Nullable String olderThan;
+    /**
+     * @return Match versions by package prefix. Applied on any prefix match.
+     * 
+     */
     private @Nullable List<String> packageNamePrefixes;
+    /**
+     * @return Match versions by tag prefix. Applied on any prefix match.
+     * 
+     */
     private @Nullable List<String> tagPrefixes;
+    /**
+     * @return Match versions by tag status.
+     * Default value is `ANY`.
+     * Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
+     * 
+     */
     private @Nullable String tagState;
+    /**
+     * @return Match versions by version name prefix. Applied on any prefix match.
+     * 
+     */
     private @Nullable List<String> versionNamePrefixes;
 
     private RepositoryCleanupPolicyCondition() {}
+    /**
+     * @return Match versions newer than a duration.
+     * 
+     */
     public Optional<String> newerThan() {
         return Optional.ofNullable(this.newerThan);
     }
+    /**
+     * @return Match versions older than a duration.
+     * 
+     */
     public Optional<String> olderThan() {
         return Optional.ofNullable(this.olderThan);
     }
+    /**
+     * @return Match versions by package prefix. Applied on any prefix match.
+     * 
+     */
     public List<String> packageNamePrefixes() {
         return this.packageNamePrefixes == null ? List.of() : this.packageNamePrefixes;
     }
+    /**
+     * @return Match versions by tag prefix. Applied on any prefix match.
+     * 
+     */
     public List<String> tagPrefixes() {
         return this.tagPrefixes == null ? List.of() : this.tagPrefixes;
     }
+    /**
+     * @return Match versions by tag status.
+     * Default value is `ANY`.
+     * Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
+     * 
+     */
     public Optional<String> tagState() {
         return Optional.ofNullable(this.tagState);
     }
+    /**
+     * @return Match versions by version name prefix. Applied on any prefix match.
+     * 
+     */
     public List<String> versionNamePrefixes() {
         return this.versionNamePrefixes == null ? List.of() : this.versionNamePrefixes;
     }

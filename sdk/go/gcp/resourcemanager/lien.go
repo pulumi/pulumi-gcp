@@ -100,8 +100,6 @@ type Lien struct {
 	// the permissions against those for which Liens are supported.  An empty
 	// list is meaningless and will be rejected.
 	// e.g. ['resourcemanager.projects.delete']
-	//
-	// ***
 	Restrictions pulumi.StringArrayOutput `pulumi:"restrictions"`
 }
 
@@ -168,8 +166,6 @@ type lienState struct {
 	// the permissions against those for which Liens are supported.  An empty
 	// list is meaningless and will be rejected.
 	// e.g. ['resourcemanager.projects.delete']
-	//
-	// ***
 	Restrictions []string `pulumi:"restrictions"`
 }
 
@@ -195,8 +191,6 @@ type LienState struct {
 	// the permissions against those for which Liens are supported.  An empty
 	// list is meaningless and will be rejected.
 	// e.g. ['resourcemanager.projects.delete']
-	//
-	// ***
 	Restrictions pulumi.StringArrayInput
 }
 
@@ -222,8 +216,6 @@ type lienArgs struct {
 	// the permissions against those for which Liens are supported.  An empty
 	// list is meaningless and will be rejected.
 	// e.g. ['resourcemanager.projects.delete']
-	//
-	// ***
 	Restrictions []string `pulumi:"restrictions"`
 }
 
@@ -246,8 +238,6 @@ type LienArgs struct {
 	// the permissions against those for which Liens are supported.  An empty
 	// list is meaningless and will be rejected.
 	// e.g. ['resourcemanager.projects.delete']
-	//
-	// ***
 	Restrictions pulumi.StringArrayInput
 }
 
@@ -374,8 +364,6 @@ func (o LienOutput) Reason() pulumi.StringOutput {
 // the permissions against those for which Liens are supported.  An empty
 // list is meaningless and will be rejected.
 // e.g. ['resourcemanager.projects.delete']
-//
-// ***
 func (o LienOutput) Restrictions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Lien) pulumi.StringArrayOutput { return v.Restrictions }).(pulumi.StringArrayOutput)
 }

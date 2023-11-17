@@ -13,7 +13,6 @@ import javax.annotation.Nullable;
 public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig {
     /**
      * @return Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-     * ***
      * 
      */
     private @Nullable String dataprocCluster;
@@ -21,7 +20,6 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistor
     private ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig() {}
     /**
      * @return Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-     * ***
      * 
      */
     public Optional<String> dataprocCluster() {

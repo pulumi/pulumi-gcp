@@ -22,9 +22,6 @@ class AccessPolicyArgs:
         :param pulumi.Input[str] parent: The parent of this AccessPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id}
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
-               
-               
-               - - -
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
                Format: folders/{{folder_id}} or projects/{{project_id}}
         """
@@ -51,9 +48,6 @@ class AccessPolicyArgs:
     def title(self) -> pulumi.Input[str]:
         """
         Human readable title. Does not affect behavior.
-
-
-        - - -
         """
         return pulumi.get(self, "title")
 
@@ -93,9 +87,6 @@ class _AccessPolicyState:
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
                Format: folders/{{folder_id}} or projects/{{project_id}}
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
-               
-               
-               - - -
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
         """
         if create_time is not None:
@@ -166,9 +157,6 @@ class _AccessPolicyState:
     def title(self) -> Optional[pulumi.Input[str]]:
         """
         Human readable title. Does not affect behavior.
-
-
-        - - -
         """
         return pulumi.get(self, "title")
 
@@ -266,9 +254,6 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
                Format: folders/{{folder_id}} or projects/{{project_id}}
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -404,9 +389,6 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] scopes: Folder or project on which this policy is applicable.
                Format: folders/{{folder_id}} or projects/{{project_id}}
         :param pulumi.Input[str] title: Human readable title. Does not affect behavior.
-               
-               
-               - - -
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -460,9 +442,6 @@ class AccessPolicy(pulumi.CustomResource):
     def title(self) -> pulumi.Output[str]:
         """
         Human readable title. Does not affect behavior.
-
-
-        - - -
         """
         return pulumi.get(self, "title")
 

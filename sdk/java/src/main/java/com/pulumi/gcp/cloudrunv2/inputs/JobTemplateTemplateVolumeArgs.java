@@ -35,9 +35,19 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.cloudSqlInstance);
     }
 
+    /**
+     * Ephemeral storage used as a shared volume.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="emptyDir")
     private @Nullable Output<JobTemplateTemplateVolumeEmptyDirArgs> emptyDir;
 
+    /**
+     * @return Ephemeral storage used as a shared volume.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<JobTemplateTemplateVolumeEmptyDirArgs>> emptyDir() {
         return Optional.ofNullable(this.emptyDir);
     }
@@ -124,11 +134,25 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
             return cloudSqlInstance(Output.of(cloudSqlInstance));
         }
 
+        /**
+         * @param emptyDir Ephemeral storage used as a shared volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emptyDir(@Nullable Output<JobTemplateTemplateVolumeEmptyDirArgs> emptyDir) {
             $.emptyDir = emptyDir;
             return this;
         }
 
+        /**
+         * @param emptyDir Ephemeral storage used as a shared volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder emptyDir(JobTemplateTemplateVolumeEmptyDirArgs emptyDir) {
             return emptyDir(Output.of(emptyDir));
         }

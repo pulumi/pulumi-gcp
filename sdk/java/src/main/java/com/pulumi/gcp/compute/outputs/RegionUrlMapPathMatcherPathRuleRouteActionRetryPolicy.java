@@ -15,14 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy {
     /**
-     * @return Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
+     * @return Specifies the allowed number retries. This number must be &gt; 0.
      * 
      */
     private @Nullable Integer numRetries;
     /**
      * @return Specifies a non-zero timeout per retry attempt.
-     * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-     * will use the largest timeout among all backend services associated with the route.
      * Structure is documented below.
      * 
      */
@@ -46,7 +44,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy {
 
     private RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy() {}
     /**
-     * @return Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
+     * @return Specifies the allowed number retries. This number must be &gt; 0.
      * 
      */
     public Optional<Integer> numRetries() {
@@ -54,8 +52,6 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy {
     }
     /**
      * @return Specifies a non-zero timeout per retry attempt.
-     * If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
-     * will use the largest timeout among all backend services associated with the route.
      * Structure is documented below.
      * 
      */

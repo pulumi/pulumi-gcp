@@ -17,16 +17,14 @@ public final class ResponsePolicyRuleState extends com.pulumi.resources.Resource
     public static final ResponsePolicyRuleState Empty = new ResponsePolicyRuleState();
 
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
-     * &#39;bypassResponsePolicy&#39;
+     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
      * 
      */
     @Import(name="behavior")
     private @Nullable Output<String> behavior;
 
     /**
-     * @return Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
-     * &#39;bypassResponsePolicy&#39;
+     * @return Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
      * 
      */
     public Optional<Output<String>> behavior() {
@@ -87,16 +85,12 @@ public final class ResponsePolicyRuleState extends com.pulumi.resources.Resource
     /**
      * Identifies the response policy addressed by this request.
      * 
-     * ***
-     * 
      */
     @Import(name="responsePolicy")
     private @Nullable Output<String> responsePolicy;
 
     /**
      * @return Identifies the response policy addressed by this request.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> responsePolicy() {
@@ -148,8 +142,7 @@ public final class ResponsePolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param behavior Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
-         * &#39;bypassResponsePolicy&#39;
+         * @param behavior Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
          * 
          * @return builder
          * 
@@ -160,8 +153,7 @@ public final class ResponsePolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param behavior Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
-         * &#39;bypassResponsePolicy&#39;
+         * @param behavior Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
          * 
          * @return builder
          * 
@@ -242,8 +234,6 @@ public final class ResponsePolicyRuleState extends com.pulumi.resources.Resource
         /**
          * @param responsePolicy Identifies the response policy addressed by this request.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -254,8 +244,6 @@ public final class ResponsePolicyRuleState extends com.pulumi.resources.Resource
 
         /**
          * @param responsePolicy Identifies the response policy addressed by this request.
-         * 
-         * ***
          * 
          * @return builder
          * 

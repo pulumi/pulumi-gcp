@@ -34,14 +34,15 @@ export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): P
 export interface GetAccountArgs {
     /**
      * The Google service account ID. This be one of:
-     *
      * * The name of the service account within the project (e.g. `my-service`)
      *
+     *
      * * The fully-qualified path to a service account resource (e.g.
-     * `projects/my-project/serviceAccounts/...`)
+     *   `projects/my-project/serviceAccounts/...`)
+     *
      *
      * * The email address of the service account (e.g.
-     * `my-service@my-project.iam.gserviceaccount.com`)
+     *   `my-service@my-project.iam.gserviceaccount.com`)
      */
     accountId: string;
     /**
@@ -109,14 +110,15 @@ export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.Invok
 export interface GetAccountOutputArgs {
     /**
      * The Google service account ID. This be one of:
-     *
      * * The name of the service account within the project (e.g. `my-service`)
      *
+     *
      * * The fully-qualified path to a service account resource (e.g.
-     * `projects/my-project/serviceAccounts/...`)
+     *   `projects/my-project/serviceAccounts/...`)
+     *
      *
      * * The email address of the service account (e.g.
-     * `my-service@my-project.iam.gserviceaccount.com`)
+     *   `my-service@my-project.iam.gserviceaccount.com`)
      */
     accountId: pulumi.Input<string>;
     /**

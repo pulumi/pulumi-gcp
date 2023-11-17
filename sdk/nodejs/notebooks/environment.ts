@@ -101,9 +101,6 @@ export class Environment extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -192,9 +189,6 @@ export interface EnvironmentState {
     displayName?: pulumi.Input<string>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -238,9 +232,6 @@ export interface EnvironmentArgs {
     displayName?: pulumi.Input<string>;
     /**
      * A reference to the zone where the machine resides.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -493,7 +493,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.AwsClusterNetworking> Networking { get; private set; } = null!;
 
         /// <summary>
-        /// The number of the Fleet host project where this cluster will be registered.
+        /// The project for the resource
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -650,7 +650,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AwsClusterNetworkingArgs> Networking { get; set; } = null!;
 
         /// <summary>
-        /// The number of the Fleet host project where this cluster will be registered.
+        /// The project for the resource
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -770,7 +770,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AwsClusterNetworkingGetArgs>? Networking { get; set; }
 
         /// <summary>
-        /// The number of the Fleet host project where this cluster will be registered.
+        /// The project for the resource
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

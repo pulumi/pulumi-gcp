@@ -28,6 +28,10 @@ public final class ServiceTemplateContainer {
      * 
      */
     private @Nullable List<String> commands;
+    /**
+     * @return Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+     * 
+     */
     private @Nullable List<String> dependsOns;
     /**
      * @return List of environment variables to set in the container.
@@ -97,6 +101,10 @@ public final class ServiceTemplateContainer {
     public List<String> commands() {
         return this.commands == null ? List.of() : this.commands;
     }
+    /**
+     * @return Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+     * 
+     */
     public List<String> dependsOns() {
         return this.dependsOns == null ? List.of() : this.dependsOns;
     }

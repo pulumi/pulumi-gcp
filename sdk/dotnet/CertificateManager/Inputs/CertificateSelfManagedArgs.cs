@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         private Input<string>? _certificatePem;
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// The certificate chain in PEM-encoded form.
         /// Leaf certificate comes first, followed by intermediate ones if any.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -63,7 +62,6 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         private Input<string>? _privateKeyPem;
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// The private key of the leaf certificate in PEM-encoded form.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// 

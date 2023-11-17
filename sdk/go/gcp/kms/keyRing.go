@@ -87,8 +87,6 @@ type KeyRing struct {
 
 	// The location for the KeyRing.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the KeyRing.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -132,8 +130,6 @@ func GetKeyRing(ctx *pulumi.Context,
 type keyRingState struct {
 	// The location for the KeyRing.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name for the KeyRing.
 	Name *string `pulumi:"name"`
@@ -145,8 +141,6 @@ type keyRingState struct {
 type KeyRingState struct {
 	// The location for the KeyRing.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name for the KeyRing.
 	Name pulumi.StringPtrInput
@@ -162,8 +156,6 @@ func (KeyRingState) ElementType() reflect.Type {
 type keyRingArgs struct {
 	// The location for the KeyRing.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The resource name for the KeyRing.
 	Name *string `pulumi:"name"`
@@ -176,8 +168,6 @@ type keyRingArgs struct {
 type KeyRingArgs struct {
 	// The location for the KeyRing.
 	// A full list of valid locations can be found by running `gcloud kms locations list`.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The resource name for the KeyRing.
 	Name pulumi.StringPtrInput
@@ -275,8 +265,6 @@ func (o KeyRingOutput) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOu
 
 // The location for the KeyRing.
 // A full list of valid locations can be found by running `gcloud kms locations list`.
-//
-// ***
 func (o KeyRingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyRing) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

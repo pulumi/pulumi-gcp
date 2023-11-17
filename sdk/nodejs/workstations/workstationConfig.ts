@@ -516,9 +516,6 @@ export class WorkstationConfig extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location where the workstation cluster config should reside.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -719,9 +716,6 @@ export interface WorkstationConfigState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the workstation cluster config should reside.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -816,9 +810,6 @@ export interface WorkstationConfigArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location where the workstation cluster config should reside.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

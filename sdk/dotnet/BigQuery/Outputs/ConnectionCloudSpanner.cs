@@ -34,7 +34,6 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly bool? UseParallelism;
         /// <summary>
-        /// (Optional, Deprecated)
         /// If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
         /// 
         /// &gt; **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.

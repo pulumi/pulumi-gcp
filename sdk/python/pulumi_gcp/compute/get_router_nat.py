@@ -263,8 +263,6 @@ def get_router_nat(name: Optional[str] = None,
            If it is not provided, the provider project is used.
     :param str region: Region where the router and NAT reside.
     :param str router: The name of the Cloud Router in which this NAT will be configured.
-           
-           - - -
     """
     __args__ = dict()
     __args__['name'] = name
@@ -329,7 +327,5 @@ def get_router_nat_output(name: Optional[pulumi.Input[str]] = None,
            If it is not provided, the provider project is used.
     :param str region: Region where the router and NAT reside.
     :param str router: The name of the Cloud Router in which this NAT will be configured.
-           
-           - - -
     """
     ...

@@ -17,16 +17,12 @@ public final class GetFunctionPlainArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * The name of a Cloud Function.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of a Cloud Function.
-     * 
-     * ***
      * 
      */
     public String name() {
@@ -95,8 +91,6 @@ public final class GetFunctionPlainArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param name The name of a Cloud Function.
-         * 
-         * ***
          * 
          * @return builder
          * 

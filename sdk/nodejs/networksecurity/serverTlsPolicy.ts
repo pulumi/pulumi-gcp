@@ -220,9 +220,6 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
     public readonly mtlsPolicy!: pulumi.Output<outputs.networksecurity.ServerTlsPolicyMtlsPolicy | undefined>;
     /**
      * Name of the ServerTlsPolicy resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -333,9 +330,6 @@ export interface ServerTlsPolicyState {
     mtlsPolicy?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyMtlsPolicy>;
     /**
      * Name of the ServerTlsPolicy resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -392,9 +386,6 @@ export interface ServerTlsPolicyArgs {
     mtlsPolicy?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyMtlsPolicy>;
     /**
      * Name of the ServerTlsPolicy resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -295,8 +295,6 @@ public class RegionTargetHttpsProxy extends com.pulumi.resources.CustomResource 
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.
      * 
-     * ***
-     * 
      */
     @Export(name="urlMap", refs={String.class}, tree="[0]")
     private Output<String> urlMap;
@@ -304,8 +302,6 @@ public class RegionTargetHttpsProxy extends com.pulumi.resources.CustomResource 
     /**
      * @return A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.
-     * 
-     * ***
      * 
      */
     public Output<String> urlMap() {

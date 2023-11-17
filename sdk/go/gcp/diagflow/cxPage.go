@@ -826,8 +826,6 @@ type CxPage struct {
 	// Structure is documented below.
 	AdvancedSettings CxPageAdvancedSettingsPtrOutput `pulumi:"advancedSettings"`
 	// The human-readable name of the page, unique within the agent.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	// Structure is documented below.
@@ -912,8 +910,6 @@ type cxPageState struct {
 	// Structure is documented below.
 	AdvancedSettings *CxPageAdvancedSettings `pulumi:"advancedSettings"`
 	// The human-readable name of the page, unique within the agent.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	// Structure is documented below.
@@ -966,8 +962,6 @@ type CxPageState struct {
 	// Structure is documented below.
 	AdvancedSettings CxPageAdvancedSettingsPtrInput
 	// The human-readable name of the page, unique within the agent.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// The fulfillment to call when the session is entering the page.
 	// Structure is documented below.
@@ -1024,8 +1018,6 @@ type cxPageArgs struct {
 	// Structure is documented below.
 	AdvancedSettings *CxPageAdvancedSettings `pulumi:"advancedSettings"`
 	// The human-readable name of the page, unique within the agent.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	// Structure is documented below.
@@ -1076,8 +1068,6 @@ type CxPageArgs struct {
 	// Structure is documented below.
 	AdvancedSettings CxPageAdvancedSettingsPtrInput
 	// The human-readable name of the page, unique within the agent.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// The fulfillment to call when the session is entering the page.
 	// Structure is documented below.
@@ -1216,8 +1206,6 @@ func (o CxPageOutput) AdvancedSettings() CxPageAdvancedSettingsPtrOutput {
 }
 
 // The human-readable name of the page, unique within the agent.
-//
-// ***
 func (o CxPageOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxPage) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

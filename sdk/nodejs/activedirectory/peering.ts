@@ -105,9 +105,6 @@ export class Peering extends pulumi.CustomResource {
      * Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    /**
-     * - - -
-     */
     public readonly peeringId!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -206,9 +203,6 @@ export interface PeeringState {
      * Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
      */
     name?: pulumi.Input<string>;
-    /**
-     * - - -
-     */
     peeringId?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -248,9 +242,6 @@ export interface PeeringArgs {
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * - - -
-     */
     peeringId: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

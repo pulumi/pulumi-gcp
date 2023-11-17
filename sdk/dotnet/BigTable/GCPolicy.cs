@@ -204,8 +204,6 @@ namespace Pulumi.Gcp.BigTable
         /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
         /// 
         /// Possible values are: `ABANDON`.
-        /// 
-        /// -----
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
@@ -235,7 +233,7 @@ namespace Pulumi.Gcp.BigTable
         public Output<ImmutableArray<Outputs.GCPolicyMaxVersion>> MaxVersions { get; private set; } = null!;
 
         /// <summary>
-        /// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+        /// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
         /// </summary>
         [Output("mode")]
         public Output<string?> Mode { get; private set; } = null!;
@@ -309,8 +307,6 @@ namespace Pulumi.Gcp.BigTable
         /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
         /// 
         /// Possible values are: `ABANDON`.
-        /// 
-        /// -----
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -346,7 +342,7 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
-        /// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+        /// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -382,8 +378,6 @@ namespace Pulumi.Gcp.BigTable
         /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
         /// 
         /// Possible values are: `ABANDON`.
-        /// 
-        /// -----
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -419,7 +413,7 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
-        /// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+        /// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

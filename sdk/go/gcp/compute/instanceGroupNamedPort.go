@@ -134,8 +134,6 @@ type InstanceGroupNamedPort struct {
 	pulumi.CustomResourceState
 
 	// The name of the instance group.
-	//
-	// ***
 	Group pulumi.StringOutput `pulumi:"group"`
 	// The name for this named port. The name must be 1-63 characters
 	// long, and comply with RFC1035.
@@ -186,8 +184,6 @@ func GetInstanceGroupNamedPort(ctx *pulumi.Context,
 // Input properties used for looking up and filtering InstanceGroupNamedPort resources.
 type instanceGroupNamedPortState struct {
 	// The name of the instance group.
-	//
-	// ***
 	Group *string `pulumi:"group"`
 	// The name for this named port. The name must be 1-63 characters
 	// long, and comply with RFC1035.
@@ -203,8 +199,6 @@ type instanceGroupNamedPortState struct {
 
 type InstanceGroupNamedPortState struct {
 	// The name of the instance group.
-	//
-	// ***
 	Group pulumi.StringPtrInput
 	// The name for this named port. The name must be 1-63 characters
 	// long, and comply with RFC1035.
@@ -224,8 +218,6 @@ func (InstanceGroupNamedPortState) ElementType() reflect.Type {
 
 type instanceGroupNamedPortArgs struct {
 	// The name of the instance group.
-	//
-	// ***
 	Group string `pulumi:"group"`
 	// The name for this named port. The name must be 1-63 characters
 	// long, and comply with RFC1035.
@@ -242,8 +234,6 @@ type instanceGroupNamedPortArgs struct {
 // The set of arguments for constructing a InstanceGroupNamedPort resource.
 type InstanceGroupNamedPortArgs struct {
 	// The name of the instance group.
-	//
-	// ***
 	Group pulumi.StringInput
 	// The name for this named port. The name must be 1-63 characters
 	// long, and comply with RFC1035.
@@ -345,8 +335,6 @@ func (o InstanceGroupNamedPortOutput) ToInstanceGroupNamedPortOutputWithContext(
 }
 
 // The name of the instance group.
-//
-// ***
 func (o InstanceGroupNamedPortOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupNamedPort) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
 }

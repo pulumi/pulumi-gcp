@@ -140,8 +140,6 @@ type MetricDescriptor struct {
 	// A detailed description of the metric, which can be used in documentation.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
@@ -235,8 +233,6 @@ type metricDescriptorState struct {
 	// A detailed description of the metric, which can be used in documentation.
 	Description *string `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
@@ -286,8 +282,6 @@ type MetricDescriptorState struct {
 	// A detailed description of the metric, which can be used in documentation.
 	Description pulumi.StringPtrInput
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
@@ -341,8 +335,6 @@ type metricDescriptorArgs struct {
 	// A detailed description of the metric, which can be used in documentation.
 	Description string `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
@@ -389,8 +381,6 @@ type MetricDescriptorArgs struct {
 	// A detailed description of the metric, which can be used in documentation.
 	Description pulumi.StringInput
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
 	// Structure is documented below.
@@ -525,8 +515,6 @@ func (o MetricDescriptorOutput) Description() pulumi.StringOutput {
 }
 
 // A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-//
-// ***
 func (o MetricDescriptorOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

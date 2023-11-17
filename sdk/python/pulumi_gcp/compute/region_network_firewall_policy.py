@@ -22,10 +22,6 @@ class RegionNetworkFirewallPolicyArgs:
         The set of arguments for constructing a RegionNetworkFirewallPolicy resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         """
@@ -55,10 +51,6 @@ class RegionNetworkFirewallPolicyArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -110,10 +102,6 @@ class _RegionNetworkFirewallPolicyState:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
         :param pulumi.Input[str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         :param pulumi.Input[str] region_network_firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
@@ -183,10 +171,6 @@ class _RegionNetworkFirewallPolicyState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -324,10 +308,6 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         """
@@ -449,10 +429,6 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] fingerprint: Fingerprint of the resource. This field is used internally during updates of this resource.
         :param pulumi.Input[str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] region: The location of this resource.
         :param pulumi.Input[str] region_network_firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
@@ -505,10 +481,6 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

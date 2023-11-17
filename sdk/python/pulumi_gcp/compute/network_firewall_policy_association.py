@@ -23,10 +23,6 @@ class NetworkFirewallPolicyAssociationArgs:
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
         :param pulumi.Input[str] name: The name for an association.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         """
         pulumi.set(__self__, "attachment_target", attachment_target)
@@ -65,10 +61,6 @@ class NetworkFirewallPolicyAssociationArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name for an association.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -102,10 +94,6 @@ class _NetworkFirewallPolicyAssociationState:
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
         :param pulumi.Input[str] name: The name for an association.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] short_name: The short name of the firewall policy of the association.
         """
@@ -149,10 +137,6 @@ class _NetworkFirewallPolicyAssociationState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name for an association.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -239,10 +223,6 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
         :param pulumi.Input[str] name: The name for an association.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         """
         ...
@@ -352,10 +332,6 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
         :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
         :param pulumi.Input[str] name: The name for an association.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] short_name: The short name of the firewall policy of the association.
         """
@@ -391,10 +367,6 @@ class NetworkFirewallPolicyAssociation(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name for an association.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

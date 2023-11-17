@@ -37,8 +37,6 @@ export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promi
 export interface GetTopicArgs {
     /**
      * The name of the Cloud Pub/Sub Topic.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -92,8 +90,6 @@ export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOpt
 export interface GetTopicOutputArgs {
     /**
      * The name of the Cloud Pub/Sub Topic.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

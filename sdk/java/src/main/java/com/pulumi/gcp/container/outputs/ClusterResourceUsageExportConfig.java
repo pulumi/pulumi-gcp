@@ -15,30 +15,6 @@ public final class ClusterResourceUsageExportConfig {
     /**
      * @return Parameters for using BigQuery as the destination of resource usage export.
      * 
-     * * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * 
      */
     private ClusterResourceUsageExportConfigBigqueryDestination bigqueryDestination;
     /**
@@ -60,30 +36,6 @@ public final class ClusterResourceUsageExportConfig {
     private ClusterResourceUsageExportConfig() {}
     /**
      * @return Parameters for using BigQuery as the destination of resource usage export.
-     * 
-     * * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     public ClusterResourceUsageExportConfigBigqueryDestination bigqueryDestination() {

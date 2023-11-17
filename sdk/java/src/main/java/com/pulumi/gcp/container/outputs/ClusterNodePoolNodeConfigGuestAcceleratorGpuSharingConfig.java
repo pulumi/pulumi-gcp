@@ -13,7 +13,6 @@ public final class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
     /**
      * @return The type of GPU sharing strategy to enable on the GPU node.
      * Accepted values are:
-     * * `&#34;TIME_SHARING&#34;`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
      * 
      */
     private String gpuSharingStrategy;
@@ -27,7 +26,6 @@ public final class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
     /**
      * @return The type of GPU sharing strategy to enable on the GPU node.
      * Accepted values are:
-     * * `&#34;TIME_SHARING&#34;`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
      * 
      */
     public String gpuSharingStrategy() {

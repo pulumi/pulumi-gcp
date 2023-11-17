@@ -73,8 +73,6 @@ namespace Pulumi.Gcp.CertificateManager
     {
         /// <summary>
         /// The name of the certificate map.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -96,8 +94,6 @@ namespace Pulumi.Gcp.CertificateManager
     {
         /// <summary>
         /// The name of the certificate map.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

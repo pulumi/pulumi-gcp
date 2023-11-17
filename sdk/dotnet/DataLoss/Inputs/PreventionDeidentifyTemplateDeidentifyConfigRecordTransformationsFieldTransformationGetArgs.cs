@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// Example Use Cases:
         /// - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
         /// - Redact a field if the date of birth field is greater than 85.
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("condition")]
         public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionGetArgs>? Condition { get; set; }

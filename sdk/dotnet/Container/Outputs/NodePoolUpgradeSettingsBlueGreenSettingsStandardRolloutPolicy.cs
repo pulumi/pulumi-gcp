@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly double? BatchPercentage;
         /// <summary>
-        /// Soak time after each batch gets drained.
+        /// (Optionial) Soak time after each batch gets drained.
         /// </summary>
         public readonly string? BatchSoakDuration;
 

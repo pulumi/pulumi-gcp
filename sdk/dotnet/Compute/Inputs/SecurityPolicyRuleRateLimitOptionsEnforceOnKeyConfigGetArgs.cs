@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
-        /// 
         /// * ALL: A single rate limit threshold is applied to all the requests matching this rule.
         /// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
         /// * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.

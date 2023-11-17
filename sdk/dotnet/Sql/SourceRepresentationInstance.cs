@@ -128,9 +128,6 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("host")]
         public Output<string> Host { get; private set; } = null!;
@@ -258,9 +255,6 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
@@ -356,9 +350,6 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }

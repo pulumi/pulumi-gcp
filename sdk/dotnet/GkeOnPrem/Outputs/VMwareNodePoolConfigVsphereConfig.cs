@@ -23,7 +23,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// Tags to apply to VMs.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="nested_tags"&gt;&lt;/a&gt;The `tags` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.VMwareNodePoolConfigVsphereConfigTag> Tags;

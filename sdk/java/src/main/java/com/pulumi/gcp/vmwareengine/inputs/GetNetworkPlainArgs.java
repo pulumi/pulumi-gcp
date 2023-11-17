@@ -17,16 +17,12 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Location of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private String location;
 
     /**
      * @return Location of the resource.
-     * 
-     * ***
      * 
      */
     public String location() {
@@ -91,8 +87,6 @@ public final class GetNetworkPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param location Location of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

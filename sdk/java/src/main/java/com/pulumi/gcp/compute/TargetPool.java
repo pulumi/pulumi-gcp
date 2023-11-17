@@ -184,8 +184,6 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -193,8 +191,6 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
     /**
      * @return A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -233,14 +229,14 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * ) The resource URL for the security policy associated with this target pool.
+     * The resource URL for the security policy associated with this target pool.
      * 
      */
     @Export(name="securityPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityPolicy;
 
     /**
-     * @return ) The resource URL for the security policy associated with this target pool.
+     * @return The resource URL for the security policy associated with this target pool.
      * 
      */
     public Output<Optional<String>> securityPolicy() {

@@ -118,9 +118,6 @@ export class Mesh extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Short name of the Mesh resource to be created.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -217,9 +214,6 @@ export interface MeshState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Short name of the Mesh resource to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -266,9 +260,6 @@ export interface MeshArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Short name of the Mesh resource to be created.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

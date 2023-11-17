@@ -114,8 +114,6 @@ namespace Pulumi.Gcp.Compute
         /// Changing this forces a new interface to be created.
         /// 
         /// In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
-        /// 
-        /// - - -
         /// </summary>
         [Output("router")]
         public Output<string> Router { get; private set; } = null!;
@@ -236,8 +234,6 @@ namespace Pulumi.Gcp.Compute
         /// Changing this forces a new interface to be created.
         /// 
         /// In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
-        /// 
-        /// - - -
         /// </summary>
         [Input("router", required: true)]
         public Input<string> Router { get; set; } = null!;
@@ -320,8 +316,6 @@ namespace Pulumi.Gcp.Compute
         /// Changing this forces a new interface to be created.
         /// 
         /// In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
-        /// 
-        /// - - -
         /// </summary>
         [Input("router")]
         public Input<string>? Router { get; set; }

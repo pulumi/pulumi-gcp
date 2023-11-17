@@ -243,8 +243,6 @@ type HostingVersion struct {
 	// sites/SITE_ID/versions/VERSION_ID
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Required. The ID of the site in which to create this Version.
-	//
-	// ***
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The ID for the version as in sites/SITE_ID/versions/VERSION_ID
 	VersionId pulumi.StringOutput `pulumi:"versionId"`
@@ -290,8 +288,6 @@ type hostingVersionState struct {
 	// sites/SITE_ID/versions/VERSION_ID
 	Name *string `pulumi:"name"`
 	// Required. The ID of the site in which to create this Version.
-	//
-	// ***
 	SiteId *string `pulumi:"siteId"`
 	// The ID for the version as in sites/SITE_ID/versions/VERSION_ID
 	VersionId *string `pulumi:"versionId"`
@@ -305,8 +301,6 @@ type HostingVersionState struct {
 	// sites/SITE_ID/versions/VERSION_ID
 	Name pulumi.StringPtrInput
 	// Required. The ID of the site in which to create this Version.
-	//
-	// ***
 	SiteId pulumi.StringPtrInput
 	// The ID for the version as in sites/SITE_ID/versions/VERSION_ID
 	VersionId pulumi.StringPtrInput
@@ -321,8 +315,6 @@ type hostingVersionArgs struct {
 	// Structure is documented below.
 	Config *HostingVersionConfig `pulumi:"config"`
 	// Required. The ID of the site in which to create this Version.
-	//
-	// ***
 	SiteId string `pulumi:"siteId"`
 }
 
@@ -332,8 +324,6 @@ type HostingVersionArgs struct {
 	// Structure is documented below.
 	Config HostingVersionConfigPtrInput
 	// Required. The ID of the site in which to create this Version.
-	//
-	// ***
 	SiteId pulumi.StringInput
 }
 
@@ -437,8 +427,6 @@ func (o HostingVersionOutput) Name() pulumi.StringOutput {
 }
 
 // Required. The ID of the site in which to create this Version.
-//
-// ***
 func (o HostingVersionOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingVersion) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }

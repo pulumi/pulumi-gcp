@@ -204,16 +204,12 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
     /**
      * The region where the regional SSL policy resides.
      * 
-     * ***
-     * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
      * @return The region where the regional SSL policy resides.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> region() {
@@ -537,8 +533,6 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
         /**
          * @param region The region where the regional SSL policy resides.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -549,8 +543,6 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param region The region where the regional SSL policy resides.
-         * 
-         * ***
          * 
          * @return builder
          * 

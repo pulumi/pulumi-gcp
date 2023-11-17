@@ -17,16 +17,12 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionObjectI
     /**
      * Required. The parts of an OID path. The most significant parts of the path come first.
      * 
-     * ***
-     * 
      */
     @Import(name="objectIdPaths", required=true)
     private Output<List<Integer>> objectIdPaths;
 
     /**
      * @return Required. The parts of an OID path. The most significant parts of the path come first.
-     * 
-     * ***
      * 
      */
     public Output<List<Integer>> objectIdPaths() {
@@ -60,8 +56,6 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionObjectI
         /**
          * @param objectIdPaths Required. The parts of an OID path. The most significant parts of the path come first.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -73,8 +67,6 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionObjectI
         /**
          * @param objectIdPaths Required. The parts of an OID path. The most significant parts of the path come first.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -84,8 +76,6 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionObjectI
 
         /**
          * @param objectIdPaths Required. The parts of an OID path. The most significant parts of the path come first.
-         * 
-         * ***
          * 
          * @return builder
          * 

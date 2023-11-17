@@ -269,8 +269,6 @@ def get_global_forwarding_rule(name: Optional[str] = None,
 
 
     :param str name: The name of the global forwarding rule.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -325,8 +323,6 @@ def get_global_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: The name of the global forwarding rule.
-           
-           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

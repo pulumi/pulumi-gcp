@@ -26,9 +26,6 @@ class BackupScheduleArgs:
         :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
-               
-               
-               - - -
         :param pulumi.Input['BackupScheduleDailyRecurrenceArgs'] daily_recurrence: For a schedule that runs daily at a specified time.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -53,9 +50,6 @@ class BackupScheduleArgs:
         At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
-
-
-        - - -
         """
         return pulumi.get(self, "retention")
 
@@ -134,9 +128,6 @@ class _BackupScheduleState:
         :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
-               
-               
-               - - -
         :param pulumi.Input['BackupScheduleWeeklyRecurrenceArgs'] weekly_recurrence: For a schedule that runs weekly on a specific day and time.
                Structure is documented below.
         """
@@ -210,9 +201,6 @@ class _BackupScheduleState:
         At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
-
-
-        - - -
         """
         return pulumi.get(self, "retention")
 
@@ -322,9 +310,6 @@ class BackupSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['BackupScheduleWeeklyRecurrenceArgs']] weekly_recurrence: For a schedule that runs weekly on a specific day and time.
                Structure is documented below.
         """
@@ -471,9 +456,6 @@ class BackupSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
                For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['BackupScheduleWeeklyRecurrenceArgs']] weekly_recurrence: For a schedule that runs weekly on a specific day and time.
                Structure is documented below.
         """
@@ -530,9 +512,6 @@ class BackupSchedule(pulumi.CustomResource):
         At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         For a daily backup recurrence, set this to a value up to 7 days. If you set a weekly backup recurrence, set this to a value up to 14 weeks.
-
-
-        - - -
         """
         return pulumi.get(self, "retention")
 

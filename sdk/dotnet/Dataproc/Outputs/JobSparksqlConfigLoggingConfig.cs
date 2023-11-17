@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     [OutputType]
     public sealed class JobSparksqlConfigLoggingConfig
     {
+        /// <summary>
+        /// `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+        /// </summary>
         public readonly ImmutableDictionary<string, string> DriverLogLevels;
 
         [OutputConstructor]

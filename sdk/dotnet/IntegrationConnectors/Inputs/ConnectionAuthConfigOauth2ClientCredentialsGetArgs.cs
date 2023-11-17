@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.IntegrationConnectors.Inputs
     public sealed class ConnectionAuthConfigOauth2ClientCredentialsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Secret version of Password for Authentication.
+        /// Client ID for user-provided OAuth app.
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
         /// <summary>
-        /// Secret version reference containing the client secret.
+        /// Client secret for user-provided OAuth app.
         /// Structure is documented below.
         /// </summary>
         [Input("clientSecret")]

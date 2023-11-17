@@ -148,16 +148,12 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     /**
      * Required. Git Clone HTTPS URI.
      * 
-     * ***
-     * 
      */
     @Import(name="remoteUri")
     private @Nullable Output<String> remoteUri;
 
     /**
      * @return Required. Git Clone HTTPS URI.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> remoteUri() {
@@ -391,8 +387,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param remoteUri Required. Git Clone HTTPS URI.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -403,8 +397,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param remoteUri Required. Git Clone HTTPS URI.
-         * 
-         * ***
          * 
          * @return builder
          * 

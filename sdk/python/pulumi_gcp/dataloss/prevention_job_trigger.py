@@ -29,7 +29,7 @@ class PreventionJobTriggerArgs:
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
-        :param pulumi.Input[str] description: A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        :param pulumi.Input[str] description: A description of the job trigger.
         :param pulumi.Input[str] display_name: User set display name of the job trigger.
         :param pulumi.Input['PreventionJobTriggerInspectJobArgs'] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
@@ -83,7 +83,7 @@ class PreventionJobTriggerArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        A description of the job trigger.
         """
         return pulumi.get(self, "description")
 
@@ -163,7 +163,7 @@ class _PreventionJobTriggerState:
         Input properties used for looking up and filtering PreventionJobTrigger resources.
         :param pulumi.Input[str] create_time: (Output)
                The creation timestamp of an inspectTemplate. Set by the server.
-        :param pulumi.Input[str] description: A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        :param pulumi.Input[str] description: A description of the job trigger.
         :param pulumi.Input[str] display_name: User set display name of the job trigger.
         :param pulumi.Input['PreventionJobTriggerInspectJobArgs'] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
@@ -221,7 +221,7 @@ class _PreventionJobTriggerState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        A description of the job trigger.
         """
         return pulumi.get(self, "description")
 
@@ -722,7 +722,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        :param pulumi.Input[str] description: A description of the job trigger.
         :param pulumi.Input[str] display_name: User set display name of the job trigger.
         :param pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
@@ -1181,7 +1181,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: (Output)
                The creation timestamp of an inspectTemplate. Set by the server.
-        :param pulumi.Input[str] description: A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        :param pulumi.Input[str] description: A description of the job trigger.
         :param pulumi.Input[str] display_name: User set display name of the job trigger.
         :param pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
@@ -1229,7 +1229,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        A description of the job trigger.
         """
         return pulumi.get(self, "description")
 

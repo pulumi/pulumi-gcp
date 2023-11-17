@@ -200,9 +200,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -279,8 +276,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SessionAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-        /// and Internal HTTP(S) load balancing.
+        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        /// Structure is documented below.
         /// </summary>
         [Output("subsetting")]
         public Output<Outputs.RegionBackendServiceSubsetting?> Subsetting { get; private set; } = null!;
@@ -475,9 +472,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -548,8 +542,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SessionAffinity { get; set; }
 
         /// <summary>
-        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-        /// and Internal HTTP(S) load balancing.
+        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        /// Structure is documented below.
         /// </summary>
         [Input("subsetting")]
         public Input<Inputs.RegionBackendServiceSubsettingArgs>? Subsetting { get; set; }
@@ -719,9 +713,6 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -798,8 +789,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SessionAffinity { get; set; }
 
         /// <summary>
-        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-        /// and Internal HTTP(S) load balancing.
+        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        /// Structure is documented below.
         /// </summary>
         [Input("subsetting")]
         public Input<Inputs.RegionBackendServiceSubsettingGetArgs>? Subsetting { get; set; }

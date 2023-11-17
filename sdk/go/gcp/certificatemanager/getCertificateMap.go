@@ -51,8 +51,6 @@ func GetCertificateMap(ctx *pulumi.Context, args *GetCertificateMapArgs, opts ..
 // A collection of arguments for invoking getCertificateMap.
 type GetCertificateMapArgs struct {
 	// The name of the certificate map.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -90,8 +88,6 @@ func GetCertificateMapOutput(ctx *pulumi.Context, args GetCertificateMapOutputAr
 // A collection of arguments for invoking getCertificateMap.
 type GetCertificateMapOutputArgs struct {
 	// The name of the certificate map.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

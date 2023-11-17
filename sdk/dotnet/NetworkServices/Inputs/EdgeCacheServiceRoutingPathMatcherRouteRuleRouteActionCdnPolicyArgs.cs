@@ -40,9 +40,9 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// - The TTL must be &gt; 0 and &lt;= 86400s (1 day)
         /// - The clientTtl cannot be larger than the defaultTtl (if set)
         /// - Fractions of a second are not allowed.
-        /// Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
-        /// When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-        /// A duration in seconds terminated by 's'. Example: "3s".
+        ///   Omit this field to use the defaultTtl, or the max-age set by the origin, as the client-facing TTL.
+        ///   When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+        ///   A duration in seconds terminated by 's'. Example: "3s".
         /// </summary>
         [Input("clientTtl")]
         public Input<string>? ClientTtl { get; set; }
@@ -55,9 +55,9 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// - The value of defaultTTL cannot be set to a value greater than that of maxTTL.
         /// - Fractions of a second are not allowed.
         /// - When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will overwrite the TTL set in all responses.
-        /// Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
-        /// When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
-        /// A duration in seconds terminated by 's'. Example: "3s".
+        ///   Note that infrequently accessed objects may be evicted from the cache before the defined TTL. Objects that expire will be revalidated with the origin.
+        ///   When the cache mode is set to "USE_ORIGIN_HEADERS" or "BYPASS_CACHE", you must omit this field.
+        ///   A duration in seconds terminated by 's'. Example: "3s".
         /// </summary>
         [Input("defaultTtl")]
         public Input<string>? DefaultTtl { get; set; }
@@ -70,8 +70,8 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// - Setting a TTL of "0" means "always revalidate"
         /// - The value of maxTtl must be equal to or greater than defaultTtl.
         /// - Fractions of a second are not allowed.
-        /// When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
-        /// A duration in seconds terminated by 's'. Example: "3s".
+        ///   When the cache mode is set to "USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", or "BYPASS_CACHE", you must omit this field.
+        ///   A duration in seconds terminated by 's'. Example: "3s".
         /// </summary>
         [Input("maxTtl")]
         public Input<string>? MaxTtl { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// - HTTP 300 (Multiple Choice), 301, 308 (Permanent Redirects): 10m
         /// - HTTP 404 (Not Found), 410 (Gone), 451 (Unavailable For Legal Reasons): 120s
         /// - HTTP 405 (Method Not Found), 414 (URI Too Long), 501 (Not Implemented): 60s
-        /// These defaults can be overridden in negativeCachingPolicy
+        ///   These defaults can be overridden in negativeCachingPolicy
         /// </summary>
         [Input("negativeCaching")]
         public Input<bool>? NegativeCaching { get; set; }
@@ -94,7 +94,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
         /// - Omitting the policy and leaving negativeCaching enabled will use the default TTLs for each status code, defined in negativeCaching.
         /// - TTLs must be &gt;= 0 (where 0 is "always revalidate") and &lt;= 86400s (1 day)
-        /// Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
+        ///   Note that when specifying an explicit negativeCachingPolicy, you should take care to specify a cache TTL for all response codes that you wish to cache. The CDNPolicy will not apply any default negative caching when a policy exists.
         /// </summary>
         public InputMap<string> NegativeCachingPolicy
         {
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// When set, a signed request is rejected if its expiration time is later than now + signedRequestMaximumExpirationTtl, where now is the time at which the signed request is first handled by the CDN.
         /// - The TTL must be &gt; 0.
         /// - Fractions of a second are not allowed.
-        /// By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
+        ///   By default, signedRequestMaximumExpirationTtl is not set and the expiration time of a signed request may be arbitrarily far into future.
         /// </summary>
         [Input("signedRequestMaximumExpirationTtl")]
         public Input<string>? SignedRequestMaximumExpirationTtl { get; set; }

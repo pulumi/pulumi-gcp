@@ -84,8 +84,6 @@ type Namespace struct {
 	// The name of the Scope instance.
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// Id of the scope
-	//
-	// ***
 	ScopeId pulumi.StringOutput `pulumi:"scopeId"`
 	// The client-provided identifier of the namespace.
 	ScopeNamespaceId pulumi.StringOutput `pulumi:"scopeNamespaceId"`
@@ -170,8 +168,6 @@ type namespaceState struct {
 	// The name of the Scope instance.
 	Scope *string `pulumi:"scope"`
 	// Id of the scope
-	//
-	// ***
 	ScopeId *string `pulumi:"scopeId"`
 	// The client-provided identifier of the namespace.
 	ScopeNamespaceId *string `pulumi:"scopeNamespaceId"`
@@ -213,8 +209,6 @@ type NamespaceState struct {
 	// The name of the Scope instance.
 	Scope pulumi.StringPtrInput
 	// Id of the scope
-	//
-	// ***
 	ScopeId pulumi.StringPtrInput
 	// The client-provided identifier of the namespace.
 	ScopeNamespaceId pulumi.StringPtrInput
@@ -249,8 +243,6 @@ type namespaceArgs struct {
 	// The name of the Scope instance.
 	Scope string `pulumi:"scope"`
 	// Id of the scope
-	//
-	// ***
 	ScopeId string `pulumi:"scopeId"`
 	// The client-provided identifier of the namespace.
 	ScopeNamespaceId string `pulumi:"scopeNamespaceId"`
@@ -275,8 +267,6 @@ type NamespaceArgs struct {
 	// The name of the Scope instance.
 	Scope pulumi.StringInput
 	// Id of the scope
-	//
-	// ***
 	ScopeId pulumi.StringInput
 	// The client-provided identifier of the namespace.
 	ScopeNamespaceId pulumi.StringInput
@@ -424,8 +414,6 @@ func (o NamespaceOutput) Scope() pulumi.StringOutput {
 }
 
 // Id of the scope
-//
-// ***
 func (o NamespaceOutput) ScopeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.ScopeId }).(pulumi.StringOutput)
 }

@@ -233,16 +233,12 @@ public class Router extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the network to which this router belongs.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
      * @return A reference to the network to which this router belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {

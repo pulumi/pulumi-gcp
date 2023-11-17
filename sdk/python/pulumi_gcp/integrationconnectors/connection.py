@@ -57,9 +57,6 @@ class ConnectionArgs:
         :param pulumi.Input['ConnectionLogConfigArgs'] log_config: Log configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of Connection needs to be created.
-               
-               
-               - - -
         :param pulumi.Input['ConnectionNodeConfigArgs'] node_config: Node configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -249,9 +246,6 @@ class ConnectionArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of Connection needs to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -386,9 +380,6 @@ class _ConnectionState:
         :param pulumi.Input['ConnectionLogConfigArgs'] log_config: Log configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of Connection needs to be created.
-               
-               
-               - - -
         :param pulumi.Input['ConnectionNodeConfigArgs'] node_config: Node configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -685,9 +676,6 @@ class _ConnectionState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of Connection needs to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1160,9 +1148,6 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ConnectionLogConfigArgs']] log_config: Log configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of Connection needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['ConnectionNodeConfigArgs']] node_config: Node configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1618,9 +1603,6 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ConnectionLogConfigArgs']] log_config: Log configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of Connection needs to be created.
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['ConnectionNodeConfigArgs']] node_config: Node configuration for the connection.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1826,9 +1808,6 @@ class Connection(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of Connection needs to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

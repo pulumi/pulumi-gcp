@@ -27,9 +27,6 @@ class RepositoryReleaseConfigArgs:
         """
         The set of arguments for constructing a RepositoryReleaseConfig resource.
         :param pulumi.Input[str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-               
-               
-               - - -
         :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
@@ -61,9 +58,6 @@ class RepositoryReleaseConfigArgs:
     def git_commitish(self) -> pulumi.Input[str]:
         """
         Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-
-
-        - - -
         """
         return pulumi.get(self, "git_commitish")
 
@@ -176,9 +170,6 @@ class _RepositoryReleaseConfigState:
                Structure is documented below.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input[str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The release's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -237,9 +228,6 @@ class _RepositoryReleaseConfigState:
     def git_commitish(self) -> Optional[pulumi.Input[str]]:
         """
         Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-
-
-        - - -
         """
         return pulumi.get(self, "git_commitish")
 
@@ -424,9 +412,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input[str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The release's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -595,9 +580,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         :param pulumi.Input[str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The release's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -644,9 +626,6 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
     def git_commitish(self) -> pulumi.Output[str]:
         """
         Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-
-
-        - - -
         """
         return pulumi.get(self, "git_commitish")
 

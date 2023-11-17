@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterConfigMasterConfig {
     /**
-     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.`accelerators` (Optional) The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
      * 
      */
     private @Nullable List<ClusterClusterConfigMasterConfigAccelerator> accelerators;
@@ -56,7 +56,7 @@ public final class ClusterClusterConfigMasterConfig {
 
     private ClusterClusterConfigMasterConfig() {}
     /**
-     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.`accelerators` (Optional) The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
      * 
      */
     public List<ClusterClusterConfigMasterConfigAccelerator> accelerators() {

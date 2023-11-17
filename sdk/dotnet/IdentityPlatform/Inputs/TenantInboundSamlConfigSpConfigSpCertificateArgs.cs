@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.IdentityPlatform.Inputs
     public sealed class TenantInboundSamlConfigSpConfigSpCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
         /// The x509 certificate
         /// </summary>
         [Input("x509Certificate")]

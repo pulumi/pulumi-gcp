@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// * MULAW: G.711 mu-law PCM with 8kHz sample rate.
         /// * MP3: MP3 file format.
         /// * OGG: OGG Vorbis.
-        /// Possible values are: `MULAW`, `MP3`, `OGG`.
+        ///   Possible values are: `MULAW`, `MP3`, `OGG`.
         /// </summary>
         [Input("audioFormat")]
         public Input<string>? AudioFormat { get; set; }

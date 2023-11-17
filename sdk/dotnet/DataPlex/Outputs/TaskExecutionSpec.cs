@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         public readonly ImmutableDictionary<string, string>? Args;
         /// <summary>
         /// The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? KmsKey;
         /// <summary>
@@ -28,8 +26,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly string? MaxJobExecutionLifetime;
         /// <summary>
-        /// The ID of the project in which the resource belongs.
-        /// If it is not provided, the provider project is used.
+        /// The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
         /// </summary>
         public readonly string? Project;
         /// <summary>

@@ -133,9 +133,6 @@ export class RegionSslPolicy extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The region where the regional SSL policy resides.
-     *
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -256,9 +253,6 @@ export interface RegionSslPolicyState {
     project?: pulumi.Input<string>;
     /**
      * The region where the regional SSL policy resides.
-     *
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -321,9 +315,6 @@ export interface RegionSslPolicyArgs {
     project?: pulumi.Input<string>;
     /**
      * The region where the regional SSL policy resides.
-     *
-     *
-     * - - -
      */
     region: pulumi.Input<string>;
 }

@@ -126,8 +126,6 @@ type TrustConfig struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The trust config location.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// A user-defined name of the trust config. Trust config names must be unique globally.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -198,8 +196,6 @@ type trustConfigState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The trust config location.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// A user-defined name of the trust config. Trust config names must be unique globally.
 	Name *string `pulumi:"name"`
@@ -233,8 +229,6 @@ type TrustConfigState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The trust config location.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// A user-defined name of the trust config. Trust config names must be unique globally.
 	Name pulumi.StringPtrInput
@@ -266,8 +260,6 @@ type trustConfigArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The trust config location.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// A user-defined name of the trust config. Trust config names must be unique globally.
 	Name *string `pulumi:"name"`
@@ -289,8 +281,6 @@ type TrustConfigArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The trust config location.
-	//
-	// ***
 	Location pulumi.StringInput
 	// A user-defined name of the trust config. Trust config names must be unique globally.
 	Name pulumi.StringPtrInput
@@ -415,8 +405,6 @@ func (o TrustConfigOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The trust config location.
-//
-// ***
 func (o TrustConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrustConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

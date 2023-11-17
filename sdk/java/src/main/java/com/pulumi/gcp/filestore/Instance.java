@@ -410,7 +410,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.tier;
     }
     /**
-     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      * 
      * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
@@ -424,8 +423,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> zone;
 
     /**
-     * @return (Optional, Deprecated)
-     * The name of the Filestore zone of the instance.
+     * @return The name of the Filestore zone of the instance.
      * 
      * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 

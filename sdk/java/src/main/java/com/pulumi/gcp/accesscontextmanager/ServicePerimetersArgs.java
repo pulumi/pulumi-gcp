@@ -21,8 +21,6 @@ public final class ServicePerimetersArgs extends com.pulumi.resources.ResourceAr
      * The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
      * 
-     * ***
-     * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
@@ -30,8 +28,6 @@ public final class ServicePerimetersArgs extends com.pulumi.resources.ResourceAr
     /**
      * @return The AccessPolicy this ServicePerimeter lives in.
      * Format: accessPolicies/{policy_id}
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {
@@ -84,8 +80,6 @@ public final class ServicePerimetersArgs extends com.pulumi.resources.ResourceAr
          * @param parent The AccessPolicy this ServicePerimeter lives in.
          * Format: accessPolicies/{policy_id}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -97,8 +91,6 @@ public final class ServicePerimetersArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param parent The AccessPolicy this ServicePerimeter lives in.
          * Format: accessPolicies/{policy_id}
-         * 
-         * ***
          * 
          * @return builder
          * 

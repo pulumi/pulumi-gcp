@@ -185,9 +185,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Name of the Apigee organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("org")]
         public Output<string> Org { get; private set; } = null!;
@@ -247,9 +244,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Name of the Apigee organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("org", required: true)]
         public Input<string> Org { get; set; } = null!;
@@ -271,9 +265,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Name of the Apigee organization.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("org")]
         public Input<string>? Org { get; set; }

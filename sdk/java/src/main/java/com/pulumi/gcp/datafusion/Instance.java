@@ -746,8 +746,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      *   pipelines at low cost.
      *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      * 
-     * ***
-     * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
@@ -764,8 +762,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      *   pipelines at low cost.
      *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-     * 
-     * ***
      * 
      */
     public Output<String> type() {

@@ -141,9 +141,6 @@ export class PerInstanceConfig extends pulumi.CustomResource {
 
     /**
      * The instance group manager this instance config is part of.
-     *
-     *
-     * - - -
      */
     public readonly instanceGroupManager!: pulumi.Output<string>;
     /**
@@ -235,9 +232,6 @@ export class PerInstanceConfig extends pulumi.CustomResource {
 export interface PerInstanceConfigState {
     /**
      * The instance group manager this instance config is part of.
-     *
-     *
-     * - - -
      */
     instanceGroupManager?: pulumi.Input<string>;
     /**
@@ -290,9 +284,6 @@ export interface PerInstanceConfigState {
 export interface PerInstanceConfigArgs {
     /**
      * The instance group manager this instance config is part of.
-     *
-     *
-     * - - -
      */
     instanceGroupManager: pulumi.Input<string>;
     /**

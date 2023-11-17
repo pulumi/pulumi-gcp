@@ -99,9 +99,6 @@ export class Lien extends pulumi.CustomResource {
      * the permissions against those for which Liens are supported.  An empty
      * list is meaningless and will be rejected.
      * e.g. ['resourcemanager.projects.delete']
-     *
-     *
-     * - - -
      */
     public readonly restrictions!: pulumi.Output<string[]>;
 
@@ -186,9 +183,6 @@ export interface LienState {
      * the permissions against those for which Liens are supported.  An empty
      * list is meaningless and will be rejected.
      * e.g. ['resourcemanager.projects.delete']
-     *
-     *
-     * - - -
      */
     restrictions?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -221,9 +215,6 @@ export interface LienArgs {
      * the permissions against those for which Liens are supported.  An empty
      * list is meaningless and will be rejected.
      * e.g. ['resourcemanager.projects.delete']
-     *
-     *
-     * - - -
      */
     restrictions: pulumi.Input<pulumi.Input<string>[]>;
 }

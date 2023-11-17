@@ -17,7 +17,7 @@ public final class ClusterNodePoolNodeConfigEffectiveTaint {
      */
     private @Nullable String effect;
     /**
-     * @return The default or custom node affinity label key name.
+     * @return The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
      * 
      */
     private @Nullable String key;
@@ -36,7 +36,7 @@ public final class ClusterNodePoolNodeConfigEffectiveTaint {
         return Optional.ofNullable(this.effect);
     }
     /**
-     * @return The default or custom node affinity label key name.
+     * @return The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
      * 
      */
     public Optional<String> key() {

@@ -41,9 +41,6 @@ class ReservationArgs:
         :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
                If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -160,9 +157,6 @@ class ReservationArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the reservation. This field must only contain alphanumeric characters or dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -210,9 +204,6 @@ class _ReservationState:
         :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
                If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
@@ -319,9 +310,6 @@ class _ReservationState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the reservation. This field must only contain alphanumeric characters or dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -436,9 +424,6 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
                If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
@@ -583,9 +568,6 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for reservations located within one of the BigQuery multi-regions (US or EU).
                If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
         :param pulumi.Input[str] name: The name of the reservation. This field must only contain alphanumeric characters or dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
@@ -664,9 +646,6 @@ class Reservation(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the reservation. This field must only contain alphanumeric characters or dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

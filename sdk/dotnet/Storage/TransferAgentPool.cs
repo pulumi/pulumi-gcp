@@ -105,12 +105,9 @@ namespace Pulumi.Gcp.Storage
         /// * Length of 128 characters or less.
         /// * Not start with the string goog.
         /// * Start with a lowercase ASCII character, followed by:
-        /// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
-        /// * One or more numerals or lowercase ASCII characters.
-        /// As expressed by the regular expression: ^(?!goog)a-z?$.
-        /// 
-        /// 
-        /// - - -
+        ///   * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
+        ///   * One or more numerals or lowercase ASCII characters.
+        ///     As expressed by the regular expression: ^(?!goog)a-z?$.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -193,12 +190,9 @@ namespace Pulumi.Gcp.Storage
         /// * Length of 128 characters or less.
         /// * Not start with the string goog.
         /// * Start with a lowercase ASCII character, followed by:
-        /// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
-        /// * One or more numerals or lowercase ASCII characters.
-        /// As expressed by the regular expression: ^(?!goog)a-z?$.
-        /// 
-        /// 
-        /// - - -
+        ///   * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
+        ///   * One or more numerals or lowercase ASCII characters.
+        ///     As expressed by the regular expression: ^(?!goog)a-z?$.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -237,12 +231,9 @@ namespace Pulumi.Gcp.Storage
         /// * Length of 128 characters or less.
         /// * Not start with the string goog.
         /// * Start with a lowercase ASCII character, followed by:
-        /// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
-        /// * One or more numerals or lowercase ASCII characters.
-        /// As expressed by the regular expression: ^(?!goog)a-z?$.
-        /// 
-        /// 
-        /// - - -
+        ///   * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
+        ///   * One or more numerals or lowercase ASCII characters.
+        ///     As expressed by the regular expression: ^(?!goog)a-z?$.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

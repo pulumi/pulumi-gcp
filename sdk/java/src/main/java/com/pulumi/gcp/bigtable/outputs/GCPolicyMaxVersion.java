@@ -12,7 +12,6 @@ public final class GCPolicyMaxVersion {
     /**
      * @return Number of version before applying the GC policy.
      * 
-     * ***
      * `gc_rules` include 2 fields:
      * 
      */
@@ -22,7 +21,6 @@ public final class GCPolicyMaxVersion {
     /**
      * @return Number of version before applying the GC policy.
      * 
-     * ***
      * `gc_rules` include 2 fields:
      * 
      */

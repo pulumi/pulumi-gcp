@@ -19,12 +19,10 @@ namespace Pulumi.Gcp.ContainerAnalysis.Inputs
         /// immutable reference, such as a cryptographic digest.
         /// Examples of valid values:
         /// * OpenPGP V4 public key fingerprint. See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr
-        /// for more details on this scheme.
-        /// * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
+        ///   for more details on this scheme.
+        ///   * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
         /// * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
-        /// * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
-        /// 
-        /// - - -
+        ///   * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
         /// </summary>
         [Input("publicKeyId", required: true)]
         public Input<string> PublicKeyId { get; set; } = null!;

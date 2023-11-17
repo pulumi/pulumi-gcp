@@ -33,16 +33,22 @@ public final class RegionInstanceTemplateNetworkInterfaceAccessConfigArgs extend
     }
 
     /**
-     * The service-level to be provided for IPv6 traffic when the
-     * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+     * The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring
+     * this instance template. This field can take the following values: PREMIUM,
+     * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+     * 
+     * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
      * 
      */
     @Import(name="networkTier")
     private @Nullable Output<String> networkTier;
 
     /**
-     * @return The service-level to be provided for IPv6 traffic when the
-     * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+     * @return The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring
+     * this instance template. This field can take the following values: PREMIUM,
+     * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+     * 
+     * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
      * 
      */
     public Optional<Output<String>> networkTier() {
@@ -106,8 +112,11 @@ public final class RegionInstanceTemplateNetworkInterfaceAccessConfigArgs extend
         }
 
         /**
-         * @param networkTier The service-level to be provided for IPv6 traffic when the
-         * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+         * @param networkTier The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring
+         * this instance template. This field can take the following values: PREMIUM,
+         * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         * 
+         * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
          * 
          * @return builder
          * 
@@ -118,8 +127,11 @@ public final class RegionInstanceTemplateNetworkInterfaceAccessConfigArgs extend
         }
 
         /**
-         * @param networkTier The service-level to be provided for IPv6 traffic when the
-         * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+         * @param networkTier The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring
+         * this instance template. This field can take the following values: PREMIUM,
+         * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         * 
+         * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
          * 
          * @return builder
          * 

@@ -200,7 +200,6 @@ type Membership struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrOutput `pulumi:"authority"`
-	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
 	// > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -221,8 +220,6 @@ type Membership struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId pulumi.StringOutput `pulumi:"membershipId"`
 	// The unique identifier of the membership.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -277,7 +274,6 @@ type membershipState struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority *MembershipAuthority `pulumi:"authority"`
-	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
 	// > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -298,8 +294,6 @@ type membershipState struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId *string `pulumi:"membershipId"`
 	// The unique identifier of the membership.
 	Name *string `pulumi:"name"`
@@ -317,7 +311,6 @@ type MembershipState struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrInput
-	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
 	// > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -338,8 +331,6 @@ type MembershipState struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId pulumi.StringPtrInput
 	// The unique identifier of the membership.
 	Name pulumi.StringPtrInput
@@ -361,7 +352,6 @@ type membershipArgs struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority *MembershipAuthority `pulumi:"authority"`
-	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
 	// > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -380,8 +370,6 @@ type membershipArgs struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId string `pulumi:"membershipId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -395,7 +383,6 @@ type MembershipArgs struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrInput
-	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
 	// > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -414,8 +401,6 @@ type MembershipArgs struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The client-provided identifier of the membership.
-	//
-	// ***
 	MembershipId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -517,7 +502,6 @@ func (o MembershipOutput) Authority() MembershipAuthorityPtrOutput {
 	return o.ApplyT(func(v *Membership) MembershipAuthorityPtrOutput { return v.Authority }).(MembershipAuthorityPtrOutput)
 }
 
-// (Optional, Deprecated)
 // The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 //
 // > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -553,8 +537,6 @@ func (o MembershipOutput) Location() pulumi.StringPtrOutput {
 }
 
 // The client-provided identifier of the membership.
-//
-// ***
 func (o MembershipOutput) MembershipId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.MembershipId }).(pulumi.StringOutput)
 }

@@ -82,7 +82,8 @@ export interface GetNotificationChannelArgs {
     /**
      * The type of the notification channel.
      *
-     * - - -
+     *
+     *
      *
      * Other optional fields include:
      */
@@ -199,7 +200,8 @@ export interface GetNotificationChannelOutputArgs {
     /**
      * The type of the notification channel.
      *
-     * - - -
+     *
+     *
      *
      * Other optional fields include:
      */

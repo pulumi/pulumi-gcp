@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class JobPigConfigLoggingConfig {
+    /**
+     * @return `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
+     * 
+     */
     private Map<String,String> driverLogLevels;
 
     private JobPigConfigLoggingConfig() {}
+    /**
+     * @return `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
+     * 
+     */
     public Map<String,String> driverLogLevels() {
         return this.driverLogLevels;
     }

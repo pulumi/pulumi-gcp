@@ -11,10 +11,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobPlacement {
+    /**
+     * @return The name of the cluster where the job
+     * will be submitted.
+     * 
+     */
     private String clusterName;
     private @Nullable String clusterUuid;
 
     private JobPlacement() {}
+    /**
+     * @return The name of the cluster where the job
+     * will be submitted.
+     * 
+     */
     public String clusterName() {
         return this.clusterName;
     }

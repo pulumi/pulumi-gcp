@@ -59,8 +59,6 @@ public final class ExtensionsInstanceConfig {
      * ${function:myFunc.url},
      * ${function:myFunc.name}, and ${function:myFunc.location}
      * 
-     * ***
-     * 
      */
     private @Nullable String populatedPostinstallContent;
     /**
@@ -131,8 +129,6 @@ public final class ExtensionsInstanceConfig {
      * with actual values. These strings include: ${param:FOO},
      * ${function:myFunc.url},
      * ${function:myFunc.name}, and ${function:myFunc.location}
-     * 
-     * ***
      * 
      */
     public Optional<String> populatedPostinstallContent() {

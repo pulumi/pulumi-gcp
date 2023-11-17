@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateVolumeCloudSqlInstance? CloudSqlInstance;
+        /// <summary>
+        /// Ephemeral storage used as a shared volume.
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.ServiceTemplateVolumeEmptyDir? EmptyDir;
         /// <summary>
         /// Volume's name.

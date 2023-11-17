@@ -14,45 +14,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
     /**
-     * @return Column name.
+     * @return Column name.`column` -
+     * (Optional)
+     * Column name.
      * 
      */
     private @Nullable String column;
     /**
      * @return The PostgreSQL data type. Full data types list can be found here:
+     * https://www.postgresql.org/docs/current/datatype.html`data_type` -
+     * (Optional)
+     * The PostgreSQL data type. Full data types list can be found here:
      * https://www.postgresql.org/docs/current/datatype.html
      * 
      */
     private @Nullable String dataType;
     /**
      * @return (Output)
+     * Column length.`length` -
+     * (Output)
      * Column length.
      * 
      */
     private @Nullable Integer length;
     /**
-     * @return Whether or not the column can accept a null value.
+     * @return Whether or not the column can accept a null value.`nullable` -
+     * (Optional)
+     * Whether or not the column can accept a null value.
      * 
      */
     private @Nullable Boolean nullable;
     /**
-     * @return The ordinal position of the column in the table.
+     * @return The ordinal position of the column in the table.`ordinal_position` -
+     * (Optional)
+     * The ordinal position of the column in the table.
      * 
      */
     private @Nullable Integer ordinalPosition;
     /**
      * @return (Output)
+     * Column precision.`precision` -
+     * (Output)
      * Column precision.
      * 
      */
     private @Nullable Integer precision;
     /**
-     * @return Whether or not the column represents a primary key.
+     * @return Whether or not the column represents a primary key.`primary_key` -
+     * (Optional)
+     * Whether or not the column represents a primary key.
      * 
      */
     private @Nullable Boolean primaryKey;
     /**
      * @return (Output)
+     * Column scale.`scale` -
+     * (Output)
      * Column scale.
      * 
      */
@@ -60,7 +77,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
 
     private StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn() {}
     /**
-     * @return Column name.
+     * @return Column name.`column` -
+     * (Optional)
+     * Column name.
      * 
      */
     public Optional<String> column() {
@@ -68,6 +87,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
     }
     /**
      * @return The PostgreSQL data type. Full data types list can be found here:
+     * https://www.postgresql.org/docs/current/datatype.html`data_type` -
+     * (Optional)
+     * The PostgreSQL data type. Full data types list can be found here:
      * https://www.postgresql.org/docs/current/datatype.html
      * 
      */
@@ -76,6 +98,8 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
     }
     /**
      * @return (Output)
+     * Column length.`length` -
+     * (Output)
      * Column length.
      * 
      */
@@ -83,14 +107,18 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
         return Optional.ofNullable(this.length);
     }
     /**
-     * @return Whether or not the column can accept a null value.
+     * @return Whether or not the column can accept a null value.`nullable` -
+     * (Optional)
+     * Whether or not the column can accept a null value.
      * 
      */
     public Optional<Boolean> nullable() {
         return Optional.ofNullable(this.nullable);
     }
     /**
-     * @return The ordinal position of the column in the table.
+     * @return The ordinal position of the column in the table.`ordinal_position` -
+     * (Optional)
+     * The ordinal position of the column in the table.
      * 
      */
     public Optional<Integer> ordinalPosition() {
@@ -98,6 +126,8 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
     }
     /**
      * @return (Output)
+     * Column precision.`precision` -
+     * (Output)
      * Column precision.
      * 
      */
@@ -105,7 +135,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
         return Optional.ofNullable(this.precision);
     }
     /**
-     * @return Whether or not the column represents a primary key.
+     * @return Whether or not the column represents a primary key.`primary_key` -
+     * (Optional)
+     * Whether or not the column represents a primary key.
      * 
      */
     public Optional<Boolean> primaryKey() {
@@ -113,6 +145,8 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
     }
     /**
      * @return (Output)
+     * Column scale.`scale` -
+     * (Output)
      * Column scale.
      * 
      */

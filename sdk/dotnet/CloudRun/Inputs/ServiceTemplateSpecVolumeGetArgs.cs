@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.CloudRun.Inputs
 
     public sealed class ServiceTemplateSpecVolumeGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+        /// Structure is documented below.
+        /// </summary>
         [Input("emptyDir")]
         public Input<Inputs.ServiceTemplateSpecVolumeEmptyDirGetArgs>? EmptyDir { get; set; }
 

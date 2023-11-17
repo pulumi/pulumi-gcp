@@ -2036,8 +2036,8 @@ class UserPasswordPolicyStatus(dict):
                  locked: Optional[bool] = None,
                  password_expiration_time: Optional[str] = None):
         """
-        :param bool locked: If true, user does not have login privileges.
-        :param str password_expiration_time: Password expiration duration with one week grace period.
+        :param bool locked: (read only) If true, user does not have login privileges.
+        :param str password_expiration_time: (read only) Password expiration duration with one week grace period.
         """
         if locked is not None:
             pulumi.set(__self__, "locked", locked)
@@ -2048,7 +2048,7 @@ class UserPasswordPolicyStatus(dict):
     @pulumi.getter
     def locked(self) -> Optional[bool]:
         """
-        If true, user does not have login privileges.
+        (read only) If true, user does not have login privileges.
         """
         return pulumi.get(self, "locked")
 
@@ -2056,7 +2056,7 @@ class UserPasswordPolicyStatus(dict):
     @pulumi.getter(name="passwordExpirationTime")
     def password_expiration_time(self) -> Optional[str]:
         """
-        Password expiration duration with one week grace period.
+        (read only) Password expiration duration with one week grace period.
         """
         return pulumi.get(self, "password_expiration_time")
 

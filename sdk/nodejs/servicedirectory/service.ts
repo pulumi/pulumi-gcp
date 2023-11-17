@@ -109,9 +109,6 @@ export class Service extends pulumi.CustomResource {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     public readonly serviceId!: pulumi.Output<string>;
 
@@ -173,9 +170,6 @@ export interface ServiceState {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     serviceId?: pulumi.Input<string>;
 }
@@ -198,9 +192,6 @@ export interface ServiceArgs {
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     *
-     *
-     * - - -
      */
     serviceId: pulumi.Input<string>;
 }

@@ -91,8 +91,6 @@ public class ConsumerQuotaOverride extends com.pulumi.resources.CustomResource {
      * &gt; Make sure that `limit` is in a format that doesn&#39;t start with `1/` or contain curly braces.
      * E.g. use `/project/user` instead of `1/{project}/{user}`.
      * 
-     * ***
-     * 
      */
     @Export(name="limit", refs={String.class}, tree="[0]")
     private Output<String> limit;
@@ -101,8 +99,6 @@ public class ConsumerQuotaOverride extends com.pulumi.resources.CustomResource {
      * @return The limit on the metric, e.g. `/project/region`.
      * &gt; Make sure that `limit` is in a format that doesn&#39;t start with `1/` or contain curly braces.
      * E.g. use `/project/user` instead of `1/{project}/{user}`.
-     * 
-     * ***
      * 
      */
     public Output<String> limit() {

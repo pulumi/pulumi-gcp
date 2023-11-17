@@ -98,16 +98,12 @@ public final class WorkforcePoolState extends com.pulumi.resources.ResourceArgs 
     /**
      * Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
      * 
-     * ***
-     * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
      * @return Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -333,8 +329,6 @@ public final class WorkforcePoolState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param parent Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -345,8 +339,6 @@ public final class WorkforcePoolState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param parent Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-         * 
-         * ***
          * 
          * @return builder
          * 

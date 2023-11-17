@@ -18,7 +18,6 @@ public final class SecurityPolicyRuleRedirectOptions {
     private @Nullable String target;
     /**
      * @return Type of redirect action.
-     * 
      * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
      * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
      * 
@@ -35,7 +34,6 @@ public final class SecurityPolicyRuleRedirectOptions {
     }
     /**
      * @return Type of redirect action.
-     * 
      * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
      * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
      * 

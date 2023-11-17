@@ -221,9 +221,6 @@ export class Snapshot extends pulumi.CustomResource {
     public /*out*/ readonly snapshotId!: pulumi.Output<number>;
     /**
      * A reference to the disk used to create this snapshot.
-     *
-     *
-     * - - -
      */
     public readonly sourceDisk!: pulumi.Output<string>;
     /**
@@ -403,9 +400,6 @@ export interface SnapshotState {
     snapshotId?: pulumi.Input<number>;
     /**
      * A reference to the disk used to create this snapshot.
-     *
-     *
-     * - - -
      */
     sourceDisk?: pulumi.Input<string>;
     /**
@@ -485,9 +479,6 @@ export interface SnapshotArgs {
     snapshotEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSnapshotEncryptionKey>;
     /**
      * A reference to the disk used to create this snapshot.
-     *
-     *
-     * - - -
      */
     sourceDisk: pulumi.Input<string>;
     /**

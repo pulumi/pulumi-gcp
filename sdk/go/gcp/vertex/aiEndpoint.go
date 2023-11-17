@@ -158,8 +158,6 @@ type AiEndpoint struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
 	ModelDeploymentMonitoringJob pulumi.StringOutput `pulumi:"modelDeploymentMonitoringJob"`
@@ -242,8 +240,6 @@ type aiEndpointState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
 	ModelDeploymentMonitoringJob *string `pulumi:"modelDeploymentMonitoringJob"`
@@ -286,8 +282,6 @@ type AiEndpointState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
 	ModelDeploymentMonitoringJob pulumi.StringPtrInput
@@ -324,8 +318,6 @@ type aiEndpointArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
 	Name *string `pulumi:"name"`
@@ -352,8 +344,6 @@ type AiEndpointArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location for the resource
-	//
-	// ***
 	Location pulumi.StringInput
 	// The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
 	Name pulumi.StringPtrInput
@@ -499,8 +489,6 @@ func (o AiEndpointOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location for the resource
-//
-// ***
 func (o AiEndpointOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

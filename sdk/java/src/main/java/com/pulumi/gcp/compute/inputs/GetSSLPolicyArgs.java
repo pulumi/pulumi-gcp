@@ -18,16 +18,12 @@ public final class GetSSLPolicyArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The name of the SSL Policy.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return The name of the SSL Policy.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -79,8 +75,6 @@ public final class GetSSLPolicyArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param name The name of the SSL Policy.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -91,8 +85,6 @@ public final class GetSSLPolicyArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name The name of the SSL Policy.
-         * 
-         * ***
          * 
          * @return builder
          * 

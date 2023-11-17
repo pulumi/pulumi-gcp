@@ -460,9 +460,8 @@ type Job struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-	// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-	// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
+	// Configures a query job.
+	// Structure is documented below.
 	Query JobQueryPtrOutput `pulumi:"query"`
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	// Structure is documented below.
@@ -542,9 +541,8 @@ type jobState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-	// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-	// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
+	// Configures a query job.
+	// Structure is documented below.
 	Query *JobQuery `pulumi:"query"`
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	// Structure is documented below.
@@ -587,9 +585,8 @@ type JobState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-	// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-	// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
+	// Configures a query job.
+	// Structure is documented below.
 	Query JobQueryPtrInput
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	// Structure is documented below.
@@ -626,9 +623,8 @@ type jobArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-	// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-	// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
+	// Configures a query job.
+	// Structure is documented below.
 	Query *JobQuery `pulumi:"query"`
 }
 
@@ -657,9 +653,8 @@ type JobArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-	// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-	// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
+	// Configures a query job.
+	// Structure is documented below.
 	Query JobQueryPtrInput
 }
 
@@ -816,9 +811,8 @@ func (o JobOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
+// Configures a query job.
+// Structure is documented below.
 func (o JobOutput) Query() JobQueryPtrOutput {
 	return o.ApplyT(func(v *Job) JobQueryPtrOutput { return v.Query }).(JobQueryPtrOutput)
 }

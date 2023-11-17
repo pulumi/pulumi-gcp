@@ -20,8 +20,6 @@ public final class TaskExecutionSpec {
     /**
      * @return The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
      * 
-     * ***
-     * 
      */
     private @Nullable String kmsKey;
     /**
@@ -30,8 +28,7 @@ public final class TaskExecutionSpec {
      */
     private @Nullable String maxJobExecutionLifetime;
     /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * @return The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
      * 
      */
     private @Nullable String project;
@@ -52,8 +49,6 @@ public final class TaskExecutionSpec {
     /**
      * @return The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
      * 
-     * ***
-     * 
      */
     public Optional<String> kmsKey() {
         return Optional.ofNullable(this.kmsKey);
@@ -66,8 +61,7 @@ public final class TaskExecutionSpec {
         return Optional.ofNullable(this.maxJobExecutionLifetime);
     }
     /**
-     * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * @return The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
      * 
      */
     public Optional<String> project() {

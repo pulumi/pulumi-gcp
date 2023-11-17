@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Looker.Outputs
         /// - FRIDAY: Friday
         /// - SATURDAY: Saturday
         /// - SUNDAY: Sunday
-        /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        ///   Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         /// </summary>
         public readonly string DayOfWeek;
         /// <summary>

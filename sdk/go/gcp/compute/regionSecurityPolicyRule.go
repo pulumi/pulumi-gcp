@@ -282,8 +282,6 @@ type RegionSecurityPolicyRule struct {
 	// The Region in which the created Region Security Policy rule should reside.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy pulumi.StringOutput `pulumi:"securityPolicy"`
 }
 
@@ -364,8 +362,6 @@ type regionSecurityPolicyRuleState struct {
 	// The Region in which the created Region Security Policy rule should reside.
 	Region *string `pulumi:"region"`
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 }
 
@@ -405,8 +401,6 @@ type RegionSecurityPolicyRuleState struct {
 	// The Region in which the created Region Security Policy rule should reside.
 	Region pulumi.StringPtrInput
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy pulumi.StringPtrInput
 }
 
@@ -450,8 +444,6 @@ type regionSecurityPolicyRuleArgs struct {
 	// The Region in which the created Region Security Policy rule should reside.
 	Region string `pulumi:"region"`
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy string `pulumi:"securityPolicy"`
 }
 
@@ -492,8 +484,6 @@ type RegionSecurityPolicyRuleArgs struct {
 	// The Region in which the created Region Security Policy rule should reside.
 	Region pulumi.StringInput
 	// The name of the security policy this rule belongs to.
-	//
-	// ***
 	SecurityPolicy pulumi.StringInput
 }
 
@@ -643,8 +633,6 @@ func (o RegionSecurityPolicyRuleOutput) Region() pulumi.StringOutput {
 }
 
 // The name of the security policy this rule belongs to.
-//
-// ***
 func (o RegionSecurityPolicyRuleOutput) SecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSecurityPolicyRule) pulumi.StringOutput { return v.SecurityPolicy }).(pulumi.StringOutput)
 }

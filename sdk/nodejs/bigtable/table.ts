@@ -96,8 +96,6 @@ export class Table extends pulumi.CustomResource {
 
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-     *
-     * -----
      */
     public readonly changeStreamRetention!: pulumi.Output<string>;
     /**
@@ -172,8 +170,6 @@ export class Table extends pulumi.CustomResource {
 export interface TableState {
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-     *
-     * -----
      */
     changeStreamRetention?: pulumi.Input<string>;
     /**
@@ -211,8 +207,6 @@ export interface TableState {
 export interface TableArgs {
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-     *
-     * -----
      */
     changeStreamRetention?: pulumi.Input<string>;
     /**

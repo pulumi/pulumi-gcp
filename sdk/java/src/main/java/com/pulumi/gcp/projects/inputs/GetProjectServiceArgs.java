@@ -35,16 +35,12 @@ public final class GetProjectServiceArgs extends com.pulumi.resources.InvokeArgs
     /**
      * The name of the Google Platform project service.
      * 
-     * ***
-     * 
      */
     @Import(name="service", required=true)
     private Output<String> service;
 
     /**
      * @return The name of the Google Platform project service.
-     * 
-     * ***
      * 
      */
     public Output<String> service() {
@@ -102,8 +98,6 @@ public final class GetProjectServiceArgs extends com.pulumi.resources.InvokeArgs
         /**
          * @param service The name of the Google Platform project service.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -114,8 +108,6 @@ public final class GetProjectServiceArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param service The name of the Google Platform project service.
-         * 
-         * ***
          * 
          * @return builder
          * 

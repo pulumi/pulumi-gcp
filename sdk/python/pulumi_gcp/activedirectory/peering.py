@@ -25,7 +25,6 @@ class PeeringArgs:
         The set of arguments for constructing a Peering resource.
         :param pulumi.Input[str] authorized_network: The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
         :param pulumi.Input[str] domain_resource: Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
-        :param pulumi.Input[str] peering_id: - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -73,9 +72,6 @@ class PeeringArgs:
     @property
     @pulumi.getter(name="peeringId")
     def peering_id(self) -> pulumi.Input[str]:
-        """
-        - - -
-        """
         return pulumi.get(self, "peering_id")
 
     @peering_id.setter
@@ -156,7 +152,6 @@ class _PeeringState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
-        :param pulumi.Input[str] peering_id: - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -250,9 +245,6 @@ class _PeeringState:
     @property
     @pulumi.getter(name="peeringId")
     def peering_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        - - -
-        """
         return pulumi.get(self, "peering_id")
 
     @peering_id.setter
@@ -370,7 +362,6 @@ class Peering(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] peering_id: - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] status: The current state of this Peering.
@@ -505,7 +496,6 @@ class Peering(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
-        :param pulumi.Input[str] peering_id: - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -574,9 +564,6 @@ class Peering(pulumi.CustomResource):
     @property
     @pulumi.getter(name="peeringId")
     def peering_id(self) -> pulumi.Output[str]:
-        """
-        - - -
-        """
         return pulumi.get(self, "peering_id")
 
     @property

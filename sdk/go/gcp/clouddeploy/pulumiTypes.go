@@ -1778,8 +1778,6 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhas
 	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 	Profiles []string `pulumi:"profiles"`
 	// Whether to run verify tests after the deployment.
-	//
-	// ***
 	Verify *bool `pulumi:"verify"`
 }
 
@@ -1806,8 +1804,6 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhas
 	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
 	// Whether to run verify tests after the deployment.
-	//
-	// ***
 	Verify pulumi.BoolPtrInput `pulumi:"verify"`
 }
 
@@ -1898,8 +1894,6 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 }
 
 // Whether to run verify tests after the deployment.
-//
-// ***
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) Verify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) *bool {
 		return v.Verify

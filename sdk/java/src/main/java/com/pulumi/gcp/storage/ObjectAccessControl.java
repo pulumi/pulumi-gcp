@@ -237,8 +237,6 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
      * 
-     * ***
-     * 
      */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
@@ -246,8 +244,6 @@ public class ObjectAccessControl extends com.pulumi.resources.CustomResource {
     /**
      * @return The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
-     * 
-     * ***
      * 
      */
     public Output<String> role() {

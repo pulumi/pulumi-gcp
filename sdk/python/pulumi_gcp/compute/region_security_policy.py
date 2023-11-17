@@ -30,9 +30,6 @@ class RegionSecurityPolicyArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy should reside.
@@ -41,8 +38,8 @@ class RegionSecurityPolicyArgs:
                - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
                - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
                - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
-               This field can be set only at resource creation time.
-               Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
+                 This field can be set only at resource creation time.
+                 Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
         :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
                A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
                Rules may then specify matching values for these fields.
@@ -94,9 +91,6 @@ class RegionSecurityPolicyArgs:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
         Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -138,8 +132,8 @@ class RegionSecurityPolicyArgs:
         - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
         - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
         - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
-        This field can be set only at resource creation time.
-        Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
+          This field can be set only at resource creation time.
+          Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
         """
         return pulumi.get(self, "type")
 
@@ -186,9 +180,6 @@ class _RegionSecurityPolicyState:
                updates of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -200,8 +191,8 @@ class _RegionSecurityPolicyState:
                - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
                - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
                - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
-               This field can be set only at resource creation time.
-               Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
+                 This field can be set only at resource creation time.
+                 Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
         :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
                A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
                Rules may then specify matching values for these fields.
@@ -274,9 +265,6 @@ class _RegionSecurityPolicyState:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
         Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -354,8 +342,8 @@ class _RegionSecurityPolicyState:
         - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
         - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
         - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
-        This field can be set only at resource creation time.
-        Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
+          This field can be set only at resource creation time.
+          Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
         """
         return pulumi.get(self, "type")
 
@@ -482,9 +470,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy should reside.
@@ -493,8 +478,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
                - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
                - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
-               This field can be set only at resource creation time.
-               Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
+                 This field can be set only at resource creation time.
+                 Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionSecurityPolicyUserDefinedFieldArgs']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
                A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
                Rules may then specify matching values for these fields.
@@ -666,9 +651,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                updates of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
                Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -680,8 +662,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
                - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
                - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
-               This field can be set only at resource creation time.
-               Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
+                 This field can be set only at resource creation time.
+                 Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionSecurityPolicyUserDefinedFieldArgs']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
                A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
                Rules may then specify matching values for these fields.
@@ -736,9 +718,6 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
         Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -792,8 +771,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
         - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
         - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
-        This field can be set only at resource creation time.
-        Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
+          This field can be set only at resource creation time.
+          Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
         """
         return pulumi.get(self, "type")
 

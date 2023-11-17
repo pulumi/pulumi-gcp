@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RepositoryCleanupPolicyMostRecentVersions {
+    /**
+     * @return Minimum number of versions to keep.
+     * 
+     */
     private @Nullable Integer keepCount;
+    /**
+     * @return Match versions by package prefix. Applied on any prefix match.
+     * 
+     */
     private @Nullable List<String> packageNamePrefixes;
 
     private RepositoryCleanupPolicyMostRecentVersions() {}
+    /**
+     * @return Minimum number of versions to keep.
+     * 
+     */
     public Optional<Integer> keepCount() {
         return Optional.ofNullable(this.keepCount);
     }
+    /**
+     * @return Match versions by package prefix. Applied on any prefix match.
+     * 
+     */
     public List<String> packageNamePrefixes() {
         return this.packageNamePrefixes == null ? List.of() : this.packageNamePrefixes;
     }

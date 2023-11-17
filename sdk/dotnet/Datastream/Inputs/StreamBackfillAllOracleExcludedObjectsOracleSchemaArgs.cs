@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.Datastream.Inputs
 
         /// <summary>
         /// Tables in the database.
+        /// Structure is documented below.`oracle_tables` -
+        /// (Optional)
+        /// Tables in the database.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs> OracleTables
@@ -26,6 +29,8 @@ namespace Pulumi.Gcp.Datastream.Inputs
         }
 
         /// <summary>
+        /// Schema name.`schema` -
+        /// (Required)
         /// Schema name.
         /// </summary>
         [Input("schema", required: true)]

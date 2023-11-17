@@ -15,6 +15,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MetastoreServiceHiveMetastoreConfig {
+    /**
+     * @return A mapping of Hive metastore version to the auxiliary version configuration.
+     * When specified, a secondary Hive metastore service is created along with the primary service.
+     * All auxiliary versions must be less than the service&#39;s primary version.
+     * The key is the auxiliary service name and it must match the regular expression a-z?.
+     * This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions;
     /**
      * @return A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
@@ -22,6 +31,12 @@ public final class MetastoreServiceHiveMetastoreConfig {
      * 
      */
     private @Nullable Map<String,String> configOverrides;
+    /**
+     * @return The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+     * Default value is `THRIFT`.
+     * Possible values are: `THRIFT`, `GRPC`.
+     * 
+     */
     private @Nullable String endpointProtocol;
     /**
      * @return Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
@@ -36,6 +51,15 @@ public final class MetastoreServiceHiveMetastoreConfig {
     private String version;
 
     private MetastoreServiceHiveMetastoreConfig() {}
+    /**
+     * @return A mapping of Hive metastore version to the auxiliary version configuration.
+     * When specified, a secondary Hive metastore service is created along with the primary service.
+     * All auxiliary versions must be less than the service&#39;s primary version.
+     * The key is the auxiliary service name and it must match the regular expression a-z?.
+     * This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+     * Structure is documented below.
+     * 
+     */
     public List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions() {
         return this.auxiliaryVersions == null ? List.of() : this.auxiliaryVersions;
     }
@@ -47,6 +71,12 @@ public final class MetastoreServiceHiveMetastoreConfig {
     public Map<String,String> configOverrides() {
         return this.configOverrides == null ? Map.of() : this.configOverrides;
     }
+    /**
+     * @return The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+     * Default value is `THRIFT`.
+     * Possible values are: `THRIFT`, `GRPC`.
+     * 
+     */
     public Optional<String> endpointProtocol() {
         return Optional.ofNullable(this.endpointProtocol);
     }

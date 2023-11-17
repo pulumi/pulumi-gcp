@@ -23,9 +23,6 @@ class DatabaseInstanceArgs:
         The set of arguments for constructing a DatabaseInstance resource.
         :param pulumi.Input[str] instance_id: The globally unique identifier of the Firebase Realtime Database instance.
                Instance IDs cannot be reused after deletion.
-               
-               
-               - - -
         :param pulumi.Input[str] region: A reference to the region where the Firebase Realtime database resides.
                Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
         :param pulumi.Input[str] desired_state: The intended database state.
@@ -53,9 +50,6 @@ class DatabaseInstanceArgs:
         """
         The globally unique identifier of the Firebase Realtime Database instance.
         Instance IDs cannot be reused after deletion.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -137,9 +131,6 @@ class _DatabaseInstanceState:
         :param pulumi.Input[str] desired_state: The intended database state.
         :param pulumi.Input[str] instance_id: The globally unique identifier of the Firebase Realtime Database instance.
                Instance IDs cannot be reused after deletion.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The fully-qualified resource name of the Firebase Realtime Database, in the
                format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
                PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
@@ -204,9 +195,6 @@ class _DatabaseInstanceState:
         """
         The globally unique identifier of the Firebase Realtime Database instance.
         Instance IDs cannot be reused after deletion.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -385,9 +373,6 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] desired_state: The intended database state.
         :param pulumi.Input[str] instance_id: The globally unique identifier of the Firebase Realtime Database instance.
                Instance IDs cannot be reused after deletion.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the Firebase Realtime database resides.
@@ -560,9 +545,6 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] desired_state: The intended database state.
         :param pulumi.Input[str] instance_id: The globally unique identifier of the Firebase Realtime Database instance.
                Instance IDs cannot be reused after deletion.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The fully-qualified resource name of the Firebase Realtime Database, in the
                format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
                PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
@@ -616,9 +598,6 @@ class DatabaseInstance(pulumi.CustomResource):
         """
         The globally unique identifier of the Firebase Realtime Database instance.
         Instance IDs cannot be reused after deletion.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 

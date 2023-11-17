@@ -172,7 +172,8 @@ def get_istio_canonical_service(canonical_service: Optional[str] = None,
     :param str canonical_service: The name of the canonical service underlying this service.
            Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
            
-           - - -
+           
+           
            
            Other optional fields include:
     :param str canonical_service_namespace: The namespace of the canonical service underlying this service.
@@ -240,7 +241,8 @@ def get_istio_canonical_service_output(canonical_service: Optional[pulumi.Input[
     :param str canonical_service: The name of the canonical service underlying this service.
            Corresponds to the destination_canonical_service_name metric label in label in Istio metrics.
            
-           - - -
+           
+           
            
            Other optional fields include:
     :param str canonical_service_namespace: The namespace of the canonical service underlying this service.

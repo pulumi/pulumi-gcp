@@ -39,12 +39,10 @@ class SubnetworkArgs:
                non-overlapping within a network. Only IPv4 is supported.
         :param pulumi.Input[str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-               
-               
-               - - -
-        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-               prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-               BGP even if their destinations match existing subnet ranges.
+        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
+               existing resources are dropped and prevented from leaving the VPC.
+               Setting this field to true will allow these packets to match dynamic routes injected
+               via BGP even if their destinations match existing subnet ranges.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
@@ -144,9 +142,6 @@ class SubnetworkArgs:
         """
         The network this subnet belongs to.
         Only networks that are in the distributed mode can have subnetworks.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -158,9 +153,10 @@ class SubnetworkArgs:
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
     def allow_subnet_cidr_routes_overlap(self) -> Optional[pulumi.Input[bool]]:
         """
-        Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-        prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-        BGP even if their destinations match existing subnet ranges.
+        Typically packets destined to IPs within the subnetwork range that do not match
+        existing resources are dropped and prevented from leaving the VPC.
+        Setting this field to true will allow these packets to match dynamic routes injected
+        via BGP even if their destinations match existing subnet ranges.
         """
         return pulumi.get(self, "allow_subnet_cidr_routes_overlap")
 
@@ -376,9 +372,10 @@ class _SubnetworkState:
                  stack_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Subnetwork resources.
-        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-               prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-               BGP even if their destinations match existing subnet ranges.
+        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
+               existing resources are dropped and prevented from leaving the VPC.
+               Setting this field to true will allow these packets to match dynamic routes injected
+               via BGP even if their destinations match existing subnet ranges.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
@@ -411,9 +408,6 @@ class _SubnetworkState:
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-               
-               
-               - - -
         :param pulumi.Input[bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -497,9 +491,10 @@ class _SubnetworkState:
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
     def allow_subnet_cidr_routes_overlap(self) -> Optional[pulumi.Input[bool]]:
         """
-        Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-        prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-        BGP even if their destinations match existing subnet ranges.
+        Typically packets destined to IPs within the subnetwork range that do not match
+        existing resources are dropped and prevented from leaving the VPC.
+        Setting this field to true will allow these packets to match dynamic routes injected
+        via BGP even if their destinations match existing subnet ranges.
         """
         return pulumi.get(self, "allow_subnet_cidr_routes_overlap")
 
@@ -667,9 +662,6 @@ class _SubnetworkState:
         """
         The network this subnet belongs to.
         Only networks that are in the distributed mode can have subnetworks.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -1000,9 +992,10 @@ class Subnetwork(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-               prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-               BGP even if their destinations match existing subnet ranges.
+        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
+               existing resources are dropped and prevented from leaving the VPC.
+               Setting this field to true will allow these packets to match dynamic routes injected
+               via BGP even if their destinations match existing subnet ranges.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
@@ -1028,9 +1021,6 @@ class Subnetwork(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-               
-               
-               - - -
         :param pulumi.Input[bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -1341,9 +1331,10 @@ class Subnetwork(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-               prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-               BGP even if their destinations match existing subnet ranges.
+        :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
+               existing resources are dropped and prevented from leaving the VPC.
+               Setting this field to true will allow these packets to match dynamic routes injected
+               via BGP even if their destinations match existing subnet ranges.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
@@ -1376,9 +1367,6 @@ class Subnetwork(pulumi.CustomResource):
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
-               
-               
-               - - -
         :param pulumi.Input[bool] private_ip_google_access: When enabled, VMs in this subnetwork without external IP addresses can
                access Google APIs and services by using Private Google Access.
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
@@ -1442,9 +1430,10 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
     def allow_subnet_cidr_routes_overlap(self) -> pulumi.Output[bool]:
         """
-        Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-        prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-        BGP even if their destinations match existing subnet ranges.
+        Typically packets destined to IPs within the subnetwork range that do not match
+        existing resources are dropped and prevented from leaving the VPC.
+        Setting this field to true will allow these packets to match dynamic routes injected
+        via BGP even if their destinations match existing subnet ranges.
         """
         return pulumi.get(self, "allow_subnet_cidr_routes_overlap")
 
@@ -1564,9 +1553,6 @@ class Subnetwork(pulumi.CustomResource):
         """
         The network this subnet belongs to.
         Only networks that are in the distributed mode can have subnetworks.
-
-
-        - - -
         """
         return pulumi.get(self, "network")
 

@@ -183,9 +183,6 @@ export class NodePool extends pulumi.CustomResource {
 
     /**
      * The name of the target Distributed Cloud Edge Cluster.
-     *
-     *
-     * - - -
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
@@ -324,9 +321,6 @@ export class NodePool extends pulumi.CustomResource {
 export interface NodePoolState {
     /**
      * The name of the target Distributed Cloud Edge Cluster.
-     *
-     *
-     * - - -
      */
     cluster?: pulumi.Input<string>;
     /**
@@ -401,9 +395,6 @@ export interface NodePoolState {
 export interface NodePoolArgs {
     /**
      * The name of the target Distributed Cloud Edge Cluster.
-     *
-     *
-     * - - -
      */
     cluster: pulumi.Input<string>;
     /**

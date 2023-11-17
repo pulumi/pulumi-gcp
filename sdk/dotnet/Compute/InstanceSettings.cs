@@ -89,9 +89,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the zone where the machine resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -158,9 +155,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the zone where the machine resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("zone", required: true)]
         public Input<string> Zone { get; set; } = null!;
@@ -196,9 +190,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the zone where the machine resides.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

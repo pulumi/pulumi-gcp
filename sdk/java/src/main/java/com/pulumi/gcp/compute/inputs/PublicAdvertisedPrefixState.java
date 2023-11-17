@@ -48,16 +48,12 @@ public final class PublicAdvertisedPrefixState extends com.pulumi.resources.Reso
     /**
      * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
      * 
-     * ***
-     * 
      */
     @Import(name="ipCidrRange")
     private @Nullable Output<String> ipCidrRange;
 
     /**
      * @return The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> ipCidrRange() {
@@ -195,8 +191,6 @@ public final class PublicAdvertisedPrefixState extends com.pulumi.resources.Reso
         /**
          * @param ipCidrRange The IPv4 address range, in CIDR format, represented by this public advertised prefix.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -207,8 +201,6 @@ public final class PublicAdvertisedPrefixState extends com.pulumi.resources.Reso
 
         /**
          * @param ipCidrRange The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-         * 
-         * ***
          * 
          * @return builder
          * 

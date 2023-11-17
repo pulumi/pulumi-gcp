@@ -55,8 +55,6 @@ type LookupWorkloadIdentityPoolArgs struct {
 	Project *string `pulumi:"project"`
 	// The id of the pool which is the
 	// final component of the resource name.
-	//
-	// ***
 	WorkloadIdentityPoolId string `pulumi:"workloadIdentityPoolId"`
 }
 
@@ -93,8 +91,6 @@ type LookupWorkloadIdentityPoolOutputArgs struct {
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// The id of the pool which is the
 	// final component of the resource name.
-	//
-	// ***
 	WorkloadIdentityPoolId pulumi.StringInput `pulumi:"workloadIdentityPoolId"`
 }
 

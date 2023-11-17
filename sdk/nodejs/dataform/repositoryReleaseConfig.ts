@@ -137,9 +137,6 @@ export class RepositoryReleaseConfig extends pulumi.CustomResource {
     public readonly cronSchedule!: pulumi.Output<string | undefined>;
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-     *
-     *
-     * - - -
      */
     public readonly gitCommitish!: pulumi.Output<string>;
     /**
@@ -226,9 +223,6 @@ export interface RepositoryReleaseConfigState {
     cronSchedule?: pulumi.Input<string>;
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-     *
-     *
-     * - - -
      */
     gitCommitish?: pulumi.Input<string>;
     /**
@@ -274,9 +268,6 @@ export interface RepositoryReleaseConfigArgs {
     cronSchedule?: pulumi.Input<string>;
     /**
      * Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
-     *
-     *
-     * - - -
      */
     gitCommitish: pulumi.Input<string>;
     /**

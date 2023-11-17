@@ -24,18 +24,18 @@ public final class OsPolicyAssignmentOsPolicy {
     private @Nullable Boolean allowNoResourceGroupMatch;
     /**
      * @return Policy description. Length of the description is
-     * limited to 1024 characters.
+     * limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
+     * description is limited to 1024 characters.
      * 
      */
     private @Nullable String description;
     /**
      * @return The id of the OS policy with the following restrictions:
-     * 
-     * *   Must contain only lowercase letters, numbers, and hyphens.
-     * *   Must start with a letter.
-     * *   Must be between 1-63 characters.
-     * *   Must end with a number or a letter.
-     * *   Must be unique within the assignment.
+     * * Must contain only lowercase letters, numbers, and hyphens.
+     * * Must start with a letter.
+     * * Must be between 1-63 characters.
+     * * Must end with a number or a letter.
+     * * Must be unique within the assignment.
      * 
      */
     private String id;
@@ -70,7 +70,8 @@ public final class OsPolicyAssignmentOsPolicy {
     }
     /**
      * @return Policy description. Length of the description is
-     * limited to 1024 characters.
+     * limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
+     * description is limited to 1024 characters.
      * 
      */
     public Optional<String> description() {
@@ -78,12 +79,11 @@ public final class OsPolicyAssignmentOsPolicy {
     }
     /**
      * @return The id of the OS policy with the following restrictions:
-     * 
-     * *   Must contain only lowercase letters, numbers, and hyphens.
-     * *   Must start with a letter.
-     * *   Must be between 1-63 characters.
-     * *   Must end with a number or a letter.
-     * *   Must be unique within the assignment.
+     * * Must contain only lowercase letters, numbers, and hyphens.
+     * * Must start with a letter.
+     * * Must be between 1-63 characters.
+     * * Must end with a number or a letter.
+     * * Must be unique within the assignment.
      * 
      */
     public String id() {

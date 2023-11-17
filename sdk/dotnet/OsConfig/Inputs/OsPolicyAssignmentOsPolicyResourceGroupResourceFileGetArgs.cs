@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// Consists of three octal digits which represent, in
+        /// (Output) Consists of three octal digits which represent, in
         /// order, the permissions of the owner, group, and other users for the file
         /// (similarly to the numeric mode used in the linux chmod utility). Each digit
         /// represents a three bit number with the 4 bit corresponding to the read

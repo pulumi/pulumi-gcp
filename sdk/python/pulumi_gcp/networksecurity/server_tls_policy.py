@@ -39,9 +39,6 @@ class ServerTlsPolicyArgs:
                Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['ServerTlsPolicyServerCertificateArgs'] server_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
@@ -136,9 +133,6 @@ class ServerTlsPolicyArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ServerTlsPolicy resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -205,9 +199,6 @@ class _ServerTlsPolicyState:
                Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -337,9 +328,6 @@ class _ServerTlsPolicyState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ServerTlsPolicy resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -566,9 +554,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ServerTlsPolicyServerCertificateArgs']] server_certificate: Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
@@ -808,9 +793,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allowOpen and mtlsPolicy are set, server allows both plain text and mTLS connections.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -905,9 +887,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the ServerTlsPolicy resource.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

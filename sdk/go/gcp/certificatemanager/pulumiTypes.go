@@ -160,8 +160,6 @@ type CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServ
 	// A CA pool resource used to issue a certificate.
 	// The CA pool string has a relative resource path following the form
 	// "projects/{project}/locations/{location}/caPools/{caPool}".
-	//
-	// ***
 	CaPool string `pulumi:"caPool"`
 }
 
@@ -180,8 +178,6 @@ type CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServ
 	// A CA pool resource used to issue a certificate.
 	// The CA pool string has a relative resource path following the form
 	// "projects/{project}/locations/{location}/caPools/{caPool}".
-	//
-	// ***
 	CaPool pulumi.StringInput `pulumi:"caPool"`
 }
 
@@ -265,8 +261,6 @@ func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityS
 // A CA pool resource used to issue a certificate.
 // The CA pool string has a relative resource path following the form
 // "projects/{project}/locations/{location}/caPools/{caPool}".
-//
-// ***
 func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput) CaPool() pulumi.StringOutput {
 	return o.ApplyT(func(v CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig) string {
 		return v.CaPool
@@ -300,8 +294,6 @@ func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityS
 // A CA pool resource used to issue a certificate.
 // The CA pool string has a relative resource path following the form
 // "projects/{project}/locations/{location}/caPools/{caPool}".
-//
-// ***
 func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput) CaPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig) *string {
 		if v == nil {
@@ -333,7 +325,7 @@ type CertificateManaged struct {
 	// Structure is documented below.
 	ProvisioningIssues []CertificateManagedProvisioningIssue `pulumi:"provisioningIssues"`
 	// (Output)
-	// State of the domain for managed certificate issuance.
+	// A state of this Managed Certificate.
 	State *string `pulumi:"state"`
 }
 
@@ -370,7 +362,7 @@ type CertificateManagedArgs struct {
 	// Structure is documented below.
 	ProvisioningIssues CertificateManagedProvisioningIssueArrayInput `pulumi:"provisioningIssues"`
 	// (Output)
-	// State of the domain for managed certificate issuance.
+	// A state of this Managed Certificate.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -489,7 +481,7 @@ func (o CertificateManagedOutput) ProvisioningIssues() CertificateManagedProvisi
 }
 
 // (Output)
-// State of the domain for managed certificate issuance.
+// A state of this Managed Certificate.
 func (o CertificateManagedOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManaged) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -579,7 +571,7 @@ func (o CertificateManagedPtrOutput) ProvisioningIssues() CertificateManagedProv
 }
 
 // (Output)
-// State of the domain for managed certificate issuance.
+// A state of this Managed Certificate.
 func (o CertificateManagedPtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateManaged) *string {
 		if v == nil {
@@ -1086,7 +1078,6 @@ func (o CertificateMapGclbTargetIpConfigArrayOutput) Index(i pulumi.IntInput) Ce
 }
 
 type CertificateSelfManaged struct {
-	// (Optional, Deprecated)
 	// The certificate chain in PEM-encoded form.
 	// Leaf certificate comes first, followed by intermediate ones if any.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1102,7 +1093,6 @@ type CertificateSelfManaged struct {
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PemPrivateKey *string `pulumi:"pemPrivateKey"`
-	// (Optional, Deprecated)
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	//
@@ -1124,7 +1114,6 @@ type CertificateSelfManagedInput interface {
 }
 
 type CertificateSelfManagedArgs struct {
-	// (Optional, Deprecated)
 	// The certificate chain in PEM-encoded form.
 	// Leaf certificate comes first, followed by intermediate ones if any.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1140,7 +1129,6 @@ type CertificateSelfManagedArgs struct {
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PemPrivateKey pulumi.StringPtrInput `pulumi:"pemPrivateKey"`
-	// (Optional, Deprecated)
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	//
@@ -1227,7 +1215,6 @@ func (o CertificateSelfManagedOutput) ToCertificateSelfManagedPtrOutputWithConte
 	}).(CertificateSelfManagedPtrOutput)
 }
 
-// (Optional, Deprecated)
 // The certificate chain in PEM-encoded form.
 // Leaf certificate comes first, followed by intermediate ones if any.
 // **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1252,7 +1239,6 @@ func (o CertificateSelfManagedOutput) PemPrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.PemPrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Deprecated)
 // The private key of the leaf certificate in PEM-encoded form.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 //
@@ -1287,7 +1273,6 @@ func (o CertificateSelfManagedPtrOutput) Elem() CertificateSelfManagedOutput {
 	}).(CertificateSelfManagedOutput)
 }
 
-// (Optional, Deprecated)
 // The certificate chain in PEM-encoded form.
 // Leaf certificate comes first, followed by intermediate ones if any.
 // **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1327,7 +1312,6 @@ func (o CertificateSelfManagedPtrOutput) PemPrivateKey() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Deprecated)
 // The private key of the leaf certificate in PEM-encoded form.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 //
@@ -1350,8 +1334,6 @@ type DnsAuthorizationDnsResourceRecord struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// (Output)
 	// Type of the DNS Resource Record.
@@ -1376,8 +1358,6 @@ type DnsAuthorizationDnsResourceRecordArgs struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
-	//
-	// ***
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// (Output)
 	// Type of the DNS Resource Record.
@@ -1444,8 +1424,6 @@ func (o DnsAuthorizationDnsResourceRecordOutput) Data() pulumi.StringPtrOutput {
 // Name of the resource; provided by the client when the resource is created.
 // The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 // and all following characters must be a dash, underscore, letter or digit.
-//
-// ***
 func (o DnsAuthorizationDnsResourceRecordOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsAuthorizationDnsResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

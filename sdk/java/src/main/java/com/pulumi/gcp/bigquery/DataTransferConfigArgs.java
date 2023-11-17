@@ -163,8 +163,6 @@ public final class DataTransferConfigArgs extends com.pulumi.resources.ResourceA
      * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="params", required=true)
     private Output<Map<String,String>> params;
@@ -174,8 +172,6 @@ public final class DataTransferConfigArgs extends com.pulumi.resources.ResourceA
      * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
      * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-     * 
-     * ***
      * 
      */
     public Output<Map<String,String>> params() {
@@ -518,8 +514,6 @@ public final class DataTransferConfigArgs extends com.pulumi.resources.ResourceA
          * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
          * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -533,8 +527,6 @@ public final class DataTransferConfigArgs extends com.pulumi.resources.ResourceA
          * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
          * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
          * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

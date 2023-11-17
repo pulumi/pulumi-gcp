@@ -27,6 +27,10 @@ public final class ResourcePolicyGroupPlacementPolicy {
      * 
      */
     private @Nullable String collocation;
+    /**
+     * @return Specifies the number of max logical switches.
+     * 
+     */
     private @Nullable Integer maxDistance;
     /**
      * @return Number of VMs in this placement group. Google does not recommend that you use this field
@@ -56,6 +60,10 @@ public final class ResourcePolicyGroupPlacementPolicy {
     public Optional<String> collocation() {
         return Optional.ofNullable(this.collocation);
     }
+    /**
+     * @return Specifies the number of max logical switches.
+     * 
+     */
     public Optional<Integer> maxDistance() {
         return Optional.ofNullable(this.maxDistance);
     }

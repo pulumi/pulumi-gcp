@@ -104,9 +104,6 @@ export class TagValue extends pulumi.CustomResource {
     /**
      * Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     *
-     * - - -
      */
     public readonly shortName!: pulumi.Output<string>;
     /**
@@ -184,9 +181,6 @@ export interface TagValueState {
     /**
      * Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     *
-     * - - -
      */
     shortName?: pulumi.Input<string>;
     /**
@@ -211,9 +205,6 @@ export interface TagValueArgs {
     /**
      * Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-     *
-     *
-     * - - -
      */
     shortName: pulumi.Input<string>;
 }

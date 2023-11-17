@@ -227,8 +227,6 @@ type Job struct {
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork pulumi.StringPtrOutput `pulumi:"subnetwork"`
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
-	//
-	// ***
 	TempGcsLocation pulumi.StringOutput `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringOutput `pulumi:"templateGcsPath"`
@@ -324,8 +322,6 @@ type jobState struct {
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork *string `pulumi:"subnetwork"`
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
-	//
-	// ***
 	TempGcsLocation *string `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath *string `pulumi:"templateGcsPath"`
@@ -381,8 +377,6 @@ type JobState struct {
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork pulumi.StringPtrInput
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
-	//
-	// ***
 	TempGcsLocation pulumi.StringPtrInput
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringPtrInput
@@ -434,8 +428,6 @@ type jobArgs struct {
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork *string `pulumi:"subnetwork"`
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
-	//
-	// ***
 	TempGcsLocation string `pulumi:"tempGcsLocation"`
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath string `pulumi:"templateGcsPath"`
@@ -482,8 +474,6 @@ type JobArgs struct {
 	// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK". If the [subnetwork is located in a Shared VPC network](https://cloud.google.com/dataflow/docs/guides/specifying-networks#shared), you must use the complete URL. For example `"googleapis.com/compute/v1/projects/PROJECT_ID/regions/REGION/subnetworks/SUBNET_NAME"`
 	Subnetwork pulumi.StringPtrInput
 	// A writeable location on GCS for the Dataflow job to dump its temporary data.
-	//
-	// ***
 	TempGcsLocation pulumi.StringInput
 	// The GCS path to the Dataflow job template.
 	TemplateGcsPath pulumi.StringInput
@@ -683,8 +673,6 @@ func (o JobOutput) Subnetwork() pulumi.StringPtrOutput {
 }
 
 // A writeable location on GCS for the Dataflow job to dump its temporary data.
-//
-// ***
 func (o JobOutput) TempGcsLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.TempGcsLocation }).(pulumi.StringOutput)
 }

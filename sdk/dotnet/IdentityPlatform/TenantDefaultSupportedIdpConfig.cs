@@ -79,9 +79,6 @@ namespace Pulumi.Gcp.IdentityPlatform
 
         /// <summary>
         /// OAuth client secret
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
@@ -94,16 +91,6 @@ namespace Pulumi.Gcp.IdentityPlatform
 
         /// <summary>
         /// ID of the IDP. Possible values include:
-        /// * `apple.com`
-        /// * `facebook.com`
-        /// * `gc.apple.com`
-        /// * `github.com`
-        /// * `google.com`
-        /// * `linkedin.com`
-        /// * `microsoft.com`
-        /// * `playgames.google.com`
-        /// * `twitter.com`
-        /// * `yahoo.com`
         /// </summary>
         [Output("idpId")]
         public Output<string> IdpId { get; private set; } = null!;
@@ -181,9 +168,6 @@ namespace Pulumi.Gcp.IdentityPlatform
 
         /// <summary>
         /// OAuth client secret
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
@@ -196,16 +180,6 @@ namespace Pulumi.Gcp.IdentityPlatform
 
         /// <summary>
         /// ID of the IDP. Possible values include:
-        /// * `apple.com`
-        /// * `facebook.com`
-        /// * `gc.apple.com`
-        /// * `github.com`
-        /// * `google.com`
-        /// * `linkedin.com`
-        /// * `microsoft.com`
-        /// * `playgames.google.com`
-        /// * `twitter.com`
-        /// * `yahoo.com`
         /// </summary>
         [Input("idpId", required: true)]
         public Input<string> IdpId { get; set; } = null!;
@@ -239,9 +213,6 @@ namespace Pulumi.Gcp.IdentityPlatform
 
         /// <summary>
         /// OAuth client secret
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
@@ -254,16 +225,6 @@ namespace Pulumi.Gcp.IdentityPlatform
 
         /// <summary>
         /// ID of the IDP. Possible values include:
-        /// * `apple.com`
-        /// * `facebook.com`
-        /// * `gc.apple.com`
-        /// * `github.com`
-        /// * `google.com`
-        /// * `linkedin.com`
-        /// * `microsoft.com`
-        /// * `playgames.google.com`
-        /// * `twitter.com`
-        /// * `yahoo.com`
         /// </summary>
         [Input("idpId")]
         public Input<string>? IdpId { get; set; }

@@ -23,9 +23,9 @@ namespace Pulumi.Gcp.VMwareEngine.Inputs
         /// The IP address layout version of the management IP address range.
         /// Possible versions include:
         /// * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
-        /// as it does not support all features.
+        ///   as it does not support all features.
         /// * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
-        /// used by all newly created private clouds. This version supports all current features.
+        ///   used by all newly created private clouds. This version supports all current features.
         /// </summary>
         [Input("managementIpAddressLayoutVersion")]
         public Input<int>? ManagementIpAddressLayoutVersion { get; set; }

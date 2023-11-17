@@ -121,8 +121,6 @@ type EndpointAttachment struct {
 	// State of the endpoint attachment connection to the service attachment.
 	ConnectionState pulumi.StringOutput `pulumi:"connectionState"`
 	// ID of the endpoint attachment.
-	//
-	// ***
 	EndpointAttachmentId pulumi.StringOutput `pulumi:"endpointAttachmentId"`
 	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
 	Host pulumi.StringOutput `pulumi:"host"`
@@ -183,8 +181,6 @@ type endpointAttachmentState struct {
 	// State of the endpoint attachment connection to the service attachment.
 	ConnectionState *string `pulumi:"connectionState"`
 	// ID of the endpoint attachment.
-	//
-	// ***
 	EndpointAttachmentId *string `pulumi:"endpointAttachmentId"`
 	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
 	Host *string `pulumi:"host"`
@@ -204,8 +200,6 @@ type EndpointAttachmentState struct {
 	// State of the endpoint attachment connection to the service attachment.
 	ConnectionState pulumi.StringPtrInput
 	// ID of the endpoint attachment.
-	//
-	// ***
 	EndpointAttachmentId pulumi.StringPtrInput
 	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
 	Host pulumi.StringPtrInput
@@ -227,8 +221,6 @@ func (EndpointAttachmentState) ElementType() reflect.Type {
 
 type endpointAttachmentArgs struct {
 	// ID of the endpoint attachment.
-	//
-	// ***
 	EndpointAttachmentId string `pulumi:"endpointAttachmentId"`
 	// Location of the endpoint attachment.
 	Location string `pulumi:"location"`
@@ -242,8 +234,6 @@ type endpointAttachmentArgs struct {
 // The set of arguments for constructing a EndpointAttachment resource.
 type EndpointAttachmentArgs struct {
 	// ID of the endpoint attachment.
-	//
-	// ***
 	EndpointAttachmentId pulumi.StringInput
 	// Location of the endpoint attachment.
 	Location pulumi.StringInput
@@ -347,8 +337,6 @@ func (o EndpointAttachmentOutput) ConnectionState() pulumi.StringOutput {
 }
 
 // ID of the endpoint attachment.
-//
-// ***
 func (o EndpointAttachmentOutput) EndpointAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.EndpointAttachmentId }).(pulumi.StringOutput)
 }

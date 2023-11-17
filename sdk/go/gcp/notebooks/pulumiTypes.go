@@ -2864,16 +2864,6 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 	// Cannot be specified with subnetwork. If neither `network` nor
 	// `subnet` is specified, the "default" network of the project is
 	// used, if it exists. A full URL or partial URI. Examples:
-	// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
-	//   regions/global/default`
-	// * `projects/[projectId]/regions/global/default`
-	//   Runtimes are managed resources inside Google Infrastructure.
-	//   Runtimes support the following network configurations:
-	// * Google Managed Network (Network & subnet are empty)
-	// * Consumer Project VPC (network & subnet are required). Requires
-	//   configuring Private Service Access.
-	// * Shared VPC (network & subnet are required). Requires
-	//   configuring Private Service Access.
 	Network *string `pulumi:"network"`
 	// The type of vNIC to be used on this interface. This may be gVNIC
 	// or VirtioNet.
@@ -2888,9 +2878,6 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 	// The Compute Engine subnetwork to be used for machine
 	// communications. Cannot be specified with network. A full URL or
 	// partial URI are valid. Examples:
-	// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
-	//   regions/us-east1/subnetworks/sub0`
-	// * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
 	Subnet *string `pulumi:"subnet"`
 	// The Compute Engine tags to add to runtime (see [Tagging instances]
 	// (https://cloud.google.com/compute/docs/
@@ -2955,16 +2942,6 @@ type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
 	// Cannot be specified with subnetwork. If neither `network` nor
 	// `subnet` is specified, the "default" network of the project is
 	// used, if it exists. A full URL or partial URI. Examples:
-	// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
-	//   regions/global/default`
-	// * `projects/[projectId]/regions/global/default`
-	//   Runtimes are managed resources inside Google Infrastructure.
-	//   Runtimes support the following network configurations:
-	// * Google Managed Network (Network & subnet are empty)
-	// * Consumer Project VPC (network & subnet are required). Requires
-	//   configuring Private Service Access.
-	// * Shared VPC (network & subnet are required). Requires
-	//   configuring Private Service Access.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// The type of vNIC to be used on this interface. This may be gVNIC
 	// or VirtioNet.
@@ -2979,9 +2956,6 @@ type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
 	// The Compute Engine subnetwork to be used for machine
 	// communications. Cannot be specified with network. A full URL or
 	// partial URI are valid. Examples:
-	// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
-	//   regions/us-east1/subnetworks/sub0`
-	// * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
 	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
 	// The Compute Engine tags to add to runtime (see [Tagging instances]
 	// (https://cloud.google.com/compute/docs/
@@ -3146,16 +3120,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Metadata() pulumi.Strin
 // Cannot be specified with subnetwork. If neither `network` nor
 // `subnet` is specified, the "default" network of the project is
 // used, if it exists. A full URL or partial URI. Examples:
-//   - `https://www.googleapis.com/compute/v1/projects/[projectId]/
-//     regions/global/default`
-//   - `projects/[projectId]/regions/global/default`
-//     Runtimes are managed resources inside Google Infrastructure.
-//     Runtimes support the following network configurations:
-//   - Google Managed Network (Network & subnet are empty)
-//   - Consumer Project VPC (network & subnet are required). Requires
-//     configuring Private Service Access.
-//   - Shared VPC (network & subnet are required). Requires
-//     configuring Private Service Access.
 func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -3184,9 +3148,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) ShieldedInstanceConfig(
 // The Compute Engine subnetwork to be used for machine
 // communications. Cannot be specified with network. A full URL or
 // partial URI are valid. Examples:
-//   - `https://www.googleapis.com/compute/v1/projects/[projectId]/
-//     regions/us-east1/subnetworks/sub0`
-//   - `projects/[projectId]/regions/us-east1/subnetworks/sub0`
 func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *string { return v.Subnet }).(pulumi.StringPtrOutput)
 }
@@ -3342,16 +3303,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Metadata() pulumi.St
 // Cannot be specified with subnetwork. If neither `network` nor
 // `subnet` is specified, the "default" network of the project is
 // used, if it exists. A full URL or partial URI. Examples:
-//   - `https://www.googleapis.com/compute/v1/projects/[projectId]/
-//     regions/global/default`
-//   - `projects/[projectId]/regions/global/default`
-//     Runtimes are managed resources inside Google Infrastructure.
-//     Runtimes support the following network configurations:
-//   - Google Managed Network (Network & subnet are empty)
-//   - Consumer Project VPC (network & subnet are required). Requires
-//     configuring Private Service Access.
-//   - Shared VPC (network & subnet are required). Requires
-//     configuring Private Service Access.
 func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *string {
 		if v == nil {
@@ -3398,9 +3349,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) ShieldedInstanceConf
 // The Compute Engine subnetwork to be used for machine
 // communications. Cannot be specified with network. A full URL or
 // partial URI are valid. Examples:
-//   - `https://www.googleapis.com/compute/v1/projects/[projectId]/
-//     regions/us-east1/subnetworks/sub0`
-//   - `projects/[projectId]/regions/us-east1/subnetworks/sub0`
 func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *string {
 		if v == nil {

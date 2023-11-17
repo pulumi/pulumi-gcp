@@ -274,13 +274,16 @@ export class Repository extends pulumi.CustomResource {
     }
 
     /**
-     * Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-     * under 128 characters in length.
+     * Cleanup policies for this repository. Cleanup policies indicate when
+     * certain package versions can be automatically deleted.
+     * Map keys are policy IDs supplied by users during policy creation. They must
+     * unique within a repository and be under 128 characters in length.
+     * Structure is documented below.
      */
     public readonly cleanupPolicies!: pulumi.Output<outputs.artifactregistry.RepositoryCleanupPolicy[] | undefined>;
     /**
-     * If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * If true, the cleanup pipeline is prevented from deleting versions in this
+     * repository.
      */
     public readonly cleanupPolicyDryRun!: pulumi.Output<boolean | undefined>;
     /**
@@ -305,9 +308,6 @@ export class Repository extends pulumi.CustomResource {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-     *
-     *
-     * - - -
      */
     public readonly format!: pulumi.Output<string>;
     /**
@@ -452,13 +452,16 @@ export class Repository extends pulumi.CustomResource {
  */
 export interface RepositoryState {
     /**
-     * Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-     * under 128 characters in length.
+     * Cleanup policies for this repository. Cleanup policies indicate when
+     * certain package versions can be automatically deleted.
+     * Map keys are policy IDs supplied by users during policy creation. They must
+     * unique within a repository and be under 128 characters in length.
+     * Structure is documented below.
      */
     cleanupPolicies?: pulumi.Input<pulumi.Input<inputs.artifactregistry.RepositoryCleanupPolicy>[]>;
     /**
-     * If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * If true, the cleanup pipeline is prevented from deleting versions in this
+     * repository.
      */
     cleanupPolicyDryRun?: pulumi.Input<boolean>;
     /**
@@ -483,9 +486,6 @@ export interface RepositoryState {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-     *
-     *
-     * - - -
      */
     format?: pulumi.Input<string>;
     /**
@@ -564,13 +564,16 @@ export interface RepositoryState {
  */
 export interface RepositoryArgs {
     /**
-     * Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-     * under 128 characters in length.
+     * Cleanup policies for this repository. Cleanup policies indicate when
+     * certain package versions can be automatically deleted.
+     * Map keys are policy IDs supplied by users during policy creation. They must
+     * unique within a repository and be under 128 characters in length.
+     * Structure is documented below.
      */
     cleanupPolicies?: pulumi.Input<pulumi.Input<inputs.artifactregistry.RepositoryCleanupPolicy>[]>;
     /**
-     * If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * If true, the cleanup pipeline is prevented from deleting versions in this
+     * repository.
      */
     cleanupPolicyDryRun?: pulumi.Input<boolean>;
     /**
@@ -587,9 +590,6 @@ export interface RepositoryArgs {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-     *
-     *
-     * - - -
      */
     format: pulumi.Input<string>;
     /**

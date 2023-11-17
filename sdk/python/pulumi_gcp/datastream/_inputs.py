@@ -676,8 +676,6 @@ class PrivateConnectionVpcPeeringConfigArgs:
                  vpc: pulumi.Input[str]):
         """
         :param pulumi.Input[str] subnet: A free subnet for peering. (CIDR of /29)
-               
-               - - -
         :param pulumi.Input[str] vpc: Fully qualified name of the VPC that Datastream will peer to.
                Format: projects/{project}/global/{networks}/{name}
         """
@@ -689,8 +687,6 @@ class PrivateConnectionVpcPeeringConfigArgs:
     def subnet(self) -> pulumi.Input[str]:
         """
         A free subnet for peering. (CIDR of /29)
-
-        - - -
         """
         return pulumi.get(self, "subnet")
 
@@ -803,8 +799,13 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs:
                  database: pulumi.Input[str],
                  mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
         """
-        :param pulumi.Input[str] database: Database name.
+        :param pulumi.Input[str] database: Database name.`database` -
+               (Required)
+               Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]] mysql_tables: Tables in the database.
+               Structure is documented below.`mysql_tables` -
+               (Optional)
+               Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "database", database)
@@ -815,6 +816,8 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs:
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
         """
+        Database name.`database` -
+        (Required)
         Database name.
         """
         return pulumi.get(self, "database")
@@ -827,6 +830,9 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs:
     @pulumi.getter(name="mysqlTables")
     def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]]:
         """
+        Tables in the database.
+        Structure is documented below.`mysql_tables` -
+        (Optional)
         Tables in the database.
         Structure is documented below.
         """
@@ -843,8 +849,13 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs:
                  table: pulumi.Input[str],
                  mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
         """
-        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[str] table: Table name.`table` -
+               (Required)
+               Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.`mysql_columns` -
+               (Optional)
+               MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -855,6 +866,8 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs:
     @pulumi.getter
     def table(self) -> pulumi.Input[str]:
         """
+        Table name.`table` -
+        (Required)
         Table name.
         """
         return pulumi.get(self, "table")
@@ -867,6 +880,9 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs:
     @pulumi.getter(name="mysqlColumns")
     def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
         """
+        MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.`mysql_columns` -
+        (Optional)
         MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
         """
@@ -888,15 +904,30 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
                  ordinal_position: Optional[pulumi.Input[int]] = None,
                  primary_key: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] collation: Column collation.
-        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] collation: Column collation.`collation` -
+               (Optional)
+               Column collation.
+        :param pulumi.Input[str] column: Column name.`column` -
+               (Optional)
+               Column name.
         :param pulumi.Input[str] data_type: The MySQL data type. Full data types list can be found here:
+               https://dev.mysql.com/doc/refman/8.0/en/data-types.html`data_type` -
+               (Optional)
+               The MySQL data type. Full data types list can be found here:
                https://dev.mysql.com/doc/refman/8.0/en/data-types.html
         :param pulumi.Input[int] length: (Output)
+               Column length.`length` -
+               (Output)
                Column length.
-        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
-        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
-        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.`nullable` -
+               (Optional)
+               Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.`ordinal_position` -
+               (Optional)
+               The ordinal position of the column in the table.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.`primary_key` -
+               (Optional)
+               Whether or not the column represents a primary key.
         """
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
@@ -917,6 +948,8 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
     @pulumi.getter
     def collation(self) -> Optional[pulumi.Input[str]]:
         """
+        Column collation.`collation` -
+        (Optional)
         Column collation.
         """
         return pulumi.get(self, "collation")
@@ -929,6 +962,8 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
         """
+        Column name.`column` -
+        (Optional)
         Column name.
         """
         return pulumi.get(self, "column")
@@ -941,6 +976,9 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
         """
+        The MySQL data type. Full data types list can be found here:
+        https://dev.mysql.com/doc/refman/8.0/en/data-types.html`data_type` -
+        (Optional)
         The MySQL data type. Full data types list can be found here:
         https://dev.mysql.com/doc/refman/8.0/en/data-types.html
         """
@@ -955,6 +993,8 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
     def length(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
+        Column length.`length` -
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -967,6 +1007,8 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
     @pulumi.getter
     def nullable(self) -> Optional[pulumi.Input[bool]]:
         """
+        Whether or not the column can accept a null value.`nullable` -
+        (Optional)
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
@@ -979,6 +1021,8 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
     @pulumi.getter(name="ordinalPosition")
     def ordinal_position(self) -> Optional[pulumi.Input[int]]:
         """
+        The ordinal position of the column in the table.`ordinal_position` -
+        (Optional)
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
@@ -991,6 +1035,8 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArg
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[pulumi.Input[bool]]:
         """
+        Whether or not the column represents a primary key.`primary_key` -
+        (Optional)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
@@ -1030,8 +1076,13 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs:
                  schema: pulumi.Input[str],
                  oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]] = None):
         """
-        :param pulumi.Input[str] schema: Schema name.
+        :param pulumi.Input[str] schema: Schema name.`schema` -
+               (Required)
+               Schema name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]] oracle_tables: Tables in the database.
+               Structure is documented below.`oracle_tables` -
+               (Optional)
+               Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -1042,6 +1093,8 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs:
     @pulumi.getter
     def schema(self) -> pulumi.Input[str]:
         """
+        Schema name.`schema` -
+        (Required)
         Schema name.
         """
         return pulumi.get(self, "schema")
@@ -1054,6 +1107,9 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs:
     @pulumi.getter(name="oracleTables")
     def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]]:
         """
+        Tables in the database.
+        Structure is documented below.`oracle_tables` -
+        (Optional)
         Tables in the database.
         Structure is documented below.
         """
@@ -1070,8 +1126,13 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs:
                  table: pulumi.Input[str],
                  oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
         """
-        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[str] table: Table name.`table` -
+               (Required)
+               Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.`oracle_columns` -
+               (Optional)
+               Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -1082,6 +1143,8 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs:
     @pulumi.getter
     def table(self) -> pulumi.Input[str]:
         """
+        Table name.`table` -
+        (Required)
         Table name.
         """
         return pulumi.get(self, "table")
@@ -1094,6 +1157,9 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs:
     @pulumi.getter(name="oracleColumns")
     def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
         """
+        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.`oracle_columns` -
+        (Optional)
         Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
         """
@@ -1117,22 +1183,41 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
                  primary_key: Optional[pulumi.Input[bool]] = None,
                  scale: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] column: Column name.`column` -
+               (Optional)
+               Column name.
         :param pulumi.Input[str] data_type: The Oracle data type. Full data types list can be found here:
+               https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+               (Optional)
+               The Oracle data type. Full data types list can be found here:
                https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
         :param pulumi.Input[str] encoding: (Output)
+               Column encoding.`encoding` -
+               (Output)
                Column encoding.
         :param pulumi.Input[int] length: (Output)
+               Column length.`length` -
+               (Output)
                Column length.
         :param pulumi.Input[bool] nullable: (Output)
+               Whether or not the column can accept a null value.`nullable` -
+               (Output)
                Whether or not the column can accept a null value.
         :param pulumi.Input[int] ordinal_position: (Output)
+               The ordinal position of the column in the table.`ordinal_position` -
+               (Output)
                The ordinal position of the column in the table.
         :param pulumi.Input[int] precision: (Output)
+               Column precision.`precision` -
+               (Output)
                Column precision.
         :param pulumi.Input[bool] primary_key: (Output)
+               Whether or not the column represents a primary key.`primary_key` -
+               (Output)
                Whether or not the column represents a primary key.
         :param pulumi.Input[int] scale: (Output)
+               Column scale.`scale` -
+               (Output)
                Column scale.
         """
         if column is not None:
@@ -1158,6 +1243,8 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
         """
+        Column name.`column` -
+        (Optional)
         Column name.
         """
         return pulumi.get(self, "column")
@@ -1170,6 +1257,9 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
         """
+        The Oracle data type. Full data types list can be found here:
+        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+        (Optional)
         The Oracle data type. Full data types list can be found here:
         https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
         """
@@ -1184,6 +1274,8 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
     def encoding(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
+        Column encoding.`encoding` -
+        (Output)
         Column encoding.
         """
         return pulumi.get(self, "encoding")
@@ -1196,6 +1288,8 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
     @pulumi.getter
     def length(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
+        Column length.`length` -
         (Output)
         Column length.
         """
@@ -1210,6 +1304,8 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
     def nullable(self) -> Optional[pulumi.Input[bool]]:
         """
         (Output)
+        Whether or not the column can accept a null value.`nullable` -
+        (Output)
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
@@ -1222,6 +1318,8 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
     @pulumi.getter(name="ordinalPosition")
     def ordinal_position(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
+        The ordinal position of the column in the table.`ordinal_position` -
         (Output)
         The ordinal position of the column in the table.
         """
@@ -1236,6 +1334,8 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
     def precision(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
+        Column precision.`precision` -
+        (Output)
         Column precision.
         """
         return pulumi.get(self, "precision")
@@ -1249,6 +1349,8 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
     def primary_key(self) -> Optional[pulumi.Input[bool]]:
         """
         (Output)
+        Whether or not the column represents a primary key.`primary_key` -
+        (Output)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
@@ -1261,6 +1363,8 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnA
     @pulumi.getter
     def scale(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
+        Column scale.`scale` -
         (Output)
         Column scale.
         """
@@ -1301,8 +1405,13 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs:
                  schema: pulumi.Input[str],
                  postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
         """
-        :param pulumi.Input[str] schema: Database name.
+        :param pulumi.Input[str] schema: Database name.`schema` -
+               (Required)
+               Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
+               Structure is documented below.`postgresql_tables` -
+               (Optional)
+               Tables in the schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -1313,6 +1422,8 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs:
     @pulumi.getter
     def schema(self) -> pulumi.Input[str]:
         """
+        Database name.`schema` -
+        (Required)
         Database name.
         """
         return pulumi.get(self, "schema")
@@ -1325,6 +1436,9 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs:
     @pulumi.getter(name="postgresqlTables")
     def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
         """
+        Tables in the schema.
+        Structure is documented below.`postgresql_tables` -
+        (Optional)
         Tables in the schema.
         Structure is documented below.
         """
@@ -1341,8 +1455,13 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableA
                  table: pulumi.Input[str],
                  postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
         """
-        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[str] table: Table name.`table` -
+               (Required)
+               Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.`postgresql_columns` -
+               (Optional)
+               PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -1353,6 +1472,8 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableA
     @pulumi.getter
     def table(self) -> pulumi.Input[str]:
         """
+        Table name.`table` -
+        (Required)
         Table name.
         """
         return pulumi.get(self, "table")
@@ -1365,6 +1486,9 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableA
     @pulumi.getter(name="postgresqlColumns")
     def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
         """
+        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.`postgresql_columns` -
+        (Optional)
         PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
         """
@@ -1387,17 +1511,34 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
                  primary_key: Optional[pulumi.Input[bool]] = None,
                  scale: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] column: Column name.`column` -
+               (Optional)
+               Column name.
         :param pulumi.Input[str] data_type: The PostgreSQL data type. Full data types list can be found here:
+               https://www.postgresql.org/docs/current/datatype.html`data_type` -
+               (Optional)
+               The PostgreSQL data type. Full data types list can be found here:
                https://www.postgresql.org/docs/current/datatype.html
         :param pulumi.Input[int] length: (Output)
+               Column length.`length` -
+               (Output)
                Column length.
-        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
-        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.`nullable` -
+               (Optional)
+               Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.`ordinal_position` -
+               (Optional)
+               The ordinal position of the column in the table.
         :param pulumi.Input[int] precision: (Output)
+               Column precision.`precision` -
+               (Output)
                Column precision.
-        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.`primary_key` -
+               (Optional)
+               Whether or not the column represents a primary key.
         :param pulumi.Input[int] scale: (Output)
+               Column scale.`scale` -
+               (Output)
                Column scale.
         """
         if column is not None:
@@ -1421,6 +1562,8 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
         """
+        Column name.`column` -
+        (Optional)
         Column name.
         """
         return pulumi.get(self, "column")
@@ -1433,6 +1576,9 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
         """
+        The PostgreSQL data type. Full data types list can be found here:
+        https://www.postgresql.org/docs/current/datatype.html`data_type` -
+        (Optional)
         The PostgreSQL data type. Full data types list can be found here:
         https://www.postgresql.org/docs/current/datatype.html
         """
@@ -1447,6 +1593,8 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     def length(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
+        Column length.`length` -
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -1459,6 +1607,8 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     @pulumi.getter
     def nullable(self) -> Optional[pulumi.Input[bool]]:
         """
+        Whether or not the column can accept a null value.`nullable` -
+        (Optional)
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
@@ -1471,6 +1621,8 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     @pulumi.getter(name="ordinalPosition")
     def ordinal_position(self) -> Optional[pulumi.Input[int]]:
         """
+        The ordinal position of the column in the table.`ordinal_position` -
+        (Optional)
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
@@ -1484,6 +1636,8 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     def precision(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
+        Column precision.`precision` -
+        (Output)
         Column precision.
         """
         return pulumi.get(self, "precision")
@@ -1496,6 +1650,8 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[pulumi.Input[bool]]:
         """
+        Whether or not the column represents a primary key.`primary_key` -
+        (Optional)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
@@ -1508,6 +1664,8 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
     @pulumi.getter
     def scale(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
+        Column scale.`scale` -
         (Output)
         Column scale.
         """
@@ -1710,8 +1868,6 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
                table. The BigQuery Service Account associated with your project requires access to this
                encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
                See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-               
-               - - -
         """
         pulumi.set(__self__, "location", location)
         if dataset_id_prefix is not None:
@@ -1753,8 +1909,6 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
         table. The BigQuery Service Account associated with your project requires access to this
         encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
         See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-
-        - - -
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -2088,8 +2242,13 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs:
                  database: pulumi.Input[str],
                  mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
         """
-        :param pulumi.Input[str] database: Database name.
+        :param pulumi.Input[str] database: Database name.`database` -
+               (Required)
+               Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]] mysql_tables: Tables in the database.
+               Structure is documented below.`mysql_tables` -
+               (Optional)
+               Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "database", database)
@@ -2100,6 +2259,8 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs:
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
         """
+        Database name.`database` -
+        (Required)
         Database name.
         """
         return pulumi.get(self, "database")
@@ -2112,6 +2273,9 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs:
     @pulumi.getter(name="mysqlTables")
     def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]]:
         """
+        Tables in the database.
+        Structure is documented below.`mysql_tables` -
+        (Optional)
         Tables in the database.
         Structure is documented below.
         """
@@ -2128,8 +2292,13 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableAr
                  table: pulumi.Input[str],
                  mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
         """
-        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[str] table: Table name.`table` -
+               (Required)
+               Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.`mysql_columns` -
+               (Optional)
+               MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -2140,6 +2309,8 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableAr
     @pulumi.getter
     def table(self) -> pulumi.Input[str]:
         """
+        Table name.`table` -
+        (Required)
         Table name.
         """
         return pulumi.get(self, "table")
@@ -2152,6 +2323,9 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableAr
     @pulumi.getter(name="mysqlColumns")
     def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
         """
+        MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.`mysql_columns` -
+        (Optional)
         MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
         """
@@ -2173,15 +2347,30 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
                  ordinal_position: Optional[pulumi.Input[int]] = None,
                  primary_key: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] collation: Column collation.
-        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] collation: Column collation.`collation` -
+               (Optional)
+               Column collation.
+        :param pulumi.Input[str] column: Column name.`column` -
+               (Optional)
+               Column name.
         :param pulumi.Input[str] data_type: The MySQL data type. Full data types list can be found here:
+               https://dev.mysql.com/doc/refman/8.0/en/data-types.html`data_type` -
+               (Optional)
+               The MySQL data type. Full data types list can be found here:
                https://dev.mysql.com/doc/refman/8.0/en/data-types.html
         :param pulumi.Input[int] length: (Output)
+               Column length.`length` -
+               (Output)
                Column length.
-        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
-        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
-        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.`nullable` -
+               (Optional)
+               Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.`ordinal_position` -
+               (Optional)
+               The ordinal position of the column in the table.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.`primary_key` -
+               (Optional)
+               Whether or not the column represents a primary key.
         """
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
@@ -2202,6 +2391,8 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter
     def collation(self) -> Optional[pulumi.Input[str]]:
         """
+        Column collation.`collation` -
+        (Optional)
         Column collation.
         """
         return pulumi.get(self, "collation")
@@ -2214,6 +2405,8 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
         """
+        Column name.`column` -
+        (Optional)
         Column name.
         """
         return pulumi.get(self, "column")
@@ -2226,6 +2419,9 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
         """
+        The MySQL data type. Full data types list can be found here:
+        https://dev.mysql.com/doc/refman/8.0/en/data-types.html`data_type` -
+        (Optional)
         The MySQL data type. Full data types list can be found here:
         https://dev.mysql.com/doc/refman/8.0/en/data-types.html
         """
@@ -2240,6 +2436,8 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
     def length(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
+        Column length.`length` -
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -2252,6 +2450,8 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter
     def nullable(self) -> Optional[pulumi.Input[bool]]:
         """
+        Whether or not the column can accept a null value.`nullable` -
+        (Optional)
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
@@ -2264,6 +2464,8 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter(name="ordinalPosition")
     def ordinal_position(self) -> Optional[pulumi.Input[int]]:
         """
+        The ordinal position of the column in the table.`ordinal_position` -
+        (Optional)
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
@@ -2276,6 +2478,8 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[pulumi.Input[bool]]:
         """
+        Whether or not the column represents a primary key.`primary_key` -
+        (Optional)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
@@ -2315,8 +2519,13 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs:
                  database: pulumi.Input[str],
                  mysql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]] = None):
         """
-        :param pulumi.Input[str] database: Database name.
+        :param pulumi.Input[str] database: Database name.`database` -
+               (Required)
+               Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]] mysql_tables: Tables in the database.
+               Structure is documented below.`mysql_tables` -
+               (Optional)
+               Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "database", database)
@@ -2327,6 +2536,8 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs:
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
         """
+        Database name.`database` -
+        (Required)
         Database name.
         """
         return pulumi.get(self, "database")
@@ -2339,6 +2550,9 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs:
     @pulumi.getter(name="mysqlTables")
     def mysql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]]:
         """
+        Tables in the database.
+        Structure is documented below.`mysql_tables` -
+        (Optional)
         Tables in the database.
         Structure is documented below.
         """
@@ -2355,8 +2569,13 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableAr
                  table: pulumi.Input[str],
                  mysql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]] = None):
         """
-        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[str] table: Table name.`table` -
+               (Required)
+               Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]] mysql_columns: MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.`mysql_columns` -
+               (Optional)
+               MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -2367,6 +2586,8 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableAr
     @pulumi.getter
     def table(self) -> pulumi.Input[str]:
         """
+        Table name.`table` -
+        (Required)
         Table name.
         """
         return pulumi.get(self, "table")
@@ -2379,6 +2600,9 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableAr
     @pulumi.getter(name="mysqlColumns")
     def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]:
         """
+        MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.`mysql_columns` -
+        (Optional)
         MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
         """
@@ -2400,15 +2624,30 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
                  ordinal_position: Optional[pulumi.Input[int]] = None,
                  primary_key: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] collation: Column collation.
-        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] collation: Column collation.`collation` -
+               (Optional)
+               Column collation.
+        :param pulumi.Input[str] column: Column name.`column` -
+               (Optional)
+               Column name.
         :param pulumi.Input[str] data_type: The MySQL data type. Full data types list can be found here:
+               https://dev.mysql.com/doc/refman/8.0/en/data-types.html`data_type` -
+               (Optional)
+               The MySQL data type. Full data types list can be found here:
                https://dev.mysql.com/doc/refman/8.0/en/data-types.html
         :param pulumi.Input[int] length: (Output)
+               Column length.`length` -
+               (Output)
                Column length.
-        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
-        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
-        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.`nullable` -
+               (Optional)
+               Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.`ordinal_position` -
+               (Optional)
+               The ordinal position of the column in the table.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.`primary_key` -
+               (Optional)
+               Whether or not the column represents a primary key.
         """
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
@@ -2429,6 +2668,8 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter
     def collation(self) -> Optional[pulumi.Input[str]]:
         """
+        Column collation.`collation` -
+        (Optional)
         Column collation.
         """
         return pulumi.get(self, "collation")
@@ -2441,6 +2682,8 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
         """
+        Column name.`column` -
+        (Optional)
         Column name.
         """
         return pulumi.get(self, "column")
@@ -2453,6 +2696,9 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
         """
+        The MySQL data type. Full data types list can be found here:
+        https://dev.mysql.com/doc/refman/8.0/en/data-types.html`data_type` -
+        (Optional)
         The MySQL data type. Full data types list can be found here:
         https://dev.mysql.com/doc/refman/8.0/en/data-types.html
         """
@@ -2467,6 +2713,8 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
     def length(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
+        Column length.`length` -
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -2479,6 +2727,8 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter
     def nullable(self) -> Optional[pulumi.Input[bool]]:
         """
+        Whether or not the column can accept a null value.`nullable` -
+        (Optional)
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
@@ -2491,6 +2741,8 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter(name="ordinalPosition")
     def ordinal_position(self) -> Optional[pulumi.Input[int]]:
         """
+        The ordinal position of the column in the table.`ordinal_position` -
+        (Optional)
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
@@ -2503,6 +2755,8 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[pulumi.Input[bool]]:
         """
+        Whether or not the column represents a primary key.`primary_key` -
+        (Optional)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
@@ -2659,8 +2913,13 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs:
                  schema: pulumi.Input[str],
                  oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]] = None):
         """
-        :param pulumi.Input[str] schema: Schema name.
+        :param pulumi.Input[str] schema: Schema name.`schema` -
+               (Required)
+               Schema name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]] oracle_tables: Tables in the database.
+               Structure is documented below.`oracle_tables` -
+               (Optional)
+               Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -2671,6 +2930,8 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs:
     @pulumi.getter
     def schema(self) -> pulumi.Input[str]:
         """
+        Schema name.`schema` -
+        (Required)
         Schema name.
         """
         return pulumi.get(self, "schema")
@@ -2683,6 +2944,9 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs:
     @pulumi.getter(name="oracleTables")
     def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]]:
         """
+        Tables in the database.
+        Structure is documented below.`oracle_tables` -
+        (Optional)
         Tables in the database.
         Structure is documented below.
         """
@@ -2699,8 +2963,13 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableA
                  table: pulumi.Input[str],
                  oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
         """
-        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[str] table: Table name.`table` -
+               (Required)
+               Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.`oracle_columns` -
+               (Optional)
+               Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -2711,6 +2980,8 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableA
     @pulumi.getter
     def table(self) -> pulumi.Input[str]:
         """
+        Table name.`table` -
+        (Required)
         Table name.
         """
         return pulumi.get(self, "table")
@@ -2723,6 +2994,9 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableA
     @pulumi.getter(name="oracleColumns")
     def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
         """
+        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.`oracle_columns` -
+        (Optional)
         Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
         """
@@ -2746,22 +3020,41 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
                  primary_key: Optional[pulumi.Input[bool]] = None,
                  scale: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] column: Column name.`column` -
+               (Optional)
+               Column name.
         :param pulumi.Input[str] data_type: The Oracle data type. Full data types list can be found here:
+               https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+               (Optional)
+               The Oracle data type. Full data types list can be found here:
                https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
         :param pulumi.Input[str] encoding: (Output)
+               Column encoding.`encoding` -
+               (Output)
                Column encoding.
         :param pulumi.Input[int] length: (Output)
+               Column length.`length` -
+               (Output)
                Column length.
         :param pulumi.Input[bool] nullable: (Output)
+               Whether or not the column can accept a null value.`nullable` -
+               (Output)
                Whether or not the column can accept a null value.
         :param pulumi.Input[int] ordinal_position: (Output)
+               The ordinal position of the column in the table.`ordinal_position` -
+               (Output)
                The ordinal position of the column in the table.
         :param pulumi.Input[int] precision: (Output)
+               Column precision.`precision` -
+               (Output)
                Column precision.
         :param pulumi.Input[bool] primary_key: (Output)
+               Whether or not the column represents a primary key.`primary_key` -
+               (Output)
                Whether or not the column represents a primary key.
         :param pulumi.Input[int] scale: (Output)
+               Column scale.`scale` -
+               (Output)
                Column scale.
         """
         if column is not None:
@@ -2787,6 +3080,8 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
         """
+        Column name.`column` -
+        (Optional)
         Column name.
         """
         return pulumi.get(self, "column")
@@ -2799,6 +3094,9 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
         """
+        The Oracle data type. Full data types list can be found here:
+        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+        (Optional)
         The Oracle data type. Full data types list can be found here:
         https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
         """
@@ -2813,6 +3111,8 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     def encoding(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
+        Column encoding.`encoding` -
+        (Output)
         Column encoding.
         """
         return pulumi.get(self, "encoding")
@@ -2825,6 +3125,8 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def length(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
+        Column length.`length` -
         (Output)
         Column length.
         """
@@ -2839,6 +3141,8 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     def nullable(self) -> Optional[pulumi.Input[bool]]:
         """
         (Output)
+        Whether or not the column can accept a null value.`nullable` -
+        (Output)
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
@@ -2851,6 +3155,8 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     @pulumi.getter(name="ordinalPosition")
     def ordinal_position(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
+        The ordinal position of the column in the table.`ordinal_position` -
         (Output)
         The ordinal position of the column in the table.
         """
@@ -2865,6 +3171,8 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     def precision(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
+        Column precision.`precision` -
+        (Output)
         Column precision.
         """
         return pulumi.get(self, "precision")
@@ -2878,6 +3186,8 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     def primary_key(self) -> Optional[pulumi.Input[bool]]:
         """
         (Output)
+        Whether or not the column represents a primary key.`primary_key` -
+        (Output)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
@@ -2890,6 +3200,8 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def scale(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
+        Column scale.`scale` -
         (Output)
         Column scale.
         """
@@ -2930,8 +3242,13 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs:
                  schema: pulumi.Input[str],
                  oracle_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]] = None):
         """
-        :param pulumi.Input[str] schema: Schema name.
+        :param pulumi.Input[str] schema: Schema name.`schema` -
+               (Required)
+               Schema name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]] oracle_tables: Tables in the database.
+               Structure is documented below.`oracle_tables` -
+               (Optional)
+               Tables in the database.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -2942,6 +3259,8 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs:
     @pulumi.getter
     def schema(self) -> pulumi.Input[str]:
         """
+        Schema name.`schema` -
+        (Required)
         Schema name.
         """
         return pulumi.get(self, "schema")
@@ -2954,6 +3273,9 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs:
     @pulumi.getter(name="oracleTables")
     def oracle_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]]:
         """
+        Tables in the database.
+        Structure is documented below.`oracle_tables` -
+        (Optional)
         Tables in the database.
         Structure is documented below.
         """
@@ -2970,8 +3292,13 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableA
                  table: pulumi.Input[str],
                  oracle_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]] = None):
         """
-        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[str] table: Table name.`table` -
+               (Required)
+               Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.`oracle_columns` -
+               (Optional)
+               Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -2982,6 +3309,8 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableA
     @pulumi.getter
     def table(self) -> pulumi.Input[str]:
         """
+        Table name.`table` -
+        (Required)
         Table name.
         """
         return pulumi.get(self, "table")
@@ -2994,6 +3323,9 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableA
     @pulumi.getter(name="oracleColumns")
     def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]:
         """
+        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.`oracle_columns` -
+        (Optional)
         Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
         """
@@ -3017,22 +3349,41 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
                  primary_key: Optional[pulumi.Input[bool]] = None,
                  scale: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] column: Column name.`column` -
+               (Optional)
+               Column name.
         :param pulumi.Input[str] data_type: The Oracle data type. Full data types list can be found here:
+               https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+               (Optional)
+               The Oracle data type. Full data types list can be found here:
                https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
         :param pulumi.Input[str] encoding: (Output)
+               Column encoding.`encoding` -
+               (Output)
                Column encoding.
         :param pulumi.Input[int] length: (Output)
+               Column length.`length` -
+               (Output)
                Column length.
         :param pulumi.Input[bool] nullable: (Output)
+               Whether or not the column can accept a null value.`nullable` -
+               (Output)
                Whether or not the column can accept a null value.
         :param pulumi.Input[int] ordinal_position: (Output)
+               The ordinal position of the column in the table.`ordinal_position` -
+               (Output)
                The ordinal position of the column in the table.
         :param pulumi.Input[int] precision: (Output)
+               Column precision.`precision` -
+               (Output)
                Column precision.
         :param pulumi.Input[bool] primary_key: (Output)
+               Whether or not the column represents a primary key.`primary_key` -
+               (Output)
                Whether or not the column represents a primary key.
         :param pulumi.Input[int] scale: (Output)
+               Column scale.`scale` -
+               (Output)
                Column scale.
         """
         if column is not None:
@@ -3058,6 +3409,8 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
         """
+        Column name.`column` -
+        (Optional)
         Column name.
         """
         return pulumi.get(self, "column")
@@ -3070,6 +3423,9 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
         """
+        The Oracle data type. Full data types list can be found here:
+        https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+        (Optional)
         The Oracle data type. Full data types list can be found here:
         https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
         """
@@ -3084,6 +3440,8 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     def encoding(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
+        Column encoding.`encoding` -
+        (Output)
         Column encoding.
         """
         return pulumi.get(self, "encoding")
@@ -3096,6 +3454,8 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def length(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
+        Column length.`length` -
         (Output)
         Column length.
         """
@@ -3110,6 +3470,8 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     def nullable(self) -> Optional[pulumi.Input[bool]]:
         """
         (Output)
+        Whether or not the column can accept a null value.`nullable` -
+        (Output)
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
@@ -3122,6 +3484,8 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     @pulumi.getter(name="ordinalPosition")
     def ordinal_position(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
+        The ordinal position of the column in the table.`ordinal_position` -
         (Output)
         The ordinal position of the column in the table.
         """
@@ -3136,6 +3500,8 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     def precision(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
+        Column precision.`precision` -
+        (Output)
         Column precision.
         """
         return pulumi.get(self, "precision")
@@ -3149,6 +3515,8 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     def primary_key(self) -> Optional[pulumi.Input[bool]]:
         """
         (Output)
+        Whether or not the column represents a primary key.`primary_key` -
+        (Output)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
@@ -3161,6 +3529,8 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
     @pulumi.getter
     def scale(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
+        Column scale.`scale` -
         (Output)
         Column scale.
         """
@@ -3302,8 +3672,13 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs
                  schema: pulumi.Input[str],
                  postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
         """
-        :param pulumi.Input[str] schema: Database name.
+        :param pulumi.Input[str] schema: Database name.`schema` -
+               (Required)
+               Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
+               Structure is documented below.`postgresql_tables` -
+               (Optional)
+               Tables in the schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -3314,6 +3689,8 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs
     @pulumi.getter
     def schema(self) -> pulumi.Input[str]:
         """
+        Database name.`schema` -
+        (Required)
         Database name.
         """
         return pulumi.get(self, "schema")
@@ -3326,6 +3703,9 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs
     @pulumi.getter(name="postgresqlTables")
     def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
         """
+        Tables in the schema.
+        Structure is documented below.`postgresql_tables` -
+        (Optional)
         Tables in the schema.
         Structure is documented below.
         """
@@ -3342,8 +3722,13 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
                  table: pulumi.Input[str],
                  postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
         """
-        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[str] table: Table name.`table` -
+               (Required)
+               Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.`postgresql_columns` -
+               (Optional)
+               PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -3354,6 +3739,8 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def table(self) -> pulumi.Input[str]:
         """
+        Table name.`table` -
+        (Required)
         Table name.
         """
         return pulumi.get(self, "table")
@@ -3366,6 +3753,9 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     @pulumi.getter(name="postgresqlColumns")
     def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
         """
+        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.`postgresql_columns` -
+        (Optional)
         PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
         """
@@ -3388,17 +3778,34 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
                  primary_key: Optional[pulumi.Input[bool]] = None,
                  scale: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] column: Column name.`column` -
+               (Optional)
+               Column name.
         :param pulumi.Input[str] data_type: The PostgreSQL data type. Full data types list can be found here:
+               https://www.postgresql.org/docs/current/datatype.html`data_type` -
+               (Optional)
+               The PostgreSQL data type. Full data types list can be found here:
                https://www.postgresql.org/docs/current/datatype.html
         :param pulumi.Input[int] length: (Output)
+               Column length.`length` -
+               (Output)
                Column length.
-        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
-        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.`nullable` -
+               (Optional)
+               Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.`ordinal_position` -
+               (Optional)
+               The ordinal position of the column in the table.
         :param pulumi.Input[int] precision: (Output)
+               Column precision.`precision` -
+               (Output)
                Column precision.
-        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.`primary_key` -
+               (Optional)
+               Whether or not the column represents a primary key.
         :param pulumi.Input[int] scale: (Output)
+               Column scale.`scale` -
+               (Output)
                Column scale.
         """
         if column is not None:
@@ -3422,6 +3829,8 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
         """
+        Column name.`column` -
+        (Optional)
         Column name.
         """
         return pulumi.get(self, "column")
@@ -3434,6 +3843,9 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
         """
+        The PostgreSQL data type. Full data types list can be found here:
+        https://www.postgresql.org/docs/current/datatype.html`data_type` -
+        (Optional)
         The PostgreSQL data type. Full data types list can be found here:
         https://www.postgresql.org/docs/current/datatype.html
         """
@@ -3448,6 +3860,8 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     def length(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
+        Column length.`length` -
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -3460,6 +3874,8 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def nullable(self) -> Optional[pulumi.Input[bool]]:
         """
+        Whether or not the column can accept a null value.`nullable` -
+        (Optional)
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
@@ -3472,6 +3888,8 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     @pulumi.getter(name="ordinalPosition")
     def ordinal_position(self) -> Optional[pulumi.Input[int]]:
         """
+        The ordinal position of the column in the table.`ordinal_position` -
+        (Optional)
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
@@ -3485,6 +3903,8 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     def precision(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
+        Column precision.`precision` -
+        (Output)
         Column precision.
         """
         return pulumi.get(self, "precision")
@@ -3497,6 +3917,8 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[pulumi.Input[bool]]:
         """
+        Whether or not the column represents a primary key.`primary_key` -
+        (Optional)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
@@ -3509,6 +3931,8 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def scale(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
+        Column scale.`scale` -
         (Output)
         Column scale.
         """
@@ -3549,8 +3973,13 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs
                  schema: pulumi.Input[str],
                  postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]] = None):
         """
-        :param pulumi.Input[str] schema: Database name.
+        :param pulumi.Input[str] schema: Database name.`schema` -
+               (Required)
+               Database name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
+               Structure is documented below.`postgresql_tables` -
+               (Optional)
+               Tables in the schema.
                Structure is documented below.
         """
         pulumi.set(__self__, "schema", schema)
@@ -3561,6 +3990,8 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs
     @pulumi.getter
     def schema(self) -> pulumi.Input[str]:
         """
+        Database name.`schema` -
+        (Required)
         Database name.
         """
         return pulumi.get(self, "schema")
@@ -3573,6 +4004,9 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs
     @pulumi.getter(name="postgresqlTables")
     def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]:
         """
+        Tables in the schema.
+        Structure is documented below.`postgresql_tables` -
+        (Optional)
         Tables in the schema.
         Structure is documented below.
         """
@@ -3589,8 +4023,13 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
                  table: pulumi.Input[str],
                  postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]] = None):
         """
-        :param pulumi.Input[str] table: Table name.
+        :param pulumi.Input[str] table: Table name.`table` -
+               (Required)
+               Table name.
         :param pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+               Structure is documented below.`postgresql_columns` -
+               (Optional)
+               PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
                Structure is documented below.
         """
         pulumi.set(__self__, "table", table)
@@ -3601,6 +4040,8 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def table(self) -> pulumi.Input[str]:
         """
+        Table name.`table` -
+        (Required)
         Table name.
         """
         return pulumi.get(self, "table")
@@ -3613,6 +4054,9 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @pulumi.getter(name="postgresqlColumns")
     def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]:
         """
+        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        Structure is documented below.`postgresql_columns` -
+        (Optional)
         PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         Structure is documented below.
         """
@@ -3635,17 +4079,34 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
                  primary_key: Optional[pulumi.Input[bool]] = None,
                  scale: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] column: Column name.`column` -
+               (Optional)
+               Column name.
         :param pulumi.Input[str] data_type: The PostgreSQL data type. Full data types list can be found here:
+               https://www.postgresql.org/docs/current/datatype.html`data_type` -
+               (Optional)
+               The PostgreSQL data type. Full data types list can be found here:
                https://www.postgresql.org/docs/current/datatype.html
         :param pulumi.Input[int] length: (Output)
+               Column length.`length` -
+               (Output)
                Column length.
-        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
-        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.`nullable` -
+               (Optional)
+               Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.`ordinal_position` -
+               (Optional)
+               The ordinal position of the column in the table.
         :param pulumi.Input[int] precision: (Output)
+               Column precision.`precision` -
+               (Output)
                Column precision.
-        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.`primary_key` -
+               (Optional)
+               Whether or not the column represents a primary key.
         :param pulumi.Input[int] scale: (Output)
+               Column scale.`scale` -
+               (Output)
                Column scale.
         """
         if column is not None:
@@ -3669,6 +4130,8 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
         """
+        Column name.`column` -
+        (Optional)
         Column name.
         """
         return pulumi.get(self, "column")
@@ -3681,6 +4144,9 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
         """
+        The PostgreSQL data type. Full data types list can be found here:
+        https://www.postgresql.org/docs/current/datatype.html`data_type` -
+        (Optional)
         The PostgreSQL data type. Full data types list can be found here:
         https://www.postgresql.org/docs/current/datatype.html
         """
@@ -3695,6 +4161,8 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     def length(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
+        Column length.`length` -
+        (Output)
         Column length.
         """
         return pulumi.get(self, "length")
@@ -3707,6 +4175,8 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def nullable(self) -> Optional[pulumi.Input[bool]]:
         """
+        Whether or not the column can accept a null value.`nullable` -
+        (Optional)
         Whether or not the column can accept a null value.
         """
         return pulumi.get(self, "nullable")
@@ -3719,6 +4189,8 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @pulumi.getter(name="ordinalPosition")
     def ordinal_position(self) -> Optional[pulumi.Input[int]]:
         """
+        The ordinal position of the column in the table.`ordinal_position` -
+        (Optional)
         The ordinal position of the column in the table.
         """
         return pulumi.get(self, "ordinal_position")
@@ -3732,6 +4204,8 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     def precision(self) -> Optional[pulumi.Input[int]]:
         """
         (Output)
+        Column precision.`precision` -
+        (Output)
         Column precision.
         """
         return pulumi.get(self, "precision")
@@ -3744,6 +4218,8 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> Optional[pulumi.Input[bool]]:
         """
+        Whether or not the column represents a primary key.`primary_key` -
+        (Optional)
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
@@ -3756,6 +4232,8 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     @pulumi.getter
     def scale(self) -> Optional[pulumi.Input[int]]:
         """
+        (Output)
+        Column scale.`scale` -
         (Output)
         Column scale.
         """

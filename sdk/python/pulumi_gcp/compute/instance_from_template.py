@@ -52,8 +52,6 @@ class InstanceFromTemplateArgs:
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
                template to create the instance based on. It is recommended to reference
                instance templates through their unique id (`self_link_unique` attribute).
-               
-               - - -
         :param pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
                stopping the instance without setting this field, the update will fail.
@@ -168,8 +166,6 @@ class InstanceFromTemplateArgs:
         Name or self link of an instance
         template to create the instance based on. It is recommended to reference
         instance templates through their unique id (`self_link_unique` attribute).
-
-        - - -
         """
         return pulumi.get(self, "source_instance_template")
 
@@ -648,8 +644,6 @@ class _InstanceFromTemplateState:
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
                template to create the instance based on. It is recommended to reference
                instance templates through their unique id (`self_link_unique` attribute).
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
@@ -1191,8 +1185,6 @@ class _InstanceFromTemplateState:
         Name or self link of an instance
         template to create the instance based on. It is recommended to reference
         instance templates through their unique id (`self_link_unique` attribute).
-
-        - - -
         """
         return pulumi.get(self, "source_instance_template")
 
@@ -1365,8 +1357,6 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
                template to create the instance based on. It is recommended to reference
                instance templates through their unique id (`self_link_unique` attribute).
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
@@ -1632,8 +1622,6 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
                template to create the instance based on. It is recommended to reference
                instance templates through their unique id (`self_link_unique` attribute).
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
@@ -1996,8 +1984,6 @@ class InstanceFromTemplate(pulumi.CustomResource):
         Name or self link of an instance
         template to create the instance based on. It is recommended to reference
         instance templates through their unique id (`self_link_unique` attribute).
-
-        - - -
         """
         return pulumi.get(self, "source_instance_template")
 

@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// specified for this Managed Certificate.
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="nested_provisioning_issue"&gt;&lt;/a&gt;The `provisioning_issue` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateManagedAuthorizationAttemptInfo> AuthorizationAttemptInfos;
@@ -46,7 +45,7 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         public readonly ImmutableArray<Outputs.CertificateManagedProvisioningIssue> ProvisioningIssues;
         /// <summary>
         /// (Output)
-        /// State of the domain for managed certificate issuance.
+        /// A state of this Managed Certificate.
         /// </summary>
         public readonly string? State;
 

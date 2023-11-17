@@ -134,7 +134,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     }
 
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group's instances to
      * apply the configuration.
@@ -208,8 +207,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
-     *
-     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -222,8 +219,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     public readonly statefulDisks!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerStatefulDisk[] | undefined>;
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-     *
-     * - - -
      */
     public readonly statefulExternalIps!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerStatefulExternalIp[] | undefined>;
     /**
@@ -351,7 +346,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
  */
 export interface RegionInstanceGroupManagerState {
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group's instances to
      * apply the configuration.
@@ -425,8 +419,6 @@ export interface RegionInstanceGroupManagerState {
     project?: pulumi.Input<string>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -439,8 +431,6 @@ export interface RegionInstanceGroupManagerState {
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[]>;
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-     *
-     * - - -
      */
     statefulExternalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulExternalIp>[]>;
     /**
@@ -492,7 +482,6 @@ export interface RegionInstanceGroupManagerState {
  */
 export interface RegionInstanceGroupManagerArgs {
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group's instances to
      * apply the configuration.
@@ -558,8 +547,6 @@ export interface RegionInstanceGroupManagerArgs {
     project?: pulumi.Input<string>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
-     *
-     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -568,8 +555,6 @@ export interface RegionInstanceGroupManagerArgs {
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulDisk>[]>;
     /**
      * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-     *
-     * - - -
      */
     statefulExternalIps?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerStatefulExternalIp>[]>;
     /**

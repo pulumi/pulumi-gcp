@@ -238,8 +238,6 @@ type InterconnectAttachment struct {
 	// `a-z?` which means the first character must be a
 	// lowercase letter, and all following characters must be a dash, lowercase
 	// letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// [Output only for type PARTNER. Not present for DEDICATED]. The opaque
 	// identifier of an PARTNER attachment used to initiate provisioning with
@@ -390,8 +388,6 @@ type interconnectAttachmentState struct {
 	// `a-z?` which means the first character must be a
 	// lowercase letter, and all following characters must be a dash, lowercase
 	// letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// [Output only for type PARTNER. Not present for DEDICATED]. The opaque
 	// identifier of an PARTNER attachment used to initiate provisioning with
@@ -510,8 +506,6 @@ type InterconnectAttachmentState struct {
 	// `a-z?` which means the first character must be a
 	// lowercase letter, and all following characters must be a dash, lowercase
 	// letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// [Output only for type PARTNER. Not present for DEDICATED]. The opaque
 	// identifier of an PARTNER attachment used to initiate provisioning with
@@ -623,8 +617,6 @@ type interconnectAttachmentArgs struct {
 	// `a-z?` which means the first character must be a
 	// lowercase letter, and all following characters must be a dash, lowercase
 	// letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -717,8 +709,6 @@ type InterconnectAttachmentArgs struct {
 	// `a-z?` which means the first character must be a
 	// lowercase letter, and all following characters must be a dash, lowercase
 	// letter, or digit, except the last character, which cannot be a dash.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -946,8 +936,6 @@ func (o InterconnectAttachmentOutput) Mtu() pulumi.StringOutput {
 // `a-z?` which means the first character must be a
 // lowercase letter, and all following characters must be a dash, lowercase
 // letter, or digit, except the last character, which cannot be a dash.
-//
-// ***
 func (o InterconnectAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

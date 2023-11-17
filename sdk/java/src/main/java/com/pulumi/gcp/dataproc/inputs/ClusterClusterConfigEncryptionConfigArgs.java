@@ -17,8 +17,6 @@ public final class ClusterClusterConfigEncryptionConfigArgs extends com.pulumi.r
      * The Cloud KMS key name to use for PD disk encryption for
      * all instances in the cluster.
      * 
-     * ***
-     * 
      */
     @Import(name="kmsKeyName", required=true)
     private Output<String> kmsKeyName;
@@ -26,8 +24,6 @@ public final class ClusterClusterConfigEncryptionConfigArgs extends com.pulumi.r
     /**
      * @return The Cloud KMS key name to use for PD disk encryption for
      * all instances in the cluster.
-     * 
-     * ***
      * 
      */
     public Output<String> kmsKeyName() {
@@ -62,8 +58,6 @@ public final class ClusterClusterConfigEncryptionConfigArgs extends com.pulumi.r
          * @param kmsKeyName The Cloud KMS key name to use for PD disk encryption for
          * all instances in the cluster.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -75,8 +69,6 @@ public final class ClusterClusterConfigEncryptionConfigArgs extends com.pulumi.r
         /**
          * @param kmsKeyName The Cloud KMS key name to use for PD disk encryption for
          * all instances in the cluster.
-         * 
-         * ***
          * 
          * @return builder
          * 

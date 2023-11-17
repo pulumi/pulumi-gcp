@@ -18,16 +18,12 @@ public final class GetVPNGatewayArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The name of the VPN gateway.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return The name of the VPN gateway.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -97,8 +93,6 @@ public final class GetVPNGatewayArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param name The name of the VPN gateway.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -109,8 +103,6 @@ public final class GetVPNGatewayArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name The name of the VPN gateway.
-         * 
-         * ***
          * 
          * @return builder
          * 

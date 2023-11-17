@@ -171,15 +171,6 @@ type DatasetIamBinding struct {
 
 	Condition DatasetIamBindingConditionPtrOutput `pulumi:"condition"`
 	// The dataset ID.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// (Computed) The etag of the dataset's IAM policy.
 	Etag    pulumi.StringOutput      `pulumi:"etag"`
@@ -234,15 +225,6 @@ func GetDatasetIamBinding(ctx *pulumi.Context,
 type datasetIamBindingState struct {
 	Condition *DatasetIamBindingCondition `pulumi:"condition"`
 	// The dataset ID.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	DatasetId *string `pulumi:"datasetId"`
 	// (Computed) The etag of the dataset's IAM policy.
 	Etag    *string  `pulumi:"etag"`
@@ -259,15 +241,6 @@ type datasetIamBindingState struct {
 type DatasetIamBindingState struct {
 	Condition DatasetIamBindingConditionPtrInput
 	// The dataset ID.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	DatasetId pulumi.StringPtrInput
 	// (Computed) The etag of the dataset's IAM policy.
 	Etag    pulumi.StringPtrInput
@@ -288,15 +261,6 @@ func (DatasetIamBindingState) ElementType() reflect.Type {
 type datasetIamBindingArgs struct {
 	Condition *DatasetIamBindingCondition `pulumi:"condition"`
 	// The dataset ID.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	DatasetId string   `pulumi:"datasetId"`
 	Members   []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
@@ -312,15 +276,6 @@ type datasetIamBindingArgs struct {
 type DatasetIamBindingArgs struct {
 	Condition DatasetIamBindingConditionPtrInput
 	// The dataset ID.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	DatasetId pulumi.StringInput
 	Members   pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
@@ -424,15 +379,6 @@ func (o DatasetIamBindingOutput) Condition() DatasetIamBindingConditionPtrOutput
 }
 
 // The dataset ID.
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o DatasetIamBindingOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatasetIamBinding) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }

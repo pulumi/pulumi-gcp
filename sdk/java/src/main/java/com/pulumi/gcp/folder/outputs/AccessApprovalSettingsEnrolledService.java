@@ -43,8 +43,6 @@ public final class AccessApprovalSettingsEnrolledService {
      * Default value is `BLOCK_ALL`.
      * Possible values are: `BLOCK_ALL`.
      * 
-     * ***
-     * 
      */
     private @Nullable String enrollmentLevel;
 
@@ -82,8 +80,6 @@ public final class AccessApprovalSettingsEnrolledService {
      * @return The enrollment level of the service.
      * Default value is `BLOCK_ALL`.
      * Possible values are: `BLOCK_ALL`.
-     * 
-     * ***
      * 
      */
     public Optional<String> enrollmentLevel() {

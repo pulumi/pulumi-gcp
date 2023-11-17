@@ -23,8 +23,6 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
      * Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
      * 
-     * ***
-     * 
      */
     @Import(name="dataset", required=true)
     private Output<String> dataset;
@@ -32,8 +30,6 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-     * 
-     * ***
      * 
      */
     public Output<String> dataset() {
@@ -160,8 +156,6 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
          * @param dataset Identifies the dataset addressed by this request. Must be in the format
          * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -173,8 +167,6 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dataset Identifies the dataset addressed by this request. Must be in the format
          * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-         * 
-         * ***
          * 
          * @return builder
          * 

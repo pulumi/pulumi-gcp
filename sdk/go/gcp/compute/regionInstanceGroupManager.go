@@ -155,7 +155,6 @@ import (
 type RegionInstanceGroupManager struct {
 	pulumi.CustomResourceState
 
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -203,16 +202,12 @@ type RegionInstanceGroupManager struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region where the managed instance group resides. If not provided, the provider region is used.
-	//
-	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URL of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayOutput `pulumi:"statefulDisks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-	//
-	// ***
 	StatefulExternalIps RegionInstanceGroupManagerStatefulExternalIpArrayOutput `pulumi:"statefulExternalIps"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
 	StatefulInternalIps RegionInstanceGroupManagerStatefulInternalIpArrayOutput `pulumi:"statefulInternalIps"`
@@ -278,7 +273,6 @@ func GetRegionInstanceGroupManager(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionInstanceGroupManager resources.
 type regionInstanceGroupManagerState struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -326,16 +320,12 @@ type regionInstanceGroupManagerState struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region where the managed instance group resides. If not provided, the provider region is used.
-	//
-	// ***
 	Region *string `pulumi:"region"`
 	// The URL of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks []RegionInstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-	//
-	// ***
 	StatefulExternalIps []RegionInstanceGroupManagerStatefulExternalIp `pulumi:"statefulExternalIps"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
 	StatefulInternalIps []RegionInstanceGroupManagerStatefulInternalIp `pulumi:"statefulInternalIps"`
@@ -366,7 +356,6 @@ type regionInstanceGroupManagerState struct {
 }
 
 type RegionInstanceGroupManagerState struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -414,16 +403,12 @@ type RegionInstanceGroupManagerState struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region where the managed instance group resides. If not provided, the provider region is used.
-	//
-	// ***
 	Region pulumi.StringPtrInput
 	// The URL of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayInput
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-	//
-	// ***
 	StatefulExternalIps RegionInstanceGroupManagerStatefulExternalIpArrayInput
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
 	StatefulInternalIps RegionInstanceGroupManagerStatefulInternalIpArrayInput
@@ -458,7 +443,6 @@ func (RegionInstanceGroupManagerState) ElementType() reflect.Type {
 }
 
 type regionInstanceGroupManagerArgs struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -502,14 +486,10 @@ type regionInstanceGroupManagerArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region where the managed instance group resides. If not provided, the provider region is used.
-	//
-	// ***
 	Region *string `pulumi:"region"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks []RegionInstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-	//
-	// ***
 	StatefulExternalIps []RegionInstanceGroupManagerStatefulExternalIp `pulumi:"statefulExternalIps"`
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
 	StatefulInternalIps []RegionInstanceGroupManagerStatefulInternalIp `pulumi:"statefulInternalIps"`
@@ -539,7 +519,6 @@ type regionInstanceGroupManagerArgs struct {
 
 // The set of arguments for constructing a RegionInstanceGroupManager resource.
 type RegionInstanceGroupManagerArgs struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -583,14 +562,10 @@ type RegionInstanceGroupManagerArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region where the managed instance group resides. If not provided, the provider region is used.
-	//
-	// ***
 	Region pulumi.StringPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayInput
 	// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-	//
-	// ***
 	StatefulExternalIps RegionInstanceGroupManagerStatefulExternalIpArrayInput
 	// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
 	StatefulInternalIps RegionInstanceGroupManagerStatefulInternalIpArrayInput
@@ -705,7 +680,6 @@ func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutputWith
 	return o
 }
 
-// )
 // Properties to set on all instances in the group. After setting
 // allInstancesConfig on the group, you must update the group's instances to
 // apply the configuration.
@@ -800,8 +774,6 @@ func (o RegionInstanceGroupManagerOutput) Project() pulumi.StringOutput {
 }
 
 // The region where the managed instance group resides. If not provided, the provider region is used.
-//
-// ***
 func (o RegionInstanceGroupManagerOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -819,8 +791,6 @@ func (o RegionInstanceGroupManagerOutput) StatefulDisks() RegionInstanceGroupMan
 }
 
 // External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-//
-// ***
 func (o RegionInstanceGroupManagerOutput) StatefulExternalIps() RegionInstanceGroupManagerStatefulExternalIpArrayOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerStatefulExternalIpArrayOutput {
 		return v.StatefulExternalIps

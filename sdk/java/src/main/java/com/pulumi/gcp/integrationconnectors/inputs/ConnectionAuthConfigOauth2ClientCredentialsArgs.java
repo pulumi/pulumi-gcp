@@ -17,14 +17,14 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsArgs extends com.p
     public static final ConnectionAuthConfigOauth2ClientCredentialsArgs Empty = new ConnectionAuthConfigOauth2ClientCredentialsArgs();
 
     /**
-     * Secret version of Password for Authentication.
+     * Client ID for user-provided OAuth app.
      * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
-     * @return Secret version of Password for Authentication.
+     * @return Client ID for user-provided OAuth app.
      * 
      */
     public Output<String> clientId() {
@@ -32,7 +32,7 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsArgs extends com.p
     }
 
     /**
-     * Secret version reference containing the client secret.
+     * Client secret for user-provided OAuth app.
      * Structure is documented below.
      * 
      */
@@ -40,7 +40,7 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsArgs extends com.p
     private @Nullable Output<ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs> clientSecret;
 
     /**
-     * @return Secret version reference containing the client secret.
+     * @return Client secret for user-provided OAuth app.
      * Structure is documented below.
      * 
      */
@@ -74,7 +74,7 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsArgs extends com.p
         }
 
         /**
-         * @param clientId Secret version of Password for Authentication.
+         * @param clientId Client ID for user-provided OAuth app.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsArgs extends com.p
         }
 
         /**
-         * @param clientId Secret version of Password for Authentication.
+         * @param clientId Client ID for user-provided OAuth app.
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsArgs extends com.p
         }
 
         /**
-         * @param clientSecret Secret version reference containing the client secret.
+         * @param clientSecret Client secret for user-provided OAuth app.
          * Structure is documented below.
          * 
          * @return builder
@@ -107,7 +107,7 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsArgs extends com.p
         }
 
         /**
-         * @param clientSecret Secret version reference containing the client secret.
+         * @param clientSecret Client secret for user-provided OAuth app.
          * Structure is documented below.
          * 
          * @return builder

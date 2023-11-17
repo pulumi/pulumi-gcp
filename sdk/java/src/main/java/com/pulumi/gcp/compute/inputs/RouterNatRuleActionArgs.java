@@ -35,9 +35,21 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.sourceNatActiveIps);
     }
 
+    /**
+     * A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+     * These subnetworks must have purpose set to PRIVATE_NAT.
+     * This field is used for private NAT.
+     * 
+     */
     @Import(name="sourceNatActiveRanges")
     private @Nullable Output<List<String>> sourceNatActiveRanges;
 
+    /**
+     * @return A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+     * These subnetworks must have purpose set to PRIVATE_NAT.
+     * This field is used for private NAT.
+     * 
+     */
     public Optional<Output<List<String>>> sourceNatActiveRanges() {
         return Optional.ofNullable(this.sourceNatActiveRanges);
     }
@@ -63,9 +75,21 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.sourceNatDrainIps);
     }
 
+    /**
+     * A list of URLs of subnetworks representing source ranges to be drained.
+     * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+     * This field is used for private NAT.
+     * 
+     */
     @Import(name="sourceNatDrainRanges")
     private @Nullable Output<List<String>> sourceNatDrainRanges;
 
+    /**
+     * @return A list of URLs of subnetworks representing source ranges to be drained.
+     * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+     * This field is used for private NAT.
+     * 
+     */
     public Optional<Output<List<String>>> sourceNatDrainRanges() {
         return Optional.ofNullable(this.sourceNatDrainRanges);
     }
@@ -134,15 +158,39 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
             return sourceNatActiveIps(List.of(sourceNatActiveIps));
         }
 
+        /**
+         * @param sourceNatActiveRanges A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+         * These subnetworks must have purpose set to PRIVATE_NAT.
+         * This field is used for private NAT.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceNatActiveRanges(@Nullable Output<List<String>> sourceNatActiveRanges) {
             $.sourceNatActiveRanges = sourceNatActiveRanges;
             return this;
         }
 
+        /**
+         * @param sourceNatActiveRanges A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+         * These subnetworks must have purpose set to PRIVATE_NAT.
+         * This field is used for private NAT.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceNatActiveRanges(List<String> sourceNatActiveRanges) {
             return sourceNatActiveRanges(Output.of(sourceNatActiveRanges));
         }
 
+        /**
+         * @param sourceNatActiveRanges A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+         * These subnetworks must have purpose set to PRIVATE_NAT.
+         * This field is used for private NAT.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceNatActiveRanges(String... sourceNatActiveRanges) {
             return sourceNatActiveRanges(List.of(sourceNatActiveRanges));
         }
@@ -187,15 +235,39 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
             return sourceNatDrainIps(List.of(sourceNatDrainIps));
         }
 
+        /**
+         * @param sourceNatDrainRanges A list of URLs of subnetworks representing source ranges to be drained.
+         * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+         * This field is used for private NAT.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceNatDrainRanges(@Nullable Output<List<String>> sourceNatDrainRanges) {
             $.sourceNatDrainRanges = sourceNatDrainRanges;
             return this;
         }
 
+        /**
+         * @param sourceNatDrainRanges A list of URLs of subnetworks representing source ranges to be drained.
+         * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+         * This field is used for private NAT.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceNatDrainRanges(List<String> sourceNatDrainRanges) {
             return sourceNatDrainRanges(Output.of(sourceNatDrainRanges));
         }
 
+        /**
+         * @param sourceNatDrainRanges A list of URLs of subnetworks representing source ranges to be drained.
+         * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+         * This field is used for private NAT.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceNatDrainRanges(String... sourceNatDrainRanges) {
             return sourceNatDrainRanges(List.of(sourceNatDrainRanges));
         }

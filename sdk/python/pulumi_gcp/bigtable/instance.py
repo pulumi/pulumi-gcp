@@ -28,8 +28,6 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
-               
-               -----
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
                in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
@@ -71,8 +69,6 @@ class InstanceArgs:
         A block of cluster configuration options. This can be specified at least once, and up 
         to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         to default to the backend value. See structure below.
-
-        -----
         """
         return pulumi.get(self, "clusters")
 
@@ -182,14 +178,10 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceClusterArgs']]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
-               
-               -----
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
                in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-               
-               -----
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
                and all instances will become `"PRODUCTION"` instances. This means that new and existing `"DEVELOPMENT"` instances will be converted to
@@ -233,8 +225,6 @@ class _InstanceState:
         A block of cluster configuration options. This can be specified at least once, and up 
         to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         to default to the backend value. See structure below.
-
-        -----
         """
         return pulumi.get(self, "clusters")
 
@@ -272,8 +262,6 @@ class _InstanceState:
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-
-        -----
         """
         return pulumi.get(self, "effective_labels")
 
@@ -458,8 +446,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
-               
-               -----
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
                in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
@@ -640,14 +626,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceClusterArgs']]]] clusters: A block of cluster configuration options. This can be specified at least once, and up 
                to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
                to default to the backend value. See structure below.
-               
-               -----
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow this provider to destroy the instance. Unless this field is set to false
                in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         :param pulumi.Input[str] display_name: The human-readable display name of the Bigtable instance. Defaults to the instance `name`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-               
-               -----
         :param pulumi.Input[str] instance_type: The instance type to create. One of `"DEVELOPMENT"` or `"PRODUCTION"`. Defaults to `"PRODUCTION"`.
                It is recommended to leave this field unspecified since the distinction between `"DEVELOPMENT"` and `"PRODUCTION"` instances is going away,
                and all instances will become `"PRODUCTION"` instances. This means that new and existing `"DEVELOPMENT"` instances will be converted to
@@ -684,8 +666,6 @@ class Instance(pulumi.CustomResource):
         A block of cluster configuration options. This can be specified at least once, and up 
         to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
         to default to the backend value. See structure below.
-
-        -----
         """
         return pulumi.get(self, "clusters")
 
@@ -711,8 +691,6 @@ class Instance(pulumi.CustomResource):
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-
-        -----
         """
         return pulumi.get(self, "effective_labels")
 

@@ -27,9 +27,6 @@ class ServiceConnectionPolicyArgs:
         """
         The set of arguments for constructing a ServiceConnectionPolicy resource.
         :param pulumi.Input[str] location: The location of the ServiceConnectionPolicy.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
         :param pulumi.Input[str] service_class: The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
                It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
@@ -63,9 +60,6 @@ class ServiceConnectionPolicyArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location of the ServiceConnectionPolicy.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -194,9 +188,6 @@ class _ServiceConnectionPolicyState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the ServiceConnectionPolicy.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
         :param pulumi.Input[str] network: The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -322,9 +313,6 @@ class _ServiceConnectionPolicyState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location of the ServiceConnectionPolicy.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -512,9 +500,6 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the ServiceConnectionPolicy.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
         :param pulumi.Input[str] network: The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -683,9 +668,6 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the ServiceConnectionPolicy.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
         :param pulumi.Input[str] network: The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -777,9 +759,6 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location of the ServiceConnectionPolicy.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

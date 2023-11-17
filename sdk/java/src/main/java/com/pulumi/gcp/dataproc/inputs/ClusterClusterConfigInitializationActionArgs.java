@@ -38,8 +38,6 @@ public final class ClusterClusterConfigInitializationActionArgs extends com.pulu
      * allowed to take to execute its action. GCP will default to a predetermined
      * computed value if not set (currently 300).
      * 
-     * ***
-     * 
      */
     @Import(name="timeoutSec")
     private @Nullable Output<Integer> timeoutSec;
@@ -48,8 +46,6 @@ public final class ClusterClusterConfigInitializationActionArgs extends com.pulu
      * @return The maximum duration (in seconds) which `script` is
      * allowed to take to execute its action. GCP will default to a predetermined
      * computed value if not set (currently 300).
-     * 
-     * ***
      * 
      */
     public Optional<Output<Integer>> timeoutSec() {
@@ -109,8 +105,6 @@ public final class ClusterClusterConfigInitializationActionArgs extends com.pulu
          * allowed to take to execute its action. GCP will default to a predetermined
          * computed value if not set (currently 300).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -123,8 +117,6 @@ public final class ClusterClusterConfigInitializationActionArgs extends com.pulu
          * @param timeoutSec The maximum duration (in seconds) which `script` is
          * allowed to take to execute its action. GCP will default to a predetermined
          * computed value if not set (currently 300).
-         * 
-         * ***
          * 
          * @return builder
          * 

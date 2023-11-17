@@ -99,9 +99,6 @@ class RegionBackendServiceArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
@@ -127,8 +124,8 @@ class RegionBackendServiceArgs:
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
-        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-               and Internal HTTP(S) load balancing.
+        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+               Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -409,9 +406,6 @@ class RegionBackendServiceArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -536,8 +530,8 @@ class RegionBackendServiceArgs:
     @pulumi.getter
     def subsetting(self) -> Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']]:
         """
-        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-        and Internal HTTP(S) load balancing.
+        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        Structure is documented below.
         """
         return pulumi.get(self, "subsetting")
 
@@ -651,9 +645,6 @@ class _RegionBackendServiceState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
@@ -680,8 +671,8 @@ class _RegionBackendServiceState:
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
-        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-               and Internal HTTP(S) load balancing.
+        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+               Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -993,9 +984,6 @@ class _RegionBackendServiceState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1132,8 +1120,8 @@ class _RegionBackendServiceState:
     @pulumi.getter
     def subsetting(self) -> Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']]:
         """
-        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-        and Internal HTTP(S) load balancing.
+        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        Structure is documented below.
         """
         return pulumi.get(self, "subsetting")
 
@@ -1288,9 +1276,6 @@ class RegionBackendService(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
@@ -1316,8 +1301,8 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-               and Internal HTTP(S) load balancing.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+               Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -1554,9 +1539,6 @@ class RegionBackendService(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
@@ -1583,8 +1565,8 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-               and Internal HTTP(S) load balancing.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+               Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -1804,9 +1786,6 @@ class RegionBackendService(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1903,8 +1882,8 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter
     def subsetting(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceSubsetting']]:
         """
-        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-        and Internal HTTP(S) load balancing.
+        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        Structure is documented below.
         """
         return pulumi.get(self, "subsetting")
 

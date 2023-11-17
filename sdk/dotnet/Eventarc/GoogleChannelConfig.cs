@@ -103,10 +103,6 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -183,10 +179,6 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -219,10 +211,6 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -107,9 +107,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("cryptoKey")]
         public Output<string> CryptoKey { get; private set; } = null!;
@@ -192,9 +189,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cryptoKey", required: true)]
         public Input<string> CryptoKey { get; set; } = null!;
@@ -250,9 +244,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cryptoKey")]
         public Input<string>? CryptoKey { get; set; }

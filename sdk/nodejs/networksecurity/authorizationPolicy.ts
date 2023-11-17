@@ -144,9 +144,6 @@ export class AuthorizationPolicy extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * Name of the AuthorizationPolicy resource.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -252,9 +249,6 @@ export interface AuthorizationPolicyState {
     location?: pulumi.Input<string>;
     /**
      * Name of the AuthorizationPolicy resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -305,9 +299,6 @@ export interface AuthorizationPolicyArgs {
     location?: pulumi.Input<string>;
     /**
      * Name of the AuthorizationPolicy resource.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

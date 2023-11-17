@@ -35,10 +35,6 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequest {
      * 
      */
     private String projectId;
-    /**
-     * @return (Optional)
-     * 
-     */
     private @Nullable Boolean validateOnly;
 
     private PipelineWorkloadDataflowLaunchTemplateRequest() {}
@@ -72,10 +68,6 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequest {
     public String projectId() {
         return this.projectId;
     }
-    /**
-     * @return (Optional)
-     * 
-     */
     public Optional<Boolean> validateOnly() {
         return Optional.ofNullable(this.validateOnly);
     }

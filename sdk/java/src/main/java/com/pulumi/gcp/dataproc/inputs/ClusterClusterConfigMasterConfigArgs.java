@@ -20,14 +20,14 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
     public static final ClusterClusterConfigMasterConfigArgs Empty = new ClusterClusterConfigMasterConfigArgs();
 
     /**
-     * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+     * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.`accelerators` (Optional) The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
      * 
      */
     @Import(name="accelerators")
     private @Nullable Output<List<ClusterClusterConfigMasterConfigAcceleratorArgs>> accelerators;
 
     /**
-     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.`accelerators` (Optional) The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
      * 
      */
     public Optional<Output<List<ClusterClusterConfigMasterConfigAcceleratorArgs>>> accelerators() {
@@ -161,7 +161,7 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.`accelerators` (Optional) The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.`accelerators` (Optional) The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
+         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.`accelerators` (Optional) The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
          * 
          * @return builder
          * 

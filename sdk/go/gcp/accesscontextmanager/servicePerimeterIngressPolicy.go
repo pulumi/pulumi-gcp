@@ -56,8 +56,6 @@ type ServicePerimeterIngressPolicy struct {
 	// Structure is documented below.
 	IngressTo ServicePerimeterIngressPolicyIngressToPtrOutput `pulumi:"ingressTo"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter pulumi.StringOutput `pulumi:"perimeter"`
 }
 
@@ -103,8 +101,6 @@ type servicePerimeterIngressPolicyState struct {
 	// Structure is documented below.
 	IngressTo *ServicePerimeterIngressPolicyIngressTo `pulumi:"ingressTo"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter *string `pulumi:"perimeter"`
 }
 
@@ -118,8 +114,6 @@ type ServicePerimeterIngressPolicyState struct {
 	// Structure is documented below.
 	IngressTo ServicePerimeterIngressPolicyIngressToPtrInput
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter pulumi.StringPtrInput
 }
 
@@ -137,8 +131,6 @@ type servicePerimeterIngressPolicyArgs struct {
 	// Structure is documented below.
 	IngressTo *ServicePerimeterIngressPolicyIngressTo `pulumi:"ingressTo"`
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter string `pulumi:"perimeter"`
 }
 
@@ -153,8 +145,6 @@ type ServicePerimeterIngressPolicyArgs struct {
 	// Structure is documented below.
 	IngressTo ServicePerimeterIngressPolicyIngressToPtrInput
 	// The name of the Service Perimeter to add this resource to.
-	//
-	// ***
 	Perimeter pulumi.StringInput
 }
 
@@ -264,8 +254,6 @@ func (o ServicePerimeterIngressPolicyOutput) IngressTo() ServicePerimeterIngress
 }
 
 // The name of the Service Perimeter to add this resource to.
-//
-// ***
 func (o ServicePerimeterIngressPolicyOutput) Perimeter() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeterIngressPolicy) pulumi.StringOutput { return v.Perimeter }).(pulumi.StringOutput)
 }

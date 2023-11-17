@@ -36,9 +36,6 @@ class RegionDiskArgs:
         """
         The set of arguments for constructing a RegionDisk resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to.
-               
-               
-               - - -
         :param pulumi.Input['RegionDiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -56,8 +53,7 @@ class RegionDiskArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
-        :param pulumi.Input[str] interface: (Optional, Deprecated)
-               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
@@ -87,10 +83,9 @@ class RegionDiskArgs:
                If you specify this field along with sourceImage or sourceSnapshot,
                the value of sizeGb must not be less than the size of the sourceImage
                or the size of the snapshot.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-               example, the following are valid values: *
-               'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. For example, the following are
+               valid values:
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -148,9 +143,6 @@ class RegionDiskArgs:
     def replica_zones(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         URLs of the zones where the disk should be replicated to.
-
-
-        - - -
         """
         return pulumi.get(self, "replica_zones")
 
@@ -223,7 +215,6 @@ class RegionDiskArgs:
     @pulumi.getter
     def interface(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 
         > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -345,10 +336,9 @@ class RegionDiskArgs:
     @pulumi.getter
     def snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-        example, the following are valid values: *
-        'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. For example, the following are
+        valid values:
         """
         return pulumi.get(self, "snapshot")
 
@@ -455,8 +445,7 @@ class _RegionDiskState:
         :param pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
-        :param pulumi.Input[str] interface: (Optional, Deprecated)
-               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
@@ -486,9 +475,6 @@ class _RegionDiskState:
                and default labels configured on the provider.
         :param pulumi.Input[str] region: A reference to the region where the disk resides.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the sourceImage or
@@ -497,10 +483,9 @@ class _RegionDiskState:
                If you specify this field along with sourceImage or sourceSnapshot,
                the value of sizeGb must not be less than the size of the sourceImage
                or the size of the snapshot.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-               example, the following are valid values: *
-               'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. For example, the following are
+               valid values:
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -674,7 +659,6 @@ class _RegionDiskState:
     @pulumi.getter
     def interface(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 
         > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -829,9 +813,6 @@ class _RegionDiskState:
     def replica_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         URLs of the zones where the disk should be replicated to.
-
-
-        - - -
         """
         return pulumi.get(self, "replica_zones")
 
@@ -873,10 +854,9 @@ class _RegionDiskState:
     @pulumi.getter
     def snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-        example, the following are valid values: *
-        'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. For example, the following are
+        valid values:
         """
         return pulumi.get(self, "snapshot")
 
@@ -1151,8 +1131,7 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionDiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
-        :param pulumi.Input[str] interface: (Optional, Deprecated)
-               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
@@ -1176,9 +1155,6 @@ class RegionDisk(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the disk resides.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to.
-               
-               
-               - - -
         :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the sourceImage or
                sourceSnapshot parameter, or specify it alone to create an empty
@@ -1186,10 +1162,9 @@ class RegionDisk(pulumi.CustomResource):
                If you specify this field along with sourceImage or sourceSnapshot,
                the value of sizeGb must not be less than the size of the sourceImage
                or the size of the snapshot.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-               example, the following are valid values: *
-               'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. For example, the following are
+               valid values:
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -1479,8 +1454,7 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionDiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
-        :param pulumi.Input[str] interface: (Optional, Deprecated)
-               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
@@ -1510,9 +1484,6 @@ class RegionDisk(pulumi.CustomResource):
                and default labels configured on the provider.
         :param pulumi.Input[str] region: A reference to the region where the disk resides.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[int] size: Size of the persistent disk, specified in GB. You can specify this
                field when creating a persistent disk using the sourceImage or
@@ -1521,10 +1492,9 @@ class RegionDisk(pulumi.CustomResource):
                If you specify this field along with sourceImage or sourceSnapshot,
                the value of sizeGb must not be less than the size of the sourceImage
                or the size of the snapshot.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-               example, the following are valid values: *
-               'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. For example, the following are
+               valid values:
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -1649,7 +1619,6 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter
     def interface(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 
         > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -1760,9 +1729,6 @@ class RegionDisk(pulumi.CustomResource):
     def replica_zones(self) -> pulumi.Output[Sequence[str]]:
         """
         URLs of the zones where the disk should be replicated to.
-
-
-        - - -
         """
         return pulumi.get(self, "replica_zones")
 
@@ -1792,10 +1758,9 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter
     def snapshot(self) -> pulumi.Output[Optional[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-        example, the following are valid values: *
-        'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. For example, the following are
+        valid values:
         """
         return pulumi.get(self, "snapshot")
 

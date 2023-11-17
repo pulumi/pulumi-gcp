@@ -67,9 +67,6 @@ export class ProjectInfo extends pulumi.CustomResource {
      * The ID of the billing account associated with the project, if
      * any. Set to empty string to disable billing for the project.
      * For example, `"012345-567890-ABCDEF"` or `""`.
-     *
-     *
-     * - - -
      */
     public readonly billingAccount!: pulumi.Output<string>;
     /**
@@ -114,9 +111,6 @@ export interface ProjectInfoState {
      * The ID of the billing account associated with the project, if
      * any. Set to empty string to disable billing for the project.
      * For example, `"012345-567890-ABCDEF"` or `""`.
-     *
-     *
-     * - - -
      */
     billingAccount?: pulumi.Input<string>;
     /**
@@ -134,9 +128,6 @@ export interface ProjectInfoArgs {
      * The ID of the billing account associated with the project, if
      * any. Set to empty string to disable billing for the project.
      * For example, `"012345-567890-ABCDEF"` or `""`.
-     *
-     *
-     * - - -
      */
     billingAccount: pulumi.Input<string>;
     /**

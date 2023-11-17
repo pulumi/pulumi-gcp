@@ -586,7 +586,7 @@ namespace Pulumi.Gcp.DataLoss
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        /// A description of the job trigger.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -699,7 +699,7 @@ namespace Pulumi.Gcp.DataLoss
     public sealed class PreventionJobTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        /// A description of the job trigger.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -769,7 +769,7 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        /// A description of the job trigger.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

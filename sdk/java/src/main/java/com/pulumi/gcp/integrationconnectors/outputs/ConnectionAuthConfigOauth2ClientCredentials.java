@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionAuthConfigOauth2ClientCredentials {
     /**
-     * @return Secret version of Password for Authentication.
+     * @return Client ID for user-provided OAuth app.
      * 
      */
     private String clientId;
     /**
-     * @return Secret version reference containing the client secret.
+     * @return Client secret for user-provided OAuth app.
      * Structure is documented below.
      * 
      */
@@ -26,14 +26,14 @@ public final class ConnectionAuthConfigOauth2ClientCredentials {
 
     private ConnectionAuthConfigOauth2ClientCredentials() {}
     /**
-     * @return Secret version of Password for Authentication.
+     * @return Client ID for user-provided OAuth app.
      * 
      */
     public String clientId() {
         return this.clientId;
     }
     /**
-     * @return Secret version reference containing the client secret.
+     * @return Client secret for user-provided OAuth app.
      * Structure is documented below.
      * 
      */

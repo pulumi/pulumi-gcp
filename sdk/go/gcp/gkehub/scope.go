@@ -106,8 +106,6 @@ type Scope struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The client-provided identifier of the scope.
-	//
-	// ***
 	ScopeId pulumi.StringOutput `pulumi:"scopeId"`
 	// State of the scope resource.
 	// Structure is documented below.
@@ -176,8 +174,6 @@ type scopeState struct {
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The client-provided identifier of the scope.
-	//
-	// ***
 	ScopeId *string `pulumi:"scopeId"`
 	// State of the scope resource.
 	// Structure is documented below.
@@ -209,8 +205,6 @@ type ScopeState struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The client-provided identifier of the scope.
-	//
-	// ***
 	ScopeId pulumi.StringPtrInput
 	// State of the scope resource.
 	// Structure is documented below.
@@ -235,8 +229,6 @@ type scopeArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The client-provided identifier of the scope.
-	//
-	// ***
 	ScopeId string `pulumi:"scopeId"`
 }
 
@@ -251,8 +243,6 @@ type ScopeArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The client-provided identifier of the scope.
-	//
-	// ***
 	ScopeId pulumi.StringInput
 }
 
@@ -384,8 +374,6 @@ func (o ScopeOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // The client-provided identifier of the scope.
-//
-// ***
 func (o ScopeOutput) ScopeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Scope) pulumi.StringOutput { return v.ScopeId }).(pulumi.StringOutput)
 }

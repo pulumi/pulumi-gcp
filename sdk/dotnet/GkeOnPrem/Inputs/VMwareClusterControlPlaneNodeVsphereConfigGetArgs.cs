@@ -22,8 +22,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// <summary>
         /// (Output)
         /// The Vsphere storage policy used by the control plane Node.
-        /// 
-        /// - - -
         /// </summary>
         [Input("storagePolicyName")]
         public Input<string>? StoragePolicyName { get; set; }

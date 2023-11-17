@@ -313,17 +313,14 @@ export class Instance extends pulumi.CustomResource {
      * Represents the type of Data Fusion instance. Each type is configured with
      * the default settings for processing and memory.
      * - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
-     * using point and click UI. However, there are certain limitations, such as fewer number
-     * of concurrent pipelines, no support for streaming pipelines, etc.
+     *   using point and click UI. However, there are certain limitations, such as fewer number
+     *   of concurrent pipelines, no support for streaming pipelines, etc.
      * - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
-     * available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+     *   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
      * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
-     * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
-     * pipelines at low cost.
-     * Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-     *
-     *
-     * - - -
+     *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+     *   pipelines at low cost.
+     *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -560,17 +557,14 @@ export interface InstanceState {
      * Represents the type of Data Fusion instance. Each type is configured with
      * the default settings for processing and memory.
      * - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
-     * using point and click UI. However, there are certain limitations, such as fewer number
-     * of concurrent pipelines, no support for streaming pipelines, etc.
+     *   using point and click UI. However, there are certain limitations, such as fewer number
+     *   of concurrent pipelines, no support for streaming pipelines, etc.
      * - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
-     * available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+     *   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
      * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
-     * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
-     * pipelines at low cost.
-     * Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-     *
-     *
-     * - - -
+     *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+     *   pipelines at low cost.
+     *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -672,17 +666,14 @@ export interface InstanceArgs {
      * Represents the type of Data Fusion instance. Each type is configured with
      * the default settings for processing and memory.
      * - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
-     * using point and click UI. However, there are certain limitations, such as fewer number
-     * of concurrent pipelines, no support for streaming pipelines, etc.
+     *   using point and click UI. However, there are certain limitations, such as fewer number
+     *   of concurrent pipelines, no support for streaming pipelines, etc.
      * - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
-     * available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+     *   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
      * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
-     * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
-     * pipelines at low cost.
-     * Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
-     *
-     *
-     * - - -
+     *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+     *   pipelines at low cost.
+     *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      */
     type: pulumi.Input<string>;
     /**

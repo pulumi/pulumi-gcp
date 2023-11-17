@@ -17,16 +17,12 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The location of the instance. eg us-central1
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable String location;
 
     /**
      * @return The location of the instance. eg us-central1
-     * 
-     * ***
      * 
      */
     public Optional<String> location() {
@@ -93,8 +89,6 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param location The location of the instance. eg us-central1
-         * 
-         * ***
          * 
          * @return builder
          * 

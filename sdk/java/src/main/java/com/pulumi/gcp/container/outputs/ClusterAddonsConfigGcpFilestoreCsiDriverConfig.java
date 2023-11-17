@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      */
     private Boolean enabled;
 
     private ClusterAddonsConfigGcpFilestoreCsiDriverConfig() {}
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      */
     public Boolean enabled() {

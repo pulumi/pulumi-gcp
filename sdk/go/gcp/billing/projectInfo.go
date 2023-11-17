@@ -53,8 +53,6 @@ type ProjectInfo struct {
 	// The ID of the billing account associated with the project, if
 	// any. Set to empty string to disable billing for the project.
 	// For example, `"012345-567890-ABCDEF"` or `""`.
-	//
-	// ***
 	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -97,8 +95,6 @@ type projectInfoState struct {
 	// The ID of the billing account associated with the project, if
 	// any. Set to empty string to disable billing for the project.
 	// For example, `"012345-567890-ABCDEF"` or `""`.
-	//
-	// ***
 	BillingAccount *string `pulumi:"billingAccount"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -109,8 +105,6 @@ type ProjectInfoState struct {
 	// The ID of the billing account associated with the project, if
 	// any. Set to empty string to disable billing for the project.
 	// For example, `"012345-567890-ABCDEF"` or `""`.
-	//
-	// ***
 	BillingAccount pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -125,8 +119,6 @@ type projectInfoArgs struct {
 	// The ID of the billing account associated with the project, if
 	// any. Set to empty string to disable billing for the project.
 	// For example, `"012345-567890-ABCDEF"` or `""`.
-	//
-	// ***
 	BillingAccount string `pulumi:"billingAccount"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -138,8 +130,6 @@ type ProjectInfoArgs struct {
 	// The ID of the billing account associated with the project, if
 	// any. Set to empty string to disable billing for the project.
 	// For example, `"012345-567890-ABCDEF"` or `""`.
-	//
-	// ***
 	BillingAccount pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -236,8 +226,6 @@ func (o ProjectInfoOutput) ToProjectInfoOutputWithContext(ctx context.Context) P
 // The ID of the billing account associated with the project, if
 // any. Set to empty string to disable billing for the project.
 // For example, `"012345-567890-ABCDEF"` or `""`.
-//
-// ***
 func (o ProjectInfoOutput) BillingAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectInfo) pulumi.StringOutput { return v.BillingAccount }).(pulumi.StringOutput)
 }

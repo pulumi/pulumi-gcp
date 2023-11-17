@@ -30,8 +30,6 @@ class GCPolicyMaxAge(dict):
         """
         :param int days: Number of days before applying GC policy.
         :param str duration: Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-               
-               -----
         """
         if days is not None:
             pulumi.set(__self__, "days", days)
@@ -54,8 +52,6 @@ class GCPolicyMaxAge(dict):
     def duration(self) -> Optional[str]:
         """
         Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-
-        -----
         """
         return pulumi.get(self, "duration")
 
@@ -67,7 +63,7 @@ class GCPolicyMaxVersion(dict):
         """
         :param int number: Number of version before applying the GC policy.
                
-               -----
+               
                `gc_rules` include 2 fields:
         """
         pulumi.set(__self__, "number", number)
@@ -78,7 +74,7 @@ class GCPolicyMaxVersion(dict):
         """
         Number of version before applying the GC policy.
 
-        -----
+
         `gc_rules` include 2 fields:
         """
         return pulumi.get(self, "number")

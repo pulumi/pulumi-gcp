@@ -34,9 +34,6 @@ class AppGatewayArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: ID of the AppGateway.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the AppGateway.
@@ -105,9 +102,6 @@ class AppGatewayArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         ID of the AppGateway.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -184,9 +178,6 @@ class _AppGatewayState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: ID of the AppGateway.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -294,9 +285,6 @@ class _AppGatewayState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         ID of the AppGateway.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -473,9 +461,6 @@ class AppGateway(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: ID of the AppGateway.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the AppGateway.
@@ -643,9 +628,6 @@ class AppGateway(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: ID of the AppGateway.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -726,9 +708,6 @@ class AppGateway(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         ID of the AppGateway.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

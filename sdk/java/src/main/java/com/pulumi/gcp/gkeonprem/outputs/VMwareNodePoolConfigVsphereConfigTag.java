@@ -21,8 +21,6 @@ public final class VMwareNodePoolConfigVsphereConfigTag {
      * @return (Output)
      * The Vsphere tag name.
      * 
-     * ***
-     * 
      */
     private @Nullable String tag;
 
@@ -38,8 +36,6 @@ public final class VMwareNodePoolConfigVsphereConfigTag {
     /**
      * @return (Output)
      * The Vsphere tag name.
-     * 
-     * ***
      * 
      */
     public Optional<String> tag() {

@@ -30,7 +30,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
      */
     private String path;
     /**
-     * @return Consists of three octal digits which represent, in
+     * @return (Output) Consists of three octal digits which represent, in
      * order, the permissions of the owner, group, and other users for the file
      * (similarly to the numeric mode used in the linux chmod utility). Each digit
      * represents a three bit number with the 4 bit corresponding to the read
@@ -73,7 +73,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
         return this.path;
     }
     /**
-     * @return Consists of three octal digits which represent, in
+     * @return (Output) Consists of three octal digits which represent, in
      * order, the permissions of the owner, group, and other users for the file
      * (similarly to the numeric mode used in the linux chmod utility). Each digit
      * represents a three bit number with the 4 bit corresponding to the read

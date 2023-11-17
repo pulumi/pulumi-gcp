@@ -14,12 +14,17 @@ import javax.annotation.Nullable;
 public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable {
     /**
      * @return MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+     * Structure is documented below.`mysql_columns` -
+     * (Optional)
+     * MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
      * Structure is documented below.
      * 
      */
     private @Nullable List<StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn> mysqlColumns;
     /**
-     * @return Table name.
+     * @return Table name.`table` -
+     * (Required)
+     * Table name.
      * 
      */
     private String table;
@@ -27,6 +32,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
     private StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable() {}
     /**
      * @return MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+     * Structure is documented below.`mysql_columns` -
+     * (Optional)
+     * MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
      * Structure is documented below.
      * 
      */
@@ -34,7 +42,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
         return this.mysqlColumns == null ? List.of() : this.mysqlColumns;
     }
     /**
-     * @return Table name.
+     * @return Table name.`table` -
+     * (Required)
+     * Table name.
      * 
      */
     public String table() {

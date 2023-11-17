@@ -24,8 +24,6 @@ public final class AssetResourceSpec {
     /**
      * @return Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
      * 
-     * ***
-     * 
      */
     private String type;
 
@@ -46,8 +44,6 @@ public final class AssetResourceSpec {
     }
     /**
      * @return Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-     * 
-     * ***
      * 
      */
     public String type() {

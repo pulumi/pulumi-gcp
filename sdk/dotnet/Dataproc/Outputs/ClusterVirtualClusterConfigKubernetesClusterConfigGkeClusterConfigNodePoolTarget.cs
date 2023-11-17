@@ -18,9 +18,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string NodePool;
         /// <summary>
-        /// The configuration for the GKE node pool. 
-        /// If specified, Dataproc attempts to create a node pool with the specified shape.
-        /// If one with the same name already exists, it is verified against all specified fields.
+        /// (Input only) The configuration for the GKE node pool. 
+        /// If specified, Dataproc attempts to create a node pool with the specified shape. 
+        /// If one with the same name already exists, it is verified against all specified fields. 
         /// If a field differs, the virtual cluster creation will fail.
         /// </summary>
         public readonly Outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig? NodePoolConfig;

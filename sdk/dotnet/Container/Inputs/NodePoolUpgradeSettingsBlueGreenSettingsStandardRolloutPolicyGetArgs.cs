@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<double>? BatchPercentage { get; set; }
 
         /// <summary>
-        /// Soak time after each batch gets drained.
+        /// (Optionial) Soak time after each batch gets drained.
         /// </summary>
         [Input("batchSoakDuration")]
         public Input<string>? BatchSoakDuration { get; set; }

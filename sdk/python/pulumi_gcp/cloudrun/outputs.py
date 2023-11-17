@@ -322,8 +322,6 @@ class DomainMappingSpec(dict):
         :param str certificate_mode: The mode of the certificate.
                Default value is `AUTOMATIC`.
                Possible values are: `NONE`, `AUTOMATIC`.
-               
-               - - -
         :param bool force_override: If set, the mapping will override any mapping set before this spec was set.
                It is recommended that the user leaves this empty to receive an error
                warning about a potential conflict and only set it once the respective UI
@@ -351,8 +349,6 @@ class DomainMappingSpec(dict):
         The mode of the certificate.
         Default value is `AUTOMATIC`.
         Possible values are: `NONE`, `AUTOMATIC`.
-
-        - - -
         """
         return pulumi.get(self, "certificate_mode")
 
@@ -674,29 +670,34 @@ class ServiceMetadata(dict):
                If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
                Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
+               keys to configure features on a Revision template:`annotations` -
+               (Optional)
+               Annotations is a key value map stored with a resource that
+               may be set by external tools to store and retrieve arbitrary metadata. More
+               info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+               **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+               If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+               or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+               Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
                keys to configure features on a Service:
-               - `run.googleapis.com/binary-authorization-breakglass` sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
-               - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
-               - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
-               - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
-               that can be used in the audience field of ID token for authenticated requests.
-               - `run.googleapis.com/description` sets a user defined description for the Service.
-               - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-               for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
-               - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
-               when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param Mapping[str, str] effective_labels: (Output)
                All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param int generation: (Output)
+               A sequence number representing a specific generation of the desired state.`generation` -
+               (Output)
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
+               (scope and select) objects.`labels` -
+               (Optional)
+               Map of string keys and values that can be used to organize and categorize
                (scope and select) objects. May match selectors of replication controllers
                and routes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param str namespace: In Cloud Run the namespace must be equal to either the
+               project ID or project number. It will default to the resource's project.`namespace` -
+               (Optional)
+               In Cloud Run the namespace must be equal to either the
                project ID or project number.
         :param Mapping[str, str] pulumi_labels: (Output)
                The combination of labels configured directly on the resource
@@ -706,10 +707,21 @@ class ServiceMetadata(dict):
                can be used by clients to determine when objects have changed. May be used
                for optimistic concurrency, change detection, and the watch operation on a
                resource or set of resources. They may only be valid for a
+               particular resource or set of resources.`resource_version` -
+               (Output)
+               An opaque value that represents the internal version of this object that
+               can be used by clients to determine when objects have changed. May be used
+               for optimistic concurrency, change detection, and the watch operation on a
+               resource or set of resources. They may only be valid for a
                particular resource or set of resources.
         :param str self_link: (Output)
+               SelfLink is a URL representing this object.`self_link` -
+               (Output)
                SelfLink is a URL representing this object.
         :param str uid: (Output)
+               UID is a unique id generated by the server on successful creation of a resource and is not
+               allowed to change on PUT operations.`uid` -
+               (Output)
                UID is a unique id generated by the server on successful creation of a resource and is not
                allowed to change on PUT operations.
         """
@@ -745,19 +757,16 @@ class ServiceMetadata(dict):
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
         Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
+        keys to configure features on a Revision template:`annotations` -
+        (Optional)
+        Annotations is a key value map stored with a resource that
+        may be set by external tools to store and retrieve arbitrary metadata. More
+        info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+        If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+        or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+        Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
         keys to configure features on a Service:
-        - `run.googleapis.com/binary-authorization-breakglass` sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
-        - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
-        - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
-        - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
-        that can be used in the audience field of ID token for authenticated requests.
-        - `run.googleapis.com/description` sets a user defined description for the Service.
-        - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-        for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
-        - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
-        when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -780,6 +789,8 @@ class ServiceMetadata(dict):
     def generation(self) -> Optional[int]:
         """
         (Output)
+        A sequence number representing a specific generation of the desired state.`generation` -
+        (Output)
         A sequence number representing a specific generation of the desired state.
         """
         return pulumi.get(self, "generation")
@@ -788,6 +799,9 @@ class ServiceMetadata(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
+        Map of string keys and values that can be used to organize and categorize
+        (scope and select) objects.`labels` -
+        (Optional)
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and routes.
@@ -800,6 +814,9 @@ class ServiceMetadata(dict):
     @pulumi.getter
     def namespace(self) -> Optional[str]:
         """
+        In Cloud Run the namespace must be equal to either the
+        project ID or project number. It will default to the resource's project.`namespace` -
+        (Optional)
         In Cloud Run the namespace must be equal to either the
         project ID or project number.
         """
@@ -824,6 +841,12 @@ class ServiceMetadata(dict):
         can be used by clients to determine when objects have changed. May be used
         for optimistic concurrency, change detection, and the watch operation on a
         resource or set of resources. They may only be valid for a
+        particular resource or set of resources.`resource_version` -
+        (Output)
+        An opaque value that represents the internal version of this object that
+        can be used by clients to determine when objects have changed. May be used
+        for optimistic concurrency, change detection, and the watch operation on a
+        resource or set of resources. They may only be valid for a
         particular resource or set of resources.
         """
         return pulumi.get(self, "resource_version")
@@ -833,6 +856,8 @@ class ServiceMetadata(dict):
     def self_link(self) -> Optional[str]:
         """
         (Output)
+        SelfLink is a URL representing this object.`self_link` -
+        (Output)
         SelfLink is a URL representing this object.
         """
         return pulumi.get(self, "self_link")
@@ -841,6 +866,9 @@ class ServiceMetadata(dict):
     @pulumi.getter
     def uid(self) -> Optional[str]:
         """
+        (Output)
+        UID is a unique id generated by the server on successful creation of a resource and is not
+        allowed to change on PUT operations.`uid` -
         (Output)
         UID is a unique id generated by the server on successful creation of a resource and is not
         allowed to change on PUT operations.
@@ -1228,22 +1256,24 @@ class ServiceTemplateMetadata(dict):
                If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
                Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
+               keys to configure features on a Revision template:`annotations` -
+               (Optional)
+               Annotations is a key value map stored with a resource that
+               may be set by external tools to store and retrieve arbitrary metadata. More
+               info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+               **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+               If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+               or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+               Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
                keys to configure features on a Service:
-               - `run.googleapis.com/binary-authorization-breakglass` sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
-               - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
-               - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
-               - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
-               that can be used in the audience field of ID token for authenticated requests.
-               - `run.googleapis.com/description` sets a user defined description for the Service.
-               - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-               for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
-               - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
-               when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param int generation: (Output)
+               A sequence number representing a specific generation of the desired state.`generation` -
+               (Output)
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
+               (scope and select) objects.`labels` -
+               (Optional)
+               Map of string keys and values that can be used to organize and categorize
                (scope and select) objects. May match selectors of replication controllers
                and routes.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1252,16 +1282,30 @@ class ServiceTemplateMetadata(dict):
                Is required when creating resources. Name is primarily intended
                for creation idempotence and configuration definition. Cannot be updated.
         :param str namespace: In Cloud Run the namespace must be equal to either the
+               project ID or project number. It will default to the resource's project.`namespace` -
+               (Optional)
+               In Cloud Run the namespace must be equal to either the
                project ID or project number.
         :param str resource_version: (Output)
                An opaque value that represents the internal version of this object that
                can be used by clients to determine when objects have changed. May be used
                for optimistic concurrency, change detection, and the watch operation on a
                resource or set of resources. They may only be valid for a
+               particular resource or set of resources.`resource_version` -
+               (Output)
+               An opaque value that represents the internal version of this object that
+               can be used by clients to determine when objects have changed. May be used
+               for optimistic concurrency, change detection, and the watch operation on a
+               resource or set of resources. They may only be valid for a
                particular resource or set of resources.
         :param str self_link: (Output)
+               SelfLink is a URL representing this object.`self_link` -
+               (Output)
                SelfLink is a URL representing this object.
         :param str uid: (Output)
+               UID is a unique id generated by the server on successful creation of a resource and is not
+               allowed to change on PUT operations.`uid` -
+               (Output)
                UID is a unique id generated by the server on successful creation of a resource and is not
                allowed to change on PUT operations.
         """
@@ -1293,19 +1337,16 @@ class ServiceTemplateMetadata(dict):
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
         Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
+        keys to configure features on a Revision template:`annotations` -
+        (Optional)
+        Annotations is a key value map stored with a resource that
+        may be set by external tools to store and retrieve arbitrary metadata. More
+        info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
+        **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+        If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+        or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+        Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
         keys to configure features on a Service:
-        - `run.googleapis.com/binary-authorization-breakglass` sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
-        - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
-        - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
-        - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
-        that can be used in the audience field of ID token for authenticated requests.
-        - `run.googleapis.com/description` sets a user defined description for the Service.
-        - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-        for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
-        - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
-        when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1313,6 +1354,8 @@ class ServiceTemplateMetadata(dict):
     @pulumi.getter
     def generation(self) -> Optional[int]:
         """
+        (Output)
+        A sequence number representing a specific generation of the desired state.`generation` -
         (Output)
         A sequence number representing a specific generation of the desired state.
         """
@@ -1322,6 +1365,9 @@ class ServiceTemplateMetadata(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
+        Map of string keys and values that can be used to organize and categorize
+        (scope and select) objects.`labels` -
+        (Optional)
         Map of string keys and values that can be used to organize and categorize
         (scope and select) objects. May match selectors of replication controllers
         and routes.
@@ -1345,6 +1391,9 @@ class ServiceTemplateMetadata(dict):
     def namespace(self) -> Optional[str]:
         """
         In Cloud Run the namespace must be equal to either the
+        project ID or project number. It will default to the resource's project.`namespace` -
+        (Optional)
+        In Cloud Run the namespace must be equal to either the
         project ID or project number.
         """
         return pulumi.get(self, "namespace")
@@ -1353,6 +1402,12 @@ class ServiceTemplateMetadata(dict):
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> Optional[str]:
         """
+        (Output)
+        An opaque value that represents the internal version of this object that
+        can be used by clients to determine when objects have changed. May be used
+        for optimistic concurrency, change detection, and the watch operation on a
+        resource or set of resources. They may only be valid for a
+        particular resource or set of resources.`resource_version` -
         (Output)
         An opaque value that represents the internal version of this object that
         can be used by clients to determine when objects have changed. May be used
@@ -1367,6 +1422,8 @@ class ServiceTemplateMetadata(dict):
     def self_link(self) -> Optional[str]:
         """
         (Output)
+        SelfLink is a URL representing this object.`self_link` -
+        (Output)
         SelfLink is a URL representing this object.
         """
         return pulumi.get(self, "self_link")
@@ -1375,6 +1432,9 @@ class ServiceTemplateMetadata(dict):
     @pulumi.getter
     def uid(self) -> Optional[str]:
         """
+        (Output)
+        UID is a unique id generated by the server on successful creation of a resource and is not
+        allowed to change on PUT operations.`uid` -
         (Output)
         UID is a unique id generated by the server on successful creation of a resource and is not
         allowed to change on PUT operations.
@@ -1558,8 +1618,7 @@ class ServiceTemplateSpecContainer(dict):
                The docker image's CMD is used if this is not provided.
         :param Sequence[str] commands: Entrypoint array. Not executed within a shell.
                The docker image's ENTRYPOINT is used if this is not provided.
-        :param Sequence['ServiceTemplateSpecContainerEnvFromArgs'] env_froms: (Optional, Deprecated)
-               List of sources to populate environment variables in the container.
+        :param Sequence['ServiceTemplateSpecContainerEnvFromArgs'] env_froms: List of sources to populate environment variables in the container.
                All invalid keys will be reported as an event when the container is starting.
                When a key exists in multiple sources, the value associated with the last source will
                take precedence. Values defined by an Env with a duplicate key will take
@@ -1584,8 +1643,7 @@ class ServiceTemplateSpecContainer(dict):
         :param Sequence['ServiceTemplateSpecContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
                Only supports SecretVolumeSources.
                Structure is documented below.
-        :param str working_dir: (Optional, Deprecated)
-               Container's working directory.
+        :param str working_dir: Container's working directory.
                If not specified, the container runtime's default will be used, which
                might be configured in the container image.
                
@@ -1646,7 +1704,6 @@ class ServiceTemplateSpecContainer(dict):
     @pulumi.getter(name="envFroms")
     def env_froms(self) -> Optional[Sequence['outputs.ServiceTemplateSpecContainerEnvFrom']]:
         """
-        (Optional, Deprecated)
         List of sources to populate environment variables in the container.
         All invalid keys will be reported as an event when the container is starting.
         When a key exists in multiple sources, the value associated with the last source will
@@ -1731,7 +1788,6 @@ class ServiceTemplateSpecContainer(dict):
     @pulumi.getter(name="workingDir")
     def working_dir(self) -> Optional[str]:
         """
-        (Optional, Deprecated)
         Container's working directory.
         If not specified, the container runtime's default will be used, which
         might be configured in the container image.
@@ -2799,6 +2855,8 @@ class ServiceTemplateSpecVolume(dict):
                  secret: Optional['outputs.ServiceTemplateSpecVolumeSecret'] = None):
         """
         :param str name: Volume's name.
+        :param 'ServiceTemplateSpecVolumeEmptyDirArgs' empty_dir: Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+               Structure is documented below.
         :param 'ServiceTemplateSpecVolumeSecretArgs' secret: The secret's value will be presented as the content of a file whose
                name is defined in the item path. If no items are defined, the name of
                the file is the secret_name.
@@ -2821,6 +2879,10 @@ class ServiceTemplateSpecVolume(dict):
     @property
     @pulumi.getter(name="emptyDir")
     def empty_dir(self) -> Optional['outputs.ServiceTemplateSpecVolumeEmptyDir']:
+        """
+        Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+        Structure is documented below.
+        """
         return pulumi.get(self, "empty_dir")
 
     @property
@@ -2860,8 +2922,6 @@ class ServiceTemplateSpecVolumeEmptyDir(dict):
         """
         :param str medium: The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
         :param str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-               
-               - - -
         """
         if medium is not None:
             pulumi.set(__self__, "medium", medium)
@@ -2881,8 +2941,6 @@ class ServiceTemplateSpecVolumeEmptyDir(dict):
     def size_limit(self) -> Optional[str]:
         """
         Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-
-        - - -
         """
         return pulumi.get(self, "size_limit")
 

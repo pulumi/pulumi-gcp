@@ -616,7 +616,6 @@ class PipelineWorkloadDataflowLaunchTemplateRequestArgs:
                https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
                Structure is documented below.
         :param pulumi.Input[str] location: The regional endpoint to which to direct the request.
-        :param pulumi.Input[bool] validate_only: (Optional)
         """
         pulumi.set(__self__, "project_id", project_id)
         if gcs_path is not None:
@@ -681,9 +680,6 @@ class PipelineWorkloadDataflowLaunchTemplateRequestArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        (Optional)
-        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter

@@ -173,7 +173,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      * 
      * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
@@ -187,8 +186,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> zone;
 
     /**
-     * @return (Optional, Deprecated)
-     * The name of the Filestore zone of the instance.
+     * @return The name of the Filestore zone of the instance.
      * 
      * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
@@ -454,8 +452,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone (Optional, Deprecated)
-         * The name of the Filestore zone of the instance.
+         * @param zone The name of the Filestore zone of the instance.
          * 
          * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
          * 
@@ -472,8 +469,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone (Optional, Deprecated)
-         * The name of the Filestore zone of the instance.
+         * @param zone The name of the Filestore zone of the instance.
          * 
          * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
          * 

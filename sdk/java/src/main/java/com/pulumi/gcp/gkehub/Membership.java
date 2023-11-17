@@ -219,7 +219,6 @@ public class Membership extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authority);
     }
     /**
-     * (Optional, Deprecated)
      * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
      * 
      * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -233,8 +232,7 @@ public class Membership extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return (Optional, Deprecated)
-     * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+     * @return The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
      * 
      * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
      * 
@@ -311,16 +309,12 @@ public class Membership extends com.pulumi.resources.CustomResource {
     /**
      * The client-provided identifier of the membership.
      * 
-     * ***
-     * 
      */
     @Export(name="membershipId", refs={String.class}, tree="[0]")
     private Output<String> membershipId;
 
     /**
      * @return The client-provided identifier of the membership.
-     * 
-     * ***
      * 
      */
     public Output<String> membershipId() {

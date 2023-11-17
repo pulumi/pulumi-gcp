@@ -283,10 +283,6 @@ class _JobState:
         :param pulumi.Input[str] driver_controls_files_uri: If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
         :param pulumi.Input[str] driver_output_resource_uri: A URI pointing to the location of the stdout of the job's driver program.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-               
-               * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-               
-               * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
@@ -378,10 +374,6 @@ class _JobState:
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-
-        * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-
-        * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -845,10 +837,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] driver_controls_files_uri: If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
         :param pulumi.Input[str] driver_output_resource_uri: A URI pointing to the location of the stdout of the job's driver program.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-               
-               * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-               
-               * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         :param pulumi.Input[bool] force_delete: By default, you can only delete inactive jobs within
                Dataproc. Setting this to true, and calling destroy, will ensure that the
                job is first cancelled before issuing the delete.
@@ -918,10 +906,6 @@ class Job(pulumi.CustomResource):
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-
-        * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-
-        * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         """
         return pulumi.get(self, "effective_labels")
 

@@ -2303,6 +2303,11 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutpu
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis struct {
 	// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
 	Disabled *bool `pulumi:"disabled"`
+	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	//
+	// > **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
+	//
 	// Deprecated: `monitoring_interval` is deprecated and will be removed in a future release.
 	MonitoringInterval *string `pulumi:"monitoringInterval"`
 	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
@@ -2326,6 +2331,11 @@ type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput interface {
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs struct {
 	// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	//
+	// > **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
+	//
 	// Deprecated: `monitoring_interval` is deprecated and will be removed in a future release.
 	MonitoringInterval pulumi.StringPtrInput `pulumi:"monitoringInterval"`
 	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
@@ -2417,6 +2427,11 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) Disabled
 	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+//
+// > **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
+//
 // Deprecated: `monitoring_interval` is deprecated and will be removed in a future release.
 func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) MonitoringInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *string { return v.MonitoringInterval }).(pulumi.StringPtrOutput)
@@ -2467,6 +2482,11 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) Disab
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+//
+// > **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
+//
 // Deprecated: `monitoring_interval` is deprecated and will be removed in a future release.
 func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) MonitoringInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *string {

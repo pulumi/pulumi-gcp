@@ -3478,8 +3478,6 @@ class BareMetalClusterStorageLvpNodeMountsConfigArgs:
         """
         :param pulumi.Input[str] path: The host machine path.
         :param pulumi.Input[str] storage_class: The StorageClass name that PVs will be created with.
-               
-               - - -
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "storage_class", storage_class)
@@ -3501,8 +3499,6 @@ class BareMetalClusterStorageLvpNodeMountsConfigArgs:
     def storage_class(self) -> pulumi.Input[str]:
         """
         The StorageClass name that PVs will be created with.
-
-        - - -
         """
         return pulumi.get(self, "storage_class")
 
@@ -3958,8 +3954,6 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
         """
         :param pulumi.Input[str] effect: Specifies the nodes operating system (default: LINUX).
                Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-               
-               - - -
         :param pulumi.Input[str] key: Key associated with the effect.
         :param pulumi.Input[str] value: Value associated with the effect.
         """
@@ -3976,8 +3970,6 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
         """
         Specifies the nodes operating system (default: LINUX).
         Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-
-        - - -
         """
         return pulumi.get(self, "effect")
 
@@ -4388,8 +4380,6 @@ class VMwareClusterControlPlaneNodeVsphereConfigArgs:
                The Vsphere datastore used by the Control Plane Node.
         :param pulumi.Input[str] storage_policy_name: (Output)
                The Vsphere storage policy used by the control plane Node.
-               
-               - - -
         """
         if datastore is not None:
             pulumi.set(__self__, "datastore", datastore)
@@ -4415,8 +4405,6 @@ class VMwareClusterControlPlaneNodeVsphereConfigArgs:
         """
         (Output)
         The Vsphere storage policy used by the control plane Node.
-
-        - - -
         """
         return pulumi.get(self, "storage_policy_name")
 
@@ -4595,8 +4583,7 @@ class VMwareClusterLoadBalancerF5ConfigArgs:
                  partition: Optional[pulumi.Input[str]] = None,
                  snat_pool: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] address: (Output)
-               The vCenter IP address.
+        :param pulumi.Input[str] address: The load balancer's IP address.
         :param pulumi.Input[str] partition: he preexisting partition to be used by the load balancer. T
                his partition is usually created for the admin cluster for example:
                'my-f5-admin-partition'.
@@ -4613,8 +4600,7 @@ class VMwareClusterLoadBalancerF5ConfigArgs:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
-        The vCenter IP address.
+        The load balancer's IP address.
         """
         return pulumi.get(self, "address")
 
@@ -6111,7 +6097,6 @@ class VMwareNodePoolConfigVsphereConfigArgs:
                Tags to apply to VMs.
                Structure is documented below.
                
-               
                <a name="nested_tags"></a>The `tags` block contains:
         """
         if datastore is not None:
@@ -6140,7 +6125,6 @@ class VMwareNodePoolConfigVsphereConfigArgs:
         Tags to apply to VMs.
         Structure is documented below.
 
-
         <a name="nested_tags"></a>The `tags` block contains:
         """
         return pulumi.get(self, "tags")
@@ -6160,8 +6144,6 @@ class VMwareNodePoolConfigVsphereConfigTagArgs:
                The Vsphere tag category.
         :param pulumi.Input[str] tag: (Output)
                The Vsphere tag name.
-               
-               - - -
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -6187,8 +6169,6 @@ class VMwareNodePoolConfigVsphereConfigTagArgs:
         """
         (Output)
         The Vsphere tag name.
-
-        - - -
         """
         return pulumi.get(self, "tag")
 

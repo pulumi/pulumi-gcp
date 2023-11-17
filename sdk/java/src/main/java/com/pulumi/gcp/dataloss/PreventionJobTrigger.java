@@ -697,14 +697,14 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * A description of the job trigger.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+     * @return A description of the job trigger.
      * 
      */
     public Output<Optional<String>> description() {

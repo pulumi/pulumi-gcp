@@ -202,8 +202,6 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
      * 
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
      * 
-     * ***
-     * 
      */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
@@ -212,8 +210,6 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
      * @return The machine type to create.
      * 
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -433,14 +429,14 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<String> resourcePolicies;
 
     /**
-     * @return - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * @return A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<Output<String>> resourcePolicies() {
@@ -849,8 +845,6 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
          * 
          * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -863,8 +857,6 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
          * @param machineType The machine type to create.
          * 
          * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1170,7 +1162,7 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourcePolicies - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -1181,7 +1173,7 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param resourcePolicies - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 

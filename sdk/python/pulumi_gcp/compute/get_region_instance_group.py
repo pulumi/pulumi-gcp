@@ -135,8 +135,6 @@ def get_region_instance_group(name: Optional[str] = None,
            is provided, this value is ignored.  If neither `self_link` nor `region` are
            provided, the provider region is used.
     :param str self_link: The link to the instance group.  One of `name` or `self_link` must be provided.
-           
-           - - -
     """
     __args__ = dict()
     __args__['name'] = name
@@ -184,7 +182,5 @@ def get_region_instance_group_output(name: Optional[pulumi.Input[Optional[str]]]
            is provided, this value is ignored.  If neither `self_link` nor `region` are
            provided, the provider region is used.
     :param str self_link: The link to the instance group.  One of `name` or `self_link` must be provided.
-           
-           - - -
     """
     ...

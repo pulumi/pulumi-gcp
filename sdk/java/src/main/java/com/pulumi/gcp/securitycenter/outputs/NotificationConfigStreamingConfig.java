@@ -30,8 +30,6 @@ public final class NotificationConfigStreamingConfig {
      *   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
      *   for information on how to write a filter.
      * 
-     * ***
-     * 
      */
     private String filter;
 
@@ -56,8 +54,6 @@ public final class NotificationConfigStreamingConfig {
      *   See
      *   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
      *   for information on how to write a filter.
-     * 
-     * ***
      * 
      */
     public String filter() {

@@ -4528,9 +4528,9 @@ func (o UserPasswordPolicyPtrOutput) Statuses() UserPasswordPolicyStatusArrayOut
 }
 
 type UserPasswordPolicyStatus struct {
-	// If true, user does not have login privileges.
+	// (read only) If true, user does not have login privileges.
 	Locked *bool `pulumi:"locked"`
-	// Password expiration duration with one week grace period.
+	// (read only) Password expiration duration with one week grace period.
 	PasswordExpirationTime *string `pulumi:"passwordExpirationTime"`
 }
 
@@ -4546,9 +4546,9 @@ type UserPasswordPolicyStatusInput interface {
 }
 
 type UserPasswordPolicyStatusArgs struct {
-	// If true, user does not have login privileges.
+	// (read only) If true, user does not have login privileges.
 	Locked pulumi.BoolPtrInput `pulumi:"locked"`
-	// Password expiration duration with one week grace period.
+	// (read only) Password expiration duration with one week grace period.
 	PasswordExpirationTime pulumi.StringPtrInput `pulumi:"passwordExpirationTime"`
 }
 
@@ -4603,12 +4603,12 @@ func (o UserPasswordPolicyStatusOutput) ToUserPasswordPolicyStatusOutputWithCont
 	return o
 }
 
-// If true, user does not have login privileges.
+// (read only) If true, user does not have login privileges.
 func (o UserPasswordPolicyStatusOutput) Locked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UserPasswordPolicyStatus) *bool { return v.Locked }).(pulumi.BoolPtrOutput)
 }
 
-// Password expiration duration with one week grace period.
+// (read only) Password expiration duration with one week grace period.
 func (o UserPasswordPolicyStatusOutput) PasswordExpirationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPasswordPolicyStatus) *string { return v.PasswordExpirationTime }).(pulumi.StringPtrOutput)
 }

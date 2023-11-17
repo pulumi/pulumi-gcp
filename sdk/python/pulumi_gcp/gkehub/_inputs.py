@@ -637,8 +637,8 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
                  prevent_drift: Optional[pulumi.Input[bool]] = None,
                  source_format: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs'] git: (Optional) Structure is documented below.
-        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs'] oci: (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs'] git: Structure is documented below.
+        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs'] oci: Supported from ACM versions 1.12.0 onwards. Structure is documented below.
                
                Use either `git` or `oci` config option.
         :param pulumi.Input[bool] prevent_drift: Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
@@ -659,7 +659,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
     @pulumi.getter
     def git(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']]:
         """
-        (Optional) Structure is documented below.
+        Structure is documented below.
         """
         return pulumi.get(self, "git")
 
@@ -680,7 +680,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
     @pulumi.getter
     def oci(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs']]:
         """
-        (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        Supported from ACM versions 1.12.0 onwards. Structure is documented below.
 
         Use either `git` or `oci` config option.
         """
@@ -1693,8 +1693,6 @@ class MembershipRbacRoleBindingRoleArgs:
         """
         :param pulumi.Input[str] predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
                Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-               
-               - - -
         """
         pulumi.set(__self__, "predefined_role", predefined_role)
 
@@ -1704,8 +1702,6 @@ class MembershipRbacRoleBindingRoleArgs:
         """
         PredefinedRole is an ENUM representation of the default Kubernetes Roles
         Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-
-        - - -
         """
         return pulumi.get(self, "predefined_role")
 
@@ -1849,8 +1845,6 @@ class ScopeRbacRoleBindingRoleArgs:
         """
         :param pulumi.Input[str] predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
                Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-               
-               - - -
         """
         if predefined_role is not None:
             pulumi.set(__self__, "predefined_role", predefined_role)
@@ -1861,8 +1855,6 @@ class ScopeRbacRoleBindingRoleArgs:
         """
         PredefinedRole is an ENUM representation of the default Kubernetes Roles
         Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-
-        - - -
         """
         return pulumi.get(self, "predefined_role")
 

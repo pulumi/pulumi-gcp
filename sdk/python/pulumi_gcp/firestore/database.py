@@ -30,9 +30,6 @@ class DatabaseArgs:
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
                Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-               
-               
-               - - -
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
@@ -91,9 +88,6 @@ class DatabaseArgs:
         See https://cloud.google.com/datastore/docs/firestore-or-datastore
         for information about how to choose.
         Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -247,9 +241,6 @@ class _DatabaseState:
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
                Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-               
-               
-               - - -
         :param pulumi.Input[str] uid: Output only. The system-generated UUID4 for this Database.
         :param pulumi.Input[str] update_time: Output only. The timestamp at which this database was most recently updated.
         :param pulumi.Input[str] version_retention_period: Output only. The period during which past versions of data are retained in the database.
@@ -451,9 +442,6 @@ class _DatabaseState:
         See https://cloud.google.com/datastore/docs/firestore-or-datastore
         for information about how to choose.
         Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -598,9 +586,6 @@ class Database(pulumi.CustomResource):
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
                Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -783,9 +768,6 @@ class Database(pulumi.CustomResource):
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
                Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-               
-               
-               - - -
         :param pulumi.Input[str] uid: Output only. The system-generated UUID4 for this Database.
         :param pulumi.Input[str] update_time: Output only. The timestamp at which this database was most recently updated.
         :param pulumi.Input[str] version_retention_period: Output only. The period during which past versions of data are retained in the database.
@@ -933,9 +915,6 @@ class Database(pulumi.CustomResource):
         See https://cloud.google.com/datastore/docs/firestore-or-datastore
         for information about how to choose.
         Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
-
-
-        - - -
         """
         return pulumi.get(self, "type")
 

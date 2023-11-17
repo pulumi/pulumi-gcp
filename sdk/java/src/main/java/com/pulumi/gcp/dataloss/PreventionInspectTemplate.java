@@ -400,12 +400,6 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
     }
     /**
      * The parent of the inspect template in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
@@ -413,12 +407,6 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
 
     /**
      * @return The parent of the inspect template in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

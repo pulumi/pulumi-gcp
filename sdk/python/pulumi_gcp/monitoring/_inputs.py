@@ -987,8 +987,6 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
                in the future.
                This field is optional. If this field is not empty, then it must be a
                valid Prometheus label name.
-               
-               - - -
         :param pulumi.Input[str] duration: Alerts are considered firing once their PromQL expression evaluated
                to be "true" for this long. Alerts whose PromQL expression was not
                evaluated to be "true" for long enough are considered pending. The
@@ -1051,8 +1049,6 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
         in the future.
         This field is optional. If this field is not empty, then it must be a
         valid Prometheus label name.
-
-        - - -
         """
         return pulumi.get(self, "alert_rule")
 
@@ -4121,7 +4117,6 @@ class UptimeCheckConfigSyntheticMonitorArgs:
         :param pulumi.Input['UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args'] cloud_function_v2: Target a Synthetic Monitor GCFv2 Instance
                Structure is documented below.
                
-               
                <a name="nested_cloud_function_v2"></a>The `cloud_function_v2` block supports:
         """
         pulumi.set(__self__, "cloud_function_v2", cloud_function_v2)
@@ -4132,7 +4127,6 @@ class UptimeCheckConfigSyntheticMonitorArgs:
         """
         Target a Synthetic Monitor GCFv2 Instance
         Structure is documented below.
-
 
         <a name="nested_cloud_function_v2"></a>The `cloud_function_v2` block supports:
         """

@@ -82,7 +82,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
      * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
-     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     @Import(name="name")
@@ -92,7 +91,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
      * @return Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
-     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     public Optional<Output<String>> name() {
@@ -295,7 +293,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          * @param name Name must be unique within a Google Cloud project and region.
          * Is required when creating resources. Name is primarily intended
          * for creation idempotence and configuration definition. Cannot be updated.
-         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
          * 
          * @return builder
          * 
@@ -309,7 +306,6 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          * @param name Name must be unique within a Google Cloud project and region.
          * Is required when creating resources. Name is primarily intended
          * for creation idempotence and configuration definition. Cannot be updated.
-         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
          * 
          * @return builder
          * 

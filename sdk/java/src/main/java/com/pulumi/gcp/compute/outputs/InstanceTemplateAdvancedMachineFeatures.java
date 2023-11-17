@@ -23,7 +23,7 @@ public final class InstanceTemplateAdvancedMachineFeatures {
      */
     private @Nullable Integer threadsPerCore;
     /**
-     * @return ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+     * @return The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
      * 
      */
     private @Nullable Integer visibleCoreCount;
@@ -44,7 +44,7 @@ public final class InstanceTemplateAdvancedMachineFeatures {
         return Optional.ofNullable(this.threadsPerCore);
     }
     /**
-     * @return ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+     * @return The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
      * 
      */
     public Optional<Integer> visibleCoreCount() {

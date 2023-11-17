@@ -77,16 +77,12 @@ public class SharedflowDeployment extends com.pulumi.resources.CustomResource {
     /**
      * Revision of the Sharedflow to be deployed.
      * 
-     * ***
-     * 
      */
     @Export(name="revision", refs={String.class}, tree="[0]")
     private Output<String> revision;
 
     /**
      * @return Revision of the Sharedflow to be deployed.
-     * 
-     * ***
      * 
      */
     public Output<String> revision() {

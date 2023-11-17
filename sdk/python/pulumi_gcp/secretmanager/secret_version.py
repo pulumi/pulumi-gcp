@@ -22,9 +22,6 @@ class SecretVersionArgs:
         """
         The set of arguments for constructing a SecretVersion resource.
         :param pulumi.Input[str] secret: Secret Manager secret resource
-               
-               
-               - - -
         :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
@@ -50,9 +47,6 @@ class SecretVersionArgs:
     def secret(self) -> pulumi.Input[str]:
         """
         Secret Manager secret resource
-
-
-        - - -
         """
         return pulumi.get(self, "secret")
 
@@ -142,9 +136,6 @@ class _SecretVersionState:
         :param pulumi.Input[str] name: The resource name of the SecretVersion. Format:
                `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
         :param pulumi.Input[str] secret: Secret Manager secret resource
-               
-               
-               - - -
         :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] version: The version of the Secret.
@@ -251,9 +242,6 @@ class _SecretVersionState:
     def secret(self) -> Optional[pulumi.Input[str]]:
         """
         Secret Manager secret resource
-
-
-        - - -
         """
         return pulumi.get(self, "secret")
 
@@ -412,9 +400,6 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: The current state of the SecretVersion.
         :param pulumi.Input[bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         :param pulumi.Input[str] secret: Secret Manager secret resource
-               
-               
-               - - -
         :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -610,9 +595,6 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name of the SecretVersion. Format:
                `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
         :param pulumi.Input[str] secret: Secret Manager secret resource
-               
-               
-               - - -
         :param pulumi.Input[str] secret_data: The secret data. Must be no larger than 64KiB.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] version: The version of the Secret.
@@ -691,9 +673,6 @@ class SecretVersion(pulumi.CustomResource):
     def secret(self) -> pulumi.Output[str]:
         """
         Secret Manager secret resource
-
-
-        - - -
         """
         return pulumi.get(self, "secret")
 

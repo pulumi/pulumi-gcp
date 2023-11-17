@@ -115,7 +115,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
 
     /**
      * (Output)
-     * State of the domain for managed certificate issuance.
+     * A state of this Managed Certificate.
      * 
      */
     @Import(name="state")
@@ -123,7 +123,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return (Output)
-     * State of the domain for managed certificate issuance.
+     * A state of this Managed Certificate.
      * 
      */
     public Optional<Output<String>> state() {
@@ -334,7 +334,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param state (Output)
-         * State of the domain for managed certificate issuance.
+         * A state of this Managed Certificate.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param state (Output)
-         * State of the domain for managed certificate issuance.
+         * A state of this Managed Certificate.
          * 
          * @return builder
          * 

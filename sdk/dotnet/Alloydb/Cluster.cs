@@ -451,9 +451,6 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb cluster should reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -472,7 +469,6 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         /// "projects/{projectNumber}/global/networks/{network_id}".
         /// 
@@ -689,15 +685,11 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb cluster should reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         /// "projects/{projectNumber}/global/networks/{network_id}".
         /// 
@@ -919,9 +911,6 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb cluster should reside.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -946,7 +935,6 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         /// "projects/{projectNumber}/global/networks/{network_id}".
         /// 

@@ -123,8 +123,6 @@ type RegionTargetHttpProxy struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the BackendService.
-	//
-	// ***
 	UrlMap pulumi.StringOutput `pulumi:"urlMap"`
 }
 
@@ -185,8 +183,6 @@ type regionTargetHttpProxyState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the BackendService.
-	//
-	// ***
 	UrlMap *string `pulumi:"urlMap"`
 }
 
@@ -215,8 +211,6 @@ type RegionTargetHttpProxyState struct {
 	SelfLink pulumi.StringPtrInput
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the BackendService.
-	//
-	// ***
 	UrlMap pulumi.StringPtrInput
 }
 
@@ -243,8 +237,6 @@ type regionTargetHttpProxyArgs struct {
 	Region *string `pulumi:"region"`
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the BackendService.
-	//
-	// ***
 	UrlMap string `pulumi:"urlMap"`
 }
 
@@ -268,8 +260,6 @@ type RegionTargetHttpProxyArgs struct {
 	Region pulumi.StringPtrInput
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the BackendService.
-	//
-	// ***
 	UrlMap pulumi.StringInput
 }
 
@@ -405,8 +395,6 @@ func (o RegionTargetHttpProxyOutput) SelfLink() pulumi.StringOutput {
 
 // A reference to the RegionUrlMap resource that defines the mapping from URL
 // to the BackendService.
-//
-// ***
 func (o RegionTargetHttpProxyOutput) UrlMap() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionTargetHttpProxy) pulumi.StringOutput { return v.UrlMap }).(pulumi.StringOutput)
 }

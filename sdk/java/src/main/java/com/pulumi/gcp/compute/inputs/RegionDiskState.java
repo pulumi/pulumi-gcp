@@ -139,7 +139,6 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -153,8 +152,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> interface_;
 
     /**
-     * @return (Optional, Deprecated)
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     * @return Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      * 
@@ -352,16 +350,12 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
     /**
      * URLs of the zones where the disk should be replicated to.
      * 
-     * ***
-     * 
      */
     @Import(name="replicaZones")
     private @Nullable Output<List<String>> replicaZones;
 
     /**
      * @return URLs of the zones where the disk should be replicated to.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> replicaZones() {
@@ -411,20 +405,18 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-     * example, the following are valid values: *
-     * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
-     * &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. For example, the following are
+     * valid values:
      * 
      */
     @Import(name="snapshot")
     private @Nullable Output<String> snapshot;
 
     /**
-     * @return The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-     * example, the following are valid values: *
-     * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
-     * &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
+     * @return The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. For example, the following are
+     * valid values:
      * 
      */
     public Optional<Output<String>> snapshot() {
@@ -774,8 +766,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ (Optional, Deprecated)
-         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * @param interface_ Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
          * 
          * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
          * 
@@ -792,8 +783,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ (Optional, Deprecated)
-         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * @param interface_ Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
          * 
          * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
          * 
@@ -1063,8 +1053,6 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param replicaZones URLs of the zones where the disk should be replicated to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1076,8 +1064,6 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param replicaZones URLs of the zones where the disk should be replicated to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1087,8 +1073,6 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param replicaZones URLs of the zones where the disk should be replicated to.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1152,10 +1136,9 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshot The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-         * example, the following are valid values: *
-         * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
-         * &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
+         * @param snapshot The source snapshot used to create this disk. You can provide this as
+         * a partial or full URL to the resource. For example, the following are
+         * valid values:
          * 
          * @return builder
          * 
@@ -1166,10 +1149,9 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshot The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-         * example, the following are valid values: *
-         * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
-         * &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
+         * @param snapshot The source snapshot used to create this disk. You can provide this as
+         * a partial or full URL to the resource. For example, the following are
+         * valid values:
          * 
          * @return builder
          * 

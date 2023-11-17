@@ -18,14 +18,19 @@ public final class InstanceNetworkInterfaceAccessConfig {
      */
     private @Nullable String natIp;
     /**
-     * @return The service-level to be provided for IPv6 traffic when the
-     * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+     * @return The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance.
+     * This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
+     * not specified, it is assumed to be PREMIUM.
+     * 
+     * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
      * 
      */
     private @Nullable String networkTier;
     /**
-     * @return The domain name to be used when creating DNSv6
-     * records for the external IPv6 ranges..
+     * @return The DNS domain name for the public PTR record.
+     * To set this field on an instance, you must be verified as the owner of the domain.
+     * See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
+     * to become verified as a domain owner.
      * 
      */
     private @Nullable String publicPtrDomainName;
@@ -41,16 +46,21 @@ public final class InstanceNetworkInterfaceAccessConfig {
         return Optional.ofNullable(this.natIp);
     }
     /**
-     * @return The service-level to be provided for IPv6 traffic when the
-     * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+     * @return The [networking tier](https://cloud.google.com/network-tiers/docs/overview) used for configuring this instance.
+     * This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
+     * not specified, it is assumed to be PREMIUM.
+     * 
+     * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
      * 
      */
     public Optional<String> networkTier() {
         return Optional.ofNullable(this.networkTier);
     }
     /**
-     * @return The domain name to be used when creating DNSv6
-     * records for the external IPv6 ranges..
+     * @return The DNS domain name for the public PTR record.
+     * To set this field on an instance, you must be verified as the owner of the domain.
+     * See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
+     * to become verified as a domain owner.
      * 
      */
     public Optional<String> publicPtrDomainName() {

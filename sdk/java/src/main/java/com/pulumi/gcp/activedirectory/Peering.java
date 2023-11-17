@@ -177,17 +177,9 @@ public class Peering extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * ***
-     * 
-     */
     @Export(name="peeringId", refs={String.class}, tree="[0]")
     private Output<String> peeringId;
 
-    /**
-     * @return - - -
-     * 
-     */
     public Output<String> peeringId() {
         return this.peeringId;
     }

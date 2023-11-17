@@ -55,8 +55,8 @@ class DiskArgs:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
-        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-               required when setting to true
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
+               Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -69,8 +69,7 @@ class DiskArgs:
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[str] interface: (Optional, Deprecated)
-               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
@@ -86,9 +85,6 @@ class DiskArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
@@ -119,10 +115,10 @@ class DiskArgs:
                if upsizing is detected but recreates the disk if downsizing is requested.
                You can add `lifecycle.prevent_destroy` in the config to prevent destroying
                and recreating.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-               snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-               * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. If the snapshot is in another
+               project than this disk, you must supply a full URL. For example, the
+               following are valid values:
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -243,8 +239,8 @@ class DiskArgs:
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-        required when setting to true
+        Whether this disk is using confidential compute mode.
+        Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -290,7 +286,6 @@ class DiskArgs:
     @pulumi.getter
     def interface(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 
         > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -354,9 +349,6 @@ class DiskArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -464,10 +456,10 @@ class DiskArgs:
     @pulumi.getter
     def snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-        snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-        * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. If the snapshot is in another
+        project than this disk, you must supply a full URL. For example, the
+        following are valid values:
         """
         return pulumi.get(self, "snapshot")
 
@@ -604,8 +596,8 @@ class _DiskState:
                you do not need to provide a key to use the disk later.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-               required when setting to true
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
+               Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -618,8 +610,7 @@ class _DiskState:
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[str] interface: (Optional, Deprecated)
-               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
@@ -639,9 +630,6 @@ class _DiskState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
@@ -675,10 +663,10 @@ class _DiskState:
                if upsizing is detected but recreates the disk if downsizing is requested.
                You can add `lifecycle.prevent_destroy` in the config to prevent destroying
                and recreating.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-               snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-               * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. If the snapshot is in another
+               project than this disk, you must supply a full URL. For example, the
+               following are valid values:
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -861,8 +849,8 @@ class _DiskState:
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-        required when setting to true
+        Whether this disk is using confidential compute mode.
+        Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -908,7 +896,6 @@ class _DiskState:
     @pulumi.getter
     def interface(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 
         > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -1009,9 +996,6 @@ class _DiskState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1144,10 +1128,10 @@ class _DiskState:
     @pulumi.getter
     def snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-        snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-        * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. If the snapshot is in another
+        project than this disk, you must supply a full URL. For example, the
+        following are valid values:
         """
         return pulumi.get(self, "snapshot")
 
@@ -1446,8 +1430,8 @@ class Disk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
-        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-               required when setting to true
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
+               Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -1460,8 +1444,7 @@ class Disk(pulumi.CustomResource):
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[str] interface: (Optional, Deprecated)
-               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
@@ -1477,9 +1460,6 @@ class Disk(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
@@ -1510,10 +1490,10 @@ class Disk(pulumi.CustomResource):
                if upsizing is detected but recreates the disk if downsizing is requested.
                You can add `lifecycle.prevent_destroy` in the config to prevent destroying
                and recreating.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-               snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-               * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. If the snapshot is in another
+               project than this disk, you must supply a full URL. For example, the
+               following are valid values:
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -1801,8 +1781,8 @@ class Disk(pulumi.CustomResource):
                you do not need to provide a key to use the disk later.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-               required when setting to true
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
+               Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -1815,8 +1795,7 @@ class Disk(pulumi.CustomResource):
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[str] interface: (Optional, Deprecated)
-               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
                
                > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
@@ -1836,9 +1815,6 @@ class Disk(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[int] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present
                in a request, a default value is used. Currently supported sizes
                are 4096 and 16384, other sizes may be added in the future.
@@ -1872,10 +1848,10 @@ class Disk(pulumi.CustomResource):
                if upsizing is detected but recreates the disk if downsizing is requested.
                You can add `lifecycle.prevent_destroy` in the config to prevent destroying
                and recreating.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-               snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-               * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
+               a partial or full URL to the resource. If the snapshot is in another
+               project than this disk, you must supply a full URL. For example, the
+               following are valid values:
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -2006,8 +1982,8 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> pulumi.Output[bool]:
         """
-        Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-        required when setting to true
+        Whether this disk is using confidential compute mode.
+        Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -2041,7 +2017,6 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter
     def interface(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 
         > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -2114,9 +2089,6 @@ class Disk(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -2213,10 +2185,10 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter
     def snapshot(self) -> pulumi.Output[Optional[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
-        snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
-        * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+        The source snapshot used to create this disk. You can provide this as
+        a partial or full URL to the resource. If the snapshot is in another
+        project than this disk, you must supply a full URL. For example, the
+        following are valid values:
         """
         return pulumi.get(self, "snapshot")
 

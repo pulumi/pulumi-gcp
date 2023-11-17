@@ -281,8 +281,6 @@ type FhirStore struct {
 	ComplexDataTypeReferenceParsing pulumi.StringOutput `pulumi:"complexDataTypeReferenceParsing"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -337,6 +335,7 @@ type FhirStore struct {
 	// Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+	// Structure is documented below.
 	NotificationConfigs FhirStoreNotificationConfigArrayOutput `pulumi:"notificationConfigs"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -400,8 +399,6 @@ type fhirStoreState struct {
 	ComplexDataTypeReferenceParsing *string `pulumi:"complexDataTypeReferenceParsing"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset *string `pulumi:"dataset"`
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -456,6 +453,7 @@ type fhirStoreState struct {
 	// Structure is documented below.
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+	// Structure is documented below.
 	NotificationConfigs []FhirStoreNotificationConfig `pulumi:"notificationConfigs"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -482,8 +480,6 @@ type FhirStoreState struct {
 	ComplexDataTypeReferenceParsing pulumi.StringPtrInput
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringPtrInput
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -538,6 +534,7 @@ type FhirStoreState struct {
 	// Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrInput
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+	// Structure is documented below.
 	NotificationConfigs FhirStoreNotificationConfigArrayInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -568,8 +565,6 @@ type fhirStoreArgs struct {
 	ComplexDataTypeReferenceParsing *string `pulumi:"complexDataTypeReferenceParsing"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset string `pulumi:"dataset"`
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -622,6 +617,7 @@ type fhirStoreArgs struct {
 	// Structure is documented below.
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+	// Structure is documented below.
 	NotificationConfigs []FhirStoreNotificationConfig `pulumi:"notificationConfigs"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
 	// this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
@@ -644,8 +640,6 @@ type FhirStoreArgs struct {
 	ComplexDataTypeReferenceParsing pulumi.StringPtrInput
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
-	//
-	// ***
 	Dataset pulumi.StringInput
 	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
@@ -698,6 +692,7 @@ type FhirStoreArgs struct {
 	// Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrInput
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+	// Structure is documented below.
 	NotificationConfigs FhirStoreNotificationConfigArrayInput
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in
 	// this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
@@ -808,8 +803,6 @@ func (o FhirStoreOutput) ComplexDataTypeReferenceParsing() pulumi.StringOutput {
 
 // Identifies the dataset addressed by this request. Must be in the format
 // 'projects/{project}/locations/{location}/datasets/{dataset}'
-//
-// ***
 func (o FhirStoreOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }
@@ -894,6 +887,7 @@ func (o FhirStoreOutput) NotificationConfig() FhirStoreNotificationConfigPtrOutp
 }
 
 // A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+// Structure is documented below.
 func (o FhirStoreOutput) NotificationConfigs() FhirStoreNotificationConfigArrayOutput {
 	return o.ApplyT(func(v *FhirStore) FhirStoreNotificationConfigArrayOutput { return v.NotificationConfigs }).(FhirStoreNotificationConfigArrayOutput)
 }

@@ -25,9 +25,6 @@ class RuntimeArgs:
         """
         The set of arguments for constructing a Runtime resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
                Structure is documented below.
         :param pulumi.Input[str] name: The name specified for the Notebook runtime.
@@ -55,9 +52,6 @@ class RuntimeArgs:
     def location(self) -> pulumi.Input[str]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -150,9 +144,6 @@ class _RuntimeState:
                values, see `https://cloud.google.com/vertex-ai/docs/workbench/
                reference/rest/v1/projects.locations.runtimes#healthstate`.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
                status
                Structure is documented below.
@@ -216,9 +207,6 @@ class _RuntimeState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -506,9 +494,6 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']] access_config: The config settings for accessing runtime.
                Structure is documented below.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -781,9 +766,6 @@ class Runtime(pulumi.CustomResource):
                values, see `https://cloud.google.com/vertex-ai/docs/workbench/
                reference/rest/v1/projects.locations.runtimes#healthstate`.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeMetricArgs']]]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
                status
                Structure is documented below.
@@ -835,9 +817,6 @@ class Runtime(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         A reference to the zone where the machine resides.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

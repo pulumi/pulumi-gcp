@@ -356,9 +356,8 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
+     * Configures a query job.
+     * Structure is documented below.
      */
     public readonly query!: pulumi.Output<outputs.bigquery.JobQuery | undefined>;
     /**
@@ -485,9 +484,8 @@ export interface JobState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
+     * Configures a query job.
+     * Structure is documented below.
      */
     query?: pulumi.Input<inputs.bigquery.JobQuery>;
     /**
@@ -545,9 +543,8 @@ export interface JobArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
+     * Configures a query job.
+     * Structure is documented below.
      */
     query?: pulumi.Input<inputs.bigquery.JobQuery>;
 }

@@ -91,8 +91,6 @@ type TenantOauthIdpConfig struct {
 	pulumi.CustomResourceState
 
 	// The client id of an OAuth client.
-	//
-	// ***
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
@@ -154,8 +152,6 @@ func GetTenantOauthIdpConfig(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TenantOauthIdpConfig resources.
 type tenantOauthIdpConfigState struct {
 	// The client id of an OAuth client.
-	//
-	// ***
 	ClientId *string `pulumi:"clientId"`
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret *string `pulumi:"clientSecret"`
@@ -176,8 +172,6 @@ type tenantOauthIdpConfigState struct {
 
 type TenantOauthIdpConfigState struct {
 	// The client id of an OAuth client.
-	//
-	// ***
 	ClientId pulumi.StringPtrInput
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret pulumi.StringPtrInput
@@ -202,8 +196,6 @@ func (TenantOauthIdpConfigState) ElementType() reflect.Type {
 
 type tenantOauthIdpConfigArgs struct {
 	// The client id of an OAuth client.
-	//
-	// ***
 	ClientId string `pulumi:"clientId"`
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret *string `pulumi:"clientSecret"`
@@ -225,8 +217,6 @@ type tenantOauthIdpConfigArgs struct {
 // The set of arguments for constructing a TenantOauthIdpConfig resource.
 type TenantOauthIdpConfigArgs struct {
 	// The client id of an OAuth client.
-	//
-	// ***
 	ClientId pulumi.StringInput
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret pulumi.StringPtrInput
@@ -333,8 +323,6 @@ func (o TenantOauthIdpConfigOutput) ToTenantOauthIdpConfigOutputWithContext(ctx 
 }
 
 // The client id of an OAuth client.
-//
-// ***
 func (o TenantOauthIdpConfigOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantOauthIdpConfig) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }

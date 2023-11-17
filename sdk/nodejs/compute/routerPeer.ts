@@ -310,9 +310,6 @@ export class RouterPeer extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
-     *
-     *
-     * - - -
      */
     public readonly router!: pulumi.Output<string>;
     /**
@@ -496,9 +493,6 @@ export interface RouterPeerState {
     region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
-     *
-     *
-     * - - -
      */
     router?: pulumi.Input<string>;
     /**
@@ -611,9 +605,6 @@ export interface RouterPeerArgs {
     region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
-     *
-     *
-     * - - -
      */
     router: pulumi.Input<string>;
     /**

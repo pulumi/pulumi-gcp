@@ -227,8 +227,6 @@ type Target struct {
 	// Information specifying a multiTarget.
 	MultiTarget TargetMultiTargetPtrOutput `pulumi:"multiTarget"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -318,8 +316,6 @@ type targetState struct {
 	// Information specifying a multiTarget.
 	MultiTarget *TargetMultiTarget `pulumi:"multiTarget"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -372,8 +368,6 @@ type TargetState struct {
 	// Information specifying a multiTarget.
 	MultiTarget TargetMultiTargetPtrInput
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -421,8 +415,6 @@ type targetArgs struct {
 	// Information specifying a multiTarget.
 	MultiTarget *TargetMultiTarget `pulumi:"multiTarget"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -459,8 +451,6 @@ type TargetArgs struct {
 	// Information specifying a multiTarget.
 	MultiTarget TargetMultiTargetPtrInput
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -630,8 +620,6 @@ func (o TargetOutput) MultiTarget() TargetMultiTargetPtrOutput {
 }
 
 // Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-//
-// ***
 func (o TargetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -163,9 +163,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The name of this intent to be displayed on the console.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -224,7 +221,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// The priority of this intent. Higher numbers represent higher priorities.
         /// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-        /// to the Normal priority in the console.
+        ///   to the Normal priority in the console.
         /// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         /// </summary>
         [Output("priority")]
@@ -255,8 +252,8 @@ namespace Pulumi.Gcp.Diagflow
         /// Indicates whether webhooks are enabled for the intent.
         /// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
         /// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-        /// filling prompt is forwarded to the webhook.
-        /// Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+        ///   filling prompt is forwarded to the webhook.
+        ///   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         /// </summary>
         [Output("webhookState")]
         public Output<string> WebhookState { get; private set; } = null!;
@@ -330,9 +327,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The name of this intent to be displayed on the console.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -388,7 +382,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// The priority of this intent. Higher numbers represent higher priorities.
         /// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-        /// to the Normal priority in the console.
+        ///   to the Normal priority in the console.
         /// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         /// </summary>
         [Input("priority")]
@@ -411,8 +405,8 @@ namespace Pulumi.Gcp.Diagflow
         /// Indicates whether webhooks are enabled for the intent.
         /// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
         /// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-        /// filling prompt is forwarded to the webhook.
-        /// Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+        ///   filling prompt is forwarded to the webhook.
+        ///   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         /// </summary>
         [Input("webhookState")]
         public Input<string>? WebhookState { get; set; }
@@ -448,9 +442,6 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The name of this intent to be displayed on the console.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -527,7 +518,7 @@ namespace Pulumi.Gcp.Diagflow
         /// <summary>
         /// The priority of this intent. Higher numbers represent higher priorities.
         /// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-        /// to the Normal priority in the console.
+        ///   to the Normal priority in the console.
         /// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         /// </summary>
         [Input("priority")]
@@ -558,8 +549,8 @@ namespace Pulumi.Gcp.Diagflow
         /// Indicates whether webhooks are enabled for the intent.
         /// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
         /// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-        /// filling prompt is forwarded to the webhook.
-        /// Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+        ///   filling prompt is forwarded to the webhook.
+        ///   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         /// </summary>
         [Input("webhookState")]
         public Input<string>? WebhookState { get; set; }

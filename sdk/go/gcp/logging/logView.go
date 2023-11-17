@@ -81,8 +81,6 @@ type LogView struct {
 	pulumi.CustomResourceState
 
 	// The bucket of the resource
-	//
-	// ***
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// Output only. The creation timestamp of the view.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -134,8 +132,6 @@ func GetLogView(ctx *pulumi.Context,
 // Input properties used for looking up and filtering LogView resources.
 type logViewState struct {
 	// The bucket of the resource
-	//
-	// ***
 	Bucket *string `pulumi:"bucket"`
 	// Output only. The creation timestamp of the view.
 	CreateTime *string `pulumi:"createTime"`
@@ -155,8 +151,6 @@ type logViewState struct {
 
 type LogViewState struct {
 	// The bucket of the resource
-	//
-	// ***
 	Bucket pulumi.StringPtrInput
 	// Output only. The creation timestamp of the view.
 	CreateTime pulumi.StringPtrInput
@@ -180,8 +174,6 @@ func (LogViewState) ElementType() reflect.Type {
 
 type logViewArgs struct {
 	// The bucket of the resource
-	//
-	// ***
 	Bucket string `pulumi:"bucket"`
 	// Describes this view.
 	Description *string `pulumi:"description"`
@@ -198,8 +190,6 @@ type logViewArgs struct {
 // The set of arguments for constructing a LogView resource.
 type LogViewArgs struct {
 	// The bucket of the resource
-	//
-	// ***
 	Bucket pulumi.StringInput
 	// Describes this view.
 	Description pulumi.StringPtrInput
@@ -301,8 +291,6 @@ func (o LogViewOutput) ToLogViewOutputWithContext(ctx context.Context) LogViewOu
 }
 
 // The bucket of the resource
-//
-// ***
 func (o LogViewOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogView) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }

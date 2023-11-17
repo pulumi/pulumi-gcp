@@ -139,9 +139,6 @@ export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
-     *
-     *
-     * - - -
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
@@ -234,9 +231,6 @@ export interface DatabaseInstanceState {
     /**
      * The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
-     *
-     *
-     * - - -
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -282,9 +276,6 @@ export interface DatabaseInstanceArgs {
     /**
      * The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
-     *
-     *
-     * - - -
      */
     instanceId: pulumi.Input<string>;
     /**

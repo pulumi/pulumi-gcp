@@ -178,9 +178,6 @@ export class User extends pulumi.CustomResource {
     /**
      * The type of this user.
      * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-     *
-     *
-     * - - -
      */
     public readonly userType!: pulumi.Output<string>;
 
@@ -254,9 +251,6 @@ export interface UserState {
     /**
      * The type of this user.
      * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-     *
-     *
-     * - - -
      */
     userType?: pulumi.Input<string>;
 }
@@ -285,9 +279,6 @@ export interface UserArgs {
     /**
      * The type of this user.
      * Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-     *
-     *
-     * - - -
      */
     userType: pulumi.Input<string>;
 }

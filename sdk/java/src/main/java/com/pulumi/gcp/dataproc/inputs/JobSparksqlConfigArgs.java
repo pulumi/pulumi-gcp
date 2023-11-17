@@ -21,16 +21,12 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
     /**
      * HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
-     * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
-     * 
      */
     @Import(name="jarFileUris")
     private @Nullable Output<List<String>> jarFileUris;
 
     /**
      * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
-     * 
-     * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
      * 
      */
     public Optional<Output<List<String>>> jarFileUris() {
@@ -140,8 +136,6 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
          * 
-         * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
-         * 
          * @return builder
          * 
          */
@@ -153,8 +147,6 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
          * 
-         * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
-         * 
          * @return builder
          * 
          */
@@ -164,8 +156,6 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
-         * 
-         * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
          * 
          * @return builder
          * 

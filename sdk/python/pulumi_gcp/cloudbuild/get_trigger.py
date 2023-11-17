@@ -294,8 +294,6 @@ def get_trigger(location: Optional[str] = None,
 
 
     :param str location: The Cloud Build location for the trigger.
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
     :param str trigger_id: The unique identifier for the trigger..
     """
@@ -360,8 +358,6 @@ def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
 
 
     :param str location: The Cloud Build location for the trigger.
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
     :param str trigger_id: The unique identifier for the trigger..
     """

@@ -243,8 +243,8 @@ export class Subscription extends pulumi.CustomResource {
      * of a message with a given value of messageId on this Subscriptions':
      * - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
      * - An acknowledged message will not be resent to a subscriber.
-     * Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
-     * is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+     *   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+     *   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
      */
     public readonly enableExactlyOnceDelivery!: pulumi.Output<boolean | undefined>;
     /**
@@ -326,9 +326,6 @@ export class Subscription extends pulumi.CustomResource {
     public readonly retryPolicy!: pulumi.Output<outputs.pubsub.SubscriptionRetryPolicy | undefined>;
     /**
      * A reference to a Topic resource.
-     *
-     *
-     * - - -
      */
     public readonly topic!: pulumi.Output<string>;
 
@@ -450,8 +447,8 @@ export interface SubscriptionState {
      * of a message with a given value of messageId on this Subscriptions':
      * - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
      * - An acknowledged message will not be resent to a subscriber.
-     * Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
-     * is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+     *   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+     *   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
      */
     enableExactlyOnceDelivery?: pulumi.Input<boolean>;
     /**
@@ -533,9 +530,6 @@ export interface SubscriptionState {
     retryPolicy?: pulumi.Input<inputs.pubsub.SubscriptionRetryPolicy>;
     /**
      * A reference to a Topic resource.
-     *
-     *
-     * - - -
      */
     topic?: pulumi.Input<string>;
 }
@@ -592,8 +586,8 @@ export interface SubscriptionArgs {
      * of a message with a given value of messageId on this Subscriptions':
      * - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
      * - An acknowledged message will not be resent to a subscriber.
-     * Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
-     * is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+     *   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+     *   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
      */
     enableExactlyOnceDelivery?: pulumi.Input<boolean>;
     /**
@@ -670,9 +664,6 @@ export interface SubscriptionArgs {
     retryPolicy?: pulumi.Input<inputs.pubsub.SubscriptionRetryPolicy>;
     /**
      * A reference to a Topic resource.
-     *
-     *
-     * - - -
      */
     topic: pulumi.Input<string>;
 }

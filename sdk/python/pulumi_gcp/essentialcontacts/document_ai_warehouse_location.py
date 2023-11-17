@@ -27,9 +27,6 @@ class DocumentAiWarehouseLocationArgs:
         :param pulumi.Input[str] database_type: The type of database used to store customer data.
                Possible values are: `DB_INFRA_SPANNER`, `DB_CLOUD_SQL_POSTGRES`.
         :param pulumi.Input[str] location: The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-               
-               
-               - - -
         :param pulumi.Input[str] project_number: The unique identifier of the project.
         :param pulumi.Input[str] document_creator_default_role: The default role for the person who create a document.
                Possible values are: `DOCUMENT_ADMIN`, `DOCUMENT_EDITOR`, `DOCUMENT_VIEWER`.
@@ -79,9 +76,6 @@ class DocumentAiWarehouseLocationArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -154,9 +148,6 @@ class _DocumentAiWarehouseLocationState:
                encryption is available. If the kmsKey is left empty, no
                encryption will be enforced.
         :param pulumi.Input[str] location: The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-               
-               
-               - - -
         :param pulumi.Input[str] project_number: The unique identifier of the project.
         """
         if access_control_mode is not None:
@@ -232,9 +223,6 @@ class _DocumentAiWarehouseLocationState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -311,9 +299,6 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
                encryption is available. If the kmsKey is left empty, no
                encryption will be enforced.
         :param pulumi.Input[str] location: The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-               
-               
-               - - -
         :param pulumi.Input[str] project_number: The unique identifier of the project.
         """
         ...
@@ -431,9 +416,6 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
                encryption is available. If the kmsKey is left empty, no
                encryption will be enforced.
         :param pulumi.Input[str] location: The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-               
-               
-               - - -
         :param pulumi.Input[str] project_number: The unique identifier of the project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -492,9 +474,6 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 

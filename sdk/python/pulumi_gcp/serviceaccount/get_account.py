@@ -142,14 +142,15 @@ def get_account(account_id: Optional[str] = None,
 
 
     :param str account_id: The Google service account ID. This be one of:
-           
            * The name of the service account within the project (e.g. `my-service`)
            
+           
            * The fully-qualified path to a service account resource (e.g.
-           `projects/my-project/serviceAccounts/...`)
+             `projects/my-project/serviceAccounts/...`)
+           
            
            * The email address of the service account (e.g.
-           `my-service@my-project.iam.gserviceaccount.com`)
+             `my-service@my-project.iam.gserviceaccount.com`)
     :param str project: The ID of the project that the service account is present in.
            Defaults to the provider project configuration.
     """
@@ -189,14 +190,15 @@ def get_account_output(account_id: Optional[pulumi.Input[str]] = None,
 
 
     :param str account_id: The Google service account ID. This be one of:
-           
            * The name of the service account within the project (e.g. `my-service`)
            
+           
            * The fully-qualified path to a service account resource (e.g.
-           `projects/my-project/serviceAccounts/...`)
+             `projects/my-project/serviceAccounts/...`)
+           
            
            * The email address of the service account (e.g.
-           `my-service@my-project.iam.gserviceaccount.com`)
+             `my-service@my-project.iam.gserviceaccount.com`)
     :param str project: The ID of the project that the service account is present in.
            Defaults to the provider project configuration.
     """

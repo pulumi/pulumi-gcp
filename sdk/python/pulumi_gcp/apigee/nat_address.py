@@ -20,9 +20,6 @@ class NatAddressArgs:
         The set of arguments for constructing a NatAddress resource.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Resource ID of the NAT address.
         """
         pulumi.set(__self__, "instance_id", instance_id)
@@ -35,9 +32,6 @@ class NatAddressArgs:
         """
         The Apigee instance associated with the Apigee environment,
         in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -69,9 +63,6 @@ class _NatAddressState:
         Input properties used for looking up and filtering NatAddress resources.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] ip_address: The allocated NAT IP address.
         :param pulumi.Input[str] name: Resource ID of the NAT address.
         :param pulumi.Input[str] state: State of the NAT IP address.
@@ -91,9 +82,6 @@ class _NatAddressState:
         """
         The Apigee instance associated with the Apigee environment,
         in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -228,9 +216,6 @@ class NatAddress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] name: Resource ID of the NAT address.
         """
         ...
@@ -372,9 +357,6 @@ class NatAddress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] ip_address: The allocated NAT IP address.
         :param pulumi.Input[str] name: Resource ID of the NAT address.
         :param pulumi.Input[str] state: State of the NAT IP address.
@@ -395,9 +377,6 @@ class NatAddress(pulumi.CustomResource):
         """
         The Apigee instance associated with the Apigee environment,
         in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "instance_id")
 

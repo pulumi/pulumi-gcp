@@ -32,8 +32,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// applies to connections through any port.
         /// Example inputs include: ["22"], ["80","443"], and
         /// ["12345-12349"].
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> Ports
         {

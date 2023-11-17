@@ -18,8 +18,6 @@ public final class GetKMSKeyRingPlainArgs extends com.pulumi.resources.InvokeArg
      * The Google Cloud Platform location for the KeyRing.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private String location;
@@ -27,8 +25,6 @@ public final class GetKMSKeyRingPlainArgs extends com.pulumi.resources.InvokeArg
     /**
      * @return The Google Cloud Platform location for the KeyRing.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
-     * 
-     * ***
      * 
      */
     public String location() {
@@ -98,8 +94,6 @@ public final class GetKMSKeyRingPlainArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param location The Google Cloud Platform location for the KeyRing.
          * A full list of valid locations can be found by running `gcloud kms locations list`.
-         * 
-         * ***
          * 
          * @return builder
          * 

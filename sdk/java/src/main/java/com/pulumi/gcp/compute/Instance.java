@@ -534,7 +534,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
+     * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+     * is &#34;External IPv6&#34;.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -542,7 +543,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
+     * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+     * is &#34;External IPv6&#34;.
      * 
      */
     public Output<String> name() {
@@ -552,8 +554,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Export(name="networkInterfaces", refs={List.class,InstanceNetworkInterface.class}, tree="[0,1]")
     private Output<List<InstanceNetworkInterface>> networkInterfaces;
@@ -562,29 +562,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      * 
-     * ***
-     * 
      */
     public Output<List<InstanceNetworkInterface>> networkInterfaces() {
         return this.networkInterfaces;
     }
     /**
-     * Configures network performance settings for the instance. Structure is
-     * documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-     * in order for this setting to take effect.
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its
+     * default network performance configuration.
      * 
      */
     @Export(name="networkPerformanceConfig", refs={InstanceNetworkPerformanceConfig.class}, tree="[0]")
     private Output</* @Nullable */ InstanceNetworkPerformanceConfig> networkPerformanceConfig;
 
     /**
-     * @return Configures network performance settings for the instance. Structure is
-     * documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-     * in order for this setting to take effect.
+     * @return Configures network performance settings for the instance. If not specified, the instance will be created with its
+     * default network performance configuration.
      * 
      */
     public Output<Optional<InstanceNetworkPerformanceConfig>> networkPerformanceConfig() {
@@ -653,14 +645,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.reservationAffinity;
     }
     /**
-     * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     @Export(name="resourcePolicies", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourcePolicies;
 
     /**
-     * @return - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * @return A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     public Output<Optional<String>> resourcePolicies() {

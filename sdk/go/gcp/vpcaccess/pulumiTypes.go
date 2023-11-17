@@ -175,8 +175,6 @@ func (o ConnectorSubnetPtrOutput) ProjectId() pulumi.StringPtrOutput {
 
 type GetConnectorSubnet struct {
 	// Name of the resource.
-	//
-	// ***
 	Name      string `pulumi:"name"`
 	ProjectId string `pulumi:"projectId"`
 }
@@ -194,8 +192,6 @@ type GetConnectorSubnetInput interface {
 
 type GetConnectorSubnetArgs struct {
 	// Name of the resource.
-	//
-	// ***
 	Name      pulumi.StringInput `pulumi:"name"`
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
@@ -252,8 +248,6 @@ func (o GetConnectorSubnetOutput) ToGetConnectorSubnetOutputWithContext(ctx cont
 }
 
 // Name of the resource.
-//
-// ***
 func (o GetConnectorSubnetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorSubnet) string { return v.Name }).(pulumi.StringOutput)
 }

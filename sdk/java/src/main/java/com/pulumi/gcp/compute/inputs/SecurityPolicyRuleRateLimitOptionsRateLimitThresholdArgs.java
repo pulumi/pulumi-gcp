@@ -31,12 +31,16 @@ public final class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs exte
     /**
      * Interval over which the threshold is computed.
      * 
+     * * &lt;a  name=&#34;nested_exceed_redirect_options&#34;&gt;&lt;/a&gt;The `exceed_redirect_options` block supports:
+     * 
      */
     @Import(name="intervalSec", required=true)
     private Output<Integer> intervalSec;
 
     /**
      * @return Interval over which the threshold is computed.
+     * 
+     * * &lt;a  name=&#34;nested_exceed_redirect_options&#34;&gt;&lt;/a&gt;The `exceed_redirect_options` block supports:
      * 
      */
     public Output<Integer> intervalSec() {
@@ -92,6 +96,8 @@ public final class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs exte
         /**
          * @param intervalSec Interval over which the threshold is computed.
          * 
+         * * &lt;a  name=&#34;nested_exceed_redirect_options&#34;&gt;&lt;/a&gt;The `exceed_redirect_options` block supports:
+         * 
          * @return builder
          * 
          */
@@ -102,6 +108,8 @@ public final class SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs exte
 
         /**
          * @param intervalSec Interval over which the threshold is computed.
+         * 
+         * * &lt;a  name=&#34;nested_exceed_redirect_options&#34;&gt;&lt;/a&gt;The `exceed_redirect_options` block supports:
          * 
          * @return builder
          * 

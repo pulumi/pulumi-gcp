@@ -142,8 +142,6 @@ type ServicePerimeters struct {
 
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
 	// Structure is documented below.
@@ -185,8 +183,6 @@ func GetServicePerimeters(ctx *pulumi.Context,
 type servicePerimetersState struct {
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 	// The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
 	// Structure is documented below.
@@ -196,8 +192,6 @@ type servicePerimetersState struct {
 type ServicePerimetersState struct {
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 	// The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
 	// Structure is documented below.
@@ -211,8 +205,6 @@ func (ServicePerimetersState) ElementType() reflect.Type {
 type servicePerimetersArgs struct {
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 	// The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
 	// Structure is documented below.
@@ -223,8 +215,6 @@ type servicePerimetersArgs struct {
 type ServicePerimetersArgs struct {
 	// The AccessPolicy this ServicePerimeter lives in.
 	// Format: accessPolicies/{policy_id}
-	//
-	// ***
 	Parent pulumi.StringInput
 	// The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
 	// Structure is documented below.
@@ -320,8 +310,6 @@ func (o ServicePerimetersOutput) ToServicePerimetersOutputWithContext(ctx contex
 
 // The AccessPolicy this ServicePerimeter lives in.
 // Format: accessPolicies/{policy_id}
-//
-// ***
 func (o ServicePerimetersOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeters) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

@@ -16,16 +16,12 @@ public final class DatascanExecutionSpecTriggerScheduleArgs extends com.pulumi.r
     /**
      * Cron schedule for running scans periodically. This field is required for Schedule scans.
      * 
-     * ***
-     * 
      */
     @Import(name="cron", required=true)
     private Output<String> cron;
 
     /**
      * @return Cron schedule for running scans periodically. This field is required for Schedule scans.
-     * 
-     * ***
      * 
      */
     public Output<String> cron() {
@@ -59,8 +55,6 @@ public final class DatascanExecutionSpecTriggerScheduleArgs extends com.pulumi.r
         /**
          * @param cron Cron schedule for running scans periodically. This field is required for Schedule scans.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -71,8 +65,6 @@ public final class DatascanExecutionSpecTriggerScheduleArgs extends com.pulumi.r
 
         /**
          * @param cron Cron schedule for running scans periodically. This field is required for Schedule scans.
-         * 
-         * ***
          * 
          * @return builder
          * 

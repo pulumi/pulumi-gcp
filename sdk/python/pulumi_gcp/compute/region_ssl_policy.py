@@ -24,9 +24,6 @@ class RegionSslPolicyArgs:
         """
         The set of arguments for constructing a RegionSslPolicy resource.
         :param pulumi.Input[str] region: The region where the regional SSL policy resides.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_features: A list of features enabled when the selected profile is CUSTOM. The
                method returns the set of features that can be specified in this
                list. This field must be empty if the profile is not CUSTOM.
@@ -77,9 +74,6 @@ class RegionSslPolicyArgs:
     def region(self) -> pulumi.Input[str]:
         """
         The region where the regional SSL policy resides.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -235,9 +229,6 @@ class _RegionSslPolicyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the regional SSL policy resides.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         if creation_timestamp is not None:
@@ -401,9 +392,6 @@ class _RegionSslPolicyState:
     def region(self) -> Optional[pulumi.Input[str]]:
         """
         The region where the regional SSL policy resides.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -508,9 +496,6 @@ class RegionSslPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the regional SSL policy resides.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -663,9 +648,6 @@ class RegionSslPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the regional SSL policy resides.
-               
-               
-               - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -787,9 +769,6 @@ class RegionSslPolicy(pulumi.CustomResource):
     def region(self) -> pulumi.Output[str]:
         """
         The region where the regional SSL policy resides.
-
-
-        - - -
         """
         return pulumi.get(self, "region")
 

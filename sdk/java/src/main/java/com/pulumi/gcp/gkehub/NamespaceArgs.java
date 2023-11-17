@@ -95,16 +95,12 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Id of the scope
      * 
-     * ***
-     * 
      */
     @Import(name="scopeId", required=true)
     private Output<String> scopeId;
 
     /**
      * @return Id of the scope
-     * 
-     * ***
      * 
      */
     public Output<String> scopeId() {
@@ -258,8 +254,6 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param scopeId Id of the scope
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -270,8 +264,6 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scopeId Id of the scope
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -55,7 +55,7 @@ type CertificateTemplate struct {
 
 	// Output only. The time at which this CertificateTemplate was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	// Optional. A human-readable description of scenarios this template is intended for.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapOutput `pulumi:"effectiveLabels"`
@@ -122,7 +122,7 @@ func GetCertificateTemplate(ctx *pulumi.Context,
 type certificateTemplateState struct {
 	// Output only. The time at which this CertificateTemplate was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	// Optional. A human-readable description of scenarios this template is intended for.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]interface{} `pulumi:"effectiveLabels"`
@@ -152,7 +152,7 @@ type certificateTemplateState struct {
 type CertificateTemplateState struct {
 	// Output only. The time at which this CertificateTemplate was created.
 	CreateTime pulumi.StringPtrInput
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	// Optional. A human-readable description of scenarios this template is intended for.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.MapInput
@@ -184,7 +184,7 @@ func (CertificateTemplateState) ElementType() reflect.Type {
 }
 
 type certificateTemplateArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	// Optional. A human-readable description of scenarios this template is intended for.
 	Description *string `pulumi:"description"`
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints *CertificateTemplateIdentityConstraints `pulumi:"identityConstraints"`
@@ -207,7 +207,7 @@ type certificateTemplateArgs struct {
 
 // The set of arguments for constructing a CertificateTemplate resource.
 type CertificateTemplateArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	// Optional. A human-readable description of scenarios this template is intended for.
 	Description pulumi.StringPtrInput
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints CertificateTemplateIdentityConstraintsPtrInput
@@ -320,7 +320,7 @@ func (o CertificateTemplateOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+// Optional. A human-readable description of scenarios this template is intended for.
 func (o CertificateTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

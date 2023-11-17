@@ -2561,7 +2561,8 @@ func (o InboundSamlConfigSpConfigPtrOutput) SpEntityId() pulumi.StringPtrOutput 
 }
 
 type InboundSamlConfigSpConfigSpCertificate struct {
-	// The IdP's x509 certificate.
+	// (Output)
+	// The x509 certificate
 	X509Certificate *string `pulumi:"x509Certificate"`
 }
 
@@ -2577,7 +2578,8 @@ type InboundSamlConfigSpConfigSpCertificateInput interface {
 }
 
 type InboundSamlConfigSpConfigSpCertificateArgs struct {
-	// The IdP's x509 certificate.
+	// (Output)
+	// The x509 certificate
 	X509Certificate pulumi.StringPtrInput `pulumi:"x509Certificate"`
 }
 
@@ -2632,7 +2634,8 @@ func (o InboundSamlConfigSpConfigSpCertificateOutput) ToInboundSamlConfigSpConfi
 	return o
 }
 
-// The IdP's x509 certificate.
+// (Output)
+// The x509 certificate
 func (o InboundSamlConfigSpConfigSpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InboundSamlConfigSpConfigSpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)
 }
@@ -3994,6 +3997,7 @@ func (o TenantInboundSamlConfigSpConfigPtrOutput) SpEntityId() pulumi.StringPtrO
 }
 
 type TenantInboundSamlConfigSpConfigSpCertificate struct {
+	// (Output)
 	// The x509 certificate
 	X509Certificate *string `pulumi:"x509Certificate"`
 }
@@ -4010,6 +4014,7 @@ type TenantInboundSamlConfigSpConfigSpCertificateInput interface {
 }
 
 type TenantInboundSamlConfigSpConfigSpCertificateArgs struct {
+	// (Output)
 	// The x509 certificate
 	X509Certificate pulumi.StringPtrInput `pulumi:"x509Certificate"`
 }
@@ -4065,6 +4070,7 @@ func (o TenantInboundSamlConfigSpConfigSpCertificateOutput) ToTenantInboundSamlC
 	return o
 }
 
+// (Output)
 // The x509 certificate
 func (o TenantInboundSamlConfigSpConfigSpCertificateOutput) X509Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigSpConfigSpCertificate) *string { return v.X509Certificate }).(pulumi.StringPtrOutput)

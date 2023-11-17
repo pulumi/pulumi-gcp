@@ -113,9 +113,6 @@ namespace Pulumi.Gcp.CloudTasks
 
         /// <summary>
         /// The location of the queue
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -139,9 +136,9 @@ namespace Pulumi.Gcp.CloudTasks
         /// * Number of tasks in the queue
         /// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
         /// * System throttling due to 429 (Too Many Requests) or 503 (Service
-        /// Unavailable) responses from the worker, high error rates, or to
-        /// smooth sudden large traffic spikes.
-        /// Structure is documented below.
+        ///   Unavailable) responses from the worker, high error rates, or to
+        ///   smooth sudden large traffic spikes.
+        ///   Structure is documented below.
         /// </summary>
         [Output("rateLimits")]
         public Output<Outputs.QueueRateLimits> RateLimits { get; private set; } = null!;
@@ -216,9 +213,6 @@ namespace Pulumi.Gcp.CloudTasks
 
         /// <summary>
         /// The location of the queue
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -242,9 +236,9 @@ namespace Pulumi.Gcp.CloudTasks
         /// * Number of tasks in the queue
         /// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
         /// * System throttling due to 429 (Too Many Requests) or 503 (Service
-        /// Unavailable) responses from the worker, high error rates, or to
-        /// smooth sudden large traffic spikes.
-        /// Structure is documented below.
+        ///   Unavailable) responses from the worker, high error rates, or to
+        ///   smooth sudden large traffic spikes.
+        ///   Structure is documented below.
         /// </summary>
         [Input("rateLimits")]
         public Input<Inputs.QueueRateLimitsArgs>? RateLimits { get; set; }
@@ -281,9 +275,6 @@ namespace Pulumi.Gcp.CloudTasks
 
         /// <summary>
         /// The location of the queue
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -307,9 +298,9 @@ namespace Pulumi.Gcp.CloudTasks
         /// * Number of tasks in the queue
         /// * User-specified throttling: rateLimits, retryConfig, and the queue's state.
         /// * System throttling due to 429 (Too Many Requests) or 503 (Service
-        /// Unavailable) responses from the worker, high error rates, or to
-        /// smooth sudden large traffic spikes.
-        /// Structure is documented below.
+        ///   Unavailable) responses from the worker, high error rates, or to
+        ///   smooth sudden large traffic spikes.
+        ///   Structure is documented below.
         /// </summary>
         [Input("rateLimits")]
         public Input<Inputs.QueueRateLimitsGetArgs>? RateLimits { get; set; }

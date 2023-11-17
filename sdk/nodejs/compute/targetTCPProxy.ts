@@ -71,9 +71,6 @@ export class TargetTCPProxy extends pulumi.CustomResource {
 
     /**
      * A reference to the BackendService resource.
-     *
-     *
-     * - - -
      */
     public readonly backendService!: pulumi.Output<string>;
     /**
@@ -168,9 +165,6 @@ export class TargetTCPProxy extends pulumi.CustomResource {
 export interface TargetTCPProxyState {
     /**
      * A reference to the BackendService resource.
-     *
-     *
-     * - - -
      */
     backendService?: pulumi.Input<string>;
     /**
@@ -224,9 +218,6 @@ export interface TargetTCPProxyState {
 export interface TargetTCPProxyArgs {
     /**
      * A reference to the BackendService resource.
-     *
-     *
-     * - - -
      */
     backendService: pulumi.Input<string>;
     /**

@@ -440,16 +440,14 @@ public class Datascan extends com.pulumi.resources.CustomResource {
         return this.dataScanId;
     }
     /**
-     * Description of the rule.
-     * The maximum length is 1,024 characters.
+     * Description of the scan.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the rule.
-     * The maximum length is 1,024 characters.
+     * @return Description of the scan.
      * 
      */
     public Output<Optional<String>> description() {

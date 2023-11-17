@@ -242,7 +242,6 @@ type Instance struct {
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
 	Tier pulumi.StringOutput `pulumi:"tier"`
-	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
 	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
@@ -332,7 +331,6 @@ type instanceState struct {
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
 	Tier *string `pulumi:"tier"`
-	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
 	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
@@ -379,7 +377,6 @@ type InstanceState struct {
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
 	Tier pulumi.StringPtrInput
-	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
 	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
@@ -420,7 +417,6 @@ type instanceArgs struct {
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
 	Tier string `pulumi:"tier"`
-	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
 	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
@@ -458,7 +454,6 @@ type InstanceArgs struct {
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
 	Tier pulumi.StringInput
-	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
 	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
@@ -630,7 +625,6 @@ func (o InstanceOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
 }
 
-// (Optional, Deprecated)
 // The name of the Filestore zone of the instance.
 //
 // > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.

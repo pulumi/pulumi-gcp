@@ -74,9 +74,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("metricsScope")]
         public Output<string> MetricsScope { get; private set; } = null!;
@@ -135,9 +132,6 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("metricsScope", required: true)]
         public Input<string> MetricsScope { get; set; } = null!;
@@ -164,9 +158,6 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("metricsScope")]
         public Input<string>? MetricsScope { get; set; }

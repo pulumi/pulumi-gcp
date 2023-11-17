@@ -190,7 +190,8 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The type of the notification channel.
         /// 
-        /// - - -
+        /// 
+        /// 
         /// 
         /// Other optional fields include:
         /// </summary>
@@ -246,7 +247,8 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The type of the notification channel.
         /// 
-        /// - - -
+        /// 
+        /// 
         /// 
         /// Other optional fields include:
         /// </summary>

@@ -225,8 +225,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Transfer specification. Structure documented below.
-        /// 
-        /// - - -
         /// </summary>
         [Output("transferSpec")]
         public Output<Outputs.TransferJobTransferSpec> TransferSpec { get; private set; } = null!;
@@ -316,8 +314,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Transfer specification. Structure documented below.
-        /// 
-        /// - - -
         /// </summary>
         [Input("transferSpec", required: true)]
         public Input<Inputs.TransferJobTransferSpecArgs> TransferSpec { get; set; } = null!;
@@ -393,8 +389,6 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Transfer specification. Structure documented below.
-        /// 
-        /// - - -
         /// </summary>
         [Input("transferSpec")]
         public Input<Inputs.TransferJobTransferSpecGetArgs>? TransferSpec { get; set; }

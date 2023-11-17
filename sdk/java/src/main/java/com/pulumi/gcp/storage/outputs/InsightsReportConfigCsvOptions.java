@@ -20,8 +20,6 @@ public final class InsightsReportConfigCsvOptions {
     /**
      * @return The boolean that indicates whether or not headers are included in the inventory report CSV file.
      * 
-     * ***
-     * 
      */
     private @Nullable Boolean headerRequired;
     /**
@@ -40,8 +38,6 @@ public final class InsightsReportConfigCsvOptions {
     }
     /**
      * @return The boolean that indicates whether or not headers are included in the inventory report CSV file.
-     * 
-     * ***
      * 
      */
     public Optional<Boolean> headerRequired() {

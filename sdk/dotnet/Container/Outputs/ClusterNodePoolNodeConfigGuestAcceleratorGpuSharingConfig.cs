@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// The type of GPU sharing strategy to enable on the GPU node.
         /// Accepted values are:
-        /// * `"TIME_SHARING"`: Allow multiple containers to have [time-shared](https://cloud.google.com/kubernetes-engine/docs/concepts/timesharing-gpus) access to a single GPU device.
         /// </summary>
         public readonly string GpuSharingStrategy;
         /// <summary>

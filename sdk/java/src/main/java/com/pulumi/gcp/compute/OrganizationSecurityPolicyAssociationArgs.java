@@ -48,16 +48,12 @@ public final class OrganizationSecurityPolicyAssociationArgs extends com.pulumi.
     /**
      * The security policy ID of the association.
      * 
-     * ***
-     * 
      */
     @Import(name="policyId", required=true)
     private Output<String> policyId;
 
     /**
      * @return The security policy ID of the association.
-     * 
-     * ***
      * 
      */
     public Output<String> policyId() {
@@ -135,8 +131,6 @@ public final class OrganizationSecurityPolicyAssociationArgs extends com.pulumi.
         /**
          * @param policyId The security policy ID of the association.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -147,8 +141,6 @@ public final class OrganizationSecurityPolicyAssociationArgs extends com.pulumi.
 
         /**
          * @param policyId The security policy ID of the association.
-         * 
-         * ***
          * 
          * @return builder
          * 

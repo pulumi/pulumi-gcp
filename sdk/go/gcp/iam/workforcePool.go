@@ -125,8 +125,6 @@ type WorkforcePool struct {
 	// Format: `locations/{location}/workforcePools/{workforcePoolId}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Duration that the Google Cloud access tokens, console sign-in sessions,
 	// and `gcloud` sign-in sessions from this pool are valid.
@@ -203,8 +201,6 @@ type workforcePoolState struct {
 	// Format: `locations/{location}/workforcePools/{workforcePoolId}`
 	Name *string `pulumi:"name"`
 	// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 	// Duration that the Google Cloud access tokens, console sign-in sessions,
 	// and `gcloud` sign-in sessions from this pool are valid.
@@ -243,8 +239,6 @@ type WorkforcePoolState struct {
 	// Format: `locations/{location}/workforcePools/{workforcePoolId}`
 	Name pulumi.StringPtrInput
 	// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 	// Duration that the Google Cloud access tokens, console sign-in sessions,
 	// and `gcloud` sign-in sessions from this pool are valid.
@@ -284,8 +278,6 @@ type workforcePoolArgs struct {
 	// The location for the resource.
 	Location string `pulumi:"location"`
 	// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 	// Duration that the Google Cloud access tokens, console sign-in sessions,
 	// and `gcloud` sign-in sessions from this pool are valid.
@@ -311,8 +303,6 @@ type WorkforcePoolArgs struct {
 	// The location for the resource.
 	Location pulumi.StringInput
 	// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-	//
-	// ***
 	Parent pulumi.StringInput
 	// Duration that the Google Cloud access tokens, console sign-in sessions,
 	// and `gcloud` sign-in sessions from this pool are valid.
@@ -441,8 +431,6 @@ func (o WorkforcePoolOutput) Name() pulumi.StringOutput {
 }
 
 // Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-//
-// ***
 func (o WorkforcePoolOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePool) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

@@ -74,16 +74,12 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Secret Manager secret resource
      * 
-     * ***
-     * 
      */
     @Import(name="secret", required=true)
     private Output<String> secret;
 
     /**
      * @return Secret Manager secret resource
-     * 
-     * ***
      * 
      */
     public Output<String> secret() {
@@ -211,8 +207,6 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param secret Secret Manager secret resource
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -223,8 +217,6 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secret Secret Manager secret resource
-         * 
-         * ***
          * 
          * @return builder
          * 

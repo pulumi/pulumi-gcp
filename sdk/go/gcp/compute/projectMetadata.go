@@ -102,8 +102,6 @@ type ProjectMetadata struct {
 	pulumi.CustomResourceState
 
 	// A series of key value pairs.
-	//
-	// ***
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -144,8 +142,6 @@ func GetProjectMetadata(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ProjectMetadata resources.
 type projectMetadataState struct {
 	// A series of key value pairs.
-	//
-	// ***
 	Metadata map[string]string `pulumi:"metadata"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -154,8 +150,6 @@ type projectMetadataState struct {
 
 type ProjectMetadataState struct {
 	// A series of key value pairs.
-	//
-	// ***
 	Metadata pulumi.StringMapInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -168,8 +162,6 @@ func (ProjectMetadataState) ElementType() reflect.Type {
 
 type projectMetadataArgs struct {
 	// A series of key value pairs.
-	//
-	// ***
 	Metadata map[string]string `pulumi:"metadata"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -179,8 +171,6 @@ type projectMetadataArgs struct {
 // The set of arguments for constructing a ProjectMetadata resource.
 type ProjectMetadataArgs struct {
 	// A series of key value pairs.
-	//
-	// ***
 	Metadata pulumi.StringMapInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -275,8 +265,6 @@ func (o ProjectMetadataOutput) ToProjectMetadataOutputWithContext(ctx context.Co
 }
 
 // A series of key value pairs.
-//
-// ***
 func (o ProjectMetadataOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ProjectMetadata) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }

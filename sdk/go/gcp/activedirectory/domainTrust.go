@@ -94,8 +94,6 @@ type DomainTrust struct {
 
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-	//
-	// ***
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -174,8 +172,6 @@ func GetDomainTrust(ctx *pulumi.Context,
 type domainTrustState struct {
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-	//
-	// ***
 	Domain *string `pulumi:"domain"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -200,8 +196,6 @@ type domainTrustState struct {
 type DomainTrustState struct {
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-	//
-	// ***
 	Domain pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -230,8 +224,6 @@ func (DomainTrustState) ElementType() reflect.Type {
 type domainTrustArgs struct {
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-	//
-	// ***
 	Domain string `pulumi:"domain"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -257,8 +249,6 @@ type domainTrustArgs struct {
 type DomainTrustArgs struct {
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-	//
-	// ***
 	Domain pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -369,8 +359,6 @@ func (o DomainTrustOutput) ToDomainTrustOutputWithContext(ctx context.Context) D
 
 // The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 // https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-//
-// ***
 func (o DomainTrustOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainTrust) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }

@@ -88,8 +88,6 @@ type InstanceSettings struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -136,8 +134,6 @@ type instanceSettingsState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Zone *string `pulumi:"zone"`
 }
 
@@ -152,8 +148,6 @@ type InstanceSettingsState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Zone pulumi.StringPtrInput
 }
 
@@ -169,8 +163,6 @@ type instanceSettingsArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Zone string `pulumi:"zone"`
 }
 
@@ -183,8 +175,6 @@ type InstanceSettingsArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Zone pulumi.StringInput
 }
 
@@ -294,8 +284,6 @@ func (o InstanceSettingsOutput) Project() pulumi.StringOutput {
 }
 
 // A reference to the zone where the machine resides.
-//
-// ***
 func (o InstanceSettingsOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceSettings) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

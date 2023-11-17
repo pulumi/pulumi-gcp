@@ -14,12 +14,17 @@ import javax.annotation.Nullable;
 public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema {
     /**
      * @return Tables in the schema.
+     * Structure is documented below.`postgresql_tables` -
+     * (Optional)
+     * Tables in the schema.
      * Structure is documented below.
      * 
      */
     private @Nullable List<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable> postgresqlTables;
     /**
-     * @return Database name.
+     * @return Database name.`schema` -
+     * (Required)
+     * Database name.
      * 
      */
     private String schema;
@@ -27,6 +32,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema {
     private StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema() {}
     /**
      * @return Tables in the schema.
+     * Structure is documented below.`postgresql_tables` -
+     * (Optional)
+     * Tables in the schema.
      * Structure is documented below.
      * 
      */
@@ -34,7 +42,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema {
         return this.postgresqlTables == null ? List.of() : this.postgresqlTables;
     }
     /**
-     * @return Database name.
+     * @return Database name.`schema` -
+     * (Required)
+     * Database name.
      * 
      */
     public String schema() {

@@ -474,8 +474,6 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
      * 
-     * ***
-     * 
      */
     @Export(name="enableProxyProtocol", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableProxyProtocol;
@@ -484,8 +482,6 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      * @return If true, enable the proxy protocol which is for supplying client TCP/IP
      * address data in TCP connections that traverse proxies on their way to
      * destination servers.
-     * 
-     * ***
      * 
      */
     public Output<Boolean> enableProxyProtocol() {

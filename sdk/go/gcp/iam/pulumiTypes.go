@@ -313,8 +313,6 @@ type AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition struct {
 	Expression string `pulumi:"expression"`
 	// String indicating the location of the expression for error reporting,
 	// e.g. a file name and a position in the file.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Title for the expression, i.e. a short string describing its purpose.
 	// This can be used e.g. in UIs which allow to enter the expression.
@@ -340,8 +338,6 @@ type AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs struct 
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// String indicating the location of the expression for error reporting,
 	// e.g. a file name and a position in the file.
-	//
-	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Title for the expression, i.e. a short string describing its purpose.
 	// This can be used e.g. in UIs which allow to enter the expression.
@@ -438,8 +434,6 @@ func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) E
 
 // String indicating the location of the expression for error reporting,
 // e.g. a file name and a position in the file.
-//
-// ***
 func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -497,8 +491,6 @@ func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput
 
 // String indicating the location of the expression for error reporting,
 // e.g. a file name and a position in the file.
-//
-// ***
 func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string {
 		if v == nil {
@@ -869,8 +861,6 @@ type DenyPolicyRuleDenyRuleDenialCondition struct {
 	Expression string `pulumi:"expression"`
 	// String indicating the location of the expression for error reporting,
 	// e.g. a file name and a position in the file.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Title for the expression, i.e. a short string describing its purpose.
 	// This can be used e.g. in UIs which allow to enter the expression.
@@ -896,8 +886,6 @@ type DenyPolicyRuleDenyRuleDenialConditionArgs struct {
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// String indicating the location of the expression for error reporting,
 	// e.g. a file name and a position in the file.
-	//
-	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Title for the expression, i.e. a short string describing its purpose.
 	// This can be used e.g. in UIs which allow to enter the expression.
@@ -994,8 +982,6 @@ func (o DenyPolicyRuleDenyRuleDenialConditionOutput) Expression() pulumi.StringO
 
 // String indicating the location of the expression for error reporting,
 // e.g. a file name and a position in the file.
-//
-// ***
 func (o DenyPolicyRuleDenyRuleDenialConditionOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DenyPolicyRuleDenyRuleDenialCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -1053,8 +1039,6 @@ func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Expression() pulumi.Stri
 
 // String indicating the location of the expression for error reporting,
 // e.g. a file name and a position in the file.
-//
-// ***
 func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DenyPolicyRuleDenyRuleDenialCondition) *string {
 		if v == nil {
@@ -1089,6 +1073,7 @@ type WorkforcePoolProviderOidc struct {
 	// .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
 	// keys are supported. The JWK must use following format and include only
 	// the following fields:
+	//
 	// ```go
 	// package main
 	//
@@ -1133,6 +1118,7 @@ type WorkforcePoolProviderOidcArgs struct {
 	// .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
 	// keys are supported. The JWK must use following format and include only
 	// the following fields:
+	//
 	// ```go
 	// package main
 	//
@@ -1251,6 +1237,7 @@ func (o WorkforcePoolProviderOidcOutput) IssuerUri() pulumi.StringOutput {
 // .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
 // keys are supported. The JWK must use following format and include only
 // the following fields:
+//
 // ```go
 // package main
 //
@@ -1338,6 +1325,7 @@ func (o WorkforcePoolProviderOidcPtrOutput) IssuerUri() pulumi.StringPtrOutput {
 // .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
 // keys are supported. The JWK must use following format and include only
 // the following fields:
+//
 // ```go
 // package main
 //
@@ -1893,15 +1881,15 @@ type WorkforcePoolProviderSaml struct {
 	// The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
 	// The max size of the acceptable xml document will be bounded to 128k characters.
 	// The metadata xml document should satisfy the following constraints:
-	// 1) Must contain an Identity Provider Entity ID.
-	// 2) Must contain at least one non-expired signing key certificate.
-	// 3) For each signing key:
-	//    a) Valid from should be no more than 7 days from now.
-	//    b) Valid to should be no more than 10 years in the future.
-	// 4) Up to 3 IdP signing keys are allowed in the metadata xml.
-	//    When updating the provider's metadata xml, at least one non-expired signing key
-	//    must overlap with the existing metadata. This requirement is skipped if there are
-	//    no non-expired signing keys present in the existing metadata.
+	// ) Must contain an Identity Provider Entity ID.
+	// ) Must contain at least one non-expired signing key certificate.
+	// ) For each signing key:
+	//   a) Valid from should be no more than 7 days from now.
+	//   b) Valid to should be no more than 10 years in the future.
+	// ) Up to 3 IdP signing keys are allowed in the metadata xml.
+	//   When updating the provider's metadata xml, at least one non-expired signing key
+	//   must overlap with the existing metadata. This requirement is skipped if there are
+	//   no non-expired signing keys present in the existing metadata.
 	IdpMetadataXml string `pulumi:"idpMetadataXml"`
 }
 
@@ -1921,15 +1909,15 @@ type WorkforcePoolProviderSamlArgs struct {
 	// The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
 	// The max size of the acceptable xml document will be bounded to 128k characters.
 	// The metadata xml document should satisfy the following constraints:
-	// 1) Must contain an Identity Provider Entity ID.
-	// 2) Must contain at least one non-expired signing key certificate.
-	// 3) For each signing key:
-	//    a) Valid from should be no more than 7 days from now.
-	//    b) Valid to should be no more than 10 years in the future.
-	// 4) Up to 3 IdP signing keys are allowed in the metadata xml.
-	//    When updating the provider's metadata xml, at least one non-expired signing key
-	//    must overlap with the existing metadata. This requirement is skipped if there are
-	//    no non-expired signing keys present in the existing metadata.
+	// ) Must contain an Identity Provider Entity ID.
+	// ) Must contain at least one non-expired signing key certificate.
+	// ) For each signing key:
+	//   a) Valid from should be no more than 7 days from now.
+	//   b) Valid to should be no more than 10 years in the future.
+	// ) Up to 3 IdP signing keys are allowed in the metadata xml.
+	//   When updating the provider's metadata xml, at least one non-expired signing key
+	//   must overlap with the existing metadata. This requirement is skipped if there are
+	//   no non-expired signing keys present in the existing metadata.
 	IdpMetadataXml pulumi.StringInput `pulumi:"idpMetadataXml"`
 }
 
@@ -2014,15 +2002,18 @@ func (o WorkforcePoolProviderSamlOutput) ToWorkforcePoolProviderSamlPtrOutputWit
 // The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
 // The max size of the acceptable xml document will be bounded to 128k characters.
 // The metadata xml document should satisfy the following constraints:
-//  1. Must contain an Identity Provider Entity ID.
-//  2. Must contain at least one non-expired signing key certificate.
-//  3. For each signing key:
-//     a) Valid from should be no more than 7 days from now.
-//     b) Valid to should be no more than 10 years in the future.
-//  4. Up to 3 IdP signing keys are allowed in the metadata xml.
-//     When updating the provider's metadata xml, at least one non-expired signing key
-//     must overlap with the existing metadata. This requirement is skipped if there are
-//     no non-expired signing keys present in the existing metadata.
+// ) Must contain an Identity Provider Entity ID.
+// ) Must contain at least one non-expired signing key certificate.
+// ) For each signing key:
+//
+//	a) Valid from should be no more than 7 days from now.
+//	b) Valid to should be no more than 10 years in the future.
+//
+// ) Up to 3 IdP signing keys are allowed in the metadata xml.
+//
+//	When updating the provider's metadata xml, at least one non-expired signing key
+//	must overlap with the existing metadata. This requirement is skipped if there are
+//	no non-expired signing keys present in the existing metadata.
 func (o WorkforcePoolProviderSamlOutput) IdpMetadataXml() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkforcePoolProviderSaml) string { return v.IdpMetadataXml }).(pulumi.StringOutput)
 }
@@ -2055,15 +2046,18 @@ func (o WorkforcePoolProviderSamlPtrOutput) Elem() WorkforcePoolProviderSamlOutp
 // The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
 // The max size of the acceptable xml document will be bounded to 128k characters.
 // The metadata xml document should satisfy the following constraints:
-//  1. Must contain an Identity Provider Entity ID.
-//  2. Must contain at least one non-expired signing key certificate.
-//  3. For each signing key:
-//     a) Valid from should be no more than 7 days from now.
-//     b) Valid to should be no more than 10 years in the future.
-//  4. Up to 3 IdP signing keys are allowed in the metadata xml.
-//     When updating the provider's metadata xml, at least one non-expired signing key
-//     must overlap with the existing metadata. This requirement is skipped if there are
-//     no non-expired signing keys present in the existing metadata.
+// ) Must contain an Identity Provider Entity ID.
+// ) Must contain at least one non-expired signing key certificate.
+// ) For each signing key:
+//
+//	a) Valid from should be no more than 7 days from now.
+//	b) Valid to should be no more than 10 years in the future.
+//
+// ) Up to 3 IdP signing keys are allowed in the metadata xml.
+//
+//	When updating the provider's metadata xml, at least one non-expired signing key
+//	must overlap with the existing metadata. This requirement is skipped if there are
+//	no non-expired signing keys present in the existing metadata.
 func (o WorkforcePoolProviderSamlPtrOutput) IdpMetadataXml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderSaml) *string {
 		if v == nil {
@@ -2218,6 +2212,7 @@ type WorkloadIdentityPoolProviderOidc struct {
 	// If this list is empty, the OIDC token audience must be equal to the full canonical
 	// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
 	// For example:
+	//
 	// ```go
 	// package main
 	//
@@ -2240,6 +2235,7 @@ type WorkloadIdentityPoolProviderOidc struct {
 	// .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
 	// keys are supported. The JWK must use following format and include only
 	// the following fields:
+	//
 	// ```go
 	// package main
 	//
@@ -2275,6 +2271,7 @@ type WorkloadIdentityPoolProviderOidcArgs struct {
 	// If this list is empty, the OIDC token audience must be equal to the full canonical
 	// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
 	// For example:
+	//
 	// ```go
 	// package main
 	//
@@ -2297,6 +2294,7 @@ type WorkloadIdentityPoolProviderOidcArgs struct {
 	// .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
 	// keys are supported. The JWK must use following format and include only
 	// the following fields:
+	//
 	// ```go
 	// package main
 	//
@@ -2397,6 +2395,7 @@ func (o WorkloadIdentityPoolProviderOidcOutput) ToWorkloadIdentityPoolProviderOi
 // If this list is empty, the OIDC token audience must be equal to the full canonical
 // resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
 // For example:
+//
 // ```go
 // package main
 //
@@ -2428,6 +2427,7 @@ func (o WorkloadIdentityPoolProviderOidcOutput) IssuerUri() pulumi.StringOutput 
 // .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
 // keys are supported. The JWK must use following format and include only
 // the following fields:
+//
 // ```go
 // package main
 //
@@ -2479,6 +2479,7 @@ func (o WorkloadIdentityPoolProviderOidcPtrOutput) Elem() WorkloadIdentityPoolPr
 // If this list is empty, the OIDC token audience must be equal to the full canonical
 // resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
 // For example:
+//
 // ```go
 // package main
 //
@@ -2520,6 +2521,7 @@ func (o WorkloadIdentityPoolProviderOidcPtrOutput) IssuerUri() pulumi.StringPtrO
 // .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
 // keys are supported. The JWK must use following format and include only
 // the following fields:
+//
 // ```go
 // package main
 //

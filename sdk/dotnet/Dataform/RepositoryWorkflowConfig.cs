@@ -219,9 +219,6 @@ namespace Pulumi.Gcp.Dataform
 
         /// <summary>
         /// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("releaseConfig")]
         public Output<string> ReleaseConfig { get; private set; } = null!;
@@ -318,9 +315,6 @@ namespace Pulumi.Gcp.Dataform
 
         /// <summary>
         /// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("releaseConfig", required: true)]
         public Input<string> ReleaseConfig { get; set; } = null!;
@@ -392,9 +386,6 @@ namespace Pulumi.Gcp.Dataform
 
         /// <summary>
         /// The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("releaseConfig")]
         public Input<string>? ReleaseConfig { get; set; }

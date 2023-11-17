@@ -13,8 +13,6 @@ public final class MembershipRbacRoleBindingRole {
      * @return PredefinedRole is an ENUM representation of the default Kubernetes Roles
      * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
      * 
-     * ***
-     * 
      */
     private String predefinedRole;
 
@@ -22,8 +20,6 @@ public final class MembershipRbacRoleBindingRole {
     /**
      * @return PredefinedRole is an ENUM representation of the default Kubernetes Roles
      * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-     * 
-     * ***
      * 
      */
     public String predefinedRole() {

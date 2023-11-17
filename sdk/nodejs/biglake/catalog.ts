@@ -101,9 +101,6 @@ export class Catalog extends pulumi.CustomResource {
     /**
      * The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -186,9 +183,6 @@ export interface CatalogState {
     /**
      * The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -215,9 +209,6 @@ export interface CatalogArgs {
     /**
      * The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

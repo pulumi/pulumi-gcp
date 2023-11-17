@@ -164,8 +164,6 @@ func (o ClusterAuthorizationPtrOutput) AdminUsers() ClusterAuthorizationAdminUse
 
 type ClusterAuthorizationAdminUsers struct {
 	// An active Google username.
-	//
-	// ***
 	Username string `pulumi:"username"`
 }
 
@@ -182,8 +180,6 @@ type ClusterAuthorizationAdminUsersInput interface {
 
 type ClusterAuthorizationAdminUsersArgs struct {
 	// An active Google username.
-	//
-	// ***
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -265,8 +261,6 @@ func (o ClusterAuthorizationAdminUsersOutput) ToClusterAuthorizationAdminUsersPt
 }
 
 // An active Google username.
-//
-// ***
 func (o ClusterAuthorizationAdminUsersOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterAuthorizationAdminUsers) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -296,8 +290,6 @@ func (o ClusterAuthorizationAdminUsersPtrOutput) Elem() ClusterAuthorizationAdmi
 }
 
 // An active Google username.
-//
-// ***
 func (o ClusterAuthorizationAdminUsersPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterAuthorizationAdminUsers) *string {
 		if v == nil {

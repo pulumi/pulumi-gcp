@@ -115,16 +115,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:dns/responsePolicyRule:ResponsePolicyRule")
 public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
-     * &#39;bypassResponsePolicy&#39;
+     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
      * 
      */
     @Export(name="behavior", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> behavior;
 
     /**
-     * @return Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
-     * &#39;bypassResponsePolicy&#39;
+     * @return Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
      * 
      */
     public Output<Optional<String>> behavior() {
@@ -181,16 +179,12 @@ public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
     /**
      * Identifies the response policy addressed by this request.
      * 
-     * ***
-     * 
      */
     @Export(name="responsePolicy", refs={String.class}, tree="[0]")
     private Output<String> responsePolicy;
 
     /**
      * @return Identifies the response policy addressed by this request.
-     * 
-     * ***
      * 
      */
     public Output<String> responsePolicy() {

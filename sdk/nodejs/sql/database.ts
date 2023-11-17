@@ -133,9 +133,6 @@ export class Database extends pulumi.CustomResource {
     /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
-     *
-     *
-     * - - -
      */
     public readonly instance!: pulumi.Output<string>;
     /**
@@ -221,9 +218,6 @@ export interface DatabaseState {
     /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
-     *
-     *
-     * - - -
      */
     instance?: pulumi.Input<string>;
     /**
@@ -272,9 +266,6 @@ export interface DatabaseArgs {
     /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
-     *
-     *
-     * - - -
      */
     instance: pulumi.Input<string>;
     /**

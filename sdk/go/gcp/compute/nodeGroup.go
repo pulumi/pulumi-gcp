@@ -245,11 +245,10 @@ type NodeGroup struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize pulumi.IntPtrOutput `pulumi:"initialSize"`
-	// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-	// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-	// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-	// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-	// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+	// Specifies the frequency of planned maintenance events. Set to one of the following:
+	// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+	// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+	//   Possible values are: `AS_NEEDED`, `RECURRENT`.
 	MaintenanceInterval pulumi.StringOutput `pulumi:"maintenanceInterval"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrOutput `pulumi:"maintenancePolicy"`
@@ -259,8 +258,6 @@ type NodeGroup struct {
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the node template to which this node group belongs.
-	//
-	// ***
 	NodeTemplate pulumi.StringOutput `pulumi:"nodeTemplate"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -320,11 +317,10 @@ type nodeGroupState struct {
 	Description *string `pulumi:"description"`
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize *int `pulumi:"initialSize"`
-	// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-	// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-	// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-	// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-	// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+	// Specifies the frequency of planned maintenance events. Set to one of the following:
+	// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+	// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+	//   Possible values are: `AS_NEEDED`, `RECURRENT`.
 	MaintenanceInterval *string `pulumi:"maintenanceInterval"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
@@ -334,8 +330,6 @@ type nodeGroupState struct {
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// The URL of the node template to which this node group belongs.
-	//
-	// ***
 	NodeTemplate *string `pulumi:"nodeTemplate"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -363,11 +357,10 @@ type NodeGroupState struct {
 	Description pulumi.StringPtrInput
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize pulumi.IntPtrInput
-	// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-	// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-	// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-	// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-	// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+	// Specifies the frequency of planned maintenance events. Set to one of the following:
+	// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+	// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+	//   Possible values are: `AS_NEEDED`, `RECURRENT`.
 	MaintenanceInterval pulumi.StringPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrInput
@@ -377,8 +370,6 @@ type NodeGroupState struct {
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// The URL of the node template to which this node group belongs.
-	//
-	// ***
 	NodeTemplate pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -408,11 +399,10 @@ type nodeGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize *int `pulumi:"initialSize"`
-	// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-	// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-	// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-	// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-	// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+	// Specifies the frequency of planned maintenance events. Set to one of the following:
+	// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+	// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+	//   Possible values are: `AS_NEEDED`, `RECURRENT`.
 	MaintenanceInterval *string `pulumi:"maintenanceInterval"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
@@ -422,8 +412,6 @@ type nodeGroupArgs struct {
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// The URL of the node template to which this node group belongs.
-	//
-	// ***
 	NodeTemplate string `pulumi:"nodeTemplate"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -446,11 +434,10 @@ type NodeGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// The initial number of nodes in the node group. One of `initialSize` or `autoscalingPolicy` must be configured on resource creation.
 	InitialSize pulumi.IntPtrInput
-	// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-	// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-	// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-	// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-	// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+	// Specifies the frequency of planned maintenance events. Set to one of the following:
+	// - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+	// - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+	//   Possible values are: `AS_NEEDED`, `RECURRENT`.
 	MaintenanceInterval pulumi.StringPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
 	MaintenancePolicy pulumi.StringPtrInput
@@ -460,8 +447,6 @@ type NodeGroupArgs struct {
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// The URL of the node template to which this node group belongs.
-	//
-	// ***
 	NodeTemplate pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -583,11 +568,10 @@ func (o NodeGroupOutput) InitialSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.IntPtrOutput { return v.InitialSize }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-// receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-// infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-// the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-// migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+// Specifies the frequency of planned maintenance events. Set to one of the following:
+//   - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+//   - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+//     Possible values are: `AS_NEEDED`, `RECURRENT`.
 func (o NodeGroupOutput) MaintenanceInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }
@@ -609,8 +593,6 @@ func (o NodeGroupOutput) Name() pulumi.StringOutput {
 }
 
 // The URL of the node template to which this node group belongs.
-//
-// ***
 func (o NodeGroupOutput) NodeTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.NodeTemplate }).(pulumi.StringOutput)
 }

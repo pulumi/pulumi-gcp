@@ -700,8 +700,6 @@ class BucketObjectRetentionArgs:
         """
         :param pulumi.Input[str] mode: The retention policy mode. Either `Locked` or `Unlocked`.
         :param pulumi.Input[str] retain_until_time: The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
-               
-               <a name>
         """
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "retain_until_time", retain_until_time)
@@ -723,8 +721,6 @@ class BucketObjectRetentionArgs:
     def retain_until_time(self) -> pulumi.Input[str]:
         """
         The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
-
-        <a name>
         """
         return pulumi.get(self, "retain_until_time")
 
@@ -886,8 +882,6 @@ class InsightsReportConfigCsvOptionsArgs:
         """
         :param pulumi.Input[str] delimiter: The delimiter used to separate the fields in the inventory report CSV file.
         :param pulumi.Input[bool] header_required: The boolean that indicates whether or not headers are included in the inventory report CSV file.
-               
-               - - -
         :param pulumi.Input[str] record_separator: The character used to separate the records in the inventory report CSV file.
         """
         if delimiter is not None:
@@ -914,8 +908,6 @@ class InsightsReportConfigCsvOptionsArgs:
     def header_required(self) -> Optional[pulumi.Input[bool]]:
         """
         The boolean that indicates whether or not headers are included in the inventory report CSV file.
-
-        - - -
         """
         return pulumi.get(self, "header_required")
 
@@ -1826,7 +1818,7 @@ class TransferJobTransferSpecAwsS3DataSourceArgs:
                  path: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] bucket_name: Google Cloud Storage bucket name.
+        :param pulumi.Input[str] bucket_name: S3 Bucket name.
         :param pulumi.Input['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs'] aws_access_key: AWS credentials block.
         :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         :param pulumi.Input[str] role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
@@ -1843,7 +1835,7 @@ class TransferJobTransferSpecAwsS3DataSourceArgs:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Input[str]:
         """
-        Google Cloud Storage bucket name.
+        S3 Bucket name.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -2127,7 +2119,7 @@ class TransferJobTransferSpecObjectConditionsArgs:
                  max_time_elapsed_since_last_modification: Optional[pulumi.Input[str]] = None,
                  min_time_elapsed_since_last_modification: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_prefixes: `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_prefixes: must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_prefixes: If `include_prefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         :param pulumi.Input[str] last_modified_before: If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] last_modified_since: If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -2151,7 +2143,7 @@ class TransferJobTransferSpecObjectConditionsArgs:
     @pulumi.getter(name="excludePrefixes")
     def exclude_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         """
         return pulumi.get(self, "exclude_prefixes")
 

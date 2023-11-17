@@ -23,8 +23,6 @@ public final class JobPigConfig {
     /**
      * @return HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
      * 
-     * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
-     * 
      */
     private @Nullable List<String> jarFileUris;
     private @Nullable JobPigConfigLoggingConfig loggingConfig;
@@ -61,8 +59,6 @@ public final class JobPigConfig {
     }
     /**
      * @return HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
-     * 
-     * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
      * 
      */
     public List<String> jarFileUris() {

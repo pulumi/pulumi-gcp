@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? Target;
         /// <summary>
         /// Type of redirect action.
-        /// 
         /// * EXTERNAL_302: Redirect to an external address, configured in 'target'.
         /// * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
         /// </summary>

@@ -436,32 +436,38 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:artifactregistry/repository:Repository")
 public class Repository extends com.pulumi.resources.CustomResource {
     /**
-     * Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-     * under 128 characters in length.
+     * Cleanup policies for this repository. Cleanup policies indicate when
+     * certain package versions can be automatically deleted.
+     * Map keys are policy IDs supplied by users during policy creation. They must
+     * unique within a repository and be under 128 characters in length.
+     * Structure is documented below.
      * 
      */
     @Export(name="cleanupPolicies", refs={List.class,RepositoryCleanupPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RepositoryCleanupPolicy>> cleanupPolicies;
 
     /**
-     * @return Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-     * under 128 characters in length.
+     * @return Cleanup policies for this repository. Cleanup policies indicate when
+     * certain package versions can be automatically deleted.
+     * Map keys are policy IDs supplied by users during policy creation. They must
+     * unique within a repository and be under 128 characters in length.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<RepositoryCleanupPolicy>>> cleanupPolicies() {
         return Codegen.optional(this.cleanupPolicies);
     }
     /**
-     * If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * If true, the cleanup pipeline is prevented from deleting versions in this
+     * repository.
      * 
      */
     @Export(name="cleanupPolicyDryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cleanupPolicyDryRun;
 
     /**
-     * @return If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * @return If true, the cleanup pipeline is prevented from deleting versions in this
+     * repository.
      * 
      */
     public Output<Optional<Boolean>> cleanupPolicyDryRun() {
@@ -531,8 +537,6 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
      * 
-     * ***
-     * 
      */
     @Export(name="format", refs={String.class}, tree="[0]")
     private Output<String> format;
@@ -542,8 +546,6 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-     * 
-     * ***
      * 
      */
     public Output<String> format() {

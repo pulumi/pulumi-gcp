@@ -19,9 +19,27 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
 
     public static final MetastoreServiceHiveMetastoreConfigArgs Empty = new MetastoreServiceHiveMetastoreConfigArgs();
 
+    /**
+     * A mapping of Hive metastore version to the auxiliary version configuration.
+     * When specified, a secondary Hive metastore service is created along with the primary service.
+     * All auxiliary versions must be less than the service&#39;s primary version.
+     * The key is the auxiliary service name and it must match the regular expression a-z?.
+     * This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="auxiliaryVersions")
     private @Nullable Output<List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs>> auxiliaryVersions;
 
+    /**
+     * @return A mapping of Hive metastore version to the auxiliary version configuration.
+     * When specified, a secondary Hive metastore service is created along with the primary service.
+     * All auxiliary versions must be less than the service&#39;s primary version.
+     * The key is the auxiliary service name and it must match the regular expression a-z?.
+     * This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs>>> auxiliaryVersions() {
         return Optional.ofNullable(this.auxiliaryVersions);
     }
@@ -43,9 +61,21 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
         return Optional.ofNullable(this.configOverrides);
     }
 
+    /**
+     * The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+     * Default value is `THRIFT`.
+     * Possible values are: `THRIFT`, `GRPC`.
+     * 
+     */
     @Import(name="endpointProtocol")
     private @Nullable Output<String> endpointProtocol;
 
+    /**
+     * @return The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+     * Default value is `THRIFT`.
+     * Possible values are: `THRIFT`, `GRPC`.
+     * 
+     */
     public Optional<Output<String>> endpointProtocol() {
         return Optional.ofNullable(this.endpointProtocol);
     }
@@ -110,15 +140,48 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
             $ = new MetastoreServiceHiveMetastoreConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param auxiliaryVersions A mapping of Hive metastore version to the auxiliary version configuration.
+         * When specified, a secondary Hive metastore service is created along with the primary service.
+         * All auxiliary versions must be less than the service&#39;s primary version.
+         * The key is the auxiliary service name and it must match the regular expression a-z?.
+         * This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder auxiliaryVersions(@Nullable Output<List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs>> auxiliaryVersions) {
             $.auxiliaryVersions = auxiliaryVersions;
             return this;
         }
 
+        /**
+         * @param auxiliaryVersions A mapping of Hive metastore version to the auxiliary version configuration.
+         * When specified, a secondary Hive metastore service is created along with the primary service.
+         * All auxiliary versions must be less than the service&#39;s primary version.
+         * The key is the auxiliary service name and it must match the regular expression a-z?.
+         * This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder auxiliaryVersions(List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs> auxiliaryVersions) {
             return auxiliaryVersions(Output.of(auxiliaryVersions));
         }
 
+        /**
+         * @param auxiliaryVersions A mapping of Hive metastore version to the auxiliary version configuration.
+         * When specified, a secondary Hive metastore service is created along with the primary service.
+         * All auxiliary versions must be less than the service&#39;s primary version.
+         * The key is the auxiliary service name and it must match the regular expression a-z?.
+         * This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder auxiliaryVersions(MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs... auxiliaryVersions) {
             return auxiliaryVersions(List.of(auxiliaryVersions));
         }
@@ -146,11 +209,27 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
             return configOverrides(Output.of(configOverrides));
         }
 
+        /**
+         * @param endpointProtocol The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+         * Default value is `THRIFT`.
+         * Possible values are: `THRIFT`, `GRPC`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointProtocol(@Nullable Output<String> endpointProtocol) {
             $.endpointProtocol = endpointProtocol;
             return this;
         }
 
+        /**
+         * @param endpointProtocol The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+         * Default value is `THRIFT`.
+         * Possible values are: `THRIFT`, `GRPC`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpointProtocol(String endpointProtocol) {
             return endpointProtocol(Output.of(endpointProtocol));
         }

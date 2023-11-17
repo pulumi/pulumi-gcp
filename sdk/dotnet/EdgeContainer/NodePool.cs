@@ -242,9 +242,6 @@ namespace Pulumi.Gcp.EdgeContainer
     {
         /// <summary>
         /// The name of the target Distributed Cloud Edge Cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
@@ -394,9 +391,6 @@ namespace Pulumi.Gcp.EdgeContainer
     {
         /// <summary>
         /// The name of the target Distributed Cloud Edge Cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
@@ -478,9 +472,6 @@ namespace Pulumi.Gcp.EdgeContainer
     {
         /// <summary>
         /// The name of the target Distributed Cloud Edge Cluster.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }

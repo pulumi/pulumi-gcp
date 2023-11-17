@@ -34,16 +34,12 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The location for the endpoint.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location for the endpoint.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -183,8 +179,6 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location for the endpoint.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -195,8 +189,6 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location for the endpoint.
-         * 
-         * ***
          * 
          * @return builder
          * 

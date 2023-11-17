@@ -59,8 +59,6 @@ class InstanceArgs:
                There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
-               
-               - - -
         :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -111,19 +109,17 @@ class InstanceArgs:
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
-               Changing this forces a new resource to be created.
-        :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. Structure is
-               documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-               the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-               in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-               in order for this setting to take effect.
+               Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+               is "External IPv6".
+        :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
+               default network performance configuration.
         :param pulumi.Input['InstanceParamsArgs'] params: Additional instance parameters.
                .
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
-        :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]] scratch_disks: Scratch disks to attach to the instance. This can be
@@ -232,8 +228,6 @@ class InstanceArgs:
         """
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
-
-        - - -
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -460,7 +454,8 @@ class InstanceArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         A unique name for the resource, required by GCE.
-        Changing this forces a new resource to be created.
+        Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+        is "External IPv6".
         """
         return pulumi.get(self, "name")
 
@@ -472,11 +467,8 @@ class InstanceArgs:
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']]:
         """
-        Configures network performance settings for the instance. Structure is
-        documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-        the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-        in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-        in order for this setting to take effect.
+        Configures network performance settings for the instance. If not specified, the instance will be created with its
+        default network performance configuration.
         """
         return pulumi.get(self, "network_performance_config")
 
@@ -527,7 +519,7 @@ class InstanceArgs:
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[str]]:
         """
-        - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 
@@ -723,16 +715,12 @@ class _InstanceState:
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
-               Changing this forces a new resource to be created.
+               Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+               is "External IPv6".
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
-               
-               - - -
-        :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. Structure is
-               documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-               the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-               in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-               in order for this setting to take effect.
+        :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
+               default network performance configuration.
         :param pulumi.Input['InstanceParamsArgs'] params: Additional instance parameters.
                .
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -740,7 +728,7 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
-        :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['InstanceSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceScratchDiskArgs']]] scratch_disks: Scratch disks to attach to the instance. This can be
@@ -1157,7 +1145,8 @@ class _InstanceState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         A unique name for the resource, required by GCE.
-        Changing this forces a new resource to be created.
+        Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+        is "External IPv6".
         """
         return pulumi.get(self, "name")
 
@@ -1171,8 +1160,6 @@ class _InstanceState:
         """
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
-
-        - - -
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -1184,11 +1171,8 @@ class _InstanceState:
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']]:
         """
-        Configures network performance settings for the instance. Structure is
-        documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-        the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-        in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-        in order for this setting to take effect.
+        Configures network performance settings for the instance. If not specified, the instance will be created with its
+        default network performance configuration.
         """
         return pulumi.get(self, "network_performance_config")
 
@@ -1251,7 +1235,7 @@ class _InstanceState:
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[str]]:
         """
-        - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 
@@ -1530,23 +1514,19 @@ class Instance(pulumi.CustomResource):
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
-               Changing this forces a new resource to be created.
+               Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+               is "External IPv6".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
-               
-               - - -
-        :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. Structure is
-               documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-               the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-               in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-               in order for this setting to take effect.
+        :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
+               default network performance configuration.
         :param pulumi.Input[pulumi.InputType['InstanceParamsArgs']] params: Additional instance parameters.
                .
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
-        :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceScratchDiskArgs']]]] scratch_disks: Scratch disks to attach to the instance. This can be
@@ -1859,16 +1839,12 @@ class Instance(pulumi.CustomResource):
                `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
-               Changing this forces a new resource to be created.
+               Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+               is "External IPv6".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
-               
-               - - -
-        :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. Structure is
-               documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-               the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-               in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-               in order for this setting to take effect.
+        :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. If not specified, the instance will be created with its
+               default network performance configuration.
         :param pulumi.Input[pulumi.InputType['InstanceParamsArgs']] params: Additional instance parameters.
                .
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -1876,7 +1852,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
-        :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['InstanceSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceScratchDiskArgs']]]] scratch_disks: Scratch disks to attach to the instance. This can be
@@ -2167,7 +2143,8 @@ class Instance(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         A unique name for the resource, required by GCE.
-        Changing this forces a new resource to be created.
+        Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+        is "External IPv6".
         """
         return pulumi.get(self, "name")
 
@@ -2177,8 +2154,6 @@ class Instance(pulumi.CustomResource):
         """
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
-
-        - - -
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -2186,11 +2161,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> pulumi.Output[Optional['outputs.InstanceNetworkPerformanceConfig']]:
         """
-        Configures network performance settings for the instance. Structure is
-        documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-        the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-        in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-        in order for this setting to take effect.
+        Configures network performance settings for the instance. If not specified, the instance will be created with its
+        default network performance configuration.
         """
         return pulumi.get(self, "network_performance_config")
 
@@ -2233,7 +2205,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> pulumi.Output[Optional[str]]:
         """
-        - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 

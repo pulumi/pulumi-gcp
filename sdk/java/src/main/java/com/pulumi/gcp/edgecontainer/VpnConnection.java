@@ -227,16 +227,12 @@ public class VpnConnection extends com.pulumi.resources.CustomResource {
     /**
      * Google Cloud Platform location.
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return Google Cloud Platform location.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

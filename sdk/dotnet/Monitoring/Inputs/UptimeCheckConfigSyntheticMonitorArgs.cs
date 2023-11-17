@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// Target a Synthetic Monitor GCFv2 Instance
         /// Structure is documented below.
         /// 
-        /// 
         /// &lt;a name="nested_cloud_function_v2"&gt;&lt;/a&gt;The `cloud_function_v2` block supports:
         /// </summary>
         [Input("cloudFunctionV2", required: true)]

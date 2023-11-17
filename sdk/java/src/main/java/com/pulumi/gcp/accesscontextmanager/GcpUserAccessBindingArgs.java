@@ -46,16 +46,12 @@ public final class GcpUserAccessBindingArgs extends com.pulumi.resources.Resourc
     /**
      * Required. ID of the parent organization.
      * 
-     * ***
-     * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
      * @return Required. ID of the parent organization.
-     * 
-     * ***
      * 
      */
     public Output<String> organizationId() {
@@ -133,8 +129,6 @@ public final class GcpUserAccessBindingArgs extends com.pulumi.resources.Resourc
         /**
          * @param organizationId Required. ID of the parent organization.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -145,8 +139,6 @@ public final class GcpUserAccessBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param organizationId Required. ID of the parent organization.
-         * 
-         * ***
          * 
          * @return builder
          * 

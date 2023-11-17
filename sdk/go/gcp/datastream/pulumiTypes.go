@@ -1707,8 +1707,6 @@ func (o PrivateConnectionErrorArrayOutput) Index(i pulumi.IntInput) PrivateConne
 
 type PrivateConnectionVpcPeeringConfig struct {
 	// A free subnet for peering. (CIDR of /29)
-	//
-	// ***
 	Subnet string `pulumi:"subnet"`
 	// Fully qualified name of the VPC that Datastream will peer to.
 	// Format: projects/{project}/global/{networks}/{name}
@@ -1728,8 +1726,6 @@ type PrivateConnectionVpcPeeringConfigInput interface {
 
 type PrivateConnectionVpcPeeringConfigArgs struct {
 	// A free subnet for peering. (CIDR of /29)
-	//
-	// ***
 	Subnet pulumi.StringInput `pulumi:"subnet"`
 	// Fully qualified name of the VPC that Datastream will peer to.
 	// Format: projects/{project}/global/{networks}/{name}
@@ -1814,8 +1810,6 @@ func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringCo
 }
 
 // A free subnet for peering. (CIDR of /29)
-//
-// ***
 func (o PrivateConnectionVpcPeeringConfigOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateConnectionVpcPeeringConfig) string { return v.Subnet }).(pulumi.StringOutput)
 }
@@ -1851,8 +1845,6 @@ func (o PrivateConnectionVpcPeeringConfigPtrOutput) Elem() PrivateConnectionVpcP
 }
 
 // A free subnet for peering. (CIDR of /29)
-//
-// ***
 func (o PrivateConnectionVpcPeeringConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateConnectionVpcPeeringConfig) *string {
 		if v == nil {
@@ -2206,8 +2198,13 @@ func (o StreamBackfillAllMysqlExcludedObjectsPtrOutput) MysqlDatabases() StreamB
 }
 
 type StreamBackfillAllMysqlExcludedObjectsMysqlDatabase struct {
+	// Database name.`database` -
+	// (Required)
 	// Database name.
 	Database string `pulumi:"database"`
+	// Tables in the database.
+	// Structure is documented below.`mysqlTables` -
+	// (Optional)
 	// Tables in the database.
 	// Structure is documented below.
 	MysqlTables []StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable `pulumi:"mysqlTables"`
@@ -2225,8 +2222,13 @@ type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseInput interface {
 }
 
 type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgs struct {
+	// Database name.`database` -
+	// (Required)
 	// Database name.
 	Database pulumi.StringInput `pulumi:"database"`
+	// Tables in the database.
+	// Structure is documented below.`mysqlTables` -
+	// (Optional)
 	// Tables in the database.
 	// Structure is documented below.
 	MysqlTables StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayInput `pulumi:"mysqlTables"`
@@ -2283,11 +2285,16 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput) ToStreamBackfi
 	return o
 }
 
+// Database name.`database` -
+// (Required)
 // Database name.
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabase) string { return v.Database }).(pulumi.StringOutput)
 }
 
+// Tables in the database.
+// Structure is documented below.`mysqlTables` -
+// (Optional)
 // Tables in the database.
 // Structure is documented below.
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseOutput) MysqlTables() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput {
@@ -2318,8 +2325,13 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArrayOutput) Index(i p
 
 type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable struct {
 	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`mysqlColumns` -
+	// (Optional)
+	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	MysqlColumns []StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn `pulumi:"mysqlColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table string `pulumi:"table"`
 }
@@ -2337,8 +2349,13 @@ type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableInput interface
 
 type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs struct {
 	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`mysqlColumns` -
+	// (Optional)
+	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	MysqlColumns StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput `pulumi:"mysqlColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table pulumi.StringInput `pulumi:"table"`
 }
@@ -2395,6 +2412,9 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) ToSt
 }
 
 // MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.`mysqlColumns` -
+// (Optional)
+// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 // Structure is documented below.
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) MysqlColumns() StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
 	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable) []StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn {
@@ -2402,6 +2422,8 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) Mysq
 	}).(StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput)
 }
 
+// Table name.`table` -
+// (Required)
 // Table name.
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable) string { return v.Table }).(pulumi.StringOutput)
@@ -2428,20 +2450,35 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArrayOutput)
 }
 
 type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn struct {
+	// Column collation.`collation` -
+	// (Optional)
 	// Column collation.
 	Collation *string `pulumi:"collation"`
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column *string `pulumi:"column"`
+	// The MySQL data type. Full data types list can be found here:
+	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html`dataType` -
+	// (Optional)
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType *string `pulumi:"dataType"`
 	// (Output)
+	// Column length.`length` -
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Optional)
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.`ordinalPosition` -
+	// (Optional)
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Optional)
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
 }
@@ -2458,20 +2495,35 @@ type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnInpu
 }
 
 type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs struct {
+	// Column collation.`collation` -
+	// (Optional)
 	// Column collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The MySQL data type. Full data types list can be found here:
+	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html`dataType` -
+	// (Optional)
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
+	// Column length.`length` -
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Optional)
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.`ordinalPosition` -
+	// (Optional)
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Optional)
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
 }
@@ -2527,6 +2579,8 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnO
 	return o
 }
 
+// Column collation.`collation` -
+// (Optional)
 // Column collation.
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
@@ -2534,6 +2588,8 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Column name.`column` -
+// (Optional)
 // Column name.
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
@@ -2541,6 +2597,9 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The MySQL data type. Full data types list can be found here:
+// https://dev.mysql.com/doc/refman/8.0/en/data-types.html`dataType` -
+// (Optional)
 // The MySQL data type. Full data types list can be found here:
 // https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) DataType() pulumi.StringPtrOutput {
@@ -2550,11 +2609,15 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnO
 }
 
 // (Output)
+// Column length.`length` -
+// (Output)
 // Column length.
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *int { return v.Length }).(pulumi.IntPtrOutput)
 }
 
+// Whether or not the column can accept a null value.`nullable` -
+// (Optional)
 // Whether or not the column can accept a null value.
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *bool {
@@ -2562,6 +2625,8 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnO
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The ordinal position of the column in the table.`ordinalPosition` -
+// (Optional)
 // The ordinal position of the column in the table.
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
@@ -2569,6 +2634,8 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnO
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether or not the column represents a primary key.`primaryKey` -
+// (Optional)
 // Whether or not the column represents a primary key.
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *bool {
@@ -2741,8 +2808,13 @@ func (o StreamBackfillAllOracleExcludedObjectsPtrOutput) OracleSchemas() StreamB
 
 type StreamBackfillAllOracleExcludedObjectsOracleSchema struct {
 	// Tables in the database.
+	// Structure is documented below.`oracleTables` -
+	// (Optional)
+	// Tables in the database.
 	// Structure is documented below.
 	OracleTables []StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable `pulumi:"oracleTables"`
+	// Schema name.`schema` -
+	// (Required)
 	// Schema name.
 	Schema string `pulumi:"schema"`
 }
@@ -2760,8 +2832,13 @@ type StreamBackfillAllOracleExcludedObjectsOracleSchemaInput interface {
 
 type StreamBackfillAllOracleExcludedObjectsOracleSchemaArgs struct {
 	// Tables in the database.
+	// Structure is documented below.`oracleTables` -
+	// (Optional)
+	// Tables in the database.
 	// Structure is documented below.
 	OracleTables StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayInput `pulumi:"oracleTables"`
+	// Schema name.`schema` -
+	// (Required)
 	// Schema name.
 	Schema pulumi.StringInput `pulumi:"schema"`
 }
@@ -2818,6 +2895,9 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) ToStreamBackfi
 }
 
 // Tables in the database.
+// Structure is documented below.`oracleTables` -
+// (Optional)
+// Tables in the database.
 // Structure is documented below.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) OracleTables() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchema) []StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable {
@@ -2825,6 +2905,8 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) OracleTables()
 	}).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput)
 }
 
+// Schema name.`schema` -
+// (Required)
 // Schema name.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchema) string { return v.Schema }).(pulumi.StringOutput)
@@ -2852,8 +2934,13 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaArrayOutput) Index(i p
 
 type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable struct {
 	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`oracleColumns` -
+	// (Optional)
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	OracleColumns []StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn `pulumi:"oracleColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table string `pulumi:"table"`
 }
@@ -2871,8 +2958,13 @@ type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableInput interfac
 
 type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs struct {
 	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`oracleColumns` -
+	// (Optional)
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	OracleColumns StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayInput `pulumi:"oracleColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table pulumi.StringInput `pulumi:"table"`
 }
@@ -2929,6 +3021,9 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) ToS
 }
 
 // Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.`oracleColumns` -
+// (Optional)
+// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 // Structure is documented below.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) OracleColumns() StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable) []StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn {
@@ -2936,6 +3031,8 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) Ora
 	}).(StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArrayOutput)
 }
 
+// Table name.`table` -
+// (Required)
 // Table name.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable) string { return v.Table }).(pulumi.StringOutput)
@@ -2962,29 +3059,48 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArrayOutput
 }
 
 type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn struct {
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column *string `pulumi:"column"`
+	// The Oracle data type. Full data types list can be found here:
+	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`dataType` -
+	// (Optional)
 	// The Oracle data type. Full data types list can be found here:
 	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 	DataType *string `pulumi:"dataType"`
 	// (Output)
+	// Column encoding.`encoding` -
+	// (Output)
 	// Column encoding.
 	Encoding *string `pulumi:"encoding"`
+	// (Output)
+	// Column length.`length` -
 	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
 	// (Output)
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Output)
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
+	// (Output)
+	// The ordinal position of the column in the table.`ordinalPosition` -
 	// (Output)
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
 	// (Output)
+	// Column precision.`precision` -
+	// (Output)
 	// Column precision.
 	Precision *int `pulumi:"precision"`
 	// (Output)
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Output)
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.`scale` -
 	// (Output)
 	// Column scale.
 	Scale *int `pulumi:"scale"`
@@ -3002,29 +3118,48 @@ type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnIn
 }
 
 type StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs struct {
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The Oracle data type. Full data types list can be found here:
+	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`dataType` -
+	// (Optional)
 	// The Oracle data type. Full data types list can be found here:
 	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
+	// Column encoding.`encoding` -
+	// (Output)
 	// Column encoding.
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// (Output)
+	// Column length.`length` -
 	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
 	// (Output)
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Output)
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// (Output)
+	// The ordinal position of the column in the table.`ordinalPosition` -
 	// (Output)
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
 	// (Output)
+	// Column precision.`precision` -
+	// (Output)
 	// Column precision.
 	Precision pulumi.IntPtrInput `pulumi:"precision"`
 	// (Output)
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Output)
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.`scale` -
 	// (Output)
 	// Column scale.
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
@@ -3081,6 +3216,8 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	return o
 }
 
+// Column name.`column` -
+// (Optional)
 // Column name.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *string {
@@ -3088,6 +3225,9 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Oracle data type. Full data types list can be found here:
+// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`dataType` -
+// (Optional)
 // The Oracle data type. Full data types list can be found here:
 // https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) DataType() pulumi.StringPtrOutput {
@@ -3097,6 +3237,8 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 }
 
 // (Output)
+// Column encoding.`encoding` -
+// (Output)
 // Column encoding.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *string {
@@ -3104,6 +3246,8 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// Column length.`length` -
 // (Output)
 // Column length.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Length() pulumi.IntPtrOutput {
@@ -3113,6 +3257,8 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 }
 
 // (Output)
+// Whether or not the column can accept a null value.`nullable` -
+// (Output)
 // Whether or not the column can accept a null value.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *bool {
@@ -3120,6 +3266,8 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// The ordinal position of the column in the table.`ordinalPosition` -
 // (Output)
 // The ordinal position of the column in the table.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
@@ -3129,6 +3277,8 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 }
 
 // (Output)
+// Column precision.`precision` -
+// (Output)
 // Column precision.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Precision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -3137,6 +3287,8 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 }
 
 // (Output)
+// Whether or not the column represents a primary key.`primaryKey` -
+// (Output)
 // Whether or not the column represents a primary key.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn) *bool {
@@ -3144,6 +3296,8 @@ func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColum
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// Column scale.`scale` -
 // (Output)
 // Column scale.
 func (o StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnOutput) Scale() pulumi.IntPtrOutput {
@@ -3315,8 +3469,13 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPtrOutput) PostgresqlSchemas()
 
 type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema struct {
 	// Tables in the schema.
+	// Structure is documented below.`postgresqlTables` -
+	// (Optional)
+	// Tables in the schema.
 	// Structure is documented below.
 	PostgresqlTables []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable `pulumi:"postgresqlTables"`
+	// Database name.`schema` -
+	// (Required)
 	// Database name.
 	Schema string `pulumi:"schema"`
 }
@@ -3334,8 +3493,13 @@ type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaInput interface {
 
 type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgs struct {
 	// Tables in the schema.
+	// Structure is documented below.`postgresqlTables` -
+	// (Optional)
+	// Tables in the schema.
 	// Structure is documented below.
 	PostgresqlTables StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayInput `pulumi:"postgresqlTables"`
+	// Database name.`schema` -
+	// (Required)
 	// Database name.
 	Schema pulumi.StringInput `pulumi:"schema"`
 }
@@ -3392,6 +3556,9 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) ToStre
 }
 
 // Tables in the schema.
+// Structure is documented below.`postgresqlTables` -
+// (Optional)
+// Tables in the schema.
 // Structure is documented below.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) PostgresqlTables() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema) []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable {
@@ -3399,6 +3566,8 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) Postgr
 	}).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArrayOutput)
 }
 
+// Database name.`schema` -
+// (Required)
 // Database name.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema) string { return v.Schema }).(pulumi.StringOutput)
@@ -3426,8 +3595,13 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArrayOutput) I
 
 type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable struct {
 	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`postgresqlColumns` -
+	// (Optional)
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	PostgresqlColumns []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn `pulumi:"postgresqlColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table string `pulumi:"table"`
 }
@@ -3445,8 +3619,13 @@ type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableIn
 
 type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs struct {
 	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`postgresqlColumns` -
+	// (Optional)
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	PostgresqlColumns StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput `pulumi:"postgresqlColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table pulumi.StringInput `pulumi:"table"`
 }
@@ -3503,6 +3682,9 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 }
 
 // PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.`postgresqlColumns` -
+// (Optional)
+// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 // Structure is documented below.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput) PostgresqlColumns() StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable) []StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
@@ -3510,6 +3692,8 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	}).(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput)
 }
 
+// Table name.`table` -
+// (Required)
 // Table name.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable) string {
@@ -3538,23 +3722,40 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 }
 
 type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn struct {
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column *string `pulumi:"column"`
+	// The PostgreSQL data type. Full data types list can be found here:
+	// https://www.postgresql.org/docs/current/datatype.html`dataType` -
+	// (Optional)
 	// The PostgreSQL data type. Full data types list can be found here:
 	// https://www.postgresql.org/docs/current/datatype.html
 	DataType *string `pulumi:"dataType"`
 	// (Output)
+	// Column length.`length` -
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Optional)
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.`ordinalPosition` -
+	// (Optional)
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
 	// (Output)
+	// Column precision.`precision` -
+	// (Output)
 	// Column precision.
 	Precision *int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Optional)
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.`scale` -
 	// (Output)
 	// Column scale.
 	Scale *int `pulumi:"scale"`
@@ -3572,23 +3773,40 @@ type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePo
 }
 
 type StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs struct {
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The PostgreSQL data type. Full data types list can be found here:
+	// https://www.postgresql.org/docs/current/datatype.html`dataType` -
+	// (Optional)
 	// The PostgreSQL data type. Full data types list can be found here:
 	// https://www.postgresql.org/docs/current/datatype.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
+	// Column length.`length` -
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Optional)
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.`ordinalPosition` -
+	// (Optional)
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
 	// (Output)
+	// Column precision.`precision` -
+	// (Output)
 	// Column precision.
 	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Optional)
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.`scale` -
 	// (Output)
 	// Column scale.
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
@@ -3645,6 +3863,8 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	return o
 }
 
+// Column name.`column` -
+// (Optional)
 // Column name.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *string {
@@ -3652,6 +3872,9 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	}).(pulumi.StringPtrOutput)
 }
 
+// The PostgreSQL data type. Full data types list can be found here:
+// https://www.postgresql.org/docs/current/datatype.html`dataType` -
+// (Optional)
 // The PostgreSQL data type. Full data types list can be found here:
 // https://www.postgresql.org/docs/current/datatype.html
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) DataType() pulumi.StringPtrOutput {
@@ -3661,6 +3884,8 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 }
 
 // (Output)
+// Column length.`length` -
+// (Output)
 // Column length.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -3668,6 +3893,8 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether or not the column can accept a null value.`nullable` -
+// (Optional)
 // Whether or not the column can accept a null value.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *bool {
@@ -3675,6 +3902,8 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The ordinal position of the column in the table.`ordinalPosition` -
+// (Optional)
 // The ordinal position of the column in the table.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -3683,6 +3912,8 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 }
 
 // (Output)
+// Column precision.`precision` -
+// (Output)
 // Column precision.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Precision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -3690,6 +3921,8 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether or not the column represents a primary key.`primaryKey` -
+// (Optional)
 // Whether or not the column represents a primary key.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *bool {
@@ -3697,6 +3930,8 @@ func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// Column scale.`scale` -
 // (Output)
 // Column scale.
 func (o StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Scale() pulumi.IntPtrOutput {
@@ -4521,8 +4756,6 @@ type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsData
 	// table. The BigQuery Service Account associated with your project requires access to this
 	// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
 	// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-	//
-	// ***
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The geographic location where the dataset should reside.
 	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
@@ -4548,8 +4781,6 @@ type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsData
 	// table. The BigQuery Service Account associated with your project requires access to this
 	// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
 	// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-	//
-	// ***
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The geographic location where the dataset should reside.
 	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
@@ -4645,8 +4876,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 // table. The BigQuery Service Account associated with your project requires access to this
 // encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
 // See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-//
-// ***
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
 		return v.KmsKeyName
@@ -4700,8 +4929,6 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 // table. The BigQuery Service Account associated with your project requires access to this
 // encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
 // See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
-//
-// ***
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
 		if v == nil {
@@ -5793,8 +6020,13 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput) MysqlDatabas
 }
 
 type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase struct {
+	// Database name.`database` -
+	// (Required)
 	// Database name.
 	Database string `pulumi:"database"`
+	// Tables in the database.
+	// Structure is documented below.`mysqlTables` -
+	// (Optional)
 	// Tables in the database.
 	// Structure is documented below.
 	MysqlTables []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable `pulumi:"mysqlTables"`
@@ -5812,8 +6044,13 @@ type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseInput interfa
 }
 
 type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs struct {
+	// Database name.`database` -
+	// (Required)
 	// Database name.
 	Database pulumi.StringInput `pulumi:"database"`
+	// Tables in the database.
+	// Structure is documented below.`mysqlTables` -
+	// (Optional)
 	// Tables in the database.
 	// Structure is documented below.
 	MysqlTables StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayInput `pulumi:"mysqlTables"`
@@ -5870,11 +6107,16 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput) To
 	return o
 }
 
+// Database name.`database` -
+// (Required)
 // Database name.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase) string { return v.Database }).(pulumi.StringOutput)
 }
 
+// Tables in the database.
+// Structure is documented below.`mysqlTables` -
+// (Optional)
 // Tables in the database.
 // Structure is documented below.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput) MysqlTables() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput {
@@ -5905,8 +6147,13 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArrayOutpu
 
 type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable struct {
 	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`mysqlColumns` -
+	// (Optional)
+	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	MysqlColumns []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn `pulumi:"mysqlColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table string `pulumi:"table"`
 }
@@ -5924,8 +6171,13 @@ type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableInp
 
 type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs struct {
 	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`mysqlColumns` -
+	// (Optional)
+	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	MysqlColumns StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput `pulumi:"mysqlColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table pulumi.StringInput `pulumi:"table"`
 }
@@ -5982,6 +6234,9 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 }
 
 // MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.`mysqlColumns` -
+// (Optional)
+// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 // Structure is documented below.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput) MysqlColumns() StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable) []StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn {
@@ -5989,6 +6244,8 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput)
 }
 
+// Table name.`table` -
+// (Required)
 // Table name.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable) string {
@@ -6017,20 +6274,35 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 }
 
 type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn struct {
+	// Column collation.`collation` -
+	// (Optional)
 	// Column collation.
 	Collation *string `pulumi:"collation"`
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column *string `pulumi:"column"`
+	// The MySQL data type. Full data types list can be found here:
+	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html`dataType` -
+	// (Optional)
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType *string `pulumi:"dataType"`
 	// (Output)
+	// Column length.`length` -
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Optional)
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.`ordinalPosition` -
+	// (Optional)
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Optional)
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
 }
@@ -6047,20 +6319,35 @@ type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMys
 }
 
 type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs struct {
+	// Column collation.`collation` -
+	// (Optional)
 	// Column collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The MySQL data type. Full data types list can be found here:
+	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html`dataType` -
+	// (Optional)
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
+	// Column length.`length` -
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Optional)
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.`ordinalPosition` -
+	// (Optional)
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Optional)
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
 }
@@ -6116,6 +6403,8 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	return o
 }
 
+// Column collation.`collation` -
+// (Optional)
 // Column collation.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
@@ -6123,6 +6412,8 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.StringPtrOutput)
 }
 
+// Column name.`column` -
+// (Optional)
 // Column name.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
@@ -6130,6 +6421,9 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.StringPtrOutput)
 }
 
+// The MySQL data type. Full data types list can be found here:
+// https://dev.mysql.com/doc/refman/8.0/en/data-types.html`dataType` -
+// (Optional)
 // The MySQL data type. Full data types list can be found here:
 // https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) DataType() pulumi.StringPtrOutput {
@@ -6139,6 +6433,8 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 }
 
 // (Output)
+// Column length.`length` -
+// (Output)
 // Column length.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
@@ -6146,6 +6442,8 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether or not the column can accept a null value.`nullable` -
+// (Optional)
 // Whether or not the column can accept a null value.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *bool {
@@ -6153,6 +6451,8 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The ordinal position of the column in the table.`ordinalPosition` -
+// (Optional)
 // The ordinal position of the column in the table.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
@@ -6160,6 +6460,8 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether or not the column represents a primary key.`primaryKey` -
+// (Optional)
 // Whether or not the column represents a primary key.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *bool {
@@ -6331,8 +6633,13 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput) MysqlDatabas
 }
 
 type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase struct {
+	// Database name.`database` -
+	// (Required)
 	// Database name.
 	Database string `pulumi:"database"`
+	// Tables in the database.
+	// Structure is documented below.`mysqlTables` -
+	// (Optional)
 	// Tables in the database.
 	// Structure is documented below.
 	MysqlTables []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable `pulumi:"mysqlTables"`
@@ -6350,8 +6657,13 @@ type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseInput interfa
 }
 
 type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs struct {
+	// Database name.`database` -
+	// (Required)
 	// Database name.
 	Database pulumi.StringInput `pulumi:"database"`
+	// Tables in the database.
+	// Structure is documented below.`mysqlTables` -
+	// (Optional)
 	// Tables in the database.
 	// Structure is documented below.
 	MysqlTables StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayInput `pulumi:"mysqlTables"`
@@ -6408,11 +6720,16 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput) To
 	return o
 }
 
+// Database name.`database` -
+// (Required)
 // Database name.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase) string { return v.Database }).(pulumi.StringOutput)
 }
 
+// Tables in the database.
+// Structure is documented below.`mysqlTables` -
+// (Optional)
 // Tables in the database.
 // Structure is documented below.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput) MysqlTables() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArrayOutput {
@@ -6443,8 +6760,13 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArrayOutpu
 
 type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable struct {
 	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`mysqlColumns` -
+	// (Optional)
+	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	MysqlColumns []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn `pulumi:"mysqlColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table string `pulumi:"table"`
 }
@@ -6462,8 +6784,13 @@ type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableInp
 
 type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs struct {
 	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`mysqlColumns` -
+	// (Optional)
+	// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	MysqlColumns StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput `pulumi:"mysqlColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table pulumi.StringInput `pulumi:"table"`
 }
@@ -6520,6 +6847,9 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 }
 
 // MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.`mysqlColumns` -
+// (Optional)
+// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 // Structure is documented below.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput) MysqlColumns() StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable) []StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn {
@@ -6527,6 +6857,8 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput)
 }
 
+// Table name.`table` -
+// (Required)
 // Table name.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable) string {
@@ -6555,20 +6887,35 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 }
 
 type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn struct {
+	// Column collation.`collation` -
+	// (Optional)
 	// Column collation.
 	Collation *string `pulumi:"collation"`
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column *string `pulumi:"column"`
+	// The MySQL data type. Full data types list can be found here:
+	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html`dataType` -
+	// (Optional)
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType *string `pulumi:"dataType"`
 	// (Output)
+	// Column length.`length` -
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Optional)
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.`ordinalPosition` -
+	// (Optional)
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Optional)
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
 }
@@ -6585,20 +6932,35 @@ type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMys
 }
 
 type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs struct {
+	// Column collation.`collation` -
+	// (Optional)
 	// Column collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The MySQL data type. Full data types list can be found here:
+	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html`dataType` -
+	// (Optional)
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
+	// Column length.`length` -
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Optional)
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.`ordinalPosition` -
+	// (Optional)
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Optional)
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
 }
@@ -6654,6 +7016,8 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	return o
 }
 
+// Column collation.`collation` -
+// (Optional)
 // Column collation.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
@@ -6661,6 +7025,8 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.StringPtrOutput)
 }
 
+// Column name.`column` -
+// (Optional)
 // Column name.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *string {
@@ -6668,6 +7034,9 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.StringPtrOutput)
 }
 
+// The MySQL data type. Full data types list can be found here:
+// https://dev.mysql.com/doc/refman/8.0/en/data-types.html`dataType` -
+// (Optional)
 // The MySQL data type. Full data types list can be found here:
 // https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) DataType() pulumi.StringPtrOutput {
@@ -6677,6 +7046,8 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 }
 
 // (Output)
+// Column length.`length` -
+// (Output)
 // Column length.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
@@ -6684,6 +7055,8 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether or not the column can accept a null value.`nullable` -
+// (Optional)
 // Whether or not the column can accept a null value.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *bool {
@@ -6691,6 +7064,8 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The ordinal position of the column in the table.`ordinalPosition` -
+// (Optional)
 // The ordinal position of the column in the table.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
@@ -6698,6 +7073,8 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether or not the column represents a primary key.`primaryKey` -
+// (Optional)
 // Whether or not the column represents a primary key.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *bool {
@@ -7244,8 +7621,13 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsPtrOutput) OracleSchem
 
 type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema struct {
 	// Tables in the database.
+	// Structure is documented below.`oracleTables` -
+	// (Optional)
+	// Tables in the database.
 	// Structure is documented below.
 	OracleTables []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable `pulumi:"oracleTables"`
+	// Schema name.`schema` -
+	// (Required)
 	// Schema name.
 	Schema string `pulumi:"schema"`
 }
@@ -7263,8 +7645,13 @@ type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaInput interfa
 
 type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs struct {
 	// Tables in the database.
+	// Structure is documented below.`oracleTables` -
+	// (Optional)
+	// Tables in the database.
 	// Structure is documented below.
 	OracleTables StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayInput `pulumi:"oracleTables"`
+	// Schema name.`schema` -
+	// (Required)
 	// Schema name.
 	Schema pulumi.StringInput `pulumi:"schema"`
 }
@@ -7321,6 +7708,9 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) To
 }
 
 // Tables in the database.
+// Structure is documented below.`oracleTables` -
+// (Optional)
+// Tables in the database.
 // Structure is documented below.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) OracleTables() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema) []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable {
@@ -7328,6 +7718,8 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) Or
 	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArrayOutput)
 }
 
+// Schema name.`schema` -
+// (Required)
 // Schema name.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema) string { return v.Schema }).(pulumi.StringOutput)
@@ -7355,8 +7747,13 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArrayOutpu
 
 type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable struct {
 	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`oracleColumns` -
+	// (Optional)
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	OracleColumns []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn `pulumi:"oracleColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table string `pulumi:"table"`
 }
@@ -7374,8 +7771,13 @@ type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableIn
 
 type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs struct {
 	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`oracleColumns` -
+	// (Optional)
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	OracleColumns StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayInput `pulumi:"oracleColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table pulumi.StringInput `pulumi:"table"`
 }
@@ -7432,6 +7834,9 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 }
 
 // Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.`oracleColumns` -
+// (Optional)
+// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 // Structure is documented below.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput) OracleColumns() StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable) []StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn {
@@ -7439,6 +7844,8 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	}).(StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput)
 }
 
+// Table name.`table` -
+// (Required)
 // Table name.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable) string {
@@ -7467,29 +7874,48 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 }
 
 type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn struct {
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column *string `pulumi:"column"`
+	// The Oracle data type. Full data types list can be found here:
+	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`dataType` -
+	// (Optional)
 	// The Oracle data type. Full data types list can be found here:
 	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 	DataType *string `pulumi:"dataType"`
 	// (Output)
+	// Column encoding.`encoding` -
+	// (Output)
 	// Column encoding.
 	Encoding *string `pulumi:"encoding"`
+	// (Output)
+	// Column length.`length` -
 	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
 	// (Output)
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Output)
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
+	// (Output)
+	// The ordinal position of the column in the table.`ordinalPosition` -
 	// (Output)
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
 	// (Output)
+	// Column precision.`precision` -
+	// (Output)
 	// Column precision.
 	Precision *int `pulumi:"precision"`
 	// (Output)
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Output)
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.`scale` -
 	// (Output)
 	// Column scale.
 	Scale *int `pulumi:"scale"`
@@ -7507,29 +7933,48 @@ type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOr
 }
 
 type StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs struct {
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The Oracle data type. Full data types list can be found here:
+	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`dataType` -
+	// (Optional)
 	// The Oracle data type. Full data types list can be found here:
 	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
+	// Column encoding.`encoding` -
+	// (Output)
 	// Column encoding.
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// (Output)
+	// Column length.`length` -
 	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
 	// (Output)
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Output)
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// (Output)
+	// The ordinal position of the column in the table.`ordinalPosition` -
 	// (Output)
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
 	// (Output)
+	// Column precision.`precision` -
+	// (Output)
 	// Column precision.
 	Precision pulumi.IntPtrInput `pulumi:"precision"`
 	// (Output)
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Output)
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.`scale` -
 	// (Output)
 	// Column scale.
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
@@ -7586,6 +8031,8 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	return o
 }
 
+// Column name.`column` -
+// (Optional)
 // Column name.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *string {
@@ -7593,6 +8040,9 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Oracle data type. Full data types list can be found here:
+// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`dataType` -
+// (Optional)
 // The Oracle data type. Full data types list can be found here:
 // https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) DataType() pulumi.StringPtrOutput {
@@ -7602,6 +8052,8 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 }
 
 // (Output)
+// Column encoding.`encoding` -
+// (Output)
 // Column encoding.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *string {
@@ -7609,6 +8061,8 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// Column length.`length` -
 // (Output)
 // Column length.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Length() pulumi.IntPtrOutput {
@@ -7618,6 +8072,8 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 }
 
 // (Output)
+// Whether or not the column can accept a null value.`nullable` -
+// (Output)
 // Whether or not the column can accept a null value.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *bool {
@@ -7625,6 +8081,8 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// The ordinal position of the column in the table.`ordinalPosition` -
 // (Output)
 // The ordinal position of the column in the table.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
@@ -7634,6 +8092,8 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 }
 
 // (Output)
+// Column precision.`precision` -
+// (Output)
 // Column precision.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Precision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -7642,6 +8102,8 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 }
 
 // (Output)
+// Whether or not the column represents a primary key.`primaryKey` -
+// (Output)
 // Whether or not the column represents a primary key.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn) *bool {
@@ -7649,6 +8111,8 @@ func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// Column scale.`scale` -
 // (Output)
 // Column scale.
 func (o StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnOutput) Scale() pulumi.IntPtrOutput {
@@ -7822,8 +8286,13 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsPtrOutput) OracleSchem
 
 type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema struct {
 	// Tables in the database.
+	// Structure is documented below.`oracleTables` -
+	// (Optional)
+	// Tables in the database.
 	// Structure is documented below.
 	OracleTables []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable `pulumi:"oracleTables"`
+	// Schema name.`schema` -
+	// (Required)
 	// Schema name.
 	Schema string `pulumi:"schema"`
 }
@@ -7841,8 +8310,13 @@ type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaInput interfa
 
 type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgs struct {
 	// Tables in the database.
+	// Structure is documented below.`oracleTables` -
+	// (Optional)
+	// Tables in the database.
 	// Structure is documented below.
 	OracleTables StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayInput `pulumi:"oracleTables"`
+	// Schema name.`schema` -
+	// (Required)
 	// Schema name.
 	Schema pulumi.StringInput `pulumi:"schema"`
 }
@@ -7899,6 +8373,9 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) To
 }
 
 // Tables in the database.
+// Structure is documented below.`oracleTables` -
+// (Optional)
+// Tables in the database.
 // Structure is documented below.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) OracleTables() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema) []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable {
@@ -7906,6 +8383,8 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) Or
 	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArrayOutput)
 }
 
+// Schema name.`schema` -
+// (Required)
 // Schema name.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema) string { return v.Schema }).(pulumi.StringOutput)
@@ -7933,8 +8412,13 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArrayOutpu
 
 type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable struct {
 	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`oracleColumns` -
+	// (Optional)
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	OracleColumns []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn `pulumi:"oracleColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table string `pulumi:"table"`
 }
@@ -7952,8 +8436,13 @@ type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableIn
 
 type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs struct {
 	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`oracleColumns` -
+	// (Optional)
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	OracleColumns StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayInput `pulumi:"oracleColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table pulumi.StringInput `pulumi:"table"`
 }
@@ -8010,6 +8499,9 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 }
 
 // Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.`oracleColumns` -
+// (Optional)
+// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 // Structure is documented below.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput) OracleColumns() StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable) []StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn {
@@ -8017,6 +8509,8 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	}).(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArrayOutput)
 }
 
+// Table name.`table` -
+// (Required)
 // Table name.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable) string {
@@ -8045,29 +8539,48 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 }
 
 type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn struct {
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column *string `pulumi:"column"`
+	// The Oracle data type. Full data types list can be found here:
+	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`dataType` -
+	// (Optional)
 	// The Oracle data type. Full data types list can be found here:
 	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 	DataType *string `pulumi:"dataType"`
 	// (Output)
+	// Column encoding.`encoding` -
+	// (Output)
 	// Column encoding.
 	Encoding *string `pulumi:"encoding"`
+	// (Output)
+	// Column length.`length` -
 	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
 	// (Output)
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Output)
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
+	// (Output)
+	// The ordinal position of the column in the table.`ordinalPosition` -
 	// (Output)
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
 	// (Output)
+	// Column precision.`precision` -
+	// (Output)
 	// Column precision.
 	Precision *int `pulumi:"precision"`
 	// (Output)
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Output)
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.`scale` -
 	// (Output)
 	// Column scale.
 	Scale *int `pulumi:"scale"`
@@ -8085,29 +8598,48 @@ type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOr
 }
 
 type StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs struct {
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The Oracle data type. Full data types list can be found here:
+	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`dataType` -
+	// (Optional)
 	// The Oracle data type. Full data types list can be found here:
 	// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
+	// Column encoding.`encoding` -
+	// (Output)
 	// Column encoding.
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+	// (Output)
+	// Column length.`length` -
 	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
 	// (Output)
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Output)
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// (Output)
+	// The ordinal position of the column in the table.`ordinalPosition` -
 	// (Output)
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
 	// (Output)
+	// Column precision.`precision` -
+	// (Output)
 	// Column precision.
 	Precision pulumi.IntPtrInput `pulumi:"precision"`
 	// (Output)
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Output)
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.`scale` -
 	// (Output)
 	// Column scale.
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
@@ -8164,6 +8696,8 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	return o
 }
 
+// Column name.`column` -
+// (Optional)
 // Column name.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *string {
@@ -8171,6 +8705,9 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Oracle data type. Full data types list can be found here:
+// https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`dataType` -
+// (Optional)
 // The Oracle data type. Full data types list can be found here:
 // https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) DataType() pulumi.StringPtrOutput {
@@ -8180,6 +8717,8 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 }
 
 // (Output)
+// Column encoding.`encoding` -
+// (Output)
 // Column encoding.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *string {
@@ -8187,6 +8726,8 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// Column length.`length` -
 // (Output)
 // Column length.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Length() pulumi.IntPtrOutput {
@@ -8196,6 +8737,8 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 }
 
 // (Output)
+// Whether or not the column can accept a null value.`nullable` -
+// (Output)
 // Whether or not the column can accept a null value.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *bool {
@@ -8203,6 +8746,8 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// The ordinal position of the column in the table.`ordinalPosition` -
 // (Output)
 // The ordinal position of the column in the table.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
@@ -8212,6 +8757,8 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 }
 
 // (Output)
+// Column precision.`precision` -
+// (Output)
 // Column precision.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Precision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *int {
@@ -8220,6 +8767,8 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 }
 
 // (Output)
+// Whether or not the column represents a primary key.`primaryKey` -
+// (Output)
 // Whether or not the column represents a primary key.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn) *bool {
@@ -8227,6 +8776,8 @@ func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTabl
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// Column scale.`scale` -
 // (Output)
 // Column scale.
 func (o StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnOutput) Scale() pulumi.IntPtrOutput {
@@ -8755,8 +9306,13 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPtrOutput) Postgre
 
 type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema struct {
 	// Tables in the schema.
+	// Structure is documented below.`postgresqlTables` -
+	// (Optional)
+	// Tables in the schema.
 	// Structure is documented below.
 	PostgresqlTables []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable `pulumi:"postgresqlTables"`
+	// Database name.`schema` -
+	// (Required)
 	// Database name.
 	Schema string `pulumi:"schema"`
 }
@@ -8774,8 +9330,13 @@ type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaInput
 
 type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs struct {
 	// Tables in the schema.
+	// Structure is documented below.`postgresqlTables` -
+	// (Optional)
+	// Tables in the schema.
 	// Structure is documented below.
 	PostgresqlTables StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayInput `pulumi:"postgresqlTables"`
+	// Database name.`schema` -
+	// (Required)
 	// Database name.
 	Schema pulumi.StringInput `pulumi:"schema"`
 }
@@ -8832,6 +9393,9 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOu
 }
 
 // Tables in the schema.
+// Structure is documented below.`postgresqlTables` -
+// (Optional)
+// Tables in the schema.
 // Structure is documented below.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput) PostgresqlTables() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema) []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable {
@@ -8839,6 +9403,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOu
 	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput)
 }
 
+// Database name.`schema` -
+// (Required)
 // Database name.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema) string { return v.Schema }).(pulumi.StringOutput)
@@ -8866,8 +9432,13 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaAr
 
 type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable struct {
 	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`postgresqlColumns` -
+	// (Optional)
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	PostgresqlColumns []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn `pulumi:"postgresqlColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table string `pulumi:"table"`
 }
@@ -8885,8 +9456,13 @@ type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostg
 
 type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs struct {
 	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`postgresqlColumns` -
+	// (Optional)
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	PostgresqlColumns StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput `pulumi:"postgresqlColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table pulumi.StringInput `pulumi:"table"`
 }
@@ -8943,6 +9519,9 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 }
 
 // PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.`postgresqlColumns` -
+// (Optional)
+// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 // Structure is documented below.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput) PostgresqlColumns() StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable) []StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
@@ -8950,6 +9529,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	}).(StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput)
 }
 
+// Table name.`table` -
+// (Required)
 // Table name.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable) string {
@@ -8978,23 +9559,40 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 }
 
 type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn struct {
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column *string `pulumi:"column"`
+	// The PostgreSQL data type. Full data types list can be found here:
+	// https://www.postgresql.org/docs/current/datatype.html`dataType` -
+	// (Optional)
 	// The PostgreSQL data type. Full data types list can be found here:
 	// https://www.postgresql.org/docs/current/datatype.html
 	DataType *string `pulumi:"dataType"`
 	// (Output)
+	// Column length.`length` -
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Optional)
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.`ordinalPosition` -
+	// (Optional)
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
 	// (Output)
+	// Column precision.`precision` -
+	// (Output)
 	// Column precision.
 	Precision *int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Optional)
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.`scale` -
 	// (Output)
 	// Column scale.
 	Scale *int `pulumi:"scale"`
@@ -9012,23 +9610,40 @@ type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostg
 }
 
 type StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs struct {
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The PostgreSQL data type. Full data types list can be found here:
+	// https://www.postgresql.org/docs/current/datatype.html`dataType` -
+	// (Optional)
 	// The PostgreSQL data type. Full data types list can be found here:
 	// https://www.postgresql.org/docs/current/datatype.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
+	// Column length.`length` -
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Optional)
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.`ordinalPosition` -
+	// (Optional)
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
 	// (Output)
+	// Column precision.`precision` -
+	// (Output)
 	// Column precision.
 	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Optional)
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.`scale` -
 	// (Output)
 	// Column scale.
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
@@ -9085,6 +9700,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	return o
 }
 
+// Column name.`column` -
+// (Optional)
 // Column name.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *string {
@@ -9092,6 +9709,9 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	}).(pulumi.StringPtrOutput)
 }
 
+// The PostgreSQL data type. Full data types list can be found here:
+// https://www.postgresql.org/docs/current/datatype.html`dataType` -
+// (Optional)
 // The PostgreSQL data type. Full data types list can be found here:
 // https://www.postgresql.org/docs/current/datatype.html
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) DataType() pulumi.StringPtrOutput {
@@ -9101,6 +9721,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 }
 
 // (Output)
+// Column length.`length` -
+// (Output)
 // Column length.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -9108,6 +9730,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether or not the column can accept a null value.`nullable` -
+// (Optional)
 // Whether or not the column can accept a null value.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *bool {
@@ -9115,6 +9739,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The ordinal position of the column in the table.`ordinalPosition` -
+// (Optional)
 // The ordinal position of the column in the table.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -9123,6 +9749,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 }
 
 // (Output)
+// Column precision.`precision` -
+// (Output)
 // Column precision.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Precision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -9130,6 +9758,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether or not the column represents a primary key.`primaryKey` -
+// (Optional)
 // Whether or not the column represents a primary key.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *bool {
@@ -9137,6 +9767,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// Column scale.`scale` -
 // (Output)
 // Column scale.
 func (o StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Scale() pulumi.IntPtrOutput {
@@ -9310,8 +9942,13 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPtrOutput) Postgre
 
 type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema struct {
 	// Tables in the schema.
+	// Structure is documented below.`postgresqlTables` -
+	// (Optional)
+	// Tables in the schema.
 	// Structure is documented below.
 	PostgresqlTables []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable `pulumi:"postgresqlTables"`
+	// Database name.`schema` -
+	// (Required)
 	// Database name.
 	Schema string `pulumi:"schema"`
 }
@@ -9329,8 +9966,13 @@ type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaInput
 
 type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs struct {
 	// Tables in the schema.
+	// Structure is documented below.`postgresqlTables` -
+	// (Optional)
+	// Tables in the schema.
 	// Structure is documented below.
 	PostgresqlTables StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayInput `pulumi:"postgresqlTables"`
+	// Database name.`schema` -
+	// (Required)
 	// Database name.
 	Schema pulumi.StringInput `pulumi:"schema"`
 }
@@ -9387,6 +10029,9 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOu
 }
 
 // Tables in the schema.
+// Structure is documented below.`postgresqlTables` -
+// (Optional)
+// Tables in the schema.
 // Structure is documented below.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput) PostgresqlTables() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema) []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable {
@@ -9394,6 +10039,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOu
 	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArrayOutput)
 }
 
+// Database name.`schema` -
+// (Required)
 // Database name.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema) string { return v.Schema }).(pulumi.StringOutput)
@@ -9421,8 +10068,13 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaAr
 
 type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable struct {
 	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`postgresqlColumns` -
+	// (Optional)
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	PostgresqlColumns []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn `pulumi:"postgresqlColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table string `pulumi:"table"`
 }
@@ -9440,8 +10092,13 @@ type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostg
 
 type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs struct {
 	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	// Structure is documented below.`postgresqlColumns` -
+	// (Optional)
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	// Structure is documented below.
 	PostgresqlColumns StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayInput `pulumi:"postgresqlColumns"`
+	// Table name.`table` -
+	// (Required)
 	// Table name.
 	Table pulumi.StringInput `pulumi:"table"`
 }
@@ -9498,6 +10155,9 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 }
 
 // PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+// Structure is documented below.`postgresqlColumns` -
+// (Optional)
+// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 // Structure is documented below.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput) PostgresqlColumns() StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable) []StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn {
@@ -9505,6 +10165,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	}).(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArrayOutput)
 }
 
+// Table name.`table` -
+// (Required)
 // Table name.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable) string {
@@ -9533,23 +10195,40 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 }
 
 type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn struct {
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column *string `pulumi:"column"`
+	// The PostgreSQL data type. Full data types list can be found here:
+	// https://www.postgresql.org/docs/current/datatype.html`dataType` -
+	// (Optional)
 	// The PostgreSQL data type. Full data types list can be found here:
 	// https://www.postgresql.org/docs/current/datatype.html
 	DataType *string `pulumi:"dataType"`
 	// (Output)
+	// Column length.`length` -
+	// (Output)
 	// Column length.
 	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Optional)
 	// Whether or not the column can accept a null value.
 	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.`ordinalPosition` -
+	// (Optional)
 	// The ordinal position of the column in the table.
 	OrdinalPosition *int `pulumi:"ordinalPosition"`
 	// (Output)
+	// Column precision.`precision` -
+	// (Output)
 	// Column precision.
 	Precision *int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Optional)
 	// Whether or not the column represents a primary key.
 	PrimaryKey *bool `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.`scale` -
 	// (Output)
 	// Column scale.
 	Scale *int `pulumi:"scale"`
@@ -9567,23 +10246,40 @@ type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostg
 }
 
 type StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs struct {
+	// Column name.`column` -
+	// (Optional)
 	// Column name.
 	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The PostgreSQL data type. Full data types list can be found here:
+	// https://www.postgresql.org/docs/current/datatype.html`dataType` -
+	// (Optional)
 	// The PostgreSQL data type. Full data types list can be found here:
 	// https://www.postgresql.org/docs/current/datatype.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// (Output)
+	// Column length.`length` -
+	// (Output)
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.`nullable` -
+	// (Optional)
 	// Whether or not the column can accept a null value.
 	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.`ordinalPosition` -
+	// (Optional)
 	// The ordinal position of the column in the table.
 	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
 	// (Output)
+	// Column precision.`precision` -
+	// (Output)
 	// Column precision.
 	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// Whether or not the column represents a primary key.`primaryKey` -
+	// (Optional)
 	// Whether or not the column represents a primary key.
 	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// (Output)
+	// Column scale.`scale` -
 	// (Output)
 	// Column scale.
 	Scale pulumi.IntPtrInput `pulumi:"scale"`
@@ -9640,6 +10336,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	return o
 }
 
+// Column name.`column` -
+// (Optional)
 // Column name.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *string {
@@ -9647,6 +10345,9 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	}).(pulumi.StringPtrOutput)
 }
 
+// The PostgreSQL data type. Full data types list can be found here:
+// https://www.postgresql.org/docs/current/datatype.html`dataType` -
+// (Optional)
 // The PostgreSQL data type. Full data types list can be found here:
 // https://www.postgresql.org/docs/current/datatype.html
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) DataType() pulumi.StringPtrOutput {
@@ -9656,6 +10357,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 }
 
 // (Output)
+// Column length.`length` -
+// (Output)
 // Column length.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -9663,6 +10366,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether or not the column can accept a null value.`nullable` -
+// (Optional)
 // Whether or not the column can accept a null value.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *bool {
@@ -9670,6 +10375,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The ordinal position of the column in the table.`ordinalPosition` -
+// (Optional)
 // The ordinal position of the column in the table.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -9678,6 +10385,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 }
 
 // (Output)
+// Column precision.`precision` -
+// (Output)
 // Column precision.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Precision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *int {
@@ -9685,6 +10394,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether or not the column represents a primary key.`primaryKey` -
+// (Optional)
 // Whether or not the column represents a primary key.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn) *bool {
@@ -9692,6 +10403,8 @@ func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// Column scale.`scale` -
 // (Output)
 // Column scale.
 func (o StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnOutput) Scale() pulumi.IntPtrOutput {

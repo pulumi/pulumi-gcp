@@ -94,9 +94,6 @@ export class SshPublicKey extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string | undefined>;
     /**
      * The user email.
-     *
-     *
-     * - - -
      */
     public readonly user!: pulumi.Output<string>;
 
@@ -159,9 +156,6 @@ export interface SshPublicKeyState {
     project?: pulumi.Input<string>;
     /**
      * The user email.
-     *
-     *
-     * - - -
      */
     user?: pulumi.Input<string>;
 }
@@ -184,9 +178,6 @@ export interface SshPublicKeyArgs {
     project?: pulumi.Input<string>;
     /**
      * The user email.
-     *
-     *
-     * - - -
      */
     user: pulumi.Input<string>;
 }

@@ -106,8 +106,7 @@ namespace Pulumi.Gcp.Dns
     public partial class ResponsePolicyRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
-        /// 'bypassResponsePolicy'
+        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         /// </summary>
         [Output("behavior")]
         public Output<string?> Behavior { get; private set; } = null!;
@@ -135,9 +134,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Identifies the response policy addressed by this request.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("responsePolicy")]
         public Output<string> ResponsePolicy { get; private set; } = null!;
@@ -195,8 +191,7 @@ namespace Pulumi.Gcp.Dns
     public sealed class ResponsePolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
-        /// 'bypassResponsePolicy'
+        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         /// </summary>
         [Input("behavior")]
         public Input<string>? Behavior { get; set; }
@@ -224,9 +219,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Identifies the response policy addressed by this request.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("responsePolicy", required: true)]
         public Input<string> ResponsePolicy { get; set; } = null!;
@@ -246,8 +238,7 @@ namespace Pulumi.Gcp.Dns
     public sealed class ResponsePolicyRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
-        /// 'bypassResponsePolicy'
+        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         /// </summary>
         [Input("behavior")]
         public Input<string>? Behavior { get; set; }
@@ -275,9 +266,6 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Identifies the response policy addressed by this request.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("responsePolicy")]
         public Input<string>? ResponsePolicy { get; set; }

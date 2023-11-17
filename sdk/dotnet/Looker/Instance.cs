@@ -331,9 +331,6 @@ namespace Pulumi.Gcp.Looker
 
         /// <summary>
         /// The ID of the instance or a fully qualified identifier for the instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -352,8 +349,8 @@ namespace Pulumi.Gcp.Looker
         /// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         /// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         /// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        /// Default value is `LOOKER_CORE_TRIAL`.
-        /// Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+        ///   Default value is `LOOKER_CORE_TRIAL`.
+        ///   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         /// </summary>
         [Output("platformEdition")]
         public Output<string?> PlatformEdition { get; private set; } = null!;
@@ -499,9 +496,6 @@ namespace Pulumi.Gcp.Looker
 
         /// <summary>
         /// The ID of the instance or a fully qualified identifier for the instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -520,8 +514,8 @@ namespace Pulumi.Gcp.Looker
         /// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         /// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         /// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        /// Default value is `LOOKER_CORE_TRIAL`.
-        /// Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+        ///   Default value is `LOOKER_CORE_TRIAL`.
+        ///   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         /// </summary>
         [Input("platformEdition")]
         public Input<string>? PlatformEdition { get; set; }
@@ -659,9 +653,6 @@ namespace Pulumi.Gcp.Looker
 
         /// <summary>
         /// The ID of the instance or a fully qualified identifier for the instance.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -680,8 +671,8 @@ namespace Pulumi.Gcp.Looker
         /// - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
         /// - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
         /// - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-        /// Default value is `LOOKER_CORE_TRIAL`.
-        /// Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+        ///   Default value is `LOOKER_CORE_TRIAL`.
+        ///   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
         /// </summary>
         [Input("platformEdition")]
         public Input<string>? PlatformEdition { get; set; }

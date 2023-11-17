@@ -13,8 +13,6 @@ public final class GroupMembershipRole {
      * @return The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
      * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
      * 
-     * ***
-     * 
      */
     private String name;
 
@@ -22,8 +20,6 @@ public final class GroupMembershipRole {
     /**
      * @return The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
      * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-     * 
-     * ***
      * 
      */
     public String name() {

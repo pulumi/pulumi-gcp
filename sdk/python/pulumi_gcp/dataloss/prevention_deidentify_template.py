@@ -26,10 +26,6 @@ class PreventionDeidentifyTemplateArgs:
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
         :param pulumi.Input[str] parent: The parent of the template in any of the following formats:
-               * `projects/{{project}}`
-               * `projects/{{project}}/locations/{{location}}`
-               * `organizations/{{organization_id}}`
-               * `organizations/{{organization_id}}/locations/{{location}}`
         :param pulumi.Input[str] description: A description of the template.
         :param pulumi.Input[str] display_name: User set display name of the template.
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
@@ -63,10 +59,6 @@ class PreventionDeidentifyTemplateArgs:
     def parent(self) -> pulumi.Input[str]:
         """
         The parent of the template in any of the following formats:
-        * `projects/{{project}}`
-        * `projects/{{project}}/locations/{{location}}`
-        * `organizations/{{organization_id}}`
-        * `organizations/{{organization_id}}/locations/{{location}}`
         """
         return pulumi.get(self, "parent")
 
@@ -133,10 +125,6 @@ class _PreventionDeidentifyTemplateState:
         :param pulumi.Input[str] display_name: User set display name of the template.
         :param pulumi.Input[str] name: Name describing the field.
         :param pulumi.Input[str] parent: The parent of the template in any of the following formats:
-               * `projects/{{project}}`
-               * `projects/{{project}}/locations/{{location}}`
-               * `organizations/{{organization_id}}`
-               * `organizations/{{organization_id}}/locations/{{location}}`
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
@@ -225,10 +213,6 @@ class _PreventionDeidentifyTemplateState:
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
         The parent of the template in any of the following formats:
-        * `projects/{{project}}`
-        * `projects/{{project}}/locations/{{location}}`
-        * `organizations/{{organization_id}}`
-        * `organizations/{{organization_id}}/locations/{{location}}`
         """
         return pulumi.get(self, "parent")
 
@@ -352,10 +336,6 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the template.
         :param pulumi.Input[str] display_name: User set display name of the template.
         :param pulumi.Input[str] parent: The parent of the template in any of the following formats:
-               * `projects/{{project}}`
-               * `projects/{{project}}/locations/{{location}}`
-               * `organizations/{{organization_id}}`
-               * `organizations/{{organization_id}}/locations/{{location}}`
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
@@ -510,10 +490,6 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User set display name of the template.
         :param pulumi.Input[str] name: Name describing the field.
         :param pulumi.Input[str] parent: The parent of the template in any of the following formats:
-               * `projects/{{project}}`
-               * `projects/{{project}}/locations/{{location}}`
-               * `organizations/{{organization_id}}`
-               * `organizations/{{organization_id}}/locations/{{location}}`
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
@@ -579,10 +555,6 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[str]:
         """
         The parent of the template in any of the following formats:
-        * `projects/{{project}}`
-        * `projects/{{project}}/locations/{{location}}`
-        * `organizations/{{organization_id}}`
-        * `organizations/{{organization_id}}/locations/{{location}}`
         """
         return pulumi.get(self, "parent")
 

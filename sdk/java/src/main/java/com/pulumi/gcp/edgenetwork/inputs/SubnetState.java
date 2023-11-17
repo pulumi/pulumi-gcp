@@ -181,16 +181,12 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
     /**
      * A unique ID that identifies this subnet.
      * 
-     * ***
-     * 
      */
     @Import(name="subnetId")
     private @Nullable Output<String> subnetId;
 
     /**
      * @return A unique ID that identifies this subnet.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> subnetId() {
@@ -526,8 +522,6 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param subnetId A unique ID that identifies this subnet.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -538,8 +532,6 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param subnetId A unique ID that identifies this subnet.
-         * 
-         * ***
          * 
          * @return builder
          * 

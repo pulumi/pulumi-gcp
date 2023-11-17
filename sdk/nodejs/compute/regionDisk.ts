@@ -211,7 +211,6 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly guestOsFeatures!: pulumi.Output<outputs.compute.RegionDiskGuestOsFeature[]>;
     /**
-     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
      * > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -277,9 +276,6 @@ export class RegionDisk extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * URLs of the zones where the disk should be replicated to.
-     *
-     *
-     * - - -
      */
     public readonly replicaZones!: pulumi.Output<string[]>;
     /**
@@ -297,10 +293,9 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<number>;
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-     * example, the following are valid values: *
-     * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-     * 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. For example, the following are
+     * valid values:
      */
     public readonly snapshot!: pulumi.Output<string | undefined>;
     /**
@@ -469,7 +464,6 @@ export interface RegionDiskState {
      */
     guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.RegionDiskGuestOsFeature>[]>;
     /**
-     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
      * > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -535,9 +529,6 @@ export interface RegionDiskState {
     region?: pulumi.Input<string>;
     /**
      * URLs of the zones where the disk should be replicated to.
-     *
-     *
-     * - - -
      */
     replicaZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -555,10 +546,9 @@ export interface RegionDiskState {
      */
     size?: pulumi.Input<number>;
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-     * example, the following are valid values: *
-     * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-     * 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. For example, the following are
+     * valid values:
      */
     snapshot?: pulumi.Input<string>;
     /**
@@ -640,7 +630,6 @@ export interface RegionDiskArgs {
      */
     guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.RegionDiskGuestOsFeature>[]>;
     /**
-     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
      * > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -688,9 +677,6 @@ export interface RegionDiskArgs {
     region?: pulumi.Input<string>;
     /**
      * URLs of the zones where the disk should be replicated to.
-     *
-     *
-     * - - -
      */
     replicaZones: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -704,10 +690,9 @@ export interface RegionDiskArgs {
      */
     size?: pulumi.Input<number>;
     /**
-     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
-     * example, the following are valid values: *
-     * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
-     * 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
+     * The source snapshot used to create this disk. You can provide this as
+     * a partial or full URL to the resource. For example, the following are
+     * valid values:
      */
     snapshot?: pulumi.Input<string>;
     /**

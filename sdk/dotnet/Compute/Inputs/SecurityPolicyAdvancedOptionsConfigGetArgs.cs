@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _userIpRequestHeaders;
 
         /// <summary>
-        /// ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        /// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         /// </summary>
         public InputList<string> UserIpRequestHeaders
         {

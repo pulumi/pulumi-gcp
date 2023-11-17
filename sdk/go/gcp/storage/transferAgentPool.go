@@ -112,11 +112,9 @@ type TransferAgentPool struct {
 	// * Length of 128 characters or less.
 	// * Not start with the string goog.
 	// * Start with a lowercase ASCII character, followed by:
-	// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
-	// * One or more numerals or lowercase ASCII characters.
-	//   As expressed by the regular expression: ^(?!goog)a-z?$.
-	//
-	// ***
+	//   * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
+	//   * One or more numerals or lowercase ASCII characters.
+	//     As expressed by the regular expression: ^(?!goog)a-z?$.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -165,11 +163,9 @@ type transferAgentPoolState struct {
 	// * Length of 128 characters or less.
 	// * Not start with the string goog.
 	// * Start with a lowercase ASCII character, followed by:
-	// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
-	// * One or more numerals or lowercase ASCII characters.
-	//   As expressed by the regular expression: ^(?!goog)a-z?$.
-	//
-	// ***
+	//   * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
+	//   * One or more numerals or lowercase ASCII characters.
+	//     As expressed by the regular expression: ^(?!goog)a-z?$.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -189,11 +185,9 @@ type TransferAgentPoolState struct {
 	// * Length of 128 characters or less.
 	// * Not start with the string goog.
 	// * Start with a lowercase ASCII character, followed by:
-	// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
-	// * One or more numerals or lowercase ASCII characters.
-	//   As expressed by the regular expression: ^(?!goog)a-z?$.
-	//
-	// ***
+	//   * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
+	//   * One or more numerals or lowercase ASCII characters.
+	//     As expressed by the regular expression: ^(?!goog)a-z?$.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -217,11 +211,9 @@ type transferAgentPoolArgs struct {
 	// * Length of 128 characters or less.
 	// * Not start with the string goog.
 	// * Start with a lowercase ASCII character, followed by:
-	// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
-	// * One or more numerals or lowercase ASCII characters.
-	//   As expressed by the regular expression: ^(?!goog)a-z?$.
-	//
-	// ***
+	//   * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
+	//   * One or more numerals or lowercase ASCII characters.
+	//     As expressed by the regular expression: ^(?!goog)a-z?$.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -240,11 +232,9 @@ type TransferAgentPoolArgs struct {
 	// * Length of 128 characters or less.
 	// * Not start with the string goog.
 	// * Start with a lowercase ASCII character, followed by:
-	// * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
-	// * One or more numerals or lowercase ASCII characters.
-	//   As expressed by the regular expression: ^(?!goog)a-z?$.
-	//
-	// ***
+	//   * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
+	//   * One or more numerals or lowercase ASCII characters.
+	//     As expressed by the regular expression: ^(?!goog)a-z?$.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -351,14 +341,12 @@ func (o TransferAgentPoolOutput) DisplayName() pulumi.StringPtrOutput {
 
 // The ID of the agent pool to create.
 // The agentPoolId must meet the following requirements:
-//   - Length of 128 characters or less.
-//   - Not start with the string goog.
-//   - Start with a lowercase ASCII character, followed by:
+// * Length of 128 characters or less.
+// * Not start with the string goog.
+// * Start with a lowercase ASCII character, followed by:
 //   - Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
 //   - One or more numerals or lowercase ASCII characters.
 //     As expressed by the regular expression: ^(?!goog)a-z?$.
-//
-// ***
 func (o TransferAgentPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferAgentPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

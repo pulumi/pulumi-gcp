@@ -211,7 +211,8 @@ namespace Pulumi.Gcp.OsConfig
         public Output<bool> Deleted { get; private set; } = null!;
 
         /// <summary>
-        /// OS policy assignment description. Length of the
+        /// Policy description. Length of the description is
+        /// limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
         /// description is limited to 1024 characters.
         /// </summary>
         [Output("description")]
@@ -355,7 +356,8 @@ namespace Pulumi.Gcp.OsConfig
     public sealed class OsPolicyAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// OS policy assignment description. Length of the
+        /// Policy description. Length of the description is
+        /// limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
         /// description is limited to 1024 characters.
         /// </summary>
         [Input("description")]
@@ -442,7 +444,8 @@ namespace Pulumi.Gcp.OsConfig
         public Input<bool>? Deleted { get; set; }
 
         /// <summary>
-        /// OS policy assignment description. Length of the
+        /// Policy description. Length of the description is
+        /// limited to 1024 characters.`description` - (Optional) OS policy assignment description. Length of the
         /// description is limited to 1024 characters.
         /// </summary>
         [Input("description")]

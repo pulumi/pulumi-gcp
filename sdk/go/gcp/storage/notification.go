@@ -135,8 +135,6 @@ type Notification struct {
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
 	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
 	// you will need to use the project-level name.
-	//
-	// ***
 	Topic pulumi.StringOutput `pulumi:"topic"`
 }
 
@@ -197,8 +195,6 @@ type notificationState struct {
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
 	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
 	// you will need to use the project-level name.
-	//
-	// ***
 	Topic *string `pulumi:"topic"`
 }
 
@@ -221,8 +217,6 @@ type NotificationState struct {
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
 	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
 	// you will need to use the project-level name.
-	//
-	// ***
 	Topic pulumi.StringPtrInput
 }
 
@@ -245,8 +239,6 @@ type notificationArgs struct {
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
 	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
 	// you will need to use the project-level name.
-	//
-	// ***
 	Topic string `pulumi:"topic"`
 }
 
@@ -266,8 +258,6 @@ type NotificationArgs struct {
 	// topic name, assumed to belong to the default GCP provider project, or the project-level name,
 	// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
 	// you will need to use the project-level name.
-	//
-	// ***
 	Topic pulumi.StringInput
 }
 
@@ -397,8 +387,6 @@ func (o NotificationOutput) SelfLink() pulumi.StringOutput {
 // topic name, assumed to belong to the default GCP provider project, or the project-level name,
 // i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
 // you will need to use the project-level name.
-//
-// ***
 func (o NotificationOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
 }

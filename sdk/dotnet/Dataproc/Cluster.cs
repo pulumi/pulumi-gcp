@@ -200,8 +200,6 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// zone.
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -315,8 +313,6 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// zone.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -399,8 +395,6 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// zone.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

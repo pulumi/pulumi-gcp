@@ -17,7 +17,8 @@ public final class ConnectionGitlabConfigAuthorizerCredential {
      */
     private String userTokenSecretVersion;
     /**
-     * @return Output only. The username associated to this token.
+     * @return Output only. The username associated to this token.`username` -
+     * Output only. The username associated to this token.
      * 
      */
     private @Nullable String username;
@@ -31,7 +32,8 @@ public final class ConnectionGitlabConfigAuthorizerCredential {
         return this.userTokenSecretVersion;
     }
     /**
-     * @return Output only. The username associated to this token.
+     * @return Output only. The username associated to this token.`username` -
+     * Output only. The username associated to this token.
      * 
      */
     public Optional<String> username() {

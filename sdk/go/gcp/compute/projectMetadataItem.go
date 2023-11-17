@@ -72,8 +72,6 @@ type ProjectMetadataItem struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The value to set for the given metadata key.
-	//
-	// ***
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -119,8 +117,6 @@ type projectMetadataItemState struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The value to set for the given metadata key.
-	//
-	// ***
 	Value *string `pulumi:"value"`
 }
 
@@ -131,8 +127,6 @@ type ProjectMetadataItemState struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The value to set for the given metadata key.
-	//
-	// ***
 	Value pulumi.StringPtrInput
 }
 
@@ -147,8 +141,6 @@ type projectMetadataItemArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The value to set for the given metadata key.
-	//
-	// ***
 	Value string `pulumi:"value"`
 }
 
@@ -160,8 +152,6 @@ type ProjectMetadataItemArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The value to set for the given metadata key.
-	//
-	// ***
 	Value pulumi.StringInput
 }
 
@@ -264,8 +254,6 @@ func (o ProjectMetadataItemOutput) Project() pulumi.StringOutput {
 }
 
 // The value to set for the given metadata key.
-//
-// ***
 func (o ProjectMetadataItemOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectMetadataItem) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

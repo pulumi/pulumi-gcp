@@ -77,14 +77,14 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
     }
 
     /**
-     * ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+     * , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
      * 
      */
     @Import(name="minReadySec")
     private @Nullable Output<Integer> minReadySec;
 
     /**
-     * @return ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+     * @return , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
      * 
      */
     public Optional<Output<Integer>> minReadySec() {
@@ -123,7 +123,6 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
 
     /**
      * , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-     * ***
      * 
      */
     @Import(name="replacementMethod")
@@ -131,7 +130,6 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
 
     /**
      * @return , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-     * ***
      * 
      */
     public Optional<Output<String>> replacementMethod() {
@@ -270,7 +268,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param minReadySec ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+         * @param minReadySec , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
          * 
          * @return builder
          * 
@@ -281,7 +279,7 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
         }
 
         /**
-         * @param minReadySec ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+         * @param minReadySec , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
          * 
          * @return builder
          * 
@@ -334,7 +332,6 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
 
         /**
          * @param replacementMethod , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-         * ***
          * 
          * @return builder
          * 
@@ -346,7 +343,6 @@ public final class InstanceGroupManagerUpdatePolicyArgs extends com.pulumi.resou
 
         /**
          * @param replacementMethod , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-         * ***
          * 
          * @return builder
          * 

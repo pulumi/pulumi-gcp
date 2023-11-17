@@ -17,16 +17,12 @@ public final class GetConnectorPlainArgs extends com.pulumi.resources.InvokeArgs
     /**
      * Name of the resource.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return Name of the resource.
-     * 
-     * ***
      * 
      */
     public String name() {
@@ -95,8 +91,6 @@ public final class GetConnectorPlainArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param name Name of the resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

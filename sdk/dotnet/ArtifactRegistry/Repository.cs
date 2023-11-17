@@ -346,15 +346,18 @@ namespace Pulumi.Gcp.ArtifactRegistry
     public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-        /// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-        /// under 128 characters in length.
+        /// Cleanup policies for this repository. Cleanup policies indicate when
+        /// certain package versions can be automatically deleted.
+        /// Map keys are policy IDs supplied by users during policy creation. They must
+        /// unique within a repository and be under 128 characters in length.
+        /// Structure is documented below.
         /// </summary>
         [Output("cleanupPolicies")]
         public Output<ImmutableArray<Outputs.RepositoryCleanupPolicy>> CleanupPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// If true, the cleanup pipeline is prevented from deleting versions in this
+        /// repository.
         /// </summary>
         [Output("cleanupPolicyDryRun")]
         public Output<bool?> CleanupPolicyDryRun { get; private set; } = null!;
@@ -389,9 +392,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
         /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -544,9 +544,11 @@ namespace Pulumi.Gcp.ArtifactRegistry
         private InputList<Inputs.RepositoryCleanupPolicyArgs>? _cleanupPolicies;
 
         /// <summary>
-        /// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-        /// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-        /// under 128 characters in length.
+        /// Cleanup policies for this repository. Cleanup policies indicate when
+        /// certain package versions can be automatically deleted.
+        /// Map keys are policy IDs supplied by users during policy creation. They must
+        /// unique within a repository and be under 128 characters in length.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RepositoryCleanupPolicyArgs> CleanupPolicies
         {
@@ -555,7 +557,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
         }
 
         /// <summary>
-        /// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// If true, the cleanup pipeline is prevented from deleting versions in this
+        /// repository.
         /// </summary>
         [Input("cleanupPolicyDryRun")]
         public Input<bool>? CleanupPolicyDryRun { get; set; }
@@ -578,9 +581,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
         /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -676,9 +676,11 @@ namespace Pulumi.Gcp.ArtifactRegistry
         private InputList<Inputs.RepositoryCleanupPolicyGetArgs>? _cleanupPolicies;
 
         /// <summary>
-        /// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-        /// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-        /// under 128 characters in length.
+        /// Cleanup policies for this repository. Cleanup policies indicate when
+        /// certain package versions can be automatically deleted.
+        /// Map keys are policy IDs supplied by users during policy creation. They must
+        /// unique within a repository and be under 128 characters in length.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RepositoryCleanupPolicyGetArgs> CleanupPolicies
         {
@@ -687,7 +689,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
         }
 
         /// <summary>
-        /// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// If true, the cleanup pipeline is prevented from deleting versions in this
+        /// repository.
         /// </summary>
         [Input("cleanupPolicyDryRun")]
         public Input<bool>? CleanupPolicyDryRun { get; set; }
@@ -732,9 +735,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
         /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }

@@ -114,16 +114,12 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Transfer specification. Structure documented below.
      * 
-     * ***
-     * 
      */
     @Import(name="transferSpec", required=true)
     private Output<TransferJobTransferSpecArgs> transferSpec;
 
     /**
      * @return Transfer specification. Structure documented below.
-     * 
-     * ***
      * 
      */
     public Output<TransferJobTransferSpecArgs> transferSpec() {
@@ -291,8 +287,6 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param transferSpec Transfer specification. Structure documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -303,8 +297,6 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param transferSpec Transfer specification. Structure documented below.
-         * 
-         * ***
          * 
          * @return builder
          * 

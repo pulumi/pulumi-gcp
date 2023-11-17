@@ -11027,8 +11027,6 @@ type BareMetalClusterStorageLvpNodeMountsConfig struct {
 	// The host machine path.
 	Path string `pulumi:"path"`
 	// The StorageClass name that PVs will be created with.
-	//
-	// ***
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -11047,8 +11045,6 @@ type BareMetalClusterStorageLvpNodeMountsConfigArgs struct {
 	// The host machine path.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The StorageClass name that PVs will be created with.
-	//
-	// ***
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
@@ -11135,8 +11131,6 @@ func (o BareMetalClusterStorageLvpNodeMountsConfigOutput) Path() pulumi.StringOu
 }
 
 // The StorageClass name that PVs will be created with.
-//
-// ***
 func (o BareMetalClusterStorageLvpNodeMountsConfigOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalClusterStorageLvpNodeMountsConfig) string { return v.StorageClass }).(pulumi.StringOutput)
 }
@@ -11176,8 +11170,6 @@ func (o BareMetalClusterStorageLvpNodeMountsConfigPtrOutput) Path() pulumi.Strin
 }
 
 // The StorageClass name that PVs will be created with.
-//
-// ***
 func (o BareMetalClusterStorageLvpNodeMountsConfigPtrOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalClusterStorageLvpNodeMountsConfig) *string {
 		if v == nil {
@@ -12402,8 +12394,6 @@ func (o BareMetalNodePoolNodePoolConfigNodeConfigArrayOutput) Index(i pulumi.Int
 type BareMetalNodePoolNodePoolConfigTaint struct {
 	// Specifies the nodes operating system (default: LINUX).
 	// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-	//
-	// ***
 	Effect *string `pulumi:"effect"`
 	// Key associated with the effect.
 	Key *string `pulumi:"key"`
@@ -12425,8 +12415,6 @@ type BareMetalNodePoolNodePoolConfigTaintInput interface {
 type BareMetalNodePoolNodePoolConfigTaintArgs struct {
 	// Specifies the nodes operating system (default: LINUX).
 	// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-	//
-	// ***
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
 	// Key associated with the effect.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -12487,8 +12475,6 @@ func (o BareMetalNodePoolNodePoolConfigTaintOutput) ToBareMetalNodePoolNodePoolC
 
 // Specifies the nodes operating system (default: LINUX).
 // Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-//
-// ***
 func (o BareMetalNodePoolNodePoolConfigTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalNodePoolNodePoolConfigTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
@@ -13708,8 +13694,6 @@ type VMwareClusterControlPlaneNodeVsphereConfig struct {
 	Datastore *string `pulumi:"datastore"`
 	// (Output)
 	// The Vsphere storage policy used by the control plane Node.
-	//
-	// ***
 	StoragePolicyName *string `pulumi:"storagePolicyName"`
 }
 
@@ -13730,8 +13714,6 @@ type VMwareClusterControlPlaneNodeVsphereConfigArgs struct {
 	Datastore pulumi.StringPtrInput `pulumi:"datastore"`
 	// (Output)
 	// The Vsphere storage policy used by the control plane Node.
-	//
-	// ***
 	StoragePolicyName pulumi.StringPtrInput `pulumi:"storagePolicyName"`
 }
 
@@ -13794,8 +13776,6 @@ func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) Datastore() pulumi.Str
 
 // (Output)
 // The Vsphere storage policy used by the control plane Node.
-//
-// ***
 func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) StoragePolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterControlPlaneNodeVsphereConfig) *string { return v.StoragePolicyName }).(pulumi.StringPtrOutput)
 }
@@ -14312,8 +14292,7 @@ func (o VMwareClusterLoadBalancerPtrOutput) VipConfig() VMwareClusterLoadBalance
 }
 
 type VMwareClusterLoadBalancerF5Config struct {
-	// (Output)
-	// The vCenter IP address.
+	// The load balancer's IP address.
 	Address *string `pulumi:"address"`
 	// he preexisting partition to be used by the load balancer. T
 	// his partition is usually created for the admin cluster for example:
@@ -14335,8 +14314,7 @@ type VMwareClusterLoadBalancerF5ConfigInput interface {
 }
 
 type VMwareClusterLoadBalancerF5ConfigArgs struct {
-	// (Output)
-	// The vCenter IP address.
+	// The load balancer's IP address.
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// he preexisting partition to be used by the load balancer. T
 	// his partition is usually created for the admin cluster for example:
@@ -14423,8 +14401,7 @@ func (o VMwareClusterLoadBalancerF5ConfigOutput) ToVMwareClusterLoadBalancerF5Co
 	}).(VMwareClusterLoadBalancerF5ConfigPtrOutput)
 }
 
-// (Output)
-// The vCenter IP address.
+// The load balancer's IP address.
 func (o VMwareClusterLoadBalancerF5ConfigOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterLoadBalancerF5Config) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
@@ -14465,8 +14442,7 @@ func (o VMwareClusterLoadBalancerF5ConfigPtrOutput) Elem() VMwareClusterLoadBala
 	}).(VMwareClusterLoadBalancerF5ConfigOutput)
 }
 
-// (Output)
-// The vCenter IP address.
+// The load balancer's IP address.
 func (o VMwareClusterLoadBalancerF5ConfigPtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMwareClusterLoadBalancerF5Config) *string {
 		if v == nil {
@@ -18268,8 +18244,6 @@ type VMwareNodePoolConfigVsphereConfigTag struct {
 	Category *string `pulumi:"category"`
 	// (Output)
 	// The Vsphere tag name.
-	//
-	// ***
 	Tag *string `pulumi:"tag"`
 }
 
@@ -18290,8 +18264,6 @@ type VMwareNodePoolConfigVsphereConfigTagArgs struct {
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// (Output)
 	// The Vsphere tag name.
-	//
-	// ***
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
@@ -18354,8 +18326,6 @@ func (o VMwareNodePoolConfigVsphereConfigTagOutput) Category() pulumi.StringPtrO
 
 // (Output)
 // The Vsphere tag name.
-//
-// ***
 func (o VMwareNodePoolConfigVsphereConfigTagOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareNodePoolConfigVsphereConfigTag) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }

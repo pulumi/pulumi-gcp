@@ -351,8 +351,6 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
      * The runtime in which the function is going to run.
      * Eg. `&#34;nodejs16&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      * 
-     * ***
-     * 
      */
     @Import(name="runtime")
     private @Nullable Output<String> runtime;
@@ -360,8 +358,6 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The runtime in which the function is going to run.
      * Eg. `&#34;nodejs16&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> runtime() {
@@ -1044,8 +1040,6 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
          * @param runtime The runtime in which the function is going to run.
          * Eg. `&#34;nodejs16&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1057,8 +1051,6 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param runtime The runtime in which the function is going to run.
          * Eg. `&#34;nodejs16&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
-         * 
-         * ***
          * 
          * @return builder
          * 

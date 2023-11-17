@@ -70,9 +70,6 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;
@@ -162,9 +159,6 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("domainName", required: true)]
         public Input<string> DomainName { get; set; } = null!;
@@ -202,9 +196,6 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }

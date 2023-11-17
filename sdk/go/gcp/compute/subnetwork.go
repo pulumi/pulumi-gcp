@@ -335,9 +335,10 @@ import (
 type Subnetwork struct {
 	pulumi.CustomResourceState
 
-	// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-	// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-	// BGP even if their destinations match existing subnet ranges.
+	// Typically packets destined to IPs within the subnetwork range that do not match
+	// existing resources are dropped and prevented from leaving the VPC.
+	// Setting this field to true will allow these packets to match dynamic routes injected
+	// via BGP even if their destinations match existing subnet ranges.
 	AllowSubnetCidrRoutesOverlap pulumi.BoolOutput `pulumi:"allowSubnetCidrRoutesOverlap"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -384,8 +385,6 @@ type Subnetwork struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
-	//
-	// ***
 	Network pulumi.StringOutput `pulumi:"network"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
@@ -464,9 +463,10 @@ func GetSubnetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Subnetwork resources.
 type subnetworkState struct {
-	// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-	// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-	// BGP even if their destinations match existing subnet ranges.
+	// Typically packets destined to IPs within the subnetwork range that do not match
+	// existing resources are dropped and prevented from leaving the VPC.
+	// Setting this field to true will allow these packets to match dynamic routes injected
+	// via BGP even if their destinations match existing subnet ranges.
 	AllowSubnetCidrRoutesOverlap *bool `pulumi:"allowSubnetCidrRoutesOverlap"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -513,8 +513,6 @@ type subnetworkState struct {
 	Name *string `pulumi:"name"`
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
-	//
-	// ***
 	Network *string `pulumi:"network"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
@@ -558,9 +556,10 @@ type subnetworkState struct {
 }
 
 type SubnetworkState struct {
-	// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-	// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-	// BGP even if their destinations match existing subnet ranges.
+	// Typically packets destined to IPs within the subnetwork range that do not match
+	// existing resources are dropped and prevented from leaving the VPC.
+	// Setting this field to true will allow these packets to match dynamic routes injected
+	// via BGP even if their destinations match existing subnet ranges.
 	AllowSubnetCidrRoutesOverlap pulumi.BoolPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -607,8 +606,6 @@ type SubnetworkState struct {
 	Name pulumi.StringPtrInput
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
-	//
-	// ***
 	Network pulumi.StringPtrInput
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
@@ -656,9 +653,10 @@ func (SubnetworkState) ElementType() reflect.Type {
 }
 
 type subnetworkArgs struct {
-	// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-	// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-	// BGP even if their destinations match existing subnet ranges.
+	// Typically packets destined to IPs within the subnetwork range that do not match
+	// existing resources are dropped and prevented from leaving the VPC.
+	// Setting this field to true will allow these packets to match dynamic routes injected
+	// via BGP even if their destinations match existing subnet ranges.
 	AllowSubnetCidrRoutesOverlap *bool `pulumi:"allowSubnetCidrRoutesOverlap"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource. This field can be set only at resource
@@ -690,8 +688,6 @@ type subnetworkArgs struct {
 	Name *string `pulumi:"name"`
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
-	//
-	// ***
 	Network string `pulumi:"network"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
@@ -734,9 +730,10 @@ type subnetworkArgs struct {
 
 // The set of arguments for constructing a Subnetwork resource.
 type SubnetworkArgs struct {
-	// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-	// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-	// BGP even if their destinations match existing subnet ranges.
+	// Typically packets destined to IPs within the subnetwork range that do not match
+	// existing resources are dropped and prevented from leaving the VPC.
+	// Setting this field to true will allow these packets to match dynamic routes injected
+	// via BGP even if their destinations match existing subnet ranges.
 	AllowSubnetCidrRoutesOverlap pulumi.BoolPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource. This field can be set only at resource
@@ -768,8 +765,6 @@ type SubnetworkArgs struct {
 	Name pulumi.StringPtrInput
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
-	//
-	// ***
 	Network pulumi.StringInput
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
@@ -897,9 +892,10 @@ func (o SubnetworkOutput) ToSubnetworkOutputWithContext(ctx context.Context) Sub
 	return o
 }
 
-// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-// BGP even if their destinations match existing subnet ranges.
+// Typically packets destined to IPs within the subnetwork range that do not match
+// existing resources are dropped and prevented from leaving the VPC.
+// Setting this field to true will allow these packets to match dynamic routes injected
+// via BGP even if their destinations match existing subnet ranges.
 func (o SubnetworkOutput) AllowSubnetCidrRoutesOverlap() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.BoolOutput { return v.AllowSubnetCidrRoutesOverlap }).(pulumi.BoolOutput)
 }
@@ -982,8 +978,6 @@ func (o SubnetworkOutput) Name() pulumi.StringOutput {
 
 // The network this subnet belongs to.
 // Only networks that are in the distributed mode can have subnetworks.
-//
-// ***
 func (o SubnetworkOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }

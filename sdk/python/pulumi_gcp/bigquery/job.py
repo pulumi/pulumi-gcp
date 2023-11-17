@@ -42,9 +42,8 @@ class JobArgs:
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['JobQueryArgs'] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-               *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-               (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
+               Structure is documented below.
         """
         pulumi.set(__self__, "job_id", job_id)
         if copy is not None:
@@ -171,9 +170,8 @@ class JobArgs:
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
         """
-        SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-        *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-        (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        Configures a query job.
+        Structure is documented below.
         """
         return pulumi.get(self, "query")
 
@@ -223,9 +221,8 @@ class _JobState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: (Output)
                The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input['JobQueryArgs'] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-               *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-               (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
                Structure is documented below.
         :param pulumi.Input[str] user_email: Email address of the user who ran the job.
@@ -406,9 +403,8 @@ class _JobState:
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
         """
-        SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-        *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-        (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        Configures a query job.
+        Structure is documented below.
         """
         return pulumi.get(self, "query")
 
@@ -722,9 +718,8 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-               *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-               (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: Configures a query job.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1084,9 +1079,8 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: (Output)
                The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-               *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-               (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: Configures a query job.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
                Structure is documented below.
         :param pulumi.Input[str] user_email: Email address of the user who ran the job.
@@ -1214,9 +1208,8 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def query(self) -> pulumi.Output[Optional['outputs.JobQuery']]:
         """
-        SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
-        *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
-        (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
+        Configures a query job.
+        Structure is documented below.
         """
         return pulumi.get(self, "query")
 

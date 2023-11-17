@@ -171,8 +171,6 @@ type RegionCommitment struct {
 	// The plan for this commitment, which determines duration and discount rate.
 	// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-	//
-	// ***
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -264,8 +262,6 @@ type regionCommitmentState struct {
 	// The plan for this commitment, which determines duration and discount rate.
 	// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-	//
-	// ***
 	Plan *string `pulumi:"plan"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -325,8 +321,6 @@ type RegionCommitmentState struct {
 	// The plan for this commitment, which determines duration and discount rate.
 	// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-	//
-	// ***
 	Plan pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -384,8 +378,6 @@ type regionCommitmentArgs struct {
 	// The plan for this commitment, which determines duration and discount rate.
 	// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-	//
-	// ***
 	Plan string `pulumi:"plan"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -431,8 +423,6 @@ type RegionCommitmentArgs struct {
 	// The plan for this commitment, which determines duration and discount rate.
 	// The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 	// Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-	//
-	// ***
 	Plan pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -593,8 +583,6 @@ func (o RegionCommitmentOutput) Name() pulumi.StringOutput {
 // The plan for this commitment, which determines duration and discount rate.
 // The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
 // Possible values are: `TWELVE_MONTH`, `THIRTY_SIX_MONTH`.
-//
-// ***
 func (o RegionCommitmentOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }

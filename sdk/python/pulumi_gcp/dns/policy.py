@@ -37,9 +37,6 @@ class PolicyArgs:
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy.
                Defaults to no logging if not set.
         :param pulumi.Input[str] name: User assigned name for this policy.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]] networks: List of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -120,9 +117,6 @@ class PolicyArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         User assigned name for this policy.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -181,9 +175,6 @@ class _PolicyState:
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy.
                Defaults to no logging if not set.
         :param pulumi.Input[str] name: User assigned name for this policy.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]] networks: List of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -264,9 +255,6 @@ class _PolicyState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         User assigned name for this policy.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -395,9 +383,6 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy.
                Defaults to no logging if not set.
         :param pulumi.Input[str] name: User assigned name for this policy.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -550,9 +535,6 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy.
                Defaults to no logging if not set.
         :param pulumi.Input[str] name: User assigned name for this policy.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -615,9 +597,6 @@ class Policy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         User assigned name for this policy.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -34,16 +34,12 @@ public final class KeystoresAliasesKeyCertFileState extends com.pulumi.resources
     /**
      * Cert content
      * 
-     * ***
-     * 
      */
     @Import(name="cert")
     private @Nullable Output<String> cert;
 
     /**
      * @return Cert content
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> cert() {
@@ -213,8 +209,6 @@ public final class KeystoresAliasesKeyCertFileState extends com.pulumi.resources
         /**
          * @param cert Cert content
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -225,8 +219,6 @@ public final class KeystoresAliasesKeyCertFileState extends com.pulumi.resources
 
         /**
          * @param cert Cert content
-         * 
-         * ***
          * 
          * @return builder
          * 

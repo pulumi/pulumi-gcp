@@ -318,8 +318,6 @@ def get_job(location: Optional[str] = None,
 
 
     :param str location: The location of the instance. eg us-central1
-           
-           - - -
     :param str name: The name of the Cloud Run v2 Job.
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -385,8 +383,6 @@ def get_job_output(location: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str location: The location of the instance. eg us-central1
-           
-           - - -
     :param str name: The name of the Cloud Run v2 Job.
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.

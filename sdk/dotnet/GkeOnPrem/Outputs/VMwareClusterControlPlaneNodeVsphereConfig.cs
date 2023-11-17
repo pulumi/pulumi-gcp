@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// <summary>
         /// (Output)
         /// The Vsphere storage policy used by the control plane Node.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? StoragePolicyName;
 

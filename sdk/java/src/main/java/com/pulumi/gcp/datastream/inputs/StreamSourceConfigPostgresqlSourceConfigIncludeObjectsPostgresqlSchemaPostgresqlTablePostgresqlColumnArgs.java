@@ -18,6 +18,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     public static final StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs Empty = new StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs();
 
     /**
+     * Column name.`column` -
+     * (Optional)
      * Column name.
      * 
      */
@@ -25,7 +27,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     private @Nullable Output<String> column;
 
     /**
-     * @return Column name.
+     * @return Column name.`column` -
+     * (Optional)
+     * Column name.
      * 
      */
     public Optional<Output<String>> column() {
@@ -33,6 +37,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     }
 
     /**
+     * The PostgreSQL data type. Full data types list can be found here:
+     * https://www.postgresql.org/docs/current/datatype.html`data_type` -
+     * (Optional)
      * The PostgreSQL data type. Full data types list can be found here:
      * https://www.postgresql.org/docs/current/datatype.html
      * 
@@ -42,6 +49,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
     /**
      * @return The PostgreSQL data type. Full data types list can be found here:
+     * https://www.postgresql.org/docs/current/datatype.html`data_type` -
+     * (Optional)
+     * The PostgreSQL data type. Full data types list can be found here:
      * https://www.postgresql.org/docs/current/datatype.html
      * 
      */
@@ -51,6 +61,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
     /**
      * (Output)
+     * Column length.`length` -
+     * (Output)
      * Column length.
      * 
      */
@@ -59,6 +71,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
     /**
      * @return (Output)
+     * Column length.`length` -
+     * (Output)
      * Column length.
      * 
      */
@@ -67,6 +81,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     }
 
     /**
+     * Whether or not the column can accept a null value.`nullable` -
+     * (Optional)
      * Whether or not the column can accept a null value.
      * 
      */
@@ -74,7 +90,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     private @Nullable Output<Boolean> nullable;
 
     /**
-     * @return Whether or not the column can accept a null value.
+     * @return Whether or not the column can accept a null value.`nullable` -
+     * (Optional)
+     * Whether or not the column can accept a null value.
      * 
      */
     public Optional<Output<Boolean>> nullable() {
@@ -82,6 +100,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     }
 
     /**
+     * The ordinal position of the column in the table.`ordinal_position` -
+     * (Optional)
      * The ordinal position of the column in the table.
      * 
      */
@@ -89,7 +109,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     private @Nullable Output<Integer> ordinalPosition;
 
     /**
-     * @return The ordinal position of the column in the table.
+     * @return The ordinal position of the column in the table.`ordinal_position` -
+     * (Optional)
+     * The ordinal position of the column in the table.
      * 
      */
     public Optional<Output<Integer>> ordinalPosition() {
@@ -97,6 +119,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     }
 
     /**
+     * (Output)
+     * Column precision.`precision` -
      * (Output)
      * Column precision.
      * 
@@ -106,6 +130,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
     /**
      * @return (Output)
+     * Column precision.`precision` -
+     * (Output)
      * Column precision.
      * 
      */
@@ -114,6 +140,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     }
 
     /**
+     * Whether or not the column represents a primary key.`primary_key` -
+     * (Optional)
      * Whether or not the column represents a primary key.
      * 
      */
@@ -121,7 +149,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     private @Nullable Output<Boolean> primaryKey;
 
     /**
-     * @return Whether or not the column represents a primary key.
+     * @return Whether or not the column represents a primary key.`primary_key` -
+     * (Optional)
+     * Whether or not the column represents a primary key.
      * 
      */
     public Optional<Output<Boolean>> primaryKey() {
@@ -129,6 +159,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
     }
 
     /**
+     * (Output)
+     * Column scale.`scale` -
      * (Output)
      * Column scale.
      * 
@@ -138,6 +170,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
     /**
      * @return (Output)
+     * Column scale.`scale` -
+     * (Output)
      * Column scale.
      * 
      */
@@ -177,7 +211,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param column Column name.
+         * @param column Column name.`column` -
+         * (Optional)
+         * Column name.
          * 
          * @return builder
          * 
@@ -188,7 +224,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param column Column name.
+         * @param column Column name.`column` -
+         * (Optional)
+         * Column name.
          * 
          * @return builder
          * 
@@ -199,6 +237,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
         /**
          * @param dataType The PostgreSQL data type. Full data types list can be found here:
+         * https://www.postgresql.org/docs/current/datatype.html`data_type` -
+         * (Optional)
+         * The PostgreSQL data type. Full data types list can be found here:
          * https://www.postgresql.org/docs/current/datatype.html
          * 
          * @return builder
@@ -211,6 +252,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
         /**
          * @param dataType The PostgreSQL data type. Full data types list can be found here:
+         * https://www.postgresql.org/docs/current/datatype.html`data_type` -
+         * (Optional)
+         * The PostgreSQL data type. Full data types list can be found here:
          * https://www.postgresql.org/docs/current/datatype.html
          * 
          * @return builder
@@ -222,6 +266,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
         /**
          * @param length (Output)
+         * Column length.`length` -
+         * (Output)
          * Column length.
          * 
          * @return builder
@@ -234,6 +280,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
         /**
          * @param length (Output)
+         * Column length.`length` -
+         * (Output)
          * Column length.
          * 
          * @return builder
@@ -244,7 +292,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param nullable Whether or not the column can accept a null value.
+         * @param nullable Whether or not the column can accept a null value.`nullable` -
+         * (Optional)
+         * Whether or not the column can accept a null value.
          * 
          * @return builder
          * 
@@ -255,7 +305,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param nullable Whether or not the column can accept a null value.
+         * @param nullable Whether or not the column can accept a null value.`nullable` -
+         * (Optional)
+         * Whether or not the column can accept a null value.
          * 
          * @return builder
          * 
@@ -265,7 +317,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param ordinalPosition The ordinal position of the column in the table.
+         * @param ordinalPosition The ordinal position of the column in the table.`ordinal_position` -
+         * (Optional)
+         * The ordinal position of the column in the table.
          * 
          * @return builder
          * 
@@ -276,7 +330,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param ordinalPosition The ordinal position of the column in the table.
+         * @param ordinalPosition The ordinal position of the column in the table.`ordinal_position` -
+         * (Optional)
+         * The ordinal position of the column in the table.
          * 
          * @return builder
          * 
@@ -287,6 +343,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
         /**
          * @param precision (Output)
+         * Column precision.`precision` -
+         * (Output)
          * Column precision.
          * 
          * @return builder
@@ -299,6 +357,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
         /**
          * @param precision (Output)
+         * Column precision.`precision` -
+         * (Output)
          * Column precision.
          * 
          * @return builder
@@ -309,7 +369,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param primaryKey Whether or not the column represents a primary key.
+         * @param primaryKey Whether or not the column represents a primary key.`primary_key` -
+         * (Optional)
+         * Whether or not the column represents a primary key.
          * 
          * @return builder
          * 
@@ -320,7 +382,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
         }
 
         /**
-         * @param primaryKey Whether or not the column represents a primary key.
+         * @param primaryKey Whether or not the column represents a primary key.`primary_key` -
+         * (Optional)
+         * Whether or not the column represents a primary key.
          * 
          * @return builder
          * 
@@ -331,6 +395,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
         /**
          * @param scale (Output)
+         * Column scale.`scale` -
+         * (Output)
          * Column scale.
          * 
          * @return builder
@@ -343,6 +409,8 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
 
         /**
          * @param scale (Output)
+         * Column scale.`scale` -
+         * (Output)
          * Column scale.
          * 
          * @return builder

@@ -610,8 +610,6 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * Name or self link of a machine
      * image to create the instance based on.
      * 
-     * ***
-     * 
      */
     @Export(name="sourceMachineImage", refs={String.class}, tree="[0]")
     private Output<String> sourceMachineImage;
@@ -619,8 +617,6 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
     /**
      * @return Name or self link of a machine
      * image to create the instance based on.
-     * 
-     * ***
      * 
      */
     public Output<String> sourceMachineImage() {

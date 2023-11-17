@@ -14,14 +14,14 @@ public final class ClusterAddonsConfigConfigConnectorConfigArgs extends com.pulu
     public static final ClusterAddonsConfigConfigConnectorConfigArgs Empty = new ClusterAddonsConfigConfigConnectorConfigArgs();
 
     /**
-     * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      */
     public Output<Boolean> enabled() {
@@ -53,7 +53,7 @@ public final class ClusterAddonsConfigConfigConnectorConfigArgs extends com.pulu
         }
 
         /**
-         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+         * @param enabled (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class ClusterAddonsConfigConfigConnectorConfigArgs extends com.pulu
         }
 
         /**
-         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+         * @param enabled (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
          * 
          * @return builder
          * 

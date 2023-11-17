@@ -112,9 +112,6 @@ namespace Pulumi.Gcp.Storage
         /// group-example@googlegroups.com.
         /// To refer to all members of the Google Apps for Business domain
         /// example.com, the entity would be domain-example.com.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("entity")]
         public Output<string> Entity { get; private set; } = null!;
@@ -194,9 +191,6 @@ namespace Pulumi.Gcp.Storage
         /// group-example@googlegroups.com.
         /// To refer to all members of the Google Apps for Business domain
         /// example.com, the entity would be domain-example.com.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entity", required: true)]
         public Input<string> Entity { get; set; } = null!;
@@ -250,9 +244,6 @@ namespace Pulumi.Gcp.Storage
         /// group-example@googlegroups.com.
         /// To refer to all members of the Google Apps for Business domain
         /// example.com, the entity would be domain-example.com.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entity")]
         public Input<string>? Entity { get; set; }

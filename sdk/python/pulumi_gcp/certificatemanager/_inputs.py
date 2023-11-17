@@ -57,8 +57,6 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
         :param pulumi.Input[str] ca_pool: A CA pool resource used to issue a certificate.
                The CA pool string has a relative resource path following the form
                "projects/{project}/locations/{location}/caPools/{caPool}".
-               
-               - - -
         """
         pulumi.set(__self__, "ca_pool", ca_pool)
 
@@ -69,8 +67,6 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
         A CA pool resource used to issue a certificate.
         The CA pool string has a relative resource path following the form
         "projects/{project}/locations/{location}/caPools/{caPool}".
-
-        - - -
         """
         return pulumi.get(self, "ca_pool")
 
@@ -94,7 +90,6 @@ class CertificateManagedArgs:
                specified for this Managed Certificate.
                Structure is documented below.
                
-               
                <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_authorizations: Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: The domains for which a managed SSL certificate will be generated.
@@ -106,7 +101,7 @@ class CertificateManagedArgs:
                Information about issues with provisioning this Managed Certificate.
                Structure is documented below.
         :param pulumi.Input[str] state: (Output)
-               State of the domain for managed certificate issuance.
+               A state of this Managed Certificate.
         """
         if authorization_attempt_infos is not None:
             pulumi.set(__self__, "authorization_attempt_infos", authorization_attempt_infos)
@@ -129,7 +124,6 @@ class CertificateManagedArgs:
         Detailed state of the latest authorization attempt for each domain
         specified for this Managed Certificate.
         Structure is documented below.
-
 
         <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
         """
@@ -197,7 +191,7 @@ class CertificateManagedArgs:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        State of the domain for managed certificate issuance.
+        A state of this Managed Certificate.
         """
         return pulumi.get(self, "state")
 
@@ -448,8 +442,7 @@ class CertificateSelfManagedArgs:
                  pem_private_key: Optional[pulumi.Input[str]] = None,
                  private_key_pem: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] certificate_pem: (Optional, Deprecated)
-               The certificate chain in PEM-encoded form.
+        :param pulumi.Input[str] certificate_pem: The certificate chain in PEM-encoded form.
                Leaf certificate comes first, followed by intermediate ones if any.
                **Note**: This property is sensitive and will not be displayed in the plan.
                
@@ -459,8 +452,7 @@ class CertificateSelfManagedArgs:
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] pem_private_key: The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param pulumi.Input[str] private_key_pem: (Optional, Deprecated)
-               The private key of the leaf certificate in PEM-encoded form.
+        :param pulumi.Input[str] private_key_pem: The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
                
                > **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
@@ -484,7 +476,6 @@ class CertificateSelfManagedArgs:
     @pulumi.getter(name="certificatePem")
     def certificate_pem(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         The certificate chain in PEM-encoded form.
         Leaf certificate comes first, followed by intermediate ones if any.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -531,7 +522,6 @@ class CertificateSelfManagedArgs:
     @pulumi.getter(name="privateKeyPem")
     def private_key_pem(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         The private key of the leaf certificate in PEM-encoded form.
         **Note**: This property is sensitive and will not be displayed in the plan.
 
@@ -559,9 +549,6 @@ class DnsAuthorizationDnsResourceRecordArgs:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] type: (Output)
                Type of the DNS Resource Record.
         """
@@ -592,9 +579,6 @@ class DnsAuthorizationDnsResourceRecordArgs:
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

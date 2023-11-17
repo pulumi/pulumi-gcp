@@ -1012,7 +1012,6 @@ type ConnectionCloudSpanner struct {
 	UseDataBoost *bool `pulumi:"useDataBoost"`
 	// If parallelism should be used when reading from Cloud Spanner.
 	UseParallelism *bool `pulumi:"useParallelism"`
-	// (Optional, Deprecated)
 	// If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
 	//
 	// > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
@@ -1043,7 +1042,6 @@ type ConnectionCloudSpannerArgs struct {
 	UseDataBoost pulumi.BoolPtrInput `pulumi:"useDataBoost"`
 	// If parallelism should be used when reading from Cloud Spanner.
 	UseParallelism pulumi.BoolPtrInput `pulumi:"useParallelism"`
-	// (Optional, Deprecated)
 	// If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
 	//
 	// > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
@@ -1154,7 +1152,6 @@ func (o ConnectionCloudSpannerOutput) UseParallelism() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionCloudSpanner) *bool { return v.UseParallelism }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional, Deprecated)
 // If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
 //
 // > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
@@ -1238,7 +1235,6 @@ func (o ConnectionCloudSpannerPtrOutput) UseParallelism() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// (Optional, Deprecated)
 // If the serverless analytics service should be used to read data from Cloud Spanner. `useParallelism` must be set when using serverless analytics.
 //
 // > **Warning:** `useServerlessAnalytics` is deprecated and will be removed in a future major release. Use `useDataBoost` instead.
@@ -5577,8 +5573,6 @@ type JobExtractSourceModel struct {
 	// The ID of the dataset containing this model.
 	DatasetId string `pulumi:"datasetId"`
 	// The ID of the model.
-	//
-	// ***
 	ModelId string `pulumi:"modelId"`
 	// The ID of the project containing this model.
 	ProjectId string `pulumi:"projectId"`
@@ -5599,8 +5593,6 @@ type JobExtractSourceModelArgs struct {
 	// The ID of the dataset containing this model.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
 	// The ID of the model.
-	//
-	// ***
 	ModelId pulumi.StringInput `pulumi:"modelId"`
 	// The ID of the project containing this model.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
@@ -5689,8 +5681,6 @@ func (o JobExtractSourceModelOutput) DatasetId() pulumi.StringOutput {
 }
 
 // The ID of the model.
-//
-// ***
 func (o JobExtractSourceModelOutput) ModelId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobExtractSourceModel) string { return v.ModelId }).(pulumi.StringOutput)
 }
@@ -5735,8 +5725,6 @@ func (o JobExtractSourceModelPtrOutput) DatasetId() pulumi.StringPtrOutput {
 }
 
 // The ID of the model.
-//
-// ***
 func (o JobExtractSourceModelPtrOutput) ModelId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobExtractSourceModel) *string {
 		if v == nil {

@@ -99,8 +99,6 @@ namespace Pulumi.Gcp.VpcAccess
     {
         /// <summary>
         /// Name of the resource.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -129,8 +127,6 @@ namespace Pulumi.Gcp.VpcAccess
     {
         /// <summary>
         /// Name of the resource.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

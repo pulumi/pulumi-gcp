@@ -33,9 +33,6 @@ class FhirStoreArgs:
         The set of arguments for constructing a FhirStore resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[str] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
         :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
@@ -81,6 +78,7 @@ class FhirStoreArgs:
         :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
                this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
                resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
@@ -124,9 +122,6 @@ class FhirStoreArgs:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -282,6 +277,7 @@ class FhirStoreArgs:
     def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]]:
         """
         A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        Structure is documented below.
         """
         return pulumi.get(self, "notification_configs")
 
@@ -347,9 +343,6 @@ class _FhirStoreState:
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
                If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
                The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
@@ -394,6 +387,7 @@ class _FhirStoreState:
         :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
@@ -460,9 +454,6 @@ class _FhirStoreState:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -617,6 +608,7 @@ class _FhirStoreState:
     def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]]:
         """
         A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        Structure is documented below.
         """
         return pulumi.get(self, "notification_configs")
 
@@ -849,9 +841,6 @@ class FhirStore(pulumi.CustomResource):
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
                If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
                The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
@@ -895,6 +884,7 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
                this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
                resource mutation is streamed to the new location in addition to the existing ones. When a location is removed
@@ -1148,9 +1138,6 @@ class FhirStore(pulumi.CustomResource):
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
-               
-               
-               - - -
         :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
                If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
                The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
@@ -1195,6 +1182,7 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: A nested object resource
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
@@ -1246,9 +1234,6 @@ class FhirStore(pulumi.CustomResource):
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
-
-
-        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -1363,6 +1348,7 @@ class FhirStore(pulumi.CustomResource):
     def notification_configs(self) -> pulumi.Output[Optional[Sequence['outputs.FhirStoreNotificationConfig']]]:
         """
         A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        Structure is documented below.
         """
         return pulumi.get(self, "notification_configs")
 

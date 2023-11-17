@@ -106,8 +106,6 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// The name of the Google Platform project service.
-        /// 
-        /// - - -
         /// </summary>
         [Input("service", required: true)]
         public string Service { get; set; } = null!;
@@ -129,8 +127,6 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// The name of the Google Platform project service.
-        /// 
-        /// - - -
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;

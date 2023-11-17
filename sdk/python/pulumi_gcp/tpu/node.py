@@ -31,9 +31,6 @@ class NodeArgs:
         The set of arguments for constructing a Node resource.
         :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
-               
-               
-               - - -
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP
                address. This CIDR block must be a /29 block; the Compute Engine
                networks API forbids a smaller block, and using a larger block would
@@ -99,9 +96,6 @@ class NodeArgs:
     def tensorflow_version(self) -> pulumi.Input[str]:
         """
         The version of Tensorflow running in the Node.
-
-
-        - - -
         """
         return pulumi.get(self, "tensorflow_version")
 
@@ -289,9 +283,6 @@ class _NodeState:
                the Tensorflow job running in the Node, this account must have
                permissions to that data.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
-               
-               
-               - - -
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
                The VPC Peering should be set up before provisioning the node. If this field is set,
                cidr_block field should not be specified. If the network that you want to peer the
@@ -499,9 +490,6 @@ class _NodeState:
     def tensorflow_version(self) -> Optional[pulumi.Input[str]]:
         """
         The version of Tensorflow running in the Node.
-
-
-        - - -
         """
         return pulumi.get(self, "tensorflow_version")
 
@@ -662,9 +650,6 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']] scheduling_config: Sets the scheduling options for this TPU instance.
                Structure is documented below.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
-               
-               
-               - - -
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
                The VPC Peering should be set up before provisioning the node. If this field is set,
                cidr_block field should not be specified. If the network that you want to peer the
@@ -882,9 +867,6 @@ class Node(pulumi.CustomResource):
                the Tensorflow job running in the Node, this account must have
                permissions to that data.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
-               
-               
-               - - -
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
                The VPC Peering should be set up before provisioning the node. If this field is set,
                cidr_block field should not be specified. If the network that you want to peer the
@@ -1034,9 +1016,6 @@ class Node(pulumi.CustomResource):
     def tensorflow_version(self) -> pulumi.Output[str]:
         """
         The version of Tensorflow running in the Node.
-
-
-        - - -
         """
         return pulumi.get(self, "tensorflow_version")
 

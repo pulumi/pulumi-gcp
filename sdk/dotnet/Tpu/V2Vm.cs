@@ -192,9 +192,6 @@ namespace Pulumi.Gcp.Tpu
 
         /// <summary>
         /// Runtime version for the TPU.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("runtimeVersion")]
         public Output<string> RuntimeVersion { get; private set; } = null!;
@@ -390,9 +387,6 @@ namespace Pulumi.Gcp.Tpu
 
         /// <summary>
         /// Runtime version for the TPU.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("runtimeVersion", required: true)]
         public Input<string> RuntimeVersion { get; set; } = null!;
@@ -615,9 +609,6 @@ namespace Pulumi.Gcp.Tpu
 
         /// <summary>
         /// Runtime version for the TPU.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("runtimeVersion")]
         public Input<string>? RuntimeVersion { get; set; }

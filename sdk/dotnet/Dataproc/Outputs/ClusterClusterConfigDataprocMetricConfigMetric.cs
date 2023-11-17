@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     {
         /// <summary>
         /// One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
-        /// 
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> MetricOverrides;
         /// <summary>

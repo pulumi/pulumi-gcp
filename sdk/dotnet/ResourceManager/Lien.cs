@@ -103,9 +103,6 @@ namespace Pulumi.Gcp.ResourceManager
         /// the permissions against those for which Liens are supported.  An empty
         /// list is meaningless and will be rejected.
         /// e.g. ['resourcemanager.projects.delete']
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("restrictions")]
         public Output<ImmutableArray<string>> Restrictions { get; private set; } = null!;
@@ -189,9 +186,6 @@ namespace Pulumi.Gcp.ResourceManager
         /// the permissions against those for which Liens are supported.  An empty
         /// list is meaningless and will be rejected.
         /// e.g. ['resourcemanager.projects.delete']
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> Restrictions
         {
@@ -252,9 +246,6 @@ namespace Pulumi.Gcp.ResourceManager
         /// the permissions against those for which Liens are supported.  An empty
         /// list is meaningless and will be rejected.
         /// e.g. ['resourcemanager.projects.delete']
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         public InputList<string> Restrictions
         {

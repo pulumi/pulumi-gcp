@@ -104,8 +104,6 @@ type GetAppEngineServiceArgs struct {
 	// The ID of the App Engine module underlying this
 	// service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
 	//
-	// ***
-	//
 	// Other optional fields include:
 	ModuleId string `pulumi:"moduleId"`
 	// The ID of the project in which the resource belongs.
@@ -147,8 +145,6 @@ func GetAppEngineServiceOutput(ctx *pulumi.Context, args GetAppEngineServiceOutp
 type GetAppEngineServiceOutputArgs struct {
 	// The ID of the App Engine module underlying this
 	// service. Corresponds to the moduleId resource label in the [gaeApp](https://cloud.google.com/monitoring/api/resources#tag_gae_app) monitored resource, or the service/module name.
-	//
-	// ***
 	//
 	// Other optional fields include:
 	ModuleId pulumi.StringInput `pulumi:"moduleId"`

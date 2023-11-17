@@ -18,16 +18,12 @@ public final class PolicyBasedRouteFilterArgs extends com.pulumi.resources.Resou
     /**
      * The destination IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34; if protocol version is IPv4.
      * 
-     * ***
-     * 
      */
     @Import(name="destRange")
     private @Nullable Output<String> destRange;
 
     /**
      * @return The destination IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34; if protocol version is IPv4.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> destRange() {
@@ -111,8 +107,6 @@ public final class PolicyBasedRouteFilterArgs extends com.pulumi.resources.Resou
         /**
          * @param destRange The destination IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34; if protocol version is IPv4.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -123,8 +117,6 @@ public final class PolicyBasedRouteFilterArgs extends com.pulumi.resources.Resou
 
         /**
          * @param destRange The destination IP range of outgoing packets that this policy-based route applies to. Default is &#34;0.0.0.0/0&#34; if protocol version is IPv4.
-         * 
-         * ***
          * 
          * @return builder
          * 

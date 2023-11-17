@@ -20,8 +20,6 @@ public final class ProjectInfoArgs extends com.pulumi.resources.ResourceArgs {
      * any. Set to empty string to disable billing for the project.
      * For example, `&#34;012345-567890-ABCDEF&#34;` or `&#34;&#34;`.
      * 
-     * ***
-     * 
      */
     @Import(name="billingAccount", required=true)
     private Output<String> billingAccount;
@@ -30,8 +28,6 @@ public final class ProjectInfoArgs extends com.pulumi.resources.ResourceArgs {
      * @return The ID of the billing account associated with the project, if
      * any. Set to empty string to disable billing for the project.
      * For example, `&#34;012345-567890-ABCDEF&#34;` or `&#34;&#34;`.
-     * 
-     * ***
      * 
      */
     public Output<String> billingAccount() {
@@ -85,8 +81,6 @@ public final class ProjectInfoArgs extends com.pulumi.resources.ResourceArgs {
          * any. Set to empty string to disable billing for the project.
          * For example, `&#34;012345-567890-ABCDEF&#34;` or `&#34;&#34;`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -99,8 +93,6 @@ public final class ProjectInfoArgs extends com.pulumi.resources.ResourceArgs {
          * @param billingAccount The ID of the billing account associated with the project, if
          * any. Set to empty string to disable billing for the project.
          * For example, `&#34;012345-567890-ABCDEF&#34;` or `&#34;&#34;`.
-         * 
-         * ***
          * 
          * @return builder
          * 

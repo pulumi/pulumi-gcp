@@ -27,9 +27,6 @@ class TlsInspectionPolicyArgs:
         :param pulumi.Input[bool] exclude_public_ca_set: If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
         :param pulumi.Input[str] location: The location of the tls inspection policy.
         :param pulumi.Input[str] name: Short name of the TlsInspectionPolicy resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -98,9 +95,6 @@ class TlsInspectionPolicyArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the TlsInspectionPolicy resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -141,9 +135,6 @@ class _TlsInspectionPolicyState:
         :param pulumi.Input[bool] exclude_public_ca_set: If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
         :param pulumi.Input[str] location: The location of the tls inspection policy.
         :param pulumi.Input[str] name: Short name of the TlsInspectionPolicy resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
@@ -230,9 +221,6 @@ class _TlsInspectionPolicyState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the TlsInspectionPolicy resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -393,9 +381,6 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] exclude_public_ca_set: If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
         :param pulumi.Input[str] location: The location of the tls inspection policy.
         :param pulumi.Input[str] name: Short name of the TlsInspectionPolicy resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -584,9 +569,6 @@ class TlsInspectionPolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] exclude_public_ca_set: If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
         :param pulumi.Input[str] location: The location of the tls inspection policy.
         :param pulumi.Input[str] name: Short name of the TlsInspectionPolicy resource to be created.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
@@ -650,9 +632,6 @@ class TlsInspectionPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Short name of the TlsInspectionPolicy resource to be created.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

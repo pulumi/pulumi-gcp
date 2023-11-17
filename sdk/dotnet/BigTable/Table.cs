@@ -93,8 +93,6 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-        /// 
-        /// -----
         /// </summary>
         [Output("changeStreamRetention")]
         public Output<string> ChangeStreamRetention { get; private set; } = null!;
@@ -186,8 +184,6 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-        /// 
-        /// -----
         /// </summary>
         [Input("changeStreamRetention")]
         public Input<string>? ChangeStreamRetention { get; set; }
@@ -253,8 +249,6 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-        /// 
-        /// -----
         /// </summary>
         [Input("changeStreamRetention")]
         public Input<string>? ChangeStreamRetention { get; set; }

@@ -120,8 +120,6 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
         /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
         /// is specified, it must be base64 encoded and less than 4096 bytes in length.
-        /// 
-        /// - - -
         /// </summary>
         [Output("text")]
         public Output<string?> Text { get; private set; } = null!;
@@ -217,8 +215,6 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
         /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
         /// is specified, it must be base64 encoded and less than 4096 bytes in length.
-        /// 
-        /// - - -
         /// </summary>
         public Input<string>? Text
         {
@@ -279,8 +275,6 @@ namespace Pulumi.Gcp.RuntimeConfig
         /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
         /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
         /// is specified, it must be base64 encoded and less than 4096 bytes in length.
-        /// 
-        /// - - -
         /// </summary>
         public Input<string>? Text
         {

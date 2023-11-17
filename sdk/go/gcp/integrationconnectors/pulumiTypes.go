@@ -773,9 +773,9 @@ func (o ConnectionAuthConfigAdditionalVariableSecretValuePtrOutput) SecretVersio
 type ConnectionAuthConfigOauth2AuthCodeFlow struct {
 	// Auth URL for Authorization Code Flow.
 	AuthUri *string `pulumi:"authUri"`
-	// Secret version of Password for Authentication.
+	// Client ID for user-provided OAuth app.
 	ClientId *string `pulumi:"clientId"`
-	// Secret version reference containing the client secret.
+	// Client secret for user-provided OAuth app.
 	// Structure is documented below.
 	ClientSecret *ConnectionAuthConfigOauth2AuthCodeFlowClientSecret `pulumi:"clientSecret"`
 	// Whether to enable PKCE when the user performs the auth code flow.
@@ -798,9 +798,9 @@ type ConnectionAuthConfigOauth2AuthCodeFlowInput interface {
 type ConnectionAuthConfigOauth2AuthCodeFlowArgs struct {
 	// Auth URL for Authorization Code Flow.
 	AuthUri pulumi.StringPtrInput `pulumi:"authUri"`
-	// Secret version of Password for Authentication.
+	// Client ID for user-provided OAuth app.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// Secret version reference containing the client secret.
+	// Client secret for user-provided OAuth app.
 	// Structure is documented below.
 	ClientSecret ConnectionAuthConfigOauth2AuthCodeFlowClientSecretPtrInput `pulumi:"clientSecret"`
 	// Whether to enable PKCE when the user performs the auth code flow.
@@ -891,12 +891,12 @@ func (o ConnectionAuthConfigOauth2AuthCodeFlowOutput) AuthUri() pulumi.StringPtr
 	return o.ApplyT(func(v ConnectionAuthConfigOauth2AuthCodeFlow) *string { return v.AuthUri }).(pulumi.StringPtrOutput)
 }
 
-// Secret version of Password for Authentication.
+// Client ID for user-provided OAuth app.
 func (o ConnectionAuthConfigOauth2AuthCodeFlowOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigOauth2AuthCodeFlow) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// Secret version reference containing the client secret.
+// Client secret for user-provided OAuth app.
 // Structure is documented below.
 func (o ConnectionAuthConfigOauth2AuthCodeFlowOutput) ClientSecret() ConnectionAuthConfigOauth2AuthCodeFlowClientSecretPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigOauth2AuthCodeFlow) *ConnectionAuthConfigOauth2AuthCodeFlowClientSecret {
@@ -948,7 +948,7 @@ func (o ConnectionAuthConfigOauth2AuthCodeFlowPtrOutput) AuthUri() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secret version of Password for Authentication.
+// Client ID for user-provided OAuth app.
 func (o ConnectionAuthConfigOauth2AuthCodeFlowPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthConfigOauth2AuthCodeFlow) *string {
 		if v == nil {
@@ -958,7 +958,7 @@ func (o ConnectionAuthConfigOauth2AuthCodeFlowPtrOutput) ClientId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secret version reference containing the client secret.
+// Client secret for user-provided OAuth app.
 // Structure is documented below.
 func (o ConnectionAuthConfigOauth2AuthCodeFlowPtrOutput) ClientSecret() ConnectionAuthConfigOauth2AuthCodeFlowClientSecretPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthConfigOauth2AuthCodeFlow) *ConnectionAuthConfigOauth2AuthCodeFlowClientSecret {
@@ -1131,9 +1131,9 @@ func (o ConnectionAuthConfigOauth2AuthCodeFlowClientSecretPtrOutput) SecretVersi
 }
 
 type ConnectionAuthConfigOauth2ClientCredentials struct {
-	// Secret version of Password for Authentication.
+	// Client ID for user-provided OAuth app.
 	ClientId string `pulumi:"clientId"`
-	// Secret version reference containing the client secret.
+	// Client secret for user-provided OAuth app.
 	// Structure is documented below.
 	ClientSecret *ConnectionAuthConfigOauth2ClientCredentialsClientSecret `pulumi:"clientSecret"`
 }
@@ -1150,9 +1150,9 @@ type ConnectionAuthConfigOauth2ClientCredentialsInput interface {
 }
 
 type ConnectionAuthConfigOauth2ClientCredentialsArgs struct {
-	// Secret version of Password for Authentication.
+	// Client ID for user-provided OAuth app.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
-	// Secret version reference containing the client secret.
+	// Client secret for user-provided OAuth app.
 	// Structure is documented below.
 	ClientSecret ConnectionAuthConfigOauth2ClientCredentialsClientSecretPtrInput `pulumi:"clientSecret"`
 }
@@ -1234,12 +1234,12 @@ func (o ConnectionAuthConfigOauth2ClientCredentialsOutput) ToConnectionAuthConfi
 	}).(ConnectionAuthConfigOauth2ClientCredentialsPtrOutput)
 }
 
-// Secret version of Password for Authentication.
+// Client ID for user-provided OAuth app.
 func (o ConnectionAuthConfigOauth2ClientCredentialsOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigOauth2ClientCredentials) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// Secret version reference containing the client secret.
+// Client secret for user-provided OAuth app.
 // Structure is documented below.
 func (o ConnectionAuthConfigOauth2ClientCredentialsOutput) ClientSecret() ConnectionAuthConfigOauth2ClientCredentialsClientSecretPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigOauth2ClientCredentials) *ConnectionAuthConfigOauth2ClientCredentialsClientSecret {
@@ -1271,7 +1271,7 @@ func (o ConnectionAuthConfigOauth2ClientCredentialsPtrOutput) Elem() ConnectionA
 	}).(ConnectionAuthConfigOauth2ClientCredentialsOutput)
 }
 
-// Secret version of Password for Authentication.
+// Client ID for user-provided OAuth app.
 func (o ConnectionAuthConfigOauth2ClientCredentialsPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthConfigOauth2ClientCredentials) *string {
 		if v == nil {
@@ -1281,7 +1281,7 @@ func (o ConnectionAuthConfigOauth2ClientCredentialsPtrOutput) ClientId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secret version reference containing the client secret.
+// Client secret for user-provided OAuth app.
 // Structure is documented below.
 func (o ConnectionAuthConfigOauth2ClientCredentialsPtrOutput) ClientSecret() ConnectionAuthConfigOauth2ClientCredentialsClientSecretPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthConfigOauth2ClientCredentials) *ConnectionAuthConfigOauth2ClientCredentialsClientSecret {

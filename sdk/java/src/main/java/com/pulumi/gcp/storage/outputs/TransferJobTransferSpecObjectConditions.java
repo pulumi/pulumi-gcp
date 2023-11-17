@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TransferJobTransferSpecObjectConditions {
     /**
-     * @return `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+     * @return must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
      * 
      */
     private @Nullable List<String> excludePrefixes;
@@ -45,7 +45,7 @@ public final class TransferJobTransferSpecObjectConditions {
 
     private TransferJobTransferSpecObjectConditions() {}
     /**
-     * @return `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+     * @return must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
      * 
      */
     public List<String> excludePrefixes() {

@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// <summary>
         /// (Output)
         /// The Vsphere tag name.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Tag;
 

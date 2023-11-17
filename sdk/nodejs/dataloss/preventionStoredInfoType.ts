@@ -170,13 +170,6 @@ export class PreventionStoredInfoType extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The parent of the info type in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -259,13 +252,6 @@ export interface PreventionStoredInfoTypeState {
     name?: pulumi.Input<string>;
     /**
      * The parent of the info type in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -305,13 +291,6 @@ export interface PreventionStoredInfoTypeArgs {
     largeCustomDictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary>;
     /**
      * The parent of the info type in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
     /**

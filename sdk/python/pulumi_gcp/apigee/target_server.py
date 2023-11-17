@@ -28,9 +28,6 @@ class TargetServerArgs:
         The set of arguments for constructing a TargetServer resource.
         :param pulumi.Input[str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] host: The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
         :param pulumi.Input[int] port: The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         :param pulumi.Input[str] description: A human-readable description of this TargetServer.
@@ -61,9 +58,6 @@ class TargetServerArgs:
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "env_id")
 
@@ -174,9 +168,6 @@ class _TargetServerState:
         :param pulumi.Input[str] description: A human-readable description of this TargetServer.
         :param pulumi.Input[str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] host: The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
         :param pulumi.Input[bool] is_enabled: Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
         :param pulumi.Input[str] name: The resource id of this reference. Values must match the regular expression [\\w\\s-.]+.
@@ -221,9 +212,6 @@ class _TargetServerState:
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "env_id")
 
@@ -409,9 +397,6 @@ class TargetServer(pulumi.CustomResource):
         :param pulumi.Input[str] description: A human-readable description of this TargetServer.
         :param pulumi.Input[str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] host: The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
         :param pulumi.Input[bool] is_enabled: Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
         :param pulumi.Input[str] name: The resource id of this reference. Values must match the regular expression [\\w\\s-.]+.
@@ -585,9 +570,6 @@ class TargetServer(pulumi.CustomResource):
         :param pulumi.Input[str] description: A human-readable description of this TargetServer.
         :param pulumi.Input[str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] host: The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
         :param pulumi.Input[bool] is_enabled: Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
         :param pulumi.Input[str] name: The resource id of this reference. Values must match the regular expression [\\w\\s-.]+.
@@ -625,9 +607,6 @@ class TargetServer(pulumi.CustomResource):
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "env_id")
 

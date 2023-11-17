@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.SecretManager.Inputs
     {
         /// <summary>
         /// Describes the Cloud KMS encryption key that will be used to protect destination secret.
-        /// 
-        /// - - -
         /// </summary>
         [Input("kmsKeyName", required: true)]
         public Input<string> KmsKeyName { get; set; } = null!;

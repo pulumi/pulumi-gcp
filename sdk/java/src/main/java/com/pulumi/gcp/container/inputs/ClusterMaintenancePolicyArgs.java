@@ -19,66 +19,14 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
     public static final ClusterMaintenancePolicyArgs Empty = new ClusterMaintenancePolicyArgs();
 
     /**
-     * Time window specified for daily maintenance operations.
-     * Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;HH:MM”,
-     * where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
-     * 
-     * Examples:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * structure documented below.
      * 
      */
     @Import(name="dailyMaintenanceWindow")
     private @Nullable Output<ClusterMaintenancePolicyDailyMaintenanceWindowArgs> dailyMaintenanceWindow;
 
     /**
-     * @return Time window specified for daily maintenance operations.
-     * Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;HH:MM”,
-     * where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
-     * 
-     * Examples:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * @return structure documented below.
      * 
      */
     public Optional<Output<ClusterMaintenancePolicyDailyMaintenanceWindowArgs>> dailyMaintenanceWindow() {
@@ -86,14 +34,18 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+     * structure documented below
+     * 
+     * In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
      * 
      */
     @Import(name="maintenanceExclusions")
     private @Nullable Output<List<ClusterMaintenancePolicyMaintenanceExclusionArgs>> maintenanceExclusions;
 
     /**
-     * @return Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+     * @return structure documented below
+     * 
+     * In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
      * 
      */
     public Optional<Output<List<ClusterMaintenancePolicyMaintenanceExclusionArgs>>> maintenanceExclusions() {
@@ -101,116 +53,14 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Time window for recurring maintenance operations.
-     * 
-     * Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
-     * the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
-     * [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
-     * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
-     * 
-     * Examples:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * structure documented below
      * 
      */
     @Import(name="recurringWindow")
     private @Nullable Output<ClusterMaintenancePolicyRecurringWindowArgs> recurringWindow;
 
     /**
-     * @return Time window for recurring maintenance operations.
-     * 
-     * Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
-     * the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
-     * [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
-     * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
-     * 
-     * Examples:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
+     * @return structure documented below
      * 
      */
     public Optional<Output<ClusterMaintenancePolicyRecurringWindowArgs>> recurringWindow() {
@@ -244,33 +94,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dailyMaintenanceWindow Time window specified for daily maintenance operations.
-         * Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;HH:MM”,
-         * where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
-         * 
-         * Examples:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
+         * @param dailyMaintenanceWindow structure documented below.
          * 
          * @return builder
          * 
@@ -281,33 +105,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dailyMaintenanceWindow Time window specified for daily maintenance operations.
-         * Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format &#34;HH:MM”,
-         * where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
-         * 
-         * Examples:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
+         * @param dailyMaintenanceWindow structure documented below.
          * 
          * @return builder
          * 
@@ -317,7 +115,9 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maintenanceExclusions Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+         * @param maintenanceExclusions structure documented below
+         * 
+         * In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
          * 
          * @return builder
          * 
@@ -328,7 +128,9 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maintenanceExclusions Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+         * @param maintenanceExclusions structure documented below
+         * 
+         * In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
          * 
          * @return builder
          * 
@@ -338,7 +140,9 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maintenanceExclusions Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+         * @param maintenanceExclusions structure documented below
+         * 
+         * In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
          * 
          * @return builder
          * 
@@ -348,58 +152,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param recurringWindow Time window for recurring maintenance operations.
-         * 
-         * Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
-         * the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
-         * [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
-         * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
-         * 
-         * Examples:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
+         * @param recurringWindow structure documented below
          * 
          * @return builder
          * 
@@ -410,58 +163,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param recurringWindow Time window for recurring maintenance operations.
-         * 
-         * Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) &#34;Zulu&#34; date format.  The start time&#39;s date is
-         * the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
-         * [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
-         * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
-         * 
-         * Examples:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
+         * @param recurringWindow structure documented below
          * 
          * @return builder
          * 

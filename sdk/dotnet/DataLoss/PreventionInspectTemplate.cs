@@ -284,13 +284,6 @@ namespace Pulumi.Gcp.DataLoss
 
         /// <summary>
         /// The parent of the inspect template in any of the following formats:
-        /// * `projects/{{project}}`
-        /// * `projects/{{project}}/locations/{{location}}`
-        /// * `organizations/{{organization_id}}`
-        /// * `organizations/{{organization_id}}/locations/{{location}}`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -370,13 +363,6 @@ namespace Pulumi.Gcp.DataLoss
 
         /// <summary>
         /// The parent of the inspect template in any of the following formats:
-        /// * `projects/{{project}}`
-        /// * `projects/{{project}}/locations/{{location}}`
-        /// * `organizations/{{organization_id}}`
-        /// * `organizations/{{organization_id}}/locations/{{location}}`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -425,13 +411,6 @@ namespace Pulumi.Gcp.DataLoss
 
         /// <summary>
         /// The parent of the inspect template in any of the following formats:
-        /// * `projects/{{project}}`
-        /// * `projects/{{project}}/locations/{{location}}`
-        /// * `organizations/{{organization_id}}`
-        /// * `organizations/{{organization_id}}/locations/{{location}}`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

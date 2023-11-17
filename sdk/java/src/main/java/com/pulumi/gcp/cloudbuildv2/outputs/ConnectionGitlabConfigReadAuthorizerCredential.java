@@ -19,8 +19,6 @@ public final class ConnectionGitlabConfigReadAuthorizerCredential {
     /**
      * @return Output only. The username associated to this token.
      * 
-     * ***
-     * 
      */
     private @Nullable String username;
 
@@ -34,8 +32,6 @@ public final class ConnectionGitlabConfigReadAuthorizerCredential {
     }
     /**
      * @return Output only. The username associated to this token.
-     * 
-     * ***
      * 
      */
     public Optional<String> username() {

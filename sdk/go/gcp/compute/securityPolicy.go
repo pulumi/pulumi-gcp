@@ -275,13 +275,11 @@ type SecurityPolicy struct {
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
 	// Structure is documented below.
 	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigOutput `pulumi:"advancedOptionsConfig"`
-	// An optional description of this security policy. Max size is 2048.
+	// An optional description of this rule. Max size is 64.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Fingerprint of this resource.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The name of the security policy.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -294,14 +292,7 @@ type SecurityPolicy struct {
 	Rules SecurityPolicyRuleArrayOutput `pulumi:"rules"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-	//   They filter requests before they hit the origin servers.
-	// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-	//   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-	//   They filter requests before the request is served from Google's cache.
-	// * CLOUD_ARMOR_INTERNAL_SERVICE - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-	//   managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+	// Type of the redirect action.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -340,13 +331,11 @@ type securityPolicyState struct {
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
 	// Structure is documented below.
 	AdvancedOptionsConfig *SecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
-	// An optional description of this security policy. Max size is 2048.
+	// An optional description of this rule. Max size is 64.
 	Description *string `pulumi:"description"`
 	// Fingerprint of this resource.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The name of the security policy.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -359,14 +348,7 @@ type securityPolicyState struct {
 	Rules []SecurityPolicyRule `pulumi:"rules"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-	//   They filter requests before they hit the origin servers.
-	// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-	//   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-	//   They filter requests before the request is served from Google's cache.
-	// * CLOUD_ARMOR_INTERNAL_SERVICE - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-	//   managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+	// Type of the redirect action.
 	Type *string `pulumi:"type"`
 }
 
@@ -376,13 +358,11 @@ type SecurityPolicyState struct {
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
 	// Structure is documented below.
 	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigPtrInput
-	// An optional description of this security policy. Max size is 2048.
+	// An optional description of this rule. Max size is 64.
 	Description pulumi.StringPtrInput
 	// Fingerprint of this resource.
 	Fingerprint pulumi.StringPtrInput
 	// The name of the security policy.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -395,14 +375,7 @@ type SecurityPolicyState struct {
 	Rules SecurityPolicyRuleArrayInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-	//   They filter requests before they hit the origin servers.
-	// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-	//   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-	//   They filter requests before the request is served from Google's cache.
-	// * CLOUD_ARMOR_INTERNAL_SERVICE - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-	//   managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+	// Type of the redirect action.
 	Type pulumi.StringPtrInput
 }
 
@@ -416,11 +389,9 @@ type securityPolicyArgs struct {
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
 	// Structure is documented below.
 	AdvancedOptionsConfig *SecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
-	// An optional description of this security policy. Max size is 2048.
+	// An optional description of this rule. Max size is 64.
 	Description *string `pulumi:"description"`
 	// The name of the security policy.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -431,14 +402,7 @@ type securityPolicyArgs struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules []SecurityPolicyRule `pulumi:"rules"`
-	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-	//   They filter requests before they hit the origin servers.
-	// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-	//   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-	//   They filter requests before the request is served from Google's cache.
-	// * CLOUD_ARMOR_INTERNAL_SERVICE - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-	//   managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+	// Type of the redirect action.
 	Type *string `pulumi:"type"`
 }
 
@@ -449,11 +413,9 @@ type SecurityPolicyArgs struct {
 	// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
 	// Structure is documented below.
 	AdvancedOptionsConfig SecurityPolicyAdvancedOptionsConfigPtrInput
-	// An optional description of this security policy. Max size is 2048.
+	// An optional description of this rule. Max size is 64.
 	Description pulumi.StringPtrInput
 	// The name of the security policy.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -464,14 +426,7 @@ type SecurityPolicyArgs struct {
 	// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
 	// security policy, a default rule with action "allow" will be added. Structure is documented below.
 	Rules SecurityPolicyRuleArrayInput
-	// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-	// * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-	//   They filter requests before they hit the origin servers.
-	// * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-	//   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-	//   They filter requests before the request is served from Google's cache.
-	// * CLOUD_ARMOR_INTERNAL_SERVICE - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-	//   managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+	// Type of the redirect action.
 	Type pulumi.StringPtrInput
 }
 
@@ -575,7 +530,7 @@ func (o SecurityPolicyOutput) AdvancedOptionsConfig() SecurityPolicyAdvancedOpti
 	return o.ApplyT(func(v *SecurityPolicy) SecurityPolicyAdvancedOptionsConfigOutput { return v.AdvancedOptionsConfig }).(SecurityPolicyAdvancedOptionsConfigOutput)
 }
 
-// An optional description of this security policy. Max size is 2048.
+// An optional description of this rule. Max size is 64.
 func (o SecurityPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -586,8 +541,6 @@ func (o SecurityPolicyOutput) Fingerprint() pulumi.StringOutput {
 }
 
 // The name of the security policy.
-//
-// ***
 func (o SecurityPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -615,14 +568,7 @@ func (o SecurityPolicyOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-//   - CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-//     They filter requests before they hit the origin servers.
-//   - CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-//     (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-//     They filter requests before the request is served from Google's cache.
-//   - CLOUD_ARMOR_INTERNAL_SERVICE - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-//     managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+// Type of the redirect action.
 func (o SecurityPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityPolicy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

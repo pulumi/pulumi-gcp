@@ -222,9 +222,6 @@ namespace Pulumi.Gcp.BigQuery
         /// A unique ID for this dataset, without the project name. The ID
         /// must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
@@ -359,9 +356,6 @@ namespace Pulumi.Gcp.BigQuery
         /// A unique ID for this dataset, without the project name. The ID
         /// must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -465,9 +459,6 @@ namespace Pulumi.Gcp.BigQuery
         /// A unique ID for this dataset, without the project name. The ID
         /// must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }

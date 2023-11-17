@@ -187,9 +187,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("featurestore")]
         public Output<string> Featurestore { get; private set; } = null!;
@@ -218,9 +215,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-        /// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-        /// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        /// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         /// </summary>
         [Output("offlineStorageTtlDays")]
         public Output<int?> OfflineStorageTtlDays { get; private set; } = null!;
@@ -303,9 +298,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("featurestore", required: true)]
         public Input<string> Featurestore { get; set; } = null!;
@@ -340,9 +332,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-        /// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-        /// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        /// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         /// </summary>
         [Input("offlineStorageTtlDays")]
         public Input<int>? OfflineStorageTtlDays { get; set; }
@@ -391,9 +381,6 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("featurestore")]
         public Input<string>? Featurestore { get; set; }
@@ -428,9 +415,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-        /// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-        /// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        /// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         /// </summary>
         [Input("offlineStorageTtlDays")]
         public Input<int>? OfflineStorageTtlDays { get; set; }

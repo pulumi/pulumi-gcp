@@ -13,6 +13,8 @@ namespace Pulumi.Gcp.Datastream.Inputs
     public sealed class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Database name.`database` -
+        /// (Required)
         /// Database name.
         /// </summary>
         [Input("database", required: true)]
@@ -22,6 +24,9 @@ namespace Pulumi.Gcp.Datastream.Inputs
         private InputList<Inputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableGetArgs>? _mysqlTables;
 
         /// <summary>
+        /// Tables in the database.
+        /// Structure is documented below.`mysql_tables` -
+        /// (Optional)
         /// Tables in the database.
         /// Structure is documented below.
         /// </summary>

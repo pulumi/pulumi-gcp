@@ -68,8 +68,6 @@ type MembershipBinding struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Location of the membership
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The client-provided identifier of the membership binding.
 	MembershipBindingId pulumi.StringOutput `pulumi:"membershipBindingId"`
@@ -154,8 +152,6 @@ type membershipBindingState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Location of the membership
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The client-provided identifier of the membership binding.
 	MembershipBindingId *string `pulumi:"membershipBindingId"`
@@ -194,8 +190,6 @@ type MembershipBindingState struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Location of the membership
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The client-provided identifier of the membership binding.
 	MembershipBindingId pulumi.StringPtrInput
@@ -232,8 +226,6 @@ type membershipBindingArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Location of the membership
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The client-provided identifier of the membership binding.
 	MembershipBindingId string `pulumi:"membershipBindingId"`
@@ -255,8 +247,6 @@ type MembershipBindingArgs struct {
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// Location of the membership
-	//
-	// ***
 	Location pulumi.StringInput
 	// The client-provided identifier of the membership binding.
 	MembershipBindingId pulumi.StringInput
@@ -381,8 +371,6 @@ func (o MembershipBindingOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Location of the membership
-//
-// ***
 func (o MembershipBindingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *MembershipBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -18,16 +18,12 @@ public final class GetTriggerArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The Cloud Build location for the trigger.
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The Cloud Build location for the trigger.
-     * 
-     * ***
      * 
      */
     public Output<String> location() {
@@ -93,8 +89,6 @@ public final class GetTriggerArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param location The Cloud Build location for the trigger.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -105,8 +99,6 @@ public final class GetTriggerArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param location The Cloud Build location for the trigger.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -39,8 +39,6 @@ export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptio
 export interface GetRepositoryArgs {
     /**
      * The location of the artifact registry repository. eg us-central1
-     *
-     * - - -
      */
     location: string;
     /**
@@ -109,8 +107,6 @@ export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi
 export interface GetRepositoryOutputArgs {
     /**
      * The location of the artifact registry repository. eg us-central1
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -24,9 +24,6 @@ class AndroidAppArgs:
         """
         The set of arguments for constructing a AndroidApp resource.
         :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
-               
-               
-               - - -
         :param pulumi.Input[str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
@@ -59,9 +56,6 @@ class AndroidAppArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         The user-assigned display name of the AndroidApp.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -172,9 +166,6 @@ class _AndroidAppState:
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Defaults to 'DELETE'.
         :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
-               
-               
-               - - -
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent
                with update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] name: The fully qualified resource name of the AndroidApp, for example:
@@ -253,9 +244,6 @@ class _AndroidAppState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         The user-assigned display name of the AndroidApp.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -438,9 +426,6 @@ class AndroidApp(pulumi.CustomResource):
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Defaults to 'DELETE'.
         :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
-               
-               
-               - - -
         :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -609,9 +594,6 @@ class AndroidApp(pulumi.CustomResource):
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Defaults to 'DELETE'.
         :param pulumi.Input[str] display_name: The user-assigned display name of the AndroidApp.
-               
-               
-               - - -
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent
                with update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] name: The fully qualified resource name of the AndroidApp, for example:
@@ -673,9 +655,6 @@ class AndroidApp(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         The user-assigned display name of the AndroidApp.
-
-
-        - - -
         """
         return pulumi.get(self, "display_name")
 

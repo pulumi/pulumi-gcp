@@ -90,9 +90,6 @@ namespace Pulumi.Gcp.OsLogin
 
         /// <summary>
         /// The user email.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("user")]
         public Output<string> User { get; private set; } = null!;
@@ -163,9 +160,6 @@ namespace Pulumi.Gcp.OsLogin
 
         /// <summary>
         /// The user email.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("user", required: true)]
         public Input<string> User { get; set; } = null!;
@@ -204,9 +198,6 @@ namespace Pulumi.Gcp.OsLogin
 
         /// <summary>
         /// The user email.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }

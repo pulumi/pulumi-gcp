@@ -214,16 +214,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The ID of the instance or a fully qualified identifier for the instance.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -703,8 +699,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The ID of the instance or a fully qualified identifier for the instance.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -715,8 +709,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The ID of the instance or a fully qualified identifier for the instance.
-         * 
-         * ***
          * 
          * @return builder
          * 

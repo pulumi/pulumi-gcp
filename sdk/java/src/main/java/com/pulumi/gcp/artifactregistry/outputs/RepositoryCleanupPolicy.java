@@ -13,19 +13,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RepositoryCleanupPolicy {
+    /**
+     * @return Policy action.
+     * Possible values are: `DELETE`, `KEEP`.
+     * 
+     */
     private @Nullable String action;
+    /**
+     * @return Policy condition for matching versions.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable RepositoryCleanupPolicyCondition condition;
     /**
      * @return The identifier for this object. Format specified above.
      * 
      */
     private String id;
+    /**
+     * @return Policy condition for retaining a minimum number of versions. May only be
+     * specified with a Keep action.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable RepositoryCleanupPolicyMostRecentVersions mostRecentVersions;
 
     private RepositoryCleanupPolicy() {}
+    /**
+     * @return Policy action.
+     * Possible values are: `DELETE`, `KEEP`.
+     * 
+     */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
+    /**
+     * @return Policy condition for matching versions.
+     * Structure is documented below.
+     * 
+     */
     public Optional<RepositoryCleanupPolicyCondition> condition() {
         return Optional.ofNullable(this.condition);
     }
@@ -36,6 +62,12 @@ public final class RepositoryCleanupPolicy {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Policy condition for retaining a minimum number of versions. May only be
+     * specified with a Keep action.
+     * Structure is documented below.
+     * 
+     */
     public Optional<RepositoryCleanupPolicyMostRecentVersions> mostRecentVersions() {
         return Optional.ofNullable(this.mostRecentVersions);
     }

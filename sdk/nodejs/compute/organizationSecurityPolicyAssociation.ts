@@ -124,9 +124,6 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
     public readonly name!: pulumi.Output<string>;
     /**
      * The security policy ID of the association.
-     *
-     *
-     * - - -
      */
     public readonly policyId!: pulumi.Output<string>;
 
@@ -183,9 +180,6 @@ export interface OrganizationSecurityPolicyAssociationState {
     name?: pulumi.Input<string>;
     /**
      * The security policy ID of the association.
-     *
-     *
-     * - - -
      */
     policyId?: pulumi.Input<string>;
 }
@@ -204,9 +198,6 @@ export interface OrganizationSecurityPolicyAssociationArgs {
     name?: pulumi.Input<string>;
     /**
      * The security policy ID of the association.
-     *
-     *
-     * - - -
      */
     policyId: pulumi.Input<string>;
 }

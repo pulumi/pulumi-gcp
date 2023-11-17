@@ -100,9 +100,6 @@ export class HostingChannel extends pulumi.CustomResource {
 
     /**
      * Required. Immutable. A unique ID within the site that identifies the channel.
-     *
-     *
-     * - - -
      */
     public readonly channelId!: pulumi.Output<string>;
     /**
@@ -200,9 +197,6 @@ export class HostingChannel extends pulumi.CustomResource {
 export interface HostingChannelState {
     /**
      * Required. Immutable. A unique ID within the site that identifies the channel.
-     *
-     *
-     * - - -
      */
     channelId?: pulumi.Input<string>;
     /**
@@ -254,9 +248,6 @@ export interface HostingChannelState {
 export interface HostingChannelArgs {
     /**
      * Required. Immutable. A unique ID within the site that identifies the channel.
-     *
-     *
-     * - - -
      */
     channelId: pulumi.Input<string>;
     /**

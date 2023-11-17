@@ -18,6 +18,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
     public static final StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs Empty = new StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs();
 
     /**
+     * Column name.`column` -
+     * (Optional)
      * Column name.
      * 
      */
@@ -25,7 +27,9 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
     private @Nullable Output<String> column;
 
     /**
-     * @return Column name.
+     * @return Column name.`column` -
+     * (Optional)
+     * Column name.
      * 
      */
     public Optional<Output<String>> column() {
@@ -33,6 +37,9 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
     }
 
     /**
+     * The Oracle data type. Full data types list can be found here:
+     * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+     * (Optional)
      * The Oracle data type. Full data types list can be found here:
      * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
      * 
@@ -42,6 +49,9 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * @return The Oracle data type. Full data types list can be found here:
+     * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+     * (Optional)
+     * The Oracle data type. Full data types list can be found here:
      * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
      * 
      */
@@ -51,6 +61,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * (Output)
+     * Column encoding.`encoding` -
+     * (Output)
      * Column encoding.
      * 
      */
@@ -59,6 +71,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * @return (Output)
+     * Column encoding.`encoding` -
+     * (Output)
      * Column encoding.
      * 
      */
@@ -68,6 +82,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * (Output)
+     * Column length.`length` -
+     * (Output)
      * Column length.
      * 
      */
@@ -76,6 +92,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * @return (Output)
+     * Column length.`length` -
+     * (Output)
      * Column length.
      * 
      */
@@ -85,6 +103,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * (Output)
+     * Whether or not the column can accept a null value.`nullable` -
+     * (Output)
      * Whether or not the column can accept a null value.
      * 
      */
@@ -93,6 +113,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * @return (Output)
+     * Whether or not the column can accept a null value.`nullable` -
+     * (Output)
      * Whether or not the column can accept a null value.
      * 
      */
@@ -102,6 +124,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * (Output)
+     * The ordinal position of the column in the table.`ordinal_position` -
+     * (Output)
      * The ordinal position of the column in the table.
      * 
      */
@@ -110,6 +134,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * @return (Output)
+     * The ordinal position of the column in the table.`ordinal_position` -
+     * (Output)
      * The ordinal position of the column in the table.
      * 
      */
@@ -119,6 +145,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * (Output)
+     * Column precision.`precision` -
+     * (Output)
      * Column precision.
      * 
      */
@@ -127,6 +155,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * @return (Output)
+     * Column precision.`precision` -
+     * (Output)
      * Column precision.
      * 
      */
@@ -136,6 +166,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * (Output)
+     * Whether or not the column represents a primary key.`primary_key` -
+     * (Output)
      * Whether or not the column represents a primary key.
      * 
      */
@@ -144,6 +176,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * @return (Output)
+     * Whether or not the column represents a primary key.`primary_key` -
+     * (Output)
      * Whether or not the column represents a primary key.
      * 
      */
@@ -153,6 +187,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * (Output)
+     * Column scale.`scale` -
+     * (Output)
      * Column scale.
      * 
      */
@@ -161,6 +197,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
     /**
      * @return (Output)
+     * Column scale.`scale` -
+     * (Output)
      * Column scale.
      * 
      */
@@ -201,7 +239,9 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
         }
 
         /**
-         * @param column Column name.
+         * @param column Column name.`column` -
+         * (Optional)
+         * Column name.
          * 
          * @return builder
          * 
@@ -212,7 +252,9 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
         }
 
         /**
-         * @param column Column name.
+         * @param column Column name.`column` -
+         * (Optional)
+         * Column name.
          * 
          * @return builder
          * 
@@ -223,6 +265,9 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param dataType The Oracle data type. Full data types list can be found here:
+         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+         * (Optional)
+         * The Oracle data type. Full data types list can be found here:
          * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
          * 
          * @return builder
@@ -235,6 +280,9 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param dataType The Oracle data type. Full data types list can be found here:
+         * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html`data_type` -
+         * (Optional)
+         * The Oracle data type. Full data types list can be found here:
          * https://docs.oracle.com/en/database/oracle/oracle-database/21/sqlrf/Data-Types.html
          * 
          * @return builder
@@ -246,6 +294,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param encoding (Output)
+         * Column encoding.`encoding` -
+         * (Output)
          * Column encoding.
          * 
          * @return builder
@@ -258,6 +308,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param encoding (Output)
+         * Column encoding.`encoding` -
+         * (Output)
          * Column encoding.
          * 
          * @return builder
@@ -269,6 +321,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param length (Output)
+         * Column length.`length` -
+         * (Output)
          * Column length.
          * 
          * @return builder
@@ -281,6 +335,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param length (Output)
+         * Column length.`length` -
+         * (Output)
          * Column length.
          * 
          * @return builder
@@ -292,6 +348,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param nullable (Output)
+         * Whether or not the column can accept a null value.`nullable` -
+         * (Output)
          * Whether or not the column can accept a null value.
          * 
          * @return builder
@@ -304,6 +362,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param nullable (Output)
+         * Whether or not the column can accept a null value.`nullable` -
+         * (Output)
          * Whether or not the column can accept a null value.
          * 
          * @return builder
@@ -315,6 +375,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param ordinalPosition (Output)
+         * The ordinal position of the column in the table.`ordinal_position` -
+         * (Output)
          * The ordinal position of the column in the table.
          * 
          * @return builder
@@ -327,6 +389,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param ordinalPosition (Output)
+         * The ordinal position of the column in the table.`ordinal_position` -
+         * (Output)
          * The ordinal position of the column in the table.
          * 
          * @return builder
@@ -338,6 +402,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param precision (Output)
+         * Column precision.`precision` -
+         * (Output)
          * Column precision.
          * 
          * @return builder
@@ -350,6 +416,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param precision (Output)
+         * Column precision.`precision` -
+         * (Output)
          * Column precision.
          * 
          * @return builder
@@ -361,6 +429,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param primaryKey (Output)
+         * Whether or not the column represents a primary key.`primary_key` -
+         * (Output)
          * Whether or not the column represents a primary key.
          * 
          * @return builder
@@ -373,6 +443,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param primaryKey (Output)
+         * Whether or not the column represents a primary key.`primary_key` -
+         * (Output)
          * Whether or not the column represents a primary key.
          * 
          * @return builder
@@ -384,6 +456,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param scale (Output)
+         * Column scale.`scale` -
+         * (Output)
          * Column scale.
          * 
          * @return builder
@@ -396,6 +470,8 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         /**
          * @param scale (Output)
+         * Column scale.`scale` -
+         * (Output)
          * Column scale.
          * 
          * @return builder

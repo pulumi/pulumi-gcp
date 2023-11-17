@@ -88,9 +88,6 @@ export class DocumentAiWarehouseLocation extends pulumi.CustomResource {
     public readonly kmsKey!: pulumi.Output<string | undefined>;
     /**
      * The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -172,9 +169,6 @@ export interface DocumentAiWarehouseLocationState {
     kmsKey?: pulumi.Input<string>;
     /**
      * The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -212,9 +206,6 @@ export interface DocumentAiWarehouseLocationArgs {
     kmsKey?: pulumi.Input<string>;
     /**
      * The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

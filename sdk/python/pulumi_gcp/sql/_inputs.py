@@ -1936,8 +1936,8 @@ class UserPasswordPolicyStatusArgs:
                  locked: Optional[pulumi.Input[bool]] = None,
                  password_expiration_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] locked: If true, user does not have login privileges.
-        :param pulumi.Input[str] password_expiration_time: Password expiration duration with one week grace period.
+        :param pulumi.Input[bool] locked: (read only) If true, user does not have login privileges.
+        :param pulumi.Input[str] password_expiration_time: (read only) Password expiration duration with one week grace period.
         """
         if locked is not None:
             pulumi.set(__self__, "locked", locked)
@@ -1948,7 +1948,7 @@ class UserPasswordPolicyStatusArgs:
     @pulumi.getter
     def locked(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, user does not have login privileges.
+        (read only) If true, user does not have login privileges.
         """
         return pulumi.get(self, "locked")
 
@@ -1960,7 +1960,7 @@ class UserPasswordPolicyStatusArgs:
     @pulumi.getter(name="passwordExpirationTime")
     def password_expiration_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Password expiration duration with one week grace period.
+        (read only) Password expiration duration with one week grace period.
         """
         return pulumi.get(self, "password_expiration_time")
 

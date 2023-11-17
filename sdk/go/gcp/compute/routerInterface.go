@@ -100,8 +100,6 @@ type RouterInterface struct {
 	// Changing this forces a new interface to be created.
 	//
 	// In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
-	//
-	// ***
 	Router pulumi.StringOutput `pulumi:"router"`
 	// The URI of the subnetwork resource that this interface
 	// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
@@ -171,8 +169,6 @@ type routerInterfaceState struct {
 	// Changing this forces a new interface to be created.
 	//
 	// In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
-	//
-	// ***
 	Router *string `pulumi:"router"`
 	// The URI of the subnetwork resource that this interface
 	// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
@@ -210,8 +206,6 @@ type RouterInterfaceState struct {
 	// Changing this forces a new interface to be created.
 	//
 	// In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
-	//
-	// ***
 	Router pulumi.StringPtrInput
 	// The URI of the subnetwork resource that this interface
 	// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
@@ -253,8 +247,6 @@ type routerInterfaceArgs struct {
 	// Changing this forces a new interface to be created.
 	//
 	// In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
-	//
-	// ***
 	Router string `pulumi:"router"`
 	// The URI of the subnetwork resource that this interface
 	// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
@@ -293,8 +285,6 @@ type RouterInterfaceArgs struct {
 	// Changing this forces a new interface to be created.
 	//
 	// In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
-	//
-	// ***
 	Router pulumi.StringInput
 	// The URI of the subnetwork resource that this interface
 	// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
@@ -439,8 +429,6 @@ func (o RouterInterfaceOutput) Region() pulumi.StringOutput {
 // Changing this forces a new interface to be created.
 //
 // In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
-//
-// ***
 func (o RouterInterfaceOutput) Router() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.Router }).(pulumi.StringOutput)
 }

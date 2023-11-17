@@ -104,8 +104,6 @@ type Table struct {
 	pulumi.CustomResourceState
 
 	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-	//
-	// ***
 	ChangeStreamRetention pulumi.StringOutput `pulumi:"changeStreamRetention"`
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayOutput `pulumi:"columnFamilies"`
@@ -158,8 +156,6 @@ func GetTable(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
 	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-	//
-	// ***
 	ChangeStreamRetention *string `pulumi:"changeStreamRetention"`
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies []TableColumnFamily `pulumi:"columnFamilies"`
@@ -180,8 +176,6 @@ type tableState struct {
 
 type TableState struct {
 	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-	//
-	// ***
 	ChangeStreamRetention pulumi.StringPtrInput
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayInput
@@ -206,8 +200,6 @@ func (TableState) ElementType() reflect.Type {
 
 type tableArgs struct {
 	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-	//
-	// ***
 	ChangeStreamRetention *string `pulumi:"changeStreamRetention"`
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies []TableColumnFamily `pulumi:"columnFamilies"`
@@ -229,8 +221,6 @@ type tableArgs struct {
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
 	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-	//
-	// ***
 	ChangeStreamRetention pulumi.StringPtrInput
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayInput
@@ -337,8 +327,6 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 }
 
 // Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-//
-// ***
 func (o TableOutput) ChangeStreamRetention() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.ChangeStreamRetention }).(pulumi.StringOutput)
 }

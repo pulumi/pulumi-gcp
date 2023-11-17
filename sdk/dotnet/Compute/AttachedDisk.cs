@@ -102,9 +102,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// `name` or `self_link` of the disk that will be attached.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("disk")]
         public Output<string> Disk { get; private set; } = null!;
@@ -206,9 +203,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// `name` or `self_link` of the disk that will be attached.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("disk", required: true)]
         public Input<string> Disk { get; set; } = null!;
@@ -272,9 +266,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// `name` or `self_link` of the disk that will be attached.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("disk")]
         public Input<string>? Disk { get; set; }

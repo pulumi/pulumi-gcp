@@ -25,8 +25,6 @@ public final class PreventionJobTriggerInspectJobStorageConfigHybridOptions {
      * Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
      * No more than 10 labels can be associated with a given finding.
      * Examples:
-     * * `&#34;environment&#34; : &#34;production&#34;`
-     * * `&#34;pipeline&#34; : &#34;etl&#34;`
      * 
      */
     private @Nullable Map<String,String> labels;
@@ -59,8 +57,6 @@ public final class PreventionJobTriggerInspectJobStorageConfigHybridOptions {
      * Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
      * No more than 10 labels can be associated with a given finding.
      * Examples:
-     * * `&#34;environment&#34; : &#34;production&#34;`
-     * * `&#34;pipeline&#34; : &#34;etl&#34;`
      * 
      */
     public Map<String,String> labels() {

@@ -149,8 +149,6 @@ public final class SSLCertificateState extends com.pulumi.resources.ResourceArgs
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
-     * ***
-     * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
@@ -158,8 +156,6 @@ public final class SSLCertificateState extends com.pulumi.resources.ResourceArgs
     /**
      * @return The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -406,8 +402,6 @@ public final class SSLCertificateState extends com.pulumi.resources.ResourceArgs
          * @param privateKey The write-only private key in PEM format.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -419,8 +413,6 @@ public final class SSLCertificateState extends com.pulumi.resources.ResourceArgs
         /**
          * @param privateKey The write-only private key in PEM format.
          * **Note**: This property is sensitive and will not be displayed in the plan.
-         * 
-         * ***
          * 
          * @return builder
          * 

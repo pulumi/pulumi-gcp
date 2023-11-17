@@ -240,8 +240,6 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`selfLinkUnique` attribute).
-     *
-     * - - -
      */
     public readonly sourceInstanceTemplate!: pulumi.Output<string>;
     /**
@@ -532,8 +530,6 @@ export interface InstanceFromTemplateState {
      * Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`selfLinkUnique` attribute).
-     *
-     * - - -
      */
     sourceInstanceTemplate?: pulumi.Input<string>;
     /**
@@ -684,8 +680,6 @@ export interface InstanceFromTemplateArgs {
      * Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`selfLinkUnique` attribute).
-     *
-     * - - -
      */
     sourceInstanceTemplate: pulumi.Input<string>;
     /**

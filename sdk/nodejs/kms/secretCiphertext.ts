@@ -98,9 +98,6 @@ export class SecretCiphertext extends pulumi.CustomResource {
     /**
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-     *
-     *
-     * - - -
      */
     public readonly cryptoKey!: pulumi.Output<string>;
     /**
@@ -162,9 +159,6 @@ export interface SecretCiphertextState {
     /**
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-     *
-     *
-     * - - -
      */
     cryptoKey?: pulumi.Input<string>;
     /**
@@ -186,9 +180,6 @@ export interface SecretCiphertextArgs {
     /**
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-     *
-     *
-     * - - -
      */
     cryptoKey: pulumi.Input<string>;
     /**

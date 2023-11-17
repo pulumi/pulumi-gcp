@@ -236,8 +236,6 @@ type HaVpnGateway struct {
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network this VPN gateway is accepting traffic for.
-	//
-	// ***
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -300,8 +298,6 @@ type haVpnGatewayState struct {
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The network this VPN gateway is accepting traffic for.
-	//
-	// ***
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -332,8 +328,6 @@ type HaVpnGatewayState struct {
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The network this VPN gateway is accepting traffic for.
-	//
-	// ***
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -368,8 +362,6 @@ type haVpnGatewayArgs struct {
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The network this VPN gateway is accepting traffic for.
-	//
-	// ***
 	Network string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -399,8 +391,6 @@ type HaVpnGatewayArgs struct {
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The network this VPN gateway is accepting traffic for.
-	//
-	// ***
 	Network pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -521,8 +511,6 @@ func (o HaVpnGatewayOutput) Name() pulumi.StringOutput {
 }
 
 // The network this VPN gateway is accepting traffic for.
-//
-// ***
 func (o HaVpnGatewayOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *HaVpnGateway) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }

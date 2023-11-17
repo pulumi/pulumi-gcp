@@ -63,15 +63,15 @@ class InterconnectAttachmentArgs:
                attachment. Can only be specified at attachment creation for PARTNER or
                DEDICATED attachments.
                * NONE - This is the default value, which means that the VLAN attachment
-               carries unencrypted traffic. VMs are able to send traffic to, or receive
-               traffic from, such a VLAN attachment.
+                 carries unencrypted traffic. VMs are able to send traffic to, or receive
+                 traffic from, such a VLAN attachment.
                * IPSEC - The VLAN attachment carries only encrypted traffic that is
-               encrypted by an IPsec device, such as an HA VPN gateway or third-party
-               IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
-               such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
-               attachment must be created with this option.
-               Default value is `NONE`.
-               Possible values are: `NONE`, `IPSEC`.
+                 encrypted by an IPsec device, such as an HA VPN gateway or third-party
+                 IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+                 such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+                 attachment must be created with this option.
+                 Default value is `NONE`.
+                 Possible values are: `NONE`, `IPSEC`.
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
                traffic will traverse through. Required if type is DEDICATED, must not
                be set if type is PARTNER.
@@ -98,9 +98,6 @@ class InterconnectAttachmentArgs:
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the regional interconnect attachment resides.
@@ -240,15 +237,15 @@ class InterconnectAttachmentArgs:
         attachment. Can only be specified at attachment creation for PARTNER or
         DEDICATED attachments.
         * NONE - This is the default value, which means that the VLAN attachment
-        carries unencrypted traffic. VMs are able to send traffic to, or receive
-        traffic from, such a VLAN attachment.
+          carries unencrypted traffic. VMs are able to send traffic to, or receive
+          traffic from, such a VLAN attachment.
         * IPSEC - The VLAN attachment carries only encrypted traffic that is
-        encrypted by an IPsec device, such as an HA VPN gateway or third-party
-        IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
-        such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
-        attachment must be created with this option.
-        Default value is `NONE`.
-        Possible values are: `NONE`, `IPSEC`.
+          encrypted by an IPsec device, such as an HA VPN gateway or third-party
+          IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+          such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+          attachment must be created with this option.
+          Default value is `NONE`.
+          Possible values are: `NONE`, `IPSEC`.
         """
         return pulumi.get(self, "encryption")
 
@@ -319,9 +316,6 @@ class InterconnectAttachmentArgs:
         `a-z?` which means the first character must be a
         lowercase letter, and all following characters must be a dash, lowercase
         letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -442,15 +436,15 @@ class _InterconnectAttachmentState:
                attachment. Can only be specified at attachment creation for PARTNER or
                DEDICATED attachments.
                * NONE - This is the default value, which means that the VLAN attachment
-               carries unencrypted traffic. VMs are able to send traffic to, or receive
-               traffic from, such a VLAN attachment.
+                 carries unencrypted traffic. VMs are able to send traffic to, or receive
+                 traffic from, such a VLAN attachment.
                * IPSEC - The VLAN attachment carries only encrypted traffic that is
-               encrypted by an IPsec device, such as an HA VPN gateway or third-party
-               IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
-               such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
-               attachment must be created with this option.
-               Default value is `NONE`.
-               Possible values are: `NONE`, `IPSEC`.
+                 encrypted by an IPsec device, such as an HA VPN gateway or third-party
+                 IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+                 such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+                 attachment must be created with this option.
+                 Default value is `NONE`.
+                 Possible values are: `NONE`, `IPSEC`.
         :param pulumi.Input[str] google_reference_id: Google reference ID, to be used when raising support tickets with
                Google or otherwise to debug backend connectivity issues.
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
@@ -479,9 +473,6 @@ class _InterconnectAttachmentState:
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] pairing_key: [Output only for type PARTNER. Not present for DEDICATED]. The opaque
                identifier of an PARTNER attachment used to initiate provisioning with
                a selected partner. Of the form "XXXXX/region/domain"
@@ -678,15 +669,15 @@ class _InterconnectAttachmentState:
         attachment. Can only be specified at attachment creation for PARTNER or
         DEDICATED attachments.
         * NONE - This is the default value, which means that the VLAN attachment
-        carries unencrypted traffic. VMs are able to send traffic to, or receive
-        traffic from, such a VLAN attachment.
+          carries unencrypted traffic. VMs are able to send traffic to, or receive
+          traffic from, such a VLAN attachment.
         * IPSEC - The VLAN attachment carries only encrypted traffic that is
-        encrypted by an IPsec device, such as an HA VPN gateway or third-party
-        IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
-        such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
-        attachment must be created with this option.
-        Default value is `NONE`.
-        Possible values are: `NONE`, `IPSEC`.
+          encrypted by an IPsec device, such as an HA VPN gateway or third-party
+          IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+          such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+          attachment must be created with this option.
+          Default value is `NONE`.
+          Possible values are: `NONE`, `IPSEC`.
         """
         return pulumi.get(self, "encryption")
 
@@ -770,9 +761,6 @@ class _InterconnectAttachmentState:
         `a-z?` which means the first character must be a
         lowercase letter, and all following characters must be a dash, lowercase
         letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1041,15 +1029,15 @@ class InterconnectAttachment(pulumi.CustomResource):
                attachment. Can only be specified at attachment creation for PARTNER or
                DEDICATED attachments.
                * NONE - This is the default value, which means that the VLAN attachment
-               carries unencrypted traffic. VMs are able to send traffic to, or receive
-               traffic from, such a VLAN attachment.
+                 carries unencrypted traffic. VMs are able to send traffic to, or receive
+                 traffic from, such a VLAN attachment.
                * IPSEC - The VLAN attachment carries only encrypted traffic that is
-               encrypted by an IPsec device, such as an HA VPN gateway or third-party
-               IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
-               such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
-               attachment must be created with this option.
-               Default value is `NONE`.
-               Possible values are: `NONE`, `IPSEC`.
+                 encrypted by an IPsec device, such as an HA VPN gateway or third-party
+                 IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+                 such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+                 attachment must be created with this option.
+                 Default value is `NONE`.
+                 Possible values are: `NONE`, `IPSEC`.
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
                traffic will traverse through. Required if type is DEDICATED, must not
                be set if type is PARTNER.
@@ -1076,9 +1064,6 @@ class InterconnectAttachment(pulumi.CustomResource):
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the regional interconnect attachment resides.
@@ -1313,15 +1298,15 @@ class InterconnectAttachment(pulumi.CustomResource):
                attachment. Can only be specified at attachment creation for PARTNER or
                DEDICATED attachments.
                * NONE - This is the default value, which means that the VLAN attachment
-               carries unencrypted traffic. VMs are able to send traffic to, or receive
-               traffic from, such a VLAN attachment.
+                 carries unencrypted traffic. VMs are able to send traffic to, or receive
+                 traffic from, such a VLAN attachment.
                * IPSEC - The VLAN attachment carries only encrypted traffic that is
-               encrypted by an IPsec device, such as an HA VPN gateway or third-party
-               IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
-               such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
-               attachment must be created with this option.
-               Default value is `NONE`.
-               Possible values are: `NONE`, `IPSEC`.
+                 encrypted by an IPsec device, such as an HA VPN gateway or third-party
+                 IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+                 such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+                 attachment must be created with this option.
+                 Default value is `NONE`.
+                 Possible values are: `NONE`, `IPSEC`.
         :param pulumi.Input[str] google_reference_id: Google reference ID, to be used when raising support tickets with
                Google or otherwise to debug backend connectivity issues.
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
@@ -1350,9 +1335,6 @@ class InterconnectAttachment(pulumi.CustomResource):
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
-               
-               
-               - - -
         :param pulumi.Input[str] pairing_key: [Output only for type PARTNER. Not present for DEDICATED]. The opaque
                identifier of an PARTNER attachment used to initiate provisioning with
                a selected partner. Of the form "XXXXX/region/domain"
@@ -1498,15 +1480,15 @@ class InterconnectAttachment(pulumi.CustomResource):
         attachment. Can only be specified at attachment creation for PARTNER or
         DEDICATED attachments.
         * NONE - This is the default value, which means that the VLAN attachment
-        carries unencrypted traffic. VMs are able to send traffic to, or receive
-        traffic from, such a VLAN attachment.
+          carries unencrypted traffic. VMs are able to send traffic to, or receive
+          traffic from, such a VLAN attachment.
         * IPSEC - The VLAN attachment carries only encrypted traffic that is
-        encrypted by an IPsec device, such as an HA VPN gateway or third-party
-        IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
-        such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
-        attachment must be created with this option.
-        Default value is `NONE`.
-        Possible values are: `NONE`, `IPSEC`.
+          encrypted by an IPsec device, such as an HA VPN gateway or third-party
+          IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+          such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+          attachment must be created with this option.
+          Default value is `NONE`.
+          Possible values are: `NONE`, `IPSEC`.
         """
         return pulumi.get(self, "encryption")
 
@@ -1570,9 +1552,6 @@ class InterconnectAttachment(pulumi.CustomResource):
         `a-z?` which means the first character must be a
         lowercase letter, and all following characters must be a dash, lowercase
         letter, or digit, except the last character, which cannot be a dash.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

@@ -173,16 +173,12 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -484,8 +480,6 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -496,8 +490,6 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-         * 
-         * ***
          * 
          * @return builder
          * 

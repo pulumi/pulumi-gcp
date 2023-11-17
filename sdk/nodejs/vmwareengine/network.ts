@@ -71,9 +71,6 @@ export class Network extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * The ID of the VMwareEngineNetwork.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -158,9 +155,6 @@ export interface NetworkState {
     location?: pulumi.Input<string>;
     /**
      * The ID of the VMwareEngineNetwork.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -203,9 +197,6 @@ export interface NetworkArgs {
     location: pulumi.Input<string>;
     /**
      * The ID of the VMwareEngineNetwork.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

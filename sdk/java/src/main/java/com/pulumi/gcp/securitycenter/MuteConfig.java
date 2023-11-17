@@ -186,8 +186,6 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      * &#34;organizations/[organization_id]&#34;, &#34;folders/[folder_id]&#34;, or
      * &#34;projects/[project_id]&#34;.
      * 
-     * ***
-     * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
@@ -196,8 +194,6 @@ public class MuteConfig extends com.pulumi.resources.CustomResource {
      * @return Resource name of the new mute configs&#39;s parent. Its format is
      * &#34;organizations/[organization_id]&#34;, &#34;folders/[folder_id]&#34;, or
      * &#34;projects/[project_id]&#34;.
-     * 
-     * ***
      * 
      */
     public Output<String> parent() {

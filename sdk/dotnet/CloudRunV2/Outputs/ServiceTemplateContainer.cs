@@ -21,6 +21,9 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         /// </summary>
         public readonly ImmutableArray<string> Commands;
+        /// <summary>
+        /// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+        /// </summary>
         public readonly ImmutableArray<string> DependsOns;
         /// <summary>
         /// List of environment variables to set in the container.

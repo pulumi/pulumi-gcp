@@ -296,8 +296,6 @@ type Runtime struct {
 	// reference/rest/v1/projects.locations.runtimes#healthstate`.
 	HealthState pulumi.StringOutput `pulumi:"healthState"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab
 	// status
@@ -359,8 +357,6 @@ type runtimeState struct {
 	// reference/rest/v1/projects.locations.runtimes#healthstate`.
 	HealthState *string `pulumi:"healthState"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab
 	// status
@@ -390,8 +386,6 @@ type RuntimeState struct {
 	// reference/rest/v1/projects.locations.runtimes#healthstate`.
 	HealthState pulumi.StringPtrInput
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Contains Runtime daemon metrics such as Service status and JupyterLab
 	// status
@@ -421,8 +415,6 @@ type runtimeArgs struct {
 	// Structure is documented below.
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The name specified for the Notebook runtime.
 	Name *string `pulumi:"name"`
@@ -443,8 +435,6 @@ type RuntimeArgs struct {
 	// Structure is documented below.
 	AccessConfig RuntimeAccessConfigPtrInput
 	// A reference to the zone where the machine resides.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The name specified for the Notebook runtime.
 	Name pulumi.StringPtrInput
@@ -560,8 +550,6 @@ func (o RuntimeOutput) HealthState() pulumi.StringOutput {
 }
 
 // A reference to the zone where the machine resides.
-//
-// ***
 func (o RuntimeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

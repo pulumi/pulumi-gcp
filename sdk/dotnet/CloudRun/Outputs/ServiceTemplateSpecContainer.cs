@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
-        /// (Optional, Deprecated)
         /// List of sources to populate environment variables in the container.
         /// All invalid keys will be reported as an event when the container is starting.
         /// When a key exists in multiple sources, the value associated with the last source will
@@ -79,7 +78,6 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerVolumeMount> VolumeMounts;
         /// <summary>
-        /// (Optional, Deprecated)
         /// Container's working directory.
         /// If not specified, the container runtime's default will be used, which
         /// might be configured in the container image.

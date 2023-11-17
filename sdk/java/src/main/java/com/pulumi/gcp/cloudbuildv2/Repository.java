@@ -353,16 +353,12 @@ public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * Required. Git Clone HTTPS URI.
      * 
-     * ***
-     * 
      */
     @Export(name="remoteUri", refs={String.class}, tree="[0]")
     private Output<String> remoteUri;
 
     /**
      * @return Required. Git Clone HTTPS URI.
-     * 
-     * ***
      * 
      */
     public Output<String> remoteUri() {

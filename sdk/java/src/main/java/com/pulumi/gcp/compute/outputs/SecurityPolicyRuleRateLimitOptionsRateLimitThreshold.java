@@ -17,6 +17,8 @@ public final class SecurityPolicyRuleRateLimitOptionsRateLimitThreshold {
     /**
      * @return Interval over which the threshold is computed.
      * 
+     * * &lt;a  name=&#34;nested_exceed_redirect_options&#34;&gt;&lt;/a&gt;The `exceed_redirect_options` block supports:
+     * 
      */
     private Integer intervalSec;
 
@@ -30,6 +32,8 @@ public final class SecurityPolicyRuleRateLimitOptionsRateLimitThreshold {
     }
     /**
      * @return Interval over which the threshold is computed.
+     * 
+     * * &lt;a  name=&#34;nested_exceed_redirect_options&#34;&gt;&lt;/a&gt;The `exceed_redirect_options` block supports:
      * 
      */
     public Integer intervalSec() {

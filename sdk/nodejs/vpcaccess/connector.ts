@@ -133,9 +133,6 @@ export class Connector extends pulumi.CustomResource {
     public readonly minThroughput!: pulumi.Output<number | undefined>;
     /**
      * The name of the resource (Max 25 characters).
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -248,9 +245,6 @@ export interface ConnectorState {
     minThroughput?: pulumi.Input<number>;
     /**
      * The name of the resource (Max 25 characters).
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -311,9 +305,6 @@ export interface ConnectorArgs {
     minThroughput?: pulumi.Input<number>;
     /**
      * The name of the resource (Max 25 characters).
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -189,16 +189,12 @@ public class Network extends com.pulumi.resources.CustomResource {
     /**
      * A unique ID that identifies this network.
      * 
-     * ***
-     * 
      */
     @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output<String> networkId;
 
     /**
      * @return A unique ID that identifies this network.
-     * 
-     * ***
      * 
      */
     public Output<String> networkId() {

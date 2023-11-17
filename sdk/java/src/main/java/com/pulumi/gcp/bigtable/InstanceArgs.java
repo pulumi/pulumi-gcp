@@ -24,8 +24,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
      * 
-     * ***
-     * 
      */
     @Import(name="clusters")
     private @Nullable Output<List<InstanceClusterArgs>> clusters;
@@ -34,8 +32,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * @return A block of cluster configuration options. This can be specified at least once, and up
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<InstanceClusterArgs>>> clusters() {
@@ -193,8 +189,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
          * to default to the backend value. See structure below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -208,8 +202,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
          * to default to the backend value. See structure below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -221,8 +213,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param clusters A block of cluster configuration options. This can be specified at least once, and up
          * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
          * to default to the backend value. See structure below.
-         * 
-         * ***
          * 
          * @return builder
          * 

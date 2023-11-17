@@ -26,13 +26,6 @@ class PreventionStoredInfoTypeArgs:
         """
         The set of arguments for constructing a PreventionStoredInfoType resource.
         :param pulumi.Input[str] parent: The parent of the info type in any of the following formats:
-               * `projects/{{project}}`
-               * `projects/{{project}}/locations/{{location}}`
-               * `organizations/{{organization_id}}`
-               * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[str] description: A description of the info type.
         :param pulumi.Input['PreventionStoredInfoTypeDictionaryArgs'] dictionary: Dictionary which defines the rule.
                Structure is documented below.
@@ -64,13 +57,6 @@ class PreventionStoredInfoTypeArgs:
     def parent(self) -> pulumi.Input[str]:
         """
         The parent of the info type in any of the following formats:
-        * `projects/{{project}}`
-        * `projects/{{project}}/locations/{{location}}`
-        * `organizations/{{organization_id}}`
-        * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -177,13 +163,6 @@ class _PreventionStoredInfoTypeState:
                Structure is documented below.
         :param pulumi.Input[str] name: Name describing the field.
         :param pulumi.Input[str] parent: The parent of the info type in any of the following formats:
-               * `projects/{{project}}`
-               * `projects/{{project}}/locations/{{location}}`
-               * `organizations/{{organization_id}}`
-               * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input['PreventionStoredInfoTypeRegexArgs'] regex: Regular expression which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
@@ -274,13 +253,6 @@ class _PreventionStoredInfoTypeState:
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
         The parent of the info type in any of the following formats:
-        * `projects/{{project}}`
-        * `projects/{{project}}/locations/{{location}}`
-        * `organizations/{{organization_id}}`
-        * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -444,13 +416,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArgs']] large_custom_dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] parent: The parent of the info type in any of the following formats:
-               * `projects/{{project}}`
-               * `projects/{{project}}/locations/{{location}}`
-               * `organizations/{{organization_id}}`
-               * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']] regex: Regular expression which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
@@ -643,13 +608,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] name: Name describing the field.
         :param pulumi.Input[str] parent: The parent of the info type in any of the following formats:
-               * `projects/{{project}}`
-               * `projects/{{project}}/locations/{{location}}`
-               * `organizations/{{organization_id}}`
-               * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']] regex: Regular expression which defines the rule.
                Structure is documented below.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
@@ -717,13 +675,6 @@ class PreventionStoredInfoType(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[str]:
         """
         The parent of the info type in any of the following formats:
-        * `projects/{{project}}`
-        * `projects/{{project}}/locations/{{location}}`
-        * `organizations/{{organization_id}}`
-        * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

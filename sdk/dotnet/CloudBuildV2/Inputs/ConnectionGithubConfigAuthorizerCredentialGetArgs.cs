@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
         public Input<string>? OauthTokenSecretVersion { get; set; }
 
         /// <summary>
+        /// Output only. The username associated to this token.`username` -
         /// Output only. The username associated to this token.
         /// </summary>
         [Input("username")]

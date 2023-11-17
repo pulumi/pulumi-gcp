@@ -39,8 +39,6 @@ class BucketArgs:
         """
         The set of arguments for constructing a Bucket resource.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-               
-               - - -
         :param pulumi.Input['BucketAutoclassArgs'] autoclass: The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
@@ -109,8 +107,6 @@ class BucketArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -393,8 +389,6 @@ class _BucketState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-               
-               - - -
         :param pulumi.Input['BucketLoggingArgs'] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -587,8 +581,6 @@ class _BucketState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -898,8 +890,6 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -1149,8 +1139,6 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-               
-               - - -
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -1284,8 +1272,6 @@ class Bucket(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-
-        - - -
         """
         return pulumi.get(self, "location")
 

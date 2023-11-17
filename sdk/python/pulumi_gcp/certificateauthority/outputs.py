@@ -206,7 +206,6 @@ class AuthorityConfig(dict):
         :param 'AuthorityConfigSubjectConfigArgs' subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
                
-               
                <a name="nested_x509_config"></a>The `x509_config` block supports:
         :param 'AuthorityConfigX509ConfigArgs' x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
                Structure is documented below.
@@ -220,7 +219,6 @@ class AuthorityConfig(dict):
         """
         Specifies some of the values in a certificate that are related to the subject.
         Structure is documented below.
-
 
         <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
@@ -1399,8 +1397,6 @@ class AuthorityKeySpec(dict):
         :param str algorithm: The algorithm to use for creating a managed Cloud KMS key for a for a simplified
                experience. All managed keys will be have their ProtectionLevel as HSM.
                Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-               
-               - - -
         :param str cloud_kms_key_version: The resource name for an existing Cloud KMS CryptoKeyVersion in the format
                `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         """
@@ -1416,8 +1412,6 @@ class AuthorityKeySpec(dict):
         The algorithm to use for creating a managed Cloud KMS key for a for a simplified
         experience. All managed keys will be have their ProtectionLevel as HSM.
         Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
-
-        - - -
         """
         return pulumi.get(self, "algorithm")
 
@@ -3047,7 +3041,6 @@ class CertificateCertificateDescription(dict):
         :param Sequence['CertificateCertificateDescriptionPublicKeyArgs'] public_keys: A PublicKey describes a public key.
                Structure is documented below.
                
-               
                <a name="nested_x509_config"></a>The `x509_config` block supports:
         :param Sequence['CertificateCertificateDescriptionSubjectDescriptionArgs'] subject_descriptions: (Output)
                Describes some of the values in a certificate that are related to the subject and lifetime.
@@ -3120,7 +3113,6 @@ class CertificateCertificateDescription(dict):
         """
         A PublicKey describes a public key.
         Structure is documented below.
-
 
         <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
@@ -4635,7 +4627,6 @@ class CertificateConfig(dict):
         :param 'CertificateConfigPublicKeyArgs' public_key: A PublicKey describes a public key.
                Structure is documented below.
                
-               
                <a name="nested_x509_config"></a>The `x509_config` block supports:
         :param 'CertificateConfigSubjectConfigArgs' subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
@@ -4652,7 +4643,6 @@ class CertificateConfig(dict):
         """
         A PublicKey describes a public key.
         Structure is documented below.
-
 
         <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
@@ -6349,8 +6339,6 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionObjectId(dict):
                  object_id_paths: Sequence[int]):
         """
         :param Sequence[int] object_id_paths: Required. The parts of an OID path. The most significant parts of the path come first.
-               
-               - - -
         """
         pulumi.set(__self__, "object_id_paths", object_id_paths)
 
@@ -6359,8 +6347,6 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionObjectId(dict):
     def object_id_paths(self) -> Sequence[int]:
         """
         Required. The parts of an OID path. The most significant parts of the path come first.
-
-        - - -
         """
         return pulumi.get(self, "object_id_paths")
 

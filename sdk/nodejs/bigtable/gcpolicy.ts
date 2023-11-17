@@ -171,8 +171,6 @@ export class GCPolicy extends pulumi.CustomResource {
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
      *
      * Possible values are: `ABANDON`.
-     *
-     * -----
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -192,7 +190,7 @@ export class GCPolicy extends pulumi.CustomResource {
      */
     public readonly maxVersions!: pulumi.Output<outputs.bigtable.GCPolicyMaxVersion[] | undefined>;
     /**
-     * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+     * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
      */
     public readonly mode!: pulumi.Output<string | undefined>;
     /**
@@ -265,8 +263,6 @@ export interface GCPolicyState {
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
      *
      * Possible values are: `ABANDON`.
-     *
-     * -----
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -286,7 +282,7 @@ export interface GCPolicyState {
      */
     maxVersions?: pulumi.Input<pulumi.Input<inputs.bigtable.GCPolicyMaxVersion>[]>;
     /**
-     * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+     * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
      */
     mode?: pulumi.Input<string>;
     /**
@@ -312,8 +308,6 @@ export interface GCPolicyArgs {
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
      *
      * Possible values are: `ABANDON`.
-     *
-     * -----
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -333,7 +327,7 @@ export interface GCPolicyArgs {
      */
     maxVersions?: pulumi.Input<pulumi.Input<inputs.bigtable.GCPolicyMaxVersion>[]>;
     /**
-     * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
+     * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.`mode`: optional, either `intersection` or `union`.
      */
     mode?: pulumi.Input<string>;
     /**

@@ -24,9 +24,6 @@ class PublicDelegatedPrefixArgs:
         """
         The set of arguments for constructing a PublicDelegatedPrefix resource.
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-               
-               
-               - - -
         :param pulumi.Input[str] parent_prefix: The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
         :param pulumi.Input[str] region: A region where the prefix will reside.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -57,9 +54,6 @@ class PublicDelegatedPrefixArgs:
     def ip_cidr_range(self) -> pulumi.Input[str]:
         """
         The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-
-
-        - - -
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -161,9 +155,6 @@ class _PublicDelegatedPrefixState:
         Input properties used for looking up and filtering PublicDelegatedPrefix resources.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-               
-               
-               - - -
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -211,9 +202,6 @@ class _PublicDelegatedPrefixState:
     def ip_cidr_range(self) -> Optional[pulumi.Input[str]]:
         """
         The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-
-
-        - - -
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -372,9 +360,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-               
-               
-               - - -
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -520,9 +505,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-               
-               
-               - - -
         :param pulumi.Input[bool] is_live_migration: If true, the prefix will be live migrated.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -563,9 +545,6 @@ class PublicDelegatedPrefix(pulumi.CustomResource):
     def ip_cidr_range(self) -> pulumi.Output[str]:
         """
         The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-
-
-        - - -
         """
         return pulumi.get(self, "ip_cidr_range")
 

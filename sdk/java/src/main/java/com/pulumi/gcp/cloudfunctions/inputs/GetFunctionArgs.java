@@ -18,16 +18,12 @@ public final class GetFunctionArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The name of a Cloud Function.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return The name of a Cloud Function.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -97,8 +93,6 @@ public final class GetFunctionArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param name The name of a Cloud Function.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -109,8 +103,6 @@ public final class GetFunctionArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name The name of a Cloud Function.
-         * 
-         * ***
          * 
          * @return builder
          * 

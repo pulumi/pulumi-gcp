@@ -135,9 +135,6 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// ID of the AppGateway.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -264,9 +261,6 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// ID of the AppGateway.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -360,9 +354,6 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// ID of the AppGateway.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

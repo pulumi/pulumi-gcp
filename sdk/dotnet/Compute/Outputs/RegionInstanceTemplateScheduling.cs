@@ -24,10 +24,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? InstanceTerminationAction;
         public readonly ImmutableArray<Outputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> LocalSsdRecoveryTimeouts;
-        /// <summary>
-        /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
-        /// &lt;a name="nested_guest_accelerator"&gt;&lt;/a&gt;The `guest_accelerator` block supports:
-        /// </summary>
         public readonly string? MaintenanceInterval;
         /// <summary>
         /// The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.

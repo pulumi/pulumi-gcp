@@ -184,8 +184,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// A path to the data you want to upload. Must be defined
         /// if `content` is not.
-        /// 
-        /// - - -
         /// </summary>
         [Output("source")]
         public Output<AssetOrArchive?> Source { get; private set; } = null!;
@@ -369,8 +367,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// A path to the data you want to upload. Must be defined
         /// if `content` is not.
-        /// 
-        /// - - -
         /// </summary>
         [Input("source")]
         public Input<AssetOrArchive>? Source { get; set; }
@@ -542,8 +538,6 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// A path to the data you want to upload. Must be defined
         /// if `content` is not.
-        /// 
-        /// - - -
         /// </summary>
         [Input("source")]
         public Input<AssetOrArchive>? Source { get; set; }

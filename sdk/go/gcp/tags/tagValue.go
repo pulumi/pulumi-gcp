@@ -102,8 +102,6 @@ type TagValue struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// ***
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
 	// Output only. Update time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -159,8 +157,6 @@ type tagValueState struct {
 	Parent *string `pulumi:"parent"`
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// ***
 	ShortName *string `pulumi:"shortName"`
 	// Output only. Update time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -181,8 +177,6 @@ type TagValueState struct {
 	Parent pulumi.StringPtrInput
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// ***
 	ShortName pulumi.StringPtrInput
 	// Output only. Update time.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -200,8 +194,6 @@ type tagValueArgs struct {
 	Parent string `pulumi:"parent"`
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// ***
 	ShortName string `pulumi:"shortName"`
 }
 
@@ -213,8 +205,6 @@ type TagValueArgs struct {
 	Parent pulumi.StringInput
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	//
-	// ***
 	ShortName pulumi.StringInput
 }
 
@@ -333,8 +323,6 @@ func (o TagValueOutput) Parent() pulumi.StringOutput {
 
 // Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 // The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-//
-// ***
 func (o TagValueOutput) ShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagValue) pulumi.StringOutput { return v.ShortName }).(pulumi.StringOutput)
 }

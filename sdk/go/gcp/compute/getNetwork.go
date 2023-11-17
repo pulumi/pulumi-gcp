@@ -51,8 +51,6 @@ func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.
 // A collection of arguments for invoking getNetwork.
 type LookupNetworkArgs struct {
 	// The name of the network.
-	//
-	// ***
 	Name string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -93,8 +91,6 @@ func LookupNetworkOutput(ctx *pulumi.Context, args LookupNetworkOutputArgs, opts
 // A collection of arguments for invoking getNetwork.
 type LookupNetworkOutputArgs struct {
 	// The name of the network.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.

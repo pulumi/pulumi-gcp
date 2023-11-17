@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? ProvisionedIops { get; set; }
 
         /// <summary>
-        /// - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        /// A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }

@@ -17,8 +17,6 @@ public final class JobSparksqlConfig {
     /**
      * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
-     * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
-     * 
      */
     private @Nullable List<String> jarFileUris;
     private @Nullable JobSparksqlConfigLoggingConfig loggingConfig;
@@ -48,8 +46,6 @@ public final class JobSparksqlConfig {
     private JobSparksqlConfig() {}
     /**
      * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
-     * 
-     * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include &#39;root&#39; package name to configure rootLogger. Examples: &#39;com.google = FATAL&#39;, &#39;root = INFO&#39;, &#39;org.apache = DEBUG&#39;
      * 
      */
     public List<String> jarFileUris() {

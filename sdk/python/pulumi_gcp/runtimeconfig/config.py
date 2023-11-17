@@ -22,8 +22,6 @@ class ConfigArgs:
         :param pulumi.Input[str] description: The description to associate with the runtime
                config.
         :param pulumi.Input[str] name: The name of the runtime config.
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -52,8 +50,6 @@ class ConfigArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the runtime config.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -86,8 +82,6 @@ class _ConfigState:
         :param pulumi.Input[str] description: The description to associate with the runtime
                config.
         :param pulumi.Input[str] name: The name of the runtime config.
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -116,8 +110,6 @@ class _ConfigState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the runtime config.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -187,8 +179,6 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description to associate with the runtime
                config.
         :param pulumi.Input[str] name: The name of the runtime config.
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -285,8 +275,6 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description to associate with the runtime
                config.
         :param pulumi.Input[str] name: The name of the runtime config.
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -313,8 +301,6 @@ class Config(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the runtime config.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

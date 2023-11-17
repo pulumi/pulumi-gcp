@@ -370,7 +370,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
+     * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+     * is &#34;External IPv6&#34;.
      * 
      */
     @Import(name="name")
@@ -378,7 +379,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
+     * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+     * is &#34;External IPv6&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -389,8 +391,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Import(name="networkInterfaces", required=true)
     private Output<List<InstanceNetworkInterfaceArgs>> networkInterfaces;
@@ -399,30 +399,22 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * @return Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      * 
-     * ***
-     * 
      */
     public Output<List<InstanceNetworkInterfaceArgs>> networkInterfaces() {
         return this.networkInterfaces;
     }
 
     /**
-     * Configures network performance settings for the instance. Structure is
-     * documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-     * in order for this setting to take effect.
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its
+     * default network performance configuration.
      * 
      */
     @Import(name="networkPerformanceConfig")
     private @Nullable Output<InstanceNetworkPerformanceConfigArgs> networkPerformanceConfig;
 
     /**
-     * @return Configures network performance settings for the instance. Structure is
-     * documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-     * in order for this setting to take effect.
+     * @return Configures network performance settings for the instance. If not specified, the instance will be created with its
+     * default network performance configuration.
      * 
      */
     public Optional<Output<InstanceNetworkPerformanceConfigArgs>> networkPerformanceConfig() {
@@ -481,14 +473,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<String> resourcePolicies;
 
     /**
-     * @return - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * @return A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<Output<String>> resourcePolicies() {
@@ -1112,7 +1104,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name A unique name for the resource, required by GCE.
-         * Changing this forces a new resource to be created.
+         * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+         * is &#34;External IPv6&#34;.
          * 
          * @return builder
          * 
@@ -1124,7 +1117,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name A unique name for the resource, required by GCE.
-         * Changing this forces a new resource to be created.
+         * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+         * is &#34;External IPv6&#34;.
          * 
          * @return builder
          * 
@@ -1136,8 +1130,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param networkInterfaces Networks to attach to the instance. This can
          * be specified multiple times. Structure is documented below.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -1151,8 +1143,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param networkInterfaces Networks to attach to the instance. This can
          * be specified multiple times. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1164,8 +1154,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param networkInterfaces Networks to attach to the instance. This can
          * be specified multiple times. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -1174,11 +1162,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkPerformanceConfig Configures network performance settings for the instance. Structure is
-         * documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-         * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-         * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-         * in order for this setting to take effect.
+         * @param networkPerformanceConfig Configures network performance settings for the instance. If not specified, the instance will be created with its
+         * default network performance configuration.
          * 
          * @return builder
          * 
@@ -1189,11 +1174,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkPerformanceConfig Configures network performance settings for the instance. Structure is
-         * documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-         * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-         * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-         * in order for this setting to take effect.
+         * @param networkPerformanceConfig Configures network performance settings for the instance. If not specified, the instance will be created with its
+         * default network performance configuration.
          * 
          * @return builder
          * 
@@ -1272,7 +1254,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourcePolicies - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -1283,7 +1265,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourcePolicies - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 

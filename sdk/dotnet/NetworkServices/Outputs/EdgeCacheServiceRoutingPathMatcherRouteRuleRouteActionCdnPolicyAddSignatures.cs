@@ -26,7 +26,6 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// <summary>
         /// The keyset to use for signature generation.
         /// The following are both valid paths to an EdgeCacheKeyset resource:
-        /// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
         /// </summary>
         public readonly string? Keyset;
         /// <summary>

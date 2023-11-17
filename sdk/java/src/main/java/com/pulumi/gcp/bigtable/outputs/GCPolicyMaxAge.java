@@ -24,8 +24,6 @@ public final class GCPolicyMaxAge {
     /**
      * @return Duration before applying GC policy (ex. &#34;8h&#34;). This is required when `days` isn&#39;t set
      * 
-     * ***
-     * 
      */
     private @Nullable String duration;
 
@@ -43,8 +41,6 @@ public final class GCPolicyMaxAge {
     }
     /**
      * @return Duration before applying GC policy (ex. &#34;8h&#34;). This is required when `days` isn&#39;t set
-     * 
-     * ***
      * 
      */
     public Optional<String> duration() {

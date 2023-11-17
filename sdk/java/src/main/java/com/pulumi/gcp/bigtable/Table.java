@@ -106,16 +106,12 @@ public class Table extends com.pulumi.resources.CustomResource {
     /**
      * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
      * 
-     * ***
-     * 
      */
     @Export(name="changeStreamRetention", refs={String.class}, tree="[0]")
     private Output<String> changeStreamRetention;
 
     /**
      * @return Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
-     * 
-     * ***
      * 
      */
     public Output<String> changeStreamRetention() {

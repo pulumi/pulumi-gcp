@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey? AwsAccessKey;
         /// <summary>
-        /// Google Cloud Storage bucket name.
+        /// S3 Bucket name.
         /// </summary>
         public readonly string BucketName;
         /// <summary>

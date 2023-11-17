@@ -25,12 +25,11 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFile? File;
         /// <summary>
         /// The id of the resource with the following restrictions:
-        /// 
-        /// *   Must contain only lowercase letters, numbers, and hyphens.
-        /// *   Must start with a letter.
-        /// *   Must be between 1-63 characters.
-        /// *   Must end with a number or a letter.
-        /// *   Must be unique within the OS policy.
+        /// * Must contain only lowercase letters, numbers, and hyphens.
+        /// * Must start with a letter.
+        /// * Must be between 1-63 characters.
+        /// * Must end with a number or a letter.
+        /// * Must be unique within the OS policy.
         /// </summary>
         public readonly string Id;
         /// <summary>

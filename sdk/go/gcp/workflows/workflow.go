@@ -213,8 +213,7 @@ type Workflow struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-	// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars pulumi.StringMapOutput `pulumi:"userEnvVars"`
 }
 
@@ -296,8 +295,7 @@ type workflowState struct {
 	State *string `pulumi:"state"`
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-	// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars map[string]string `pulumi:"userEnvVars"`
 }
 
@@ -345,8 +343,7 @@ type WorkflowState struct {
 	State pulumi.StringPtrInput
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-	// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars pulumi.StringMapInput
 }
 
@@ -385,8 +382,7 @@ type workflowArgs struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 32KB.
 	SourceContents *string `pulumi:"sourceContents"`
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-	// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars map[string]string `pulumi:"userEnvVars"`
 }
 
@@ -422,8 +418,7 @@ type WorkflowArgs struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 32KB.
 	SourceContents pulumi.StringPtrInput
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-	// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars pulumi.StringMapInput
 }
 
@@ -602,8 +597,7 @@ func (o WorkflowOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 func (o WorkflowOutput) UserEnvVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.UserEnvVars }).(pulumi.StringMapOutput)
 }

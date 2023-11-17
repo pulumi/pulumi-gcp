@@ -34,16 +34,12 @@ public final class TenantDefaultSupportedIdpConfigState extends com.pulumi.resou
     /**
      * OAuth client secret
      * 
-     * ***
-     * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
      * @return OAuth client secret
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -67,16 +63,6 @@ public final class TenantDefaultSupportedIdpConfigState extends com.pulumi.resou
 
     /**
      * ID of the IDP. Possible values include:
-     * * `apple.com`
-     * * `facebook.com`
-     * * `gc.apple.com`
-     * * `github.com`
-     * * `google.com`
-     * * `linkedin.com`
-     * * `microsoft.com`
-     * * `playgames.google.com`
-     * * `twitter.com`
-     * * `yahoo.com`
      * 
      */
     @Import(name="idpId")
@@ -84,16 +70,6 @@ public final class TenantDefaultSupportedIdpConfigState extends com.pulumi.resou
 
     /**
      * @return ID of the IDP. Possible values include:
-     * * `apple.com`
-     * * `facebook.com`
-     * * `gc.apple.com`
-     * * `github.com`
-     * * `google.com`
-     * * `linkedin.com`
-     * * `microsoft.com`
-     * * `playgames.google.com`
-     * * `twitter.com`
-     * * `yahoo.com`
      * 
      */
     public Optional<Output<String>> idpId() {
@@ -201,8 +177,6 @@ public final class TenantDefaultSupportedIdpConfigState extends com.pulumi.resou
         /**
          * @param clientSecret OAuth client secret
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -213,8 +187,6 @@ public final class TenantDefaultSupportedIdpConfigState extends com.pulumi.resou
 
         /**
          * @param clientSecret OAuth client secret
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -246,16 +218,6 @@ public final class TenantDefaultSupportedIdpConfigState extends com.pulumi.resou
 
         /**
          * @param idpId ID of the IDP. Possible values include:
-         * * `apple.com`
-         * * `facebook.com`
-         * * `gc.apple.com`
-         * * `github.com`
-         * * `google.com`
-         * * `linkedin.com`
-         * * `microsoft.com`
-         * * `playgames.google.com`
-         * * `twitter.com`
-         * * `yahoo.com`
          * 
          * @return builder
          * 
@@ -267,16 +229,6 @@ public final class TenantDefaultSupportedIdpConfigState extends com.pulumi.resou
 
         /**
          * @param idpId ID of the IDP. Possible values include:
-         * * `apple.com`
-         * * `facebook.com`
-         * * `gc.apple.com`
-         * * `github.com`
-         * * `google.com`
-         * * `linkedin.com`
-         * * `microsoft.com`
-         * * `playgames.google.com`
-         * * `twitter.com`
-         * * `yahoo.com`
          * 
          * @return builder
          * 

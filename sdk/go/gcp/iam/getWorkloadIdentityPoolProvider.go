@@ -59,8 +59,6 @@ type LookupWorkloadIdentityPoolProviderArgs struct {
 	WorkloadIdentityPoolId string `pulumi:"workloadIdentityPoolId"`
 	// The id of the provider which is the
 	// final component of the resource name.
-	//
-	// ***
 	WorkloadIdentityPoolProviderId string `pulumi:"workloadIdentityPoolProviderId"`
 }
 
@@ -105,8 +103,6 @@ type LookupWorkloadIdentityPoolProviderOutputArgs struct {
 	WorkloadIdentityPoolId pulumi.StringInput `pulumi:"workloadIdentityPoolId"`
 	// The id of the provider which is the
 	// final component of the resource name.
-	//
-	// ***
 	WorkloadIdentityPoolProviderId pulumi.StringInput `pulumi:"workloadIdentityPoolProviderId"`
 }
 

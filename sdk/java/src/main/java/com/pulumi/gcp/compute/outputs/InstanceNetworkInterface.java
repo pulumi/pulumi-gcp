@@ -41,7 +41,8 @@ public final class InstanceNetworkInterface {
     private @Nullable String ipv6Address;
     /**
      * @return A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
+     * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+     * is &#34;External IPv6&#34;.
      * 
      */
     private @Nullable String name;
@@ -133,7 +134,8 @@ public final class InstanceNetworkInterface {
     }
     /**
      * @return A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
+     * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+     * is &#34;External IPv6&#34;.
      * 
      */
     public Optional<String> name() {

@@ -134,16 +134,12 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
     /**
      * The entity kind which the index applies to.
      * 
-     * ***
-     * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
      * @return The entity kind which the index applies to.
-     * 
-     * ***
      * 
      */
     public Output<String> kind() {

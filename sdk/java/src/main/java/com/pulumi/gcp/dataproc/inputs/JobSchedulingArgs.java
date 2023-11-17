@@ -13,16 +13,32 @@ public final class JobSchedulingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobSchedulingArgs Empty = new JobSchedulingArgs();
 
+    /**
+     * Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * 
+     */
     @Import(name="maxFailuresPerHour", required=true)
     private Output<Integer> maxFailuresPerHour;
 
+    /**
+     * @return Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * 
+     */
     public Output<Integer> maxFailuresPerHour() {
         return this.maxFailuresPerHour;
     }
 
+    /**
+     * Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * 
+     */
     @Import(name="maxFailuresTotal", required=true)
     private Output<Integer> maxFailuresTotal;
 
+    /**
+     * @return Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * 
+     */
     public Output<Integer> maxFailuresTotal() {
         return this.maxFailuresTotal;
     }
@@ -52,20 +68,44 @@ public final class JobSchedulingArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobSchedulingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maxFailuresPerHour Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxFailuresPerHour(Output<Integer> maxFailuresPerHour) {
             $.maxFailuresPerHour = maxFailuresPerHour;
             return this;
         }
 
+        /**
+         * @param maxFailuresPerHour Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxFailuresPerHour(Integer maxFailuresPerHour) {
             return maxFailuresPerHour(Output.of(maxFailuresPerHour));
         }
 
+        /**
+         * @param maxFailuresTotal Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxFailuresTotal(Output<Integer> maxFailuresTotal) {
             $.maxFailuresTotal = maxFailuresTotal;
             return this;
         }
 
+        /**
+         * @param maxFailuresTotal Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxFailuresTotal(Integer maxFailuresTotal) {
             return maxFailuresTotal(Output.of(maxFailuresTotal));
         }

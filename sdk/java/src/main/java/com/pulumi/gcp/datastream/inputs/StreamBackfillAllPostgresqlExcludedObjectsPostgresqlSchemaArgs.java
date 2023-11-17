@@ -19,6 +19,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArg
 
     /**
      * Tables in the schema.
+     * Structure is documented below.`postgresql_tables` -
+     * (Optional)
+     * Tables in the schema.
      * Structure is documented below.
      * 
      */
@@ -27,6 +30,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArg
 
     /**
      * @return Tables in the schema.
+     * Structure is documented below.`postgresql_tables` -
+     * (Optional)
+     * Tables in the schema.
      * Structure is documented below.
      * 
      */
@@ -35,6 +41,8 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArg
     }
 
     /**
+     * Database name.`schema` -
+     * (Required)
      * Database name.
      * 
      */
@@ -42,7 +50,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArg
     private Output<String> schema;
 
     /**
-     * @return Database name.
+     * @return Database name.`schema` -
+     * (Required)
+     * Database name.
      * 
      */
     public Output<String> schema() {
@@ -76,6 +86,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArg
 
         /**
          * @param postgresqlTables Tables in the schema.
+         * Structure is documented below.`postgresql_tables` -
+         * (Optional)
+         * Tables in the schema.
          * Structure is documented below.
          * 
          * @return builder
@@ -88,6 +101,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArg
 
         /**
          * @param postgresqlTables Tables in the schema.
+         * Structure is documented below.`postgresql_tables` -
+         * (Optional)
+         * Tables in the schema.
          * Structure is documented below.
          * 
          * @return builder
@@ -99,6 +115,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArg
 
         /**
          * @param postgresqlTables Tables in the schema.
+         * Structure is documented below.`postgresql_tables` -
+         * (Optional)
+         * Tables in the schema.
          * Structure is documented below.
          * 
          * @return builder
@@ -109,7 +128,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArg
         }
 
         /**
-         * @param schema Database name.
+         * @param schema Database name.`schema` -
+         * (Required)
+         * Database name.
          * 
          * @return builder
          * 
@@ -120,7 +141,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArg
         }
 
         /**
-         * @param schema Database name.
+         * @param schema Database name.`schema` -
+         * (Required)
+         * Database name.
          * 
          * @return builder
          * 

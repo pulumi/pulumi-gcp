@@ -54,16 +54,12 @@ public final class DataStoreIndexState extends com.pulumi.resources.ResourceArgs
     /**
      * The entity kind which the index applies to.
      * 
-     * ***
-     * 
      */
     @Import(name="kind")
     private @Nullable Output<String> kind;
 
     /**
      * @return The entity kind which the index applies to.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> kind() {
@@ -181,8 +177,6 @@ public final class DataStoreIndexState extends com.pulumi.resources.ResourceArgs
         /**
          * @param kind The entity kind which the index applies to.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -193,8 +187,6 @@ public final class DataStoreIndexState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param kind The entity kind which the index applies to.
-         * 
-         * ***
          * 
          * @return builder
          * 

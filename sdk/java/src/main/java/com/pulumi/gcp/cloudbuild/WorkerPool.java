@@ -254,16 +254,12 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
     /**
      * User-defined name of the `WorkerPool`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return User-defined name of the `WorkerPool`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

@@ -13,20 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterMaintenancePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time window specified for daily maintenance operations.
-        /// Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
-        /// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
-        /// 
-        /// Examples:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
+        /// structure documented below.
         /// </summary>
         [Input("dailyMaintenanceWindow")]
         public Input<Inputs.ClusterMaintenancePolicyDailyMaintenanceWindowArgs>? DailyMaintenanceWindow { get; set; }
@@ -35,7 +22,9 @@ namespace Pulumi.Gcp.Container.Inputs
         private InputList<Inputs.ClusterMaintenancePolicyMaintenanceExclusionArgs>? _maintenanceExclusions;
 
         /// <summary>
-        /// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+        /// structure documented below
+        /// 
+        /// In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
         /// </summary>
         public InputList<Inputs.ClusterMaintenancePolicyMaintenanceExclusionArgs> MaintenanceExclusions
         {
@@ -44,33 +33,7 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
-        /// Time window for recurring maintenance operations.
-        /// 
-        /// Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
-        /// the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
-        /// [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
-        /// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
-        /// 
-        /// Examples:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
+        /// structure documented below
         /// </summary>
         [Input("recurringWindow")]
         public Input<Inputs.ClusterMaintenancePolicyRecurringWindowArgs>? RecurringWindow { get; set; }

@@ -17,8 +17,6 @@ public final class BucketObjectRetention {
     /**
      * @return The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
      * 
-     * &lt;a name&gt;
-     * 
      */
     private String retainUntilTime;
 
@@ -32,8 +30,6 @@ public final class BucketObjectRetention {
     }
     /**
      * @return The time to retain the object until in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
-     * 
-     * &lt;a name&gt;
      * 
      */
     public String retainUntilTime() {

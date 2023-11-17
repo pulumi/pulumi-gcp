@@ -20,11 +20,6 @@ public final class ClusterNodePoolNodeConfigReservationAffinityArgs extends com.
      * The type of reservation consumption
      * Accepted values are:
      * 
-     * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
-     * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
-     * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
-     * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
-     * 
      */
     @Import(name="consumeReservationType", required=true)
     private Output<String> consumeReservationType;
@@ -32,11 +27,6 @@ public final class ClusterNodePoolNodeConfigReservationAffinityArgs extends com.
     /**
      * @return The type of reservation consumption
      * Accepted values are:
-     * 
-     * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
-     * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
-     * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
-     * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
      * 
      */
     public Output<String> consumeReservationType() {
@@ -103,11 +93,6 @@ public final class ClusterNodePoolNodeConfigReservationAffinityArgs extends com.
          * @param consumeReservationType The type of reservation consumption
          * Accepted values are:
          * 
-         * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
-         * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
-         * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
-         * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
-         * 
          * @return builder
          * 
          */
@@ -119,11 +104,6 @@ public final class ClusterNodePoolNodeConfigReservationAffinityArgs extends com.
         /**
          * @param consumeReservationType The type of reservation consumption
          * Accepted values are:
-         * 
-         * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
-         * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
-         * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
-         * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
          * 
          * @return builder
          * 

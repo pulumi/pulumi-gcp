@@ -49,16 +49,12 @@ public final class AttachedDiskArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * `name` or `self_link` of the disk that will be attached.
      * 
-     * ***
-     * 
      */
     @Import(name="disk", required=true)
     private Output<String> disk;
 
     /**
      * @return `name` or `self_link` of the disk that will be attached.
-     * 
-     * ***
      * 
      */
     public Output<String> disk() {
@@ -216,8 +212,6 @@ public final class AttachedDiskArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param disk `name` or `self_link` of the disk that will be attached.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -228,8 +222,6 @@ public final class AttachedDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param disk `name` or `self_link` of the disk that will be attached.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -55,12 +55,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
 
     /**
      * The id of the resource with the following restrictions:
-     * 
-     * *   Must contain only lowercase letters, numbers, and hyphens.
-     * *   Must start with a letter.
-     * *   Must be between 1-63 characters.
-     * *   Must end with a number or a letter.
-     * *   Must be unique within the OS policy.
+     * * Must contain only lowercase letters, numbers, and hyphens.
+     * * Must start with a letter.
+     * * Must be between 1-63 characters.
+     * * Must end with a number or a letter.
+     * * Must be unique within the OS policy.
      * 
      */
     @Import(name="id", required=true)
@@ -68,12 +67,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
 
     /**
      * @return The id of the resource with the following restrictions:
-     * 
-     * *   Must contain only lowercase letters, numbers, and hyphens.
-     * *   Must start with a letter.
-     * *   Must be between 1-63 characters.
-     * *   Must end with a number or a letter.
-     * *   Must be unique within the OS policy.
+     * * Must contain only lowercase letters, numbers, and hyphens.
+     * * Must start with a letter.
+     * * Must be between 1-63 characters.
+     * * Must end with a number or a letter.
+     * * Must be unique within the OS policy.
      * 
      */
     public Output<String> id() {
@@ -190,12 +188,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
 
         /**
          * @param id The id of the resource with the following restrictions:
-         * 
-         * *   Must contain only lowercase letters, numbers, and hyphens.
-         * *   Must start with a letter.
-         * *   Must be between 1-63 characters.
-         * *   Must end with a number or a letter.
-         * *   Must be unique within the OS policy.
+         * * Must contain only lowercase letters, numbers, and hyphens.
+         * * Must start with a letter.
+         * * Must be between 1-63 characters.
+         * * Must end with a number or a letter.
+         * * Must be unique within the OS policy.
          * 
          * @return builder
          * 
@@ -207,12 +204,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
 
         /**
          * @param id The id of the resource with the following restrictions:
-         * 
-         * *   Must contain only lowercase letters, numbers, and hyphens.
-         * *   Must start with a letter.
-         * *   Must be between 1-63 characters.
-         * *   Must end with a number or a letter.
-         * *   Must be unique within the OS policy.
+         * * Must contain only lowercase letters, numbers, and hyphens.
+         * * Must start with a letter.
+         * * Must be between 1-63 characters.
+         * * Must end with a number or a letter.
+         * * Must be unique within the OS policy.
          * 
          * @return builder
          * 

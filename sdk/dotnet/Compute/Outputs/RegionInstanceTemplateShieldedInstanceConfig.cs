@@ -14,15 +14,15 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionInstanceTemplateShieldedInstanceConfig
     {
         /// <summary>
-        /// - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        /// Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
         /// </summary>
         public readonly bool? EnableIntegrityMonitoring;
         /// <summary>
-        /// - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        /// Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
         /// </summary>
         public readonly bool? EnableSecureBoot;
         /// <summary>
-        /// - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        /// Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
         /// </summary>
         public readonly bool? EnableVtpm;
 

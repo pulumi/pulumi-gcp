@@ -275,14 +275,14 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of the Fleet host project where this cluster will be registered.
+     * The project for the resource
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The number of the Fleet host project where this cluster will be registered.
+     * @return The project for the resource
      * 
      */
     public Optional<Output<String>> project() {
@@ -770,7 +770,7 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The number of the Fleet host project where this cluster will be registered.
+         * @param project The project for the resource
          * 
          * @return builder
          * 
@@ -781,7 +781,7 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The number of the Fleet host project where this cluster will be registered.
+         * @param project The project for the resource
          * 
          * @return builder
          * 

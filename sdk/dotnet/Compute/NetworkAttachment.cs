@@ -259,9 +259,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -382,9 +379,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -500,9 +494,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

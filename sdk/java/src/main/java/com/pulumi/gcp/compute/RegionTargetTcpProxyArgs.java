@@ -19,16 +19,12 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
     /**
      * A reference to the BackendService resource.
      * 
-     * ***
-     * 
      */
     @Import(name="backendService", required=true)
     private Output<String> backendService;
 
     /**
      * @return A reference to the BackendService resource.
-     * 
-     * ***
      * 
      */
     public Output<String> backendService() {
@@ -182,8 +178,6 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
         /**
          * @param backendService A reference to the BackendService resource.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -194,8 +188,6 @@ public final class RegionTargetTcpProxyArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param backendService A reference to the BackendService resource.
-         * 
-         * ***
          * 
          * @return builder
          * 

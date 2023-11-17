@@ -54,7 +54,6 @@ public final class ClusterAddonsConfig {
      *     }
      * }
      * ```
-     * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
      * 
      */
     private @Nullable ClusterAddonsConfigConfigConnectorConfig configConnectorConfig;
@@ -172,7 +171,6 @@ public final class ClusterAddonsConfig {
      *     }
      * }
      * ```
-     * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
      * 
      */
     public Optional<ClusterAddonsConfigConfigConnectorConfig> configConnectorConfig() {

@@ -82,9 +82,6 @@ export class BiReservation extends pulumi.CustomResource {
 
     /**
      * LOCATION_DESCRIPTION
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -153,9 +150,6 @@ export class BiReservation extends pulumi.CustomResource {
 export interface BiReservationState {
     /**
      * LOCATION_DESCRIPTION
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -189,9 +183,6 @@ export interface BiReservationState {
 export interface BiReservationArgs {
     /**
      * LOCATION_DESCRIPTION
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

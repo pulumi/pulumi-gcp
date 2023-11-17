@@ -57,9 +57,6 @@ class EdgeCacheOriginArgs:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs'] origin_override_action: The override actions, including url rewrites and header
                additions, for requests that use this origin.
                Structure is documented below.
@@ -85,7 +82,7 @@ class EdgeCacheOriginArgs:
                - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-               Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+                 Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -212,9 +209,6 @@ class EdgeCacheOriginArgs:
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -306,7 +300,7 @@ class EdgeCacheOriginArgs:
         - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
         - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
         - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-        Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+          Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         """
         return pulumi.get(self, "retry_conditions")
 
@@ -371,9 +365,6 @@ class _EdgeCacheOriginState:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] origin_address: A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
                This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
                When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
@@ -405,7 +396,7 @@ class _EdgeCacheOriginState:
                - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-               Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+                 Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -534,9 +525,6 @@ class _EdgeCacheOriginState:
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -656,7 +644,7 @@ class _EdgeCacheOriginState:
         - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
         - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
         - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-        Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+          Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         """
         return pulumi.get(self, "retry_conditions")
 
@@ -844,9 +832,6 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] origin_address: A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
                This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
                When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
@@ -876,7 +861,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-               Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+                 Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         :param pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -1122,9 +1107,6 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
-               
-               
-               - - -
         :param pulumi.Input[str] origin_address: A fully qualified domain name (FQDN) or IP address reachable over the public Internet, or the address of a Google Cloud Storage bucket.
                This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
                When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
@@ -1156,7 +1138,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-               Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+                 Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         :param pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -1250,9 +1232,6 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1340,7 +1319,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
         - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
         - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-        Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+          Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         """
         return pulumi.get(self, "retry_conditions")
 

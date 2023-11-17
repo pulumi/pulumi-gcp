@@ -17,8 +17,6 @@ public final class DomainMappingSpec {
      * Default value is `AUTOMATIC`.
      * Possible values are: `NONE`, `AUTOMATIC`.
      * 
-     * ***
-     * 
      */
     private @Nullable String certificateMode;
     /**
@@ -41,8 +39,6 @@ public final class DomainMappingSpec {
      * @return The mode of the certificate.
      * Default value is `AUTOMATIC`.
      * Possible values are: `NONE`, `AUTOMATIC`.
-     * 
-     * ***
      * 
      */
     public Optional<String> certificateMode() {

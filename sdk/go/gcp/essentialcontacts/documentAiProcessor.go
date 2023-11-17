@@ -88,8 +88,6 @@ type DocumentAiProcessor struct {
 	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
 	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// The location of the resource.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the processor.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -144,8 +142,6 @@ type documentAiProcessorState struct {
 	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The location of the resource.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// The resource name of the processor.
 	Name *string `pulumi:"name"`
@@ -162,8 +158,6 @@ type DocumentAiProcessorState struct {
 	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
 	KmsKeyName pulumi.StringPtrInput
 	// The location of the resource.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// The resource name of the processor.
 	Name pulumi.StringPtrInput
@@ -184,8 +178,6 @@ type documentAiProcessorArgs struct {
 	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The location of the resource.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -201,8 +193,6 @@ type DocumentAiProcessorArgs struct {
 	// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
 	KmsKeyName pulumi.StringPtrInput
 	// The location of the resource.
-	//
-	// ***
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -309,8 +299,6 @@ func (o DocumentAiProcessorOutput) KmsKeyName() pulumi.StringPtrOutput {
 }
 
 // The location of the resource.
-//
-// ***
 func (o DocumentAiProcessorOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DocumentAiProcessor) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

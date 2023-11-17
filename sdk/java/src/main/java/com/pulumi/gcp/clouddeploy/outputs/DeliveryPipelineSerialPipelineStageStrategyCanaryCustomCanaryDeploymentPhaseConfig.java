@@ -44,8 +44,6 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
     /**
      * @return Whether to run verify tests after the deployment.
      * 
-     * ***
-     * 
      */
     private @Nullable Boolean verify;
 
@@ -87,8 +85,6 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
     }
     /**
      * @return Whether to run verify tests after the deployment.
-     * 
-     * ***
      * 
      */
     public Optional<Boolean> verify() {

@@ -42,8 +42,6 @@ public final class ClusterNodePool {
      * @return The name of the cluster, unique within the project and
      * location.
      * 
-     * ***
-     * 
      */
     private @Nullable String name;
     private @Nullable String namePrefix;
@@ -121,8 +119,6 @@ public final class ClusterNodePool {
     /**
      * @return The name of the cluster, unique within the project and
      * location.
-     * 
-     * ***
      * 
      */
     public Optional<String> name() {

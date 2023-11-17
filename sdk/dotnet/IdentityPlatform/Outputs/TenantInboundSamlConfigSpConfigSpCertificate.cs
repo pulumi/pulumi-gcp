@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
     public sealed class TenantInboundSamlConfigSpConfigSpCertificate
     {
         /// <summary>
+        /// (Output)
         /// The x509 certificate
         /// </summary>
         public readonly string? X509Certificate;

@@ -18,6 +18,8 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     public static final StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs Empty = new StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs();
 
     /**
+     * Column collation.`collation` -
+     * (Optional)
      * Column collation.
      * 
      */
@@ -25,7 +27,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     private @Nullable Output<String> collation;
 
     /**
-     * @return Column collation.
+     * @return Column collation.`collation` -
+     * (Optional)
+     * Column collation.
      * 
      */
     public Optional<Output<String>> collation() {
@@ -33,6 +37,8 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     }
 
     /**
+     * Column name.`column` -
+     * (Optional)
      * Column name.
      * 
      */
@@ -40,7 +46,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     private @Nullable Output<String> column;
 
     /**
-     * @return Column name.
+     * @return Column name.`column` -
+     * (Optional)
+     * Column name.
      * 
      */
     public Optional<Output<String>> column() {
@@ -48,6 +56,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     }
 
     /**
+     * The MySQL data type. Full data types list can be found here:
+     * https://dev.mysql.com/doc/refman/8.0/en/data-types.html`data_type` -
+     * (Optional)
      * The MySQL data type. Full data types list can be found here:
      * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
      * 
@@ -57,6 +68,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
 
     /**
      * @return The MySQL data type. Full data types list can be found here:
+     * https://dev.mysql.com/doc/refman/8.0/en/data-types.html`data_type` -
+     * (Optional)
+     * The MySQL data type. Full data types list can be found here:
      * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
      * 
      */
@@ -66,6 +80,8 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
 
     /**
      * (Output)
+     * Column length.`length` -
+     * (Output)
      * Column length.
      * 
      */
@@ -74,6 +90,8 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
 
     /**
      * @return (Output)
+     * Column length.`length` -
+     * (Output)
      * Column length.
      * 
      */
@@ -82,6 +100,8 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     }
 
     /**
+     * Whether or not the column can accept a null value.`nullable` -
+     * (Optional)
      * Whether or not the column can accept a null value.
      * 
      */
@@ -89,7 +109,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     private @Nullable Output<Boolean> nullable;
 
     /**
-     * @return Whether or not the column can accept a null value.
+     * @return Whether or not the column can accept a null value.`nullable` -
+     * (Optional)
+     * Whether or not the column can accept a null value.
      * 
      */
     public Optional<Output<Boolean>> nullable() {
@@ -97,6 +119,8 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     }
 
     /**
+     * The ordinal position of the column in the table.`ordinal_position` -
+     * (Optional)
      * The ordinal position of the column in the table.
      * 
      */
@@ -104,7 +128,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     private @Nullable Output<Integer> ordinalPosition;
 
     /**
-     * @return The ordinal position of the column in the table.
+     * @return The ordinal position of the column in the table.`ordinal_position` -
+     * (Optional)
+     * The ordinal position of the column in the table.
      * 
      */
     public Optional<Output<Integer>> ordinalPosition() {
@@ -112,6 +138,8 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     }
 
     /**
+     * Whether or not the column represents a primary key.`primary_key` -
+     * (Optional)
      * Whether or not the column represents a primary key.
      * 
      */
@@ -119,7 +147,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     private @Nullable Output<Boolean> primaryKey;
 
     /**
-     * @return Whether or not the column represents a primary key.
+     * @return Whether or not the column represents a primary key.`primary_key` -
+     * (Optional)
+     * Whether or not the column represents a primary key.
      * 
      */
     public Optional<Output<Boolean>> primaryKey() {
@@ -157,7 +187,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         }
 
         /**
-         * @param collation Column collation.
+         * @param collation Column collation.`collation` -
+         * (Optional)
+         * Column collation.
          * 
          * @return builder
          * 
@@ -168,7 +200,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         }
 
         /**
-         * @param collation Column collation.
+         * @param collation Column collation.`collation` -
+         * (Optional)
+         * Column collation.
          * 
          * @return builder
          * 
@@ -178,7 +212,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         }
 
         /**
-         * @param column Column name.
+         * @param column Column name.`column` -
+         * (Optional)
+         * Column name.
          * 
          * @return builder
          * 
@@ -189,7 +225,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         }
 
         /**
-         * @param column Column name.
+         * @param column Column name.`column` -
+         * (Optional)
+         * Column name.
          * 
          * @return builder
          * 
@@ -200,6 +238,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
 
         /**
          * @param dataType The MySQL data type. Full data types list can be found here:
+         * https://dev.mysql.com/doc/refman/8.0/en/data-types.html`data_type` -
+         * (Optional)
+         * The MySQL data type. Full data types list can be found here:
          * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
          * 
          * @return builder
@@ -212,6 +253,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
 
         /**
          * @param dataType The MySQL data type. Full data types list can be found here:
+         * https://dev.mysql.com/doc/refman/8.0/en/data-types.html`data_type` -
+         * (Optional)
+         * The MySQL data type. Full data types list can be found here:
          * https://dev.mysql.com/doc/refman/8.0/en/data-types.html
          * 
          * @return builder
@@ -223,6 +267,8 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
 
         /**
          * @param length (Output)
+         * Column length.`length` -
+         * (Output)
          * Column length.
          * 
          * @return builder
@@ -235,6 +281,8 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
 
         /**
          * @param length (Output)
+         * Column length.`length` -
+         * (Output)
          * Column length.
          * 
          * @return builder
@@ -245,7 +293,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         }
 
         /**
-         * @param nullable Whether or not the column can accept a null value.
+         * @param nullable Whether or not the column can accept a null value.`nullable` -
+         * (Optional)
+         * Whether or not the column can accept a null value.
          * 
          * @return builder
          * 
@@ -256,7 +306,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         }
 
         /**
-         * @param nullable Whether or not the column can accept a null value.
+         * @param nullable Whether or not the column can accept a null value.`nullable` -
+         * (Optional)
+         * Whether or not the column can accept a null value.
          * 
          * @return builder
          * 
@@ -266,7 +318,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         }
 
         /**
-         * @param ordinalPosition The ordinal position of the column in the table.
+         * @param ordinalPosition The ordinal position of the column in the table.`ordinal_position` -
+         * (Optional)
+         * The ordinal position of the column in the table.
          * 
          * @return builder
          * 
@@ -277,7 +331,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         }
 
         /**
-         * @param ordinalPosition The ordinal position of the column in the table.
+         * @param ordinalPosition The ordinal position of the column in the table.`ordinal_position` -
+         * (Optional)
+         * The ordinal position of the column in the table.
          * 
          * @return builder
          * 
@@ -287,7 +343,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         }
 
         /**
-         * @param primaryKey Whether or not the column represents a primary key.
+         * @param primaryKey Whether or not the column represents a primary key.`primary_key` -
+         * (Optional)
+         * Whether or not the column represents a primary key.
          * 
          * @return builder
          * 
@@ -298,7 +356,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         }
 
         /**
-         * @param primaryKey Whether or not the column represents a primary key.
+         * @param primaryKey Whether or not the column represents a primary key.`primary_key` -
+         * (Optional)
+         * Whether or not the column represents a primary key.
          * 
          * @return builder
          * 

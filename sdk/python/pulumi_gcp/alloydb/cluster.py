@@ -38,9 +38,6 @@ class ClusterArgs:
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
-               
-               
-               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
                
@@ -66,8 +63,7 @@ class ClusterArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] network: (Optional, Deprecated)
-               The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+        :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
                
                > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
@@ -137,9 +133,6 @@ class ClusterArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location where the alloydb cluster should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -286,7 +279,6 @@ class ClusterArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         "projects/{projectNumber}/global/networks/{network_id}".
 
@@ -440,14 +432,10 @@ class _ClusterState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]] migration_sources: Cluster created via DMS migration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
-        :param pulumi.Input[str] network: (Optional, Deprecated)
-               The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+        :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
                
                > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
@@ -762,9 +750,6 @@ class _ClusterState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location where the alloydb cluster should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -801,7 +786,6 @@ class _ClusterState:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         "projects/{projectNumber}/global/networks/{network_id}".
 
@@ -1181,11 +1165,7 @@ class Cluster(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
-               
-               
-               - - -
-        :param pulumi.Input[str] network: (Optional, Deprecated)
-               The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+        :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
                
                > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
@@ -1564,14 +1544,10 @@ class Cluster(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterMigrationSourceArgs']]]] migration_sources: Cluster created via DMS migration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
-        :param pulumi.Input[str] network: (Optional, Deprecated)
-               The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
+        :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
                
                > **Warning:** `network` is deprecated and will be removed in a future major release. Instead, use `network_config` to define the network configuration.
@@ -1790,9 +1766,6 @@ class Cluster(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location where the alloydb cluster should reside.
-
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -1817,7 +1790,6 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[str]:
         """
-        (Optional, Deprecated)
         The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
         "projects/{projectNumber}/global/networks/{network_id}".
 

@@ -34,16 +34,12 @@ public final class InsightsReportConfigCsvOptionsArgs extends com.pulumi.resourc
     /**
      * The boolean that indicates whether or not headers are included in the inventory report CSV file.
      * 
-     * ***
-     * 
      */
     @Import(name="headerRequired")
     private @Nullable Output<Boolean> headerRequired;
 
     /**
      * @return The boolean that indicates whether or not headers are included in the inventory report CSV file.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Boolean>> headerRequired() {
@@ -115,8 +111,6 @@ public final class InsightsReportConfigCsvOptionsArgs extends com.pulumi.resourc
         /**
          * @param headerRequired The boolean that indicates whether or not headers are included in the inventory report CSV file.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -127,8 +121,6 @@ public final class InsightsReportConfigCsvOptionsArgs extends com.pulumi.resourc
 
         /**
          * @param headerRequired The boolean that indicates whether or not headers are included in the inventory report CSV file.
-         * 
-         * ***
          * 
          * @return builder
          * 

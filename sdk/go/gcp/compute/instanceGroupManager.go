@@ -166,7 +166,6 @@ import (
 type InstanceGroupManager struct {
 	pulumi.CustomResourceState
 
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -227,8 +226,6 @@ type InstanceGroupManager struct {
 	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-	//
-	// ***
 	UpdatePolicy InstanceGroupManagerUpdatePolicyOutput `pulumi:"updatePolicy"`
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -245,8 +242,6 @@ type InstanceGroupManager struct {
 	WaitForInstancesStatus pulumi.StringPtrOutput `pulumi:"waitForInstancesStatus"`
 	// The zone that instances in this group should be created
 	// in.
-	//
-	// ***
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -286,7 +281,6 @@ func GetInstanceGroupManager(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceGroupManager resources.
 type instanceGroupManagerState struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -347,8 +341,6 @@ type instanceGroupManagerState struct {
 	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize *int `pulumi:"targetSize"`
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-	//
-	// ***
 	UpdatePolicy *InstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -365,13 +357,10 @@ type instanceGroupManagerState struct {
 	WaitForInstancesStatus *string `pulumi:"waitForInstancesStatus"`
 	// The zone that instances in this group should be created
 	// in.
-	//
-	// ***
 	Zone *string `pulumi:"zone"`
 }
 
 type InstanceGroupManagerState struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -432,8 +421,6 @@ type InstanceGroupManagerState struct {
 	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize pulumi.IntPtrInput
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-	//
-	// ***
 	UpdatePolicy InstanceGroupManagerUpdatePolicyPtrInput
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -450,8 +437,6 @@ type InstanceGroupManagerState struct {
 	WaitForInstancesStatus pulumi.StringPtrInput
 	// The zone that instances in this group should be created
 	// in.
-	//
-	// ***
 	Zone pulumi.StringPtrInput
 }
 
@@ -460,7 +445,6 @@ func (InstanceGroupManagerState) ElementType() reflect.Type {
 }
 
 type instanceGroupManagerArgs struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -512,8 +496,6 @@ type instanceGroupManagerArgs struct {
 	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize *int `pulumi:"targetSize"`
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-	//
-	// ***
 	UpdatePolicy *InstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -530,14 +512,11 @@ type instanceGroupManagerArgs struct {
 	WaitForInstancesStatus *string `pulumi:"waitForInstancesStatus"`
 	// The zone that instances in this group should be created
 	// in.
-	//
-	// ***
 	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a InstanceGroupManager resource.
 type InstanceGroupManagerArgs struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -589,8 +568,6 @@ type InstanceGroupManagerArgs struct {
 	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize pulumi.IntPtrInput
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-	//
-	// ***
 	UpdatePolicy InstanceGroupManagerUpdatePolicyPtrInput
 	// Application versions managed by this instance group. Each
 	// version deals with a specific instance template, allowing canary release scenarios.
@@ -607,8 +584,6 @@ type InstanceGroupManagerArgs struct {
 	WaitForInstancesStatus pulumi.StringPtrInput
 	// The zone that instances in this group should be created
 	// in.
-	//
-	// ***
 	Zone pulumi.StringPtrInput
 }
 
@@ -699,7 +674,6 @@ func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutputWithContext(ctx 
 	return o
 }
 
-// )
 // Properties to set on all instances in the group. After setting
 // allInstancesConfig on the group, you must update the group's instances to
 // apply the configuration.
@@ -827,8 +801,6 @@ func (o InstanceGroupManagerOutput) TargetSize() pulumi.IntOutput {
 }
 
 // The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-//
-// ***
 func (o InstanceGroupManagerOutput) UpdatePolicy() InstanceGroupManagerUpdatePolicyOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerUpdatePolicyOutput { return v.UpdatePolicy }).(InstanceGroupManagerUpdatePolicyOutput)
 }
@@ -857,8 +829,6 @@ func (o InstanceGroupManagerOutput) WaitForInstancesStatus() pulumi.StringPtrOut
 
 // The zone that instances in this group should be created
 // in.
-//
-// ***
 func (o InstanceGroupManagerOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

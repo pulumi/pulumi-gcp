@@ -20,18 +20,20 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     public static final SubnetworkState Empty = new SubnetworkState();
 
     /**
-     * Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-     * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-     * BGP even if their destinations match existing subnet ranges.
+     * Typically packets destined to IPs within the subnetwork range that do not match
+     * existing resources are dropped and prevented from leaving the VPC.
+     * Setting this field to true will allow these packets to match dynamic routes injected
+     * via BGP even if their destinations match existing subnet ranges.
      * 
      */
     @Import(name="allowSubnetCidrRoutesOverlap")
     private @Nullable Output<Boolean> allowSubnetCidrRoutesOverlap;
 
     /**
-     * @return Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-     * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-     * BGP even if their destinations match existing subnet ranges.
+     * @return Typically packets destined to IPs within the subnetwork range that do not match
+     * existing resources are dropped and prevented from leaving the VPC.
+     * Setting this field to true will allow these packets to match dynamic routes injected
+     * via BGP even if their destinations match existing subnet ranges.
      * 
      */
     public Optional<Output<Boolean>> allowSubnetCidrRoutesOverlap() {
@@ -253,8 +255,6 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
      * 
-     * ***
-     * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
@@ -262,8 +262,6 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> network() {
@@ -493,9 +491,10 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowSubnetCidrRoutesOverlap Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-         * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-         * BGP even if their destinations match existing subnet ranges.
+         * @param allowSubnetCidrRoutesOverlap Typically packets destined to IPs within the subnetwork range that do not match
+         * existing resources are dropped and prevented from leaving the VPC.
+         * Setting this field to true will allow these packets to match dynamic routes injected
+         * via BGP even if their destinations match existing subnet ranges.
          * 
          * @return builder
          * 
@@ -506,9 +505,10 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowSubnetCidrRoutesOverlap Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-         * prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-         * BGP even if their destinations match existing subnet ranges.
+         * @param allowSubnetCidrRoutesOverlap Typically packets destined to IPs within the subnetwork range that do not match
+         * existing resources are dropped and prevented from leaving the VPC.
+         * Setting this field to true will allow these packets to match dynamic routes injected
+         * via BGP even if their destinations match existing subnet ranges.
          * 
          * @return builder
          * 
@@ -798,8 +798,6 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          * @param network The network this subnet belongs to.
          * Only networks that are in the distributed mode can have subnetworks.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -811,8 +809,6 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param network The network this subnet belongs to.
          * Only networks that are in the distributed mode can have subnetworks.
-         * 
-         * ***
          * 
          * @return builder
          * 

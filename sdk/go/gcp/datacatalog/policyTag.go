@@ -157,8 +157,6 @@ type PolicyTag struct {
 	// If not set, defaults to an empty string.
 	ParentPolicyTag pulumi.StringPtrOutput `pulumi:"parentPolicyTag"`
 	// Taxonomy the policy tag is associated with
-	//
-	// ***
 	Taxonomy pulumi.StringOutput `pulumi:"taxonomy"`
 }
 
@@ -217,8 +215,6 @@ type policyTagState struct {
 	// If not set, defaults to an empty string.
 	ParentPolicyTag *string `pulumi:"parentPolicyTag"`
 	// Taxonomy the policy tag is associated with
-	//
-	// ***
 	Taxonomy *string `pulumi:"taxonomy"`
 }
 
@@ -242,8 +238,6 @@ type PolicyTagState struct {
 	// If not set, defaults to an empty string.
 	ParentPolicyTag pulumi.StringPtrInput
 	// Taxonomy the policy tag is associated with
-	//
-	// ***
 	Taxonomy pulumi.StringPtrInput
 }
 
@@ -266,8 +260,6 @@ type policyTagArgs struct {
 	// If not set, defaults to an empty string.
 	ParentPolicyTag *string `pulumi:"parentPolicyTag"`
 	// Taxonomy the policy tag is associated with
-	//
-	// ***
 	Taxonomy string `pulumi:"taxonomy"`
 }
 
@@ -287,8 +279,6 @@ type PolicyTagArgs struct {
 	// If not set, defaults to an empty string.
 	ParentPolicyTag pulumi.StringPtrInput
 	// Taxonomy the policy tag is associated with
-	//
-	// ***
 	Taxonomy pulumi.StringInput
 }
 
@@ -413,8 +403,6 @@ func (o PolicyTagOutput) ParentPolicyTag() pulumi.StringPtrOutput {
 }
 
 // Taxonomy the policy tag is associated with
-//
-// ***
 func (o PolicyTagOutput) Taxonomy() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyTag) pulumi.StringOutput { return v.Taxonomy }).(pulumi.StringOutput)
 }

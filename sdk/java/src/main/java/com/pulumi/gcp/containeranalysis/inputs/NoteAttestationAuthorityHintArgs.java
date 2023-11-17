@@ -17,8 +17,6 @@ public final class NoteAttestationAuthorityHintArgs extends com.pulumi.resources
      * The human readable name of this Attestation Authority, for
      * example &#34;qa&#34;.
      * 
-     * ***
-     * 
      */
     @Import(name="humanReadableName", required=true)
     private Output<String> humanReadableName;
@@ -26,8 +24,6 @@ public final class NoteAttestationAuthorityHintArgs extends com.pulumi.resources
     /**
      * @return The human readable name of this Attestation Authority, for
      * example &#34;qa&#34;.
-     * 
-     * ***
      * 
      */
     public Output<String> humanReadableName() {
@@ -62,8 +58,6 @@ public final class NoteAttestationAuthorityHintArgs extends com.pulumi.resources
          * @param humanReadableName The human readable name of this Attestation Authority, for
          * example &#34;qa&#34;.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -75,8 +69,6 @@ public final class NoteAttestationAuthorityHintArgs extends com.pulumi.resources
         /**
          * @param humanReadableName The human readable name of this Attestation Authority, for
          * example &#34;qa&#34;.
-         * 
-         * ***
          * 
          * @return builder
          * 

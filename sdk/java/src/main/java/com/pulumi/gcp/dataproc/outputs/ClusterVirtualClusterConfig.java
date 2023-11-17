@@ -22,7 +22,6 @@ public final class ClusterVirtualClusterConfig {
     /**
      * @return The configuration for running the Dataproc cluster on Kubernetes.
      * Structure defined below.
-     * ***
      * 
      */
     private @Nullable ClusterVirtualClusterConfigKubernetesClusterConfig kubernetesClusterConfig;
@@ -50,7 +49,6 @@ public final class ClusterVirtualClusterConfig {
     /**
      * @return The configuration for running the Dataproc cluster on Kubernetes.
      * Structure defined below.
-     * ***
      * 
      */
     public Optional<ClusterVirtualClusterConfigKubernetesClusterConfig> kubernetesClusterConfig() {

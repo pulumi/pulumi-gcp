@@ -18,9 +18,9 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// reading data. The following modes are supported.
         /// * AUTO: automatically infer partition key name(s) and type(s).
         /// * STRINGS: automatically infer partition key name(s). All types are
-        /// Not all storage formats support hive partitioning. Requesting hive
-        /// partitioning on an unsupported format will lead to an error.
-        /// Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
+        ///   Not all storage formats support hive partitioning. Requesting hive
+        ///   partitioning on an unsupported format will lead to an error.
+        ///   Currently supported formats are: JSON, CSV, ORC, Avro and Parquet.
         /// * CUSTOM: when set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
         /// </summary>
         public readonly string? Mode;

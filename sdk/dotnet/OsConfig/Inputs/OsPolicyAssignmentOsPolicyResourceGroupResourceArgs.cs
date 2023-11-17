@@ -28,12 +28,11 @@ namespace Pulumi.Gcp.OsConfig.Inputs
 
         /// <summary>
         /// The id of the resource with the following restrictions:
-        /// 
-        /// *   Must contain only lowercase letters, numbers, and hyphens.
-        /// *   Must start with a letter.
-        /// *   Must be between 1-63 characters.
-        /// *   Must end with a number or a letter.
-        /// *   Must be unique within the OS policy.
+        /// * Must contain only lowercase letters, numbers, and hyphens.
+        /// * Must start with a letter.
+        /// * Must be between 1-63 characters.
+        /// * Must end with a number or a letter.
+        /// * Must be unique within the OS policy.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

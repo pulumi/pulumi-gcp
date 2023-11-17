@@ -254,8 +254,6 @@ type DatasetAccess struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -338,8 +336,6 @@ type datasetAccessState struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId *string `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -390,8 +386,6 @@ type DatasetAccessState struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId pulumi.StringPtrInput
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -443,8 +437,6 @@ type datasetAccessArgs struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId string `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -493,8 +485,6 @@ type DatasetAccessArgs struct {
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
-	//
-	// ***
 	DatasetId pulumi.StringInput
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -637,8 +627,6 @@ func (o DatasetAccessOutput) AuthorizedDataset() DatasetAccessAuthorizedDatasetP
 // A unique ID for this dataset, without the project name. The ID
 // must contain only letters (a-z, A-Z), numbers (0-9), or
 // underscores (_). The maximum length is 1,024 characters.
-//
-// ***
 func (o DatasetAccessOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatasetAccess) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }

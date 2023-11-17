@@ -190,8 +190,6 @@ export class TransferJob extends pulumi.CustomResource {
     public readonly status!: pulumi.Output<string | undefined>;
     /**
      * Transfer specification. Structure documented below.
-     *
-     * - - -
      */
     public readonly transferSpec!: pulumi.Output<outputs.storage.TransferJobTransferSpec>;
 
@@ -291,8 +289,6 @@ export interface TransferJobState {
     status?: pulumi.Input<string>;
     /**
      * Transfer specification. Structure documented below.
-     *
-     * - - -
      */
     transferSpec?: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
 }
@@ -328,8 +324,6 @@ export interface TransferJobArgs {
     status?: pulumi.Input<string>;
     /**
      * Transfer specification. Structure documented below.
-     *
-     * - - -
      */
     transferSpec: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
 }

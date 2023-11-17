@@ -28,9 +28,6 @@ class InstanceArgs:
         :param pulumi.Input[str] location: Required. Compute Engine location where the instance resides.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_accept_lists: Optional. Customer accept list represents the list of projects (id/number) on customer
                side that can privately connect to the service attachment. It is an optional field
                which the customers can provide during the instance creation. By default, the customer
@@ -85,9 +82,6 @@ class InstanceArgs:
         """
         The Apigee Organization associated with the Apigee instance,
         in the format `organizations/{{org_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "org_id")
 
@@ -228,9 +222,6 @@ class _InstanceState:
         :param pulumi.Input[str] name: Resource ID of the instance.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] peering_cidr_range: The size of the CIDR block range that will be reserved by the instance. For valid values,
                see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
         :param pulumi.Input[str] port: Output only. Port number of the exposed Apigee endpoint.
@@ -375,9 +366,6 @@ class _InstanceState:
         """
         The Apigee Organization associated with the Apigee instance,
         in the format `organizations/{{org_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "org_id")
 
@@ -617,9 +605,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Resource ID of the instance.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] peering_cidr_range: The size of the CIDR block range that will be reserved by the instance. For valid values,
                see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
         """
@@ -883,9 +868,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: Resource ID of the instance.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
-               
-               
-               - - -
         :param pulumi.Input[str] peering_cidr_range: The size of the CIDR block range that will be reserved by the instance. For valid values,
                see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
         :param pulumi.Input[str] port: Output only. Port number of the exposed Apigee endpoint.
@@ -991,9 +973,6 @@ class Instance(pulumi.CustomResource):
         """
         The Apigee Organization associated with the Apigee instance,
         in the format `organizations/{{org_name}}`.
-
-
-        - - -
         """
         return pulumi.get(self, "org_id")
 

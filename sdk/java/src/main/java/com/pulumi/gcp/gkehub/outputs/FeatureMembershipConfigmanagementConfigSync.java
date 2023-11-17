@@ -15,13 +15,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureMembershipConfigmanagementConfigSync {
     /**
-     * @return (Optional) Structure is documented below.
+     * @return Structure is documented below.
      * 
      */
     private @Nullable FeatureMembershipConfigmanagementConfigSyncGit git;
     private @Nullable String metricsGcpServiceAccountEmail;
     /**
-     * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * @return Supported from ACM versions 1.12.0 onwards. Structure is documented below.
      * 
      * Use either `git` or `oci` config option.
      * 
@@ -40,7 +40,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
 
     private FeatureMembershipConfigmanagementConfigSync() {}
     /**
-     * @return (Optional) Structure is documented below.
+     * @return Structure is documented below.
      * 
      */
     public Optional<FeatureMembershipConfigmanagementConfigSyncGit> git() {
@@ -50,7 +50,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         return Optional.ofNullable(this.metricsGcpServiceAccountEmail);
     }
     /**
-     * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * @return Supported from ACM versions 1.12.0 onwards. Structure is documented below.
      * 
      * Use either `git` or `oci` config option.
      * 

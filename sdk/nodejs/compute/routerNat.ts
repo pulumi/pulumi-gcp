@@ -307,9 +307,6 @@ export class RouterNat extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
-     *
-     *
-     * - - -
      */
     public readonly router!: pulumi.Output<string>;
     /**
@@ -353,9 +350,12 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly tcpTransitoryIdleTimeoutSec!: pulumi.Output<number | undefined>;
     /**
-     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-     * 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-     * Possible values: ["PUBLIC", "PRIVATE"]
+     * Indicates whether this NAT is used for public or private IP translation.
+     * If unspecified, it defaults to PUBLIC.
+     * If `PUBLIC` NAT used for public IP translation.
+     * If `PRIVATE` NAT used for private IP translation.
+     * Default value is `PUBLIC`.
+     * Possible values are: `PUBLIC`, `PRIVATE`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -501,9 +501,6 @@ export interface RouterNatState {
     region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
-     *
-     *
-     * - - -
      */
     router?: pulumi.Input<string>;
     /**
@@ -547,9 +544,12 @@ export interface RouterNatState {
      */
     tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
     /**
-     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-     * 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-     * Possible values: ["PUBLIC", "PRIVATE"]
+     * Indicates whether this NAT is used for public or private IP translation.
+     * If unspecified, it defaults to PUBLIC.
+     * If `PUBLIC` NAT used for public IP translation.
+     * If `PRIVATE` NAT used for private IP translation.
+     * Default value is `PUBLIC`.
+     * Possible values are: `PUBLIC`, `PRIVATE`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -627,9 +627,6 @@ export interface RouterNatArgs {
     region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
-     *
-     *
-     * - - -
      */
     router: pulumi.Input<string>;
     /**
@@ -673,9 +670,12 @@ export interface RouterNatArgs {
      */
     tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
     /**
-     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-     * 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-     * Possible values: ["PUBLIC", "PRIVATE"]
+     * Indicates whether this NAT is used for public or private IP translation.
+     * If unspecified, it defaults to PUBLIC.
+     * If `PUBLIC` NAT used for public IP translation.
+     * If `PRIVATE` NAT used for private IP translation.
+     * Default value is `PUBLIC`.
+     * Possible values are: `PUBLIC`, `PRIVATE`.
      */
     type?: pulumi.Input<string>;
     /**

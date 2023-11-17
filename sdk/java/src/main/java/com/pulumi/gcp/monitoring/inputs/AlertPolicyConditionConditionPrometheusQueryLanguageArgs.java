@@ -27,8 +27,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * This field is optional. If this field is not empty, then it must be a
      * valid Prometheus label name.
      * 
-     * ***
-     * 
      */
     @Import(name="alertRule")
     private @Nullable Output<String> alertRule;
@@ -43,8 +41,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * in the future.
      * This field is optional. If this field is not empty, then it must be a
      * valid Prometheus label name.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> alertRule() {
@@ -206,8 +202,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * This field is optional. If this field is not empty, then it must be a
          * valid Prometheus label name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -226,8 +220,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * in the future.
          * This field is optional. If this field is not empty, then it must be a
          * valid Prometheus label name.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -131,9 +131,6 @@ export class SecurityScanConfig extends pulumi.CustomResource {
     public readonly schedule!: pulumi.Output<outputs.compute.SecurityScanConfigSchedule | undefined>;
     /**
      * The starting URLs from which the scanner finds site pages.
-     *
-     *
-     * - - -
      */
     public readonly startingUrls!: pulumi.Output<string[]>;
     /**
@@ -244,9 +241,6 @@ export interface SecurityScanConfigState {
     schedule?: pulumi.Input<inputs.compute.SecurityScanConfigSchedule>;
     /**
      * The starting URLs from which the scanner finds site pages.
-     *
-     *
-     * - - -
      */
     startingUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -304,9 +298,6 @@ export interface SecurityScanConfigArgs {
     schedule?: pulumi.Input<inputs.compute.SecurityScanConfigSchedule>;
     /**
      * The starting URLs from which the scanner finds site pages.
-     *
-     *
-     * - - -
      */
     startingUrls: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -38,16 +38,12 @@ public final class EnterpriseKeyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Human-readable display name of this key. Modifiable by user.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
      * @return Human-readable display name of this key. Modifiable by user.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {
@@ -189,8 +185,6 @@ public final class EnterpriseKeyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName Human-readable display name of this key. Modifiable by user.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -201,8 +195,6 @@ public final class EnterpriseKeyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName Human-readable display name of this key. Modifiable by user.
-         * 
-         * ***
          * 
          * @return builder
          * 

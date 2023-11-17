@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// A user managed service account that will be used to write
         /// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
-        /// routing logs to a destination outside this sink's project. If not specified, a Logging service account
+        /// routing logs to a destination outside this sink's project. If not specified, a Logging service account 
         /// will automatically be generated.
         /// </summary>
         [Output("customWriterIdentity")]
@@ -53,14 +53,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-        /// 
-        /// - `storage.googleapis.com/[GCS_BUCKET]`
-        /// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
-        /// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-        /// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
-        /// - `logging.googleapis.com/projects/[PROJECT_ID]`
-        /// 
-        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Output("destination")]
         public Output<string> Destination { get; private set; } = null!;
@@ -168,7 +160,7 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// A user managed service account that will be used to write
         /// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
-        /// routing logs to a destination outside this sink's project. If not specified, a Logging service account
+        /// routing logs to a destination outside this sink's project. If not specified, a Logging service account 
         /// will automatically be generated.
         /// </summary>
         [Input("customWriterIdentity")]
@@ -183,14 +175,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-        /// 
-        /// - `storage.googleapis.com/[GCS_BUCKET]`
-        /// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
-        /// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-        /// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
-        /// - `logging.googleapis.com/projects/[PROJECT_ID]`
-        /// 
-        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
@@ -259,7 +243,7 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// A user managed service account that will be used to write
         /// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
-        /// routing logs to a destination outside this sink's project. If not specified, a Logging service account
+        /// routing logs to a destination outside this sink's project. If not specified, a Logging service account 
         /// will automatically be generated.
         /// </summary>
         [Input("customWriterIdentity")]
@@ -274,14 +258,6 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
-        /// 
-        /// - `storage.googleapis.com/[GCS_BUCKET]`
-        /// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
-        /// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-        /// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
-        /// - `logging.googleapis.com/projects/[PROJECT_ID]`
-        /// 
-        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }

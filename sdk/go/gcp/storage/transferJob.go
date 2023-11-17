@@ -185,8 +185,6 @@ type TransferJob struct {
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Transfer specification. Structure documented below.
-	//
-	// ***
 	TransferSpec TransferJobTransferSpecOutput `pulumi:"transferSpec"`
 }
 
@@ -248,8 +246,6 @@ type transferJobState struct {
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status *string `pulumi:"status"`
 	// Transfer specification. Structure documented below.
-	//
-	// ***
 	TransferSpec *TransferJobTransferSpec `pulumi:"transferSpec"`
 }
 
@@ -276,8 +272,6 @@ type TransferJobState struct {
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrInput
 	// Transfer specification. Structure documented below.
-	//
-	// ***
 	TransferSpec TransferJobTransferSpecPtrInput
 }
 
@@ -300,8 +294,6 @@ type transferJobArgs struct {
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status *string `pulumi:"status"`
 	// Transfer specification. Structure documented below.
-	//
-	// ***
 	TransferSpec TransferJobTransferSpec `pulumi:"transferSpec"`
 }
 
@@ -321,8 +313,6 @@ type TransferJobArgs struct {
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrInput
 	// Transfer specification. Structure documented below.
-	//
-	// ***
 	TransferSpec TransferJobTransferSpecInput
 }
 
@@ -465,8 +455,6 @@ func (o TransferJobOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Transfer specification. Structure documented below.
-//
-// ***
 func (o TransferJobOutput) TransferSpec() TransferJobTransferSpecOutput {
 	return o.ApplyT(func(v *TransferJob) TransferJobTransferSpecOutput { return v.TransferSpec }).(TransferJobTransferSpecOutput)
 }

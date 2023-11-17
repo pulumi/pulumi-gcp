@@ -162,9 +162,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The globally unique identifier of the Firebase Realtime Database instance.
         /// Instance IDs cannot be reused after deletion.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -264,9 +261,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The globally unique identifier of the Firebase Realtime Database instance.
         /// Instance IDs cannot be reused after deletion.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -320,9 +314,6 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The globally unique identifier of the Firebase Realtime Database instance.
         /// Instance IDs cannot be reused after deletion.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

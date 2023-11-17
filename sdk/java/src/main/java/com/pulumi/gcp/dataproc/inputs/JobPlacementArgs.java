@@ -15,9 +15,19 @@ public final class JobPlacementArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobPlacementArgs Empty = new JobPlacementArgs();
 
+    /**
+     * The name of the cluster where the job
+     * will be submitted.
+     * 
+     */
     @Import(name="clusterName", required=true)
     private Output<String> clusterName;
 
+    /**
+     * @return The name of the cluster where the job
+     * will be submitted.
+     * 
+     */
     public Output<String> clusterName() {
         return this.clusterName;
     }
@@ -54,11 +64,25 @@ public final class JobPlacementArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobPlacementArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clusterName The name of the cluster where the job
+         * will be submitted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterName(Output<String> clusterName) {
             $.clusterName = clusterName;
             return this;
         }
 
+        /**
+         * @param clusterName The name of the cluster where the job
+         * will be submitted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterName(String clusterName) {
             return clusterName(Output.of(clusterName));
         }

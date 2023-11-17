@@ -35,8 +35,7 @@ class AccessApprovalSettingsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
-        :param pulumi.Input[str] project: (Optional, Deprecated)
-               Project id.
+        :param pulumi.Input[str] project: Project id.
                
                > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         """
@@ -112,7 +111,6 @@ class AccessApprovalSettingsArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         Project id.
 
         > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
@@ -159,8 +157,7 @@ class _AccessApprovalSettingsState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
-        :param pulumi.Input[str] project: (Optional, Deprecated)
-               Project id.
+        :param pulumi.Input[str] project: Project id.
                
                > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
@@ -286,7 +283,6 @@ class _AccessApprovalSettingsState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         Project id.
 
         > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
@@ -412,8 +408,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
-        :param pulumi.Input[str] project: (Optional, Deprecated)
-               Project id.
+        :param pulumi.Input[str] project: Project id.
                
                > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
@@ -585,8 +580,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
-        :param pulumi.Input[str] project: (Optional, Deprecated)
-               Project id.
+        :param pulumi.Input[str] project: Project id.
                
                > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
@@ -677,7 +671,6 @@ class AccessApprovalSettings(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional, Deprecated)
         Project id.
 
         > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.

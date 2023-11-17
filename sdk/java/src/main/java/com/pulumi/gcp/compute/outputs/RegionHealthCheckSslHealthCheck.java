@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionHealthCheckSslHealthCheck {
     /**
-     * @return The TCP port number for the HTTP2 health check request.
+     * @return The TCP port number for the SSL health check request.
      * The default value is 443.
      * 
      */
@@ -56,7 +56,7 @@ public final class RegionHealthCheckSslHealthCheck {
 
     private RegionHealthCheckSslHealthCheck() {}
     /**
-     * @return The TCP port number for the HTTP2 health check request.
+     * @return The TCP port number for the SSL health check request.
      * The default value is 443.
      * 
      */

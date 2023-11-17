@@ -16,15 +16,15 @@ public final class InstanceShieldedInstanceConfigArgs extends com.pulumi.resourc
     public static final InstanceShieldedInstanceConfigArgs Empty = new InstanceShieldedInstanceConfigArgs();
 
     /**
-     * - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
-     *   **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
     @Import(name="enableIntegrityMonitoring")
     private @Nullable Output<Boolean> enableIntegrityMonitoring;
 
     /**
-     * @return - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+     * @return Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
@@ -33,15 +33,15 @@ public final class InstanceShieldedInstanceConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
-     *   **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
     @Import(name="enableSecureBoot")
     private @Nullable Output<Boolean> enableSecureBoot;
 
     /**
-     * @return - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+     * @return Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
@@ -50,15 +50,15 @@ public final class InstanceShieldedInstanceConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
-     *   **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
+     * Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+     * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
     @Import(name="enableVtpm")
     private @Nullable Output<Boolean> enableVtpm;
 
     /**
-     * @return - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+     * @return Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
@@ -93,7 +93,7 @@ public final class InstanceShieldedInstanceConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enableIntegrityMonitoring - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+         * @param enableIntegrityMonitoring Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
          * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
          * 
          * @return builder
@@ -105,7 +105,7 @@ public final class InstanceShieldedInstanceConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enableIntegrityMonitoring - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+         * @param enableIntegrityMonitoring Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
          * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
          * 
          * @return builder
@@ -116,7 +116,7 @@ public final class InstanceShieldedInstanceConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enableSecureBoot - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+         * @param enableSecureBoot Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
          * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
          * 
          * @return builder
@@ -128,7 +128,7 @@ public final class InstanceShieldedInstanceConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enableSecureBoot - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+         * @param enableSecureBoot Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
          * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
          * 
          * @return builder
@@ -139,7 +139,7 @@ public final class InstanceShieldedInstanceConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enableVtpm - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+         * @param enableVtpm Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
          * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
          * 
          * @return builder
@@ -151,7 +151,7 @@ public final class InstanceShieldedInstanceConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enableVtpm - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+         * @param enableVtpm Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
          * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
          * 
          * @return builder

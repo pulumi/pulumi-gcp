@@ -23,8 +23,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * This field is optional. If this field is not empty, then it must be a
      * valid Prometheus label name.
      * 
-     * ***
-     * 
      */
     private @Nullable String alertRule;
     /**
@@ -84,8 +82,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * in the future.
      * This field is optional. If this field is not empty, then it must be a
      * valid Prometheus label name.
-     * 
-     * ***
      * 
      */
     public Optional<String> alertRule() {

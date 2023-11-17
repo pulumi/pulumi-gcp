@@ -139,16 +139,12 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
     /**
      * The name of the location this connection profile is located in.
      * 
-     * ***
-     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The name of the location this connection profile is located in.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -468,8 +464,6 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
         /**
          * @param location The name of the location this connection profile is located in.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -480,8 +474,6 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
 
         /**
          * @param location The name of the location this connection profile is located in.
-         * 
-         * ***
          * 
          * @return builder
          * 

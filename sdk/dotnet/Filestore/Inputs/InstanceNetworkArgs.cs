@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.Filestore.Inputs
         /// DIRECT_PEERING.
         /// Default value is `DIRECT_PEERING`.
         /// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("connectMode")]
         public Input<string>? ConnectMode { get; set; }

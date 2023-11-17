@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class UserPasswordPolicyStatus {
     /**
-     * @return If true, user does not have login privileges.
+     * @return (read only) If true, user does not have login privileges.
      * 
      */
     private @Nullable Boolean locked;
     /**
-     * @return Password expiration duration with one week grace period.
+     * @return (read only) Password expiration duration with one week grace period.
      * 
      */
     private @Nullable String passwordExpirationTime;
 
     private UserPasswordPolicyStatus() {}
     /**
-     * @return If true, user does not have login privileges.
+     * @return (read only) If true, user does not have login privileges.
      * 
      */
     public Optional<Boolean> locked() {
         return Optional.ofNullable(this.locked);
     }
     /**
-     * @return Password expiration duration with one week grace period.
+     * @return (read only) Password expiration duration with one week grace period.
      * 
      */
     public Optional<String> passwordExpirationTime() {

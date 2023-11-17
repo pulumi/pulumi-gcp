@@ -43,8 +43,6 @@ export function getAddress(args: GetAddressArgs, opts?: pulumi.InvokeOptions): P
 export interface GetAddressArgs {
     /**
      * A unique name for the resource, required by GCE.
-     *
-     * - - -
      */
     name: string;
     /**
@@ -123,8 +121,6 @@ export function getAddressOutput(args: GetAddressOutputArgs, opts?: pulumi.Invok
 export interface GetAddressOutputArgs {
     /**
      * A unique name for the resource, required by GCE.
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

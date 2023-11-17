@@ -392,9 +392,6 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -564,9 +561,6 @@ export interface CertificateState {
     /**
      * Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -652,9 +646,6 @@ export interface CertificateArgs {
     /**
      * Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

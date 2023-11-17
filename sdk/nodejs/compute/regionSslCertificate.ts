@@ -163,9 +163,6 @@ export class RegionSslCertificate extends pulumi.CustomResource {
     /**
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
-     *
-     *
-     * - - -
      */
     public readonly privateKey!: pulumi.Output<string>;
     /**
@@ -281,9 +278,6 @@ export interface RegionSslCertificateState {
     /**
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
-     *
-     *
-     * - - -
      */
     privateKey?: pulumi.Input<string>;
     /**
@@ -337,9 +331,6 @@ export interface RegionSslCertificateArgs {
     /**
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
-     *
-     *
-     * - - -
      */
     privateKey: pulumi.Input<string>;
     /**

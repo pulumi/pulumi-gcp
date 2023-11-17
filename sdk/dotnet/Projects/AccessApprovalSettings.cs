@@ -189,7 +189,6 @@ namespace Pulumi.Gcp.Projects
         public Output<ImmutableArray<string>> NotificationEmails { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// Project id.
         /// 
         /// &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
@@ -288,7 +287,6 @@ namespace Pulumi.Gcp.Projects
         }
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// Project id.
         /// 
         /// &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
@@ -376,7 +374,6 @@ namespace Pulumi.Gcp.Projects
         }
 
         /// <summary>
-        /// (Optional, Deprecated)
         /// Project id.
         /// 
         /// &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.

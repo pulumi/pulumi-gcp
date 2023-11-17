@@ -18,8 +18,6 @@ public final class AppConnectionApplicationEndpoint {
     /**
      * @return Port of the remote application endpoint.
      * 
-     * ***
-     * 
      */
     private Integer port;
 
@@ -33,8 +31,6 @@ public final class AppConnectionApplicationEndpoint {
     }
     /**
      * @return Port of the remote application endpoint.
-     * 
-     * ***
      * 
      */
     public Integer port() {

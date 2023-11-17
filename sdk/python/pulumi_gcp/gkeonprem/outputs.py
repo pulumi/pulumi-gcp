@@ -3855,8 +3855,6 @@ class BareMetalClusterStorageLvpNodeMountsConfig(dict):
         """
         :param str path: The host machine path.
         :param str storage_class: The StorageClass name that PVs will be created with.
-               
-               - - -
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "storage_class", storage_class)
@@ -3874,8 +3872,6 @@ class BareMetalClusterStorageLvpNodeMountsConfig(dict):
     def storage_class(self) -> str:
         """
         The StorageClass name that PVs will be created with.
-
-        - - -
         """
         return pulumi.get(self, "storage_class")
 
@@ -4319,8 +4315,6 @@ class BareMetalNodePoolNodePoolConfigTaint(dict):
         """
         :param str effect: Specifies the nodes operating system (default: LINUX).
                Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-               
-               - - -
         :param str key: Key associated with the effect.
         :param str value: Value associated with the effect.
         """
@@ -4337,8 +4331,6 @@ class BareMetalNodePoolNodePoolConfigTaint(dict):
         """
         Specifies the nodes operating system (default: LINUX).
         Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-
-        - - -
         """
         return pulumi.get(self, "effect")
 
@@ -4773,8 +4765,6 @@ class VMwareClusterControlPlaneNodeVsphereConfig(dict):
                The Vsphere datastore used by the Control Plane Node.
         :param str storage_policy_name: (Output)
                The Vsphere storage policy used by the control plane Node.
-               
-               - - -
         """
         if datastore is not None:
             pulumi.set(__self__, "datastore", datastore)
@@ -4796,8 +4786,6 @@ class VMwareClusterControlPlaneNodeVsphereConfig(dict):
         """
         (Output)
         The Vsphere storage policy used by the control plane Node.
-
-        - - -
         """
         return pulumi.get(self, "storage_policy_name")
 
@@ -5001,8 +4989,7 @@ class VMwareClusterLoadBalancerF5Config(dict):
                  partition: Optional[str] = None,
                  snat_pool: Optional[str] = None):
         """
-        :param str address: (Output)
-               The vCenter IP address.
+        :param str address: The load balancer's IP address.
         :param str partition: he preexisting partition to be used by the load balancer. T
                his partition is usually created for the admin cluster for example:
                'my-f5-admin-partition'.
@@ -5019,8 +5006,7 @@ class VMwareClusterLoadBalancerF5Config(dict):
     @pulumi.getter
     def address(self) -> Optional[str]:
         """
-        (Output)
-        The vCenter IP address.
+        The load balancer's IP address.
         """
         return pulumi.get(self, "address")
 
@@ -6489,7 +6475,6 @@ class VMwareNodePoolConfigVsphereConfig(dict):
                Tags to apply to VMs.
                Structure is documented below.
                
-               
                <a name="nested_tags"></a>The `tags` block contains:
         """
         if datastore is not None:
@@ -6514,7 +6499,6 @@ class VMwareNodePoolConfigVsphereConfig(dict):
         Tags to apply to VMs.
         Structure is documented below.
 
-
         <a name="nested_tags"></a>The `tags` block contains:
         """
         return pulumi.get(self, "tags")
@@ -6530,8 +6514,6 @@ class VMwareNodePoolConfigVsphereConfigTag(dict):
                The Vsphere tag category.
         :param str tag: (Output)
                The Vsphere tag name.
-               
-               - - -
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -6553,8 +6535,6 @@ class VMwareNodePoolConfigVsphereConfigTag(dict):
         """
         (Output)
         The Vsphere tag name.
-
-        - - -
         """
         return pulumi.get(self, "tag")
 

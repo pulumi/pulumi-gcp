@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// The value of grpcServiceName has the following meanings by convention:
         /// - Empty serviceName means the overall status of all services at the backend.
         /// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
-        /// The grpcServiceName can only be ASCII.
+        ///   The grpcServiceName can only be ASCII.
         /// </summary>
         [Input("grpcServiceName")]
         public Input<string>? GrpcServiceName { get; set; }

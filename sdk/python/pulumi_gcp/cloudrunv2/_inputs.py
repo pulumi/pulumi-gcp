@@ -1034,6 +1034,8 @@ class JobTemplateTemplateVolumeArgs:
         :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
+        :param pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs'] empty_dir: Ephemeral storage used as a shared volume.
+               Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
         """
@@ -1073,6 +1075,10 @@ class JobTemplateTemplateVolumeArgs:
     @property
     @pulumi.getter(name="emptyDir")
     def empty_dir(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs']]:
+        """
+        Ephemeral storage used as a shared volume.
+        Structure is documented below.
+        """
         return pulumi.get(self, "empty_dir")
 
     @empty_dir.setter
@@ -1341,8 +1347,6 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
                network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
                subnetwork with the same name with the network will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags applied to this Cloud Run job.
-               
-               - - -
         """
         if network is not None:
             pulumi.set(__self__, "network", network)
@@ -1384,8 +1388,6 @@ class JobTemplateTemplateVpcAccessNetworkInterfaceArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Network tags applied to this Cloud Run job.
-
-        - - -
         """
         return pulumi.get(self, "tags")
 
@@ -2075,6 +2077,7 @@ class ServiceTemplateContainerArgs:
         :param pulumi.Input[str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] depends_ons: Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgs']]] envs: List of environment variables to set in the container.
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -2154,6 +2157,9 @@ class ServiceTemplateContainerArgs:
     @property
     @pulumi.getter(name="dependsOns")
     def depends_ons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+        """
         return pulumi.get(self, "depends_ons")
 
     @depends_ons.setter
@@ -3105,6 +3111,8 @@ class ServiceTemplateVolumeArgs:
         :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
+        :param pulumi.Input['ServiceTemplateVolumeEmptyDirArgs'] empty_dir: Ephemeral storage used as a shared volume.
+               Structure is documented below.
         :param pulumi.Input['ServiceTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
         """
@@ -3144,6 +3152,10 @@ class ServiceTemplateVolumeArgs:
     @property
     @pulumi.getter(name="emptyDir")
     def empty_dir(self) -> Optional[pulumi.Input['ServiceTemplateVolumeEmptyDirArgs']]:
+        """
+        Ephemeral storage used as a shared volume.
+        Structure is documented below.
+        """
         return pulumi.get(self, "empty_dir")
 
     @empty_dir.setter
@@ -3197,8 +3209,6 @@ class ServiceTemplateVolumeEmptyDirArgs:
                Default value is `MEMORY`.
                Possible values are: `MEMORY`.
         :param pulumi.Input[str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-               
-               - - -
         """
         if medium is not None:
             pulumi.set(__self__, "medium", medium)
@@ -3224,8 +3234,6 @@ class ServiceTemplateVolumeEmptyDirArgs:
     def size_limit(self) -> Optional[pulumi.Input[str]]:
         """
         Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-
-        - - -
         """
         return pulumi.get(self, "size_limit")
 

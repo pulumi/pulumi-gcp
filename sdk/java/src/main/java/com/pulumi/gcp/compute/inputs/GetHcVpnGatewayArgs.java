@@ -18,16 +18,12 @@ public final class GetHcVpnGatewayArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The name of the forwarding rule.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return The name of the forwarding rule.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {
@@ -97,8 +93,6 @@ public final class GetHcVpnGatewayArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param name The name of the forwarding rule.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -109,8 +103,6 @@ public final class GetHcVpnGatewayArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name The name of the forwarding rule.
-         * 
-         * ***
          * 
          * @return builder
          * 

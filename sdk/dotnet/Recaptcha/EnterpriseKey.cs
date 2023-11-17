@@ -208,10 +208,6 @@ namespace Pulumi.Gcp.Recaptcha
 
         /// <summary>
         /// Human-readable display name of this key. Modifiable by user.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -326,10 +322,6 @@ namespace Pulumi.Gcp.Recaptcha
 
         /// <summary>
         /// Human-readable display name of this key. Modifiable by user.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -395,10 +387,6 @@ namespace Pulumi.Gcp.Recaptcha
 
         /// <summary>
         /// Human-readable display name of this key. Modifiable by user.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

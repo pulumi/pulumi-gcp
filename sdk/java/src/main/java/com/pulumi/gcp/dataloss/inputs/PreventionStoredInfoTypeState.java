@@ -99,12 +99,6 @@ public final class PreventionStoredInfoTypeState extends com.pulumi.resources.Re
 
     /**
      * The parent of the info type in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     @Import(name="parent")
@@ -112,12 +106,6 @@ public final class PreventionStoredInfoTypeState extends com.pulumi.resources.Re
 
     /**
      * @return The parent of the info type in any of the following formats:
-     * * `projects/{{project}}`
-     * * `projects/{{project}}/locations/{{location}}`
-     * * `organizations/{{organization_id}}`
-     * * `organizations/{{organization_id}}/locations/{{location}}`
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -302,12 +290,6 @@ public final class PreventionStoredInfoTypeState extends com.pulumi.resources.Re
 
         /**
          * @param parent The parent of the info type in any of the following formats:
-         * * `projects/{{project}}`
-         * * `projects/{{project}}/locations/{{location}}`
-         * * `organizations/{{organization_id}}`
-         * * `organizations/{{organization_id}}/locations/{{location}}`
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -319,12 +301,6 @@ public final class PreventionStoredInfoTypeState extends com.pulumi.resources.Re
 
         /**
          * @param parent The parent of the info type in any of the following formats:
-         * * `projects/{{project}}`
-         * * `projects/{{project}}/locations/{{location}}`
-         * * `organizations/{{organization_id}}`
-         * * `organizations/{{organization_id}}/locations/{{location}}`
-         * 
-         * ***
          * 
          * @return builder
          * 

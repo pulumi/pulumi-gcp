@@ -134,9 +134,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// The ID to use for the schema, which will become the final component of the schema's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -216,9 +213,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// The ID to use for the schema, which will become the final component of the schema's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -260,9 +254,6 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// The ID to use for the schema, which will become the final component of the schema's resource name.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

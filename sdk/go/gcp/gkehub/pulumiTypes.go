@@ -1841,10 +1841,10 @@ func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Enabled() pulumi.Boo
 }
 
 type FeatureMembershipConfigmanagementConfigSync struct {
-	// (Optional) Structure is documented below.
+	// Structure is documented below.
 	Git                           *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
 	MetricsGcpServiceAccountEmail *string                                         `pulumi:"metricsGcpServiceAccountEmail"`
-	// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+	// Supported from ACM versions 1.12.0 onwards. Structure is documented below.
 	//
 	// Use either `git` or `oci` config option.
 	Oci *FeatureMembershipConfigmanagementConfigSyncOci `pulumi:"oci"`
@@ -1866,10 +1866,10 @@ type FeatureMembershipConfigmanagementConfigSyncInput interface {
 }
 
 type FeatureMembershipConfigmanagementConfigSyncArgs struct {
-	// (Optional) Structure is documented below.
+	// Structure is documented below.
 	Git                           FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
 	MetricsGcpServiceAccountEmail pulumi.StringPtrInput                                  `pulumi:"metricsGcpServiceAccountEmail"`
-	// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+	// Supported from ACM versions 1.12.0 onwards. Structure is documented below.
 	//
 	// Use either `git` or `oci` config option.
 	Oci FeatureMembershipConfigmanagementConfigSyncOciPtrInput `pulumi:"oci"`
@@ -1956,7 +1956,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) ToFeatureMembershipCo
 	}).(FeatureMembershipConfigmanagementConfigSyncPtrOutput)
 }
 
-// (Optional) Structure is documented below.
+// Structure is documented below.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) Git() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncGit {
 		return v.Git
@@ -1967,7 +1967,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) MetricsGcpServiceAcco
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *string { return v.MetricsGcpServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+// Supported from ACM versions 1.12.0 onwards. Structure is documented below.
 //
 // Use either `git` or `oci` config option.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) Oci() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
@@ -2010,7 +2010,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Elem() FeatureMemb
 	}).(FeatureMembershipConfigmanagementConfigSyncOutput)
 }
 
-// (Optional) Structure is documented below.
+// Structure is documented below.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Git() FeatureMembershipConfigmanagementConfigSyncGitPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncGit {
 		if v == nil {
@@ -2029,7 +2029,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) MetricsGcpServiceA
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+// Supported from ACM versions 1.12.0 onwards. Structure is documented below.
 //
 // Use either `git` or `oci` config option.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Oci() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
@@ -5454,8 +5454,6 @@ func (o MembershipIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type MembershipRbacRoleBindingRole struct {
 	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
 	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-	//
-	// ***
 	PredefinedRole string `pulumi:"predefinedRole"`
 }
 
@@ -5473,8 +5471,6 @@ type MembershipRbacRoleBindingRoleInput interface {
 type MembershipRbacRoleBindingRoleArgs struct {
 	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
 	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-	//
-	// ***
 	PredefinedRole pulumi.StringInput `pulumi:"predefinedRole"`
 }
 
@@ -5557,8 +5553,6 @@ func (o MembershipRbacRoleBindingRoleOutput) ToMembershipRbacRoleBindingRolePtrO
 
 // PredefinedRole is an ENUM representation of the default Kubernetes Roles
 // Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-//
-// ***
 func (o MembershipRbacRoleBindingRoleOutput) PredefinedRole() pulumi.StringOutput {
 	return o.ApplyT(func(v MembershipRbacRoleBindingRole) string { return v.PredefinedRole }).(pulumi.StringOutput)
 }
@@ -5589,8 +5583,6 @@ func (o MembershipRbacRoleBindingRolePtrOutput) Elem() MembershipRbacRoleBinding
 
 // PredefinedRole is an ENUM representation of the default Kubernetes Roles
 // Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
-//
-// ***
 func (o MembershipRbacRoleBindingRolePtrOutput) PredefinedRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MembershipRbacRoleBindingRole) *string {
 		if v == nil {
@@ -6129,8 +6121,6 @@ func (o ScopeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type ScopeRbacRoleBindingRole struct {
 	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
 	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-	//
-	// ***
 	PredefinedRole *string `pulumi:"predefinedRole"`
 }
 
@@ -6148,8 +6138,6 @@ type ScopeRbacRoleBindingRoleInput interface {
 type ScopeRbacRoleBindingRoleArgs struct {
 	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
 	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-	//
-	// ***
 	PredefinedRole pulumi.StringPtrInput `pulumi:"predefinedRole"`
 }
 
@@ -6232,8 +6220,6 @@ func (o ScopeRbacRoleBindingRoleOutput) ToScopeRbacRoleBindingRolePtrOutputWithC
 
 // PredefinedRole is an ENUM representation of the default Kubernetes Roles
 // Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-//
-// ***
 func (o ScopeRbacRoleBindingRoleOutput) PredefinedRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScopeRbacRoleBindingRole) *string { return v.PredefinedRole }).(pulumi.StringPtrOutput)
 }
@@ -6264,8 +6250,6 @@ func (o ScopeRbacRoleBindingRolePtrOutput) Elem() ScopeRbacRoleBindingRoleOutput
 
 // PredefinedRole is an ENUM representation of the default Kubernetes Roles
 // Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
-//
-// ***
 func (o ScopeRbacRoleBindingRolePtrOutput) PredefinedRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScopeRbacRoleBindingRole) *string {
 		if v == nil {

@@ -269,7 +269,7 @@ import (
 type KeyRingIAMMember struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition KeyRingIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the key ring's IAM policy.
@@ -278,15 +278,6 @@ type KeyRingIAMMember struct {
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	KeyRingId pulumi.StringOutput `pulumi:"keyRingId"`
 	Member    pulumi.StringOutput `pulumi:"member"`
 	// The role that should be applied. Only one
@@ -334,7 +325,7 @@ func GetKeyRingIAMMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyRingIAMMember resources.
 type keyRingIAMMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *KeyRingIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the key ring's IAM policy.
@@ -343,15 +334,6 @@ type keyRingIAMMemberState struct {
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	KeyRingId *string `pulumi:"keyRingId"`
 	Member    *string `pulumi:"member"`
 	// The role that should be applied. Only one
@@ -361,7 +343,7 @@ type keyRingIAMMemberState struct {
 }
 
 type KeyRingIAMMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition KeyRingIAMMemberConditionPtrInput
 	// (Computed) The etag of the key ring's IAM policy.
@@ -370,15 +352,6 @@ type KeyRingIAMMemberState struct {
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	KeyRingId pulumi.StringPtrInput
 	Member    pulumi.StringPtrInput
 	// The role that should be applied. Only one
@@ -392,22 +365,13 @@ func (KeyRingIAMMemberState) ElementType() reflect.Type {
 }
 
 type keyRingIAMMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *KeyRingIAMMemberCondition `pulumi:"condition"`
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	KeyRingId string `pulumi:"keyRingId"`
 	Member    string `pulumi:"member"`
 	// The role that should be applied. Only one
@@ -418,22 +382,13 @@ type keyRingIAMMemberArgs struct {
 
 // The set of arguments for constructing a KeyRingIAMMember resource.
 type KeyRingIAMMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition KeyRingIAMMemberConditionPtrInput
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	KeyRingId pulumi.StringInput
 	Member    pulumi.StringInput
 	// The role that should be applied. Only one
@@ -529,7 +484,7 @@ func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberOutputWithContext(ctx context.
 	return o
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o KeyRingIAMMemberOutput) Condition() KeyRingIAMMemberConditionPtrOutput {
 	return o.ApplyT(func(v *KeyRingIAMMember) KeyRingIAMMemberConditionPtrOutput { return v.Condition }).(KeyRingIAMMemberConditionPtrOutput)
@@ -544,15 +499,6 @@ func (o KeyRingIAMMemberOutput) Etag() pulumi.StringOutput {
 // `{project_id}/{location_name}/{key_ring_name}` or
 // `{location_name}/{key_ring_name}`. In the second form, the provider's
 // project setting will be used as a fallback.
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o KeyRingIAMMemberOutput) KeyRingId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyRingIAMMember) pulumi.StringOutput { return v.KeyRingId }).(pulumi.StringOutput)
 }

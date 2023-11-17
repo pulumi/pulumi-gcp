@@ -85,8 +85,6 @@ namespace Pulumi.Gcp.CloudBuild
     {
         /// <summary>
         /// The Cloud Build location for the trigger.
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -113,8 +111,6 @@ namespace Pulumi.Gcp.CloudBuild
     {
         /// <summary>
         /// The Cloud Build location for the trigger.
-        /// 
-        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

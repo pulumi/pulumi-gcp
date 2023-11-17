@@ -89,8 +89,6 @@ type Fulfillment struct {
 	pulumi.CustomResourceState
 
 	// The human-readable name of the fulfillment, unique within the agent.
-	//
-	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Whether fulfillment is enabled.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -142,8 +140,6 @@ func GetFulfillment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Fulfillment resources.
 type fulfillmentState struct {
 	// The human-readable name of the fulfillment, unique within the agent.
-	//
-	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// Whether fulfillment is enabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -163,8 +159,6 @@ type fulfillmentState struct {
 
 type FulfillmentState struct {
 	// The human-readable name of the fulfillment, unique within the agent.
-	//
-	// ***
 	DisplayName pulumi.StringPtrInput
 	// Whether fulfillment is enabled.
 	Enabled pulumi.BoolPtrInput
@@ -188,8 +182,6 @@ func (FulfillmentState) ElementType() reflect.Type {
 
 type fulfillmentArgs struct {
 	// The human-readable name of the fulfillment, unique within the agent.
-	//
-	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Whether fulfillment is enabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -207,8 +199,6 @@ type fulfillmentArgs struct {
 // The set of arguments for constructing a Fulfillment resource.
 type FulfillmentArgs struct {
 	// The human-readable name of the fulfillment, unique within the agent.
-	//
-	// ***
 	DisplayName pulumi.StringInput
 	// Whether fulfillment is enabled.
 	Enabled pulumi.BoolPtrInput
@@ -311,8 +301,6 @@ func (o FulfillmentOutput) ToFulfillmentOutputWithContext(ctx context.Context) F
 }
 
 // The human-readable name of the fulfillment, unique within the agent.
-//
-// ***
 func (o FulfillmentOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fulfillment) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

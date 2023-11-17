@@ -31,7 +31,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The list of Compute Engine zones where node pool nodes associated 
         /// with a Dataproc on GKE virtual cluster will be located.
-        /// - - -
         /// </summary>
         public InputList<string> Locations
         {

@@ -270,10 +270,6 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -457,10 +453,6 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -618,10 +610,6 @@ namespace Pulumi.Gcp.CloudDeploy
 
         /// <summary>
         /// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -90,9 +90,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// The id of the entry group to create. The id must begin with a letter or underscore,
         /// contain only English letters, numbers and underscores, and be at most 64 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("entryGroupId")]
         public Output<string> EntryGroupId { get; private set; } = null!;
@@ -177,9 +174,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// The id of the entry group to create. The id must begin with a letter or underscore,
         /// contain only English letters, numbers and underscores, and be at most 64 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entryGroupId", required: true)]
         public Input<string> EntryGroupId { get; set; } = null!;
@@ -220,9 +214,6 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// The id of the entry group to create. The id must begin with a letter or underscore,
         /// contain only English letters, numbers and underscores, and be at most 64 characters.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("entryGroupId")]
         public Input<string>? EntryGroupId { get; set; }

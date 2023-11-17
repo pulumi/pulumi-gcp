@@ -116,9 +116,6 @@ export class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
 
     /**
      * The name of the regional disk in which the resource policies are attached to.
-     *
-     *
-     * - - -
      */
     public readonly disk!: pulumi.Output<string>;
     /**
@@ -174,9 +171,6 @@ export class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
 export interface RegionDiskResourcePolicyAttachmentState {
     /**
      * The name of the regional disk in which the resource policies are attached to.
-     *
-     *
-     * - - -
      */
     disk?: pulumi.Input<string>;
     /**
@@ -201,9 +195,6 @@ export interface RegionDiskResourcePolicyAttachmentState {
 export interface RegionDiskResourcePolicyAttachmentArgs {
     /**
      * The name of the regional disk in which the resource policies are attached to.
-     *
-     *
-     * - - -
      */
     disk: pulumi.Input<string>;
     /**

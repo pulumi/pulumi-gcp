@@ -13,12 +13,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
     /**
-     * @return Database name.
+     * @return Database name.`database` -
+     * (Required)
+     * Database name.
      * 
      */
     private String database;
     /**
      * @return Tables in the database.
+     * Structure is documented below.`mysql_tables` -
+     * (Optional)
+     * Tables in the database.
      * Structure is documented below.
      * 
      */
@@ -26,7 +31,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
 
     private StreamBackfillAllMysqlExcludedObjectsMysqlDatabase() {}
     /**
-     * @return Database name.
+     * @return Database name.`database` -
+     * (Required)
+     * Database name.
      * 
      */
     public String database() {
@@ -34,6 +41,9 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
     }
     /**
      * @return Tables in the database.
+     * Structure is documented below.`mysql_tables` -
+     * (Optional)
+     * Tables in the database.
      * Structure is documented below.
      * 
      */

@@ -45,7 +45,7 @@ public final class SecurityPolicyRule {
      */
     private SecurityPolicyRuleMatch match;
     /**
-     * @return ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+     * @return Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
      * 
      */
     private @Nullable SecurityPolicyRulePreconfiguredWafConfig preconfiguredWafConfig;
@@ -108,7 +108,7 @@ public final class SecurityPolicyRule {
         return this.match;
     }
     /**
-     * @return ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+     * @return Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
      * 
      */
     public Optional<SecurityPolicyRulePreconfiguredWafConfig> preconfiguredWafConfig() {

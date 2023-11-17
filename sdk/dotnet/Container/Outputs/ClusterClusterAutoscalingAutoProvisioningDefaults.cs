@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterClusterAutoscalingAutoProvisioningDefaults
     {
         /// <summary>
-        /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
         /// </summary>
         public readonly string? BootDiskKmsKey;
         /// <summary>
@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
+        /// The image type to use for this node. Note that changing the image type
+        /// will delete and recreate all nodes in the node pool.
         /// </summary>
         public readonly string? ImageType;
         /// <summary>
@@ -46,7 +47,8 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
         /// <summary>
-        /// The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
+        /// The service account to be used by the Node VMs.
+        /// If not specified, the "default" service account is used.
         /// </summary>
         public readonly string? ServiceAccount;
         /// <summary>

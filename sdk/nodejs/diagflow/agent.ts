@@ -93,7 +93,7 @@ export class Agent extends pulumi.CustomResource {
      * * API_VERSION_V1: Legacy V1 API.
      * * API_VERSION_V2: V2 API.
      * * API_VERSION_V2_BETA_1: V2beta1 API.
-     * Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
+     *   Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
      */
     public readonly apiVersion!: pulumi.Output<string>;
     /**
@@ -135,10 +135,10 @@ export class Agent extends pulumi.CustomResource {
     /**
      * Determines how intents are detected from user queries.
      * * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
-     * syntax and composite entities.
+     *   syntax and composite entities.
      * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-     * using @sys.any or very large developer entities.
-     * Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
+     *   using @sys.any or very large developer entities.
+     *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      */
     public readonly matchMode!: pulumi.Output<string>;
     /**
@@ -155,16 +155,13 @@ export class Agent extends pulumi.CustomResource {
      * * TIER_STANDARD: Standard tier.
      * * TIER_ENTERPRISE: Enterprise tier (Essentials).
      * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-     * NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     * the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+     *   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
+     *   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
      */
     public readonly tier!: pulumi.Output<string | undefined>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
-     *
-     *
-     * - - -
      */
     public readonly timeZone!: pulumi.Output<string>;
 
@@ -235,7 +232,7 @@ export interface AgentState {
      * * API_VERSION_V1: Legacy V1 API.
      * * API_VERSION_V2: V2 API.
      * * API_VERSION_V2_BETA_1: V2beta1 API.
-     * Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
+     *   Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
      */
     apiVersion?: pulumi.Input<string>;
     /**
@@ -277,10 +274,10 @@ export interface AgentState {
     /**
      * Determines how intents are detected from user queries.
      * * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
-     * syntax and composite entities.
+     *   syntax and composite entities.
      * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-     * using @sys.any or very large developer entities.
-     * Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
+     *   using @sys.any or very large developer entities.
+     *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      */
     matchMode?: pulumi.Input<string>;
     /**
@@ -297,16 +294,13 @@ export interface AgentState {
      * * TIER_STANDARD: Standard tier.
      * * TIER_ENTERPRISE: Enterprise tier (Essentials).
      * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-     * NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     * the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+     *   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
+     *   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
      */
     tier?: pulumi.Input<string>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
-     *
-     *
-     * - - -
      */
     timeZone?: pulumi.Input<string>;
 }
@@ -322,7 +316,7 @@ export interface AgentArgs {
      * * API_VERSION_V1: Legacy V1 API.
      * * API_VERSION_V2: V2 API.
      * * API_VERSION_V2_BETA_1: V2beta1 API.
-     * Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
+     *   Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
      */
     apiVersion?: pulumi.Input<string>;
     /**
@@ -359,10 +353,10 @@ export interface AgentArgs {
     /**
      * Determines how intents are detected from user queries.
      * * MATCH_MODE_HYBRID: Best for agents with a small number of examples in intents and/or wide use of templates
-     * syntax and composite entities.
+     *   syntax and composite entities.
      * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
-     * using @sys.any or very large developer entities.
-     * Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
+     *   using @sys.any or very large developer entities.
+     *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      */
     matchMode?: pulumi.Input<string>;
     /**
@@ -379,16 +373,13 @@ export interface AgentArgs {
      * * TIER_STANDARD: Standard tier.
      * * TIER_ENTERPRISE: Enterprise tier (Essentials).
      * * TIER_ENTERPRISE_PLUS: Enterprise tier (Plus).
-     * NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
-     * the the provider state and Dialogflow if the agent tier is changed outside of the provider.
+     *   NOTE: Due to consistency issues, the provider will not read this field from the API. Drift is possible between
+     *   the the provider state and Dialogflow if the agent tier is changed outside of the provider.
      */
     tier?: pulumi.Input<string>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
-     *
-     *
-     * - - -
      */
     timeZone: pulumi.Input<string>;
 }

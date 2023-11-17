@@ -38,7 +38,7 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
      */
     private @Nullable Integer maxUnavailablePercent;
     /**
-     * @return ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+     * @return , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
      * 
      */
     private @Nullable Integer minReadySec;
@@ -54,7 +54,6 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
     private @Nullable String mostDisruptiveAllowedAction;
     /**
      * @return , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-     * ***
      * 
      */
     private @Nullable String replacementMethod;
@@ -101,7 +100,7 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
         return Optional.ofNullable(this.maxUnavailablePercent);
     }
     /**
-     * @return ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+     * @return , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
      * 
      */
     public Optional<Integer> minReadySec() {
@@ -123,7 +122,6 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
     }
     /**
      * @return , The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
-     * ***
      * 
      */
     public Optional<String> replacementMethod() {

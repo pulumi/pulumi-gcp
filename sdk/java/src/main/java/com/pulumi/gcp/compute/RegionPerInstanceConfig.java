@@ -276,16 +276,12 @@ public class RegionPerInstanceConfig extends com.pulumi.resources.CustomResource
     /**
      * The region instance group manager this instance config is part of.
      * 
-     * ***
-     * 
      */
     @Export(name="regionInstanceGroupManager", refs={String.class}, tree="[0]")
     private Output<String> regionInstanceGroupManager;
 
     /**
      * @return The region instance group manager this instance config is part of.
-     * 
-     * ***
      * 
      */
     public Output<String> regionInstanceGroupManager() {

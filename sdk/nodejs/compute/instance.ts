@@ -242,22 +242,18 @@ export class Instance extends pulumi.CustomResource {
     public readonly minCpuPlatform!: pulumi.Output<string>;
     /**
      * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
+     * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+     * is "External IPv6".
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
-     *
-     * - - -
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.compute.InstanceNetworkInterface[]>;
     /**
-     * Configures network performance settings for the instance. Structure is
-     * documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-     * in order for this setting to take effect.
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its
+     * default network performance configuration.
      */
     public readonly networkPerformanceConfig!: pulumi.Output<outputs.compute.InstanceNetworkPerformanceConfig | undefined>;
     /**
@@ -280,7 +276,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceReservationAffinity>;
     /**
-     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
     public readonly resourcePolicies!: pulumi.Output<string | undefined>;
     /**
@@ -571,22 +567,18 @@ export interface InstanceState {
     minCpuPlatform?: pulumi.Input<string>;
     /**
      * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
+     * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+     * is "External IPv6".
      */
     name?: pulumi.Input<string>;
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
-     *
-     * - - -
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
     /**
-     * Configures network performance settings for the instance. Structure is
-     * documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-     * in order for this setting to take effect.
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its
+     * default network performance configuration.
      */
     networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceNetworkPerformanceConfig>;
     /**
@@ -609,7 +601,7 @@ export interface InstanceState {
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceReservationAffinity>;
     /**
-     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
     resourcePolicies?: pulumi.Input<string>;
     /**
@@ -767,22 +759,18 @@ export interface InstanceArgs {
     minCpuPlatform?: pulumi.Input<string>;
     /**
      * A unique name for the resource, required by GCE.
-     * Changing this forces a new resource to be created.
+     * Changing this forces a new resource to be created.`name` - (Optional) The name of this access configuration. In ipv6AccessConfigs, the recommended name
+     * is "External IPv6".
      */
     name?: pulumi.Input<string>;
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
-     *
-     * - - -
      */
     networkInterfaces: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
     /**
-     * Configures network performance settings for the instance. Structure is
-     * documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
-     * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
-     * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
-     * in order for this setting to take effect.
+     * Configures network performance settings for the instance. If not specified, the instance will be created with its
+     * default network performance configuration.
      */
     networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceNetworkPerformanceConfig>;
     /**
@@ -801,7 +789,7 @@ export interface InstanceArgs {
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceReservationAffinity>;
     /**
-     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
     resourcePolicies?: pulumi.Input<string>;
     /**

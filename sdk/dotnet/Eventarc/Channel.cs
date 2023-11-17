@@ -116,10 +116,6 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// Required. The resource name of the channel. Must be unique within the location on the project.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -220,10 +216,6 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// Required. The resource name of the channel. Must be unique within the location on the project.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -274,10 +266,6 @@ namespace Pulumi.Gcp.Eventarc
 
         /// <summary>
         /// Required. The resource name of the channel. Must be unique within the location on the project.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

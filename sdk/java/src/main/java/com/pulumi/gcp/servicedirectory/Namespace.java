@@ -168,8 +168,6 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
      * 
-     * ***
-     * 
      */
     @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output<String> namespaceId;
@@ -177,8 +175,6 @@ public class Namespace extends com.pulumi.resources.CustomResource {
     /**
      * @return The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
-     * 
-     * ***
      * 
      */
     public Output<String> namespaceId() {

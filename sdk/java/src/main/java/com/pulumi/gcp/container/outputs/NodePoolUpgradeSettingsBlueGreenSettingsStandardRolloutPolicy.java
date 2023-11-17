@@ -24,7 +24,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy
      */
     private @Nullable Double batchPercentage;
     /**
-     * @return Soak time after each batch gets drained.
+     * @return (Optionial) Soak time after each batch gets drained.
      * 
      */
     private @Nullable String batchSoakDuration;
@@ -45,7 +45,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy
         return Optional.ofNullable(this.batchPercentage);
     }
     /**
-     * @return Soak time after each batch gets drained.
+     * @return (Optionial) Soak time after each batch gets drained.
      * 
      */
     public Optional<String> batchSoakDuration() {

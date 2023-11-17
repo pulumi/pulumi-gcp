@@ -282,7 +282,6 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
         return this.notificationEmails;
     }
     /**
-     * (Optional, Deprecated)
      * Project id.
      * 
      * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
@@ -296,8 +295,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
     private Output</* @Nullable */ String> project;
 
     /**
-     * @return (Optional, Deprecated)
-     * Project id.
+     * @return Project id.
      * 
      * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      * 

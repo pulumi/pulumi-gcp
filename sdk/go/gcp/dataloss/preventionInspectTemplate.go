@@ -241,12 +241,6 @@ type PreventionInspectTemplate struct {
 	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the inspect template in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -298,12 +292,6 @@ type preventionInspectTemplateState struct {
 	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name *string `pulumi:"name"`
 	// The parent of the inspect template in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent *string `pulumi:"parent"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -323,12 +311,6 @@ type PreventionInspectTemplateState struct {
 	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name pulumi.StringPtrInput
 	// The parent of the inspect template in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent pulumi.StringPtrInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -349,12 +331,6 @@ type preventionInspectTemplateArgs struct {
 	// Structure is documented below.
 	InspectConfig *PreventionInspectTemplateInspectConfig `pulumi:"inspectConfig"`
 	// The parent of the inspect template in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent string `pulumi:"parent"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -372,12 +348,6 @@ type PreventionInspectTemplateArgs struct {
 	// Structure is documented below.
 	InspectConfig PreventionInspectTemplateInspectConfigPtrInput
 	// The parent of the inspect template in any of the following formats:
-	// * `projects/{{project}}`
-	// * `projects/{{project}}/locations/{{location}}`
-	// * `organizations/{{organization_id}}`
-	// * `organizations/{{organization_id}}/locations/{{location}}`
-	//
-	// ***
 	Parent pulumi.StringInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
 	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
@@ -497,12 +467,6 @@ func (o PreventionInspectTemplateOutput) Name() pulumi.StringOutput {
 }
 
 // The parent of the inspect template in any of the following formats:
-// * `projects/{{project}}`
-// * `projects/{{project}}/locations/{{location}}`
-// * `organizations/{{organization_id}}`
-// * `organizations/{{organization_id}}/locations/{{location}}`
-//
-// ***
 func (o PreventionInspectTemplateOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplate) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

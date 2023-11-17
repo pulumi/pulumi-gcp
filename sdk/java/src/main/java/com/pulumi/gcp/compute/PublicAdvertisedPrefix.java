@@ -114,16 +114,12 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
     /**
      * The IPv4 address range, in CIDR format, represented by this public advertised prefix.
      * 
-     * ***
-     * 
      */
     @Export(name="ipCidrRange", refs={String.class}, tree="[0]")
     private Output<String> ipCidrRange;
 
     /**
      * @return The IPv4 address range, in CIDR format, represented by this public advertised prefix.
-     * 
-     * ***
      * 
      */
     public Output<String> ipCidrRange() {

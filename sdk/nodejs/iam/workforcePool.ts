@@ -119,9 +119,6 @@ export class WorkforcePool extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-     *
-     *
-     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -228,9 +225,6 @@ export interface WorkforcePoolState {
     name?: pulumi.Input<string>;
     /**
      * Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-     *
-     *
-     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -285,9 +279,6 @@ export interface WorkforcePoolArgs {
     location: pulumi.Input<string>;
     /**
      * Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
-     *
-     *
-     * - - -
      */
     parent: pulumi.Input<string>;
     /**

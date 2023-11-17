@@ -473,7 +473,6 @@ type Service struct {
 	// Name must be unique within a Google Cloud project and region.
 	// Is required when creating resources. Name is primarily intended
 	// for creation idempotence and configuration definition. Cannot be updated.
-	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -546,7 +545,6 @@ type serviceState struct {
 	// Name must be unique within a Google Cloud project and region.
 	// Is required when creating resources. Name is primarily intended
 	// for creation idempotence and configuration definition. Cannot be updated.
-	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -587,7 +585,6 @@ type ServiceState struct {
 	// Name must be unique within a Google Cloud project and region.
 	// Is required when creating resources. Name is primarily intended
 	// for creation idempotence and configuration definition. Cannot be updated.
-	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -632,7 +629,6 @@ type serviceArgs struct {
 	// Name must be unique within a Google Cloud project and region.
 	// Is required when creating resources. Name is primarily intended
 	// for creation idempotence and configuration definition. Cannot be updated.
-	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -671,7 +667,6 @@ type ServiceArgs struct {
 	// Name must be unique within a Google Cloud project and region.
 	// Is required when creating resources. Name is primarily intended
 	// for creation idempotence and configuration definition. Cannot be updated.
-	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -804,7 +799,6 @@ func (o ServiceOutput) Metadata() ServiceMetadataOutput {
 // Name must be unique within a Google Cloud project and region.
 // Is required when creating resources. Name is primarily intended
 // for creation idempotence and configuration definition. Cannot be updated.
-// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

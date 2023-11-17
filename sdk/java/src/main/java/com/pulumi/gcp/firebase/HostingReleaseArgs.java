@@ -50,16 +50,12 @@ public final class HostingReleaseArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Required. The ID of the site to which the release belongs.
      * 
-     * ***
-     * 
      */
     @Import(name="siteId", required=true)
     private Output<String> siteId;
 
     /**
      * @return Required. The ID of the site to which the release belongs.
-     * 
-     * ***
      * 
      */
     public Output<String> siteId() {
@@ -187,8 +183,6 @@ public final class HostingReleaseArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param siteId Required. The ID of the site to which the release belongs.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -199,8 +193,6 @@ public final class HostingReleaseArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param siteId Required. The ID of the site to which the release belongs.
-         * 
-         * ***
          * 
          * @return builder
          * 

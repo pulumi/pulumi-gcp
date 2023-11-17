@@ -142,9 +142,6 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly management!: pulumi.Output<boolean>;
     /**
      * The ID of the Cluster.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -215,9 +212,6 @@ export interface ClusterState {
     management?: pulumi.Input<boolean>;
     /**
      * The ID of the Cluster.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -248,9 +242,6 @@ export interface ClusterState {
 export interface ClusterArgs {
     /**
      * The ID of the Cluster.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

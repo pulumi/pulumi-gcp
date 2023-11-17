@@ -15,10 +15,15 @@ namespace Pulumi.Gcp.Datastream.Outputs
     {
         /// <summary>
         /// Tables in the schema.
+        /// Structure is documented below.`postgresql_tables` -
+        /// (Optional)
+        /// Tables in the schema.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable> PostgresqlTables;
         /// <summary>
+        /// Database name.`schema` -
+        /// (Required)
         /// Database name.
         /// </summary>
         public readonly string Schema;

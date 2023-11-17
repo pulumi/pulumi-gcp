@@ -22,8 +22,6 @@ public final class ClusterClusterConfigAutoscalingConfigArgs extends com.pulumi.
      * `projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
      * Note that the policy must be in the same project and Cloud Dataproc region.
      * 
-     * ***
-     * 
      */
     @Import(name="policyUri", required=true)
     private Output<String> policyUri;
@@ -36,8 +34,6 @@ public final class ClusterClusterConfigAutoscalingConfigArgs extends com.pulumi.
      * `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
      * `projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
      * Note that the policy must be in the same project and Cloud Dataproc region.
-     * 
-     * ***
      * 
      */
     public Output<String> policyUri() {
@@ -77,8 +73,6 @@ public final class ClusterClusterConfigAutoscalingConfigArgs extends com.pulumi.
          * `projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
          * Note that the policy must be in the same project and Cloud Dataproc region.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -95,8 +89,6 @@ public final class ClusterClusterConfigAutoscalingConfigArgs extends com.pulumi.
          * `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
          * `projects/[projectId]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]`
          * Note that the policy must be in the same project and Cloud Dataproc region.
-         * 
-         * ***
          * 
          * @return builder
          * 

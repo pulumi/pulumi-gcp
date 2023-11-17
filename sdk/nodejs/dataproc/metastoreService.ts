@@ -230,6 +230,7 @@ export class MetastoreService extends pulumi.CustomResource {
     public readonly maintenanceWindow!: pulumi.Output<outputs.dataproc.MetastoreServiceMaintenanceWindow | undefined>;
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Structure is documented below.
      */
     public readonly metadataIntegration!: pulumi.Output<outputs.dataproc.MetastoreServiceMetadataIntegration | undefined>;
     /**
@@ -275,9 +276,6 @@ export class MetastoreService extends pulumi.CustomResource {
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
-     *
-     *
-     * - - -
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
@@ -431,6 +429,7 @@ export interface MetastoreServiceState {
     maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Structure is documented below.
      */
     metadataIntegration?: pulumi.Input<inputs.dataproc.MetastoreServiceMetadataIntegration>;
     /**
@@ -476,9 +475,6 @@ export interface MetastoreServiceState {
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
-     *
-     *
-     * - - -
      */
     serviceId?: pulumi.Input<string>;
     /**
@@ -546,6 +542,7 @@ export interface MetastoreServiceArgs {
     maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Structure is documented below.
      */
     metadataIntegration?: pulumi.Input<inputs.dataproc.MetastoreServiceMetadataIntegration>;
     /**
@@ -582,9 +579,6 @@ export interface MetastoreServiceArgs {
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
-     *
-     *
-     * - - -
      */
     serviceId: pulumi.Input<string>;
     /**

@@ -31,9 +31,6 @@ class SourceRepresentationInstanceArgs:
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
                Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
         :param pulumi.Input[str] host: The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-               
-               
-               - - -
         :param pulumi.Input[str] ca_certificate: The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
@@ -90,9 +87,6 @@ class SourceRepresentationInstanceArgs:
     def host(self) -> pulumi.Input[str]:
         """
         The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-
-
-        - - -
         """
         return pulumi.get(self, "host")
 
@@ -249,9 +243,6 @@ class _SourceRepresentationInstanceState:
                Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] host: The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[str] password: The password for the replication user account.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -354,9 +345,6 @@ class _SourceRepresentationInstanceState:
     def host(self) -> Optional[pulumi.Input[str]]:
         """
         The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-
-
-        - - -
         """
         return pulumi.get(self, "host")
 
@@ -535,9 +523,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] host: The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[str] password: The password for the replication user account.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -712,9 +697,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] host: The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-               
-               
-               - - -
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[str] password: The password for the replication user account.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -790,9 +772,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
     def host(self) -> pulumi.Output[str]:
         """
         The IPv4 address and port for the external server, or the the DNS address for the external server. If the external server is hosted on Cloud SQL, the port is 5432.
-
-
-        - - -
         """
         return pulumi.get(self, "host")
 

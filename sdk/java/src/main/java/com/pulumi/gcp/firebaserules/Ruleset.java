@@ -155,16 +155,12 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
     /**
      * File name.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return File name.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

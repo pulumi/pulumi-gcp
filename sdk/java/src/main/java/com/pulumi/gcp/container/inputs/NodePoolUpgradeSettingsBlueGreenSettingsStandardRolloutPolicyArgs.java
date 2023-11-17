@@ -48,14 +48,14 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy
     }
 
     /**
-     * Soak time after each batch gets drained.
+     * (Optionial) Soak time after each batch gets drained.
      * 
      */
     @Import(name="batchSoakDuration")
     private @Nullable Output<String> batchSoakDuration;
 
     /**
-     * @return Soak time after each batch gets drained.
+     * @return (Optionial) Soak time after each batch gets drained.
      * 
      */
     public Optional<Output<String>> batchSoakDuration() {
@@ -131,7 +131,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy
         }
 
         /**
-         * @param batchSoakDuration Soak time after each batch gets drained.
+         * @param batchSoakDuration (Optionial) Soak time after each batch gets drained.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy
         }
 
         /**
-         * @param batchSoakDuration Soak time after each batch gets drained.
+         * @param batchSoakDuration (Optionial) Soak time after each batch gets drained.
          * 
          * @return builder
          * 

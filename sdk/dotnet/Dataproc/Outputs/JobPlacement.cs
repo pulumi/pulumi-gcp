@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     [OutputType]
     public sealed class JobPlacement
     {
+        /// <summary>
+        /// The name of the cluster where the job 
+        /// will be submitted.
+        /// </summary>
         public readonly string ClusterName;
         public readonly string? ClusterUuid;
 

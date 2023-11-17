@@ -141,7 +141,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     }
 
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group's instances to
      * apply the configuration.
@@ -238,8 +237,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     public readonly targetSize!: pulumi.Output<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-     *
-     * - - -
      */
     public readonly updatePolicy!: pulumi.Output<outputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**
@@ -264,8 +261,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     /**
      * The zone that instances in this group should be created
      * in.
-     *
-     * - - -
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -349,7 +344,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
  */
 export interface InstanceGroupManagerState {
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group's instances to
      * apply the configuration.
@@ -446,8 +440,6 @@ export interface InstanceGroupManagerState {
     targetSize?: pulumi.Input<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-     *
-     * - - -
      */
     updatePolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**
@@ -472,8 +464,6 @@ export interface InstanceGroupManagerState {
     /**
      * The zone that instances in this group should be created
      * in.
-     *
-     * - - -
      */
     zone?: pulumi.Input<string>;
 }
@@ -483,7 +473,6 @@ export interface InstanceGroupManagerState {
  */
 export interface InstanceGroupManagerArgs {
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group's instances to
      * apply the configuration.
@@ -563,8 +552,6 @@ export interface InstanceGroupManagerArgs {
     targetSize?: pulumi.Input<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-     *
-     * - - -
      */
     updatePolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**
@@ -589,8 +576,6 @@ export interface InstanceGroupManagerArgs {
     /**
      * The zone that instances in this group should be created
      * in.
-     *
-     * - - -
      */
     zone?: pulumi.Input<string>;
 }

@@ -38,9 +38,6 @@ class RegionSecurityPolicyRuleArgs:
                Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
-               
-               
-               - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['RegionSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
@@ -121,9 +118,6 @@ class RegionSecurityPolicyRuleArgs:
     def security_policy(self) -> pulumi.Input[str]:
         """
         The name of the security policy this rule belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "security_policy")
 
@@ -244,9 +238,6 @@ class _RegionSecurityPolicyRuleState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
-               
-               
-               - - -
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -386,9 +377,6 @@ class _RegionSecurityPolicyRuleState:
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the security policy this rule belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "security_policy")
 
@@ -591,9 +579,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -854,9 +839,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy rule should reside.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -960,9 +942,6 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
     def security_policy(self) -> pulumi.Output[str]:
         """
         The name of the security policy this rule belongs to.
-
-
-        - - -
         """
         return pulumi.get(self, "security_policy")
 

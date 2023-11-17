@@ -513,8 +513,6 @@ class AssetResourceSpecArgs:
                  read_access_mode: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-               
-               - - -
         :param pulumi.Input[str] name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
         :param pulumi.Input[str] read_access_mode: Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
         """
@@ -529,8 +527,6 @@ class AssetResourceSpecArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
-
-        - - -
         """
         return pulumi.get(self, "type")
 
@@ -1656,8 +1652,6 @@ class DatascanExecutionSpecTriggerScheduleArgs:
                  cron: pulumi.Input[str]):
         """
         :param pulumi.Input[str] cron: Cron schedule for running scans periodically. This field is required for Schedule scans.
-               
-               - - -
         """
         pulumi.set(__self__, "cron", cron)
 
@@ -1666,8 +1660,6 @@ class DatascanExecutionSpecTriggerScheduleArgs:
     def cron(self) -> pulumi.Input[str]:
         """
         Cron schedule for running scans periodically. This field is required for Schedule scans.
-
-        - - -
         """
         return pulumi.get(self, "cron")
 
@@ -2020,11 +2012,8 @@ class TaskExecutionSpecArgs:
         :param pulumi.Input[str] service_account: Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] args: The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
         :param pulumi.Input[str] kms_key: The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-               
-               - - -
         :param pulumi.Input[str] max_job_execution_lifetime: The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
         """
         pulumi.set(__self__, "service_account", service_account)
         if args is not None:
@@ -2065,8 +2054,6 @@ class TaskExecutionSpecArgs:
     def kms_key(self) -> Optional[pulumi.Input[str]]:
         """
         The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
-
-        - - -
         """
         return pulumi.get(self, "kms_key")
 
@@ -2090,8 +2077,7 @@ class TaskExecutionSpecArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the resource belongs.
-        If it is not provided, the provider project is used.
+        The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
         """
         return pulumi.get(self, "project")
 
@@ -3482,8 +3468,6 @@ class ZoneResourceSpecArgs:
                  location_type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] location_type: Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-               
-               - - -
         """
         pulumi.set(__self__, "location_type", location_type)
 
@@ -3492,8 +3476,6 @@ class ZoneResourceSpecArgs:
     def location_type(self) -> pulumi.Input[str]:
         """
         Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
-
-        - - -
         """
         return pulumi.get(self, "location_type")
 

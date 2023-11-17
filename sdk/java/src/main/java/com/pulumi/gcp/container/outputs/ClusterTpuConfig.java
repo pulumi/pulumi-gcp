@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterTpuConfig {
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      */
     private Boolean enabled;
@@ -22,7 +22,7 @@ public final class ClusterTpuConfig {
 
     private ClusterTpuConfig() {}
     /**
-     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * @return (DEPRECATED) Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      */
     public Boolean enabled() {

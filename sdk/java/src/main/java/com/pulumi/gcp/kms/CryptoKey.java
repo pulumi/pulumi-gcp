@@ -184,8 +184,6 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      * The KeyRing that this key belongs to.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
      * 
-     * ***
-     * 
      */
     @Export(name="keyRing", refs={String.class}, tree="[0]")
     private Output<String> keyRing;
@@ -193,8 +191,6 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
     /**
      * @return The KeyRing that this key belongs to.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
-     * 
-     * ***
      * 
      */
     public Output<String> keyRing() {

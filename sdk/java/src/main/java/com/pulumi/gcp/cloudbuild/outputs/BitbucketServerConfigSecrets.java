@@ -23,8 +23,6 @@ public final class BitbucketServerConfigSecrets {
      * @return Immutable. The resource name for the webhook secret&#39;s secret version. Once this field has been set, it cannot be changed.
      * Changing this field will result in deleting/ recreating the resource.
      * 
-     * ***
-     * 
      */
     private String webhookSecretVersionName;
 
@@ -46,8 +44,6 @@ public final class BitbucketServerConfigSecrets {
     /**
      * @return Immutable. The resource name for the webhook secret&#39;s secret version. Once this field has been set, it cannot be changed.
      * Changing this field will result in deleting/ recreating the resource.
-     * 
-     * ***
      * 
      */
     public String webhookSecretVersionName() {

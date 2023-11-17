@@ -359,9 +359,6 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Redis memory size in GiB.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("memorySizeGb")]
         public Output<int> MemorySizeGb { get; private set; } = null!;
@@ -434,10 +431,10 @@ namespace Pulumi.Gcp.Redis
         /// Optional. Read replica mode. Can only be specified when trying to create the instance.
         /// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
         /// - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
-        /// instance cannot scale up or down the number of replicas.
+        ///   instance cannot scale up or down the number of replicas.
         /// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
-        /// can scale up and down the number of replicas.
-        /// Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
+        ///   can scale up and down the number of replicas.
+        ///   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         /// </summary>
         [Output("readReplicasMode")]
         public Output<string> ReadReplicasMode { get; private set; } = null!;
@@ -503,8 +500,8 @@ namespace Pulumi.Gcp.Redis
         /// The service tier of the instance. Must be one of these values:
         /// - BASIC: standalone instance
         /// - STANDARD_HA: highly available primary/replica instances
-        /// Default value is `BASIC`.
-        /// Possible values are: `BASIC`, `STANDARD_HA`.
+        ///   Default value is `BASIC`.
+        ///   Possible values are: `BASIC`, `STANDARD_HA`.
         /// </summary>
         [Output("tier")]
         public Output<string?> Tier { get; private set; } = null!;
@@ -512,8 +509,8 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
         /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
-        /// Default value is `DISABLED`.
-        /// Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
+        ///   Default value is `DISABLED`.
+        ///   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         /// </summary>
         [Output("transitEncryptionMode")]
         public Output<string?> TransitEncryptionMode { get; private set; } = null!;
@@ -649,9 +646,6 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Redis memory size in GiB.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("memorySizeGb", required: true)]
         public Input<int> MemorySizeGb { get; set; } = null!;
@@ -680,10 +674,10 @@ namespace Pulumi.Gcp.Redis
         /// Optional. Read replica mode. Can only be specified when trying to create the instance.
         /// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
         /// - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
-        /// instance cannot scale up or down the number of replicas.
+        ///   instance cannot scale up or down the number of replicas.
         /// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
-        /// can scale up and down the number of replicas.
-        /// Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
+        ///   can scale up and down the number of replicas.
+        ///   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         /// </summary>
         [Input("readReplicasMode")]
         public Input<string>? ReadReplicasMode { get; set; }
@@ -748,8 +742,8 @@ namespace Pulumi.Gcp.Redis
         /// The service tier of the instance. Must be one of these values:
         /// - BASIC: standalone instance
         /// - STANDARD_HA: highly available primary/replica instances
-        /// Default value is `BASIC`.
-        /// Possible values are: `BASIC`, `STANDARD_HA`.
+        ///   Default value is `BASIC`.
+        ///   Possible values are: `BASIC`, `STANDARD_HA`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
@@ -757,8 +751,8 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
         /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
-        /// Default value is `DISABLED`.
-        /// Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
+        ///   Default value is `DISABLED`.
+        ///   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         /// </summary>
         [Input("transitEncryptionMode")]
         public Input<string>? TransitEncryptionMode { get; set; }
@@ -921,9 +915,6 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Redis memory size in GiB.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("memorySizeGb")]
         public Input<int>? MemorySizeGb { get; set; }
@@ -1012,10 +1003,10 @@ namespace Pulumi.Gcp.Redis
         /// Optional. Read replica mode. Can only be specified when trying to create the instance.
         /// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
         /// - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
-        /// instance cannot scale up or down the number of replicas.
+        ///   instance cannot scale up or down the number of replicas.
         /// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
-        /// can scale up and down the number of replicas.
-        /// Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
+        ///   can scale up and down the number of replicas.
+        ///   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         /// </summary>
         [Input("readReplicasMode")]
         public Input<string>? ReadReplicasMode { get; set; }
@@ -1093,8 +1084,8 @@ namespace Pulumi.Gcp.Redis
         /// The service tier of the instance. Must be one of these values:
         /// - BASIC: standalone instance
         /// - STANDARD_HA: highly available primary/replica instances
-        /// Default value is `BASIC`.
-        /// Possible values are: `BASIC`, `STANDARD_HA`.
+        ///   Default value is `BASIC`.
+        ///   Possible values are: `BASIC`, `STANDARD_HA`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
@@ -1102,8 +1093,8 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
         /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
-        /// Default value is `DISABLED`.
-        /// Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
+        ///   Default value is `DISABLED`.
+        ///   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         /// </summary>
         [Input("transitEncryptionMode")]
         public Input<string>? TransitEncryptionMode { get; set; }

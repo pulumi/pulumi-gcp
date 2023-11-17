@@ -139,11 +139,9 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      * * Length of 128 characters or less.
      * * Not start with the string goog.
      * * Start with a lowercase ASCII character, followed by:
-     * * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
-     * * One or more numerals or lowercase ASCII characters.
-     *   As expressed by the regular expression: ^(?!goog)a-z?$.
-     * 
-     * ***
+     *   * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
+     *   * One or more numerals or lowercase ASCII characters.
+     *     As expressed by the regular expression: ^(?!goog)a-z?$.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -155,11 +153,9 @@ public class TransferAgentPool extends com.pulumi.resources.CustomResource {
      * * Length of 128 characters or less.
      * * Not start with the string goog.
      * * Start with a lowercase ASCII character, followed by:
-     * * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
-     * * One or more numerals or lowercase ASCII characters.
-     *   As expressed by the regular expression: ^(?!goog)a-z?$.
-     * 
-     * ***
+     *   * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
+     *   * One or more numerals or lowercase ASCII characters.
+     *     As expressed by the regular expression: ^(?!goog)a-z?$.
      * 
      */
     public Output<String> name() {

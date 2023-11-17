@@ -136,8 +136,6 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
                e.g. when hovered over it in a UI.
         :param pulumi.Input[str] location: String indicating the location of the expression for error reporting,
                e.g. a file name and a position in the file.
-               
-               - - -
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
@@ -180,8 +178,6 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -354,8 +350,6 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
                e.g. when hovered over it in a UI.
         :param pulumi.Input[str] location: String indicating the location of the expression for error reporting,
                e.g. a file name and a position in the file.
-               
-               - - -
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
@@ -398,8 +392,6 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
-
-        - - -
         """
         return pulumi.get(self, "location")
 
@@ -440,6 +432,7 @@ class WorkforcePoolProviderOidcArgs:
                .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
                keys are supported. The JWK must use following format and include only
                the following fields:
+               
                ```python
                import pulumi
                ```
@@ -502,6 +495,7 @@ class WorkforcePoolProviderOidcArgs:
         .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
         keys are supported. The JWK must use following format and include only
         the following fields:
+
         ```python
         import pulumi
         ```
@@ -603,12 +597,12 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
         :param pulumi.Input[str] assertion_claims_behavior: The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
                * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
                * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-               Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
+                 Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
         :param pulumi.Input[str] response_type: The Response Type to request for in the OIDC Authorization Request for web sign-in.
                The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
                * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
                * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-               Possible values are: `CODE`, `ID_TOKEN`.
+                 Possible values are: `CODE`, `ID_TOKEN`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_scopes: Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
                Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
         """
@@ -624,7 +618,7 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
         The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
         * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
         * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-        Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
+          Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
         """
         return pulumi.get(self, "assertion_claims_behavior")
 
@@ -640,7 +634,7 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
         The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
         * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
         * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-        Possible values are: `CODE`, `ID_TOKEN`.
+          Possible values are: `CODE`, `ID_TOKEN`.
         """
         return pulumi.get(self, "response_type")
 
@@ -671,15 +665,15 @@ class WorkforcePoolProviderSamlArgs:
                The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
                The max size of the acceptable xml document will be bounded to 128k characters.
                The metadata xml document should satisfy the following constraints:
-               1) Must contain an Identity Provider Entity ID.
-               2) Must contain at least one non-expired signing key certificate.
-               3) For each signing key:
-               a) Valid from should be no more than 7 days from now.
-               b) Valid to should be no more than 10 years in the future.
-               4) Up to 3 IdP signing keys are allowed in the metadata xml.
-               When updating the provider's metadata xml, at least one non-expired signing key
-               must overlap with the existing metadata. This requirement is skipped if there are
-               no non-expired signing keys present in the existing metadata.
+               ) Must contain an Identity Provider Entity ID.
+               ) Must contain at least one non-expired signing key certificate.
+               ) For each signing key:
+                 a) Valid from should be no more than 7 days from now.
+                 b) Valid to should be no more than 10 years in the future.
+               ) Up to 3 IdP signing keys are allowed in the metadata xml.
+                 When updating the provider's metadata xml, at least one non-expired signing key
+                 must overlap with the existing metadata. This requirement is skipped if there are
+                 no non-expired signing keys present in the existing metadata.
         """
         pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
 
@@ -691,15 +685,15 @@ class WorkforcePoolProviderSamlArgs:
         The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
         The max size of the acceptable xml document will be bounded to 128k characters.
         The metadata xml document should satisfy the following constraints:
-        1) Must contain an Identity Provider Entity ID.
-        2) Must contain at least one non-expired signing key certificate.
-        3) For each signing key:
-        a) Valid from should be no more than 7 days from now.
-        b) Valid to should be no more than 10 years in the future.
-        4) Up to 3 IdP signing keys are allowed in the metadata xml.
-        When updating the provider's metadata xml, at least one non-expired signing key
-        must overlap with the existing metadata. This requirement is skipped if there are
-        no non-expired signing keys present in the existing metadata.
+        ) Must contain an Identity Provider Entity ID.
+        ) Must contain at least one non-expired signing key certificate.
+        ) For each signing key:
+          a) Valid from should be no more than 7 days from now.
+          b) Valid to should be no more than 10 years in the future.
+        ) Up to 3 IdP signing keys are allowed in the metadata xml.
+          When updating the provider's metadata xml, at least one non-expired signing key
+          must overlap with the existing metadata. This requirement is skipped if there are
+          no non-expired signing keys present in the existing metadata.
         """
         return pulumi.get(self, "idp_metadata_xml")
 
@@ -745,6 +739,7 @@ class WorkloadIdentityPoolProviderOidcArgs:
                If this list is empty, the OIDC token audience must be equal to the full canonical
                resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
                For example:
+               
                ```python
                import pulumi
                ```
@@ -754,6 +749,7 @@ class WorkloadIdentityPoolProviderOidcArgs:
                .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
                keys are supported. The JWK must use following format and include only
                the following fields:
+               
                ```python
                import pulumi
                ```
@@ -787,6 +783,7 @@ class WorkloadIdentityPoolProviderOidcArgs:
         If this list is empty, the OIDC token audience must be equal to the full canonical
         resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
         For example:
+
         ```python
         import pulumi
         ```
@@ -807,6 +804,7 @@ class WorkloadIdentityPoolProviderOidcArgs:
         .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
         keys are supported. The JWK must use following format and include only
         the following fields:
+
         ```python
         import pulumi
         ```

@@ -36,9 +36,6 @@ export function getForwardingRule(args: GetForwardingRuleArgs, opts?: pulumi.Inv
 export interface GetForwardingRuleArgs {
     /**
      * The name of the forwarding rule.
-     *
-     *
-     * - - -
      */
     name: string;
     /**
@@ -120,9 +117,6 @@ export function getForwardingRuleOutput(args: GetForwardingRuleOutputArgs, opts?
 export interface GetForwardingRuleOutputArgs {
     /**
      * The name of the forwarding rule.
-     *
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

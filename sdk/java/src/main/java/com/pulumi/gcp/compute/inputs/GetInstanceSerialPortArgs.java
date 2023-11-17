@@ -34,16 +34,12 @@ public final class GetInstanceSerialPortArgs extends com.pulumi.resources.Invoke
     /**
      * The number of the serial port to read output from. Possible values are 1-4.
      * 
-     * ***
-     * 
      */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
     /**
      * @return The number of the serial port to read output from. Possible values are 1-4.
-     * 
-     * ***
      * 
      */
     public Output<Integer> port() {
@@ -135,8 +131,6 @@ public final class GetInstanceSerialPortArgs extends com.pulumi.resources.Invoke
         /**
          * @param port The number of the serial port to read output from. Possible values are 1-4.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -147,8 +141,6 @@ public final class GetInstanceSerialPortArgs extends com.pulumi.resources.Invoke
 
         /**
          * @param port The number of the serial port to read output from. Possible values are 1-4.
-         * 
-         * ***
          * 
          * @return builder
          * 

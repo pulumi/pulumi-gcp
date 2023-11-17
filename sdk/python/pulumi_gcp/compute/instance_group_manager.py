@@ -46,8 +46,7 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
-        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs'] auto_healing_policies: The autohealing policies for this managed instance
@@ -78,8 +77,6 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
                unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-               
-               - - -
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, this provider will
                continue trying until it times out.
@@ -89,8 +86,6 @@ class InstanceGroupManagerArgs:
                instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
-               
-               - - -
         """
         pulumi.set(__self__, "base_instance_name", base_instance_name)
         pulumi.set(__self__, "versions", versions)
@@ -164,7 +159,6 @@ class InstanceGroupManagerArgs:
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.
@@ -339,8 +333,6 @@ class InstanceGroupManagerArgs:
     def update_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']]:
         """
         The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-
-        - - -
         """
         return pulumi.get(self, "update_policy")
 
@@ -383,8 +375,6 @@ class InstanceGroupManagerArgs:
         """
         The zone that instances in this group should be created
         in.
-
-        - - -
         """
         return pulumi.get(self, "zone")
 
@@ -422,8 +412,7 @@ class _InstanceGroupManagerState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceGroupManager resources.
-        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs'] auto_healing_policies: The autohealing policies for this managed instance
@@ -464,8 +453,6 @@ class _InstanceGroupManagerState:
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
                unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
@@ -478,8 +465,6 @@ class _InstanceGroupManagerState:
                instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
-               
-               - - -
         """
         if all_instances_config is not None:
             pulumi.set(__self__, "all_instances_config", all_instances_config)
@@ -534,7 +519,6 @@ class _InstanceGroupManagerState:
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.
@@ -783,8 +767,6 @@ class _InstanceGroupManagerState:
     def update_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerUpdatePolicyArgs']]:
         """
         The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-
-        - - -
         """
         return pulumi.get(self, "update_policy")
 
@@ -841,8 +823,6 @@ class _InstanceGroupManagerState:
         """
         The zone that instances in this group should be created
         in.
-
-        - - -
         """
         return pulumi.get(self, "zone")
 
@@ -980,8 +960,7 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']] auto_healing_policies: The autohealing policies for this managed instance
@@ -1018,8 +997,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
                unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
@@ -1032,8 +1009,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
-               
-               - - -
         """
         ...
     @overload
@@ -1255,8 +1230,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']] auto_healing_policies: The autohealing policies for this managed instance
@@ -1297,8 +1271,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
                unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
@@ -1311,8 +1283,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
         :param pulumi.Input[str] zone: The zone that instances in this group should be created
                in.
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1348,7 +1318,6 @@ class InstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> pulumi.Output[Optional['outputs.InstanceGroupManagerAllInstancesConfig']]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.
@@ -1521,8 +1490,6 @@ class InstanceGroupManager(pulumi.CustomResource):
     def update_policy(self) -> pulumi.Output['outputs.InstanceGroupManagerUpdatePolicy']:
         """
         The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
-
-        - - -
         """
         return pulumi.get(self, "update_policy")
 
@@ -1563,8 +1530,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         """
         The zone that instances in this group should be created
         in.
-
-        - - -
         """
         return pulumi.get(self, "zone")
 

@@ -154,9 +154,6 @@ export class DataTransferConfig extends pulumi.CustomResource {
      * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
      * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-     *
-     *
-     * - - -
      */
     public readonly params!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -314,9 +311,6 @@ export interface DataTransferConfigState {
      * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
      * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-     *
-     *
-     * - - -
      */
     params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -407,9 +401,6 @@ export interface DataTransferConfigArgs {
      * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
      * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
      * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
-     *
-     *
-     * - - -
      */
     params: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

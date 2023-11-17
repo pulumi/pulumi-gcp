@@ -25,7 +25,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// <summary>
         /// The list of Compute Engine zones where node pool nodes associated 
         /// with a Dataproc on GKE virtual cluster will be located.
-        /// - - -
         /// </summary>
         public readonly ImmutableArray<string> Locations;
 

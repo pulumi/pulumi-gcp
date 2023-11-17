@@ -50,16 +50,12 @@ public final class CxVersionState extends com.pulumi.resources.ResourceArgs {
     /**
      * The human-readable name of the version. Limit of 64 characters.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return The human-readable name of the version. Limit of 64 characters.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -211,8 +207,6 @@ public final class CxVersionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The human-readable name of the version. Limit of 64 characters.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -223,8 +217,6 @@ public final class CxVersionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The human-readable name of the version. Limit of 64 characters.
-         * 
-         * ***
          * 
          * @return builder
          * 

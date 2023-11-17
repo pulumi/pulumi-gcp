@@ -68,7 +68,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      *     }
      * }
      * ```
-     * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
      * 
      */
     @Import(name="configConnectorConfig")
@@ -101,7 +100,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      *     }
      * }
      * ```
-     * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
      * 
      */
     public Optional<Output<ClusterAddonsConfigConfigConnectorConfigArgs>> configConnectorConfig() {
@@ -397,7 +395,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          *     }
          * }
          * ```
-         * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
          * 
          * @return builder
          * 
@@ -434,7 +431,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          *     }
          * }
          * ```
-         * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
          * 
          * @return builder
          * 

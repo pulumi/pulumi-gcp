@@ -22,9 +22,6 @@ class ServicePerimeterIngressPolicyArgs:
         """
         The set of arguments for constructing a ServicePerimeterIngressPolicy resource.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         :param pulumi.Input['ServicePerimeterIngressPolicyIngressFromArgs'] ingress_from: Defines the conditions on the source of a request causing this `IngressPolicy`
                to apply.
                Structure is documented below.
@@ -43,9 +40,6 @@ class ServicePerimeterIngressPolicyArgs:
     def perimeter(self) -> pulumi.Input[str]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter")
 
@@ -97,9 +91,6 @@ class _ServicePerimeterIngressPolicyState:
                this `IngressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         """
         if ingress_from is not None:
             pulumi.set(__self__, "ingress_from", ingress_from)
@@ -141,9 +132,6 @@ class _ServicePerimeterIngressPolicyState:
     def perimeter(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter")
 
@@ -200,9 +188,6 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
                this `IngressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -299,9 +284,6 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
                this `IngressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[str] perimeter: The name of the Service Perimeter to add this resource to.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -337,9 +319,6 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
     def perimeter(self) -> pulumi.Output[str]:
         """
         The name of the Service Perimeter to add this resource to.
-
-
-        - - -
         """
         return pulumi.get(self, "perimeter")
 

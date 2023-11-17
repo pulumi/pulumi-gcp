@@ -81,9 +81,6 @@ export class MonitoredProject extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-     *
-     *
-     * - - -
      */
     public readonly metricsScope!: pulumi.Output<string>;
     /**
@@ -131,9 +128,6 @@ export interface MonitoredProjectState {
     createTime?: pulumi.Input<string>;
     /**
      * Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-     *
-     *
-     * - - -
      */
     metricsScope?: pulumi.Input<string>;
     /**
@@ -148,9 +142,6 @@ export interface MonitoredProjectState {
 export interface MonitoredProjectArgs {
     /**
      * Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-     *
-     *
-     * - - -
      */
     metricsScope: pulumi.Input<string>;
     /**

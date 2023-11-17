@@ -94,8 +94,6 @@ class ExtensionsInstanceConfig(dict):
                with actual values. These strings include: ${param:FOO},
                ${function:myFunc.url},
                ${function:myFunc.name}, and ${function:myFunc.location}
-               
-               - - -
         :param Mapping[str, str] system_params: Params whose values are only available at deployment time.
                Unlike other params, these will not be set as environment variables on
                functions.
@@ -186,8 +184,6 @@ class ExtensionsInstanceConfig(dict):
         with actual values. These strings include: ${param:FOO},
         ${function:myFunc.url},
         ${function:myFunc.name}, and ${function:myFunc.location}
-
-        - - -
         """
         return pulumi.get(self, "populated_postinstall_content")
 
@@ -1365,6 +1361,7 @@ class HostingVersionConfigRedirect(dict):
         :param str location: The value to put in the HTTP location header of the response.
                The location can contain capture group values from the pattern using a : prefix to identify
                the segment and an optional * to capture the rest of the URL. For example:
+               
                ```python
                import pulumi
                ```
@@ -1386,6 +1383,7 @@ class HostingVersionConfigRedirect(dict):
         The value to put in the HTTP location header of the response.
         The location can contain capture group values from the pattern using a : prefix to identify
         the segment and an optional * to capture the rest of the URL. For example:
+
         ```python
         import pulumi
         ```

@@ -40,16 +40,12 @@ public final class HostingCustomDomainArgs extends com.pulumi.resources.Resource
     /**
      * The ID of the `CustomDomain`, which is the domain name you&#39;d like to use with Firebase Hosting.
      * 
-     * ***
-     * 
      */
     @Import(name="customDomain", required=true)
     private Output<String> customDomain;
 
     /**
      * @return The ID of the `CustomDomain`, which is the domain name you&#39;d like to use with Firebase Hosting.
-     * 
-     * ***
      * 
      */
     public Output<String> customDomain() {
@@ -187,8 +183,6 @@ public final class HostingCustomDomainArgs extends com.pulumi.resources.Resource
         /**
          * @param customDomain The ID of the `CustomDomain`, which is the domain name you&#39;d like to use with Firebase Hosting.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -199,8 +193,6 @@ public final class HostingCustomDomainArgs extends com.pulumi.resources.Resource
 
         /**
          * @param customDomain The ID of the `CustomDomain`, which is the domain name you&#39;d like to use with Firebase Hosting.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -41,8 +41,6 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
      * Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
      * 
-     * ***
-     * 
      */
     @Import(name="dataset", required=true)
     private Output<String> dataset;
@@ -50,8 +48,6 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-     * 
-     * ***
      * 
      */
     public Output<String> dataset() {
@@ -248,6 +244,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * Structure is documented below.
      * 
      */
     @Import(name="notificationConfigs")
@@ -255,6 +252,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<FhirStoreNotificationConfigArgs>>> notificationConfigs() {
@@ -370,8 +368,6 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
          * @param dataset Identifies the dataset addressed by this request. Must be in the format
          * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -383,8 +379,6 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dataset Identifies the dataset addressed by this request. Must be in the format
          * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -631,6 +625,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param notificationConfigs A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -642,6 +637,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param notificationConfigs A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -652,6 +648,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param notificationConfigs A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+         * Structure is documented below.
          * 
          * @return builder
          * 

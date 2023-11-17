@@ -174,6 +174,7 @@ func (o ConnectionGithubConfigPtrOutput) AuthorizerCredential() ConnectionGithub
 type ConnectionGithubConfigAuthorizerCredential struct {
 	// A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 	OauthTokenSecretVersion *string `pulumi:"oauthTokenSecretVersion"`
+	// Output only. The username associated to this token.`username` -
 	// Output only. The username associated to this token.
 	Username *string `pulumi:"username"`
 }
@@ -192,6 +193,7 @@ type ConnectionGithubConfigAuthorizerCredentialInput interface {
 type ConnectionGithubConfigAuthorizerCredentialArgs struct {
 	// A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 	OauthTokenSecretVersion pulumi.StringPtrInput `pulumi:"oauthTokenSecretVersion"`
+	// Output only. The username associated to this token.`username` -
 	// Output only. The username associated to this token.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -278,6 +280,7 @@ func (o ConnectionGithubConfigAuthorizerCredentialOutput) OauthTokenSecretVersio
 	return o.ApplyT(func(v ConnectionGithubConfigAuthorizerCredential) *string { return v.OauthTokenSecretVersion }).(pulumi.StringPtrOutput)
 }
 
+// Output only. The username associated to this token.`username` -
 // Output only. The username associated to this token.
 func (o ConnectionGithubConfigAuthorizerCredentialOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionGithubConfigAuthorizerCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
@@ -317,6 +320,7 @@ func (o ConnectionGithubConfigAuthorizerCredentialPtrOutput) OauthTokenSecretVer
 	}).(pulumi.StringPtrOutput)
 }
 
+// Output only. The username associated to this token.`username` -
 // Output only. The username associated to this token.
 func (o ConnectionGithubConfigAuthorizerCredentialPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionGithubConfigAuthorizerCredential) *string {
@@ -996,6 +1000,7 @@ func (o ConnectionGitlabConfigPtrOutput) WebhookSecretSecretVersion() pulumi.Str
 type ConnectionGitlabConfigAuthorizerCredential struct {
 	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 	UserTokenSecretVersion string `pulumi:"userTokenSecretVersion"`
+	// Output only. The username associated to this token.`username` -
 	// Output only. The username associated to this token.
 	Username *string `pulumi:"username"`
 }
@@ -1014,6 +1019,7 @@ type ConnectionGitlabConfigAuthorizerCredentialInput interface {
 type ConnectionGitlabConfigAuthorizerCredentialArgs struct {
 	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 	UserTokenSecretVersion pulumi.StringInput `pulumi:"userTokenSecretVersion"`
+	// Output only. The username associated to this token.`username` -
 	// Output only. The username associated to this token.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -1100,6 +1106,7 @@ func (o ConnectionGitlabConfigAuthorizerCredentialOutput) UserTokenSecretVersion
 	return o.ApplyT(func(v ConnectionGitlabConfigAuthorizerCredential) string { return v.UserTokenSecretVersion }).(pulumi.StringOutput)
 }
 
+// Output only. The username associated to this token.`username` -
 // Output only. The username associated to this token.
 func (o ConnectionGitlabConfigAuthorizerCredentialOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionGitlabConfigAuthorizerCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
@@ -1139,6 +1146,7 @@ func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) UserTokenSecretVers
 	}).(pulumi.StringPtrOutput)
 }
 
+// Output only. The username associated to this token.`username` -
 // Output only. The username associated to this token.
 func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionGitlabConfigAuthorizerCredential) *string {
@@ -1153,8 +1161,6 @@ type ConnectionGitlabConfigReadAuthorizerCredential struct {
 	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 	UserTokenSecretVersion string `pulumi:"userTokenSecretVersion"`
 	// Output only. The username associated to this token.
-	//
-	// ***
 	Username *string `pulumi:"username"`
 }
 
@@ -1173,8 +1179,6 @@ type ConnectionGitlabConfigReadAuthorizerCredentialArgs struct {
 	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 	UserTokenSecretVersion pulumi.StringInput `pulumi:"userTokenSecretVersion"`
 	// Output only. The username associated to this token.
-	//
-	// ***
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -1261,8 +1265,6 @@ func (o ConnectionGitlabConfigReadAuthorizerCredentialOutput) UserTokenSecretVer
 }
 
 // Output only. The username associated to this token.
-//
-// ***
 func (o ConnectionGitlabConfigReadAuthorizerCredentialOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionGitlabConfigReadAuthorizerCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -1302,8 +1304,6 @@ func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) UserTokenSecret
 }
 
 // Output only. The username associated to this token.
-//
-// ***
 func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionGitlabConfigReadAuthorizerCredential) *string {
 		if v == nil {

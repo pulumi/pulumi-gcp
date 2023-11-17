@@ -181,7 +181,6 @@ type AccessApprovalSettings struct {
 	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayOutput `pulumi:"notificationEmails"`
-	// (Optional, Deprecated)
 	// Project id.
 	//
 	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
@@ -253,7 +252,6 @@ type accessApprovalSettingsState struct {
 	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails []string `pulumi:"notificationEmails"`
-	// (Optional, Deprecated)
 	// Project id.
 	//
 	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
@@ -290,7 +288,6 @@ type AccessApprovalSettingsState struct {
 	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayInput
-	// (Optional, Deprecated)
 	// Project id.
 	//
 	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
@@ -320,7 +317,6 @@ type accessApprovalSettingsArgs struct {
 	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails []string `pulumi:"notificationEmails"`
-	// (Optional, Deprecated)
 	// Project id.
 	//
 	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
@@ -347,7 +343,6 @@ type AccessApprovalSettingsArgs struct {
 	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayInput
-	// (Optional, Deprecated)
 	// Project id.
 	//
 	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
@@ -493,7 +488,6 @@ func (o AccessApprovalSettingsOutput) NotificationEmails() pulumi.StringArrayOut
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.StringArrayOutput { return v.NotificationEmails }).(pulumi.StringArrayOutput)
 }
 
-// (Optional, Deprecated)
 // Project id.
 //
 // > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.

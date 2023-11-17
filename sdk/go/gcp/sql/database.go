@@ -155,8 +155,6 @@ type Database struct {
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The name of the Cloud SQL instance. This does not include the project
 	// ID.
-	//
-	// ***
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// The name of the database in the Cloud SQL instance.
 	// This does not include the project ID or instance name.
@@ -220,8 +218,6 @@ type databaseState struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the Cloud SQL instance. This does not include the project
 	// ID.
-	//
-	// ***
 	Instance *string `pulumi:"instance"`
 	// The name of the database in the Cloud SQL instance.
 	// This does not include the project ID or instance name.
@@ -253,8 +249,6 @@ type DatabaseState struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. This does not include the project
 	// ID.
-	//
-	// ***
 	Instance pulumi.StringPtrInput
 	// The name of the database in the Cloud SQL instance.
 	// This does not include the project ID or instance name.
@@ -290,8 +284,6 @@ type databaseArgs struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the Cloud SQL instance. This does not include the project
 	// ID.
-	//
-	// ***
 	Instance string `pulumi:"instance"`
 	// The name of the database in the Cloud SQL instance.
 	// This does not include the project ID or instance name.
@@ -322,8 +314,6 @@ type DatabaseArgs struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. This does not include the project
 	// ID.
-	//
-	// ***
 	Instance pulumi.StringInput
 	// The name of the database in the Cloud SQL instance.
 	// This does not include the project ID or instance name.
@@ -448,8 +438,6 @@ func (o DatabaseOutput) DeletionPolicy() pulumi.StringPtrOutput {
 
 // The name of the Cloud SQL instance. This does not include the project
 // ID.
-//
-// ***
 func (o DatabaseOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }

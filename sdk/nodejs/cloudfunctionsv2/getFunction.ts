@@ -39,8 +39,6 @@ export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions):
 export interface GetFunctionArgs {
     /**
      * The location in which the resource belongs.
-     *
-     * - - -
      */
     location: string;
     /**
@@ -105,8 +103,6 @@ export function getFunctionOutput(args: GetFunctionOutputArgs, opts?: pulumi.Inv
 export interface GetFunctionOutputArgs {
     /**
      * The location in which the resource belongs.
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**

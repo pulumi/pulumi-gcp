@@ -215,8 +215,6 @@ def get_health_check(name: Optional[str] = None,
 
 
     :param str name: Name of the resource.
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -265,8 +263,6 @@ def get_health_check_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: Name of the resource.
-           
-           - - -
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

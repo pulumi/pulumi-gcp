@@ -65,8 +65,6 @@ class _RulesetState:
         :param pulumi.Input[str] create_time: Output only. Time the `Ruleset` was created.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetMetadataArgs']]] metadatas: Output only. The metadata for this ruleset.
         :param pulumi.Input[str] name: File name.
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['RulesetSourceArgs'] source: `Source` for the `Ruleset`.
         """
@@ -110,8 +108,6 @@ class _RulesetState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         File name.
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -343,8 +339,6 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. Time the `Ruleset` was created.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetMetadataArgs']]]] metadatas: Output only. The metadata for this ruleset.
         :param pulumi.Input[str] name: File name.
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['RulesetSourceArgs']] source: `Source` for the `Ruleset`.
         """
@@ -380,8 +374,6 @@ class Ruleset(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         File name.
-
-        - - -
         """
         return pulumi.get(self, "name")
 

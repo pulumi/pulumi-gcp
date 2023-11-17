@@ -137,7 +137,7 @@ def get_organization_policy(constraint: Optional[str] = None,
     ```
 
 
-    :param str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+    :param str constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
     :param str folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
     """
     __args__ = dict()
@@ -179,7 +179,7 @@ def get_organization_policy_output(constraint: Optional[pulumi.Input[str]] = Non
     ```
 
 
-    :param str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+    :param str constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
     :param str folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
     """
     ...

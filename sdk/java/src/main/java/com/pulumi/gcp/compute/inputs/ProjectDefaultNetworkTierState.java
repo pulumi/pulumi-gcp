@@ -19,8 +19,6 @@ public final class ProjectDefaultNetworkTierState extends com.pulumi.resources.R
      * The default network tier to be configured for the project.
      * This field can take the following values: `PREMIUM` or `STANDARD`.
      * 
-     * ***
-     * 
      */
     @Import(name="networkTier")
     private @Nullable Output<String> networkTier;
@@ -28,8 +26,6 @@ public final class ProjectDefaultNetworkTierState extends com.pulumi.resources.R
     /**
      * @return The default network tier to be configured for the project.
      * This field can take the following values: `PREMIUM` or `STANDARD`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> networkTier() {
@@ -82,8 +78,6 @@ public final class ProjectDefaultNetworkTierState extends com.pulumi.resources.R
          * @param networkTier The default network tier to be configured for the project.
          * This field can take the following values: `PREMIUM` or `STANDARD`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -95,8 +89,6 @@ public final class ProjectDefaultNetworkTierState extends com.pulumi.resources.R
         /**
          * @param networkTier The default network tier to be configured for the project.
          * This field can take the following values: `PREMIUM` or `STANDARD`.
-         * 
-         * ***
          * 
          * @return builder
          * 

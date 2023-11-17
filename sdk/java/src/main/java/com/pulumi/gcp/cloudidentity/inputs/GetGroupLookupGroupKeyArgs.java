@@ -16,7 +16,7 @@ public final class GetGroupLookupGroupKeyArgs extends com.pulumi.resources.Resou
     public static final GetGroupLookupGroupKeyArgs Empty = new GetGroupLookupGroupKeyArgs();
 
     /**
-     * (Required) The ID of the entity.
+     * The ID of the entity.
      * For Google-managed entities, the id is the email address of an existing group or user.
      * For external-identity-mapped entities, the id is a string conforming
      * to the Identity Source&#39;s requirements.
@@ -26,7 +26,7 @@ public final class GetGroupLookupGroupKeyArgs extends com.pulumi.resources.Resou
     private Output<String> id;
 
     /**
-     * @return (Required) The ID of the entity.
+     * @return The ID of the entity.
      * For Google-managed entities, the id is the email address of an existing group or user.
      * For external-identity-mapped entities, the id is a string conforming
      * to the Identity Source&#39;s requirements.
@@ -37,7 +37,7 @@ public final class GetGroupLookupGroupKeyArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Optional) The namespace in which the entity exists.
+     * The namespace in which the entity exists.
      * If not populated, the EntityKey represents a Google-managed entity
      * such as a Google user or a Google Group.
      * If populated, the EntityKey represents an external-identity-mapped group.
@@ -49,7 +49,7 @@ public final class GetGroupLookupGroupKeyArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> namespace;
 
     /**
-     * @return (Optional) The namespace in which the entity exists.
+     * @return The namespace in which the entity exists.
      * If not populated, the EntityKey represents a Google-managed entity
      * such as a Google user or a Google Group.
      * If populated, the EntityKey represents an external-identity-mapped group.
@@ -87,7 +87,7 @@ public final class GetGroupLookupGroupKeyArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param id (Required) The ID of the entity.
+         * @param id The ID of the entity.
          * For Google-managed entities, the id is the email address of an existing group or user.
          * For external-identity-mapped entities, the id is a string conforming
          * to the Identity Source&#39;s requirements.
@@ -101,7 +101,7 @@ public final class GetGroupLookupGroupKeyArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param id (Required) The ID of the entity.
+         * @param id The ID of the entity.
          * For Google-managed entities, the id is the email address of an existing group or user.
          * For external-identity-mapped entities, the id is a string conforming
          * to the Identity Source&#39;s requirements.
@@ -114,7 +114,7 @@ public final class GetGroupLookupGroupKeyArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param namespace (Optional) The namespace in which the entity exists.
+         * @param namespace The namespace in which the entity exists.
          * If not populated, the EntityKey represents a Google-managed entity
          * such as a Google user or a Google Group.
          * If populated, the EntityKey represents an external-identity-mapped group.
@@ -130,7 +130,7 @@ public final class GetGroupLookupGroupKeyArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param namespace (Optional) The namespace in which the entity exists.
+         * @param namespace The namespace in which the entity exists.
          * If not populated, the EntityKey represents a Google-managed entity
          * such as a Google user or a Google Group.
          * If populated, the EntityKey represents an external-identity-mapped group.

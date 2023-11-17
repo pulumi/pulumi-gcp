@@ -270,9 +270,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly maintenanceWindow!: pulumi.Output<outputs.looker.InstanceMaintenanceWindow | undefined>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -287,8 +284,8 @@ export class Instance extends pulumi.CustomResource {
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * Default value is `LOOKER_CORE_TRIAL`.
-     * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+     *   Default value is `LOOKER_CORE_TRIAL`.
+     *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
      */
     public readonly platformEdition!: pulumi.Output<string | undefined>;
     /**
@@ -455,9 +452,6 @@ export interface InstanceState {
     maintenanceWindow?: pulumi.Input<inputs.looker.InstanceMaintenanceWindow>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -472,8 +466,8 @@ export interface InstanceState {
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * Default value is `LOOKER_CORE_TRIAL`.
-     * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+     *   Default value is `LOOKER_CORE_TRIAL`.
+     *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
      */
     platformEdition?: pulumi.Input<string>;
     /**
@@ -553,9 +547,6 @@ export interface InstanceArgs {
     maintenanceWindow?: pulumi.Input<inputs.looker.InstanceMaintenanceWindow>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -570,8 +561,8 @@ export interface InstanceArgs {
      * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
      * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
      * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * Default value is `LOOKER_CORE_TRIAL`.
-     * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+     *   Default value is `LOOKER_CORE_TRIAL`.
+     *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
      */
     platformEdition?: pulumi.Input<string>;
     /**

@@ -253,8 +253,7 @@ namespace Pulumi.Gcp.Workflows
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-        /// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        /// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         /// </summary>
         [Output("userEnvVars")]
         public Output<ImmutableDictionary<string, string>?> UserEnvVars { get; private set; } = null!;
@@ -386,8 +385,7 @@ namespace Pulumi.Gcp.Workflows
         private InputMap<string>? _userEnvVars;
 
         /// <summary>
-        /// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-        /// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        /// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         /// </summary>
         public InputMap<string> UserEnvVars
         {
@@ -536,8 +534,7 @@ namespace Pulumi.Gcp.Workflows
         private InputMap<string>? _userEnvVars;
 
         /// <summary>
-        /// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-        /// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        /// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         /// </summary>
         public InputMap<string> UserEnvVars
         {

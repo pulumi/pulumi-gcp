@@ -74,8 +74,6 @@ public final class DnsAuthorizationArgs extends com.pulumi.resources.ResourceArg
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -84,8 +82,6 @@ public final class DnsAuthorizationArgs extends com.pulumi.resources.ResourceArg
      * @return Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -213,8 +209,6 @@ public final class DnsAuthorizationArgs extends com.pulumi.resources.ResourceArg
          * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
          * and all following characters must be a dash, underscore, letter or digit.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -227,8 +221,6 @@ public final class DnsAuthorizationArgs extends com.pulumi.resources.ResourceArg
          * @param name Name of the resource; provided by the client when the resource is created.
          * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
          * and all following characters must be a dash, underscore, letter or digit.
-         * 
-         * ***
          * 
          * @return builder
          * 

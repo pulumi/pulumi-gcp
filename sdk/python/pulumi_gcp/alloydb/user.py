@@ -26,9 +26,6 @@ class UserArgs:
         :param pulumi.Input[str] user_id: The database role name of the user.
         :param pulumi.Input[str] user_type: The type of this user.
                Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-               
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] database_roles: List of database roles this database user has.
         :param pulumi.Input[str] password: Password for this database user.
         """
@@ -71,9 +68,6 @@ class UserArgs:
         """
         The type of this user.
         Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-
-
-        - - -
         """
         return pulumi.get(self, "user_type")
 
@@ -125,9 +119,6 @@ class _UserState:
         :param pulumi.Input[str] user_id: The database role name of the user.
         :param pulumi.Input[str] user_type: The type of this user.
                Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-               
-               
-               - - -
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
@@ -209,9 +200,6 @@ class _UserState:
         """
         The type of this user.
         Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-
-
-        - - -
         """
         return pulumi.get(self, "user_type")
 
@@ -348,9 +336,6 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] user_id: The database role name of the user.
         :param pulumi.Input[str] user_type: The type of this user.
                Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-               
-               
-               - - -
         """
         ...
     @overload
@@ -538,9 +523,6 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] user_id: The database role name of the user.
         :param pulumi.Input[str] user_type: The type of this user.
                Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-               
-               
-               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -601,9 +583,6 @@ class User(pulumi.CustomResource):
         """
         The type of this user.
         Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
-
-
-        - - -
         """
         return pulumi.get(self, "user_type")
 

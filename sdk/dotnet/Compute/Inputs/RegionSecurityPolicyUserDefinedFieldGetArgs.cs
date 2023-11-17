@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// - IPV6: Points to the beginning of the IPv6 header.
         /// - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
         /// - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
-        /// Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
+        ///   Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
         /// </summary>
         [Input("base", required: true)]
         public Input<string> Base { get; set; } = null!;

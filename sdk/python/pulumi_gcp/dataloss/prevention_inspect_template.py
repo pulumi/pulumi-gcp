@@ -24,13 +24,6 @@ class PreventionInspectTemplateArgs:
         """
         The set of arguments for constructing a PreventionInspectTemplate resource.
         :param pulumi.Input[str] parent: The parent of the inspect template in any of the following formats:
-               * `projects/{{project}}`
-               * `projects/{{project}}/locations/{{location}}`
-               * `organizations/{{organization_id}}`
-               * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[str] description: A description of the inspect template.
         :param pulumi.Input[str] display_name: User set display name of the inspect template.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigArgs'] inspect_config: The core content of the template.
@@ -54,13 +47,6 @@ class PreventionInspectTemplateArgs:
     def parent(self) -> pulumi.Input[str]:
         """
         The parent of the inspect template in any of the following formats:
-        * `projects/{{project}}`
-        * `projects/{{project}}/locations/{{location}}`
-        * `organizations/{{organization_id}}`
-        * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -138,13 +124,6 @@ class _PreventionInspectTemplateState:
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
                listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         :param pulumi.Input[str] parent: The parent of the inspect template in any of the following formats:
-               * `projects/{{project}}`
-               * `projects/{{project}}/locations/{{location}}`
-               * `organizations/{{organization_id}}`
-               * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
@@ -217,13 +196,6 @@ class _PreventionInspectTemplateState:
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
         The parent of the inspect template in any of the following formats:
-        * `projects/{{project}}`
-        * `projects/{{project}}/locations/{{location}}`
-        * `organizations/{{organization_id}}`
-        * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -419,13 +391,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArgs']] inspect_config: The core content of the template.
                Structure is documented below.
         :param pulumi.Input[str] parent: The parent of the inspect template in any of the following formats:
-               * `projects/{{project}}`
-               * `projects/{{project}}/locations/{{location}}`
-               * `organizations/{{organization_id}}`
-               * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
@@ -658,13 +623,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
                listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         :param pulumi.Input[str] parent: The parent of the inspect template in any of the following formats:
-               * `projects/{{project}}`
-               * `projects/{{project}}/locations/{{location}}`
-               * `organizations/{{organization_id}}`
-               * `organizations/{{organization_id}}/locations/{{location}}`
-               
-               
-               - - -
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
                that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
                100 characters. Can be empty to allow the system to generate one.
@@ -720,13 +678,6 @@ class PreventionInspectTemplate(pulumi.CustomResource):
     def parent(self) -> pulumi.Output[str]:
         """
         The parent of the inspect template in any of the following formats:
-        * `projects/{{project}}`
-        * `projects/{{project}}/locations/{{location}}`
-        * `organizations/{{organization_id}}`
-        * `organizations/{{organization_id}}/locations/{{location}}`
-
-
-        - - -
         """
         return pulumi.get(self, "parent")
 

@@ -161,16 +161,12 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
     /**
      * A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
      * @return A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

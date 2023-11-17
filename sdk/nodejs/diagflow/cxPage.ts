@@ -642,9 +642,6 @@ export class CxPage extends pulumi.CustomResource {
     public readonly advancedSettings!: pulumi.Output<outputs.diagflow.CxPageAdvancedSettings | undefined>;
     /**
      * The human-readable name of the page, unique within the agent.
-     *
-     *
-     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -763,9 +760,6 @@ export interface CxPageState {
     advancedSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettings>;
     /**
      * The human-readable name of the page, unique within the agent.
-     *
-     *
-     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -841,9 +835,6 @@ export interface CxPageArgs {
     advancedSettings?: pulumi.Input<inputs.diagflow.CxPageAdvancedSettings>;
     /**
      * The human-readable name of the page, unique within the agent.
-     *
-     *
-     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

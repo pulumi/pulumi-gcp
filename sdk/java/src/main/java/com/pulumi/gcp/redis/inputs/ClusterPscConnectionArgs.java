@@ -50,8 +50,6 @@ public final class ClusterPscConnectionArgs extends com.pulumi.resources.Resourc
      * the discovery endpoint will be reserved, in the form of
      * projects/{network_project_id_or_number}/global/networks/{network_id}.
      * 
-     * ***
-     * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
@@ -60,8 +58,6 @@ public final class ClusterPscConnectionArgs extends com.pulumi.resources.Resourc
      * @return Required. The consumer network where the network address of
      * the discovery endpoint will be reserved, in the form of
      * projects/{network_project_id_or_number}/global/networks/{network_id}.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> network() {
@@ -173,8 +169,6 @@ public final class ClusterPscConnectionArgs extends com.pulumi.resources.Resourc
          * the discovery endpoint will be reserved, in the form of
          * projects/{network_project_id_or_number}/global/networks/{network_id}.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -187,8 +181,6 @@ public final class ClusterPscConnectionArgs extends com.pulumi.resources.Resourc
          * @param network Required. The consumer network where the network address of
          * the discovery endpoint will be reserved, in the form of
          * projects/{network_project_id_or_number}/global/networks/{network_id}.
-         * 
-         * ***
          * 
          * @return builder
          * 

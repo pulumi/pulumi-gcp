@@ -39,8 +39,6 @@ export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<G
 export interface GetJobArgs {
     /**
      * The location of the instance. eg us-central1
-     *
-     * - - -
      */
     location?: string;
     /**
@@ -118,8 +116,6 @@ export function getJobOutput(args: GetJobOutputArgs, opts?: pulumi.InvokeOptions
 export interface GetJobOutputArgs {
     /**
      * The location of the instance. eg us-central1
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**

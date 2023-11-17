@@ -21,8 +21,6 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// Type of Network peeringMode
         /// Default value is `PRIVATE_SERVICE_ACCESS`.
         /// Possible values are: `PRIVATE_SERVICE_ACCESS`.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? PeeringMode;
 

@@ -176,14 +176,14 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * Optional. A human-readable description of scenarios this template is intended for.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * @return Optional. A human-readable description of scenarios this template is intended for.
      * 
      */
     public Output<Optional<String>> description() {

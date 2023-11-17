@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.VpcAccess.Outputs
     {
         /// <summary>
         /// Name of the resource.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Name;
         public readonly string ProjectId;

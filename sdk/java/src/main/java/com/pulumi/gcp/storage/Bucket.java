@@ -345,16 +345,12 @@ public class Bucket extends com.pulumi.resources.CustomResource {
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      * 
-     * ***
-     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
      * @return The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
-     * 
-     * ***
      * 
      */
     public Output<String> location() {

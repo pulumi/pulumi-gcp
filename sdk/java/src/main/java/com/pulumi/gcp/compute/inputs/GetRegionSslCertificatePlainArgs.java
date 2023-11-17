@@ -17,16 +17,12 @@ public final class GetRegionSslCertificatePlainArgs extends com.pulumi.resources
     /**
      * The name of the certificate.
      * 
-     * ***
-     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the certificate.
-     * 
-     * ***
      * 
      */
     public String name() {
@@ -95,8 +91,6 @@ public final class GetRegionSslCertificatePlainArgs extends com.pulumi.resources
 
         /**
          * @param name The name of the certificate.
-         * 
-         * ***
          * 
          * @return builder
          * 

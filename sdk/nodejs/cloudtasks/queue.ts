@@ -113,9 +113,6 @@ export class Queue extends pulumi.CustomResource {
     public readonly appEngineRoutingOverride!: pulumi.Output<outputs.cloudtasks.QueueAppEngineRoutingOverride | undefined>;
     /**
      * The location of the queue
-     *
-     *
-     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -133,9 +130,9 @@ export class Queue extends pulumi.CustomResource {
      * * Number of tasks in the queue
      * * User-specified throttling: rateLimits, retryConfig, and the queue's state.
      * * System throttling due to 429 (Too Many Requests) or 503 (Service
-     * Unavailable) responses from the worker, high error rates, or to
-     * smooth sudden large traffic spikes.
-     * Structure is documented below.
+     *   Unavailable) responses from the worker, high error rates, or to
+     *   smooth sudden large traffic spikes.
+     *   Structure is documented below.
      */
     public readonly rateLimits!: pulumi.Output<outputs.cloudtasks.QueueRateLimits>;
     /**
@@ -199,9 +196,6 @@ export interface QueueState {
     appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
     /**
      * The location of the queue
-     *
-     *
-     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -219,9 +213,9 @@ export interface QueueState {
      * * Number of tasks in the queue
      * * User-specified throttling: rateLimits, retryConfig, and the queue's state.
      * * System throttling due to 429 (Too Many Requests) or 503 (Service
-     * Unavailable) responses from the worker, high error rates, or to
-     * smooth sudden large traffic spikes.
-     * Structure is documented below.
+     *   Unavailable) responses from the worker, high error rates, or to
+     *   smooth sudden large traffic spikes.
+     *   Structure is documented below.
      */
     rateLimits?: pulumi.Input<inputs.cloudtasks.QueueRateLimits>;
     /**
@@ -248,9 +242,6 @@ export interface QueueArgs {
     appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
     /**
      * The location of the queue
-     *
-     *
-     * - - -
      */
     location: pulumi.Input<string>;
     /**
@@ -268,9 +259,9 @@ export interface QueueArgs {
      * * Number of tasks in the queue
      * * User-specified throttling: rateLimits, retryConfig, and the queue's state.
      * * System throttling due to 429 (Too Many Requests) or 503 (Service
-     * Unavailable) responses from the worker, high error rates, or to
-     * smooth sudden large traffic spikes.
-     * Structure is documented below.
+     *   Unavailable) responses from the worker, high error rates, or to
+     *   smooth sudden large traffic spikes.
+     *   Structure is documented below.
      */
     rateLimits?: pulumi.Input<inputs.cloudtasks.QueueRateLimits>;
     /**

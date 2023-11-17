@@ -36,9 +36,6 @@ export function getHcVpnGateway(args: GetHcVpnGatewayArgs, opts?: pulumi.InvokeO
 export interface GetHcVpnGatewayArgs {
     /**
      * The name of the forwarding rule.
-     *
-     *
-     * - - -
      */
     name: string;
     /**
@@ -94,9 +91,6 @@ export function getHcVpnGatewayOutput(args: GetHcVpnGatewayOutputArgs, opts?: pu
 export interface GetHcVpnGatewayOutputArgs {
     /**
      * The name of the forwarding rule.
-     *
-     *
-     * - - -
      */
     name: pulumi.Input<string>;
     /**

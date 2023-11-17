@@ -54,8 +54,6 @@ class PolicyBasedRouteFilterArgs:
         :param pulumi.Input[str] protocol_version: Internet protocol versions this policy-based route applies to.
                Possible values are: `IPV4`.
         :param pulumi.Input[str] dest_range: The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
-               
-               - - -
         :param pulumi.Input[str] ip_protocol: The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
         :param pulumi.Input[str] src_range: The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
         """
@@ -85,8 +83,6 @@ class PolicyBasedRouteFilterArgs:
     def dest_range(self) -> Optional[pulumi.Input[str]]:
         """
         The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
-
-        - - -
         """
         return pulumi.get(self, "dest_range")
 
@@ -617,8 +613,6 @@ class SpokeLinkedRouterApplianceInstancesInstanceArgs:
         """
         :param pulumi.Input[str] ip_address: The IP address on the VM to use for peering.
         :param pulumi.Input[str] virtual_machine: The URI of the virtual machine resource
-               
-               - - -
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -642,8 +636,6 @@ class SpokeLinkedRouterApplianceInstancesInstanceArgs:
     def virtual_machine(self) -> Optional[pulumi.Input[str]]:
         """
         The URI of the virtual machine resource
-
-        - - -
         """
         return pulumi.get(self, "virtual_machine")
 

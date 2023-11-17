@@ -123,8 +123,6 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// The GCS path to the Dataflow job Flex
         /// Template.
-        /// 
-        /// - - -
         /// </summary>
         [Output("containerSpecGcsPath")]
         public Output<string> ContainerSpecGcsPath { get; private set; } = null!;
@@ -374,8 +372,6 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// The GCS path to the Dataflow job Flex
         /// Template.
-        /// 
-        /// - - -
         /// </summary>
         [Input("containerSpecGcsPath", required: true)]
         public Input<string> ContainerSpecGcsPath { get; set; } = null!;
@@ -569,8 +565,6 @@ namespace Pulumi.Gcp.Dataflow
         /// <summary>
         /// The GCS path to the Dataflow job Flex
         /// Template.
-        /// 
-        /// - - -
         /// </summary>
         [Input("containerSpecGcsPath")]
         public Input<string>? ContainerSpecGcsPath { get; set; }

@@ -20,12 +20,12 @@ public final class ConnectionAuthConfigOauth2AuthCodeFlow {
      */
     private @Nullable String authUri;
     /**
-     * @return Secret version of Password for Authentication.
+     * @return Client ID for user-provided OAuth app.
      * 
      */
     private @Nullable String clientId;
     /**
-     * @return Secret version reference containing the client secret.
+     * @return Client secret for user-provided OAuth app.
      * Structure is documented below.
      * 
      */
@@ -50,14 +50,14 @@ public final class ConnectionAuthConfigOauth2AuthCodeFlow {
         return Optional.ofNullable(this.authUri);
     }
     /**
-     * @return Secret version of Password for Authentication.
+     * @return Client ID for user-provided OAuth app.
      * 
      */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return Secret version reference containing the client secret.
+     * @return Client secret for user-provided OAuth app.
      * Structure is documented below.
      * 
      */

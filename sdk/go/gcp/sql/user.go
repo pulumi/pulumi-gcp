@@ -57,8 +57,6 @@ type User struct {
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The host the user can connect from. This is only supported
 	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
@@ -131,8 +129,6 @@ type userState struct {
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The host the user can connect from. This is only supported
 	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
@@ -166,8 +162,6 @@ type UserState struct {
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy pulumi.StringPtrInput
 	// The host the user can connect from. This is only supported
 	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
@@ -205,8 +199,6 @@ type userArgs struct {
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The host the user can connect from. This is only supported
 	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
@@ -240,8 +232,6 @@ type UserArgs struct {
 	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 	//
 	// Possible values are: `ABANDON`.
-	//
-	// ***
 	DeletionPolicy pulumi.StringPtrInput
 	// The host the user can connect from. This is only supported
 	// for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
@@ -360,8 +350,6 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 // for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 //
 // Possible values are: `ABANDON`.
-//
-// ***
 func (o UserOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }

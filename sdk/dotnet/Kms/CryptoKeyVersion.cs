@@ -86,9 +86,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The name of the cryptoKey associated with the CryptoKeyVersions.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("cryptoKey")]
         public Output<string> CryptoKey { get; private set; } = null!;
@@ -167,9 +164,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The name of the cryptoKey associated with the CryptoKeyVersions.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cryptoKey", required: true)]
         public Input<string> CryptoKey { get; set; } = null!;
@@ -212,9 +206,6 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The name of the cryptoKey associated with the CryptoKeyVersions.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cryptoKey")]
         public Input<string>? CryptoKey { get; set; }

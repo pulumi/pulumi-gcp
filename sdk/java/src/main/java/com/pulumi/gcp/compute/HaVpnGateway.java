@@ -269,16 +269,12 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
     /**
      * The network this VPN gateway is accepting traffic for.
      * 
-     * ***
-     * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
      * @return The network this VPN gateway is accepting traffic for.
-     * 
-     * ***
      * 
      */
     public Output<String> network() {

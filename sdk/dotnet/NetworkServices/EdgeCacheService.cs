@@ -443,7 +443,7 @@ namespace Pulumi.Gcp.NetworkServices
     public partial class EdgeCacheService : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A human-readable description of the hostRule.
+        /// A human-readable description of the resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -604,7 +604,7 @@ namespace Pulumi.Gcp.NetworkServices
     public sealed class EdgeCacheServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A human-readable description of the hostRule.
+        /// A human-readable description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -709,7 +709,7 @@ namespace Pulumi.Gcp.NetworkServices
     public sealed class EdgeCacheServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A human-readable description of the hostRule.
+        /// A human-readable description of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
         /// * Agent level
         /// * Flow level
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("audioExportGcsDestination")]
         public Input<Inputs.CxFlowAdvancedSettingsAudioExportGcsDestinationArgs>? AudioExportGcsDestination { get; set; }
@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// * Flow level
         /// * Page level
         /// * Parameter level
-        /// Structure is documented below.
+        ///   Structure is documented below.
         /// </summary>
         [Input("dtmfSettings")]
         public Input<Inputs.CxFlowAdvancedSettingsDtmfSettingsArgs>? DtmfSettings { get; set; }

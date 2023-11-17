@@ -324,8 +324,6 @@ type BareMetalAdminCluster struct {
 	// cluster controller logs.
 	LocalName pulumi.StringOutput `pulumi:"localName"`
 	// The location of the resource.
-	//
-	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Specifies the workload node configurations.
 	// Structure is documented below.
@@ -464,8 +462,6 @@ type bareMetalAdminClusterState struct {
 	// cluster controller logs.
 	LocalName *string `pulumi:"localName"`
 	// The location of the resource.
-	//
-	// ***
 	Location *string `pulumi:"location"`
 	// Specifies the workload node configurations.
 	// Structure is documented below.
@@ -572,8 +568,6 @@ type BareMetalAdminClusterState struct {
 	// cluster controller logs.
 	LocalName pulumi.StringPtrInput
 	// The location of the resource.
-	//
-	// ***
 	Location pulumi.StringPtrInput
 	// Specifies the workload node configurations.
 	// Structure is documented below.
@@ -650,8 +644,6 @@ type bareMetalAdminClusterArgs struct {
 	// Structure is documented below.
 	LoadBalancer *BareMetalAdminClusterLoadBalancer `pulumi:"loadBalancer"`
 	// The location of the resource.
-	//
-	// ***
 	Location string `pulumi:"location"`
 	// Specifies the workload node configurations.
 	// Structure is documented below.
@@ -709,8 +701,6 @@ type BareMetalAdminClusterArgs struct {
 	// Structure is documented below.
 	LoadBalancer BareMetalAdminClusterLoadBalancerPtrInput
 	// The location of the resource.
-	//
-	// ***
 	Location pulumi.StringInput
 	// Specifies the workload node configurations.
 	// Structure is documented below.
@@ -928,8 +918,6 @@ func (o BareMetalAdminClusterOutput) LocalName() pulumi.StringOutput {
 }
 
 // The location of the resource.
-//
-// ***
 func (o BareMetalAdminClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalAdminCluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

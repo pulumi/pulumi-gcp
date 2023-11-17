@@ -127,9 +127,6 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The client-assigned document ID to use for this document during creation.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("documentId")]
         public Output<string> DocumentId { get; private set; } = null!;
@@ -226,9 +223,6 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The client-assigned document ID to use for this document during creation.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("documentId", required: true)]
         public Input<string> DocumentId { get; set; } = null!;
@@ -274,9 +268,6 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The client-assigned document ID to use for this document during creation.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("documentId")]
         public Input<string>? DocumentId { get; set; }

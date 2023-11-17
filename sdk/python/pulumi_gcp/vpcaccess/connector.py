@@ -36,9 +36,6 @@ class ConnectorArgs:
         :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
-               
-               
-               - - -
         :param pulumi.Input[str] network: Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -146,9 +143,6 @@ class ConnectorArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the resource (Max 25 characters).
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -234,9 +228,6 @@ class _ConnectorState:
         :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
-               
-               
-               - - -
         :param pulumi.Input[str] network: Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -364,9 +355,6 @@ class _ConnectorState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the resource (Max 25 characters).
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -541,9 +529,6 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
-               
-               
-               - - -
         :param pulumi.Input[str] network: Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -711,9 +696,6 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
-               
-               
-               - - -
         :param pulumi.Input[str] network: Name or self_link of the VPC network. Required if `ip_cidr_range` is set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -804,9 +786,6 @@ class Connector(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the resource (Max 25 characters).
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

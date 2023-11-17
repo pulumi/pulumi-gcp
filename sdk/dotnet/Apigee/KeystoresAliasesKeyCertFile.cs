@@ -49,9 +49,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Cert content
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("cert")]
         public Output<string> Cert { get; private set; } = null!;
@@ -158,9 +155,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Cert content
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cert", required: true)]
         public Input<string> Cert { get; set; } = null!;
@@ -238,9 +232,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Cert content
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("cert")]
         public Input<string>? Cert { get; set; }

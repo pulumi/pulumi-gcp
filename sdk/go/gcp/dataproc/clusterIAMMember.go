@@ -148,15 +148,6 @@ type ClusterIAMMember struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
 	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   pulumi.StringOutput                `pulumi:"cluster"`
 	Condition ClusterIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the clusters's IAM policy.
@@ -218,15 +209,6 @@ type clusterIAMMemberState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
 	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   *string                    `pulumi:"cluster"`
 	Condition *ClusterIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the clusters's IAM policy.
@@ -250,15 +232,6 @@ type ClusterIAMMemberState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
 	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   pulumi.StringPtrInput
 	Condition ClusterIAMMemberConditionPtrInput
 	// (Computed) The etag of the clusters's IAM policy.
@@ -286,15 +259,6 @@ type clusterIAMMemberArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
 	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   string                     `pulumi:"cluster"`
 	Condition *ClusterIAMMemberCondition `pulumi:"condition"`
 	Member    string                     `pulumi:"member"`
@@ -317,15 +281,6 @@ type ClusterIAMMemberArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
 	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-	//
-	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
-	//   Each entry can have one of the following values:
-	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   pulumi.StringInput
 	Condition ClusterIAMMemberConditionPtrInput
 	Member    pulumi.StringInput
@@ -433,15 +388,6 @@ func (o ClusterIAMMemberOutput) ToClusterIAMMemberOutputWithContext(ctx context.
 // The name or relative resource id of the cluster to manage IAM policies for.
 //
 // For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
-//
-//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
-//     Each entry can have one of the following values:
-//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
-//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
-//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o ClusterIAMMemberOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterIAMMember) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }

@@ -12,8 +12,6 @@ public final class PrivateConnectionVpcPeeringConfig {
     /**
      * @return A free subnet for peering. (CIDR of /29)
      * 
-     * ***
-     * 
      */
     private String subnet;
     /**
@@ -26,8 +24,6 @@ public final class PrivateConnectionVpcPeeringConfig {
     private PrivateConnectionVpcPeeringConfig() {}
     /**
      * @return A free subnet for peering. (CIDR of /29)
-     * 
-     * ***
      * 
      */
     public String subnet() {

@@ -126,8 +126,6 @@ type LinkedDataset struct {
 	// Structure is documented below.
 	BigqueryDatasets LinkedDatasetBigqueryDatasetArrayOutput `pulumi:"bigqueryDatasets"`
 	// The bucket to which the linked dataset is attached.
-	//
-	// ***
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// Output only. The creation timestamp of the link. A timestamp in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
@@ -190,8 +188,6 @@ type linkedDatasetState struct {
 	// Structure is documented below.
 	BigqueryDatasets []LinkedDatasetBigqueryDataset `pulumi:"bigqueryDatasets"`
 	// The bucket to which the linked dataset is attached.
-	//
-	// ***
 	Bucket *string `pulumi:"bucket"`
 	// Output only. The creation timestamp of the link. A timestamp in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
@@ -219,8 +215,6 @@ type LinkedDatasetState struct {
 	// Structure is documented below.
 	BigqueryDatasets LinkedDatasetBigqueryDatasetArrayInput
 	// The bucket to which the linked dataset is attached.
-	//
-	// ***
 	Bucket pulumi.StringPtrInput
 	// Output only. The creation timestamp of the link. A timestamp in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
@@ -252,8 +246,6 @@ type linkedDatasetArgs struct {
 	// Structure is documented below.
 	BigqueryDatasets []LinkedDatasetBigqueryDataset `pulumi:"bigqueryDatasets"`
 	// The bucket to which the linked dataset is attached.
-	//
-	// ***
 	Bucket string `pulumi:"bucket"`
 	// Describes this link. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
@@ -273,8 +265,6 @@ type LinkedDatasetArgs struct {
 	// Structure is documented below.
 	BigqueryDatasets LinkedDatasetBigqueryDatasetArrayInput
 	// The bucket to which the linked dataset is attached.
-	//
-	// ***
 	Bucket pulumi.StringInput
 	// Describes this link. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
@@ -382,8 +372,6 @@ func (o LinkedDatasetOutput) BigqueryDatasets() LinkedDatasetBigqueryDatasetArra
 }
 
 // The bucket to which the linked dataset is attached.
-//
-// ***
 func (o LinkedDatasetOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *LinkedDataset) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }

@@ -73,9 +73,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the VPN gateway.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -104,9 +101,6 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The name of the VPN gateway.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

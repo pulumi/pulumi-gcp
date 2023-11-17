@@ -684,16 +684,12 @@ public class Subscription extends com.pulumi.resources.CustomResource {
     /**
      * A reference to a Topic resource.
      * 
-     * ***
-     * 
      */
     @Export(name="topic", refs={String.class}, tree="[0]")
     private Output<String> topic;
 
     /**
      * @return A reference to a Topic resource.
-     * 
-     * ***
      * 
      */
     public Output<String> topic() {
