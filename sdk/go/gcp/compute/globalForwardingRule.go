@@ -366,7 +366,6 @@ type GlobalForwardingRule struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
-	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringPtrOutput `pulumi:"portRange"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -568,7 +567,6 @@ type globalForwardingRuleState struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
-	//   @pattern: \d+(?:-\d+)?
 	PortRange *string `pulumi:"portRange"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -733,7 +731,6 @@ type GlobalForwardingRuleState struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
-	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -895,7 +892,6 @@ type globalForwardingRuleArgs struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
-	//   @pattern: \d+(?:-\d+)?
 	PortRange *string `pulumi:"portRange"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1045,7 +1041,6 @@ type GlobalForwardingRuleArgs struct {
 	//   For internal forwarding rules within the same VPC network, two or more
 	//   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 	//   cannot have overlapping `portRange`s.
-	//   @pattern: \d+(?:-\d+)?
 	PortRange pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1329,7 +1324,6 @@ func (o GlobalForwardingRuleOutput) NoAutomateDnsZone() pulumi.BoolPtrOutput {
 //     For internal forwarding rules within the same VPC network, two or more
 //     forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
 //     cannot have overlapping `portRange`s.
-//     @pattern: \d+(?:-\d+)?
 func (o GlobalForwardingRuleOutput) PortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.PortRange }).(pulumi.StringPtrOutput)
 }

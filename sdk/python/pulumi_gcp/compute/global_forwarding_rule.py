@@ -155,7 +155,6 @@ class GlobalForwardingRuleArgs:
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
                cannot have overlapping `portRange`s.
-               @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
@@ -455,7 +454,6 @@ class GlobalForwardingRuleArgs:
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
         cannot have overlapping `portRange`s.
-        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "port_range")
 
@@ -645,7 +643,6 @@ class _GlobalForwardingRuleState:
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
                cannot have overlapping `portRange`s.
-               @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
@@ -991,7 +988,6 @@ class _GlobalForwardingRuleState:
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
         cannot have overlapping `portRange`s.
-        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "port_range")
 
@@ -1381,7 +1377,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
                cannot have overlapping `portRange`s.
-               @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
@@ -1764,7 +1759,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
                For internal forwarding rules within the same VPC network, two or more
                forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
                cannot have overlapping `portRange`s.
-               @pattern: \\d+(?:-\\d+)?
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
@@ -2036,7 +2030,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
         For internal forwarding rules within the same VPC network, two or more
         forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
         cannot have overlapping `portRange`s.
-        @pattern: \\d+(?:-\\d+)?
         """
         return pulumi.get(self, "port_range")
 

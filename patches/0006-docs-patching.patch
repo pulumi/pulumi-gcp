@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Guinevere Saenger <guinevere@pulumi.com>
 Date: Wed, 4 Oct 2023 12:52:40 -0700
-Subject: [PATCH 6/9] docs patching
+Subject: [PATCH 06/10] docs patching
 
 
 diff --git a/website/docs/r/api_gateway_api.html.markdown b/website/docs/r/api_gateway_api.html.markdown

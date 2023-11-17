@@ -323,7 +323,6 @@ export class ForwardingRule extends pulumi.CustomResource {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      * cannot have overlapping `portRange`s.
-     * @pattern: \d+(?:-\d+)?
      */
     public readonly portRange!: pulumi.Output<string>;
     /**
@@ -344,7 +343,6 @@ export class ForwardingRule extends pulumi.CustomResource {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      * they share at least one port number.
-     * @pattern: \d+(?:-\d+)?
      */
     public readonly ports!: pulumi.Output<string[] | undefined>;
     /**
@@ -731,7 +729,6 @@ export interface ForwardingRuleState {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      * cannot have overlapping `portRange`s.
-     * @pattern: \d+(?:-\d+)?
      */
     portRange?: pulumi.Input<string>;
     /**
@@ -752,7 +749,6 @@ export interface ForwardingRuleState {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      * they share at least one port number.
-     * @pattern: \d+(?:-\d+)?
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1032,7 +1028,6 @@ export interface ForwardingRuleArgs {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
      * cannot have overlapping `portRange`s.
-     * @pattern: \d+(?:-\d+)?
      */
     portRange?: pulumi.Input<string>;
     /**
@@ -1053,7 +1048,6 @@ export interface ForwardingRuleArgs {
      * For internal forwarding rules within the same VPC network, two or more
      * forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
      * they share at least one port number.
-     * @pattern: \d+(?:-\d+)?
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
