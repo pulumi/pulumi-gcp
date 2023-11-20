@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  * To get more information about ServiceSplitTraffic, see:
  *
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
+ * * [API documentation for migrateTraffic](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services/patch#query-parameters)
  *
  * ## Example Usage
  * ### App Engine Service Split Traffic
