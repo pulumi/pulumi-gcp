@@ -6,7 +6,7 @@ Subject: [PATCH 01/10] Allow disabling the partner name
 Add options to set or disable partner name.
 
 diff --git a/google-beta/provider/provider.go b/google-beta/provider/provider.go
-index 4524f2880..eca1d04f9 100644
+index 09d487954..23122ed15 100644
 --- a/google-beta/provider/provider.go
 +++ b/google-beta/provider/provider.go
 @@ -247,6 +247,19 @@ func Provider() *schema.Provider {
@@ -29,7 +29,7 @@ index 4524f2880..eca1d04f9 100644
  			"request_reason": {
  				Type:     schema.TypeString,
  				Optional: true,
-@@ -1964,6 +1977,21 @@ func ProviderConfigure(ctx context.Context, d *schema.ResourceData, p *schema.Pr
+@@ -1963,6 +1976,21 @@ func ProviderConfigure(ctx context.Context, d *schema.ResourceData, p *schema.Pr
  		UserAgent:           p.UserAgent("terraform-provider-google-beta", version.ProviderVersion),
  	}
  

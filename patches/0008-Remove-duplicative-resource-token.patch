@@ -5,7 +5,7 @@ Subject: [PATCH 08/10] Remove duplicative resource token
 
 
 diff --git a/google-beta/provider/provider.go b/google-beta/provider/provider.go
-index eca1d04f9..ec5d2d4d9 100644
+index 23122ed15..af08b197b 100644
 --- a/google-beta/provider/provider.go
 +++ b/google-beta/provider/provider.go
 @@ -887,6 +887,15 @@ func Provider() *schema.Provider {
