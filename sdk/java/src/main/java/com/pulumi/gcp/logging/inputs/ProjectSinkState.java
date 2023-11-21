@@ -153,14 +153,14 @@ public final class ProjectSinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the logging sink.
+     * The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the logging sink.
+     * @return The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -440,7 +440,7 @@ public final class ProjectSinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the logging sink.
+         * @param name The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
          * 
          * @return builder
          * 
@@ -451,7 +451,7 @@ public final class ProjectSinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the logging sink.
+         * @param name The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
          * 
          * @return builder
          * 

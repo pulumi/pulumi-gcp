@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'AppProfileSingleClusterRouting',
+    'AppProfileStandardIsolation',
     'BiReservationPreferredTable',
     'ConnectionAws',
     'ConnectionAwsAccessRole',
@@ -135,6 +136,26 @@ class AppProfileSingleClusterRouting(dict):
         It is unsafe to send these requests to the same table/row/column in multiple clusters.
         """
         return pulumi.get(self, "allow_transactional_writes")
+
+
+@pulumi.output_type
+class AppProfileStandardIsolation(dict):
+    def __init__(__self__, *,
+                 priority: str):
+        """
+        :param str priority: The priority of requests sent using this app profile.
+               Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+        """
+        pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> str:
+        """
+        The priority of requests sent using this app profile.
+        Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+        """
+        return pulumi.get(self, "priority")
 
 
 @pulumi.output_type

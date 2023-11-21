@@ -227,6 +227,11 @@ export class AttachedCluster extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Support for proxy configuration.
+     * Structure is documented below.
+     */
+    public readonly proxyConfig!: pulumi.Output<outputs.container.AttachedClusterProxyConfig | undefined>;
+    /**
      * If set, there are currently changes in flight to the cluster.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
@@ -282,6 +287,7 @@ export class AttachedCluster extends pulumi.CustomResource {
             resourceInputs["oidcConfig"] = state ? state.oidcConfig : undefined;
             resourceInputs["platformVersion"] = state ? state.platformVersion : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["proxyConfig"] = state ? state.proxyConfig : undefined;
             resourceInputs["reconciling"] = state ? state.reconciling : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
@@ -318,6 +324,7 @@ export class AttachedCluster extends pulumi.CustomResource {
             resourceInputs["oidcConfig"] = args ? args.oidcConfig : undefined;
             resourceInputs["platformVersion"] = args ? args.platformVersion : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["proxyConfig"] = args ? args.proxyConfig : undefined;
             resourceInputs["clusterRegion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
@@ -444,6 +451,11 @@ export interface AttachedClusterState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Support for proxy configuration.
+     * Structure is documented below.
+     */
+    proxyConfig?: pulumi.Input<inputs.container.AttachedClusterProxyConfig>;
+    /**
      * If set, there are currently changes in flight to the cluster.
      */
     reconciling?: pulumi.Input<boolean>;
@@ -553,4 +565,9 @@ export interface AttachedClusterArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Support for proxy configuration.
+     * Structure is documented below.
+     */
+    proxyConfig?: pulumi.Input<inputs.container.AttachedClusterProxyConfig>;
 }

@@ -368,7 +368,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig")
 public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
     /**
-     * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+     * The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */
@@ -376,7 +376,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
     private Output<String> checkerType;
 
     /**
-     * @return The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+     * @return The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */
@@ -430,16 +430,20 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.httpCheck);
     }
     /**
-     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
-     * Structure is documented below.
+     * The [monitored resource]
+     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * configuration. The following monitored resource types are supported for
+     * uptime checks:
      * 
      */
     @Export(name="monitoredResource", refs={UptimeCheckConfigMonitoredResource.class}, tree="[0]")
     private Output</* @Nullable */ UptimeCheckConfigMonitoredResource> monitoredResource;
 
     /**
-     * @return The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
-     * Structure is documented below.
+     * @return The [monitored resource]
+     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * configuration. The following monitored resource types are supported for
+     * uptime checks:
      * 
      */
     public Output<Optional<UptimeCheckConfigMonitoredResource>> monitoredResource() {
@@ -552,7 +556,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tcpCheck);
     }
     /**
-     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
      * 
      * ***
      * 
@@ -561,7 +565,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
     private Output<String> timeout;
 
     /**
-     * @return The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+     * @return The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
      * 
      * ***
      * 

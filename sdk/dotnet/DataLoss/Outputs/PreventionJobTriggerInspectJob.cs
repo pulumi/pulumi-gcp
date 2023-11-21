@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionJobTriggerInspectJob
     {
         /// <summary>
-        /// A task to execute on the completion of a job.
+        /// Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.PreventionJobTriggerInspectJobAction> Actions;

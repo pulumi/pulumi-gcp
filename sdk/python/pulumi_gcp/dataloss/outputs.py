@@ -12980,7 +12980,7 @@ class PreventionJobTriggerInspectJob(dict):
         """
         :param 'PreventionJobTriggerInspectJobStorageConfigArgs' storage_config: Information on where to inspect
                Structure is documented below.
-        :param Sequence['PreventionJobTriggerInspectJobActionArgs'] actions: A task to execute on the completion of a job.
+        :param Sequence['PreventionJobTriggerInspectJobActionArgs'] actions: Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
                Structure is documented below.
         :param 'PreventionJobTriggerInspectJobInspectConfigArgs' inspect_config: The core content of the template.
                Structure is documented below.
@@ -13007,7 +13007,7 @@ class PreventionJobTriggerInspectJob(dict):
     @pulumi.getter
     def actions(self) -> Optional[Sequence['outputs.PreventionJobTriggerInspectJobAction']]:
         """
-        A task to execute on the completion of a job.
+        Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
         Structure is documented below.
         """
         return pulumi.get(self, "actions")

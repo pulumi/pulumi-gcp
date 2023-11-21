@@ -24,11 +24,6 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Action to take when `match` matches the request. Valid values:
-     * * allow: allow access to target.
-     * * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
-     * * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-     * * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
-     * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
      * 
      */
     @Import(name="action", required=true)
@@ -36,11 +31,6 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Action to take when `match` matches the request. Valid values:
-     * * allow: allow access to target.
-     * * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
-     * * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-     * * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
-     * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
      * 
      */
     public Output<String> action() {
@@ -95,14 +85,14 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+     * ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
      * 
      */
     @Import(name="preconfiguredWafConfig")
     private @Nullable Output<SecurityPolicyRulePreconfiguredWafConfigArgs> preconfiguredWafConfig;
 
     /**
-     * @return ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+     * @return ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
      * 
      */
     public Optional<Output<SecurityPolicyRulePreconfiguredWafConfigArgs>> preconfiguredWafConfig() {
@@ -144,14 +134,14 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Must be specified if the `action` is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
+     * Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
      * 
      */
     @Import(name="rateLimitOptions")
     private @Nullable Output<SecurityPolicyRuleRateLimitOptionsArgs> rateLimitOptions;
 
     /**
-     * @return Must be specified if the `action` is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
+     * @return Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
      * 
      */
     public Optional<Output<SecurityPolicyRuleRateLimitOptionsArgs>> rateLimitOptions() {
@@ -159,14 +149,14 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
+     * Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
      * 
      */
     @Import(name="redirectOptions")
     private @Nullable Output<SecurityPolicyRuleRedirectOptionsArgs> redirectOptions;
 
     /**
-     * @return Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
+     * @return Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
      * 
      */
     public Optional<Output<SecurityPolicyRuleRedirectOptionsArgs>> redirectOptions() {
@@ -207,11 +197,6 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param action Action to take when `match` matches the request. Valid values:
-         * * allow: allow access to target.
-         * * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
-         * * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-         * * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
-         * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
          * 
          * @return builder
          * 
@@ -223,11 +208,6 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param action Action to take when `match` matches the request. Valid values:
-         * * allow: allow access to target.
-         * * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
-         * * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-         * * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
-         * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
          * 
          * @return builder
          * 
@@ -302,7 +282,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param preconfiguredWafConfig ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+         * @param preconfiguredWafConfig ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
          * 
          * @return builder
          * 
@@ -313,7 +293,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param preconfiguredWafConfig ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+         * @param preconfiguredWafConfig ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
          * 
          * @return builder
          * 
@@ -369,7 +349,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rateLimitOptions Must be specified if the `action` is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
+         * @param rateLimitOptions Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
          * 
          * @return builder
          * 
@@ -380,7 +360,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rateLimitOptions Must be specified if the `action` is &#34;rate_based_ban&#34; or &#34;throttle&#34;. Cannot be specified for other actions. Structure is documented below.
+         * @param rateLimitOptions Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
          * 
          * @return builder
          * 
@@ -390,7 +370,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param redirectOptions Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
+         * @param redirectOptions Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
          * 
          * @return builder
          * 
@@ -401,7 +381,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param redirectOptions Can be specified if the `action` is &#34;redirect&#34;. Cannot be specified for other actions. Structure is documented below.
+         * @param redirectOptions Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
          * 
          * @return builder
          * 

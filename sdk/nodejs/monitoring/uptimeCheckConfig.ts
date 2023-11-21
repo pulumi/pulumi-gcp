@@ -251,7 +251,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
     }
 
     /**
-     * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+     * The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      */
     public readonly checkerType!: pulumi.Output<string>;
@@ -270,8 +270,10 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly httpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigHttpCheck | undefined>;
     /**
-     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
-     * Structure is documented below.
+     * The [monitored resource]
+     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * configuration. The following monitored resource types are supported for
+     * uptime checks:
      */
     public readonly monitoredResource!: pulumi.Output<outputs.monitoring.UptimeCheckConfigMonitoredResource | undefined>;
     /**
@@ -307,7 +309,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly tcpCheck!: pulumi.Output<outputs.monitoring.UptimeCheckConfigTcpCheck | undefined>;
     /**
-     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
      *
      *
      * - - -
@@ -384,7 +386,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
  */
 export interface UptimeCheckConfigState {
     /**
-     * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+     * The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      */
     checkerType?: pulumi.Input<string>;
@@ -403,8 +405,10 @@ export interface UptimeCheckConfigState {
      */
     httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
     /**
-     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
-     * Structure is documented below.
+     * The [monitored resource]
+     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * configuration. The following monitored resource types are supported for
+     * uptime checks:
      */
     monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
     /**
@@ -440,7 +444,7 @@ export interface UptimeCheckConfigState {
      */
     tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
     /**
-     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
      *
      *
      * - - -
@@ -461,7 +465,7 @@ export interface UptimeCheckConfigState {
  */
 export interface UptimeCheckConfigArgs {
     /**
-     * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+     * The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      */
     checkerType?: pulumi.Input<string>;
@@ -480,8 +484,10 @@ export interface UptimeCheckConfigArgs {
      */
     httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
     /**
-     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
-     * Structure is documented below.
+     * The [monitored resource]
+     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * configuration. The following monitored resource types are supported for
+     * uptime checks:
      */
     monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
     /**
@@ -513,7 +519,7 @@ export interface UptimeCheckConfigArgs {
      */
     tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
     /**
-     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
      *
      *
      * - - -

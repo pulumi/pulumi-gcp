@@ -94,7 +94,7 @@ export class ProjectSink extends pulumi.CustomResource {
      */
     public readonly filter!: pulumi.Output<string | undefined>;
     /**
-     * The name of the logging sink.
+     * The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -207,7 +207,7 @@ export interface ProjectSinkState {
      */
     filter?: pulumi.Input<string>;
     /**
-     * The name of the logging sink.
+     * The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -275,7 +275,7 @@ export interface ProjectSinkArgs {
      */
     filter?: pulumi.Input<string>;
     /**
-     * The name of the logging sink.
+     * The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
      */
     name?: pulumi.Input<string>;
     /**

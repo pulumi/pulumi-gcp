@@ -1331,6 +1331,305 @@ func (o AttachedClusterOidcConfigPtrOutput) Jwks() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AttachedClusterProxyConfig struct {
+	// The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
+	// Structure is documented below.
+	KubernetesSecret *AttachedClusterProxyConfigKubernetesSecret `pulumi:"kubernetesSecret"`
+}
+
+// AttachedClusterProxyConfigInput is an input type that accepts AttachedClusterProxyConfigArgs and AttachedClusterProxyConfigOutput values.
+// You can construct a concrete instance of `AttachedClusterProxyConfigInput` via:
+//
+//	AttachedClusterProxyConfigArgs{...}
+type AttachedClusterProxyConfigInput interface {
+	pulumi.Input
+
+	ToAttachedClusterProxyConfigOutput() AttachedClusterProxyConfigOutput
+	ToAttachedClusterProxyConfigOutputWithContext(context.Context) AttachedClusterProxyConfigOutput
+}
+
+type AttachedClusterProxyConfigArgs struct {
+	// The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
+	// Structure is documented below.
+	KubernetesSecret AttachedClusterProxyConfigKubernetesSecretPtrInput `pulumi:"kubernetesSecret"`
+}
+
+func (AttachedClusterProxyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterProxyConfig)(nil)).Elem()
+}
+
+func (i AttachedClusterProxyConfigArgs) ToAttachedClusterProxyConfigOutput() AttachedClusterProxyConfigOutput {
+	return i.ToAttachedClusterProxyConfigOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterProxyConfigArgs) ToAttachedClusterProxyConfigOutputWithContext(ctx context.Context) AttachedClusterProxyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterProxyConfigOutput)
+}
+
+func (i AttachedClusterProxyConfigArgs) ToAttachedClusterProxyConfigPtrOutput() AttachedClusterProxyConfigPtrOutput {
+	return i.ToAttachedClusterProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterProxyConfigArgs) ToAttachedClusterProxyConfigPtrOutputWithContext(ctx context.Context) AttachedClusterProxyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterProxyConfigOutput).ToAttachedClusterProxyConfigPtrOutputWithContext(ctx)
+}
+
+// AttachedClusterProxyConfigPtrInput is an input type that accepts AttachedClusterProxyConfigArgs, AttachedClusterProxyConfigPtr and AttachedClusterProxyConfigPtrOutput values.
+// You can construct a concrete instance of `AttachedClusterProxyConfigPtrInput` via:
+//
+//	        AttachedClusterProxyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttachedClusterProxyConfigPtrInput interface {
+	pulumi.Input
+
+	ToAttachedClusterProxyConfigPtrOutput() AttachedClusterProxyConfigPtrOutput
+	ToAttachedClusterProxyConfigPtrOutputWithContext(context.Context) AttachedClusterProxyConfigPtrOutput
+}
+
+type attachedClusterProxyConfigPtrType AttachedClusterProxyConfigArgs
+
+func AttachedClusterProxyConfigPtr(v *AttachedClusterProxyConfigArgs) AttachedClusterProxyConfigPtrInput {
+	return (*attachedClusterProxyConfigPtrType)(v)
+}
+
+func (*attachedClusterProxyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterProxyConfig)(nil)).Elem()
+}
+
+func (i *attachedClusterProxyConfigPtrType) ToAttachedClusterProxyConfigPtrOutput() AttachedClusterProxyConfigPtrOutput {
+	return i.ToAttachedClusterProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedClusterProxyConfigPtrType) ToAttachedClusterProxyConfigPtrOutputWithContext(ctx context.Context) AttachedClusterProxyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterProxyConfigPtrOutput)
+}
+
+type AttachedClusterProxyConfigOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterProxyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterProxyConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterProxyConfigOutput) ToAttachedClusterProxyConfigOutput() AttachedClusterProxyConfigOutput {
+	return o
+}
+
+func (o AttachedClusterProxyConfigOutput) ToAttachedClusterProxyConfigOutputWithContext(ctx context.Context) AttachedClusterProxyConfigOutput {
+	return o
+}
+
+func (o AttachedClusterProxyConfigOutput) ToAttachedClusterProxyConfigPtrOutput() AttachedClusterProxyConfigPtrOutput {
+	return o.ToAttachedClusterProxyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedClusterProxyConfigOutput) ToAttachedClusterProxyConfigPtrOutputWithContext(ctx context.Context) AttachedClusterProxyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedClusterProxyConfig) *AttachedClusterProxyConfig {
+		return &v
+	}).(AttachedClusterProxyConfigPtrOutput)
+}
+
+// The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
+// Structure is documented below.
+func (o AttachedClusterProxyConfigOutput) KubernetesSecret() AttachedClusterProxyConfigKubernetesSecretPtrOutput {
+	return o.ApplyT(func(v AttachedClusterProxyConfig) *AttachedClusterProxyConfigKubernetesSecret {
+		return v.KubernetesSecret
+	}).(AttachedClusterProxyConfigKubernetesSecretPtrOutput)
+}
+
+type AttachedClusterProxyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterProxyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterProxyConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterProxyConfigPtrOutput) ToAttachedClusterProxyConfigPtrOutput() AttachedClusterProxyConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterProxyConfigPtrOutput) ToAttachedClusterProxyConfigPtrOutputWithContext(ctx context.Context) AttachedClusterProxyConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterProxyConfigPtrOutput) Elem() AttachedClusterProxyConfigOutput {
+	return o.ApplyT(func(v *AttachedClusterProxyConfig) AttachedClusterProxyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedClusterProxyConfig
+		return ret
+	}).(AttachedClusterProxyConfigOutput)
+}
+
+// The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
+// Structure is documented below.
+func (o AttachedClusterProxyConfigPtrOutput) KubernetesSecret() AttachedClusterProxyConfigKubernetesSecretPtrOutput {
+	return o.ApplyT(func(v *AttachedClusterProxyConfig) *AttachedClusterProxyConfigKubernetesSecret {
+		if v == nil {
+			return nil
+		}
+		return v.KubernetesSecret
+	}).(AttachedClusterProxyConfigKubernetesSecretPtrOutput)
+}
+
+type AttachedClusterProxyConfigKubernetesSecret struct {
+	// Name of the kubernetes secret containing the proxy config.
+	Name string `pulumi:"name"`
+	// Namespace of the kubernetes secret containing the proxy config.
+	Namespace string `pulumi:"namespace"`
+}
+
+// AttachedClusterProxyConfigKubernetesSecretInput is an input type that accepts AttachedClusterProxyConfigKubernetesSecretArgs and AttachedClusterProxyConfigKubernetesSecretOutput values.
+// You can construct a concrete instance of `AttachedClusterProxyConfigKubernetesSecretInput` via:
+//
+//	AttachedClusterProxyConfigKubernetesSecretArgs{...}
+type AttachedClusterProxyConfigKubernetesSecretInput interface {
+	pulumi.Input
+
+	ToAttachedClusterProxyConfigKubernetesSecretOutput() AttachedClusterProxyConfigKubernetesSecretOutput
+	ToAttachedClusterProxyConfigKubernetesSecretOutputWithContext(context.Context) AttachedClusterProxyConfigKubernetesSecretOutput
+}
+
+type AttachedClusterProxyConfigKubernetesSecretArgs struct {
+	// Name of the kubernetes secret containing the proxy config.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Namespace of the kubernetes secret containing the proxy config.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+}
+
+func (AttachedClusterProxyConfigKubernetesSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterProxyConfigKubernetesSecret)(nil)).Elem()
+}
+
+func (i AttachedClusterProxyConfigKubernetesSecretArgs) ToAttachedClusterProxyConfigKubernetesSecretOutput() AttachedClusterProxyConfigKubernetesSecretOutput {
+	return i.ToAttachedClusterProxyConfigKubernetesSecretOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterProxyConfigKubernetesSecretArgs) ToAttachedClusterProxyConfigKubernetesSecretOutputWithContext(ctx context.Context) AttachedClusterProxyConfigKubernetesSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterProxyConfigKubernetesSecretOutput)
+}
+
+func (i AttachedClusterProxyConfigKubernetesSecretArgs) ToAttachedClusterProxyConfigKubernetesSecretPtrOutput() AttachedClusterProxyConfigKubernetesSecretPtrOutput {
+	return i.ToAttachedClusterProxyConfigKubernetesSecretPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterProxyConfigKubernetesSecretArgs) ToAttachedClusterProxyConfigKubernetesSecretPtrOutputWithContext(ctx context.Context) AttachedClusterProxyConfigKubernetesSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterProxyConfigKubernetesSecretOutput).ToAttachedClusterProxyConfigKubernetesSecretPtrOutputWithContext(ctx)
+}
+
+// AttachedClusterProxyConfigKubernetesSecretPtrInput is an input type that accepts AttachedClusterProxyConfigKubernetesSecretArgs, AttachedClusterProxyConfigKubernetesSecretPtr and AttachedClusterProxyConfigKubernetesSecretPtrOutput values.
+// You can construct a concrete instance of `AttachedClusterProxyConfigKubernetesSecretPtrInput` via:
+//
+//	        AttachedClusterProxyConfigKubernetesSecretArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttachedClusterProxyConfigKubernetesSecretPtrInput interface {
+	pulumi.Input
+
+	ToAttachedClusterProxyConfigKubernetesSecretPtrOutput() AttachedClusterProxyConfigKubernetesSecretPtrOutput
+	ToAttachedClusterProxyConfigKubernetesSecretPtrOutputWithContext(context.Context) AttachedClusterProxyConfigKubernetesSecretPtrOutput
+}
+
+type attachedClusterProxyConfigKubernetesSecretPtrType AttachedClusterProxyConfigKubernetesSecretArgs
+
+func AttachedClusterProxyConfigKubernetesSecretPtr(v *AttachedClusterProxyConfigKubernetesSecretArgs) AttachedClusterProxyConfigKubernetesSecretPtrInput {
+	return (*attachedClusterProxyConfigKubernetesSecretPtrType)(v)
+}
+
+func (*attachedClusterProxyConfigKubernetesSecretPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterProxyConfigKubernetesSecret)(nil)).Elem()
+}
+
+func (i *attachedClusterProxyConfigKubernetesSecretPtrType) ToAttachedClusterProxyConfigKubernetesSecretPtrOutput() AttachedClusterProxyConfigKubernetesSecretPtrOutput {
+	return i.ToAttachedClusterProxyConfigKubernetesSecretPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedClusterProxyConfigKubernetesSecretPtrType) ToAttachedClusterProxyConfigKubernetesSecretPtrOutputWithContext(ctx context.Context) AttachedClusterProxyConfigKubernetesSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterProxyConfigKubernetesSecretPtrOutput)
+}
+
+type AttachedClusterProxyConfigKubernetesSecretOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterProxyConfigKubernetesSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterProxyConfigKubernetesSecret)(nil)).Elem()
+}
+
+func (o AttachedClusterProxyConfigKubernetesSecretOutput) ToAttachedClusterProxyConfigKubernetesSecretOutput() AttachedClusterProxyConfigKubernetesSecretOutput {
+	return o
+}
+
+func (o AttachedClusterProxyConfigKubernetesSecretOutput) ToAttachedClusterProxyConfigKubernetesSecretOutputWithContext(ctx context.Context) AttachedClusterProxyConfigKubernetesSecretOutput {
+	return o
+}
+
+func (o AttachedClusterProxyConfigKubernetesSecretOutput) ToAttachedClusterProxyConfigKubernetesSecretPtrOutput() AttachedClusterProxyConfigKubernetesSecretPtrOutput {
+	return o.ToAttachedClusterProxyConfigKubernetesSecretPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedClusterProxyConfigKubernetesSecretOutput) ToAttachedClusterProxyConfigKubernetesSecretPtrOutputWithContext(ctx context.Context) AttachedClusterProxyConfigKubernetesSecretPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedClusterProxyConfigKubernetesSecret) *AttachedClusterProxyConfigKubernetesSecret {
+		return &v
+	}).(AttachedClusterProxyConfigKubernetesSecretPtrOutput)
+}
+
+// Name of the kubernetes secret containing the proxy config.
+func (o AttachedClusterProxyConfigKubernetesSecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedClusterProxyConfigKubernetesSecret) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Namespace of the kubernetes secret containing the proxy config.
+func (o AttachedClusterProxyConfigKubernetesSecretOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedClusterProxyConfigKubernetesSecret) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+type AttachedClusterProxyConfigKubernetesSecretPtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterProxyConfigKubernetesSecretPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterProxyConfigKubernetesSecret)(nil)).Elem()
+}
+
+func (o AttachedClusterProxyConfigKubernetesSecretPtrOutput) ToAttachedClusterProxyConfigKubernetesSecretPtrOutput() AttachedClusterProxyConfigKubernetesSecretPtrOutput {
+	return o
+}
+
+func (o AttachedClusterProxyConfigKubernetesSecretPtrOutput) ToAttachedClusterProxyConfigKubernetesSecretPtrOutputWithContext(ctx context.Context) AttachedClusterProxyConfigKubernetesSecretPtrOutput {
+	return o
+}
+
+func (o AttachedClusterProxyConfigKubernetesSecretPtrOutput) Elem() AttachedClusterProxyConfigKubernetesSecretOutput {
+	return o.ApplyT(func(v *AttachedClusterProxyConfigKubernetesSecret) AttachedClusterProxyConfigKubernetesSecret {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedClusterProxyConfigKubernetesSecret
+		return ret
+	}).(AttachedClusterProxyConfigKubernetesSecretOutput)
+}
+
+// Name of the kubernetes secret containing the proxy config.
+func (o AttachedClusterProxyConfigKubernetesSecretPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedClusterProxyConfigKubernetesSecret) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Namespace of the kubernetes secret containing the proxy config.
+func (o AttachedClusterProxyConfigKubernetesSecretPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedClusterProxyConfigKubernetesSecret) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
 type AttachedClusterWorkloadIdentityConfig struct {
 	// The ID of the OIDC Identity Provider (IdP) associated to
 	// the Workload Identity Pool.
@@ -53158,6 +53457,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterMonitoringConfigManagedPrometheusConfigPtrInput)(nil)).Elem(), AttachedClusterMonitoringConfigManagedPrometheusConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterOidcConfigInput)(nil)).Elem(), AttachedClusterOidcConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterOidcConfigPtrInput)(nil)).Elem(), AttachedClusterOidcConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterProxyConfigInput)(nil)).Elem(), AttachedClusterProxyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterProxyConfigPtrInput)(nil)).Elem(), AttachedClusterProxyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterProxyConfigKubernetesSecretInput)(nil)).Elem(), AttachedClusterProxyConfigKubernetesSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterProxyConfigKubernetesSecretPtrInput)(nil)).Elem(), AttachedClusterProxyConfigKubernetesSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterWorkloadIdentityConfigInput)(nil)).Elem(), AttachedClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), AttachedClusterWorkloadIdentityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterAuthorizationInput)(nil)).Elem(), AwsClusterAuthorizationArgs{})
@@ -53874,6 +54177,10 @@ func init() {
 	pulumi.RegisterOutputType(AttachedClusterMonitoringConfigManagedPrometheusConfigPtrOutput{})
 	pulumi.RegisterOutputType(AttachedClusterOidcConfigOutput{})
 	pulumi.RegisterOutputType(AttachedClusterOidcConfigPtrOutput{})
+	pulumi.RegisterOutputType(AttachedClusterProxyConfigOutput{})
+	pulumi.RegisterOutputType(AttachedClusterProxyConfigPtrOutput{})
+	pulumi.RegisterOutputType(AttachedClusterProxyConfigKubernetesSecretOutput{})
+	pulumi.RegisterOutputType(AttachedClusterProxyConfigKubernetesSecretPtrOutput{})
 	pulumi.RegisterOutputType(AttachedClusterWorkloadIdentityConfigOutput{})
 	pulumi.RegisterOutputType(AttachedClusterWorkloadIdentityConfigArrayOutput{})
 	pulumi.RegisterOutputType(AwsClusterAuthorizationOutput{})

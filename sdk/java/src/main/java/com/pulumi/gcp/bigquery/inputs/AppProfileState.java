@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigquery.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.bigquery.inputs.AppProfileSingleClusterRoutingArgs;
+import com.pulumi.gcp.bigquery.inputs.AppProfileStandardIsolationArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -167,6 +168,23 @@ public final class AppProfileState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.singleClusterRouting);
     }
 
+    /**
+     * The standard options used for isolating this app profile&#39;s traffic from other use cases.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="standardIsolation")
+    private @Nullable Output<AppProfileStandardIsolationArgs> standardIsolation;
+
+    /**
+     * @return The standard options used for isolating this app profile&#39;s traffic from other use cases.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AppProfileStandardIsolationArgs>> standardIsolation() {
+        return Optional.ofNullable(this.standardIsolation);
+    }
+
     private AppProfileState() {}
 
     private AppProfileState(AppProfileState $) {
@@ -179,6 +197,7 @@ public final class AppProfileState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.singleClusterRouting = $.singleClusterRouting;
+        this.standardIsolation = $.standardIsolation;
     }
 
     public static Builder builder() {
@@ -411,6 +430,29 @@ public final class AppProfileState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder singleClusterRouting(AppProfileSingleClusterRoutingArgs singleClusterRouting) {
             return singleClusterRouting(Output.of(singleClusterRouting));
+        }
+
+        /**
+         * @param standardIsolation The standard options used for isolating this app profile&#39;s traffic from other use cases.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder standardIsolation(@Nullable Output<AppProfileStandardIsolationArgs> standardIsolation) {
+            $.standardIsolation = standardIsolation;
+            return this;
+        }
+
+        /**
+         * @param standardIsolation The standard options used for isolating this app profile&#39;s traffic from other use cases.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder standardIsolation(AppProfileStandardIsolationArgs standardIsolation) {
+            return standardIsolation(Output.of(standardIsolation));
         }
 
         public AppProfileState build() {

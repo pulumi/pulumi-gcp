@@ -20,14 +20,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly Outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig? JsonCustomConfig;
         /// <summary>
         /// Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
-        /// * DISABLED - Don't parse JSON payloads in POST bodies.
-        /// * STANDARD - Parse JSON payloads in POST bodies.
         /// </summary>
         public readonly string? JsonParsing;
         /// <summary>
         /// Log level to use. Defaults to `NORMAL`.
-        /// * NORMAL - Normal log level.
-        /// * VERBOSE - Verbose log level.
         /// </summary>
         public readonly string? LogLevel;
         /// <summary>

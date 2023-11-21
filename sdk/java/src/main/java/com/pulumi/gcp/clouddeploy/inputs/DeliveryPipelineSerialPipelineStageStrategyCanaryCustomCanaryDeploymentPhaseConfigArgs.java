@@ -51,14 +51,14 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
     }
 
     /**
-     * (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+     * Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
      * 
      */
     @Import(name="postdeploy")
     private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs> postdeploy;
 
     /**
-     * @return (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+     * @return Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
      * 
      */
     public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs>> postdeploy() {
@@ -66,14 +66,14 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
     }
 
     /**
-     * (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+     * Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
      * 
      */
     @Import(name="predeploy")
     private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs> predeploy;
 
     /**
-     * @return (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+     * @return Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
      * 
      */
     public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs>> predeploy() {
@@ -186,7 +186,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
         }
 
         /**
-         * @param postdeploy (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+         * @param postdeploy Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
         }
 
         /**
-         * @param postdeploy (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+         * @param postdeploy Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
         }
 
         /**
-         * @param predeploy (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+         * @param predeploy Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
         }
 
         /**
-         * @param predeploy (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+         * @param predeploy Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
          * 
          * @return builder
          * 

@@ -327,7 +327,7 @@ import (
 type UptimeCheckConfig struct {
 	pulumi.CustomResourceState
 
-	// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+	// The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
 	// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
 	CheckerType pulumi.StringOutput `pulumi:"checkerType"`
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
@@ -338,8 +338,10 @@ type UptimeCheckConfig struct {
 	// Contains information needed to make an HTTP or HTTPS check.
 	// Structure is documented below.
 	HttpCheck UptimeCheckConfigHttpCheckPtrOutput `pulumi:"httpCheck"`
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
-	// Structure is documented below.
+	// The [monitored resource]
+	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// configuration. The following monitored resource types are supported for
+	// uptime checks:
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrOutput `pulumi:"monitoredResource"`
 	// The fully qualified name of the cloud function resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -359,7 +361,7 @@ type UptimeCheckConfig struct {
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrOutput `pulumi:"tcpCheck"`
-	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
 	//
 	// ***
 	Timeout pulumi.StringOutput `pulumi:"timeout"`
@@ -405,7 +407,7 @@ func GetUptimeCheckConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UptimeCheckConfig resources.
 type uptimeCheckConfigState struct {
-	// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+	// The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
 	// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
 	CheckerType *string `pulumi:"checkerType"`
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
@@ -416,8 +418,10 @@ type uptimeCheckConfigState struct {
 	// Contains information needed to make an HTTP or HTTPS check.
 	// Structure is documented below.
 	HttpCheck *UptimeCheckConfigHttpCheck `pulumi:"httpCheck"`
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
-	// Structure is documented below.
+	// The [monitored resource]
+	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// configuration. The following monitored resource types are supported for
+	// uptime checks:
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
 	// The fully qualified name of the cloud function resource.
 	Name *string `pulumi:"name"`
@@ -437,7 +441,7 @@ type uptimeCheckConfigState struct {
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck *UptimeCheckConfigTcpCheck `pulumi:"tcpCheck"`
-	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
 	//
 	// ***
 	Timeout *string `pulumi:"timeout"`
@@ -448,7 +452,7 @@ type uptimeCheckConfigState struct {
 }
 
 type UptimeCheckConfigState struct {
-	// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+	// The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
 	// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
 	CheckerType pulumi.StringPtrInput
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
@@ -459,8 +463,10 @@ type UptimeCheckConfigState struct {
 	// Contains information needed to make an HTTP or HTTPS check.
 	// Structure is documented below.
 	HttpCheck UptimeCheckConfigHttpCheckPtrInput
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
-	// Structure is documented below.
+	// The [monitored resource]
+	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// configuration. The following monitored resource types are supported for
+	// uptime checks:
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
 	// The fully qualified name of the cloud function resource.
 	Name pulumi.StringPtrInput
@@ -480,7 +486,7 @@ type UptimeCheckConfigState struct {
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrInput
-	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
 	//
 	// ***
 	Timeout pulumi.StringPtrInput
@@ -495,7 +501,7 @@ func (UptimeCheckConfigState) ElementType() reflect.Type {
 }
 
 type uptimeCheckConfigArgs struct {
-	// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+	// The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
 	// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
 	CheckerType *string `pulumi:"checkerType"`
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
@@ -506,8 +512,10 @@ type uptimeCheckConfigArgs struct {
 	// Contains information needed to make an HTTP or HTTPS check.
 	// Structure is documented below.
 	HttpCheck *UptimeCheckConfigHttpCheck `pulumi:"httpCheck"`
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
-	// Structure is documented below.
+	// The [monitored resource]
+	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// configuration. The following monitored resource types are supported for
+	// uptime checks:
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period *string `pulumi:"period"`
@@ -525,7 +533,7 @@ type uptimeCheckConfigArgs struct {
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck *UptimeCheckConfigTcpCheck `pulumi:"tcpCheck"`
-	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
 	//
 	// ***
 	Timeout string `pulumi:"timeout"`
@@ -535,7 +543,7 @@ type uptimeCheckConfigArgs struct {
 
 // The set of arguments for constructing a UptimeCheckConfig resource.
 type UptimeCheckConfigArgs struct {
-	// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+	// The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
 	// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
 	CheckerType pulumi.StringPtrInput
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
@@ -546,8 +554,10 @@ type UptimeCheckConfigArgs struct {
 	// Contains information needed to make an HTTP or HTTPS check.
 	// Structure is documented below.
 	HttpCheck UptimeCheckConfigHttpCheckPtrInput
-	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
-	// Structure is documented below.
+	// The [monitored resource]
+	// (https://cloud.google.com/monitoring/api/resources) associated with the
+	// configuration. The following monitored resource types are supported for
+	// uptime checks:
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period pulumi.StringPtrInput
@@ -565,7 +575,7 @@ type UptimeCheckConfigArgs struct {
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrInput
-	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
 	//
 	// ***
 	Timeout pulumi.StringInput
@@ -660,7 +670,7 @@ func (o UptimeCheckConfigOutput) ToUptimeCheckConfigOutputWithContext(ctx contex
 	return o
 }
 
-// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+// The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
 // Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
 func (o UptimeCheckConfigOutput) CheckerType() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.CheckerType }).(pulumi.StringOutput)
@@ -683,8 +693,10 @@ func (o UptimeCheckConfigOutput) HttpCheck() UptimeCheckConfigHttpCheckPtrOutput
 	return o.ApplyT(func(v *UptimeCheckConfig) UptimeCheckConfigHttpCheckPtrOutput { return v.HttpCheck }).(UptimeCheckConfigHttpCheckPtrOutput)
 }
 
-// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
-// Structure is documented below.
+// The [monitored resource]
+// (https://cloud.google.com/monitoring/api/resources) associated with the
+// configuration. The following monitored resource types are supported for
+// uptime checks:
 func (o UptimeCheckConfigOutput) MonitoredResource() UptimeCheckConfigMonitoredResourcePtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) UptimeCheckConfigMonitoredResourcePtrOutput { return v.MonitoredResource }).(UptimeCheckConfigMonitoredResourcePtrOutput)
 }
@@ -728,7 +740,7 @@ func (o UptimeCheckConfigOutput) TcpCheck() UptimeCheckConfigTcpCheckPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) UptimeCheckConfigTcpCheckPtrOutput { return v.TcpCheck }).(UptimeCheckConfigTcpCheckPtrOutput)
 }
 
-// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
 //
 // ***
 func (o UptimeCheckConfigOutput) Timeout() pulumi.StringOutput {

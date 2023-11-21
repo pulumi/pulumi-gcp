@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        /// Rule visibility can be one of the following:
         /// </summary>
         [Input("ruleVisibility")]
         public Input<string>? RuleVisibility { get; set; }

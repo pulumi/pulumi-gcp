@@ -267,6 +267,13 @@ namespace Pulumi.Gcp.Container
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Support for proxy configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("proxyConfig")]
+        public Output<Outputs.AttachedClusterProxyConfig?> ProxyConfig { get; private set; } = null!;
+
+        /// <summary>
         /// If set, there are currently changes in flight to the cluster.
         /// </summary>
         [Output("reconciling")]
@@ -460,6 +467,13 @@ namespace Pulumi.Gcp.Container
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Support for proxy configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("proxyConfig")]
+        public Input<Inputs.AttachedClusterProxyConfigArgs>? ProxyConfig { get; set; }
+
         public AttachedClusterArgs()
         {
         }
@@ -628,6 +642,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Support for proxy configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("proxyConfig")]
+        public Input<Inputs.AttachedClusterProxyConfigGetArgs>? ProxyConfig { get; set; }
 
         /// <summary>
         /// If set, there are currently changes in flight to the cluster.

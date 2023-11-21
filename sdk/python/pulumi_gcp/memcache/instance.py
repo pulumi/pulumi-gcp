@@ -48,7 +48,7 @@ class InstanceArgs:
                Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
                determined by our system based on the latest supported minor version.
                Default value is `MEMCACHE_1_5`.
-               Possible values are: `MEMCACHE_1_5`.
+               Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -178,7 +178,7 @@ class InstanceArgs:
         Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
         determined by our system based on the latest supported minor version.
         Default value is `MEMCACHE_1_5`.
-        Possible values are: `MEMCACHE_1_5`.
+        Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         """
         return pulumi.get(self, "memcache_version")
 
@@ -287,7 +287,7 @@ class _InstanceState:
                Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
                determined by our system based on the latest supported minor version.
                Default value is `MEMCACHE_1_5`.
-               Possible values are: `MEMCACHE_1_5`.
+               Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input['InstanceNodeConfigArgs'] node_config: Configuration for memcache nodes.
                Structure is documented below.
@@ -490,7 +490,7 @@ class _InstanceState:
         Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
         determined by our system based on the latest supported minor version.
         Default value is `MEMCACHE_1_5`.
-        Possible values are: `MEMCACHE_1_5`.
+        Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         """
         return pulumi.get(self, "memcache_version")
 
@@ -709,7 +709,7 @@ class Instance(pulumi.CustomResource):
                Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
                determined by our system based on the latest supported minor version.
                Default value is `MEMCACHE_1_5`.
-               Possible values are: `MEMCACHE_1_5`.
+               Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[pulumi.InputType['InstanceNodeConfigArgs']] node_config: Configuration for memcache nodes.
                Structure is documented below.
@@ -936,7 +936,7 @@ class Instance(pulumi.CustomResource):
                Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
                determined by our system based on the latest supported minor version.
                Default value is `MEMCACHE_1_5`.
-               Possible values are: `MEMCACHE_1_5`.
+               Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[pulumi.InputType['InstanceNodeConfigArgs']] node_config: Configuration for memcache nodes.
                Structure is documented below.
@@ -1081,7 +1081,7 @@ class Instance(pulumi.CustomResource):
         Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
         determined by our system based on the latest supported minor version.
         Default value is `MEMCACHE_1_5`.
-        Possible values are: `MEMCACHE_1_5`.
+        Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         """
         return pulumi.get(self, "memcache_version")
 

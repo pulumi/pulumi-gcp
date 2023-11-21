@@ -1154,9 +1154,9 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) RuntimeConfi
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment struct {
 	// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 	Percentages []int `pulumi:"percentages"`
-	// (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+	// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
 	Postdeploy *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy `pulumi:"postdeploy"`
-	// (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+	// Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
 	Predeploy *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy `pulumi:"predeploy"`
 	// Whether to run verify tests after each percentage deployment.
 	Verify *bool `pulumi:"verify"`
@@ -1176,9 +1176,9 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentInput inte
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs struct {
 	// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 	Percentages pulumi.IntArrayInput `pulumi:"percentages"`
-	// (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+	// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
 	Postdeploy DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrInput `pulumi:"postdeploy"`
-	// (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+	// Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
 	Predeploy DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrInput `pulumi:"predeploy"`
 	// Whether to run verify tests after each percentage deployment.
 	Verify pulumi.BoolPtrInput `pulumi:"verify"`
@@ -1266,14 +1266,14 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput)
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) []int { return v.Percentages }).(pulumi.IntArrayOutput)
 }
 
-// (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) Postdeploy() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy {
 		return v.Postdeploy
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput)
 }
 
-// (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+// Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) Predeploy() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy {
 		return v.Predeploy
@@ -1319,7 +1319,7 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutp
 	}).(pulumi.IntArrayOutput)
 }
 
-// (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) Postdeploy() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy {
 		if v == nil {
@@ -1329,7 +1329,7 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutp
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput)
 }
 
-// (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+// Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) Predeploy() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy {
 		if v == nil {
@@ -1771,9 +1771,9 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhas
 	Percentage int `pulumi:"percentage"`
 	// Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
 	PhaseId string `pulumi:"phaseId"`
-	// (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+	// Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
 	Postdeploy *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy `pulumi:"postdeploy"`
-	// (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+	// Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
 	Predeploy *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy `pulumi:"predeploy"`
 	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 	Profiles []string `pulumi:"profiles"`
@@ -1799,9 +1799,9 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhas
 	Percentage pulumi.IntInput `pulumi:"percentage"`
 	// Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
 	PhaseId pulumi.StringInput `pulumi:"phaseId"`
-	// (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+	// Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
 	Postdeploy DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrInput `pulumi:"postdeploy"`
-	// (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+	// Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
 	Predeploy DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrInput `pulumi:"predeploy"`
 	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
@@ -1876,14 +1876,14 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 	}).(pulumi.StringOutput)
 }
 
-// (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+// Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) Postdeploy() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy {
 		return v.Postdeploy
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput)
 }
 
-// (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+// Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) Predeploy() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy {
 		return v.Predeploy
@@ -3047,9 +3047,9 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyStandard struct {
-	// (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+	// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
 	Postdeploy *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy `pulumi:"postdeploy"`
-	// (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+	// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
 	Predeploy *DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy `pulumi:"predeploy"`
 	// Whether to verify a deployment.
 	Verify *bool `pulumi:"verify"`
@@ -3067,9 +3067,9 @@ type DeliveryPipelineSerialPipelineStageStrategyStandardInput interface {
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyStandardArgs struct {
-	// (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+	// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
 	Postdeploy DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrInput `pulumi:"postdeploy"`
-	// (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+	// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
 	Predeploy DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrInput `pulumi:"predeploy"`
 	// Whether to verify a deployment.
 	Verify pulumi.BoolPtrInput `pulumi:"verify"`
@@ -3152,14 +3152,14 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) ToDeliveryPip
 	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput)
 }
 
-// (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) Postdeploy() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy {
 		return v.Postdeploy
 	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput)
 }
 
-// (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) Predeploy() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy {
 		return v.Predeploy
@@ -3195,7 +3195,7 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Elem() Del
 	}).(DeliveryPipelineSerialPipelineStageStrategyStandardOutput)
 }
 
-// (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Postdeploy() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy {
 		if v == nil {
@@ -3205,7 +3205,7 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Postdeploy
 	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput)
 }
 
-// (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Predeploy() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy {
 		if v == nil {

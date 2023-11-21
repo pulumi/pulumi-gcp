@@ -237,7 +237,7 @@ export class Subnetwork extends pulumi.CustomResource {
     /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */
-    public /*out*/ readonly externalIpv6Prefix!: pulumi.Output<string>;
+    public readonly externalIpv6Prefix!: pulumi.Output<string>;
     /**
      * Fingerprint of this resource. This field is used internally during updates of this resource.
      *
@@ -400,6 +400,7 @@ export class Subnetwork extends pulumi.CustomResource {
             }
             resourceInputs["allowSubnetCidrRoutesOverlap"] = args ? args.allowSubnetCidrRoutesOverlap : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["externalIpv6Prefix"] = args ? args.externalIpv6Prefix : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
@@ -414,7 +415,6 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
             resourceInputs["stackType"] = args ? args.stackType : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
-            resourceInputs["externalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["gatewayAddress"] = undefined /*out*/;
             resourceInputs["internalIpv6Prefix"] = undefined /*out*/;
@@ -584,6 +584,10 @@ export interface SubnetworkArgs {
      * creation time.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The range of external IPv6 addresses that are owned by this subnetwork.
+     */
+    externalIpv6Prefix?: pulumi.Input<string>;
     /**
      * The range of internal addresses that are owned by this subnetwork.
      * Provide this property when you create the subnetwork. For example,

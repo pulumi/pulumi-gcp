@@ -19,6 +19,8 @@ __all__ = [
     'AttachedClusterMonitoringConfigArgs',
     'AttachedClusterMonitoringConfigManagedPrometheusConfigArgs',
     'AttachedClusterOidcConfigArgs',
+    'AttachedClusterProxyConfigArgs',
+    'AttachedClusterProxyConfigKubernetesSecretArgs',
     'AttachedClusterWorkloadIdentityConfigArgs',
     'AwsClusterAuthorizationArgs',
     'AwsClusterAuthorizationAdminGroupArgs',
@@ -523,6 +525,68 @@ class AttachedClusterOidcConfigArgs:
     @jwks.setter
     def jwks(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "jwks", value)
+
+
+@pulumi.input_type
+class AttachedClusterProxyConfigArgs:
+    def __init__(__self__, *,
+                 kubernetes_secret: Optional[pulumi.Input['AttachedClusterProxyConfigKubernetesSecretArgs']] = None):
+        """
+        :param pulumi.Input['AttachedClusterProxyConfigKubernetesSecretArgs'] kubernetes_secret: The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
+               Structure is documented below.
+        """
+        if kubernetes_secret is not None:
+            pulumi.set(__self__, "kubernetes_secret", kubernetes_secret)
+
+    @property
+    @pulumi.getter(name="kubernetesSecret")
+    def kubernetes_secret(self) -> Optional[pulumi.Input['AttachedClusterProxyConfigKubernetesSecretArgs']]:
+        """
+        The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kubernetes_secret")
+
+    @kubernetes_secret.setter
+    def kubernetes_secret(self, value: Optional[pulumi.Input['AttachedClusterProxyConfigKubernetesSecretArgs']]):
+        pulumi.set(self, "kubernetes_secret", value)
+
+
+@pulumi.input_type
+class AttachedClusterProxyConfigKubernetesSecretArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 namespace: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name of the kubernetes secret containing the proxy config.
+        :param pulumi.Input[str] namespace: Namespace of the kubernetes secret containing the proxy config.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the kubernetes secret containing the proxy config.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> pulumi.Input[str]:
+        """
+        Namespace of the kubernetes secret containing the proxy config.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace", value)
 
 
 @pulumi.input_type

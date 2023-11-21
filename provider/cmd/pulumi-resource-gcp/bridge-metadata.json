@@ -2429,6 +2429,9 @@
                     },
                     "single_cluster_routing": {
                         "maxItemsOne": true
+                    },
+                    "standard_isolation": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -8167,6 +8170,16 @@
                     },
                     "oidc_config": {
                         "maxItemsOne": true
+                    },
+                    "proxy_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "kubernetes_secret": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "workload_identity_config": {
                         "maxItemsOne": false
@@ -30988,7 +31001,8 @@
                 "ignoreWarnings": "ignore_warnings",
                 "multiClusterRoutingClusterIds": "multi_cluster_routing_cluster_ids",
                 "multiClusterRoutingUseAny": "multi_cluster_routing_use_any",
-                "singleClusterRouting": "single_cluster_routing"
+                "singleClusterRouting": "single_cluster_routing",
+                "standardIsolation": "standard_isolation"
             },
             "gcp:bigquery/biReservation:BiReservation": {
                 "preferredTables": "preferred_tables",
@@ -37739,6 +37753,9 @@
             "gcp:container/AttachedClusterOidcConfig:AttachedClusterOidcConfig": {
                 "issuerUrl": "issuer_url"
             },
+            "gcp:container/AttachedClusterProxyConfig:AttachedClusterProxyConfig": {
+                "kubernetesSecret": "kubernetes_secret"
+            },
             "gcp:container/AttachedClusterWorkloadIdentityConfig:AttachedClusterWorkloadIdentityConfig": {
                 "identityProvider": "identity_provider",
                 "issuerUri": "issuer_uri",
@@ -38484,6 +38501,7 @@
                 "monitoringConfig": "monitoring_config",
                 "oidcConfig": "oidc_config",
                 "platformVersion": "platform_version",
+                "proxyConfig": "proxy_config",
                 "updateTime": "update_time",
                 "workloadIdentityConfigs": "workload_identity_config"
             },
@@ -43171,6 +43189,9 @@
             },
             "gcp:gkehub/featureIamPolicy:FeatureIamPolicy": {
                 "policyData": "policy_data"
+            },
+            "gcp:gkehub/featureMembership:FeatureMembership": {
+                "membershipLocation": "membership_location"
             },
             "gcp:gkehub/fleet:Fleet": {
                 "createTime": "create_time",

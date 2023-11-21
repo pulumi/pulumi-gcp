@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.Dataproc
     ///         {
     ///             InstanceSize = "EXTRA_SMALL",
     ///         },
-    ///         ServiceId = "dpms2",
+    ///         ServiceId = "ms-dpms2",
     ///     });
     /// 
     /// });
@@ -189,7 +189,7 @@ namespace Pulumi.Gcp.Dataproc
     ///         {
     ///             ScalingFactor = 2,
     ///         },
-    ///         ServiceId = "dpms2sf",
+    ///         ServiceId = "ms-dpms2sf",
     ///     });
     /// 
     /// });

@@ -20,6 +20,36 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
  *
  * ## Example Usage
+ * ### Firestore Database
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     appEngineIntegrationMode: "DISABLED",
+ *     concurrencyMode: "OPTIMISTIC",
+ *     locationId: "nam5",
+ *     pointInTimeRecoveryEnablement: "POINT_IN_TIME_RECOVERY_ENABLED",
+ *     project: "my-project-name",
+ *     type: "FIRESTORE_NATIVE",
+ * });
+ * ```
+ * ### Firestore Database In Datastore Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const datastoreModeDatabase = new gcp.firestore.Database("datastoreModeDatabase", {
+ *     appEngineIntegrationMode: "DISABLED",
+ *     concurrencyMode: "OPTIMISTIC",
+ *     locationId: "nam5",
+ *     pointInTimeRecoveryEnablement: "POINT_IN_TIME_RECOVERY_ENABLED",
+ *     project: "my-project-name",
+ *     type: "DATASTORE_MODE",
+ * });
+ * ```
  * ### Firestore Database With Delete Protection
  *
  * ```typescript
@@ -27,12 +57,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const database = new gcp.firestore.Database("database", {
- *     project: google_project.project.project_id,
- *     locationId: "nam5",
- *     type: "FIRESTORE_NATIVE",
  *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
- * }, {
- *     dependsOn: [google_project_service.firestore],
+ *     locationId: "nam5",
+ *     project: "my-project-name",
+ *     type: "FIRESTORE_NATIVE",
  * });
  * ```
  *

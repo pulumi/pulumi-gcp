@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeliveryPipelineSerialPipelineStageStrategyStandard {
     /**
-     * @return (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+     * @return Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
      * 
      */
     private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy postdeploy;
     /**
-     * @return (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+     * @return Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
      * 
      */
     private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy predeploy;
@@ -31,14 +31,14 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandard {
 
     private DeliveryPipelineSerialPipelineStageStrategyStandard() {}
     /**
-     * @return (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+     * @return Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
      * 
      */
     public Optional<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy> postdeploy() {
         return Optional.ofNullable(this.postdeploy);
     }
     /**
-     * @return (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+     * @return Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
      * 
      */
     public Optional<DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy> predeploy() {

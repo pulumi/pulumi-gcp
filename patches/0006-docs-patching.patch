@@ -61,7 +61,7 @@ index 0889b9be9..9b0366546 100644
  ## google\_api\_gateway\_api\_iam\_policy
  
 diff --git a/website/docs/r/api_gateway_gateway.html.markdown b/website/docs/r/api_gateway_gateway.html.markdown
-index b9ac960e6..afb65eb80 100644
+index 2ba5ba6dc..2de1b2eb1 100644
 --- a/website/docs/r/api_gateway_gateway.html.markdown
 +++ b/website/docs/r/api_gateway_gateway.html.markdown
 @@ -21,9 +21,6 @@ description: |-
@@ -1720,7 +1720,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 021744ac9..6afee0d42 100644
+index 98af03c92..cc5a976a6 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -10,7 +10,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -1780,7 +1780,7 @@ index a6e3ee9f2..2424c509f 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index 766d04473..2d02f775a 100644
+index dcca9641c..79e8deffe 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
 @@ -298,11 +298,6 @@ The following arguments are supported:
@@ -1837,7 +1837,7 @@ index d282b9178..376d46e33 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
 diff --git a/website/docs/r/compute_vpn_tunnel.html.markdown b/website/docs/r/compute_vpn_tunnel.html.markdown
-index 44a3ef3df..117b82a7a 100644
+index 9db13a01f..145a05e51 100644
 --- a/website/docs/r/compute_vpn_tunnel.html.markdown
 +++ b/website/docs/r/compute_vpn_tunnel.html.markdown
 @@ -29,9 +29,8 @@ To get more information about VpnTunnel, see:
@@ -1852,15 +1852,6 @@ index 44a3ef3df..117b82a7a 100644
  
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=vpn_tunnel_basic&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
-@@ -276,7 +275,7 @@ The following arguments are supported:
-   Only IPv4 is supported.
- 
- * `labels` -
--  (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html))
-+  (Optional)
-   Labels to apply to this VpnTunnel.
-   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-   Please refer to the field `effective_labels` for all of the labels present on the resource.
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
 index 7ec0fb4e1..5e119dd02 100644
 --- a/website/docs/r/container_cluster.html.markdown
@@ -3428,7 +3419,7 @@ index d29264f82..aa3a631ce 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/kms_crypto_key.html.markdown b/website/docs/r/kms_crypto_key.html.markdown
-index 5f052d48c..6e0983278 100644
+index a0f6908d1..9d3328ea9 100644
 --- a/website/docs/r/kms_crypto_key.html.markdown
 +++ b/website/docs/r/kms_crypto_key.html.markdown
 @@ -23,9 +23,9 @@ A `CryptoKey` represents a logical key that can be used for cryptographic operat
@@ -3441,8 +3432,8 @@ index 5f052d48c..6e0983278 100644
 -not delete the resource from the project.* When Terraform destroys these keys,
 +not delete the resource from the project.* When the provider destroys these keys,
  any data previously encrypted with these keys will be irrecoverable.
- For this reason, it is strongly recommended that you add lifecycle hooks
- to the resource to prevent accidental destruction.
+ For this reason, it is strongly recommended that you add
+ [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
 diff --git a/website/docs/r/kms_key_ring.html.markdown b/website/docs/r/kms_key_ring.html.markdown
 index e86af5427..23c3fc6ac 100644
 --- a/website/docs/r/kms_key_ring.html.markdown
@@ -3589,7 +3580,7 @@ index 7be7b3b31..57269fac0 100644
  ## Example Usage
  
 diff --git a/website/docs/r/logging_project_sink.html.markdown b/website/docs/r/logging_project_sink.html.markdown
-index 100fe2e71..1844d4b84 100644
+index 7aac31384..137e15cbf 100644
 --- a/website/docs/r/logging_project_sink.html.markdown
 +++ b/website/docs/r/logging_project_sink.html.markdown
 @@ -14,7 +14,7 @@ Manages a project-level logging sink. For more information see:
@@ -3694,7 +3685,7 @@ index 8d04d36a1..7091f611e 100644
    goal = 0.9
    rolling_period_days = 20
 diff --git a/website/docs/r/monitoring_uptime_check_config.html.markdown b/website/docs/r/monitoring_uptime_check_config.html.markdown
-index 09c8585b7..6130c1b50 100644
+index eb593594c..929f171ae 100644
 --- a/website/docs/r/monitoring_uptime_check_config.html.markdown
 +++ b/website/docs/r/monitoring_uptime_check_config.html.markdown
 @@ -28,9 +28,8 @@ To get more information about UptimeCheckConfig, see:
@@ -3920,24 +3911,25 @@ index 329bd3e1a..cb7f3260d 100644
  
  * How-to Guides
 diff --git a/website/docs/r/spanner_database.html.markdown b/website/docs/r/spanner_database.html.markdown
-index e4ac1abd4..b34dc51cc 100644
+index 81e68fdc2..b73f3c417 100644
 --- a/website/docs/r/spanner_database.html.markdown
 +++ b/website/docs/r/spanner_database.html.markdown
-@@ -28,12 +28,7 @@ To get more information about Database, see:
- * How-to Guides
+@@ -29,12 +29,10 @@ To get more information about Database, see:
      * [Official Documentation](https://cloud.google.com/spanner/)
  
--~> **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
+ ~> **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
 -(and run `terraform apply` to write the field to state) in order to destroy an instance.
--It is recommended to not set this field (or set it to true) until you're ready to destroy.
--On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
--on databases in order to prevent accidental data loss. See [Terraform docs](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
++(and run `pulumi up` to write the field to state) in order to destroy an instance.
+ It is recommended to not set this field (or set it to true) until you're ready to destroy.
+ On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
+-on databases in order to prevent accidental data loss. See
+-[Terraform docs](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#prevent_destroy)
 -for more information on lifecycle parameters.
-+~> **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
++on databases in order to prevent accidental data loss.
  
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=spanner_database_basic&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
-@@ -119,8 +114,8 @@ The following arguments are supported:
+@@ -120,8 +118,8 @@ The following arguments are supported:
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
  

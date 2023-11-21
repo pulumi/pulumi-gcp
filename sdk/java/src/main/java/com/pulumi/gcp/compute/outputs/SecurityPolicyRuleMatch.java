@@ -22,7 +22,7 @@ public final class SecurityPolicyRuleMatch {
     private @Nullable SecurityPolicyRuleMatchConfig config;
     /**
      * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-     * such as origin.ip, source.region_code and contents in the request header.
+     * such as `origin.ip`, `source.region_code` and `contents` in the request header.
      * Structure is documented below.
      * 
      */
@@ -30,7 +30,6 @@ public final class SecurityPolicyRuleMatch {
     /**
      * @return Predefined rule expression. If this field is specified, `config` must also be specified.
      * Available options:
-     * * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
      * 
      */
     private @Nullable String versionedExpr;
@@ -47,7 +46,7 @@ public final class SecurityPolicyRuleMatch {
     }
     /**
      * @return User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-     * such as origin.ip, source.region_code and contents in the request header.
+     * such as `origin.ip`, `source.region_code` and `contents` in the request header.
      * Structure is documented below.
      * 
      */
@@ -57,7 +56,6 @@ public final class SecurityPolicyRuleMatch {
     /**
      * @return Predefined rule expression. If this field is specified, `config` must also be specified.
      * Available options:
-     * * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
      * 
      */
     public Optional<String> versionedExpr() {

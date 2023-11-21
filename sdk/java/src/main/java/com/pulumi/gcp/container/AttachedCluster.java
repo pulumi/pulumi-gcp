@@ -17,6 +17,7 @@ import com.pulumi.gcp.container.outputs.AttachedClusterFleet;
 import com.pulumi.gcp.container.outputs.AttachedClusterLoggingConfig;
 import com.pulumi.gcp.container.outputs.AttachedClusterMonitoringConfig;
 import com.pulumi.gcp.container.outputs.AttachedClusterOidcConfig;
+import com.pulumi.gcp.container.outputs.AttachedClusterProxyConfig;
 import com.pulumi.gcp.container.outputs.AttachedClusterWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -492,6 +493,22 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Support for proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="proxyConfig", refs={AttachedClusterProxyConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AttachedClusterProxyConfig> proxyConfig;
+
+    /**
+     * @return Support for proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AttachedClusterProxyConfig>> proxyConfig() {
+        return Codegen.optional(this.proxyConfig);
     }
     /**
      * If set, there are currently changes in flight to the cluster.

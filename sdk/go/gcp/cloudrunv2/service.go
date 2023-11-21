@@ -540,9 +540,8 @@ type Service struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Email address of the authenticated creator.
 	Creator pulumi.StringOutput `pulumi:"creator"`
-	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayOutput `pulumi:"customAudiences"`
 	// The deletion time.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
@@ -680,9 +679,8 @@ type serviceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Email address of the authenticated creator.
 	Creator *string `pulumi:"creator"`
-	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences []string `pulumi:"customAudiences"`
 	// The deletion time.
 	DeleteTime *string `pulumi:"deleteTime"`
@@ -780,9 +778,8 @@ type ServiceState struct {
 	CreateTime pulumi.StringPtrInput
 	// Email address of the authenticated creator.
 	Creator pulumi.StringPtrInput
-	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayInput
 	// The deletion time.
 	DeleteTime pulumi.StringPtrInput
@@ -877,9 +874,8 @@ type serviceArgs struct {
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion *string `pulumi:"clientVersion"`
-	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences []string `pulumi:"customAudiences"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description *string `pulumi:"description"`
@@ -929,9 +925,8 @@ type ServiceArgs struct {
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringPtrInput
-	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-	// https://cloud.google.com/run/docs/configuring/custom-audiences.
+	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+	// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringPtrInput
@@ -1094,9 +1089,8 @@ func (o ServiceOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
 
-// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-// https://cloud.google.com/run/docs/configuring/custom-audiences.
+// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
 func (o ServiceOutput) CustomAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.CustomAudiences }).(pulumi.StringArrayOutput)
 }

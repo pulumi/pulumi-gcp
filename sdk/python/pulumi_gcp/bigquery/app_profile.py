@@ -23,7 +23,8 @@ class AppProfileArgs:
                  multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None):
+                 single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None,
+                 standard_isolation: Optional[pulumi.Input['AppProfileStandardIsolationArgs']] = None):
         """
         The set of arguments for constructing a AppProfile resource.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
@@ -42,6 +43,8 @@ class AppProfileArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['AppProfileSingleClusterRoutingArgs'] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
+        :param pulumi.Input['AppProfileStandardIsolationArgs'] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
+               Structure is documented below.
         """
         pulumi.set(__self__, "app_profile_id", app_profile_id)
         if description is not None:
@@ -58,6 +61,8 @@ class AppProfileArgs:
             pulumi.set(__self__, "project", project)
         if single_cluster_routing is not None:
             pulumi.set(__self__, "single_cluster_routing", single_cluster_routing)
+        if standard_isolation is not None:
+            pulumi.set(__self__, "standard_isolation", standard_isolation)
 
     @property
     @pulumi.getter(name="appProfileId")
@@ -163,6 +168,19 @@ class AppProfileArgs:
     def single_cluster_routing(self, value: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]):
         pulumi.set(self, "single_cluster_routing", value)
 
+    @property
+    @pulumi.getter(name="standardIsolation")
+    def standard_isolation(self) -> Optional[pulumi.Input['AppProfileStandardIsolationArgs']]:
+        """
+        The standard options used for isolating this app profile's traffic from other use cases.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "standard_isolation")
+
+    @standard_isolation.setter
+    def standard_isolation(self, value: Optional[pulumi.Input['AppProfileStandardIsolationArgs']]):
+        pulumi.set(self, "standard_isolation", value)
+
 
 @pulumi.input_type
 class _AppProfileState:
@@ -175,7 +193,8 @@ class _AppProfileState:
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None):
+                 single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None,
+                 standard_isolation: Optional[pulumi.Input['AppProfileStandardIsolationArgs']] = None):
         """
         Input properties used for looking up and filtering AppProfile resources.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
@@ -194,6 +213,8 @@ class _AppProfileState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['AppProfileSingleClusterRoutingArgs'] single_cluster_routing: Use a single-cluster routing policy.
+               Structure is documented below.
+        :param pulumi.Input['AppProfileStandardIsolationArgs'] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
                Structure is documented below.
         """
         if app_profile_id is not None:
@@ -214,6 +235,8 @@ class _AppProfileState:
             pulumi.set(__self__, "project", project)
         if single_cluster_routing is not None:
             pulumi.set(__self__, "single_cluster_routing", single_cluster_routing)
+        if standard_isolation is not None:
+            pulumi.set(__self__, "standard_isolation", standard_isolation)
 
     @property
     @pulumi.getter(name="appProfileId")
@@ -331,6 +354,19 @@ class _AppProfileState:
     def single_cluster_routing(self, value: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]):
         pulumi.set(self, "single_cluster_routing", value)
 
+    @property
+    @pulumi.getter(name="standardIsolation")
+    def standard_isolation(self) -> Optional[pulumi.Input['AppProfileStandardIsolationArgs']]:
+        """
+        The standard options used for isolating this app profile's traffic from other use cases.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "standard_isolation")
+
+    @standard_isolation.setter
+    def standard_isolation(self, value: Optional[pulumi.Input['AppProfileStandardIsolationArgs']]):
+        pulumi.set(self, "standard_isolation", value)
+
 
 class AppProfile(pulumi.CustomResource):
     @overload
@@ -345,6 +381,7 @@ class AppProfile(pulumi.CustomResource):
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None,
+                 standard_isolation: Optional[pulumi.Input[pulumi.InputType['AppProfileStandardIsolationArgs']]] = None,
                  __props__=None):
         """
         App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
@@ -449,6 +486,32 @@ class AppProfile(pulumi.CustomResource):
             ],
             ignore_warnings=True)
         ```
+        ### Bigtable App Profile Priority
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="cluster-1",
+                zone="us-central1-b",
+                num_nodes=3,
+                storage_type="HDD",
+            )],
+            deletion_protection=True)
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
+                cluster_id="cluster-1",
+                allow_transactional_writes=True,
+            ),
+            standard_isolation=gcp.bigquery.AppProfileStandardIsolationArgs(
+                priority="PRIORITY_LOW",
+            ),
+            ignore_warnings=True)
+        ```
 
         ## Import
 
@@ -491,6 +554,8 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']] single_cluster_routing: Use a single-cluster routing policy.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['AppProfileStandardIsolationArgs']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
                Structure is documented below.
         """
         ...
@@ -602,6 +667,32 @@ class AppProfile(pulumi.CustomResource):
             ],
             ignore_warnings=True)
         ```
+        ### Bigtable App Profile Priority
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="cluster-1",
+                zone="us-central1-b",
+                num_nodes=3,
+                storage_type="HDD",
+            )],
+            deletion_protection=True)
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
+                cluster_id="cluster-1",
+                allow_transactional_writes=True,
+            ),
+            standard_isolation=gcp.bigquery.AppProfileStandardIsolationArgs(
+                priority="PRIORITY_LOW",
+            ),
+            ignore_warnings=True)
+        ```
 
         ## Import
 
@@ -650,6 +741,7 @@ class AppProfile(pulumi.CustomResource):
                  multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None,
+                 standard_isolation: Optional[pulumi.Input[pulumi.InputType['AppProfileStandardIsolationArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -669,6 +761,7 @@ class AppProfile(pulumi.CustomResource):
             __props__.__dict__["multi_cluster_routing_use_any"] = multi_cluster_routing_use_any
             __props__.__dict__["project"] = project
             __props__.__dict__["single_cluster_routing"] = single_cluster_routing
+            __props__.__dict__["standard_isolation"] = standard_isolation
             __props__.__dict__["name"] = None
         super(AppProfile, __self__).__init__(
             'gcp:bigquery/appProfile:AppProfile',
@@ -688,7 +781,8 @@ class AppProfile(pulumi.CustomResource):
             multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None) -> 'AppProfile':
+            single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None,
+            standard_isolation: Optional[pulumi.Input[pulumi.InputType['AppProfileStandardIsolationArgs']]] = None) -> 'AppProfile':
         """
         Get an existing AppProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -713,6 +807,8 @@ class AppProfile(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['AppProfileStandardIsolationArgs']] standard_isolation: The standard options used for isolating this app profile's traffic from other use cases.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -727,6 +823,7 @@ class AppProfile(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["single_cluster_routing"] = single_cluster_routing
+        __props__.__dict__["standard_isolation"] = standard_isolation
         return AppProfile(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -808,4 +905,13 @@ class AppProfile(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "single_cluster_routing")
+
+    @property
+    @pulumi.getter(name="standardIsolation")
+    def standard_isolation(self) -> pulumi.Output['outputs.AppProfileStandardIsolation']:
+        """
+        The standard options used for isolating this app profile's traffic from other use cases.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "standard_isolation")
 

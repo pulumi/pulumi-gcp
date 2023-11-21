@@ -220,7 +220,7 @@ import javax.annotation.Nullable;
  *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
  *                 .instanceSize(&#34;EXTRA_SMALL&#34;)
  *                 .build())
- *             .serviceId(&#34;dpms2&#34;)
+ *             .serviceId(&#34;ms-dpms2&#34;)
  *             .build());
  * 
  *     }
@@ -259,7 +259,7 @@ import javax.annotation.Nullable;
  *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
  *                 .scalingFactor(&#34;2&#34;)
  *                 .build())
- *             .serviceId(&#34;dpms2sf&#34;)
+ *             .serviceId(&#34;ms-dpms2sf&#34;)
  *             .build());
  * 
  *     }

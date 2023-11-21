@@ -48,67 +48,10 @@ import * as utilities from "../utilities";
  *     peerIp: "15.0.0.120",
  *     sharedSecret: "a secret message",
  *     targetVpnGateway: targetGateway.id,
- * }, {
- *     dependsOn: [
- *         frEsp,
- *         frUdp500,
- *         frUdp4500,
- *     ],
- * });
- * const route1 = new gcp.compute.Route("route1", {
- *     network: network1.name,
- *     destRange: "15.0.0.0/24",
- *     priority: 1000,
- *     nextHopVpnTunnel: tunnel1.id,
- * });
- * ```
- * ### Vpn Tunnel Beta
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const network1 = new gcp.compute.Network("network1", {}, {
- *     provider: google_beta,
- * });
- * const targetGateway = new gcp.compute.VPNGateway("targetGateway", {network: network1.id}, {
- *     provider: google_beta,
- * });
- * const vpnStaticIp = new gcp.compute.Address("vpnStaticIp", {}, {
- *     provider: google_beta,
- * });
- * const frEsp = new gcp.compute.ForwardingRule("frEsp", {
- *     ipProtocol: "ESP",
- *     ipAddress: vpnStaticIp.address,
- *     target: targetGateway.id,
- * }, {
- *     provider: google_beta,
- * });
- * const frUdp500 = new gcp.compute.ForwardingRule("frUdp500", {
- *     ipProtocol: "UDP",
- *     portRange: "500",
- *     ipAddress: vpnStaticIp.address,
- *     target: targetGateway.id,
- * }, {
- *     provider: google_beta,
- * });
- * const frUdp4500 = new gcp.compute.ForwardingRule("frUdp4500", {
- *     ipProtocol: "UDP",
- *     portRange: "4500",
- *     ipAddress: vpnStaticIp.address,
- *     target: targetGateway.id,
- * }, {
- *     provider: google_beta,
- * });
- * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
- *     peerIp: "15.0.0.120",
- *     sharedSecret: "a secret message",
- *     targetVpnGateway: targetGateway.id,
  *     labels: {
  *         foo: "bar",
  *     },
  * }, {
- *     provider: google_beta,
  *     dependsOn: [
  *         frEsp,
  *         frUdp500,
@@ -120,8 +63,6 @@ import * as utilities from "../utilities";
  *     destRange: "15.0.0.0/24",
  *     priority: 1000,
  *     nextHopVpnTunnel: tunnel1.id,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -194,8 +135,7 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     public /*out*/ readonly detailedStatus!: pulumi.Output<string>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -256,7 +196,8 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -404,8 +345,7 @@ export interface VPNTunnelState {
      */
     detailedStatus?: pulumi.Input<string>;
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -466,7 +406,8 @@ export interface VPNTunnelState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

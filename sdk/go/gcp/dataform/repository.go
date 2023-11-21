@@ -33,7 +33,7 @@ import (
 //				return err
 //			}
 //			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
-//				SecretId: pulumi.String("secret"),
+//				SecretId: pulumi.String("my-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: nil,
 //				},
@@ -89,7 +89,7 @@ import (
 //				return err
 //			}
 //			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
-//				SecretId: pulumi.String("secret"),
+//				SecretId: pulumi.String("my-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: nil,
 //				},

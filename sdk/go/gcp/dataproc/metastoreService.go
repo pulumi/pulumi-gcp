@@ -180,7 +180,7 @@ import (
 //				ScalingConfig: &dataproc.MetastoreServiceScalingConfigArgs{
 //					InstanceSize: pulumi.String("EXTRA_SMALL"),
 //				},
-//				ServiceId: pulumi.String("dpms2"),
+//				ServiceId: pulumi.String("ms-dpms2"),
 //			})
 //			if err != nil {
 //				return err
@@ -213,7 +213,7 @@ import (
 //				ScalingConfig: &dataproc.MetastoreServiceScalingConfigArgs{
 //					ScalingFactor: pulumi.Float64(2),
 //				},
-//				ServiceId: pulumi.String("dpms2sf"),
+//				ServiceId: pulumi.String("ms-dpms2sf"),
 //			})
 //			if err != nil {
 //				return err

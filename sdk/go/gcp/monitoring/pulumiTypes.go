@@ -9704,31 +9704,31 @@ type UptimeCheckConfigHttpCheck struct {
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	// Structure is documented below.
 	AuthInfo *UptimeCheckConfigHttpCheckAuthInfo `pulumi:"authInfo"`
-	// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+	// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
 	Body *string `pulumi:"body"`
 	// The content type to use for the check.
 	// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
 	ContentType *string `pulumi:"contentType"`
 	// A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType` , as well as the following 1.  `contentType`is`URL_ENCODED`and`customContentType`is set. 2.`contentType`is`USER_PROVIDED`and`customContentType` is not set.
 	CustomContentType *string `pulumi:"customContentType"`
-	// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
+	// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers map[string]string `pulumi:"headers"`
-	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if maskHeaders is set to True then the headers will be obscured with ******.
+	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `maskHeaders` is set to `true` then the headers will be obscured with `******`.
 	MaskHeaders *bool `pulumi:"maskHeaders"`
-	// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
+	// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
 	Path *string `pulumi:"path"`
 	// Contains information needed to add pings to an HTTP check.
 	// Structure is documented below.
 	PingConfig *UptimeCheckConfigHttpCheckPingConfig `pulumi:"pingConfig"`
-	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+	// The port to the page to run the check against. Will be combined with `host` (specified within the `monitoredResource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
 	Port *int `pulumi:"port"`
-	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+	// The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `requestMethod` defaults to `GET`.
 	// Default value is `GET`.
 	// Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
 	RequestMethod *string `pulumi:"requestMethod"`
 	// If true, use HTTPS instead of HTTP to run the check.
 	UseSsl *bool `pulumi:"useSsl"`
-	// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
+	// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitoredResource` is set to `uptimeUrl`. If `useSsl` is `false`, setting `validateSsl` to `true` has no effect.
 	ValidateSsl *bool `pulumi:"validateSsl"`
 }
 
@@ -9750,31 +9750,31 @@ type UptimeCheckConfigHttpCheckArgs struct {
 	// The authentication information. Optional when creating an HTTP check; defaults to empty.
 	// Structure is documented below.
 	AuthInfo UptimeCheckConfigHttpCheckAuthInfoPtrInput `pulumi:"authInfo"`
-	// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+	// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
 	Body pulumi.StringPtrInput `pulumi:"body"`
 	// The content type to use for the check.
 	// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
 	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
 	// A user provided content type header to use for the check. The invalid configurations outlined in the `contentType` field apply to customContentType` , as well as the following 1.  `contentType`is`URL_ENCODED`and`customContentType`is set. 2.`contentType`is`USER_PROVIDED`and`customContentType` is not set.
 	CustomContentType pulumi.StringPtrInput `pulumi:"customContentType"`
-	// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
+	// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
-	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if maskHeaders is set to True then the headers will be obscured with ******.
+	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `maskHeaders` is set to `true` then the headers will be obscured with `******`.
 	MaskHeaders pulumi.BoolPtrInput `pulumi:"maskHeaders"`
-	// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
+	// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Contains information needed to add pings to an HTTP check.
 	// Structure is documented below.
 	PingConfig UptimeCheckConfigHttpCheckPingConfigPtrInput `pulumi:"pingConfig"`
-	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+	// The port to the page to run the check against. Will be combined with `host` (specified within the `monitoredResource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+	// The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `requestMethod` defaults to `GET`.
 	// Default value is `GET`.
 	// Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
 	RequestMethod pulumi.StringPtrInput `pulumi:"requestMethod"`
 	// If true, use HTTPS instead of HTTP to run the check.
 	UseSsl pulumi.BoolPtrInput `pulumi:"useSsl"`
-	// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
+	// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitoredResource` is set to `uptimeUrl`. If `useSsl` is `false`, setting `validateSsl` to `true` has no effect.
 	ValidateSsl pulumi.BoolPtrInput `pulumi:"validateSsl"`
 }
 
@@ -9869,7 +9869,7 @@ func (o UptimeCheckConfigHttpCheckOutput) AuthInfo() UptimeCheckConfigHttpCheckA
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckAuthInfo { return v.AuthInfo }).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 
-// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
 func (o UptimeCheckConfigHttpCheckOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
@@ -9885,17 +9885,17 @@ func (o UptimeCheckConfigHttpCheckOutput) CustomContentType() pulumi.StringPtrOu
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.CustomContentType }).(pulumi.StringPtrOutput)
 }
 
-// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
+// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 func (o UptimeCheckConfigHttpCheckOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
-// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if maskHeaders is set to True then the headers will be obscured with ******.
+// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `maskHeaders` is set to `true` then the headers will be obscured with `******`.
 func (o UptimeCheckConfigHttpCheckOutput) MaskHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *bool { return v.MaskHeaders }).(pulumi.BoolPtrOutput)
 }
 
-// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
+// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
 func (o UptimeCheckConfigHttpCheckOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -9906,12 +9906,12 @@ func (o UptimeCheckConfigHttpCheckOutput) PingConfig() UptimeCheckConfigHttpChec
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *UptimeCheckConfigHttpCheckPingConfig { return v.PingConfig }).(UptimeCheckConfigHttpCheckPingConfigPtrOutput)
 }
 
-// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+// The port to the page to run the check against. Will be combined with `host` (specified within the `monitoredResource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
 func (o UptimeCheckConfigHttpCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+// The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `requestMethod` defaults to `GET`.
 // Default value is `GET`.
 // Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
 func (o UptimeCheckConfigHttpCheckOutput) RequestMethod() pulumi.StringPtrOutput {
@@ -9923,7 +9923,7 @@ func (o UptimeCheckConfigHttpCheckOutput) UseSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *bool { return v.UseSsl }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
+// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitoredResource` is set to `uptimeUrl`. If `useSsl` is `false`, setting `validateSsl` to `true` has no effect.
 func (o UptimeCheckConfigHttpCheckOutput) ValidateSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *bool { return v.ValidateSsl }).(pulumi.BoolPtrOutput)
 }
@@ -9974,7 +9974,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) AuthInfo() UptimeCheckConfigHttpChe
 	}).(UptimeCheckConfigHttpCheckAuthInfoPtrOutput)
 }
 
-// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+// The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
 func (o UptimeCheckConfigHttpCheckPtrOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *string {
 		if v == nil {
@@ -10005,7 +10005,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) CustomContentType() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
+// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 func (o UptimeCheckConfigHttpCheckPtrOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) map[string]string {
 		if v == nil {
@@ -10015,7 +10015,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) Headers() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if maskHeaders is set to True then the headers will be obscured with ******.
+// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `maskHeaders` is set to `true` then the headers will be obscured with `******`.
 func (o UptimeCheckConfigHttpCheckPtrOutput) MaskHeaders() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *bool {
 		if v == nil {
@@ -10025,7 +10025,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) MaskHeaders() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
+// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
 func (o UptimeCheckConfigHttpCheckPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *string {
 		if v == nil {
@@ -10046,7 +10046,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) PingConfig() UptimeCheckConfigHttpC
 	}).(UptimeCheckConfigHttpCheckPingConfigPtrOutput)
 }
 
-// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+// The port to the page to run the check against. Will be combined with `host` (specified within the `monitoredResource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
 func (o UptimeCheckConfigHttpCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *int {
 		if v == nil {
@@ -10056,7 +10056,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+// The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `requestMethod` defaults to `GET`.
 // Default value is `GET`.
 // Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
 func (o UptimeCheckConfigHttpCheckPtrOutput) RequestMethod() pulumi.StringPtrOutput {
@@ -10078,7 +10078,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) UseSsl() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
+// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitoredResource` is set to `uptimeUrl`. If `useSsl` is `false`, setting `validateSsl` to `true` has no effect.
 func (o UptimeCheckConfigHttpCheckPtrOutput) ValidateSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *bool {
 		if v == nil {
@@ -10495,9 +10495,9 @@ func (o UptimeCheckConfigHttpCheckPingConfigPtrOutput) PingsCount() pulumi.IntPt
 }
 
 type UptimeCheckConfigMonitoredResource struct {
-	// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "projectId", "instanceId", and "zone".
+	// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `projectId`, `instanceId`, and `zone`.
 	Labels map[string]string `pulumi:"labels"`
-	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+	// The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gceInstance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
 	Type string `pulumi:"type"`
 }
 
@@ -10513,9 +10513,9 @@ type UptimeCheckConfigMonitoredResourceInput interface {
 }
 
 type UptimeCheckConfigMonitoredResourceArgs struct {
-	// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "projectId", "instanceId", and "zone".
+	// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `projectId`, `instanceId`, and `zone`.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+	// The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gceInstance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -10596,12 +10596,12 @@ func (o UptimeCheckConfigMonitoredResourceOutput) ToUptimeCheckConfigMonitoredRe
 	}).(UptimeCheckConfigMonitoredResourcePtrOutput)
 }
 
-// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "projectId", "instanceId", and "zone".
+// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `projectId`, `instanceId`, and `zone`.
 func (o UptimeCheckConfigMonitoredResourceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v UptimeCheckConfigMonitoredResource) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+// The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gceInstance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
 func (o UptimeCheckConfigMonitoredResourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v UptimeCheckConfigMonitoredResource) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -10630,7 +10630,7 @@ func (o UptimeCheckConfigMonitoredResourcePtrOutput) Elem() UptimeCheckConfigMon
 	}).(UptimeCheckConfigMonitoredResourceOutput)
 }
 
-// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "projectId", "instanceId", and "zone".
+// Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `projectId`, `instanceId`, and `zone`.
 func (o UptimeCheckConfigMonitoredResourcePtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigMonitoredResource) map[string]string {
 		if v == nil {
@@ -10640,7 +10640,7 @@ func (o UptimeCheckConfigMonitoredResourcePtrOutput) Labels() pulumi.StringMapOu
 	}).(pulumi.StringMapOutput)
 }
 
-// The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+// The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gceInstance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
 func (o UptimeCheckConfigMonitoredResourcePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigMonitoredResource) *string {
 		if v == nil {
@@ -11102,7 +11102,7 @@ type UptimeCheckConfigTcpCheck struct {
 	// Contains information needed to add pings to a TCP check.
 	// Structure is documented below.
 	PingConfig *UptimeCheckConfigTcpCheckPingConfig `pulumi:"pingConfig"`
-	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+	// The port to the page to run the check against. Will be combined with host (specified within the `monitoredResource`) to construct the full URL.
 	Port int `pulumi:"port"`
 }
 
@@ -11121,7 +11121,7 @@ type UptimeCheckConfigTcpCheckArgs struct {
 	// Contains information needed to add pings to a TCP check.
 	// Structure is documented below.
 	PingConfig UptimeCheckConfigTcpCheckPingConfigPtrInput `pulumi:"pingConfig"`
-	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+	// The port to the page to run the check against. Will be combined with host (specified within the `monitoredResource`) to construct the full URL.
 	Port pulumi.IntInput `pulumi:"port"`
 }
 
@@ -11208,7 +11208,7 @@ func (o UptimeCheckConfigTcpCheckOutput) PingConfig() UptimeCheckConfigTcpCheckP
 	return o.ApplyT(func(v UptimeCheckConfigTcpCheck) *UptimeCheckConfigTcpCheckPingConfig { return v.PingConfig }).(UptimeCheckConfigTcpCheckPingConfigPtrOutput)
 }
 
-// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+// The port to the page to run the check against. Will be combined with host (specified within the `monitoredResource`) to construct the full URL.
 func (o UptimeCheckConfigTcpCheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v UptimeCheckConfigTcpCheck) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -11248,7 +11248,7 @@ func (o UptimeCheckConfigTcpCheckPtrOutput) PingConfig() UptimeCheckConfigTcpChe
 	}).(UptimeCheckConfigTcpCheckPingConfigPtrOutput)
 }
 
-// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+// The port to the page to run the check against. Will be combined with host (specified within the `monitoredResource`) to construct the full URL.
 func (o UptimeCheckConfigTcpCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigTcpCheck) *int {
 		if v == nil {

@@ -27366,7 +27366,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
                  rule_visibility: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enable: If set to true, enables CAAP for L7 DDoS detection.
-        :param pulumi.Input[str] rule_visibility: Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        :param pulumi.Input[str] rule_visibility: Rule visibility can be one of the following:
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -27389,7 +27389,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
     @pulumi.getter(name="ruleVisibility")
     def rule_visibility(self) -> Optional[pulumi.Input[str]]:
         """
-        Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        Rule visibility can be one of the following:
         """
         return pulumi.get(self, "rule_visibility")
 
@@ -27409,11 +27409,7 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
         :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs'] json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when
                `json_parsing` is set to `STANDARD`. Structure is documented below.
         :param pulumi.Input[str] json_parsing: Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
-               * DISABLED - Don't parse JSON payloads in POST bodies.
-               * STANDARD - Parse JSON payloads in POST bodies.
         :param pulumi.Input[str] log_level: Log level to use. Defaults to `NORMAL`.
-               * NORMAL - Normal log level.
-               * VERBOSE - Verbose log level.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ip_request_headers: ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         """
         if json_custom_config is not None:
@@ -27443,8 +27439,6 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
     def json_parsing(self) -> Optional[pulumi.Input[str]]:
         """
         Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
-        * DISABLED - Don't parse JSON payloads in POST bodies.
-        * STANDARD - Parse JSON payloads in POST bodies.
         """
         return pulumi.get(self, "json_parsing")
 
@@ -27457,8 +27451,6 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
     def log_level(self) -> Optional[pulumi.Input[str]]:
         """
         Log level to use. Defaults to `NORMAL`.
-        * NORMAL - Normal log level.
-        * VERBOSE - Verbose log level.
         """
         return pulumi.get(self, "log_level")
 
@@ -27512,7 +27504,7 @@ class SecurityPolicyRecaptchaOptionsConfigArgs:
     def __init__(__self__, *,
                  redirect_site_key: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] redirect_site_key: A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        :param pulumi.Input[str] redirect_site_key: A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of `GOOGLE_RECAPTCHA` under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
         """
         pulumi.set(__self__, "redirect_site_key", redirect_site_key)
 
@@ -27520,7 +27512,7 @@ class SecurityPolicyRecaptchaOptionsConfigArgs:
     @pulumi.getter(name="redirectSiteKey")
     def redirect_site_key(self) -> pulumi.Input[str]:
         """
-        A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of `GOOGLE_RECAPTCHA` under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
         """
         return pulumi.get(self, "redirect_site_key")
 
@@ -27543,22 +27535,17 @@ class SecurityPolicyRuleArgs:
                  redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']] = None):
         """
         :param pulumi.Input[str] action: Action to take when `match` matches the request. Valid values:
-               * allow: allow access to target.
-               * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
-               * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-               * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
-               * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input['SecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
         :param pulumi.Input[int] priority: An unique positive integer indicating the priority of evaluation for a rule.
                Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input['SecurityPolicyRuleHeaderActionArgs'] header_action: Additional actions that are performed on headers. Structure is documented below.
-        :param pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
         :param pulumi.Input[bool] preview: When set to true, the `action` specified above is not enforced.
                Stackdriver logs for requests that trigger a preview action are annotated as such.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the `action` is "rate_based_ban" or "throttle". Cannot be specified for other actions. Structure is documented below.
-        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] redirect_options: Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] redirect_options: Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "match", match)
@@ -27581,11 +27568,6 @@ class SecurityPolicyRuleArgs:
     def action(self) -> pulumi.Input[str]:
         """
         Action to take when `match` matches the request. Valid values:
-        * allow: allow access to target.
-        * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
-        * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-        * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
-        * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         """
         return pulumi.get(self, "action")
 
@@ -27647,7 +27629,7 @@ class SecurityPolicyRuleArgs:
     @pulumi.getter(name="preconfiguredWafConfig")
     def preconfigured_waf_config(self) -> Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']]:
         """
-        ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+        ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
         """
         return pulumi.get(self, "preconfigured_waf_config")
 
@@ -27672,7 +27654,7 @@ class SecurityPolicyRuleArgs:
     @pulumi.getter(name="rateLimitOptions")
     def rate_limit_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]:
         """
-        Must be specified if the `action` is "rate_based_ban" or "throttle". Cannot be specified for other actions. Structure is documented below.
+        Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
         """
         return pulumi.get(self, "rate_limit_options")
 
@@ -27684,7 +27666,7 @@ class SecurityPolicyRuleArgs:
     @pulumi.getter(name="redirectOptions")
     def redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']]:
         """
-        Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
+        Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
         """
         return pulumi.get(self, "redirect_options")
 
@@ -27764,11 +27746,10 @@ class SecurityPolicyRuleMatchArgs:
                This field must be specified if `versioned_expr` is specified and cannot be specified if `versioned_expr` is not specified.
                Structure is documented below.
         :param pulumi.Input['SecurityPolicyRuleMatchExprArgs'] expr: User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-               such as origin.ip, source.region_code and contents in the request header.
+               such as `origin.ip`, `source.region_code` and `contents` in the request header.
                Structure is documented below.
         :param pulumi.Input[str] versioned_expr: Predefined rule expression. If this field is specified, `config` must also be specified.
                Available options:
-               * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -27796,7 +27777,7 @@ class SecurityPolicyRuleMatchArgs:
     def expr(self) -> Optional[pulumi.Input['SecurityPolicyRuleMatchExprArgs']]:
         """
         User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-        such as origin.ip, source.region_code and contents in the request header.
+        such as `origin.ip`, `source.region_code` and `contents` in the request header.
         Structure is documented below.
         """
         return pulumi.get(self, "expr")
@@ -27811,7 +27792,6 @@ class SecurityPolicyRuleMatchArgs:
         """
         Predefined rule expression. If this field is specified, `config` must also be specified.
         Available options:
-        * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
         """
         return pulumi.get(self, "versioned_expr")
 
@@ -27826,7 +27806,7 @@ class SecurityPolicyRuleMatchConfigArgs:
                  src_ip_ranges: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-               to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '\\*' matches all IPs
+               to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
                (can be used to override the default behavior).
         """
         pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
@@ -27836,7 +27816,7 @@ class SecurityPolicyRuleMatchConfigArgs:
     def src_ip_ranges(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-        to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '\\*' matches all IPs
+        to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
         (can be used to override the default behavior).
         """
         return pulumi.get(self, "src_ip_ranges")
@@ -28006,14 +27986,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
-               
-               * EQUALS: The operator matches if the field value equals the specified value.
-               * STARTS_WITH: The operator matches if the field value starts with the specified value.
-               * ENDS_WITH: The operator matches if the field value ends with the specified value.
-               * CONTAINS: The operator matches if the field value contains the specified value.
-               * EQUALS_ANY: The operator matches if the field value is any value.
         :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-               The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+               The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
         """
         pulumi.set(__self__, "operator", operator)
         if value is not None:
@@ -28024,12 +27998,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
     def operator(self) -> pulumi.Input[str]:
         """
         You can specify an exact match or a partial match by using a field operator and a field value.
-
-        * EQUALS: The operator matches if the field value equals the specified value.
-        * STARTS_WITH: The operator matches if the field value starts with the specified value.
-        * ENDS_WITH: The operator matches if the field value ends with the specified value.
-        * CONTAINS: The operator matches if the field value contains the specified value.
-        * EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -28042,7 +28010,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-        The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+        The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
         """
         return pulumi.get(self, "value")
 
@@ -28058,14 +28026,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
-               
-               * EQUALS: The operator matches if the field value equals the specified value.
-               * STARTS_WITH: The operator matches if the field value starts with the specified value.
-               * ENDS_WITH: The operator matches if the field value ends with the specified value.
-               * CONTAINS: The operator matches if the field value contains the specified value.
-               * EQUALS_ANY: The operator matches if the field value is any value.
         :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-               The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+               The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
         """
         pulumi.set(__self__, "operator", operator)
         if value is not None:
@@ -28076,12 +28038,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
     def operator(self) -> pulumi.Input[str]:
         """
         You can specify an exact match or a partial match by using a field operator and a field value.
-
-        * EQUALS: The operator matches if the field value equals the specified value.
-        * STARTS_WITH: The operator matches if the field value starts with the specified value.
-        * ENDS_WITH: The operator matches if the field value ends with the specified value.
-        * CONTAINS: The operator matches if the field value contains the specified value.
-        * EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -28094,7 +28050,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-        The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+        The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
         """
         return pulumi.get(self, "value")
 
@@ -28110,14 +28066,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
-               
-               * EQUALS: The operator matches if the field value equals the specified value.
-               * STARTS_WITH: The operator matches if the field value starts with the specified value.
-               * ENDS_WITH: The operator matches if the field value ends with the specified value.
-               * CONTAINS: The operator matches if the field value contains the specified value.
-               * EQUALS_ANY: The operator matches if the field value is any value.
         :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-               The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+               The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
         """
         pulumi.set(__self__, "operator", operator)
         if value is not None:
@@ -28128,12 +28078,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
     def operator(self) -> pulumi.Input[str]:
         """
         You can specify an exact match or a partial match by using a field operator and a field value.
-
-        * EQUALS: The operator matches if the field value equals the specified value.
-        * STARTS_WITH: The operator matches if the field value starts with the specified value.
-        * ENDS_WITH: The operator matches if the field value ends with the specified value.
-        * CONTAINS: The operator matches if the field value contains the specified value.
-        * EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -28146,7 +28090,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-        The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+        The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
         """
         return pulumi.get(self, "value")
 
@@ -28162,14 +28106,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
-               
-               * EQUALS: The operator matches if the field value equals the specified value.
-               * STARTS_WITH: The operator matches if the field value starts with the specified value.
-               * ENDS_WITH: The operator matches if the field value ends with the specified value.
-               * CONTAINS: The operator matches if the field value contains the specified value.
-               * EQUALS_ANY: The operator matches if the field value is any value.
         :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-               The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+               The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
         """
         pulumi.set(__self__, "operator", operator)
         if value is not None:
@@ -28180,12 +28118,6 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
     def operator(self) -> pulumi.Input[str]:
         """
         You can specify an exact match or a partial match by using a field operator and a field value.
-
-        * EQUALS: The operator matches if the field value equals the specified value.
-        * STARTS_WITH: The operator matches if the field value starts with the specified value.
-        * ENDS_WITH: The operator matches if the field value ends with the specified value.
-        * CONTAINS: The operator matches if the field value contains the specified value.
-        * EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -28198,7 +28130,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-        The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+        The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
         """
         return pulumi.get(self, "value")
 
@@ -28220,29 +28152,20 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
                  enforce_on_key_name: Optional[pulumi.Input[str]] = None,
                  exceed_redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']] = None):
         """
-        :param pulumi.Input[str] conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+        :param pulumi.Input[str] conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is `allow` only.
         :param pulumi.Input[str] exceed_action: When a request is denied, returns the HTTP response code specified.
-               Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+               Valid options are `deny()` where valid values for status are 403, 404, 429, and 502.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsRateLimitThresholdArgs'] rate_limit_threshold: Threshold at which to begin ratelimiting. Structure is documented below.
-        :param pulumi.Input[int] ban_duration_sec: Can only be specified if the `action` for the rule is "rate_based_ban".
+        :param pulumi.Input[int] ban_duration_sec: Can only be specified if the `action` for the rule is `rate_based_ban`.
                If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs'] ban_threshold: Can only be specified if the `action` for the rule is "rate_based_ban".
-               If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
-               exceed this 'ban_threshold'. Structure is documented below.
-        :param pulumi.Input[str] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
-               
-               * ALL: A single rate limit threshold is applied to all the requests matching this rule.
-               * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
-               * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
-               * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
-               * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
-               * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-               * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
-               * REGION_CODE: The country/region from which the request originates.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]] enforce_on_key_configs: ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs'] ban_threshold: Can only be specified if the `action` for the rule is `rate_based_ban`.
+               If specified, the key will be banned for the configured `ban_duration_sec` when the number of requests that exceed the `rate_limit_threshold` also
+               exceed this `ban_threshold`. Structure is documented below.
+        :param pulumi.Input[str] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]] enforce_on_key_configs: ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
                
                **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
-        :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types:
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
                
                <a name="nested_threshold"></a>The `{ban/rate_limit}_threshold` block supports:
@@ -28267,7 +28190,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="conformAction")
     def conform_action(self) -> pulumi.Input[str]:
         """
-        Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+        Action to take for requests that are under the configured rate limit threshold. Valid option is `allow` only.
         """
         return pulumi.get(self, "conform_action")
 
@@ -28280,7 +28203,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     def exceed_action(self) -> pulumi.Input[str]:
         """
         When a request is denied, returns the HTTP response code specified.
-        Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+        Valid options are `deny()` where valid values for status are 403, 404, 429, and 502.
         """
         return pulumi.get(self, "exceed_action")
 
@@ -28304,7 +28227,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="banDurationSec")
     def ban_duration_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        Can only be specified if the `action` for the rule is "rate_based_ban".
+        Can only be specified if the `action` for the rule is `rate_based_ban`.
         If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         """
         return pulumi.get(self, "ban_duration_sec")
@@ -28317,9 +28240,9 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="banThreshold")
     def ban_threshold(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsBanThresholdArgs']]:
         """
-        Can only be specified if the `action` for the rule is "rate_based_ban".
-        If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
-        exceed this 'ban_threshold'. Structure is documented below.
+        Can only be specified if the `action` for the rule is `rate_based_ban`.
+        If specified, the key will be banned for the configured `ban_duration_sec` when the number of requests that exceed the `rate_limit_threshold` also
+        exceed this `ban_threshold`. Structure is documented below.
         """
         return pulumi.get(self, "ban_threshold")
 
@@ -28331,16 +28254,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
-
-        * ALL: A single rate limit threshold is applied to all the requests matching this rule.
-        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
-        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
-        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
-        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
-        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
-        * REGION_CODE: The country/region from which the request originates.
+        Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -28352,7 +28266,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="enforceOnKeyConfigs")
     def enforce_on_key_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]]]:
         """
-        ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+        ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
 
         **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
         """
@@ -28366,7 +28280,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="enforceOnKeyName")
     def enforce_on_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        Rate limit key name applicable only for the following key types:
         """
         return pulumi.get(self, "enforce_on_key_name")
 
@@ -28432,17 +28346,8 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
                  enforce_on_key_name: Optional[pulumi.Input[str]] = None,
                  enforce_on_key_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER: Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE: Name of the HTTP cookie whose value is taken as the key value.
-        :param pulumi.Input[str] enforce_on_key_type: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
-               
-               * ALL: A single rate limit threshold is applied to all the requests matching this rule.
-               * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
-               * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
-               * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
-               * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
-               * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-               * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
-               * REGION_CODE: The country/region from which the request originates.
+        :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types:
+        :param pulumi.Input[str] enforce_on_key_type: Determines the key to enforce the `rate_limit_threshold` on. If not specified, defaults to `ALL`.
         """
         if enforce_on_key_name is not None:
             pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
@@ -28453,7 +28358,7 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
     @pulumi.getter(name="enforceOnKeyName")
     def enforce_on_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Rate limit key name applicable only for the following key types: HTTP_HEADER: Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE: Name of the HTTP cookie whose value is taken as the key value.
+        Rate limit key name applicable only for the following key types:
         """
         return pulumi.get(self, "enforce_on_key_name")
 
@@ -28465,16 +28370,7 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
     @pulumi.getter(name="enforceOnKeyType")
     def enforce_on_key_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
-
-        * ALL: A single rate limit threshold is applied to all the requests matching this rule.
-        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
-        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
-        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
-        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
-        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
-        * REGION_CODE: The country/region from which the request originates.
+        Determines the key to enforce the `rate_limit_threshold` on. If not specified, defaults to `ALL`.
         """
         return pulumi.get(self, "enforce_on_key_type")
 
@@ -28490,7 +28386,7 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
                  target: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Type of the redirect action.
-        :param pulumi.Input[str] target: Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+        :param pulumi.Input[str] target: Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
         """
         pulumi.set(__self__, "type", type)
         if target is not None:
@@ -28512,7 +28408,7 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs:
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
         """
-        Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+        Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
         """
         return pulumi.get(self, "target")
 
@@ -28565,10 +28461,7 @@ class SecurityPolicyRuleRedirectOptionsArgs:
                  target: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Type of redirect action.
-               
-               * EXTERNAL_302: Redirect to an external address, configured in 'target'.
-               * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
-        :param pulumi.Input[str] target: External redirection target when "EXTERNAL_302" is set in 'type'.
+        :param pulumi.Input[str] target: External redirection target when `EXTERNAL_302` is set in `type`.
         """
         pulumi.set(__self__, "type", type)
         if target is not None:
@@ -28579,9 +28472,6 @@ class SecurityPolicyRuleRedirectOptionsArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Type of redirect action.
-
-        * EXTERNAL_302: Redirect to an external address, configured in 'target'.
-        * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
         """
         return pulumi.get(self, "type")
 
@@ -28593,7 +28483,7 @@ class SecurityPolicyRuleRedirectOptionsArgs:
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
         """
-        External redirection target when "EXTERNAL_302" is set in 'type'.
+        External redirection target when `EXTERNAL_302` is set in `type`.
         """
         return pulumi.get(self, "target")
 

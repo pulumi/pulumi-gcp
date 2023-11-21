@@ -94,103 +94,8 @@ import javax.annotation.Nullable;
  *             .peerIp(&#34;15.0.0.120&#34;)
  *             .sharedSecret(&#34;a secret message&#34;)
  *             .targetVpnGateway(targetGateway.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     frEsp,
- *                     frUdp500,
- *                     frUdp4500)
- *                 .build());
- * 
- *         var route1 = new Route(&#34;route1&#34;, RouteArgs.builder()        
- *             .network(network1.name())
- *             .destRange(&#34;15.0.0.0/24&#34;)
- *             .priority(1000)
- *             .nextHopVpnTunnel(tunnel1.id())
- *             .build());
- * 
- *     }
- * }
- * ```
- * ### Vpn Tunnel Beta
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.compute.VPNGateway;
- * import com.pulumi.gcp.compute.VPNGatewayArgs;
- * import com.pulumi.gcp.compute.Address;
- * import com.pulumi.gcp.compute.AddressArgs;
- * import com.pulumi.gcp.compute.ForwardingRule;
- * import com.pulumi.gcp.compute.ForwardingRuleArgs;
- * import com.pulumi.gcp.compute.VPNTunnel;
- * import com.pulumi.gcp.compute.VPNTunnelArgs;
- * import com.pulumi.gcp.compute.Route;
- * import com.pulumi.gcp.compute.RouteArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
- *             .build());
- * 
- *         var targetGateway = new VPNGateway(&#34;targetGateway&#34;, VPNGatewayArgs.builder()        
- *             .network(network1.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var vpnStaticIp = new Address(&#34;vpnStaticIp&#34;, AddressArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
- *             .build());
- * 
- *         var frEsp = new ForwardingRule(&#34;frEsp&#34;, ForwardingRuleArgs.builder()        
- *             .ipProtocol(&#34;ESP&#34;)
- *             .ipAddress(vpnStaticIp.address())
- *             .target(targetGateway.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var frUdp500 = new ForwardingRule(&#34;frUdp500&#34;, ForwardingRuleArgs.builder()        
- *             .ipProtocol(&#34;UDP&#34;)
- *             .portRange(&#34;500&#34;)
- *             .ipAddress(vpnStaticIp.address())
- *             .target(targetGateway.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var frUdp4500 = new ForwardingRule(&#34;frUdp4500&#34;, ForwardingRuleArgs.builder()        
- *             .ipProtocol(&#34;UDP&#34;)
- *             .portRange(&#34;4500&#34;)
- *             .ipAddress(vpnStaticIp.address())
- *             .target(targetGateway.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var tunnel1 = new VPNTunnel(&#34;tunnel1&#34;, VPNTunnelArgs.builder()        
- *             .peerIp(&#34;15.0.0.120&#34;)
- *             .sharedSecret(&#34;a secret message&#34;)
- *             .targetVpnGateway(targetGateway.id())
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(                
  *                     frEsp,
  *                     frUdp500,
@@ -202,9 +107,7 @@ import javax.annotation.Nullable;
  *             .destRange(&#34;15.0.0.0/24&#34;)
  *             .priority(1000)
  *             .nextHopVpnTunnel(tunnel1.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -284,16 +187,14 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
         return this.detailedStatus;
     }
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
     /**
-     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
     public Output<Map<String,String>> effectiveLabels() {
@@ -474,14 +375,16 @@ public class VPNTunnel extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * const secret = new gcp.secretmanager.Secret("secret", {
- *     secretId: "secret",
+ *     secretId: "my-secret",
  *     replication: {
  *         auto: {},
  *     },
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * const secret = new gcp.secretmanager.Secret("secret", {
- *     secretId: "secret",
+ *     secretId: "my-secret",
  *     replication: {
  *         auto: {},
  *     },

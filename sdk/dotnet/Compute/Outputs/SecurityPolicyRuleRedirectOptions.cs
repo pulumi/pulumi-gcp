@@ -14,14 +14,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class SecurityPolicyRuleRedirectOptions
     {
         /// <summary>
-        /// External redirection target when "EXTERNAL_302" is set in 'type'.
+        /// External redirection target when `EXTERNAL_302` is set in `type`.
         /// </summary>
         public readonly string? Target;
         /// <summary>
         /// Type of redirect action.
-        /// 
-        /// * EXTERNAL_302: Redirect to an external address, configured in 'target'.
-        /// * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
         /// </summary>
         public readonly string Type;
 

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
     /**
-     * @return Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+     * @return Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
      * 
      */
     private @Nullable String target;
@@ -24,7 +24,7 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
 
     private SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions() {}
     /**
-     * @return Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+     * @return Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
      * 
      */
     public Optional<String> target() {

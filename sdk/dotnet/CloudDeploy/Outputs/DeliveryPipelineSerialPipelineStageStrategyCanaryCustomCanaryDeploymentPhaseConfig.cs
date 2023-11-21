@@ -22,11 +22,11 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// </summary>
         public readonly string PhaseId;
         /// <summary>
-        /// (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+        /// Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
         /// </summary>
         public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy? Postdeploy;
         /// <summary>
-        /// (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+        /// Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
         /// </summary>
         public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy? Predeploy;
         /// <summary>

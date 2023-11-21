@@ -32,14 +32,14 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
     }
 
     /**
-     * Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+     * Rule visibility can be one of the following:
      * 
      */
     @Import(name="ruleVisibility")
     private @Nullable Output<String> ruleVisibility;
 
     /**
-     * @return Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+     * @return Rule visibility can be one of the following:
      * 
      */
     public Optional<Output<String>> ruleVisibility() {
@@ -93,7 +93,7 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
         }
 
         /**
-         * @param ruleVisibility Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+         * @param ruleVisibility Rule visibility can be one of the following:
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
         }
 
         /**
-         * @param ruleVisibility Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+         * @param ruleVisibility Rule visibility can be one of the following:
          * 
          * @return builder
          * 

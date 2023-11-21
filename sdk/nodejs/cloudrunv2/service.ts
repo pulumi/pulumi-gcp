@@ -380,9 +380,8 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly creator!: pulumi.Output<string>;
     /**
-     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-     * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-     * https://cloud.google.com/run/docs/configuring/custom-audiences.
+     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+     * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
      */
     public readonly customAudiences!: pulumi.Output<string[] | undefined>;
     /**
@@ -647,9 +646,8 @@ export interface ServiceState {
      */
     creator?: pulumi.Input<string>;
     /**
-     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-     * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-     * https://cloud.google.com/run/docs/configuring/custom-audiences.
+     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+     * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
      */
     customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -805,9 +803,8 @@ export interface ServiceArgs {
      */
     clientVersion?: pulumi.Input<string>;
     /**
-     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-     * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-     * https://cloud.google.com/run/docs/configuring/custom-audiences.
+     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+     * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
      */
     customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
     /**

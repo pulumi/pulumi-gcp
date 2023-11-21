@@ -29,7 +29,8 @@ class AttachedClusterArgs:
                  logging_config: Optional[pulumi.Input['AttachedClusterLoggingConfigArgs']] = None,
                  monitoring_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 proxy_config: Optional[pulumi.Input['AttachedClusterProxyConfigArgs']] = None):
         """
         The set of arguments for constructing a AttachedCluster resource.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
@@ -71,6 +72,8 @@ class AttachedClusterArgs:
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['AttachedClusterProxyConfigArgs'] proxy_config: Support for proxy configuration.
+               Structure is documented below.
         """
         pulumi.set(__self__, "distribution", distribution)
         pulumi.set(__self__, "fleet", fleet)
@@ -95,6 +98,8 @@ class AttachedClusterArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if proxy_config is not None:
+            pulumi.set(__self__, "proxy_config", proxy_config)
 
     @property
     @pulumi.getter
@@ -289,6 +294,19 @@ class AttachedClusterArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="proxyConfig")
+    def proxy_config(self) -> Optional[pulumi.Input['AttachedClusterProxyConfigArgs']]:
+        """
+        Support for proxy configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proxy_config")
+
+    @proxy_config.setter
+    def proxy_config(self, value: Optional[pulumi.Input['AttachedClusterProxyConfigArgs']]):
+        pulumi.set(self, "proxy_config", value)
+
 
 @pulumi.input_type
 class _AttachedClusterState:
@@ -312,6 +330,7 @@ class _AttachedClusterState:
                  oidc_config: Optional[pulumi.Input['AttachedClusterOidcConfigArgs']] = None,
                  platform_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 proxy_config: Optional[pulumi.Input['AttachedClusterProxyConfigArgs']] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
@@ -367,6 +386,8 @@ class _AttachedClusterState:
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['AttachedClusterProxyConfigArgs'] proxy_config: Support for proxy configuration.
+               Structure is documented below.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: The current state of the cluster. Possible values:
                STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
@@ -414,6 +435,8 @@ class _AttachedClusterState:
             pulumi.set(__self__, "platform_version", platform_version)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if proxy_config is not None:
+            pulumi.set(__self__, "proxy_config", proxy_config)
         if reconciling is not None:
             pulumi.set(__self__, "reconciling", reconciling)
         if state is not None:
@@ -683,6 +706,19 @@ class _AttachedClusterState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="proxyConfig")
+    def proxy_config(self) -> Optional[pulumi.Input['AttachedClusterProxyConfigArgs']]:
+        """
+        Support for proxy configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proxy_config")
+
+    @proxy_config.setter
+    def proxy_config(self, value: Optional[pulumi.Input['AttachedClusterProxyConfigArgs']]):
+        pulumi.set(self, "proxy_config", value)
+
+    @property
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -765,6 +801,7 @@ class AttachedCluster(pulumi.CustomResource):
                  oidc_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']]] = None,
                  platform_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 proxy_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterProxyConfigArgs']]] = None,
                  __props__=None):
         """
         An Anthos cluster running on customer owned infrastructure.
@@ -888,6 +925,8 @@ class AttachedCluster(pulumi.CustomResource):
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterProxyConfigArgs']] proxy_config: Support for proxy configuration.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1005,6 +1044,7 @@ class AttachedCluster(pulumi.CustomResource):
                  oidc_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']]] = None,
                  platform_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 proxy_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterProxyConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1038,6 +1078,7 @@ class AttachedCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'platform_version'")
             __props__.__dict__["platform_version"] = platform_version
             __props__.__dict__["project"] = project
+            __props__.__dict__["proxy_config"] = proxy_config
             __props__.__dict__["cluster_region"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_annotations"] = None
@@ -1077,6 +1118,7 @@ class AttachedCluster(pulumi.CustomResource):
             oidc_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterOidcConfigArgs']]] = None,
             platform_version: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            proxy_config: Optional[pulumi.Input[pulumi.InputType['AttachedClusterProxyConfigArgs']]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -1137,6 +1179,8 @@ class AttachedCluster(pulumi.CustomResource):
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['AttachedClusterProxyConfigArgs']] proxy_config: Support for proxy configuration.
+               Structure is documented below.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: The current state of the cluster. Possible values:
                STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
@@ -1169,6 +1213,7 @@ class AttachedCluster(pulumi.CustomResource):
         __props__.__dict__["oidc_config"] = oidc_config
         __props__.__dict__["platform_version"] = platform_version
         __props__.__dict__["project"] = project
+        __props__.__dict__["proxy_config"] = proxy_config
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["state"] = state
         __props__.__dict__["uid"] = uid
@@ -1356,6 +1401,15 @@ class AttachedCluster(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="proxyConfig")
+    def proxy_config(self) -> pulumi.Output[Optional['outputs.AttachedClusterProxyConfig']]:
+        """
+        Support for proxy configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "proxy_config")
 
     @property
     @pulumi.getter

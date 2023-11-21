@@ -14,105 +14,6 @@ import * as utilities from "../utilities";
  *     * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
  *
  * ## Example Usage
- * ### Workflow Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const testAccount = new gcp.serviceaccount.Account("testAccount", {
- *     accountId: "my-account",
- *     displayName: "Test Service Account",
- * });
- * const example = new gcp.workflows.Workflow("example", {
- *     region: "us-central1",
- *     description: "Magic",
- *     serviceAccount: testAccount.id,
- *     labels: {
- *         env: "test",
- *     },
- *     sourceContents: `# This is a sample workflow. You can replace it with your source code.
- * #
- * # This workflow does the following:
- * # - reads current time and date information from an external API and stores
- * #   the response in currentTime variable
- * # - retrieves a list of Wikipedia articles related to the day of the week
- * #   from currentTime
- * # - returns the list of articles as an output of the workflow
- * #
- * # Note: In Terraform you need to escape the $$ or it will cause errors.
- *
- * - getCurrentTime:
- *     call: http.get
- *     args:
- *         url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
- *     result: currentTime
- * - readWikipedia:
- *     call: http.get
- *     args:
- *         url: https://en.wikipedia.org/w/api.php
- *         query:
- *             action: opensearch
- *             search: ${currentTime.body.dayOfWeek}
- *     result: wikiResult
- * - returnOutput:
- *     return: ${wikiResult.body[1]}
- * `,
- * });
- * ```
- * ### Workflow Beta
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const testAccount = new gcp.serviceaccount.Account("testAccount", {
- *     accountId: "my-account",
- *     displayName: "Test Service Account",
- * }, {
- *     provider: google_beta,
- * });
- * const exampleBeta = new gcp.workflows.Workflow("exampleBeta", {
- *     region: "us-central1",
- *     description: "Magic",
- *     serviceAccount: testAccount.id,
- *     labels: {
- *         env: "test",
- *     },
- *     userEnvVars: {
- *         foo: "BAR",
- *     },
- *     sourceContents: `# This is a sample workflow. You can replace it with your source code.
- * #
- * # This workflow does the following:
- * # - reads current time and date information from an external API and stores
- * #   the response in currentTime variable
- * # - retrieves a list of Wikipedia articles related to the day of the week
- * #   from currentTime
- * # - returns the list of articles as an output of the workflow
- * #
- * # Note: In Terraform you need to escape the $$ or it will cause errors.
- *
- * - getCurrentTime:
- *     call: http.get
- *     args:
- *         url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
- *     result: currentTime
- * - readWikipedia:
- *     call: http.get
- *     args:
- *         url: https://en.wikipedia.org/w/api.php
- *         query:
- *             action: opensearch
- *             search: ${currentTime.body.dayOfWeek}
- *     result: wikiResult
- * - returnOutput:
- *     return: ${wikiResult.body[1]}
- * `,
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *
@@ -220,8 +121,7 @@ export class Workflow extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-     * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
      */
     public readonly userEnvVars!: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -358,8 +258,7 @@ export interface WorkflowState {
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-     * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
      */
     userEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -417,8 +316,7 @@ export interface WorkflowArgs {
      */
     sourceContents?: pulumi.Input<string>;
     /**
-     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-     * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
      */
     userEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

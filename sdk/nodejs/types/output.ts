@@ -4134,6 +4134,14 @@ export namespace bigquery {
         clusterId: string;
     }
 
+    export interface AppProfileStandardIsolation {
+        /**
+         * The priority of requests sent using this app profile.
+         * Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+         */
+        priority: string;
+    }
+
     export interface BiReservationPreferredTable {
         /**
          * The ID of the dataset in the above project.
@@ -9818,11 +9826,11 @@ export namespace clouddeploy {
          */
         percentages: number[];
         /**
-         * (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+         * Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
          */
         postdeploy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy;
         /**
-         * (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+         * Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
          */
         predeploy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy;
         /**
@@ -9862,11 +9870,11 @@ export namespace clouddeploy {
          */
         phaseId: string;
         /**
-         * (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+         * Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
          */
         postdeploy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy;
         /**
-         * (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+         * Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
          */
         predeploy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy;
         /**
@@ -9960,11 +9968,11 @@ export namespace clouddeploy {
 
     export interface DeliveryPipelineSerialPipelineStageStrategyStandard {
         /**
-         * (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+         * Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
          */
         postdeploy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy;
         /**
-         * (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+         * Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
          */
         predeploy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy;
         /**
@@ -23602,7 +23610,7 @@ export namespace compute {
          */
         enable?: boolean;
         /**
-         * Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+         * Rule visibility can be one of the following:
          */
         ruleVisibility?: string;
     }
@@ -23615,14 +23623,10 @@ export namespace compute {
         jsonCustomConfig: outputs.compute.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig;
         /**
          * Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
-         * * DISABLED - Don't parse JSON payloads in POST bodies.
-         * * STANDARD - Parse JSON payloads in POST bodies.
          */
         jsonParsing: string;
         /**
          * Log level to use. Defaults to `NORMAL`.
-         * * NORMAL - Normal log level.
-         * * VERBOSE - Verbose log level.
          */
         logLevel: string;
         /**
@@ -23643,7 +23647,7 @@ export namespace compute {
 
     export interface SecurityPolicyRecaptchaOptionsConfig {
         /**
-         * A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+         * A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of `GOOGLE_RECAPTCHA` under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
          */
         redirectSiteKey: string;
     }
@@ -23651,11 +23655,6 @@ export namespace compute {
     export interface SecurityPolicyRule {
         /**
          * Action to take when `match` matches the request. Valid values:
-         * * allow: allow access to target.
-         * * deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502).
-         * * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
-         * * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions.
-         * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
          */
         action: string;
         /**
@@ -23672,7 +23671,7 @@ export namespace compute {
          */
         match: outputs.compute.SecurityPolicyRuleMatch;
         /**
-         * ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
+         * ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
          */
         preconfiguredWafConfig?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfig;
         /**
@@ -23686,11 +23685,11 @@ export namespace compute {
          */
         priority: number;
         /**
-         * Must be specified if the `action` is "rateBasedBan" or "throttle". Cannot be specified for other actions. Structure is documented below.
+         * Must be specified if the `action` is `rateBasedBan` or `throttle`. Cannot be specified for other actions. Structure is documented below.
          */
         rateLimitOptions?: outputs.compute.SecurityPolicyRuleRateLimitOptions;
         /**
-         * Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
+         * Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
          */
         redirectOptions?: outputs.compute.SecurityPolicyRuleRedirectOptions;
     }
@@ -23722,14 +23721,13 @@ export namespace compute {
         config?: outputs.compute.SecurityPolicyRuleMatchConfig;
         /**
          * User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-         * such as origin.ip, source.region_code and contents in the request header.
+         * such as `origin.ip`, `source.region_code` and `contents` in the request header.
          * Structure is documented below.
          */
         expr?: outputs.compute.SecurityPolicyRuleMatchExpr;
         /**
          * Predefined rule expression. If this field is specified, `config` must also be specified.
          * Available options:
-         * * SRC_IPS_V1: Must specify the corresponding `srcIpRanges` field in `config`.
          */
         versionedExpr?: string;
     }
@@ -23737,7 +23735,7 @@ export namespace compute {
     export interface SecurityPolicyRuleMatchConfig {
         /**
          * Set of IP addresses or ranges (IPV4 or IPV6) in CIDR notation
-         * to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of '\*' matches all IPs
+         * to match against inbound traffic. There is a limit of 10 IP ranges per rule. A value of `*` matches all IPs
          * (can be used to override the default behavior).
          */
         srcIpRanges: string[];
@@ -23790,17 +23788,11 @@ export namespace compute {
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
         /**
          * You can specify an exact match or a partial match by using a field operator and a field value.
-         *
-         * * EQUALS: The operator matches if the field value equals the specified value.
-         * * STARTS_WITH: The operator matches if the field value starts with the specified value.
-         * * ENDS_WITH: The operator matches if the field value ends with the specified value.
-         * * CONTAINS: The operator matches if the field value contains the specified value.
-         * * EQUALS_ANY: The operator matches if the field value is any value.
          */
         operator: string;
         /**
          * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-         * The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+         * The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
          */
         value?: string;
     }
@@ -23808,17 +23800,11 @@ export namespace compute {
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader {
         /**
          * You can specify an exact match or a partial match by using a field operator and a field value.
-         *
-         * * EQUALS: The operator matches if the field value equals the specified value.
-         * * STARTS_WITH: The operator matches if the field value starts with the specified value.
-         * * ENDS_WITH: The operator matches if the field value ends with the specified value.
-         * * CONTAINS: The operator matches if the field value contains the specified value.
-         * * EQUALS_ANY: The operator matches if the field value is any value.
          */
         operator: string;
         /**
          * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-         * The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+         * The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
          */
         value?: string;
     }
@@ -23826,17 +23812,11 @@ export namespace compute {
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam {
         /**
          * You can specify an exact match or a partial match by using a field operator and a field value.
-         *
-         * * EQUALS: The operator matches if the field value equals the specified value.
-         * * STARTS_WITH: The operator matches if the field value starts with the specified value.
-         * * ENDS_WITH: The operator matches if the field value ends with the specified value.
-         * * CONTAINS: The operator matches if the field value contains the specified value.
-         * * EQUALS_ANY: The operator matches if the field value is any value.
          */
         operator: string;
         /**
          * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-         * The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+         * The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
          */
         value?: string;
     }
@@ -23844,63 +23824,48 @@ export namespace compute {
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
         /**
          * You can specify an exact match or a partial match by using a field operator and a field value.
-         *
-         * * EQUALS: The operator matches if the field value equals the specified value.
-         * * STARTS_WITH: The operator matches if the field value starts with the specified value.
-         * * ENDS_WITH: The operator matches if the field value ends with the specified value.
-         * * CONTAINS: The operator matches if the field value contains the specified value.
-         * * EQUALS_ANY: The operator matches if the field value is any value.
          */
         operator: string;
         /**
          * A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-         * The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
+         * The field value must be given if the field `operator` is not `EQUALS_ANY`, and cannot be given if the field `operator` is `EQUALS_ANY`.
          */
         value?: string;
     }
 
     export interface SecurityPolicyRuleRateLimitOptions {
         /**
-         * Can only be specified if the `action` for the rule is "rateBasedBan".
+         * Can only be specified if the `action` for the rule is `rateBasedBan`.
          * If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
          */
         banDurationSec?: number;
         /**
-         * Can only be specified if the `action` for the rule is "rateBasedBan".
-         * If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
-         * exceed this 'ban_threshold'. Structure is documented below.
+         * Can only be specified if the `action` for the rule is `rateBasedBan`.
+         * If specified, the key will be banned for the configured `banDurationSec` when the number of requests that exceed the `rateLimitThreshold` also
+         * exceed this `banThreshold`. Structure is documented below.
          */
         banThreshold?: outputs.compute.SecurityPolicyRuleRateLimitOptionsBanThreshold;
         /**
-         * Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+         * Action to take for requests that are under the configured rate limit threshold. Valid option is `allow` only.
          */
         conformAction: string;
         /**
-         * Determines the key to enforce the rateLimitThreshold on. If not specified, defaults to "ALL".
-         *
-         * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
-         * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
-         * * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
-         * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
-         * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
-         * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-         * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
-         * * REGION_CODE: The country/region from which the request originates.
+         * Determines the key to enforce the rateLimitThreshold on. If not specified, defaults to `ALL`.
          */
         enforceOnKey?: string;
         /**
-         * ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforceOnKeyConfigs` is specified, enforceOnKey must be set to an empty string. Structure is documented below.
+         * ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforceOnKeyConfigs` is specified, `enforceOnKey` must be set to an empty string. Structure is documented below.
          *
          * **Note:** To avoid the conflict between `enforceOnKey` and `enforceOnKeyConfigs`, the field `enforceOnKey` needs to be set to an empty string.
          */
         enforceOnKeyConfigs?: outputs.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig[];
         /**
-         * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+         * Rate limit key name applicable only for the following key types:
          */
         enforceOnKeyName?: string;
         /**
          * When a request is denied, returns the HTTP response code specified.
-         * Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+         * Valid options are `deny()` where valid values for status are 403, 404, 429, and 502.
          */
         exceedAction: string;
         /**
@@ -23928,27 +23893,18 @@ export namespace compute {
 
     export interface SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
         /**
-         * Rate limit key name applicable only for the following key types: HTTP_HEADER: Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE: Name of the HTTP cookie whose value is taken as the key value.
+         * Rate limit key name applicable only for the following key types:
          */
         enforceOnKeyName?: string;
         /**
-         * Determines the key to enforce the rateLimitThreshold on. If not specified, defaults to "ALL".
-         *
-         * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
-         * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
-         * * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
-         * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
-         * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
-         * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-         * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
-         * * REGION_CODE: The country/region from which the request originates.
+         * Determines the key to enforce the `rateLimitThreshold` on. If not specified, defaults to `ALL`.
          */
         enforceOnKeyType?: string;
     }
 
     export interface SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
         /**
-         * Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+         * Target for the redirect action. This is required if the type is `EXTERNAL_302` and cannot be specified for `GOOGLE_RECAPTCHA`.
          */
         target?: string;
         /**
@@ -23970,14 +23926,11 @@ export namespace compute {
 
     export interface SecurityPolicyRuleRedirectOptions {
         /**
-         * External redirection target when "EXTERNAL_302" is set in 'type'.
+         * External redirection target when `EXTERNAL_302` is set in `type`.
          */
         target?: string;
         /**
          * Type of redirect action.
-         *
-         * * EXTERNAL_302: Redirect to an external address, configured in 'target'.
-         * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
          */
         type: string;
     }
@@ -26288,6 +26241,25 @@ export namespace container {
          * OIDC verification keys in JWKS format (RFC 7517).
          */
         jwks?: string;
+    }
+
+    export interface AttachedClusterProxyConfig {
+        /**
+         * The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
+         * Structure is documented below.
+         */
+        kubernetesSecret?: outputs.container.AttachedClusterProxyConfigKubernetesSecret;
+    }
+
+    export interface AttachedClusterProxyConfigKubernetesSecret {
+        /**
+         * Name of the kubernetes secret containing the proxy config.
+         */
+        name: string;
+        /**
+         * Namespace of the kubernetes secret containing the proxy config.
+         */
+        namespace: string;
     }
 
     export interface AttachedClusterWorkloadIdentityConfig {
@@ -35389,7 +35361,7 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJob {
         /**
-         * A task to execute on the completion of a job.
+         * Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
          * Structure is documented below.
          */
         actions?: outputs.dataloss.PreventionJobTriggerInspectJobAction[];
@@ -45825,7 +45797,7 @@ export namespace gkehub {
         /**
          * Binauthz configuration for the cluster. Structure is documented below.
          */
-        binauthz?: outputs.gkehub.FeatureMembershipConfigmanagementBinauthz;
+        binauthz: outputs.gkehub.FeatureMembershipConfigmanagementBinauthz;
         /**
          * Config Sync configuration for the cluster. Structure is documented below.
          */
@@ -52361,7 +52333,7 @@ export namespace monitoring {
          */
         authInfo?: outputs.monitoring.UptimeCheckConfigHttpCheckAuthInfo;
         /**
-         * The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+         * The request body associated with the HTTP POST request. If `contentType` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `requestMethod` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
          */
         body?: string;
         /**
@@ -52374,15 +52346,15 @@ export namespace monitoring {
          */
         customContentType?: string;
         /**
-         * The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
+         * The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
          */
         headers: {[key: string]: string};
         /**
-         * Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if maskHeaders is set to True then the headers will be obscured with ******.
+         * Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `maskHeaders` is set to `true` then the headers will be obscured with `******`.
          */
         maskHeaders?: boolean;
         /**
-         * The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
+         * The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
          */
         path?: string;
         /**
@@ -52391,11 +52363,11 @@ export namespace monitoring {
          */
         pingConfig?: outputs.monitoring.UptimeCheckConfigHttpCheckPingConfig;
         /**
-         * The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+         * The port to the page to run the check against. Will be combined with `host` (specified within the `monitoredResource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
          */
         port: number;
         /**
-         * The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+         * The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `requestMethod` defaults to `GET`.
          * Default value is `GET`.
          * Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
          */
@@ -52405,7 +52377,7 @@ export namespace monitoring {
          */
         useSsl?: boolean;
         /**
-         * Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
+         * Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitoredResource` is set to `uptimeUrl`. If `useSsl` is `false`, setting `validateSsl` to `true` has no effect.
          */
         validateSsl?: boolean;
     }
@@ -52443,11 +52415,11 @@ export namespace monitoring {
 
     export interface UptimeCheckConfigMonitoredResource {
         /**
-         * Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "projectId", "instanceId", and "zone".
+         * Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels `projectId`, `instanceId`, and `zone`.
          */
         labels: {[key: string]: string};
         /**
-         * The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list).
+         * The monitored resource type. This field must match the type field of a [`MonitoredResourceDescriptor`](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.monitoredResourceDescriptors#MonitoredResourceDescriptor) object. For example, the type of a Compute Engine VM instance is `gceInstance`. For a list of types, see [Monitoring resource types](https://cloud.google.com/monitoring/api/resources) and [Logging resource types](https://cloud.google.com/logging/docs/api/v2/resource-list).
          */
         type: string;
     }
@@ -52489,7 +52461,7 @@ export namespace monitoring {
          */
         pingConfig?: outputs.monitoring.UptimeCheckConfigTcpCheckPingConfig;
         /**
-         * The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+         * The port to the page to run the check against. Will be combined with host (specified within the `monitoredResource`) to construct the full URL.
          */
         port: number;
     }

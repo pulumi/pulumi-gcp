@@ -12,22 +12,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SecurityPolicyRuleRedirectOptions {
     /**
-     * @return External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
+     * @return External redirection target when `EXTERNAL_302` is set in `type`.
      * 
      */
     private @Nullable String target;
     /**
      * @return Type of redirect action.
      * 
-     * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
-     * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
-     * 
      */
     private String type;
 
     private SecurityPolicyRuleRedirectOptions() {}
     /**
-     * @return External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
+     * @return External redirection target when `EXTERNAL_302` is set in `type`.
      * 
      */
     public Optional<String> target() {
@@ -35,9 +32,6 @@ public final class SecurityPolicyRuleRedirectOptions {
     }
     /**
      * @return Type of redirect action.
-     * 
-     * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
-     * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
      * 
      */
     public String type() {

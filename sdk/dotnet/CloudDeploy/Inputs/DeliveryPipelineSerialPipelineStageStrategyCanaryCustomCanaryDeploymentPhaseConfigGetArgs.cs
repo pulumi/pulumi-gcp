@@ -25,13 +25,13 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         public Input<string> PhaseId { get; set; } = null!;
 
         /// <summary>
-        /// (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+        /// Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
         /// </summary>
         [Input("postdeploy")]
         public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployGetArgs>? Postdeploy { get; set; }
 
         /// <summary>
-        /// (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+        /// Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
         /// </summary>
         [Input("predeploy")]
         public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployGetArgs>? Predeploy { get; set; }

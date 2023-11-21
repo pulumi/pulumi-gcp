@@ -173,6 +173,147 @@ func (o AppProfileSingleClusterRoutingPtrOutput) ClusterId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type AppProfileStandardIsolation struct {
+	// The priority of requests sent using this app profile.
+	// Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+	Priority string `pulumi:"priority"`
+}
+
+// AppProfileStandardIsolationInput is an input type that accepts AppProfileStandardIsolationArgs and AppProfileStandardIsolationOutput values.
+// You can construct a concrete instance of `AppProfileStandardIsolationInput` via:
+//
+//	AppProfileStandardIsolationArgs{...}
+type AppProfileStandardIsolationInput interface {
+	pulumi.Input
+
+	ToAppProfileStandardIsolationOutput() AppProfileStandardIsolationOutput
+	ToAppProfileStandardIsolationOutputWithContext(context.Context) AppProfileStandardIsolationOutput
+}
+
+type AppProfileStandardIsolationArgs struct {
+	// The priority of requests sent using this app profile.
+	// Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+	Priority pulumi.StringInput `pulumi:"priority"`
+}
+
+func (AppProfileStandardIsolationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProfileStandardIsolation)(nil)).Elem()
+}
+
+func (i AppProfileStandardIsolationArgs) ToAppProfileStandardIsolationOutput() AppProfileStandardIsolationOutput {
+	return i.ToAppProfileStandardIsolationOutputWithContext(context.Background())
+}
+
+func (i AppProfileStandardIsolationArgs) ToAppProfileStandardIsolationOutputWithContext(ctx context.Context) AppProfileStandardIsolationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileStandardIsolationOutput)
+}
+
+func (i AppProfileStandardIsolationArgs) ToAppProfileStandardIsolationPtrOutput() AppProfileStandardIsolationPtrOutput {
+	return i.ToAppProfileStandardIsolationPtrOutputWithContext(context.Background())
+}
+
+func (i AppProfileStandardIsolationArgs) ToAppProfileStandardIsolationPtrOutputWithContext(ctx context.Context) AppProfileStandardIsolationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileStandardIsolationOutput).ToAppProfileStandardIsolationPtrOutputWithContext(ctx)
+}
+
+// AppProfileStandardIsolationPtrInput is an input type that accepts AppProfileStandardIsolationArgs, AppProfileStandardIsolationPtr and AppProfileStandardIsolationPtrOutput values.
+// You can construct a concrete instance of `AppProfileStandardIsolationPtrInput` via:
+//
+//	        AppProfileStandardIsolationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppProfileStandardIsolationPtrInput interface {
+	pulumi.Input
+
+	ToAppProfileStandardIsolationPtrOutput() AppProfileStandardIsolationPtrOutput
+	ToAppProfileStandardIsolationPtrOutputWithContext(context.Context) AppProfileStandardIsolationPtrOutput
+}
+
+type appProfileStandardIsolationPtrType AppProfileStandardIsolationArgs
+
+func AppProfileStandardIsolationPtr(v *AppProfileStandardIsolationArgs) AppProfileStandardIsolationPtrInput {
+	return (*appProfileStandardIsolationPtrType)(v)
+}
+
+func (*appProfileStandardIsolationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProfileStandardIsolation)(nil)).Elem()
+}
+
+func (i *appProfileStandardIsolationPtrType) ToAppProfileStandardIsolationPtrOutput() AppProfileStandardIsolationPtrOutput {
+	return i.ToAppProfileStandardIsolationPtrOutputWithContext(context.Background())
+}
+
+func (i *appProfileStandardIsolationPtrType) ToAppProfileStandardIsolationPtrOutputWithContext(ctx context.Context) AppProfileStandardIsolationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileStandardIsolationPtrOutput)
+}
+
+type AppProfileStandardIsolationOutput struct{ *pulumi.OutputState }
+
+func (AppProfileStandardIsolationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProfileStandardIsolation)(nil)).Elem()
+}
+
+func (o AppProfileStandardIsolationOutput) ToAppProfileStandardIsolationOutput() AppProfileStandardIsolationOutput {
+	return o
+}
+
+func (o AppProfileStandardIsolationOutput) ToAppProfileStandardIsolationOutputWithContext(ctx context.Context) AppProfileStandardIsolationOutput {
+	return o
+}
+
+func (o AppProfileStandardIsolationOutput) ToAppProfileStandardIsolationPtrOutput() AppProfileStandardIsolationPtrOutput {
+	return o.ToAppProfileStandardIsolationPtrOutputWithContext(context.Background())
+}
+
+func (o AppProfileStandardIsolationOutput) ToAppProfileStandardIsolationPtrOutputWithContext(ctx context.Context) AppProfileStandardIsolationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppProfileStandardIsolation) *AppProfileStandardIsolation {
+		return &v
+	}).(AppProfileStandardIsolationPtrOutput)
+}
+
+// The priority of requests sent using this app profile.
+// Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+func (o AppProfileStandardIsolationOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v AppProfileStandardIsolation) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+type AppProfileStandardIsolationPtrOutput struct{ *pulumi.OutputState }
+
+func (AppProfileStandardIsolationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProfileStandardIsolation)(nil)).Elem()
+}
+
+func (o AppProfileStandardIsolationPtrOutput) ToAppProfileStandardIsolationPtrOutput() AppProfileStandardIsolationPtrOutput {
+	return o
+}
+
+func (o AppProfileStandardIsolationPtrOutput) ToAppProfileStandardIsolationPtrOutputWithContext(ctx context.Context) AppProfileStandardIsolationPtrOutput {
+	return o
+}
+
+func (o AppProfileStandardIsolationPtrOutput) Elem() AppProfileStandardIsolationOutput {
+	return o.ApplyT(func(v *AppProfileStandardIsolation) AppProfileStandardIsolation {
+		if v != nil {
+			return *v
+		}
+		var ret AppProfileStandardIsolation
+		return ret
+	}).(AppProfileStandardIsolationOutput)
+}
+
+// The priority of requests sent using this app profile.
+// Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+func (o AppProfileStandardIsolationPtrOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppProfileStandardIsolation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Priority
+	}).(pulumi.StringPtrOutput)
+}
+
 type BiReservationPreferredTable struct {
 	// The ID of the dataset in the above project.
 	DatasetId *string `pulumi:"datasetId"`
@@ -13576,6 +13717,8 @@ func (o GetDatasetDefaultEncryptionConfigurationArrayOutput) Index(i pulumi.IntI
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingPtrInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileStandardIsolationInput)(nil)).Elem(), AppProfileStandardIsolationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileStandardIsolationPtrInput)(nil)).Elem(), AppProfileStandardIsolationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BiReservationPreferredTableInput)(nil)).Elem(), BiReservationPreferredTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BiReservationPreferredTableArrayInput)(nil)).Elem(), BiReservationPreferredTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAwsInput)(nil)).Elem(), ConnectionAwsArgs{})
@@ -13720,6 +13863,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetDefaultEncryptionConfigurationArrayInput)(nil)).Elem(), GetDatasetDefaultEncryptionConfigurationArray{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingOutput{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingPtrOutput{})
+	pulumi.RegisterOutputType(AppProfileStandardIsolationOutput{})
+	pulumi.RegisterOutputType(AppProfileStandardIsolationPtrOutput{})
 	pulumi.RegisterOutputType(BiReservationPreferredTableOutput{})
 	pulumi.RegisterOutputType(BiReservationPreferredTableArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionAwsOutput{})

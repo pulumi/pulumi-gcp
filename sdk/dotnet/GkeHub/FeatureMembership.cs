@@ -290,6 +290,12 @@ namespace Pulumi.Gcp.GkeHub
         public Output<string> Membership { get; private set; } = null!;
 
         /// <summary>
+        /// The location of the membership
+        /// </summary>
+        [Output("membershipLocation")]
+        public Output<string?> MembershipLocation { get; private set; } = null!;
+
+        /// <summary>
         /// Service mesh specific spec. Structure is documented below.
         /// </summary>
         [Output("mesh")]
@@ -372,6 +378,12 @@ namespace Pulumi.Gcp.GkeHub
         public Input<string> Membership { get; set; } = null!;
 
         /// <summary>
+        /// The location of the membership
+        /// </summary>
+        [Input("membershipLocation")]
+        public Input<string>? MembershipLocation { get; set; }
+
+        /// <summary>
         /// Service mesh specific spec. Structure is documented below.
         /// </summary>
         [Input("mesh")]
@@ -414,6 +426,12 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("membership")]
         public Input<string>? Membership { get; set; }
+
+        /// <summary>
+        /// The location of the membership
+        /// </summary>
+        [Input("membershipLocation")]
+        public Input<string>? MembershipLocation { get; set; }
 
         /// <summary>
         /// Service mesh specific spec. Structure is documented below.

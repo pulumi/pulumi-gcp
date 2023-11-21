@@ -93,18 +93,16 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-     * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-     * https://cloud.google.com/run/docs/configuring/custom-audiences.
+     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+     * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
      * 
      */
     @Import(name="customAudiences")
     private @Nullable Output<List<String>> customAudiences;
 
     /**
-     * @return One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-     * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-     * https://cloud.google.com/run/docs/configuring/custom-audiences.
+     * @return One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+     * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
      * 
      */
     public Optional<Output<List<String>>> customAudiences() {
@@ -404,9 +402,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customAudiences One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-         * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-         * https://cloud.google.com/run/docs/configuring/custom-audiences.
+         * @param customAudiences One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+         * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
          * 
          * @return builder
          * 
@@ -417,9 +414,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customAudiences One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-         * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-         * https://cloud.google.com/run/docs/configuring/custom-audiences.
+         * @param customAudiences One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+         * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
          * 
          * @return builder
          * 
@@ -429,9 +425,8 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customAudiences One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-         * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-         * https://cloud.google.com/run/docs/configuring/custom-audiences.
+         * @param customAudiences One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+         * For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
          * 
          * @return builder
          * 

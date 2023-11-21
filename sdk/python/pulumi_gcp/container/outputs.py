@@ -20,6 +20,8 @@ __all__ = [
     'AttachedClusterMonitoringConfig',
     'AttachedClusterMonitoringConfigManagedPrometheusConfig',
     'AttachedClusterOidcConfig',
+    'AttachedClusterProxyConfig',
+    'AttachedClusterProxyConfigKubernetesSecret',
     'AttachedClusterWorkloadIdentityConfig',
     'AwsClusterAuthorization',
     'AwsClusterAuthorizationAdminGroup',
@@ -710,6 +712,73 @@ class AttachedClusterOidcConfig(dict):
         OIDC verification keys in JWKS format (RFC 7517).
         """
         return pulumi.get(self, "jwks")
+
+
+@pulumi.output_type
+class AttachedClusterProxyConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kubernetesSecret":
+            suggest = "kubernetes_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttachedClusterProxyConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttachedClusterProxyConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttachedClusterProxyConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kubernetes_secret: Optional['outputs.AttachedClusterProxyConfigKubernetesSecret'] = None):
+        """
+        :param 'AttachedClusterProxyConfigKubernetesSecretArgs' kubernetes_secret: The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
+               Structure is documented below.
+        """
+        if kubernetes_secret is not None:
+            pulumi.set(__self__, "kubernetes_secret", kubernetes_secret)
+
+    @property
+    @pulumi.getter(name="kubernetesSecret")
+    def kubernetes_secret(self) -> Optional['outputs.AttachedClusterProxyConfigKubernetesSecret']:
+        """
+        The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kubernetes_secret")
+
+
+@pulumi.output_type
+class AttachedClusterProxyConfigKubernetesSecret(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 namespace: str):
+        """
+        :param str name: Name of the kubernetes secret containing the proxy config.
+        :param str namespace: Namespace of the kubernetes secret containing the proxy config.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "namespace", namespace)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the kubernetes secret containing the proxy config.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        """
+        Namespace of the kubernetes secret containing the proxy config.
+        """
+        return pulumi.get(self, "namespace")
 
 
 @pulumi.output_type
