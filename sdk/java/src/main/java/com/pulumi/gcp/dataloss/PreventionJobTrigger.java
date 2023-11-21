@@ -656,6 +656,74 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dlp Job Trigger Multiple Actions
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataloss.PreventionJobTrigger;
+ * import com.pulumi.gcp.dataloss.PreventionJobTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basic = new PreventionJobTrigger(&#34;basic&#34;, PreventionJobTriggerArgs.builder()        
+ *             .description(&#34;Description&#34;)
+ *             .displayName(&#34;Displayname&#34;)
+ *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
+ *                 .actions(                
+ *                     PreventionJobTriggerInspectJobActionArgs.builder()
+ *                         .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
+ *                             .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
+ *                                 .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
+ *                                     .datasetId(&#34;dataset&#34;)
+ *                                     .projectId(&#34;project&#34;)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     PreventionJobTriggerInspectJobActionArgs.builder()
+ *                         .pubSub(PreventionJobTriggerInspectJobActionPubSubArgs.builder()
+ *                             .topic(&#34;projects/project/topics/topic-name&#34;)
+ *                             .build())
+ *                         .build())
+ *                 .inspectTemplateName(&#34;fake&#34;)
+ *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
+ *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
+ *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
+ *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .parent(&#34;projects/my-project-name&#34;)
+ *             .triggers(PreventionJobTriggerTriggerArgs.builder()
+ *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
+ *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

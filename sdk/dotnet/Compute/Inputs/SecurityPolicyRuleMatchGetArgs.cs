@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria
-        /// such as origin.ip, source.region_code and contents in the request header.
+        /// such as `origin.ip`, `source.region_code` and `contents` in the request header.
         /// Structure is documented below.
         /// </summary>
         [Input("expr")]
@@ -31,7 +31,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Predefined rule expression. If this field is specified, `config` must also be specified.
         /// Available options:
-        /// * SRC_IPS_V1: Must specify the corresponding `src_ip_ranges` field in `config`.
         /// </summary>
         [Input("versionedExpr")]
         public Input<string>? VersionedExpr { get; set; }

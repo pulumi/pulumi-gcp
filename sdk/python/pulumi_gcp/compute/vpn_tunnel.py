@@ -379,8 +379,7 @@ class _VPNTunnelState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] detailed_status: Detailed status message for the VPN tunnel.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[int] ike_version: IKE protocol version to use when establishing the VPN tunnel with
                peer VPN gateway.
                Acceptable IKE versions are 1 or 2. Default version is 2.
@@ -408,7 +407,8 @@ class _VPNTunnelState:
         :param pulumi.Input[str] peer_ip: IP address of the peer VPN gateway. Only IPv4 is supported.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_traffic_selectors: Remote traffic selector to use when establishing the VPN tunnel with
                peer VPN gateway. The value should be a CIDR formatted string,
@@ -522,8 +522,7 @@ class _VPNTunnelState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -672,7 +671,8 @@ class _VPNTunnelState:
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -876,6 +876,9 @@ class VPNTunnel(pulumi.CustomResource):
             peer_ip="15.0.0.120",
             shared_secret="a secret message",
             target_vpn_gateway=target_gateway.id,
+            labels={
+                "foo": "bar",
+            },
             opts=pulumi.ResourceOptions(depends_on=[
                     fr_esp,
                     fr_udp500,
@@ -886,53 +889,6 @@ class VPNTunnel(pulumi.CustomResource):
             dest_range="15.0.0.0/24",
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id)
-        ```
-        ### Vpn Tunnel Beta
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network1 = gcp.compute.Network("network1", opts=pulumi.ResourceOptions(provider=google_beta))
-        target_gateway = gcp.compute.VPNGateway("targetGateway", network=network1.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        vpn_static_ip = gcp.compute.Address("vpnStaticIp", opts=pulumi.ResourceOptions(provider=google_beta))
-        fr_esp = gcp.compute.ForwardingRule("frEsp",
-            ip_protocol="ESP",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        fr_udp500 = gcp.compute.ForwardingRule("frUdp500",
-            ip_protocol="UDP",
-            port_range="500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        fr_udp4500 = gcp.compute.ForwardingRule("frUdp4500",
-            ip_protocol="UDP",
-            port_range="4500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
-            peer_ip="15.0.0.120",
-            shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id,
-            labels={
-                "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[
-                    fr_esp,
-                    fr_udp500,
-                    fr_udp4500,
-                ]))
-        route1 = gcp.compute.Route("route1",
-            network=network1.name,
-            dest_range="15.0.0.0/24",
-            priority=1000,
-            next_hop_vpn_tunnel=tunnel1.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -1058,6 +1014,9 @@ class VPNTunnel(pulumi.CustomResource):
             peer_ip="15.0.0.120",
             shared_secret="a secret message",
             target_vpn_gateway=target_gateway.id,
+            labels={
+                "foo": "bar",
+            },
             opts=pulumi.ResourceOptions(depends_on=[
                     fr_esp,
                     fr_udp500,
@@ -1068,53 +1027,6 @@ class VPNTunnel(pulumi.CustomResource):
             dest_range="15.0.0.0/24",
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id)
-        ```
-        ### Vpn Tunnel Beta
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        network1 = gcp.compute.Network("network1", opts=pulumi.ResourceOptions(provider=google_beta))
-        target_gateway = gcp.compute.VPNGateway("targetGateway", network=network1.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        vpn_static_ip = gcp.compute.Address("vpnStaticIp", opts=pulumi.ResourceOptions(provider=google_beta))
-        fr_esp = gcp.compute.ForwardingRule("frEsp",
-            ip_protocol="ESP",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        fr_udp500 = gcp.compute.ForwardingRule("frUdp500",
-            ip_protocol="UDP",
-            port_range="500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        fr_udp4500 = gcp.compute.ForwardingRule("frUdp4500",
-            ip_protocol="UDP",
-            port_range="4500",
-            ip_address=vpn_static_ip.address,
-            target=target_gateway.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
-            peer_ip="15.0.0.120",
-            shared_secret="a secret message",
-            target_vpn_gateway=target_gateway.id,
-            labels={
-                "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[
-                    fr_esp,
-                    fr_udp500,
-                    fr_udp4500,
-                ]))
-        route1 = gcp.compute.Route("route1",
-            network=network1.name,
-            dest_range="15.0.0.0/24",
-            priority=1000,
-            next_hop_vpn_tunnel=tunnel1.id,
-            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -1260,8 +1172,7 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] detailed_status: Detailed status message for the VPN tunnel.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[int] ike_version: IKE protocol version to use when establishing the VPN tunnel with
                peer VPN gateway.
                Acceptable IKE versions are 1 or 2. Default version is 2.
@@ -1289,7 +1200,8 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] peer_ip: IP address of the peer VPN gateway. Only IPv4 is supported.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: The region where the tunnel is located. If unset, is set to the region of `target_vpn_gateway`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] remote_traffic_selectors: Remote traffic selector to use when establishing the VPN tunnel with
                peer VPN gateway. The value should be a CIDR formatted string,
@@ -1371,8 +1283,7 @@ class VPNTunnel(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -1477,7 +1388,8 @@ class VPNTunnel(pulumi.CustomResource):
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

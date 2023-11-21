@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? Enable;
         /// <summary>
-        /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+        /// Rule visibility can be one of the following:
         /// </summary>
         public readonly string? RuleVisibility;
 

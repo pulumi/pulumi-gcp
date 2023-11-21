@@ -83,6 +83,9 @@ import (
 //				PeerIp:           pulumi.String("15.0.0.120"),
 //				SharedSecret:     pulumi.String("a secret message"),
 //				TargetVpnGateway: targetGateway.ID(),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				frEsp,
 //				frUdp500,
@@ -97,89 +100,6 @@ import (
 //				Priority:         pulumi.Int(1000),
 //				NextHopVpnTunnel: tunnel1.ID(),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Vpn Tunnel Beta
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := compute.NewNetwork(ctx, "network1", nil, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			targetGateway, err := compute.NewVPNGateway(ctx, "targetGateway", &compute.VPNGatewayArgs{
-//				Network: network1.ID(),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			vpnStaticIp, err := compute.NewAddress(ctx, "vpnStaticIp", nil, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			frEsp, err := compute.NewForwardingRule(ctx, "frEsp", &compute.ForwardingRuleArgs{
-//				IpProtocol: pulumi.String("ESP"),
-//				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			frUdp500, err := compute.NewForwardingRule(ctx, "frUdp500", &compute.ForwardingRuleArgs{
-//				IpProtocol: pulumi.String("UDP"),
-//				PortRange:  pulumi.String("500"),
-//				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			frUdp4500, err := compute.NewForwardingRule(ctx, "frUdp4500", &compute.ForwardingRuleArgs{
-//				IpProtocol: pulumi.String("UDP"),
-//				PortRange:  pulumi.String("4500"),
-//				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
-//				PeerIp:           pulumi.String("15.0.0.120"),
-//				SharedSecret:     pulumi.String("a secret message"),
-//				TargetVpnGateway: targetGateway.ID(),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-//				frEsp,
-//				frUdp500,
-//				frUdp4500,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = compute.NewRoute(ctx, "route1", &compute.RouteArgs{
-//				Network:          network1.Name,
-//				DestRange:        pulumi.String("15.0.0.0/24"),
-//				Priority:         pulumi.Int(1000),
-//				NextHopVpnTunnel: tunnel1.ID(),
-//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -235,8 +155,7 @@ type VPNTunnel struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Detailed status message for the VPN tunnel.
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// IKE protocol version to use when establishing the VPN tunnel with
 	// peer VPN gateway.
@@ -275,7 +194,8 @@ type VPNTunnel struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -357,8 +277,7 @@ type vpntunnelState struct {
 	Description *string `pulumi:"description"`
 	// Detailed status message for the VPN tunnel.
 	DetailedStatus *string `pulumi:"detailedStatus"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// IKE protocol version to use when establishing the VPN tunnel with
 	// peer VPN gateway.
@@ -397,7 +316,8 @@ type vpntunnelState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 	Region *string `pulumi:"region"`
@@ -438,8 +358,7 @@ type VPNTunnelState struct {
 	Description pulumi.StringPtrInput
 	// Detailed status message for the VPN tunnel.
 	DetailedStatus pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// IKE protocol version to use when establishing the VPN tunnel with
 	// peer VPN gateway.
@@ -478,7 +397,8 @@ type VPNTunnelState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
 	Region pulumi.StringPtrInput
@@ -747,8 +667,7 @@ func (o VPNTunnelOutput) DetailedStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringOutput { return v.DetailedStatus }).(pulumi.StringOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o VPNTunnelOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -820,7 +739,8 @@ func (o VPNTunnelOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The combination of labels configured directly on the resource and default labels configured on the provider.
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
 func (o VPNTunnelOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

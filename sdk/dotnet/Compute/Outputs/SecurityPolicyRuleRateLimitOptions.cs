@@ -14,46 +14,37 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class SecurityPolicyRuleRateLimitOptions
     {
         /// <summary>
-        /// Can only be specified if the `action` for the rule is "rate_based_ban".
+        /// Can only be specified if the `action` for the rule is `rate_based_ban`.
         /// If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         /// </summary>
         public readonly int? BanDurationSec;
         /// <summary>
-        /// Can only be specified if the `action` for the rule is "rate_based_ban".
-        /// If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
-        /// exceed this 'ban_threshold'. Structure is documented below.
+        /// Can only be specified if the `action` for the rule is `rate_based_ban`.
+        /// If specified, the key will be banned for the configured `ban_duration_sec` when the number of requests that exceed the `rate_limit_threshold` also
+        /// exceed this `ban_threshold`. Structure is documented below.
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRateLimitOptionsBanThreshold? BanThreshold;
         /// <summary>
-        /// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+        /// Action to take for requests that are under the configured rate limit threshold. Valid option is `allow` only.
         /// </summary>
         public readonly string ConformAction;
         /// <summary>
-        /// Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
-        /// 
-        /// * ALL: A single rate limit threshold is applied to all the requests matching this rule.
-        /// * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
-        /// * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
-        /// * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
-        /// * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
-        /// * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-        /// * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
-        /// * REGION_CODE: The country/region from which the request originates.
+        /// Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
         /// </summary>
         public readonly string? EnforceOnKey;
         /// <summary>
-        /// ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+        /// ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
         /// 
         /// **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
         /// </summary>
         public readonly ImmutableArray<Outputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig> EnforceOnKeyConfigs;
         /// <summary>
-        /// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        /// Rate limit key name applicable only for the following key types:
         /// </summary>
         public readonly string? EnforceOnKeyName;
         /// <summary>
         /// When a request is denied, returns the HTTP response code specified.
-        /// Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
+        /// Valid options are `deny()` where valid values for status are 403, 404, 429, and 502.
         /// </summary>
         public readonly string ExceedAction;
         /// <summary>

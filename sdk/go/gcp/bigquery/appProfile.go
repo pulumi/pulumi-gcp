@@ -179,6 +179,55 @@ import (
 //	}
 //
 // ```
+// ### Bigtable App Profile Priority
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigtable"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := bigtable.NewInstance(ctx, "instance", &bigtable.InstanceArgs{
+//				Clusters: bigtable.InstanceClusterArray{
+//					&bigtable.InstanceClusterArgs{
+//						ClusterId:   pulumi.String("cluster-1"),
+//						Zone:        pulumi.String("us-central1-b"),
+//						NumNodes:    pulumi.Int(3),
+//						StorageType: pulumi.String("HDD"),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewAppProfile(ctx, "ap", &bigquery.AppProfileArgs{
+//				Instance:     instance.Name,
+//				AppProfileId: pulumi.String("bt-profile"),
+//				SingleClusterRouting: &bigquery.AppProfileSingleClusterRoutingArgs{
+//					ClusterId:                pulumi.String("cluster-1"),
+//					AllowTransactionalWrites: pulumi.Bool(true),
+//				},
+//				StandardIsolation: &bigquery.AppProfileStandardIsolationArgs{
+//					Priority: pulumi.String("PRIORITY_LOW"),
+//				},
+//				IgnoreWarnings: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -239,6 +288,9 @@ type AppProfile struct {
 	// Use a single-cluster routing policy.
 	// Structure is documented below.
 	SingleClusterRouting AppProfileSingleClusterRoutingPtrOutput `pulumi:"singleClusterRouting"`
+	// The standard options used for isolating this app profile's traffic from other use cases.
+	// Structure is documented below.
+	StandardIsolation AppProfileStandardIsolationOutput `pulumi:"standardIsolation"`
 }
 
 // NewAppProfile registers a new resource with the given unique name, arguments, and options.
@@ -299,6 +351,9 @@ type appProfileState struct {
 	// Use a single-cluster routing policy.
 	// Structure is documented below.
 	SingleClusterRouting *AppProfileSingleClusterRouting `pulumi:"singleClusterRouting"`
+	// The standard options used for isolating this app profile's traffic from other use cases.
+	// Structure is documented below.
+	StandardIsolation *AppProfileStandardIsolation `pulumi:"standardIsolation"`
 }
 
 type AppProfileState struct {
@@ -327,6 +382,9 @@ type AppProfileState struct {
 	// Use a single-cluster routing policy.
 	// Structure is documented below.
 	SingleClusterRouting AppProfileSingleClusterRoutingPtrInput
+	// The standard options used for isolating this app profile's traffic from other use cases.
+	// Structure is documented below.
+	StandardIsolation AppProfileStandardIsolationPtrInput
 }
 
 func (AppProfileState) ElementType() reflect.Type {
@@ -357,6 +415,9 @@ type appProfileArgs struct {
 	// Use a single-cluster routing policy.
 	// Structure is documented below.
 	SingleClusterRouting *AppProfileSingleClusterRouting `pulumi:"singleClusterRouting"`
+	// The standard options used for isolating this app profile's traffic from other use cases.
+	// Structure is documented below.
+	StandardIsolation *AppProfileStandardIsolation `pulumi:"standardIsolation"`
 }
 
 // The set of arguments for constructing a AppProfile resource.
@@ -384,6 +445,9 @@ type AppProfileArgs struct {
 	// Use a single-cluster routing policy.
 	// Structure is documented below.
 	SingleClusterRouting AppProfileSingleClusterRoutingPtrInput
+	// The standard options used for isolating this app profile's traffic from other use cases.
+	// Structure is documented below.
+	StandardIsolation AppProfileStandardIsolationPtrInput
 }
 
 func (AppProfileArgs) ElementType() reflect.Type {
@@ -523,6 +587,12 @@ func (o AppProfileOutput) Project() pulumi.StringOutput {
 // Structure is documented below.
 func (o AppProfileOutput) SingleClusterRouting() AppProfileSingleClusterRoutingPtrOutput {
 	return o.ApplyT(func(v *AppProfile) AppProfileSingleClusterRoutingPtrOutput { return v.SingleClusterRouting }).(AppProfileSingleClusterRoutingPtrOutput)
+}
+
+// The standard options used for isolating this app profile's traffic from other use cases.
+// Structure is documented below.
+func (o AppProfileOutput) StandardIsolation() AppProfileStandardIsolationOutput {
+	return o.ApplyT(func(v *AppProfile) AppProfileStandardIsolationOutput { return v.StandardIsolation }).(AppProfileStandardIsolationOutput)
 }
 
 type AppProfileArrayOutput struct{ *pulumi.OutputState }

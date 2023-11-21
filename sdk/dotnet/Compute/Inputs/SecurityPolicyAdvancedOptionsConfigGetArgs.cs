@@ -21,16 +21,12 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
-        /// * DISABLED - Don't parse JSON payloads in POST bodies.
-        /// * STANDARD - Parse JSON payloads in POST bodies.
         /// </summary>
         [Input("jsonParsing")]
         public Input<string>? JsonParsing { get; set; }
 
         /// <summary>
         /// Log level to use. Defaults to `NORMAL`.
-        /// * NORMAL - Normal log level.
-        /// * VERBOSE - Verbose log level.
         /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }

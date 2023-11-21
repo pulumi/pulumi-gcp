@@ -45,9 +45,8 @@ class ServiceArgs:
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-               string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-               https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+               For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
                Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -177,9 +176,8 @@ class ServiceArgs:
     @pulumi.getter(name="customAudiences")
     def custom_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-        string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-        https://cloud.google.com/run/docs/configuring/custom-audiences.
+        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+        For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         """
         return pulumi.get(self, "custom_audiences")
 
@@ -336,9 +334,8 @@ class _ServiceState:
                Structure is documented below.
         :param pulumi.Input[str] create_time: The creation time.
         :param pulumi.Input[str] creator: Email address of the authenticated creator.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-               string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-               https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+               For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] delete_time: The deletion time.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -550,9 +547,8 @@ class _ServiceState:
     @pulumi.getter(name="customAudiences")
     def custom_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-        string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-        https://cloud.google.com/run/docs/configuring/custom-audiences.
+        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+        For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         """
         return pulumi.get(self, "custom_audiences")
 
@@ -1214,9 +1210,8 @@ class Service(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-               string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-               https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+               For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
                Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -1677,9 +1672,8 @@ class Service(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] create_time: The creation time.
         :param pulumi.Input[str] creator: Email address of the authenticated creator.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-               string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-               https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+               For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] delete_time: The deletion time.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -1834,9 +1828,8 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="customAudiences")
     def custom_audiences(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
-        string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
-        https://cloud.google.com/run/docs/configuring/custom-audiences.
+        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
+        For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         """
         return pulumi.get(self, "custom_audiences")
 

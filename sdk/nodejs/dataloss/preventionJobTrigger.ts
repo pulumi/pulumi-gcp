@@ -357,6 +357,50 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Dlp Job Trigger Multiple Actions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.dataloss.PreventionJobTrigger("basic", {
+ *     description: "Description",
+ *     displayName: "Displayname",
+ *     inspectJob: {
+ *         actions: [
+ *             {
+ *                 saveFindings: {
+ *                     outputConfig: {
+ *                         table: {
+ *                             datasetId: "dataset",
+ *                             projectId: "project",
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *             {
+ *                 pubSub: {
+ *                     topic: "projects/project/topics/topic-name",
+ *                 },
+ *             },
+ *         ],
+ *         inspectTemplateName: "fake",
+ *         storageConfig: {
+ *             cloudStorageOptions: {
+ *                 fileSet: {
+ *                     url: "gs://mybucket/directory/",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     parent: "projects/my-project-name",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

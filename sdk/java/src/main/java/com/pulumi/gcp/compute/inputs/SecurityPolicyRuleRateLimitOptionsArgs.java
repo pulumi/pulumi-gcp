@@ -22,7 +22,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
     public static final SecurityPolicyRuleRateLimitOptionsArgs Empty = new SecurityPolicyRuleRateLimitOptionsArgs();
 
     /**
-     * Can only be specified if the `action` for the rule is &#34;rate_based_ban&#34;.
+     * Can only be specified if the `action` for the rule is `rate_based_ban`.
      * If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
      * 
      */
@@ -30,7 +30,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
     private @Nullable Output<Integer> banDurationSec;
 
     /**
-     * @return Can only be specified if the `action` for the rule is &#34;rate_based_ban&#34;.
+     * @return Can only be specified if the `action` for the rule is `rate_based_ban`.
      * If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
      * 
      */
@@ -39,18 +39,18 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
     }
 
     /**
-     * Can only be specified if the `action` for the rule is &#34;rate_based_ban&#34;.
-     * If specified, the key will be banned for the configured &#39;ban_duration_sec&#39; when the number of requests that exceed the &#39;rate_limit_threshold&#39; also
-     * exceed this &#39;ban_threshold&#39;. Structure is documented below.
+     * Can only be specified if the `action` for the rule is `rate_based_ban`.
+     * If specified, the key will be banned for the configured `ban_duration_sec` when the number of requests that exceed the `rate_limit_threshold` also
+     * exceed this `ban_threshold`. Structure is documented below.
      * 
      */
     @Import(name="banThreshold")
     private @Nullable Output<SecurityPolicyRuleRateLimitOptionsBanThresholdArgs> banThreshold;
 
     /**
-     * @return Can only be specified if the `action` for the rule is &#34;rate_based_ban&#34;.
-     * If specified, the key will be banned for the configured &#39;ban_duration_sec&#39; when the number of requests that exceed the &#39;rate_limit_threshold&#39; also
-     * exceed this &#39;ban_threshold&#39;. Structure is documented below.
+     * @return Can only be specified if the `action` for the rule is `rate_based_ban`.
+     * If specified, the key will be banned for the configured `ban_duration_sec` when the number of requests that exceed the `rate_limit_threshold` also
+     * exceed this `ban_threshold`. Structure is documented below.
      * 
      */
     public Optional<Output<SecurityPolicyRuleRateLimitOptionsBanThresholdArgs>> banThreshold() {
@@ -58,14 +58,14 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
     }
 
     /**
-     * Action to take for requests that are under the configured rate limit threshold. Valid option is &#34;allow&#34; only.
+     * Action to take for requests that are under the configured rate limit threshold. Valid option is `allow` only.
      * 
      */
     @Import(name="conformAction", required=true)
     private Output<String> conformAction;
 
     /**
-     * @return Action to take for requests that are under the configured rate limit threshold. Valid option is &#34;allow&#34; only.
+     * @return Action to take for requests that are under the configured rate limit threshold. Valid option is `allow` only.
      * 
      */
     public Output<String> conformAction() {
@@ -73,32 +73,14 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
     }
 
     /**
-     * Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
-     * 
-     * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
-     * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
-     * * HTTP_HEADER: The value of the HTTP header whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
-     * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
-     * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
-     * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-     * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
-     * * REGION_CODE: The country/region from which the request originates.
+     * Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
      * 
      */
     @Import(name="enforceOnKey")
     private @Nullable Output<String> enforceOnKey;
 
     /**
-     * @return Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
-     * 
-     * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
-     * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
-     * * HTTP_HEADER: The value of the HTTP header whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
-     * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
-     * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
-     * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-     * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
-     * * REGION_CODE: The country/region from which the request originates.
+     * @return Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
      * 
      */
     public Optional<Output<String>> enforceOnKey() {
@@ -106,7 +88,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
     }
 
     /**
-     * ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+     * ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
      * 
      * **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
      * 
@@ -115,7 +97,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
     private @Nullable Output<List<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs>> enforceOnKeyConfigs;
 
     /**
-     * @return ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+     * @return ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
      * 
      * **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
      * 
@@ -125,14 +107,14 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
     }
 
     /**
-     * Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+     * Rate limit key name applicable only for the following key types:
      * 
      */
     @Import(name="enforceOnKeyName")
     private @Nullable Output<String> enforceOnKeyName;
 
     /**
-     * @return Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+     * @return Rate limit key name applicable only for the following key types:
      * 
      */
     public Optional<Output<String>> enforceOnKeyName() {
@@ -141,7 +123,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
 
     /**
      * When a request is denied, returns the HTTP response code specified.
-     * Valid options are &#34;deny()&#34; where valid values for status are 403, 404, 429, and 502.
+     * Valid options are `deny()` where valid values for status are 403, 404, 429, and 502.
      * 
      */
     @Import(name="exceedAction", required=true)
@@ -149,7 +131,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
 
     /**
      * @return When a request is denied, returns the HTTP response code specified.
-     * Valid options are &#34;deny()&#34; where valid values for status are 403, 404, 429, and 502.
+     * Valid options are `deny()` where valid values for status are 403, 404, 429, and 502.
      * 
      */
     public Output<String> exceedAction() {
@@ -223,7 +205,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param banDurationSec Can only be specified if the `action` for the rule is &#34;rate_based_ban&#34;.
+         * @param banDurationSec Can only be specified if the `action` for the rule is `rate_based_ban`.
          * If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
          * 
          * @return builder
@@ -235,7 +217,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param banDurationSec Can only be specified if the `action` for the rule is &#34;rate_based_ban&#34;.
+         * @param banDurationSec Can only be specified if the `action` for the rule is `rate_based_ban`.
          * If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
          * 
          * @return builder
@@ -246,9 +228,9 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param banThreshold Can only be specified if the `action` for the rule is &#34;rate_based_ban&#34;.
-         * If specified, the key will be banned for the configured &#39;ban_duration_sec&#39; when the number of requests that exceed the &#39;rate_limit_threshold&#39; also
-         * exceed this &#39;ban_threshold&#39;. Structure is documented below.
+         * @param banThreshold Can only be specified if the `action` for the rule is `rate_based_ban`.
+         * If specified, the key will be banned for the configured `ban_duration_sec` when the number of requests that exceed the `rate_limit_threshold` also
+         * exceed this `ban_threshold`. Structure is documented below.
          * 
          * @return builder
          * 
@@ -259,9 +241,9 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param banThreshold Can only be specified if the `action` for the rule is &#34;rate_based_ban&#34;.
-         * If specified, the key will be banned for the configured &#39;ban_duration_sec&#39; when the number of requests that exceed the &#39;rate_limit_threshold&#39; also
-         * exceed this &#39;ban_threshold&#39;. Structure is documented below.
+         * @param banThreshold Can only be specified if the `action` for the rule is `rate_based_ban`.
+         * If specified, the key will be banned for the configured `ban_duration_sec` when the number of requests that exceed the `rate_limit_threshold` also
+         * exceed this `ban_threshold`. Structure is documented below.
          * 
          * @return builder
          * 
@@ -271,7 +253,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param conformAction Action to take for requests that are under the configured rate limit threshold. Valid option is &#34;allow&#34; only.
+         * @param conformAction Action to take for requests that are under the configured rate limit threshold. Valid option is `allow` only.
          * 
          * @return builder
          * 
@@ -282,7 +264,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param conformAction Action to take for requests that are under the configured rate limit threshold. Valid option is &#34;allow&#34; only.
+         * @param conformAction Action to take for requests that are under the configured rate limit threshold. Valid option is `allow` only.
          * 
          * @return builder
          * 
@@ -292,16 +274,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param enforceOnKey Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
-         * 
-         * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
-         * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
-         * * HTTP_HEADER: The value of the HTTP header whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
-         * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
-         * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
-         * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-         * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
-         * * REGION_CODE: The country/region from which the request originates.
+         * @param enforceOnKey Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
          * 
          * @return builder
          * 
@@ -312,16 +285,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param enforceOnKey Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
-         * 
-         * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
-         * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
-         * * HTTP_HEADER: The value of the HTTP header whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
-         * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
-         * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
-         * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
-         * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
-         * * REGION_CODE: The country/region from which the request originates.
+         * @param enforceOnKey Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
          * 
          * @return builder
          * 
@@ -331,7 +295,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param enforceOnKeyConfigs ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+         * @param enforceOnKeyConfigs ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
          * 
          * **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
          * 
@@ -344,7 +308,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param enforceOnKeyConfigs ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+         * @param enforceOnKeyConfigs ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
          * 
          * **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
          * 
@@ -356,7 +320,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param enforceOnKeyConfigs ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+         * @param enforceOnKeyConfigs ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
          * 
          * **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
          * 
@@ -368,7 +332,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param enforceOnKeyName Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+         * @param enforceOnKeyName Rate limit key name applicable only for the following key types:
          * 
          * @return builder
          * 
@@ -379,7 +343,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param enforceOnKeyName Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+         * @param enforceOnKeyName Rate limit key name applicable only for the following key types:
          * 
          * @return builder
          * 
@@ -390,7 +354,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
 
         /**
          * @param exceedAction When a request is denied, returns the HTTP response code specified.
-         * Valid options are &#34;deny()&#34; where valid values for status are 403, 404, 429, and 502.
+         * Valid options are `deny()` where valid values for status are 403, 404, 429, and 502.
          * 
          * @return builder
          * 
@@ -402,7 +366,7 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
 
         /**
          * @param exceedAction When a request is denied, returns the HTTP response code specified.
-         * Valid options are &#34;deny()&#34; where valid values for status are 403, 404, 429, and 502.
+         * Valid options are `deny()` where valid values for status are 403, 404, 429, and 502.
          * 
          * @return builder
          * 

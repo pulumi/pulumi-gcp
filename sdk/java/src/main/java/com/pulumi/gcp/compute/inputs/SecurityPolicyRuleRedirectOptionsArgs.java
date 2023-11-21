@@ -16,14 +16,14 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
     public static final SecurityPolicyRuleRedirectOptionsArgs Empty = new SecurityPolicyRuleRedirectOptionsArgs();
 
     /**
-     * External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
+     * External redirection target when `EXTERNAL_302` is set in `type`.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
+     * @return External redirection target when `EXTERNAL_302` is set in `type`.
      * 
      */
     public Optional<Output<String>> target() {
@@ -33,18 +33,12 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
     /**
      * Type of redirect action.
      * 
-     * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
-     * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
-     * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
      * @return Type of redirect action.
-     * 
-     * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
-     * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
      * 
      */
     public Output<String> type() {
@@ -77,7 +71,7 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param target External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
+         * @param target External redirection target when `EXTERNAL_302` is set in `type`.
          * 
          * @return builder
          * 
@@ -88,7 +82,7 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param target External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
+         * @param target External redirection target when `EXTERNAL_302` is set in `type`.
          * 
          * @return builder
          * 
@@ -100,9 +94,6 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
         /**
          * @param type Type of redirect action.
          * 
-         * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
-         * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
-         * 
          * @return builder
          * 
          */
@@ -113,9 +104,6 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
 
         /**
          * @param type Type of redirect action.
-         * 
-         * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
-         * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
          * 
          * @return builder
          * 

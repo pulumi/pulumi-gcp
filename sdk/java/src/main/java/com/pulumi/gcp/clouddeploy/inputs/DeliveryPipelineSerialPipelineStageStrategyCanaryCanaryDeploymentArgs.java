@@ -35,14 +35,14 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
     }
 
     /**
-     * (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+     * Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
      * 
      */
     @Import(name="postdeploy")
     private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs> postdeploy;
 
     /**
-     * @return (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+     * @return Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
      * 
      */
     public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs>> postdeploy() {
@@ -50,14 +50,14 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
     }
 
     /**
-     * (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+     * Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
      * 
      */
     @Import(name="predeploy")
     private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs> predeploy;
 
     /**
-     * @return (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+     * @return Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
      * 
      */
     public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs>> predeploy() {
@@ -138,7 +138,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
         }
 
         /**
-         * @param postdeploy (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+         * @param postdeploy Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
         }
 
         /**
-         * @param postdeploy (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+         * @param postdeploy Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
         }
 
         /**
-         * @param predeploy (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+         * @param predeploy Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
         }
 
         /**
-         * @param predeploy (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+         * @param predeploy Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
          * 
          * @return builder
          * 

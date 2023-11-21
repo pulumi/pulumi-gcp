@@ -115,6 +115,34 @@ import * as utilities from "../utilities";
  *     ignoreWarnings: true,
  * });
  * ```
+ * ### Bigtable App Profile Priority
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.bigtable.Instance("instance", {
+ *     clusters: [{
+ *         clusterId: "cluster-1",
+ *         zone: "us-central1-b",
+ *         numNodes: 3,
+ *         storageType: "HDD",
+ *     }],
+ *     deletionProtection: true,
+ * });
+ * const ap = new gcp.bigquery.AppProfile("ap", {
+ *     instance: instance.name,
+ *     appProfileId: "bt-profile",
+ *     singleClusterRouting: {
+ *         clusterId: "cluster-1",
+ *         allowTransactionalWrites: true,
+ *     },
+ *     standardIsolation: {
+ *         priority: "PRIORITY_LOW",
+ *     },
+ *     ignoreWarnings: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -212,6 +240,11 @@ export class AppProfile extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly singleClusterRouting!: pulumi.Output<outputs.bigquery.AppProfileSingleClusterRouting | undefined>;
+    /**
+     * The standard options used for isolating this app profile's traffic from other use cases.
+     * Structure is documented below.
+     */
+    public readonly standardIsolation!: pulumi.Output<outputs.bigquery.AppProfileStandardIsolation>;
 
     /**
      * Create a AppProfile resource with the given unique name, arguments, and options.
@@ -235,6 +268,7 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["singleClusterRouting"] = state ? state.singleClusterRouting : undefined;
+            resourceInputs["standardIsolation"] = state ? state.standardIsolation : undefined;
         } else {
             const args = argsOrState as AppProfileArgs | undefined;
             if ((!args || args.appProfileId === undefined) && !opts.urn) {
@@ -248,6 +282,7 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["multiClusterRoutingUseAny"] = args ? args.multiClusterRoutingUseAny : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["singleClusterRouting"] = args ? args.singleClusterRouting : undefined;
+            resourceInputs["standardIsolation"] = args ? args.standardIsolation : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -303,6 +338,11 @@ export interface AppProfileState {
      * Structure is documented below.
      */
     singleClusterRouting?: pulumi.Input<inputs.bigquery.AppProfileSingleClusterRouting>;
+    /**
+     * The standard options used for isolating this app profile's traffic from other use cases.
+     * Structure is documented below.
+     */
+    standardIsolation?: pulumi.Input<inputs.bigquery.AppProfileStandardIsolation>;
 }
 
 /**
@@ -349,4 +389,9 @@ export interface AppProfileArgs {
      * Structure is documented below.
      */
     singleClusterRouting?: pulumi.Input<inputs.bigquery.AppProfileSingleClusterRouting>;
+    /**
+     * The standard options used for isolating this app profile's traffic from other use cases.
+     * Structure is documented below.
+     */
+    standardIsolation?: pulumi.Input<inputs.bigquery.AppProfileStandardIsolation>;
 }

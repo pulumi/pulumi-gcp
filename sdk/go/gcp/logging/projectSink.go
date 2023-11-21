@@ -62,7 +62,7 @@ type ProjectSink struct {
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrOutput `pulumi:"filter"`
-	// The name of the logging sink.
+	// The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
@@ -137,7 +137,7 @@ type projectSinkState struct {
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
-	// The name of the logging sink.
+	// The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
 	Name *string `pulumi:"name"`
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
@@ -180,7 +180,7 @@ type ProjectSinkState struct {
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
-	// The name of the logging sink.
+	// The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
 	Name pulumi.StringPtrInput
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
@@ -227,7 +227,7 @@ type projectSinkArgs struct {
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
-	// The name of the logging sink.
+	// The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
 	Name *string `pulumi:"name"`
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
@@ -268,7 +268,7 @@ type ProjectSinkArgs struct {
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
-	// The name of the logging sink.
+	// The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
 	Name pulumi.StringPtrInput
 	// The ID of the project to create the sink in. If omitted, the project associated with the provider is
 	// used.
@@ -415,7 +415,7 @@ func (o ProjectSinkOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectSink) pulumi.StringPtrOutput { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-// The name of the logging sink.
+// The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
 func (o ProjectSinkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectSink) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

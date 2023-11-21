@@ -20,149 +20,6 @@ import (
 //   - [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
 //
 // ## Example Usage
-// ### Workflow Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/workflows"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testAccount, err := serviceaccount.NewAccount(ctx, "testAccount", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-account"),
-//				DisplayName: pulumi.String("Test Service Account"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = workflows.NewWorkflow(ctx, "example", &workflows.WorkflowArgs{
-//				Region:         pulumi.String("us-central1"),
-//				Description:    pulumi.String("Magic"),
-//				ServiceAccount: testAccount.ID(),
-//				Labels: pulumi.StringMap{
-//					"env": pulumi.String("test"),
-//				},
-//				SourceContents: pulumi.String(fmt.Sprintf(`# This is a sample workflow. You can replace it with your source code.
-//
-// #
-// # This workflow does the following:
-// # - reads current time and date information from an external API and stores
-// #   the response in currentTime variable
-// # - retrieves a list of Wikipedia articles related to the day of the week
-// #   from currentTime
-// # - returns the list of articles as an output of the workflow
-// #
-// # Note: In Terraform you need to escape the $$ or it will cause errors.
-//
-//   - getCurrentTime:
-//     call: http.get
-//     args:
-//     url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
-//     result: currentTime
-//   - readWikipedia:
-//     call: http.get
-//     args:
-//     url: https://en.wikipedia.org/w/api.php
-//     query:
-//     action: opensearch
-//     search: %v
-//     result: wikiResult
-//   - returnOutput:
-//     return: %v
-//
-// `, currentTime.Body.DayOfWeek, wikiResult.Body[1])),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Workflow Beta
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/serviceaccount"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/workflows"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testAccount, err := serviceaccount.NewAccount(ctx, "testAccount", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-account"),
-//				DisplayName: pulumi.String("Test Service Account"),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = workflows.NewWorkflow(ctx, "exampleBeta", &workflows.WorkflowArgs{
-//				Region:         pulumi.String("us-central1"),
-//				Description:    pulumi.String("Magic"),
-//				ServiceAccount: testAccount.ID(),
-//				Labels: pulumi.StringMap{
-//					"env": pulumi.String("test"),
-//				},
-//				UserEnvVars: pulumi.StringMap{
-//					"foo": pulumi.String("BAR"),
-//				},
-//				SourceContents: pulumi.String(fmt.Sprintf(`# This is a sample workflow. You can replace it with your source code.
-//
-// #
-// # This workflow does the following:
-// # - reads current time and date information from an external API and stores
-// #   the response in currentTime variable
-// # - retrieves a list of Wikipedia articles related to the day of the week
-// #   from currentTime
-// # - returns the list of articles as an output of the workflow
-// #
-// # Note: In Terraform you need to escape the $$ or it will cause errors.
-//
-//   - getCurrentTime:
-//     call: http.get
-//     args:
-//     url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
-//     result: currentTime
-//   - readWikipedia:
-//     call: http.get
-//     args:
-//     url: https://en.wikipedia.org/w/api.php
-//     query:
-//     action: opensearch
-//     search: %v
-//     result: wikiResult
-//   - returnOutput:
-//     return: %v
-//
-// `, currentTime.Body.DayOfWeek, wikiResult.Body[1])),
-//
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
@@ -213,8 +70,7 @@ type Workflow struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-	// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars pulumi.StringMapOutput `pulumi:"userEnvVars"`
 }
 
@@ -296,8 +152,7 @@ type workflowState struct {
 	State *string `pulumi:"state"`
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-	// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars map[string]string `pulumi:"userEnvVars"`
 }
 
@@ -345,8 +200,7 @@ type WorkflowState struct {
 	State pulumi.StringPtrInput
 	// The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-	// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars pulumi.StringMapInput
 }
 
@@ -385,8 +239,7 @@ type workflowArgs struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 32KB.
 	SourceContents *string `pulumi:"sourceContents"`
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-	// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars map[string]string `pulumi:"userEnvVars"`
 }
 
@@ -422,8 +275,7 @@ type WorkflowArgs struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 32KB.
 	SourceContents pulumi.StringPtrInput
-	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-	// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars pulumi.StringMapInput
 }
 
@@ -602,8 +454,7 @@ func (o WorkflowOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-// string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 func (o WorkflowOutput) UserEnvVars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.UserEnvVars }).(pulumi.StringMapOutput)
 }

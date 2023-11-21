@@ -527,6 +527,67 @@ import (
 //	}
 //
 // ```
+// ### Dlp Job Trigger Multiple Actions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "basic", &dataloss.PreventionJobTriggerArgs{
+//				Description: pulumi.String("Description"),
+//				DisplayName: pulumi.String("Displayname"),
+//				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
+//						&dataloss.PreventionJobTriggerInspectJobActionArgs{
+//							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
+//								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
+//									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
+//										DatasetId: pulumi.String("dataset"),
+//										ProjectId: pulumi.String("project"),
+//									},
+//								},
+//							},
+//						},
+//						&dataloss.PreventionJobTriggerInspectJobActionArgs{
+//							PubSub: &dataloss.PreventionJobTriggerInspectJobActionPubSubArgs{
+//								Topic: pulumi.String("projects/project/topics/topic-name"),
+//							},
+//						},
+//					},
+//					InspectTemplateName: pulumi.String("fake"),
+//					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+//						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
+//							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
+//								Url: pulumi.String("gs://mybucket/directory/"),
+//							},
+//						},
+//					},
+//				},
+//				Parent: pulumi.String("projects/my-project-name"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -311,7 +311,7 @@ namespace Pulumi.Gcp.Monitoring
     public partial class UptimeCheckConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+        /// The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
         /// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         /// </summary>
         [Output("checkerType")]
@@ -338,8 +338,10 @@ namespace Pulumi.Gcp.Monitoring
         public Output<Outputs.UptimeCheckConfigHttpCheck?> HttpCheck { get; private set; } = null!;
 
         /// <summary>
-        /// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
-        /// Structure is documented below.
+        /// The [monitored resource]
+        /// (https://cloud.google.com/monitoring/api/resources) associated with the
+        /// configuration. The following monitored resource types are supported for
+        /// uptime checks:
         /// </summary>
         [Output("monitoredResource")]
         public Output<Outputs.UptimeCheckConfigMonitoredResource?> MonitoredResource { get; private set; } = null!;
@@ -391,7 +393,7 @@ namespace Pulumi.Gcp.Monitoring
         public Output<Outputs.UptimeCheckConfigTcpCheck?> TcpCheck { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+        /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
         /// 
         /// 
         /// - - -
@@ -458,7 +460,7 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class UptimeCheckConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+        /// The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
         /// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         /// </summary>
         [Input("checkerType")]
@@ -491,8 +493,10 @@ namespace Pulumi.Gcp.Monitoring
         public Input<Inputs.UptimeCheckConfigHttpCheckArgs>? HttpCheck { get; set; }
 
         /// <summary>
-        /// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
-        /// Structure is documented below.
+        /// The [monitored resource]
+        /// (https://cloud.google.com/monitoring/api/resources) associated with the
+        /// configuration. The following monitored resource types are supported for
+        /// uptime checks:
         /// </summary>
         [Input("monitoredResource")]
         public Input<Inputs.UptimeCheckConfigMonitoredResourceArgs>? MonitoredResource { get; set; }
@@ -544,7 +548,7 @@ namespace Pulumi.Gcp.Monitoring
         public Input<Inputs.UptimeCheckConfigTcpCheckArgs>? TcpCheck { get; set; }
 
         /// <summary>
-        /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+        /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
         /// 
         /// 
         /// - - -
@@ -573,7 +577,7 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class UptimeCheckConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+        /// The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
         /// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         /// </summary>
         [Input("checkerType")]
@@ -606,8 +610,10 @@ namespace Pulumi.Gcp.Monitoring
         public Input<Inputs.UptimeCheckConfigHttpCheckGetArgs>? HttpCheck { get; set; }
 
         /// <summary>
-        /// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
-        /// Structure is documented below.
+        /// The [monitored resource]
+        /// (https://cloud.google.com/monitoring/api/resources) associated with the
+        /// configuration. The following monitored resource types are supported for
+        /// uptime checks:
         /// </summary>
         [Input("monitoredResource")]
         public Input<Inputs.UptimeCheckConfigMonitoredResourceGetArgs>? MonitoredResource { get; set; }
@@ -665,7 +671,7 @@ namespace Pulumi.Gcp.Monitoring
         public Input<Inputs.UptimeCheckConfigTcpCheckGetArgs>? TcpCheck { get; set; }
 
         /// <summary>
-        /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+        /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
         /// 
         /// 
         /// - - -

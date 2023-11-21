@@ -436,7 +436,11 @@ class Database(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/spanner/)
 
-        > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
+        > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
+        (and run `pulumi up` to write the field to state) in order to destroy an instance.
+        It is recommended to not set this field (or set it to true) until you're ready to destroy.
+        On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
+        on databases in order to prevent accidental data loss.
 
         ## Example Usage
         ### Spanner Database Basic
@@ -534,7 +538,11 @@ class Database(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/spanner/)
 
-        > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
+        > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
+        (and run `pulumi up` to write the field to state) in order to destroy an instance.
+        It is recommended to not set this field (or set it to true) until you're ready to destroy.
+        On older versions, it is strongly recommended to set `lifecycle { prevent_destroy = true }`
+        on databases in order to prevent accidental data loss.
 
         ## Example Usage
         ### Spanner Database Basic

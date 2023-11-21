@@ -207,7 +207,7 @@ namespace Pulumi.Gcp.Memcache
         /// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
         /// determined by our system based on the latest supported minor version.
         /// Default value is `MEMCACHE_1_5`.
-        /// Possible values are: `MEMCACHE_1_5`.
+        /// Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         /// </summary>
         [Output("memcacheVersion")]
         public Output<string?> MemcacheVersion { get; private set; } = null!;
@@ -356,7 +356,7 @@ namespace Pulumi.Gcp.Memcache
         /// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
         /// determined by our system based on the latest supported minor version.
         /// Default value is `MEMCACHE_1_5`.
-        /// Possible values are: `MEMCACHE_1_5`.
+        /// Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         /// </summary>
         [Input("memcacheVersion")]
         public Input<string>? MemcacheVersion { get; set; }
@@ -524,7 +524,7 @@ namespace Pulumi.Gcp.Memcache
         /// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
         /// determined by our system based on the latest supported minor version.
         /// Default value is `MEMCACHE_1_5`.
-        /// Possible values are: `MEMCACHE_1_5`.
+        /// Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
         /// </summary>
         [Input("memcacheVersion")]
         public Input<string>? MemcacheVersion { get; set; }

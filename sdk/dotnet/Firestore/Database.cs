@@ -25,6 +25,50 @@ namespace Pulumi.Gcp.Firestore
     ///     * [Official Documentation](https://cloud.google.com/firestore/docs/)
     /// 
     /// ## Example Usage
+    /// ### Firestore Database
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         AppEngineIntegrationMode = "DISABLED",
+    ///         ConcurrencyMode = "OPTIMISTIC",
+    ///         LocationId = "nam5",
+    ///         PointInTimeRecoveryEnablement = "POINT_IN_TIME_RECOVERY_ENABLED",
+    ///         Project = "my-project-name",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Database In Datastore Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datastoreModeDatabase = new Gcp.Firestore.Database("datastoreModeDatabase", new()
+    ///     {
+    ///         AppEngineIntegrationMode = "DISABLED",
+    ///         ConcurrencyMode = "OPTIMISTIC",
+    ///         LocationId = "nam5",
+    ///         PointInTimeRecoveryEnablement = "POINT_IN_TIME_RECOVERY_ENABLED",
+    ///         Project = "my-project-name",
+    ///         Type = "DATASTORE_MODE",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Firestore Database With Delete Protection
     /// 
     /// ```csharp
@@ -37,16 +81,10 @@ namespace Pulumi.Gcp.Firestore
     /// {
     ///     var database = new Gcp.Firestore.Database("database", new()
     ///     {
-    ///         Project = google_project.Project.Project_id,
-    ///         LocationId = "nam5",
-    ///         Type = "FIRESTORE_NATIVE",
     ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             google_project_service.Firestore,
-    ///         },
+    ///         LocationId = "nam5",
+    ///         Project = "my-project-name",
+    ///         Type = "FIRESTORE_NATIVE",
     ///     });
     /// 
     /// });

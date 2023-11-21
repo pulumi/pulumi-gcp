@@ -49,7 +49,7 @@ class ProjectSinkArgs:
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
-        :param pulumi.Input[str] name: The name of the logging sink.
+        :param pulumi.Input[str] name: The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
         :param pulumi.Input[str] project: The ID of the project to create the sink in. If omitted, the project associated with the provider is
                used.
         :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
@@ -178,7 +178,7 @@ class ProjectSinkArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the logging sink.
+        The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
         """
         return pulumi.get(self, "name")
 
@@ -251,7 +251,7 @@ class _ProjectSinkState:
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
-        :param pulumi.Input[str] name: The name of the logging sink.
+        :param pulumi.Input[str] name: The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
         :param pulumi.Input[str] project: The ID of the project to create the sink in. If omitted, the project associated with the provider is
                used.
         :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
@@ -385,7 +385,7 @@ class _ProjectSinkState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the logging sink.
+        The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
         """
         return pulumi.get(self, "name")
 
@@ -490,7 +490,7 @@ class ProjectSink(pulumi.CustomResource):
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
-        :param pulumi.Input[str] name: The name of the logging sink.
+        :param pulumi.Input[str] name: The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
         :param pulumi.Input[str] project: The ID of the project to create the sink in. If omitted, the project associated with the provider is
                used.
         :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
@@ -616,7 +616,7 @@ class ProjectSink(pulumi.CustomResource):
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
-        :param pulumi.Input[str] name: The name of the logging sink.
+        :param pulumi.Input[str] name: The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
         :param pulumi.Input[str] project: The ID of the project to create the sink in. If omitted, the project associated with the provider is
                used.
         :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`, then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true` (the default),
@@ -716,7 +716,7 @@ class ProjectSink(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the logging sink.
+        The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
         """
         return pulumi.get(self, "name")
 

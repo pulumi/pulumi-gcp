@@ -20,6 +20,7 @@ class SubnetworkArgs:
                  network: pulumi.Input[str],
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -48,6 +49,7 @@ class SubnetworkArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
+        :param pulumi.Input[str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
@@ -100,6 +102,8 @@ class SubnetworkArgs:
             pulumi.set(__self__, "allow_subnet_cidr_routes_overlap", allow_subnet_cidr_routes_overlap)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if external_ipv6_prefix is not None:
+            pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
         if ipv6_access_type is not None:
             pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
         if log_config is not None:
@@ -181,6 +185,18 @@ class SubnetworkArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6Prefix")
+    def external_ipv6_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The range of external IPv6 addresses that are owned by this subnetwork.
+        """
+        return pulumi.get(self, "external_ipv6_prefix")
+
+    @external_ipv6_prefix.setter
+    def external_ipv6_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6_prefix", value)
 
     @property
     @pulumi.getter(name="ipv6AccessType")
@@ -814,6 +830,7 @@ class Subnetwork(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']]] = None,
@@ -1006,6 +1023,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
+        :param pulumi.Input[str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
                Provide this property when you create the subnetwork. For example,
                10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -1254,6 +1272,7 @@ class Subnetwork(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']]] = None,
@@ -1278,6 +1297,7 @@ class Subnetwork(pulumi.CustomResource):
 
             __props__.__dict__["allow_subnet_cidr_routes_overlap"] = allow_subnet_cidr_routes_overlap
             __props__.__dict__["description"] = description
+            __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
             if ip_cidr_range is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_cidr_range'")
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
@@ -1296,7 +1316,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
             __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["creation_timestamp"] = None
-            __props__.__dict__["external_ipv6_prefix"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["gateway_address"] = None
             __props__.__dict__["internal_ipv6_prefix"] = None

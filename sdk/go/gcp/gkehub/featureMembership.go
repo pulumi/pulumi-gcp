@@ -283,6 +283,8 @@ type FeatureMembership struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the membership
 	Membership pulumi.StringOutput `pulumi:"membership"`
+	// The location of the membership
+	MembershipLocation pulumi.StringPtrOutput `pulumi:"membershipLocation"`
 	// Service mesh specific spec. Structure is documented below.
 	Mesh FeatureMembershipMeshPtrOutput `pulumi:"mesh"`
 	// The project of the feature
@@ -336,6 +338,8 @@ type featureMembershipState struct {
 	Location *string `pulumi:"location"`
 	// The name of the membership
 	Membership *string `pulumi:"membership"`
+	// The location of the membership
+	MembershipLocation *string `pulumi:"membershipLocation"`
 	// Service mesh specific spec. Structure is documented below.
 	Mesh *FeatureMembershipMesh `pulumi:"mesh"`
 	// The project of the feature
@@ -351,6 +355,8 @@ type FeatureMembershipState struct {
 	Location pulumi.StringPtrInput
 	// The name of the membership
 	Membership pulumi.StringPtrInput
+	// The location of the membership
+	MembershipLocation pulumi.StringPtrInput
 	// Service mesh specific spec. Structure is documented below.
 	Mesh FeatureMembershipMeshPtrInput
 	// The project of the feature
@@ -370,6 +376,8 @@ type featureMembershipArgs struct {
 	Location string `pulumi:"location"`
 	// The name of the membership
 	Membership string `pulumi:"membership"`
+	// The location of the membership
+	MembershipLocation *string `pulumi:"membershipLocation"`
 	// Service mesh specific spec. Structure is documented below.
 	Mesh *FeatureMembershipMesh `pulumi:"mesh"`
 	// The project of the feature
@@ -386,6 +394,8 @@ type FeatureMembershipArgs struct {
 	Location pulumi.StringInput
 	// The name of the membership
 	Membership pulumi.StringInput
+	// The location of the membership
+	MembershipLocation pulumi.StringPtrInput
 	// Service mesh specific spec. Structure is documented below.
 	Mesh FeatureMembershipMeshPtrInput
 	// The project of the feature
@@ -497,6 +507,11 @@ func (o FeatureMembershipOutput) Location() pulumi.StringOutput {
 // The name of the membership
 func (o FeatureMembershipOutput) Membership() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureMembership) pulumi.StringOutput { return v.Membership }).(pulumi.StringOutput)
+}
+
+// The location of the membership
+func (o FeatureMembershipOutput) MembershipLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembership) pulumi.StringPtrOutput { return v.MembershipLocation }).(pulumi.StringPtrOutput)
 }
 
 // Service mesh specific spec. Structure is documented below.

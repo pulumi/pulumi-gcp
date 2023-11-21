@@ -664,6 +664,8 @@ type subnetworkArgs struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description *string `pulumi:"description"`
+	// The range of external IPv6 addresses that are owned by this subnetwork.
+	ExternalIpv6Prefix *string `pulumi:"externalIpv6Prefix"`
 	// The range of internal addresses that are owned by this subnetwork.
 	// Provide this property when you create the subnetwork. For example,
 	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -742,6 +744,8 @@ type SubnetworkArgs struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrInput
+	// The range of external IPv6 addresses that are owned by this subnetwork.
+	ExternalIpv6Prefix pulumi.StringPtrInput
 	// The range of internal addresses that are owned by this subnetwork.
 	// Provide this property when you create the subnetwork. For example,
 	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and

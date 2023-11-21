@@ -699,6 +699,49 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 ),
             )])
         ```
+        ### Dlp Job Trigger Multiple Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataloss.PreventionJobTrigger("basic",
+            description="Description",
+            display_name="Displayname",
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                actions=[
+                    gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                        save_findings=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs(
+                            output_config=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs(
+                                table=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs(
+                                    dataset_id="dataset",
+                                    project_id="project",
+                                ),
+                            ),
+                        ),
+                    ),
+                    gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                        pub_sub=gcp.dataloss.PreventionJobTriggerInspectJobActionPubSubArgs(
+                            topic="projects/project/topics/topic-name",
+                        ),
+                    ),
+                ],
+                inspect_template_name="fake",
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    cloud_storage_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs(
+                        file_set=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs(
+                            url="gs://mybucket/directory/",
+                        ),
+                    ),
+                ),
+            ),
+            parent="projects/my-project-name",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
+                    recurrence_period_duration="86400s",
+                ),
+            )])
+        ```
 
         ## Import
 
@@ -1078,6 +1121,49 @@ class PreventionJobTrigger(pulumi.CustomResource):
             ),
             parent="projects/my-project-name",
             trigger_id="id-",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
+                    recurrence_period_duration="86400s",
+                ),
+            )])
+        ```
+        ### Dlp Job Trigger Multiple Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataloss.PreventionJobTrigger("basic",
+            description="Description",
+            display_name="Displayname",
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                actions=[
+                    gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                        save_findings=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs(
+                            output_config=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs(
+                                table=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs(
+                                    dataset_id="dataset",
+                                    project_id="project",
+                                ),
+                            ),
+                        ),
+                    ),
+                    gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                        pub_sub=gcp.dataloss.PreventionJobTriggerInspectJobActionPubSubArgs(
+                            topic="projects/project/topics/topic-name",
+                        ),
+                    ),
+                ],
+                inspect_template_name="fake",
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    cloud_storage_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs(
+                        file_set=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs(
+                            url="gs://mybucket/directory/",
+                        ),
+                    ),
+                ),
+            ),
+            parent="projects/my-project-name",
             triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
                 schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
                     recurrence_period_duration="86400s",

@@ -883,7 +883,7 @@ class MetastoreService(pulumi.CustomResource):
             scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
                 instance_size="EXTRA_SMALL",
             ),
-            service_id="dpms2")
+            service_id="ms-dpms2")
         ```
         ### Dataproc Metastore Service Dpms2 Scaling Factor
 
@@ -900,7 +900,7 @@ class MetastoreService(pulumi.CustomResource):
             scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
                 scaling_factor=2,
             ),
-            service_id="dpms2sf")
+            service_id="ms-dpms2sf")
         ```
 
         ## Import
@@ -1069,7 +1069,7 @@ class MetastoreService(pulumi.CustomResource):
             scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
                 instance_size="EXTRA_SMALL",
             ),
-            service_id="dpms2")
+            service_id="ms-dpms2")
         ```
         ### Dataproc Metastore Service Dpms2 Scaling Factor
 
@@ -1086,7 +1086,7 @@ class MetastoreService(pulumi.CustomResource):
             scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
                 scaling_factor=2,
             ),
-            service_id="dpms2sf")
+            service_id="ms-dpms2sf")
         ```
 
         ## Import

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
  * 
  * ## Example Usage
- * ### Firestore Database With Delete Protection
+ * ### Firestore Database
  * ```java
  * package generated_program;
  * 
@@ -39,7 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.firestore.Database;
  * import com.pulumi.gcp.firestore.DatabaseArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,13 +53,79 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .project(google_project.project().project_id())
+ *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
+ *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
  *             .locationId(&#34;nam5&#34;)
+ *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
+ *             .project(&#34;my-project-name&#34;)
  *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Firestore Database In Datastore Mode
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var datastoreModeDatabase = new Database(&#34;datastoreModeDatabase&#34;, DatabaseArgs.builder()        
+ *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
+ *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .type(&#34;DATASTORE_MODE&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Firestore Database With Delete Protection
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
  *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(google_project_service.firestore())
- *                 .build());
+ *             .locationId(&#34;nam5&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .build());
  * 
  *     }
  * }

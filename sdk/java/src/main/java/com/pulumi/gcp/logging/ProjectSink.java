@@ -165,14 +165,14 @@ public class ProjectSink extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.filter);
     }
     /**
-     * The name of the logging sink.
+     * The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the logging sink.
+     * @return The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
      * 
      */
     public Output<String> name() {

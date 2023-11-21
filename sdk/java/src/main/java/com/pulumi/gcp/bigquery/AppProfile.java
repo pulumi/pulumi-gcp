@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.AppProfileArgs;
 import com.pulumi.gcp.bigquery.inputs.AppProfileState;
 import com.pulumi.gcp.bigquery.outputs.AppProfileSingleClusterRouting;
+import com.pulumi.gcp.bigquery.outputs.AppProfileStandardIsolation;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -193,6 +194,59 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Bigtable App Profile Priority
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigtable.Instance;
+ * import com.pulumi.gcp.bigtable.InstanceArgs;
+ * import com.pulumi.gcp.bigtable.inputs.InstanceClusterArgs;
+ * import com.pulumi.gcp.bigquery.AppProfile;
+ * import com.pulumi.gcp.bigquery.AppProfileArgs;
+ * import com.pulumi.gcp.bigquery.inputs.AppProfileSingleClusterRoutingArgs;
+ * import com.pulumi.gcp.bigquery.inputs.AppProfileStandardIsolationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .clusters(InstanceClusterArgs.builder()
+ *                 .clusterId(&#34;cluster-1&#34;)
+ *                 .zone(&#34;us-central1-b&#34;)
+ *                 .numNodes(3)
+ *                 .storageType(&#34;HDD&#34;)
+ *                 .build())
+ *             .deletionProtection(&#34;true&#34;)
+ *             .build());
+ * 
+ *         var ap = new AppProfile(&#34;ap&#34;, AppProfileArgs.builder()        
+ *             .instance(instance.name())
+ *             .appProfileId(&#34;bt-profile&#34;)
+ *             .singleClusterRouting(AppProfileSingleClusterRoutingArgs.builder()
+ *                 .clusterId(&#34;cluster-1&#34;)
+ *                 .allowTransactionalWrites(true)
+ *                 .build())
+ *             .standardIsolation(AppProfileStandardIsolationArgs.builder()
+ *                 .priority(&#34;PRIORITY_LOW&#34;)
+ *                 .build())
+ *             .ignoreWarnings(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -360,6 +414,22 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<AppProfileSingleClusterRouting>> singleClusterRouting() {
         return Codegen.optional(this.singleClusterRouting);
+    }
+    /**
+     * The standard options used for isolating this app profile&#39;s traffic from other use cases.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="standardIsolation", refs={AppProfileStandardIsolation.class}, tree="[0]")
+    private Output<AppProfileStandardIsolation> standardIsolation;
+
+    /**
+     * @return The standard options used for isolating this app profile&#39;s traffic from other use cases.
+     * Structure is documented below.
+     * 
+     */
+    public Output<AppProfileStandardIsolation> standardIsolation() {
+        return this.standardIsolation;
     }
 
     /**

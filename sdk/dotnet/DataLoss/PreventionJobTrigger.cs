@@ -554,6 +554,73 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// ### Dlp Job Trigger Multiple Actions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.DataLoss.PreventionJobTrigger("basic", new()
+    ///     {
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     SaveFindings = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs
+    ///                     {
+    ///                         OutputConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
+    ///                         {
+    ///                             Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
+    ///                             {
+    ///                                 DatasetId = "dataset",
+    ///                                 ProjectId = "project",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     PubSub = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionPubSubArgs
+    ///                     {
+    ///                         Topic = "projects/project/topics/topic-name",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             InspectTemplateName = "fake",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
+    ///                 {
+    ///                     FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
+    ///                     {
+    ///                         Url = "gs://mybucket/directory/",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

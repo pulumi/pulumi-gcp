@@ -58,6 +58,21 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The range of external IPv6 addresses that are owned by this subnetwork.
+     * 
+     */
+    @Import(name="externalIpv6Prefix")
+    private @Nullable Output<String> externalIpv6Prefix;
+
+    /**
+     * @return The range of external IPv6 addresses that are owned by this subnetwork.
+     * 
+     */
+    public Optional<Output<String>> externalIpv6Prefix() {
+        return Optional.ofNullable(this.externalIpv6Prefix);
+    }
+
+    /**
      * The range of internal addresses that are owned by this subnetwork.
      * Provide this property when you create the subnetwork. For example,
      * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
@@ -337,6 +352,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
     private SubnetworkArgs(SubnetworkArgs $) {
         this.allowSubnetCidrRoutesOverlap = $.allowSubnetCidrRoutesOverlap;
         this.description = $.description;
+        this.externalIpv6Prefix = $.externalIpv6Prefix;
         this.ipCidrRange = $.ipCidrRange;
         this.ipv6AccessType = $.ipv6AccessType;
         this.logConfig = $.logConfig;
@@ -418,6 +434,27 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param externalIpv6Prefix The range of external IPv6 addresses that are owned by this subnetwork.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalIpv6Prefix(@Nullable Output<String> externalIpv6Prefix) {
+            $.externalIpv6Prefix = externalIpv6Prefix;
+            return this;
+        }
+
+        /**
+         * @param externalIpv6Prefix The range of external IPv6 addresses that are owned by this subnetwork.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalIpv6Prefix(String externalIpv6Prefix) {
+            return externalIpv6Prefix(Output.of(externalIpv6Prefix));
         }
 
         /**

@@ -20,7 +20,7 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
     public static final PreventionJobTriggerInspectJobArgs Empty = new PreventionJobTriggerInspectJobArgs();
 
     /**
-     * A task to execute on the completion of a job.
+     * Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
      * Structure is documented below.
      * 
      */
@@ -28,7 +28,7 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
     private @Nullable Output<List<PreventionJobTriggerInspectJobActionArgs>> actions;
 
     /**
-     * @return A task to execute on the completion of a job.
+     * @return Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
      * Structure is documented below.
      * 
      */
@@ -113,7 +113,7 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param actions A task to execute on the completion of a job.
+         * @param actions Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
          * Structure is documented below.
          * 
          * @return builder
@@ -125,7 +125,7 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param actions A task to execute on the completion of a job.
+         * @param actions Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
          * Structure is documented below.
          * 
          * @return builder
@@ -136,7 +136,7 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param actions A task to execute on the completion of a job.
+         * @param actions Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
          * Structure is documented below.
          * 
          * @return builder

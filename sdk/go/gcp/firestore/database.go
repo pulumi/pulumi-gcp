@@ -27,6 +27,66 @@ import (
 //   - [Official Documentation](https://cloud.google.com/firestore/docs/)
 //
 // ## Example Usage
+// ### Firestore Database
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				AppEngineIntegrationMode:      pulumi.String("DISABLED"),
+//				ConcurrencyMode:               pulumi.String("OPTIMISTIC"),
+//				LocationId:                    pulumi.String("nam5"),
+//				PointInTimeRecoveryEnablement: pulumi.String("POINT_IN_TIME_RECOVERY_ENABLED"),
+//				Project:                       pulumi.String("my-project-name"),
+//				Type:                          pulumi.String("FIRESTORE_NATIVE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firestore Database In Datastore Mode
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firestore.NewDatabase(ctx, "datastoreModeDatabase", &firestore.DatabaseArgs{
+//				AppEngineIntegrationMode:      pulumi.String("DISABLED"),
+//				ConcurrencyMode:               pulumi.String("OPTIMISTIC"),
+//				LocationId:                    pulumi.String("nam5"),
+//				PointInTimeRecoveryEnablement: pulumi.String("POINT_IN_TIME_RECOVERY_ENABLED"),
+//				Project:                       pulumi.String("my-project-name"),
+//				Type:                          pulumi.String("DATASTORE_MODE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Firestore Database With Delete Protection
 //
 // ```go
@@ -42,13 +102,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
-//				Project:               pulumi.Any(google_project.Project.Project_id),
-//				LocationId:            pulumi.String("nam5"),
-//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
 //				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				google_project_service.Firestore,
-//			}))
+//				LocationId:            pulumi.String("nam5"),
+//				Project:               pulumi.String("my-project-name"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//			})
 //			if err != nil {
 //				return err
 //			}

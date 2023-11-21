@@ -368,6 +368,20 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
         return this.membership;
     }
     /**
+     * The location of the membership
+     * 
+     */
+    @Export(name="membershipLocation", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> membershipLocation;
+
+    /**
+     * @return The location of the membership
+     * 
+     */
+    public Output<Optional<String>> membershipLocation() {
+        return Codegen.optional(this.membershipLocation);
+    }
+    /**
      * Service mesh specific spec. Structure is documented below.
      * 
      */

@@ -18,7 +18,7 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
      */
     private @Nullable Boolean enable;
     /**
-     * @return Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+     * @return Rule visibility can be one of the following:
      * 
      */
     private @Nullable String ruleVisibility;
@@ -32,7 +32,7 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
         return Optional.ofNullable(this.enable);
     }
     /**
-     * @return Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules.
+     * @return Rule visibility can be one of the following:
      * 
      */
     public Optional<String> ruleVisibility() {

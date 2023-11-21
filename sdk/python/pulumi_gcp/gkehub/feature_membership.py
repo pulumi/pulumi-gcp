@@ -20,6 +20,7 @@ class FeatureMembershipArgs:
                  location: pulumi.Input[str],
                  membership: pulumi.Input[str],
                  configmanagement: Optional[pulumi.Input['FeatureMembershipConfigmanagementArgs']] = None,
+                 membership_location: Optional[pulumi.Input[str]] = None,
                  mesh: Optional[pulumi.Input['FeatureMembershipMeshArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -28,6 +29,7 @@ class FeatureMembershipArgs:
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
         :param pulumi.Input['FeatureMembershipConfigmanagementArgs'] configmanagement: Config Management-specific spec. Structure is documented below.
+        :param pulumi.Input[str] membership_location: The location of the membership
         :param pulumi.Input['FeatureMembershipMeshArgs'] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
@@ -36,6 +38,8 @@ class FeatureMembershipArgs:
         pulumi.set(__self__, "membership", membership)
         if configmanagement is not None:
             pulumi.set(__self__, "configmanagement", configmanagement)
+        if membership_location is not None:
+            pulumi.set(__self__, "membership_location", membership_location)
         if mesh is not None:
             pulumi.set(__self__, "mesh", mesh)
         if project is not None:
@@ -90,6 +94,18 @@ class FeatureMembershipArgs:
         pulumi.set(self, "configmanagement", value)
 
     @property
+    @pulumi.getter(name="membershipLocation")
+    def membership_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the membership
+        """
+        return pulumi.get(self, "membership_location")
+
+    @membership_location.setter
+    def membership_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "membership_location", value)
+
+    @property
     @pulumi.getter
     def mesh(self) -> Optional[pulumi.Input['FeatureMembershipMeshArgs']]:
         """
@@ -121,6 +137,7 @@ class _FeatureMembershipState:
                  feature: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership: Optional[pulumi.Input[str]] = None,
+                 membership_location: Optional[pulumi.Input[str]] = None,
                  mesh: Optional[pulumi.Input['FeatureMembershipMeshArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -129,6 +146,7 @@ class _FeatureMembershipState:
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
+        :param pulumi.Input[str] membership_location: The location of the membership
         :param pulumi.Input['FeatureMembershipMeshArgs'] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
@@ -140,6 +158,8 @@ class _FeatureMembershipState:
             pulumi.set(__self__, "location", location)
         if membership is not None:
             pulumi.set(__self__, "membership", membership)
+        if membership_location is not None:
+            pulumi.set(__self__, "membership_location", membership_location)
         if mesh is not None:
             pulumi.set(__self__, "mesh", mesh)
         if project is not None:
@@ -194,6 +214,18 @@ class _FeatureMembershipState:
         pulumi.set(self, "membership", value)
 
     @property
+    @pulumi.getter(name="membershipLocation")
+    def membership_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the membership
+        """
+        return pulumi.get(self, "membership_location")
+
+    @membership_location.setter
+    def membership_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "membership_location", value)
+
+    @property
     @pulumi.getter
     def mesh(self) -> Optional[pulumi.Input['FeatureMembershipMeshArgs']]:
         """
@@ -227,6 +259,7 @@ class FeatureMembership(pulumi.CustomResource):
                  feature: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership: Optional[pulumi.Input[str]] = None,
+                 membership_location: Optional[pulumi.Input[str]] = None,
                  mesh: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -387,6 +420,7 @@ class FeatureMembership(pulumi.CustomResource):
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
+        :param pulumi.Input[str] membership_location: The location of the membership
         :param pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
@@ -566,6 +600,7 @@ class FeatureMembership(pulumi.CustomResource):
                  feature: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  membership: Optional[pulumi.Input[str]] = None,
+                 membership_location: Optional[pulumi.Input[str]] = None,
                  mesh: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -587,6 +622,7 @@ class FeatureMembership(pulumi.CustomResource):
             if membership is None and not opts.urn:
                 raise TypeError("Missing required property 'membership'")
             __props__.__dict__["membership"] = membership
+            __props__.__dict__["membership_location"] = membership_location
             __props__.__dict__["mesh"] = mesh
             __props__.__dict__["project"] = project
         super(FeatureMembership, __self__).__init__(
@@ -603,6 +639,7 @@ class FeatureMembership(pulumi.CustomResource):
             feature: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             membership: Optional[pulumi.Input[str]] = None,
+            membership_location: Optional[pulumi.Input[str]] = None,
             mesh: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'FeatureMembership':
         """
@@ -616,6 +653,7 @@ class FeatureMembership(pulumi.CustomResource):
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
+        :param pulumi.Input[str] membership_location: The location of the membership
         :param pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
@@ -627,6 +665,7 @@ class FeatureMembership(pulumi.CustomResource):
         __props__.__dict__["feature"] = feature
         __props__.__dict__["location"] = location
         __props__.__dict__["membership"] = membership
+        __props__.__dict__["membership_location"] = membership_location
         __props__.__dict__["mesh"] = mesh
         __props__.__dict__["project"] = project
         return FeatureMembership(resource_name, opts=opts, __props__=__props__)
@@ -662,6 +701,14 @@ class FeatureMembership(pulumi.CustomResource):
         The name of the membership
         """
         return pulumi.get(self, "membership")
+
+    @property
+    @pulumi.getter(name="membershipLocation")
+    def membership_location(self) -> pulumi.Output[Optional[str]]:
+        """
+        The location of the membership
+        """
+        return pulumi.get(self, "membership_location")
 
     @property
     @pulumi.getter

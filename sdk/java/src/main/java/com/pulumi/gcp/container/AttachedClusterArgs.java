@@ -11,6 +11,7 @@ import com.pulumi.gcp.container.inputs.AttachedClusterFleetArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterLoggingConfigArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterMonitoringConfigArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterOidcConfigArgs;
+import com.pulumi.gcp.container.inputs.AttachedClusterProxyConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -282,6 +283,23 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Support for proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="proxyConfig")
+    private @Nullable Output<AttachedClusterProxyConfigArgs> proxyConfig;
+
+    /**
+     * @return Support for proxy configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AttachedClusterProxyConfigArgs>> proxyConfig() {
+        return Optional.ofNullable(this.proxyConfig);
+    }
+
     private AttachedClusterArgs() {}
 
     private AttachedClusterArgs(AttachedClusterArgs $) {
@@ -299,6 +317,7 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
         this.oidcConfig = $.oidcConfig;
         this.platformVersion = $.platformVersion;
         this.project = $.project;
+        this.proxyConfig = $.proxyConfig;
     }
 
     public static Builder builder() {
@@ -661,6 +680,29 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param proxyConfig Support for proxy configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyConfig(@Nullable Output<AttachedClusterProxyConfigArgs> proxyConfig) {
+            $.proxyConfig = proxyConfig;
+            return this;
+        }
+
+        /**
+         * @param proxyConfig Support for proxy configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyConfig(AttachedClusterProxyConfigArgs proxyConfig) {
+            return proxyConfig(Output.of(proxyConfig));
         }
 
         public AttachedClusterArgs build() {

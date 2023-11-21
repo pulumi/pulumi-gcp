@@ -27,12 +27,12 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
      */
     private String phaseId;
     /**
-     * @return (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+     * @return Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
      * 
      */
     private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy postdeploy;
     /**
-     * @return (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+     * @return Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
      * 
      */
     private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy predeploy;
@@ -65,14 +65,14 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
         return this.phaseId;
     }
     /**
-     * @return (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+     * @return Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
      * 
      */
     public Optional<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy> postdeploy() {
         return Optional.ofNullable(this.postdeploy);
     }
     /**
-     * @return (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+     * @return Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
      * 
      */
     public Optional<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy> predeploy() {

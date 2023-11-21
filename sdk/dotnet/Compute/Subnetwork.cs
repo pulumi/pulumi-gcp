@@ -523,6 +523,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The range of external IPv6 addresses that are owned by this subnetwork.
+        /// </summary>
+        [Input("externalIpv6Prefix")]
+        public Input<string>? ExternalIpv6Prefix { get; set; }
+
+        /// <summary>
         /// The range of internal addresses that are owned by this subnetwork.
         /// Provide this property when you create the subnetwork. For example,
         /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and

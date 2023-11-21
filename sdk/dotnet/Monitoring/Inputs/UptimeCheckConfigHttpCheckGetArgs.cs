@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<Inputs.UptimeCheckConfigHttpCheckAuthInfoGetArgs>? AuthInfo { get; set; }
 
         /// <summary>
-        /// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
+        /// The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
         /// </summary>
         [Input("body")]
         public Input<string>? Body { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         private InputMap<string>? _headers;
 
         /// <summary>
-        /// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
+        /// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         /// </summary>
         public InputMap<string> Headers
         {
@@ -64,13 +64,13 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         }
 
         /// <summary>
-        /// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******.
+        /// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `mask_headers` is set to `true` then the headers will be obscured with `******`.
         /// </summary>
         [Input("maskHeaders")]
         public Input<bool>? MaskHeaders { get; set; }
 
         /// <summary>
-        /// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
+        /// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -83,13 +83,13 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<Inputs.UptimeCheckConfigHttpCheckPingConfigGetArgs>? PingConfig { get; set; }
 
         /// <summary>
-        /// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+        /// The port to the page to run the check against. Will be combined with `host` (specified within the `monitored_resource`) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
+        /// The HTTP request method to use for the check. If set to `METHOD_UNSPECIFIED` then `request_method` defaults to `GET`.
         /// Default value is `GET`.
         /// Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
         /// </summary>
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<bool>? UseSsl { get; set; }
 
         /// <summary>
-        /// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
+        /// Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`, setting `validate_ssl` to `true` has no effect.
         /// </summary>
         [Input("validateSsl")]
         public Input<bool>? ValidateSsl { get; set; }

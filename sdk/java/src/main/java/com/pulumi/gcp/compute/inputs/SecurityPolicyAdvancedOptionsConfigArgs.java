@@ -36,8 +36,6 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
     /**
      * Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
-     * * DISABLED - Don&#39;t parse JSON payloads in POST bodies.
-     * * STANDARD - Parse JSON payloads in POST bodies.
      * 
      */
     @Import(name="jsonParsing")
@@ -45,8 +43,6 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
     /**
      * @return Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
-     * * DISABLED - Don&#39;t parse JSON payloads in POST bodies.
-     * * STANDARD - Parse JSON payloads in POST bodies.
      * 
      */
     public Optional<Output<String>> jsonParsing() {
@@ -55,8 +51,6 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
     /**
      * Log level to use. Defaults to `NORMAL`.
-     * * NORMAL - Normal log level.
-     * * VERBOSE - Verbose log level.
      * 
      */
     @Import(name="logLevel")
@@ -64,8 +58,6 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
     /**
      * @return Log level to use. Defaults to `NORMAL`.
-     * * NORMAL - Normal log level.
-     * * VERBOSE - Verbose log level.
      * 
      */
     public Optional<Output<String>> logLevel() {
@@ -139,8 +131,6 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
         /**
          * @param jsonParsing Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
-         * * DISABLED - Don&#39;t parse JSON payloads in POST bodies.
-         * * STANDARD - Parse JSON payloads in POST bodies.
          * 
          * @return builder
          * 
@@ -152,8 +142,6 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
         /**
          * @param jsonParsing Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
-         * * DISABLED - Don&#39;t parse JSON payloads in POST bodies.
-         * * STANDARD - Parse JSON payloads in POST bodies.
          * 
          * @return builder
          * 
@@ -164,8 +152,6 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
         /**
          * @param logLevel Log level to use. Defaults to `NORMAL`.
-         * * NORMAL - Normal log level.
-         * * VERBOSE - Verbose log level.
          * 
          * @return builder
          * 
@@ -177,8 +163,6 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
 
         /**
          * @param logLevel Log level to use. Defaults to `NORMAL`.
-         * * NORMAL - Normal log level.
-         * * VERBOSE - Verbose log level.
          * 
          * @return builder
          * 

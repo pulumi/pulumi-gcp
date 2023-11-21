@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'AppProfileSingleClusterRoutingArgs',
+    'AppProfileStandardIsolationArgs',
     'BiReservationPreferredTableArgs',
     'ConnectionAwsArgs',
     'ConnectionAwsAccessRoleArgs',
@@ -117,6 +118,30 @@ class AppProfileSingleClusterRoutingArgs:
     @allow_transactional_writes.setter
     def allow_transactional_writes(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_transactional_writes", value)
+
+
+@pulumi.input_type
+class AppProfileStandardIsolationArgs:
+    def __init__(__self__, *,
+                 priority: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] priority: The priority of requests sent using this app profile.
+               Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+        """
+        pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[str]:
+        """
+        The priority of requests sent using this app profile.
+        Possible values are: `PRIORITY_LOW`, `PRIORITY_MEDIUM`, `PRIORITY_HIGH`.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[str]):
+        pulumi.set(self, "priority", value)
 
 
 @pulumi.input_type

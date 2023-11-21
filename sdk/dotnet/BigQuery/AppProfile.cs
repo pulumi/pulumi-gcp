@@ -159,6 +159,49 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigtable App Profile Priority
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.BigTable.Instance("instance", new()
+    ///     {
+    ///         Clusters = new[]
+    ///         {
+    ///             new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///             {
+    ///                 ClusterId = "cluster-1",
+    ///                 Zone = "us-central1-b",
+    ///                 NumNodes = 3,
+    ///                 StorageType = "HDD",
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var ap = new Gcp.BigQuery.AppProfile("ap", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         AppProfileId = "bt-profile",
+    ///         SingleClusterRouting = new Gcp.BigQuery.Inputs.AppProfileSingleClusterRoutingArgs
+    ///         {
+    ///             ClusterId = "cluster-1",
+    ///             AllowTransactionalWrites = true,
+    ///         },
+    ///         StandardIsolation = new Gcp.BigQuery.Inputs.AppProfileStandardIsolationArgs
+    ///         {
+    ///             Priority = "PRIORITY_LOW",
+    ///         },
+    ///         IgnoreWarnings = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -248,6 +291,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("singleClusterRouting")]
         public Output<Outputs.AppProfileSingleClusterRouting?> SingleClusterRouting { get; private set; } = null!;
+
+        /// <summary>
+        /// The standard options used for isolating this app profile's traffic from other use cases.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("standardIsolation")]
+        public Output<Outputs.AppProfileStandardIsolation> StandardIsolation { get; private set; } = null!;
 
 
         /// <summary>
@@ -357,6 +407,13 @@ namespace Pulumi.Gcp.BigQuery
         [Input("singleClusterRouting")]
         public Input<Inputs.AppProfileSingleClusterRoutingArgs>? SingleClusterRouting { get; set; }
 
+        /// <summary>
+        /// The standard options used for isolating this app profile's traffic from other use cases.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("standardIsolation")]
+        public Input<Inputs.AppProfileStandardIsolationArgs>? StandardIsolation { get; set; }
+
         public AppProfileArgs()
         {
         }
@@ -432,6 +489,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("singleClusterRouting")]
         public Input<Inputs.AppProfileSingleClusterRoutingGetArgs>? SingleClusterRouting { get; set; }
+
+        /// <summary>
+        /// The standard options used for isolating this app profile's traffic from other use cases.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("standardIsolation")]
+        public Input<Inputs.AppProfileStandardIsolationGetArgs>? StandardIsolation { get; set; }
 
         public AppProfileState()
         {

@@ -120,8 +120,11 @@ import (
 type Gateway struct {
 	pulumi.CustomResourceState
 
-	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
-	// When changing api configs please ensure the new config is a new resource and the lifecycle rule `createBeforeDestroy` is set.
+	// Resource name of the API Config for this Gateway. Format:
+	// projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
+	// config is a new resource and the
+	// [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
+	// set.
 	ApiConfig pulumi.StringOutput `pulumi:"apiConfig"`
 	// The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
 	DefaultHostname pulumi.StringOutput `pulumi:"defaultHostname"`
@@ -191,8 +194,11 @@ func GetGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
-	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
-	// When changing api configs please ensure the new config is a new resource and the lifecycle rule `createBeforeDestroy` is set.
+	// Resource name of the API Config for this Gateway. Format:
+	// projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
+	// config is a new resource and the
+	// [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
+	// set.
 	ApiConfig *string `pulumi:"apiConfig"`
 	// The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
 	DefaultHostname *string `pulumi:"defaultHostname"`
@@ -222,8 +228,11 @@ type gatewayState struct {
 }
 
 type GatewayState struct {
-	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
-	// When changing api configs please ensure the new config is a new resource and the lifecycle rule `createBeforeDestroy` is set.
+	// Resource name of the API Config for this Gateway. Format:
+	// projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
+	// config is a new resource and the
+	// [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
+	// set.
 	ApiConfig pulumi.StringPtrInput
 	// The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
 	DefaultHostname pulumi.StringPtrInput
@@ -257,8 +266,11 @@ func (GatewayState) ElementType() reflect.Type {
 }
 
 type gatewayArgs struct {
-	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
-	// When changing api configs please ensure the new config is a new resource and the lifecycle rule `createBeforeDestroy` is set.
+	// Resource name of the API Config for this Gateway. Format:
+	// projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
+	// config is a new resource and the
+	// [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
+	// set.
 	ApiConfig string `pulumi:"apiConfig"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
@@ -280,8 +292,11 @@ type gatewayArgs struct {
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
-	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
-	// When changing api configs please ensure the new config is a new resource and the lifecycle rule `createBeforeDestroy` is set.
+	// Resource name of the API Config for this Gateway. Format:
+	// projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
+	// config is a new resource and the
+	// [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
+	// set.
 	ApiConfig pulumi.StringInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
@@ -388,8 +403,11 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
-// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
-// When changing api configs please ensure the new config is a new resource and the lifecycle rule `createBeforeDestroy` is set.
+// Resource name of the API Config for this Gateway. Format:
+// projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
+// config is a new resource and the
+// [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
+// set.
 func (o GatewayOutput) ApiConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.ApiConfig }).(pulumi.StringOutput)
 }

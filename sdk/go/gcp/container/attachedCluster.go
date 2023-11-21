@@ -223,6 +223,9 @@ type AttachedCluster struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Support for proxy configuration.
+	// Structure is documented below.
+	ProxyConfig AttachedClusterProxyConfigPtrOutput `pulumi:"proxyConfig"`
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// The current state of the cluster. Possible values:
@@ -350,6 +353,9 @@ type attachedClusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Support for proxy configuration.
+	// Structure is documented below.
+	ProxyConfig *AttachedClusterProxyConfig `pulumi:"proxyConfig"`
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling *bool `pulumi:"reconciling"`
 	// The current state of the cluster. Possible values:
@@ -433,6 +439,9 @@ type AttachedClusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Support for proxy configuration.
+	// Structure is documented below.
+	ProxyConfig AttachedClusterProxyConfigPtrInput
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolPtrInput
 	// The current state of the cluster. Possible values:
@@ -506,6 +515,9 @@ type attachedClusterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Support for proxy configuration.
+	// Structure is documented below.
+	ProxyConfig *AttachedClusterProxyConfig `pulumi:"proxyConfig"`
 }
 
 // The set of arguments for constructing a AttachedCluster resource.
@@ -563,6 +575,9 @@ type AttachedClusterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Support for proxy configuration.
+	// Structure is documented below.
+	ProxyConfig AttachedClusterProxyConfigPtrInput
 }
 
 func (AttachedClusterArgs) ElementType() reflect.Type {
@@ -774,6 +789,12 @@ func (o AttachedClusterOutput) PlatformVersion() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o AttachedClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Support for proxy configuration.
+// Structure is documented below.
+func (o AttachedClusterOutput) ProxyConfig() AttachedClusterProxyConfigPtrOutput {
+	return o.ApplyT(func(v *AttachedCluster) AttachedClusterProxyConfigPtrOutput { return v.ProxyConfig }).(AttachedClusterProxyConfigPtrOutput)
 }
 
 // If set, there are currently changes in flight to the cluster.

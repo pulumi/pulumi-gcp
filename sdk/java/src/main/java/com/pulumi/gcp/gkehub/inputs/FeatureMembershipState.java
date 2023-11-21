@@ -78,6 +78,21 @@ public final class FeatureMembershipState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The location of the membership
+     * 
+     */
+    @Import(name="membershipLocation")
+    private @Nullable Output<String> membershipLocation;
+
+    /**
+     * @return The location of the membership
+     * 
+     */
+    public Optional<Output<String>> membershipLocation() {
+        return Optional.ofNullable(this.membershipLocation);
+    }
+
+    /**
      * Service mesh specific spec. Structure is documented below.
      * 
      */
@@ -114,6 +129,7 @@ public final class FeatureMembershipState extends com.pulumi.resources.ResourceA
         this.feature = $.feature;
         this.location = $.location;
         this.membership = $.membership;
+        this.membershipLocation = $.membershipLocation;
         this.mesh = $.mesh;
         this.project = $.project;
     }
@@ -218,6 +234,27 @@ public final class FeatureMembershipState extends com.pulumi.resources.ResourceA
          */
         public Builder membership(String membership) {
             return membership(Output.of(membership));
+        }
+
+        /**
+         * @param membershipLocation The location of the membership
+         * 
+         * @return builder
+         * 
+         */
+        public Builder membershipLocation(@Nullable Output<String> membershipLocation) {
+            $.membershipLocation = membershipLocation;
+            return this;
+        }
+
+        /**
+         * @param membershipLocation The location of the membership
+         * 
+         * @return builder
+         * 
+         */
+        public Builder membershipLocation(String membershipLocation) {
+            return membershipLocation(Output.of(membershipLocation));
         }
 
         /**

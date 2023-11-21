@@ -106,7 +106,7 @@ import * as utilities from "../utilities";
  *     scalingConfig: {
  *         instanceSize: "EXTRA_SMALL",
  *     },
- *     serviceId: "dpms2",
+ *     serviceId: "ms-dpms2",
  * });
  * ```
  * ### Dataproc Metastore Service Dpms2 Scaling Factor
@@ -124,7 +124,7 @@ import * as utilities from "../utilities";
  *     scalingConfig: {
  *         scalingFactor: 2,
  *     },
- *     serviceId: "dpms2sf",
+ *     serviceId: "ms-dpms2sf",
  * });
  * ```
  *

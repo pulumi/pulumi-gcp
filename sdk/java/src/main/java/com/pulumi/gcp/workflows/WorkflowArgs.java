@@ -176,16 +176,14 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-     * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
      * 
      */
     @Import(name="userEnvVars")
     private @Nullable Output<Map<String,String>> userEnvVars;
 
     /**
-     * @return User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-     * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+     * @return User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
      * 
      */
     public Optional<Output<Map<String,String>>> userEnvVars() {
@@ -439,8 +437,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userEnvVars User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-         * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+         * @param userEnvVars User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
          * 
          * @return builder
          * 
@@ -451,8 +448,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userEnvVars User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each
-         * string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
+         * @param userEnvVars User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS&#34;.
          * 
          * @return builder
          * 

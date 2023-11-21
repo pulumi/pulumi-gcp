@@ -86,7 +86,7 @@ namespace Pulumi.Gcp.Logging
         public Output<string?> Filter { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the logging sink.
+        /// The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The name of the logging sink.
+        /// The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -313,7 +313,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The name of the logging sink.
+        /// The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

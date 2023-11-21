@@ -24,7 +24,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     public static final UptimeCheckConfigState Empty = new UptimeCheckConfigState();
 
     /**
-     * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+     * The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */
@@ -32,7 +32,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> checkerType;
 
     /**
-     * @return The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+     * @return The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */
@@ -90,16 +90,20 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
-     * Structure is documented below.
+     * The [monitored resource]
+     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * configuration. The following monitored resource types are supported for
+     * uptime checks:
      * 
      */
     @Import(name="monitoredResource")
     private @Nullable Output<UptimeCheckConfigMonitoredResourceArgs> monitoredResource;
 
     /**
-     * @return The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
-     * Structure is documented below.
+     * @return The [monitored resource]
+     * (https://cloud.google.com/monitoring/api/resources) associated with the
+     * configuration. The following monitored resource types are supported for
+     * uptime checks:
      * 
      */
     public Optional<Output<UptimeCheckConfigMonitoredResourceArgs>> monitoredResource() {
@@ -220,7 +224,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+     * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
      * 
      * ***
      * 
@@ -229,7 +233,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> timeout;
 
     /**
-     * @return The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+     * @return The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
      * 
      * ***
      * 
@@ -307,7 +311,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param checkerType The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+         * @param checkerType The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
          * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
          * 
          * @return builder
@@ -319,7 +323,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param checkerType The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
+         * @param checkerType The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
          * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
          * 
          * @return builder
@@ -408,8 +412,10 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param monitoredResource The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
-         * Structure is documented below.
+         * @param monitoredResource The [monitored resource]
+         * (https://cloud.google.com/monitoring/api/resources) associated with the
+         * configuration. The following monitored resource types are supported for
+         * uptime checks:
          * 
          * @return builder
          * 
@@ -420,8 +426,10 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param monitoredResource The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
-         * Structure is documented below.
+         * @param monitoredResource The [monitored resource]
+         * (https://cloud.google.com/monitoring/api/resources) associated with the
+         * configuration. The following monitored resource types are supported for
+         * uptime checks:
          * 
          * @return builder
          * 
@@ -596,7 +604,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param timeout The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+         * @param timeout The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
          * 
          * ***
          * 
@@ -609,7 +617,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param timeout The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+         * @param timeout The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
          * 
          * ***
          * 

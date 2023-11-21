@@ -18,14 +18,14 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardArgs exten
     public static final DeliveryPipelineSerialPipelineStageStrategyStandardArgs Empty = new DeliveryPipelineSerialPipelineStageStrategyStandardArgs();
 
     /**
-     * (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+     * Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
      * 
      */
     @Import(name="postdeploy")
     private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs> postdeploy;
 
     /**
-     * @return (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+     * @return Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
      * 
      */
     public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs>> postdeploy() {
@@ -33,14 +33,14 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardArgs exten
     }
 
     /**
-     * (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+     * Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
      * 
      */
     @Import(name="predeploy")
     private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs> predeploy;
 
     /**
-     * @return (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+     * @return Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
      * 
      */
     public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs>> predeploy() {
@@ -89,7 +89,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardArgs exten
         }
 
         /**
-         * @param postdeploy (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+         * @param postdeploy Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardArgs exten
         }
 
         /**
-         * @param postdeploy (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+         * @param postdeploy Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardArgs exten
         }
 
         /**
-         * @param predeploy (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+         * @param predeploy Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardArgs exten
         }
 
         /**
-         * @param predeploy (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+         * @param predeploy Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
          * 
          * @return builder
          * 

@@ -227,6 +227,10 @@ export class FeatureMembership extends pulumi.CustomResource {
      */
     public readonly membership!: pulumi.Output<string>;
     /**
+     * The location of the membership
+     */
+    public readonly membershipLocation!: pulumi.Output<string | undefined>;
+    /**
      * Service mesh specific spec. Structure is documented below.
      */
     public readonly mesh!: pulumi.Output<outputs.gkehub.FeatureMembershipMesh | undefined>;
@@ -252,6 +256,7 @@ export class FeatureMembership extends pulumi.CustomResource {
             resourceInputs["feature"] = state ? state.feature : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["membership"] = state ? state.membership : undefined;
+            resourceInputs["membershipLocation"] = state ? state.membershipLocation : undefined;
             resourceInputs["mesh"] = state ? state.mesh : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
         } else {
@@ -269,6 +274,7 @@ export class FeatureMembership extends pulumi.CustomResource {
             resourceInputs["feature"] = args ? args.feature : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["membership"] = args ? args.membership : undefined;
+            resourceInputs["membershipLocation"] = args ? args.membershipLocation : undefined;
             resourceInputs["mesh"] = args ? args.mesh : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
         }
@@ -297,6 +303,10 @@ export interface FeatureMembershipState {
      * The name of the membership
      */
     membership?: pulumi.Input<string>;
+    /**
+     * The location of the membership
+     */
+    membershipLocation?: pulumi.Input<string>;
     /**
      * Service mesh specific spec. Structure is documented below.
      */
@@ -327,6 +337,10 @@ export interface FeatureMembershipArgs {
      * The name of the membership
      */
     membership: pulumi.Input<string>;
+    /**
+     * The location of the membership
+     */
+    membershipLocation?: pulumi.Input<string>;
     /**
      * Service mesh specific spec. Structure is documented below.
      */
