@@ -15,10 +15,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
  *
- * > **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `oracle_profile.password`, `mysql_profile.password`, `mysql_profile.ssl_config.client_key`, `mysql_profile.ssl_config.client_certificate`, `mysql_profile.ssl_config.ca_certificate`, `postgresql_profile.password`, `forward_ssh_connectivity.password`, `forward_ssh_connectivity.private_key`.
- * Read more about sensitive data in state.
- *
  * ## Example Usage
  * ### Datastream Connection Profile Basic
  *

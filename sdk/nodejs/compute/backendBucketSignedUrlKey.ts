@@ -13,9 +13,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Using Signed URLs](https://cloud.google.com/cdn/docs/using-signed-urls/)
  *
- * > **Warning:** All arguments including `keyValue` will be stored in the raw
- * state as plain-text.
- *
  * ## Example Usage
  * ### Backend Bucket Signed Url Key
  *

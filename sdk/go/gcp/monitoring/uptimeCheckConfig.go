@@ -20,9 +20,6 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/monitoring/uptime-checks/)
 //
-// > **Warning:** All arguments including `http_check.auth_info.password` will be stored in the raw
-// state as plain-text.
-//
 // ## Example Usage
 // ### Uptime Check Config Http
 //

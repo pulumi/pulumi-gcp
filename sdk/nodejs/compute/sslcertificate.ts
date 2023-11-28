@@ -15,9 +15,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
  *
- * > **Warning:** All arguments including `certificate` and `privateKey` will be stored in the raw
- * state as plain-text.
- *
  * ## Example Usage
  * ### Ssl Certificate Basic
  *

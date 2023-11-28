@@ -18,10 +18,6 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// * How-to Guides
     ///     * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
     /// 
-    /// &gt; **Warning:** All arguments including the following potentially sensitive
-    /// values will be stored in the raw state as plain text: `trust_handshake_secret`.
-    /// Read more about sensitive data in state.
-    /// 
     /// ## Example Usage
     /// ### Active Directory Domain Trust Basic
     /// 

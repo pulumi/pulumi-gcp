@@ -966,10 +966,6 @@ class Cluster(pulumi.CustomResource):
         * How-to Guides
             * [AlloyDB](https://cloud.google.com/alloydb/docs/)
 
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `initial_user.password`.
-        Read more about sensitive data in state.
-
         ## Example Usage
         ### Alloydb Cluster Basic
 
@@ -1214,10 +1210,6 @@ class Cluster(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
         * How-to Guides
             * [AlloyDB](https://cloud.google.com/alloydb/docs/)
-
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `initial_user.password`.
-        Read more about sensitive data in state.
 
         ## Example Usage
         ### Alloydb Cluster Basic

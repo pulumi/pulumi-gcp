@@ -1197,10 +1197,6 @@ class RegionBackendService(pulumi.CustomResource):
         * How-to Guides
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`.
-        Read more about sensitive data in state.
-
         ## Example Usage
 
         ## Import
@@ -1336,10 +1332,6 @@ class RegionBackendService(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
         * How-to Guides
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
-
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`.
-        Read more about sensitive data in state.
 
         ## Example Usage
 

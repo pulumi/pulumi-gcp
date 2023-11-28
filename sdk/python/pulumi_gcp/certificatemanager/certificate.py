@@ -416,10 +416,6 @@ class Certificate(pulumi.CustomResource):
         """
         Certificate represents a HTTP-reachable backend for a Certificate.
 
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `self_managed.certificate_pem`, `self_managed.private_key_pem`, `self_managed.pem_private_key`.
-        Read more about sensitive data in state.
-
         ## Example Usage
         ### Certificate Manager Google Managed Certificate Dns
 
@@ -708,10 +704,6 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Certificate represents a HTTP-reachable backend for a Certificate.
-
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `self_managed.certificate_pem`, `self_managed.private_key_pem`, `self_managed.pem_private_key`.
-        Read more about sensitive data in state.
 
         ## Example Usage
         ### Certificate Manager Google Managed Certificate Dns

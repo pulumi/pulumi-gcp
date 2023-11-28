@@ -184,8 +184,6 @@ class SecretCiphertext(pulumi.CustomResource):
         * How-to Guides
             * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
 
-        > **Warning:** All arguments including `plaintext` and `additional_authenticated_data` will be stored in the raw state as plain-text.
-
         ## Example Usage
         ### Kms Secret Ciphertext Basic
 
@@ -252,8 +250,6 @@ class SecretCiphertext(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys/encrypt)
         * How-to Guides
             * [Encrypting and decrypting data with a symmetric key](https://cloud.google.com/kms/docs/encrypt-decrypt)
-
-        > **Warning:** All arguments including `plaintext` and `additional_authenticated_data` will be stored in the raw state as plain-text.
 
         ## Example Usage
         ### Kms Secret Ciphertext Basic

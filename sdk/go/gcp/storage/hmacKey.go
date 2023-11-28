@@ -22,11 +22,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
 //
-// > **Warning:** All arguments including the `secret` value will be stored in the raw
-// state as plain-text. On import, the `secret` value will not be retrieved.
-//
-// > **Warning:** All arguments including `secret` will be stored in the raw
-// state as plain-text.
+// > **Warning:** On import, the `secret` value will not be retrieved.
 //
 // ## Example Usage
 // ### Storage Hmac Key

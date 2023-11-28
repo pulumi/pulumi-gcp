@@ -16,10 +16,6 @@ namespace Pulumi.Gcp.Sql
     /// contains no data, requires no configuration or maintenance, and does not
     /// affect billing. You cannot update the source representation instance.
     /// 
-    /// &gt; **Warning:** All arguments including the following potentially sensitive
-    /// values will be stored in the raw state as plain text: `on_premises_configuration.password`.
-    /// Read more about sensitive data in state.
-    /// 
     /// ## Example Usage
     /// ### Sql Source Representation Instance Basic
     /// 

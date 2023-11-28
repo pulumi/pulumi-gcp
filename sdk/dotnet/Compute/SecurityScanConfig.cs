@@ -18,8 +18,6 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Using Cloud Security Scanner](https://cloud.google.com/security-scanner/docs/scanning)
     /// 
-    /// &gt; **Warning:** All arguments including `authentication.google_account.password` and `authentication.custom_account.password` will be stored in the raw state as plain-text.
-    /// 
     /// ## Example Usage
     /// ### Scan Config Basic
     /// 
