@@ -17,9 +17,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Setting up IAP Client](https://cloud.google.com/iap/docs/authentication-howto)
  *
- * > **Warning:** All arguments including `secret` will be stored in the raw
- * state as plain-text.
- *
  * ## Example Usage
  * ### Iap Client
  *

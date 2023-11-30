@@ -18,10 +18,6 @@ import * as utilities from "../utilities";
  * > **Note:** Ask your Google Cloud account team to request access to workforce identity federation for your
  * billing/quota project. The account team notifies you when the project is granted access.
  *
- * > **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `oidc.client_secret.value.plain_text`.
- * Read more about sensitive data in state.
- *
  * ## Example Usage
  * ### Iam Workforce Pool Provider Saml Basic
  *

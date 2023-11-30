@@ -13,10 +13,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
  *
- * > **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `trustHandshakeSecret`.
- * Read more about sensitive data in state.
- *
  * ## Example Usage
  * ### Active Directory Domain Trust Basic
  *
