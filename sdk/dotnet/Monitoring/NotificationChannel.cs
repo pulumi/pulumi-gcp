@@ -34,9 +34,6 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
     ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
     /// 
-    /// &gt; **Warning:** All arguments including `sensitive_labels.auth_token`, `sensitive_labels.password`, and `sensitive_labels.service_key` will be stored in the raw
-    /// state as plain-text.
-    /// 
     /// ## Example Usage
     /// ### Notification Channel Basic
     /// 
