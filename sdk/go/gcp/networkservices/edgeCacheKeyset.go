@@ -19,10 +19,6 @@ import (
 // * How-to Guides
 //   - [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
 //
-// > **Warning:** All arguments including the following potentially sensitive
-// values will be stored in the raw state as plain text: `public_key.public_key.value`.
-// Read more about sensitive data in state.
-//
 // ## Example Usage
 // ### Network Services Edge Cache Keyset Basic
 //

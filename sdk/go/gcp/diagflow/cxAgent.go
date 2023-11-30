@@ -20,10 +20,6 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/dialogflow/cx/docs)
 //
-// > **Warning:** All arguments including the following potentially sensitive
-// values will be stored in the raw state as plain text: `git_integration_settings.github_settings.access_token`.
-// Read more about sensitive data in state.
-//
 // ## Example Usage
 // ### Dialogflowcx Agent Full
 //

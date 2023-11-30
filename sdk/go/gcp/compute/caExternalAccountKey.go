@@ -27,10 +27,6 @@ import (
 // The EAB secret is invalidated if you don't use it within 7 days.
 // The ACME account registered by using an EAB secret has no expiration.
 //
-// > **Warning:** All arguments including the following potentially sensitive
-// values will be stored in the raw state as plain text: `keyId`, `b64MacKey`.
-// Read more about sensitive data in state.
-//
 // ## Example Usage
 // ### Public Ca External Account Key
 //
