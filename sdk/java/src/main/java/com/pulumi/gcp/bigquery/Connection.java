@@ -29,10 +29,6 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
  * 
- * &gt; **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `cloud_sql.credential.password`.
- * Read more about sensitive data in state.
- * 
  * ## Example Usage
  * ### Bigquery Connection Cloud Resource
  * ```java

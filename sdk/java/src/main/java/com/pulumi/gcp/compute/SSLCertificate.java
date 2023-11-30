@@ -27,9 +27,6 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
  * 
- * &gt; **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
- * state as plain-text.
- * 
  * ## Example Usage
  * ### Ssl Certificate Basic
  * ```java

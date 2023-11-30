@@ -32,10 +32,6 @@ import javax.annotation.Nullable;
  * The EAB secret is invalidated if you don&#39;t use it within 7 days.
  * The ACME account registered by using an EAB secret has no expiration.
  * 
- * &gt; **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `key_id`, `b64_mac_key`.
- * Read more about sensitive data in state.
- * 
  * ## Example Usage
  * ### Public Ca External Account Key
  * ```java

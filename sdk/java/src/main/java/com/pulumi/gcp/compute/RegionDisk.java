@@ -44,9 +44,6 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Adding or Resizing Regional Persistent Disks](https://cloud.google.com/compute/docs/disks/regional-persistent-disk)
  * 
- * &gt; **Warning:** All arguments including `disk_encryption_key.raw_key` will be stored in the raw
- * state as plain-text.
- * 
  * ## Example Usage
  * ### Region Disk Basic
  * ```java

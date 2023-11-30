@@ -34,10 +34,6 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
  * 
- * &gt; **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `cluster_ca_certificate`.
- * Read more about sensitive data in state.
- * 
  * ## Example Usage
  * ### Edgecontainer Cluster
  * ```java
