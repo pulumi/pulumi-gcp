@@ -232,12 +232,6 @@ class HmacKey(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
 
-        > **Warning:** All arguments including the `secret` value will be stored in the raw
-        state as plain-text. On import, the `secret` value will not be retrieved.
-
-        > **Warning:** All arguments including `secret` will be stored in the raw
-        state as plain-text.
-
         ## Example Usage
         ### Storage Hmac Key
 
@@ -303,12 +297,6 @@ class HmacKey(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/storage/docs/authentication/managing-hmackeys)
-
-        > **Warning:** All arguments including the `secret` value will be stored in the raw
-        state as plain-text. On import, the `secret` value will not be retrieved.
-
-        > **Warning:** All arguments including `secret` will be stored in the raw
-        state as plain-text.
 
         ## Example Usage
         ### Storage Hmac Key

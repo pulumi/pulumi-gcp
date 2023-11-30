@@ -347,10 +347,6 @@ class TrustConfig(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
 
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `trust_stores.trust_stores.trust_anchors.trust_anchors.pem_certificate`, `trust_stores.trust_stores.intermediate_cas.intermediate_cas.pem_certificate`.
-        Read more about sensitive data in state.
-
         ## Example Usage
         ### Certificate Manager Trust Config
 
@@ -429,10 +425,6 @@ class TrustConfig(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.trustConfigs/create)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
-
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `trust_stores.trust_stores.trust_anchors.trust_anchors.pem_certificate`, `trust_stores.trust_stores.intermediate_cas.intermediate_cas.pem_certificate`.
-        Read more about sensitive data in state.
 
         ## Example Usage
         ### Certificate Manager Trust Config

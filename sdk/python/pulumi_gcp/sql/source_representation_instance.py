@@ -466,10 +466,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         contains no data, requires no configuration or maintenance, and does not
         affect billing. You cannot update the source representation instance.
 
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `on_premises_configuration.password`.
-        Read more about sensitive data in state.
-
         ## Example Usage
         ### Sql Source Representation Instance Basic
 
@@ -561,10 +557,6 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         Cloud Console and appears the same as a regular Cloud SQL instance, but it
         contains no data, requires no configuration or maintenance, and does not
         affect billing. You cannot update the source representation instance.
-
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `on_premises_configuration.password`.
-        Read more about sensitive data in state.
 
         ## Example Usage
         ### Sql Source Representation Instance Basic
