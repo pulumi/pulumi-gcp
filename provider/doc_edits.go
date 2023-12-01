@@ -7,9 +7,10 @@ import (
 )
 
 func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
-	var result = append(defaults, fixupEffectiveLabels)
-	result = append(result, removeSecretsInPlainTextNote)
-	return result
+	return append(defaults,
+		fixupEffectiveLabels,
+		removeSecretsInPlainTextNote,
+	)
 }
 
 const effectiveLabels = `including the labels configured through Terraform`
@@ -33,7 +34,7 @@ var removeSecretsInPlainTextNote = tfbridge.DocsEdit{
 	Path: "*",
 	Edit: func(path string, content []byte) ([]byte, error) {
 		for _, r := range secretsInPlainTextNoteRegexps {
-			content = r.ReplaceAllLiteral(content, []byte(""))
+			content = r.ReplaceAllLiteral(content, nil)
 		}
 		return content, nil
 	},

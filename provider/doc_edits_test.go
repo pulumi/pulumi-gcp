@@ -8,6 +8,7 @@ import (
 )
 
 func TestEffectiveLabels(t *testing.T) {
+	t.Parallel()
 	tests := []struct{ text, expected string }{
 		{
 			"including the labels configured through Terraform",
