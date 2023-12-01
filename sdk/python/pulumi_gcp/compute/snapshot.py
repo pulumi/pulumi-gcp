@@ -662,9 +662,6 @@ class Snapshot(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
 
-        > **Warning:** All arguments including `snapshot_encryption_key.raw_key` and `source_disk_encryption_key.raw_key` will be stored in the raw
-        state as plain-text.
-
         ## Example Usage
         ### Snapshot Basic
 
@@ -802,9 +799,6 @@ class Snapshot(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
-
-        > **Warning:** All arguments including `snapshot_encryption_key.raw_key` and `source_disk_encryption_key.raw_key` will be stored in the raw
-        state as plain-text.
 
         ## Example Usage
         ### Snapshot Basic

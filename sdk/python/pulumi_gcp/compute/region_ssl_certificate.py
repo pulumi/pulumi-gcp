@@ -409,9 +409,6 @@ class RegionSslCertificate(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
 
-        > **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
-        state as plain-text.
-
         ## Example Usage
         ### Region Ssl Certificate Basic
 
@@ -526,9 +523,6 @@ class RegionSslCertificate(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSslCertificates)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
-
-        > **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
-        state as plain-text.
 
         ## Example Usage
         ### Region Ssl Certificate Basic

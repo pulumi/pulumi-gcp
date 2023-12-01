@@ -16,10 +16,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
  *
- * > **Warning:** All arguments including the following potentially sensitive
- * values will be stored in the raw state as plain text: `sensitive_params.secret_access_key`.
- * Read more about sensitive data in state.
- *
  * ## Example Usage
  * ### Bigquerydatatransfer Config Scheduled Query
  *

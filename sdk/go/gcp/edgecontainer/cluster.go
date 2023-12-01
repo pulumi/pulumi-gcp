@@ -20,10 +20,6 @@ import (
 // * How-to Guides
 //   - [Create and manage clusters](https://cloud.google.com/distributed-cloud/edge/latest/docs/clusters)
 //
-// > **Warning:** All arguments including the following potentially sensitive
-// values will be stored in the raw state as plain text: `clusterCaCertificate`.
-// Read more about sensitive data in state.
-//
 // ## Example Usage
 // ### Edgecontainer Cluster
 //

@@ -9,8 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
  *
- * > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
- *
  * ## Import
  *
  * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g. * `{{project_id}}/{{instance}}/{{host}}/{{name}}` SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g. * `{{project_id}}/{{instance}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NAME_HERE using one of the formats above. For exampletf MySQL database import {

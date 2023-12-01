@@ -18,10 +18,6 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// * How-to Guides
     ///     * [Database Migration](https://cloud.google.com/database-migration/docs/)
     /// 
-    /// &gt; **Warning:** All arguments including the following potentially sensitive
-    /// values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `oracle.password`, `oracle.ssl.client_key`, `oracle.ssl.client_certificate`, `oracle.ssl.ca_certificate`, `oracle.forward_ssh_connectivity.password`, `oracle.forward_ssh_connectivity.private_key`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
-    /// Read more about sensitive data in state.
-    /// 
     /// ## Example Usage
     /// ### Database Migration Service Connection Profile Cloudsql
     /// 

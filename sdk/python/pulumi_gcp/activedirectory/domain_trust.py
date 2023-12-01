@@ -332,10 +332,6 @@ class DomainTrust(pulumi.CustomResource):
         * How-to Guides
             * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
 
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `trust_handshake_secret`.
-        Read more about sensitive data in state.
-
         ## Example Usage
         ### Active Directory Domain Trust Basic
 
@@ -409,10 +405,6 @@ class DomainTrust(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains/attachTrust)
         * How-to Guides
             * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
-
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `trust_handshake_secret`.
-        Read more about sensitive data in state.
 
         ## Example Usage
         ### Active Directory Domain Trust Basic

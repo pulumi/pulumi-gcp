@@ -456,10 +456,6 @@ class Connection(pulumi.CustomResource):
         * How-to Guides
             * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
 
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `cloud_sql.credential.password`.
-        Read more about sensitive data in state.
-
         ## Example Usage
         ### Bigquery Connection Cloud Resource
 
@@ -676,10 +672,6 @@ class Connection(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1/projects.locations.connections/create)
         * How-to Guides
             * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
-
-        > **Warning:** All arguments including the following potentially sensitive
-        values will be stored in the raw state as plain text: `cloud_sql.credential.password`.
-        Read more about sensitive data in state.
 
         ## Example Usage
         ### Bigquery Connection Cloud Resource
