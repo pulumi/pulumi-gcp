@@ -28,10 +28,10 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     trustStores: [{
  *         trustAnchors: [{
- *             pemCertificate: fs.readFileSync("test-fixtures/cert.pem"),
+ *             pemCertificate: fs.readFileSync("test-fixtures/cert.pem", "utf8"),
  *         }],
  *         intermediateCas: [{
- *             pemCertificate: fs.readFileSync("test-fixtures/cert.pem"),
+ *             pemCertificate: fs.readFileSync("test-fixtures/cert.pem", "utf8"),
  *         }],
  *     }],
  *     labels: {

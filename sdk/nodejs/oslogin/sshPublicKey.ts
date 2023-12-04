@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * const me = gcp.organizations.getClientOpenIdUserInfo({});
  * const cache = new gcp.oslogin.SshPublicKey("cache", {
  *     user: me.then(me => me.email),
- *     key: fs.readFileSync("path/to/id_rsa.pub"),
+ *     key: fs.readFileSync("path/to/id_rsa.pub", "utf8"),
  * });
  * ```
  *

@@ -341,7 +341,7 @@ namespace Pulumi.Gcp.Compute
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "gcp:compute/autoscalar:Autoscalar"},
+                    new global::Pulumi.Alias { Type = "gcp:compute/autoscalar:Autoscalar" },
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
