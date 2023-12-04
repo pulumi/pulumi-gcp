@@ -151,8 +151,8 @@ import * as utilities from "../utilities";
  *     description: "Regional cert",
  *     location: "us-central1",
  *     selfManaged: {
- *         pemCertificate: fs.readFileSync("test-fixtures/cert.pem"),
- *         pemPrivateKey: fs.readFileSync("test-fixtures/private-key.pem"),
+ *         pemCertificate: fs.readFileSync("test-fixtures/cert.pem", "utf8"),
+ *         pemPrivateKey: fs.readFileSync("test-fixtures/private-key.pem", "utf8"),
  *     },
  * });
  * ```

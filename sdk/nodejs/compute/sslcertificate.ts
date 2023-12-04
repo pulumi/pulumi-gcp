@@ -26,8 +26,8 @@ import * as utilities from "../utilities";
  * const _default = new gcp.compute.SSLCertificate("default", {
  *     namePrefix: "my-certificate-",
  *     description: "a description",
- *     privateKey: fs.readFileSync("path/to/private.key"),
- *     certificate: fs.readFileSync("path/to/certificate.crt"),
+ *     privateKey: fs.readFileSync("path/to/private.key", "utf8"),
+ *     certificate: fs.readFileSync("path/to/certificate.crt", "utf8"),
  * });
  * ```
  * ### Ssl Certificate Random Provider
@@ -46,8 +46,8 @@ import * as utilities from "../utilities";
  *
  * // You may also want to control name generation explicitly:
  * const _default = new gcp.compute.SSLCertificate("default", {
- *     privateKey: fs.readFileSync("path/to/private.key"),
- *     certificate: fs.readFileSync("path/to/certificate.crt"),
+ *     privateKey: fs.readFileSync("path/to/private.key", "utf8"),
+ *     certificate: fs.readFileSync("path/to/certificate.crt", "utf8"),
  * });
  * const certificate = new random.RandomId("certificate", {
  *     byteLength: 4,
