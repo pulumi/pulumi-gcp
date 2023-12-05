@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *         signRequest: true,
  *         ssoUrl: "https://example.com",
  *         idpCertificates: [{
- *             x509Certificate: fs.readFileSync("test-fixtures/rsa_cert.pem"),
+ *             x509Certificate: fs.readFileSync("test-fixtures/rsa_cert.pem", "utf8"),
  *         }],
  *     },
  *     spConfig: {

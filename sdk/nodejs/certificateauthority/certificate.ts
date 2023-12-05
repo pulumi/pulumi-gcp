@@ -138,7 +138,7 @@ import * as utilities from "../utilities";
  *     pool: defaultCaPool.name,
  *     certificateAuthority: defaultAuthority.certificateAuthorityId,
  *     lifetime: "860s",
- *     pemCsr: fs.readFileSync("test-fixtures/rsa_csr.pem"),
+ *     pemCsr: fs.readFileSync("test-fixtures/rsa_csr.pem", "utf8"),
  *     certificateTemplate: defaultCertificateTemplate.id,
  * });
  * ```
@@ -194,7 +194,7 @@ import * as utilities from "../utilities";
  *     pool: defaultCaPool.name,
  *     certificateAuthority: defaultAuthority.certificateAuthorityId,
  *     lifetime: "860s",
- *     pemCsr: fs.readFileSync("test-fixtures/rsa_csr.pem"),
+ *     pemCsr: fs.readFileSync("test-fixtures/rsa_csr.pem", "utf8"),
  * });
  * ```
  * ### Privateca Certificate No Authority

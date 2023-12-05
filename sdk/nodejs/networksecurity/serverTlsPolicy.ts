@@ -103,10 +103,10 @@ import * as utilities from "../utilities";
  *     location: "global",
  *     trustStores: [{
  *         trustAnchors: [{
- *             pemCertificate: fs.readFileSync("test-fixtures/ca_cert.pem"),
+ *             pemCertificate: fs.readFileSync("test-fixtures/ca_cert.pem", "utf8"),
  *         }],
  *         intermediateCas: [{
- *             pemCertificate: fs.readFileSync("test-fixtures/ca_cert.pem"),
+ *             pemCertificate: fs.readFileSync("test-fixtures/ca_cert.pem", "utf8"),
  *         }],
  *     }],
  *     labels: {

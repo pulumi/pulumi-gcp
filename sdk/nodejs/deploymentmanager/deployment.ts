@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const deployment = new gcp.deploymentmanager.Deployment("deployment", {
  *     target: {
  *         config: {
- *             content: fs.readFileSync("path/to/config.yml"),
+ *             content: fs.readFileSync("path/to/config.yml", "utf8"),
  *         },
  *     },
  *     labels: [{
