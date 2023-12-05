@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.ServiceAccount
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "gcp:serviceAccount/account:Account"},
+                    new global::Pulumi.Alias { Type = "gcp:serviceAccount/account:Account" },
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

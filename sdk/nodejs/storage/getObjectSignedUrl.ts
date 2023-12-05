@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     contentMd5: "pRviqwS4c4OTJRTe03FD1w==",
  *     contentType: "text/plain",
  *     duration: "2d",
- *     credentials: fs.readFileSync("path/to/credentials.json"),
+ *     credentials: fs.readFileSync("path/to/credentials.json", "utf8"),
  *     extensionHeaders: {
  *         "x-goog-if-generation-match": "1",
  *     },
@@ -152,7 +152,7 @@ export interface GetObjectSignedUrlResult {
  *     contentMd5: "pRviqwS4c4OTJRTe03FD1w==",
  *     contentType: "text/plain",
  *     duration: "2d",
- *     credentials: fs.readFileSync("path/to/credentials.json"),
+ *     credentials: fs.readFileSync("path/to/credentials.json", "utf8"),
  *     extensionHeaders: {
  *         "x-goog-if-generation-match": "1",
  *     },

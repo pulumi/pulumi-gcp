@@ -164,7 +164,7 @@ namespace Pulumi.Gcp.Compute
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "gcp:compute/mangedSslCertificate:MangedSslCertificate"},
+                    new global::Pulumi.Alias { Type = "gcp:compute/mangedSslCertificate:MangedSslCertificate" },
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);

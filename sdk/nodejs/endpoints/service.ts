@@ -19,12 +19,12 @@ import * as utilities from "../utilities";
  * const openapiService = new gcp.endpoints.Service("openapiService", {
  *     serviceName: "api-name.endpoints.project-id.cloud.goog",
  *     project: "project-id",
- *     openapiConfig: fs.readFileSync("openapi_spec.yml"),
+ *     openapiConfig: fs.readFileSync("openapi_spec.yml", "utf8"),
  * });
  * const grpcService = new gcp.endpoints.Service("grpcService", {
  *     serviceName: "api-name.endpoints.project-id.cloud.goog",
  *     project: "project-id",
- *     grpcConfig: fs.readFileSync("service_spec.yml"),
+ *     grpcConfig: fs.readFileSync("service_spec.yml", "utf8"),
  *     protocOutputBase64: Buffer.from(fs.readFileSync("compiled_descriptor_file.pb"), 'binary').toString('base64'),
  * });
  * ```

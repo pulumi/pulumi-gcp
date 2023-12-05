@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * });
  * const private_key_secret_version = new gcp.secretmanager.SecretVersion("private-key-secret-version", {
  *     secret: private_key_secret.id,
- *     secretData: fs.readFileSync("private-key.pem"),
+ *     secretData: fs.readFileSync("private-key.pem", "utf8"),
  * });
  * const webhook_secret_secret = new gcp.secretmanager.Secret("webhook-secret-secret", {
  *     secretId: "github-token-secret",
@@ -85,7 +85,7 @@ import * as utilities from "../utilities";
  * });
  * const github_token_secret_version = new gcp.secretmanager.SecretVersion("github-token-secret-version", {
  *     secret: github_token_secret.id,
- *     secretData: fs.readFileSync("my-github-token.txt"),
+ *     secretData: fs.readFileSync("my-github-token.txt", "utf8"),
  * });
  * const p4sa-secretAccessor = gcp.organizations.getIAMPolicy({
  *     bindings: [{

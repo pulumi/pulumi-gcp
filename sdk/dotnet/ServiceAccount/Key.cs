@@ -178,7 +178,7 @@ namespace Pulumi.Gcp.ServiceAccount
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "gcp:serviceAccount/key:Key"},
+                    new global::Pulumi.Alias { Type = "gcp:serviceAccount/key:Key" },
                 },
                 AdditionalSecretOutputs =
                 {
