@@ -22,6 +22,7 @@ import (
 	"testing"
 
 	"github.com/pulumi/providertest"
+	"github.com/pulumi/providertest/replay"
 )
 
 func TestDNSRecordSet(t *testing.T) {
@@ -106,4 +107,109 @@ func TestAutoExtractedPrograms(t *testing.T) {
 			))
 		})
 	}
+}
+
+// This used to panic in the Diff on unexpected bool label (expecting string), see
+// pulumi/pulumi-gcp#1377 for more details.
+func TestBucketBooleanLabel(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+	replay.ReplaySequence(t, providerServer(t), `
+	[
+	  {
+	    "method": "/pulumirpc.ResourceProvider/Configure",
+	    "request": {
+	      "variables": {
+		"gcp:config:project": "pulumi-development"
+	      },
+	      "args": {
+		"project": "pulumi-development",
+		"version": "7.2.1"
+	      },
+	      "acceptSecrets": true,
+	      "acceptResources": true,
+	      "sendsOldInputs": true,
+	      "sendsOldInputsToDelete": true
+	    },
+	    "response": {
+	      "supportsPreview": true
+	    }
+	  },
+	  {
+	    "method": "/pulumirpc.ResourceProvider/Diff",
+	    "request": {
+	      "id": "my-bucket-409ae4e",
+	      "urn": "urn:pulumi:dev::gcp_bucket_python::gcp:storage/bucket:Bucket::my-bucket",
+	      "olds": {
+		"__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":600000000000,\"read\":240000000000,\"update\":240000000000}}",
+		"autoclass": null,
+		"cors": [],
+		"customPlacementConfig": null,
+		"defaultEventBasedHold": false,
+		"encryption": null,
+		"forceDestroy": false,
+		"id": "my-bucket-409ae4e",
+		"labels": {
+		  "bad-bool": "1"
+		},
+		"lifecycleRules": [],
+		"location": "US",
+		"logging": null,
+		"name": "my-bucket-409ae4e",
+		"project": "pulumi-development",
+		"publicAccessPrevention": "inherited",
+		"requesterPays": false,
+		"retentionPolicy": null,
+		"selfLink": "https://www.googleapis.com/storage/v1/b/my-bucket-409ae4e",
+		"storageClass": "STANDARD",
+		"uniformBucketLevelAccess": false,
+		"url": "gs://my-bucket-409ae4e",
+		"versioning": null,
+		"website": null
+	      },
+	      "news": {
+		"__defaults": [
+		  "forceDestroy",
+		  "name",
+		  "storageClass"
+		],
+		"forceDestroy": false,
+		"labels": {
+		  "__defaults": [],
+		  "bad-bool": true
+		},
+		"location": "US",
+		"name": "my-bucket-409ae4e",
+		"storageClass": "STANDARD"
+	      },
+	      "oldInputs": {
+		"__defaults": [
+		  "forceDestroy",
+		  "name",
+		  "storageClass"
+		],
+		"forceDestroy": false,
+		"labels": {
+		  "__defaults": [],
+		  "bad-bool": true
+		},
+		"location": "US",
+		"name": "my-bucket-409ae4e",
+		"storageClass": "STANDARD"
+	      }
+	    },
+	    "response": {
+	      "changes": "DIFF_SOME",
+	      "diffs": ["labels"],
+	      "stables": "*",
+	      "hasDetailedDiff": true,
+	      "detailedDiff": {
+		"labels.bad-bool": {
+		  "kind": "UPDATE"
+		}
+	      }
+	    }
+	  }
+	]`)
 }
