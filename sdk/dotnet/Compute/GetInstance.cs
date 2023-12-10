@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Compute
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// using Gcp = Pulumi.%[1]s;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Compute
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// using Gcp = Pulumi.%[1]s;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {

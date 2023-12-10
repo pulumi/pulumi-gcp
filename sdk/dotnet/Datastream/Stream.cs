@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.Datastream
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
+    /// using Gcp = Pulumi.%[1]s;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
     /// 
@@ -704,6 +705,7 @@ namespace Pulumi.Gcp.Datastream
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
+    /// using Gcp = Pulumi.%[1]s;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
     /// 

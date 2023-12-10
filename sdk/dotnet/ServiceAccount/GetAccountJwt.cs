@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// using System.Linq;
         /// using System.Text.Json;
         /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// using Gcp = Pulumi.%[1]s;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// using System.Linq;
         /// using System.Text.Json;
         /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
+        /// using Gcp = Pulumi.%[1]s;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {

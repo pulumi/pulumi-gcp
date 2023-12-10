@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
+    /// using Gcp = Pulumi.%[1]s;
     /// using Gcp = Pulumi.Gcp;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -110,6 +111,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
+    /// using Gcp = Pulumi.%[1]s;
     /// using Gcp = Pulumi.Gcp;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 

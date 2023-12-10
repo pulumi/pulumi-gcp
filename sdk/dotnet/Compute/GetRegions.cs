@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Compute
         /// using System.Linq;
         /// using System.Threading.Tasks;
         /// using Pulumi;
+        /// using Gcp = Pulumi.%[1]s;
         /// using Gcp = Pulumi.Gcp;
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
@@ -52,6 +53,7 @@ namespace Pulumi.Gcp.Compute
         /// using System.Linq;
         /// using System.Threading.Tasks;
         /// using Pulumi;
+        /// using Gcp = Pulumi.%[1]s;
         /// using Gcp = Pulumi.Gcp;
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
