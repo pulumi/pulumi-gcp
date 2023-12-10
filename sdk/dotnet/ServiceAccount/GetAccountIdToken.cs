@@ -74,8 +74,8 @@ namespace Pulumi.Gcp.ServiceAccount
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// using Http = Pulumi.Http;
+        /// using Gcp = Pulumi.%[1]s;
+        /// using Http = Pulumi.%[1]s;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
@@ -168,8 +168,8 @@ namespace Pulumi.Gcp.ServiceAccount
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// using Http = Pulumi.Http;
+        /// using Gcp = Pulumi.%[1]s;
+        /// using Http = Pulumi.%[1]s;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {

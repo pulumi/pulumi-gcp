@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
+    /// using Gcp = Pulumi.%[1]s;
     /// using Gcp = Pulumi.Gcp;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 

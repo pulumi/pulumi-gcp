@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Firebase
     /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
+    /// using Gcp = Pulumi.%[1]s;
     /// using Gcp = Pulumi.Gcp;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 

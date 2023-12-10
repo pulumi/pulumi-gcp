@@ -57,6 +57,7 @@ namespace Pulumi.Gcp.Organizations
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
+    /// using Gcp = Pulumi.%[1]s;
     /// using Gcp = Pulumi.Gcp;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
