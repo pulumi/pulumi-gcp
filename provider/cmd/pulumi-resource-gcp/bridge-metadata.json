@@ -4176,90 +4176,6 @@
                 "current": "gcp:cloudfunctions/functionIamPolicy:FunctionIamPolicy",
                 "majorVersion": 7
             },
-            "google_cloudiot_device": {
-                "current": "gcp:iot/device:Device",
-                "majorVersion": 6,
-                "fields": {
-                    "config": {
-                        "maxItemsOne": false
-                    },
-                    "credentials": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "public_key": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
-                    "gateway_config": {
-                        "maxItemsOne": true
-                    },
-                    "last_error_status": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "details": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "state": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "google_cloudiot_registry": {
-                "current": "gcp:iot/registry:Registry",
-                "majorVersion": 6,
-                "fields": {
-                    "credentials": {
-                        "maxItemsOne": false
-                    },
-                    "event_notification_configs": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "google_cloudiot_registry_iam_binding": {
-                "current": "gcp:iot/registryIamBinding:RegistryIamBinding",
-                "majorVersion": 6,
-                "fields": {
-                    "condition": {
-                        "maxItemsOne": true
-                    },
-                    "members": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "google_cloudiot_registry_iam_member": {
-                "current": "gcp:iot/registryIamMember:RegistryIamMember",
-                "majorVersion": 6,
-                "fields": {
-                    "condition": {
-                        "maxItemsOne": true
-                    }
-                }
-            },
-            "google_cloudiot_registry_iam_policy": {
-                "current": "gcp:iot/registryIamPolicy:RegistryIamPolicy",
-                "majorVersion": 6
-            },
-            "google_cloudiot_registry_legacy": {
-                "current": "gcp:kms/registry:Registry",
-                "majorVersion": 6,
-                "fields": {
-                    "credentials": {
-                        "maxItemsOne": false
-                    },
-                    "event_notification_configs": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
             "google_composer_environment": {
                 "current": "gcp:composer/environment:Environment",
                 "majorVersion": 7,
@@ -4380,12 +4296,12 @@
                 "majorVersion": 7
             },
             "google_compute_autoscaler": {
-                "current": "gcp:compute/autoscalar:Autoscalar",
+                "current": "gcp:compute/autoscaler:Autoscaler",
                 "past": [
                     {
                         "name": "gcp:compute/autoscalar:Autoscalar",
                         "inCodegen": true,
-                        "majorVersion": 6
+                        "majorVersion": 7
                     }
                 ],
                 "majorVersion": 7,
@@ -14840,10 +14756,6 @@
                 "current": "gcp:firebase/project:Project",
                 "majorVersion": 7
             },
-            "google_firebase_project_location": {
-                "current": "gcp:firebase/projectLocation:ProjectLocation",
-                "majorVersion": 6
-            },
             "google_firebase_storage_bucket": {
                 "current": "gcp:firebase/storageBucket:StorageBucket",
                 "majorVersion": 7
@@ -15030,75 +14942,6 @@
                         "maxItemsOne": true
                     }
                 }
-            },
-            "google_game_services_game_server_cluster": {
-                "current": "gcp:gameservices/gameServerCluster:GameServerCluster",
-                "majorVersion": 6,
-                "fields": {
-                    "connection_info": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "gke_cluster_reference": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "google_game_services_game_server_config": {
-                "current": "gcp:gameservices/gameServerConfig:GameServerConfig",
-                "majorVersion": 6,
-                "fields": {
-                    "fleet_configs": {
-                        "maxItemsOne": false
-                    },
-                    "scaling_configs": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "schedules": {
-                                    "maxItemsOne": false
-                                },
-                                "selectors": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "google_game_services_game_server_deployment": {
-                "current": "gcp:gameservices/gameServerDeployment:GameServerDeployment",
-                "majorVersion": 6
-            },
-            "google_game_services_game_server_deployment_rollout": {
-                "current": "gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout",
-                "majorVersion": 6,
-                "fields": {
-                    "game_server_config_overrides": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "realms_selector": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "realms": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "google_game_services_realm": {
-                "current": "gcp:gameservices/realm:Realm",
-                "majorVersion": 6
             },
             "google_gke_backup_backup_plan": {
                 "current": "gcp:gkebackup/backupPlan:BackupPlan",
@@ -23662,10 +23505,6 @@
                 "current": "gcp:cloudfunctions/getFunctionIamPolicy:getFunctionIamPolicy",
                 "majorVersion": 7
             },
-            "google_cloudiot_registry_iam_policy": {
-                "current": "gcp:iot/getRegistryIamPolicy:getRegistryIamPolicy",
-                "majorVersion": 6
-            },
             "google_composer_environment": {
                 "current": "gcp:composer/getEnvironment:getEnvironment",
                 "majorVersion": 7,
@@ -25619,11 +25458,9 @@
                     "key_signing_keys": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "digests": {
-                                        "maxItemsOne": false
-                                    }
+                            "fields": {
+                                "digests": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -25631,11 +25468,9 @@
                     "zone_signing_keys": {
                         "maxItemsOne": false,
                         "elem": {
-                            "elem": {
-                                "fields": {
-                                    "digests": {
-                                        "maxItemsOne": false
-                                    }
+                            "fields": {
+                                "digests": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -25766,29 +25601,6 @@
                 "fields": {
                     "folders": {
                         "maxItemsOne": false
-                    }
-                }
-            },
-            "google_game_services_game_server_deployment_rollout": {
-                "current": "gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout",
-                "majorVersion": 6,
-                "fields": {
-                    "game_server_config_overrides": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "realms_selector": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "realms": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             },
@@ -26090,9 +25902,6 @@
             "google_organization": {
                 "current": "gcp:organizations/getOrganization:getOrganization",
                 "majorVersion": 7
-            },
-            "google_organization_iam_policy": {
-                "current": "gcp:organizations/getIamPolicy:getIamPolicy"
             },
             "google_privateca_ca_pool_iam_policy": {
                 "current": "gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy",
@@ -27190,6 +26999,45 @@
             }
         }
     },
+    "auto-settings": {
+        "resources": {
+            "google_compute_autoscaler": {
+                "aliases": [
+                    "gcp:compute/autoscalar:Autoscalar"
+                ]
+            },
+            "google_gkeonprem_vmware_cluster": {
+                "maxItemsOneOverrides": {
+                    "vcenter": false
+                }
+            },
+            "google_service_account": {
+                "renames": [
+                    "gcp:serviceAccount/account:Account"
+                ]
+            },
+            "google_service_account_iam_binding": {
+                "renames": [
+                    "gcp:serviceAccount/iAMBinding:IAMBinding"
+                ]
+            },
+            "google_service_account_iam_member": {
+                "renames": [
+                    "gcp:serviceAccount/iAMMember:IAMMember"
+                ]
+            },
+            "google_service_account_iam_policy": {
+                "renames": [
+                    "gcp:serviceAccount/iAMPolicy:IAMPolicy"
+                ]
+            },
+            "google_service_account_key": {
+                "renames": [
+                    "gcp:serviceAccount/key:Key"
+                ]
+            }
+        }
+    },
     "mux": {
         "resources": {
             "gcp:accesscontextmanager/accessLevel:AccessLevel": 0,
@@ -27384,6 +27232,7 @@
             "gcp:composer/environment:Environment": 0,
             "gcp:compute/address:Address": 0,
             "gcp:compute/attachedDisk:AttachedDisk": 0,
+            "gcp:compute/autoscalar:Autoscalar": 0,
             "gcp:compute/autoscaler:Autoscaler": 0,
             "gcp:compute/backendBucket:BackendBucket": 0,
             "gcp:compute/backendBucketIamBinding:BackendBucketIamBinding": 0,
@@ -28467,6 +28316,7 @@
             "gcp:composer/environment:Environment": "google_composer_environment",
             "gcp:compute/address:Address": "google_compute_address",
             "gcp:compute/attachedDisk:AttachedDisk": "google_compute_attached_disk",
+            "gcp:compute/autoscalar:Autoscalar": "google_compute_autoscaler_legacy",
             "gcp:compute/autoscaler:Autoscaler": "google_compute_autoscaler",
             "gcp:compute/backendBucket:BackendBucket": "google_compute_backend_bucket",
             "gcp:compute/backendBucketIamBinding:BackendBucketIamBinding": "google_compute_backend_bucket_iam_binding",
@@ -33799,6 +33649,36 @@
                 "imageVersionId": "image_version_id",
                 "supportedPythonVersions": "supported_python_versions"
             },
+            "gcp:compute/AutoscalarAutoscalingPolicy:AutoscalarAutoscalingPolicy": {
+                "cooldownPeriod": "cooldown_period",
+                "cpuUtilization": "cpu_utilization",
+                "loadBalancingUtilization": "load_balancing_utilization",
+                "maxReplicas": "max_replicas",
+                "metrics": "metric",
+                "minReplicas": "min_replicas",
+                "scaleDownControl": "scale_down_control",
+                "scaleInControl": "scale_in_control",
+                "scalingSchedules": "scaling_schedules"
+            },
+            "gcp:compute/AutoscalarAutoscalingPolicyCpuUtilization:AutoscalarAutoscalingPolicyCpuUtilization": {
+                "predictiveMethod": "predictive_method"
+            },
+            "gcp:compute/AutoscalarAutoscalingPolicyMetric:AutoscalarAutoscalingPolicyMetric": {
+                "singleInstanceAssignment": "single_instance_assignment"
+            },
+            "gcp:compute/AutoscalarAutoscalingPolicyScaleDownControl:AutoscalarAutoscalingPolicyScaleDownControl": {
+                "maxScaledDownReplicas": "max_scaled_down_replicas",
+                "timeWindowSec": "time_window_sec"
+            },
+            "gcp:compute/AutoscalarAutoscalingPolicyScaleInControl:AutoscalarAutoscalingPolicyScaleInControl": {
+                "maxScaledInReplicas": "max_scaled_in_replicas",
+                "timeWindowSec": "time_window_sec"
+            },
+            "gcp:compute/AutoscalarAutoscalingPolicyScalingSchedule:AutoscalarAutoscalingPolicyScalingSchedule": {
+                "durationSec": "duration_sec",
+                "minRequiredReplicas": "min_required_replicas",
+                "timeZone": "time_zone"
+            },
             "gcp:compute/AutoscalerAutoscalingPolicy:AutoscalerAutoscalingPolicy": {
                 "cooldownPeriod": "cooldown_period",
                 "cpuUtilization": "cpu_utilization",
@@ -35665,6 +35545,11 @@
             },
             "gcp:compute/attachedDisk:AttachedDisk": {
                 "deviceName": "device_name"
+            },
+            "gcp:compute/autoscalar:Autoscalar": {
+                "autoscalingPolicy": "autoscaling_policy",
+                "creationTimestamp": "creation_timestamp",
+                "selfLink": "self_link"
             },
             "gcp:compute/autoscaler:Autoscaler": {
                 "autoscalingPolicy": "autoscaling_policy",
