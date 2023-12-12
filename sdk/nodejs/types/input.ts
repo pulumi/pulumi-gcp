@@ -12415,6 +12415,261 @@ export namespace composer {
 }
 
 export namespace compute {
+    export interface AutoscalarAutoscalingPolicy {
+        /**
+         * The number of seconds that the autoscaler should wait before it
+         * starts collecting information from a new instance. This prevents
+         * the autoscaler from collecting information when the instance is
+         * initializing, during which the collected usage would not be
+         * reliable. The default time autoscaler waits is 60 seconds.
+         * Virtual machine initialization times might vary because of
+         * numerous factors. We recommend that you test how long an
+         * instance may take to initialize. To do this, create an instance
+         * and time the startup process.
+         */
+        cooldownPeriod?: pulumi.Input<number>;
+        /**
+         * Defines the CPU utilization policy that allows the autoscaler to
+         * scale based on the average CPU utilization of a managed instance
+         * group.
+         * Structure is documented below.
+         */
+        cpuUtilization?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyCpuUtilization>;
+        /**
+         * Configuration parameters of autoscaling based on a load balancer.
+         * Structure is documented below.
+         */
+        loadBalancingUtilization?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyLoadBalancingUtilization>;
+        /**
+         * The maximum number of instances that the autoscaler can scale up
+         * to. This is required when creating or updating an autoscaler. The
+         * maximum number of replicas should not be lower than minimal number
+         * of replicas.
+         */
+        maxReplicas: pulumi.Input<number>;
+        /**
+         * Configuration parameters of autoscaling based on a custom metric.
+         * Structure is documented below.
+         */
+        metrics?: pulumi.Input<pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyMetric>[]>;
+        /**
+         * The minimum number of replicas that the autoscaler can scale down
+         * to. This cannot be less than 0. If not provided, autoscaler will
+         * choose a default value depending on maximum number of instances
+         * allowed.
+         */
+        minReplicas: pulumi.Input<number>;
+        /**
+         * Defines operating mode for this policy.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * Defines scale down controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         * Structure is documented below.
+         */
+        scaleDownControl?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyScaleDownControl>;
+        /**
+         * Defines scale in controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         * Structure is documented below.
+         */
+        scaleInControl?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyScaleInControl>;
+        /**
+         * Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+         * Structure is documented below.
+         */
+        scalingSchedules?: pulumi.Input<pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyScalingSchedule>[]>;
+    }
+
+    export interface AutoscalarAutoscalingPolicyCpuUtilization {
+        /**
+         * Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+         * - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+         * - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+         */
+        predictiveMethod?: pulumi.Input<string>;
+        /**
+         * The target CPU utilization that the autoscaler should maintain.
+         * Must be a float value in the range (0, 1]. If not specified, the
+         * default is 0.6.
+         * If the CPU level is below the target utilization, the autoscaler
+         * scales down the number of instances until it reaches the minimum
+         * number of instances you specified or until the average CPU of
+         * your instances reaches the target utilization.
+         * If the average CPU is above the target utilization, the autoscaler
+         * scales up until it reaches the maximum number of instances you
+         * specified or until the average utilization reaches the target
+         * utilization.
+         */
+        target: pulumi.Input<number>;
+    }
+
+    export interface AutoscalarAutoscalingPolicyLoadBalancingUtilization {
+        /**
+         * Fraction of backend capacity utilization (set in HTTP(s) load
+         * balancing configuration) that autoscaler should maintain. Must
+         * be a positive float value. If not defined, the default is 0.8.
+         */
+        target: pulumi.Input<number>;
+    }
+
+    export interface AutoscalarAutoscalingPolicyMetric {
+        /**
+         * A filter string to be used as the filter string for
+         * a Stackdriver Monitoring TimeSeries.list API call.
+         * This filter is used to select a specific TimeSeries for
+         * the purpose of autoscaling and to determine whether the metric
+         * is exporting per-instance or per-group data.
+         * You can only use the AND operator for joining selectors.
+         * You can only use direct equality comparison operator (=) without
+         * any functions for each selector.
+         * You can specify the metric in both the filter string and in the
+         * metric field. However, if specified in both places, the metric must
+         * be identical.
+         * The monitored resource type determines what kind of values are
+         * expected for the metric. If it is a gce_instance, the autoscaler
+         * expects the metric to include a separate TimeSeries for each
+         * instance in a group. In such a case, you cannot filter on resource
+         * labels.
+         * If the resource type is any other value, the autoscaler expects
+         * this metric to contain values that apply to the entire autoscaled
+         * instance group and resource label filtering can be performed to
+         * point autoscaler at the correct TimeSeries to scale upon.
+         * This is called a per-group metric for the purpose of autoscaling.
+         * If not specified, the type defaults to gce_instance.
+         * You should provide a filter that is selective enough to pick just
+         * one TimeSeries for the autoscaled group or for each of the instances
+         * (if you are using gceInstance resource type). If multiple
+         * TimeSeries are returned upon the query execution, the autoscaler
+         * will sum their respective values to obtain its scaling value.
+         */
+        filter?: pulumi.Input<string>;
+        /**
+         * The identifier (type) of the Stackdriver Monitoring metric.
+         * The metric cannot have negative values.
+         * The metric must have a value type of INT64 or DOUBLE.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * If scaling is based on a per-group metric value that represents the
+         * total amount of work to be done or resource usage, set this value to
+         * an amount assigned for a single instance of the scaled group.
+         * The autoscaler will keep the number of instances proportional to the
+         * value of this metric, the metric itself should not change value due
+         * to group resizing.
+         * For example, a good metric to use with the target is
+         * `pubsub.googleapis.com/subscription/num_undelivered_messages`
+         * or a custom metric exporting the total number of requests coming to
+         * your instances.
+         * A bad example would be a metric exporting an average or median
+         * latency, since this value can't include a chunk assignable to a
+         * single instance, it could be better used with utilizationTarget
+         * instead.
+         */
+        singleInstanceAssignment?: pulumi.Input<number>;
+        /**
+         * The target value of the metric that autoscaler should
+         * maintain. This must be a positive value. A utilization
+         * metric scales number of virtual machines handling requests
+         * to increase or decrease proportionally to the metric.
+         * For example, a good metric to use as a utilizationTarget is
+         * www.googleapis.com/compute/instance/network/received_bytes_count.
+         * The autoscaler will work to keep this value constant for each
+         * of the instances.
+         */
+        target?: pulumi.Input<number>;
+        /**
+         * Defines how target utilization value is expressed for a
+         * Stackdriver Monitoring metric.
+         * Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface AutoscalarAutoscalingPolicyScaleDownControl {
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        maxScaledDownReplicas?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas>;
+        /**
+         * How long back autoscaling should look when computing recommendations
+         * to include directives regarding slower scale down, as described above.
+         */
+        timeWindowSec?: pulumi.Input<number>;
+    }
+
+    export interface AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
+        /**
+         * Specifies a fixed number of VM instances. This must be a positive
+         * integer.
+         */
+        fixed?: pulumi.Input<number>;
+        /**
+         * Specifies a percentage of instances between 0 to 100%, inclusive.
+         * For example, specify 80 for 80%.
+         */
+        percent?: pulumi.Input<number>;
+    }
+
+    export interface AutoscalarAutoscalingPolicyScaleInControl {
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        maxScaledInReplicas?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas>;
+        /**
+         * How long back autoscaling should look when computing recommendations
+         * to include directives regarding slower scale down, as described above.
+         */
+        timeWindowSec?: pulumi.Input<number>;
+    }
+
+    export interface AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas {
+        /**
+         * Specifies a fixed number of VM instances. This must be a positive
+         * integer.
+         */
+        fixed?: pulumi.Input<number>;
+        /**
+         * Specifies a percentage of instances between 0 to 100%, inclusive.
+         * For example, specify 80 for 80%.
+         */
+        percent?: pulumi.Input<number>;
+    }
+
+    export interface AutoscalarAutoscalingPolicyScalingSchedule {
+        /**
+         * An optional description of this resource.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+         */
+        durationSec: pulumi.Input<number>;
+        /**
+         * Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+         */
+        minRequiredReplicas: pulumi.Input<number>;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+         */
+        schedule: pulumi.Input<string>;
+        /**
+         * The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         */
+        timeZone?: pulumi.Input<string>;
+    }
+
     export interface AutoscalerAutoscalingPolicy {
         /**
          * The number of seconds that the autoscaler should wait before it

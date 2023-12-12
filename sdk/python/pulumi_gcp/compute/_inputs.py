@@ -10,6 +10,15 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AutoscalarAutoscalingPolicyArgs',
+    'AutoscalarAutoscalingPolicyCpuUtilizationArgs',
+    'AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs',
+    'AutoscalarAutoscalingPolicyMetricArgs',
+    'AutoscalarAutoscalingPolicyScaleDownControlArgs',
+    'AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs',
+    'AutoscalarAutoscalingPolicyScaleInControlArgs',
+    'AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs',
+    'AutoscalarAutoscalingPolicyScalingScheduleArgs',
     'AutoscalerAutoscalingPolicyArgs',
     'AutoscalerAutoscalingPolicyCpuUtilizationArgs',
     'AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs',
@@ -522,6 +531,780 @@ __all__ = [
     'URLMapPathMatcherRouteRuleUrlRedirectArgs',
     'URLMapTestArgs',
 ]
+
+@pulumi.input_type
+class AutoscalarAutoscalingPolicyArgs:
+    def __init__(__self__, *,
+                 max_replicas: pulumi.Input[int],
+                 min_replicas: pulumi.Input[int],
+                 cooldown_period: Optional[pulumi.Input[int]] = None,
+                 cpu_utilization: Optional[pulumi.Input['AutoscalarAutoscalingPolicyCpuUtilizationArgs']] = None,
+                 load_balancing_utilization: Optional[pulumi.Input['AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs']] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalarAutoscalingPolicyMetricArgs']]]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 scale_down_control: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlArgs']] = None,
+                 scale_in_control: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlArgs']] = None,
+                 scaling_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalarAutoscalingPolicyScalingScheduleArgs']]]] = None):
+        """
+        :param pulumi.Input[int] max_replicas: The maximum number of instances that the autoscaler can scale up
+               to. This is required when creating or updating an autoscaler. The
+               maximum number of replicas should not be lower than minimal number
+               of replicas.
+        :param pulumi.Input[int] min_replicas: The minimum number of replicas that the autoscaler can scale down
+               to. This cannot be less than 0. If not provided, autoscaler will
+               choose a default value depending on maximum number of instances
+               allowed.
+        :param pulumi.Input[int] cooldown_period: The number of seconds that the autoscaler should wait before it
+               starts collecting information from a new instance. This prevents
+               the autoscaler from collecting information when the instance is
+               initializing, during which the collected usage would not be
+               reliable. The default time autoscaler waits is 60 seconds.
+               Virtual machine initialization times might vary because of
+               numerous factors. We recommend that you test how long an
+               instance may take to initialize. To do this, create an instance
+               and time the startup process.
+        :param pulumi.Input['AutoscalarAutoscalingPolicyCpuUtilizationArgs'] cpu_utilization: Defines the CPU utilization policy that allows the autoscaler to
+               scale based on the average CPU utilization of a managed instance
+               group.
+               Structure is documented below.
+        :param pulumi.Input['AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs'] load_balancing_utilization: Configuration parameters of autoscaling based on a load balancer.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AutoscalarAutoscalingPolicyMetricArgs']]] metrics: Configuration parameters of autoscaling based on a custom metric.
+               Structure is documented below.
+        :param pulumi.Input[str] mode: Defines operating mode for this policy.
+        :param pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlArgs'] scale_down_control: Defines scale down controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events
+               Structure is documented below.
+        :param pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlArgs'] scale_in_control: Defines scale in controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AutoscalarAutoscalingPolicyScalingScheduleArgs']]] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "max_replicas", max_replicas)
+        pulumi.set(__self__, "min_replicas", min_replicas)
+        if cooldown_period is not None:
+            pulumi.set(__self__, "cooldown_period", cooldown_period)
+        if cpu_utilization is not None:
+            pulumi.set(__self__, "cpu_utilization", cpu_utilization)
+        if load_balancing_utilization is not None:
+            pulumi.set(__self__, "load_balancing_utilization", load_balancing_utilization)
+        if metrics is not None:
+            pulumi.set(__self__, "metrics", metrics)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if scale_down_control is not None:
+            pulumi.set(__self__, "scale_down_control", scale_down_control)
+        if scale_in_control is not None:
+            pulumi.set(__self__, "scale_in_control", scale_in_control)
+        if scaling_schedules is not None:
+            pulumi.set(__self__, "scaling_schedules", scaling_schedules)
+
+    @property
+    @pulumi.getter(name="maxReplicas")
+    def max_replicas(self) -> pulumi.Input[int]:
+        """
+        The maximum number of instances that the autoscaler can scale up
+        to. This is required when creating or updating an autoscaler. The
+        maximum number of replicas should not be lower than minimal number
+        of replicas.
+        """
+        return pulumi.get(self, "max_replicas")
+
+    @max_replicas.setter
+    def max_replicas(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_replicas", value)
+
+    @property
+    @pulumi.getter(name="minReplicas")
+    def min_replicas(self) -> pulumi.Input[int]:
+        """
+        The minimum number of replicas that the autoscaler can scale down
+        to. This cannot be less than 0. If not provided, autoscaler will
+        choose a default value depending on maximum number of instances
+        allowed.
+        """
+        return pulumi.get(self, "min_replicas")
+
+    @min_replicas.setter
+    def min_replicas(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_replicas", value)
+
+    @property
+    @pulumi.getter(name="cooldownPeriod")
+    def cooldown_period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of seconds that the autoscaler should wait before it
+        starts collecting information from a new instance. This prevents
+        the autoscaler from collecting information when the instance is
+        initializing, during which the collected usage would not be
+        reliable. The default time autoscaler waits is 60 seconds.
+        Virtual machine initialization times might vary because of
+        numerous factors. We recommend that you test how long an
+        instance may take to initialize. To do this, create an instance
+        and time the startup process.
+        """
+        return pulumi.get(self, "cooldown_period")
+
+    @cooldown_period.setter
+    def cooldown_period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cooldown_period", value)
+
+    @property
+    @pulumi.getter(name="cpuUtilization")
+    def cpu_utilization(self) -> Optional[pulumi.Input['AutoscalarAutoscalingPolicyCpuUtilizationArgs']]:
+        """
+        Defines the CPU utilization policy that allows the autoscaler to
+        scale based on the average CPU utilization of a managed instance
+        group.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cpu_utilization")
+
+    @cpu_utilization.setter
+    def cpu_utilization(self, value: Optional[pulumi.Input['AutoscalarAutoscalingPolicyCpuUtilizationArgs']]):
+        pulumi.set(self, "cpu_utilization", value)
+
+    @property
+    @pulumi.getter(name="loadBalancingUtilization")
+    def load_balancing_utilization(self) -> Optional[pulumi.Input['AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs']]:
+        """
+        Configuration parameters of autoscaling based on a load balancer.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "load_balancing_utilization")
+
+    @load_balancing_utilization.setter
+    def load_balancing_utilization(self, value: Optional[pulumi.Input['AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs']]):
+        pulumi.set(self, "load_balancing_utilization", value)
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalarAutoscalingPolicyMetricArgs']]]]:
+        """
+        Configuration parameters of autoscaling based on a custom metric.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metrics")
+
+    @metrics.setter
+    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalarAutoscalingPolicyMetricArgs']]]]):
+        pulumi.set(self, "metrics", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines operating mode for this policy.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="scaleDownControl")
+    def scale_down_control(self) -> Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlArgs']]:
+        """
+        Defines scale down controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scale_down_control")
+
+    @scale_down_control.setter
+    def scale_down_control(self, value: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlArgs']]):
+        pulumi.set(self, "scale_down_control", value)
+
+    @property
+    @pulumi.getter(name="scaleInControl")
+    def scale_in_control(self) -> Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlArgs']]:
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scale_in_control")
+
+    @scale_in_control.setter
+    def scale_in_control(self, value: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlArgs']]):
+        pulumi.set(self, "scale_in_control", value)
+
+    @property
+    @pulumi.getter(name="scalingSchedules")
+    def scaling_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalarAutoscalingPolicyScalingScheduleArgs']]]]:
+        """
+        Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scaling_schedules")
+
+    @scaling_schedules.setter
+    def scaling_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalarAutoscalingPolicyScalingScheduleArgs']]]]):
+        pulumi.set(self, "scaling_schedules", value)
+
+
+@pulumi.input_type
+class AutoscalarAutoscalingPolicyCpuUtilizationArgs:
+    def __init__(__self__, *,
+                 target: pulumi.Input[float],
+                 predictive_method: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[float] target: The target CPU utilization that the autoscaler should maintain.
+               Must be a float value in the range (0, 1]. If not specified, the
+               default is 0.6.
+               If the CPU level is below the target utilization, the autoscaler
+               scales down the number of instances until it reaches the minimum
+               number of instances you specified or until the average CPU of
+               your instances reaches the target utilization.
+               If the average CPU is above the target utilization, the autoscaler
+               scales up until it reaches the maximum number of instances you
+               specified or until the average utilization reaches the target
+               utilization.
+        :param pulumi.Input[str] predictive_method: Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+               - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+               - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+        """
+        pulumi.set(__self__, "target", target)
+        if predictive_method is not None:
+            pulumi.set(__self__, "predictive_method", predictive_method)
+
+    @property
+    @pulumi.getter
+    def target(self) -> pulumi.Input[float]:
+        """
+        The target CPU utilization that the autoscaler should maintain.
+        Must be a float value in the range (0, 1]. If not specified, the
+        default is 0.6.
+        If the CPU level is below the target utilization, the autoscaler
+        scales down the number of instances until it reaches the minimum
+        number of instances you specified or until the average CPU of
+        your instances reaches the target utilization.
+        If the average CPU is above the target utilization, the autoscaler
+        scales up until it reaches the maximum number of instances you
+        specified or until the average utilization reaches the target
+        utilization.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: pulumi.Input[float]):
+        pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter(name="predictiveMethod")
+    def predictive_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+        - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+        - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+        """
+        return pulumi.get(self, "predictive_method")
+
+    @predictive_method.setter
+    def predictive_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predictive_method", value)
+
+
+@pulumi.input_type
+class AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs:
+    def __init__(__self__, *,
+                 target: pulumi.Input[float]):
+        """
+        :param pulumi.Input[float] target: Fraction of backend capacity utilization (set in HTTP(s) load
+               balancing configuration) that autoscaler should maintain. Must
+               be a positive float value. If not defined, the default is 0.8.
+        """
+        pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter
+    def target(self) -> pulumi.Input[float]:
+        """
+        Fraction of backend capacity utilization (set in HTTP(s) load
+        balancing configuration) that autoscaler should maintain. Must
+        be a positive float value. If not defined, the default is 0.8.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: pulumi.Input[float]):
+        pulumi.set(self, "target", value)
+
+
+@pulumi.input_type
+class AutoscalarAutoscalingPolicyMetricArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 filter: Optional[pulumi.Input[str]] = None,
+                 single_instance_assignment: Optional[pulumi.Input[float]] = None,
+                 target: Optional[pulumi.Input[float]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The identifier (type) of the Stackdriver Monitoring metric.
+               The metric cannot have negative values.
+               The metric must have a value type of INT64 or DOUBLE.
+        :param pulumi.Input[str] filter: A filter string to be used as the filter string for
+               a Stackdriver Monitoring TimeSeries.list API call.
+               This filter is used to select a specific TimeSeries for
+               the purpose of autoscaling and to determine whether the metric
+               is exporting per-instance or per-group data.
+               You can only use the AND operator for joining selectors.
+               You can only use direct equality comparison operator (=) without
+               any functions for each selector.
+               You can specify the metric in both the filter string and in the
+               metric field. However, if specified in both places, the metric must
+               be identical.
+               The monitored resource type determines what kind of values are
+               expected for the metric. If it is a gce_instance, the autoscaler
+               expects the metric to include a separate TimeSeries for each
+               instance in a group. In such a case, you cannot filter on resource
+               labels.
+               If the resource type is any other value, the autoscaler expects
+               this metric to contain values that apply to the entire autoscaled
+               instance group and resource label filtering can be performed to
+               point autoscaler at the correct TimeSeries to scale upon.
+               This is called a per-group metric for the purpose of autoscaling.
+               If not specified, the type defaults to gce_instance.
+               You should provide a filter that is selective enough to pick just
+               one TimeSeries for the autoscaled group or for each of the instances
+               (if you are using gce_instance resource type). If multiple
+               TimeSeries are returned upon the query execution, the autoscaler
+               will sum their respective values to obtain its scaling value.
+        :param pulumi.Input[float] single_instance_assignment: If scaling is based on a per-group metric value that represents the
+               total amount of work to be done or resource usage, set this value to
+               an amount assigned for a single instance of the scaled group.
+               The autoscaler will keep the number of instances proportional to the
+               value of this metric, the metric itself should not change value due
+               to group resizing.
+               For example, a good metric to use with the target is
+               `pubsub.googleapis.com/subscription/num_undelivered_messages`
+               or a custom metric exporting the total number of requests coming to
+               your instances.
+               A bad example would be a metric exporting an average or median
+               latency, since this value can't include a chunk assignable to a
+               single instance, it could be better used with utilization_target
+               instead.
+        :param pulumi.Input[float] target: The target value of the metric that autoscaler should
+               maintain. This must be a positive value. A utilization
+               metric scales number of virtual machines handling requests
+               to increase or decrease proportionally to the metric.
+               For example, a good metric to use as a utilizationTarget is
+               www.googleapis.com/compute/instance/network/received_bytes_count.
+               The autoscaler will work to keep this value constant for each
+               of the instances.
+        :param pulumi.Input[str] type: Defines how target utilization value is expressed for a
+               Stackdriver Monitoring metric.
+               Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
+        """
+        pulumi.set(__self__, "name", name)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if single_instance_assignment is not None:
+            pulumi.set(__self__, "single_instance_assignment", single_instance_assignment)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The identifier (type) of the Stackdriver Monitoring metric.
+        The metric cannot have negative values.
+        The metric must have a value type of INT64 or DOUBLE.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        A filter string to be used as the filter string for
+        a Stackdriver Monitoring TimeSeries.list API call.
+        This filter is used to select a specific TimeSeries for
+        the purpose of autoscaling and to determine whether the metric
+        is exporting per-instance or per-group data.
+        You can only use the AND operator for joining selectors.
+        You can only use direct equality comparison operator (=) without
+        any functions for each selector.
+        You can specify the metric in both the filter string and in the
+        metric field. However, if specified in both places, the metric must
+        be identical.
+        The monitored resource type determines what kind of values are
+        expected for the metric. If it is a gce_instance, the autoscaler
+        expects the metric to include a separate TimeSeries for each
+        instance in a group. In such a case, you cannot filter on resource
+        labels.
+        If the resource type is any other value, the autoscaler expects
+        this metric to contain values that apply to the entire autoscaled
+        instance group and resource label filtering can be performed to
+        point autoscaler at the correct TimeSeries to scale upon.
+        This is called a per-group metric for the purpose of autoscaling.
+        If not specified, the type defaults to gce_instance.
+        You should provide a filter that is selective enough to pick just
+        one TimeSeries for the autoscaled group or for each of the instances
+        (if you are using gce_instance resource type). If multiple
+        TimeSeries are returned upon the query execution, the autoscaler
+        will sum their respective values to obtain its scaling value.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="singleInstanceAssignment")
+    def single_instance_assignment(self) -> Optional[pulumi.Input[float]]:
+        """
+        If scaling is based on a per-group metric value that represents the
+        total amount of work to be done or resource usage, set this value to
+        an amount assigned for a single instance of the scaled group.
+        The autoscaler will keep the number of instances proportional to the
+        value of this metric, the metric itself should not change value due
+        to group resizing.
+        For example, a good metric to use with the target is
+        `pubsub.googleapis.com/subscription/num_undelivered_messages`
+        or a custom metric exporting the total number of requests coming to
+        your instances.
+        A bad example would be a metric exporting an average or median
+        latency, since this value can't include a chunk assignable to a
+        single instance, it could be better used with utilization_target
+        instead.
+        """
+        return pulumi.get(self, "single_instance_assignment")
+
+    @single_instance_assignment.setter
+    def single_instance_assignment(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "single_instance_assignment", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> Optional[pulumi.Input[float]]:
+        """
+        The target value of the metric that autoscaler should
+        maintain. This must be a positive value. A utilization
+        metric scales number of virtual machines handling requests
+        to increase or decrease proportionally to the metric.
+        For example, a good metric to use as a utilizationTarget is
+        www.googleapis.com/compute/instance/network/received_bytes_count.
+        The autoscaler will work to keep this value constant for each
+        of the instances.
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "target", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines how target utilization value is expressed for a
+        Stackdriver Monitoring metric.
+        Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class AutoscalarAutoscalingPolicyScaleDownControlArgs:
+    def __init__(__self__, *,
+                 max_scaled_down_replicas: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']] = None,
+                 time_window_sec: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs'] max_scaled_down_replicas: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
+               to include directives regarding slower scale down, as described above.
+        """
+        if max_scaled_down_replicas is not None:
+            pulumi.set(__self__, "max_scaled_down_replicas", max_scaled_down_replicas)
+        if time_window_sec is not None:
+            pulumi.set(__self__, "time_window_sec", time_window_sec)
+
+    @property
+    @pulumi.getter(name="maxScaledDownReplicas")
+    def max_scaled_down_replicas(self) -> Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']]:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_scaled_down_replicas")
+
+    @max_scaled_down_replicas.setter
+    def max_scaled_down_replicas(self, value: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']]):
+        pulumi.set(self, "max_scaled_down_replicas", value)
+
+    @property
+    @pulumi.getter(name="timeWindowSec")
+    def time_window_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long back autoscaling should look when computing recommendations
+        to include directives regarding slower scale down, as described above.
+        """
+        return pulumi.get(self, "time_window_sec")
+
+    @time_window_sec.setter
+    def time_window_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "time_window_sec", value)
+
+
+@pulumi.input_type
+class AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
+    def __init__(__self__, *,
+                 fixed: Optional[pulumi.Input[int]] = None,
+                 percent: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] fixed: Specifies a fixed number of VM instances. This must be a positive
+               integer.
+        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%, inclusive.
+               For example, specify 80 for 80%.
+        """
+        if fixed is not None:
+            pulumi.set(__self__, "fixed", fixed)
+        if percent is not None:
+            pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def fixed(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies a fixed number of VM instances. This must be a positive
+        integer.
+        """
+        return pulumi.get(self, "fixed")
+
+    @fixed.setter
+    def fixed(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "fixed", value)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
+        """
+        return pulumi.get(self, "percent")
+
+    @percent.setter
+    def percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "percent", value)
+
+
+@pulumi.input_type
+class AutoscalarAutoscalingPolicyScaleInControlArgs:
+    def __init__(__self__, *,
+                 max_scaled_in_replicas: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']] = None,
+                 time_window_sec: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs'] max_scaled_in_replicas: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
+               to include directives regarding slower scale down, as described above.
+        """
+        if max_scaled_in_replicas is not None:
+            pulumi.set(__self__, "max_scaled_in_replicas", max_scaled_in_replicas)
+        if time_window_sec is not None:
+            pulumi.set(__self__, "time_window_sec", time_window_sec)
+
+    @property
+    @pulumi.getter(name="maxScaledInReplicas")
+    def max_scaled_in_replicas(self) -> Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_scaled_in_replicas")
+
+    @max_scaled_in_replicas.setter
+    def max_scaled_in_replicas(self, value: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]):
+        pulumi.set(self, "max_scaled_in_replicas", value)
+
+    @property
+    @pulumi.getter(name="timeWindowSec")
+    def time_window_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long back autoscaling should look when computing recommendations
+        to include directives regarding slower scale down, as described above.
+        """
+        return pulumi.get(self, "time_window_sec")
+
+    @time_window_sec.setter
+    def time_window_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "time_window_sec", value)
+
+
+@pulumi.input_type
+class AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
+    def __init__(__self__, *,
+                 fixed: Optional[pulumi.Input[int]] = None,
+                 percent: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] fixed: Specifies a fixed number of VM instances. This must be a positive
+               integer.
+        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%, inclusive.
+               For example, specify 80 for 80%.
+        """
+        if fixed is not None:
+            pulumi.set(__self__, "fixed", fixed)
+        if percent is not None:
+            pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def fixed(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies a fixed number of VM instances. This must be a positive
+        integer.
+        """
+        return pulumi.get(self, "fixed")
+
+    @fixed.setter
+    def fixed(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "fixed", value)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
+        """
+        return pulumi.get(self, "percent")
+
+    @percent.setter
+    def percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "percent", value)
+
+
+@pulumi.input_type
+class AutoscalarAutoscalingPolicyScalingScheduleArgs:
+    def __init__(__self__, *,
+                 duration_sec: pulumi.Input[int],
+                 min_required_replicas: pulumi.Input[int],
+                 name: pulumi.Input[str],
+                 schedule: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] duration_sec: The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+        :param pulumi.Input[int] min_required_replicas: Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
+        :param pulumi.Input[str] schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[bool] disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+        :param pulumi.Input[str] time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+        pulumi.set(__self__, "duration_sec", duration_sec)
+        pulumi.set(__self__, "min_required_replicas", min_required_replicas)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "schedule", schedule)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter(name="durationSec")
+    def duration_sec(self) -> pulumi.Input[int]:
+        """
+        The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+        """
+        return pulumi.get(self, "duration_sec")
+
+    @duration_sec.setter
+    def duration_sec(self, value: pulumi.Input[int]):
+        pulumi.set(self, "duration_sec", value)
+
+    @property
+    @pulumi.getter(name="minRequiredReplicas")
+    def min_required_replicas(self) -> pulumi.Input[int]:
+        """
+        Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+        """
+        return pulumi.get(self, "min_required_replicas")
+
+    @min_required_replicas.setter
+    def min_required_replicas(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_required_replicas", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Input[str]:
+        """
+        The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
 
 @pulumi.input_type
 class AutoscalerAutoscalingPolicyArgs:
