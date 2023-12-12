@@ -84,10 +84,10 @@ public final class CxAgentAdvancedSettings {
             return this;
         }
         public CxAgentAdvancedSettings build() {
-            final var o = new CxAgentAdvancedSettings();
-            o.audioExportGcsDestination = audioExportGcsDestination;
-            o.dtmfSettings = dtmfSettings;
-            return o;
+            final var _resultValue = new CxAgentAdvancedSettings();
+            _resultValue.audioExportGcsDestination = audioExportGcsDestination;
+            _resultValue.dtmfSettings = dtmfSettings;
+            return _resultValue;
         }
     }
 }

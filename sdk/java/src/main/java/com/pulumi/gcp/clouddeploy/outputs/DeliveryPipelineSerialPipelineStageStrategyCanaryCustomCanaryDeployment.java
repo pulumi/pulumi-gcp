@@ -50,9 +50,9 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
             return phaseConfigs(List.of(phaseConfigs));
         }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment();
-            o.phaseConfigs = phaseConfigs;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment();
+            _resultValue.phaseConfigs = phaseConfigs;
+            return _resultValue;
         }
     }
 }

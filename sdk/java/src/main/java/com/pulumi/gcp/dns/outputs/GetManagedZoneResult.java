@@ -160,16 +160,16 @@ public final class GetManagedZoneResult {
             return this;
         }
         public GetManagedZoneResult build() {
-            final var o = new GetManagedZoneResult();
-            o.description = description;
-            o.dnsName = dnsName;
-            o.id = id;
-            o.managedZoneId = managedZoneId;
-            o.name = name;
-            o.nameServers = nameServers;
-            o.project = project;
-            o.visibility = visibility;
-            return o;
+            final var _resultValue = new GetManagedZoneResult();
+            _resultValue.description = description;
+            _resultValue.dnsName = dnsName;
+            _resultValue.id = id;
+            _resultValue.managedZoneId = managedZoneId;
+            _resultValue.name = name;
+            _resultValue.nameServers = nameServers;
+            _resultValue.project = project;
+            _resultValue.visibility = visibility;
+            return _resultValue;
         }
     }
 }

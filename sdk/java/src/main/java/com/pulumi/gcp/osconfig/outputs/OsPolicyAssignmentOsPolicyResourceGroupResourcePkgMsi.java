@@ -77,10 +77,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi();
-            o.properties = properties;
-            o.source = source;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi();
+            _resultValue.properties = properties;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

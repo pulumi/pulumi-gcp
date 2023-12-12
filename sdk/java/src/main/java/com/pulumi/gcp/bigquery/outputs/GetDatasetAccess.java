@@ -139,17 +139,17 @@ public final class GetDatasetAccess {
             return views(List.of(views));
         }
         public GetDatasetAccess build() {
-            final var o = new GetDatasetAccess();
-            o.datasets = datasets;
-            o.domain = domain;
-            o.groupByEmail = groupByEmail;
-            o.iamMember = iamMember;
-            o.role = role;
-            o.routines = routines;
-            o.specialGroup = specialGroup;
-            o.userByEmail = userByEmail;
-            o.views = views;
-            return o;
+            final var _resultValue = new GetDatasetAccess();
+            _resultValue.datasets = datasets;
+            _resultValue.domain = domain;
+            _resultValue.groupByEmail = groupByEmail;
+            _resultValue.iamMember = iamMember;
+            _resultValue.role = role;
+            _resultValue.routines = routines;
+            _resultValue.specialGroup = specialGroup;
+            _resultValue.userByEmail = userByEmail;
+            _resultValue.views = views;
+            return _resultValue;
         }
     }
 }

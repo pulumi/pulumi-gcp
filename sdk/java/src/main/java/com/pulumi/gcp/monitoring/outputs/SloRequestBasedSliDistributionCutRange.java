@@ -75,10 +75,10 @@ public final class SloRequestBasedSliDistributionCutRange {
             return this;
         }
         public SloRequestBasedSliDistributionCutRange build() {
-            final var o = new SloRequestBasedSliDistributionCutRange();
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new SloRequestBasedSliDistributionCutRange();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

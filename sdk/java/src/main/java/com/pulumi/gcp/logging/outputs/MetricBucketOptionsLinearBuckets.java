@@ -85,11 +85,11 @@ public final class MetricBucketOptionsLinearBuckets {
             return this;
         }
         public MetricBucketOptionsLinearBuckets build() {
-            final var o = new MetricBucketOptionsLinearBuckets();
-            o.numFiniteBuckets = numFiniteBuckets;
-            o.offset = offset;
-            o.width = width;
-            return o;
+            final var _resultValue = new MetricBucketOptionsLinearBuckets();
+            _resultValue.numFiniteBuckets = numFiniteBuckets;
+            _resultValue.offset = offset;
+            _resultValue.width = width;
+            return _resultValue;
         }
     }
 }

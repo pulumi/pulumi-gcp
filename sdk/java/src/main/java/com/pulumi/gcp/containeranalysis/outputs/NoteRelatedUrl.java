@@ -67,10 +67,10 @@ public final class NoteRelatedUrl {
             return this;
         }
         public NoteRelatedUrl build() {
-            final var o = new NoteRelatedUrl();
-            o.label = label;
-            o.url = url;
-            return o;
+            final var _resultValue = new NoteRelatedUrl();
+            _resultValue.label = label;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

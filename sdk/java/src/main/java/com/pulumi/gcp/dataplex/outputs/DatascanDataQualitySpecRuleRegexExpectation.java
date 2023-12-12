@@ -46,9 +46,9 @@ public final class DatascanDataQualitySpecRuleRegexExpectation {
             return this;
         }
         public DatascanDataQualitySpecRuleRegexExpectation build() {
-            final var o = new DatascanDataQualitySpecRuleRegexExpectation();
-            o.regex = regex;
-            return o;
+            final var _resultValue = new DatascanDataQualitySpecRuleRegexExpectation();
+            _resultValue.regex = regex;
+            return _resultValue;
         }
     }
 }

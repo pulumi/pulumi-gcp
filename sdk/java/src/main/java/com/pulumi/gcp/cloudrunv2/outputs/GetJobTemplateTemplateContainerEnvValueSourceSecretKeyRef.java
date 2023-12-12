@@ -49,10 +49,10 @@ public final class GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef {
             return this;
         }
         public GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef build() {
-            final var o = new GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef();
-            o.secret = secret;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef();
+            _resultValue.secret = secret;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

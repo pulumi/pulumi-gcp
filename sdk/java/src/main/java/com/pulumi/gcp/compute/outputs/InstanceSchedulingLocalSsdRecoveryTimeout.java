@@ -77,10 +77,10 @@ public final class InstanceSchedulingLocalSsdRecoveryTimeout {
             return this;
         }
         public InstanceSchedulingLocalSsdRecoveryTimeout build() {
-            final var o = new InstanceSchedulingLocalSsdRecoveryTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new InstanceSchedulingLocalSsdRecoveryTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

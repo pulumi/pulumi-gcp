@@ -50,9 +50,9 @@ public final class ApiKeyRestrictionsIosKeyRestrictions {
             return allowedBundleIds(List.of(allowedBundleIds));
         }
         public ApiKeyRestrictionsIosKeyRestrictions build() {
-            final var o = new ApiKeyRestrictionsIosKeyRestrictions();
-            o.allowedBundleIds = allowedBundleIds;
-            return o;
+            final var _resultValue = new ApiKeyRestrictionsIosKeyRestrictions();
+            _resultValue.allowedBundleIds = allowedBundleIds;
+            return _resultValue;
         }
     }
 }

@@ -126,17 +126,17 @@ public final class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
             return this;
         }
         public GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage build() {
-            final var o = new GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage();
-            o.certSign = certSign;
-            o.contentCommitment = contentCommitment;
-            o.crlSign = crlSign;
-            o.dataEncipherment = dataEncipherment;
-            o.decipherOnly = decipherOnly;
-            o.digitalSignature = digitalSignature;
-            o.encipherOnly = encipherOnly;
-            o.keyAgreement = keyAgreement;
-            o.keyEncipherment = keyEncipherment;
-            return o;
+            final var _resultValue = new GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage();
+            _resultValue.certSign = certSign;
+            _resultValue.contentCommitment = contentCommitment;
+            _resultValue.crlSign = crlSign;
+            _resultValue.dataEncipherment = dataEncipherment;
+            _resultValue.decipherOnly = decipherOnly;
+            _resultValue.digitalSignature = digitalSignature;
+            _resultValue.encipherOnly = encipherOnly;
+            _resultValue.keyAgreement = keyAgreement;
+            _resultValue.keyEncipherment = keyEncipherment;
+            return _resultValue;
         }
     }
 }

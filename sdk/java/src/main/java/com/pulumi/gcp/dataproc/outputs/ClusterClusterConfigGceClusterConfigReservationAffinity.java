@@ -90,11 +90,11 @@ public final class ClusterClusterConfigGceClusterConfigReservationAffinity {
             return values(List.of(values));
         }
         public ClusterClusterConfigGceClusterConfigReservationAffinity build() {
-            final var o = new ClusterClusterConfigGceClusterConfigReservationAffinity();
-            o.consumeReservationType = consumeReservationType;
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new ClusterClusterConfigGceClusterConfigReservationAffinity();
+            _resultValue.consumeReservationType = consumeReservationType;
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

@@ -154,14 +154,14 @@ public final class RepositoryWorkflowConfigInvocationConfig {
             return this;
         }
         public RepositoryWorkflowConfigInvocationConfig build() {
-            final var o = new RepositoryWorkflowConfigInvocationConfig();
-            o.fullyRefreshIncrementalTablesEnabled = fullyRefreshIncrementalTablesEnabled;
-            o.includedTags = includedTags;
-            o.includedTargets = includedTargets;
-            o.serviceAccount = serviceAccount;
-            o.transitiveDependenciesIncluded = transitiveDependenciesIncluded;
-            o.transitiveDependentsIncluded = transitiveDependentsIncluded;
-            return o;
+            final var _resultValue = new RepositoryWorkflowConfigInvocationConfig();
+            _resultValue.fullyRefreshIncrementalTablesEnabled = fullyRefreshIncrementalTablesEnabled;
+            _resultValue.includedTags = includedTags;
+            _resultValue.includedTargets = includedTargets;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.transitiveDependenciesIncluded = transitiveDependenciesIncluded;
+            _resultValue.transitiveDependentsIncluded = transitiveDependentsIncluded;
+            return _resultValue;
         }
     }
 }

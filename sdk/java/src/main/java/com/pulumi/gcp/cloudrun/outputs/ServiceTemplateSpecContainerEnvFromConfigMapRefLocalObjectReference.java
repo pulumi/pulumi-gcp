@@ -46,9 +46,9 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectRef
             return this;
         }
         public ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference build() {
-            final var o = new ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference();
-            o.name = name;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class GetSecretsSecretReplicationUserManagedReplicaCustomerManagedE
             return this;
         }
         public GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption build() {
-            final var o = new GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

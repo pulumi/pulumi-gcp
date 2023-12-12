@@ -48,9 +48,9 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigSecurityConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigSecurityConfig();
-            o.kerberosConfig = kerberosConfig;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigSecurityConfig();
+            _resultValue.kerberosConfig = kerberosConfig;
+            return _resultValue;
         }
     }
 }

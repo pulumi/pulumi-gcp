@@ -123,12 +123,12 @@ public final class RoutineArgument {
             return this;
         }
         public RoutineArgument build() {
-            final var o = new RoutineArgument();
-            o.argumentKind = argumentKind;
-            o.dataType = dataType;
-            o.mode = mode;
-            o.name = name;
-            return o;
+            final var _resultValue = new RoutineArgument();
+            _resultValue.argumentKind = argumentKind;
+            _resultValue.dataType = dataType;
+            _resultValue.mode = mode;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

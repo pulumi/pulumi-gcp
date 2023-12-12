@@ -71,10 +71,10 @@ public final class AiEndpointDeployedModelAutomaticResource {
             return this;
         }
         public AiEndpointDeployedModelAutomaticResource build() {
-            final var o = new AiEndpointDeployedModelAutomaticResource();
-            o.maxReplicaCount = maxReplicaCount;
-            o.minReplicaCount = minReplicaCount;
-            return o;
+            final var _resultValue = new AiEndpointDeployedModelAutomaticResource();
+            _resultValue.maxReplicaCount = maxReplicaCount;
+            _resultValue.minReplicaCount = minReplicaCount;
+            return _resultValue;
         }
     }
 }

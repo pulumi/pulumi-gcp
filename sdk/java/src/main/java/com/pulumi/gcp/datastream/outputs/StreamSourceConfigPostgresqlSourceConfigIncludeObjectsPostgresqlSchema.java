@@ -73,10 +73,10 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgre
             return this;
         }
         public StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema build() {
-            final var o = new StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema();
-            o.postgresqlTables = postgresqlTables;
-            o.schema = schema;
-            return o;
+            final var _resultValue = new StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema();
+            _resultValue.postgresqlTables = postgresqlTables;
+            _resultValue.schema = schema;
+            return _resultValue;
         }
     }
 }

@@ -54,10 +54,10 @@ public final class GetRepositoryCleanupPolicyMostRecentVersion {
             return packageNamePrefixes(List.of(packageNamePrefixes));
         }
         public GetRepositoryCleanupPolicyMostRecentVersion build() {
-            final var o = new GetRepositoryCleanupPolicyMostRecentVersion();
-            o.keepCount = keepCount;
-            o.packageNamePrefixes = packageNamePrefixes;
-            return o;
+            final var _resultValue = new GetRepositoryCleanupPolicyMostRecentVersion();
+            _resultValue.keepCount = keepCount;
+            _resultValue.packageNamePrefixes = packageNamePrefixes;
+            return _resultValue;
         }
     }
 }

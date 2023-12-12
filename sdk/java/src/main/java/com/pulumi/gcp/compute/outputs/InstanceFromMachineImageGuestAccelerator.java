@@ -50,10 +50,10 @@ public final class InstanceFromMachineImageGuestAccelerator {
             return this;
         }
         public InstanceFromMachineImageGuestAccelerator build() {
-            final var o = new InstanceFromMachineImageGuestAccelerator();
-            o.count = count;
-            o.type = type;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageGuestAccelerator();
+            _resultValue.count = count;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

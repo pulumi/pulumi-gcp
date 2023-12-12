@@ -119,14 +119,14 @@ public final class GetMembershipIamPolicyResult {
             return this;
         }
         public GetMembershipIamPolicyResult build() {
-            final var o = new GetMembershipIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.location = location;
-            o.membershipId = membershipId;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetMembershipIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.membershipId = membershipId;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

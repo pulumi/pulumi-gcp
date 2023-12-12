@@ -100,11 +100,11 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
             return includeRegexes(List.of(includeRegexes));
         }
         public PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet();
-            o.bucketName = bucketName;
-            o.excludeRegexes = excludeRegexes;
-            o.includeRegexes = includeRegexes;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet();
+            _resultValue.bucketName = bucketName;
+            _resultValue.excludeRegexes = excludeRegexes;
+            _resultValue.includeRegexes = includeRegexes;
+            return _resultValue;
         }
     }
 }

@@ -135,13 +135,13 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
             return this;
         }
         public PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters build() {
-            final var o = new PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters();
-            o.environment = environment;
-            o.jobName = jobName;
-            o.parameters = parameters;
-            o.transformNameMapping = transformNameMapping;
-            o.update = update;
-            return o;
+            final var _resultValue = new PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters();
+            _resultValue.environment = environment;
+            _resultValue.jobName = jobName;
+            _resultValue.parameters = parameters;
+            _resultValue.transformNameMapping = transformNameMapping;
+            _resultValue.update = update;
+            return _resultValue;
         }
     }
 }

@@ -77,10 +77,10 @@ public final class TopicSchemaSettings {
             return this;
         }
         public TopicSchemaSettings build() {
-            final var o = new TopicSchemaSettings();
-            o.encoding = encoding;
-            o.schema = schema;
-            return o;
+            final var _resultValue = new TopicSchemaSettings();
+            _resultValue.encoding = encoding;
+            _resultValue.schema = schema;
+            return _resultValue;
         }
     }
 }

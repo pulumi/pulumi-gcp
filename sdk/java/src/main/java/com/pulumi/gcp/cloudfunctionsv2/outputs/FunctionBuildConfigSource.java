@@ -72,10 +72,10 @@ public final class FunctionBuildConfigSource {
             return this;
         }
         public FunctionBuildConfigSource build() {
-            final var o = new FunctionBuildConfigSource();
-            o.repoSource = repoSource;
-            o.storageSource = storageSource;
-            return o;
+            final var _resultValue = new FunctionBuildConfigSource();
+            _resultValue.repoSource = repoSource;
+            _resultValue.storageSource = storageSource;
+            return _resultValue;
         }
     }
 }

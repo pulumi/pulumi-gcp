@@ -110,15 +110,15 @@ public final class GetFunctionBuildConfig {
             return this;
         }
         public GetFunctionBuildConfig build() {
-            final var o = new GetFunctionBuildConfig();
-            o.build = build;
-            o.dockerRepository = dockerRepository;
-            o.entryPoint = entryPoint;
-            o.environmentVariables = environmentVariables;
-            o.runtime = runtime;
-            o.sources = sources;
-            o.workerPool = workerPool;
-            return o;
+            final var _resultValue = new GetFunctionBuildConfig();
+            _resultValue.build = build;
+            _resultValue.dockerRepository = dockerRepository;
+            _resultValue.entryPoint = entryPoint;
+            _resultValue.environmentVariables = environmentVariables;
+            _resultValue.runtime = runtime;
+            _resultValue.sources = sources;
+            _resultValue.workerPool = workerPool;
+            return _resultValue;
         }
     }
 }

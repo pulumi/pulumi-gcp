@@ -74,10 +74,10 @@ public final class PatchDeploymentRecurringScheduleMonthly {
             return this;
         }
         public PatchDeploymentRecurringScheduleMonthly build() {
-            final var o = new PatchDeploymentRecurringScheduleMonthly();
-            o.monthDay = monthDay;
-            o.weekDayOfMonth = weekDayOfMonth;
-            return o;
+            final var _resultValue = new PatchDeploymentRecurringScheduleMonthly();
+            _resultValue.monthDay = monthDay;
+            _resultValue.weekDayOfMonth = weekDayOfMonth;
+            return _resultValue;
         }
     }
 }

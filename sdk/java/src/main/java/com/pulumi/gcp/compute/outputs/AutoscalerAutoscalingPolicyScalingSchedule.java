@@ -164,15 +164,15 @@ public final class AutoscalerAutoscalingPolicyScalingSchedule {
             return this;
         }
         public AutoscalerAutoscalingPolicyScalingSchedule build() {
-            final var o = new AutoscalerAutoscalingPolicyScalingSchedule();
-            o.description = description;
-            o.disabled = disabled;
-            o.durationSec = durationSec;
-            o.minRequiredReplicas = minRequiredReplicas;
-            o.name = name;
-            o.schedule = schedule;
-            o.timeZone = timeZone;
-            return o;
+            final var _resultValue = new AutoscalerAutoscalingPolicyScalingSchedule();
+            _resultValue.description = description;
+            _resultValue.disabled = disabled;
+            _resultValue.durationSec = durationSec;
+            _resultValue.minRequiredReplicas = minRequiredReplicas;
+            _resultValue.name = name;
+            _resultValue.schedule = schedule;
+            _resultValue.timeZone = timeZone;
+            return _resultValue;
         }
     }
 }

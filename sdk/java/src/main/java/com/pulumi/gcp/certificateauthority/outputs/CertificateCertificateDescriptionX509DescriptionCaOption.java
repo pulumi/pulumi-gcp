@@ -70,10 +70,10 @@ public final class CertificateCertificateDescriptionX509DescriptionCaOption {
             return this;
         }
         public CertificateCertificateDescriptionX509DescriptionCaOption build() {
-            final var o = new CertificateCertificateDescriptionX509DescriptionCaOption();
-            o.isCa = isCa;
-            o.maxIssuerPathLength = maxIssuerPathLength;
-            return o;
+            final var _resultValue = new CertificateCertificateDescriptionX509DescriptionCaOption();
+            _resultValue.isCa = isCa;
+            _resultValue.maxIssuerPathLength = maxIssuerPathLength;
+            return _resultValue;
         }
     }
 }

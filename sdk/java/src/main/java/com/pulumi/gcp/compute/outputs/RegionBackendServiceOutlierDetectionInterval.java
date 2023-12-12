@@ -73,10 +73,10 @@ public final class RegionBackendServiceOutlierDetectionInterval {
             return this;
         }
         public RegionBackendServiceOutlierDetectionInterval build() {
-            final var o = new RegionBackendServiceOutlierDetectionInterval();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new RegionBackendServiceOutlierDetectionInterval();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

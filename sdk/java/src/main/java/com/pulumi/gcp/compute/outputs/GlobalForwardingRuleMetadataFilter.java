@@ -88,10 +88,10 @@ public final class GlobalForwardingRuleMetadataFilter {
             return this;
         }
         public GlobalForwardingRuleMetadataFilter build() {
-            final var o = new GlobalForwardingRuleMetadataFilter();
-            o.filterLabels = filterLabels;
-            o.filterMatchCriteria = filterMatchCriteria;
-            return o;
+            final var _resultValue = new GlobalForwardingRuleMetadataFilter();
+            _resultValue.filterLabels = filterLabels;
+            _resultValue.filterMatchCriteria = filterMatchCriteria;
+            return _resultValue;
         }
     }
 }

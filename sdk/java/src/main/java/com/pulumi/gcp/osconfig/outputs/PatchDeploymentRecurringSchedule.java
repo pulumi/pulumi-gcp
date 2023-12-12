@@ -207,16 +207,16 @@ public final class PatchDeploymentRecurringSchedule {
             return this;
         }
         public PatchDeploymentRecurringSchedule build() {
-            final var o = new PatchDeploymentRecurringSchedule();
-            o.endTime = endTime;
-            o.lastExecuteTime = lastExecuteTime;
-            o.monthly = monthly;
-            o.nextExecuteTime = nextExecuteTime;
-            o.startTime = startTime;
-            o.timeOfDay = timeOfDay;
-            o.timeZone = timeZone;
-            o.weekly = weekly;
-            return o;
+            final var _resultValue = new PatchDeploymentRecurringSchedule();
+            _resultValue.endTime = endTime;
+            _resultValue.lastExecuteTime = lastExecuteTime;
+            _resultValue.monthly = monthly;
+            _resultValue.nextExecuteTime = nextExecuteTime;
+            _resultValue.startTime = startTime;
+            _resultValue.timeOfDay = timeOfDay;
+            _resultValue.timeZone = timeZone;
+            _resultValue.weekly = weekly;
+            return _resultValue;
         }
     }
 }

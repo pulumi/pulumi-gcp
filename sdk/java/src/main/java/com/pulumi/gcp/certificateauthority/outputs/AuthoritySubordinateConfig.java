@@ -78,10 +78,10 @@ public final class AuthoritySubordinateConfig {
             return this;
         }
         public AuthoritySubordinateConfig build() {
-            final var o = new AuthoritySubordinateConfig();
-            o.certificateAuthority = certificateAuthority;
-            o.pemIssuerChain = pemIssuerChain;
-            return o;
+            final var _resultValue = new AuthoritySubordinateConfig();
+            _resultValue.certificateAuthority = certificateAuthority;
+            _resultValue.pemIssuerChain = pemIssuerChain;
+            return _resultValue;
         }
     }
 }

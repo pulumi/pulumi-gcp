@@ -87,11 +87,11 @@ public final class ConnectionDestinationConfigDestination {
             return this;
         }
         public ConnectionDestinationConfigDestination build() {
-            final var o = new ConnectionDestinationConfigDestination();
-            o.host = host;
-            o.port = port;
-            o.serviceAttachment = serviceAttachment;
-            return o;
+            final var _resultValue = new ConnectionDestinationConfigDestination();
+            _resultValue.host = host;
+            _resultValue.port = port;
+            _resultValue.serviceAttachment = serviceAttachment;
+            return _resultValue;
         }
     }
 }

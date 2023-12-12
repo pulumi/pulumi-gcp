@@ -56,9 +56,9 @@ public final class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
             return contentTypes(List.of(contentTypes));
         }
         public SecurityPolicyAdvancedOptionsConfigJsonCustomConfig build() {
-            final var o = new SecurityPolicyAdvancedOptionsConfigJsonCustomConfig();
-            o.contentTypes = contentTypes;
-            return o;
+            final var _resultValue = new SecurityPolicyAdvancedOptionsConfigJsonCustomConfig();
+            _resultValue.contentTypes = contentTypes;
+            return _resultValue;
         }
     }
 }

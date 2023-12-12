@@ -114,12 +114,12 @@ public final class CxSecuritySettingsAudioExportSettings {
             return this;
         }
         public CxSecuritySettingsAudioExportSettings build() {
-            final var o = new CxSecuritySettingsAudioExportSettings();
-            o.audioExportPattern = audioExportPattern;
-            o.audioFormat = audioFormat;
-            o.enableAudioRedaction = enableAudioRedaction;
-            o.gcsBucket = gcsBucket;
-            return o;
+            final var _resultValue = new CxSecuritySettingsAudioExportSettings();
+            _resultValue.audioExportPattern = audioExportPattern;
+            _resultValue.audioFormat = audioFormat;
+            _resultValue.enableAudioRedaction = enableAudioRedaction;
+            _resultValue.gcsBucket = gcsBucket;
+            return _resultValue;
         }
     }
 }

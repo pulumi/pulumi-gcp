@@ -25,8 +25,8 @@ public final class DatascanDataQualitySpecRuleNonNullExpectation {
         }
 
         public DatascanDataQualitySpecRuleNonNullExpectation build() {
-            final var o = new DatascanDataQualitySpecRuleNonNullExpectation();
-            return o;
+            final var _resultValue = new DatascanDataQualitySpecRuleNonNullExpectation();
+            return _resultValue;
         }
     }
 }

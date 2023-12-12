@@ -72,10 +72,10 @@ public final class RegionInstanceGroupManagerStatusStateful {
             return perInstanceConfigs(List.of(perInstanceConfigs));
         }
         public RegionInstanceGroupManagerStatusStateful build() {
-            final var o = new RegionInstanceGroupManagerStatusStateful();
-            o.hasStatefulConfig = hasStatefulConfig;
-            o.perInstanceConfigs = perInstanceConfigs;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerStatusStateful();
+            _resultValue.hasStatefulConfig = hasStatefulConfig;
+            _resultValue.perInstanceConfigs = perInstanceConfigs;
+            return _resultValue;
         }
     }
 }

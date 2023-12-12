@@ -46,9 +46,9 @@ public final class VMwareClusterAuthorizationAdminUser {
             return this;
         }
         public VMwareClusterAuthorizationAdminUser build() {
-            final var o = new VMwareClusterAuthorizationAdminUser();
-            o.username = username;
-            return o;
+            final var _resultValue = new VMwareClusterAuthorizationAdminUser();
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

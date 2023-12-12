@@ -52,9 +52,9 @@ public final class MetastoreServiceNetworkConfig {
             return consumers(List.of(consumers));
         }
         public MetastoreServiceNetworkConfig build() {
-            final var o = new MetastoreServiceNetworkConfig();
-            o.consumers = consumers;
-            return o;
+            final var _resultValue = new MetastoreServiceNetworkConfig();
+            _resultValue.consumers = consumers;
+            return _resultValue;
         }
     }
 }

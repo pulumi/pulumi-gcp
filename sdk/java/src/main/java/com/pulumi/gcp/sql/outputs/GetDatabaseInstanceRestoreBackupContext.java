@@ -69,11 +69,11 @@ public final class GetDatabaseInstanceRestoreBackupContext {
             return this;
         }
         public GetDatabaseInstanceRestoreBackupContext build() {
-            final var o = new GetDatabaseInstanceRestoreBackupContext();
-            o.backupRunId = backupRunId;
-            o.instanceId = instanceId;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetDatabaseInstanceRestoreBackupContext();
+            _resultValue.backupRunId = backupRunId;
+            _resultValue.instanceId = instanceId;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

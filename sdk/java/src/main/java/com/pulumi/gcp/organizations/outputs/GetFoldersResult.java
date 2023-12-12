@@ -81,11 +81,11 @@ public final class GetFoldersResult {
             return this;
         }
         public GetFoldersResult build() {
-            final var o = new GetFoldersResult();
-            o.folders = folders;
-            o.id = id;
-            o.parentId = parentId;
-            return o;
+            final var _resultValue = new GetFoldersResult();
+            _resultValue.folders = folders;
+            _resultValue.id = id;
+            _resultValue.parentId = parentId;
+            return _resultValue;
         }
     }
 }

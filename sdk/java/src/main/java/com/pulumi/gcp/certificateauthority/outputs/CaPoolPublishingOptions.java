@@ -103,11 +103,11 @@ public final class CaPoolPublishingOptions {
             return this;
         }
         public CaPoolPublishingOptions build() {
-            final var o = new CaPoolPublishingOptions();
-            o.encodingFormat = encodingFormat;
-            o.publishCaCert = publishCaCert;
-            o.publishCrl = publishCrl;
-            return o;
+            final var _resultValue = new CaPoolPublishingOptions();
+            _resultValue.encodingFormat = encodingFormat;
+            _resultValue.publishCaCert = publishCaCert;
+            _resultValue.publishCrl = publishCrl;
+            return _resultValue;
         }
     }
 }

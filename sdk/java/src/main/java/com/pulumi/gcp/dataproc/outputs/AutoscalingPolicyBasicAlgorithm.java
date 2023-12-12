@@ -74,10 +74,10 @@ public final class AutoscalingPolicyBasicAlgorithm {
             return this;
         }
         public AutoscalingPolicyBasicAlgorithm build() {
-            final var o = new AutoscalingPolicyBasicAlgorithm();
-            o.cooldownPeriod = cooldownPeriod;
-            o.yarnConfig = yarnConfig;
-            return o;
+            final var _resultValue = new AutoscalingPolicyBasicAlgorithm();
+            _resultValue.cooldownPeriod = cooldownPeriod;
+            _resultValue.yarnConfig = yarnConfig;
+            return _resultValue;
         }
     }
 }

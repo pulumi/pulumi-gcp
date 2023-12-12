@@ -77,12 +77,12 @@ public final class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
             return storageLocations(List.of(storageLocations));
         }
         public GetResourcePolicySnapshotSchedulePolicySnapshotProperty build() {
-            final var o = new GetResourcePolicySnapshotSchedulePolicySnapshotProperty();
-            o.chainName = chainName;
-            o.guestFlush = guestFlush;
-            o.labels = labels;
-            o.storageLocations = storageLocations;
-            return o;
+            final var _resultValue = new GetResourcePolicySnapshotSchedulePolicySnapshotProperty();
+            _resultValue.chainName = chainName;
+            _resultValue.guestFlush = guestFlush;
+            _resultValue.labels = labels;
+            _resultValue.storageLocations = storageLocations;
+            return _resultValue;
         }
     }
 }

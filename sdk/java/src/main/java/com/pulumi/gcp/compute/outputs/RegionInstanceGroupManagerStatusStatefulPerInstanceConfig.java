@@ -48,9 +48,9 @@ public final class RegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
             return this;
         }
         public RegionInstanceGroupManagerStatusStatefulPerInstanceConfig build() {
-            final var o = new RegionInstanceGroupManagerStatusStatefulPerInstanceConfig();
-            o.allEffective = allEffective;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerStatusStatefulPerInstanceConfig();
+            _resultValue.allEffective = allEffective;
+            return _resultValue;
         }
     }
 }

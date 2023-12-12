@@ -77,12 +77,12 @@ public final class GetRouterNatRule {
             return this;
         }
         public GetRouterNatRule build() {
-            final var o = new GetRouterNatRule();
-            o.actions = actions;
-            o.description = description;
-            o.match = match;
-            o.ruleNumber = ruleNumber;
-            return o;
+            final var _resultValue = new GetRouterNatRule();
+            _resultValue.actions = actions;
+            _resultValue.description = description;
+            _resultValue.match = match;
+            _resultValue.ruleNumber = ruleNumber;
+            return _resultValue;
         }
     }
 }

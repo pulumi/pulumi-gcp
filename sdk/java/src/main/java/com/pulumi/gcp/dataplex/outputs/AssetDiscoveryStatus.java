@@ -116,14 +116,14 @@ public final class AssetDiscoveryStatus {
             return this;
         }
         public AssetDiscoveryStatus build() {
-            final var o = new AssetDiscoveryStatus();
-            o.lastRunDuration = lastRunDuration;
-            o.lastRunTime = lastRunTime;
-            o.message = message;
-            o.state = state;
-            o.stats = stats;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new AssetDiscoveryStatus();
+            _resultValue.lastRunDuration = lastRunDuration;
+            _resultValue.lastRunTime = lastRunTime;
+            _resultValue.message = message;
+            _resultValue.state = state;
+            _resultValue.stats = stats;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

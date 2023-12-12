@@ -73,10 +73,10 @@ public final class ExtensionsInstanceRuntimeDataProcessingState {
             return this;
         }
         public ExtensionsInstanceRuntimeDataProcessingState build() {
-            final var o = new ExtensionsInstanceRuntimeDataProcessingState();
-            o.detailMessage = detailMessage;
-            o.state = state;
-            return o;
+            final var _resultValue = new ExtensionsInstanceRuntimeDataProcessingState();
+            _resultValue.detailMessage = detailMessage;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

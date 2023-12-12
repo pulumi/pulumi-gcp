@@ -52,9 +52,9 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjects {
             return oracleSchemas(List.of(oracleSchemas));
         }
         public StreamSourceConfigOracleSourceConfigIncludeObjects build() {
-            final var o = new StreamSourceConfigOracleSourceConfigIncludeObjects();
-            o.oracleSchemas = oracleSchemas;
-            return o;
+            final var _resultValue = new StreamSourceConfigOracleSourceConfigIncludeObjects();
+            _resultValue.oracleSchemas = oracleSchemas;
+            return _resultValue;
         }
     }
 }

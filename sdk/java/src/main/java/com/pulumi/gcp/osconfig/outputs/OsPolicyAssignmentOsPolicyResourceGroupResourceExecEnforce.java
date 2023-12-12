@@ -145,13 +145,13 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce();
-            o.args = args;
-            o.file = file;
-            o.interpreter = interpreter;
-            o.outputFilePath = outputFilePath;
-            o.script = script;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce();
+            _resultValue.args = args;
+            _resultValue.file = file;
+            _resultValue.interpreter = interpreter;
+            _resultValue.outputFilePath = outputFilePath;
+            _resultValue.script = script;
+            return _resultValue;
         }
     }
 }

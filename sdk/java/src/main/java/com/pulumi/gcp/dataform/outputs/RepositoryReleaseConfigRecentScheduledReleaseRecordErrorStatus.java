@@ -72,10 +72,10 @@ public final class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatu
             return this;
         }
         public RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus build() {
-            final var o = new RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus();
-            o.code = code;
-            o.message = message;
-            return o;
+            final var _resultValue = new RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus();
+            _resultValue.code = code;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

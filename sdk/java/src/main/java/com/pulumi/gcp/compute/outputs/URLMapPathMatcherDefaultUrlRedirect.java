@@ -188,14 +188,14 @@ public final class URLMapPathMatcherDefaultUrlRedirect {
             return this;
         }
         public URLMapPathMatcherDefaultUrlRedirect build() {
-            final var o = new URLMapPathMatcherDefaultUrlRedirect();
-            o.hostRedirect = hostRedirect;
-            o.httpsRedirect = httpsRedirect;
-            o.pathRedirect = pathRedirect;
-            o.prefixRedirect = prefixRedirect;
-            o.redirectResponseCode = redirectResponseCode;
-            o.stripQuery = stripQuery;
-            return o;
+            final var _resultValue = new URLMapPathMatcherDefaultUrlRedirect();
+            _resultValue.hostRedirect = hostRedirect;
+            _resultValue.httpsRedirect = httpsRedirect;
+            _resultValue.pathRedirect = pathRedirect;
+            _resultValue.prefixRedirect = prefixRedirect;
+            _resultValue.redirectResponseCode = redirectResponseCode;
+            _resultValue.stripQuery = stripQuery;
+            return _resultValue;
         }
     }
 }

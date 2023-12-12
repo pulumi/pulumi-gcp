@@ -70,9 +70,9 @@ public final class WorkforcePoolProviderSaml {
             return this;
         }
         public WorkforcePoolProviderSaml build() {
-            final var o = new WorkforcePoolProviderSaml();
-            o.idpMetadataXml = idpMetadataXml;
-            return o;
+            final var _resultValue = new WorkforcePoolProviderSaml();
+            _resultValue.idpMetadataXml = idpMetadataXml;
+            return _resultValue;
         }
     }
 }

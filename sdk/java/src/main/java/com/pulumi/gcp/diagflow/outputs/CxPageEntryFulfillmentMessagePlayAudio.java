@@ -70,10 +70,10 @@ public final class CxPageEntryFulfillmentMessagePlayAudio {
             return this;
         }
         public CxPageEntryFulfillmentMessagePlayAudio build() {
-            final var o = new CxPageEntryFulfillmentMessagePlayAudio();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.audioUri = audioUri;
-            return o;
+            final var _resultValue = new CxPageEntryFulfillmentMessagePlayAudio();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.audioUri = audioUri;
+            return _resultValue;
         }
     }
 }

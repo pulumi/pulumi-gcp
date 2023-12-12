@@ -222,19 +222,19 @@ public final class GetEngineVersionsResult {
             return this;
         }
         public GetEngineVersionsResult build() {
-            final var o = new GetEngineVersionsResult();
-            o.defaultClusterVersion = defaultClusterVersion;
-            o.id = id;
-            o.latestMasterVersion = latestMasterVersion;
-            o.latestNodeVersion = latestNodeVersion;
-            o.location = location;
-            o.project = project;
-            o.releaseChannelDefaultVersion = releaseChannelDefaultVersion;
-            o.releaseChannelLatestVersion = releaseChannelLatestVersion;
-            o.validMasterVersions = validMasterVersions;
-            o.validNodeVersions = validNodeVersions;
-            o.versionPrefix = versionPrefix;
-            return o;
+            final var _resultValue = new GetEngineVersionsResult();
+            _resultValue.defaultClusterVersion = defaultClusterVersion;
+            _resultValue.id = id;
+            _resultValue.latestMasterVersion = latestMasterVersion;
+            _resultValue.latestNodeVersion = latestNodeVersion;
+            _resultValue.location = location;
+            _resultValue.project = project;
+            _resultValue.releaseChannelDefaultVersion = releaseChannelDefaultVersion;
+            _resultValue.releaseChannelLatestVersion = releaseChannelLatestVersion;
+            _resultValue.validMasterVersions = validMasterVersions;
+            _resultValue.validNodeVersions = validNodeVersions;
+            _resultValue.versionPrefix = versionPrefix;
+            return _resultValue;
         }
     }
 }

@@ -153,14 +153,14 @@ public final class ZoneDiscoverySpec {
             return this;
         }
         public ZoneDiscoverySpec build() {
-            final var o = new ZoneDiscoverySpec();
-            o.csvOptions = csvOptions;
-            o.enabled = enabled;
-            o.excludePatterns = excludePatterns;
-            o.includePatterns = includePatterns;
-            o.jsonOptions = jsonOptions;
-            o.schedule = schedule;
-            return o;
+            final var _resultValue = new ZoneDiscoverySpec();
+            _resultValue.csvOptions = csvOptions;
+            _resultValue.enabled = enabled;
+            _resultValue.excludePatterns = excludePatterns;
+            _resultValue.includePatterns = includePatterns;
+            _resultValue.jsonOptions = jsonOptions;
+            _resultValue.schedule = schedule;
+            return _resultValue;
         }
     }
 }

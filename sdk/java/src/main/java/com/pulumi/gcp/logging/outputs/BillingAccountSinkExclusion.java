@@ -108,12 +108,12 @@ public final class BillingAccountSinkExclusion {
             return this;
         }
         public BillingAccountSinkExclusion build() {
-            final var o = new BillingAccountSinkExclusion();
-            o.description = description;
-            o.disabled = disabled;
-            o.filter = filter;
-            o.name = name;
-            return o;
+            final var _resultValue = new BillingAccountSinkExclusion();
+            _resultValue.description = description;
+            _resultValue.disabled = disabled;
+            _resultValue.filter = filter;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

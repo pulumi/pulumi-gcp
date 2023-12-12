@@ -159,13 +159,13 @@ public final class ClusterNetworking {
             return servicesIpv6CidrBlocks(List.of(servicesIpv6CidrBlocks));
         }
         public ClusterNetworking build() {
-            final var o = new ClusterNetworking();
-            o.clusterIpv4CidrBlocks = clusterIpv4CidrBlocks;
-            o.clusterIpv6CidrBlocks = clusterIpv6CidrBlocks;
-            o.networkType = networkType;
-            o.servicesIpv4CidrBlocks = servicesIpv4CidrBlocks;
-            o.servicesIpv6CidrBlocks = servicesIpv6CidrBlocks;
-            return o;
+            final var _resultValue = new ClusterNetworking();
+            _resultValue.clusterIpv4CidrBlocks = clusterIpv4CidrBlocks;
+            _resultValue.clusterIpv6CidrBlocks = clusterIpv6CidrBlocks;
+            _resultValue.networkType = networkType;
+            _resultValue.servicesIpv4CidrBlocks = servicesIpv4CidrBlocks;
+            _resultValue.servicesIpv6CidrBlocks = servicesIpv6CidrBlocks;
+            return _resultValue;
         }
     }
 }

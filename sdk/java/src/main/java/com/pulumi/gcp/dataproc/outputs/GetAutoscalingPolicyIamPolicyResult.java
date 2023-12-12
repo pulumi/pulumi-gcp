@@ -119,14 +119,14 @@ public final class GetAutoscalingPolicyIamPolicyResult {
             return this;
         }
         public GetAutoscalingPolicyIamPolicyResult build() {
-            final var o = new GetAutoscalingPolicyIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.location = location;
-            o.policyData = policyData;
-            o.policyId = policyId;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetAutoscalingPolicyIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.policyData = policyData;
+            _resultValue.policyId = policyId;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

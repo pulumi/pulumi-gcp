@@ -72,11 +72,11 @@ public final class GetClusterMaintenancePolicy {
             return recurringWindows(List.of(recurringWindows));
         }
         public GetClusterMaintenancePolicy build() {
-            final var o = new GetClusterMaintenancePolicy();
-            o.dailyMaintenanceWindows = dailyMaintenanceWindows;
-            o.maintenanceExclusions = maintenanceExclusions;
-            o.recurringWindows = recurringWindows;
-            return o;
+            final var _resultValue = new GetClusterMaintenancePolicy();
+            _resultValue.dailyMaintenanceWindows = dailyMaintenanceWindows;
+            _resultValue.maintenanceExclusions = maintenanceExclusions;
+            _resultValue.recurringWindows = recurringWindows;
+            return _resultValue;
         }
     }
 }

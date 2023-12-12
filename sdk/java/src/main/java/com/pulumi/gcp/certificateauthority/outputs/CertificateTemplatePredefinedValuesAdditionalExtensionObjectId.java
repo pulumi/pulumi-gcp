@@ -54,9 +54,9 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionObjectI
             return objectIdPaths(List.of(objectIdPaths));
         }
         public CertificateTemplatePredefinedValuesAdditionalExtensionObjectId build() {
-            final var o = new CertificateTemplatePredefinedValuesAdditionalExtensionObjectId();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new CertificateTemplatePredefinedValuesAdditionalExtensionObjectId();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class TargetGke {
             return this;
         }
         public TargetGke build() {
-            final var o = new TargetGke();
-            o.cluster = cluster;
-            o.internalIp = internalIp;
-            return o;
+            final var _resultValue = new TargetGke();
+            _resultValue.cluster = cluster;
+            _resultValue.internalIp = internalIp;
+            return _resultValue;
         }
     }
 }

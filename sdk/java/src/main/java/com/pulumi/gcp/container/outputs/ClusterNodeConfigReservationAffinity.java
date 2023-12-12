@@ -102,11 +102,11 @@ public final class ClusterNodeConfigReservationAffinity {
             return values(List.of(values));
         }
         public ClusterNodeConfigReservationAffinity build() {
-            final var o = new ClusterNodeConfigReservationAffinity();
-            o.consumeReservationType = consumeReservationType;
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new ClusterNodeConfigReservationAffinity();
+            _resultValue.consumeReservationType = consumeReservationType;
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

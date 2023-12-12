@@ -64,11 +64,11 @@ public final class GetClusterNodeConfigSoleTenantConfigNodeAffinity {
             return values(List.of(values));
         }
         public GetClusterNodeConfigSoleTenantConfigNodeAffinity build() {
-            final var o = new GetClusterNodeConfigSoleTenantConfigNodeAffinity();
-            o.key = key;
-            o.operator = operator;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetClusterNodeConfigSoleTenantConfigNodeAffinity();
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

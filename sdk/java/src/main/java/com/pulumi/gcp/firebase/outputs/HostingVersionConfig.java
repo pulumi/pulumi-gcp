@@ -82,10 +82,10 @@ public final class HostingVersionConfig {
             return rewrites(List.of(rewrites));
         }
         public HostingVersionConfig build() {
-            final var o = new HostingVersionConfig();
-            o.redirects = redirects;
-            o.rewrites = rewrites;
-            return o;
+            final var _resultValue = new HostingVersionConfig();
+            _resultValue.redirects = redirects;
+            _resultValue.rewrites = rewrites;
+            return _resultValue;
         }
     }
 }

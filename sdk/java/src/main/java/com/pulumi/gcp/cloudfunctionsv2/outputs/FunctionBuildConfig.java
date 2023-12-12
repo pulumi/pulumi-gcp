@@ -180,15 +180,15 @@ public final class FunctionBuildConfig {
             return this;
         }
         public FunctionBuildConfig build() {
-            final var o = new FunctionBuildConfig();
-            o.build = build;
-            o.dockerRepository = dockerRepository;
-            o.entryPoint = entryPoint;
-            o.environmentVariables = environmentVariables;
-            o.runtime = runtime;
-            o.source = source;
-            o.workerPool = workerPool;
-            return o;
+            final var _resultValue = new FunctionBuildConfig();
+            _resultValue.build = build;
+            _resultValue.dockerRepository = dockerRepository;
+            _resultValue.entryPoint = entryPoint;
+            _resultValue.environmentVariables = environmentVariables;
+            _resultValue.runtime = runtime;
+            _resultValue.source = source;
+            _resultValue.workerPool = workerPool;
+            return _resultValue;
         }
     }
 }

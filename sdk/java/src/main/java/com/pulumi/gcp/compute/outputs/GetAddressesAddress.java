@@ -182,16 +182,16 @@ public final class GetAddressesAddress {
             return this;
         }
         public GetAddressesAddress build() {
-            final var o = new GetAddressesAddress();
-            o.address = address;
-            o.addressType = addressType;
-            o.description = description;
-            o.labels = labels;
-            o.name = name;
-            o.region = region;
-            o.selfLink = selfLink;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAddressesAddress();
+            _resultValue.address = address;
+            _resultValue.addressType = addressType;
+            _resultValue.description = description;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.selfLink = selfLink;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

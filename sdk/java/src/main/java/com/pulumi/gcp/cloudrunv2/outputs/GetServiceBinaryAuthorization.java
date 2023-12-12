@@ -50,10 +50,10 @@ public final class GetServiceBinaryAuthorization {
             return this;
         }
         public GetServiceBinaryAuthorization build() {
-            final var o = new GetServiceBinaryAuthorization();
-            o.breakglassJustification = breakglassJustification;
-            o.useDefault = useDefault;
-            return o;
+            final var _resultValue = new GetServiceBinaryAuthorization();
+            _resultValue.breakglassJustification = breakglassJustification;
+            _resultValue.useDefault = useDefault;
+            return _resultValue;
         }
     }
 }

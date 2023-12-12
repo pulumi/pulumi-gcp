@@ -157,17 +157,17 @@ public final class GetJobTemplateTemplateContainer {
             return this;
         }
         public GetJobTemplateTemplateContainer build() {
-            final var o = new GetJobTemplateTemplateContainer();
-            o.args = args;
-            o.commands = commands;
-            o.envs = envs;
-            o.image = image;
-            o.name = name;
-            o.ports = ports;
-            o.resources = resources;
-            o.volumeMounts = volumeMounts;
-            o.workingDir = workingDir;
-            return o;
+            final var _resultValue = new GetJobTemplateTemplateContainer();
+            _resultValue.args = args;
+            _resultValue.commands = commands;
+            _resultValue.envs = envs;
+            _resultValue.image = image;
+            _resultValue.name = name;
+            _resultValue.ports = ports;
+            _resultValue.resources = resources;
+            _resultValue.volumeMounts = volumeMounts;
+            _resultValue.workingDir = workingDir;
+            return _resultValue;
         }
     }
 }

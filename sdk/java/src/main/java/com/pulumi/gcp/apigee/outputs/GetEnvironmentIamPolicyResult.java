@@ -108,13 +108,13 @@ public final class GetEnvironmentIamPolicyResult {
             return this;
         }
         public GetEnvironmentIamPolicyResult build() {
-            final var o = new GetEnvironmentIamPolicyResult();
-            o.envId = envId;
-            o.etag = etag;
-            o.id = id;
-            o.orgId = orgId;
-            o.policyData = policyData;
-            return o;
+            final var _resultValue = new GetEnvironmentIamPolicyResult();
+            _resultValue.envId = envId;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.orgId = orgId;
+            _resultValue.policyData = policyData;
+            return _resultValue;
         }
     }
 }

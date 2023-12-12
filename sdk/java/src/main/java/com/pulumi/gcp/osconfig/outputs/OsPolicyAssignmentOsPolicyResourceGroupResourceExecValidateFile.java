@@ -116,12 +116,12 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFi
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile();
-            o.allowInsecure = allowInsecure;
-            o.gcs = gcs;
-            o.localPath = localPath;
-            o.remote = remote;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile();
+            _resultValue.allowInsecure = allowInsecure;
+            _resultValue.gcs = gcs;
+            _resultValue.localPath = localPath;
+            _resultValue.remote = remote;
+            return _resultValue;
         }
     }
 }

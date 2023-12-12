@@ -64,11 +64,11 @@ public final class InstanceFromTemplateSchedulingNodeAffinity {
             return values(List.of(values));
         }
         public InstanceFromTemplateSchedulingNodeAffinity build() {
-            final var o = new InstanceFromTemplateSchedulingNodeAffinity();
-            o.key = key;
-            o.operator = operator;
-            o.values = values;
-            return o;
+            final var _resultValue = new InstanceFromTemplateSchedulingNodeAffinity();
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

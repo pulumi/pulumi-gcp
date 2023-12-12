@@ -135,13 +135,13 @@ public final class DatascanDataQualitySpecRuleStatisticRangeExpectation {
             return this;
         }
         public DatascanDataQualitySpecRuleStatisticRangeExpectation build() {
-            final var o = new DatascanDataQualitySpecRuleStatisticRangeExpectation();
-            o.maxValue = maxValue;
-            o.minValue = minValue;
-            o.statistic = statistic;
-            o.strictMaxEnabled = strictMaxEnabled;
-            o.strictMinEnabled = strictMinEnabled;
-            return o;
+            final var _resultValue = new DatascanDataQualitySpecRuleStatisticRangeExpectation();
+            _resultValue.maxValue = maxValue;
+            _resultValue.minValue = minValue;
+            _resultValue.statistic = statistic;
+            _resultValue.strictMaxEnabled = strictMaxEnabled;
+            _resultValue.strictMinEnabled = strictMinEnabled;
+            return _resultValue;
         }
     }
 }

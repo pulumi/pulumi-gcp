@@ -135,11 +135,11 @@ public final class AttestorAttestationAuthorityNote {
             return publicKeys(List.of(publicKeys));
         }
         public AttestorAttestationAuthorityNote build() {
-            final var o = new AttestorAttestationAuthorityNote();
-            o.delegationServiceAccountEmail = delegationServiceAccountEmail;
-            o.noteReference = noteReference;
-            o.publicKeys = publicKeys;
-            return o;
+            final var _resultValue = new AttestorAttestationAuthorityNote();
+            _resultValue.delegationServiceAccountEmail = delegationServiceAccountEmail;
+            _resultValue.noteReference = noteReference;
+            _resultValue.publicKeys = publicKeys;
+            return _resultValue;
         }
     }
 }

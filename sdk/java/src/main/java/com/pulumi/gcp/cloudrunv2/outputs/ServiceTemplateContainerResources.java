@@ -88,11 +88,11 @@ public final class ServiceTemplateContainerResources {
             return this;
         }
         public ServiceTemplateContainerResources build() {
-            final var o = new ServiceTemplateContainerResources();
-            o.cpuIdle = cpuIdle;
-            o.limits = limits;
-            o.startupCpuBoost = startupCpuBoost;
-            return o;
+            final var _resultValue = new ServiceTemplateContainerResources();
+            _resultValue.cpuIdle = cpuIdle;
+            _resultValue.limits = limits;
+            _resultValue.startupCpuBoost = startupCpuBoost;
+            return _resultValue;
         }
     }
 }

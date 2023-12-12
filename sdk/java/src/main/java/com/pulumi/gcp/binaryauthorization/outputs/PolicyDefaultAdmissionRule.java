@@ -111,11 +111,11 @@ public final class PolicyDefaultAdmissionRule {
             return requireAttestationsBies(List.of(requireAttestationsBies));
         }
         public PolicyDefaultAdmissionRule build() {
-            final var o = new PolicyDefaultAdmissionRule();
-            o.enforcementMode = enforcementMode;
-            o.evaluationMode = evaluationMode;
-            o.requireAttestationsBies = requireAttestationsBies;
-            return o;
+            final var _resultValue = new PolicyDefaultAdmissionRule();
+            _resultValue.enforcementMode = enforcementMode;
+            _resultValue.evaluationMode = evaluationMode;
+            _resultValue.requireAttestationsBies = requireAttestationsBies;
+            return _resultValue;
         }
     }
 }

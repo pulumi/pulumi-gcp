@@ -52,9 +52,9 @@ public final class GetSecretsSecretReplicationAuto {
             return customerManagedEncryptions(List.of(customerManagedEncryptions));
         }
         public GetSecretsSecretReplicationAuto build() {
-            final var o = new GetSecretsSecretReplicationAuto();
-            o.customerManagedEncryptions = customerManagedEncryptions;
-            return o;
+            final var _resultValue = new GetSecretsSecretReplicationAuto();
+            _resultValue.customerManagedEncryptions = customerManagedEncryptions;
+            return _resultValue;
         }
     }
 }

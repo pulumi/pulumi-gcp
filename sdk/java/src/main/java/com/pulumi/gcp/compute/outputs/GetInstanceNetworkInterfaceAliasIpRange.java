@@ -69,10 +69,10 @@ public final class GetInstanceNetworkInterfaceAliasIpRange {
             return this;
         }
         public GetInstanceNetworkInterfaceAliasIpRange build() {
-            final var o = new GetInstanceNetworkInterfaceAliasIpRange();
-            o.ipCidrRange = ipCidrRange;
-            o.subnetworkRangeName = subnetworkRangeName;
-            return o;
+            final var _resultValue = new GetInstanceNetworkInterfaceAliasIpRange();
+            _resultValue.ipCidrRange = ipCidrRange;
+            _resultValue.subnetworkRangeName = subnetworkRangeName;
+            return _resultValue;
         }
     }
 }

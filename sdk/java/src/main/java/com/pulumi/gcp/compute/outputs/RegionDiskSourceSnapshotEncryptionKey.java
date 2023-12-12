@@ -92,11 +92,11 @@ public final class RegionDiskSourceSnapshotEncryptionKey {
             return this;
         }
         public RegionDiskSourceSnapshotEncryptionKey build() {
-            final var o = new RegionDiskSourceSnapshotEncryptionKey();
-            o.kmsKeyName = kmsKeyName;
-            o.rawKey = rawKey;
-            o.sha256 = sha256;
-            return o;
+            final var _resultValue = new RegionDiskSourceSnapshotEncryptionKey();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.rawKey = rawKey;
+            _resultValue.sha256 = sha256;
+            return _resultValue;
         }
     }
 }

@@ -117,12 +117,12 @@ public final class AuthorityConfigSubjectConfigSubjectAltName {
             return uris(List.of(uris));
         }
         public AuthorityConfigSubjectConfigSubjectAltName build() {
-            final var o = new AuthorityConfigSubjectConfigSubjectAltName();
-            o.dnsNames = dnsNames;
-            o.emailAddresses = emailAddresses;
-            o.ipAddresses = ipAddresses;
-            o.uris = uris;
-            return o;
+            final var _resultValue = new AuthorityConfigSubjectConfigSubjectAltName();
+            _resultValue.dnsNames = dnsNames;
+            _resultValue.emailAddresses = emailAddresses;
+            _resultValue.ipAddresses = ipAddresses;
+            _resultValue.uris = uris;
+            return _resultValue;
         }
     }
 }

@@ -171,15 +171,15 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax();
-            o.dateValue = dateValue;
-            o.dayOfWeekValue = dayOfWeekValue;
-            o.floatValue = floatValue;
-            o.integerValue = integerValue;
-            o.stringValue = stringValue;
-            o.timeValue = timeValue;
-            o.timestampValue = timestampValue;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax();
+            _resultValue.dateValue = dateValue;
+            _resultValue.dayOfWeekValue = dayOfWeekValue;
+            _resultValue.floatValue = floatValue;
+            _resultValue.integerValue = integerValue;
+            _resultValue.stringValue = stringValue;
+            _resultValue.timeValue = timeValue;
+            _resultValue.timestampValue = timestampValue;
+            return _resultValue;
         }
     }
 }

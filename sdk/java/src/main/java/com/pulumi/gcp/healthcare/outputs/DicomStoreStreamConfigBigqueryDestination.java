@@ -46,9 +46,9 @@ public final class DicomStoreStreamConfigBigqueryDestination {
             return this;
         }
         public DicomStoreStreamConfigBigqueryDestination build() {
-            final var o = new DicomStoreStreamConfigBigqueryDestination();
-            o.tableUri = tableUri;
-            return o;
+            final var _resultValue = new DicomStoreStreamConfigBigqueryDestination();
+            _resultValue.tableUri = tableUri;
+            return _resultValue;
         }
     }
 }

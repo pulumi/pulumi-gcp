@@ -70,10 +70,10 @@ public final class AddonsConfigAddonsConfigConnectorsPlatformConfig {
             return this;
         }
         public AddonsConfigAddonsConfigConnectorsPlatformConfig build() {
-            final var o = new AddonsConfigAddonsConfigConnectorsPlatformConfig();
-            o.enabled = enabled;
-            o.expiresAt = expiresAt;
-            return o;
+            final var _resultValue = new AddonsConfigAddonsConfigConnectorsPlatformConfig();
+            _resultValue.enabled = enabled;
+            _resultValue.expiresAt = expiresAt;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class JobTemplateTemplateContainerResources {
             return this;
         }
         public JobTemplateTemplateContainerResources build() {
-            final var o = new JobTemplateTemplateContainerResources();
-            o.limits = limits;
-            return o;
+            final var _resultValue = new JobTemplateTemplateContainerResources();
+            _resultValue.limits = limits;
+            return _resultValue;
         }
     }
 }

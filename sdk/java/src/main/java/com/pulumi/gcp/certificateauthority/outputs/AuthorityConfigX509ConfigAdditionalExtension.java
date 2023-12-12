@@ -90,11 +90,11 @@ public final class AuthorityConfigX509ConfigAdditionalExtension {
             return this;
         }
         public AuthorityConfigX509ConfigAdditionalExtension build() {
-            final var o = new AuthorityConfigX509ConfigAdditionalExtension();
-            o.critical = critical;
-            o.objectId = objectId;
-            o.value = value;
-            return o;
+            final var _resultValue = new AuthorityConfigX509ConfigAdditionalExtension();
+            _resultValue.critical = critical;
+            _resultValue.objectId = objectId;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

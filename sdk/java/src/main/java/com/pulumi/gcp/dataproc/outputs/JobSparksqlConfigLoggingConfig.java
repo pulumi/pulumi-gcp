@@ -39,9 +39,9 @@ public final class JobSparksqlConfigLoggingConfig {
             return this;
         }
         public JobSparksqlConfigLoggingConfig build() {
-            final var o = new JobSparksqlConfigLoggingConfig();
-            o.driverLogLevels = driverLogLevels;
-            return o;
+            final var _resultValue = new JobSparksqlConfigLoggingConfig();
+            _resultValue.driverLogLevels = driverLogLevels;
+            return _resultValue;
         }
     }
 }

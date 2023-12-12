@@ -48,9 +48,9 @@ public final class ClusterPodSecurityPolicyConfig {
             return this;
         }
         public ClusterPodSecurityPolicyConfig build() {
-            final var o = new ClusterPodSecurityPolicyConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterPodSecurityPolicyConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

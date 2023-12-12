@@ -117,12 +117,12 @@ public final class HostingCustomDomainRequiredDnsUpdateDesiredRecord {
             return this;
         }
         public HostingCustomDomainRequiredDnsUpdateDesiredRecord build() {
-            final var o = new HostingCustomDomainRequiredDnsUpdateDesiredRecord();
-            o.domainName = domainName;
-            o.rdata = rdata;
-            o.requiredAction = requiredAction;
-            o.type = type;
-            return o;
+            final var _resultValue = new HostingCustomDomainRequiredDnsUpdateDesiredRecord();
+            _resultValue.domainName = domainName;
+            _resultValue.rdata = rdata;
+            _resultValue.requiredAction = requiredAction;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

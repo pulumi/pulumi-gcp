@@ -209,15 +209,15 @@ public final class AlertPolicyCondition {
             return this;
         }
         public AlertPolicyCondition build() {
-            final var o = new AlertPolicyCondition();
-            o.conditionAbsent = conditionAbsent;
-            o.conditionMatchedLog = conditionMatchedLog;
-            o.conditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
-            o.conditionPrometheusQueryLanguage = conditionPrometheusQueryLanguage;
-            o.conditionThreshold = conditionThreshold;
-            o.displayName = displayName;
-            o.name = name;
-            return o;
+            final var _resultValue = new AlertPolicyCondition();
+            _resultValue.conditionAbsent = conditionAbsent;
+            _resultValue.conditionMatchedLog = conditionMatchedLog;
+            _resultValue.conditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
+            _resultValue.conditionPrometheusQueryLanguage = conditionPrometheusQueryLanguage;
+            _resultValue.conditionThreshold = conditionThreshold;
+            _resultValue.displayName = displayName;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

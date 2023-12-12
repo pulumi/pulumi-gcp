@@ -152,17 +152,17 @@ public final class GetAuthorityConfigX509ConfigNameConstraint {
             return permittedUris(List.of(permittedUris));
         }
         public GetAuthorityConfigX509ConfigNameConstraint build() {
-            final var o = new GetAuthorityConfigX509ConfigNameConstraint();
-            o.critical = critical;
-            o.excludedDnsNames = excludedDnsNames;
-            o.excludedEmailAddresses = excludedEmailAddresses;
-            o.excludedIpRanges = excludedIpRanges;
-            o.excludedUris = excludedUris;
-            o.permittedDnsNames = permittedDnsNames;
-            o.permittedEmailAddresses = permittedEmailAddresses;
-            o.permittedIpRanges = permittedIpRanges;
-            o.permittedUris = permittedUris;
-            return o;
+            final var _resultValue = new GetAuthorityConfigX509ConfigNameConstraint();
+            _resultValue.critical = critical;
+            _resultValue.excludedDnsNames = excludedDnsNames;
+            _resultValue.excludedEmailAddresses = excludedEmailAddresses;
+            _resultValue.excludedIpRanges = excludedIpRanges;
+            _resultValue.excludedUris = excludedUris;
+            _resultValue.permittedDnsNames = permittedDnsNames;
+            _resultValue.permittedEmailAddresses = permittedEmailAddresses;
+            _resultValue.permittedIpRanges = permittedIpRanges;
+            _resultValue.permittedUris = permittedUris;
+            return _resultValue;
         }
     }
 }

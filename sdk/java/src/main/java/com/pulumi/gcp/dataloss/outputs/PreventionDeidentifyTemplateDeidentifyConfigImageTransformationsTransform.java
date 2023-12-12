@@ -112,12 +112,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigImageTransformati
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform();
-            o.allInfoTypes = allInfoTypes;
-            o.allText = allText;
-            o.redactionColor = redactionColor;
-            o.selectedInfoTypes = selectedInfoTypes;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform();
+            _resultValue.allInfoTypes = allInfoTypes;
+            _resultValue.allText = allText;
+            _resultValue.redactionColor = redactionColor;
+            _resultValue.selectedInfoTypes = selectedInfoTypes;
+            return _resultValue;
         }
     }
 }

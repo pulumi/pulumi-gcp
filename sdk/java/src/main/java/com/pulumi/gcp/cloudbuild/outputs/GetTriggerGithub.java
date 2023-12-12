@@ -91,13 +91,13 @@ public final class GetTriggerGithub {
             return pushes(List.of(pushes));
         }
         public GetTriggerGithub build() {
-            final var o = new GetTriggerGithub();
-            o.enterpriseConfigResourceName = enterpriseConfigResourceName;
-            o.name = name;
-            o.owner = owner;
-            o.pullRequests = pullRequests;
-            o.pushes = pushes;
-            return o;
+            final var _resultValue = new GetTriggerGithub();
+            _resultValue.enterpriseConfigResourceName = enterpriseConfigResourceName;
+            _resultValue.name = name;
+            _resultValue.owner = owner;
+            _resultValue.pullRequests = pullRequests;
+            _resultValue.pushes = pushes;
+            return _resultValue;
         }
     }
 }

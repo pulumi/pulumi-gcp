@@ -100,13 +100,13 @@ public final class GetKMSSecretResult {
             return this;
         }
         public GetKMSSecretResult build() {
-            final var o = new GetKMSSecretResult();
-            o.additionalAuthenticatedData = additionalAuthenticatedData;
-            o.ciphertext = ciphertext;
-            o.cryptoKey = cryptoKey;
-            o.id = id;
-            o.plaintext = plaintext;
-            return o;
+            final var _resultValue = new GetKMSSecretResult();
+            _resultValue.additionalAuthenticatedData = additionalAuthenticatedData;
+            _resultValue.ciphertext = ciphertext;
+            _resultValue.cryptoKey = cryptoKey;
+            _resultValue.id = id;
+            _resultValue.plaintext = plaintext;
+            return _resultValue;
         }
     }
 }

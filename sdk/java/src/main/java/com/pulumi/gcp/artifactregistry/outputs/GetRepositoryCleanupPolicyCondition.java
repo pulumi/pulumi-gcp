@@ -103,14 +103,14 @@ public final class GetRepositoryCleanupPolicyCondition {
             return versionNamePrefixes(List.of(versionNamePrefixes));
         }
         public GetRepositoryCleanupPolicyCondition build() {
-            final var o = new GetRepositoryCleanupPolicyCondition();
-            o.newerThan = newerThan;
-            o.olderThan = olderThan;
-            o.packageNamePrefixes = packageNamePrefixes;
-            o.tagPrefixes = tagPrefixes;
-            o.tagState = tagState;
-            o.versionNamePrefixes = versionNamePrefixes;
-            return o;
+            final var _resultValue = new GetRepositoryCleanupPolicyCondition();
+            _resultValue.newerThan = newerThan;
+            _resultValue.olderThan = olderThan;
+            _resultValue.packageNamePrefixes = packageNamePrefixes;
+            _resultValue.tagPrefixes = tagPrefixes;
+            _resultValue.tagState = tagState;
+            _resultValue.versionNamePrefixes = versionNamePrefixes;
+            return _resultValue;
         }
     }
 }

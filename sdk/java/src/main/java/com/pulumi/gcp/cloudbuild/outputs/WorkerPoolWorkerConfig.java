@@ -88,11 +88,11 @@ public final class WorkerPoolWorkerConfig {
             return this;
         }
         public WorkerPoolWorkerConfig build() {
-            final var o = new WorkerPoolWorkerConfig();
-            o.diskSizeGb = diskSizeGb;
-            o.machineType = machineType;
-            o.noExternalIp = noExternalIp;
-            return o;
+            final var _resultValue = new WorkerPoolWorkerConfig();
+            _resultValue.diskSizeGb = diskSizeGb;
+            _resultValue.machineType = machineType;
+            _resultValue.noExternalIp = noExternalIp;
+            return _resultValue;
         }
     }
 }

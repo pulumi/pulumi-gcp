@@ -93,11 +93,11 @@ public final class FunctionEventTrigger {
             return this;
         }
         public FunctionEventTrigger build() {
-            final var o = new FunctionEventTrigger();
-            o.eventType = eventType;
-            o.failurePolicy = failurePolicy;
-            o.resource = resource;
-            return o;
+            final var _resultValue = new FunctionEventTrigger();
+            _resultValue.eventType = eventType;
+            _resultValue.failurePolicy = failurePolicy;
+            _resultValue.resource = resource;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class RepositoryGitRemoteSettingsSshAuthenticationConfig {
             return this;
         }
         public RepositoryGitRemoteSettingsSshAuthenticationConfig build() {
-            final var o = new RepositoryGitRemoteSettingsSshAuthenticationConfig();
-            o.hostPublicKey = hostPublicKey;
-            o.userPrivateKeySecretVersion = userPrivateKeySecretVersion;
-            return o;
+            final var _resultValue = new RepositoryGitRemoteSettingsSshAuthenticationConfig();
+            _resultValue.hostPublicKey = hostPublicKey;
+            _resultValue.userPrivateKeySecretVersion = userPrivateKeySecretVersion;
+            return _resultValue;
         }
     }
 }

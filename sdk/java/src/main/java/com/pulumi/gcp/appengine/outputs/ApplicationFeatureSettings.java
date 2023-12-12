@@ -48,9 +48,9 @@ public final class ApplicationFeatureSettings {
             return this;
         }
         public ApplicationFeatureSettings build() {
-            final var o = new ApplicationFeatureSettings();
-            o.splitHealthChecks = splitHealthChecks;
-            return o;
+            final var _resultValue = new ApplicationFeatureSettings();
+            _resultValue.splitHealthChecks = splitHealthChecks;
+            return _resultValue;
         }
     }
 }

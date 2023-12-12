@@ -465,35 +465,35 @@ public final class DatabaseInstanceSettings {
             return this;
         }
         public DatabaseInstanceSettings build() {
-            final var o = new DatabaseInstanceSettings();
-            o.activationPolicy = activationPolicy;
-            o.activeDirectoryConfig = activeDirectoryConfig;
-            o.advancedMachineFeatures = advancedMachineFeatures;
-            o.availabilityType = availabilityType;
-            o.backupConfiguration = backupConfiguration;
-            o.collation = collation;
-            o.connectorEnforcement = connectorEnforcement;
-            o.dataCacheConfig = dataCacheConfig;
-            o.databaseFlags = databaseFlags;
-            o.deletionProtectionEnabled = deletionProtectionEnabled;
-            o.denyMaintenancePeriod = denyMaintenancePeriod;
-            o.diskAutoresize = diskAutoresize;
-            o.diskAutoresizeLimit = diskAutoresizeLimit;
-            o.diskSize = diskSize;
-            o.diskType = diskType;
-            o.edition = edition;
-            o.insightsConfig = insightsConfig;
-            o.ipConfiguration = ipConfiguration;
-            o.locationPreference = locationPreference;
-            o.maintenanceWindow = maintenanceWindow;
-            o.passwordValidationPolicy = passwordValidationPolicy;
-            o.pricingPlan = pricingPlan;
-            o.sqlServerAuditConfig = sqlServerAuditConfig;
-            o.tier = tier;
-            o.timeZone = timeZone;
-            o.userLabels = userLabels;
-            o.version = version;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettings();
+            _resultValue.activationPolicy = activationPolicy;
+            _resultValue.activeDirectoryConfig = activeDirectoryConfig;
+            _resultValue.advancedMachineFeatures = advancedMachineFeatures;
+            _resultValue.availabilityType = availabilityType;
+            _resultValue.backupConfiguration = backupConfiguration;
+            _resultValue.collation = collation;
+            _resultValue.connectorEnforcement = connectorEnforcement;
+            _resultValue.dataCacheConfig = dataCacheConfig;
+            _resultValue.databaseFlags = databaseFlags;
+            _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
+            _resultValue.denyMaintenancePeriod = denyMaintenancePeriod;
+            _resultValue.diskAutoresize = diskAutoresize;
+            _resultValue.diskAutoresizeLimit = diskAutoresizeLimit;
+            _resultValue.diskSize = diskSize;
+            _resultValue.diskType = diskType;
+            _resultValue.edition = edition;
+            _resultValue.insightsConfig = insightsConfig;
+            _resultValue.ipConfiguration = ipConfiguration;
+            _resultValue.locationPreference = locationPreference;
+            _resultValue.maintenanceWindow = maintenanceWindow;
+            _resultValue.passwordValidationPolicy = passwordValidationPolicy;
+            _resultValue.pricingPlan = pricingPlan;
+            _resultValue.sqlServerAuditConfig = sqlServerAuditConfig;
+            _resultValue.tier = tier;
+            _resultValue.timeZone = timeZone;
+            _resultValue.userLabels = userLabels;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class InstanceTemplateNetworkPerformanceConfig {
             return this;
         }
         public InstanceTemplateNetworkPerformanceConfig build() {
-            final var o = new InstanceTemplateNetworkPerformanceConfig();
-            o.totalEgressBandwidthTier = totalEgressBandwidthTier;
-            return o;
+            final var _resultValue = new InstanceTemplateNetworkPerformanceConfig();
+            _resultValue.totalEgressBandwidthTier = totalEgressBandwidthTier;
+            return _resultValue;
         }
     }
 }

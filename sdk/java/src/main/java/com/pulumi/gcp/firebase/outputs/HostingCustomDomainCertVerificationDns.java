@@ -99,11 +99,11 @@ public final class HostingCustomDomainCertVerificationDns {
             return discovereds(List.of(discovereds));
         }
         public HostingCustomDomainCertVerificationDns build() {
-            final var o = new HostingCustomDomainCertVerificationDns();
-            o.checkTime = checkTime;
-            o.desireds = desireds;
-            o.discovereds = discovereds;
-            return o;
+            final var _resultValue = new HostingCustomDomainCertVerificationDns();
+            _resultValue.checkTime = checkTime;
+            _resultValue.desireds = desireds;
+            _resultValue.discovereds = discovereds;
+            return _resultValue;
         }
     }
 }

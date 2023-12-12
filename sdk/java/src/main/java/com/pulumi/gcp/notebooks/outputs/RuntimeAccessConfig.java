@@ -94,11 +94,11 @@ public final class RuntimeAccessConfig {
             return this;
         }
         public RuntimeAccessConfig build() {
-            final var o = new RuntimeAccessConfig();
-            o.accessType = accessType;
-            o.proxyUri = proxyUri;
-            o.runtimeOwner = runtimeOwner;
-            return o;
+            final var _resultValue = new RuntimeAccessConfig();
+            _resultValue.accessType = accessType;
+            _resultValue.proxyUri = proxyUri;
+            _resultValue.runtimeOwner = runtimeOwner;
+            return _resultValue;
         }
     }
 }

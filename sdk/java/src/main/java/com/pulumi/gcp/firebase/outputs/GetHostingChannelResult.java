@@ -155,18 +155,18 @@ public final class GetHostingChannelResult {
             return this;
         }
         public GetHostingChannelResult build() {
-            final var o = new GetHostingChannelResult();
-            o.channelId = channelId;
-            o.effectiveLabels = effectiveLabels;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.pulumiLabels = pulumiLabels;
-            o.retainedReleaseCount = retainedReleaseCount;
-            o.siteId = siteId;
-            o.ttl = ttl;
-            return o;
+            final var _resultValue = new GetHostingChannelResult();
+            _resultValue.channelId = channelId;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.expireTime = expireTime;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.retainedReleaseCount = retainedReleaseCount;
+            _resultValue.siteId = siteId;
+            _resultValue.ttl = ttl;
+            return _resultValue;
         }
     }
 }

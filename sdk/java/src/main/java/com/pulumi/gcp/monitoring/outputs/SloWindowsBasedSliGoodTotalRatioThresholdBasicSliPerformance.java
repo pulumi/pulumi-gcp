@@ -170,13 +170,13 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance 
             return versions(List.of(versions));
         }
         public SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance build() {
-            final var o = new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance();
-            o.availability = availability;
-            o.latency = latency;
-            o.locations = locations;
-            o.methods = methods;
-            o.versions = versions;
-            return o;
+            final var _resultValue = new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance();
+            _resultValue.availability = availability;
+            _resultValue.latency = latency;
+            _resultValue.locations = locations;
+            _resultValue.methods = methods;
+            _resultValue.versions = versions;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class InstanceFromMachineImageConfidentialInstanceConfig {
             return this;
         }
         public InstanceFromMachineImageConfidentialInstanceConfig build() {
-            final var o = new InstanceFromMachineImageConfidentialInstanceConfig();
-            o.enableConfidentialCompute = enableConfidentialCompute;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageConfidentialInstanceConfig();
+            _resultValue.enableConfidentialCompute = enableConfidentialCompute;
+            return _resultValue;
         }
     }
 }

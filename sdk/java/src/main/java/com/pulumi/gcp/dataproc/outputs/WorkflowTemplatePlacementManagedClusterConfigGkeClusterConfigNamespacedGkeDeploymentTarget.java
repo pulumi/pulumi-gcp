@@ -67,10 +67,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget();
-            o.clusterNamespace = clusterNamespace;
-            o.targetGkeCluster = targetGkeCluster;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget();
+            _resultValue.clusterNamespace = clusterNamespace;
+            _resultValue.targetGkeCluster = targetGkeCluster;
+            return _resultValue;
         }
     }
 }

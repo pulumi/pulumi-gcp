@@ -132,13 +132,13 @@ public final class ApiKeyRestrictions {
             return this;
         }
         public ApiKeyRestrictions build() {
-            final var o = new ApiKeyRestrictions();
-            o.androidKeyRestrictions = androidKeyRestrictions;
-            o.apiTargets = apiTargets;
-            o.browserKeyRestrictions = browserKeyRestrictions;
-            o.iosKeyRestrictions = iosKeyRestrictions;
-            o.serverKeyRestrictions = serverKeyRestrictions;
-            return o;
+            final var _resultValue = new ApiKeyRestrictions();
+            _resultValue.androidKeyRestrictions = androidKeyRestrictions;
+            _resultValue.apiTargets = apiTargets;
+            _resultValue.browserKeyRestrictions = browserKeyRestrictions;
+            _resultValue.iosKeyRestrictions = iosKeyRestrictions;
+            _resultValue.serverKeyRestrictions = serverKeyRestrictions;
+            return _resultValue;
         }
     }
 }

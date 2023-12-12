@@ -97,12 +97,12 @@ public final class GetFolderServiceAccountResult {
             return this;
         }
         public GetFolderServiceAccountResult build() {
-            final var o = new GetFolderServiceAccountResult();
-            o.accountEmail = accountEmail;
-            o.folderId = folderId;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetFolderServiceAccountResult();
+            _resultValue.accountEmail = accountEmail;
+            _resultValue.folderId = folderId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

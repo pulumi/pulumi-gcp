@@ -62,11 +62,11 @@ public final class EntryGroupIamBindingCondition {
             return this;
         }
         public EntryGroupIamBindingCondition build() {
-            final var o = new EntryGroupIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new EntryGroupIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

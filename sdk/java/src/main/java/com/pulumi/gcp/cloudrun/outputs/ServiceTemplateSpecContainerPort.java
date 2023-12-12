@@ -87,11 +87,11 @@ public final class ServiceTemplateSpecContainerPort {
             return this;
         }
         public ServiceTemplateSpecContainerPort build() {
-            final var o = new ServiceTemplateSpecContainerPort();
-            o.containerPort = containerPort;
-            o.name = name;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecContainerPort();
+            _resultValue.containerPort = containerPort;
+            _resultValue.name = name;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

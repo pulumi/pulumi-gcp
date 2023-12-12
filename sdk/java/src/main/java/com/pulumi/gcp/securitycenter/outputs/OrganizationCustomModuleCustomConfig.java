@@ -166,14 +166,14 @@ public final class OrganizationCustomModuleCustomConfig {
             return this;
         }
         public OrganizationCustomModuleCustomConfig build() {
-            final var o = new OrganizationCustomModuleCustomConfig();
-            o.customOutput = customOutput;
-            o.description = description;
-            o.predicate = predicate;
-            o.recommendation = recommendation;
-            o.resourceSelector = resourceSelector;
-            o.severity = severity;
-            return o;
+            final var _resultValue = new OrganizationCustomModuleCustomConfig();
+            _resultValue.customOutput = customOutput;
+            _resultValue.description = description;
+            _resultValue.predicate = predicate;
+            _resultValue.recommendation = recommendation;
+            _resultValue.resourceSelector = resourceSelector;
+            _resultValue.severity = severity;
+            return _resultValue;
         }
     }
 }

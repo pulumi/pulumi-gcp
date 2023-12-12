@@ -50,9 +50,9 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition();
-            o.expressions = expressions;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition();
+            _resultValue.expressions = expressions;
+            return _resultValue;
         }
     }
 }

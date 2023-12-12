@@ -119,14 +119,14 @@ public final class GetAiFeaturestoreIamPolicyResult {
             return this;
         }
         public GetAiFeaturestoreIamPolicyResult build() {
-            final var o = new GetAiFeaturestoreIamPolicyResult();
-            o.etag = etag;
-            o.featurestore = featurestore;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetAiFeaturestoreIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.featurestore = featurestore;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

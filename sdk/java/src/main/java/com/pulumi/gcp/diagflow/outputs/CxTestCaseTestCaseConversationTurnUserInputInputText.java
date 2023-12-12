@@ -46,9 +46,9 @@ public final class CxTestCaseTestCaseConversationTurnUserInputInputText {
             return this;
         }
         public CxTestCaseTestCaseConversationTurnUserInputInputText build() {
-            final var o = new CxTestCaseTestCaseConversationTurnUserInputInputText();
-            o.text = text;
-            return o;
+            final var _resultValue = new CxTestCaseTestCaseConversationTurnUserInputInputText();
+            _resultValue.text = text;
+            return _resultValue;
         }
     }
 }

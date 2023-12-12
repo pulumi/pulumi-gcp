@@ -109,12 +109,12 @@ public final class GuestPoliciesRecipeInstallStepFileExec {
             return this;
         }
         public GuestPoliciesRecipeInstallStepFileExec build() {
-            final var o = new GuestPoliciesRecipeInstallStepFileExec();
-            o.allowedExitCodes = allowedExitCodes;
-            o.args = args;
-            o.artifactId = artifactId;
-            o.localPath = localPath;
-            return o;
+            final var _resultValue = new GuestPoliciesRecipeInstallStepFileExec();
+            _resultValue.allowedExitCodes = allowedExitCodes;
+            _resultValue.args = args;
+            _resultValue.artifactId = artifactId;
+            _resultValue.localPath = localPath;
+            return _resultValue;
         }
     }
 }

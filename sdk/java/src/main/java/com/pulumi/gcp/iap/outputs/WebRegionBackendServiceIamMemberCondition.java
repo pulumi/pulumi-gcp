@@ -78,11 +78,11 @@ public final class WebRegionBackendServiceIamMemberCondition {
             return this;
         }
         public WebRegionBackendServiceIamMemberCondition build() {
-            final var o = new WebRegionBackendServiceIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new WebRegionBackendServiceIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

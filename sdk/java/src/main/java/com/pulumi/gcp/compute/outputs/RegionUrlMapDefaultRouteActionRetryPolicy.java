@@ -120,11 +120,11 @@ public final class RegionUrlMapDefaultRouteActionRetryPolicy {
             return retryConditions(List.of(retryConditions));
         }
         public RegionUrlMapDefaultRouteActionRetryPolicy build() {
-            final var o = new RegionUrlMapDefaultRouteActionRetryPolicy();
-            o.numRetries = numRetries;
-            o.perTryTimeout = perTryTimeout;
-            o.retryConditions = retryConditions;
-            return o;
+            final var _resultValue = new RegionUrlMapDefaultRouteActionRetryPolicy();
+            _resultValue.numRetries = numRetries;
+            _resultValue.perTryTimeout = perTryTimeout;
+            _resultValue.retryConditions = retryConditions;
+            return _resultValue;
         }
     }
 }

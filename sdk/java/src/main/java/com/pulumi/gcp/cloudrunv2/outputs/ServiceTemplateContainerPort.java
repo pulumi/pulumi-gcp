@@ -68,10 +68,10 @@ public final class ServiceTemplateContainerPort {
             return this;
         }
         public ServiceTemplateContainerPort build() {
-            final var o = new ServiceTemplateContainerPort();
-            o.containerPort = containerPort;
-            o.name = name;
-            return o;
+            final var _resultValue = new ServiceTemplateContainerPort();
+            _resultValue.containerPort = containerPort;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

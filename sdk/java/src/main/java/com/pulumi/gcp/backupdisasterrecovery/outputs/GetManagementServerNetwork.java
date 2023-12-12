@@ -49,10 +49,10 @@ public final class GetManagementServerNetwork {
             return this;
         }
         public GetManagementServerNetwork build() {
-            final var o = new GetManagementServerNetwork();
-            o.network = network;
-            o.peeringMode = peeringMode;
-            return o;
+            final var _resultValue = new GetManagementServerNetwork();
+            _resultValue.network = network;
+            _resultValue.peeringMode = peeringMode;
+            return _resultValue;
         }
     }
 }

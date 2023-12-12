@@ -38,9 +38,9 @@ public final class GetClusterNodeConfigAdvancedMachineFeature {
             return this;
         }
         public GetClusterNodeConfigAdvancedMachineFeature build() {
-            final var o = new GetClusterNodeConfigAdvancedMachineFeature();
-            o.threadsPerCore = threadsPerCore;
-            return o;
+            final var _resultValue = new GetClusterNodeConfigAdvancedMachineFeature();
+            _resultValue.threadsPerCore = threadsPerCore;
+            return _resultValue;
         }
     }
 }

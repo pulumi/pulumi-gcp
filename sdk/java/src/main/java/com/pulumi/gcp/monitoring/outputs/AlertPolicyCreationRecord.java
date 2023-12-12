@@ -71,10 +71,10 @@ public final class AlertPolicyCreationRecord {
             return this;
         }
         public AlertPolicyCreationRecord build() {
-            final var o = new AlertPolicyCreationRecord();
-            o.mutateTime = mutateTime;
-            o.mutatedBy = mutatedBy;
-            return o;
+            final var _resultValue = new AlertPolicyCreationRecord();
+            _resultValue.mutateTime = mutateTime;
+            _resultValue.mutatedBy = mutatedBy;
+            return _resultValue;
         }
     }
 }

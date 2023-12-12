@@ -132,13 +132,13 @@ public final class BareMetalClusterValidationCheckStatusResult {
             return this;
         }
         public BareMetalClusterValidationCheckStatusResult build() {
-            final var o = new BareMetalClusterValidationCheckStatusResult();
-            o.category = category;
-            o.description = description;
-            o.details = details;
-            o.options = options;
-            o.reason = reason;
-            return o;
+            final var _resultValue = new BareMetalClusterValidationCheckStatusResult();
+            _resultValue.category = category;
+            _resultValue.description = description;
+            _resultValue.details = details;
+            _resultValue.options = options;
+            _resultValue.reason = reason;
+            return _resultValue;
         }
     }
 }

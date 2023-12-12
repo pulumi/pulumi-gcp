@@ -310,20 +310,20 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation();
-            o.bucketingConfig = bucketingConfig;
-            o.characterMaskConfig = characterMaskConfig;
-            o.cryptoDeterministicConfig = cryptoDeterministicConfig;
-            o.cryptoHashConfig = cryptoHashConfig;
-            o.cryptoReplaceFfxFpeConfig = cryptoReplaceFfxFpeConfig;
-            o.dateShiftConfig = dateShiftConfig;
-            o.fixedSizeBucketingConfig = fixedSizeBucketingConfig;
-            o.redactConfig = redactConfig;
-            o.replaceConfig = replaceConfig;
-            o.replaceDictionaryConfig = replaceDictionaryConfig;
-            o.replaceWithInfoTypeConfig = replaceWithInfoTypeConfig;
-            o.timePartConfig = timePartConfig;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation();
+            _resultValue.bucketingConfig = bucketingConfig;
+            _resultValue.characterMaskConfig = characterMaskConfig;
+            _resultValue.cryptoDeterministicConfig = cryptoDeterministicConfig;
+            _resultValue.cryptoHashConfig = cryptoHashConfig;
+            _resultValue.cryptoReplaceFfxFpeConfig = cryptoReplaceFfxFpeConfig;
+            _resultValue.dateShiftConfig = dateShiftConfig;
+            _resultValue.fixedSizeBucketingConfig = fixedSizeBucketingConfig;
+            _resultValue.redactConfig = redactConfig;
+            _resultValue.replaceConfig = replaceConfig;
+            _resultValue.replaceDictionaryConfig = replaceDictionaryConfig;
+            _resultValue.replaceWithInfoTypeConfig = replaceWithInfoTypeConfig;
+            _resultValue.timePartConfig = timePartConfig;
+            return _resultValue;
         }
     }
 }

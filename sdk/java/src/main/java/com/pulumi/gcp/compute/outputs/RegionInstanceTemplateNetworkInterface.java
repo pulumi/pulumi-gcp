@@ -289,22 +289,22 @@ public final class RegionInstanceTemplateNetworkInterface {
             return this;
         }
         public RegionInstanceTemplateNetworkInterface build() {
-            final var o = new RegionInstanceTemplateNetworkInterface();
-            o.accessConfigs = accessConfigs;
-            o.aliasIpRanges = aliasIpRanges;
-            o.internalIpv6PrefixLength = internalIpv6PrefixLength;
-            o.ipv6AccessConfigs = ipv6AccessConfigs;
-            o.ipv6AccessType = ipv6AccessType;
-            o.ipv6Address = ipv6Address;
-            o.name = name;
-            o.network = network;
-            o.networkIp = networkIp;
-            o.nicType = nicType;
-            o.queueCount = queueCount;
-            o.stackType = stackType;
-            o.subnetwork = subnetwork;
-            o.subnetworkProject = subnetworkProject;
-            return o;
+            final var _resultValue = new RegionInstanceTemplateNetworkInterface();
+            _resultValue.accessConfigs = accessConfigs;
+            _resultValue.aliasIpRanges = aliasIpRanges;
+            _resultValue.internalIpv6PrefixLength = internalIpv6PrefixLength;
+            _resultValue.ipv6AccessConfigs = ipv6AccessConfigs;
+            _resultValue.ipv6AccessType = ipv6AccessType;
+            _resultValue.ipv6Address = ipv6Address;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.networkIp = networkIp;
+            _resultValue.nicType = nicType;
+            _resultValue.queueCount = queueCount;
+            _resultValue.stackType = stackType;
+            _resultValue.subnetwork = subnetwork;
+            _resultValue.subnetworkProject = subnetworkProject;
+            return _resultValue;
         }
     }
 }

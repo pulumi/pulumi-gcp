@@ -48,9 +48,9 @@ public final class ClusterContinuousBackupConfigEncryptionConfig {
             return this;
         }
         public ClusterContinuousBackupConfigEncryptionConfig build() {
-            final var o = new ClusterContinuousBackupConfigEncryptionConfig();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new ClusterContinuousBackupConfigEncryptionConfig();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

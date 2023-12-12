@@ -109,14 +109,14 @@ public final class GetAttachedInstallManifestResult {
             return this;
         }
         public GetAttachedInstallManifestResult build() {
-            final var o = new GetAttachedInstallManifestResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.location = location;
-            o.manifest = manifest;
-            o.platformVersion = platformVersion;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetAttachedInstallManifestResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.manifest = manifest;
+            _resultValue.platformVersion = platformVersion;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

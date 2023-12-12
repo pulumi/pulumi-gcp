@@ -67,10 +67,10 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped();
-            o.cryptoKeyName = cryptoKeyName;
-            o.wrappedKey = wrappedKey;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrapped();
+            _resultValue.cryptoKeyName = cryptoKeyName;
+            _resultValue.wrappedKey = wrappedKey;
+            return _resultValue;
         }
     }
 }

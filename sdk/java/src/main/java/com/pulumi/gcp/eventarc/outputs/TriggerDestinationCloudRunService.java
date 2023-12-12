@@ -86,11 +86,11 @@ public final class TriggerDestinationCloudRunService {
             return this;
         }
         public TriggerDestinationCloudRunService build() {
-            final var o = new TriggerDestinationCloudRunService();
-            o.path = path;
-            o.region = region;
-            o.service = service;
-            return o;
+            final var _resultValue = new TriggerDestinationCloudRunService();
+            _resultValue.path = path;
+            _resultValue.region = region;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

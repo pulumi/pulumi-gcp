@@ -172,15 +172,15 @@ public final class JobPrestoConfig {
             return queryLists(List.of(queryLists));
         }
         public JobPrestoConfig build() {
-            final var o = new JobPrestoConfig();
-            o.clientTags = clientTags;
-            o.continueOnFailure = continueOnFailure;
-            o.loggingConfig = loggingConfig;
-            o.outputFormat = outputFormat;
-            o.properties = properties;
-            o.queryFileUri = queryFileUri;
-            o.queryLists = queryLists;
-            return o;
+            final var _resultValue = new JobPrestoConfig();
+            _resultValue.clientTags = clientTags;
+            _resultValue.continueOnFailure = continueOnFailure;
+            _resultValue.loggingConfig = loggingConfig;
+            _resultValue.outputFormat = outputFormat;
+            _resultValue.properties = properties;
+            _resultValue.queryFileUri = queryFileUri;
+            _resultValue.queryLists = queryLists;
+            return _resultValue;
         }
     }
 }

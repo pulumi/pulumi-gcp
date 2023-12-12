@@ -165,16 +165,16 @@ public final class GetOrganizationResult {
             return this;
         }
         public GetOrganizationResult build() {
-            final var o = new GetOrganizationResult();
-            o.createTime = createTime;
-            o.directoryCustomerId = directoryCustomerId;
-            o.domain = domain;
-            o.id = id;
-            o.lifecycleState = lifecycleState;
-            o.name = name;
-            o.orgId = orgId;
-            o.organization = organization;
-            return o;
+            final var _resultValue = new GetOrganizationResult();
+            _resultValue.createTime = createTime;
+            _resultValue.directoryCustomerId = directoryCustomerId;
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.lifecycleState = lifecycleState;
+            _resultValue.name = name;
+            _resultValue.orgId = orgId;
+            _resultValue.organization = organization;
+            return _resultValue;
         }
     }
 }

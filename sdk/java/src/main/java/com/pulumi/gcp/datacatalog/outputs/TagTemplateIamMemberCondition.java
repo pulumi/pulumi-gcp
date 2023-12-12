@@ -62,11 +62,11 @@ public final class TagTemplateIamMemberCondition {
             return this;
         }
         public TagTemplateIamMemberCondition build() {
-            final var o = new TagTemplateIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new TagTemplateIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

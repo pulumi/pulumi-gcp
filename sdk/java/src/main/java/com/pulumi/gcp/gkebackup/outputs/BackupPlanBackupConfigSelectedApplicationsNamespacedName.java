@@ -65,10 +65,10 @@ public final class BackupPlanBackupConfigSelectedApplicationsNamespacedName {
             return this;
         }
         public BackupPlanBackupConfigSelectedApplicationsNamespacedName build() {
-            final var o = new BackupPlanBackupConfigSelectedApplicationsNamespacedName();
-            o.name = name;
-            o.namespace = namespace;
-            return o;
+            final var _resultValue = new BackupPlanBackupConfigSelectedApplicationsNamespacedName();
+            _resultValue.name = name;
+            _resultValue.namespace = namespace;
+            return _resultValue;
         }
     }
 }

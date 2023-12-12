@@ -38,9 +38,9 @@ public final class EnvironmentStorageConfig {
             return this;
         }
         public EnvironmentStorageConfig build() {
-            final var o = new EnvironmentStorageConfig();
-            o.bucket = bucket;
-            return o;
+            final var _resultValue = new EnvironmentStorageConfig();
+            _resultValue.bucket = bucket;
+            return _resultValue;
         }
     }
 }

@@ -191,16 +191,16 @@ public final class TaskSpark {
             return this;
         }
         public TaskSpark build() {
-            final var o = new TaskSpark();
-            o.archiveUris = archiveUris;
-            o.fileUris = fileUris;
-            o.infrastructureSpec = infrastructureSpec;
-            o.mainClass = mainClass;
-            o.mainJarFileUri = mainJarFileUri;
-            o.pythonScriptFile = pythonScriptFile;
-            o.sqlScript = sqlScript;
-            o.sqlScriptFile = sqlScriptFile;
-            return o;
+            final var _resultValue = new TaskSpark();
+            _resultValue.archiveUris = archiveUris;
+            _resultValue.fileUris = fileUris;
+            _resultValue.infrastructureSpec = infrastructureSpec;
+            _resultValue.mainClass = mainClass;
+            _resultValue.mainJarFileUri = mainJarFileUri;
+            _resultValue.pythonScriptFile = pythonScriptFile;
+            _resultValue.sqlScript = sqlScript;
+            _resultValue.sqlScriptFile = sqlScriptFile;
+            return _resultValue;
         }
     }
 }

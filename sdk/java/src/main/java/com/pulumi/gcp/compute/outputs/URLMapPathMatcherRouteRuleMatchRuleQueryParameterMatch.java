@@ -122,12 +122,12 @@ public final class URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
             return this;
         }
         public URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch build() {
-            final var o = new URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch();
-            o.exactMatch = exactMatch;
-            o.name = name;
-            o.presentMatch = presentMatch;
-            o.regexMatch = regexMatch;
-            return o;
+            final var _resultValue = new URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch();
+            _resultValue.exactMatch = exactMatch;
+            _resultValue.name = name;
+            _resultValue.presentMatch = presentMatch;
+            _resultValue.regexMatch = regexMatch;
+            return _resultValue;
         }
     }
 }

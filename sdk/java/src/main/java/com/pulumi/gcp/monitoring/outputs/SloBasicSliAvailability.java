@@ -48,9 +48,9 @@ public final class SloBasicSliAvailability {
             return this;
         }
         public SloBasicSliAvailability build() {
-            final var o = new SloBasicSliAvailability();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new SloBasicSliAvailability();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

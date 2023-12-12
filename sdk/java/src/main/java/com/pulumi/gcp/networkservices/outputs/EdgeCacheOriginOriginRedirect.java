@@ -57,9 +57,9 @@ public final class EdgeCacheOriginOriginRedirect {
             return redirectConditions(List.of(redirectConditions));
         }
         public EdgeCacheOriginOriginRedirect build() {
-            final var o = new EdgeCacheOriginOriginRedirect();
-            o.redirectConditions = redirectConditions;
-            return o;
+            final var _resultValue = new EdgeCacheOriginOriginRedirect();
+            _resultValue.redirectConditions = redirectConditions;
+            return _resultValue;
         }
     }
 }

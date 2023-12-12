@@ -60,11 +60,11 @@ public final class GetEnvironmentConfigWorkloadsConfigWebServer {
             return this;
         }
         public GetEnvironmentConfigWorkloadsConfigWebServer build() {
-            final var o = new GetEnvironmentConfigWorkloadsConfigWebServer();
-            o.cpu = cpu;
-            o.memoryGb = memoryGb;
-            o.storageGb = storageGb;
-            return o;
+            final var _resultValue = new GetEnvironmentConfigWorkloadsConfigWebServer();
+            _resultValue.cpu = cpu;
+            _resultValue.memoryGb = memoryGb;
+            _resultValue.storageGb = storageGb;
+            return _resultValue;
         }
     }
 }

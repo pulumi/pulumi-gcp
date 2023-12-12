@@ -48,9 +48,9 @@ public final class ProjectFeedFeedOutputConfig {
             return this;
         }
         public ProjectFeedFeedOutputConfig build() {
-            final var o = new ProjectFeedFeedOutputConfig();
-            o.pubsubDestination = pubsubDestination;
-            return o;
+            final var _resultValue = new ProjectFeedFeedOutputConfig();
+            _resultValue.pubsubDestination = pubsubDestination;
+            return _resultValue;
         }
     }
 }

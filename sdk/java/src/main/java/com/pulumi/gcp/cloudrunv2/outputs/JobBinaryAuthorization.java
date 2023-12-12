@@ -68,10 +68,10 @@ public final class JobBinaryAuthorization {
             return this;
         }
         public JobBinaryAuthorization build() {
-            final var o = new JobBinaryAuthorization();
-            o.breakglassJustification = breakglassJustification;
-            o.useDefault = useDefault;
-            return o;
+            final var _resultValue = new JobBinaryAuthorization();
+            _resultValue.breakglassJustification = breakglassJustification;
+            _resultValue.useDefault = useDefault;
+            return _resultValue;
         }
     }
 }

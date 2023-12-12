@@ -204,18 +204,18 @@ public final class GetInstanceGroupResult {
             return this;
         }
         public GetInstanceGroupResult build() {
-            final var o = new GetInstanceGroupResult();
-            o.description = description;
-            o.id = id;
-            o.instances = instances;
-            o.name = name;
-            o.namedPorts = namedPorts;
-            o.network = network;
-            o.project = project;
-            o.selfLink = selfLink;
-            o.size = size;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetInstanceGroupResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.instances = instances;
+            _resultValue.name = name;
+            _resultValue.namedPorts = namedPorts;
+            _resultValue.network = network;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            _resultValue.size = size;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

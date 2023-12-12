@@ -111,12 +111,12 @@ public final class TriggerPubsubConfig {
             return this;
         }
         public TriggerPubsubConfig build() {
-            final var o = new TriggerPubsubConfig();
-            o.serviceAccountEmail = serviceAccountEmail;
-            o.state = state;
-            o.subscription = subscription;
-            o.topic = topic;
-            return o;
+            final var _resultValue = new TriggerPubsubConfig();
+            _resultValue.serviceAccountEmail = serviceAccountEmail;
+            _resultValue.state = state;
+            _resultValue.subscription = subscription;
+            _resultValue.topic = topic;
+            return _resultValue;
         }
     }
 }

@@ -74,10 +74,10 @@ public final class EngineSplitTrafficSplit {
             return this;
         }
         public EngineSplitTrafficSplit build() {
-            final var o = new EngineSplitTrafficSplit();
-            o.allocations = allocations;
-            o.shardBy = shardBy;
-            return o;
+            final var _resultValue = new EngineSplitTrafficSplit();
+            _resultValue.allocations = allocations;
+            _resultValue.shardBy = shardBy;
+            return _resultValue;
         }
     }
 }

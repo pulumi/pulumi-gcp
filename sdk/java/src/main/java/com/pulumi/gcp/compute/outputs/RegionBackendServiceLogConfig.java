@@ -74,10 +74,10 @@ public final class RegionBackendServiceLogConfig {
             return this;
         }
         public RegionBackendServiceLogConfig build() {
-            final var o = new RegionBackendServiceLogConfig();
-            o.enable = enable;
-            o.sampleRate = sampleRate;
-            return o;
+            final var _resultValue = new RegionBackendServiceLogConfig();
+            _resultValue.enable = enable;
+            _resultValue.sampleRate = sampleRate;
+            return _resultValue;
         }
     }
 }

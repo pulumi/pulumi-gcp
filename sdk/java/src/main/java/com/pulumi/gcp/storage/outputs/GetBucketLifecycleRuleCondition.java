@@ -159,19 +159,19 @@ public final class GetBucketLifecycleRuleCondition {
             return this;
         }
         public GetBucketLifecycleRuleCondition build() {
-            final var o = new GetBucketLifecycleRuleCondition();
-            o.age = age;
-            o.createdBefore = createdBefore;
-            o.customTimeBefore = customTimeBefore;
-            o.daysSinceCustomTime = daysSinceCustomTime;
-            o.daysSinceNoncurrentTime = daysSinceNoncurrentTime;
-            o.matchesPrefixes = matchesPrefixes;
-            o.matchesStorageClasses = matchesStorageClasses;
-            o.matchesSuffixes = matchesSuffixes;
-            o.noncurrentTimeBefore = noncurrentTimeBefore;
-            o.numNewerVersions = numNewerVersions;
-            o.withState = withState;
-            return o;
+            final var _resultValue = new GetBucketLifecycleRuleCondition();
+            _resultValue.age = age;
+            _resultValue.createdBefore = createdBefore;
+            _resultValue.customTimeBefore = customTimeBefore;
+            _resultValue.daysSinceCustomTime = daysSinceCustomTime;
+            _resultValue.daysSinceNoncurrentTime = daysSinceNoncurrentTime;
+            _resultValue.matchesPrefixes = matchesPrefixes;
+            _resultValue.matchesStorageClasses = matchesStorageClasses;
+            _resultValue.matchesSuffixes = matchesSuffixes;
+            _resultValue.noncurrentTimeBefore = noncurrentTimeBefore;
+            _resultValue.numNewerVersions = numNewerVersions;
+            _resultValue.withState = withState;
+            return _resultValue;
         }
     }
 }

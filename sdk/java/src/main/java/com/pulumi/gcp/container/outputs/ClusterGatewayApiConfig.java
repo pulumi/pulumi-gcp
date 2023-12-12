@@ -46,9 +46,9 @@ public final class ClusterGatewayApiConfig {
             return this;
         }
         public ClusterGatewayApiConfig build() {
-            final var o = new ClusterGatewayApiConfig();
-            o.channel = channel;
-            return o;
+            final var _resultValue = new ClusterGatewayApiConfig();
+            _resultValue.channel = channel;
+            return _resultValue;
         }
     }
 }

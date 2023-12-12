@@ -67,10 +67,10 @@ public final class WorkflowTemplateJobScheduling {
             return this;
         }
         public WorkflowTemplateJobScheduling build() {
-            final var o = new WorkflowTemplateJobScheduling();
-            o.maxFailuresPerHour = maxFailuresPerHour;
-            o.maxFailuresTotal = maxFailuresTotal;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobScheduling();
+            _resultValue.maxFailuresPerHour = maxFailuresPerHour;
+            _resultValue.maxFailuresTotal = maxFailuresTotal;
+            return _resultValue;
         }
     }
 }

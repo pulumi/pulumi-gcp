@@ -48,9 +48,9 @@ public final class WorkstationConfigHostGceInstanceConfidentialInstanceConfig {
             return this;
         }
         public WorkstationConfigHostGceInstanceConfidentialInstanceConfig build() {
-            final var o = new WorkstationConfigHostGceInstanceConfidentialInstanceConfig();
-            o.enableConfidentialCompute = enableConfidentialCompute;
-            return o;
+            final var _resultValue = new WorkstationConfigHostGceInstanceConfidentialInstanceConfig();
+            _resultValue.enableConfidentialCompute = enableConfidentialCompute;
+            return _resultValue;
         }
     }
 }

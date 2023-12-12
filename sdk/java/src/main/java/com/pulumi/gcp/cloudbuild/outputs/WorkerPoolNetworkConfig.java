@@ -67,10 +67,10 @@ public final class WorkerPoolNetworkConfig {
             return this;
         }
         public WorkerPoolNetworkConfig build() {
-            final var o = new WorkerPoolNetworkConfig();
-            o.peeredNetwork = peeredNetwork;
-            o.peeredNetworkIpRange = peeredNetworkIpRange;
-            return o;
+            final var _resultValue = new WorkerPoolNetworkConfig();
+            _resultValue.peeredNetwork = peeredNetwork;
+            _resultValue.peeredNetworkIpRange = peeredNetworkIpRange;
+            return _resultValue;
         }
     }
 }

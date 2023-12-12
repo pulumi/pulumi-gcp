@@ -69,10 +69,10 @@ public final class InstanceReservationAffinitySpecificReservation {
             return values(List.of(values));
         }
         public InstanceReservationAffinitySpecificReservation build() {
-            final var o = new InstanceReservationAffinitySpecificReservation();
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new InstanceReservationAffinitySpecificReservation();
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

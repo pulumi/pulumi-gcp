@@ -50,9 +50,9 @@ public final class BareMetalClusterNodeAccessConfig {
             return this;
         }
         public BareMetalClusterNodeAccessConfig build() {
-            final var o = new BareMetalClusterNodeAccessConfig();
-            o.loginUser = loginUser;
-            return o;
+            final var _resultValue = new BareMetalClusterNodeAccessConfig();
+            _resultValue.loginUser = loginUser;
+            return _resultValue;
         }
     }
 }

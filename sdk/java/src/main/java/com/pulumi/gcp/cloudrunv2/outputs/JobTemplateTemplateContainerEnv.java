@@ -89,11 +89,11 @@ public final class JobTemplateTemplateContainerEnv {
             return this;
         }
         public JobTemplateTemplateContainerEnv build() {
-            final var o = new JobTemplateTemplateContainerEnv();
-            o.name = name;
-            o.value = value;
-            o.valueSource = valueSource;
-            return o;
+            final var _resultValue = new JobTemplateTemplateContainerEnv();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            _resultValue.valueSource = valueSource;
+            return _resultValue;
         }
     }
 }

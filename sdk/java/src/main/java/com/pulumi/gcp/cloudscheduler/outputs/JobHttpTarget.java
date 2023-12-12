@@ -162,14 +162,14 @@ public final class JobHttpTarget {
             return this;
         }
         public JobHttpTarget build() {
-            final var o = new JobHttpTarget();
-            o.body = body;
-            o.headers = headers;
-            o.httpMethod = httpMethod;
-            o.oauthToken = oauthToken;
-            o.oidcToken = oidcToken;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new JobHttpTarget();
+            _resultValue.body = body;
+            _resultValue.headers = headers;
+            _resultValue.httpMethod = httpMethod;
+            _resultValue.oauthToken = oauthToken;
+            _resultValue.oidcToken = oidcToken;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

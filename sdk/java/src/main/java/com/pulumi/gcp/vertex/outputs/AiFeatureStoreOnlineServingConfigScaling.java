@@ -65,10 +65,10 @@ public final class AiFeatureStoreOnlineServingConfigScaling {
             return this;
         }
         public AiFeatureStoreOnlineServingConfigScaling build() {
-            final var o = new AiFeatureStoreOnlineServingConfigScaling();
-            o.maxNodeCount = maxNodeCount;
-            o.minNodeCount = minNodeCount;
-            return o;
+            final var _resultValue = new AiFeatureStoreOnlineServingConfigScaling();
+            _resultValue.maxNodeCount = maxNodeCount;
+            _resultValue.minNodeCount = minNodeCount;
+            return _resultValue;
         }
     }
 }

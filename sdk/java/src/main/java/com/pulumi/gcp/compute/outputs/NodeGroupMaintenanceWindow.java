@@ -46,9 +46,9 @@ public final class NodeGroupMaintenanceWindow {
             return this;
         }
         public NodeGroupMaintenanceWindow build() {
-            final var o = new NodeGroupMaintenanceWindow();
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new NodeGroupMaintenanceWindow();
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

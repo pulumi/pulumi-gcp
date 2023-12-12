@@ -52,9 +52,9 @@ public final class ResponsePolicyRuleLocalData {
             return localDatas(List.of(localDatas));
         }
         public ResponsePolicyRuleLocalData build() {
-            final var o = new ResponsePolicyRuleLocalData();
-            o.localDatas = localDatas;
-            return o;
+            final var _resultValue = new ResponsePolicyRuleLocalData();
+            _resultValue.localDatas = localDatas;
+            return _resultValue;
         }
     }
 }

@@ -212,15 +212,15 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
             return includedQueryParameters(List.of(includedQueryParameters));
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy();
-            o.excludeHost = excludeHost;
-            o.excludeQueryString = excludeQueryString;
-            o.excludedQueryParameters = excludedQueryParameters;
-            o.includeProtocol = includeProtocol;
-            o.includedCookieNames = includedCookieNames;
-            o.includedHeaderNames = includedHeaderNames;
-            o.includedQueryParameters = includedQueryParameters;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy();
+            _resultValue.excludeHost = excludeHost;
+            _resultValue.excludeQueryString = excludeQueryString;
+            _resultValue.excludedQueryParameters = excludedQueryParameters;
+            _resultValue.includeProtocol = includeProtocol;
+            _resultValue.includedCookieNames = includedCookieNames;
+            _resultValue.includedHeaderNames = includedHeaderNames;
+            _resultValue.includedQueryParameters = includedQueryParameters;
+            return _resultValue;
         }
     }
 }

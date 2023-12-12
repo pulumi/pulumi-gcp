@@ -209,16 +209,16 @@ public final class URLMapPathMatcherRouteRuleRouteActionCorsPolicy {
             return this;
         }
         public URLMapPathMatcherRouteRuleRouteActionCorsPolicy build() {
-            final var o = new URLMapPathMatcherRouteRuleRouteActionCorsPolicy();
-            o.allowCredentials = allowCredentials;
-            o.allowHeaders = allowHeaders;
-            o.allowMethods = allowMethods;
-            o.allowOriginRegexes = allowOriginRegexes;
-            o.allowOrigins = allowOrigins;
-            o.disabled = disabled;
-            o.exposeHeaders = exposeHeaders;
-            o.maxAge = maxAge;
-            return o;
+            final var _resultValue = new URLMapPathMatcherRouteRuleRouteActionCorsPolicy();
+            _resultValue.allowCredentials = allowCredentials;
+            _resultValue.allowHeaders = allowHeaders;
+            _resultValue.allowMethods = allowMethods;
+            _resultValue.allowOriginRegexes = allowOriginRegexes;
+            _resultValue.allowOrigins = allowOrigins;
+            _resultValue.disabled = disabled;
+            _resultValue.exposeHeaders = exposeHeaders;
+            _resultValue.maxAge = maxAge;
+            return _resultValue;
         }
     }
 }

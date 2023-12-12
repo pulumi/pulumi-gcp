@@ -38,9 +38,9 @@ public final class GetClusterDefaultSnatStatus {
             return this;
         }
         public GetClusterDefaultSnatStatus build() {
-            final var o = new GetClusterDefaultSnatStatus();
-            o.disabled = disabled;
-            return o;
+            final var _resultValue = new GetClusterDefaultSnatStatus();
+            _resultValue.disabled = disabled;
+            return _resultValue;
         }
     }
 }

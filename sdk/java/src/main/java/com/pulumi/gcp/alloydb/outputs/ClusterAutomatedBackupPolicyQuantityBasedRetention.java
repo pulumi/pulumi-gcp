@@ -48,9 +48,9 @@ public final class ClusterAutomatedBackupPolicyQuantityBasedRetention {
             return this;
         }
         public ClusterAutomatedBackupPolicyQuantityBasedRetention build() {
-            final var o = new ClusterAutomatedBackupPolicyQuantityBasedRetention();
-            o.count = count;
-            return o;
+            final var _resultValue = new ClusterAutomatedBackupPolicyQuantityBasedRetention();
+            _resultValue.count = count;
+            return _resultValue;
         }
     }
 }

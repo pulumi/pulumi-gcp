@@ -50,9 +50,9 @@ public final class BareMetalAdminClusterSecurityConfig {
             return this;
         }
         public BareMetalAdminClusterSecurityConfig build() {
-            final var o = new BareMetalAdminClusterSecurityConfig();
-            o.authorization = authorization;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterSecurityConfig();
+            _resultValue.authorization = authorization;
+            return _resultValue;
         }
     }
 }

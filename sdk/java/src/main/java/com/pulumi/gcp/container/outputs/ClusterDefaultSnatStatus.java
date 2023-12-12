@@ -50,9 +50,9 @@ public final class ClusterDefaultSnatStatus {
             return this;
         }
         public ClusterDefaultSnatStatus build() {
-            final var o = new ClusterDefaultSnatStatus();
-            o.disabled = disabled;
-            return o;
+            final var _resultValue = new ClusterDefaultSnatStatus();
+            _resultValue.disabled = disabled;
+            return _resultValue;
         }
     }
 }

@@ -191,16 +191,16 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
             return this;
         }
         public StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn build() {
-            final var o = new StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn();
-            o.column = column;
-            o.dataType = dataType;
-            o.length = length;
-            o.nullable = nullable;
-            o.ordinalPosition = ordinalPosition;
-            o.precision = precision;
-            o.primaryKey = primaryKey;
-            o.scale = scale;
-            return o;
+            final var _resultValue = new StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn();
+            _resultValue.column = column;
+            _resultValue.dataType = dataType;
+            _resultValue.length = length;
+            _resultValue.nullable = nullable;
+            _resultValue.ordinalPosition = ordinalPosition;
+            _resultValue.precision = precision;
+            _resultValue.primaryKey = primaryKey;
+            _resultValue.scale = scale;
+            return _resultValue;
         }
     }
 }

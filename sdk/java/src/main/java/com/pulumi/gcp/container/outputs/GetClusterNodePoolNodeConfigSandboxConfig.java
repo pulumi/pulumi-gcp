@@ -38,9 +38,9 @@ public final class GetClusterNodePoolNodeConfigSandboxConfig {
             return this;
         }
         public GetClusterNodePoolNodeConfigSandboxConfig build() {
-            final var o = new GetClusterNodePoolNodeConfigSandboxConfig();
-            o.sandboxType = sandboxType;
-            return o;
+            final var _resultValue = new GetClusterNodePoolNodeConfigSandboxConfig();
+            _resultValue.sandboxType = sandboxType;
+            return _resultValue;
         }
     }
 }

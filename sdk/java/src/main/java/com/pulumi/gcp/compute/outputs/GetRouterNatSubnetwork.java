@@ -77,11 +77,11 @@ public final class GetRouterNatSubnetwork {
             return sourceIpRangesToNats(List.of(sourceIpRangesToNats));
         }
         public GetRouterNatSubnetwork build() {
-            final var o = new GetRouterNatSubnetwork();
-            o.name = name;
-            o.secondaryIpRangeNames = secondaryIpRangeNames;
-            o.sourceIpRangesToNats = sourceIpRangesToNats;
-            return o;
+            final var _resultValue = new GetRouterNatSubnetwork();
+            _resultValue.name = name;
+            _resultValue.secondaryIpRangeNames = secondaryIpRangeNames;
+            _resultValue.sourceIpRangesToNats = sourceIpRangesToNats;
+            return _resultValue;
         }
     }
 }

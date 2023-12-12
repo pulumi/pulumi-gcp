@@ -48,9 +48,9 @@ public final class ClusterNodePoolDefaults {
             return this;
         }
         public ClusterNodePoolDefaults build() {
-            final var o = new ClusterNodePoolDefaults();
-            o.nodeConfigDefaults = nodeConfigDefaults;
-            return o;
+            final var _resultValue = new ClusterNodePoolDefaults();
+            _resultValue.nodeConfigDefaults = nodeConfigDefaults;
+            return _resultValue;
         }
     }
 }

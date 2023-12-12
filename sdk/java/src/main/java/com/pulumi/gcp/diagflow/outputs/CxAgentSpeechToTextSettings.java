@@ -48,9 +48,9 @@ public final class CxAgentSpeechToTextSettings {
             return this;
         }
         public CxAgentSpeechToTextSettings build() {
-            final var o = new CxAgentSpeechToTextSettings();
-            o.enableSpeechAdaptation = enableSpeechAdaptation;
-            return o;
+            final var _resultValue = new CxAgentSpeechToTextSettings();
+            _resultValue.enableSpeechAdaptation = enableSpeechAdaptation;
+            return _resultValue;
         }
     }
 }

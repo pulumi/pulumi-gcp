@@ -46,9 +46,9 @@ public final class PreventionStoredInfoTypeDictionaryCloudStoragePath {
             return this;
         }
         public PreventionStoredInfoTypeDictionaryCloudStoragePath build() {
-            final var o = new PreventionStoredInfoTypeDictionaryCloudStoragePath();
-            o.path = path;
-            return o;
+            final var _resultValue = new PreventionStoredInfoTypeDictionaryCloudStoragePath();
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

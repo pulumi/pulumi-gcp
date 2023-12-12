@@ -49,10 +49,10 @@ public final class GetInstanceGroupManagerStatefulDisk {
             return this;
         }
         public GetInstanceGroupManagerStatefulDisk build() {
-            final var o = new GetInstanceGroupManagerStatefulDisk();
-            o.deleteRule = deleteRule;
-            o.deviceName = deviceName;
-            return o;
+            final var _resultValue = new GetInstanceGroupManagerStatefulDisk();
+            _resultValue.deleteRule = deleteRule;
+            _resultValue.deviceName = deviceName;
+            return _resultValue;
         }
     }
 }

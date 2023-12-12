@@ -150,14 +150,14 @@ public final class WorkflowTemplateJobHiveJob {
             return this;
         }
         public WorkflowTemplateJobHiveJob build() {
-            final var o = new WorkflowTemplateJobHiveJob();
-            o.continueOnFailure = continueOnFailure;
-            o.jarFileUris = jarFileUris;
-            o.properties = properties;
-            o.queryFileUri = queryFileUri;
-            o.queryList = queryList;
-            o.scriptVariables = scriptVariables;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobHiveJob();
+            _resultValue.continueOnFailure = continueOnFailure;
+            _resultValue.jarFileUris = jarFileUris;
+            _resultValue.properties = properties;
+            _resultValue.queryFileUri = queryFileUri;
+            _resultValue.queryList = queryList;
+            _resultValue.scriptVariables = scriptVariables;
+            return _resultValue;
         }
     }
 }

@@ -96,11 +96,11 @@ public final class PreventionStoredInfoTypeLargeCustomDictionary {
             return this;
         }
         public PreventionStoredInfoTypeLargeCustomDictionary build() {
-            final var o = new PreventionStoredInfoTypeLargeCustomDictionary();
-            o.bigQueryField = bigQueryField;
-            o.cloudStorageFileSet = cloudStorageFileSet;
-            o.outputPath = outputPath;
-            return o;
+            final var _resultValue = new PreventionStoredInfoTypeLargeCustomDictionary();
+            _resultValue.bigQueryField = bigQueryField;
+            _resultValue.cloudStorageFileSet = cloudStorageFileSet;
+            _resultValue.outputPath = outputPath;
+            return _resultValue;
         }
     }
 }

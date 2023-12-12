@@ -73,10 +73,10 @@ public final class InstanceTemplateDiskSourceImageEncryptionKey {
             return this;
         }
         public InstanceTemplateDiskSourceImageEncryptionKey build() {
-            final var o = new InstanceTemplateDiskSourceImageEncryptionKey();
-            o.kmsKeySelfLink = kmsKeySelfLink;
-            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
-            return o;
+            final var _resultValue = new InstanceTemplateDiskSourceImageEncryptionKey();
+            _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            return _resultValue;
         }
     }
 }

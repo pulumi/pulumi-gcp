@@ -99,11 +99,11 @@ public final class PacketMirroringFilter {
             return ipProtocols(List.of(ipProtocols));
         }
         public PacketMirroringFilter build() {
-            final var o = new PacketMirroringFilter();
-            o.cidrRanges = cidrRanges;
-            o.direction = direction;
-            o.ipProtocols = ipProtocols;
-            return o;
+            final var _resultValue = new PacketMirroringFilter();
+            _resultValue.cidrRanges = cidrRanges;
+            _resultValue.direction = direction;
+            _resultValue.ipProtocols = ipProtocols;
+            return _resultValue;
         }
     }
 }

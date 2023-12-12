@@ -62,11 +62,11 @@ public final class FeatureIamBindingCondition {
             return this;
         }
         public FeatureIamBindingCondition build() {
-            final var o = new FeatureIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new FeatureIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

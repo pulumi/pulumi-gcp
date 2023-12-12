@@ -118,12 +118,12 @@ public final class GuestPoliciesRecipeArtifact {
             return this;
         }
         public GuestPoliciesRecipeArtifact build() {
-            final var o = new GuestPoliciesRecipeArtifact();
-            o.allowInsecure = allowInsecure;
-            o.gcs = gcs;
-            o.id = id;
-            o.remote = remote;
-            return o;
+            final var _resultValue = new GuestPoliciesRecipeArtifact();
+            _resultValue.allowInsecure = allowInsecure;
+            _resultValue.gcs = gcs;
+            _resultValue.id = id;
+            _resultValue.remote = remote;
+            return _resultValue;
         }
     }
 }

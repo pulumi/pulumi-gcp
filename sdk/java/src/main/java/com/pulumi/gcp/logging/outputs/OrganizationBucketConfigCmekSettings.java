@@ -81,12 +81,12 @@ public final class OrganizationBucketConfigCmekSettings {
             return this;
         }
         public OrganizationBucketConfigCmekSettings build() {
-            final var o = new OrganizationBucketConfigCmekSettings();
-            o.kmsKeyName = kmsKeyName;
-            o.kmsKeyVersionName = kmsKeyVersionName;
-            o.name = name;
-            o.serviceAccountId = serviceAccountId;
-            return o;
+            final var _resultValue = new OrganizationBucketConfigCmekSettings();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.kmsKeyVersionName = kmsKeyVersionName;
+            _resultValue.name = name;
+            _resultValue.serviceAccountId = serviceAccountId;
+            return _resultValue;
         }
     }
 }

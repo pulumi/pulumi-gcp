@@ -274,17 +274,17 @@ public final class CertificateCertificateDescriptionX509DescriptionNameConstrain
             return permittedUris(List.of(permittedUris));
         }
         public CertificateCertificateDescriptionX509DescriptionNameConstraint build() {
-            final var o = new CertificateCertificateDescriptionX509DescriptionNameConstraint();
-            o.critical = critical;
-            o.excludedDnsNames = excludedDnsNames;
-            o.excludedEmailAddresses = excludedEmailAddresses;
-            o.excludedIpRanges = excludedIpRanges;
-            o.excludedUris = excludedUris;
-            o.permittedDnsNames = permittedDnsNames;
-            o.permittedEmailAddresses = permittedEmailAddresses;
-            o.permittedIpRanges = permittedIpRanges;
-            o.permittedUris = permittedUris;
-            return o;
+            final var _resultValue = new CertificateCertificateDescriptionX509DescriptionNameConstraint();
+            _resultValue.critical = critical;
+            _resultValue.excludedDnsNames = excludedDnsNames;
+            _resultValue.excludedEmailAddresses = excludedEmailAddresses;
+            _resultValue.excludedIpRanges = excludedIpRanges;
+            _resultValue.excludedUris = excludedUris;
+            _resultValue.permittedDnsNames = permittedDnsNames;
+            _resultValue.permittedEmailAddresses = permittedEmailAddresses;
+            _resultValue.permittedIpRanges = permittedIpRanges;
+            _resultValue.permittedUris = permittedUris;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class ClusterClusterConfigSecurityConfig {
             return this;
         }
         public ClusterClusterConfigSecurityConfig build() {
-            final var o = new ClusterClusterConfigSecurityConfig();
-            o.kerberosConfig = kerberosConfig;
-            return o;
+            final var _resultValue = new ClusterClusterConfigSecurityConfig();
+            _resultValue.kerberosConfig = kerberosConfig;
+            return _resultValue;
         }
     }
 }

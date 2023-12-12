@@ -50,9 +50,9 @@ public final class CertificateCertificateDescriptionSubjectKeyId {
             return this;
         }
         public CertificateCertificateDescriptionSubjectKeyId build() {
-            final var o = new CertificateCertificateDescriptionSubjectKeyId();
-            o.keyId = keyId;
-            return o;
+            final var _resultValue = new CertificateCertificateDescriptionSubjectKeyId();
+            _resultValue.keyId = keyId;
+            return _resultValue;
         }
     }
 }

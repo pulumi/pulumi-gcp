@@ -46,9 +46,9 @@ public final class ClusterServiceExternalIpsConfig {
             return this;
         }
         public ClusterServiceExternalIpsConfig build() {
-            final var o = new ClusterServiceExternalIpsConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterServiceExternalIpsConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

@@ -77,10 +77,10 @@ public final class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
             return this;
         }
         public RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout build() {
-            final var o = new RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

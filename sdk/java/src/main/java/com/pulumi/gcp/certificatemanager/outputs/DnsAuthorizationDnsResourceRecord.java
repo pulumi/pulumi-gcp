@@ -98,11 +98,11 @@ public final class DnsAuthorizationDnsResourceRecord {
             return this;
         }
         public DnsAuthorizationDnsResourceRecord build() {
-            final var o = new DnsAuthorizationDnsResourceRecord();
-            o.data = data;
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new DnsAuthorizationDnsResourceRecord();
+            _resultValue.data = data;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

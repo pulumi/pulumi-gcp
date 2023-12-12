@@ -50,9 +50,9 @@ public final class AwsNodePoolMaxPodsConstraint {
             return this;
         }
         public AwsNodePoolMaxPodsConstraint build() {
-            final var o = new AwsNodePoolMaxPodsConstraint();
-            o.maxPodsPerNode = maxPodsPerNode;
-            return o;
+            final var _resultValue = new AwsNodePoolMaxPodsConstraint();
+            _resultValue.maxPodsPerNode = maxPodsPerNode;
+            return _resultValue;
         }
     }
 }

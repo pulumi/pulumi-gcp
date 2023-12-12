@@ -68,10 +68,10 @@ public final class ClusterNetworkPolicy {
             return this;
         }
         public ClusterNetworkPolicy build() {
-            final var o = new ClusterNetworkPolicy();
-            o.enabled = enabled;
-            o.provider = provider;
-            return o;
+            final var _resultValue = new ClusterNetworkPolicy();
+            _resultValue.enabled = enabled;
+            _resultValue.provider = provider;
+            return _resultValue;
         }
     }
 }

@@ -125,16 +125,16 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
             return this;
         }
         public GetDatabaseInstancesInstanceSettingIpConfiguration build() {
-            final var o = new GetDatabaseInstancesInstanceSettingIpConfiguration();
-            o.allocatedIpRange = allocatedIpRange;
-            o.authorizedNetworks = authorizedNetworks;
-            o.enablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
-            o.ipv4Enabled = ipv4Enabled;
-            o.privateNetwork = privateNetwork;
-            o.pscConfigs = pscConfigs;
-            o.requireSsl = requireSsl;
-            o.sslMode = sslMode;
-            return o;
+            final var _resultValue = new GetDatabaseInstancesInstanceSettingIpConfiguration();
+            _resultValue.allocatedIpRange = allocatedIpRange;
+            _resultValue.authorizedNetworks = authorizedNetworks;
+            _resultValue.enablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
+            _resultValue.ipv4Enabled = ipv4Enabled;
+            _resultValue.privateNetwork = privateNetwork;
+            _resultValue.pscConfigs = pscConfigs;
+            _resultValue.requireSsl = requireSsl;
+            _resultValue.sslMode = sslMode;
+            return _resultValue;
         }
     }
 }

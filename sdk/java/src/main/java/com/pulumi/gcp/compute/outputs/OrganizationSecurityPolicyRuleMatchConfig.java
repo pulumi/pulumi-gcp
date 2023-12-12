@@ -106,11 +106,11 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
             return srcIpRanges(List.of(srcIpRanges));
         }
         public OrganizationSecurityPolicyRuleMatchConfig build() {
-            final var o = new OrganizationSecurityPolicyRuleMatchConfig();
-            o.destIpRanges = destIpRanges;
-            o.layer4Configs = layer4Configs;
-            o.srcIpRanges = srcIpRanges;
-            return o;
+            final var _resultValue = new OrganizationSecurityPolicyRuleMatchConfig();
+            _resultValue.destIpRanges = destIpRanges;
+            _resultValue.layer4Configs = layer4Configs;
+            _resultValue.srcIpRanges = srcIpRanges;
+            return _resultValue;
         }
     }
 }

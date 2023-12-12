@@ -67,10 +67,10 @@ public final class CxTestCaseTestCaseConversationTurnUserInputInputDtmf {
             return this;
         }
         public CxTestCaseTestCaseConversationTurnUserInputInputDtmf build() {
-            final var o = new CxTestCaseTestCaseConversationTurnUserInputInputDtmf();
-            o.digits = digits;
-            o.finishDigit = finishDigit;
-            return o;
+            final var _resultValue = new CxTestCaseTestCaseConversationTurnUserInputInputDtmf();
+            _resultValue.digits = digits;
+            _resultValue.finishDigit = finishDigit;
+            return _resultValue;
         }
     }
 }

@@ -85,10 +85,10 @@ public final class PrivateCloudManagementCluster {
             return nodeTypeConfigs(List.of(nodeTypeConfigs));
         }
         public PrivateCloudManagementCluster build() {
-            final var o = new PrivateCloudManagementCluster();
-            o.clusterId = clusterId;
-            o.nodeTypeConfigs = nodeTypeConfigs;
-            return o;
+            final var _resultValue = new PrivateCloudManagementCluster();
+            _resultValue.clusterId = clusterId;
+            _resultValue.nodeTypeConfigs = nodeTypeConfigs;
+            return _resultValue;
         }
     }
 }

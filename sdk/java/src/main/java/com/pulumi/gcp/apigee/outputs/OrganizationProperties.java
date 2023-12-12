@@ -53,9 +53,9 @@ public final class OrganizationProperties {
             return properties(List.of(properties));
         }
         public OrganizationProperties build() {
-            final var o = new OrganizationProperties();
-            o.properties = properties;
-            return o;
+            final var _resultValue = new OrganizationProperties();
+            _resultValue.properties = properties;
+            return _resultValue;
         }
     }
 }

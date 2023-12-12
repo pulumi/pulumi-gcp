@@ -56,9 +56,9 @@ public final class VMwareClusterLoadBalancerMetalLbConfig {
             return addressPools(List.of(addressPools));
         }
         public VMwareClusterLoadBalancerMetalLbConfig build() {
-            final var o = new VMwareClusterLoadBalancerMetalLbConfig();
-            o.addressPools = addressPools;
-            return o;
+            final var _resultValue = new VMwareClusterLoadBalancerMetalLbConfig();
+            _resultValue.addressPools = addressPools;
+            return _resultValue;
         }
     }
 }

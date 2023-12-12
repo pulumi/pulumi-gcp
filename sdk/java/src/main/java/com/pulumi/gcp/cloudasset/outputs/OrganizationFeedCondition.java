@@ -111,12 +111,12 @@ public final class OrganizationFeedCondition {
             return this;
         }
         public OrganizationFeedCondition build() {
-            final var o = new OrganizationFeedCondition();
-            o.description = description;
-            o.expression = expression;
-            o.location = location;
-            o.title = title;
-            return o;
+            final var _resultValue = new OrganizationFeedCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.location = location;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

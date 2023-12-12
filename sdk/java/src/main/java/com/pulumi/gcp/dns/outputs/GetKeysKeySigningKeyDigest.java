@@ -65,10 +65,10 @@ public final class GetKeysKeySigningKeyDigest {
             return this;
         }
         public GetKeysKeySigningKeyDigest build() {
-            final var o = new GetKeysKeySigningKeyDigest();
-            o.digest = digest;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetKeysKeySigningKeyDigest();
+            _resultValue.digest = digest;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

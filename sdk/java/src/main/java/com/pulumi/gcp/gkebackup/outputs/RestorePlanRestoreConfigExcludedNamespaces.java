@@ -50,9 +50,9 @@ public final class RestorePlanRestoreConfigExcludedNamespaces {
             return namespaces(List.of(namespaces));
         }
         public RestorePlanRestoreConfigExcludedNamespaces build() {
-            final var o = new RestorePlanRestoreConfigExcludedNamespaces();
-            o.namespaces = namespaces;
-            return o;
+            final var _resultValue = new RestorePlanRestoreConfigExcludedNamespaces();
+            _resultValue.namespaces = namespaces;
+            return _resultValue;
         }
     }
 }

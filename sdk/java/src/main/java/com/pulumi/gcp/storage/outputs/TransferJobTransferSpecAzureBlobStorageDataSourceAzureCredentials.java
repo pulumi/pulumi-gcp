@@ -50,9 +50,9 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredent
             return this;
         }
         public TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials build() {
-            final var o = new TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials();
-            o.sasToken = sasToken;
-            return o;
+            final var _resultValue = new TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials();
+            _resultValue.sasToken = sasToken;
+            return _resultValue;
         }
     }
 }

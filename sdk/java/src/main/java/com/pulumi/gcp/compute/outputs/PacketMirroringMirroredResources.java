@@ -101,11 +101,11 @@ public final class PacketMirroringMirroredResources {
             return tags(List.of(tags));
         }
         public PacketMirroringMirroredResources build() {
-            final var o = new PacketMirroringMirroredResources();
-            o.instances = instances;
-            o.subnetworks = subnetworks;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new PacketMirroringMirroredResources();
+            _resultValue.instances = instances;
+            _resultValue.subnetworks = subnetworks;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

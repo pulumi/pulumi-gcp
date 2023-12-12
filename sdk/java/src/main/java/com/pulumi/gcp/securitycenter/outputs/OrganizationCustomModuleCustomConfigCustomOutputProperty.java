@@ -72,10 +72,10 @@ public final class OrganizationCustomModuleCustomConfigCustomOutputProperty {
             return this;
         }
         public OrganizationCustomModuleCustomConfigCustomOutputProperty build() {
-            final var o = new OrganizationCustomModuleCustomConfigCustomOutputProperty();
-            o.name = name;
-            o.valueExpression = valueExpression;
-            return o;
+            final var _resultValue = new OrganizationCustomModuleCustomConfigCustomOutputProperty();
+            _resultValue.name = name;
+            _resultValue.valueExpression = valueExpression;
+            return _resultValue;
         }
     }
 }

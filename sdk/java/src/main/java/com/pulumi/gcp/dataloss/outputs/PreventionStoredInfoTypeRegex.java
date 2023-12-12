@@ -73,10 +73,10 @@ public final class PreventionStoredInfoTypeRegex {
             return this;
         }
         public PreventionStoredInfoTypeRegex build() {
-            final var o = new PreventionStoredInfoTypeRegex();
-            o.groupIndexes = groupIndexes;
-            o.pattern = pattern;
-            return o;
+            final var _resultValue = new PreventionStoredInfoTypeRegex();
+            _resultValue.groupIndexes = groupIndexes;
+            _resultValue.pattern = pattern;
+            return _resultValue;
         }
     }
 }

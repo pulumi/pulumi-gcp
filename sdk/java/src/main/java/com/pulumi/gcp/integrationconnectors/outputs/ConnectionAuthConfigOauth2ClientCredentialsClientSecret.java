@@ -48,9 +48,9 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsClientSecret {
             return this;
         }
         public ConnectionAuthConfigOauth2ClientCredentialsClientSecret build() {
-            final var o = new ConnectionAuthConfigOauth2ClientCredentialsClientSecret();
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigOauth2ClientCredentialsClientSecret();
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

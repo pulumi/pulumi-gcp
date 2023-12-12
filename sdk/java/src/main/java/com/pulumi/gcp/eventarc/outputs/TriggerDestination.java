@@ -107,12 +107,12 @@ public final class TriggerDestination {
             return this;
         }
         public TriggerDestination build() {
-            final var o = new TriggerDestination();
-            o.cloudFunction = cloudFunction;
-            o.cloudRunService = cloudRunService;
-            o.gke = gke;
-            o.workflow = workflow;
-            return o;
+            final var _resultValue = new TriggerDestination();
+            _resultValue.cloudFunction = cloudFunction;
+            _resultValue.cloudRunService = cloudRunService;
+            _resultValue.gke = gke;
+            _resultValue.workflow = workflow;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class GetClusterCostManagementConfig {
             return this;
         }
         public GetClusterCostManagementConfig build() {
-            final var o = new GetClusterCostManagementConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClusterCostManagementConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

@@ -373,25 +373,25 @@ public final class ConnectionProfileCloudsqlSettings {
             return this;
         }
         public ConnectionProfileCloudsqlSettings build() {
-            final var o = new ConnectionProfileCloudsqlSettings();
-            o.activationPolicy = activationPolicy;
-            o.autoStorageIncrease = autoStorageIncrease;
-            o.cmekKeyName = cmekKeyName;
-            o.collation = collation;
-            o.dataDiskSizeGb = dataDiskSizeGb;
-            o.dataDiskType = dataDiskType;
-            o.databaseFlags = databaseFlags;
-            o.databaseVersion = databaseVersion;
-            o.edition = edition;
-            o.ipConfig = ipConfig;
-            o.rootPassword = rootPassword;
-            o.rootPasswordSet = rootPasswordSet;
-            o.sourceId = sourceId;
-            o.storageAutoResizeLimit = storageAutoResizeLimit;
-            o.tier = tier;
-            o.userLabels = userLabels;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new ConnectionProfileCloudsqlSettings();
+            _resultValue.activationPolicy = activationPolicy;
+            _resultValue.autoStorageIncrease = autoStorageIncrease;
+            _resultValue.cmekKeyName = cmekKeyName;
+            _resultValue.collation = collation;
+            _resultValue.dataDiskSizeGb = dataDiskSizeGb;
+            _resultValue.dataDiskType = dataDiskType;
+            _resultValue.databaseFlags = databaseFlags;
+            _resultValue.databaseVersion = databaseVersion;
+            _resultValue.edition = edition;
+            _resultValue.ipConfig = ipConfig;
+            _resultValue.rootPassword = rootPassword;
+            _resultValue.rootPasswordSet = rootPasswordSet;
+            _resultValue.sourceId = sourceId;
+            _resultValue.storageAutoResizeLimit = storageAutoResizeLimit;
+            _resultValue.tier = tier;
+            _resultValue.userLabels = userLabels;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

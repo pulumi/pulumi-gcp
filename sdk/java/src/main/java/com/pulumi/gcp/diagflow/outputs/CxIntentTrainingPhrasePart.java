@@ -67,10 +67,10 @@ public final class CxIntentTrainingPhrasePart {
             return this;
         }
         public CxIntentTrainingPhrasePart build() {
-            final var o = new CxIntentTrainingPhrasePart();
-            o.parameterId = parameterId;
-            o.text = text;
-            return o;
+            final var _resultValue = new CxIntentTrainingPhrasePart();
+            _resultValue.parameterId = parameterId;
+            _resultValue.text = text;
+            return _resultValue;
         }
     }
 }

@@ -51,9 +51,9 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy 
             return actions(List.of(actions));
         }
         public DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy();
-            o.actions = actions;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy();
+            _resultValue.actions = actions;
+            return _resultValue;
         }
     }
 }

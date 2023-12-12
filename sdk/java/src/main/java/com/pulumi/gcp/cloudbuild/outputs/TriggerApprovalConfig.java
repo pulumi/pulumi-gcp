@@ -50,9 +50,9 @@ public final class TriggerApprovalConfig {
             return this;
         }
         public TriggerApprovalConfig build() {
-            final var o = new TriggerApprovalConfig();
-            o.approvalRequired = approvalRequired;
-            return o;
+            final var _resultValue = new TriggerApprovalConfig();
+            _resultValue.approvalRequired = approvalRequired;
+            return _resultValue;
         }
     }
 }

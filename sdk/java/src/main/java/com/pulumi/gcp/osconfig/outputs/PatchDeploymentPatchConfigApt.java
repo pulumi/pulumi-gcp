@@ -99,11 +99,11 @@ public final class PatchDeploymentPatchConfigApt {
             return this;
         }
         public PatchDeploymentPatchConfigApt build() {
-            final var o = new PatchDeploymentPatchConfigApt();
-            o.excludes = excludes;
-            o.exclusivePackages = exclusivePackages;
-            o.type = type;
-            return o;
+            final var _resultValue = new PatchDeploymentPatchConfigApt();
+            _resultValue.excludes = excludes;
+            _resultValue.exclusivePackages = exclusivePackages;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

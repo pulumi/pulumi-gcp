@@ -76,10 +76,10 @@ public final class ServicePerimetersServicePerimeterStatusVpcAccessibleServices 
             return this;
         }
         public ServicePerimetersServicePerimeterStatusVpcAccessibleServices build() {
-            final var o = new ServicePerimetersServicePerimeterStatusVpcAccessibleServices();
-            o.allowedServices = allowedServices;
-            o.enableRestriction = enableRestriction;
-            return o;
+            final var _resultValue = new ServicePerimetersServicePerimeterStatusVpcAccessibleServices();
+            _resultValue.allowedServices = allowedServices;
+            _resultValue.enableRestriction = enableRestriction;
+            return _resultValue;
         }
     }
 }

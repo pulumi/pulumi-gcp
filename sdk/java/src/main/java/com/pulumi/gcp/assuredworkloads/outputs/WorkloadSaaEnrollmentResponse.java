@@ -55,10 +55,10 @@ public final class WorkloadSaaEnrollmentResponse {
             return this;
         }
         public WorkloadSaaEnrollmentResponse build() {
-            final var o = new WorkloadSaaEnrollmentResponse();
-            o.setupErrors = setupErrors;
-            o.setupStatus = setupStatus;
-            return o;
+            final var _resultValue = new WorkloadSaaEnrollmentResponse();
+            _resultValue.setupErrors = setupErrors;
+            _resultValue.setupStatus = setupStatus;
+            return _resultValue;
         }
     }
 }

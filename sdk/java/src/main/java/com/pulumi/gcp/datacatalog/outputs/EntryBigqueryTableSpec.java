@@ -105,11 +105,11 @@ public final class EntryBigqueryTableSpec {
             return viewSpecs(List.of(viewSpecs));
         }
         public EntryBigqueryTableSpec build() {
-            final var o = new EntryBigqueryTableSpec();
-            o.tableSourceType = tableSourceType;
-            o.tableSpecs = tableSpecs;
-            o.viewSpecs = viewSpecs;
-            return o;
+            final var _resultValue = new EntryBigqueryTableSpec();
+            _resultValue.tableSourceType = tableSourceType;
+            _resultValue.tableSpecs = tableSpecs;
+            _resultValue.viewSpecs = viewSpecs;
+            return _resultValue;
         }
     }
 }

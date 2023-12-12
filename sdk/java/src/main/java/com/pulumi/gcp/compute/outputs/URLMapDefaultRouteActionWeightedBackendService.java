@@ -110,11 +110,11 @@ public final class URLMapDefaultRouteActionWeightedBackendService {
             return this;
         }
         public URLMapDefaultRouteActionWeightedBackendService build() {
-            final var o = new URLMapDefaultRouteActionWeightedBackendService();
-            o.backendService = backendService;
-            o.headerAction = headerAction;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new URLMapDefaultRouteActionWeightedBackendService();
+            _resultValue.backendService = backendService;
+            _resultValue.headerAction = headerAction;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

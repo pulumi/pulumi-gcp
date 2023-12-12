@@ -77,10 +77,10 @@ public final class AuthorityKeySpec {
             return this;
         }
         public AuthorityKeySpec build() {
-            final var o = new AuthorityKeySpec();
-            o.algorithm = algorithm;
-            o.cloudKmsKeyVersion = cloudKmsKeyVersion;
-            return o;
+            final var _resultValue = new AuthorityKeySpec();
+            _resultValue.algorithm = algorithm;
+            _resultValue.cloudKmsKeyVersion = cloudKmsKeyVersion;
+            return _resultValue;
         }
     }
 }

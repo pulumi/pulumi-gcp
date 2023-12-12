@@ -69,10 +69,10 @@ public final class DatascanData {
             return this;
         }
         public DatascanData build() {
-            final var o = new DatascanData();
-            o.entity = entity;
-            o.resource = resource;
-            return o;
+            final var _resultValue = new DatascanData();
+            _resultValue.entity = entity;
+            _resultValue.resource = resource;
+            return _resultValue;
         }
     }
 }

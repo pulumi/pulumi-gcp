@@ -48,9 +48,9 @@ public final class ClusterNodeConfigConfidentialNodes {
             return this;
         }
         public ClusterNodeConfigConfidentialNodes build() {
-            final var o = new ClusterNodeConfigConfidentialNodes();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterNodeConfigConfidentialNodes();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

@@ -86,10 +86,10 @@ public final class VMwareClusterStatus {
             return this;
         }
         public VMwareClusterStatus build() {
-            final var o = new VMwareClusterStatus();
-            o.conditions = conditions;
-            o.errorMessage = errorMessage;
-            return o;
+            final var _resultValue = new VMwareClusterStatus();
+            _resultValue.conditions = conditions;
+            _resultValue.errorMessage = errorMessage;
+            return _resultValue;
         }
     }
 }

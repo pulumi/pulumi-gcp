@@ -76,10 +76,10 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
             return this;
         }
         public AlertPolicyConditionConditionMonitoringQueryLanguageTrigger build() {
-            final var o = new AlertPolicyConditionConditionMonitoringQueryLanguageTrigger();
-            o.count = count;
-            o.percent = percent;
-            return o;
+            final var _resultValue = new AlertPolicyConditionConditionMonitoringQueryLanguageTrigger();
+            _resultValue.count = count;
+            _resultValue.percent = percent;
+            return _resultValue;
         }
     }
 }

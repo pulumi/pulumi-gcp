@@ -134,13 +134,13 @@ public final class NetworkAttachmentConnectionEndpoint {
             return this;
         }
         public NetworkAttachmentConnectionEndpoint build() {
-            final var o = new NetworkAttachmentConnectionEndpoint();
-            o.ipAddress = ipAddress;
-            o.projectIdOrNum = projectIdOrNum;
-            o.secondaryIpCidrRanges = secondaryIpCidrRanges;
-            o.status = status;
-            o.subnetwork = subnetwork;
-            return o;
+            final var _resultValue = new NetworkAttachmentConnectionEndpoint();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.projectIdOrNum = projectIdOrNum;
+            _resultValue.secondaryIpCidrRanges = secondaryIpCidrRanges;
+            _resultValue.status = status;
+            _resultValue.subnetwork = subnetwork;
+            return _resultValue;
         }
     }
 }

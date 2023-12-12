@@ -54,9 +54,9 @@ public final class BareMetalClusterFleet {
             return this;
         }
         public BareMetalClusterFleet build() {
-            final var o = new BareMetalClusterFleet();
-            o.membership = membership;
-            return o;
+            final var _resultValue = new BareMetalClusterFleet();
+            _resultValue.membership = membership;
+            return _resultValue;
         }
     }
 }

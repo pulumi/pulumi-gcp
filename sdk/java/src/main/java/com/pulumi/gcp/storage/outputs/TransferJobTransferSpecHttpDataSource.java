@@ -46,9 +46,9 @@ public final class TransferJobTransferSpecHttpDataSource {
             return this;
         }
         public TransferJobTransferSpecHttpDataSource build() {
-            final var o = new TransferJobTransferSpecHttpDataSource();
-            o.listUrl = listUrl;
-            return o;
+            final var _resultValue = new TransferJobTransferSpecHttpDataSource();
+            _resultValue.listUrl = listUrl;
+            return _resultValue;
         }
     }
 }

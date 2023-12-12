@@ -72,10 +72,10 @@ public final class FeatureFleetDefaultMemberConfig {
             return this;
         }
         public FeatureFleetDefaultMemberConfig build() {
-            final var o = new FeatureFleetDefaultMemberConfig();
-            o.configmanagement = configmanagement;
-            o.mesh = mesh;
-            return o;
+            final var _resultValue = new FeatureFleetDefaultMemberConfig();
+            _resultValue.configmanagement = configmanagement;
+            _resultValue.mesh = mesh;
+            return _resultValue;
         }
     }
 }

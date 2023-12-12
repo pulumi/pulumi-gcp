@@ -133,13 +133,13 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
             return this;
         }
         public ClusterClusterConfigPreemptibleWorkerConfig build() {
-            final var o = new ClusterClusterConfigPreemptibleWorkerConfig();
-            o.diskConfig = diskConfig;
-            o.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
-            o.instanceNames = instanceNames;
-            o.numInstances = numInstances;
-            o.preemptibility = preemptibility;
-            return o;
+            final var _resultValue = new ClusterClusterConfigPreemptibleWorkerConfig();
+            _resultValue.diskConfig = diskConfig;
+            _resultValue.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
+            _resultValue.instanceNames = instanceNames;
+            _resultValue.numInstances = numInstances;
+            _resultValue.preemptibility = preemptibility;
+            return _resultValue;
         }
     }
 }

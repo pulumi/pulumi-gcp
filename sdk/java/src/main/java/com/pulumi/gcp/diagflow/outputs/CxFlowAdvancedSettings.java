@@ -84,10 +84,10 @@ public final class CxFlowAdvancedSettings {
             return this;
         }
         public CxFlowAdvancedSettings build() {
-            final var o = new CxFlowAdvancedSettings();
-            o.audioExportGcsDestination = audioExportGcsDestination;
-            o.dtmfSettings = dtmfSettings;
-            return o;
+            final var _resultValue = new CxFlowAdvancedSettings();
+            _resultValue.audioExportGcsDestination = audioExportGcsDestination;
+            _resultValue.dtmfSettings = dtmfSettings;
+            return _resultValue;
         }
     }
 }

@@ -137,13 +137,13 @@ public final class FlexibleAppVersionNetwork {
             return this;
         }
         public FlexibleAppVersionNetwork build() {
-            final var o = new FlexibleAppVersionNetwork();
-            o.forwardedPorts = forwardedPorts;
-            o.instanceTag = instanceTag;
-            o.name = name;
-            o.sessionAffinity = sessionAffinity;
-            o.subnetwork = subnetwork;
-            return o;
+            final var _resultValue = new FlexibleAppVersionNetwork();
+            _resultValue.forwardedPorts = forwardedPorts;
+            _resultValue.instanceTag = instanceTag;
+            _resultValue.name = name;
+            _resultValue.sessionAffinity = sessionAffinity;
+            _resultValue.subnetwork = subnetwork;
+            return _resultValue;
         }
     }
 }

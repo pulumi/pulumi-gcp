@@ -42,9 +42,9 @@ public final class NodePoolNodeConfigSoleTenantConfig {
             return nodeAffinities(List.of(nodeAffinities));
         }
         public NodePoolNodeConfigSoleTenantConfig build() {
-            final var o = new NodePoolNodeConfigSoleTenantConfig();
-            o.nodeAffinities = nodeAffinities;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigSoleTenantConfig();
+            _resultValue.nodeAffinities = nodeAffinities;
+            return _resultValue;
         }
     }
 }

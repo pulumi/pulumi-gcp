@@ -260,25 +260,25 @@ public final class GetEnvironmentConfig {
             return workloadsConfigs(List.of(workloadsConfigs));
         }
         public GetEnvironmentConfig build() {
-            final var o = new GetEnvironmentConfig();
-            o.airflowUri = airflowUri;
-            o.dagGcsPrefix = dagGcsPrefix;
-            o.databaseConfigs = databaseConfigs;
-            o.encryptionConfigs = encryptionConfigs;
-            o.environmentSize = environmentSize;
-            o.gkeCluster = gkeCluster;
-            o.maintenanceWindows = maintenanceWindows;
-            o.masterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
-            o.nodeConfigs = nodeConfigs;
-            o.nodeCount = nodeCount;
-            o.privateEnvironmentConfigs = privateEnvironmentConfigs;
-            o.recoveryConfigs = recoveryConfigs;
-            o.resilienceMode = resilienceMode;
-            o.softwareConfigs = softwareConfigs;
-            o.webServerConfigs = webServerConfigs;
-            o.webServerNetworkAccessControls = webServerNetworkAccessControls;
-            o.workloadsConfigs = workloadsConfigs;
-            return o;
+            final var _resultValue = new GetEnvironmentConfig();
+            _resultValue.airflowUri = airflowUri;
+            _resultValue.dagGcsPrefix = dagGcsPrefix;
+            _resultValue.databaseConfigs = databaseConfigs;
+            _resultValue.encryptionConfigs = encryptionConfigs;
+            _resultValue.environmentSize = environmentSize;
+            _resultValue.gkeCluster = gkeCluster;
+            _resultValue.maintenanceWindows = maintenanceWindows;
+            _resultValue.masterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
+            _resultValue.nodeConfigs = nodeConfigs;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.privateEnvironmentConfigs = privateEnvironmentConfigs;
+            _resultValue.recoveryConfigs = recoveryConfigs;
+            _resultValue.resilienceMode = resilienceMode;
+            _resultValue.softwareConfigs = softwareConfigs;
+            _resultValue.webServerConfigs = webServerConfigs;
+            _resultValue.webServerNetworkAccessControls = webServerNetworkAccessControls;
+            _resultValue.workloadsConfigs = workloadsConfigs;
+            return _resultValue;
         }
     }
 }

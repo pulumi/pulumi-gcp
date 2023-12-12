@@ -86,11 +86,11 @@ public final class WorkstationConfigHostGceInstanceShieldedInstanceConfig {
             return this;
         }
         public WorkstationConfigHostGceInstanceShieldedInstanceConfig build() {
-            final var o = new WorkstationConfigHostGceInstanceShieldedInstanceConfig();
-            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
-            o.enableSecureBoot = enableSecureBoot;
-            o.enableVtpm = enableVtpm;
-            return o;
+            final var _resultValue = new WorkstationConfigHostGceInstanceShieldedInstanceConfig();
+            _resultValue.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            _resultValue.enableSecureBoot = enableSecureBoot;
+            _resultValue.enableVtpm = enableVtpm;
+            return _resultValue;
         }
     }
 }

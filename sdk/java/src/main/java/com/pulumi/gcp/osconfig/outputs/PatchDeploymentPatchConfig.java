@@ -224,17 +224,17 @@ public final class PatchDeploymentPatchConfig {
             return this;
         }
         public PatchDeploymentPatchConfig build() {
-            final var o = new PatchDeploymentPatchConfig();
-            o.apt = apt;
-            o.goo = goo;
-            o.migInstancesAllowed = migInstancesAllowed;
-            o.postStep = postStep;
-            o.preStep = preStep;
-            o.rebootConfig = rebootConfig;
-            o.windowsUpdate = windowsUpdate;
-            o.yum = yum;
-            o.zypper = zypper;
-            return o;
+            final var _resultValue = new PatchDeploymentPatchConfig();
+            _resultValue.apt = apt;
+            _resultValue.goo = goo;
+            _resultValue.migInstancesAllowed = migInstancesAllowed;
+            _resultValue.postStep = postStep;
+            _resultValue.preStep = preStep;
+            _resultValue.rebootConfig = rebootConfig;
+            _resultValue.windowsUpdate = windowsUpdate;
+            _resultValue.yum = yum;
+            _resultValue.zypper = zypper;
+            return _resultValue;
         }
     }
 }

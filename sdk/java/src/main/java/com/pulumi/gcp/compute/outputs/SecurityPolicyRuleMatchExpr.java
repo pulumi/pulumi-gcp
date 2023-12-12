@@ -48,9 +48,9 @@ public final class SecurityPolicyRuleMatchExpr {
             return this;
         }
         public SecurityPolicyRuleMatchExpr build() {
-            final var o = new SecurityPolicyRuleMatchExpr();
-            o.expression = expression;
-            return o;
+            final var _resultValue = new SecurityPolicyRuleMatchExpr();
+            _resultValue.expression = expression;
+            return _resultValue;
         }
     }
 }

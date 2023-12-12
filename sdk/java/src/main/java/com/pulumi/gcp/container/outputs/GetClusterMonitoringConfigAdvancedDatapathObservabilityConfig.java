@@ -50,10 +50,10 @@ public final class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig
             return this;
         }
         public GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig build() {
-            final var o = new GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig();
-            o.enableMetrics = enableMetrics;
-            o.relayMode = relayMode;
-            return o;
+            final var _resultValue = new GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig();
+            _resultValue.enableMetrics = enableMetrics;
+            _resultValue.relayMode = relayMode;
+            return _resultValue;
         }
     }
 }

@@ -55,9 +55,9 @@ public final class KeystoresAliasesSelfSignedCertCertsInfo {
             return certInfos(List.of(certInfos));
         }
         public KeystoresAliasesSelfSignedCertCertsInfo build() {
-            final var o = new KeystoresAliasesSelfSignedCertCertsInfo();
-            o.certInfos = certInfos;
-            return o;
+            final var _resultValue = new KeystoresAliasesSelfSignedCertCertsInfo();
+            _resultValue.certInfos = certInfos;
+            return _resultValue;
         }
     }
 }

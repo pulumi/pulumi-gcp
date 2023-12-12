@@ -48,9 +48,9 @@ public final class AzureNodePoolConfigRootVolume {
             return this;
         }
         public AzureNodePoolConfigRootVolume build() {
-            final var o = new AzureNodePoolConfigRootVolume();
-            o.sizeGib = sizeGib;
-            return o;
+            final var _resultValue = new AzureNodePoolConfigRootVolume();
+            _resultValue.sizeGib = sizeGib;
+            return _resultValue;
         }
     }
 }

@@ -111,12 +111,12 @@ public final class RouterNatRuleAction {
             return sourceNatDrainRanges(List.of(sourceNatDrainRanges));
         }
         public RouterNatRuleAction build() {
-            final var o = new RouterNatRuleAction();
-            o.sourceNatActiveIps = sourceNatActiveIps;
-            o.sourceNatActiveRanges = sourceNatActiveRanges;
-            o.sourceNatDrainIps = sourceNatDrainIps;
-            o.sourceNatDrainRanges = sourceNatDrainRanges;
-            return o;
+            final var _resultValue = new RouterNatRuleAction();
+            _resultValue.sourceNatActiveIps = sourceNatActiveIps;
+            _resultValue.sourceNatActiveRanges = sourceNatActiveRanges;
+            _resultValue.sourceNatDrainIps = sourceNatDrainIps;
+            _resultValue.sourceNatDrainRanges = sourceNatDrainRanges;
+            return _resultValue;
         }
     }
 }

@@ -85,10 +85,10 @@ public final class FhirStoreStreamConfig {
             return resourceTypes(List.of(resourceTypes));
         }
         public FhirStoreStreamConfig build() {
-            final var o = new FhirStoreStreamConfig();
-            o.bigqueryDestination = bigqueryDestination;
-            o.resourceTypes = resourceTypes;
-            return o;
+            final var _resultValue = new FhirStoreStreamConfig();
+            _resultValue.bigqueryDestination = bigqueryDestination;
+            _resultValue.resourceTypes = resourceTypes;
+            return _resultValue;
         }
     }
 }

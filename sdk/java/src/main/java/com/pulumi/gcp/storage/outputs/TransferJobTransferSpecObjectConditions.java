@@ -150,14 +150,14 @@ public final class TransferJobTransferSpecObjectConditions {
             return this;
         }
         public TransferJobTransferSpecObjectConditions build() {
-            final var o = new TransferJobTransferSpecObjectConditions();
-            o.excludePrefixes = excludePrefixes;
-            o.includePrefixes = includePrefixes;
-            o.lastModifiedBefore = lastModifiedBefore;
-            o.lastModifiedSince = lastModifiedSince;
-            o.maxTimeElapsedSinceLastModification = maxTimeElapsedSinceLastModification;
-            o.minTimeElapsedSinceLastModification = minTimeElapsedSinceLastModification;
-            return o;
+            final var _resultValue = new TransferJobTransferSpecObjectConditions();
+            _resultValue.excludePrefixes = excludePrefixes;
+            _resultValue.includePrefixes = includePrefixes;
+            _resultValue.lastModifiedBefore = lastModifiedBefore;
+            _resultValue.lastModifiedSince = lastModifiedSince;
+            _resultValue.maxTimeElapsedSinceLastModification = maxTimeElapsedSinceLastModification;
+            _resultValue.minTimeElapsedSinceLastModification = minTimeElapsedSinceLastModification;
+            return _resultValue;
         }
     }
 }

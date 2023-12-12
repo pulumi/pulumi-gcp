@@ -121,12 +121,12 @@ public final class NodePoolUpgradeSettings {
             return this;
         }
         public NodePoolUpgradeSettings build() {
-            final var o = new NodePoolUpgradeSettings();
-            o.blueGreenSettings = blueGreenSettings;
-            o.maxSurge = maxSurge;
-            o.maxUnavailable = maxUnavailable;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new NodePoolUpgradeSettings();
+            _resultValue.blueGreenSettings = blueGreenSettings;
+            _resultValue.maxSurge = maxSurge;
+            _resultValue.maxUnavailable = maxUnavailable;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

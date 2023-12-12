@@ -122,12 +122,12 @@ public final class FlexibleAppVersionEndpointsApiService {
             return this;
         }
         public FlexibleAppVersionEndpointsApiService build() {
-            final var o = new FlexibleAppVersionEndpointsApiService();
-            o.configId = configId;
-            o.disableTraceSampling = disableTraceSampling;
-            o.name = name;
-            o.rolloutStrategy = rolloutStrategy;
-            return o;
+            final var _resultValue = new FlexibleAppVersionEndpointsApiService();
+            _resultValue.configId = configId;
+            _resultValue.disableTraceSampling = disableTraceSampling;
+            _resultValue.name = name;
+            _resultValue.rolloutStrategy = rolloutStrategy;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class AppProfileStandardIsolation {
             return this;
         }
         public AppProfileStandardIsolation build() {
-            final var o = new AppProfileStandardIsolation();
-            o.priority = priority;
-            return o;
+            final var _resultValue = new AppProfileStandardIsolation();
+            _resultValue.priority = priority;
+            return _resultValue;
         }
     }
 }

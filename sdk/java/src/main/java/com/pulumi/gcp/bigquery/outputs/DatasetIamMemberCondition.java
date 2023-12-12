@@ -62,11 +62,11 @@ public final class DatasetIamMemberCondition {
             return this;
         }
         public DatasetIamMemberCondition build() {
-            final var o = new DatasetIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new DatasetIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

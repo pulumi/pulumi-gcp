@@ -86,11 +86,11 @@ public final class WorkloadResourceSetting {
             return this;
         }
         public WorkloadResourceSetting build() {
-            final var o = new WorkloadResourceSetting();
-            o.displayName = displayName;
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            return o;
+            final var _resultValue = new WorkloadResourceSetting();
+            _resultValue.displayName = displayName;
+            _resultValue.resourceId = resourceId;
+            _resultValue.resourceType = resourceType;
+            return _resultValue;
         }
     }
 }

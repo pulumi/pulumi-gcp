@@ -50,9 +50,9 @@ public final class AttachedClusterMonitoringConfig {
             return this;
         }
         public AttachedClusterMonitoringConfig build() {
-            final var o = new AttachedClusterMonitoringConfig();
-            o.managedPrometheusConfig = managedPrometheusConfig;
-            return o;
+            final var _resultValue = new AttachedClusterMonitoringConfig();
+            _resultValue.managedPrometheusConfig = managedPrometheusConfig;
+            return _resultValue;
         }
     }
 }

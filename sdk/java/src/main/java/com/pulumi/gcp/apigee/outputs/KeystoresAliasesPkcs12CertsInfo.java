@@ -55,9 +55,9 @@ public final class KeystoresAliasesPkcs12CertsInfo {
             return certInfos(List.of(certInfos));
         }
         public KeystoresAliasesPkcs12CertsInfo build() {
-            final var o = new KeystoresAliasesPkcs12CertsInfo();
-            o.certInfos = certInfos;
-            return o;
+            final var _resultValue = new KeystoresAliasesPkcs12CertsInfo();
+            _resultValue.certInfos = certInfos;
+            return _resultValue;
         }
     }
 }

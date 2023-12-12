@@ -50,9 +50,9 @@ public final class FlexibleAppVersionManualScaling {
             return this;
         }
         public FlexibleAppVersionManualScaling build() {
-            final var o = new FlexibleAppVersionManualScaling();
-            o.instances = instances;
-            return o;
+            final var _resultValue = new FlexibleAppVersionManualScaling();
+            _resultValue.instances = instances;
+            return _resultValue;
         }
     }
 }

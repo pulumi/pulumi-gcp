@@ -98,11 +98,11 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
             return this;
         }
         public StreamDestinationConfigBigqueryDestinationConfig build() {
-            final var o = new StreamDestinationConfigBigqueryDestinationConfig();
-            o.dataFreshness = dataFreshness;
-            o.singleTargetDataset = singleTargetDataset;
-            o.sourceHierarchyDatasets = sourceHierarchyDatasets;
-            return o;
+            final var _resultValue = new StreamDestinationConfigBigqueryDestinationConfig();
+            _resultValue.dataFreshness = dataFreshness;
+            _resultValue.singleTargetDataset = singleTargetDataset;
+            _resultValue.sourceHierarchyDatasets = sourceHierarchyDatasets;
+            return _resultValue;
         }
     }
 }

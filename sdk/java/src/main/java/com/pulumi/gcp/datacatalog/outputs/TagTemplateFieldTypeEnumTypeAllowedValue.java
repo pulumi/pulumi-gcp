@@ -46,9 +46,9 @@ public final class TagTemplateFieldTypeEnumTypeAllowedValue {
             return this;
         }
         public TagTemplateFieldTypeEnumTypeAllowedValue build() {
-            final var o = new TagTemplateFieldTypeEnumTypeAllowedValue();
-            o.displayName = displayName;
-            return o;
+            final var _resultValue = new TagTemplateFieldTypeEnumTypeAllowedValue();
+            _resultValue.displayName = displayName;
+            return _resultValue;
         }
     }
 }

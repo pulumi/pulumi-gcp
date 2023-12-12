@@ -185,15 +185,15 @@ public final class RegionHealthCheckHttpsHealthCheck {
             return this;
         }
         public RegionHealthCheckHttpsHealthCheck build() {
-            final var o = new RegionHealthCheckHttpsHealthCheck();
-            o.host = host;
-            o.port = port;
-            o.portName = portName;
-            o.portSpecification = portSpecification;
-            o.proxyHeader = proxyHeader;
-            o.requestPath = requestPath;
-            o.response = response;
-            return o;
+            final var _resultValue = new RegionHealthCheckHttpsHealthCheck();
+            _resultValue.host = host;
+            _resultValue.port = port;
+            _resultValue.portName = portName;
+            _resultValue.portSpecification = portSpecification;
+            _resultValue.proxyHeader = proxyHeader;
+            _resultValue.requestPath = requestPath;
+            _resultValue.response = response;
+            return _resultValue;
         }
     }
 }

@@ -71,11 +71,11 @@ public final class LakeAssetStatus {
             return this;
         }
         public LakeAssetStatus build() {
-            final var o = new LakeAssetStatus();
-            o.activeAssets = activeAssets;
-            o.securityPolicyApplyingAssets = securityPolicyApplyingAssets;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new LakeAssetStatus();
+            _resultValue.activeAssets = activeAssets;
+            _resultValue.securityPolicyApplyingAssets = securityPolicyApplyingAssets;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

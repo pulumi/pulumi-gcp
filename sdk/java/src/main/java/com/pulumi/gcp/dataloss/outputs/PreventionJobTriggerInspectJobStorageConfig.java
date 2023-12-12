@@ -138,13 +138,13 @@ public final class PreventionJobTriggerInspectJobStorageConfig {
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfig build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfig();
-            o.bigQueryOptions = bigQueryOptions;
-            o.cloudStorageOptions = cloudStorageOptions;
-            o.datastoreOptions = datastoreOptions;
-            o.hybridOptions = hybridOptions;
-            o.timespanConfig = timespanConfig;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfig();
+            _resultValue.bigQueryOptions = bigQueryOptions;
+            _resultValue.cloudStorageOptions = cloudStorageOptions;
+            _resultValue.datastoreOptions = datastoreOptions;
+            _resultValue.hybridOptions = hybridOptions;
+            _resultValue.timespanConfig = timespanConfig;
+            return _resultValue;
         }
     }
 }

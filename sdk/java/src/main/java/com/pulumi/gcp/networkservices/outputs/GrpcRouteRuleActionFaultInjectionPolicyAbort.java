@@ -67,10 +67,10 @@ public final class GrpcRouteRuleActionFaultInjectionPolicyAbort {
             return this;
         }
         public GrpcRouteRuleActionFaultInjectionPolicyAbort build() {
-            final var o = new GrpcRouteRuleActionFaultInjectionPolicyAbort();
-            o.httpStatus = httpStatus;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new GrpcRouteRuleActionFaultInjectionPolicyAbort();
+            _resultValue.httpStatus = httpStatus;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

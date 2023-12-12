@@ -25,8 +25,8 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTy
         }
 
         public DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions build() {
-            final var o = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions();
-            return o;
+            final var _resultValue = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions();
+            return _resultValue;
         }
     }
 }

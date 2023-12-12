@@ -91,13 +91,13 @@ public final class GetResourcePolicyInstanceSchedulePolicy {
             return vmStopSchedules(List.of(vmStopSchedules));
         }
         public GetResourcePolicyInstanceSchedulePolicy build() {
-            final var o = new GetResourcePolicyInstanceSchedulePolicy();
-            o.expirationTime = expirationTime;
-            o.startTime = startTime;
-            o.timeZone = timeZone;
-            o.vmStartSchedules = vmStartSchedules;
-            o.vmStopSchedules = vmStopSchedules;
-            return o;
+            final var _resultValue = new GetResourcePolicyInstanceSchedulePolicy();
+            _resultValue.expirationTime = expirationTime;
+            _resultValue.startTime = startTime;
+            _resultValue.timeZone = timeZone;
+            _resultValue.vmStartSchedules = vmStartSchedules;
+            _resultValue.vmStopSchedules = vmStopSchedules;
+            return _resultValue;
         }
     }
 }

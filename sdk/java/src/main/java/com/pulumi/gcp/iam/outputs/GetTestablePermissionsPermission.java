@@ -123,13 +123,13 @@ public final class GetTestablePermissionsPermission {
             return this;
         }
         public GetTestablePermissionsPermission build() {
-            final var o = new GetTestablePermissionsPermission();
-            o.apiDisabled = apiDisabled;
-            o.customSupportLevel = customSupportLevel;
-            o.name = name;
-            o.stage = stage;
-            o.title = title;
-            return o;
+            final var _resultValue = new GetTestablePermissionsPermission();
+            _resultValue.apiDisabled = apiDisabled;
+            _resultValue.customSupportLevel = customSupportLevel;
+            _resultValue.name = name;
+            _resultValue.stage = stage;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

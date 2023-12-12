@@ -88,10 +88,10 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
             return this;
         }
         public RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter build() {
-            final var o = new RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter();
-            o.filterLabels = filterLabels;
-            o.filterMatchCriteria = filterMatchCriteria;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter();
+            _resultValue.filterLabels = filterLabels;
+            _resultValue.filterMatchCriteria = filterMatchCriteria;
+            return _resultValue;
         }
     }
 }

@@ -88,11 +88,11 @@ public final class ClusterNodeConfigSoleTenantConfigNodeAffinity {
             return values(List.of(values));
         }
         public ClusterNodeConfigSoleTenantConfigNodeAffinity build() {
-            final var o = new ClusterNodeConfigSoleTenantConfigNodeAffinity();
-            o.key = key;
-            o.operator = operator;
-            o.values = values;
-            return o;
+            final var _resultValue = new ClusterNodeConfigSoleTenantConfigNodeAffinity();
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

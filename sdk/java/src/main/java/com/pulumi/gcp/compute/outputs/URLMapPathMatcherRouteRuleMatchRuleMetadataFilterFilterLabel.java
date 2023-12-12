@@ -69,10 +69,10 @@ public final class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel 
             return this;
         }
         public URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel build() {
-            final var o = new URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

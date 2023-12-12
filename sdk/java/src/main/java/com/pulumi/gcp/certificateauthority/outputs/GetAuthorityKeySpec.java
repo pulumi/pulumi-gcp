@@ -49,10 +49,10 @@ public final class GetAuthorityKeySpec {
             return this;
         }
         public GetAuthorityKeySpec build() {
-            final var o = new GetAuthorityKeySpec();
-            o.algorithm = algorithm;
-            o.cloudKmsKeyVersion = cloudKmsKeyVersion;
-            return o;
+            final var _resultValue = new GetAuthorityKeySpec();
+            _resultValue.algorithm = algorithm;
+            _resultValue.cloudKmsKeyVersion = cloudKmsKeyVersion;
+            return _resultValue;
         }
     }
 }

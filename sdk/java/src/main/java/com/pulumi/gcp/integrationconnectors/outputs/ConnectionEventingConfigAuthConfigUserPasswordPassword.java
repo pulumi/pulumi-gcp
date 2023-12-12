@@ -48,9 +48,9 @@ public final class ConnectionEventingConfigAuthConfigUserPasswordPassword {
             return this;
         }
         public ConnectionEventingConfigAuthConfigUserPasswordPassword build() {
-            final var o = new ConnectionEventingConfigAuthConfigUserPasswordPassword();
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new ConnectionEventingConfigAuthConfigUserPasswordPassword();
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

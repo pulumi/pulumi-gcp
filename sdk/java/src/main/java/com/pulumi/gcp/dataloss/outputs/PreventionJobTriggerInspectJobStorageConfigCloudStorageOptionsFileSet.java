@@ -78,10 +78,10 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet();
-            o.regexFileSet = regexFileSet;
-            o.url = url;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet();
+            _resultValue.regexFileSet = regexFileSet;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

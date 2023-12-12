@@ -84,11 +84,11 @@ public final class BudgetBudgetFilterCustomPeriodEndDate {
             return this;
         }
         public BudgetBudgetFilterCustomPeriodEndDate build() {
-            final var o = new BudgetBudgetFilterCustomPeriodEndDate();
-            o.day = day;
-            o.month = month;
-            o.year = year;
-            return o;
+            final var _resultValue = new BudgetBudgetFilterCustomPeriodEndDate();
+            _resultValue.day = day;
+            _resultValue.month = month;
+            _resultValue.year = year;
+            return _resultValue;
         }
     }
 }

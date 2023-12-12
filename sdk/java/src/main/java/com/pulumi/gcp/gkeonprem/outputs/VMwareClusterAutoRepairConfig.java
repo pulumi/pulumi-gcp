@@ -46,9 +46,9 @@ public final class VMwareClusterAutoRepairConfig {
             return this;
         }
         public VMwareClusterAutoRepairConfig build() {
-            final var o = new VMwareClusterAutoRepairConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new VMwareClusterAutoRepairConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

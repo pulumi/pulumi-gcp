@@ -54,9 +54,9 @@ public final class ScopeRbacRoleBindingRole {
             return this;
         }
         public ScopeRbacRoleBindingRole build() {
-            final var o = new ScopeRbacRoleBindingRole();
-            o.predefinedRole = predefinedRole;
-            return o;
+            final var _resultValue = new ScopeRbacRoleBindingRole();
+            _resultValue.predefinedRole = predefinedRole;
+            return _resultValue;
         }
     }
 }

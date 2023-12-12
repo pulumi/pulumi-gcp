@@ -69,10 +69,10 @@ public final class ReservationAutoscale {
             return this;
         }
         public ReservationAutoscale build() {
-            final var o = new ReservationAutoscale();
-            o.currentSlots = currentSlots;
-            o.maxSlots = maxSlots;
-            return o;
+            final var _resultValue = new ReservationAutoscale();
+            _resultValue.currentSlots = currentSlots;
+            _resultValue.maxSlots = maxSlots;
+            return _resultValue;
         }
     }
 }

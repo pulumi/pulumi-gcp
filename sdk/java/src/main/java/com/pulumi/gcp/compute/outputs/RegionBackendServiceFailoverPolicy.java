@@ -121,11 +121,11 @@ public final class RegionBackendServiceFailoverPolicy {
             return this;
         }
         public RegionBackendServiceFailoverPolicy build() {
-            final var o = new RegionBackendServiceFailoverPolicy();
-            o.disableConnectionDrainOnFailover = disableConnectionDrainOnFailover;
-            o.dropTrafficIfUnhealthy = dropTrafficIfUnhealthy;
-            o.failoverRatio = failoverRatio;
-            return o;
+            final var _resultValue = new RegionBackendServiceFailoverPolicy();
+            _resultValue.disableConnectionDrainOnFailover = disableConnectionDrainOnFailover;
+            _resultValue.dropTrafficIfUnhealthy = dropTrafficIfUnhealthy;
+            _resultValue.failoverRatio = failoverRatio;
+            return _resultValue;
         }
     }
 }

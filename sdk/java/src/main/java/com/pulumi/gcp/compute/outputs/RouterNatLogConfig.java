@@ -68,10 +68,10 @@ public final class RouterNatLogConfig {
             return this;
         }
         public RouterNatLogConfig build() {
-            final var o = new RouterNatLogConfig();
-            o.enable = enable;
-            o.filter = filter;
-            return o;
+            final var _resultValue = new RouterNatLogConfig();
+            _resultValue.enable = enable;
+            _resultValue.filter = filter;
+            return _resultValue;
         }
     }
 }

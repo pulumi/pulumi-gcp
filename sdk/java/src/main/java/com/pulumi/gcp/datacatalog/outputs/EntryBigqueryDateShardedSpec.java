@@ -97,11 +97,11 @@ public final class EntryBigqueryDateShardedSpec {
             return this;
         }
         public EntryBigqueryDateShardedSpec build() {
-            final var o = new EntryBigqueryDateShardedSpec();
-            o.dataset = dataset;
-            o.shardCount = shardCount;
-            o.tablePrefix = tablePrefix;
-            return o;
+            final var _resultValue = new EntryBigqueryDateShardedSpec();
+            _resultValue.dataset = dataset;
+            _resultValue.shardCount = shardCount;
+            _resultValue.tablePrefix = tablePrefix;
+            return _resultValue;
         }
     }
 }

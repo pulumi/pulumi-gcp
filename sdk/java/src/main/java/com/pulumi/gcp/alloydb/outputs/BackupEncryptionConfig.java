@@ -48,9 +48,9 @@ public final class BackupEncryptionConfig {
             return this;
         }
         public BackupEncryptionConfig build() {
-            final var o = new BackupEncryptionConfig();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new BackupEncryptionConfig();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

@@ -87,11 +87,11 @@ public final class ServiceConnectionPolicyPscConnectionErrorInfo {
             return this;
         }
         public ServiceConnectionPolicyPscConnectionErrorInfo build() {
-            final var o = new ServiceConnectionPolicyPscConnectionErrorInfo();
-            o.domain = domain;
-            o.metadata = metadata;
-            o.reason = reason;
-            return o;
+            final var _resultValue = new ServiceConnectionPolicyPscConnectionErrorInfo();
+            _resultValue.domain = domain;
+            _resultValue.metadata = metadata;
+            _resultValue.reason = reason;
+            return _resultValue;
         }
     }
 }

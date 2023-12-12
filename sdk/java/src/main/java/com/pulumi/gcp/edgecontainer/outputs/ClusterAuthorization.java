@@ -52,9 +52,9 @@ public final class ClusterAuthorization {
             return this;
         }
         public ClusterAuthorization build() {
-            final var o = new ClusterAuthorization();
-            o.adminUsers = adminUsers;
-            return o;
+            final var _resultValue = new ClusterAuthorization();
+            _resultValue.adminUsers = adminUsers;
+            return _resultValue;
         }
     }
 }

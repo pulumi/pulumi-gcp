@@ -129,12 +129,12 @@ public final class TableTimePartitioning {
             return this;
         }
         public TableTimePartitioning build() {
-            final var o = new TableTimePartitioning();
-            o.expirationMs = expirationMs;
-            o.field = field;
-            o.requirePartitionFilter = requirePartitionFilter;
-            o.type = type;
-            return o;
+            final var _resultValue = new TableTimePartitioning();
+            _resultValue.expirationMs = expirationMs;
+            _resultValue.field = field;
+            _resultValue.requirePartitionFilter = requirePartitionFilter;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

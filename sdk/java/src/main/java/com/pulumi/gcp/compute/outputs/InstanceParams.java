@@ -41,9 +41,9 @@ public final class InstanceParams {
             return this;
         }
         public InstanceParams build() {
-            final var o = new InstanceParams();
-            o.resourceManagerTags = resourceManagerTags;
-            return o;
+            final var _resultValue = new InstanceParams();
+            _resultValue.resourceManagerTags = resourceManagerTags;
+            return _resultValue;
         }
     }
 }

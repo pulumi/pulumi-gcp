@@ -93,11 +93,11 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpec {
             return this;
         }
         public AiEndpointDeployedModelDedicatedResourceMachineSpec build() {
-            final var o = new AiEndpointDeployedModelDedicatedResourceMachineSpec();
-            o.acceleratorCount = acceleratorCount;
-            o.acceleratorType = acceleratorType;
-            o.machineType = machineType;
-            return o;
+            final var _resultValue = new AiEndpointDeployedModelDedicatedResourceMachineSpec();
+            _resultValue.acceleratorCount = acceleratorCount;
+            _resultValue.acceleratorType = acceleratorType;
+            _resultValue.machineType = machineType;
+            return _resultValue;
         }
     }
 }

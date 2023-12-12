@@ -62,11 +62,11 @@ public final class RepositoryIamMemberCondition {
             return this;
         }
         public RepositoryIamMemberCondition build() {
-            final var o = new RepositoryIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new RepositoryIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

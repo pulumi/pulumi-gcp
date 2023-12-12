@@ -91,11 +91,11 @@ public final class InsightsReportConfigCsvOptions {
             return this;
         }
         public InsightsReportConfigCsvOptions build() {
-            final var o = new InsightsReportConfigCsvOptions();
-            o.delimiter = delimiter;
-            o.headerRequired = headerRequired;
-            o.recordSeparator = recordSeparator;
-            return o;
+            final var _resultValue = new InsightsReportConfigCsvOptions();
+            _resultValue.delimiter = delimiter;
+            _resultValue.headerRequired = headerRequired;
+            _resultValue.recordSeparator = recordSeparator;
+            return _resultValue;
         }
     }
 }

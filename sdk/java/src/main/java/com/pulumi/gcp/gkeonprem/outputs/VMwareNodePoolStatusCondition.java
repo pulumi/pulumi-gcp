@@ -136,13 +136,13 @@ public final class VMwareNodePoolStatusCondition {
             return this;
         }
         public VMwareNodePoolStatusCondition build() {
-            final var o = new VMwareNodePoolStatusCondition();
-            o.lastTransitionTime = lastTransitionTime;
-            o.message = message;
-            o.reason = reason;
-            o.state = state;
-            o.type = type;
-            return o;
+            final var _resultValue = new VMwareNodePoolStatusCondition();
+            _resultValue.lastTransitionTime = lastTransitionTime;
+            _resultValue.message = message;
+            _resultValue.reason = reason;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

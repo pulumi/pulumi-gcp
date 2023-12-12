@@ -50,9 +50,9 @@ public final class CxPageEventHandlerTriggerFulfillmentConditionalCase {
             return this;
         }
         public CxPageEventHandlerTriggerFulfillmentConditionalCase build() {
-            final var o = new CxPageEventHandlerTriggerFulfillmentConditionalCase();
-            o.cases = cases;
-            return o;
+            final var _resultValue = new CxPageEventHandlerTriggerFulfillmentConditionalCase();
+            _resultValue.cases = cases;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId
             return objectIdPaths(List.of(objectIdPaths));
         }
         public CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId build() {
-            final var o = new CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

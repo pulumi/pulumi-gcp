@@ -77,11 +77,11 @@ public final class GetServiceTemplateSpecVolume {
             return secrets(List.of(secrets));
         }
         public GetServiceTemplateSpecVolume build() {
-            final var o = new GetServiceTemplateSpecVolume();
-            o.emptyDirs = emptyDirs;
-            o.name = name;
-            o.secrets = secrets;
-            return o;
+            final var _resultValue = new GetServiceTemplateSpecVolume();
+            _resultValue.emptyDirs = emptyDirs;
+            _resultValue.name = name;
+            _resultValue.secrets = secrets;
+            return _resultValue;
         }
     }
 }

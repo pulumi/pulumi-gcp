@@ -50,9 +50,9 @@ public final class RegionInstanceGroupManagerInstanceLifecyclePolicy {
             return this;
         }
         public RegionInstanceGroupManagerInstanceLifecyclePolicy build() {
-            final var o = new RegionInstanceGroupManagerInstanceLifecyclePolicy();
-            o.forceUpdateOnRepair = forceUpdateOnRepair;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerInstanceLifecyclePolicy();
+            _resultValue.forceUpdateOnRepair = forceUpdateOnRepair;
+            return _resultValue;
         }
     }
 }

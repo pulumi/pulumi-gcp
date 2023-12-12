@@ -113,12 +113,12 @@ public final class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
             return this;
         }
         public ResourcePolicySnapshotSchedulePolicySnapshotProperties build() {
-            final var o = new ResourcePolicySnapshotSchedulePolicySnapshotProperties();
-            o.chainName = chainName;
-            o.guestFlush = guestFlush;
-            o.labels = labels;
-            o.storageLocations = storageLocations;
-            return o;
+            final var _resultValue = new ResourcePolicySnapshotSchedulePolicySnapshotProperties();
+            _resultValue.chainName = chainName;
+            _resultValue.guestFlush = guestFlush;
+            _resultValue.labels = labels;
+            _resultValue.storageLocations = storageLocations;
+            return _resultValue;
         }
     }
 }

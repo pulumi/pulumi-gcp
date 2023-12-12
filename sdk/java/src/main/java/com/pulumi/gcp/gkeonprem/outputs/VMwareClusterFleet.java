@@ -54,9 +54,9 @@ public final class VMwareClusterFleet {
             return this;
         }
         public VMwareClusterFleet build() {
-            final var o = new VMwareClusterFleet();
-            o.membership = membership;
-            return o;
+            final var _resultValue = new VMwareClusterFleet();
+            _resultValue.membership = membership;
+            return _resultValue;
         }
     }
 }

@@ -68,11 +68,11 @@ public final class GetDatasetAccessView {
             return this;
         }
         public GetDatasetAccessView build() {
-            final var o = new GetDatasetAccessView();
-            o.datasetId = datasetId;
-            o.projectId = projectId;
-            o.tableId = tableId;
-            return o;
+            final var _resultValue = new GetDatasetAccessView();
+            _resultValue.datasetId = datasetId;
+            _resultValue.projectId = projectId;
+            _resultValue.tableId = tableId;
+            return _resultValue;
         }
     }
 }

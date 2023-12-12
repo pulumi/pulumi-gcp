@@ -51,9 +51,9 @@ public final class AwsClusterLoggingConfigComponentConfig {
             return enableComponents(List.of(enableComponents));
         }
         public AwsClusterLoggingConfigComponentConfig build() {
-            final var o = new AwsClusterLoggingConfigComponentConfig();
-            o.enableComponents = enableComponents;
-            return o;
+            final var _resultValue = new AwsClusterLoggingConfigComponentConfig();
+            _resultValue.enableComponents = enableComponents;
+            return _resultValue;
         }
     }
 }

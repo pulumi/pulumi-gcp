@@ -102,10 +102,10 @@ public final class EntryGcsFilesetSpec {
             return sampleGcsFileSpecs(List.of(sampleGcsFileSpecs));
         }
         public EntryGcsFilesetSpec build() {
-            final var o = new EntryGcsFilesetSpec();
-            o.filePatterns = filePatterns;
-            o.sampleGcsFileSpecs = sampleGcsFileSpecs;
-            return o;
+            final var _resultValue = new EntryGcsFilesetSpec();
+            _resultValue.filePatterns = filePatterns;
+            _resultValue.sampleGcsFileSpecs = sampleGcsFileSpecs;
+            return _resultValue;
         }
     }
 }

@@ -90,11 +90,11 @@ public final class CaPoolIssuancePolicyBaselineValuesAdditionalExtension {
             return this;
         }
         public CaPoolIssuancePolicyBaselineValuesAdditionalExtension build() {
-            final var o = new CaPoolIssuancePolicyBaselineValuesAdditionalExtension();
-            o.critical = critical;
-            o.objectId = objectId;
-            o.value = value;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyBaselineValuesAdditionalExtension();
+            _resultValue.critical = critical;
+            _resultValue.objectId = objectId;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -52,9 +52,9 @@ public final class UptimeCheckConfigSyntheticMonitor {
             return this;
         }
         public UptimeCheckConfigSyntheticMonitor build() {
-            final var o = new UptimeCheckConfigSyntheticMonitor();
-            o.cloudFunctionV2 = cloudFunctionV2;
-            return o;
+            final var _resultValue = new UptimeCheckConfigSyntheticMonitor();
+            _resultValue.cloudFunctionV2 = cloudFunctionV2;
+            return _resultValue;
         }
     }
 }

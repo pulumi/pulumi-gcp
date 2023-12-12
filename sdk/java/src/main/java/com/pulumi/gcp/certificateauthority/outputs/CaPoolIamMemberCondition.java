@@ -78,11 +78,11 @@ public final class CaPoolIamMemberCondition {
             return this;
         }
         public CaPoolIamMemberCondition build() {
-            final var o = new CaPoolIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new CaPoolIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

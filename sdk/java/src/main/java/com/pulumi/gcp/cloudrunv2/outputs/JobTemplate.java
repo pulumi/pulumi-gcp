@@ -143,13 +143,13 @@ public final class JobTemplate {
             return this;
         }
         public JobTemplate build() {
-            final var o = new JobTemplate();
-            o.annotations = annotations;
-            o.labels = labels;
-            o.parallelism = parallelism;
-            o.taskCount = taskCount;
-            o.template = template;
-            return o;
+            final var _resultValue = new JobTemplate();
+            _resultValue.annotations = annotations;
+            _resultValue.labels = labels;
+            _resultValue.parallelism = parallelism;
+            _resultValue.taskCount = taskCount;
+            _resultValue.template = template;
+            return _resultValue;
         }
     }
 }

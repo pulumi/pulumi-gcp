@@ -70,10 +70,10 @@ public final class CxPageEventHandlerTriggerFulfillmentMessagePlayAudio {
             return this;
         }
         public CxPageEventHandlerTriggerFulfillmentMessagePlayAudio build() {
-            final var o = new CxPageEventHandlerTriggerFulfillmentMessagePlayAudio();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.audioUri = audioUri;
-            return o;
+            final var _resultValue = new CxPageEventHandlerTriggerFulfillmentMessagePlayAudio();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.audioUri = audioUri;
+            return _resultValue;
         }
     }
 }

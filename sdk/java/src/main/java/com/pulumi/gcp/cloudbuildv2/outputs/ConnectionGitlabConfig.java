@@ -165,15 +165,15 @@ public final class ConnectionGitlabConfig {
             return this;
         }
         public ConnectionGitlabConfig build() {
-            final var o = new ConnectionGitlabConfig();
-            o.authorizerCredential = authorizerCredential;
-            o.hostUri = hostUri;
-            o.readAuthorizerCredential = readAuthorizerCredential;
-            o.serverVersion = serverVersion;
-            o.serviceDirectoryConfig = serviceDirectoryConfig;
-            o.sslCa = sslCa;
-            o.webhookSecretSecretVersion = webhookSecretSecretVersion;
-            return o;
+            final var _resultValue = new ConnectionGitlabConfig();
+            _resultValue.authorizerCredential = authorizerCredential;
+            _resultValue.hostUri = hostUri;
+            _resultValue.readAuthorizerCredential = readAuthorizerCredential;
+            _resultValue.serverVersion = serverVersion;
+            _resultValue.serviceDirectoryConfig = serviceDirectoryConfig;
+            _resultValue.sslCa = sslCa;
+            _resultValue.webhookSecretSecretVersion = webhookSecretSecretVersion;
+            return _resultValue;
         }
     }
 }

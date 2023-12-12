@@ -50,10 +50,10 @@ public final class GetServiceTemplateContainerStartupProbeGrpc {
             return this;
         }
         public GetServiceTemplateContainerStartupProbeGrpc build() {
-            final var o = new GetServiceTemplateContainerStartupProbeGrpc();
-            o.port = port;
-            o.service = service;
-            return o;
+            final var _resultValue = new GetServiceTemplateContainerStartupProbeGrpc();
+            _resultValue.port = port;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

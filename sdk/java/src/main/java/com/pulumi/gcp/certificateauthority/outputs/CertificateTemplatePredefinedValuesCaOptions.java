@@ -68,10 +68,10 @@ public final class CertificateTemplatePredefinedValuesCaOptions {
             return this;
         }
         public CertificateTemplatePredefinedValuesCaOptions build() {
-            final var o = new CertificateTemplatePredefinedValuesCaOptions();
-            o.isCa = isCa;
-            o.maxIssuerPathLength = maxIssuerPathLength;
-            return o;
+            final var _resultValue = new CertificateTemplatePredefinedValuesCaOptions();
+            _resultValue.isCa = isCa;
+            _resultValue.maxIssuerPathLength = maxIssuerPathLength;
+            return _resultValue;
         }
     }
 }

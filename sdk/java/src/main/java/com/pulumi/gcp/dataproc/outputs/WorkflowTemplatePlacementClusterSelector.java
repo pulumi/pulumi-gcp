@@ -68,10 +68,10 @@ public final class WorkflowTemplatePlacementClusterSelector {
             return this;
         }
         public WorkflowTemplatePlacementClusterSelector build() {
-            final var o = new WorkflowTemplatePlacementClusterSelector();
-            o.clusterLabels = clusterLabels;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementClusterSelector();
+            _resultValue.clusterLabels = clusterLabels;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

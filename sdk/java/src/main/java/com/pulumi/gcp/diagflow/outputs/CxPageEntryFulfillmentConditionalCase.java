@@ -50,9 +50,9 @@ public final class CxPageEntryFulfillmentConditionalCase {
             return this;
         }
         public CxPageEntryFulfillmentConditionalCase build() {
-            final var o = new CxPageEntryFulfillmentConditionalCase();
-            o.cases = cases;
-            return o;
+            final var _resultValue = new CxPageEntryFulfillmentConditionalCase();
+            _resultValue.cases = cases;
+            return _resultValue;
         }
     }
 }

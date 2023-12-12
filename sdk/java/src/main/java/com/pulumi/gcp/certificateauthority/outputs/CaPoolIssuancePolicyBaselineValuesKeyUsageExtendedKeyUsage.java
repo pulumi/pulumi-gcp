@@ -143,14 +143,14 @@ public final class CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage {
             return this;
         }
         public CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage build() {
-            final var o = new CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage();
-            o.clientAuth = clientAuth;
-            o.codeSigning = codeSigning;
-            o.emailProtection = emailProtection;
-            o.ocspSigning = ocspSigning;
-            o.serverAuth = serverAuth;
-            o.timeStamping = timeStamping;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage();
+            _resultValue.clientAuth = clientAuth;
+            _resultValue.codeSigning = codeSigning;
+            _resultValue.emailProtection = emailProtection;
+            _resultValue.ocspSigning = ocspSigning;
+            _resultValue.serverAuth = serverAuth;
+            _resultValue.timeStamping = timeStamping;
+            return _resultValue;
         }
     }
 }

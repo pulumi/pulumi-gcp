@@ -49,10 +49,10 @@ public final class GetBucketLogging {
             return this;
         }
         public GetBucketLogging build() {
-            final var o = new GetBucketLogging();
-            o.logBucket = logBucket;
-            o.logObjectPrefix = logObjectPrefix;
-            return o;
+            final var _resultValue = new GetBucketLogging();
+            _resultValue.logBucket = logBucket;
+            _resultValue.logObjectPrefix = logObjectPrefix;
+            return _resultValue;
         }
     }
 }

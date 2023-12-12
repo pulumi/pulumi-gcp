@@ -72,10 +72,10 @@ public final class SecurityScanConfigSchedule {
             return this;
         }
         public SecurityScanConfigSchedule build() {
-            final var o = new SecurityScanConfigSchedule();
-            o.intervalDurationDays = intervalDurationDays;
-            o.scheduleTime = scheduleTime;
-            return o;
+            final var _resultValue = new SecurityScanConfigSchedule();
+            _resultValue.intervalDurationDays = intervalDurationDays;
+            _resultValue.scheduleTime = scheduleTime;
+            return _resultValue;
         }
     }
 }

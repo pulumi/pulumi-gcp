@@ -105,12 +105,12 @@ public final class FlexibleAppVersionAutomaticScalingDiskUtilization {
             return this;
         }
         public FlexibleAppVersionAutomaticScalingDiskUtilization build() {
-            final var o = new FlexibleAppVersionAutomaticScalingDiskUtilization();
-            o.targetReadBytesPerSecond = targetReadBytesPerSecond;
-            o.targetReadOpsPerSecond = targetReadOpsPerSecond;
-            o.targetWriteBytesPerSecond = targetWriteBytesPerSecond;
-            o.targetWriteOpsPerSecond = targetWriteOpsPerSecond;
-            return o;
+            final var _resultValue = new FlexibleAppVersionAutomaticScalingDiskUtilization();
+            _resultValue.targetReadBytesPerSecond = targetReadBytesPerSecond;
+            _resultValue.targetReadOpsPerSecond = targetReadOpsPerSecond;
+            _resultValue.targetWriteBytesPerSecond = targetWriteBytesPerSecond;
+            _resultValue.targetWriteOpsPerSecond = targetWriteOpsPerSecond;
+            return _resultValue;
         }
     }
 }

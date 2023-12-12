@@ -69,10 +69,10 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore();
-            o.charactersToSkip = charactersToSkip;
-            o.commonCharactersToIgnore = commonCharactersToIgnore;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore();
+            _resultValue.charactersToSkip = charactersToSkip;
+            _resultValue.commonCharactersToIgnore = commonCharactersToIgnore;
+            return _resultValue;
         }
     }
 }

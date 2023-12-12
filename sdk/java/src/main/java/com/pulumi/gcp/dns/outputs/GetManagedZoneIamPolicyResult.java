@@ -108,13 +108,13 @@ public final class GetManagedZoneIamPolicyResult {
             return this;
         }
         public GetManagedZoneIamPolicyResult build() {
-            final var o = new GetManagedZoneIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.managedZone = managedZone;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetManagedZoneIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.managedZone = managedZone;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

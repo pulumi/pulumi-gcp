@@ -62,11 +62,11 @@ public final class BackendBucketIamMemberCondition {
             return this;
         }
         public BackendBucketIamMemberCondition build() {
-            final var o = new BackendBucketIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new BackendBucketIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

@@ -92,9 +92,9 @@ public final class ClusterWorkloadIdentityConfig {
             return this;
         }
         public ClusterWorkloadIdentityConfig build() {
-            final var o = new ClusterWorkloadIdentityConfig();
-            o.workloadPool = workloadPool;
-            return o;
+            final var _resultValue = new ClusterWorkloadIdentityConfig();
+            _resultValue.workloadPool = workloadPool;
+            return _resultValue;
         }
     }
 }

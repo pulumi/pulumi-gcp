@@ -62,11 +62,11 @@ public final class SnapshotIamBindingCondition {
             return this;
         }
         public SnapshotIamBindingCondition build() {
-            final var o = new SnapshotIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new SnapshotIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

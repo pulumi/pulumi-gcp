@@ -88,11 +88,11 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy
             return this;
         }
         public NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy build() {
-            final var o = new NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy();
-            o.batchNodeCount = batchNodeCount;
-            o.batchPercentage = batchPercentage;
-            o.batchSoakDuration = batchSoakDuration;
-            return o;
+            final var _resultValue = new NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy();
+            _resultValue.batchNodeCount = batchNodeCount;
+            _resultValue.batchPercentage = batchPercentage;
+            _resultValue.batchSoakDuration = batchSoakDuration;
+            return _resultValue;
         }
     }
 }

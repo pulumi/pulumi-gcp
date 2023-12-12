@@ -99,12 +99,12 @@ public final class GetIAMPolicyResult {
             return this;
         }
         public GetIAMPolicyResult build() {
-            final var o = new GetIAMPolicyResult();
-            o.auditConfigs = auditConfigs;
-            o.bindings = bindings;
-            o.id = id;
-            o.policyData = policyData;
-            return o;
+            final var _resultValue = new GetIAMPolicyResult();
+            _resultValue.auditConfigs = auditConfigs;
+            _resultValue.bindings = bindings;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            return _resultValue;
         }
     }
 }

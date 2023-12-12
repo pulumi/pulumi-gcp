@@ -133,13 +133,13 @@ public final class CxFlowEventHandler {
             return this;
         }
         public CxFlowEventHandler build() {
-            final var o = new CxFlowEventHandler();
-            o.event = event;
-            o.name = name;
-            o.targetFlow = targetFlow;
-            o.targetPage = targetPage;
-            o.triggerFulfillment = triggerFulfillment;
-            return o;
+            final var _resultValue = new CxFlowEventHandler();
+            _resultValue.event = event;
+            _resultValue.name = name;
+            _resultValue.targetFlow = targetFlow;
+            _resultValue.targetPage = targetPage;
+            _resultValue.triggerFulfillment = triggerFulfillment;
+            return _resultValue;
         }
     }
 }

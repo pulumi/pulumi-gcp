@@ -78,10 +78,10 @@ public final class TaskExecutionStatus {
             return this;
         }
         public TaskExecutionStatus build() {
-            final var o = new TaskExecutionStatus();
-            o.latestJobs = latestJobs;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new TaskExecutionStatus();
+            _resultValue.latestJobs = latestJobs;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

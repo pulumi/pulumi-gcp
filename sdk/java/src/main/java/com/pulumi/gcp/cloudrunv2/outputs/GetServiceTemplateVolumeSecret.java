@@ -66,11 +66,11 @@ public final class GetServiceTemplateVolumeSecret {
             return this;
         }
         public GetServiceTemplateVolumeSecret build() {
-            final var o = new GetServiceTemplateVolumeSecret();
-            o.defaultMode = defaultMode;
-            o.items = items;
-            o.secret = secret;
-            return o;
+            final var _resultValue = new GetServiceTemplateVolumeSecret();
+            _resultValue.defaultMode = defaultMode;
+            _resultValue.items = items;
+            _resultValue.secret = secret;
+            return _resultValue;
         }
     }
 }

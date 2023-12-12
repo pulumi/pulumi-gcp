@@ -57,10 +57,10 @@ public final class GetAuthorityConfig {
             return x509Configs(List.of(x509Configs));
         }
         public GetAuthorityConfig build() {
-            final var o = new GetAuthorityConfig();
-            o.subjectConfigs = subjectConfigs;
-            o.x509Configs = x509Configs;
-            return o;
+            final var _resultValue = new GetAuthorityConfig();
+            _resultValue.subjectConfigs = subjectConfigs;
+            _resultValue.x509Configs = x509Configs;
+            return _resultValue;
         }
     }
 }

@@ -60,11 +60,11 @@ public final class GetClusterNodeConfigEffectiveTaint {
             return this;
         }
         public GetClusterNodeConfigEffectiveTaint build() {
-            final var o = new GetClusterNodeConfigEffectiveTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetClusterNodeConfigEffectiveTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

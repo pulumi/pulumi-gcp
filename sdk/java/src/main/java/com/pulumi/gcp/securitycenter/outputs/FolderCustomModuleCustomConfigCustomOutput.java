@@ -53,9 +53,9 @@ public final class FolderCustomModuleCustomConfigCustomOutput {
             return properties(List.of(properties));
         }
         public FolderCustomModuleCustomConfigCustomOutput build() {
-            final var o = new FolderCustomModuleCustomConfigCustomOutput();
-            o.properties = properties;
-            return o;
+            final var _resultValue = new FolderCustomModuleCustomConfigCustomOutput();
+            _resultValue.properties = properties;
+            return _resultValue;
         }
     }
 }

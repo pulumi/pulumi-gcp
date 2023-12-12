@@ -120,12 +120,12 @@ public final class BareMetalClusterNetworkConfig {
             return this;
         }
         public BareMetalClusterNetworkConfig build() {
-            final var o = new BareMetalClusterNetworkConfig();
-            o.advancedNetworking = advancedNetworking;
-            o.islandModeCidr = islandModeCidr;
-            o.multipleNetworkInterfacesConfig = multipleNetworkInterfacesConfig;
-            o.srIovConfig = srIovConfig;
-            return o;
+            final var _resultValue = new BareMetalClusterNetworkConfig();
+            _resultValue.advancedNetworking = advancedNetworking;
+            _resultValue.islandModeCidr = islandModeCidr;
+            _resultValue.multipleNetworkInterfacesConfig = multipleNetworkInterfacesConfig;
+            _resultValue.srIovConfig = srIovConfig;
+            return _resultValue;
         }
     }
 }

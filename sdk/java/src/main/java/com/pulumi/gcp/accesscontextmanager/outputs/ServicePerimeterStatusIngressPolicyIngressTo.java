@@ -92,10 +92,10 @@ public final class ServicePerimeterStatusIngressPolicyIngressTo {
             return resources(List.of(resources));
         }
         public ServicePerimeterStatusIngressPolicyIngressTo build() {
-            final var o = new ServicePerimeterStatusIngressPolicyIngressTo();
-            o.operations = operations;
-            o.resources = resources;
-            return o;
+            final var _resultValue = new ServicePerimeterStatusIngressPolicyIngressTo();
+            _resultValue.operations = operations;
+            _resultValue.resources = resources;
+            return _resultValue;
         }
     }
 }

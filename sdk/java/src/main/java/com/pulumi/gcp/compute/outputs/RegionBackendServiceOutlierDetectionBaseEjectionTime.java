@@ -73,10 +73,10 @@ public final class RegionBackendServiceOutlierDetectionBaseEjectionTime {
             return this;
         }
         public RegionBackendServiceOutlierDetectionBaseEjectionTime build() {
-            final var o = new RegionBackendServiceOutlierDetectionBaseEjectionTime();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new RegionBackendServiceOutlierDetectionBaseEjectionTime();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

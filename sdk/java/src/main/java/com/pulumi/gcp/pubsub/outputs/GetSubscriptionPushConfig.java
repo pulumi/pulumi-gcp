@@ -81,12 +81,12 @@ public final class GetSubscriptionPushConfig {
             return this;
         }
         public GetSubscriptionPushConfig build() {
-            final var o = new GetSubscriptionPushConfig();
-            o.attributes = attributes;
-            o.noWrappers = noWrappers;
-            o.oidcTokens = oidcTokens;
-            o.pushEndpoint = pushEndpoint;
-            return o;
+            final var _resultValue = new GetSubscriptionPushConfig();
+            _resultValue.attributes = attributes;
+            _resultValue.noWrappers = noWrappers;
+            _resultValue.oidcTokens = oidcTokens;
+            _resultValue.pushEndpoint = pushEndpoint;
+            return _resultValue;
         }
     }
 }

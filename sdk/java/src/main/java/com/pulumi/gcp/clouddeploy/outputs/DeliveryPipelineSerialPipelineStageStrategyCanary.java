@@ -88,11 +88,11 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanary {
             return this;
         }
         public DeliveryPipelineSerialPipelineStageStrategyCanary build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategyCanary();
-            o.canaryDeployment = canaryDeployment;
-            o.customCanaryDeployment = customCanaryDeployment;
-            o.runtimeConfig = runtimeConfig;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanary();
+            _resultValue.canaryDeployment = canaryDeployment;
+            _resultValue.customCanaryDeployment = customCanaryDeployment;
+            _resultValue.runtimeConfig = runtimeConfig;
+            return _resultValue;
         }
     }
 }

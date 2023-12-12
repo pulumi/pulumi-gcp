@@ -68,10 +68,10 @@ public final class ConfigSignInPhoneNumber {
             return this;
         }
         public ConfigSignInPhoneNumber build() {
-            final var o = new ConfigSignInPhoneNumber();
-            o.enabled = enabled;
-            o.testPhoneNumbers = testPhoneNumbers;
-            return o;
+            final var _resultValue = new ConfigSignInPhoneNumber();
+            _resultValue.enabled = enabled;
+            _resultValue.testPhoneNumbers = testPhoneNumbers;
+            return _resultValue;
         }
     }
 }

@@ -57,10 +57,10 @@ public final class GetFunctionBuildConfigSource {
             return storageSources(List.of(storageSources));
         }
         public GetFunctionBuildConfigSource build() {
-            final var o = new GetFunctionBuildConfigSource();
-            o.repoSources = repoSources;
-            o.storageSources = storageSources;
-            return o;
+            final var _resultValue = new GetFunctionBuildConfigSource();
+            _resultValue.repoSources = repoSources;
+            _resultValue.storageSources = storageSources;
+            return _resultValue;
         }
     }
 }

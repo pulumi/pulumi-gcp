@@ -46,9 +46,9 @@ public final class ClusterAddonsConfigKalmConfig {
             return this;
         }
         public ClusterAddonsConfigKalmConfig build() {
-            final var o = new ClusterAddonsConfigKalmConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterAddonsConfigKalmConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

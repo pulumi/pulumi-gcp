@@ -65,10 +65,10 @@ public final class ApiConfigGrpcServiceSource {
             return this;
         }
         public ApiConfigGrpcServiceSource build() {
-            final var o = new ApiConfigGrpcServiceSource();
-            o.contents = contents;
-            o.path = path;
-            return o;
+            final var _resultValue = new ApiConfigGrpcServiceSource();
+            _resultValue.contents = contents;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

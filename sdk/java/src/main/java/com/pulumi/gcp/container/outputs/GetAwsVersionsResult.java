@@ -115,13 +115,13 @@ public final class GetAwsVersionsResult {
             return validVersions(List.of(validVersions));
         }
         public GetAwsVersionsResult build() {
-            final var o = new GetAwsVersionsResult();
-            o.id = id;
-            o.location = location;
-            o.project = project;
-            o.supportedRegions = supportedRegions;
-            o.validVersions = validVersions;
-            return o;
+            final var _resultValue = new GetAwsVersionsResult();
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.project = project;
+            _resultValue.supportedRegions = supportedRegions;
+            _resultValue.validVersions = validVersions;
+            return _resultValue;
         }
     }
 }

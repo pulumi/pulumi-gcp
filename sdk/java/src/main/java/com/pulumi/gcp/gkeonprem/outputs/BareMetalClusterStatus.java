@@ -86,10 +86,10 @@ public final class BareMetalClusterStatus {
             return this;
         }
         public BareMetalClusterStatus build() {
-            final var o = new BareMetalClusterStatus();
-            o.conditions = conditions;
-            o.errorMessage = errorMessage;
-            return o;
+            final var _resultValue = new BareMetalClusterStatus();
+            _resultValue.conditions = conditions;
+            _resultValue.errorMessage = errorMessage;
+            return _resultValue;
         }
     }
 }

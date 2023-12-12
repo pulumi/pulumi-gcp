@@ -71,10 +71,10 @@ public final class RegionUrlMapDefaultRouteActionUrlRewrite {
             return this;
         }
         public RegionUrlMapDefaultRouteActionUrlRewrite build() {
-            final var o = new RegionUrlMapDefaultRouteActionUrlRewrite();
-            o.hostRewrite = hostRewrite;
-            o.pathPrefixRewrite = pathPrefixRewrite;
-            return o;
+            final var _resultValue = new RegionUrlMapDefaultRouteActionUrlRewrite();
+            _resultValue.hostRewrite = hostRewrite;
+            _resultValue.pathPrefixRewrite = pathPrefixRewrite;
+            return _resultValue;
         }
     }
 }

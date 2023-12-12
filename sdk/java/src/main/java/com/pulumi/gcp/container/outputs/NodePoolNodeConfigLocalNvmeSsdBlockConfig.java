@@ -38,9 +38,9 @@ public final class NodePoolNodeConfigLocalNvmeSsdBlockConfig {
             return this;
         }
         public NodePoolNodeConfigLocalNvmeSsdBlockConfig build() {
-            final var o = new NodePoolNodeConfigLocalNvmeSsdBlockConfig();
-            o.localSsdCount = localSsdCount;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigLocalNvmeSsdBlockConfig();
+            _resultValue.localSsdCount = localSsdCount;
+            return _resultValue;
         }
     }
 }

@@ -120,12 +120,12 @@ public final class ManagedZoneDnssecConfigDefaultKeySpec {
             return this;
         }
         public ManagedZoneDnssecConfigDefaultKeySpec build() {
-            final var o = new ManagedZoneDnssecConfigDefaultKeySpec();
-            o.algorithm = algorithm;
-            o.keyLength = keyLength;
-            o.keyType = keyType;
-            o.kind = kind;
-            return o;
+            final var _resultValue = new ManagedZoneDnssecConfigDefaultKeySpec();
+            _resultValue.algorithm = algorithm;
+            _resultValue.keyLength = keyLength;
+            _resultValue.keyType = keyType;
+            _resultValue.kind = kind;
+            return _resultValue;
         }
     }
 }

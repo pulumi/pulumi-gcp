@@ -123,12 +123,12 @@ public final class PerInstanceConfigPreservedStateDisk {
             return this;
         }
         public PerInstanceConfigPreservedStateDisk build() {
-            final var o = new PerInstanceConfigPreservedStateDisk();
-            o.deleteRule = deleteRule;
-            o.deviceName = deviceName;
-            o.mode = mode;
-            o.source = source;
-            return o;
+            final var _resultValue = new PerInstanceConfigPreservedStateDisk();
+            _resultValue.deleteRule = deleteRule;
+            _resultValue.deviceName = deviceName;
+            _resultValue.mode = mode;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

@@ -72,10 +72,10 @@ public final class EnterpriseKeyIosSettings {
             return allowedBundleIds(List.of(allowedBundleIds));
         }
         public EnterpriseKeyIosSettings build() {
-            final var o = new EnterpriseKeyIosSettings();
-            o.allowAllBundleIds = allowAllBundleIds;
-            o.allowedBundleIds = allowedBundleIds;
-            return o;
+            final var _resultValue = new EnterpriseKeyIosSettings();
+            _resultValue.allowAllBundleIds = allowAllBundleIds;
+            _resultValue.allowedBundleIds = allowedBundleIds;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class GetClusterIdentityServiceConfig {
             return this;
         }
         public GetClusterIdentityServiceConfig build() {
-            final var o = new GetClusterIdentityServiceConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClusterIdentityServiceConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

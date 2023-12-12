@@ -115,16 +115,16 @@ public final class GetJobCondition {
             return this;
         }
         public GetJobCondition build() {
-            final var o = new GetJobCondition();
-            o.executionReason = executionReason;
-            o.lastTransitionTime = lastTransitionTime;
-            o.message = message;
-            o.reason = reason;
-            o.revisionReason = revisionReason;
-            o.severity = severity;
-            o.state = state;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetJobCondition();
+            _resultValue.executionReason = executionReason;
+            _resultValue.lastTransitionTime = lastTransitionTime;
+            _resultValue.message = message;
+            _resultValue.reason = reason;
+            _resultValue.revisionReason = revisionReason;
+            _resultValue.severity = severity;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

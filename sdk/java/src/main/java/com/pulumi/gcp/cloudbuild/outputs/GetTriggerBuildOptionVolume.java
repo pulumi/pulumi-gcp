@@ -49,10 +49,10 @@ public final class GetTriggerBuildOptionVolume {
             return this;
         }
         public GetTriggerBuildOptionVolume build() {
-            final var o = new GetTriggerBuildOptionVolume();
-            o.name = name;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetTriggerBuildOptionVolume();
+            _resultValue.name = name;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

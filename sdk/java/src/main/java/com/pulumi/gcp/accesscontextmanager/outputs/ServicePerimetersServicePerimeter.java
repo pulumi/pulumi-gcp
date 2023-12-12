@@ -273,17 +273,17 @@ public final class ServicePerimetersServicePerimeter {
             return this;
         }
         public ServicePerimetersServicePerimeter build() {
-            final var o = new ServicePerimetersServicePerimeter();
-            o.createTime = createTime;
-            o.description = description;
-            o.name = name;
-            o.perimeterType = perimeterType;
-            o.spec = spec;
-            o.status = status;
-            o.title = title;
-            o.updateTime = updateTime;
-            o.useExplicitDryRunSpec = useExplicitDryRunSpec;
-            return o;
+            final var _resultValue = new ServicePerimetersServicePerimeter();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.name = name;
+            _resultValue.perimeterType = perimeterType;
+            _resultValue.spec = spec;
+            _resultValue.status = status;
+            _resultValue.title = title;
+            _resultValue.updateTime = updateTime;
+            _resultValue.useExplicitDryRunSpec = useExplicitDryRunSpec;
+            return _resultValue;
         }
     }
 }

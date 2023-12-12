@@ -46,9 +46,9 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity();
-            o.nodeGroup = nodeGroup;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity();
+            _resultValue.nodeGroup = nodeGroup;
+            return _resultValue;
         }
     }
 }

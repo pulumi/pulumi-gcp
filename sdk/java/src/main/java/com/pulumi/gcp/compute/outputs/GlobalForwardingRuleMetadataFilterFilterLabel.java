@@ -69,10 +69,10 @@ public final class GlobalForwardingRuleMetadataFilterFilterLabel {
             return this;
         }
         public GlobalForwardingRuleMetadataFilterFilterLabel build() {
-            final var o = new GlobalForwardingRuleMetadataFilterFilterLabel();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GlobalForwardingRuleMetadataFilterFilterLabel();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

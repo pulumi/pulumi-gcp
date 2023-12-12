@@ -109,11 +109,11 @@ public final class GetIAMPolicyBinding {
             return this;
         }
         public GetIAMPolicyBinding build() {
-            final var o = new GetIAMPolicyBinding();
-            o.condition = condition;
-            o.members = members;
-            o.role = role;
-            return o;
+            final var _resultValue = new GetIAMPolicyBinding();
+            _resultValue.condition = condition;
+            _resultValue.members = members;
+            _resultValue.role = role;
+            return _resultValue;
         }
     }
 }

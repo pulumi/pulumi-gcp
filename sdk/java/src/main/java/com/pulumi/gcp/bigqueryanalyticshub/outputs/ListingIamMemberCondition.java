@@ -62,11 +62,11 @@ public final class ListingIamMemberCondition {
             return this;
         }
         public ListingIamMemberCondition build() {
-            final var o = new ListingIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new ListingIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

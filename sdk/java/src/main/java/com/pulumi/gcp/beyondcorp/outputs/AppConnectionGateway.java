@@ -114,12 +114,12 @@ public final class AppConnectionGateway {
             return this;
         }
         public AppConnectionGateway build() {
-            final var o = new AppConnectionGateway();
-            o.appGateway = appGateway;
-            o.ingressPort = ingressPort;
-            o.type = type;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new AppConnectionGateway();
+            _resultValue.appGateway = appGateway;
+            _resultValue.ingressPort = ingressPort;
+            _resultValue.type = type;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

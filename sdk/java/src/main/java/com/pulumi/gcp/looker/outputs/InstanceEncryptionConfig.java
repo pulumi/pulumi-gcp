@@ -90,11 +90,11 @@ public final class InstanceEncryptionConfig {
             return this;
         }
         public InstanceEncryptionConfig build() {
-            final var o = new InstanceEncryptionConfig();
-            o.kmsKeyName = kmsKeyName;
-            o.kmsKeyNameVersion = kmsKeyNameVersion;
-            o.kmsKeyState = kmsKeyState;
-            return o;
+            final var _resultValue = new InstanceEncryptionConfig();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.kmsKeyNameVersion = kmsKeyNameVersion;
+            _resultValue.kmsKeyState = kmsKeyState;
+            return _resultValue;
         }
     }
 }

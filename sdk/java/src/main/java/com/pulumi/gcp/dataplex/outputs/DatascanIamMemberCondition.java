@@ -62,11 +62,11 @@ public final class DatascanIamMemberCondition {
             return this;
         }
         public DatascanIamMemberCondition build() {
-            final var o = new DatascanIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new DatascanIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

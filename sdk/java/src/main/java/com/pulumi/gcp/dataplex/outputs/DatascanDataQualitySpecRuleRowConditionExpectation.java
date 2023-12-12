@@ -46,9 +46,9 @@ public final class DatascanDataQualitySpecRuleRowConditionExpectation {
             return this;
         }
         public DatascanDataQualitySpecRuleRowConditionExpectation build() {
-            final var o = new DatascanDataQualitySpecRuleRowConditionExpectation();
-            o.sqlExpression = sqlExpression;
-            return o;
+            final var _resultValue = new DatascanDataQualitySpecRuleRowConditionExpectation();
+            _resultValue.sqlExpression = sqlExpression;
+            return _resultValue;
         }
     }
 }

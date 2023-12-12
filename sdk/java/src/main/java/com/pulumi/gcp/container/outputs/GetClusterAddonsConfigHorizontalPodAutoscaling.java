@@ -38,9 +38,9 @@ public final class GetClusterAddonsConfigHorizontalPodAutoscaling {
             return this;
         }
         public GetClusterAddonsConfigHorizontalPodAutoscaling build() {
-            final var o = new GetClusterAddonsConfigHorizontalPodAutoscaling();
-            o.disabled = disabled;
-            return o;
+            final var _resultValue = new GetClusterAddonsConfigHorizontalPodAutoscaling();
+            _resultValue.disabled = disabled;
+            return _resultValue;
         }
     }
 }

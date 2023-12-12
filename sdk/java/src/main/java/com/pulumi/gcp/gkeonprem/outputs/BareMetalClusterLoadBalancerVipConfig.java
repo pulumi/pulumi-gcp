@@ -65,10 +65,10 @@ public final class BareMetalClusterLoadBalancerVipConfig {
             return this;
         }
         public BareMetalClusterLoadBalancerVipConfig build() {
-            final var o = new BareMetalClusterLoadBalancerVipConfig();
-            o.controlPlaneVip = controlPlaneVip;
-            o.ingressVip = ingressVip;
-            return o;
+            final var _resultValue = new BareMetalClusterLoadBalancerVipConfig();
+            _resultValue.controlPlaneVip = controlPlaneVip;
+            _resultValue.ingressVip = ingressVip;
+            return _resultValue;
         }
     }
 }

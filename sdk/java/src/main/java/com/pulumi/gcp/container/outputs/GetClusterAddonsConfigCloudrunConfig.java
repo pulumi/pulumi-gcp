@@ -50,10 +50,10 @@ public final class GetClusterAddonsConfigCloudrunConfig {
             return this;
         }
         public GetClusterAddonsConfigCloudrunConfig build() {
-            final var o = new GetClusterAddonsConfigCloudrunConfig();
-            o.disabled = disabled;
-            o.loadBalancerType = loadBalancerType;
-            return o;
+            final var _resultValue = new GetClusterAddonsConfigCloudrunConfig();
+            _resultValue.disabled = disabled;
+            _resultValue.loadBalancerType = loadBalancerType;
+            return _resultValue;
         }
     }
 }

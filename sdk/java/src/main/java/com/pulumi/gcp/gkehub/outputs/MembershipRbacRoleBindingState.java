@@ -50,9 +50,9 @@ public final class MembershipRbacRoleBindingState {
             return this;
         }
         public MembershipRbacRoleBindingState build() {
-            final var o = new MembershipRbacRoleBindingState();
-            o.code = code;
-            return o;
+            final var _resultValue = new MembershipRbacRoleBindingState();
+            _resultValue.code = code;
+            return _resultValue;
         }
     }
 }

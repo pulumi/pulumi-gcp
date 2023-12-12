@@ -40,9 +40,9 @@ public final class InstanceGroupManagerStatusVersionTarget {
             return this;
         }
         public InstanceGroupManagerStatusVersionTarget build() {
-            final var o = new InstanceGroupManagerStatusVersionTarget();
-            o.isReached = isReached;
-            return o;
+            final var _resultValue = new InstanceGroupManagerStatusVersionTarget();
+            _resultValue.isReached = isReached;
+            return _resultValue;
         }
     }
 }

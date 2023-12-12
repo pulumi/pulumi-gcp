@@ -48,9 +48,9 @@ public final class AwsNodePoolUpdateSettings {
             return this;
         }
         public AwsNodePoolUpdateSettings build() {
-            final var o = new AwsNodePoolUpdateSettings();
-            o.surgeSettings = surgeSettings;
-            return o;
+            final var _resultValue = new AwsNodePoolUpdateSettings();
+            _resultValue.surgeSettings = surgeSettings;
+            return _resultValue;
         }
     }
 }

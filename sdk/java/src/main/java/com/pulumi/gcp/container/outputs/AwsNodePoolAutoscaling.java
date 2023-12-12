@@ -65,10 +65,10 @@ public final class AwsNodePoolAutoscaling {
             return this;
         }
         public AwsNodePoolAutoscaling build() {
-            final var o = new AwsNodePoolAutoscaling();
-            o.maxNodeCount = maxNodeCount;
-            o.minNodeCount = minNodeCount;
-            return o;
+            final var _resultValue = new AwsNodePoolAutoscaling();
+            _resultValue.maxNodeCount = maxNodeCount;
+            _resultValue.minNodeCount = minNodeCount;
+            return _resultValue;
         }
     }
 }

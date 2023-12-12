@@ -119,14 +119,14 @@ public final class GetLakeIamPolicyResult {
             return this;
         }
         public GetLakeIamPolicyResult build() {
-            final var o = new GetLakeIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.lake = lake;
-            o.location = location;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetLakeIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.lake = lake;
+            _resultValue.location = location;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

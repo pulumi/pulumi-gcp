@@ -46,9 +46,9 @@ public final class ConnectionLogConfig {
             return this;
         }
         public ConnectionLogConfig build() {
-            final var o = new ConnectionLogConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ConnectionLogConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

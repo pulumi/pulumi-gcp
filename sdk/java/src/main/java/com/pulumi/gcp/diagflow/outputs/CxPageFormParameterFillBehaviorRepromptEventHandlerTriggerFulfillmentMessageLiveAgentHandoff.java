@@ -48,9 +48,9 @@ public final class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFul
             return this;
         }
         public CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff build() {
-            final var o = new CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff();
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff();
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

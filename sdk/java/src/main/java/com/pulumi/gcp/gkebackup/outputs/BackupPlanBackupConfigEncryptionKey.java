@@ -46,9 +46,9 @@ public final class BackupPlanBackupConfigEncryptionKey {
             return this;
         }
         public BackupPlanBackupConfigEncryptionKey build() {
-            final var o = new BackupPlanBackupConfigEncryptionKey();
-            o.gcpKmsEncryptionKey = gcpKmsEncryptionKey;
-            return o;
+            final var _resultValue = new BackupPlanBackupConfigEncryptionKey();
+            _resultValue.gcpKmsEncryptionKey = gcpKmsEncryptionKey;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class AiFeatureStoreIamMemberCondition {
             return this;
         }
         public AiFeatureStoreIamMemberCondition build() {
-            final var o = new AiFeatureStoreIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new AiFeatureStoreIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

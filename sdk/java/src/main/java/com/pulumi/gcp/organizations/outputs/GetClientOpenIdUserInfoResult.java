@@ -57,10 +57,10 @@ public final class GetClientOpenIdUserInfoResult {
             return this;
         }
         public GetClientOpenIdUserInfoResult build() {
-            final var o = new GetClientOpenIdUserInfoResult();
-            o.email = email;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetClientOpenIdUserInfoResult();
+            _resultValue.email = email;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

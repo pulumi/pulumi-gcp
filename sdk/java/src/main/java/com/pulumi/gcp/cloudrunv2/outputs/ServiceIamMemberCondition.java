@@ -62,11 +62,11 @@ public final class ServiceIamMemberCondition {
             return this;
         }
         public ServiceIamMemberCondition build() {
-            final var o = new ServiceIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new ServiceIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

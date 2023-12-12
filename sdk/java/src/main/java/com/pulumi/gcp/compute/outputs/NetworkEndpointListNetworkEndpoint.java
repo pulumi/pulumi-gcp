@@ -99,11 +99,11 @@ public final class NetworkEndpointListNetworkEndpoint {
             return this;
         }
         public NetworkEndpointListNetworkEndpoint build() {
-            final var o = new NetworkEndpointListNetworkEndpoint();
-            o.instance = instance;
-            o.ipAddress = ipAddress;
-            o.port = port;
-            return o;
+            final var _resultValue = new NetworkEndpointListNetworkEndpoint();
+            _resultValue.instance = instance;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

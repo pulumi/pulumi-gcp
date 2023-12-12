@@ -147,12 +147,12 @@ public final class RegionUrlMapPathMatcherPathRule {
             return this;
         }
         public RegionUrlMapPathMatcherPathRule build() {
-            final var o = new RegionUrlMapPathMatcherPathRule();
-            o.paths = paths;
-            o.routeAction = routeAction;
-            o.service = service;
-            o.urlRedirect = urlRedirect;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherPathRule();
+            _resultValue.paths = paths;
+            _resultValue.routeAction = routeAction;
+            _resultValue.service = service;
+            _resultValue.urlRedirect = urlRedirect;
+            return _resultValue;
         }
     }
 }

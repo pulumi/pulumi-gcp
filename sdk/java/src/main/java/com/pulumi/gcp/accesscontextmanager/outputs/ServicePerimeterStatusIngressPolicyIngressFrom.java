@@ -106,11 +106,11 @@ public final class ServicePerimeterStatusIngressPolicyIngressFrom {
             return sources(List.of(sources));
         }
         public ServicePerimeterStatusIngressPolicyIngressFrom build() {
-            final var o = new ServicePerimeterStatusIngressPolicyIngressFrom();
-            o.identities = identities;
-            o.identityType = identityType;
-            o.sources = sources;
-            return o;
+            final var _resultValue = new ServicePerimeterStatusIngressPolicyIngressFrom();
+            _resultValue.identities = identities;
+            _resultValue.identityType = identityType;
+            _resultValue.sources = sources;
+            return _resultValue;
         }
     }
 }

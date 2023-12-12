@@ -52,9 +52,9 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
             return dayOfWeeks(List.of(dayOfWeeks));
         }
         public ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule build() {
-            final var o = new ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule();
-            o.dayOfWeeks = dayOfWeeks;
-            return o;
+            final var _resultValue = new ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule();
+            _resultValue.dayOfWeeks = dayOfWeeks;
+            return _resultValue;
         }
     }
 }

@@ -70,10 +70,10 @@ public final class MetastoreServiceScalingConfig {
             return this;
         }
         public MetastoreServiceScalingConfig build() {
-            final var o = new MetastoreServiceScalingConfig();
-            o.instanceSize = instanceSize;
-            o.scalingFactor = scalingFactor;
-            return o;
+            final var _resultValue = new MetastoreServiceScalingConfig();
+            _resultValue.instanceSize = instanceSize;
+            _resultValue.scalingFactor = scalingFactor;
+            return _resultValue;
         }
     }
 }

@@ -79,10 +79,10 @@ public final class ServiceTemplateSpecContainerResources {
             return this;
         }
         public ServiceTemplateSpecContainerResources build() {
-            final var o = new ServiceTemplateSpecContainerResources();
-            o.limits = limits;
-            o.requests = requests;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecContainerResources();
+            _resultValue.limits = limits;
+            _resultValue.requests = requests;
+            return _resultValue;
         }
     }
 }

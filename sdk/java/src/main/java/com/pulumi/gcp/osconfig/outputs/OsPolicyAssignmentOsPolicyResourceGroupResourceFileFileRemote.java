@@ -69,10 +69,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote();
-            o.sha256Checksum = sha256Checksum;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote();
+            _resultValue.sha256Checksum = sha256Checksum;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class NodePoolNodeConfig {
             return this;
         }
         public NodePoolNodeConfig build() {
-            final var o = new NodePoolNodeConfig();
-            o.labels = labels;
-            return o;
+            final var _resultValue = new NodePoolNodeConfig();
+            _resultValue.labels = labels;
+            return _resultValue;
         }
     }
 }

@@ -117,12 +117,12 @@ public final class PatchDeploymentPatchConfigPostStepWindowsExecStepConfig {
             return this;
         }
         public PatchDeploymentPatchConfigPostStepWindowsExecStepConfig build() {
-            final var o = new PatchDeploymentPatchConfigPostStepWindowsExecStepConfig();
-            o.allowedSuccessCodes = allowedSuccessCodes;
-            o.gcsObject = gcsObject;
-            o.interpreter = interpreter;
-            o.localPath = localPath;
-            return o;
+            final var _resultValue = new PatchDeploymentPatchConfigPostStepWindowsExecStepConfig();
+            _resultValue.allowedSuccessCodes = allowedSuccessCodes;
+            _resultValue.gcsObject = gcsObject;
+            _resultValue.interpreter = interpreter;
+            _resultValue.localPath = localPath;
+            return _resultValue;
         }
     }
 }

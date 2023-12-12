@@ -62,11 +62,11 @@ public final class AccessPolicyIamMemberCondition {
             return this;
         }
         public AccessPolicyIamMemberCondition build() {
-            final var o = new AccessPolicyIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new AccessPolicyIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

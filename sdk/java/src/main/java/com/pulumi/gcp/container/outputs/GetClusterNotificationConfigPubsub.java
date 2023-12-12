@@ -66,11 +66,11 @@ public final class GetClusterNotificationConfigPubsub {
             return this;
         }
         public GetClusterNotificationConfigPubsub build() {
-            final var o = new GetClusterNotificationConfigPubsub();
-            o.enabled = enabled;
-            o.filters = filters;
-            o.topic = topic;
-            return o;
+            final var _resultValue = new GetClusterNotificationConfigPubsub();
+            _resultValue.enabled = enabled;
+            _resultValue.filters = filters;
+            _resultValue.topic = topic;
+            return _resultValue;
         }
     }
 }

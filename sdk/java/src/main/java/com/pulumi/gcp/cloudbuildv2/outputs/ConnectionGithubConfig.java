@@ -68,10 +68,10 @@ public final class ConnectionGithubConfig {
             return this;
         }
         public ConnectionGithubConfig build() {
-            final var o = new ConnectionGithubConfig();
-            o.appInstallationId = appInstallationId;
-            o.authorizerCredential = authorizerCredential;
-            return o;
+            final var _resultValue = new ConnectionGithubConfig();
+            _resultValue.appInstallationId = appInstallationId;
+            _resultValue.authorizerCredential = authorizerCredential;
+            return _resultValue;
         }
     }
 }

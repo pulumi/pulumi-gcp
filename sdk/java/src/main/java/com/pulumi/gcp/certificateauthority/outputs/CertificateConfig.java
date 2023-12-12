@@ -96,11 +96,11 @@ public final class CertificateConfig {
             return this;
         }
         public CertificateConfig build() {
-            final var o = new CertificateConfig();
-            o.publicKey = publicKey;
-            o.subjectConfig = subjectConfig;
-            o.x509Config = x509Config;
-            return o;
+            final var _resultValue = new CertificateConfig();
+            _resultValue.publicKey = publicKey;
+            _resultValue.subjectConfig = subjectConfig;
+            _resultValue.x509Config = x509Config;
+            return _resultValue;
         }
     }
 }

@@ -98,11 +98,11 @@ public final class ServiceTemplateVpcAccessNetworkInterface {
             return tags(List.of(tags));
         }
         public ServiceTemplateVpcAccessNetworkInterface build() {
-            final var o = new ServiceTemplateVpcAccessNetworkInterface();
-            o.network = network;
-            o.subnetwork = subnetwork;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new ServiceTemplateVpcAccessNetworkInterface();
+            _resultValue.network = network;
+            _resultValue.subnetwork = subnetwork;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

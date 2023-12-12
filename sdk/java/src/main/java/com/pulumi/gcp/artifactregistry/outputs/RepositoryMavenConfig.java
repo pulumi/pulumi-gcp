@@ -74,10 +74,10 @@ public final class RepositoryMavenConfig {
             return this;
         }
         public RepositoryMavenConfig build() {
-            final var o = new RepositoryMavenConfig();
-            o.allowSnapshotOverwrites = allowSnapshotOverwrites;
-            o.versionPolicy = versionPolicy;
-            return o;
+            final var _resultValue = new RepositoryMavenConfig();
+            _resultValue.allowSnapshotOverwrites = allowSnapshotOverwrites;
+            _resultValue.versionPolicy = versionPolicy;
+            return _resultValue;
         }
     }
 }

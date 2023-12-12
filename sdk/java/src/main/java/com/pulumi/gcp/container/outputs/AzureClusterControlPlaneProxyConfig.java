@@ -65,10 +65,10 @@ public final class AzureClusterControlPlaneProxyConfig {
             return this;
         }
         public AzureClusterControlPlaneProxyConfig build() {
-            final var o = new AzureClusterControlPlaneProxyConfig();
-            o.resourceGroupId = resourceGroupId;
-            o.secretId = secretId;
-            return o;
+            final var _resultValue = new AzureClusterControlPlaneProxyConfig();
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.secretId = secretId;
+            return _resultValue;
         }
     }
 }

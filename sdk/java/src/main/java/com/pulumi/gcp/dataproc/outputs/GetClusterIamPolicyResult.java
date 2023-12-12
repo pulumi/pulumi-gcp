@@ -117,14 +117,14 @@ public final class GetClusterIamPolicyResult {
             return this;
         }
         public GetClusterIamPolicyResult build() {
-            final var o = new GetClusterIamPolicyResult();
-            o.cluster = cluster;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetClusterIamPolicyResult();
+            _resultValue.cluster = cluster;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

@@ -86,11 +86,11 @@ public final class DatabaseInstanceSettingsSqlServerAuditConfig {
             return this;
         }
         public DatabaseInstanceSettingsSqlServerAuditConfig build() {
-            final var o = new DatabaseInstanceSettingsSqlServerAuditConfig();
-            o.bucket = bucket;
-            o.retentionInterval = retentionInterval;
-            o.uploadInterval = uploadInterval;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettingsSqlServerAuditConfig();
+            _resultValue.bucket = bucket;
+            _resultValue.retentionInterval = retentionInterval;
+            _resultValue.uploadInterval = uploadInterval;
+            return _resultValue;
         }
     }
 }

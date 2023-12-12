@@ -288,20 +288,20 @@ public final class ServiceTemplateContainer {
             return this;
         }
         public ServiceTemplateContainer build() {
-            final var o = new ServiceTemplateContainer();
-            o.args = args;
-            o.commands = commands;
-            o.dependsOns = dependsOns;
-            o.envs = envs;
-            o.image = image;
-            o.livenessProbe = livenessProbe;
-            o.name = name;
-            o.ports = ports;
-            o.resources = resources;
-            o.startupProbe = startupProbe;
-            o.volumeMounts = volumeMounts;
-            o.workingDir = workingDir;
-            return o;
+            final var _resultValue = new ServiceTemplateContainer();
+            _resultValue.args = args;
+            _resultValue.commands = commands;
+            _resultValue.dependsOns = dependsOns;
+            _resultValue.envs = envs;
+            _resultValue.image = image;
+            _resultValue.livenessProbe = livenessProbe;
+            _resultValue.name = name;
+            _resultValue.ports = ports;
+            _resultValue.resources = resources;
+            _resultValue.startupProbe = startupProbe;
+            _resultValue.volumeMounts = volumeMounts;
+            _resultValue.workingDir = workingDir;
+            return _resultValue;
         }
     }
 }

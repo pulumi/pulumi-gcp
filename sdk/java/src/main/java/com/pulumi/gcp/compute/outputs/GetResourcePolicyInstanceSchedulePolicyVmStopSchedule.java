@@ -38,9 +38,9 @@ public final class GetResourcePolicyInstanceSchedulePolicyVmStopSchedule {
             return this;
         }
         public GetResourcePolicyInstanceSchedulePolicyVmStopSchedule build() {
-            final var o = new GetResourcePolicyInstanceSchedulePolicyVmStopSchedule();
-            o.schedule = schedule;
-            return o;
+            final var _resultValue = new GetResourcePolicyInstanceSchedulePolicyVmStopSchedule();
+            _resultValue.schedule = schedule;
+            return _resultValue;
         }
     }
 }

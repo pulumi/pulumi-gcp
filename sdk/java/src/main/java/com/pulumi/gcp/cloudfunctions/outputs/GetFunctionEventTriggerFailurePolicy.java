@@ -46,9 +46,9 @@ public final class GetFunctionEventTriggerFailurePolicy {
             return this;
         }
         public GetFunctionEventTriggerFailurePolicy build() {
-            final var o = new GetFunctionEventTriggerFailurePolicy();
-            o.retry = retry;
-            return o;
+            final var _resultValue = new GetFunctionEventTriggerFailurePolicy();
+            _resultValue.retry = retry;
+            return _resultValue;
         }
     }
 }

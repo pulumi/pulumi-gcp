@@ -108,12 +108,12 @@ public final class GetTiersTier {
             return this;
         }
         public GetTiersTier build() {
-            final var o = new GetTiersTier();
-            o.diskQuota = diskQuota;
-            o.ram = ram;
-            o.regions = regions;
-            o.tier = tier;
-            return o;
+            final var _resultValue = new GetTiersTier();
+            _resultValue.diskQuota = diskQuota;
+            _resultValue.ram = ram;
+            _resultValue.regions = regions;
+            _resultValue.tier = tier;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class AzureClusterAuthorizationAdminUser {
             return this;
         }
         public AzureClusterAuthorizationAdminUser build() {
-            final var o = new AzureClusterAuthorizationAdminUser();
-            o.username = username;
-            return o;
+            final var _resultValue = new AzureClusterAuthorizationAdminUser();
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

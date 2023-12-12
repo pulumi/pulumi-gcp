@@ -67,10 +67,10 @@ public final class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFul
             return this;
         }
         public CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction build() {
-            final var o = new CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction();
-            o.parameter = parameter;
-            o.value = value;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction();
+            _resultValue.parameter = parameter;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

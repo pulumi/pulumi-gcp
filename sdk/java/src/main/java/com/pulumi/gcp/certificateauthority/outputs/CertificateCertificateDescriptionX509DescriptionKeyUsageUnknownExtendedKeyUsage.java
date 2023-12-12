@@ -51,9 +51,9 @@ public final class CertificateCertificateDescriptionX509DescriptionKeyUsageUnkno
             return objectIdPaths(List.of(objectIdPaths));
         }
         public CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage build() {
-            final var o = new CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

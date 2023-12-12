@@ -97,11 +97,11 @@ public final class CaPoolIssuancePolicyIdentityConstraints {
             return this;
         }
         public CaPoolIssuancePolicyIdentityConstraints build() {
-            final var o = new CaPoolIssuancePolicyIdentityConstraints();
-            o.allowSubjectAltNamesPassthrough = allowSubjectAltNamesPassthrough;
-            o.allowSubjectPassthrough = allowSubjectPassthrough;
-            o.celExpression = celExpression;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyIdentityConstraints();
+            _resultValue.allowSubjectAltNamesPassthrough = allowSubjectAltNamesPassthrough;
+            _resultValue.allowSubjectPassthrough = allowSubjectPassthrough;
+            _resultValue.celExpression = celExpression;
+            return _resultValue;
         }
     }
 }

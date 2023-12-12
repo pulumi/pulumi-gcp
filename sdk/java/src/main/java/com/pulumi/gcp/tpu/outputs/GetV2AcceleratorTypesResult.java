@@ -91,12 +91,12 @@ public final class GetV2AcceleratorTypesResult {
             return this;
         }
         public GetV2AcceleratorTypesResult build() {
-            final var o = new GetV2AcceleratorTypesResult();
-            o.id = id;
-            o.project = project;
-            o.types = types;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetV2AcceleratorTypesResult();
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.types = types;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

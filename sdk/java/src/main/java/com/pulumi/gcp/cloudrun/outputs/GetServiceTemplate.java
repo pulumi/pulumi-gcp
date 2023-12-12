@@ -57,10 +57,10 @@ public final class GetServiceTemplate {
             return specs(List.of(specs));
         }
         public GetServiceTemplate build() {
-            final var o = new GetServiceTemplate();
-            o.metadatas = metadatas;
-            o.specs = specs;
-            return o;
+            final var _resultValue = new GetServiceTemplate();
+            _resultValue.metadatas = metadatas;
+            _resultValue.specs = specs;
+            return _resultValue;
         }
     }
 }

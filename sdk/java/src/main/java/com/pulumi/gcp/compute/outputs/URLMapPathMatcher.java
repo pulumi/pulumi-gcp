@@ -241,16 +241,16 @@ public final class URLMapPathMatcher {
             return routeRules(List.of(routeRules));
         }
         public URLMapPathMatcher build() {
-            final var o = new URLMapPathMatcher();
-            o.defaultRouteAction = defaultRouteAction;
-            o.defaultService = defaultService;
-            o.defaultUrlRedirect = defaultUrlRedirect;
-            o.description = description;
-            o.headerAction = headerAction;
-            o.name = name;
-            o.pathRules = pathRules;
-            o.routeRules = routeRules;
-            return o;
+            final var _resultValue = new URLMapPathMatcher();
+            _resultValue.defaultRouteAction = defaultRouteAction;
+            _resultValue.defaultService = defaultService;
+            _resultValue.defaultUrlRedirect = defaultUrlRedirect;
+            _resultValue.description = description;
+            _resultValue.headerAction = headerAction;
+            _resultValue.name = name;
+            _resultValue.pathRules = pathRules;
+            _resultValue.routeRules = routeRules;
+            return _resultValue;
         }
     }
 }

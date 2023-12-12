@@ -87,11 +87,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGc
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs();
-            o.bucket = bucket;
-            o.generation = generation;
-            o.object = object;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs();
+            _resultValue.bucket = bucket;
+            _resultValue.generation = generation;
+            _resultValue.object = object;
+            return _resultValue;
         }
     }
 }

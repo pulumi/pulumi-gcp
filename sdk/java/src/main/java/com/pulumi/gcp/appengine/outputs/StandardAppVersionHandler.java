@@ -180,15 +180,15 @@ public final class StandardAppVersionHandler {
             return this;
         }
         public StandardAppVersionHandler build() {
-            final var o = new StandardAppVersionHandler();
-            o.authFailAction = authFailAction;
-            o.login = login;
-            o.redirectHttpResponseCode = redirectHttpResponseCode;
-            o.script = script;
-            o.securityLevel = securityLevel;
-            o.staticFiles = staticFiles;
-            o.urlRegex = urlRegex;
-            return o;
+            final var _resultValue = new StandardAppVersionHandler();
+            _resultValue.authFailAction = authFailAction;
+            _resultValue.login = login;
+            _resultValue.redirectHttpResponseCode = redirectHttpResponseCode;
+            _resultValue.script = script;
+            _resultValue.securityLevel = securityLevel;
+            _resultValue.staticFiles = staticFiles;
+            _resultValue.urlRegex = urlRegex;
+            return _resultValue;
         }
     }
 }

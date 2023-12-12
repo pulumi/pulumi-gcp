@@ -130,15 +130,15 @@ public final class GetTaskIamPolicyResult {
             return this;
         }
         public GetTaskIamPolicyResult build() {
-            final var o = new GetTaskIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.lake = lake;
-            o.location = location;
-            o.policyData = policyData;
-            o.project = project;
-            o.taskId = taskId;
-            return o;
+            final var _resultValue = new GetTaskIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.lake = lake;
+            _resultValue.location = location;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.taskId = taskId;
+            return _resultValue;
         }
     }
 }

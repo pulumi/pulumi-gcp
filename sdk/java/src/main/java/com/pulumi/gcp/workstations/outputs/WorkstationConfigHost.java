@@ -50,9 +50,9 @@ public final class WorkstationConfigHost {
             return this;
         }
         public WorkstationConfigHost build() {
-            final var o = new WorkstationConfigHost();
-            o.gceInstance = gceInstance;
-            return o;
+            final var _resultValue = new WorkstationConfigHost();
+            _resultValue.gceInstance = gceInstance;
+            return _resultValue;
         }
     }
 }

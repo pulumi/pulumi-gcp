@@ -247,18 +247,18 @@ public final class ConnectionSslConfig {
             return this;
         }
         public ConnectionSslConfig build() {
-            final var o = new ConnectionSslConfig();
-            o.additionalVariables = additionalVariables;
-            o.clientCertType = clientCertType;
-            o.clientCertificate = clientCertificate;
-            o.clientPrivateKey = clientPrivateKey;
-            o.clientPrivateKeyPass = clientPrivateKeyPass;
-            o.privateServerCertificate = privateServerCertificate;
-            o.serverCertType = serverCertType;
-            o.trustModel = trustModel;
-            o.type = type;
-            o.useSsl = useSsl;
-            return o;
+            final var _resultValue = new ConnectionSslConfig();
+            _resultValue.additionalVariables = additionalVariables;
+            _resultValue.clientCertType = clientCertType;
+            _resultValue.clientCertificate = clientCertificate;
+            _resultValue.clientPrivateKey = clientPrivateKey;
+            _resultValue.clientPrivateKeyPass = clientPrivateKeyPass;
+            _resultValue.privateServerCertificate = privateServerCertificate;
+            _resultValue.serverCertType = serverCertType;
+            _resultValue.trustModel = trustModel;
+            _resultValue.type = type;
+            _resultValue.useSsl = useSsl;
+            return _resultValue;
         }
     }
 }

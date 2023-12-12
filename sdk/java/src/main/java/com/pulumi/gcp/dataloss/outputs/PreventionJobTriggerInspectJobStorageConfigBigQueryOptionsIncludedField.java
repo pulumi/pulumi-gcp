@@ -46,9 +46,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsInc
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField();
-            o.name = name;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

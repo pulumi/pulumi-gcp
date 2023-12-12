@@ -50,9 +50,9 @@ public final class WorkflowTemplateJobHiveJobQueryList {
             return queries(List.of(queries));
         }
         public WorkflowTemplateJobHiveJobQueryList build() {
-            final var o = new WorkflowTemplateJobHiveJobQueryList();
-            o.queries = queries;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobHiveJobQueryList();
+            _resultValue.queries = queries;
+            return _resultValue;
         }
     }
 }

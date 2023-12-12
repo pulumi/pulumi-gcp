@@ -94,11 +94,11 @@ public final class NodePoolPlacementPolicy {
             return this;
         }
         public NodePoolPlacementPolicy build() {
-            final var o = new NodePoolPlacementPolicy();
-            o.policyName = policyName;
-            o.tpuTopology = tpuTopology;
-            o.type = type;
-            return o;
+            final var _resultValue = new NodePoolPlacementPolicy();
+            _resultValue.policyName = policyName;
+            _resultValue.tpuTopology = tpuTopology;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

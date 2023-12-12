@@ -116,14 +116,14 @@ public final class GetAccountJwtResult {
             return this;
         }
         public GetAccountJwtResult build() {
-            final var o = new GetAccountJwtResult();
-            o.delegates = delegates;
-            o.expiresIn = expiresIn;
-            o.id = id;
-            o.jwt = jwt;
-            o.payload = payload;
-            o.targetServiceAccount = targetServiceAccount;
-            return o;
+            final var _resultValue = new GetAccountJwtResult();
+            _resultValue.delegates = delegates;
+            _resultValue.expiresIn = expiresIn;
+            _resultValue.id = id;
+            _resultValue.jwt = jwt;
+            _resultValue.payload = payload;
+            _resultValue.targetServiceAccount = targetServiceAccount;
+            return _resultValue;
         }
     }
 }

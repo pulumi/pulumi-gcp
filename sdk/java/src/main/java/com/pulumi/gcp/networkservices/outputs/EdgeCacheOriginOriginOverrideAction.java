@@ -76,10 +76,10 @@ public final class EdgeCacheOriginOriginOverrideAction {
             return this;
         }
         public EdgeCacheOriginOriginOverrideAction build() {
-            final var o = new EdgeCacheOriginOriginOverrideAction();
-            o.headerAction = headerAction;
-            o.urlRewrite = urlRewrite;
-            return o;
+            final var _resultValue = new EdgeCacheOriginOriginOverrideAction();
+            _resultValue.headerAction = headerAction;
+            _resultValue.urlRewrite = urlRewrite;
+            return _resultValue;
         }
     }
 }

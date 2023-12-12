@@ -68,10 +68,10 @@ public final class GrpcRouteRuleActionDestination {
             return this;
         }
         public GrpcRouteRuleActionDestination build() {
-            final var o = new GrpcRouteRuleActionDestination();
-            o.serviceName = serviceName;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GrpcRouteRuleActionDestination();
+            _resultValue.serviceName = serviceName;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

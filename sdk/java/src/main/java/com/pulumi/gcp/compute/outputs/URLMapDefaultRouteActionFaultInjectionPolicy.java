@@ -72,10 +72,10 @@ public final class URLMapDefaultRouteActionFaultInjectionPolicy {
             return this;
         }
         public URLMapDefaultRouteActionFaultInjectionPolicy build() {
-            final var o = new URLMapDefaultRouteActionFaultInjectionPolicy();
-            o.abort = abort;
-            o.delay = delay;
-            return o;
+            final var _resultValue = new URLMapDefaultRouteActionFaultInjectionPolicy();
+            _resultValue.abort = abort;
+            _resultValue.delay = delay;
+            return _resultValue;
         }
     }
 }

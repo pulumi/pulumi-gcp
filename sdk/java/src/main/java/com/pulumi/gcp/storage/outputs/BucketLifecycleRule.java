@@ -66,10 +66,10 @@ public final class BucketLifecycleRule {
             return this;
         }
         public BucketLifecycleRule build() {
-            final var o = new BucketLifecycleRule();
-            o.action = action;
-            o.condition = condition;
-            return o;
+            final var _resultValue = new BucketLifecycleRule();
+            _resultValue.action = action;
+            _resultValue.condition = condition;
+            return _resultValue;
         }
     }
 }

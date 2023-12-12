@@ -48,9 +48,9 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageConversationSucces
             return this;
         }
         public CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess build() {
-            final var o = new CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess();
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess();
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

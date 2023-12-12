@@ -75,10 +75,10 @@ public final class BackendServiceCircuitBreakersConnectTimeout {
             return this;
         }
         public BackendServiceCircuitBreakersConnectTimeout build() {
-            final var o = new BackendServiceCircuitBreakersConnectTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new BackendServiceCircuitBreakersConnectTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

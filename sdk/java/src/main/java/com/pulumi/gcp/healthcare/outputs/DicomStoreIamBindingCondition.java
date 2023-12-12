@@ -62,11 +62,11 @@ public final class DicomStoreIamBindingCondition {
             return this;
         }
         public DicomStoreIamBindingCondition build() {
-            final var o = new DicomStoreIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new DicomStoreIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

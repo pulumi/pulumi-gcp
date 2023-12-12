@@ -261,19 +261,19 @@ public final class WorkstationConfigHostGceInstance {
             return tags(List.of(tags));
         }
         public WorkstationConfigHostGceInstance build() {
-            final var o = new WorkstationConfigHostGceInstance();
-            o.accelerators = accelerators;
-            o.bootDiskSizeGb = bootDiskSizeGb;
-            o.confidentialInstanceConfig = confidentialInstanceConfig;
-            o.disablePublicIpAddresses = disablePublicIpAddresses;
-            o.enableNestedVirtualization = enableNestedVirtualization;
-            o.machineType = machineType;
-            o.poolSize = poolSize;
-            o.serviceAccount = serviceAccount;
-            o.serviceAccountScopes = serviceAccountScopes;
-            o.shieldedInstanceConfig = shieldedInstanceConfig;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new WorkstationConfigHostGceInstance();
+            _resultValue.accelerators = accelerators;
+            _resultValue.bootDiskSizeGb = bootDiskSizeGb;
+            _resultValue.confidentialInstanceConfig = confidentialInstanceConfig;
+            _resultValue.disablePublicIpAddresses = disablePublicIpAddresses;
+            _resultValue.enableNestedVirtualization = enableNestedVirtualization;
+            _resultValue.machineType = machineType;
+            _resultValue.poolSize = poolSize;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.serviceAccountScopes = serviceAccountScopes;
+            _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

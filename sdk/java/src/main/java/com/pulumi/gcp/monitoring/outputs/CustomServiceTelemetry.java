@@ -52,9 +52,9 @@ public final class CustomServiceTelemetry {
             return this;
         }
         public CustomServiceTelemetry build() {
-            final var o = new CustomServiceTelemetry();
-            o.resourceName = resourceName;
-            return o;
+            final var _resultValue = new CustomServiceTelemetry();
+            _resultValue.resourceName = resourceName;
+            return _resultValue;
         }
     }
 }

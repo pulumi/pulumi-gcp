@@ -229,17 +229,17 @@ public final class ExtensionsInstanceConfig {
             return this;
         }
         public ExtensionsInstanceConfig build() {
-            final var o = new ExtensionsInstanceConfig();
-            o.allowedEventTypes = allowedEventTypes;
-            o.createTime = createTime;
-            o.eventarcChannel = eventarcChannel;
-            o.extensionRef = extensionRef;
-            o.extensionVersion = extensionVersion;
-            o.name = name;
-            o.params = params;
-            o.populatedPostinstallContent = populatedPostinstallContent;
-            o.systemParams = systemParams;
-            return o;
+            final var _resultValue = new ExtensionsInstanceConfig();
+            _resultValue.allowedEventTypes = allowedEventTypes;
+            _resultValue.createTime = createTime;
+            _resultValue.eventarcChannel = eventarcChannel;
+            _resultValue.extensionRef = extensionRef;
+            _resultValue.extensionVersion = extensionVersion;
+            _resultValue.name = name;
+            _resultValue.params = params;
+            _resultValue.populatedPostinstallContent = populatedPostinstallContent;
+            _resultValue.systemParams = systemParams;
+            return _resultValue;
         }
     }
 }

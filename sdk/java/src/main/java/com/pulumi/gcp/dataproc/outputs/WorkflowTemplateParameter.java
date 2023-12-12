@@ -110,12 +110,12 @@ public final class WorkflowTemplateParameter {
             return this;
         }
         public WorkflowTemplateParameter build() {
-            final var o = new WorkflowTemplateParameter();
-            o.description = description;
-            o.fields = fields;
-            o.name = name;
-            o.validation = validation;
-            return o;
+            final var _resultValue = new WorkflowTemplateParameter();
+            _resultValue.description = description;
+            _resultValue.fields = fields;
+            _resultValue.name = name;
+            _resultValue.validation = validation;
+            return _resultValue;
         }
     }
 }

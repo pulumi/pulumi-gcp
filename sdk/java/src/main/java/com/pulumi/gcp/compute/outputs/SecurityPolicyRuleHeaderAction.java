@@ -50,9 +50,9 @@ public final class SecurityPolicyRuleHeaderAction {
             return requestHeadersToAdds(List.of(requestHeadersToAdds));
         }
         public SecurityPolicyRuleHeaderAction build() {
-            final var o = new SecurityPolicyRuleHeaderAction();
-            o.requestHeadersToAdds = requestHeadersToAdds;
-            return o;
+            final var _resultValue = new SecurityPolicyRuleHeaderAction();
+            _resultValue.requestHeadersToAdds = requestHeadersToAdds;
+            return _resultValue;
         }
     }
 }

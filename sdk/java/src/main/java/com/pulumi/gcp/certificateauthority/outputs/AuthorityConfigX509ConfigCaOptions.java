@@ -116,12 +116,12 @@ public final class AuthorityConfigX509ConfigCaOptions {
             return this;
         }
         public AuthorityConfigX509ConfigCaOptions build() {
-            final var o = new AuthorityConfigX509ConfigCaOptions();
-            o.isCa = isCa;
-            o.maxIssuerPathLength = maxIssuerPathLength;
-            o.nonCa = nonCa;
-            o.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
-            return o;
+            final var _resultValue = new AuthorityConfigX509ConfigCaOptions();
+            _resultValue.isCa = isCa;
+            _resultValue.maxIssuerPathLength = maxIssuerPathLength;
+            _resultValue.nonCa = nonCa;
+            _resultValue.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
+            return _resultValue;
         }
     }
 }

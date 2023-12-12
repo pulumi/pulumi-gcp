@@ -25,8 +25,8 @@ public final class PreventionJobTriggerTriggerManual {
         }
 
         public PreventionJobTriggerTriggerManual build() {
-            final var o = new PreventionJobTriggerTriggerManual();
-            return o;
+            final var _resultValue = new PreventionJobTriggerTriggerManual();
+            return _resultValue;
         }
     }
 }

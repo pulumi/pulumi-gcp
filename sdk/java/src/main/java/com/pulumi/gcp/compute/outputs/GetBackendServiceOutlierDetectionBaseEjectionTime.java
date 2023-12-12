@@ -49,10 +49,10 @@ public final class GetBackendServiceOutlierDetectionBaseEjectionTime {
             return this;
         }
         public GetBackendServiceOutlierDetectionBaseEjectionTime build() {
-            final var o = new GetBackendServiceOutlierDetectionBaseEjectionTime();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new GetBackendServiceOutlierDetectionBaseEjectionTime();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

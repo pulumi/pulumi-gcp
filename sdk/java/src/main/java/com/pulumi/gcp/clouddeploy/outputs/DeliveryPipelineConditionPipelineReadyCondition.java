@@ -60,10 +60,10 @@ public final class DeliveryPipelineConditionPipelineReadyCondition {
             return this;
         }
         public DeliveryPipelineConditionPipelineReadyCondition build() {
-            final var o = new DeliveryPipelineConditionPipelineReadyCondition();
-            o.status = status;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new DeliveryPipelineConditionPipelineReadyCondition();
+            _resultValue.status = status;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

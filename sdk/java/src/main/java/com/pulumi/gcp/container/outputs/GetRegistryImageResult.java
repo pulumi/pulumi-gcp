@@ -122,15 +122,15 @@ public final class GetRegistryImageResult {
             return this;
         }
         public GetRegistryImageResult build() {
-            final var o = new GetRegistryImageResult();
-            o.digest = digest;
-            o.id = id;
-            o.imageUrl = imageUrl;
-            o.name = name;
-            o.project = project;
-            o.region = region;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new GetRegistryImageResult();
+            _resultValue.digest = digest;
+            _resultValue.id = id;
+            _resultValue.imageUrl = imageUrl;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

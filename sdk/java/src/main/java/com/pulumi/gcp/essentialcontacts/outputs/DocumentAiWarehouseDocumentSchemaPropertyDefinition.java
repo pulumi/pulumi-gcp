@@ -374,25 +374,25 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinition {
             return this;
         }
         public DocumentAiWarehouseDocumentSchemaPropertyDefinition build() {
-            final var o = new DocumentAiWarehouseDocumentSchemaPropertyDefinition();
-            o.dateTimeTypeOptions = dateTimeTypeOptions;
-            o.displayName = displayName;
-            o.enumTypeOptions = enumTypeOptions;
-            o.floatTypeOptions = floatTypeOptions;
-            o.integerTypeOptions = integerTypeOptions;
-            o.isFilterable = isFilterable;
-            o.isMetadata = isMetadata;
-            o.isRepeatable = isRepeatable;
-            o.isRequired = isRequired;
-            o.isSearchable = isSearchable;
-            o.mapTypeOptions = mapTypeOptions;
-            o.name = name;
-            o.propertyTypeOptions = propertyTypeOptions;
-            o.retrievalImportance = retrievalImportance;
-            o.schemaSources = schemaSources;
-            o.textTypeOptions = textTypeOptions;
-            o.timestampTypeOptions = timestampTypeOptions;
-            return o;
+            final var _resultValue = new DocumentAiWarehouseDocumentSchemaPropertyDefinition();
+            _resultValue.dateTimeTypeOptions = dateTimeTypeOptions;
+            _resultValue.displayName = displayName;
+            _resultValue.enumTypeOptions = enumTypeOptions;
+            _resultValue.floatTypeOptions = floatTypeOptions;
+            _resultValue.integerTypeOptions = integerTypeOptions;
+            _resultValue.isFilterable = isFilterable;
+            _resultValue.isMetadata = isMetadata;
+            _resultValue.isRepeatable = isRepeatable;
+            _resultValue.isRequired = isRequired;
+            _resultValue.isSearchable = isSearchable;
+            _resultValue.mapTypeOptions = mapTypeOptions;
+            _resultValue.name = name;
+            _resultValue.propertyTypeOptions = propertyTypeOptions;
+            _resultValue.retrievalImportance = retrievalImportance;
+            _resultValue.schemaSources = schemaSources;
+            _resultValue.textTypeOptions = textTypeOptions;
+            _resultValue.timestampTypeOptions = timestampTypeOptions;
+            return _resultValue;
         }
     }
 }

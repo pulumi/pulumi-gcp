@@ -127,12 +127,12 @@ public final class ServicePerimeterEgressPolicyEgressFrom {
             return sources(List.of(sources));
         }
         public ServicePerimeterEgressPolicyEgressFrom build() {
-            final var o = new ServicePerimeterEgressPolicyEgressFrom();
-            o.identities = identities;
-            o.identityType = identityType;
-            o.sourceRestriction = sourceRestriction;
-            o.sources = sources;
-            return o;
+            final var _resultValue = new ServicePerimeterEgressPolicyEgressFrom();
+            _resultValue.identities = identities;
+            _resultValue.identityType = identityType;
+            _resultValue.sourceRestriction = sourceRestriction;
+            _resultValue.sources = sources;
+            return _resultValue;
         }
     }
 }

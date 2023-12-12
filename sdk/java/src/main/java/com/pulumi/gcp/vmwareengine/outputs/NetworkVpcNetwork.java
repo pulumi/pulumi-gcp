@@ -73,10 +73,10 @@ public final class NetworkVpcNetwork {
             return this;
         }
         public NetworkVpcNetwork build() {
-            final var o = new NetworkVpcNetwork();
-            o.network = network;
-            o.type = type;
-            return o;
+            final var _resultValue = new NetworkVpcNetwork();
+            _resultValue.network = network;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

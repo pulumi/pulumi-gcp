@@ -147,13 +147,13 @@ public final class PatchDeploymentInstanceFilter {
             return zones(List.of(zones));
         }
         public PatchDeploymentInstanceFilter build() {
-            final var o = new PatchDeploymentInstanceFilter();
-            o.all = all;
-            o.groupLabels = groupLabels;
-            o.instanceNamePrefixes = instanceNamePrefixes;
-            o.instances = instances;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new PatchDeploymentInstanceFilter();
+            _resultValue.all = all;
+            _resultValue.groupLabels = groupLabels;
+            _resultValue.instanceNamePrefixes = instanceNamePrefixes;
+            _resultValue.instances = instances;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

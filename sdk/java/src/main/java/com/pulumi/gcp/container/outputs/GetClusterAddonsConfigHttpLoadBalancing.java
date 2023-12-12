@@ -38,9 +38,9 @@ public final class GetClusterAddonsConfigHttpLoadBalancing {
             return this;
         }
         public GetClusterAddonsConfigHttpLoadBalancing build() {
-            final var o = new GetClusterAddonsConfigHttpLoadBalancing();
-            o.disabled = disabled;
-            return o;
+            final var _resultValue = new GetClusterAddonsConfigHttpLoadBalancing();
+            _resultValue.disabled = disabled;
+            return _resultValue;
         }
     }
 }

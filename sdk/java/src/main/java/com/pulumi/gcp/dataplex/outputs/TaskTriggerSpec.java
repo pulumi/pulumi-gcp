@@ -128,13 +128,13 @@ public final class TaskTriggerSpec {
             return this;
         }
         public TaskTriggerSpec build() {
-            final var o = new TaskTriggerSpec();
-            o.disabled = disabled;
-            o.maxRetries = maxRetries;
-            o.schedule = schedule;
-            o.startTime = startTime;
-            o.type = type;
-            return o;
+            final var _resultValue = new TaskTriggerSpec();
+            _resultValue.disabled = disabled;
+            _resultValue.maxRetries = maxRetries;
+            _resultValue.schedule = schedule;
+            _resultValue.startTime = startTime;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

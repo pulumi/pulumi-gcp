@@ -71,10 +71,10 @@ public final class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas 
             return this;
         }
         public AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas build() {
-            final var o = new AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas();
-            o.fixed = fixed;
-            o.percent = percent;
-            return o;
+            final var _resultValue = new AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas();
+            _resultValue.fixed = fixed;
+            _resultValue.percent = percent;
+            return _resultValue;
         }
     }
 }

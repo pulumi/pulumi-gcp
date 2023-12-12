@@ -142,12 +142,12 @@ public final class AttestorAttestationAuthorityNotePublicKey {
             return this;
         }
         public AttestorAttestationAuthorityNotePublicKey build() {
-            final var o = new AttestorAttestationAuthorityNotePublicKey();
-            o.asciiArmoredPgpPublicKey = asciiArmoredPgpPublicKey;
-            o.comment = comment;
-            o.id = id;
-            o.pkixPublicKey = pkixPublicKey;
-            return o;
+            final var _resultValue = new AttestorAttestationAuthorityNotePublicKey();
+            _resultValue.asciiArmoredPgpPublicKey = asciiArmoredPgpPublicKey;
+            _resultValue.comment = comment;
+            _resultValue.id = id;
+            _resultValue.pkixPublicKey = pkixPublicKey;
+            return _resultValue;
         }
     }
 }

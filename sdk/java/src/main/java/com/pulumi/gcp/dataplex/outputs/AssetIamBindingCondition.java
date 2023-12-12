@@ -62,11 +62,11 @@ public final class AssetIamBindingCondition {
             return this;
         }
         public AssetIamBindingCondition build() {
-            final var o = new AssetIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new AssetIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

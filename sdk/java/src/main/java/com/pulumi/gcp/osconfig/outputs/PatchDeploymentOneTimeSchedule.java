@@ -48,9 +48,9 @@ public final class PatchDeploymentOneTimeSchedule {
             return this;
         }
         public PatchDeploymentOneTimeSchedule build() {
-            final var o = new PatchDeploymentOneTimeSchedule();
-            o.executeTime = executeTime;
-            return o;
+            final var _resultValue = new PatchDeploymentOneTimeSchedule();
+            _resultValue.executeTime = executeTime;
+            return _resultValue;
         }
     }
 }

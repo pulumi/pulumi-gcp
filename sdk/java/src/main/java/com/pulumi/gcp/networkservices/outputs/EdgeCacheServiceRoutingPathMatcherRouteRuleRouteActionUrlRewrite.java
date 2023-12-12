@@ -106,11 +106,11 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewr
             return this;
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite();
-            o.hostRewrite = hostRewrite;
-            o.pathPrefixRewrite = pathPrefixRewrite;
-            o.pathTemplateRewrite = pathTemplateRewrite;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite();
+            _resultValue.hostRewrite = hostRewrite;
+            _resultValue.pathPrefixRewrite = pathPrefixRewrite;
+            _resultValue.pathTemplateRewrite = pathTemplateRewrite;
+            return _resultValue;
         }
     }
 }

@@ -51,9 +51,9 @@ public final class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTex
             return texts(List.of(texts));
         }
         public CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse build() {
-            final var o = new CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse();
-            o.texts = texts;
-            return o;
+            final var _resultValue = new CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse();
+            _resultValue.texts = texts;
+            return _resultValue;
         }
     }
 }

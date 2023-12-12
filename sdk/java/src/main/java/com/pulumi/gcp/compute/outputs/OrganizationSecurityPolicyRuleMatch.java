@@ -95,11 +95,11 @@ public final class OrganizationSecurityPolicyRuleMatch {
             return this;
         }
         public OrganizationSecurityPolicyRuleMatch build() {
-            final var o = new OrganizationSecurityPolicyRuleMatch();
-            o.config = config;
-            o.description = description;
-            o.versionedExpr = versionedExpr;
-            return o;
+            final var _resultValue = new OrganizationSecurityPolicyRuleMatch();
+            _resultValue.config = config;
+            _resultValue.description = description;
+            _resultValue.versionedExpr = versionedExpr;
+            return _resultValue;
         }
     }
 }

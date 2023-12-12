@@ -73,10 +73,10 @@ public final class PolicySpecRuleValues {
             return deniedValues(List.of(deniedValues));
         }
         public PolicySpecRuleValues build() {
-            final var o = new PolicySpecRuleValues();
-            o.allowedValues = allowedValues;
-            o.deniedValues = deniedValues;
-            return o;
+            final var _resultValue = new PolicySpecRuleValues();
+            _resultValue.allowedValues = allowedValues;
+            _resultValue.deniedValues = deniedValues;
+            return _resultValue;
         }
     }
 }

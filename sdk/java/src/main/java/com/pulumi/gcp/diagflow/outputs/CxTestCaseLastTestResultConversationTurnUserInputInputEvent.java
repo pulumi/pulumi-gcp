@@ -46,9 +46,9 @@ public final class CxTestCaseLastTestResultConversationTurnUserInputInputEvent {
             return this;
         }
         public CxTestCaseLastTestResultConversationTurnUserInputInputEvent build() {
-            final var o = new CxTestCaseLastTestResultConversationTurnUserInputInputEvent();
-            o.event = event;
-            return o;
+            final var _resultValue = new CxTestCaseLastTestResultConversationTurnUserInputInputEvent();
+            _resultValue.event = event;
+            return _resultValue;
         }
     }
 }

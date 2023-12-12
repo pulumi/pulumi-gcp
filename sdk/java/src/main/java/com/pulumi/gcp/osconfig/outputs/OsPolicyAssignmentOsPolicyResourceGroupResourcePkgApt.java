@@ -46,9 +46,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt();
-            o.name = name;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

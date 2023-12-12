@@ -50,9 +50,9 @@ public final class MembershipEndpoint {
             return this;
         }
         public MembershipEndpoint build() {
-            final var o = new MembershipEndpoint();
-            o.gkeCluster = gkeCluster;
-            return o;
+            final var _resultValue = new MembershipEndpoint();
+            _resultValue.gkeCluster = gkeCluster;
+            return _resultValue;
         }
     }
 }

@@ -52,9 +52,9 @@ public final class OsPolicyAssignmentInstanceFilterExclusionLabel {
             return this;
         }
         public OsPolicyAssignmentInstanceFilterExclusionLabel build() {
-            final var o = new OsPolicyAssignmentInstanceFilterExclusionLabel();
-            o.labels = labels;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentInstanceFilterExclusionLabel();
+            _resultValue.labels = labels;
+            return _resultValue;
         }
     }
 }

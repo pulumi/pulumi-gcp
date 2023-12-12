@@ -52,9 +52,9 @@ public final class FolderSinkBigqueryOptions {
             return this;
         }
         public FolderSinkBigqueryOptions build() {
-            final var o = new FolderSinkBigqueryOptions();
-            o.usePartitionedTables = usePartitionedTables;
-            return o;
+            final var _resultValue = new FolderSinkBigqueryOptions();
+            _resultValue.usePartitionedTables = usePartitionedTables;
+            return _resultValue;
         }
     }
 }

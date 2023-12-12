@@ -115,13 +115,13 @@ public final class GetKeysResult {
             return zoneSigningKeys(List.of(zoneSigningKeys));
         }
         public GetKeysResult build() {
-            final var o = new GetKeysResult();
-            o.id = id;
-            o.keySigningKeys = keySigningKeys;
-            o.managedZone = managedZone;
-            o.project = project;
-            o.zoneSigningKeys = zoneSigningKeys;
-            return o;
+            final var _resultValue = new GetKeysResult();
+            _resultValue.id = id;
+            _resultValue.keySigningKeys = keySigningKeys;
+            _resultValue.managedZone = managedZone;
+            _resultValue.project = project;
+            _resultValue.zoneSigningKeys = zoneSigningKeys;
+            return _resultValue;
         }
     }
 }

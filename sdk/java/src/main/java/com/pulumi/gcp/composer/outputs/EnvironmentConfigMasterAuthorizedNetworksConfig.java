@@ -55,10 +55,10 @@ public final class EnvironmentConfigMasterAuthorizedNetworksConfig {
             return this;
         }
         public EnvironmentConfigMasterAuthorizedNetworksConfig build() {
-            final var o = new EnvironmentConfigMasterAuthorizedNetworksConfig();
-            o.cidrBlocks = cidrBlocks;
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new EnvironmentConfigMasterAuthorizedNetworksConfig();
+            _resultValue.cidrBlocks = cidrBlocks;
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

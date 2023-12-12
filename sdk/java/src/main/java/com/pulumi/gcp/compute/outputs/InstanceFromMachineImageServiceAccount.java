@@ -55,10 +55,10 @@ public final class InstanceFromMachineImageServiceAccount {
             return scopes(List.of(scopes));
         }
         public InstanceFromMachineImageServiceAccount build() {
-            final var o = new InstanceFromMachineImageServiceAccount();
-            o.email = email;
-            o.scopes = scopes;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageServiceAccount();
+            _resultValue.email = email;
+            _resultValue.scopes = scopes;
+            return _resultValue;
         }
     }
 }

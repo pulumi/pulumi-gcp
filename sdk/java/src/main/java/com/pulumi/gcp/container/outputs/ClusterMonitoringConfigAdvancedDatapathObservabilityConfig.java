@@ -68,10 +68,10 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
             return this;
         }
         public ClusterMonitoringConfigAdvancedDatapathObservabilityConfig build() {
-            final var o = new ClusterMonitoringConfigAdvancedDatapathObservabilityConfig();
-            o.enableMetrics = enableMetrics;
-            o.relayMode = relayMode;
-            return o;
+            final var _resultValue = new ClusterMonitoringConfigAdvancedDatapathObservabilityConfig();
+            _resultValue.enableMetrics = enableMetrics;
+            _resultValue.relayMode = relayMode;
+            return _resultValue;
         }
     }
 }

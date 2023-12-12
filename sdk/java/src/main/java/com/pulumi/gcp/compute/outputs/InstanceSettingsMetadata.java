@@ -48,9 +48,9 @@ public final class InstanceSettingsMetadata {
             return this;
         }
         public InstanceSettingsMetadata build() {
-            final var o = new InstanceSettingsMetadata();
-            o.items = items;
-            return o;
+            final var _resultValue = new InstanceSettingsMetadata();
+            _resultValue.items = items;
+            return _resultValue;
         }
     }
 }

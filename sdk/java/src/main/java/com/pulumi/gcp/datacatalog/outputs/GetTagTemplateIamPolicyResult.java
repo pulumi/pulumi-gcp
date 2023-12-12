@@ -119,14 +119,14 @@ public final class GetTagTemplateIamPolicyResult {
             return this;
         }
         public GetTagTemplateIamPolicyResult build() {
-            final var o = new GetTagTemplateIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.region = region;
-            o.tagTemplate = tagTemplate;
-            return o;
+            final var _resultValue = new GetTagTemplateIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.tagTemplate = tagTemplate;
+            return _resultValue;
         }
     }
 }

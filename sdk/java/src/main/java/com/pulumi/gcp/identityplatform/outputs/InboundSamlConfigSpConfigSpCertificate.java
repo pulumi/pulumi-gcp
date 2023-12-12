@@ -48,9 +48,9 @@ public final class InboundSamlConfigSpConfigSpCertificate {
             return this;
         }
         public InboundSamlConfigSpConfigSpCertificate build() {
-            final var o = new InboundSamlConfigSpConfigSpCertificate();
-            o.x509Certificate = x509Certificate;
-            return o;
+            final var _resultValue = new InboundSamlConfigSpConfigSpCertificate();
+            _resultValue.x509Certificate = x509Certificate;
+            return _resultValue;
         }
     }
 }

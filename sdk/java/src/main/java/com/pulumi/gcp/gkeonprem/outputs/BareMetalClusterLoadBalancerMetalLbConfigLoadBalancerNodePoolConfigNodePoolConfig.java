@@ -137,12 +137,12 @@ public final class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePool
             return taints(List.of(taints));
         }
         public BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig build() {
-            final var o = new BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig();
-            o.labels = labels;
-            o.nodeConfigs = nodeConfigs;
-            o.operatingSystem = operatingSystem;
-            o.taints = taints;
-            return o;
+            final var _resultValue = new BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig();
+            _resultValue.labels = labels;
+            _resultValue.nodeConfigs = nodeConfigs;
+            _resultValue.operatingSystem = operatingSystem;
+            _resultValue.taints = taints;
+            return _resultValue;
         }
     }
 }

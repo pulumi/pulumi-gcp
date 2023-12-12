@@ -171,16 +171,16 @@ public final class GetKMSCryptoKeyVersionResult {
             return this;
         }
         public GetKMSCryptoKeyVersionResult build() {
-            final var o = new GetKMSCryptoKeyVersionResult();
-            o.algorithm = algorithm;
-            o.cryptoKey = cryptoKey;
-            o.id = id;
-            o.name = name;
-            o.protectionLevel = protectionLevel;
-            o.publicKeys = publicKeys;
-            o.state = state;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetKMSCryptoKeyVersionResult();
+            _resultValue.algorithm = algorithm;
+            _resultValue.cryptoKey = cryptoKey;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.protectionLevel = protectionLevel;
+            _resultValue.publicKeys = publicKeys;
+            _resultValue.state = state;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

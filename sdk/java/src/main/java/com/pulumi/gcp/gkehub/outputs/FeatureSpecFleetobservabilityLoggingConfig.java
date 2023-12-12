@@ -72,10 +72,10 @@ public final class FeatureSpecFleetobservabilityLoggingConfig {
             return this;
         }
         public FeatureSpecFleetobservabilityLoggingConfig build() {
-            final var o = new FeatureSpecFleetobservabilityLoggingConfig();
-            o.defaultConfig = defaultConfig;
-            o.fleetScopeLogsConfig = fleetScopeLogsConfig;
-            return o;
+            final var _resultValue = new FeatureSpecFleetobservabilityLoggingConfig();
+            _resultValue.defaultConfig = defaultConfig;
+            _resultValue.fleetScopeLogsConfig = fleetScopeLogsConfig;
+            return _resultValue;
         }
     }
 }

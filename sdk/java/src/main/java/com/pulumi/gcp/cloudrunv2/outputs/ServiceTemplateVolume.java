@@ -104,12 +104,12 @@ public final class ServiceTemplateVolume {
             return this;
         }
         public ServiceTemplateVolume build() {
-            final var o = new ServiceTemplateVolume();
-            o.cloudSqlInstance = cloudSqlInstance;
-            o.emptyDir = emptyDir;
-            o.name = name;
-            o.secret = secret;
-            return o;
+            final var _resultValue = new ServiceTemplateVolume();
+            _resultValue.cloudSqlInstance = cloudSqlInstance;
+            _resultValue.emptyDir = emptyDir;
+            _resultValue.name = name;
+            _resultValue.secret = secret;
+            return _resultValue;
         }
     }
 }

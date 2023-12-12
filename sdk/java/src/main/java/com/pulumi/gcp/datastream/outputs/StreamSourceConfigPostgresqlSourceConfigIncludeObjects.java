@@ -52,9 +52,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
             return postgresqlSchemas(List.of(postgresqlSchemas));
         }
         public StreamSourceConfigPostgresqlSourceConfigIncludeObjects build() {
-            final var o = new StreamSourceConfigPostgresqlSourceConfigIncludeObjects();
-            o.postgresqlSchemas = postgresqlSchemas;
-            return o;
+            final var _resultValue = new StreamSourceConfigPostgresqlSourceConfigIncludeObjects();
+            _resultValue.postgresqlSchemas = postgresqlSchemas;
+            return _resultValue;
         }
     }
 }

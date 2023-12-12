@@ -282,17 +282,17 @@ public final class BudgetBudgetFilter {
             return subaccounts(List.of(subaccounts));
         }
         public BudgetBudgetFilter build() {
-            final var o = new BudgetBudgetFilter();
-            o.calendarPeriod = calendarPeriod;
-            o.creditTypes = creditTypes;
-            o.creditTypesTreatment = creditTypesTreatment;
-            o.customPeriod = customPeriod;
-            o.labels = labels;
-            o.projects = projects;
-            o.resourceAncestors = resourceAncestors;
-            o.services = services;
-            o.subaccounts = subaccounts;
-            return o;
+            final var _resultValue = new BudgetBudgetFilter();
+            _resultValue.calendarPeriod = calendarPeriod;
+            _resultValue.creditTypes = creditTypes;
+            _resultValue.creditTypesTreatment = creditTypesTreatment;
+            _resultValue.customPeriod = customPeriod;
+            _resultValue.labels = labels;
+            _resultValue.projects = projects;
+            _resultValue.resourceAncestors = resourceAncestors;
+            _resultValue.services = services;
+            _resultValue.subaccounts = subaccounts;
+            return _resultValue;
         }
     }
 }

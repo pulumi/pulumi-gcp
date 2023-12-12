@@ -131,13 +131,13 @@ public final class StreamDestinationConfigGcsDestinationConfig {
             return this;
         }
         public StreamDestinationConfigGcsDestinationConfig build() {
-            final var o = new StreamDestinationConfigGcsDestinationConfig();
-            o.avroFileFormat = avroFileFormat;
-            o.fileRotationInterval = fileRotationInterval;
-            o.fileRotationMb = fileRotationMb;
-            o.jsonFileFormat = jsonFileFormat;
-            o.path = path;
-            return o;
+            final var _resultValue = new StreamDestinationConfigGcsDestinationConfig();
+            _resultValue.avroFileFormat = avroFileFormat;
+            _resultValue.fileRotationInterval = fileRotationInterval;
+            _resultValue.fileRotationMb = fileRotationMb;
+            _resultValue.jsonFileFormat = jsonFileFormat;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

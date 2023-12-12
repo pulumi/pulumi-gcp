@@ -108,12 +108,12 @@ public final class TransferJobTransferSpecTransferOptions {
             return this;
         }
         public TransferJobTransferSpecTransferOptions build() {
-            final var o = new TransferJobTransferSpecTransferOptions();
-            o.deleteObjectsFromSourceAfterTransfer = deleteObjectsFromSourceAfterTransfer;
-            o.deleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
-            o.overwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
-            o.overwriteWhen = overwriteWhen;
-            return o;
+            final var _resultValue = new TransferJobTransferSpecTransferOptions();
+            _resultValue.deleteObjectsFromSourceAfterTransfer = deleteObjectsFromSourceAfterTransfer;
+            _resultValue.deleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
+            _resultValue.overwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
+            _resultValue.overwriteWhen = overwriteWhen;
+            return _resultValue;
         }
     }
 }

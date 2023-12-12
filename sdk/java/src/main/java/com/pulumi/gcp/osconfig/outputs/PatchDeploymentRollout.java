@@ -78,10 +78,10 @@ public final class PatchDeploymentRollout {
             return this;
         }
         public PatchDeploymentRollout build() {
-            final var o = new PatchDeploymentRollout();
-            o.disruptionBudget = disruptionBudget;
-            o.mode = mode;
-            return o;
+            final var _resultValue = new PatchDeploymentRollout();
+            _resultValue.disruptionBudget = disruptionBudget;
+            _resultValue.mode = mode;
+            return _resultValue;
         }
     }
 }

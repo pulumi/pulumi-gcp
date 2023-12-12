@@ -65,10 +65,10 @@ public final class VMwareNodePoolNodePoolAutoscaling {
             return this;
         }
         public VMwareNodePoolNodePoolAutoscaling build() {
-            final var o = new VMwareNodePoolNodePoolAutoscaling();
-            o.maxReplicas = maxReplicas;
-            o.minReplicas = minReplicas;
-            return o;
+            final var _resultValue = new VMwareNodePoolNodePoolAutoscaling();
+            _resultValue.maxReplicas = maxReplicas;
+            _resultValue.minReplicas = minReplicas;
+            return _resultValue;
         }
     }
 }

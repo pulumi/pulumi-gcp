@@ -89,11 +89,11 @@ public final class ServiceTemplateSpecContainerEnv {
             return this;
         }
         public ServiceTemplateSpecContainerEnv build() {
-            final var o = new ServiceTemplateSpecContainerEnv();
-            o.name = name;
-            o.value = value;
-            o.valueFrom = valueFrom;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecContainerEnv();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            _resultValue.valueFrom = valueFrom;
+            return _resultValue;
         }
     }
 }

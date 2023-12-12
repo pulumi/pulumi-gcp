@@ -55,9 +55,9 @@ public final class RepositoryVirtualRepositoryConfig {
             return upstreamPolicies(List.of(upstreamPolicies));
         }
         public RepositoryVirtualRepositoryConfig build() {
-            final var o = new RepositoryVirtualRepositoryConfig();
-            o.upstreamPolicies = upstreamPolicies;
-            return o;
+            final var _resultValue = new RepositoryVirtualRepositoryConfig();
+            _resultValue.upstreamPolicies = upstreamPolicies;
+            return _resultValue;
         }
     }
 }

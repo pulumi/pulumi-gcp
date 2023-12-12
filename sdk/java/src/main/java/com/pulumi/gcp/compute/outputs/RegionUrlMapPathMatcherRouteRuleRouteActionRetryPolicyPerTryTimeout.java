@@ -72,10 +72,10 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryT
             return this;
         }
         public RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout build() {
-            final var o = new RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class InsightsReportConfigObjectMetadataReportOptionsStorageDestina
             return this;
         }
         public InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions build() {
-            final var o = new InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions();
-            o.bucket = bucket;
-            o.destinationPath = destinationPath;
-            return o;
+            final var _resultValue = new InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions();
+            _resultValue.bucket = bucket;
+            _resultValue.destinationPath = destinationPath;
+            return _resultValue;
         }
     }
 }

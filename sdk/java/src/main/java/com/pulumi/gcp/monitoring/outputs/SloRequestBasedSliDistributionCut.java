@@ -82,10 +82,10 @@ public final class SloRequestBasedSliDistributionCut {
             return this;
         }
         public SloRequestBasedSliDistributionCut build() {
-            final var o = new SloRequestBasedSliDistributionCut();
-            o.distributionFilter = distributionFilter;
-            o.range = range;
-            return o;
+            final var _resultValue = new SloRequestBasedSliDistributionCut();
+            _resultValue.distributionFilter = distributionFilter;
+            _resultValue.range = range;
+            return _resultValue;
         }
     }
 }

@@ -70,10 +70,10 @@ public final class ConnectionEventingConfigAuthConfigUserPassword {
             return this;
         }
         public ConnectionEventingConfigAuthConfigUserPassword build() {
-            final var o = new ConnectionEventingConfigAuthConfigUserPassword();
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionEventingConfigAuthConfigUserPassword();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

@@ -71,10 +71,10 @@ public final class ServiceConnectionPolicyPscConfig {
             return subnetworks(List.of(subnetworks));
         }
         public ServiceConnectionPolicyPscConfig build() {
-            final var o = new ServiceConnectionPolicyPscConfig();
-            o.limit = limit;
-            o.subnetworks = subnetworks;
-            return o;
+            final var _resultValue = new ServiceConnectionPolicyPscConfig();
+            _resultValue.limit = limit;
+            _resultValue.subnetworks = subnetworks;
+            return _resultValue;
         }
     }
 }

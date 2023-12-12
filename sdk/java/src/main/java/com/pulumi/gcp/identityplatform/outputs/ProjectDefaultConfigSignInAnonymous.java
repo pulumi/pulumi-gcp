@@ -50,9 +50,9 @@ public final class ProjectDefaultConfigSignInAnonymous {
             return this;
         }
         public ProjectDefaultConfigSignInAnonymous build() {
-            final var o = new ProjectDefaultConfigSignInAnonymous();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ProjectDefaultConfigSignInAnonymous();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

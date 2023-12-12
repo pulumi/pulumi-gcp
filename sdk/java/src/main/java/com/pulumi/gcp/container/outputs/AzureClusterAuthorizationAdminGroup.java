@@ -46,9 +46,9 @@ public final class AzureClusterAuthorizationAdminGroup {
             return this;
         }
         public AzureClusterAuthorizationAdminGroup build() {
-            final var o = new AzureClusterAuthorizationAdminGroup();
-            o.group = group;
-            return o;
+            final var _resultValue = new AzureClusterAuthorizationAdminGroup();
+            _resultValue.group = group;
+            return _resultValue;
         }
     }
 }

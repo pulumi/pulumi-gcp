@@ -90,11 +90,11 @@ public final class MetastoreFederationBackendMetastore {
             return this;
         }
         public MetastoreFederationBackendMetastore build() {
-            final var o = new MetastoreFederationBackendMetastore();
-            o.metastoreType = metastoreType;
-            o.name = name;
-            o.rank = rank;
-            return o;
+            final var _resultValue = new MetastoreFederationBackendMetastore();
+            _resultValue.metastoreType = metastoreType;
+            _resultValue.name = name;
+            _resultValue.rank = rank;
+            return _resultValue;
         }
     }
 }

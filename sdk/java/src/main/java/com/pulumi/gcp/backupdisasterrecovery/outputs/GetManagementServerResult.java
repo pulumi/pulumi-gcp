@@ -132,16 +132,16 @@ public final class GetManagementServerResult {
             return this;
         }
         public GetManagementServerResult build() {
-            final var o = new GetManagementServerResult();
-            o.id = id;
-            o.location = location;
-            o.managementUris = managementUris;
-            o.name = name;
-            o.networks = networks;
-            o.oauth2ClientId = oauth2ClientId;
-            o.project = project;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetManagementServerResult();
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.managementUris = managementUris;
+            _resultValue.name = name;
+            _resultValue.networks = networks;
+            _resultValue.oauth2ClientId = oauth2ClientId;
+            _resultValue.project = project;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

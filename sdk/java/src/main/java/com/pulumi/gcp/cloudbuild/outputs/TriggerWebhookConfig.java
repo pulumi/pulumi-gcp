@@ -71,10 +71,10 @@ public final class TriggerWebhookConfig {
             return this;
         }
         public TriggerWebhookConfig build() {
-            final var o = new TriggerWebhookConfig();
-            o.secret = secret;
-            o.state = state;
-            return o;
+            final var _resultValue = new TriggerWebhookConfig();
+            _resultValue.secret = secret;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

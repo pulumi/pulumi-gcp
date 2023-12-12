@@ -79,10 +79,10 @@ public final class AlertPolicyConditionConditionMatchedLog {
             return this;
         }
         public AlertPolicyConditionConditionMatchedLog build() {
-            final var o = new AlertPolicyConditionConditionMatchedLog();
-            o.filter = filter;
-            o.labelExtractors = labelExtractors;
-            return o;
+            final var _resultValue = new AlertPolicyConditionConditionMatchedLog();
+            _resultValue.filter = filter;
+            _resultValue.labelExtractors = labelExtractors;
+            return _resultValue;
         }
     }
 }

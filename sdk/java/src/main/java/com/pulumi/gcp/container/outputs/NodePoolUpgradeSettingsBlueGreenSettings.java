@@ -70,10 +70,10 @@ public final class NodePoolUpgradeSettingsBlueGreenSettings {
             return this;
         }
         public NodePoolUpgradeSettingsBlueGreenSettings build() {
-            final var o = new NodePoolUpgradeSettingsBlueGreenSettings();
-            o.nodePoolSoakDuration = nodePoolSoakDuration;
-            o.standardRolloutPolicy = standardRolloutPolicy;
-            return o;
+            final var _resultValue = new NodePoolUpgradeSettingsBlueGreenSettings();
+            _resultValue.nodePoolSoakDuration = nodePoolSoakDuration;
+            _resultValue.standardRolloutPolicy = standardRolloutPolicy;
+            return _resultValue;
         }
     }
 }

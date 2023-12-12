@@ -90,11 +90,11 @@ public final class HttpRouteRuleActionRequestHeaderModifier {
             return this;
         }
         public HttpRouteRuleActionRequestHeaderModifier build() {
-            final var o = new HttpRouteRuleActionRequestHeaderModifier();
-            o.add = add;
-            o.removes = removes;
-            o.set = set;
-            return o;
+            final var _resultValue = new HttpRouteRuleActionRequestHeaderModifier();
+            _resultValue.add = add;
+            _resultValue.removes = removes;
+            _resultValue.set = set;
+            return _resultValue;
         }
     }
 }

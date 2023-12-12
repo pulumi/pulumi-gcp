@@ -67,10 +67,10 @@ public final class TransferJobTransferSpecGcsDataSource {
             return this;
         }
         public TransferJobTransferSpecGcsDataSource build() {
-            final var o = new TransferJobTransferSpecGcsDataSource();
-            o.bucketName = bucketName;
-            o.path = path;
-            return o;
+            final var _resultValue = new TransferJobTransferSpecGcsDataSource();
+            _resultValue.bucketName = bucketName;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

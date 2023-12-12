@@ -52,9 +52,9 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTy
             return propertyDefinitions(List.of(propertyDefinitions));
         }
         public DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions build() {
-            final var o = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions();
-            o.propertyDefinitions = propertyDefinitions;
-            return o;
+            final var _resultValue = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions();
+            _resultValue.propertyDefinitions = propertyDefinitions;
+            return _resultValue;
         }
     }
 }

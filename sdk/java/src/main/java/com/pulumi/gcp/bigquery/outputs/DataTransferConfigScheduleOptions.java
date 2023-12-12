@@ -109,11 +109,11 @@ public final class DataTransferConfigScheduleOptions {
             return this;
         }
         public DataTransferConfigScheduleOptions build() {
-            final var o = new DataTransferConfigScheduleOptions();
-            o.disableAutoScheduling = disableAutoScheduling;
-            o.endTime = endTime;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new DataTransferConfigScheduleOptions();
+            _resultValue.disableAutoScheduling = disableAutoScheduling;
+            _resultValue.endTime = endTime;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class FeatureIamMemberCondition {
             return this;
         }
         public FeatureIamMemberCondition build() {
-            final var o = new FeatureIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new FeatureIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

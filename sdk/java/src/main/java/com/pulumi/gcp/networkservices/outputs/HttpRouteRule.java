@@ -80,10 +80,10 @@ public final class HttpRouteRule {
             return matches(List.of(matches));
         }
         public HttpRouteRule build() {
-            final var o = new HttpRouteRule();
-            o.action = action;
-            o.matches = matches;
-            return o;
+            final var _resultValue = new HttpRouteRule();
+            _resultValue.action = action;
+            _resultValue.matches = matches;
+            return _resultValue;
         }
     }
 }

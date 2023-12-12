@@ -67,10 +67,10 @@ public final class NodePoolNetworkConfigAdditionalNodeNetworkConfig {
             return this;
         }
         public NodePoolNetworkConfigAdditionalNodeNetworkConfig build() {
-            final var o = new NodePoolNetworkConfigAdditionalNodeNetworkConfig();
-            o.network = network;
-            o.subnetwork = subnetwork;
-            return o;
+            final var _resultValue = new NodePoolNetworkConfigAdditionalNodeNetworkConfig();
+            _resultValue.network = network;
+            _resultValue.subnetwork = subnetwork;
+            return _resultValue;
         }
     }
 }

@@ -185,16 +185,16 @@ public final class HttpRouteRuleMatchHeader {
             return this;
         }
         public HttpRouteRuleMatchHeader build() {
-            final var o = new HttpRouteRuleMatchHeader();
-            o.exactMatch = exactMatch;
-            o.header = header;
-            o.invertMatch = invertMatch;
-            o.prefixMatch = prefixMatch;
-            o.presentMatch = presentMatch;
-            o.rangeMatch = rangeMatch;
-            o.regexMatch = regexMatch;
-            o.suffixMatch = suffixMatch;
-            return o;
+            final var _resultValue = new HttpRouteRuleMatchHeader();
+            _resultValue.exactMatch = exactMatch;
+            _resultValue.header = header;
+            _resultValue.invertMatch = invertMatch;
+            _resultValue.prefixMatch = prefixMatch;
+            _resultValue.presentMatch = presentMatch;
+            _resultValue.rangeMatch = rangeMatch;
+            _resultValue.regexMatch = regexMatch;
+            _resultValue.suffixMatch = suffixMatch;
+            return _resultValue;
         }
     }
 }

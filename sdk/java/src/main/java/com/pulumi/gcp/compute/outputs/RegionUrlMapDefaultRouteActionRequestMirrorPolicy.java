@@ -52,9 +52,9 @@ public final class RegionUrlMapDefaultRouteActionRequestMirrorPolicy {
             return this;
         }
         public RegionUrlMapDefaultRouteActionRequestMirrorPolicy build() {
-            final var o = new RegionUrlMapDefaultRouteActionRequestMirrorPolicy();
-            o.backendService = backendService;
-            return o;
+            final var _resultValue = new RegionUrlMapDefaultRouteActionRequestMirrorPolicy();
+            _resultValue.backendService = backendService;
+            return _resultValue;
         }
     }
 }

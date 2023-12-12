@@ -96,11 +96,11 @@ public final class ConnectionProfileError {
             return this;
         }
         public ConnectionProfileError build() {
-            final var o = new ConnectionProfileError();
-            o.code = code;
-            o.details = details;
-            o.message = message;
-            return o;
+            final var _resultValue = new ConnectionProfileError();
+            _resultValue.code = code;
+            _resultValue.details = details;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

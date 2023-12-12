@@ -38,9 +38,9 @@ public final class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptio
             return this;
         }
         public GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption build() {
-            final var o = new GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption();
-            o.scope = scope;
-            return o;
+            final var _resultValue = new GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption();
+            _resultValue.scope = scope;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class AddonsConfigAddonsConfigMonetizationConfig {
             return this;
         }
         public AddonsConfigAddonsConfigMonetizationConfig build() {
-            final var o = new AddonsConfigAddonsConfigMonetizationConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new AddonsConfigAddonsConfigMonetizationConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

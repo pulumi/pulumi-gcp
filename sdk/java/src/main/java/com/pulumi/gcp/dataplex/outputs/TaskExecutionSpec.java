@@ -131,13 +131,13 @@ public final class TaskExecutionSpec {
             return this;
         }
         public TaskExecutionSpec build() {
-            final var o = new TaskExecutionSpec();
-            o.args = args;
-            o.kmsKey = kmsKey;
-            o.maxJobExecutionLifetime = maxJobExecutionLifetime;
-            o.project = project;
-            o.serviceAccount = serviceAccount;
-            return o;
+            final var _resultValue = new TaskExecutionSpec();
+            _resultValue.args = args;
+            _resultValue.kmsKey = kmsKey;
+            _resultValue.maxJobExecutionLifetime = maxJobExecutionLifetime;
+            _resultValue.project = project;
+            _resultValue.serviceAccount = serviceAccount;
+            return _resultValue;
         }
     }
 }

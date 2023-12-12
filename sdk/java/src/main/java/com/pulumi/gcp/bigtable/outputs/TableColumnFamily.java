@@ -46,9 +46,9 @@ public final class TableColumnFamily {
             return this;
         }
         public TableColumnFamily build() {
-            final var o = new TableColumnFamily();
-            o.family = family;
-            return o;
+            final var _resultValue = new TableColumnFamily();
+            _resultValue.family = family;
+            return _resultValue;
         }
     }
 }

@@ -119,14 +119,14 @@ public final class GetCaPoolIamPolicyResult {
             return this;
         }
         public GetCaPoolIamPolicyResult build() {
-            final var o = new GetCaPoolIamPolicyResult();
-            o.caPool = caPool;
-            o.etag = etag;
-            o.id = id;
-            o.location = location;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetCaPoolIamPolicyResult();
+            _resultValue.caPool = caPool;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

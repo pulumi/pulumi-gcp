@@ -50,9 +50,9 @@ public final class RegionHealthCheckLogConfig {
             return this;
         }
         public RegionHealthCheckLogConfig build() {
-            final var o = new RegionHealthCheckLogConfig();
-            o.enable = enable;
-            return o;
+            final var _resultValue = new RegionHealthCheckLogConfig();
+            _resultValue.enable = enable;
+            return _resultValue;
         }
     }
 }

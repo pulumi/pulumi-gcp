@@ -99,11 +99,11 @@ public final class RepositoryReleaseConfigRecentScheduledReleaseRecord {
             return this;
         }
         public RepositoryReleaseConfigRecentScheduledReleaseRecord build() {
-            final var o = new RepositoryReleaseConfigRecentScheduledReleaseRecord();
-            o.compilationResult = compilationResult;
-            o.errorStatuses = errorStatuses;
-            o.releaseTime = releaseTime;
-            return o;
+            final var _resultValue = new RepositoryReleaseConfigRecentScheduledReleaseRecord();
+            _resultValue.compilationResult = compilationResult;
+            _resultValue.errorStatuses = errorStatuses;
+            _resultValue.releaseTime = releaseTime;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
             return this;
         }
         public ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader build() {
-            final var o = new ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

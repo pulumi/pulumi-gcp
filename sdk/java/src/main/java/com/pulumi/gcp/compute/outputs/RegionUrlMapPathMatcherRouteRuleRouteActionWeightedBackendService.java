@@ -100,11 +100,11 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendSer
             return this;
         }
         public RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService build() {
-            final var o = new RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService();
-            o.backendService = backendService;
-            o.headerAction = headerAction;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService();
+            _resultValue.backendService = backendService;
+            _resultValue.headerAction = headerAction;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

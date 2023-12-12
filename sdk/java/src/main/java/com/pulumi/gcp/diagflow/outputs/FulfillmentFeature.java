@@ -50,9 +50,9 @@ public final class FulfillmentFeature {
             return this;
         }
         public FulfillmentFeature build() {
-            final var o = new FulfillmentFeature();
-            o.type = type;
-            return o;
+            final var _resultValue = new FulfillmentFeature();
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

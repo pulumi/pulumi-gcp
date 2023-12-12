@@ -113,12 +113,12 @@ public final class TableMaterializedView {
             return this;
         }
         public TableMaterializedView build() {
-            final var o = new TableMaterializedView();
-            o.allowNonIncrementalDefinition = allowNonIncrementalDefinition;
-            o.enableRefresh = enableRefresh;
-            o.query = query;
-            o.refreshIntervalMs = refreshIntervalMs;
-            return o;
+            final var _resultValue = new TableMaterializedView();
+            _resultValue.allowNonIncrementalDefinition = allowNonIncrementalDefinition;
+            _resultValue.enableRefresh = enableRefresh;
+            _resultValue.query = query;
+            _resultValue.refreshIntervalMs = refreshIntervalMs;
+            return _resultValue;
         }
     }
 }

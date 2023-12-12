@@ -38,9 +38,9 @@ public final class NodePoolNetworkConfigPodCidrOverprovisionConfig {
             return this;
         }
         public NodePoolNetworkConfigPodCidrOverprovisionConfig build() {
-            final var o = new NodePoolNetworkConfigPodCidrOverprovisionConfig();
-            o.disabled = disabled;
-            return o;
+            final var _resultValue = new NodePoolNetworkConfigPodCidrOverprovisionConfig();
+            _resultValue.disabled = disabled;
+            return _resultValue;
         }
     }
 }

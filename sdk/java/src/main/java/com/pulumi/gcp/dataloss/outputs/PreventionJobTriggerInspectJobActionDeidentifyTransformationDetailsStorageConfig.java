@@ -48,9 +48,9 @@ public final class PreventionJobTriggerInspectJobActionDeidentifyTransformationD
             return this;
         }
         public PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig build() {
-            final var o = new PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig();
-            o.table = table;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig();
+            _resultValue.table = table;
+            return _resultValue;
         }
     }
 }

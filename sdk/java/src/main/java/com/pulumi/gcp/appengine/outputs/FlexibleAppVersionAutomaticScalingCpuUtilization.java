@@ -68,10 +68,10 @@ public final class FlexibleAppVersionAutomaticScalingCpuUtilization {
             return this;
         }
         public FlexibleAppVersionAutomaticScalingCpuUtilization build() {
-            final var o = new FlexibleAppVersionAutomaticScalingCpuUtilization();
-            o.aggregationWindowLength = aggregationWindowLength;
-            o.targetUtilization = targetUtilization;
-            return o;
+            final var _resultValue = new FlexibleAppVersionAutomaticScalingCpuUtilization();
+            _resultValue.aggregationWindowLength = aggregationWindowLength;
+            _resultValue.targetUtilization = targetUtilization;
+            return _resultValue;
         }
     }
 }

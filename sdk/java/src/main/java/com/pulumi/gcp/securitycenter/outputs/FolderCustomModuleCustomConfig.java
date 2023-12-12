@@ -166,14 +166,14 @@ public final class FolderCustomModuleCustomConfig {
             return this;
         }
         public FolderCustomModuleCustomConfig build() {
-            final var o = new FolderCustomModuleCustomConfig();
-            o.customOutput = customOutput;
-            o.description = description;
-            o.predicate = predicate;
-            o.recommendation = recommendation;
-            o.resourceSelector = resourceSelector;
-            o.severity = severity;
-            return o;
+            final var _resultValue = new FolderCustomModuleCustomConfig();
+            _resultValue.customOutput = customOutput;
+            _resultValue.description = description;
+            _resultValue.predicate = predicate;
+            _resultValue.recommendation = recommendation;
+            _resultValue.resourceSelector = resourceSelector;
+            _resultValue.severity = severity;
+            return _resultValue;
         }
     }
 }

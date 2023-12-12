@@ -144,13 +144,13 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
             return uris(List.of(uris));
         }
         public CertificateCertificateDescriptionSubjectDescriptionSubjectAltName build() {
-            final var o = new CertificateCertificateDescriptionSubjectDescriptionSubjectAltName();
-            o.customSans = customSans;
-            o.dnsNames = dnsNames;
-            o.emailAddresses = emailAddresses;
-            o.ipAddresses = ipAddresses;
-            o.uris = uris;
-            return o;
+            final var _resultValue = new CertificateCertificateDescriptionSubjectDescriptionSubjectAltName();
+            _resultValue.customSans = customSans;
+            _resultValue.dnsNames = dnsNames;
+            _resultValue.emailAddresses = emailAddresses;
+            _resultValue.ipAddresses = ipAddresses;
+            _resultValue.uris = uris;
+            return _resultValue;
         }
     }
 }

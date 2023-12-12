@@ -38,9 +38,9 @@ public final class GetSubscriptionExpirationPolicy {
             return this;
         }
         public GetSubscriptionExpirationPolicy build() {
-            final var o = new GetSubscriptionExpirationPolicy();
-            o.ttl = ttl;
-            return o;
+            final var _resultValue = new GetSubscriptionExpirationPolicy();
+            _resultValue.ttl = ttl;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class GetClusterAddonsConfigGcsFuseCsiDriverConfig {
             return this;
         }
         public GetClusterAddonsConfigGcsFuseCsiDriverConfig build() {
-            final var o = new GetClusterAddonsConfigGcsFuseCsiDriverConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClusterAddonsConfigGcsFuseCsiDriverConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

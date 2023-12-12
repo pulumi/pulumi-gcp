@@ -88,11 +88,11 @@ public final class CxAgentAdvancedSettingsDtmfSettings {
             return this;
         }
         public CxAgentAdvancedSettingsDtmfSettings build() {
-            final var o = new CxAgentAdvancedSettingsDtmfSettings();
-            o.enabled = enabled;
-            o.finishDigit = finishDigit;
-            o.maxDigits = maxDigits;
-            return o;
+            final var _resultValue = new CxAgentAdvancedSettingsDtmfSettings();
+            _resultValue.enabled = enabled;
+            _resultValue.finishDigit = finishDigit;
+            _resultValue.maxDigits = maxDigits;
+            return _resultValue;
         }
     }
 }

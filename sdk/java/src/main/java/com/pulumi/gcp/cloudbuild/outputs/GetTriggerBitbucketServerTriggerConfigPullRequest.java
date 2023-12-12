@@ -61,11 +61,11 @@ public final class GetTriggerBitbucketServerTriggerConfigPullRequest {
             return this;
         }
         public GetTriggerBitbucketServerTriggerConfigPullRequest build() {
-            final var o = new GetTriggerBitbucketServerTriggerConfigPullRequest();
-            o.branch = branch;
-            o.commentControl = commentControl;
-            o.invertRegex = invertRegex;
-            return o;
+            final var _resultValue = new GetTriggerBitbucketServerTriggerConfigPullRequest();
+            _resultValue.branch = branch;
+            _resultValue.commentControl = commentControl;
+            _resultValue.invertRegex = invertRegex;
+            return _resultValue;
         }
     }
 }

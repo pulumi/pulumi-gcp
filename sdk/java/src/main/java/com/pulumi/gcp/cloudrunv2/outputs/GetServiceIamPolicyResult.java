@@ -119,14 +119,14 @@ public final class GetServiceIamPolicyResult {
             return this;
         }
         public GetServiceIamPolicyResult build() {
-            final var o = new GetServiceIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.location = location;
-            o.name = name;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetServiceIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.name = name;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

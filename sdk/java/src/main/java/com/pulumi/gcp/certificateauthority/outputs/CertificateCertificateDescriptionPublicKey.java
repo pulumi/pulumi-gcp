@@ -69,10 +69,10 @@ public final class CertificateCertificateDescriptionPublicKey {
             return this;
         }
         public CertificateCertificateDescriptionPublicKey build() {
-            final var o = new CertificateCertificateDescriptionPublicKey();
-            o.format = format;
-            o.key = key;
-            return o;
+            final var _resultValue = new CertificateCertificateDescriptionPublicKey();
+            _resultValue.format = format;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

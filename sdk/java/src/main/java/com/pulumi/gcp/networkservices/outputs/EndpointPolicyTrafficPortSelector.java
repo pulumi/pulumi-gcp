@@ -50,9 +50,9 @@ public final class EndpointPolicyTrafficPortSelector {
             return ports(List.of(ports));
         }
         public EndpointPolicyTrafficPortSelector build() {
-            final var o = new EndpointPolicyTrafficPortSelector();
-            o.ports = ports;
-            return o;
+            final var _resultValue = new EndpointPolicyTrafficPortSelector();
+            _resultValue.ports = ports;
+            return _resultValue;
         }
     }
 }

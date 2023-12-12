@@ -50,9 +50,9 @@ public final class InstanceClientConnectionConfigSslConfig {
             return this;
         }
         public InstanceClientConnectionConfigSslConfig build() {
-            final var o = new InstanceClientConnectionConfigSslConfig();
-            o.sslMode = sslMode;
-            return o;
+            final var _resultValue = new InstanceClientConnectionConfigSslConfig();
+            _resultValue.sslMode = sslMode;
+            return _resultValue;
         }
     }
 }

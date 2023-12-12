@@ -187,14 +187,14 @@ public final class RegionUrlMapPathMatcher {
             return routeRules(List.of(routeRules));
         }
         public RegionUrlMapPathMatcher build() {
-            final var o = new RegionUrlMapPathMatcher();
-            o.defaultService = defaultService;
-            o.defaultUrlRedirect = defaultUrlRedirect;
-            o.description = description;
-            o.name = name;
-            o.pathRules = pathRules;
-            o.routeRules = routeRules;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcher();
+            _resultValue.defaultService = defaultService;
+            _resultValue.defaultUrlRedirect = defaultUrlRedirect;
+            _resultValue.description = description;
+            _resultValue.name = name;
+            _resultValue.pathRules = pathRules;
+            _resultValue.routeRules = routeRules;
+            return _resultValue;
         }
     }
 }

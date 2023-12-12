@@ -71,10 +71,10 @@ public final class RegionInstanceGroupManagerAllInstancesConfig {
             return this;
         }
         public RegionInstanceGroupManagerAllInstancesConfig build() {
-            final var o = new RegionInstanceGroupManagerAllInstancesConfig();
-            o.labels = labels;
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerAllInstancesConfig();
+            _resultValue.labels = labels;
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

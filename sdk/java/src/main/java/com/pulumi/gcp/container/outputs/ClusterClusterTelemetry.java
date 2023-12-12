@@ -48,9 +48,9 @@ public final class ClusterClusterTelemetry {
             return this;
         }
         public ClusterClusterTelemetry build() {
-            final var o = new ClusterClusterTelemetry();
-            o.type = type;
-            return o;
+            final var _resultValue = new ClusterClusterTelemetry();
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

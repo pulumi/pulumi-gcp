@@ -56,10 +56,10 @@ public final class GetBackendBucketCdnPolicyCacheKeyPolicy {
             return queryStringWhitelists(List.of(queryStringWhitelists));
         }
         public GetBackendBucketCdnPolicyCacheKeyPolicy build() {
-            final var o = new GetBackendBucketCdnPolicyCacheKeyPolicy();
-            o.includeHttpHeaders = includeHttpHeaders;
-            o.queryStringWhitelists = queryStringWhitelists;
-            return o;
+            final var _resultValue = new GetBackendBucketCdnPolicyCacheKeyPolicy();
+            _resultValue.includeHttpHeaders = includeHttpHeaders;
+            _resultValue.queryStringWhitelists = queryStringWhitelists;
+            return _resultValue;
         }
     }
 }

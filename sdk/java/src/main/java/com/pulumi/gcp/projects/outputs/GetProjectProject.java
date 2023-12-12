@@ -161,15 +161,15 @@ public final class GetProjectProject {
             return this;
         }
         public GetProjectProject build() {
-            final var o = new GetProjectProject();
-            o.createTime = createTime;
-            o.labels = labels;
-            o.lifecycleState = lifecycleState;
-            o.name = name;
-            o.number = number;
-            o.parent = parent;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new GetProjectProject();
+            _resultValue.createTime = createTime;
+            _resultValue.labels = labels;
+            _resultValue.lifecycleState = lifecycleState;
+            _resultValue.name = name;
+            _resultValue.number = number;
+            _resultValue.parent = parent;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

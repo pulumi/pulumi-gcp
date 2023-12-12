@@ -62,11 +62,11 @@ public final class TagValueIamBindingCondition {
             return this;
         }
         public TagValueIamBindingCondition build() {
-            final var o = new TagValueIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new TagValueIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

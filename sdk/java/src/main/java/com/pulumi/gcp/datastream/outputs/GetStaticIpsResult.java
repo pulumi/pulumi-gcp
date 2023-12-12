@@ -93,12 +93,12 @@ public final class GetStaticIpsResult {
             return staticIps(List.of(staticIps));
         }
         public GetStaticIpsResult build() {
-            final var o = new GetStaticIpsResult();
-            o.id = id;
-            o.location = location;
-            o.project = project;
-            o.staticIps = staticIps;
-            return o;
+            final var _resultValue = new GetStaticIpsResult();
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.project = project;
+            _resultValue.staticIps = staticIps;
+            return _resultValue;
         }
     }
 }

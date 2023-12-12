@@ -65,10 +65,10 @@ public final class AzureClusterControlPlaneReplicaPlacement {
             return this;
         }
         public AzureClusterControlPlaneReplicaPlacement build() {
-            final var o = new AzureClusterControlPlaneReplicaPlacement();
-            o.azureAvailabilityZone = azureAvailabilityZone;
-            o.subnetId = subnetId;
-            return o;
+            final var _resultValue = new AzureClusterControlPlaneReplicaPlacement();
+            _resultValue.azureAvailabilityZone = azureAvailabilityZone;
+            _resultValue.subnetId = subnetId;
+            return _resultValue;
         }
     }
 }

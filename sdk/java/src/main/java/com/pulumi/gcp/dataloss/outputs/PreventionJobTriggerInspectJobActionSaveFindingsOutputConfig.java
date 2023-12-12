@@ -84,10 +84,10 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig 
             return this;
         }
         public PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig build() {
-            final var o = new PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig();
-            o.outputSchema = outputSchema;
-            o.table = table;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig();
+            _resultValue.outputSchema = outputSchema;
+            _resultValue.table = table;
+            return _resultValue;
         }
     }
 }

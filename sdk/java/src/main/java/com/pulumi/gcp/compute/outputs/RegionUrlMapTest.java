@@ -105,12 +105,12 @@ public final class RegionUrlMapTest {
             return this;
         }
         public RegionUrlMapTest build() {
-            final var o = new RegionUrlMapTest();
-            o.description = description;
-            o.host = host;
-            o.path = path;
-            o.service = service;
-            return o;
+            final var _resultValue = new RegionUrlMapTest();
+            _resultValue.description = description;
+            _resultValue.host = host;
+            _resultValue.path = path;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

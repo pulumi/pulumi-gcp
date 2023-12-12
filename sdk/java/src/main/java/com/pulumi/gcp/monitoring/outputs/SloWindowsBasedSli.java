@@ -175,13 +175,13 @@ public final class SloWindowsBasedSli {
             return this;
         }
         public SloWindowsBasedSli build() {
-            final var o = new SloWindowsBasedSli();
-            o.goodBadMetricFilter = goodBadMetricFilter;
-            o.goodTotalRatioThreshold = goodTotalRatioThreshold;
-            o.metricMeanInRange = metricMeanInRange;
-            o.metricSumInRange = metricSumInRange;
-            o.windowPeriod = windowPeriod;
-            return o;
+            final var _resultValue = new SloWindowsBasedSli();
+            _resultValue.goodBadMetricFilter = goodBadMetricFilter;
+            _resultValue.goodTotalRatioThreshold = goodTotalRatioThreshold;
+            _resultValue.metricMeanInRange = metricMeanInRange;
+            _resultValue.metricSumInRange = metricSumInRange;
+            _resultValue.windowPeriod = windowPeriod;
+            return _resultValue;
         }
     }
 }

@@ -97,12 +97,12 @@ public final class GetDefaultServiceAccountResult {
             return this;
         }
         public GetDefaultServiceAccountResult build() {
-            final var o = new GetDefaultServiceAccountResult();
-            o.email = email;
-            o.id = id;
-            o.member = member;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetDefaultServiceAccountResult();
+            _resultValue.email = email;
+            _resultValue.id = id;
+            _resultValue.member = member;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

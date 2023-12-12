@@ -72,10 +72,10 @@ public final class CertificateMapGclbTargetIpConfig {
             return ports(List.of(ports));
         }
         public CertificateMapGclbTargetIpConfig build() {
-            final var o = new CertificateMapGclbTargetIpConfig();
-            o.ipAddress = ipAddress;
-            o.ports = ports;
-            return o;
+            final var _resultValue = new CertificateMapGclbTargetIpConfig();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.ports = ports;
+            return _resultValue;
         }
     }
 }

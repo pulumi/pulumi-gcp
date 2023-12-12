@@ -213,17 +213,17 @@ public final class SecurityPolicyRule {
             return this;
         }
         public SecurityPolicyRule build() {
-            final var o = new SecurityPolicyRule();
-            o.action = action;
-            o.description = description;
-            o.headerAction = headerAction;
-            o.match = match;
-            o.preconfiguredWafConfig = preconfiguredWafConfig;
-            o.preview = preview;
-            o.priority = priority;
-            o.rateLimitOptions = rateLimitOptions;
-            o.redirectOptions = redirectOptions;
-            return o;
+            final var _resultValue = new SecurityPolicyRule();
+            _resultValue.action = action;
+            _resultValue.description = description;
+            _resultValue.headerAction = headerAction;
+            _resultValue.match = match;
+            _resultValue.preconfiguredWafConfig = preconfiguredWafConfig;
+            _resultValue.preview = preview;
+            _resultValue.priority = priority;
+            _resultValue.rateLimitOptions = rateLimitOptions;
+            _resultValue.redirectOptions = redirectOptions;
+            return _resultValue;
         }
     }
 }

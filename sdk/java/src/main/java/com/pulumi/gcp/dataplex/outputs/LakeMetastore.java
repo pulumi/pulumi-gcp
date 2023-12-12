@@ -48,9 +48,9 @@ public final class LakeMetastore {
             return this;
         }
         public LakeMetastore build() {
-            final var o = new LakeMetastore();
-            o.service = service;
-            return o;
+            final var _resultValue = new LakeMetastore();
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

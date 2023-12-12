@@ -180,15 +180,15 @@ public final class RepositoryRemoteRepositoryConfig {
             return this;
         }
         public RepositoryRemoteRepositoryConfig build() {
-            final var o = new RepositoryRemoteRepositoryConfig();
-            o.aptRepository = aptRepository;
-            o.description = description;
-            o.dockerRepository = dockerRepository;
-            o.mavenRepository = mavenRepository;
-            o.npmRepository = npmRepository;
-            o.pythonRepository = pythonRepository;
-            o.yumRepository = yumRepository;
-            return o;
+            final var _resultValue = new RepositoryRemoteRepositoryConfig();
+            _resultValue.aptRepository = aptRepository;
+            _resultValue.description = description;
+            _resultValue.dockerRepository = dockerRepository;
+            _resultValue.mavenRepository = mavenRepository;
+            _resultValue.npmRepository = npmRepository;
+            _resultValue.pythonRepository = pythonRepository;
+            _resultValue.yumRepository = yumRepository;
+            return _resultValue;
         }
     }
 }

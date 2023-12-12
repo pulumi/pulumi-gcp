@@ -52,9 +52,9 @@ public final class GCPolicyMaxVersion {
             return this;
         }
         public GCPolicyMaxVersion build() {
-            final var o = new GCPolicyMaxVersion();
-            o.number = number;
-            return o;
+            final var _resultValue = new GCPolicyMaxVersion();
+            _resultValue.number = number;
+            return _resultValue;
         }
     }
 }

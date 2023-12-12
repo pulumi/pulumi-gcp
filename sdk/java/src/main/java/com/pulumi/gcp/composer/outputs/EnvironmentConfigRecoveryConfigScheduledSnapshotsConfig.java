@@ -74,12 +74,12 @@ public final class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
             return this;
         }
         public EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig build() {
-            final var o = new EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig();
-            o.enabled = enabled;
-            o.snapshotCreationSchedule = snapshotCreationSchedule;
-            o.snapshotLocation = snapshotLocation;
-            o.timeZone = timeZone;
-            return o;
+            final var _resultValue = new EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig();
+            _resultValue.enabled = enabled;
+            _resultValue.snapshotCreationSchedule = snapshotCreationSchedule;
+            _resultValue.snapshotLocation = snapshotLocation;
+            _resultValue.timeZone = timeZone;
+            return _resultValue;
         }
     }
 }

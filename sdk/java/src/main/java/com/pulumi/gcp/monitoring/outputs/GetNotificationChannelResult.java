@@ -226,20 +226,20 @@ public final class GetNotificationChannelResult {
             return this;
         }
         public GetNotificationChannelResult build() {
-            final var o = new GetNotificationChannelResult();
-            o.description = description;
-            o.displayName = displayName;
-            o.enabled = enabled;
-            o.forceDelete = forceDelete;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.project = project;
-            o.sensitiveLabels = sensitiveLabels;
-            o.type = type;
-            o.userLabels = userLabels;
-            o.verificationStatus = verificationStatus;
-            return o;
+            final var _resultValue = new GetNotificationChannelResult();
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.enabled = enabled;
+            _resultValue.forceDelete = forceDelete;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.sensitiveLabels = sensitiveLabels;
+            _resultValue.type = type;
+            _resultValue.userLabels = userLabels;
+            _resultValue.verificationStatus = verificationStatus;
+            return _resultValue;
         }
     }
 }

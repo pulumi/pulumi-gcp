@@ -117,14 +117,14 @@ public final class GetJobIamPolicyResult {
             return this;
         }
         public GetJobIamPolicyResult build() {
-            final var o = new GetJobIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.jobId = jobId;
-            o.policyData = policyData;
-            o.project = project;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetJobIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.jobId = jobId;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

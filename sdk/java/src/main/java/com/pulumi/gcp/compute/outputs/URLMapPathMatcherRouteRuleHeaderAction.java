@@ -127,12 +127,12 @@ public final class URLMapPathMatcherRouteRuleHeaderAction {
             return responseHeadersToRemoves(List.of(responseHeadersToRemoves));
         }
         public URLMapPathMatcherRouteRuleHeaderAction build() {
-            final var o = new URLMapPathMatcherRouteRuleHeaderAction();
-            o.requestHeadersToAdds = requestHeadersToAdds;
-            o.requestHeadersToRemoves = requestHeadersToRemoves;
-            o.responseHeadersToAdds = responseHeadersToAdds;
-            o.responseHeadersToRemoves = responseHeadersToRemoves;
-            return o;
+            final var _resultValue = new URLMapPathMatcherRouteRuleHeaderAction();
+            _resultValue.requestHeadersToAdds = requestHeadersToAdds;
+            _resultValue.requestHeadersToRemoves = requestHeadersToRemoves;
+            _resultValue.responseHeadersToAdds = responseHeadersToAdds;
+            _resultValue.responseHeadersToRemoves = responseHeadersToRemoves;
+            return _resultValue;
         }
     }
 }

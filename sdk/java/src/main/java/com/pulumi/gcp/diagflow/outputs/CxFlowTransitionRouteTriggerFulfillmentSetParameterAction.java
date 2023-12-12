@@ -67,10 +67,10 @@ public final class CxFlowTransitionRouteTriggerFulfillmentSetParameterAction {
             return this;
         }
         public CxFlowTransitionRouteTriggerFulfillmentSetParameterAction build() {
-            final var o = new CxFlowTransitionRouteTriggerFulfillmentSetParameterAction();
-            o.parameter = parameter;
-            o.value = value;
-            return o;
+            final var _resultValue = new CxFlowTransitionRouteTriggerFulfillmentSetParameterAction();
+            _resultValue.parameter = parameter;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

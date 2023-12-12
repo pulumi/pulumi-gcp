@@ -74,10 +74,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm();
-            o.pullDeps = pullDeps;
-            o.source = source;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm();
+            _resultValue.pullDeps = pullDeps;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

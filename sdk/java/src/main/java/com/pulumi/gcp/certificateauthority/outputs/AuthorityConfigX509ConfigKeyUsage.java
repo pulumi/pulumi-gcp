@@ -97,11 +97,11 @@ public final class AuthorityConfigX509ConfigKeyUsage {
             return unknownExtendedKeyUsages(List.of(unknownExtendedKeyUsages));
         }
         public AuthorityConfigX509ConfigKeyUsage build() {
-            final var o = new AuthorityConfigX509ConfigKeyUsage();
-            o.baseKeyUsage = baseKeyUsage;
-            o.extendedKeyUsage = extendedKeyUsage;
-            o.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
-            return o;
+            final var _resultValue = new AuthorityConfigX509ConfigKeyUsage();
+            _resultValue.baseKeyUsage = baseKeyUsage;
+            _resultValue.extendedKeyUsage = extendedKeyUsage;
+            _resultValue.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
+            return _resultValue;
         }
     }
 }

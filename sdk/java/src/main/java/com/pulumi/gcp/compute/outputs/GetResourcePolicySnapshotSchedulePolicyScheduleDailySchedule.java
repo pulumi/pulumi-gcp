@@ -50,10 +50,10 @@ public final class GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule 
             return this;
         }
         public GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule build() {
-            final var o = new GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule();
-            o.daysInCycle = daysInCycle;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule();
+            _resultValue.daysInCycle = daysInCycle;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

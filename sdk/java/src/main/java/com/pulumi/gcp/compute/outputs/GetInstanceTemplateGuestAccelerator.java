@@ -66,10 +66,10 @@ public final class GetInstanceTemplateGuestAccelerator {
             return this;
         }
         public GetInstanceTemplateGuestAccelerator build() {
-            final var o = new GetInstanceTemplateGuestAccelerator();
-            o.count = count;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetInstanceTemplateGuestAccelerator();
+            _resultValue.count = count;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -72,10 +72,10 @@ public final class CxTestCaseTestCaseConversationTurn {
             return this;
         }
         public CxTestCaseTestCaseConversationTurn build() {
-            final var o = new CxTestCaseTestCaseConversationTurn();
-            o.userInput = userInput;
-            o.virtualAgentOutput = virtualAgentOutput;
-            return o;
+            final var _resultValue = new CxTestCaseTestCaseConversationTurn();
+            _resultValue.userInput = userInput;
+            _resultValue.virtualAgentOutput = virtualAgentOutput;
+            return _resultValue;
         }
     }
 }

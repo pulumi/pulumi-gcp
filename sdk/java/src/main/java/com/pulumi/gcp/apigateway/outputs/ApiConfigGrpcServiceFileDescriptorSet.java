@@ -65,10 +65,10 @@ public final class ApiConfigGrpcServiceFileDescriptorSet {
             return this;
         }
         public ApiConfigGrpcServiceFileDescriptorSet build() {
-            final var o = new ApiConfigGrpcServiceFileDescriptorSet();
-            o.contents = contents;
-            o.path = path;
-            return o;
+            final var _resultValue = new ApiConfigGrpcServiceFileDescriptorSet();
+            _resultValue.contents = contents;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

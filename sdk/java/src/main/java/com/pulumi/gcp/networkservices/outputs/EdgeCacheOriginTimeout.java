@@ -131,12 +131,12 @@ public final class EdgeCacheOriginTimeout {
             return this;
         }
         public EdgeCacheOriginTimeout build() {
-            final var o = new EdgeCacheOriginTimeout();
-            o.connectTimeout = connectTimeout;
-            o.maxAttemptsTimeout = maxAttemptsTimeout;
-            o.readTimeout = readTimeout;
-            o.responseTimeout = responseTimeout;
-            return o;
+            final var _resultValue = new EdgeCacheOriginTimeout();
+            _resultValue.connectTimeout = connectTimeout;
+            _resultValue.maxAttemptsTimeout = maxAttemptsTimeout;
+            _resultValue.readTimeout = readTimeout;
+            _resultValue.responseTimeout = responseTimeout;
+            return _resultValue;
         }
     }
 }

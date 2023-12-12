@@ -106,11 +106,11 @@ public final class RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConf
             return this;
         }
         public RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig build() {
-            final var o = new RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig();
-            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
-            o.enableSecureBoot = enableSecureBoot;
-            o.enableVtpm = enableVtpm;
-            return o;
+            final var _resultValue = new RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig();
+            _resultValue.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            _resultValue.enableSecureBoot = enableSecureBoot;
+            _resultValue.enableVtpm = enableVtpm;
+            return _resultValue;
         }
     }
 }

@@ -76,10 +76,10 @@ public final class DatabaseHiveOptions {
             return this;
         }
         public DatabaseHiveOptions build() {
-            final var o = new DatabaseHiveOptions();
-            o.locationUri = locationUri;
-            o.parameters = parameters;
-            return o;
+            final var _resultValue = new DatabaseHiveOptions();
+            _resultValue.locationUri = locationUri;
+            _resultValue.parameters = parameters;
+            return _resultValue;
         }
     }
 }

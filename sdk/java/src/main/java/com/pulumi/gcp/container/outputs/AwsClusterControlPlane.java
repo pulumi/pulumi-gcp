@@ -311,22 +311,22 @@ public final class AwsClusterControlPlane {
             return this;
         }
         public AwsClusterControlPlane build() {
-            final var o = new AwsClusterControlPlane();
-            o.awsServicesAuthentication = awsServicesAuthentication;
-            o.configEncryption = configEncryption;
-            o.databaseEncryption = databaseEncryption;
-            o.iamInstanceProfile = iamInstanceProfile;
-            o.instancePlacement = instancePlacement;
-            o.instanceType = instanceType;
-            o.mainVolume = mainVolume;
-            o.proxyConfig = proxyConfig;
-            o.rootVolume = rootVolume;
-            o.securityGroupIds = securityGroupIds;
-            o.sshConfig = sshConfig;
-            o.subnetIds = subnetIds;
-            o.tags = tags;
-            o.version = version;
-            return o;
+            final var _resultValue = new AwsClusterControlPlane();
+            _resultValue.awsServicesAuthentication = awsServicesAuthentication;
+            _resultValue.configEncryption = configEncryption;
+            _resultValue.databaseEncryption = databaseEncryption;
+            _resultValue.iamInstanceProfile = iamInstanceProfile;
+            _resultValue.instancePlacement = instancePlacement;
+            _resultValue.instanceType = instanceType;
+            _resultValue.mainVolume = mainVolume;
+            _resultValue.proxyConfig = proxyConfig;
+            _resultValue.rootVolume = rootVolume;
+            _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.sshConfig = sshConfig;
+            _resultValue.subnetIds = subnetIds;
+            _resultValue.tags = tags;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

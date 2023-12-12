@@ -48,9 +48,9 @@ public final class PatchDeploymentRecurringScheduleWeekly {
             return this;
         }
         public PatchDeploymentRecurringScheduleWeekly build() {
-            final var o = new PatchDeploymentRecurringScheduleWeekly();
-            o.dayOfWeek = dayOfWeek;
-            return o;
+            final var _resultValue = new PatchDeploymentRecurringScheduleWeekly();
+            _resultValue.dayOfWeek = dayOfWeek;
+            return _resultValue;
         }
     }
 }

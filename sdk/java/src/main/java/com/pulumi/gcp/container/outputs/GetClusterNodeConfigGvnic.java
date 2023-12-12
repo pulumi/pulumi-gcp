@@ -38,9 +38,9 @@ public final class GetClusterNodeConfigGvnic {
             return this;
         }
         public GetClusterNodeConfigGvnic build() {
-            final var o = new GetClusterNodeConfigGvnic();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClusterNodeConfigGvnic();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

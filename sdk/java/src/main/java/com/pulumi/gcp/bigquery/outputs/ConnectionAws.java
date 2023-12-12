@@ -48,9 +48,9 @@ public final class ConnectionAws {
             return this;
         }
         public ConnectionAws build() {
-            final var o = new ConnectionAws();
-            o.accessRole = accessRole;
-            return o;
+            final var _resultValue = new ConnectionAws();
+            _resultValue.accessRole = accessRole;
+            return _resultValue;
         }
     }
 }

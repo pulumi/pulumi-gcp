@@ -25,8 +25,8 @@ public final class AiIndexMetadataConfigAlgorithmConfigBruteForceConfig {
         }
 
         public AiIndexMetadataConfigAlgorithmConfigBruteForceConfig build() {
-            final var o = new AiIndexMetadataConfigAlgorithmConfigBruteForceConfig();
-            return o;
+            final var _resultValue = new AiIndexMetadataConfigAlgorithmConfigBruteForceConfig();
+            return _resultValue;
         }
     }
 }

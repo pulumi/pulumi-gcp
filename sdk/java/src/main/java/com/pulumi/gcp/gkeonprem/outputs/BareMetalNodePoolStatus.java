@@ -86,10 +86,10 @@ public final class BareMetalNodePoolStatus {
             return this;
         }
         public BareMetalNodePoolStatus build() {
-            final var o = new BareMetalNodePoolStatus();
-            o.conditions = conditions;
-            o.errorMessage = errorMessage;
-            return o;
+            final var _resultValue = new BareMetalNodePoolStatus();
+            _resultValue.conditions = conditions;
+            _resultValue.errorMessage = errorMessage;
+            return _resultValue;
         }
     }
 }

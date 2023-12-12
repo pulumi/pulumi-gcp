@@ -48,9 +48,9 @@ public final class ClusterMaintenancePolicyWindow {
             return this;
         }
         public ClusterMaintenancePolicyWindow build() {
-            final var o = new ClusterMaintenancePolicyWindow();
-            o.recurringWindow = recurringWindow;
-            return o;
+            final var _resultValue = new ClusterMaintenancePolicyWindow();
+            _resultValue.recurringWindow = recurringWindow;
+            return _resultValue;
         }
     }
 }

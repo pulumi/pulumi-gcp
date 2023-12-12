@@ -73,10 +73,10 @@ public final class AccessLevelConditionDevicePolicyOsConstraint {
             return this;
         }
         public AccessLevelConditionDevicePolicyOsConstraint build() {
-            final var o = new AccessLevelConditionDevicePolicyOsConstraint();
-            o.minimumVersion = minimumVersion;
-            o.osType = osType;
-            return o;
+            final var _resultValue = new AccessLevelConditionDevicePolicyOsConstraint();
+            _resultValue.minimumVersion = minimumVersion;
+            _resultValue.osType = osType;
+            return _resultValue;
         }
     }
 }

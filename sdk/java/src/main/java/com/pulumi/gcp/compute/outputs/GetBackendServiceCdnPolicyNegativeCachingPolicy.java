@@ -49,10 +49,10 @@ public final class GetBackendServiceCdnPolicyNegativeCachingPolicy {
             return this;
         }
         public GetBackendServiceCdnPolicyNegativeCachingPolicy build() {
-            final var o = new GetBackendServiceCdnPolicyNegativeCachingPolicy();
-            o.code = code;
-            o.ttl = ttl;
-            return o;
+            final var _resultValue = new GetBackendServiceCdnPolicyNegativeCachingPolicy();
+            _resultValue.code = code;
+            _resultValue.ttl = ttl;
+            return _resultValue;
         }
     }
 }

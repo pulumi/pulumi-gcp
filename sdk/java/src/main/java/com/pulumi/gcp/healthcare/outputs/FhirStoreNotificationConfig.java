@@ -113,11 +113,11 @@ public final class FhirStoreNotificationConfig {
             return this;
         }
         public FhirStoreNotificationConfig build() {
-            final var o = new FhirStoreNotificationConfig();
-            o.pubsubTopic = pubsubTopic;
-            o.sendFullResource = sendFullResource;
-            o.sendPreviousResourceOnDelete = sendPreviousResourceOnDelete;
-            return o;
+            final var _resultValue = new FhirStoreNotificationConfig();
+            _resultValue.pubsubTopic = pubsubTopic;
+            _resultValue.sendFullResource = sendFullResource;
+            _resultValue.sendPreviousResourceOnDelete = sendPreviousResourceOnDelete;
+            return _resultValue;
         }
     }
 }

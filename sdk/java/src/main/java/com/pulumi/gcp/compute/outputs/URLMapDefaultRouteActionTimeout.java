@@ -72,10 +72,10 @@ public final class URLMapDefaultRouteActionTimeout {
             return this;
         }
         public URLMapDefaultRouteActionTimeout build() {
-            final var o = new URLMapDefaultRouteActionTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new URLMapDefaultRouteActionTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

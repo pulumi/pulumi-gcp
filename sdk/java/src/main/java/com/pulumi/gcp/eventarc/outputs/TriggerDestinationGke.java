@@ -124,13 +124,13 @@ public final class TriggerDestinationGke {
             return this;
         }
         public TriggerDestinationGke build() {
-            final var o = new TriggerDestinationGke();
-            o.cluster = cluster;
-            o.location = location;
-            o.namespace = namespace;
-            o.path = path;
-            o.service = service;
-            return o;
+            final var _resultValue = new TriggerDestinationGke();
+            _resultValue.cluster = cluster;
+            _resultValue.location = location;
+            _resultValue.namespace = namespace;
+            _resultValue.path = path;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

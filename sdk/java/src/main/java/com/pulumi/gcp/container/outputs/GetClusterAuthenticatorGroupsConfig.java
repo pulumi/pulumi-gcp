@@ -38,9 +38,9 @@ public final class GetClusterAuthenticatorGroupsConfig {
             return this;
         }
         public GetClusterAuthenticatorGroupsConfig build() {
-            final var o = new GetClusterAuthenticatorGroupsConfig();
-            o.securityGroup = securityGroup;
-            return o;
+            final var _resultValue = new GetClusterAuthenticatorGroupsConfig();
+            _resultValue.securityGroup = securityGroup;
+            return _resultValue;
         }
     }
 }

@@ -73,10 +73,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter();
-            o.osShortName = osShortName;
-            o.osVersion = osVersion;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter();
+            _resultValue.osShortName = osShortName;
+            _resultValue.osVersion = osVersion;
+            return _resultValue;
         }
     }
 }

@@ -42,9 +42,9 @@ public final class GetRepositoryRemoteRepositoryConfigYumRepository {
             return publicRepositories(List.of(publicRepositories));
         }
         public GetRepositoryRemoteRepositoryConfigYumRepository build() {
-            final var o = new GetRepositoryRemoteRepositoryConfigYumRepository();
-            o.publicRepositories = publicRepositories;
-            return o;
+            final var _resultValue = new GetRepositoryRemoteRepositoryConfigYumRepository();
+            _resultValue.publicRepositories = publicRepositories;
+            return _resultValue;
         }
     }
 }

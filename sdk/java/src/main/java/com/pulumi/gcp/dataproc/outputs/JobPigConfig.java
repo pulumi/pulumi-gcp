@@ -172,15 +172,15 @@ public final class JobPigConfig {
             return this;
         }
         public JobPigConfig build() {
-            final var o = new JobPigConfig();
-            o.continueOnFailure = continueOnFailure;
-            o.jarFileUris = jarFileUris;
-            o.loggingConfig = loggingConfig;
-            o.properties = properties;
-            o.queryFileUri = queryFileUri;
-            o.queryLists = queryLists;
-            o.scriptVariables = scriptVariables;
-            return o;
+            final var _resultValue = new JobPigConfig();
+            _resultValue.continueOnFailure = continueOnFailure;
+            _resultValue.jarFileUris = jarFileUris;
+            _resultValue.loggingConfig = loggingConfig;
+            _resultValue.properties = properties;
+            _resultValue.queryFileUri = queryFileUri;
+            _resultValue.queryLists = queryLists;
+            _resultValue.scriptVariables = scriptVariables;
+            return _resultValue;
         }
     }
 }

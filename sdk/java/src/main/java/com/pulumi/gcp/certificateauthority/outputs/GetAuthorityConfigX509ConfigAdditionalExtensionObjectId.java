@@ -42,9 +42,9 @@ public final class GetAuthorityConfigX509ConfigAdditionalExtensionObjectId {
             return objectIdPaths(List.of(objectIdPaths));
         }
         public GetAuthorityConfigX509ConfigAdditionalExtensionObjectId build() {
-            final var o = new GetAuthorityConfigX509ConfigAdditionalExtensionObjectId();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new GetAuthorityConfigX509ConfigAdditionalExtensionObjectId();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

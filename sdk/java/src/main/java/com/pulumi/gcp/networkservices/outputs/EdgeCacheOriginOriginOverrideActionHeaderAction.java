@@ -55,9 +55,9 @@ public final class EdgeCacheOriginOriginOverrideActionHeaderAction {
             return requestHeadersToAdds(List.of(requestHeadersToAdds));
         }
         public EdgeCacheOriginOriginOverrideActionHeaderAction build() {
-            final var o = new EdgeCacheOriginOriginOverrideActionHeaderAction();
-            o.requestHeadersToAdds = requestHeadersToAdds;
-            return o;
+            final var _resultValue = new EdgeCacheOriginOriginOverrideActionHeaderAction();
+            _resultValue.requestHeadersToAdds = requestHeadersToAdds;
+            return _resultValue;
         }
     }
 }

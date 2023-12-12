@@ -138,13 +138,13 @@ public final class BareMetalClusterLoadBalancer {
             return this;
         }
         public BareMetalClusterLoadBalancer build() {
-            final var o = new BareMetalClusterLoadBalancer();
-            o.bgpLbConfig = bgpLbConfig;
-            o.manualLbConfig = manualLbConfig;
-            o.metalLbConfig = metalLbConfig;
-            o.portConfig = portConfig;
-            o.vipConfig = vipConfig;
-            return o;
+            final var _resultValue = new BareMetalClusterLoadBalancer();
+            _resultValue.bgpLbConfig = bgpLbConfig;
+            _resultValue.manualLbConfig = manualLbConfig;
+            _resultValue.metalLbConfig = metalLbConfig;
+            _resultValue.portConfig = portConfig;
+            _resultValue.vipConfig = vipConfig;
+            return _resultValue;
         }
     }
 }

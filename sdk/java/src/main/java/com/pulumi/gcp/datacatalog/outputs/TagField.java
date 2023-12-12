@@ -196,16 +196,16 @@ public final class TagField {
             return this;
         }
         public TagField build() {
-            final var o = new TagField();
-            o.boolValue = boolValue;
-            o.displayName = displayName;
-            o.doubleValue = doubleValue;
-            o.enumValue = enumValue;
-            o.fieldName = fieldName;
-            o.order = order;
-            o.stringValue = stringValue;
-            o.timestampValue = timestampValue;
-            return o;
+            final var _resultValue = new TagField();
+            _resultValue.boolValue = boolValue;
+            _resultValue.displayName = displayName;
+            _resultValue.doubleValue = doubleValue;
+            _resultValue.enumValue = enumValue;
+            _resultValue.fieldName = fieldName;
+            _resultValue.order = order;
+            _resultValue.stringValue = stringValue;
+            _resultValue.timestampValue = timestampValue;
+            return _resultValue;
         }
     }
 }

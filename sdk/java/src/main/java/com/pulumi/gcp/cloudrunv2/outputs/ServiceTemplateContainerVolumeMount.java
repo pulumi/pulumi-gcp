@@ -65,10 +65,10 @@ public final class ServiceTemplateContainerVolumeMount {
             return this;
         }
         public ServiceTemplateContainerVolumeMount build() {
-            final var o = new ServiceTemplateContainerVolumeMount();
-            o.mountPath = mountPath;
-            o.name = name;
-            return o;
+            final var _resultValue = new ServiceTemplateContainerVolumeMount();
+            _resultValue.mountPath = mountPath;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

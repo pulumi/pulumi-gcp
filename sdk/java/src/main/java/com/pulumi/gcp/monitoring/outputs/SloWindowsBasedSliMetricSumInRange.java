@@ -90,10 +90,10 @@ public final class SloWindowsBasedSliMetricSumInRange {
             return this;
         }
         public SloWindowsBasedSliMetricSumInRange build() {
-            final var o = new SloWindowsBasedSliMetricSumInRange();
-            o.range = range;
-            o.timeSeries = timeSeries;
-            return o;
+            final var _resultValue = new SloWindowsBasedSliMetricSumInRange();
+            _resultValue.range = range;
+            _resultValue.timeSeries = timeSeries;
+            return _resultValue;
         }
     }
 }

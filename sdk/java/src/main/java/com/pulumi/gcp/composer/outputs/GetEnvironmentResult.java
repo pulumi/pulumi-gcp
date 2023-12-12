@@ -154,17 +154,17 @@ public final class GetEnvironmentResult {
             return storageConfigs(List.of(storageConfigs));
         }
         public GetEnvironmentResult build() {
-            final var o = new GetEnvironmentResult();
-            o.configs = configs;
-            o.effectiveLabels = effectiveLabels;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.region = region;
-            o.storageConfigs = storageConfigs;
-            return o;
+            final var _resultValue = new GetEnvironmentResult();
+            _resultValue.configs = configs;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.region = region;
+            _resultValue.storageConfigs = storageConfigs;
+            return _resultValue;
         }
     }
 }

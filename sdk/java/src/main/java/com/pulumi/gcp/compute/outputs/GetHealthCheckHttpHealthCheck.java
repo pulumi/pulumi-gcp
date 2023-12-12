@@ -105,15 +105,15 @@ public final class GetHealthCheckHttpHealthCheck {
             return this;
         }
         public GetHealthCheckHttpHealthCheck build() {
-            final var o = new GetHealthCheckHttpHealthCheck();
-            o.host = host;
-            o.port = port;
-            o.portName = portName;
-            o.portSpecification = portSpecification;
-            o.proxyHeader = proxyHeader;
-            o.requestPath = requestPath;
-            o.response = response;
-            return o;
+            final var _resultValue = new GetHealthCheckHttpHealthCheck();
+            _resultValue.host = host;
+            _resultValue.port = port;
+            _resultValue.portName = portName;
+            _resultValue.portSpecification = portSpecification;
+            _resultValue.proxyHeader = proxyHeader;
+            _resultValue.requestPath = requestPath;
+            _resultValue.response = response;
+            return _resultValue;
         }
     }
 }

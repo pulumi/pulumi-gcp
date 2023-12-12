@@ -226,25 +226,25 @@ public final class GetFunctionServiceConfig {
             return this;
         }
         public GetFunctionServiceConfig build() {
-            final var o = new GetFunctionServiceConfig();
-            o.allTrafficOnLatestRevision = allTrafficOnLatestRevision;
-            o.availableCpu = availableCpu;
-            o.availableMemory = availableMemory;
-            o.environmentVariables = environmentVariables;
-            o.gcfUri = gcfUri;
-            o.ingressSettings = ingressSettings;
-            o.maxInstanceCount = maxInstanceCount;
-            o.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
-            o.minInstanceCount = minInstanceCount;
-            o.secretEnvironmentVariables = secretEnvironmentVariables;
-            o.secretVolumes = secretVolumes;
-            o.service = service;
-            o.serviceAccountEmail = serviceAccountEmail;
-            o.timeoutSeconds = timeoutSeconds;
-            o.uri = uri;
-            o.vpcConnector = vpcConnector;
-            o.vpcConnectorEgressSettings = vpcConnectorEgressSettings;
-            return o;
+            final var _resultValue = new GetFunctionServiceConfig();
+            _resultValue.allTrafficOnLatestRevision = allTrafficOnLatestRevision;
+            _resultValue.availableCpu = availableCpu;
+            _resultValue.availableMemory = availableMemory;
+            _resultValue.environmentVariables = environmentVariables;
+            _resultValue.gcfUri = gcfUri;
+            _resultValue.ingressSettings = ingressSettings;
+            _resultValue.maxInstanceCount = maxInstanceCount;
+            _resultValue.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
+            _resultValue.minInstanceCount = minInstanceCount;
+            _resultValue.secretEnvironmentVariables = secretEnvironmentVariables;
+            _resultValue.secretVolumes = secretVolumes;
+            _resultValue.service = service;
+            _resultValue.serviceAccountEmail = serviceAccountEmail;
+            _resultValue.timeoutSeconds = timeoutSeconds;
+            _resultValue.uri = uri;
+            _resultValue.vpcConnector = vpcConnector;
+            _resultValue.vpcConnectorEgressSettings = vpcConnectorEgressSettings;
+            return _resultValue;
         }
     }
 }

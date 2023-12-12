@@ -75,10 +75,10 @@ public final class TableEncryptionConfiguration {
             return this;
         }
         public TableEncryptionConfiguration build() {
-            final var o = new TableEncryptionConfiguration();
-            o.kmsKeyName = kmsKeyName;
-            o.kmsKeyVersion = kmsKeyVersion;
-            return o;
+            final var _resultValue = new TableEncryptionConfiguration();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.kmsKeyVersion = kmsKeyVersion;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class NetworkFirewallPolicyRuleMatchSrcSecureTag {
             return this;
         }
         public NetworkFirewallPolicyRuleMatchSrcSecureTag build() {
-            final var o = new NetworkFirewallPolicyRuleMatchSrcSecureTag();
-            o.name = name;
-            o.state = state;
-            return o;
+            final var _resultValue = new NetworkFirewallPolicyRuleMatchSrcSecureTag();
+            _resultValue.name = name;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

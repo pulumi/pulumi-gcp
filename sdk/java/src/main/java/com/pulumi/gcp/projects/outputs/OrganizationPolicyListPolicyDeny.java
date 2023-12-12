@@ -72,10 +72,10 @@ public final class OrganizationPolicyListPolicyDeny {
             return values(List.of(values));
         }
         public OrganizationPolicyListPolicyDeny build() {
-            final var o = new OrganizationPolicyListPolicyDeny();
-            o.all = all;
-            o.values = values;
-            return o;
+            final var _resultValue = new OrganizationPolicyListPolicyDeny();
+            _resultValue.all = all;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

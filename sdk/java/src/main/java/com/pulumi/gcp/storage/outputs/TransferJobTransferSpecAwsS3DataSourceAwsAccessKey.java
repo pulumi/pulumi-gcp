@@ -65,10 +65,10 @@ public final class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey {
             return this;
         }
         public TransferJobTransferSpecAwsS3DataSourceAwsAccessKey build() {
-            final var o = new TransferJobTransferSpecAwsS3DataSourceAwsAccessKey();
-            o.accessKeyId = accessKeyId;
-            o.secretAccessKey = secretAccessKey;
-            return o;
+            final var _resultValue = new TransferJobTransferSpecAwsS3DataSourceAwsAccessKey();
+            _resultValue.accessKeyId = accessKeyId;
+            _resultValue.secretAccessKey = secretAccessKey;
+            return _resultValue;
         }
     }
 }

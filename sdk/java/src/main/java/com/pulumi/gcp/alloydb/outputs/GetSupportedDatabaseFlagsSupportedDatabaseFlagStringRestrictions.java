@@ -42,9 +42,9 @@ public final class GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestricti
             return allowedValues(List.of(allowedValues));
         }
         public GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions build() {
-            final var o = new GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions();
-            o.allowedValues = allowedValues;
-            return o;
+            final var _resultValue = new GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions();
+            _resultValue.allowedValues = allowedValues;
+            return _resultValue;
         }
     }
 }

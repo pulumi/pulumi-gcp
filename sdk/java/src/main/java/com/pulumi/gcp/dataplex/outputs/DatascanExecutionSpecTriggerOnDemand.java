@@ -25,8 +25,8 @@ public final class DatascanExecutionSpecTriggerOnDemand {
         }
 
         public DatascanExecutionSpecTriggerOnDemand build() {
-            final var o = new DatascanExecutionSpecTriggerOnDemand();
-            return o;
+            final var _resultValue = new DatascanExecutionSpecTriggerOnDemand();
+            return _resultValue;
         }
     }
 }

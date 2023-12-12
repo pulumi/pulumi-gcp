@@ -67,10 +67,10 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPa
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId();
-            o.namespaceId = namespaceId;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId();
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

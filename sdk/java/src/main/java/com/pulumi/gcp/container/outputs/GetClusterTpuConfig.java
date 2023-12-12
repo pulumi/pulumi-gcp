@@ -61,11 +61,11 @@ public final class GetClusterTpuConfig {
             return this;
         }
         public GetClusterTpuConfig build() {
-            final var o = new GetClusterTpuConfig();
-            o.enabled = enabled;
-            o.ipv4CidrBlock = ipv4CidrBlock;
-            o.useServiceNetworking = useServiceNetworking;
-            return o;
+            final var _resultValue = new GetClusterTpuConfig();
+            _resultValue.enabled = enabled;
+            _resultValue.ipv4CidrBlock = ipv4CidrBlock;
+            _resultValue.useServiceNetworking = useServiceNetworking;
+            return _resultValue;
         }
     }
 }

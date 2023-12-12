@@ -118,14 +118,14 @@ public final class GetAccountAccessTokenResult {
             return this;
         }
         public GetAccountAccessTokenResult build() {
-            final var o = new GetAccountAccessTokenResult();
-            o.accessToken = accessToken;
-            o.delegates = delegates;
-            o.id = id;
-            o.lifetime = lifetime;
-            o.scopes = scopes;
-            o.targetServiceAccount = targetServiceAccount;
-            return o;
+            final var _resultValue = new GetAccountAccessTokenResult();
+            _resultValue.accessToken = accessToken;
+            _resultValue.delegates = delegates;
+            _resultValue.id = id;
+            _resultValue.lifetime = lifetime;
+            _resultValue.scopes = scopes;
+            _resultValue.targetServiceAccount = targetServiceAccount;
+            return _resultValue;
         }
     }
 }

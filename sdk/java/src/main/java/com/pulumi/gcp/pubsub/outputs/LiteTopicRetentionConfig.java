@@ -77,10 +77,10 @@ public final class LiteTopicRetentionConfig {
             return this;
         }
         public LiteTopicRetentionConfig build() {
-            final var o = new LiteTopicRetentionConfig();
-            o.perPartitionBytes = perPartitionBytes;
-            o.period = period;
-            return o;
+            final var _resultValue = new LiteTopicRetentionConfig();
+            _resultValue.perPartitionBytes = perPartitionBytes;
+            _resultValue.period = period;
+            return _resultValue;
         }
     }
 }

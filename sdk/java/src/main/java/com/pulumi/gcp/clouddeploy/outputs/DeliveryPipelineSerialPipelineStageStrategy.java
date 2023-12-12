@@ -68,10 +68,10 @@ public final class DeliveryPipelineSerialPipelineStageStrategy {
             return this;
         }
         public DeliveryPipelineSerialPipelineStageStrategy build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategy();
-            o.canary = canary;
-            o.standard = standard;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategy();
+            _resultValue.canary = canary;
+            _resultValue.standard = standard;
+            return _resultValue;
         }
     }
 }

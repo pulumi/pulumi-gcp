@@ -73,10 +73,10 @@ public final class RegionInstanceTemplateDiskSourceSnapshotEncryptionKey {
             return this;
         }
         public RegionInstanceTemplateDiskSourceSnapshotEncryptionKey build() {
-            final var o = new RegionInstanceTemplateDiskSourceSnapshotEncryptionKey();
-            o.kmsKeySelfLink = kmsKeySelfLink;
-            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
-            return o;
+            final var _resultValue = new RegionInstanceTemplateDiskSourceSnapshotEncryptionKey();
+            _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class ScopeIamMemberCondition {
             return this;
         }
         public ScopeIamMemberCondition build() {
-            final var o = new ScopeIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new ScopeIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

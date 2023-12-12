@@ -87,11 +87,11 @@ public final class TriggerBitbucketServerTriggerConfigPush {
             return this;
         }
         public TriggerBitbucketServerTriggerConfigPush build() {
-            final var o = new TriggerBitbucketServerTriggerConfigPush();
-            o.branch = branch;
-            o.invertRegex = invertRegex;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new TriggerBitbucketServerTriggerConfigPush();
+            _resultValue.branch = branch;
+            _resultValue.invertRegex = invertRegex;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

@@ -50,10 +50,10 @@ public final class GetSubscriptionDeadLetterPolicy {
             return this;
         }
         public GetSubscriptionDeadLetterPolicy build() {
-            final var o = new GetSubscriptionDeadLetterPolicy();
-            o.deadLetterTopic = deadLetterTopic;
-            o.maxDeliveryAttempts = maxDeliveryAttempts;
-            return o;
+            final var _resultValue = new GetSubscriptionDeadLetterPolicy();
+            _resultValue.deadLetterTopic = deadLetterTopic;
+            _resultValue.maxDeliveryAttempts = maxDeliveryAttempts;
+            return _resultValue;
         }
     }
 }

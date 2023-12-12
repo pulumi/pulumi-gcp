@@ -67,10 +67,10 @@ public final class ServiceEndpoint {
             return this;
         }
         public ServiceEndpoint build() {
-            final var o = new ServiceEndpoint();
-            o.address = address;
-            o.name = name;
-            return o;
+            final var _resultValue = new ServiceEndpoint();
+            _resultValue.address = address;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

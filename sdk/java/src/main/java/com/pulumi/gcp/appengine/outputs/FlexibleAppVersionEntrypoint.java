@@ -46,9 +46,9 @@ public final class FlexibleAppVersionEntrypoint {
             return this;
         }
         public FlexibleAppVersionEntrypoint build() {
-            final var o = new FlexibleAppVersionEntrypoint();
-            o.shell = shell;
-            return o;
+            final var _resultValue = new FlexibleAppVersionEntrypoint();
+            _resultValue.shell = shell;
+            return _resultValue;
         }
     }
 }

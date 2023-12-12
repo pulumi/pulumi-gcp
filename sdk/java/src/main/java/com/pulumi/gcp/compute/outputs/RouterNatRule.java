@@ -123,12 +123,12 @@ public final class RouterNatRule {
             return this;
         }
         public RouterNatRule build() {
-            final var o = new RouterNatRule();
-            o.action = action;
-            o.description = description;
-            o.match = match;
-            o.ruleNumber = ruleNumber;
-            return o;
+            final var _resultValue = new RouterNatRule();
+            _resultValue.action = action;
+            _resultValue.description = description;
+            _resultValue.match = match;
+            _resultValue.ruleNumber = ruleNumber;
+            return _resultValue;
         }
     }
 }

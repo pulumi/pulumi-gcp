@@ -49,10 +49,10 @@ public final class GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrict
             return this;
         }
         public GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions build() {
-            final var o = new GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions();
-            o.maxValue = maxValue;
-            o.minValue = minValue;
-            return o;
+            final var _resultValue = new GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions();
+            _resultValue.maxValue = maxValue;
+            _resultValue.minValue = minValue;
+            return _resultValue;
         }
     }
 }

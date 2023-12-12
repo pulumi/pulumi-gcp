@@ -69,10 +69,10 @@ public final class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabe
             return this;
         }
         public EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel build() {
-            final var o = new EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel();
-            o.labelName = labelName;
-            o.labelValue = labelValue;
-            return o;
+            final var _resultValue = new EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel();
+            _resultValue.labelName = labelName;
+            _resultValue.labelValue = labelValue;
+            return _resultValue;
         }
     }
 }

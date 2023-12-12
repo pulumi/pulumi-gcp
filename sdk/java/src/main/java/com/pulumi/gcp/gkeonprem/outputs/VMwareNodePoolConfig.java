@@ -251,18 +251,18 @@ public final class VMwareNodePoolConfig {
             return vsphereConfigs(List.of(vsphereConfigs));
         }
         public VMwareNodePoolConfig build() {
-            final var o = new VMwareNodePoolConfig();
-            o.bootDiskSizeGb = bootDiskSizeGb;
-            o.cpus = cpus;
-            o.enableLoadBalancer = enableLoadBalancer;
-            o.image = image;
-            o.imageType = imageType;
-            o.labels = labels;
-            o.memoryMb = memoryMb;
-            o.replicas = replicas;
-            o.taints = taints;
-            o.vsphereConfigs = vsphereConfigs;
-            return o;
+            final var _resultValue = new VMwareNodePoolConfig();
+            _resultValue.bootDiskSizeGb = bootDiskSizeGb;
+            _resultValue.cpus = cpus;
+            _resultValue.enableLoadBalancer = enableLoadBalancer;
+            _resultValue.image = image;
+            _resultValue.imageType = imageType;
+            _resultValue.labels = labels;
+            _resultValue.memoryMb = memoryMb;
+            _resultValue.replicas = replicas;
+            _resultValue.taints = taints;
+            _resultValue.vsphereConfigs = vsphereConfigs;
+            return _resultValue;
         }
     }
 }

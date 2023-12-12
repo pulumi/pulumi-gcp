@@ -70,10 +70,10 @@ public final class ApiKeyRestrictionsApiTarget {
             return this;
         }
         public ApiKeyRestrictionsApiTarget build() {
-            final var o = new ApiKeyRestrictionsApiTarget();
-            o.methods = methods;
-            o.service = service;
-            return o;
+            final var _resultValue = new ApiKeyRestrictionsApiTarget();
+            _resultValue.methods = methods;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

@@ -127,15 +127,15 @@ public final class GetRecordSetResult {
             return this;
         }
         public GetRecordSetResult build() {
-            final var o = new GetRecordSetResult();
-            o.id = id;
-            o.managedZone = managedZone;
-            o.name = name;
-            o.project = project;
-            o.rrdatas = rrdatas;
-            o.ttl = ttl;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetRecordSetResult();
+            _resultValue.id = id;
+            _resultValue.managedZone = managedZone;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.rrdatas = rrdatas;
+            _resultValue.ttl = ttl;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

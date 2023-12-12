@@ -73,10 +73,10 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable 
             return this;
         }
         public StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable build() {
-            final var o = new StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable();
-            o.mysqlColumns = mysqlColumns;
-            o.table = table;
-            return o;
+            final var _resultValue = new StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable();
+            _resultValue.mysqlColumns = mysqlColumns;
+            _resultValue.table = table;
+            return _resultValue;
         }
     }
 }

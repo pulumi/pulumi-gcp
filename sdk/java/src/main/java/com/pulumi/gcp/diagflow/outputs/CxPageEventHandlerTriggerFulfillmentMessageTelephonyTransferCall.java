@@ -46,9 +46,9 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferC
             return this;
         }
         public CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall build() {
-            final var o = new CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall();
-            o.phoneNumber = phoneNumber;
-            return o;
+            final var _resultValue = new CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall();
+            _resultValue.phoneNumber = phoneNumber;
+            return _resultValue;
         }
     }
 }

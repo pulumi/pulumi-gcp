@@ -42,9 +42,9 @@ public final class GetBucketCustomPlacementConfig {
             return dataLocations(List.of(dataLocations));
         }
         public GetBucketCustomPlacementConfig build() {
-            final var o = new GetBucketCustomPlacementConfig();
-            o.dataLocations = dataLocations;
-            return o;
+            final var _resultValue = new GetBucketCustomPlacementConfig();
+            _resultValue.dataLocations = dataLocations;
+            return _resultValue;
         }
     }
 }

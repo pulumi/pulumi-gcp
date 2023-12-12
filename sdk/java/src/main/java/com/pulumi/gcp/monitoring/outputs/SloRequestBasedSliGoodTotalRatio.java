@@ -120,11 +120,11 @@ public final class SloRequestBasedSliGoodTotalRatio {
             return this;
         }
         public SloRequestBasedSliGoodTotalRatio build() {
-            final var o = new SloRequestBasedSliGoodTotalRatio();
-            o.badServiceFilter = badServiceFilter;
-            o.goodServiceFilter = goodServiceFilter;
-            o.totalServiceFilter = totalServiceFilter;
-            return o;
+            final var _resultValue = new SloRequestBasedSliGoodTotalRatio();
+            _resultValue.badServiceFilter = badServiceFilter;
+            _resultValue.goodServiceFilter = goodServiceFilter;
+            _resultValue.totalServiceFilter = totalServiceFilter;
+            return _resultValue;
         }
     }
 }

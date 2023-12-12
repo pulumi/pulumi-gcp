@@ -102,11 +102,11 @@ public final class GuestPoliciesPackage {
             return this;
         }
         public GuestPoliciesPackage build() {
-            final var o = new GuestPoliciesPackage();
-            o.desiredState = desiredState;
-            o.manager = manager;
-            o.name = name;
-            return o;
+            final var _resultValue = new GuestPoliciesPackage();
+            _resultValue.desiredState = desiredState;
+            _resultValue.manager = manager;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

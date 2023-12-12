@@ -50,9 +50,9 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolCo
             return this;
         }
         public BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig build() {
-            final var o = new BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig();
-            o.nodePoolConfig = nodePoolConfig;
-            return o;
+            final var _resultValue = new BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig();
+            _resultValue.nodePoolConfig = nodePoolConfig;
+            return _resultValue;
         }
     }
 }

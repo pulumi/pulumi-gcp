@@ -73,10 +73,10 @@ public final class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabas
             return mysqlTables(List.of(mysqlTables));
         }
         public StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase build() {
-            final var o = new StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase();
-            o.database = database;
-            o.mysqlTables = mysqlTables;
-            return o;
+            final var _resultValue = new StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase();
+            _resultValue.database = database;
+            _resultValue.mysqlTables = mysqlTables;
+            return _resultValue;
         }
     }
 }

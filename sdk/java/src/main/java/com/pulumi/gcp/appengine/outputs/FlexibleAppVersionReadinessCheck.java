@@ -165,15 +165,15 @@ public final class FlexibleAppVersionReadinessCheck {
             return this;
         }
         public FlexibleAppVersionReadinessCheck build() {
-            final var o = new FlexibleAppVersionReadinessCheck();
-            o.appStartTimeout = appStartTimeout;
-            o.checkInterval = checkInterval;
-            o.failureThreshold = failureThreshold;
-            o.host = host;
-            o.path = path;
-            o.successThreshold = successThreshold;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new FlexibleAppVersionReadinessCheck();
+            _resultValue.appStartTimeout = appStartTimeout;
+            _resultValue.checkInterval = checkInterval;
+            _resultValue.failureThreshold = failureThreshold;
+            _resultValue.host = host;
+            _resultValue.path = path;
+            _resultValue.successThreshold = successThreshold;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

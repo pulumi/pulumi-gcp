@@ -73,10 +73,10 @@ public final class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
             return this;
         }
         public StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable build() {
-            final var o = new StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable();
-            o.oracleColumns = oracleColumns;
-            o.table = table;
-            return o;
+            final var _resultValue = new StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable();
+            _resultValue.oracleColumns = oracleColumns;
+            _resultValue.table = table;
+            return _resultValue;
         }
     }
 }

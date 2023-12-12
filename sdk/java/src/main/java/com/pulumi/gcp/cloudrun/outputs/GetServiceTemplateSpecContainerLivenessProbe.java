@@ -102,14 +102,14 @@ public final class GetServiceTemplateSpecContainerLivenessProbe {
             return this;
         }
         public GetServiceTemplateSpecContainerLivenessProbe build() {
-            final var o = new GetServiceTemplateSpecContainerLivenessProbe();
-            o.failureThreshold = failureThreshold;
-            o.grpcs = grpcs;
-            o.httpGets = httpGets;
-            o.initialDelaySeconds = initialDelaySeconds;
-            o.periodSeconds = periodSeconds;
-            o.timeoutSeconds = timeoutSeconds;
-            return o;
+            final var _resultValue = new GetServiceTemplateSpecContainerLivenessProbe();
+            _resultValue.failureThreshold = failureThreshold;
+            _resultValue.grpcs = grpcs;
+            _resultValue.httpGets = httpGets;
+            _resultValue.initialDelaySeconds = initialDelaySeconds;
+            _resultValue.periodSeconds = periodSeconds;
+            _resultValue.timeoutSeconds = timeoutSeconds;
+            return _resultValue;
         }
     }
 }

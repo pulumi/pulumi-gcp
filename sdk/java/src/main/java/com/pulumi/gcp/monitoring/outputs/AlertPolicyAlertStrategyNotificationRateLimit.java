@@ -48,9 +48,9 @@ public final class AlertPolicyAlertStrategyNotificationRateLimit {
             return this;
         }
         public AlertPolicyAlertStrategyNotificationRateLimit build() {
-            final var o = new AlertPolicyAlertStrategyNotificationRateLimit();
-            o.period = period;
-            return o;
+            final var _resultValue = new AlertPolicyAlertStrategyNotificationRateLimit();
+            _resultValue.period = period;
+            return _resultValue;
         }
     }
 }

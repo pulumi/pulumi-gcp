@@ -112,11 +112,11 @@ public final class AutoscalingPolicySecondaryWorkerConfig {
             return this;
         }
         public AutoscalingPolicySecondaryWorkerConfig build() {
-            final var o = new AutoscalingPolicySecondaryWorkerConfig();
-            o.maxInstances = maxInstances;
-            o.minInstances = minInstances;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new AutoscalingPolicySecondaryWorkerConfig();
+            _resultValue.maxInstances = maxInstances;
+            _resultValue.minInstances = minInstances;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

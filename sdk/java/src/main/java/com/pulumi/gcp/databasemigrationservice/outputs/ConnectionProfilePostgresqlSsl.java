@@ -119,12 +119,12 @@ public final class ConnectionProfilePostgresqlSsl {
             return this;
         }
         public ConnectionProfilePostgresqlSsl build() {
-            final var o = new ConnectionProfilePostgresqlSsl();
-            o.caCertificate = caCertificate;
-            o.clientCertificate = clientCertificate;
-            o.clientKey = clientKey;
-            o.type = type;
-            return o;
+            final var _resultValue = new ConnectionProfilePostgresqlSsl();
+            _resultValue.caCertificate = caCertificate;
+            _resultValue.clientCertificate = clientCertificate;
+            _resultValue.clientKey = clientKey;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

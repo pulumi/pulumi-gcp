@@ -50,9 +50,9 @@ public final class HealthCheckLogConfig {
             return this;
         }
         public HealthCheckLogConfig build() {
-            final var o = new HealthCheckLogConfig();
-            o.enable = enable;
-            return o;
+            final var _resultValue = new HealthCheckLogConfig();
+            _resultValue.enable = enable;
+            return _resultValue;
         }
     }
 }

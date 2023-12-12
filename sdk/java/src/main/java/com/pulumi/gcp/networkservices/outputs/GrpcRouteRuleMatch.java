@@ -76,10 +76,10 @@ public final class GrpcRouteRuleMatch {
             return this;
         }
         public GrpcRouteRuleMatch build() {
-            final var o = new GrpcRouteRuleMatch();
-            o.headers = headers;
-            o.method = method;
-            return o;
+            final var _resultValue = new GrpcRouteRuleMatch();
+            _resultValue.headers = headers;
+            _resultValue.method = method;
+            return _resultValue;
         }
     }
 }

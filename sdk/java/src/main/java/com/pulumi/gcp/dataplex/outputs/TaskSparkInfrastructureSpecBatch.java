@@ -67,10 +67,10 @@ public final class TaskSparkInfrastructureSpecBatch {
             return this;
         }
         public TaskSparkInfrastructureSpecBatch build() {
-            final var o = new TaskSparkInfrastructureSpecBatch();
-            o.executorsCount = executorsCount;
-            o.maxExecutorsCount = maxExecutorsCount;
-            return o;
+            final var _resultValue = new TaskSparkInfrastructureSpecBatch();
+            _resultValue.executorsCount = executorsCount;
+            _resultValue.maxExecutorsCount = maxExecutorsCount;
+            return _resultValue;
         }
     }
 }

@@ -78,10 +78,10 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
             return nodePoolTargets(List.of(nodePoolTargets));
         }
         public ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig build() {
-            final var o = new ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig();
-            o.gkeClusterTarget = gkeClusterTarget;
-            o.nodePoolTargets = nodePoolTargets;
-            return o;
+            final var _resultValue = new ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig();
+            _resultValue.gkeClusterTarget = gkeClusterTarget;
+            _resultValue.nodePoolTargets = nodePoolTargets;
+            return _resultValue;
         }
     }
 }

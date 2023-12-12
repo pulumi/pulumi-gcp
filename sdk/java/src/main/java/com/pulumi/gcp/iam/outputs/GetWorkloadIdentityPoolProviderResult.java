@@ -191,21 +191,21 @@ public final class GetWorkloadIdentityPoolProviderResult {
             return this;
         }
         public GetWorkloadIdentityPoolProviderResult build() {
-            final var o = new GetWorkloadIdentityPoolProviderResult();
-            o.attributeCondition = attributeCondition;
-            o.attributeMapping = attributeMapping;
-            o.aws = aws;
-            o.description = description;
-            o.disabled = disabled;
-            o.displayName = displayName;
-            o.id = id;
-            o.name = name;
-            o.oidcs = oidcs;
-            o.project = project;
-            o.state = state;
-            o.workloadIdentityPoolId = workloadIdentityPoolId;
-            o.workloadIdentityPoolProviderId = workloadIdentityPoolProviderId;
-            return o;
+            final var _resultValue = new GetWorkloadIdentityPoolProviderResult();
+            _resultValue.attributeCondition = attributeCondition;
+            _resultValue.attributeMapping = attributeMapping;
+            _resultValue.aws = aws;
+            _resultValue.description = description;
+            _resultValue.disabled = disabled;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.oidcs = oidcs;
+            _resultValue.project = project;
+            _resultValue.state = state;
+            _resultValue.workloadIdentityPoolId = workloadIdentityPoolId;
+            _resultValue.workloadIdentityPoolProviderId = workloadIdentityPoolProviderId;
+            return _resultValue;
         }
     }
 }

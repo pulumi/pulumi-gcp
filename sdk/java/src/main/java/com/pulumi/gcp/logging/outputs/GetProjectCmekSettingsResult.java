@@ -159,14 +159,14 @@ public final class GetProjectCmekSettingsResult {
             return this;
         }
         public GetProjectCmekSettingsResult build() {
-            final var o = new GetProjectCmekSettingsResult();
-            o.id = id;
-            o.kmsKeyName = kmsKeyName;
-            o.kmsKeyVersionName = kmsKeyVersionName;
-            o.name = name;
-            o.project = project;
-            o.serviceAccountId = serviceAccountId;
-            return o;
+            final var _resultValue = new GetProjectCmekSettingsResult();
+            _resultValue.id = id;
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.kmsKeyVersionName = kmsKeyVersionName;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.serviceAccountId = serviceAccountId;
+            return _resultValue;
         }
     }
 }

@@ -76,10 +76,10 @@ public final class ClusterMasterAuthorizedNetworksConfig {
             return this;
         }
         public ClusterMasterAuthorizedNetworksConfig build() {
-            final var o = new ClusterMasterAuthorizedNetworksConfig();
-            o.cidrBlocks = cidrBlocks;
-            o.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
-            return o;
+            final var _resultValue = new ClusterMasterAuthorizedNetworksConfig();
+            _resultValue.cidrBlocks = cidrBlocks;
+            _resultValue.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
+            return _resultValue;
         }
     }
 }

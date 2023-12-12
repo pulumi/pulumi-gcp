@@ -128,13 +128,13 @@ public final class FeatureMembershipConfigmanagement {
             return this;
         }
         public FeatureMembershipConfigmanagement build() {
-            final var o = new FeatureMembershipConfigmanagement();
-            o.binauthz = binauthz;
-            o.configSync = configSync;
-            o.hierarchyController = hierarchyController;
-            o.policyController = policyController;
-            o.version = version;
-            return o;
+            final var _resultValue = new FeatureMembershipConfigmanagement();
+            _resultValue.binauthz = binauthz;
+            _resultValue.configSync = configSync;
+            _resultValue.hierarchyController = hierarchyController;
+            _resultValue.policyController = policyController;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -69,10 +69,10 @@ public final class BucketObjectRetention {
             return this;
         }
         public BucketObjectRetention build() {
-            final var o = new BucketObjectRetention();
-            o.mode = mode;
-            o.retainUntilTime = retainUntilTime;
-            return o;
+            final var _resultValue = new BucketObjectRetention();
+            _resultValue.mode = mode;
+            _resultValue.retainUntilTime = retainUntilTime;
+            return _resultValue;
         }
     }
 }

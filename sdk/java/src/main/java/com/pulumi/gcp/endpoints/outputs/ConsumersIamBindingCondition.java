@@ -62,11 +62,11 @@ public final class ConsumersIamBindingCondition {
             return this;
         }
         public ConsumersIamBindingCondition build() {
-            final var o = new ConsumersIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new ConsumersIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

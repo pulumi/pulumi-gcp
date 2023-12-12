@@ -46,9 +46,9 @@ public final class ConnectionConfigVariableSecretValue {
             return this;
         }
         public ConnectionConfigVariableSecretValue build() {
-            final var o = new ConnectionConfigVariableSecretValue();
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new ConnectionConfigVariableSecretValue();
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

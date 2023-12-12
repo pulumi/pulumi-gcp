@@ -47,9 +47,9 @@ public final class GuestPoliciesAssignmentGroupLabel {
             return this;
         }
         public GuestPoliciesAssignmentGroupLabel build() {
-            final var o = new GuestPoliciesAssignmentGroupLabel();
-            o.labels = labels;
-            return o;
+            final var _resultValue = new GuestPoliciesAssignmentGroupLabel();
+            _resultValue.labels = labels;
+            return _resultValue;
         }
     }
 }

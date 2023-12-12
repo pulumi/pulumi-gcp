@@ -119,14 +119,14 @@ public final class GetRuntimeIamPolicyResult {
             return this;
         }
         public GetRuntimeIamPolicyResult build() {
-            final var o = new GetRuntimeIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.location = location;
-            o.policyData = policyData;
-            o.project = project;
-            o.runtimeName = runtimeName;
-            return o;
+            final var _resultValue = new GetRuntimeIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.runtimeName = runtimeName;
+            return _resultValue;
         }
     }
 }

@@ -65,11 +65,11 @@ public final class GetCertificateMapGclbTarget {
             return this;
         }
         public GetCertificateMapGclbTarget build() {
-            final var o = new GetCertificateMapGclbTarget();
-            o.ipConfigs = ipConfigs;
-            o.targetHttpsProxy = targetHttpsProxy;
-            o.targetSslProxy = targetSslProxy;
-            return o;
+            final var _resultValue = new GetCertificateMapGclbTarget();
+            _resultValue.ipConfigs = ipConfigs;
+            _resultValue.targetHttpsProxy = targetHttpsProxy;
+            _resultValue.targetSslProxy = targetSslProxy;
+            return _resultValue;
         }
     }
 }

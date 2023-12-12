@@ -136,12 +136,12 @@ public final class OsPolicyAssignmentInstanceFilter {
             return inventories(List.of(inventories));
         }
         public OsPolicyAssignmentInstanceFilter build() {
-            final var o = new OsPolicyAssignmentInstanceFilter();
-            o.all = all;
-            o.exclusionLabels = exclusionLabels;
-            o.inclusionLabels = inclusionLabels;
-            o.inventories = inventories;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentInstanceFilter();
+            _resultValue.all = all;
+            _resultValue.exclusionLabels = exclusionLabels;
+            _resultValue.inclusionLabels = inclusionLabels;
+            _resultValue.inventories = inventories;
+            return _resultValue;
         }
     }
 }

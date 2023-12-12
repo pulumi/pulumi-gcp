@@ -89,11 +89,11 @@ public final class RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderAct
             return this;
         }
         public RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd build() {
-            final var o = new RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd();
-            o.headerName = headerName;
-            o.headerValue = headerValue;
-            o.replace = replace;
-            return o;
+            final var _resultValue = new RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd();
+            _resultValue.headerName = headerName;
+            _resultValue.headerValue = headerValue;
+            _resultValue.replace = replace;
+            return _resultValue;
         }
     }
 }

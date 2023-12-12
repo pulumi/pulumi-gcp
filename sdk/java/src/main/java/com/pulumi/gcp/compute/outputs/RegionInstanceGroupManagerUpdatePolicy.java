@@ -222,18 +222,18 @@ public final class RegionInstanceGroupManagerUpdatePolicy {
             return this;
         }
         public RegionInstanceGroupManagerUpdatePolicy build() {
-            final var o = new RegionInstanceGroupManagerUpdatePolicy();
-            o.instanceRedistributionType = instanceRedistributionType;
-            o.maxSurgeFixed = maxSurgeFixed;
-            o.maxSurgePercent = maxSurgePercent;
-            o.maxUnavailableFixed = maxUnavailableFixed;
-            o.maxUnavailablePercent = maxUnavailablePercent;
-            o.minReadySec = minReadySec;
-            o.minimalAction = minimalAction;
-            o.mostDisruptiveAllowedAction = mostDisruptiveAllowedAction;
-            o.replacementMethod = replacementMethod;
-            o.type = type;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerUpdatePolicy();
+            _resultValue.instanceRedistributionType = instanceRedistributionType;
+            _resultValue.maxSurgeFixed = maxSurgeFixed;
+            _resultValue.maxSurgePercent = maxSurgePercent;
+            _resultValue.maxUnavailableFixed = maxUnavailableFixed;
+            _resultValue.maxUnavailablePercent = maxUnavailablePercent;
+            _resultValue.minReadySec = minReadySec;
+            _resultValue.minimalAction = minimalAction;
+            _resultValue.mostDisruptiveAllowedAction = mostDisruptiveAllowedAction;
+            _resultValue.replacementMethod = replacementMethod;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

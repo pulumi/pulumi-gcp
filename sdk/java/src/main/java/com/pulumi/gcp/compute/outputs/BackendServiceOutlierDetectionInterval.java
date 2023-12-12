@@ -73,10 +73,10 @@ public final class BackendServiceOutlierDetectionInterval {
             return this;
         }
         public BackendServiceOutlierDetectionInterval build() {
-            final var o = new BackendServiceOutlierDetectionInterval();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new BackendServiceOutlierDetectionInterval();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

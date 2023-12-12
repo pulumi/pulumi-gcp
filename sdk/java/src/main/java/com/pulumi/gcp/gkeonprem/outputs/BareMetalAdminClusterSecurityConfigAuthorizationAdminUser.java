@@ -46,9 +46,9 @@ public final class BareMetalAdminClusterSecurityConfigAuthorizationAdminUser {
             return this;
         }
         public BareMetalAdminClusterSecurityConfigAuthorizationAdminUser build() {
-            final var o = new BareMetalAdminClusterSecurityConfigAuthorizationAdminUser();
-            o.username = username;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterSecurityConfigAuthorizationAdminUser();
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

@@ -105,12 +105,12 @@ public final class FlexibleAppVersionAutomaticScalingNetworkUtilization {
             return this;
         }
         public FlexibleAppVersionAutomaticScalingNetworkUtilization build() {
-            final var o = new FlexibleAppVersionAutomaticScalingNetworkUtilization();
-            o.targetReceivedBytesPerSecond = targetReceivedBytesPerSecond;
-            o.targetReceivedPacketsPerSecond = targetReceivedPacketsPerSecond;
-            o.targetSentBytesPerSecond = targetSentBytesPerSecond;
-            o.targetSentPacketsPerSecond = targetSentPacketsPerSecond;
-            return o;
+            final var _resultValue = new FlexibleAppVersionAutomaticScalingNetworkUtilization();
+            _resultValue.targetReceivedBytesPerSecond = targetReceivedBytesPerSecond;
+            _resultValue.targetReceivedPacketsPerSecond = targetReceivedPacketsPerSecond;
+            _resultValue.targetSentBytesPerSecond = targetSentBytesPerSecond;
+            _resultValue.targetSentPacketsPerSecond = targetSentPacketsPerSecond;
+            return _resultValue;
         }
     }
 }

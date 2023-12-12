@@ -70,10 +70,10 @@ public final class InstanceMemcacheParameters {
             return this;
         }
         public InstanceMemcacheParameters build() {
-            final var o = new InstanceMemcacheParameters();
-            o.id = id;
-            o.params = params;
-            return o;
+            final var _resultValue = new InstanceMemcacheParameters();
+            _resultValue.id = id;
+            _resultValue.params = params;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class AiMetadataStoreEncryptionSpec {
             return this;
         }
         public AiMetadataStoreEncryptionSpec build() {
-            final var o = new AiMetadataStoreEncryptionSpec();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new AiMetadataStoreEncryptionSpec();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

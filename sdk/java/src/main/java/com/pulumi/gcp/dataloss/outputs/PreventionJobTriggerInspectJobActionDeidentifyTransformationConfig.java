@@ -86,11 +86,11 @@ public final class PreventionJobTriggerInspectJobActionDeidentifyTransformationC
             return this;
         }
         public PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig build() {
-            final var o = new PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig();
-            o.deidentifyTemplate = deidentifyTemplate;
-            o.imageRedactTemplate = imageRedactTemplate;
-            o.structuredDeidentifyTemplate = structuredDeidentifyTemplate;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig();
+            _resultValue.deidentifyTemplate = deidentifyTemplate;
+            _resultValue.imageRedactTemplate = imageRedactTemplate;
+            _resultValue.structuredDeidentifyTemplate = structuredDeidentifyTemplate;
+            return _resultValue;
         }
     }
 }

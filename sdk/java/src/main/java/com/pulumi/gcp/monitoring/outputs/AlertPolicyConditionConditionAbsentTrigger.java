@@ -76,10 +76,10 @@ public final class AlertPolicyConditionConditionAbsentTrigger {
             return this;
         }
         public AlertPolicyConditionConditionAbsentTrigger build() {
-            final var o = new AlertPolicyConditionConditionAbsentTrigger();
-            o.count = count;
-            o.percent = percent;
-            return o;
+            final var _resultValue = new AlertPolicyConditionConditionAbsentTrigger();
+            _resultValue.count = count;
+            _resultValue.percent = percent;
+            return _resultValue;
         }
     }
 }

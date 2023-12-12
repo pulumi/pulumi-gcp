@@ -40,9 +40,9 @@ public final class RegionInstanceGroupManagerStatusVersionTarget {
             return this;
         }
         public RegionInstanceGroupManagerStatusVersionTarget build() {
-            final var o = new RegionInstanceGroupManagerStatusVersionTarget();
-            o.isReached = isReached;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerStatusVersionTarget();
+            _resultValue.isReached = isReached;
+            return _resultValue;
         }
     }
 }

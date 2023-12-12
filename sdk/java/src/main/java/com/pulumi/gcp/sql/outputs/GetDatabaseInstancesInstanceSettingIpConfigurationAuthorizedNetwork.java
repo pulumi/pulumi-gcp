@@ -60,11 +60,11 @@ public final class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedN
             return this;
         }
         public GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork build() {
-            final var o = new GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork();
-            o.expirationTime = expirationTime;
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork();
+            _resultValue.expirationTime = expirationTime;
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

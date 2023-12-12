@@ -48,9 +48,9 @@ public final class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuc
             return this;
         }
         public CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess build() {
-            final var o = new CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess();
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess();
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

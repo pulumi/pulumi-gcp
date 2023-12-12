@@ -84,12 +84,12 @@ public final class GetInstanceGroupManagerStatus {
             return versionTargets(List.of(versionTargets));
         }
         public GetInstanceGroupManagerStatus build() {
-            final var o = new GetInstanceGroupManagerStatus();
-            o.allInstancesConfigs = allInstancesConfigs;
-            o.isStable = isStable;
-            o.statefuls = statefuls;
-            o.versionTargets = versionTargets;
-            return o;
+            final var _resultValue = new GetInstanceGroupManagerStatus();
+            _resultValue.allInstancesConfigs = allInstancesConfigs;
+            _resultValue.isStable = isStable;
+            _resultValue.statefuls = statefuls;
+            _resultValue.versionTargets = versionTargets;
+            return _resultValue;
         }
     }
 }

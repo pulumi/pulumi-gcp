@@ -46,9 +46,9 @@ public final class ClusterVerticalPodAutoscaling {
             return this;
         }
         public ClusterVerticalPodAutoscaling build() {
-            final var o = new ClusterVerticalPodAutoscaling();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterVerticalPodAutoscaling();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

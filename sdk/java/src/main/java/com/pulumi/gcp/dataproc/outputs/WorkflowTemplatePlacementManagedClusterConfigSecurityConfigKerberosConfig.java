@@ -316,23 +316,23 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig();
-            o.crossRealmTrustAdminServer = crossRealmTrustAdminServer;
-            o.crossRealmTrustKdc = crossRealmTrustKdc;
-            o.crossRealmTrustRealm = crossRealmTrustRealm;
-            o.crossRealmTrustSharedPassword = crossRealmTrustSharedPassword;
-            o.enableKerberos = enableKerberos;
-            o.kdcDbKey = kdcDbKey;
-            o.keyPassword = keyPassword;
-            o.keystore = keystore;
-            o.keystorePassword = keystorePassword;
-            o.kmsKey = kmsKey;
-            o.realm = realm;
-            o.rootPrincipalPassword = rootPrincipalPassword;
-            o.tgtLifetimeHours = tgtLifetimeHours;
-            o.truststore = truststore;
-            o.truststorePassword = truststorePassword;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig();
+            _resultValue.crossRealmTrustAdminServer = crossRealmTrustAdminServer;
+            _resultValue.crossRealmTrustKdc = crossRealmTrustKdc;
+            _resultValue.crossRealmTrustRealm = crossRealmTrustRealm;
+            _resultValue.crossRealmTrustSharedPassword = crossRealmTrustSharedPassword;
+            _resultValue.enableKerberos = enableKerberos;
+            _resultValue.kdcDbKey = kdcDbKey;
+            _resultValue.keyPassword = keyPassword;
+            _resultValue.keystore = keystore;
+            _resultValue.keystorePassword = keystorePassword;
+            _resultValue.kmsKey = kmsKey;
+            _resultValue.realm = realm;
+            _resultValue.rootPrincipalPassword = rootPrincipalPassword;
+            _resultValue.tgtLifetimeHours = tgtLifetimeHours;
+            _resultValue.truststore = truststore;
+            _resultValue.truststorePassword = truststorePassword;
+            return _resultValue;
         }
     }
 }

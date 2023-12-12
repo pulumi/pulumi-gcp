@@ -62,11 +62,11 @@ public final class DatabaseInstanceIpAddress {
             return this;
         }
         public DatabaseInstanceIpAddress build() {
-            final var o = new DatabaseInstanceIpAddress();
-            o.ipAddress = ipAddress;
-            o.timeToRetire = timeToRetire;
-            o.type = type;
-            return o;
+            final var _resultValue = new DatabaseInstanceIpAddress();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.timeToRetire = timeToRetire;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

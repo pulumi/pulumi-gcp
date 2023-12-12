@@ -38,9 +38,9 @@ public final class NodePoolNodeConfigWorkloadMetadataConfig {
             return this;
         }
         public NodePoolNodeConfigWorkloadMetadataConfig build() {
-            final var o = new NodePoolNodeConfigWorkloadMetadataConfig();
-            o.mode = mode;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigWorkloadMetadataConfig();
+            _resultValue.mode = mode;
+            return _resultValue;
         }
     }
 }

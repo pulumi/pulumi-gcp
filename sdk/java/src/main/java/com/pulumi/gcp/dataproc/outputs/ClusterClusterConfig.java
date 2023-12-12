@@ -394,24 +394,24 @@ public final class ClusterClusterConfig {
             return this;
         }
         public ClusterClusterConfig build() {
-            final var o = new ClusterClusterConfig();
-            o.autoscalingConfig = autoscalingConfig;
-            o.bucket = bucket;
-            o.dataprocMetricConfig = dataprocMetricConfig;
-            o.encryptionConfig = encryptionConfig;
-            o.endpointConfig = endpointConfig;
-            o.gceClusterConfig = gceClusterConfig;
-            o.initializationActions = initializationActions;
-            o.lifecycleConfig = lifecycleConfig;
-            o.masterConfig = masterConfig;
-            o.metastoreConfig = metastoreConfig;
-            o.preemptibleWorkerConfig = preemptibleWorkerConfig;
-            o.securityConfig = securityConfig;
-            o.softwareConfig = softwareConfig;
-            o.stagingBucket = stagingBucket;
-            o.tempBucket = tempBucket;
-            o.workerConfig = workerConfig;
-            return o;
+            final var _resultValue = new ClusterClusterConfig();
+            _resultValue.autoscalingConfig = autoscalingConfig;
+            _resultValue.bucket = bucket;
+            _resultValue.dataprocMetricConfig = dataprocMetricConfig;
+            _resultValue.encryptionConfig = encryptionConfig;
+            _resultValue.endpointConfig = endpointConfig;
+            _resultValue.gceClusterConfig = gceClusterConfig;
+            _resultValue.initializationActions = initializationActions;
+            _resultValue.lifecycleConfig = lifecycleConfig;
+            _resultValue.masterConfig = masterConfig;
+            _resultValue.metastoreConfig = metastoreConfig;
+            _resultValue.preemptibleWorkerConfig = preemptibleWorkerConfig;
+            _resultValue.securityConfig = securityConfig;
+            _resultValue.softwareConfig = softwareConfig;
+            _resultValue.stagingBucket = stagingBucket;
+            _resultValue.tempBucket = tempBucket;
+            _resultValue.workerConfig = workerConfig;
+            return _resultValue;
         }
     }
 }

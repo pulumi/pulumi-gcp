@@ -71,10 +71,10 @@ public final class SecretRotation {
             return this;
         }
         public SecretRotation build() {
-            final var o = new SecretRotation();
-            o.nextRotationTime = nextRotationTime;
-            o.rotationPeriod = rotationPeriod;
-            return o;
+            final var _resultValue = new SecretRotation();
+            _resultValue.nextRotationTime = nextRotationTime;
+            _resultValue.rotationPeriod = rotationPeriod;
+            return _resultValue;
         }
     }
 }

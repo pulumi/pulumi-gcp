@@ -113,12 +113,12 @@ public final class TaskSparkInfrastructureSpecContainerImage {
             return pythonPackages(List.of(pythonPackages));
         }
         public TaskSparkInfrastructureSpecContainerImage build() {
-            final var o = new TaskSparkInfrastructureSpecContainerImage();
-            o.image = image;
-            o.javaJars = javaJars;
-            o.properties = properties;
-            o.pythonPackages = pythonPackages;
-            return o;
+            final var _resultValue = new TaskSparkInfrastructureSpecContainerImage();
+            _resultValue.image = image;
+            _resultValue.javaJars = javaJars;
+            _resultValue.properties = properties;
+            _resultValue.pythonPackages = pythonPackages;
+            return _resultValue;
         }
     }
 }

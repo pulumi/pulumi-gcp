@@ -80,10 +80,10 @@ public final class GCPolicyMaxAge {
             return this;
         }
         public GCPolicyMaxAge build() {
-            final var o = new GCPolicyMaxAge();
-            o.days = days;
-            o.duration = duration;
-            return o;
+            final var _resultValue = new GCPolicyMaxAge();
+            _resultValue.days = days;
+            _resultValue.duration = duration;
+            return _resultValue;
         }
     }
 }

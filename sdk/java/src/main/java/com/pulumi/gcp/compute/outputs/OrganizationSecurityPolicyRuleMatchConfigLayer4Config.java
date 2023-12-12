@@ -92,10 +92,10 @@ public final class OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
             return ports(List.of(ports));
         }
         public OrganizationSecurityPolicyRuleMatchConfigLayer4Config build() {
-            final var o = new OrganizationSecurityPolicyRuleMatchConfigLayer4Config();
-            o.ipProtocol = ipProtocol;
-            o.ports = ports;
-            return o;
+            final var _resultValue = new OrganizationSecurityPolicyRuleMatchConfigLayer4Config();
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.ports = ports;
+            return _resultValue;
         }
     }
 }

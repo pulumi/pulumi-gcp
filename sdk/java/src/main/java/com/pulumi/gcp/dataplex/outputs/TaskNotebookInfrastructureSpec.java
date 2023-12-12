@@ -94,11 +94,11 @@ public final class TaskNotebookInfrastructureSpec {
             return this;
         }
         public TaskNotebookInfrastructureSpec build() {
-            final var o = new TaskNotebookInfrastructureSpec();
-            o.batch = batch;
-            o.containerImage = containerImage;
-            o.vpcNetwork = vpcNetwork;
-            return o;
+            final var _resultValue = new TaskNotebookInfrastructureSpec();
+            _resultValue.batch = batch;
+            _resultValue.containerImage = containerImage;
+            _resultValue.vpcNetwork = vpcNetwork;
+            return _resultValue;
         }
     }
 }

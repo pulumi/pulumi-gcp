@@ -62,11 +62,11 @@ public final class AzureClusterWorkloadIdentityConfig {
             return this;
         }
         public AzureClusterWorkloadIdentityConfig build() {
-            final var o = new AzureClusterWorkloadIdentityConfig();
-            o.identityProvider = identityProvider;
-            o.issuerUri = issuerUri;
-            o.workloadPool = workloadPool;
-            return o;
+            final var _resultValue = new AzureClusterWorkloadIdentityConfig();
+            _resultValue.identityProvider = identityProvider;
+            _resultValue.issuerUri = issuerUri;
+            _resultValue.workloadPool = workloadPool;
+            return _resultValue;
         }
     }
 }

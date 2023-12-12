@@ -46,9 +46,9 @@ public final class GetGroupMembershipsMembershipRole {
             return this;
         }
         public GetGroupMembershipsMembershipRole build() {
-            final var o = new GetGroupMembershipsMembershipRole();
-            o.name = name;
-            return o;
+            final var _resultValue = new GetGroupMembershipsMembershipRole();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

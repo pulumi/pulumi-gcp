@@ -239,18 +239,18 @@ public final class ConnectionProfileOracle {
             return this;
         }
         public ConnectionProfileOracle build() {
-            final var o = new ConnectionProfileOracle();
-            o.databaseService = databaseService;
-            o.forwardSshConnectivity = forwardSshConnectivity;
-            o.host = host;
-            o.password = password;
-            o.passwordSet = passwordSet;
-            o.port = port;
-            o.privateConnectivity = privateConnectivity;
-            o.ssl = ssl;
-            o.staticServiceIpConnectivity = staticServiceIpConnectivity;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionProfileOracle();
+            _resultValue.databaseService = databaseService;
+            _resultValue.forwardSshConnectivity = forwardSshConnectivity;
+            _resultValue.host = host;
+            _resultValue.password = password;
+            _resultValue.passwordSet = passwordSet;
+            _resultValue.port = port;
+            _resultValue.privateConnectivity = privateConnectivity;
+            _resultValue.ssl = ssl;
+            _resultValue.staticServiceIpConnectivity = staticServiceIpConnectivity;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

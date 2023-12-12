@@ -92,11 +92,11 @@ public final class JobLoadTimePartitioning {
             return this;
         }
         public JobLoadTimePartitioning build() {
-            final var o = new JobLoadTimePartitioning();
-            o.expirationMs = expirationMs;
-            o.field = field;
-            o.type = type;
-            return o;
+            final var _resultValue = new JobLoadTimePartitioning();
+            _resultValue.expirationMs = expirationMs;
+            _resultValue.field = field;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

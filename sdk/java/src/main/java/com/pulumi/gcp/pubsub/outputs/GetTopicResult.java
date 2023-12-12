@@ -157,18 +157,18 @@ public final class GetTopicResult {
             return schemaSettings(List.of(schemaSettings));
         }
         public GetTopicResult build() {
-            final var o = new GetTopicResult();
-            o.effectiveLabels = effectiveLabels;
-            o.id = id;
-            o.kmsKeyName = kmsKeyName;
-            o.labels = labels;
-            o.messageRetentionDuration = messageRetentionDuration;
-            o.messageStoragePolicies = messageStoragePolicies;
-            o.name = name;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.schemaSettings = schemaSettings;
-            return o;
+            final var _resultValue = new GetTopicResult();
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.id = id;
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.labels = labels;
+            _resultValue.messageRetentionDuration = messageRetentionDuration;
+            _resultValue.messageStoragePolicies = messageStoragePolicies;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.schemaSettings = schemaSettings;
+            return _resultValue;
         }
     }
 }

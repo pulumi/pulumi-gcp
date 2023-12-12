@@ -87,11 +87,11 @@ public final class MetastoreServiceHiveMetastoreConfigKerberosConfig {
             return this;
         }
         public MetastoreServiceHiveMetastoreConfigKerberosConfig build() {
-            final var o = new MetastoreServiceHiveMetastoreConfigKerberosConfig();
-            o.keytab = keytab;
-            o.krb5ConfigGcsUri = krb5ConfigGcsUri;
-            o.principal = principal;
-            return o;
+            final var _resultValue = new MetastoreServiceHiveMetastoreConfigKerberosConfig();
+            _resultValue.keytab = keytab;
+            _resultValue.krb5ConfigGcsUri = krb5ConfigGcsUri;
+            _resultValue.principal = principal;
+            return _resultValue;
         }
     }
 }

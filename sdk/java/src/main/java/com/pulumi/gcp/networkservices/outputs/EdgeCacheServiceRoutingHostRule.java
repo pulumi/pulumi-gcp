@@ -110,11 +110,11 @@ public final class EdgeCacheServiceRoutingHostRule {
             return this;
         }
         public EdgeCacheServiceRoutingHostRule build() {
-            final var o = new EdgeCacheServiceRoutingHostRule();
-            o.description = description;
-            o.hosts = hosts;
-            o.pathMatcher = pathMatcher;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingHostRule();
+            _resultValue.description = description;
+            _resultValue.hosts = hosts;
+            _resultValue.pathMatcher = pathMatcher;
+            return _resultValue;
         }
     }
 }

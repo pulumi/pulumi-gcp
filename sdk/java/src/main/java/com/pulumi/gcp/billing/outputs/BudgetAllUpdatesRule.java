@@ -132,12 +132,12 @@ public final class BudgetAllUpdatesRule {
             return this;
         }
         public BudgetAllUpdatesRule build() {
-            final var o = new BudgetAllUpdatesRule();
-            o.disableDefaultIamRecipients = disableDefaultIamRecipients;
-            o.monitoringNotificationChannels = monitoringNotificationChannels;
-            o.pubsubTopic = pubsubTopic;
-            o.schemaVersion = schemaVersion;
-            return o;
+            final var _resultValue = new BudgetAllUpdatesRule();
+            _resultValue.disableDefaultIamRecipients = disableDefaultIamRecipients;
+            _resultValue.monitoringNotificationChannels = monitoringNotificationChannels;
+            _resultValue.pubsubTopic = pubsubTopic;
+            _resultValue.schemaVersion = schemaVersion;
+            return _resultValue;
         }
     }
 }

@@ -63,11 +63,11 @@ public final class InstanceFromMachineImageScratchDisk {
             return this;
         }
         public InstanceFromMachineImageScratchDisk build() {
-            final var o = new InstanceFromMachineImageScratchDisk();
-            o.deviceName = deviceName;
-            o.interface_ = interface_;
-            o.size = size;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageScratchDisk();
+            _resultValue.deviceName = deviceName;
+            _resultValue.interface_ = interface_;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

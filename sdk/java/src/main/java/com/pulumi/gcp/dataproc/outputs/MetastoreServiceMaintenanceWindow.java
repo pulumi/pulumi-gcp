@@ -68,10 +68,10 @@ public final class MetastoreServiceMaintenanceWindow {
             return this;
         }
         public MetastoreServiceMaintenanceWindow build() {
-            final var o = new MetastoreServiceMaintenanceWindow();
-            o.dayOfWeek = dayOfWeek;
-            o.hourOfDay = hourOfDay;
-            return o;
+            final var _resultValue = new MetastoreServiceMaintenanceWindow();
+            _resultValue.dayOfWeek = dayOfWeek;
+            _resultValue.hourOfDay = hourOfDay;
+            return _resultValue;
         }
     }
 }

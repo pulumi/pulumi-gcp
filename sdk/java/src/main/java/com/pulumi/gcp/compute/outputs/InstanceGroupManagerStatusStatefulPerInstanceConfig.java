@@ -48,9 +48,9 @@ public final class InstanceGroupManagerStatusStatefulPerInstanceConfig {
             return this;
         }
         public InstanceGroupManagerStatusStatefulPerInstanceConfig build() {
-            final var o = new InstanceGroupManagerStatusStatefulPerInstanceConfig();
-            o.allEffective = allEffective;
-            return o;
+            final var _resultValue = new InstanceGroupManagerStatusStatefulPerInstanceConfig();
+            _resultValue.allEffective = allEffective;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class TaskIamBindingCondition {
             return this;
         }
         public TaskIamBindingCondition build() {
-            final var o = new TaskIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new TaskIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

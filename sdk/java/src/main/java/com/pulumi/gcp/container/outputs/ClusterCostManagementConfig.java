@@ -46,9 +46,9 @@ public final class ClusterCostManagementConfig {
             return this;
         }
         public ClusterCostManagementConfig build() {
-            final var o = new ClusterCostManagementConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterCostManagementConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

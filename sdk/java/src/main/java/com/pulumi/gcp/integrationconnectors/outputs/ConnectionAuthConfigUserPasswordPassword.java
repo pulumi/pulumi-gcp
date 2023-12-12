@@ -48,9 +48,9 @@ public final class ConnectionAuthConfigUserPasswordPassword {
             return this;
         }
         public ConnectionAuthConfigUserPasswordPassword build() {
-            final var o = new ConnectionAuthConfigUserPasswordPassword();
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigUserPasswordPassword();
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

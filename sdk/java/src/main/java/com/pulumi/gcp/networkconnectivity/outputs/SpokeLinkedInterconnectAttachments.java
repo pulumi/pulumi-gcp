@@ -70,10 +70,10 @@ public final class SpokeLinkedInterconnectAttachments {
             return uris(List.of(uris));
         }
         public SpokeLinkedInterconnectAttachments build() {
-            final var o = new SpokeLinkedInterconnectAttachments();
-            o.siteToSiteDataTransfer = siteToSiteDataTransfer;
-            o.uris = uris;
-            return o;
+            final var _resultValue = new SpokeLinkedInterconnectAttachments();
+            _resultValue.siteToSiteDataTransfer = siteToSiteDataTransfer;
+            _resultValue.uris = uris;
+            return _resultValue;
         }
     }
 }

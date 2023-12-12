@@ -63,11 +63,11 @@ public final class InstanceFromMachineImageAdvancedMachineFeatures {
             return this;
         }
         public InstanceFromMachineImageAdvancedMachineFeatures build() {
-            final var o = new InstanceFromMachineImageAdvancedMachineFeatures();
-            o.enableNestedVirtualization = enableNestedVirtualization;
-            o.threadsPerCore = threadsPerCore;
-            o.visibleCoreCount = visibleCoreCount;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageAdvancedMachineFeatures();
+            _resultValue.enableNestedVirtualization = enableNestedVirtualization;
+            _resultValue.threadsPerCore = threadsPerCore;
+            _resultValue.visibleCoreCount = visibleCoreCount;
+            return _resultValue;
         }
     }
 }

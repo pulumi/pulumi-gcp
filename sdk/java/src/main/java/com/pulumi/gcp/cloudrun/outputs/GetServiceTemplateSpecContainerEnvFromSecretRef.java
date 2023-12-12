@@ -54,10 +54,10 @@ public final class GetServiceTemplateSpecContainerEnvFromSecretRef {
             return this;
         }
         public GetServiceTemplateSpecContainerEnvFromSecretRef build() {
-            final var o = new GetServiceTemplateSpecContainerEnvFromSecretRef();
-            o.localObjectReferences = localObjectReferences;
-            o.optional = optional;
-            return o;
+            final var _resultValue = new GetServiceTemplateSpecContainerEnvFromSecretRef();
+            _resultValue.localObjectReferences = localObjectReferences;
+            _resultValue.optional = optional;
+            return _resultValue;
         }
     }
 }

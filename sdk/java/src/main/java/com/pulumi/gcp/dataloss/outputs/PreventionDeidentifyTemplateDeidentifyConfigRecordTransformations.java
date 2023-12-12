@@ -78,10 +78,10 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return recordSuppressions(List.of(recordSuppressions));
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations();
-            o.fieldTransformations = fieldTransformations;
-            o.recordSuppressions = recordSuppressions;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations();
+            _resultValue.fieldTransformations = fieldTransformations;
+            _resultValue.recordSuppressions = recordSuppressions;
+            return _resultValue;
         }
     }
 }

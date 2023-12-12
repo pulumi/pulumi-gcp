@@ -91,11 +91,11 @@ public final class ConnectionProfileAlloydbSettingsInitialUser {
             return this;
         }
         public ConnectionProfileAlloydbSettingsInitialUser build() {
-            final var o = new ConnectionProfileAlloydbSettingsInitialUser();
-            o.password = password;
-            o.passwordSet = passwordSet;
-            o.user = user;
-            return o;
+            final var _resultValue = new ConnectionProfileAlloydbSettingsInitialUser();
+            _resultValue.password = password;
+            _resultValue.passwordSet = passwordSet;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

@@ -98,11 +98,11 @@ public final class TenantInboundSamlConfigSpConfig {
             return this;
         }
         public TenantInboundSamlConfigSpConfig build() {
-            final var o = new TenantInboundSamlConfigSpConfig();
-            o.callbackUri = callbackUri;
-            o.spCertificates = spCertificates;
-            o.spEntityId = spEntityId;
-            return o;
+            final var _resultValue = new TenantInboundSamlConfigSpConfig();
+            _resultValue.callbackUri = callbackUri;
+            _resultValue.spCertificates = spCertificates;
+            _resultValue.spEntityId = spEntityId;
+            return _resultValue;
         }
     }
 }

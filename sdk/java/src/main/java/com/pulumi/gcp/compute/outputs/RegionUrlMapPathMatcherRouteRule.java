@@ -216,14 +216,14 @@ public final class RegionUrlMapPathMatcherRouteRule {
             return this;
         }
         public RegionUrlMapPathMatcherRouteRule build() {
-            final var o = new RegionUrlMapPathMatcherRouteRule();
-            o.headerAction = headerAction;
-            o.matchRules = matchRules;
-            o.priority = priority;
-            o.routeAction = routeAction;
-            o.service = service;
-            o.urlRedirect = urlRedirect;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherRouteRule();
+            _resultValue.headerAction = headerAction;
+            _resultValue.matchRules = matchRules;
+            _resultValue.priority = priority;
+            _resultValue.routeAction = routeAction;
+            _resultValue.service = service;
+            _resultValue.urlRedirect = urlRedirect;
+            return _resultValue;
         }
     }
 }

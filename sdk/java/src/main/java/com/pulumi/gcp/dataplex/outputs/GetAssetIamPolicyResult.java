@@ -141,16 +141,16 @@ public final class GetAssetIamPolicyResult {
             return this;
         }
         public GetAssetIamPolicyResult build() {
-            final var o = new GetAssetIamPolicyResult();
-            o.asset = asset;
-            o.dataplexZone = dataplexZone;
-            o.etag = etag;
-            o.id = id;
-            o.lake = lake;
-            o.location = location;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetAssetIamPolicyResult();
+            _resultValue.asset = asset;
+            _resultValue.dataplexZone = dataplexZone;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.lake = lake;
+            _resultValue.location = location;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

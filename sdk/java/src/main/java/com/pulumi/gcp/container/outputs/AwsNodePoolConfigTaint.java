@@ -84,11 +84,11 @@ public final class AwsNodePoolConfigTaint {
             return this;
         }
         public AwsNodePoolConfigTaint build() {
-            final var o = new AwsNodePoolConfigTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new AwsNodePoolConfigTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

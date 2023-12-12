@@ -73,10 +73,10 @@ public final class ConnectionEventingConfigAdditionalVariableEncryptionKeyValue 
             return this;
         }
         public ConnectionEventingConfigAdditionalVariableEncryptionKeyValue build() {
-            final var o = new ConnectionEventingConfigAdditionalVariableEncryptionKeyValue();
-            o.kmsKeyName = kmsKeyName;
-            o.type = type;
-            return o;
+            final var _resultValue = new ConnectionEventingConfigAdditionalVariableEncryptionKeyValue();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

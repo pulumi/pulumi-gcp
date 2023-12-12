@@ -90,11 +90,11 @@ public final class PreventionJobTriggerInspectJobActionDeidentifyTransformationD
             return this;
         }
         public PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable build() {
-            final var o = new PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable();
-            o.datasetId = datasetId;
-            o.projectId = projectId;
-            o.tableId = tableId;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable();
+            _resultValue.datasetId = datasetId;
+            _resultValue.projectId = projectId;
+            _resultValue.tableId = tableId;
+            return _resultValue;
         }
     }
 }

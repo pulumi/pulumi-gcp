@@ -108,13 +108,13 @@ public final class GetServiceConsumersIamPolicyResult {
             return this;
         }
         public GetServiceConsumersIamPolicyResult build() {
-            final var o = new GetServiceConsumersIamPolicyResult();
-            o.consumerProject = consumerProject;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GetServiceConsumersIamPolicyResult();
+            _resultValue.consumerProject = consumerProject;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

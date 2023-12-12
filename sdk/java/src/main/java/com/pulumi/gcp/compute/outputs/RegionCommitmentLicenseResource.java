@@ -86,11 +86,11 @@ public final class RegionCommitmentLicenseResource {
             return this;
         }
         public RegionCommitmentLicenseResource build() {
-            final var o = new RegionCommitmentLicenseResource();
-            o.amount = amount;
-            o.coresPerLicense = coresPerLicense;
-            o.license = license;
-            return o;
+            final var _resultValue = new RegionCommitmentLicenseResource();
+            _resultValue.amount = amount;
+            _resultValue.coresPerLicense = coresPerLicense;
+            _resultValue.license = license;
+            return _resultValue;
         }
     }
 }

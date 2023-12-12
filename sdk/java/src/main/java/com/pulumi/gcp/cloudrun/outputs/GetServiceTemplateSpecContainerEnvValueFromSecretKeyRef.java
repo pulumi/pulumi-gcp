@@ -57,10 +57,10 @@ public final class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
             return this;
         }
         public GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef build() {
-            final var o = new GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef();
-            o.key = key;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef();
+            _resultValue.key = key;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

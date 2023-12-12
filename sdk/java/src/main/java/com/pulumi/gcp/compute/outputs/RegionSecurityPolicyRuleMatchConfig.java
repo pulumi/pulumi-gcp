@@ -51,9 +51,9 @@ public final class RegionSecurityPolicyRuleMatchConfig {
             return srcIpRanges(List.of(srcIpRanges));
         }
         public RegionSecurityPolicyRuleMatchConfig build() {
-            final var o = new RegionSecurityPolicyRuleMatchConfig();
-            o.srcIpRanges = srcIpRanges;
-            return o;
+            final var _resultValue = new RegionSecurityPolicyRuleMatchConfig();
+            _resultValue.srcIpRanges = srcIpRanges;
+            return _resultValue;
         }
     }
 }

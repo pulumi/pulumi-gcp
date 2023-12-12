@@ -49,10 +49,10 @@ public final class GetNetworkVpcNetwork {
             return this;
         }
         public GetNetworkVpcNetwork build() {
-            final var o = new GetNetworkVpcNetwork();
-            o.network = network;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetNetworkVpcNetwork();
+            _resultValue.network = network;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

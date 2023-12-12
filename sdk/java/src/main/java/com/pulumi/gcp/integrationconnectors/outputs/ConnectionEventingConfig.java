@@ -118,12 +118,12 @@ public final class ConnectionEventingConfig {
             return this;
         }
         public ConnectionEventingConfig build() {
-            final var o = new ConnectionEventingConfig();
-            o.additionalVariables = additionalVariables;
-            o.authConfig = authConfig;
-            o.enrichmentEnabled = enrichmentEnabled;
-            o.registrationDestinationConfig = registrationDestinationConfig;
-            return o;
+            final var _resultValue = new ConnectionEventingConfig();
+            _resultValue.additionalVariables = additionalVariables;
+            _resultValue.authConfig = authConfig;
+            _resultValue.enrichmentEnabled = enrichmentEnabled;
+            _resultValue.registrationDestinationConfig = registrationDestinationConfig;
+            return _resultValue;
         }
     }
 }

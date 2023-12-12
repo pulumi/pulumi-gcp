@@ -71,10 +71,10 @@ public final class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPa
             return this;
         }
         public CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage build() {
-            final var o = new CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage();
-            o.displayName = displayName;
-            o.name = name;
-            return o;
+            final var _resultValue = new CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage();
+            _resultValue.displayName = displayName;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

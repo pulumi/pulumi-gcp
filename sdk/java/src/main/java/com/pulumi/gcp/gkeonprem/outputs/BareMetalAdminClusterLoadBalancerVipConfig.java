@@ -46,9 +46,9 @@ public final class BareMetalAdminClusterLoadBalancerVipConfig {
             return this;
         }
         public BareMetalAdminClusterLoadBalancerVipConfig build() {
-            final var o = new BareMetalAdminClusterLoadBalancerVipConfig();
-            o.controlPlaneVip = controlPlaneVip;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterLoadBalancerVipConfig();
+            _resultValue.controlPlaneVip = controlPlaneVip;
+            return _resultValue;
         }
     }
 }

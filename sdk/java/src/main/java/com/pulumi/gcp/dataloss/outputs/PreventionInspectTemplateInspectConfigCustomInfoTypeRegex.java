@@ -73,10 +73,10 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeRegex {
             return this;
         }
         public PreventionInspectTemplateInspectConfigCustomInfoTypeRegex build() {
-            final var o = new PreventionInspectTemplateInspectConfigCustomInfoTypeRegex();
-            o.groupIndexes = groupIndexes;
-            o.pattern = pattern;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigCustomInfoTypeRegex();
+            _resultValue.groupIndexes = groupIndexes;
+            _resultValue.pattern = pattern;
+            return _resultValue;
         }
     }
 }

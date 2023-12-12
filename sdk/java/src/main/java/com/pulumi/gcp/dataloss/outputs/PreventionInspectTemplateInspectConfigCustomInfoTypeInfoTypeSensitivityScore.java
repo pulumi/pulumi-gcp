@@ -48,9 +48,9 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeS
             return this;
         }
         public PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScore build() {
-            final var o = new PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScore();
-            o.score = score;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScore();
+            _resultValue.score = score;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class NamespaceIamMemberCondition {
             return this;
         }
         public NamespaceIamMemberCondition build() {
-            final var o = new NamespaceIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new NamespaceIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

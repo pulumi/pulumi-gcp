@@ -50,9 +50,9 @@ public final class CxPageTransitionRouteTriggerFulfillmentConditionalCase {
             return this;
         }
         public CxPageTransitionRouteTriggerFulfillmentConditionalCase build() {
-            final var o = new CxPageTransitionRouteTriggerFulfillmentConditionalCase();
-            o.cases = cases;
-            return o;
+            final var _resultValue = new CxPageTransitionRouteTriggerFulfillmentConditionalCase();
+            _resultValue.cases = cases;
+            return _resultValue;
         }
     }
 }

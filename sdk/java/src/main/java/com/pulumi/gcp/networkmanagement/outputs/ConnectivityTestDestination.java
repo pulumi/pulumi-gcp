@@ -149,13 +149,13 @@ public final class ConnectivityTestDestination {
             return this;
         }
         public ConnectivityTestDestination build() {
-            final var o = new ConnectivityTestDestination();
-            o.instance = instance;
-            o.ipAddress = ipAddress;
-            o.network = network;
-            o.port = port;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new ConnectivityTestDestination();
+            _resultValue.instance = instance;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.network = network;
+            _resultValue.port = port;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

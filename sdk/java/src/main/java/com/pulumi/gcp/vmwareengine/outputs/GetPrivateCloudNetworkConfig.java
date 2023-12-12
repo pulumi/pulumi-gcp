@@ -72,12 +72,12 @@ public final class GetPrivateCloudNetworkConfig {
             return this;
         }
         public GetPrivateCloudNetworkConfig build() {
-            final var o = new GetPrivateCloudNetworkConfig();
-            o.managementCidr = managementCidr;
-            o.managementIpAddressLayoutVersion = managementIpAddressLayoutVersion;
-            o.vmwareEngineNetwork = vmwareEngineNetwork;
-            o.vmwareEngineNetworkCanonical = vmwareEngineNetworkCanonical;
-            return o;
+            final var _resultValue = new GetPrivateCloudNetworkConfig();
+            _resultValue.managementCidr = managementCidr;
+            _resultValue.managementIpAddressLayoutVersion = managementIpAddressLayoutVersion;
+            _resultValue.vmwareEngineNetwork = vmwareEngineNetwork;
+            _resultValue.vmwareEngineNetworkCanonical = vmwareEngineNetworkCanonical;
+            return _resultValue;
         }
     }
 }

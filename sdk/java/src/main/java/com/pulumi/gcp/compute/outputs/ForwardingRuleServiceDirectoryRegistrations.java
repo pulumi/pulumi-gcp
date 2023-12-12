@@ -67,10 +67,10 @@ public final class ForwardingRuleServiceDirectoryRegistrations {
             return this;
         }
         public ForwardingRuleServiceDirectoryRegistrations build() {
-            final var o = new ForwardingRuleServiceDirectoryRegistrations();
-            o.namespace = namespace;
-            o.service = service;
-            return o;
+            final var _resultValue = new ForwardingRuleServiceDirectoryRegistrations();
+            _resultValue.namespace = namespace;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

@@ -75,10 +75,10 @@ public final class AttachedClusterFleet {
             return this;
         }
         public AttachedClusterFleet build() {
-            final var o = new AttachedClusterFleet();
-            o.membership = membership;
-            o.project = project;
-            return o;
+            final var _resultValue = new AttachedClusterFleet();
+            _resultValue.membership = membership;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

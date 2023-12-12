@@ -56,9 +56,9 @@ public final class DicomStoreNotificationConfig {
             return this;
         }
         public DicomStoreNotificationConfig build() {
-            final var o = new DicomStoreNotificationConfig();
-            o.pubsubTopic = pubsubTopic;
-            return o;
+            final var _resultValue = new DicomStoreNotificationConfig();
+            _resultValue.pubsubTopic = pubsubTopic;
+            return _resultValue;
         }
     }
 }

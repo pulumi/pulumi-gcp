@@ -38,9 +38,9 @@ public final class GetEnvironmentConfigWebServerConfig {
             return this;
         }
         public GetEnvironmentConfigWebServerConfig build() {
-            final var o = new GetEnvironmentConfigWebServerConfig();
-            o.machineType = machineType;
-            return o;
+            final var _resultValue = new GetEnvironmentConfigWebServerConfig();
+            _resultValue.machineType = machineType;
+            return _resultValue;
         }
     }
 }

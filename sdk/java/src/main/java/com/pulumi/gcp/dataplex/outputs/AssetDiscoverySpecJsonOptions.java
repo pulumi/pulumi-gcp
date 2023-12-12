@@ -68,10 +68,10 @@ public final class AssetDiscoverySpecJsonOptions {
             return this;
         }
         public AssetDiscoverySpecJsonOptions build() {
-            final var o = new AssetDiscoverySpecJsonOptions();
-            o.disableTypeInference = disableTypeInference;
-            o.encoding = encoding;
-            return o;
+            final var _resultValue = new AssetDiscoverySpecJsonOptions();
+            _resultValue.disableTypeInference = disableTypeInference;
+            _resultValue.encoding = encoding;
+            return _resultValue;
         }
     }
 }

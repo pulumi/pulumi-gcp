@@ -50,10 +50,10 @@ public final class GetRouterNatLogConfig {
             return this;
         }
         public GetRouterNatLogConfig build() {
-            final var o = new GetRouterNatLogConfig();
-            o.enable = enable;
-            o.filter = filter;
-            return o;
+            final var _resultValue = new GetRouterNatLogConfig();
+            _resultValue.enable = enable;
+            _resultValue.filter = filter;
+            return _resultValue;
         }
     }
 }

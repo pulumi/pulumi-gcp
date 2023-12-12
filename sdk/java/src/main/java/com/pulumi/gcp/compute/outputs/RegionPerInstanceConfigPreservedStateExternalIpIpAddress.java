@@ -48,9 +48,9 @@ public final class RegionPerInstanceConfigPreservedStateExternalIpIpAddress {
             return this;
         }
         public RegionPerInstanceConfigPreservedStateExternalIpIpAddress build() {
-            final var o = new RegionPerInstanceConfigPreservedStateExternalIpIpAddress();
-            o.address = address;
-            return o;
+            final var _resultValue = new RegionPerInstanceConfigPreservedStateExternalIpIpAddress();
+            _resultValue.address = address;
+            return _resultValue;
         }
     }
 }

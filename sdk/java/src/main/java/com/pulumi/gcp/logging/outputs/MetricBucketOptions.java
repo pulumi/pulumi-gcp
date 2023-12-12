@@ -98,11 +98,11 @@ public final class MetricBucketOptions {
             return this;
         }
         public MetricBucketOptions build() {
-            final var o = new MetricBucketOptions();
-            o.explicitBuckets = explicitBuckets;
-            o.exponentialBuckets = exponentialBuckets;
-            o.linearBuckets = linearBuckets;
-            return o;
+            final var _resultValue = new MetricBucketOptions();
+            _resultValue.explicitBuckets = explicitBuckets;
+            _resultValue.exponentialBuckets = exponentialBuckets;
+            _resultValue.linearBuckets = linearBuckets;
+            return _resultValue;
         }
     }
 }

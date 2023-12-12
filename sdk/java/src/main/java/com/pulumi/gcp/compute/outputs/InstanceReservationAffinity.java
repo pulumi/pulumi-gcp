@@ -70,10 +70,10 @@ public final class InstanceReservationAffinity {
             return this;
         }
         public InstanceReservationAffinity build() {
-            final var o = new InstanceReservationAffinity();
-            o.specificReservation = specificReservation;
-            o.type = type;
-            return o;
+            final var _resultValue = new InstanceReservationAffinity();
+            _resultValue.specificReservation = specificReservation;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

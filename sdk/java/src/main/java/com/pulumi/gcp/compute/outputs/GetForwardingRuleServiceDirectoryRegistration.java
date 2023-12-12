@@ -49,10 +49,10 @@ public final class GetForwardingRuleServiceDirectoryRegistration {
             return this;
         }
         public GetForwardingRuleServiceDirectoryRegistration build() {
-            final var o = new GetForwardingRuleServiceDirectoryRegistration();
-            o.namespace = namespace;
-            o.service = service;
-            return o;
+            final var _resultValue = new GetForwardingRuleServiceDirectoryRegistration();
+            _resultValue.namespace = namespace;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

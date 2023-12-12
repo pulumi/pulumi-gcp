@@ -62,11 +62,11 @@ public final class InstanceIamBindingCondition {
             return this;
         }
         public InstanceIamBindingCondition build() {
-            final var o = new InstanceIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new InstanceIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

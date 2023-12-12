@@ -48,9 +48,9 @@ public final class VpnConnectionDetailCloudRouter {
             return this;
         }
         public VpnConnectionDetailCloudRouter build() {
-            final var o = new VpnConnectionDetailCloudRouter();
-            o.name = name;
-            return o;
+            final var _resultValue = new VpnConnectionDetailCloudRouter();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

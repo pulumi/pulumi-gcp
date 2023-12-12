@@ -130,12 +130,12 @@ public final class ClusterClusterAutoscaling {
             return resourceLimits(List.of(resourceLimits));
         }
         public ClusterClusterAutoscaling build() {
-            final var o = new ClusterClusterAutoscaling();
-            o.autoProvisioningDefaults = autoProvisioningDefaults;
-            o.autoscalingProfile = autoscalingProfile;
-            o.enabled = enabled;
-            o.resourceLimits = resourceLimits;
-            return o;
+            final var _resultValue = new ClusterClusterAutoscaling();
+            _resultValue.autoProvisioningDefaults = autoProvisioningDefaults;
+            _resultValue.autoscalingProfile = autoscalingProfile;
+            _resultValue.enabled = enabled;
+            _resultValue.resourceLimits = resourceLimits;
+            return _resultValue;
         }
     }
 }

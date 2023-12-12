@@ -176,16 +176,16 @@ public final class GetGroupMembershipsMembership {
             return this;
         }
         public GetGroupMembershipsMembership build() {
-            final var o = new GetGroupMembershipsMembership();
-            o.createTime = createTime;
-            o.group = group;
-            o.memberKeys = memberKeys;
-            o.name = name;
-            o.preferredMemberKeys = preferredMemberKeys;
-            o.roles = roles;
-            o.type = type;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetGroupMembershipsMembership();
+            _resultValue.createTime = createTime;
+            _resultValue.group = group;
+            _resultValue.memberKeys = memberKeys;
+            _resultValue.name = name;
+            _resultValue.preferredMemberKeys = preferredMemberKeys;
+            _resultValue.roles = roles;
+            _resultValue.type = type;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

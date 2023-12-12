@@ -46,9 +46,9 @@ public final class EngineModelDefaultVersion {
             return this;
         }
         public EngineModelDefaultVersion build() {
-            final var o = new EngineModelDefaultVersion();
-            o.name = name;
-            return o;
+            final var _resultValue = new EngineModelDefaultVersion();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

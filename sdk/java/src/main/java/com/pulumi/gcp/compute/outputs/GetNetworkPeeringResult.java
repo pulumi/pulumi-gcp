@@ -157,19 +157,19 @@ public final class GetNetworkPeeringResult {
             return this;
         }
         public GetNetworkPeeringResult build() {
-            final var o = new GetNetworkPeeringResult();
-            o.exportCustomRoutes = exportCustomRoutes;
-            o.exportSubnetRoutesWithPublicIp = exportSubnetRoutesWithPublicIp;
-            o.id = id;
-            o.importCustomRoutes = importCustomRoutes;
-            o.importSubnetRoutesWithPublicIp = importSubnetRoutesWithPublicIp;
-            o.name = name;
-            o.network = network;
-            o.peerNetwork = peerNetwork;
-            o.stackType = stackType;
-            o.state = state;
-            o.stateDetails = stateDetails;
-            return o;
+            final var _resultValue = new GetNetworkPeeringResult();
+            _resultValue.exportCustomRoutes = exportCustomRoutes;
+            _resultValue.exportSubnetRoutesWithPublicIp = exportSubnetRoutesWithPublicIp;
+            _resultValue.id = id;
+            _resultValue.importCustomRoutes = importCustomRoutes;
+            _resultValue.importSubnetRoutesWithPublicIp = importSubnetRoutesWithPublicIp;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.peerNetwork = peerNetwork;
+            _resultValue.stackType = stackType;
+            _resultValue.state = state;
+            _resultValue.stateDetails = stateDetails;
+            return _resultValue;
         }
     }
 }

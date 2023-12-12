@@ -199,18 +199,18 @@ public final class GetAppleAppResult {
             return this;
         }
         public GetAppleAppResult build() {
-            final var o = new GetAppleAppResult();
-            o.apiKeyId = apiKeyId;
-            o.appId = appId;
-            o.appStoreId = appStoreId;
-            o.bundleId = bundleId;
-            o.deletionPolicy = deletionPolicy;
-            o.displayName = displayName;
-            o.id = id;
-            o.name = name;
-            o.project = project;
-            o.teamId = teamId;
-            return o;
+            final var _resultValue = new GetAppleAppResult();
+            _resultValue.apiKeyId = apiKeyId;
+            _resultValue.appId = appId;
+            _resultValue.appStoreId = appStoreId;
+            _resultValue.bundleId = bundleId;
+            _resultValue.deletionPolicy = deletionPolicy;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.teamId = teamId;
+            return _resultValue;
         }
     }
 }

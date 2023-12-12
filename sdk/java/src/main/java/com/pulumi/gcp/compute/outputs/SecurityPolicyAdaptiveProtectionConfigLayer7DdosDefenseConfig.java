@@ -68,10 +68,10 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
             return this;
         }
         public SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig build() {
-            final var o = new SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig();
-            o.enable = enable;
-            o.ruleVisibility = ruleVisibility;
-            return o;
+            final var _resultValue = new SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig();
+            _resultValue.enable = enable;
+            _resultValue.ruleVisibility = ruleVisibility;
+            return _resultValue;
         }
     }
 }

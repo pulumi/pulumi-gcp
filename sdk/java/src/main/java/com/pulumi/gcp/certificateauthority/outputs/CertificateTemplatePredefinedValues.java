@@ -138,13 +138,13 @@ public final class CertificateTemplatePredefinedValues {
             return policyIds(List.of(policyIds));
         }
         public CertificateTemplatePredefinedValues build() {
-            final var o = new CertificateTemplatePredefinedValues();
-            o.additionalExtensions = additionalExtensions;
-            o.aiaOcspServers = aiaOcspServers;
-            o.caOptions = caOptions;
-            o.keyUsage = keyUsage;
-            o.policyIds = policyIds;
-            return o;
+            final var _resultValue = new CertificateTemplatePredefinedValues();
+            _resultValue.additionalExtensions = additionalExtensions;
+            _resultValue.aiaOcspServers = aiaOcspServers;
+            _resultValue.caOptions = caOptions;
+            _resultValue.keyUsage = keyUsage;
+            _resultValue.policyIds = policyIds;
+            return _resultValue;
         }
     }
 }

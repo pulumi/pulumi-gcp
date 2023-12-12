@@ -46,9 +46,9 @@ public final class BareMetalAdminClusterLoadBalancerPortConfig {
             return this;
         }
         public BareMetalAdminClusterLoadBalancerPortConfig build() {
-            final var o = new BareMetalAdminClusterLoadBalancerPortConfig();
-            o.controlPlaneLoadBalancerPort = controlPlaneLoadBalancerPort;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterLoadBalancerPortConfig();
+            _resultValue.controlPlaneLoadBalancerPort = controlPlaneLoadBalancerPort;
+            return _resultValue;
         }
     }
 }

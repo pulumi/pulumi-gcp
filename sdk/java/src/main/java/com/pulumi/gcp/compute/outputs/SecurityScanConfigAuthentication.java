@@ -72,10 +72,10 @@ public final class SecurityScanConfigAuthentication {
             return this;
         }
         public SecurityScanConfigAuthentication build() {
-            final var o = new SecurityScanConfigAuthentication();
-            o.customAccount = customAccount;
-            o.googleAccount = googleAccount;
-            return o;
+            final var _resultValue = new SecurityScanConfigAuthentication();
+            _resultValue.customAccount = customAccount;
+            _resultValue.googleAccount = googleAccount;
+            return _resultValue;
         }
     }
 }

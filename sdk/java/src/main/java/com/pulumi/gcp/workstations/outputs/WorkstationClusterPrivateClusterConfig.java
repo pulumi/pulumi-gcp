@@ -124,12 +124,12 @@ public final class WorkstationClusterPrivateClusterConfig {
             return this;
         }
         public WorkstationClusterPrivateClusterConfig build() {
-            final var o = new WorkstationClusterPrivateClusterConfig();
-            o.allowedProjects = allowedProjects;
-            o.clusterHostname = clusterHostname;
-            o.enablePrivateEndpoint = enablePrivateEndpoint;
-            o.serviceAttachmentUri = serviceAttachmentUri;
-            return o;
+            final var _resultValue = new WorkstationClusterPrivateClusterConfig();
+            _resultValue.allowedProjects = allowedProjects;
+            _resultValue.clusterHostname = clusterHostname;
+            _resultValue.enablePrivateEndpoint = enablePrivateEndpoint;
+            _resultValue.serviceAttachmentUri = serviceAttachmentUri;
+            return _resultValue;
         }
     }
 }

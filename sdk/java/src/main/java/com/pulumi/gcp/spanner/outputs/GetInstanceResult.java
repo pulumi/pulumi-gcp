@@ -188,21 +188,21 @@ public final class GetInstanceResult {
             return this;
         }
         public GetInstanceResult build() {
-            final var o = new GetInstanceResult();
-            o.autoscalingConfigs = autoscalingConfigs;
-            o.config = config;
-            o.displayName = displayName;
-            o.effectiveLabels = effectiveLabels;
-            o.forceDestroy = forceDestroy;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.numNodes = numNodes;
-            o.processingUnits = processingUnits;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.state = state;
-            return o;
+            final var _resultValue = new GetInstanceResult();
+            _resultValue.autoscalingConfigs = autoscalingConfigs;
+            _resultValue.config = config;
+            _resultValue.displayName = displayName;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.forceDestroy = forceDestroy;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.numNodes = numNodes;
+            _resultValue.processingUnits = processingUnits;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

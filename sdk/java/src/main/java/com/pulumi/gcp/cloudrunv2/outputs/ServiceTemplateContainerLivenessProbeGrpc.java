@@ -74,10 +74,10 @@ public final class ServiceTemplateContainerLivenessProbeGrpc {
             return this;
         }
         public ServiceTemplateContainerLivenessProbeGrpc build() {
-            final var o = new ServiceTemplateContainerLivenessProbeGrpc();
-            o.port = port;
-            o.service = service;
-            return o;
+            final var _resultValue = new ServiceTemplateContainerLivenessProbeGrpc();
+            _resultValue.port = port;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

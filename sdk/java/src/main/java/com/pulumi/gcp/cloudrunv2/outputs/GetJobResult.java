@@ -380,37 +380,37 @@ public final class GetJobResult {
             return this;
         }
         public GetJobResult build() {
-            final var o = new GetJobResult();
-            o.annotations = annotations;
-            o.binaryAuthorizations = binaryAuthorizations;
-            o.client = client;
-            o.clientVersion = clientVersion;
-            o.conditions = conditions;
-            o.createTime = createTime;
-            o.creator = creator;
-            o.deleteTime = deleteTime;
-            o.effectiveAnnotations = effectiveAnnotations;
-            o.effectiveLabels = effectiveLabels;
-            o.etag = etag;
-            o.executionCount = executionCount;
-            o.expireTime = expireTime;
-            o.generation = generation;
-            o.id = id;
-            o.labels = labels;
-            o.lastModifier = lastModifier;
-            o.latestCreatedExecutions = latestCreatedExecutions;
-            o.launchStage = launchStage;
-            o.location = location;
-            o.name = name;
-            o.observedGeneration = observedGeneration;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.reconciling = reconciling;
-            o.templates = templates;
-            o.terminalConditions = terminalConditions;
-            o.uid = uid;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetJobResult();
+            _resultValue.annotations = annotations;
+            _resultValue.binaryAuthorizations = binaryAuthorizations;
+            _resultValue.client = client;
+            _resultValue.clientVersion = clientVersion;
+            _resultValue.conditions = conditions;
+            _resultValue.createTime = createTime;
+            _resultValue.creator = creator;
+            _resultValue.deleteTime = deleteTime;
+            _resultValue.effectiveAnnotations = effectiveAnnotations;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.etag = etag;
+            _resultValue.executionCount = executionCount;
+            _resultValue.expireTime = expireTime;
+            _resultValue.generation = generation;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.lastModifier = lastModifier;
+            _resultValue.latestCreatedExecutions = latestCreatedExecutions;
+            _resultValue.launchStage = launchStage;
+            _resultValue.location = location;
+            _resultValue.name = name;
+            _resultValue.observedGeneration = observedGeneration;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.reconciling = reconciling;
+            _resultValue.templates = templates;
+            _resultValue.terminalConditions = terminalConditions;
+            _resultValue.uid = uid;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

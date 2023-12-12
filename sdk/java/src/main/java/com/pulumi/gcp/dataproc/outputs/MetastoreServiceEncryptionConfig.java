@@ -48,9 +48,9 @@ public final class MetastoreServiceEncryptionConfig {
             return this;
         }
         public MetastoreServiceEncryptionConfig build() {
-            final var o = new MetastoreServiceEncryptionConfig();
-            o.kmsKey = kmsKey;
-            return o;
+            final var _resultValue = new MetastoreServiceEncryptionConfig();
+            _resultValue.kmsKey = kmsKey;
+            return _resultValue;
         }
     }
 }

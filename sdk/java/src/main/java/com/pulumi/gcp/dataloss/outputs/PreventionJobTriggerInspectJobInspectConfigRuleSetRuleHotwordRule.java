@@ -102,11 +102,11 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule();
-            o.hotwordRegex = hotwordRegex;
-            o.likelihoodAdjustment = likelihoodAdjustment;
-            o.proximity = proximity;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule();
+            _resultValue.hotwordRegex = hotwordRegex;
+            _resultValue.likelihoodAdjustment = likelihoodAdjustment;
+            _resultValue.proximity = proximity;
+            return _resultValue;
         }
     }
 }

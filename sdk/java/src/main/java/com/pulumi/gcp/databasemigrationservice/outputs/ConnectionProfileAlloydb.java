@@ -70,10 +70,10 @@ public final class ConnectionProfileAlloydb {
             return this;
         }
         public ConnectionProfileAlloydb build() {
-            final var o = new ConnectionProfileAlloydb();
-            o.clusterId = clusterId;
-            o.settings = settings;
-            return o;
+            final var _resultValue = new ConnectionProfileAlloydb();
+            _resultValue.clusterId = clusterId;
+            _resultValue.settings = settings;
+            return _resultValue;
         }
     }
 }

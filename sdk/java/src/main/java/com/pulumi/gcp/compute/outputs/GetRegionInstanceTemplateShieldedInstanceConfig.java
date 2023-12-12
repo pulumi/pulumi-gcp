@@ -84,11 +84,11 @@ public final class GetRegionInstanceTemplateShieldedInstanceConfig {
             return this;
         }
         public GetRegionInstanceTemplateShieldedInstanceConfig build() {
-            final var o = new GetRegionInstanceTemplateShieldedInstanceConfig();
-            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
-            o.enableSecureBoot = enableSecureBoot;
-            o.enableVtpm = enableVtpm;
-            return o;
+            final var _resultValue = new GetRegionInstanceTemplateShieldedInstanceConfig();
+            _resultValue.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            _resultValue.enableSecureBoot = enableSecureBoot;
+            _resultValue.enableVtpm = enableVtpm;
+            return _resultValue;
         }
     }
 }

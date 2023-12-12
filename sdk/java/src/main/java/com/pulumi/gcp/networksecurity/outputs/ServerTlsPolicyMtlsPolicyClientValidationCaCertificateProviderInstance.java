@@ -46,9 +46,9 @@ public final class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProvide
             return this;
         }
         public ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance build() {
-            final var o = new ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance();
-            o.pluginInstance = pluginInstance;
-            return o;
+            final var _resultValue = new ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance();
+            _resultValue.pluginInstance = pluginInstance;
+            return _resultValue;
         }
     }
 }

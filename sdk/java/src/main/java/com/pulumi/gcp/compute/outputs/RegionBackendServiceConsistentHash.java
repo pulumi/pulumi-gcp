@@ -108,11 +108,11 @@ public final class RegionBackendServiceConsistentHash {
             return this;
         }
         public RegionBackendServiceConsistentHash build() {
-            final var o = new RegionBackendServiceConsistentHash();
-            o.httpCookie = httpCookie;
-            o.httpHeaderName = httpHeaderName;
-            o.minimumRingSize = minimumRingSize;
-            return o;
+            final var _resultValue = new RegionBackendServiceConsistentHash();
+            _resultValue.httpCookie = httpCookie;
+            _resultValue.httpHeaderName = httpHeaderName;
+            _resultValue.minimumRingSize = minimumRingSize;
+            return _resultValue;
         }
     }
 }

@@ -86,11 +86,11 @@ public final class VMwareClusterDataplaneV2 {
             return this;
         }
         public VMwareClusterDataplaneV2 build() {
-            final var o = new VMwareClusterDataplaneV2();
-            o.advancedNetworking = advancedNetworking;
-            o.dataplaneV2Enabled = dataplaneV2Enabled;
-            o.windowsDataplaneV2Enabled = windowsDataplaneV2Enabled;
-            return o;
+            final var _resultValue = new VMwareClusterDataplaneV2();
+            _resultValue.advancedNetworking = advancedNetworking;
+            _resultValue.dataplaneV2Enabled = dataplaneV2Enabled;
+            _resultValue.windowsDataplaneV2Enabled = windowsDataplaneV2Enabled;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class WorkloadResource {
             return this;
         }
         public WorkloadResource build() {
-            final var o = new WorkloadResource();
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            return o;
+            final var _resultValue = new WorkloadResource();
+            _resultValue.resourceId = resourceId;
+            _resultValue.resourceType = resourceType;
+            return _resultValue;
         }
     }
 }

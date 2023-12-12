@@ -111,12 +111,12 @@ public final class FunctionServiceConfigSecretVolume {
             return versions(List.of(versions));
         }
         public FunctionServiceConfigSecretVolume build() {
-            final var o = new FunctionServiceConfigSecretVolume();
-            o.mountPath = mountPath;
-            o.projectId = projectId;
-            o.secret = secret;
-            o.versions = versions;
-            return o;
+            final var _resultValue = new FunctionServiceConfigSecretVolume();
+            _resultValue.mountPath = mountPath;
+            _resultValue.projectId = projectId;
+            _resultValue.secret = secret;
+            _resultValue.versions = versions;
+            return _resultValue;
         }
     }
 }

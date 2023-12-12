@@ -72,10 +72,10 @@ public final class SecretReplication {
             return this;
         }
         public SecretReplication build() {
-            final var o = new SecretReplication();
-            o.auto = auto;
-            o.userManaged = userManaged;
-            return o;
+            final var _resultValue = new SecretReplication();
+            _resultValue.auto = auto;
+            _resultValue.userManaged = userManaged;
+            return _resultValue;
         }
     }
 }

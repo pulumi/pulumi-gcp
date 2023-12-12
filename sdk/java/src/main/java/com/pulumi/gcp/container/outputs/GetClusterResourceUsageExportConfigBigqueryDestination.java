@@ -38,9 +38,9 @@ public final class GetClusterResourceUsageExportConfigBigqueryDestination {
             return this;
         }
         public GetClusterResourceUsageExportConfigBigqueryDestination build() {
-            final var o = new GetClusterResourceUsageExportConfigBigqueryDestination();
-            o.datasetId = datasetId;
-            return o;
+            final var _resultValue = new GetClusterResourceUsageExportConfigBigqueryDestination();
+            _resultValue.datasetId = datasetId;
+            return _resultValue;
         }
     }
 }

@@ -75,10 +75,10 @@ public final class ServiceTemplateVolumeEmptyDir {
             return this;
         }
         public ServiceTemplateVolumeEmptyDir build() {
-            final var o = new ServiceTemplateVolumeEmptyDir();
-            o.medium = medium;
-            o.sizeLimit = sizeLimit;
-            return o;
+            final var _resultValue = new ServiceTemplateVolumeEmptyDir();
+            _resultValue.medium = medium;
+            _resultValue.sizeLimit = sizeLimit;
+            return _resultValue;
         }
     }
 }

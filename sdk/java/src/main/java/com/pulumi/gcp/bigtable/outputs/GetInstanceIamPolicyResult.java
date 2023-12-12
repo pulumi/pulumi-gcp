@@ -106,13 +106,13 @@ public final class GetInstanceIamPolicyResult {
             return this;
         }
         public GetInstanceIamPolicyResult build() {
-            final var o = new GetInstanceIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.instance = instance;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetInstanceIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.instance = instance;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

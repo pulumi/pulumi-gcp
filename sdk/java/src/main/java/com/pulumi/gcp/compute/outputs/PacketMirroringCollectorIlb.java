@@ -46,9 +46,9 @@ public final class PacketMirroringCollectorIlb {
             return this;
         }
         public PacketMirroringCollectorIlb build() {
-            final var o = new PacketMirroringCollectorIlb();
-            o.url = url;
-            return o;
+            final var _resultValue = new PacketMirroringCollectorIlb();
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

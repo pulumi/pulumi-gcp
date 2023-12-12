@@ -54,10 +54,10 @@ public final class GetGlobalForwardingRuleMetadataFilter {
             return this;
         }
         public GetGlobalForwardingRuleMetadataFilter build() {
-            final var o = new GetGlobalForwardingRuleMetadataFilter();
-            o.filterLabels = filterLabels;
-            o.filterMatchCriteria = filterMatchCriteria;
-            return o;
+            final var _resultValue = new GetGlobalForwardingRuleMetadataFilter();
+            _resultValue.filterLabels = filterLabels;
+            _resultValue.filterMatchCriteria = filterMatchCriteria;
+            return _resultValue;
         }
     }
 }

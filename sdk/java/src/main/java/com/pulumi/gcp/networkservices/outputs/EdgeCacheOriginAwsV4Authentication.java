@@ -86,11 +86,11 @@ public final class EdgeCacheOriginAwsV4Authentication {
             return this;
         }
         public EdgeCacheOriginAwsV4Authentication build() {
-            final var o = new EdgeCacheOriginAwsV4Authentication();
-            o.accessKeyId = accessKeyId;
-            o.originRegion = originRegion;
-            o.secretAccessKeyVersion = secretAccessKeyVersion;
-            return o;
+            final var _resultValue = new EdgeCacheOriginAwsV4Authentication();
+            _resultValue.accessKeyId = accessKeyId;
+            _resultValue.originRegion = originRegion;
+            _resultValue.secretAccessKeyVersion = secretAccessKeyVersion;
+            return _resultValue;
         }
     }
 }

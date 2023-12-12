@@ -158,19 +158,19 @@ public final class GetBackendServiceBackend {
             return this;
         }
         public GetBackendServiceBackend build() {
-            final var o = new GetBackendServiceBackend();
-            o.balancingMode = balancingMode;
-            o.capacityScaler = capacityScaler;
-            o.description = description;
-            o.group = group;
-            o.maxConnections = maxConnections;
-            o.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
-            o.maxConnectionsPerInstance = maxConnectionsPerInstance;
-            o.maxRate = maxRate;
-            o.maxRatePerEndpoint = maxRatePerEndpoint;
-            o.maxRatePerInstance = maxRatePerInstance;
-            o.maxUtilization = maxUtilization;
-            return o;
+            final var _resultValue = new GetBackendServiceBackend();
+            _resultValue.balancingMode = balancingMode;
+            _resultValue.capacityScaler = capacityScaler;
+            _resultValue.description = description;
+            _resultValue.group = group;
+            _resultValue.maxConnections = maxConnections;
+            _resultValue.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
+            _resultValue.maxConnectionsPerInstance = maxConnectionsPerInstance;
+            _resultValue.maxRate = maxRate;
+            _resultValue.maxRatePerEndpoint = maxRatePerEndpoint;
+            _resultValue.maxRatePerInstance = maxRatePerInstance;
+            _resultValue.maxUtilization = maxUtilization;
+            return _resultValue;
         }
     }
 }

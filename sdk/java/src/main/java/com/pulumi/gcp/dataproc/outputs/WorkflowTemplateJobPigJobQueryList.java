@@ -50,9 +50,9 @@ public final class WorkflowTemplateJobPigJobQueryList {
             return queries(List.of(queries));
         }
         public WorkflowTemplateJobPigJobQueryList build() {
-            final var o = new WorkflowTemplateJobPigJobQueryList();
-            o.queries = queries;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobPigJobQueryList();
+            _resultValue.queries = queries;
+            return _resultValue;
         }
     }
 }

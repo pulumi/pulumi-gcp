@@ -49,10 +49,10 @@ public final class GetServiceTemplateSpecVolumeEmptyDir {
             return this;
         }
         public GetServiceTemplateSpecVolumeEmptyDir build() {
-            final var o = new GetServiceTemplateSpecVolumeEmptyDir();
-            o.medium = medium;
-            o.sizeLimit = sizeLimit;
-            return o;
+            final var _resultValue = new GetServiceTemplateSpecVolumeEmptyDir();
+            _resultValue.medium = medium;
+            _resultValue.sizeLimit = sizeLimit;
+            return _resultValue;
         }
     }
 }

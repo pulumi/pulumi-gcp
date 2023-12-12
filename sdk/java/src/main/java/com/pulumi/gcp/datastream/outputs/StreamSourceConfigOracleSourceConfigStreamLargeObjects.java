@@ -25,8 +25,8 @@ public final class StreamSourceConfigOracleSourceConfigStreamLargeObjects {
         }
 
         public StreamSourceConfigOracleSourceConfigStreamLargeObjects build() {
-            final var o = new StreamSourceConfigOracleSourceConfigStreamLargeObjects();
-            return o;
+            final var _resultValue = new StreamSourceConfigOracleSourceConfigStreamLargeObjects();
+            return _resultValue;
         }
     }
 }

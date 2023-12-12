@@ -55,9 +55,9 @@ public final class FeatureState {
             return states(List.of(states));
         }
         public FeatureState build() {
-            final var o = new FeatureState();
-            o.states = states;
-            return o;
+            final var _resultValue = new FeatureState();
+            _resultValue.states = states;
+            return _resultValue;
         }
     }
 }

@@ -81,12 +81,12 @@ public final class GetConfigResult {
             return this;
         }
         public GetConfigResult build() {
-            final var o = new GetConfigResult();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetConfigResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

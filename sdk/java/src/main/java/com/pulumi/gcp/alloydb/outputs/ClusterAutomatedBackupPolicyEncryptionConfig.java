@@ -48,9 +48,9 @@ public final class ClusterAutomatedBackupPolicyEncryptionConfig {
             return this;
         }
         public ClusterAutomatedBackupPolicyEncryptionConfig build() {
-            final var o = new ClusterAutomatedBackupPolicyEncryptionConfig();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new ClusterAutomatedBackupPolicyEncryptionConfig();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

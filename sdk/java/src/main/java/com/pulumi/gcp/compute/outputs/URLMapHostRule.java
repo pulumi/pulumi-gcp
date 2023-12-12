@@ -98,11 +98,11 @@ public final class URLMapHostRule {
             return this;
         }
         public URLMapHostRule build() {
-            final var o = new URLMapHostRule();
-            o.description = description;
-            o.hosts = hosts;
-            o.pathMatcher = pathMatcher;
-            return o;
+            final var _resultValue = new URLMapHostRule();
+            _resultValue.description = description;
+            _resultValue.hosts = hosts;
+            _resultValue.pathMatcher = pathMatcher;
+            return _resultValue;
         }
     }
 }

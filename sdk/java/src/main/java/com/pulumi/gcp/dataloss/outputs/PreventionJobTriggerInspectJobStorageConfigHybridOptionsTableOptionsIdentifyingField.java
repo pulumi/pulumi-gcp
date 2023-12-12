@@ -46,9 +46,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTable
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField();
-            o.name = name;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

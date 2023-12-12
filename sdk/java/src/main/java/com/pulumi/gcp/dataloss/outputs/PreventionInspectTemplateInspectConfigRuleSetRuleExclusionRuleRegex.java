@@ -73,10 +73,10 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex();
-            o.groupIndexes = groupIndexes;
-            o.pattern = pattern;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex();
+            _resultValue.groupIndexes = groupIndexes;
+            _resultValue.pattern = pattern;
+            return _resultValue;
         }
     }
 }

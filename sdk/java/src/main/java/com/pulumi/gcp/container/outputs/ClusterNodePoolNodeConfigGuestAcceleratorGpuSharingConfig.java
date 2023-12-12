@@ -70,10 +70,10 @@ public final class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
             return this;
         }
         public ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig build() {
-            final var o = new ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig();
-            o.gpuSharingStrategy = gpuSharingStrategy;
-            o.maxSharedClientsPerGpu = maxSharedClientsPerGpu;
-            return o;
+            final var _resultValue = new ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig();
+            _resultValue.gpuSharingStrategy = gpuSharingStrategy;
+            _resultValue.maxSharedClientsPerGpu = maxSharedClientsPerGpu;
+            return _resultValue;
         }
     }
 }

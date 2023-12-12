@@ -50,10 +50,10 @@ public final class GetClusterNetworkPolicy {
             return this;
         }
         public GetClusterNetworkPolicy build() {
-            final var o = new GetClusterNetworkPolicy();
-            o.enabled = enabled;
-            o.provider = provider;
-            return o;
+            final var _resultValue = new GetClusterNetworkPolicy();
+            _resultValue.enabled = enabled;
+            _resultValue.provider = provider;
+            return _resultValue;
         }
     }
 }

@@ -119,14 +119,14 @@ public final class GetSubnetworkIamPolicyResult {
             return this;
         }
         public GetSubnetworkIamPolicyResult build() {
-            final var o = new GetSubnetworkIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.region = region;
-            o.subnetwork = subnetwork;
-            return o;
+            final var _resultValue = new GetSubnetworkIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.subnetwork = subnetwork;
+            return _resultValue;
         }
     }
 }

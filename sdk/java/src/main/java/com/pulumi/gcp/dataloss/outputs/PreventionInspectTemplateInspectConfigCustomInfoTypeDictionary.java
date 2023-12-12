@@ -72,10 +72,10 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionar
             return this;
         }
         public PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary build() {
-            final var o = new PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary();
-            o.cloudStoragePath = cloudStoragePath;
-            o.wordList = wordList;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary();
+            _resultValue.cloudStoragePath = cloudStoragePath;
+            _resultValue.wordList = wordList;
+            return _resultValue;
         }
     }
 }

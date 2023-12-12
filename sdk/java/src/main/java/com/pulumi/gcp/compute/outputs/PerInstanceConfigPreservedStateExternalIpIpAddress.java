@@ -48,9 +48,9 @@ public final class PerInstanceConfigPreservedStateExternalIpIpAddress {
             return this;
         }
         public PerInstanceConfigPreservedStateExternalIpIpAddress build() {
-            final var o = new PerInstanceConfigPreservedStateExternalIpIpAddress();
-            o.address = address;
-            return o;
+            final var _resultValue = new PerInstanceConfigPreservedStateExternalIpIpAddress();
+            _resultValue.address = address;
+            return _resultValue;
         }
     }
 }

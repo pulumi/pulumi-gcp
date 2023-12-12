@@ -67,10 +67,10 @@ public final class DataStoreIndexProperty {
             return this;
         }
         public DataStoreIndexProperty build() {
-            final var o = new DataStoreIndexProperty();
-            o.direction = direction;
-            o.name = name;
-            return o;
+            final var _resultValue = new DataStoreIndexProperty();
+            _resultValue.direction = direction;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

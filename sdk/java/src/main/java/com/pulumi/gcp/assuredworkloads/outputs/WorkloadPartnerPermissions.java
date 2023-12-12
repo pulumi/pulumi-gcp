@@ -86,11 +86,11 @@ public final class WorkloadPartnerPermissions {
             return this;
         }
         public WorkloadPartnerPermissions build() {
-            final var o = new WorkloadPartnerPermissions();
-            o.assuredWorkloadsMonitoring = assuredWorkloadsMonitoring;
-            o.dataLogsViewer = dataLogsViewer;
-            o.serviceAccessApprover = serviceAccessApprover;
-            return o;
+            final var _resultValue = new WorkloadPartnerPermissions();
+            _resultValue.assuredWorkloadsMonitoring = assuredWorkloadsMonitoring;
+            _resultValue.dataLogsViewer = dataLogsViewer;
+            _resultValue.serviceAccessApprover = serviceAccessApprover;
+            return _resultValue;
         }
     }
 }

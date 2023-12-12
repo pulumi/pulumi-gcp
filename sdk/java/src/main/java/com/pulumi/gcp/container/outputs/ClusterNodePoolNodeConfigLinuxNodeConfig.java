@@ -120,10 +120,10 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
             return this;
         }
         public ClusterNodePoolNodeConfigLinuxNodeConfig build() {
-            final var o = new ClusterNodePoolNodeConfigLinuxNodeConfig();
-            o.cgroupMode = cgroupMode;
-            o.sysctls = sysctls;
-            return o;
+            final var _resultValue = new ClusterNodePoolNodeConfigLinuxNodeConfig();
+            _resultValue.cgroupMode = cgroupMode;
+            _resultValue.sysctls = sysctls;
+            return _resultValue;
         }
     }
 }

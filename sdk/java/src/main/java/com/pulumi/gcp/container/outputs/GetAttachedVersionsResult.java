@@ -91,12 +91,12 @@ public final class GetAttachedVersionsResult {
             return validVersions(List.of(validVersions));
         }
         public GetAttachedVersionsResult build() {
-            final var o = new GetAttachedVersionsResult();
-            o.id = id;
-            o.location = location;
-            o.project = project;
-            o.validVersions = validVersions;
-            return o;
+            final var _resultValue = new GetAttachedVersionsResult();
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.project = project;
+            _resultValue.validVersions = validVersions;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class DatascanIamBindingCondition {
             return this;
         }
         public DatascanIamBindingCondition build() {
-            final var o = new DatascanIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new DatascanIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

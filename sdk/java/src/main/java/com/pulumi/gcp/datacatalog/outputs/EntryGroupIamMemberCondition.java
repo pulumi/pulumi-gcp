@@ -62,11 +62,11 @@ public final class EntryGroupIamMemberCondition {
             return this;
         }
         public EntryGroupIamMemberCondition build() {
-            final var o = new EntryGroupIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new EntryGroupIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

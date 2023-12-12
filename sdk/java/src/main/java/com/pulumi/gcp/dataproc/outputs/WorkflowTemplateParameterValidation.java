@@ -68,10 +68,10 @@ public final class WorkflowTemplateParameterValidation {
             return this;
         }
         public WorkflowTemplateParameterValidation build() {
-            final var o = new WorkflowTemplateParameterValidation();
-            o.regex = regex;
-            o.values = values;
-            return o;
+            final var _resultValue = new WorkflowTemplateParameterValidation();
+            _resultValue.regex = regex;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

@@ -52,9 +52,9 @@ public final class OrganizationSinkBigqueryOptions {
             return this;
         }
         public OrganizationSinkBigqueryOptions build() {
-            final var o = new OrganizationSinkBigqueryOptions();
-            o.usePartitionedTables = usePartitionedTables;
-            return o;
+            final var _resultValue = new OrganizationSinkBigqueryOptions();
+            _resultValue.usePartitionedTables = usePartitionedTables;
+            return _resultValue;
         }
     }
 }

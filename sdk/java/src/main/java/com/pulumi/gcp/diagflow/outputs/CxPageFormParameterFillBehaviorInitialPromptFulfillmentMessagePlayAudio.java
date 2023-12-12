@@ -70,10 +70,10 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessag
             return this;
         }
         public CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio build() {
-            final var o = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.audioUri = audioUri;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.audioUri = audioUri;
+            return _resultValue;
         }
     }
 }

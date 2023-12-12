@@ -62,11 +62,11 @@ public final class DatabaseIAMMemberCondition {
             return this;
         }
         public DatabaseIAMMemberCondition build() {
-            final var o = new DatabaseIAMMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new DatabaseIAMMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

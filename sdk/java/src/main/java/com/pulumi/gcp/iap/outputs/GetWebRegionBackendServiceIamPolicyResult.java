@@ -119,14 +119,14 @@ public final class GetWebRegionBackendServiceIamPolicyResult {
             return this;
         }
         public GetWebRegionBackendServiceIamPolicyResult build() {
-            final var o = new GetWebRegionBackendServiceIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.region = region;
-            o.webRegionBackendService = webRegionBackendService;
-            return o;
+            final var _resultValue = new GetWebRegionBackendServiceIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.webRegionBackendService = webRegionBackendService;
+            return _resultValue;
         }
     }
 }

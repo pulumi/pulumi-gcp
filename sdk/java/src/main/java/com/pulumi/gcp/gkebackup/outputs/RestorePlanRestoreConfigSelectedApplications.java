@@ -52,9 +52,9 @@ public final class RestorePlanRestoreConfigSelectedApplications {
             return namespacedNames(List.of(namespacedNames));
         }
         public RestorePlanRestoreConfigSelectedApplications build() {
-            final var o = new RestorePlanRestoreConfigSelectedApplications();
-            o.namespacedNames = namespacedNames;
-            return o;
+            final var _resultValue = new RestorePlanRestoreConfigSelectedApplications();
+            _resultValue.namespacedNames = namespacedNames;
+            return _resultValue;
         }
     }
 }

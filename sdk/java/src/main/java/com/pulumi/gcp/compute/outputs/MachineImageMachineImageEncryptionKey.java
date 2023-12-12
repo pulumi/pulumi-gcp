@@ -113,12 +113,12 @@ public final class MachineImageMachineImageEncryptionKey {
             return this;
         }
         public MachineImageMachineImageEncryptionKey build() {
-            final var o = new MachineImageMachineImageEncryptionKey();
-            o.kmsKeyName = kmsKeyName;
-            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
-            o.rawKey = rawKey;
-            o.sha256 = sha256;
-            return o;
+            final var _resultValue = new MachineImageMachineImageEncryptionKey();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            _resultValue.rawKey = rawKey;
+            _resultValue.sha256 = sha256;
+            return _resultValue;
         }
     }
 }

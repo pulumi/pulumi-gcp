@@ -54,9 +54,9 @@ public final class ManagedZoneServiceDirectoryConfigNamespace {
             return this;
         }
         public ManagedZoneServiceDirectoryConfigNamespace build() {
-            final var o = new ManagedZoneServiceDirectoryConfigNamespace();
-            o.namespaceUrl = namespaceUrl;
-            return o;
+            final var _resultValue = new ManagedZoneServiceDirectoryConfigNamespace();
+            _resultValue.namespaceUrl = namespaceUrl;
+            return _resultValue;
         }
     }
 }

@@ -88,11 +88,11 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
             return this;
         }
         public BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint build() {
-            final var o = new BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

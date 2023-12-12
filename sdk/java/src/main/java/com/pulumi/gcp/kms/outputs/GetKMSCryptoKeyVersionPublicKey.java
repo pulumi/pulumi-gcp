@@ -65,10 +65,10 @@ public final class GetKMSCryptoKeyVersionPublicKey {
             return this;
         }
         public GetKMSCryptoKeyVersionPublicKey build() {
-            final var o = new GetKMSCryptoKeyVersionPublicKey();
-            o.algorithm = algorithm;
-            o.pem = pem;
-            return o;
+            final var _resultValue = new GetKMSCryptoKeyVersionPublicKey();
+            _resultValue.algorithm = algorithm;
+            _resultValue.pem = pem;
+            return _resultValue;
         }
     }
 }

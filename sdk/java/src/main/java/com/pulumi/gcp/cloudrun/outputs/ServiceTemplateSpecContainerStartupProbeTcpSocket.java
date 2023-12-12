@@ -50,9 +50,9 @@ public final class ServiceTemplateSpecContainerStartupProbeTcpSocket {
             return this;
         }
         public ServiceTemplateSpecContainerStartupProbeTcpSocket build() {
-            final var o = new ServiceTemplateSpecContainerStartupProbeTcpSocket();
-            o.port = port;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecContainerStartupProbeTcpSocket();
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

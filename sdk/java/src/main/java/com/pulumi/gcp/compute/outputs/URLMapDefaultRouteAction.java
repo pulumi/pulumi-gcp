@@ -216,15 +216,15 @@ public final class URLMapDefaultRouteAction {
             return weightedBackendServices(List.of(weightedBackendServices));
         }
         public URLMapDefaultRouteAction build() {
-            final var o = new URLMapDefaultRouteAction();
-            o.corsPolicy = corsPolicy;
-            o.faultInjectionPolicy = faultInjectionPolicy;
-            o.requestMirrorPolicy = requestMirrorPolicy;
-            o.retryPolicy = retryPolicy;
-            o.timeout = timeout;
-            o.urlRewrite = urlRewrite;
-            o.weightedBackendServices = weightedBackendServices;
-            return o;
+            final var _resultValue = new URLMapDefaultRouteAction();
+            _resultValue.corsPolicy = corsPolicy;
+            _resultValue.faultInjectionPolicy = faultInjectionPolicy;
+            _resultValue.requestMirrorPolicy = requestMirrorPolicy;
+            _resultValue.retryPolicy = retryPolicy;
+            _resultValue.timeout = timeout;
+            _resultValue.urlRewrite = urlRewrite;
+            _resultValue.weightedBackendServices = weightedBackendServices;
+            return _resultValue;
         }
     }
 }

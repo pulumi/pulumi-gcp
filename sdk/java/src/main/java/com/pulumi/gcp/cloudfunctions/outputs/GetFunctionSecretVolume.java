@@ -76,12 +76,12 @@ public final class GetFunctionSecretVolume {
             return versions(List.of(versions));
         }
         public GetFunctionSecretVolume build() {
-            final var o = new GetFunctionSecretVolume();
-            o.mountPath = mountPath;
-            o.projectId = projectId;
-            o.secret = secret;
-            o.versions = versions;
-            return o;
+            final var _resultValue = new GetFunctionSecretVolume();
+            _resultValue.mountPath = mountPath;
+            _resultValue.projectId = projectId;
+            _resultValue.secret = secret;
+            _resultValue.versions = versions;
+            return _resultValue;
         }
     }
 }

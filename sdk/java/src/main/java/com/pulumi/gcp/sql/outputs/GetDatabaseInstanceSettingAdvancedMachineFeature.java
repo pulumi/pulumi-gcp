@@ -38,9 +38,9 @@ public final class GetDatabaseInstanceSettingAdvancedMachineFeature {
             return this;
         }
         public GetDatabaseInstanceSettingAdvancedMachineFeature build() {
-            final var o = new GetDatabaseInstanceSettingAdvancedMachineFeature();
-            o.threadsPerCore = threadsPerCore;
-            return o;
+            final var _resultValue = new GetDatabaseInstanceSettingAdvancedMachineFeature();
+            _resultValue.threadsPerCore = threadsPerCore;
+            return _resultValue;
         }
     }
 }

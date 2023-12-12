@@ -49,10 +49,10 @@ public final class GetKMSCryptoKeyVersionTemplate {
             return this;
         }
         public GetKMSCryptoKeyVersionTemplate build() {
-            final var o = new GetKMSCryptoKeyVersionTemplate();
-            o.algorithm = algorithm;
-            o.protectionLevel = protectionLevel;
-            return o;
+            final var _resultValue = new GetKMSCryptoKeyVersionTemplate();
+            _resultValue.algorithm = algorithm;
+            _resultValue.protectionLevel = protectionLevel;
+            return _resultValue;
         }
     }
 }

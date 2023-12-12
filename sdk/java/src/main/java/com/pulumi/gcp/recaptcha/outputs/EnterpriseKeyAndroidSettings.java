@@ -72,10 +72,10 @@ public final class EnterpriseKeyAndroidSettings {
             return allowedPackageNames(List.of(allowedPackageNames));
         }
         public EnterpriseKeyAndroidSettings build() {
-            final var o = new EnterpriseKeyAndroidSettings();
-            o.allowAllPackageNames = allowAllPackageNames;
-            o.allowedPackageNames = allowedPackageNames;
-            return o;
+            final var _resultValue = new EnterpriseKeyAndroidSettings();
+            _resultValue.allowAllPackageNames = allowAllPackageNames;
+            _resultValue.allowedPackageNames = allowedPackageNames;
+            return _resultValue;
         }
     }
 }

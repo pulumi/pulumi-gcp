@@ -94,11 +94,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfig {
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfig build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfig();
-            o.imageTransformations = imageTransformations;
-            o.infoTypeTransformations = infoTypeTransformations;
-            o.recordTransformations = recordTransformations;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfig();
+            _resultValue.imageTransformations = imageTransformations;
+            _resultValue.infoTypeTransformations = infoTypeTransformations;
+            _resultValue.recordTransformations = recordTransformations;
+            return _resultValue;
         }
     }
 }

@@ -66,10 +66,10 @@ public final class InstanceEventPublishConfig {
             return this;
         }
         public InstanceEventPublishConfig build() {
-            final var o = new InstanceEventPublishConfig();
-            o.enabled = enabled;
-            o.topic = topic;
-            return o;
+            final var _resultValue = new InstanceEventPublishConfig();
+            _resultValue.enabled = enabled;
+            _resultValue.topic = topic;
+            return _resultValue;
         }
     }
 }

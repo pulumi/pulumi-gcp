@@ -88,11 +88,11 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
             return this;
         }
         public ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy build() {
-            final var o = new ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy();
-            o.batchNodeCount = batchNodeCount;
-            o.batchPercentage = batchPercentage;
-            o.batchSoakDuration = batchSoakDuration;
-            return o;
+            final var _resultValue = new ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy();
+            _resultValue.batchNodeCount = batchNodeCount;
+            _resultValue.batchPercentage = batchPercentage;
+            _resultValue.batchSoakDuration = batchSoakDuration;
+            return _resultValue;
         }
     }
 }

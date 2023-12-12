@@ -130,15 +130,15 @@ public final class GetAppEngineVersionIamPolicyResult {
             return this;
         }
         public GetAppEngineVersionIamPolicyResult build() {
-            final var o = new GetAppEngineVersionIamPolicyResult();
-            o.appId = appId;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.service = service;
-            o.versionId = versionId;
-            return o;
+            final var _resultValue = new GetAppEngineVersionIamPolicyResult();
+            _resultValue.appId = appId;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.service = service;
+            _resultValue.versionId = versionId;
+            return _resultValue;
         }
     }
 }

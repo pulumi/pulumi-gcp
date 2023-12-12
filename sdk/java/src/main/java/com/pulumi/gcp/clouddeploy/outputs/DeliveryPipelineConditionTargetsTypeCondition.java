@@ -52,10 +52,10 @@ public final class DeliveryPipelineConditionTargetsTypeCondition {
             return this;
         }
         public DeliveryPipelineConditionTargetsTypeCondition build() {
-            final var o = new DeliveryPipelineConditionTargetsTypeCondition();
-            o.errorDetails = errorDetails;
-            o.status = status;
-            return o;
+            final var _resultValue = new DeliveryPipelineConditionTargetsTypeCondition();
+            _resultValue.errorDetails = errorDetails;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

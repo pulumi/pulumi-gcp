@@ -54,9 +54,9 @@ public final class FolderCustomModuleCustomConfigResourceSelector {
             return resourceTypes(List.of(resourceTypes));
         }
         public FolderCustomModuleCustomConfigResourceSelector build() {
-            final var o = new FolderCustomModuleCustomConfigResourceSelector();
-            o.resourceTypes = resourceTypes;
-            return o;
+            final var _resultValue = new FolderCustomModuleCustomConfigResourceSelector();
+            _resultValue.resourceTypes = resourceTypes;
+            return _resultValue;
         }
     }
 }

@@ -145,13 +145,13 @@ public final class NodePoolAutoscaling {
             return this;
         }
         public NodePoolAutoscaling build() {
-            final var o = new NodePoolAutoscaling();
-            o.locationPolicy = locationPolicy;
-            o.maxNodeCount = maxNodeCount;
-            o.minNodeCount = minNodeCount;
-            o.totalMaxNodeCount = totalMaxNodeCount;
-            o.totalMinNodeCount = totalMinNodeCount;
-            return o;
+            final var _resultValue = new NodePoolAutoscaling();
+            _resultValue.locationPolicy = locationPolicy;
+            _resultValue.maxNodeCount = maxNodeCount;
+            _resultValue.minNodeCount = minNodeCount;
+            _resultValue.totalMaxNodeCount = totalMaxNodeCount;
+            _resultValue.totalMinNodeCount = totalMinNodeCount;
+            return _resultValue;
         }
     }
 }

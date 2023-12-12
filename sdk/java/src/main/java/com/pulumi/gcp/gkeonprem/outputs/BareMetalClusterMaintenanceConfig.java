@@ -56,9 +56,9 @@ public final class BareMetalClusterMaintenanceConfig {
             return maintenanceAddressCidrBlocks(List.of(maintenanceAddressCidrBlocks));
         }
         public BareMetalClusterMaintenanceConfig build() {
-            final var o = new BareMetalClusterMaintenanceConfig();
-            o.maintenanceAddressCidrBlocks = maintenanceAddressCidrBlocks;
-            return o;
+            final var _resultValue = new BareMetalClusterMaintenanceConfig();
+            _resultValue.maintenanceAddressCidrBlocks = maintenanceAddressCidrBlocks;
+            return _resultValue;
         }
     }
 }

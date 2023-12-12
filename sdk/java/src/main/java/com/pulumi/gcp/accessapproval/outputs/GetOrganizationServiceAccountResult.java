@@ -97,12 +97,12 @@ public final class GetOrganizationServiceAccountResult {
             return this;
         }
         public GetOrganizationServiceAccountResult build() {
-            final var o = new GetOrganizationServiceAccountResult();
-            o.accountEmail = accountEmail;
-            o.id = id;
-            o.name = name;
-            o.organizationId = organizationId;
-            return o;
+            final var _resultValue = new GetOrganizationServiceAccountResult();
+            _resultValue.accountEmail = accountEmail;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.organizationId = organizationId;
+            return _resultValue;
         }
     }
 }

@@ -71,10 +71,10 @@ public final class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDow
             return this;
         }
         public RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas build() {
-            final var o = new RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas();
-            o.fixed = fixed;
-            o.percent = percent;
-            return o;
+            final var _resultValue = new RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas();
+            _resultValue.fixed = fixed;
+            _resultValue.percent = percent;
+            return _resultValue;
         }
     }
 }

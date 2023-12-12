@@ -73,10 +73,10 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
             return this;
         }
         public ManagedZoneForwardingConfigTargetNameServer build() {
-            final var o = new ManagedZoneForwardingConfigTargetNameServer();
-            o.forwardingPath = forwardingPath;
-            o.ipv4Address = ipv4Address;
-            return o;
+            final var _resultValue = new ManagedZoneForwardingConfigTargetNameServer();
+            _resultValue.forwardingPath = forwardingPath;
+            _resultValue.ipv4Address = ipv4Address;
+            return _resultValue;
         }
     }
 }

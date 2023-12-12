@@ -74,10 +74,10 @@ public final class ServerTlsPolicyServerCertificate {
             return this;
         }
         public ServerTlsPolicyServerCertificate build() {
-            final var o = new ServerTlsPolicyServerCertificate();
-            o.certificateProviderInstance = certificateProviderInstance;
-            o.grpcEndpoint = grpcEndpoint;
-            return o;
+            final var _resultValue = new ServerTlsPolicyServerCertificate();
+            _resultValue.certificateProviderInstance = certificateProviderInstance;
+            _resultValue.grpcEndpoint = grpcEndpoint;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class RegionNetworkFirewallPolicyRuleTargetSecureTag {
             return this;
         }
         public RegionNetworkFirewallPolicyRuleTargetSecureTag build() {
-            final var o = new RegionNetworkFirewallPolicyRuleTargetSecureTag();
-            o.name = name;
-            o.state = state;
-            return o;
+            final var _resultValue = new RegionNetworkFirewallPolicyRuleTargetSecureTag();
+            _resultValue.name = name;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

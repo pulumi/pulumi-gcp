@@ -91,11 +91,11 @@ public final class ReservationSpecificReservation {
             return this;
         }
         public ReservationSpecificReservation build() {
-            final var o = new ReservationSpecificReservation();
-            o.count = count;
-            o.inUseCount = inUseCount;
-            o.instanceProperties = instanceProperties;
-            return o;
+            final var _resultValue = new ReservationSpecificReservation();
+            _resultValue.count = count;
+            _resultValue.inUseCount = inUseCount;
+            _resultValue.instanceProperties = instanceProperties;
+            return _resultValue;
         }
     }
 }

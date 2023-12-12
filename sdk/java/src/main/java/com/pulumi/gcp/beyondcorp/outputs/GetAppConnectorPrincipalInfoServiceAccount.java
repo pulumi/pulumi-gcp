@@ -38,9 +38,9 @@ public final class GetAppConnectorPrincipalInfoServiceAccount {
             return this;
         }
         public GetAppConnectorPrincipalInfoServiceAccount build() {
-            final var o = new GetAppConnectorPrincipalInfoServiceAccount();
-            o.email = email;
-            return o;
+            final var _resultValue = new GetAppConnectorPrincipalInfoServiceAccount();
+            _resultValue.email = email;
+            return _resultValue;
         }
     }
 }

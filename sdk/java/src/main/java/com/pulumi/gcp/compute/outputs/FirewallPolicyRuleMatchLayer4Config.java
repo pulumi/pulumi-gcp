@@ -74,10 +74,10 @@ public final class FirewallPolicyRuleMatchLayer4Config {
             return ports(List.of(ports));
         }
         public FirewallPolicyRuleMatchLayer4Config build() {
-            final var o = new FirewallPolicyRuleMatchLayer4Config();
-            o.ipProtocol = ipProtocol;
-            o.ports = ports;
-            return o;
+            final var _resultValue = new FirewallPolicyRuleMatchLayer4Config();
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.ports = ports;
+            return _resultValue;
         }
     }
 }

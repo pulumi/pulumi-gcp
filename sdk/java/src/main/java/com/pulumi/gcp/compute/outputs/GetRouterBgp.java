@@ -91,13 +91,13 @@ public final class GetRouterBgp {
             return this;
         }
         public GetRouterBgp build() {
-            final var o = new GetRouterBgp();
-            o.advertiseMode = advertiseMode;
-            o.advertisedGroups = advertisedGroups;
-            o.advertisedIpRanges = advertisedIpRanges;
-            o.asn = asn;
-            o.keepaliveInterval = keepaliveInterval;
-            return o;
+            final var _resultValue = new GetRouterBgp();
+            _resultValue.advertiseMode = advertiseMode;
+            _resultValue.advertisedGroups = advertisedGroups;
+            _resultValue.advertisedIpRanges = advertisedIpRanges;
+            _resultValue.asn = asn;
+            _resultValue.keepaliveInterval = keepaliveInterval;
+            return _resultValue;
         }
     }
 }

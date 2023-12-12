@@ -53,10 +53,10 @@ public final class GetInstanceReservationAffinitySpecificReservation {
             return values(List.of(values));
         }
         public GetInstanceReservationAffinitySpecificReservation build() {
-            final var o = new GetInstanceReservationAffinitySpecificReservation();
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetInstanceReservationAffinitySpecificReservation();
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

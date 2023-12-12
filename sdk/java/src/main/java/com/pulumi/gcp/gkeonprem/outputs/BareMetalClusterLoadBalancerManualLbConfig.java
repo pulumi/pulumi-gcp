@@ -46,9 +46,9 @@ public final class BareMetalClusterLoadBalancerManualLbConfig {
             return this;
         }
         public BareMetalClusterLoadBalancerManualLbConfig build() {
-            final var o = new BareMetalClusterLoadBalancerManualLbConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new BareMetalClusterLoadBalancerManualLbConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

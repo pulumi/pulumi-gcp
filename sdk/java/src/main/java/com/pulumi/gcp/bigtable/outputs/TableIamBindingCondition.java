@@ -62,11 +62,11 @@ public final class TableIamBindingCondition {
             return this;
         }
         public TableIamBindingCondition build() {
-            final var o = new TableIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new TableIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

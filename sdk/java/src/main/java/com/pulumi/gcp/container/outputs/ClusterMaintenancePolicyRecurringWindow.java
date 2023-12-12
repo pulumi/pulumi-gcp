@@ -60,11 +60,11 @@ public final class ClusterMaintenancePolicyRecurringWindow {
             return this;
         }
         public ClusterMaintenancePolicyRecurringWindow build() {
-            final var o = new ClusterMaintenancePolicyRecurringWindow();
-            o.endTime = endTime;
-            o.recurrence = recurrence;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new ClusterMaintenancePolicyRecurringWindow();
+            _resultValue.endTime = endTime;
+            _resultValue.recurrence = recurrence;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

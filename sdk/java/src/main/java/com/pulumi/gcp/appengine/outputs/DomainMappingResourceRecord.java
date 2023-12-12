@@ -88,11 +88,11 @@ public final class DomainMappingResourceRecord {
             return this;
         }
         public DomainMappingResourceRecord build() {
-            final var o = new DomainMappingResourceRecord();
-            o.name = name;
-            o.rrdata = rrdata;
-            o.type = type;
-            return o;
+            final var _resultValue = new DomainMappingResourceRecord();
+            _resultValue.name = name;
+            _resultValue.rrdata = rrdata;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

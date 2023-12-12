@@ -74,10 +74,10 @@ public final class TlsRouteRule {
             return matches(List.of(matches));
         }
         public TlsRouteRule build() {
-            final var o = new TlsRouteRule();
-            o.action = action;
-            o.matches = matches;
-            return o;
+            final var _resultValue = new TlsRouteRule();
+            _resultValue.action = action;
+            _resultValue.matches = matches;
+            return _resultValue;
         }
     }
 }

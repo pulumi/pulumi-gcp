@@ -48,9 +48,9 @@ public final class DataTransferConfigSensitiveParams {
             return this;
         }
         public DataTransferConfigSensitiveParams build() {
-            final var o = new DataTransferConfigSensitiveParams();
-            o.secretAccessKey = secretAccessKey;
-            return o;
+            final var _resultValue = new DataTransferConfigSensitiveParams();
+            _resultValue.secretAccessKey = secretAccessKey;
+            return _resultValue;
         }
     }
 }

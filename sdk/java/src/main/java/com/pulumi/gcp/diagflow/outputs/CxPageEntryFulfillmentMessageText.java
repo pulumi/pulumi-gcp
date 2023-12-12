@@ -74,10 +74,10 @@ public final class CxPageEntryFulfillmentMessageText {
             return texts(List.of(texts));
         }
         public CxPageEntryFulfillmentMessageText build() {
-            final var o = new CxPageEntryFulfillmentMessageText();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.texts = texts;
-            return o;
+            final var _resultValue = new CxPageEntryFulfillmentMessageText();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.texts = texts;
+            return _resultValue;
         }
     }
 }

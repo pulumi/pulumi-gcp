@@ -136,13 +136,13 @@ public final class TriggerGithub {
             return this;
         }
         public TriggerGithub build() {
-            final var o = new TriggerGithub();
-            o.enterpriseConfigResourceName = enterpriseConfigResourceName;
-            o.name = name;
-            o.owner = owner;
-            o.pullRequest = pullRequest;
-            o.push = push;
-            return o;
+            final var _resultValue = new TriggerGithub();
+            _resultValue.enterpriseConfigResourceName = enterpriseConfigResourceName;
+            _resultValue.name = name;
+            _resultValue.owner = owner;
+            _resultValue.pullRequest = pullRequest;
+            _resultValue.push = push;
+            return _resultValue;
         }
     }
 }

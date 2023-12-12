@@ -90,11 +90,11 @@ public final class CxWebhookGenericWebService {
             return this;
         }
         public CxWebhookGenericWebService build() {
-            final var o = new CxWebhookGenericWebService();
-            o.allowedCaCerts = allowedCaCerts;
-            o.requestHeaders = requestHeaders;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new CxWebhookGenericWebService();
+            _resultValue.allowedCaCerts = allowedCaCerts;
+            _resultValue.requestHeaders = requestHeaders;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

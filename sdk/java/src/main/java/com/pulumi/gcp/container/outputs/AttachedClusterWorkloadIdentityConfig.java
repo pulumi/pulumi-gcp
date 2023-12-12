@@ -88,11 +88,11 @@ public final class AttachedClusterWorkloadIdentityConfig {
             return this;
         }
         public AttachedClusterWorkloadIdentityConfig build() {
-            final var o = new AttachedClusterWorkloadIdentityConfig();
-            o.identityProvider = identityProvider;
-            o.issuerUri = issuerUri;
-            o.workloadPool = workloadPool;
-            return o;
+            final var _resultValue = new AttachedClusterWorkloadIdentityConfig();
+            _resultValue.identityProvider = identityProvider;
+            _resultValue.issuerUri = issuerUri;
+            _resultValue.workloadPool = workloadPool;
+            return _resultValue;
         }
     }
 }

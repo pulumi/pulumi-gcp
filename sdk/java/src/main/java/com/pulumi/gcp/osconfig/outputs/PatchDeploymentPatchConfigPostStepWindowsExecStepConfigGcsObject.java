@@ -84,11 +84,11 @@ public final class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObj
             return this;
         }
         public PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject build() {
-            final var o = new PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject();
-            o.bucket = bucket;
-            o.generationNumber = generationNumber;
-            o.object = object;
-            return o;
+            final var _resultValue = new PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject();
+            _resultValue.bucket = bucket;
+            _resultValue.generationNumber = generationNumber;
+            _resultValue.object = object;
+            return _resultValue;
         }
     }
 }

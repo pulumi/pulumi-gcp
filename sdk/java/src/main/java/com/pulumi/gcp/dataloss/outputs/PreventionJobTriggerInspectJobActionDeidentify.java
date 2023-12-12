@@ -129,12 +129,12 @@ public final class PreventionJobTriggerInspectJobActionDeidentify {
             return this;
         }
         public PreventionJobTriggerInspectJobActionDeidentify build() {
-            final var o = new PreventionJobTriggerInspectJobActionDeidentify();
-            o.cloudStorageOutput = cloudStorageOutput;
-            o.fileTypesToTransforms = fileTypesToTransforms;
-            o.transformationConfig = transformationConfig;
-            o.transformationDetailsStorageConfig = transformationDetailsStorageConfig;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobActionDeidentify();
+            _resultValue.cloudStorageOutput = cloudStorageOutput;
+            _resultValue.fileTypesToTransforms = fileTypesToTransforms;
+            _resultValue.transformationConfig = transformationConfig;
+            _resultValue.transformationDetailsStorageConfig = transformationDetailsStorageConfig;
+            return _resultValue;
         }
     }
 }

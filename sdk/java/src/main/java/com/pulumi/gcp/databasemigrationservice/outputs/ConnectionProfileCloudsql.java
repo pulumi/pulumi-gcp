@@ -114,12 +114,12 @@ public final class ConnectionProfileCloudsql {
             return this;
         }
         public ConnectionProfileCloudsql build() {
-            final var o = new ConnectionProfileCloudsql();
-            o.cloudSqlId = cloudSqlId;
-            o.privateIp = privateIp;
-            o.publicIp = publicIp;
-            o.settings = settings;
-            return o;
+            final var _resultValue = new ConnectionProfileCloudsql();
+            _resultValue.cloudSqlId = cloudSqlId;
+            _resultValue.privateIp = privateIp;
+            _resultValue.publicIp = publicIp;
+            _resultValue.settings = settings;
+            return _resultValue;
         }
     }
 }

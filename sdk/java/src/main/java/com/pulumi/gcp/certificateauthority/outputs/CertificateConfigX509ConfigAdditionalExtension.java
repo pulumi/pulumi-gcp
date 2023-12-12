@@ -90,11 +90,11 @@ public final class CertificateConfigX509ConfigAdditionalExtension {
             return this;
         }
         public CertificateConfigX509ConfigAdditionalExtension build() {
-            final var o = new CertificateConfigX509ConfigAdditionalExtension();
-            o.critical = critical;
-            o.objectId = objectId;
-            o.value = value;
-            return o;
+            final var _resultValue = new CertificateConfigX509ConfigAdditionalExtension();
+            _resultValue.critical = critical;
+            _resultValue.objectId = objectId;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

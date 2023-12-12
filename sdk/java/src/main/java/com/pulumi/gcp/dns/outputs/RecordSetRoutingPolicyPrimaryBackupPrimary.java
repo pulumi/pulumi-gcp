@@ -52,9 +52,9 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimary {
             return internalLoadBalancers(List.of(internalLoadBalancers));
         }
         public RecordSetRoutingPolicyPrimaryBackupPrimary build() {
-            final var o = new RecordSetRoutingPolicyPrimaryBackupPrimary();
-            o.internalLoadBalancers = internalLoadBalancers;
-            return o;
+            final var _resultValue = new RecordSetRoutingPolicyPrimaryBackupPrimary();
+            _resultValue.internalLoadBalancers = internalLoadBalancers;
+            return _resultValue;
         }
     }
 }

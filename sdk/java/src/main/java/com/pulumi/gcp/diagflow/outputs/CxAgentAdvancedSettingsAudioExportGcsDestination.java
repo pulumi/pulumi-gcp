@@ -50,9 +50,9 @@ public final class CxAgentAdvancedSettingsAudioExportGcsDestination {
             return this;
         }
         public CxAgentAdvancedSettingsAudioExportGcsDestination build() {
-            final var o = new CxAgentAdvancedSettingsAudioExportGcsDestination();
-            o.uri = uri;
-            return o;
+            final var _resultValue = new CxAgentAdvancedSettingsAudioExportGcsDestination();
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

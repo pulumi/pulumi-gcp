@@ -48,9 +48,9 @@ public final class ServicePerimeterStatusEgressPolicyEgressFromSource {
             return this;
         }
         public ServicePerimeterStatusEgressPolicyEgressFromSource build() {
-            final var o = new ServicePerimeterStatusEgressPolicyEgressFromSource();
-            o.accessLevel = accessLevel;
-            return o;
+            final var _resultValue = new ServicePerimeterStatusEgressPolicyEgressFromSource();
+            _resultValue.accessLevel = accessLevel;
+            return _resultValue;
         }
     }
 }

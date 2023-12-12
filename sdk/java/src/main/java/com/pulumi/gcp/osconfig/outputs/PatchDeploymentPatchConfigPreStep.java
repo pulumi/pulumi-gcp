@@ -72,10 +72,10 @@ public final class PatchDeploymentPatchConfigPreStep {
             return this;
         }
         public PatchDeploymentPatchConfigPreStep build() {
-            final var o = new PatchDeploymentPatchConfigPreStep();
-            o.linuxExecStepConfig = linuxExecStepConfig;
-            o.windowsExecStepConfig = windowsExecStepConfig;
-            return o;
+            final var _resultValue = new PatchDeploymentPatchConfigPreStep();
+            _resultValue.linuxExecStepConfig = linuxExecStepConfig;
+            _resultValue.windowsExecStepConfig = windowsExecStepConfig;
+            return _resultValue;
         }
     }
 }

@@ -82,12 +82,12 @@ public final class GetBucketCor {
             return responseHeaders(List.of(responseHeaders));
         }
         public GetBucketCor build() {
-            final var o = new GetBucketCor();
-            o.maxAgeSeconds = maxAgeSeconds;
-            o.methods = methods;
-            o.origins = origins;
-            o.responseHeaders = responseHeaders;
-            return o;
+            final var _resultValue = new GetBucketCor();
+            _resultValue.maxAgeSeconds = maxAgeSeconds;
+            _resultValue.methods = methods;
+            _resultValue.origins = origins;
+            _resultValue.responseHeaders = responseHeaders;
+            return _resultValue;
         }
     }
 }

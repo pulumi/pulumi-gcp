@@ -49,10 +49,10 @@ public final class JobScheduling {
             return this;
         }
         public JobScheduling build() {
-            final var o = new JobScheduling();
-            o.maxFailuresPerHour = maxFailuresPerHour;
-            o.maxFailuresTotal = maxFailuresTotal;
-            return o;
+            final var _resultValue = new JobScheduling();
+            _resultValue.maxFailuresPerHour = maxFailuresPerHour;
+            _resultValue.maxFailuresTotal = maxFailuresTotal;
+            return _resultValue;
         }
     }
 }

@@ -71,12 +71,12 @@ public final class GetInstancePersistenceConfig {
             return this;
         }
         public GetInstancePersistenceConfig build() {
-            final var o = new GetInstancePersistenceConfig();
-            o.persistenceMode = persistenceMode;
-            o.rdbNextSnapshotTime = rdbNextSnapshotTime;
-            o.rdbSnapshotPeriod = rdbSnapshotPeriod;
-            o.rdbSnapshotStartTime = rdbSnapshotStartTime;
-            return o;
+            final var _resultValue = new GetInstancePersistenceConfig();
+            _resultValue.persistenceMode = persistenceMode;
+            _resultValue.rdbNextSnapshotTime = rdbNextSnapshotTime;
+            _resultValue.rdbSnapshotPeriod = rdbSnapshotPeriod;
+            _resultValue.rdbSnapshotStartTime = rdbSnapshotStartTime;
+            return _resultValue;
         }
     }
 }

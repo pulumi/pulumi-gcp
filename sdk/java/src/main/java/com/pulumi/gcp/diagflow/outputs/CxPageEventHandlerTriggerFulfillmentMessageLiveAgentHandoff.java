@@ -48,9 +48,9 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
             return this;
         }
         public CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff build() {
-            final var o = new CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff();
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff();
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

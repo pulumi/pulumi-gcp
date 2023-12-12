@@ -162,15 +162,15 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTarg
             return this;
         }
         public RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer build() {
-            final var o = new RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer();
-            o.ipAddress = ipAddress;
-            o.ipProtocol = ipProtocol;
-            o.loadBalancerType = loadBalancerType;
-            o.networkUrl = networkUrl;
-            o.port = port;
-            o.project = project;
-            o.region = region;
-            return o;
+            final var _resultValue = new RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.loadBalancerType = loadBalancerType;
+            _resultValue.networkUrl = networkUrl;
+            _resultValue.port = port;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

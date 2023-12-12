@@ -71,10 +71,10 @@ public final class JobLoadDestinationEncryptionConfiguration {
             return this;
         }
         public JobLoadDestinationEncryptionConfiguration build() {
-            final var o = new JobLoadDestinationEncryptionConfiguration();
-            o.kmsKeyName = kmsKeyName;
-            o.kmsKeyVersion = kmsKeyVersion;
-            return o;
+            final var _resultValue = new JobLoadDestinationEncryptionConfiguration();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.kmsKeyVersion = kmsKeyVersion;
+            return _resultValue;
         }
     }
 }

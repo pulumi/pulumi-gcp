@@ -200,17 +200,17 @@ public final class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage {
             return this;
         }
         public CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage build() {
-            final var o = new CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage();
-            o.certSign = certSign;
-            o.contentCommitment = contentCommitment;
-            o.crlSign = crlSign;
-            o.dataEncipherment = dataEncipherment;
-            o.decipherOnly = decipherOnly;
-            o.digitalSignature = digitalSignature;
-            o.encipherOnly = encipherOnly;
-            o.keyAgreement = keyAgreement;
-            o.keyEncipherment = keyEncipherment;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage();
+            _resultValue.certSign = certSign;
+            _resultValue.contentCommitment = contentCommitment;
+            _resultValue.crlSign = crlSign;
+            _resultValue.dataEncipherment = dataEncipherment;
+            _resultValue.decipherOnly = decipherOnly;
+            _resultValue.digitalSignature = digitalSignature;
+            _resultValue.encipherOnly = encipherOnly;
+            _resultValue.keyAgreement = keyAgreement;
+            _resultValue.keyEncipherment = keyEncipherment;
+            return _resultValue;
         }
     }
 }

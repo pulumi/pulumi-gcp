@@ -50,10 +50,10 @@ public final class GetBucketRetentionPolicy {
             return this;
         }
         public GetBucketRetentionPolicy build() {
-            final var o = new GetBucketRetentionPolicy();
-            o.isLocked = isLocked;
-            o.retentionPeriod = retentionPeriod;
-            return o;
+            final var _resultValue = new GetBucketRetentionPolicy();
+            _resultValue.isLocked = isLocked;
+            _resultValue.retentionPeriod = retentionPeriod;
+            return _resultValue;
         }
     }
 }

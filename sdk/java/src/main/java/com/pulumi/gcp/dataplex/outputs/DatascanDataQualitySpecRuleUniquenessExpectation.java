@@ -25,8 +25,8 @@ public final class DatascanDataQualitySpecRuleUniquenessExpectation {
         }
 
         public DatascanDataQualitySpecRuleUniquenessExpectation build() {
-            final var o = new DatascanDataQualitySpecRuleUniquenessExpectation();
-            return o;
+            final var _resultValue = new DatascanDataQualitySpecRuleUniquenessExpectation();
+            return _resultValue;
         }
     }
 }

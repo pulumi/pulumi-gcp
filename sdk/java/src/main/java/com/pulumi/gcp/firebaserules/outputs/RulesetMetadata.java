@@ -43,9 +43,9 @@ public final class RulesetMetadata {
             return services(List.of(services));
         }
         public RulesetMetadata build() {
-            final var o = new RulesetMetadata();
-            o.services = services;
-            return o;
+            final var _resultValue = new RulesetMetadata();
+            _resultValue.services = services;
+            return _resultValue;
         }
     }
 }

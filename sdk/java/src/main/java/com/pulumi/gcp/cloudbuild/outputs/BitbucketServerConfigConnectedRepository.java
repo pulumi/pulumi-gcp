@@ -65,10 +65,10 @@ public final class BitbucketServerConfigConnectedRepository {
             return this;
         }
         public BitbucketServerConfigConnectedRepository build() {
-            final var o = new BitbucketServerConfigConnectedRepository();
-            o.projectKey = projectKey;
-            o.repoSlug = repoSlug;
-            return o;
+            final var _resultValue = new BitbucketServerConfigConnectedRepository();
+            _resultValue.projectKey = projectKey;
+            _resultValue.repoSlug = repoSlug;
+            return _resultValue;
         }
     }
 }

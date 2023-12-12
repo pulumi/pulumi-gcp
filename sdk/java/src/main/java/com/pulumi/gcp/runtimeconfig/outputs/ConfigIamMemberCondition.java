@@ -62,11 +62,11 @@ public final class ConfigIamMemberCondition {
             return this;
         }
         public ConfigIamMemberCondition build() {
-            final var o = new ConfigIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new ConfigIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

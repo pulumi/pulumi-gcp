@@ -50,9 +50,9 @@ public final class HttpRouteRuleActionRequestMirrorPolicy {
             return this;
         }
         public HttpRouteRuleActionRequestMirrorPolicy build() {
-            final var o = new HttpRouteRuleActionRequestMirrorPolicy();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new HttpRouteRuleActionRequestMirrorPolicy();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

@@ -54,9 +54,9 @@ public final class ClusterPscConfig {
             return this;
         }
         public ClusterPscConfig build() {
-            final var o = new ClusterPscConfig();
-            o.network = network;
-            return o;
+            final var _resultValue = new ClusterPscConfig();
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

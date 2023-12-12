@@ -65,10 +65,10 @@ public final class AwsClusterControlPlaneProxyConfig {
             return this;
         }
         public AwsClusterControlPlaneProxyConfig build() {
-            final var o = new AwsClusterControlPlaneProxyConfig();
-            o.secretArn = secretArn;
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new AwsClusterControlPlaneProxyConfig();
+            _resultValue.secretArn = secretArn;
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

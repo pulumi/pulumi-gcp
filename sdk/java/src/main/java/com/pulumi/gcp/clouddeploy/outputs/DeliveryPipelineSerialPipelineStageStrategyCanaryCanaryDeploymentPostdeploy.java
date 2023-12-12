@@ -51,9 +51,9 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
             return actions(List.of(actions));
         }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy();
-            o.actions = actions;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy();
+            _resultValue.actions = actions;
+            return _resultValue;
         }
     }
 }

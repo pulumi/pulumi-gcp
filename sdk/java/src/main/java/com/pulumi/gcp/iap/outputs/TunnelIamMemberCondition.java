@@ -86,11 +86,11 @@ public final class TunnelIamMemberCondition {
             return this;
         }
         public TunnelIamMemberCondition build() {
-            final var o = new TunnelIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new TunnelIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

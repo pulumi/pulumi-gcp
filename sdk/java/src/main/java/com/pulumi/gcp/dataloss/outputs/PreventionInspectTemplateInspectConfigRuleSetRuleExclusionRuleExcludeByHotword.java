@@ -78,10 +78,10 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword();
-            o.hotwordRegex = hotwordRegex;
-            o.proximity = proximity;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword();
+            _resultValue.hotwordRegex = hotwordRegex;
+            _resultValue.proximity = proximity;
+            return _resultValue;
         }
     }
 }

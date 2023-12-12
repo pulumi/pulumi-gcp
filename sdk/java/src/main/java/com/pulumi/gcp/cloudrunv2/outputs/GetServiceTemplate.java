@@ -190,21 +190,21 @@ public final class GetServiceTemplate {
             return vpcAccesses(List.of(vpcAccesses));
         }
         public GetServiceTemplate build() {
-            final var o = new GetServiceTemplate();
-            o.annotations = annotations;
-            o.containers = containers;
-            o.encryptionKey = encryptionKey;
-            o.executionEnvironment = executionEnvironment;
-            o.labels = labels;
-            o.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
-            o.revision = revision;
-            o.scalings = scalings;
-            o.serviceAccount = serviceAccount;
-            o.sessionAffinity = sessionAffinity;
-            o.timeout = timeout;
-            o.volumes = volumes;
-            o.vpcAccesses = vpcAccesses;
-            return o;
+            final var _resultValue = new GetServiceTemplate();
+            _resultValue.annotations = annotations;
+            _resultValue.containers = containers;
+            _resultValue.encryptionKey = encryptionKey;
+            _resultValue.executionEnvironment = executionEnvironment;
+            _resultValue.labels = labels;
+            _resultValue.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
+            _resultValue.revision = revision;
+            _resultValue.scalings = scalings;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.sessionAffinity = sessionAffinity;
+            _resultValue.timeout = timeout;
+            _resultValue.volumes = volumes;
+            _resultValue.vpcAccesses = vpcAccesses;
+            return _resultValue;
         }
     }
 }

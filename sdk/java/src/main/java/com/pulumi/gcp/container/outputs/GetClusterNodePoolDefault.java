@@ -42,9 +42,9 @@ public final class GetClusterNodePoolDefault {
             return nodeConfigDefaults(List.of(nodeConfigDefaults));
         }
         public GetClusterNodePoolDefault build() {
-            final var o = new GetClusterNodePoolDefault();
-            o.nodeConfigDefaults = nodeConfigDefaults;
-            return o;
+            final var _resultValue = new GetClusterNodePoolDefault();
+            _resultValue.nodeConfigDefaults = nodeConfigDefaults;
+            return _resultValue;
         }
     }
 }

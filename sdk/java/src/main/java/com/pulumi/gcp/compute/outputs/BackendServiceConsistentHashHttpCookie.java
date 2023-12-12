@@ -89,11 +89,11 @@ public final class BackendServiceConsistentHashHttpCookie {
             return this;
         }
         public BackendServiceConsistentHashHttpCookie build() {
-            final var o = new BackendServiceConsistentHashHttpCookie();
-            o.name = name;
-            o.path = path;
-            o.ttl = ttl;
-            return o;
+            final var _resultValue = new BackendServiceConsistentHashHttpCookie();
+            _resultValue.name = name;
+            _resultValue.path = path;
+            _resultValue.ttl = ttl;
+            return _resultValue;
         }
     }
 }

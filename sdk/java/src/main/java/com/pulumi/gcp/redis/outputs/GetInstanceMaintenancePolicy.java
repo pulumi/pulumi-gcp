@@ -76,12 +76,12 @@ public final class GetInstanceMaintenancePolicy {
             return weeklyMaintenanceWindows(List.of(weeklyMaintenanceWindows));
         }
         public GetInstanceMaintenancePolicy build() {
-            final var o = new GetInstanceMaintenancePolicy();
-            o.createTime = createTime;
-            o.description = description;
-            o.updateTime = updateTime;
-            o.weeklyMaintenanceWindows = weeklyMaintenanceWindows;
-            return o;
+            final var _resultValue = new GetInstanceMaintenancePolicy();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.updateTime = updateTime;
+            _resultValue.weeklyMaintenanceWindows = weeklyMaintenanceWindows;
+            return _resultValue;
         }
     }
 }

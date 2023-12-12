@@ -52,9 +52,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjects {
             return postgresqlSchemas(List.of(postgresqlSchemas));
         }
         public StreamBackfillAllPostgresqlExcludedObjects build() {
-            final var o = new StreamBackfillAllPostgresqlExcludedObjects();
-            o.postgresqlSchemas = postgresqlSchemas;
-            return o;
+            final var _resultValue = new StreamBackfillAllPostgresqlExcludedObjects();
+            _resultValue.postgresqlSchemas = postgresqlSchemas;
+            return _resultValue;
         }
     }
 }

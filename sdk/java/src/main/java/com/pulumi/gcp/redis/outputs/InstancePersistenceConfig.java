@@ -139,12 +139,12 @@ public final class InstancePersistenceConfig {
             return this;
         }
         public InstancePersistenceConfig build() {
-            final var o = new InstancePersistenceConfig();
-            o.persistenceMode = persistenceMode;
-            o.rdbNextSnapshotTime = rdbNextSnapshotTime;
-            o.rdbSnapshotPeriod = rdbSnapshotPeriod;
-            o.rdbSnapshotStartTime = rdbSnapshotStartTime;
-            return o;
+            final var _resultValue = new InstancePersistenceConfig();
+            _resultValue.persistenceMode = persistenceMode;
+            _resultValue.rdbNextSnapshotTime = rdbNextSnapshotTime;
+            _resultValue.rdbSnapshotPeriod = rdbSnapshotPeriod;
+            _resultValue.rdbSnapshotStartTime = rdbSnapshotStartTime;
+            return _resultValue;
         }
     }
 }

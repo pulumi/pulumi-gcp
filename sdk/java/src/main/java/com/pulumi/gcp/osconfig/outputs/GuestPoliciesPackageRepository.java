@@ -116,12 +116,12 @@ public final class GuestPoliciesPackageRepository {
             return this;
         }
         public GuestPoliciesPackageRepository build() {
-            final var o = new GuestPoliciesPackageRepository();
-            o.apt = apt;
-            o.goo = goo;
-            o.yum = yum;
-            o.zypper = zypper;
-            return o;
+            final var _resultValue = new GuestPoliciesPackageRepository();
+            _resultValue.apt = apt;
+            _resultValue.goo = goo;
+            _resultValue.yum = yum;
+            _resultValue.zypper = zypper;
+            return _resultValue;
         }
     }
 }

@@ -54,9 +54,9 @@ public final class ClusterNodeConfigWorkloadMetadataConfig {
             return this;
         }
         public ClusterNodeConfigWorkloadMetadataConfig build() {
-            final var o = new ClusterNodeConfigWorkloadMetadataConfig();
-            o.mode = mode;
-            return o;
+            final var _resultValue = new ClusterNodeConfigWorkloadMetadataConfig();
+            _resultValue.mode = mode;
+            return _resultValue;
         }
     }
 }

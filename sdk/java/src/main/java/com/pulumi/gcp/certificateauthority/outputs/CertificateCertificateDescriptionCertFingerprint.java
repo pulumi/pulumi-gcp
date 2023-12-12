@@ -50,9 +50,9 @@ public final class CertificateCertificateDescriptionCertFingerprint {
             return this;
         }
         public CertificateCertificateDescriptionCertFingerprint build() {
-            final var o = new CertificateCertificateDescriptionCertFingerprint();
-            o.sha256Hash = sha256Hash;
-            return o;
+            final var _resultValue = new CertificateCertificateDescriptionCertFingerprint();
+            _resultValue.sha256Hash = sha256Hash;
+            return _resultValue;
         }
     }
 }

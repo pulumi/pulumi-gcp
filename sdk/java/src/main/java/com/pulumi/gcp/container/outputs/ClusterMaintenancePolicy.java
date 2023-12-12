@@ -246,11 +246,11 @@ public final class ClusterMaintenancePolicy {
             return this;
         }
         public ClusterMaintenancePolicy build() {
-            final var o = new ClusterMaintenancePolicy();
-            o.dailyMaintenanceWindow = dailyMaintenanceWindow;
-            o.maintenanceExclusions = maintenanceExclusions;
-            o.recurringWindow = recurringWindow;
-            return o;
+            final var _resultValue = new ClusterMaintenancePolicy();
+            _resultValue.dailyMaintenanceWindow = dailyMaintenanceWindow;
+            _resultValue.maintenanceExclusions = maintenanceExclusions;
+            _resultValue.recurringWindow = recurringWindow;
+            return _resultValue;
         }
     }
 }

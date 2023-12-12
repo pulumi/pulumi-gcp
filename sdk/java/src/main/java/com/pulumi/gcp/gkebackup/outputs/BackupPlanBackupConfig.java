@@ -158,14 +158,14 @@ public final class BackupPlanBackupConfig {
             return this;
         }
         public BackupPlanBackupConfig build() {
-            final var o = new BackupPlanBackupConfig();
-            o.allNamespaces = allNamespaces;
-            o.encryptionKey = encryptionKey;
-            o.includeSecrets = includeSecrets;
-            o.includeVolumeData = includeVolumeData;
-            o.selectedApplications = selectedApplications;
-            o.selectedNamespaces = selectedNamespaces;
-            return o;
+            final var _resultValue = new BackupPlanBackupConfig();
+            _resultValue.allNamespaces = allNamespaces;
+            _resultValue.encryptionKey = encryptionKey;
+            _resultValue.includeSecrets = includeSecrets;
+            _resultValue.includeVolumeData = includeVolumeData;
+            _resultValue.selectedApplications = selectedApplications;
+            _resultValue.selectedNamespaces = selectedNamespaces;
+            return _resultValue;
         }
     }
 }

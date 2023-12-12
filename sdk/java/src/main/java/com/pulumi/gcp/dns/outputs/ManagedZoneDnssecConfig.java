@@ -124,12 +124,12 @@ public final class ManagedZoneDnssecConfig {
             return this;
         }
         public ManagedZoneDnssecConfig build() {
-            final var o = new ManagedZoneDnssecConfig();
-            o.defaultKeySpecs = defaultKeySpecs;
-            o.kind = kind;
-            o.nonExistence = nonExistence;
-            o.state = state;
-            return o;
+            final var _resultValue = new ManagedZoneDnssecConfig();
+            _resultValue.defaultKeySpecs = defaultKeySpecs;
+            _resultValue.kind = kind;
+            _resultValue.nonExistence = nonExistence;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

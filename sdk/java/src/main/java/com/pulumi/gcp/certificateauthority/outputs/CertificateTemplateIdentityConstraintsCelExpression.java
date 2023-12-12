@@ -105,12 +105,12 @@ public final class CertificateTemplateIdentityConstraintsCelExpression {
             return this;
         }
         public CertificateTemplateIdentityConstraintsCelExpression build() {
-            final var o = new CertificateTemplateIdentityConstraintsCelExpression();
-            o.description = description;
-            o.expression = expression;
-            o.location = location;
-            o.title = title;
-            return o;
+            final var _resultValue = new CertificateTemplateIdentityConstraintsCelExpression();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.location = location;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

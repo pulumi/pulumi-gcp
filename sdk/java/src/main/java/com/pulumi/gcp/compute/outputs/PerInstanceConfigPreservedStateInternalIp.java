@@ -93,11 +93,11 @@ public final class PerInstanceConfigPreservedStateInternalIp {
             return this;
         }
         public PerInstanceConfigPreservedStateInternalIp build() {
-            final var o = new PerInstanceConfigPreservedStateInternalIp();
-            o.autoDelete = autoDelete;
-            o.interfaceName = interfaceName;
-            o.ipAddress = ipAddress;
-            return o;
+            final var _resultValue = new PerInstanceConfigPreservedStateInternalIp();
+            _resultValue.autoDelete = autoDelete;
+            _resultValue.interfaceName = interfaceName;
+            _resultValue.ipAddress = ipAddress;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
             return this;
         }
         public MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab build() {
-            final var o = new MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab();
-            o.cloudSecret = cloudSecret;
-            return o;
+            final var _resultValue = new MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab();
+            _resultValue.cloudSecret = cloudSecret;
+            return _resultValue;
         }
     }
 }

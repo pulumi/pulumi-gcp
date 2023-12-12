@@ -173,15 +173,15 @@ public final class TagTemplateField {
             return this;
         }
         public TagTemplateField build() {
-            final var o = new TagTemplateField();
-            o.description = description;
-            o.displayName = displayName;
-            o.fieldId = fieldId;
-            o.isRequired = isRequired;
-            o.name = name;
-            o.order = order;
-            o.type = type;
-            return o;
+            final var _resultValue = new TagTemplateField();
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.fieldId = fieldId;
+            _resultValue.isRequired = isRequired;
+            _resultValue.name = name;
+            _resultValue.order = order;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

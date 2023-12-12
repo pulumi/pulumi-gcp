@@ -126,16 +126,16 @@ public final class GetWorkloadIdentityPoolResult {
             return this;
         }
         public GetWorkloadIdentityPoolResult build() {
-            final var o = new GetWorkloadIdentityPoolResult();
-            o.description = description;
-            o.disabled = disabled;
-            o.displayName = displayName;
-            o.id = id;
-            o.name = name;
-            o.project = project;
-            o.state = state;
-            o.workloadIdentityPoolId = workloadIdentityPoolId;
-            return o;
+            final var _resultValue = new GetWorkloadIdentityPoolResult();
+            _resultValue.description = description;
+            _resultValue.disabled = disabled;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.state = state;
+            _resultValue.workloadIdentityPoolId = workloadIdentityPoolId;
+            return _resultValue;
         }
     }
 }

@@ -181,16 +181,16 @@ public final class FeatureMembershipConfigmanagementConfigSyncGit {
             return this;
         }
         public FeatureMembershipConfigmanagementConfigSyncGit build() {
-            final var o = new FeatureMembershipConfigmanagementConfigSyncGit();
-            o.gcpServiceAccountEmail = gcpServiceAccountEmail;
-            o.httpsProxy = httpsProxy;
-            o.policyDir = policyDir;
-            o.secretType = secretType;
-            o.syncBranch = syncBranch;
-            o.syncRepo = syncRepo;
-            o.syncRev = syncRev;
-            o.syncWaitSecs = syncWaitSecs;
-            return o;
+            final var _resultValue = new FeatureMembershipConfigmanagementConfigSyncGit();
+            _resultValue.gcpServiceAccountEmail = gcpServiceAccountEmail;
+            _resultValue.httpsProxy = httpsProxy;
+            _resultValue.policyDir = policyDir;
+            _resultValue.secretType = secretType;
+            _resultValue.syncBranch = syncBranch;
+            _resultValue.syncRepo = syncRepo;
+            _resultValue.syncRev = syncRev;
+            _resultValue.syncWaitSecs = syncWaitSecs;
+            return _resultValue;
         }
     }
 }

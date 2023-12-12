@@ -183,15 +183,15 @@ public final class FunctionEventTrigger {
             return this;
         }
         public FunctionEventTrigger build() {
-            final var o = new FunctionEventTrigger();
-            o.eventFilters = eventFilters;
-            o.eventType = eventType;
-            o.pubsubTopic = pubsubTopic;
-            o.retryPolicy = retryPolicy;
-            o.serviceAccountEmail = serviceAccountEmail;
-            o.trigger = trigger;
-            o.triggerRegion = triggerRegion;
-            return o;
+            final var _resultValue = new FunctionEventTrigger();
+            _resultValue.eventFilters = eventFilters;
+            _resultValue.eventType = eventType;
+            _resultValue.pubsubTopic = pubsubTopic;
+            _resultValue.retryPolicy = retryPolicy;
+            _resultValue.serviceAccountEmail = serviceAccountEmail;
+            _resultValue.trigger = trigger;
+            _resultValue.triggerRegion = triggerRegion;
+            return _resultValue;
         }
     }
 }

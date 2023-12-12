@@ -50,9 +50,9 @@ public final class ServiceTemplateContainerEnvValueSource {
             return this;
         }
         public ServiceTemplateContainerEnvValueSource build() {
-            final var o = new ServiceTemplateContainerEnvValueSource();
-            o.secretKeyRef = secretKeyRef;
-            return o;
+            final var _resultValue = new ServiceTemplateContainerEnvValueSource();
+            _resultValue.secretKeyRef = secretKeyRef;
+            return _resultValue;
         }
     }
 }

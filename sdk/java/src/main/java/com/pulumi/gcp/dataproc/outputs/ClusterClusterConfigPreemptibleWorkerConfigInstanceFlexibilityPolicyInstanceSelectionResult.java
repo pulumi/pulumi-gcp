@@ -60,10 +60,10 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
             return this;
         }
         public ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult build() {
-            final var o = new ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult();
-            o.machineType = machineType;
-            o.vmCount = vmCount;
-            return o;
+            final var _resultValue = new ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult();
+            _resultValue.machineType = machineType;
+            _resultValue.vmCount = vmCount;
+            return _resultValue;
         }
     }
 }

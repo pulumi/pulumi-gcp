@@ -130,13 +130,13 @@ public final class PolicySpec {
             return this;
         }
         public PolicySpec build() {
-            final var o = new PolicySpec();
-            o.etag = etag;
-            o.inheritFromParent = inheritFromParent;
-            o.reset = reset;
-            o.rules = rules;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new PolicySpec();
+            _resultValue.etag = etag;
+            _resultValue.inheritFromParent = inheritFromParent;
+            _resultValue.reset = reset;
+            _resultValue.rules = rules;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

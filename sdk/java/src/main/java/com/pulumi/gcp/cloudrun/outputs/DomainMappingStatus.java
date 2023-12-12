@@ -133,12 +133,12 @@ public final class DomainMappingStatus {
             return resourceRecords(List.of(resourceRecords));
         }
         public DomainMappingStatus build() {
-            final var o = new DomainMappingStatus();
-            o.conditions = conditions;
-            o.mappedRouteName = mappedRouteName;
-            o.observedGeneration = observedGeneration;
-            o.resourceRecords = resourceRecords;
-            return o;
+            final var _resultValue = new DomainMappingStatus();
+            _resultValue.conditions = conditions;
+            _resultValue.mappedRouteName = mappedRouteName;
+            _resultValue.observedGeneration = observedGeneration;
+            _resultValue.resourceRecords = resourceRecords;
+            return _resultValue;
         }
     }
 }

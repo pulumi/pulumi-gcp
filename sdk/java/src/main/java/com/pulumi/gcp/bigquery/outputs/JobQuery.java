@@ -440,25 +440,25 @@ public final class JobQuery {
             return this;
         }
         public JobQuery build() {
-            final var o = new JobQuery();
-            o.allowLargeResults = allowLargeResults;
-            o.createDisposition = createDisposition;
-            o.defaultDataset = defaultDataset;
-            o.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
-            o.destinationTable = destinationTable;
-            o.flattenResults = flattenResults;
-            o.maximumBillingTier = maximumBillingTier;
-            o.maximumBytesBilled = maximumBytesBilled;
-            o.parameterMode = parameterMode;
-            o.priority = priority;
-            o.query = query;
-            o.schemaUpdateOptions = schemaUpdateOptions;
-            o.scriptOptions = scriptOptions;
-            o.useLegacySql = useLegacySql;
-            o.useQueryCache = useQueryCache;
-            o.userDefinedFunctionResources = userDefinedFunctionResources;
-            o.writeDisposition = writeDisposition;
-            return o;
+            final var _resultValue = new JobQuery();
+            _resultValue.allowLargeResults = allowLargeResults;
+            _resultValue.createDisposition = createDisposition;
+            _resultValue.defaultDataset = defaultDataset;
+            _resultValue.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
+            _resultValue.destinationTable = destinationTable;
+            _resultValue.flattenResults = flattenResults;
+            _resultValue.maximumBillingTier = maximumBillingTier;
+            _resultValue.maximumBytesBilled = maximumBytesBilled;
+            _resultValue.parameterMode = parameterMode;
+            _resultValue.priority = priority;
+            _resultValue.query = query;
+            _resultValue.schemaUpdateOptions = schemaUpdateOptions;
+            _resultValue.scriptOptions = scriptOptions;
+            _resultValue.useLegacySql = useLegacySql;
+            _resultValue.useQueryCache = useQueryCache;
+            _resultValue.userDefinedFunctionResources = userDefinedFunctionResources;
+            _resultValue.writeDisposition = writeDisposition;
+            return _resultValue;
         }
     }
 }

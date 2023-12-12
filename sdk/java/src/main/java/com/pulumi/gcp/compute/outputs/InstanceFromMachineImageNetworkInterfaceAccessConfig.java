@@ -73,12 +73,12 @@ public final class InstanceFromMachineImageNetworkInterfaceAccessConfig {
             return this;
         }
         public InstanceFromMachineImageNetworkInterfaceAccessConfig build() {
-            final var o = new InstanceFromMachineImageNetworkInterfaceAccessConfig();
-            o.natIp = natIp;
-            o.networkTier = networkTier;
-            o.publicPtrDomainName = publicPtrDomainName;
-            o.securityPolicy = securityPolicy;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageNetworkInterfaceAccessConfig();
+            _resultValue.natIp = natIp;
+            _resultValue.networkTier = networkTier;
+            _resultValue.publicPtrDomainName = publicPtrDomainName;
+            _resultValue.securityPolicy = securityPolicy;
+            return _resultValue;
         }
     }
 }

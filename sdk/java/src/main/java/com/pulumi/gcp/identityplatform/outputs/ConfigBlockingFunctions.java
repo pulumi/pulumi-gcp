@@ -76,10 +76,10 @@ public final class ConfigBlockingFunctions {
             return triggers(List.of(triggers));
         }
         public ConfigBlockingFunctions build() {
-            final var o = new ConfigBlockingFunctions();
-            o.forwardInboundCredentials = forwardInboundCredentials;
-            o.triggers = triggers;
-            return o;
+            final var _resultValue = new ConfigBlockingFunctions();
+            _resultValue.forwardInboundCredentials = forwardInboundCredentials;
+            _resultValue.triggers = triggers;
+            return _resultValue;
         }
     }
 }

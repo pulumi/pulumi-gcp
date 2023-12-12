@@ -94,14 +94,14 @@ public final class GetHealthCheckSslHealthCheck {
             return this;
         }
         public GetHealthCheckSslHealthCheck build() {
-            final var o = new GetHealthCheckSslHealthCheck();
-            o.port = port;
-            o.portName = portName;
-            o.portSpecification = portSpecification;
-            o.proxyHeader = proxyHeader;
-            o.request = request;
-            o.response = response;
-            return o;
+            final var _resultValue = new GetHealthCheckSslHealthCheck();
+            _resultValue.port = port;
+            _resultValue.portName = portName;
+            _resultValue.portSpecification = portSpecification;
+            _resultValue.proxyHeader = proxyHeader;
+            _resultValue.request = request;
+            _resultValue.response = response;
+            return _resultValue;
         }
     }
 }

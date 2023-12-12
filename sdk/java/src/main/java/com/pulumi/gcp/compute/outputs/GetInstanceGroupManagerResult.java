@@ -358,33 +358,33 @@ public final class GetInstanceGroupManagerResult {
             return this;
         }
         public GetInstanceGroupManagerResult build() {
-            final var o = new GetInstanceGroupManagerResult();
-            o.allInstancesConfigs = allInstancesConfigs;
-            o.autoHealingPolicies = autoHealingPolicies;
-            o.baseInstanceName = baseInstanceName;
-            o.description = description;
-            o.fingerprint = fingerprint;
-            o.id = id;
-            o.instanceGroup = instanceGroup;
-            o.instanceLifecyclePolicies = instanceLifecyclePolicies;
-            o.listManagedInstancesResults = listManagedInstancesResults;
-            o.name = name;
-            o.namedPorts = namedPorts;
-            o.operation = operation;
-            o.project = project;
-            o.selfLink = selfLink;
-            o.statefulDisks = statefulDisks;
-            o.statefulExternalIps = statefulExternalIps;
-            o.statefulInternalIps = statefulInternalIps;
-            o.statuses = statuses;
-            o.targetPools = targetPools;
-            o.targetSize = targetSize;
-            o.updatePolicies = updatePolicies;
-            o.versions = versions;
-            o.waitForInstances = waitForInstances;
-            o.waitForInstancesStatus = waitForInstancesStatus;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetInstanceGroupManagerResult();
+            _resultValue.allInstancesConfigs = allInstancesConfigs;
+            _resultValue.autoHealingPolicies = autoHealingPolicies;
+            _resultValue.baseInstanceName = baseInstanceName;
+            _resultValue.description = description;
+            _resultValue.fingerprint = fingerprint;
+            _resultValue.id = id;
+            _resultValue.instanceGroup = instanceGroup;
+            _resultValue.instanceLifecyclePolicies = instanceLifecyclePolicies;
+            _resultValue.listManagedInstancesResults = listManagedInstancesResults;
+            _resultValue.name = name;
+            _resultValue.namedPorts = namedPorts;
+            _resultValue.operation = operation;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            _resultValue.statefulDisks = statefulDisks;
+            _resultValue.statefulExternalIps = statefulExternalIps;
+            _resultValue.statefulInternalIps = statefulInternalIps;
+            _resultValue.statuses = statuses;
+            _resultValue.targetPools = targetPools;
+            _resultValue.targetSize = targetSize;
+            _resultValue.updatePolicies = updatePolicies;
+            _resultValue.versions = versions;
+            _resultValue.waitForInstances = waitForInstances;
+            _resultValue.waitForInstancesStatus = waitForInstancesStatus;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

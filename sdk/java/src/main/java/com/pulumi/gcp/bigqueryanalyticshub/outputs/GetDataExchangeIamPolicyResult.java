@@ -119,14 +119,14 @@ public final class GetDataExchangeIamPolicyResult {
             return this;
         }
         public GetDataExchangeIamPolicyResult build() {
-            final var o = new GetDataExchangeIamPolicyResult();
-            o.dataExchangeId = dataExchangeId;
-            o.etag = etag;
-            o.id = id;
-            o.location = location;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetDataExchangeIamPolicyResult();
+            _resultValue.dataExchangeId = dataExchangeId;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

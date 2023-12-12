@@ -38,9 +38,9 @@ public final class InstanceFromMachineImageNetworkPerformanceConfig {
             return this;
         }
         public InstanceFromMachineImageNetworkPerformanceConfig build() {
-            final var o = new InstanceFromMachineImageNetworkPerformanceConfig();
-            o.totalEgressBandwidthTier = totalEgressBandwidthTier;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageNetworkPerformanceConfig();
+            _resultValue.totalEgressBandwidthTier = totalEgressBandwidthTier;
+            return _resultValue;
         }
     }
 }

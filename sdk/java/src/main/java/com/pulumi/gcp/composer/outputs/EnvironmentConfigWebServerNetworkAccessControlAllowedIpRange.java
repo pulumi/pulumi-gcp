@@ -51,10 +51,10 @@ public final class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange 
             return this;
         }
         public EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange build() {
-            final var o = new EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange();
-            o.description = description;
-            o.value = value;
-            return o;
+            final var _resultValue = new EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange();
+            _resultValue.description = description;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

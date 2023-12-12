@@ -68,10 +68,10 @@ public final class FlexibleAppVersionAutomaticScalingRequestUtilization {
             return this;
         }
         public FlexibleAppVersionAutomaticScalingRequestUtilization build() {
-            final var o = new FlexibleAppVersionAutomaticScalingRequestUtilization();
-            o.targetConcurrentRequests = targetConcurrentRequests;
-            o.targetRequestCountPerSecond = targetRequestCountPerSecond;
-            return o;
+            final var _resultValue = new FlexibleAppVersionAutomaticScalingRequestUtilization();
+            _resultValue.targetConcurrentRequests = targetConcurrentRequests;
+            _resultValue.targetRequestCountPerSecond = targetRequestCountPerSecond;
+            return _resultValue;
         }
     }
 }

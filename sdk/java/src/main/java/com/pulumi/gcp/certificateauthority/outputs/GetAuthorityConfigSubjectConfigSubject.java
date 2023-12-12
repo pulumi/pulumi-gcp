@@ -115,16 +115,16 @@ public final class GetAuthorityConfigSubjectConfigSubject {
             return this;
         }
         public GetAuthorityConfigSubjectConfigSubject build() {
-            final var o = new GetAuthorityConfigSubjectConfigSubject();
-            o.commonName = commonName;
-            o.countryCode = countryCode;
-            o.locality = locality;
-            o.organization = organization;
-            o.organizationalUnit = organizationalUnit;
-            o.postalCode = postalCode;
-            o.province = province;
-            o.streetAddress = streetAddress;
-            return o;
+            final var _resultValue = new GetAuthorityConfigSubjectConfigSubject();
+            _resultValue.commonName = commonName;
+            _resultValue.countryCode = countryCode;
+            _resultValue.locality = locality;
+            _resultValue.organization = organization;
+            _resultValue.organizationalUnit = organizationalUnit;
+            _resultValue.postalCode = postalCode;
+            _resultValue.province = province;
+            _resultValue.streetAddress = streetAddress;
+            return _resultValue;
         }
     }
 }

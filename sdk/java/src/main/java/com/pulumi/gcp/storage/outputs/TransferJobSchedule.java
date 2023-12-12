@@ -108,12 +108,12 @@ public final class TransferJobSchedule {
             return this;
         }
         public TransferJobSchedule build() {
-            final var o = new TransferJobSchedule();
-            o.repeatInterval = repeatInterval;
-            o.scheduleEndDate = scheduleEndDate;
-            o.scheduleStartDate = scheduleStartDate;
-            o.startTimeOfDay = startTimeOfDay;
-            return o;
+            final var _resultValue = new TransferJobSchedule();
+            _resultValue.repeatInterval = repeatInterval;
+            _resultValue.scheduleEndDate = scheduleEndDate;
+            _resultValue.scheduleStartDate = scheduleStartDate;
+            _resultValue.startTimeOfDay = startTimeOfDay;
+            return _resultValue;
         }
     }
 }

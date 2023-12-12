@@ -68,10 +68,10 @@ public final class RegionInstanceGroupManagerNamedPort {
             return this;
         }
         public RegionInstanceGroupManagerNamedPort build() {
-            final var o = new RegionInstanceGroupManagerNamedPort();
-            o.name = name;
-            o.port = port;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerNamedPort();
+            _resultValue.name = name;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

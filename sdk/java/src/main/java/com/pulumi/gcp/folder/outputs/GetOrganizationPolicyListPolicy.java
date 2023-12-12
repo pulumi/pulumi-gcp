@@ -81,12 +81,12 @@ public final class GetOrganizationPolicyListPolicy {
             return this;
         }
         public GetOrganizationPolicyListPolicy build() {
-            final var o = new GetOrganizationPolicyListPolicy();
-            o.allows = allows;
-            o.denies = denies;
-            o.inheritFromParent = inheritFromParent;
-            o.suggestedValue = suggestedValue;
-            return o;
+            final var _resultValue = new GetOrganizationPolicyListPolicy();
+            _resultValue.allows = allows;
+            _resultValue.denies = denies;
+            _resultValue.inheritFromParent = inheritFromParent;
+            _resultValue.suggestedValue = suggestedValue;
+            return _resultValue;
         }
     }
 }

@@ -41,9 +41,9 @@ public final class InstanceFromMachineImageParams {
             return this;
         }
         public InstanceFromMachineImageParams build() {
-            final var o = new InstanceFromMachineImageParams();
-            o.resourceManagerTags = resourceManagerTags;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageParams();
+            _resultValue.resourceManagerTags = resourceManagerTags;
+            return _resultValue;
         }
     }
 }

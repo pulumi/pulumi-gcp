@@ -68,10 +68,10 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
             return this;
         }
         public ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings build() {
-            final var o = new ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings();
-            o.nodePoolSoakDuration = nodePoolSoakDuration;
-            o.standardRolloutPolicy = standardRolloutPolicy;
-            return o;
+            final var _resultValue = new ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings();
+            _resultValue.nodePoolSoakDuration = nodePoolSoakDuration;
+            _resultValue.standardRolloutPolicy = standardRolloutPolicy;
+            return _resultValue;
         }
     }
 }

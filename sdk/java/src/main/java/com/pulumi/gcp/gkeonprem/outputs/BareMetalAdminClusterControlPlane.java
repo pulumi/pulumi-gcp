@@ -81,10 +81,10 @@ public final class BareMetalAdminClusterControlPlane {
             return this;
         }
         public BareMetalAdminClusterControlPlane build() {
-            final var o = new BareMetalAdminClusterControlPlane();
-            o.apiServerArgs = apiServerArgs;
-            o.controlPlaneNodePoolConfig = controlPlaneNodePoolConfig;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterControlPlane();
+            _resultValue.apiServerArgs = apiServerArgs;
+            _resultValue.controlPlaneNodePoolConfig = controlPlaneNodePoolConfig;
+            return _resultValue;
         }
     }
 }

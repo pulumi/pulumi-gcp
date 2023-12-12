@@ -86,11 +86,11 @@ public final class ClusterDnsConfig {
             return this;
         }
         public ClusterDnsConfig build() {
-            final var o = new ClusterDnsConfig();
-            o.clusterDns = clusterDns;
-            o.clusterDnsDomain = clusterDnsDomain;
-            o.clusterDnsScope = clusterDnsScope;
-            return o;
+            final var _resultValue = new ClusterDnsConfig();
+            _resultValue.clusterDns = clusterDns;
+            _resultValue.clusterDnsDomain = clusterDnsDomain;
+            _resultValue.clusterDnsScope = clusterDnsScope;
+            return _resultValue;
         }
     }
 }

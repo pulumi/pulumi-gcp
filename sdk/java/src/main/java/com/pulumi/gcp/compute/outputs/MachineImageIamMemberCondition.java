@@ -86,11 +86,11 @@ public final class MachineImageIamMemberCondition {
             return this;
         }
         public MachineImageIamMemberCondition build() {
-            final var o = new MachineImageIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new MachineImageIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

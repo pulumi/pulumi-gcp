@@ -87,11 +87,11 @@ public final class RegionInstanceTemplateAdvancedMachineFeatures {
             return this;
         }
         public RegionInstanceTemplateAdvancedMachineFeatures build() {
-            final var o = new RegionInstanceTemplateAdvancedMachineFeatures();
-            o.enableNestedVirtualization = enableNestedVirtualization;
-            o.threadsPerCore = threadsPerCore;
-            o.visibleCoreCount = visibleCoreCount;
-            return o;
+            final var _resultValue = new RegionInstanceTemplateAdvancedMachineFeatures();
+            _resultValue.enableNestedVirtualization = enableNestedVirtualization;
+            _resultValue.threadsPerCore = threadsPerCore;
+            _resultValue.visibleCoreCount = visibleCoreCount;
+            return _resultValue;
         }
     }
 }

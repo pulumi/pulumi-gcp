@@ -70,10 +70,10 @@ public final class TableRangePartitioning {
             return this;
         }
         public TableRangePartitioning build() {
-            final var o = new TableRangePartitioning();
-            o.field = field;
-            o.range = range;
-            return o;
+            final var _resultValue = new TableRangePartitioning();
+            _resultValue.field = field;
+            _resultValue.range = range;
+            return _resultValue;
         }
     }
 }

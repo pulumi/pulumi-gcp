@@ -119,14 +119,14 @@ public final class GetConnectionIamPolicyResult {
             return this;
         }
         public GetConnectionIamPolicyResult build() {
-            final var o = new GetConnectionIamPolicyResult();
-            o.connectionId = connectionId;
-            o.etag = etag;
-            o.id = id;
-            o.location = location;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetConnectionIamPolicyResult();
+            _resultValue.connectionId = connectionId;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

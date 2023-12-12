@@ -50,9 +50,9 @@ public final class PacketMirroringMirroredResourcesInstance {
             return this;
         }
         public PacketMirroringMirroredResourcesInstance build() {
-            final var o = new PacketMirroringMirroredResourcesInstance();
-            o.url = url;
-            return o;
+            final var _resultValue = new PacketMirroringMirroredResourcesInstance();
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

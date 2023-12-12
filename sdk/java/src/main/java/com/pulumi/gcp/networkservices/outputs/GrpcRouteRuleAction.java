@@ -118,12 +118,12 @@ public final class GrpcRouteRuleAction {
             return this;
         }
         public GrpcRouteRuleAction build() {
-            final var o = new GrpcRouteRuleAction();
-            o.destinations = destinations;
-            o.faultInjectionPolicy = faultInjectionPolicy;
-            o.retryPolicy = retryPolicy;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new GrpcRouteRuleAction();
+            _resultValue.destinations = destinations;
+            _resultValue.faultInjectionPolicy = faultInjectionPolicy;
+            _resultValue.retryPolicy = retryPolicy;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

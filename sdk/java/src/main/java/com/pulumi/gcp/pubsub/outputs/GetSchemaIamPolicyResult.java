@@ -108,13 +108,13 @@ public final class GetSchemaIamPolicyResult {
             return this;
         }
         public GetSchemaIamPolicyResult build() {
-            final var o = new GetSchemaIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.schema = schema;
-            return o;
+            final var _resultValue = new GetSchemaIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.schema = schema;
+            return _resultValue;
         }
     }
 }

@@ -109,15 +109,15 @@ public final class EnvironmentConfigSoftwareConfig {
             return this;
         }
         public EnvironmentConfigSoftwareConfig build() {
-            final var o = new EnvironmentConfigSoftwareConfig();
-            o.airflowConfigOverrides = airflowConfigOverrides;
-            o.cloudDataLineageIntegration = cloudDataLineageIntegration;
-            o.envVariables = envVariables;
-            o.imageVersion = imageVersion;
-            o.pypiPackages = pypiPackages;
-            o.pythonVersion = pythonVersion;
-            o.schedulerCount = schedulerCount;
-            return o;
+            final var _resultValue = new EnvironmentConfigSoftwareConfig();
+            _resultValue.airflowConfigOverrides = airflowConfigOverrides;
+            _resultValue.cloudDataLineageIntegration = cloudDataLineageIntegration;
+            _resultValue.envVariables = envVariables;
+            _resultValue.imageVersion = imageVersion;
+            _resultValue.pypiPackages = pypiPackages;
+            _resultValue.pythonVersion = pythonVersion;
+            _resultValue.schedulerCount = schedulerCount;
+            return _resultValue;
         }
     }
 }

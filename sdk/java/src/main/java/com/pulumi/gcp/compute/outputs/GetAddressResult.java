@@ -214,22 +214,22 @@ public final class GetAddressResult {
             return this;
         }
         public GetAddressResult build() {
-            final var o = new GetAddressResult();
-            o.address = address;
-            o.addressType = addressType;
-            o.id = id;
-            o.name = name;
-            o.network = network;
-            o.networkTier = networkTier;
-            o.prefixLength = prefixLength;
-            o.project = project;
-            o.purpose = purpose;
-            o.region = region;
-            o.selfLink = selfLink;
-            o.status = status;
-            o.subnetwork = subnetwork;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetAddressResult();
+            _resultValue.address = address;
+            _resultValue.addressType = addressType;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.networkTier = networkTier;
+            _resultValue.prefixLength = prefixLength;
+            _resultValue.project = project;
+            _resultValue.purpose = purpose;
+            _resultValue.region = region;
+            _resultValue.selfLink = selfLink;
+            _resultValue.status = status;
+            _resultValue.subnetwork = subnetwork;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

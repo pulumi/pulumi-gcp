@@ -46,9 +46,9 @@ public final class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachin
             return this;
         }
         public ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig build() {
-            final var o = new ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig();
-            o.cpuCount = cpuCount;
-            return o;
+            final var _resultValue = new ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig();
+            _resultValue.cpuCount = cpuCount;
+            return _resultValue;
         }
     }
 }

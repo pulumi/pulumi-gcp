@@ -70,10 +70,10 @@ public final class SecretReplicationUserManagedReplica {
             return this;
         }
         public SecretReplicationUserManagedReplica build() {
-            final var o = new SecretReplicationUserManagedReplica();
-            o.customerManagedEncryption = customerManagedEncryption;
-            o.location = location;
-            return o;
+            final var _resultValue = new SecretReplicationUserManagedReplica();
+            _resultValue.customerManagedEncryption = customerManagedEncryption;
+            _resultValue.location = location;
+            return _resultValue;
         }
     }
 }

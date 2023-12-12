@@ -72,10 +72,10 @@ public final class AutoscalerAutoscalingPolicyScaleDownControl {
             return this;
         }
         public AutoscalerAutoscalingPolicyScaleDownControl build() {
-            final var o = new AutoscalerAutoscalingPolicyScaleDownControl();
-            o.maxScaledDownReplicas = maxScaledDownReplicas;
-            o.timeWindowSec = timeWindowSec;
-            return o;
+            final var _resultValue = new AutoscalerAutoscalingPolicyScaleDownControl();
+            _resultValue.maxScaledDownReplicas = maxScaledDownReplicas;
+            _resultValue.timeWindowSec = timeWindowSec;
+            return _resultValue;
         }
     }
 }

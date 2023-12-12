@@ -106,12 +106,12 @@ public final class HttpRouteRuleMatchQueryParameter {
             return this;
         }
         public HttpRouteRuleMatchQueryParameter build() {
-            final var o = new HttpRouteRuleMatchQueryParameter();
-            o.exactMatch = exactMatch;
-            o.presentMatch = presentMatch;
-            o.queryParameter = queryParameter;
-            o.regexMatch = regexMatch;
-            return o;
+            final var _resultValue = new HttpRouteRuleMatchQueryParameter();
+            _resultValue.exactMatch = exactMatch;
+            _resultValue.presentMatch = presentMatch;
+            _resultValue.queryParameter = queryParameter;
+            _resultValue.regexMatch = regexMatch;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class ConnectionAuthConfigAdditionalVariableSecretValue {
             return this;
         }
         public ConnectionAuthConfigAdditionalVariableSecretValue build() {
-            final var o = new ConnectionAuthConfigAdditionalVariableSecretValue();
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigAdditionalVariableSecretValue();
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

@@ -91,10 +91,10 @@ public final class InstanceTemplateServiceAccount {
             return scopes(List.of(scopes));
         }
         public InstanceTemplateServiceAccount build() {
-            final var o = new InstanceTemplateServiceAccount();
-            o.email = email;
-            o.scopes = scopes;
-            return o;
+            final var _resultValue = new InstanceTemplateServiceAccount();
+            _resultValue.email = email;
+            _resultValue.scopes = scopes;
+            return _resultValue;
         }
     }
 }

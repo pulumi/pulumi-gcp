@@ -76,10 +76,10 @@ public final class InstanceAutoscalingConfig {
             return this;
         }
         public InstanceAutoscalingConfig build() {
-            final var o = new InstanceAutoscalingConfig();
-            o.autoscalingLimits = autoscalingLimits;
-            o.autoscalingTargets = autoscalingTargets;
-            return o;
+            final var _resultValue = new InstanceAutoscalingConfig();
+            _resultValue.autoscalingLimits = autoscalingLimits;
+            _resultValue.autoscalingTargets = autoscalingTargets;
+            return _resultValue;
         }
     }
 }

@@ -54,9 +54,9 @@ public final class CxAgentTextToSpeechSettings {
             return this;
         }
         public CxAgentTextToSpeechSettings build() {
-            final var o = new CxAgentTextToSpeechSettings();
-            o.synthesizeSpeechConfigs = synthesizeSpeechConfigs;
-            return o;
+            final var _resultValue = new CxAgentTextToSpeechSettings();
+            _resultValue.synthesizeSpeechConfigs = synthesizeSpeechConfigs;
+            return _resultValue;
         }
     }
 }

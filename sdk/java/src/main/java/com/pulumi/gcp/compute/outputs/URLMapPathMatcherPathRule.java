@@ -135,12 +135,12 @@ public final class URLMapPathMatcherPathRule {
             return this;
         }
         public URLMapPathMatcherPathRule build() {
-            final var o = new URLMapPathMatcherPathRule();
-            o.paths = paths;
-            o.routeAction = routeAction;
-            o.service = service;
-            o.urlRedirect = urlRedirect;
-            return o;
+            final var _resultValue = new URLMapPathMatcherPathRule();
+            _resultValue.paths = paths;
+            _resultValue.routeAction = routeAction;
+            _resultValue.service = service;
+            _resultValue.urlRedirect = urlRedirect;
+            return _resultValue;
         }
     }
 }

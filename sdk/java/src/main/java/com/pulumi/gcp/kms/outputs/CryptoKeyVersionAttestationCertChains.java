@@ -86,11 +86,11 @@ public final class CryptoKeyVersionAttestationCertChains {
             return this;
         }
         public CryptoKeyVersionAttestationCertChains build() {
-            final var o = new CryptoKeyVersionAttestationCertChains();
-            o.caviumCerts = caviumCerts;
-            o.googleCardCerts = googleCardCerts;
-            o.googlePartitionCerts = googlePartitionCerts;
-            return o;
+            final var _resultValue = new CryptoKeyVersionAttestationCertChains();
+            _resultValue.caviumCerts = caviumCerts;
+            _resultValue.googleCardCerts = googleCardCerts;
+            _resultValue.googlePartitionCerts = googlePartitionCerts;
+            return _resultValue;
         }
     }
 }

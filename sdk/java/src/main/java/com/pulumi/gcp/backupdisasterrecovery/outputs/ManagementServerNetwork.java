@@ -75,10 +75,10 @@ public final class ManagementServerNetwork {
             return this;
         }
         public ManagementServerNetwork build() {
-            final var o = new ManagementServerNetwork();
-            o.network = network;
-            o.peeringMode = peeringMode;
-            return o;
+            final var _resultValue = new ManagementServerNetwork();
+            _resultValue.network = network;
+            _resultValue.peeringMode = peeringMode;
+            return _resultValue;
         }
     }
 }

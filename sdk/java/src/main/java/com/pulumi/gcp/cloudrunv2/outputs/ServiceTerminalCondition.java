@@ -199,16 +199,16 @@ public final class ServiceTerminalCondition {
             return this;
         }
         public ServiceTerminalCondition build() {
-            final var o = new ServiceTerminalCondition();
-            o.executionReason = executionReason;
-            o.lastTransitionTime = lastTransitionTime;
-            o.message = message;
-            o.reason = reason;
-            o.revisionReason = revisionReason;
-            o.severity = severity;
-            o.state = state;
-            o.type = type;
-            return o;
+            final var _resultValue = new ServiceTerminalCondition();
+            _resultValue.executionReason = executionReason;
+            _resultValue.lastTransitionTime = lastTransitionTime;
+            _resultValue.message = message;
+            _resultValue.reason = reason;
+            _resultValue.revisionReason = revisionReason;
+            _resultValue.severity = severity;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdC
             return this;
         }
         public AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig build() {
-            final var o = new AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig();
-            o.value = value;
-            return o;
+            final var _resultValue = new AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig();
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -95,11 +95,11 @@ public final class ClusterMonitoringConfig {
             return this;
         }
         public ClusterMonitoringConfig build() {
-            final var o = new ClusterMonitoringConfig();
-            o.advancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
-            o.enableComponents = enableComponents;
-            o.managedPrometheus = managedPrometheus;
-            return o;
+            final var _resultValue = new ClusterMonitoringConfig();
+            _resultValue.advancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
+            _resultValue.enableComponents = enableComponents;
+            _resultValue.managedPrometheus = managedPrometheus;
+            return _resultValue;
         }
     }
 }

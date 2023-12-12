@@ -68,10 +68,10 @@ public final class FhirStoreStreamConfigBigqueryDestination {
             return this;
         }
         public FhirStoreStreamConfigBigqueryDestination build() {
-            final var o = new FhirStoreStreamConfigBigqueryDestination();
-            o.datasetUri = datasetUri;
-            o.schemaConfig = schemaConfig;
-            return o;
+            final var _resultValue = new FhirStoreStreamConfigBigqueryDestination();
+            _resultValue.datasetUri = datasetUri;
+            _resultValue.schemaConfig = schemaConfig;
+            return _resultValue;
         }
     }
 }

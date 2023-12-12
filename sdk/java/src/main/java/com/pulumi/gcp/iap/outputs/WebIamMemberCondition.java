@@ -94,11 +94,11 @@ public final class WebIamMemberCondition {
             return this;
         }
         public WebIamMemberCondition build() {
-            final var o = new WebIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new WebIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

@@ -178,15 +178,15 @@ public final class TriggerGitFileSource {
             return this;
         }
         public TriggerGitFileSource build() {
-            final var o = new TriggerGitFileSource();
-            o.bitbucketServerConfig = bitbucketServerConfig;
-            o.githubEnterpriseConfig = githubEnterpriseConfig;
-            o.path = path;
-            o.repoType = repoType;
-            o.repository = repository;
-            o.revision = revision;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new TriggerGitFileSource();
+            _resultValue.bitbucketServerConfig = bitbucketServerConfig;
+            _resultValue.githubEnterpriseConfig = githubEnterpriseConfig;
+            _resultValue.path = path;
+            _resultValue.repoType = repoType;
+            _resultValue.repository = repository;
+            _resultValue.revision = revision;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

@@ -42,9 +42,9 @@ public final class GetAppConnectorPrincipalInfo {
             return serviceAccounts(List.of(serviceAccounts));
         }
         public GetAppConnectorPrincipalInfo build() {
-            final var o = new GetAppConnectorPrincipalInfo();
-            o.serviceAccounts = serviceAccounts;
-            return o;
+            final var _resultValue = new GetAppConnectorPrincipalInfo();
+            _resultValue.serviceAccounts = serviceAccounts;
+            return _resultValue;
         }
     }
 }

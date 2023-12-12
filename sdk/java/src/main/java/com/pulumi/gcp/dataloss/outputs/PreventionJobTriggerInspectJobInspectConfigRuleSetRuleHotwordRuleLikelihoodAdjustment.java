@@ -80,10 +80,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment();
-            o.fixedLikelihood = fixedLikelihood;
-            o.relativeLikelihood = relativeLikelihood;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment();
+            _resultValue.fixedLikelihood = fixedLikelihood;
+            _resultValue.relativeLikelihood = relativeLikelihood;
+            return _resultValue;
         }
     }
 }

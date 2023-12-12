@@ -72,10 +72,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary();
-            o.cloudStoragePath = cloudStoragePath;
-            o.wordList = wordList;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary();
+            _resultValue.cloudStoragePath = cloudStoragePath;
+            _resultValue.wordList = wordList;
+            return _resultValue;
         }
     }
 }

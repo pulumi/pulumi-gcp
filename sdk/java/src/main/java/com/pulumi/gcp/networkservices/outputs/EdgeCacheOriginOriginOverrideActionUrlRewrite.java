@@ -54,9 +54,9 @@ public final class EdgeCacheOriginOriginOverrideActionUrlRewrite {
             return this;
         }
         public EdgeCacheOriginOriginOverrideActionUrlRewrite build() {
-            final var o = new EdgeCacheOriginOriginOverrideActionUrlRewrite();
-            o.hostRewrite = hostRewrite;
-            return o;
+            final var _resultValue = new EdgeCacheOriginOriginOverrideActionUrlRewrite();
+            _resultValue.hostRewrite = hostRewrite;
+            return _resultValue;
         }
     }
 }

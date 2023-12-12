@@ -92,12 +92,12 @@ public final class GetImageVersionsResult {
             return this;
         }
         public GetImageVersionsResult build() {
-            final var o = new GetImageVersionsResult();
-            o.id = id;
-            o.imageVersions = imageVersions;
-            o.project = project;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetImageVersionsResult();
+            _resultValue.id = id;
+            _resultValue.imageVersions = imageVersions;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

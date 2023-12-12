@@ -84,10 +84,10 @@ public final class InstanceMaintenanceWindow {
             return this;
         }
         public InstanceMaintenanceWindow build() {
-            final var o = new InstanceMaintenanceWindow();
-            o.dayOfWeek = dayOfWeek;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new InstanceMaintenanceWindow();
+            _resultValue.dayOfWeek = dayOfWeek;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

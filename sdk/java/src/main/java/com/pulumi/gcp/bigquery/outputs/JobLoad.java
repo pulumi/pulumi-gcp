@@ -566,29 +566,29 @@ public final class JobLoad {
             return this;
         }
         public JobLoad build() {
-            final var o = new JobLoad();
-            o.allowJaggedRows = allowJaggedRows;
-            o.allowQuotedNewlines = allowQuotedNewlines;
-            o.autodetect = autodetect;
-            o.createDisposition = createDisposition;
-            o.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
-            o.destinationTable = destinationTable;
-            o.encoding = encoding;
-            o.fieldDelimiter = fieldDelimiter;
-            o.ignoreUnknownValues = ignoreUnknownValues;
-            o.jsonExtension = jsonExtension;
-            o.maxBadRecords = maxBadRecords;
-            o.nullMarker = nullMarker;
-            o.parquetOptions = parquetOptions;
-            o.projectionFields = projectionFields;
-            o.quote = quote;
-            o.schemaUpdateOptions = schemaUpdateOptions;
-            o.skipLeadingRows = skipLeadingRows;
-            o.sourceFormat = sourceFormat;
-            o.sourceUris = sourceUris;
-            o.timePartitioning = timePartitioning;
-            o.writeDisposition = writeDisposition;
-            return o;
+            final var _resultValue = new JobLoad();
+            _resultValue.allowJaggedRows = allowJaggedRows;
+            _resultValue.allowQuotedNewlines = allowQuotedNewlines;
+            _resultValue.autodetect = autodetect;
+            _resultValue.createDisposition = createDisposition;
+            _resultValue.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
+            _resultValue.destinationTable = destinationTable;
+            _resultValue.encoding = encoding;
+            _resultValue.fieldDelimiter = fieldDelimiter;
+            _resultValue.ignoreUnknownValues = ignoreUnknownValues;
+            _resultValue.jsonExtension = jsonExtension;
+            _resultValue.maxBadRecords = maxBadRecords;
+            _resultValue.nullMarker = nullMarker;
+            _resultValue.parquetOptions = parquetOptions;
+            _resultValue.projectionFields = projectionFields;
+            _resultValue.quote = quote;
+            _resultValue.schemaUpdateOptions = schemaUpdateOptions;
+            _resultValue.skipLeadingRows = skipLeadingRows;
+            _resultValue.sourceFormat = sourceFormat;
+            _resultValue.sourceUris = sourceUris;
+            _resultValue.timePartitioning = timePartitioning;
+            _resultValue.writeDisposition = writeDisposition;
+            return _resultValue;
         }
     }
 }

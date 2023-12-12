@@ -50,9 +50,9 @@ public final class WorkflowTemplateParameterValidationRegex {
             return regexes(List.of(regexes));
         }
         public WorkflowTemplateParameterValidationRegex build() {
-            final var o = new WorkflowTemplateParameterValidationRegex();
-            o.regexes = regexes;
-            return o;
+            final var _resultValue = new WorkflowTemplateParameterValidationRegex();
+            _resultValue.regexes = regexes;
+            return _resultValue;
         }
     }
 }

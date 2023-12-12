@@ -49,10 +49,10 @@ public final class GetBackendServiceConsistentHashHttpCookyTtl {
             return this;
         }
         public GetBackendServiceConsistentHashHttpCookyTtl build() {
-            final var o = new GetBackendServiceConsistentHashHttpCookyTtl();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new GetBackendServiceConsistentHashHttpCookyTtl();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

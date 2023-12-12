@@ -86,11 +86,11 @@ public final class ServiceTemplateSpecVolume {
             return this;
         }
         public ServiceTemplateSpecVolume build() {
-            final var o = new ServiceTemplateSpecVolume();
-            o.emptyDir = emptyDir;
-            o.name = name;
-            o.secret = secret;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecVolume();
+            _resultValue.emptyDir = emptyDir;
+            _resultValue.name = name;
+            _resultValue.secret = secret;
+            return _resultValue;
         }
     }
 }

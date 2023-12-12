@@ -87,11 +87,11 @@ public final class RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToA
             return this;
         }
         public RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd build() {
-            final var o = new RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd();
-            o.headerName = headerName;
-            o.headerValue = headerValue;
-            o.replace = replace;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAdd();
+            _resultValue.headerName = headerName;
+            _resultValue.headerValue = headerValue;
+            _resultValue.replace = replace;
+            return _resultValue;
         }
     }
 }

@@ -103,11 +103,11 @@ public final class ServerTlsPolicyMtlsPolicy {
             return this;
         }
         public ServerTlsPolicyMtlsPolicy build() {
-            final var o = new ServerTlsPolicyMtlsPolicy();
-            o.clientValidationCas = clientValidationCas;
-            o.clientValidationMode = clientValidationMode;
-            o.clientValidationTrustConfig = clientValidationTrustConfig;
-            return o;
+            final var _resultValue = new ServerTlsPolicyMtlsPolicy();
+            _resultValue.clientValidationCas = clientValidationCas;
+            _resultValue.clientValidationMode = clientValidationMode;
+            _resultValue.clientValidationTrustConfig = clientValidationTrustConfig;
+            return _resultValue;
         }
     }
 }

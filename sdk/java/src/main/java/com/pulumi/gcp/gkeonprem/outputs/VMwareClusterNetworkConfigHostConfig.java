@@ -99,11 +99,11 @@ public final class VMwareClusterNetworkConfigHostConfig {
             return ntpServers(List.of(ntpServers));
         }
         public VMwareClusterNetworkConfigHostConfig build() {
-            final var o = new VMwareClusterNetworkConfigHostConfig();
-            o.dnsSearchDomains = dnsSearchDomains;
-            o.dnsServers = dnsServers;
-            o.ntpServers = ntpServers;
-            return o;
+            final var _resultValue = new VMwareClusterNetworkConfigHostConfig();
+            _resultValue.dnsSearchDomains = dnsSearchDomains;
+            _resultValue.dnsServers = dnsServers;
+            _resultValue.ntpServers = ntpServers;
+            return _resultValue;
         }
     }
 }

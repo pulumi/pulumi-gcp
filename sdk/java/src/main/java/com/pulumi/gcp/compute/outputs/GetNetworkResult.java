@@ -169,16 +169,16 @@ public final class GetNetworkResult {
             return subnetworksSelfLinks(List.of(subnetworksSelfLinks));
         }
         public GetNetworkResult build() {
-            final var o = new GetNetworkResult();
-            o.description = description;
-            o.gatewayIpv4 = gatewayIpv4;
-            o.id = id;
-            o.internalIpv6Range = internalIpv6Range;
-            o.name = name;
-            o.project = project;
-            o.selfLink = selfLink;
-            o.subnetworksSelfLinks = subnetworksSelfLinks;
-            return o;
+            final var _resultValue = new GetNetworkResult();
+            _resultValue.description = description;
+            _resultValue.gatewayIpv4 = gatewayIpv4;
+            _resultValue.id = id;
+            _resultValue.internalIpv6Range = internalIpv6Range;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            _resultValue.subnetworksSelfLinks = subnetworksSelfLinks;
+            return _resultValue;
         }
     }
 }

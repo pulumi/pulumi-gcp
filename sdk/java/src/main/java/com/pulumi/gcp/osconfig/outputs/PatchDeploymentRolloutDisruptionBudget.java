@@ -67,10 +67,10 @@ public final class PatchDeploymentRolloutDisruptionBudget {
             return this;
         }
         public PatchDeploymentRolloutDisruptionBudget build() {
-            final var o = new PatchDeploymentRolloutDisruptionBudget();
-            o.fixed = fixed;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new PatchDeploymentRolloutDisruptionBudget();
+            _resultValue.fixed = fixed;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

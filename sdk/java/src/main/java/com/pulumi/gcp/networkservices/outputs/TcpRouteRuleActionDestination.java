@@ -78,10 +78,10 @@ public final class TcpRouteRuleActionDestination {
             return this;
         }
         public TcpRouteRuleActionDestination build() {
-            final var o = new TcpRouteRuleActionDestination();
-            o.serviceName = serviceName;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new TcpRouteRuleActionDestination();
+            _resultValue.serviceName = serviceName;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

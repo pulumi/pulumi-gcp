@@ -48,9 +48,9 @@ public final class BareMetalClusterOsEnvironmentConfig {
             return this;
         }
         public BareMetalClusterOsEnvironmentConfig build() {
-            final var o = new BareMetalClusterOsEnvironmentConfig();
-            o.packageRepoExcluded = packageRepoExcluded;
-            return o;
+            final var _resultValue = new BareMetalClusterOsEnvironmentConfig();
+            _resultValue.packageRepoExcluded = packageRepoExcluded;
+            return _resultValue;
         }
     }
 }

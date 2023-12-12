@@ -71,10 +71,10 @@ public final class JobHttpTargetOidcToken {
             return this;
         }
         public JobHttpTargetOidcToken build() {
-            final var o = new JobHttpTargetOidcToken();
-            o.audience = audience;
-            o.serviceAccountEmail = serviceAccountEmail;
-            return o;
+            final var _resultValue = new JobHttpTargetOidcToken();
+            _resultValue.audience = audience;
+            _resultValue.serviceAccountEmail = serviceAccountEmail;
+            return _resultValue;
         }
     }
 }

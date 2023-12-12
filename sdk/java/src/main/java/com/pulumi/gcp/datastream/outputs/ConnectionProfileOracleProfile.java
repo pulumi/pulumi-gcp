@@ -147,14 +147,14 @@ public final class ConnectionProfileOracleProfile {
             return this;
         }
         public ConnectionProfileOracleProfile build() {
-            final var o = new ConnectionProfileOracleProfile();
-            o.connectionAttributes = connectionAttributes;
-            o.databaseService = databaseService;
-            o.hostname = hostname;
-            o.password = password;
-            o.port = port;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionProfileOracleProfile();
+            _resultValue.connectionAttributes = connectionAttributes;
+            _resultValue.databaseService = databaseService;
+            _resultValue.hostname = hostname;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

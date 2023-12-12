@@ -79,10 +79,10 @@ public final class ApiConfigGrpcService {
             return sources(List.of(sources));
         }
         public ApiConfigGrpcService build() {
-            final var o = new ApiConfigGrpcService();
-            o.fileDescriptorSet = fileDescriptorSet;
-            o.sources = sources;
-            return o;
+            final var _resultValue = new ApiConfigGrpcService();
+            _resultValue.fileDescriptorSet = fileDescriptorSet;
+            _resultValue.sources = sources;
+            return _resultValue;
         }
     }
 }

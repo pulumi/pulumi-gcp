@@ -126,12 +126,12 @@ public final class ReservationSpecificReservationInstanceProperties {
             return this;
         }
         public ReservationSpecificReservationInstanceProperties build() {
-            final var o = new ReservationSpecificReservationInstanceProperties();
-            o.guestAccelerators = guestAccelerators;
-            o.localSsds = localSsds;
-            o.machineType = machineType;
-            o.minCpuPlatform = minCpuPlatform;
-            return o;
+            final var _resultValue = new ReservationSpecificReservationInstanceProperties();
+            _resultValue.guestAccelerators = guestAccelerators;
+            _resultValue.localSsds = localSsds;
+            _resultValue.machineType = machineType;
+            _resultValue.minCpuPlatform = minCpuPlatform;
+            return _resultValue;
         }
     }
 }

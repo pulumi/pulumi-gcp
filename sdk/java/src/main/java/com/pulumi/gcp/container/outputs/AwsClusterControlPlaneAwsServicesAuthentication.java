@@ -67,10 +67,10 @@ public final class AwsClusterControlPlaneAwsServicesAuthentication {
             return this;
         }
         public AwsClusterControlPlaneAwsServicesAuthentication build() {
-            final var o = new AwsClusterControlPlaneAwsServicesAuthentication();
-            o.roleArn = roleArn;
-            o.roleSessionName = roleSessionName;
-            return o;
+            final var _resultValue = new AwsClusterControlPlaneAwsServicesAuthentication();
+            _resultValue.roleArn = roleArn;
+            _resultValue.roleSessionName = roleSessionName;
+            return _resultValue;
         }
     }
 }

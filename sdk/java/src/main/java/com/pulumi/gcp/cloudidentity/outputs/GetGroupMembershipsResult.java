@@ -81,11 +81,11 @@ public final class GetGroupMembershipsResult {
             return memberships(List.of(memberships));
         }
         public GetGroupMembershipsResult build() {
-            final var o = new GetGroupMembershipsResult();
-            o.group = group;
-            o.id = id;
-            o.memberships = memberships;
-            return o;
+            final var _resultValue = new GetGroupMembershipsResult();
+            _resultValue.group = group;
+            _resultValue.id = id;
+            _resultValue.memberships = memberships;
+            return _resultValue;
         }
     }
 }

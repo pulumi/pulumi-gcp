@@ -68,10 +68,10 @@ public final class ConnectionLockConfig {
             return this;
         }
         public ConnectionLockConfig build() {
-            final var o = new ConnectionLockConfig();
-            o.locked = locked;
-            o.reason = reason;
-            return o;
+            final var _resultValue = new ConnectionLockConfig();
+            _resultValue.locked = locked;
+            _resultValue.reason = reason;
+            return _resultValue;
         }
     }
 }

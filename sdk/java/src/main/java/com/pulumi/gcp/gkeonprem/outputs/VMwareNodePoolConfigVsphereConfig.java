@@ -82,10 +82,10 @@ public final class VMwareNodePoolConfigVsphereConfig {
             return tags(List.of(tags));
         }
         public VMwareNodePoolConfigVsphereConfig build() {
-            final var o = new VMwareNodePoolConfigVsphereConfig();
-            o.datastore = datastore;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new VMwareNodePoolConfigVsphereConfig();
+            _resultValue.datastore = datastore;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

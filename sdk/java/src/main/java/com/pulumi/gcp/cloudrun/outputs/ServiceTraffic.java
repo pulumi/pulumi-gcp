@@ -138,13 +138,13 @@ public final class ServiceTraffic {
             return this;
         }
         public ServiceTraffic build() {
-            final var o = new ServiceTraffic();
-            o.latestRevision = latestRevision;
-            o.percent = percent;
-            o.revisionName = revisionName;
-            o.tag = tag;
-            o.url = url;
-            return o;
+            final var _resultValue = new ServiceTraffic();
+            _resultValue.latestRevision = latestRevision;
+            _resultValue.percent = percent;
+            _resultValue.revisionName = revisionName;
+            _resultValue.tag = tag;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

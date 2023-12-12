@@ -25,8 +25,8 @@ public final class StreamDestinationConfigGcsDestinationConfigAvroFileFormat {
         }
 
         public StreamDestinationConfigGcsDestinationConfigAvroFileFormat build() {
-            final var o = new StreamDestinationConfigGcsDestinationConfigAvroFileFormat();
-            return o;
+            final var _resultValue = new StreamDestinationConfigGcsDestinationConfigAvroFileFormat();
+            return _resultValue;
         }
     }
 }

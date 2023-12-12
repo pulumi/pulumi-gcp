@@ -48,9 +48,9 @@ public final class PreventionJobTriggerInspectJobActionSaveFindings {
             return this;
         }
         public PreventionJobTriggerInspectJobActionSaveFindings build() {
-            final var o = new PreventionJobTriggerInspectJobActionSaveFindings();
-            o.outputConfig = outputConfig;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobActionSaveFindings();
+            _resultValue.outputConfig = outputConfig;
+            return _resultValue;
         }
     }
 }

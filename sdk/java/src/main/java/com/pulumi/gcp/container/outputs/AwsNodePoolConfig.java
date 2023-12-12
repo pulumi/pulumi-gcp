@@ -311,22 +311,22 @@ public final class AwsNodePoolConfig {
             return taints(List.of(taints));
         }
         public AwsNodePoolConfig build() {
-            final var o = new AwsNodePoolConfig();
-            o.autoscalingMetricsCollection = autoscalingMetricsCollection;
-            o.configEncryption = configEncryption;
-            o.iamInstanceProfile = iamInstanceProfile;
-            o.imageType = imageType;
-            o.instancePlacement = instancePlacement;
-            o.instanceType = instanceType;
-            o.labels = labels;
-            o.proxyConfig = proxyConfig;
-            o.rootVolume = rootVolume;
-            o.securityGroupIds = securityGroupIds;
-            o.spotConfig = spotConfig;
-            o.sshConfig = sshConfig;
-            o.tags = tags;
-            o.taints = taints;
-            return o;
+            final var _resultValue = new AwsNodePoolConfig();
+            _resultValue.autoscalingMetricsCollection = autoscalingMetricsCollection;
+            _resultValue.configEncryption = configEncryption;
+            _resultValue.iamInstanceProfile = iamInstanceProfile;
+            _resultValue.imageType = imageType;
+            _resultValue.instancePlacement = instancePlacement;
+            _resultValue.instanceType = instanceType;
+            _resultValue.labels = labels;
+            _resultValue.proxyConfig = proxyConfig;
+            _resultValue.rootVolume = rootVolume;
+            _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.spotConfig = spotConfig;
+            _resultValue.sshConfig = sshConfig;
+            _resultValue.tags = tags;
+            _resultValue.taints = taints;
+            return _resultValue;
         }
     }
 }

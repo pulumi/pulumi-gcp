@@ -71,10 +71,10 @@ public final class SpokeLinkedRouterApplianceInstancesInstance {
             return this;
         }
         public SpokeLinkedRouterApplianceInstancesInstance build() {
-            final var o = new SpokeLinkedRouterApplianceInstancesInstance();
-            o.ipAddress = ipAddress;
-            o.virtualMachine = virtualMachine;
-            return o;
+            final var _resultValue = new SpokeLinkedRouterApplianceInstancesInstance();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.virtualMachine = virtualMachine;
+            return _resultValue;
         }
     }
 }

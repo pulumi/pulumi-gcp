@@ -73,10 +73,10 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchem
             return this;
         }
         public StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable build() {
-            final var o = new StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable();
-            o.oracleColumns = oracleColumns;
-            o.table = table;
-            return o;
+            final var _resultValue = new StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTable();
+            _resultValue.oracleColumns = oracleColumns;
+            _resultValue.table = table;
+            return _resultValue;
         }
     }
 }

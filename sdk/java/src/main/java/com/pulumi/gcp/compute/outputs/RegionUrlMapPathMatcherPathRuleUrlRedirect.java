@@ -194,14 +194,14 @@ public final class RegionUrlMapPathMatcherPathRuleUrlRedirect {
             return this;
         }
         public RegionUrlMapPathMatcherPathRuleUrlRedirect build() {
-            final var o = new RegionUrlMapPathMatcherPathRuleUrlRedirect();
-            o.hostRedirect = hostRedirect;
-            o.httpsRedirect = httpsRedirect;
-            o.pathRedirect = pathRedirect;
-            o.prefixRedirect = prefixRedirect;
-            o.redirectResponseCode = redirectResponseCode;
-            o.stripQuery = stripQuery;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherPathRuleUrlRedirect();
+            _resultValue.hostRedirect = hostRedirect;
+            _resultValue.httpsRedirect = httpsRedirect;
+            _resultValue.pathRedirect = pathRedirect;
+            _resultValue.prefixRedirect = prefixRedirect;
+            _resultValue.redirectResponseCode = redirectResponseCode;
+            _resultValue.stripQuery = stripQuery;
+            return _resultValue;
         }
     }
 }

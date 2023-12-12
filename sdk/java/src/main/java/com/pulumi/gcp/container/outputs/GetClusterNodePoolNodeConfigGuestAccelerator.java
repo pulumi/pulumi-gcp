@@ -92,13 +92,13 @@ public final class GetClusterNodePoolNodeConfigGuestAccelerator {
             return this;
         }
         public GetClusterNodePoolNodeConfigGuestAccelerator build() {
-            final var o = new GetClusterNodePoolNodeConfigGuestAccelerator();
-            o.count = count;
-            o.gpuDriverInstallationConfigs = gpuDriverInstallationConfigs;
-            o.gpuPartitionSize = gpuPartitionSize;
-            o.gpuSharingConfigs = gpuSharingConfigs;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetClusterNodePoolNodeConfigGuestAccelerator();
+            _resultValue.count = count;
+            _resultValue.gpuDriverInstallationConfigs = gpuDriverInstallationConfigs;
+            _resultValue.gpuPartitionSize = gpuPartitionSize;
+            _resultValue.gpuSharingConfigs = gpuSharingConfigs;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class ClusterEnableK8sBetaApis {
             return enabledApis(List.of(enabledApis));
         }
         public ClusterEnableK8sBetaApis build() {
-            final var o = new ClusterEnableK8sBetaApis();
-            o.enabledApis = enabledApis;
-            return o;
+            final var _resultValue = new ClusterEnableK8sBetaApis();
+            _resultValue.enabledApis = enabledApis;
+            return _resultValue;
         }
     }
 }

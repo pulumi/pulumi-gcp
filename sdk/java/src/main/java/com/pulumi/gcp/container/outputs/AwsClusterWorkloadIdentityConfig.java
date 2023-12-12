@@ -62,11 +62,11 @@ public final class AwsClusterWorkloadIdentityConfig {
             return this;
         }
         public AwsClusterWorkloadIdentityConfig build() {
-            final var o = new AwsClusterWorkloadIdentityConfig();
-            o.identityProvider = identityProvider;
-            o.issuerUri = issuerUri;
-            o.workloadPool = workloadPool;
-            return o;
+            final var _resultValue = new AwsClusterWorkloadIdentityConfig();
+            _resultValue.identityProvider = identityProvider;
+            _resultValue.issuerUri = issuerUri;
+            _resultValue.workloadPool = workloadPool;
+            return _resultValue;
         }
     }
 }

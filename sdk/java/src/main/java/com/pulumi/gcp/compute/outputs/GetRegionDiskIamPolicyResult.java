@@ -119,14 +119,14 @@ public final class GetRegionDiskIamPolicyResult {
             return this;
         }
         public GetRegionDiskIamPolicyResult build() {
-            final var o = new GetRegionDiskIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.name = name;
-            o.policyData = policyData;
-            o.project = project;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetRegionDiskIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

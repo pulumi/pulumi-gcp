@@ -84,10 +84,10 @@ public final class ServiceTemplate {
             return this;
         }
         public ServiceTemplate build() {
-            final var o = new ServiceTemplate();
-            o.metadata = metadata;
-            o.spec = spec;
-            return o;
+            final var _resultValue = new ServiceTemplate();
+            _resultValue.metadata = metadata;
+            _resultValue.spec = spec;
+            return _resultValue;
         }
     }
 }

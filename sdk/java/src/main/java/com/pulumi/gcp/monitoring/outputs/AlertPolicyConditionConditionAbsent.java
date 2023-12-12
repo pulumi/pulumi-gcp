@@ -171,12 +171,12 @@ public final class AlertPolicyConditionConditionAbsent {
             return this;
         }
         public AlertPolicyConditionConditionAbsent build() {
-            final var o = new AlertPolicyConditionConditionAbsent();
-            o.aggregations = aggregations;
-            o.duration = duration;
-            o.filter = filter;
-            o.trigger = trigger;
-            return o;
+            final var _resultValue = new AlertPolicyConditionConditionAbsent();
+            _resultValue.aggregations = aggregations;
+            _resultValue.duration = duration;
+            _resultValue.filter = filter;
+            _resultValue.trigger = trigger;
+            return _resultValue;
         }
     }
 }

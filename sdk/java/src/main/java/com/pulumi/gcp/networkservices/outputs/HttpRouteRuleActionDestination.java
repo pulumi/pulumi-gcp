@@ -74,10 +74,10 @@ public final class HttpRouteRuleActionDestination {
             return this;
         }
         public HttpRouteRuleActionDestination build() {
-            final var o = new HttpRouteRuleActionDestination();
-            o.serviceName = serviceName;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new HttpRouteRuleActionDestination();
+            _resultValue.serviceName = serviceName;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

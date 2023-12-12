@@ -182,15 +182,15 @@ public final class FlexibleAppVersionHandler {
             return this;
         }
         public FlexibleAppVersionHandler build() {
-            final var o = new FlexibleAppVersionHandler();
-            o.authFailAction = authFailAction;
-            o.login = login;
-            o.redirectHttpResponseCode = redirectHttpResponseCode;
-            o.script = script;
-            o.securityLevel = securityLevel;
-            o.staticFiles = staticFiles;
-            o.urlRegex = urlRegex;
-            return o;
+            final var _resultValue = new FlexibleAppVersionHandler();
+            _resultValue.authFailAction = authFailAction;
+            _resultValue.login = login;
+            _resultValue.redirectHttpResponseCode = redirectHttpResponseCode;
+            _resultValue.script = script;
+            _resultValue.securityLevel = securityLevel;
+            _resultValue.staticFiles = staticFiles;
+            _resultValue.urlRegex = urlRegex;
+            return _resultValue;
         }
     }
 }

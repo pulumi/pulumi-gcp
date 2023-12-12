@@ -136,13 +136,13 @@ public final class VMwareClusterStatusCondition {
             return this;
         }
         public VMwareClusterStatusCondition build() {
-            final var o = new VMwareClusterStatusCondition();
-            o.lastTransitionTime = lastTransitionTime;
-            o.message = message;
-            o.reason = reason;
-            o.state = state;
-            o.type = type;
-            return o;
+            final var _resultValue = new VMwareClusterStatusCondition();
+            _resultValue.lastTransitionTime = lastTransitionTime;
+            _resultValue.message = message;
+            _resultValue.reason = reason;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -55,9 +55,9 @@ public final class VMwareClusterAuthorization {
             return adminUsers(List.of(adminUsers));
         }
         public VMwareClusterAuthorization build() {
-            final var o = new VMwareClusterAuthorization();
-            o.adminUsers = adminUsers;
-            return o;
+            final var _resultValue = new VMwareClusterAuthorization();
+            _resultValue.adminUsers = adminUsers;
+            return _resultValue;
         }
     }
 }

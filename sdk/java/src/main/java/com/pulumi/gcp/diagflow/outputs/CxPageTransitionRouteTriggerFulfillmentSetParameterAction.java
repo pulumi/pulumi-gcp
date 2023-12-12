@@ -67,10 +67,10 @@ public final class CxPageTransitionRouteTriggerFulfillmentSetParameterAction {
             return this;
         }
         public CxPageTransitionRouteTriggerFulfillmentSetParameterAction build() {
-            final var o = new CxPageTransitionRouteTriggerFulfillmentSetParameterAction();
-            o.parameter = parameter;
-            o.value = value;
-            return o;
+            final var _resultValue = new CxPageTransitionRouteTriggerFulfillmentSetParameterAction();
+            _resultValue.parameter = parameter;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

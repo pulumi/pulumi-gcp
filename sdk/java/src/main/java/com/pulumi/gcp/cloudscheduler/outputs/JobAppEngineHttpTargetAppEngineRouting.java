@@ -92,11 +92,11 @@ public final class JobAppEngineHttpTargetAppEngineRouting {
             return this;
         }
         public JobAppEngineHttpTargetAppEngineRouting build() {
-            final var o = new JobAppEngineHttpTargetAppEngineRouting();
-            o.instance = instance;
-            o.service = service;
-            o.version = version;
-            return o;
+            final var _resultValue = new JobAppEngineHttpTargetAppEngineRouting();
+            _resultValue.instance = instance;
+            _resultValue.service = service;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

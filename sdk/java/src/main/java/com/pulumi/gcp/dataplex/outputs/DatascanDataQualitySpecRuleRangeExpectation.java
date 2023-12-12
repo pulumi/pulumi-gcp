@@ -110,12 +110,12 @@ public final class DatascanDataQualitySpecRuleRangeExpectation {
             return this;
         }
         public DatascanDataQualitySpecRuleRangeExpectation build() {
-            final var o = new DatascanDataQualitySpecRuleRangeExpectation();
-            o.maxValue = maxValue;
-            o.minValue = minValue;
-            o.strictMaxEnabled = strictMaxEnabled;
-            o.strictMinEnabled = strictMinEnabled;
-            return o;
+            final var _resultValue = new DatascanDataQualitySpecRuleRangeExpectation();
+            _resultValue.maxValue = maxValue;
+            _resultValue.minValue = minValue;
+            _resultValue.strictMaxEnabled = strictMaxEnabled;
+            _resultValue.strictMinEnabled = strictMinEnabled;
+            return _resultValue;
         }
     }
 }

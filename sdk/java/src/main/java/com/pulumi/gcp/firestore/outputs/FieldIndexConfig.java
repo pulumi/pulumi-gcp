@@ -53,9 +53,9 @@ public final class FieldIndexConfig {
             return indexes(List.of(indexes));
         }
         public FieldIndexConfig build() {
-            final var o = new FieldIndexConfig();
-            o.indexes = indexes;
-            return o;
+            final var _resultValue = new FieldIndexConfig();
+            _resultValue.indexes = indexes;
+            return _resultValue;
         }
     }
 }

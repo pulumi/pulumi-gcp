@@ -88,11 +88,11 @@ public final class GuestPoliciesRecipeInstallStepArchiveExtraction {
             return this;
         }
         public GuestPoliciesRecipeInstallStepArchiveExtraction build() {
-            final var o = new GuestPoliciesRecipeInstallStepArchiveExtraction();
-            o.artifactId = artifactId;
-            o.destination = destination;
-            o.type = type;
-            return o;
+            final var _resultValue = new GuestPoliciesRecipeInstallStepArchiveExtraction();
+            _resultValue.artifactId = artifactId;
+            _resultValue.destination = destination;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

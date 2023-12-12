@@ -87,11 +87,11 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig();
-            o.bootDiskSizeGb = bootDiskSizeGb;
-            o.bootDiskType = bootDiskType;
-            o.numLocalSsds = numLocalSsds;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig();
+            _resultValue.bootDiskSizeGb = bootDiskSizeGb;
+            _resultValue.bootDiskType = bootDiskType;
+            _resultValue.numLocalSsds = numLocalSsds;
+            return _resultValue;
         }
     }
 }

@@ -119,14 +119,14 @@ public final class GetApiConfigIamPolicyResult {
             return this;
         }
         public GetApiConfigIamPolicyResult build() {
-            final var o = new GetApiConfigIamPolicyResult();
-            o.api = api;
-            o.apiConfig = apiConfig;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetApiConfigIamPolicyResult();
+            _resultValue.api = api;
+            _resultValue.apiConfig = apiConfig;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

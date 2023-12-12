@@ -48,9 +48,9 @@ public final class AwsClusterBinaryAuthorization {
             return this;
         }
         public AwsClusterBinaryAuthorization build() {
-            final var o = new AwsClusterBinaryAuthorization();
-            o.evaluationMode = evaluationMode;
-            return o;
+            final var _resultValue = new AwsClusterBinaryAuthorization();
+            _resultValue.evaluationMode = evaluationMode;
+            return _resultValue;
         }
     }
 }

@@ -25,8 +25,8 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOpt
         }
 
         public DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions build() {
-            final var o = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions();
-            return o;
+            final var _resultValue = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions();
+            return _resultValue;
         }
     }
 }

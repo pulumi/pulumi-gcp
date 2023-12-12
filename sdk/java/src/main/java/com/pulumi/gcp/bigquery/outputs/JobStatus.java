@@ -109,11 +109,11 @@ public final class JobStatus {
             return this;
         }
         public JobStatus build() {
-            final var o = new JobStatus();
-            o.errorResults = errorResults;
-            o.errors = errors;
-            o.state = state;
-            return o;
+            final var _resultValue = new JobStatus();
+            _resultValue.errorResults = errorResults;
+            _resultValue.errors = errors;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

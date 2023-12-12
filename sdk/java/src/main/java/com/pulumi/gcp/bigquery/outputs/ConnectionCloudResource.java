@@ -50,9 +50,9 @@ public final class ConnectionCloudResource {
             return this;
         }
         public ConnectionCloudResource build() {
-            final var o = new ConnectionCloudResource();
-            o.serviceAccountId = serviceAccountId;
-            return o;
+            final var _resultValue = new ConnectionCloudResource();
+            _resultValue.serviceAccountId = serviceAccountId;
+            return _resultValue;
         }
     }
 }

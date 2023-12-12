@@ -48,9 +48,9 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTyp
             return this;
         }
         public PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType build() {
-            final var o = new PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType();
-            o.name = name;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

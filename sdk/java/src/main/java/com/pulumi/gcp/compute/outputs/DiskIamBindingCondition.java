@@ -62,11 +62,11 @@ public final class DiskIamBindingCondition {
             return this;
         }
         public DiskIamBindingCondition build() {
-            final var o = new DiskIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new DiskIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

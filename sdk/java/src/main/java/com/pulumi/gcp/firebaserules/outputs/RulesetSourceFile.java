@@ -90,11 +90,11 @@ public final class RulesetSourceFile {
             return this;
         }
         public RulesetSourceFile build() {
-            final var o = new RulesetSourceFile();
-            o.content = content;
-            o.fingerprint = fingerprint;
-            o.name = name;
-            return o;
+            final var _resultValue = new RulesetSourceFile();
+            _resultValue.content = content;
+            _resultValue.fingerprint = fingerprint;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

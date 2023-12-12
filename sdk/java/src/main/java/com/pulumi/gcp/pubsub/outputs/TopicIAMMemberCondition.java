@@ -62,11 +62,11 @@ public final class TopicIAMMemberCondition {
             return this;
         }
         public TopicIAMMemberCondition build() {
-            final var o = new TopicIAMMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new TopicIAMMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

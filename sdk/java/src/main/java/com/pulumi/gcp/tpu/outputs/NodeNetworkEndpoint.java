@@ -72,10 +72,10 @@ public final class NodeNetworkEndpoint {
             return this;
         }
         public NodeNetworkEndpoint build() {
-            final var o = new NodeNetworkEndpoint();
-            o.ipAddress = ipAddress;
-            o.port = port;
-            return o;
+            final var _resultValue = new NodeNetworkEndpoint();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

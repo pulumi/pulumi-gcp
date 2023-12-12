@@ -168,14 +168,14 @@ public final class ConnectivityTestSource {
             return this;
         }
         public ConnectivityTestSource build() {
-            final var o = new ConnectivityTestSource();
-            o.instance = instance;
-            o.ipAddress = ipAddress;
-            o.network = network;
-            o.networkType = networkType;
-            o.port = port;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new ConnectivityTestSource();
+            _resultValue.instance = instance;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.network = network;
+            _resultValue.networkType = networkType;
+            _resultValue.port = port;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

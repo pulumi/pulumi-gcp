@@ -48,9 +48,9 @@ public final class FolderFeedFeedOutputConfig {
             return this;
         }
         public FolderFeedFeedOutputConfig build() {
-            final var o = new FolderFeedFeedOutputConfig();
-            o.pubsubDestination = pubsubDestination;
-            return o;
+            final var _resultValue = new FolderFeedFeedOutputConfig();
+            _resultValue.pubsubDestination = pubsubDestination;
+            return _resultValue;
         }
     }
 }

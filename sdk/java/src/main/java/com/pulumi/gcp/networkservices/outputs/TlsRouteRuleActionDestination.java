@@ -72,10 +72,10 @@ public final class TlsRouteRuleActionDestination {
             return this;
         }
         public TlsRouteRuleActionDestination build() {
-            final var o = new TlsRouteRuleActionDestination();
-            o.serviceName = serviceName;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new TlsRouteRuleActionDestination();
+            _resultValue.serviceName = serviceName;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

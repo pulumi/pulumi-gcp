@@ -78,10 +78,10 @@ public final class TableExternalDataConfigurationGoogleSheetsOptions {
             return this;
         }
         public TableExternalDataConfigurationGoogleSheetsOptions build() {
-            final var o = new TableExternalDataConfigurationGoogleSheetsOptions();
-            o.range = range;
-            o.skipLeadingRows = skipLeadingRows;
-            return o;
+            final var _resultValue = new TableExternalDataConfigurationGoogleSheetsOptions();
+            _resultValue.range = range;
+            _resultValue.skipLeadingRows = skipLeadingRows;
+            return _resultValue;
         }
     }
 }

@@ -72,11 +72,11 @@ public final class GetClusterMonitoringConfig {
             return managedPrometheuses(List.of(managedPrometheuses));
         }
         public GetClusterMonitoringConfig build() {
-            final var o = new GetClusterMonitoringConfig();
-            o.advancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
-            o.enableComponents = enableComponents;
-            o.managedPrometheuses = managedPrometheuses;
-            return o;
+            final var _resultValue = new GetClusterMonitoringConfig();
+            _resultValue.advancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
+            _resultValue.enableComponents = enableComponents;
+            _resultValue.managedPrometheuses = managedPrometheuses;
+            return _resultValue;
         }
     }
 }

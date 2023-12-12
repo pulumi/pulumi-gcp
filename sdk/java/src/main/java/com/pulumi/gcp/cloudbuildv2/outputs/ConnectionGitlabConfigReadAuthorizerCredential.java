@@ -71,10 +71,10 @@ public final class ConnectionGitlabConfigReadAuthorizerCredential {
             return this;
         }
         public ConnectionGitlabConfigReadAuthorizerCredential build() {
-            final var o = new ConnectionGitlabConfigReadAuthorizerCredential();
-            o.userTokenSecretVersion = userTokenSecretVersion;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionGitlabConfigReadAuthorizerCredential();
+            _resultValue.userTokenSecretVersion = userTokenSecretVersion;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

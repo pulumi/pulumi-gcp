@@ -57,10 +57,10 @@ public final class GetAuthorityConfigSubjectConfig {
             return subjects(List.of(subjects));
         }
         public GetAuthorityConfigSubjectConfig build() {
-            final var o = new GetAuthorityConfigSubjectConfig();
-            o.subjectAltNames = subjectAltNames;
-            o.subjects = subjects;
-            return o;
+            final var _resultValue = new GetAuthorityConfigSubjectConfig();
+            _resultValue.subjectAltNames = subjectAltNames;
+            _resultValue.subjects = subjects;
+            return _resultValue;
         }
     }
 }

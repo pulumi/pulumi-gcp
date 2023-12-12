@@ -50,9 +50,9 @@ public final class StandardAppVersionEntrypoint {
             return this;
         }
         public StandardAppVersionEntrypoint build() {
-            final var o = new StandardAppVersionEntrypoint();
-            o.shell = shell;
-            return o;
+            final var _resultValue = new StandardAppVersionEntrypoint();
+            _resultValue.shell = shell;
+            return _resultValue;
         }
     }
 }

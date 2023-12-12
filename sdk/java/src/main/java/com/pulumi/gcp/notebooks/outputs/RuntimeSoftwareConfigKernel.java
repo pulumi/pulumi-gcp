@@ -69,10 +69,10 @@ public final class RuntimeSoftwareConfigKernel {
             return this;
         }
         public RuntimeSoftwareConfigKernel build() {
-            final var o = new RuntimeSoftwareConfigKernel();
-            o.repository = repository;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new RuntimeSoftwareConfigKernel();
+            _resultValue.repository = repository;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

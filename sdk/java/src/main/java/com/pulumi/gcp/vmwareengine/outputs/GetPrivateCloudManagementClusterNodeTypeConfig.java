@@ -61,11 +61,11 @@ public final class GetPrivateCloudManagementClusterNodeTypeConfig {
             return this;
         }
         public GetPrivateCloudManagementClusterNodeTypeConfig build() {
-            final var o = new GetPrivateCloudManagementClusterNodeTypeConfig();
-            o.customCoreCount = customCoreCount;
-            o.nodeCount = nodeCount;
-            o.nodeTypeId = nodeTypeId;
-            return o;
+            final var _resultValue = new GetPrivateCloudManagementClusterNodeTypeConfig();
+            _resultValue.customCoreCount = customCoreCount;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.nodeTypeId = nodeTypeId;
+            return _resultValue;
         }
     }
 }

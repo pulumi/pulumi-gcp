@@ -48,9 +48,9 @@ public final class AttachedClusterError {
             return this;
         }
         public AttachedClusterError build() {
-            final var o = new AttachedClusterError();
-            o.message = message;
-            return o;
+            final var _resultValue = new AttachedClusterError();
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

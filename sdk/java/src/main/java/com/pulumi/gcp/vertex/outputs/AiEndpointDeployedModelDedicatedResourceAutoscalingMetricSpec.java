@@ -72,10 +72,10 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
             return this;
         }
         public AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec build() {
-            final var o = new AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec();
-            o.metricName = metricName;
-            o.target = target;
-            return o;
+            final var _resultValue = new AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec();
+            _resultValue.metricName = metricName;
+            _resultValue.target = target;
+            return _resultValue;
         }
     }
 }

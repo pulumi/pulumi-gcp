@@ -48,9 +48,9 @@ public final class DataPolicyDataMaskingPolicy {
             return this;
         }
         public DataPolicyDataMaskingPolicy build() {
-            final var o = new DataPolicyDataMaskingPolicy();
-            o.predefinedExpression = predefinedExpression;
-            return o;
+            final var _resultValue = new DataPolicyDataMaskingPolicy();
+            _resultValue.predefinedExpression = predefinedExpression;
+            return _resultValue;
         }
     }
 }

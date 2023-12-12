@@ -54,9 +54,9 @@ public final class ClusterClusterConfigMetastoreConfig {
             return this;
         }
         public ClusterClusterConfigMetastoreConfig build() {
-            final var o = new ClusterClusterConfigMetastoreConfig();
-            o.dataprocMetastoreService = dataprocMetastoreService;
-            return o;
+            final var _resultValue = new ClusterClusterConfigMetastoreConfig();
+            _resultValue.dataprocMetastoreService = dataprocMetastoreService;
+            return _resultValue;
         }
     }
 }

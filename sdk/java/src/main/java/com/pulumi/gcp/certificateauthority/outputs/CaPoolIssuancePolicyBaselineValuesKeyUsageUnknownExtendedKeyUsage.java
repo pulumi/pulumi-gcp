@@ -50,9 +50,9 @@ public final class CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyU
             return objectIdPaths(List.of(objectIdPaths));
         }
         public CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage build() {
-            final var o = new CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

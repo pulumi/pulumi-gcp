@@ -86,11 +86,11 @@ public final class RepositoryWorkspaceCompilationOverrides {
             return this;
         }
         public RepositoryWorkspaceCompilationOverrides build() {
-            final var o = new RepositoryWorkspaceCompilationOverrides();
-            o.defaultDatabase = defaultDatabase;
-            o.schemaSuffix = schemaSuffix;
-            o.tablePrefix = tablePrefix;
-            return o;
+            final var _resultValue = new RepositoryWorkspaceCompilationOverrides();
+            _resultValue.defaultDatabase = defaultDatabase;
+            _resultValue.schemaSuffix = schemaSuffix;
+            _resultValue.tablePrefix = tablePrefix;
+            return _resultValue;
         }
     }
 }

@@ -123,12 +123,12 @@ public final class RegionUrlMapPathMatcherRouteRuleHeaderAction {
             return responseHeadersToRemoves(List.of(responseHeadersToRemoves));
         }
         public RegionUrlMapPathMatcherRouteRuleHeaderAction build() {
-            final var o = new RegionUrlMapPathMatcherRouteRuleHeaderAction();
-            o.requestHeadersToAdds = requestHeadersToAdds;
-            o.requestHeadersToRemoves = requestHeadersToRemoves;
-            o.responseHeadersToAdds = responseHeadersToAdds;
-            o.responseHeadersToRemoves = responseHeadersToRemoves;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherRouteRuleHeaderAction();
+            _resultValue.requestHeadersToAdds = requestHeadersToAdds;
+            _resultValue.requestHeadersToRemoves = requestHeadersToRemoves;
+            _resultValue.responseHeadersToAdds = responseHeadersToAdds;
+            _resultValue.responseHeadersToRemoves = responseHeadersToRemoves;
+            return _resultValue;
         }
     }
 }

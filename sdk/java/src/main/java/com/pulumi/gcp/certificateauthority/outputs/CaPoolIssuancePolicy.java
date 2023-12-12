@@ -152,13 +152,13 @@ public final class CaPoolIssuancePolicy {
             return this;
         }
         public CaPoolIssuancePolicy build() {
-            final var o = new CaPoolIssuancePolicy();
-            o.allowedIssuanceModes = allowedIssuanceModes;
-            o.allowedKeyTypes = allowedKeyTypes;
-            o.baselineValues = baselineValues;
-            o.identityConstraints = identityConstraints;
-            o.maximumLifetime = maximumLifetime;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicy();
+            _resultValue.allowedIssuanceModes = allowedIssuanceModes;
+            _resultValue.allowedKeyTypes = allowedKeyTypes;
+            _resultValue.baselineValues = baselineValues;
+            _resultValue.identityConstraints = identityConstraints;
+            _resultValue.maximumLifetime = maximumLifetime;
+            return _resultValue;
         }
     }
 }

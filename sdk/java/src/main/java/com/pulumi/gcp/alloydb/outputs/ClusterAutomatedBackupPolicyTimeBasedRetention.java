@@ -50,9 +50,9 @@ public final class ClusterAutomatedBackupPolicyTimeBasedRetention {
             return this;
         }
         public ClusterAutomatedBackupPolicyTimeBasedRetention build() {
-            final var o = new ClusterAutomatedBackupPolicyTimeBasedRetention();
-            o.retentionPeriod = retentionPeriod;
-            return o;
+            final var _resultValue = new ClusterAutomatedBackupPolicyTimeBasedRetention();
+            _resultValue.retentionPeriod = retentionPeriod;
+            return _resultValue;
         }
     }
 }

@@ -54,10 +54,10 @@ public final class GetClusterProtectConfig {
             return this;
         }
         public GetClusterProtectConfig build() {
-            final var o = new GetClusterProtectConfig();
-            o.workloadConfigs = workloadConfigs;
-            o.workloadVulnerabilityMode = workloadVulnerabilityMode;
-            return o;
+            final var _resultValue = new GetClusterProtectConfig();
+            _resultValue.workloadConfigs = workloadConfigs;
+            _resultValue.workloadVulnerabilityMode = workloadVulnerabilityMode;
+            return _resultValue;
         }
     }
 }

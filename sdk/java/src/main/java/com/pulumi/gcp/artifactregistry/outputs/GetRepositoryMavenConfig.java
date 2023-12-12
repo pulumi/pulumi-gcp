@@ -50,10 +50,10 @@ public final class GetRepositoryMavenConfig {
             return this;
         }
         public GetRepositoryMavenConfig build() {
-            final var o = new GetRepositoryMavenConfig();
-            o.allowSnapshotOverwrites = allowSnapshotOverwrites;
-            o.versionPolicy = versionPolicy;
-            return o;
+            final var _resultValue = new GetRepositoryMavenConfig();
+            _resultValue.allowSnapshotOverwrites = allowSnapshotOverwrites;
+            _resultValue.versionPolicy = versionPolicy;
+            return _resultValue;
         }
     }
 }

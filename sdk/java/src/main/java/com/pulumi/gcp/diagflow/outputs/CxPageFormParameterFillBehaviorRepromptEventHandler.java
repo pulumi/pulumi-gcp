@@ -133,13 +133,13 @@ public final class CxPageFormParameterFillBehaviorRepromptEventHandler {
             return this;
         }
         public CxPageFormParameterFillBehaviorRepromptEventHandler build() {
-            final var o = new CxPageFormParameterFillBehaviorRepromptEventHandler();
-            o.event = event;
-            o.name = name;
-            o.targetFlow = targetFlow;
-            o.targetPage = targetPage;
-            o.triggerFulfillment = triggerFulfillment;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorRepromptEventHandler();
+            _resultValue.event = event;
+            _resultValue.name = name;
+            _resultValue.targetFlow = targetFlow;
+            _resultValue.targetPage = targetPage;
+            _resultValue.triggerFulfillment = triggerFulfillment;
+            return _resultValue;
         }
     }
 }

@@ -69,10 +69,10 @@ public final class RouterPeerAdvertisedIpRange {
             return this;
         }
         public RouterPeerAdvertisedIpRange build() {
-            final var o = new RouterPeerAdvertisedIpRange();
-            o.description = description;
-            o.range = range;
-            return o;
+            final var _resultValue = new RouterPeerAdvertisedIpRange();
+            _resultValue.description = description;
+            _resultValue.range = range;
+            return _resultValue;
         }
     }
 }

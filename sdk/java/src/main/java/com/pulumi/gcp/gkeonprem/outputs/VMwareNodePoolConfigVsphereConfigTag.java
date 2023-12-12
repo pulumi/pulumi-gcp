@@ -75,10 +75,10 @@ public final class VMwareNodePoolConfigVsphereConfigTag {
             return this;
         }
         public VMwareNodePoolConfigVsphereConfigTag build() {
-            final var o = new VMwareNodePoolConfigVsphereConfigTag();
-            o.category = category;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new VMwareNodePoolConfigVsphereConfigTag();
+            _resultValue.category = category;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

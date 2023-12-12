@@ -62,11 +62,11 @@ public final class MetastoreServiceIamBindingCondition {
             return this;
         }
         public MetastoreServiceIamBindingCondition build() {
-            final var o = new MetastoreServiceIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new MetastoreServiceIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

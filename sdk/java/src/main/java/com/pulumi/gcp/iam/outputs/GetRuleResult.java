@@ -118,13 +118,13 @@ public final class GetRuleResult {
             return this;
         }
         public GetRuleResult build() {
-            final var o = new GetRuleResult();
-            o.id = id;
-            o.includedPermissions = includedPermissions;
-            o.name = name;
-            o.stage = stage;
-            o.title = title;
-            return o;
+            final var _resultValue = new GetRuleResult();
+            _resultValue.id = id;
+            _resultValue.includedPermissions = includedPermissions;
+            _resultValue.name = name;
+            _resultValue.stage = stage;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

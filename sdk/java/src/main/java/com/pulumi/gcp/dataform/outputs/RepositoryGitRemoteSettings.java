@@ -129,13 +129,13 @@ public final class RepositoryGitRemoteSettings {
             return this;
         }
         public RepositoryGitRemoteSettings build() {
-            final var o = new RepositoryGitRemoteSettings();
-            o.authenticationTokenSecretVersion = authenticationTokenSecretVersion;
-            o.defaultBranch = defaultBranch;
-            o.sshAuthenticationConfig = sshAuthenticationConfig;
-            o.tokenStatus = tokenStatus;
-            o.url = url;
-            return o;
+            final var _resultValue = new RepositoryGitRemoteSettings();
+            _resultValue.authenticationTokenSecretVersion = authenticationTokenSecretVersion;
+            _resultValue.defaultBranch = defaultBranch;
+            _resultValue.sshAuthenticationConfig = sshAuthenticationConfig;
+            _resultValue.tokenStatus = tokenStatus;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

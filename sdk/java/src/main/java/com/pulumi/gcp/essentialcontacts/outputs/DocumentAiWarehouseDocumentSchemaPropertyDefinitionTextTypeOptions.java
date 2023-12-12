@@ -25,8 +25,8 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOp
         }
 
         public DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions build() {
-            final var o = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions();
-            return o;
+            final var _resultValue = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions();
+            return _resultValue;
         }
     }
 }

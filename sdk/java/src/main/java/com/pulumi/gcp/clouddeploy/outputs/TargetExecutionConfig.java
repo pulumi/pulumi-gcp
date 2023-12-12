@@ -128,13 +128,13 @@ public final class TargetExecutionConfig {
             return this;
         }
         public TargetExecutionConfig build() {
-            final var o = new TargetExecutionConfig();
-            o.artifactStorage = artifactStorage;
-            o.executionTimeout = executionTimeout;
-            o.serviceAccount = serviceAccount;
-            o.usages = usages;
-            o.workerPool = workerPool;
-            return o;
+            final var _resultValue = new TargetExecutionConfig();
+            _resultValue.artifactStorage = artifactStorage;
+            _resultValue.executionTimeout = executionTimeout;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.usages = usages;
+            _resultValue.workerPool = workerPool;
+            return _resultValue;
         }
     }
 }

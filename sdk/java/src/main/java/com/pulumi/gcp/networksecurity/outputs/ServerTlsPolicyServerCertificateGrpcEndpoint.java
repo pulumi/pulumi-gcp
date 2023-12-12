@@ -46,9 +46,9 @@ public final class ServerTlsPolicyServerCertificateGrpcEndpoint {
             return this;
         }
         public ServerTlsPolicyServerCertificateGrpcEndpoint build() {
-            final var o = new ServerTlsPolicyServerCertificateGrpcEndpoint();
-            o.targetUri = targetUri;
-            return o;
+            final var _resultValue = new ServerTlsPolicyServerCertificateGrpcEndpoint();
+            _resultValue.targetUri = targetUri;
+            return _resultValue;
         }
     }
 }

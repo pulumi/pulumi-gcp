@@ -108,11 +108,11 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
             return this;
         }
         public FhirStoreStreamConfigBigqueryDestinationSchemaConfig build() {
-            final var o = new FhirStoreStreamConfigBigqueryDestinationSchemaConfig();
-            o.lastUpdatedPartitionConfig = lastUpdatedPartitionConfig;
-            o.recursiveStructureDepth = recursiveStructureDepth;
-            o.schemaType = schemaType;
-            return o;
+            final var _resultValue = new FhirStoreStreamConfigBigqueryDestinationSchemaConfig();
+            _resultValue.lastUpdatedPartitionConfig = lastUpdatedPartitionConfig;
+            _resultValue.recursiveStructureDepth = recursiveStructureDepth;
+            _resultValue.schemaType = schemaType;
+            return _resultValue;
         }
     }
 }

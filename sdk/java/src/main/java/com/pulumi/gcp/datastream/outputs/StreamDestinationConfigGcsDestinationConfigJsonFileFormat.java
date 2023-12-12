@@ -71,10 +71,10 @@ public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
             return this;
         }
         public StreamDestinationConfigGcsDestinationConfigJsonFileFormat build() {
-            final var o = new StreamDestinationConfigGcsDestinationConfigJsonFileFormat();
-            o.compression = compression;
-            o.schemaFileFormat = schemaFileFormat;
-            return o;
+            final var _resultValue = new StreamDestinationConfigGcsDestinationConfigJsonFileFormat();
+            _resultValue.compression = compression;
+            _resultValue.schemaFileFormat = schemaFileFormat;
+            return _resultValue;
         }
     }
 }

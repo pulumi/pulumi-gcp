@@ -225,17 +225,17 @@ public final class SecurityPolicyRuleRateLimitOptions {
             return this;
         }
         public SecurityPolicyRuleRateLimitOptions build() {
-            final var o = new SecurityPolicyRuleRateLimitOptions();
-            o.banDurationSec = banDurationSec;
-            o.banThreshold = banThreshold;
-            o.conformAction = conformAction;
-            o.enforceOnKey = enforceOnKey;
-            o.enforceOnKeyConfigs = enforceOnKeyConfigs;
-            o.enforceOnKeyName = enforceOnKeyName;
-            o.exceedAction = exceedAction;
-            o.exceedRedirectOptions = exceedRedirectOptions;
-            o.rateLimitThreshold = rateLimitThreshold;
-            return o;
+            final var _resultValue = new SecurityPolicyRuleRateLimitOptions();
+            _resultValue.banDurationSec = banDurationSec;
+            _resultValue.banThreshold = banThreshold;
+            _resultValue.conformAction = conformAction;
+            _resultValue.enforceOnKey = enforceOnKey;
+            _resultValue.enforceOnKeyConfigs = enforceOnKeyConfigs;
+            _resultValue.enforceOnKeyName = enforceOnKeyName;
+            _resultValue.exceedAction = exceedAction;
+            _resultValue.exceedRedirectOptions = exceedRedirectOptions;
+            _resultValue.rateLimitThreshold = rateLimitThreshold;
+            return _resultValue;
         }
     }
 }

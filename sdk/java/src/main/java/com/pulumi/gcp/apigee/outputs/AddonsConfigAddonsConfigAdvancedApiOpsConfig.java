@@ -48,9 +48,9 @@ public final class AddonsConfigAddonsConfigAdvancedApiOpsConfig {
             return this;
         }
         public AddonsConfigAddonsConfigAdvancedApiOpsConfig build() {
-            final var o = new AddonsConfigAddonsConfigAdvancedApiOpsConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new AddonsConfigAddonsConfigAdvancedApiOpsConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class NamespaceState {
             return this;
         }
         public NamespaceState build() {
-            final var o = new NamespaceState();
-            o.code = code;
-            return o;
+            final var _resultValue = new NamespaceState();
+            _resultValue.code = code;
+            return _resultValue;
         }
     }
 }

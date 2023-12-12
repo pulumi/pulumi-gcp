@@ -196,18 +196,18 @@ public final class GetFolderResult {
             return this;
         }
         public GetFolderResult build() {
-            final var o = new GetFolderResult();
-            o.createTime = createTime;
-            o.displayName = displayName;
-            o.folder = folder;
-            o.folderId = folderId;
-            o.id = id;
-            o.lifecycleState = lifecycleState;
-            o.lookupOrganization = lookupOrganization;
-            o.name = name;
-            o.organization = organization;
-            o.parent = parent;
-            return o;
+            final var _resultValue = new GetFolderResult();
+            _resultValue.createTime = createTime;
+            _resultValue.displayName = displayName;
+            _resultValue.folder = folder;
+            _resultValue.folderId = folderId;
+            _resultValue.id = id;
+            _resultValue.lifecycleState = lifecycleState;
+            _resultValue.lookupOrganization = lookupOrganization;
+            _resultValue.name = name;
+            _resultValue.organization = organization;
+            _resultValue.parent = parent;
+            return _resultValue;
         }
     }
 }

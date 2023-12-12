@@ -157,16 +157,16 @@ public final class GetAppEngineServiceResult {
             return this;
         }
         public GetAppEngineServiceResult build() {
-            final var o = new GetAppEngineServiceResult();
-            o.displayName = displayName;
-            o.id = id;
-            o.moduleId = moduleId;
-            o.name = name;
-            o.project = project;
-            o.serviceId = serviceId;
-            o.telemetries = telemetries;
-            o.userLabels = userLabels;
-            return o;
+            final var _resultValue = new GetAppEngineServiceResult();
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.moduleId = moduleId;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.serviceId = serviceId;
+            _resultValue.telemetries = telemetries;
+            _resultValue.userLabels = userLabels;
+            return _resultValue;
         }
     }
 }

@@ -25,8 +25,8 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurr
         }
 
         public PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType();
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType();
+            return _resultValue;
         }
     }
 }

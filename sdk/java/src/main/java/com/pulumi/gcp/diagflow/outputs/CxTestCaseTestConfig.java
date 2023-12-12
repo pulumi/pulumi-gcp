@@ -98,11 +98,11 @@ public final class CxTestCaseTestConfig {
             return trackingParameters(List.of(trackingParameters));
         }
         public CxTestCaseTestConfig build() {
-            final var o = new CxTestCaseTestConfig();
-            o.flow = flow;
-            o.page = page;
-            o.trackingParameters = trackingParameters;
-            return o;
+            final var _resultValue = new CxTestCaseTestConfig();
+            _resultValue.flow = flow;
+            _resultValue.page = page;
+            _resultValue.trackingParameters = trackingParameters;
+            return _resultValue;
         }
     }
 }

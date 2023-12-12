@@ -60,11 +60,11 @@ public final class GetDatabaseInstanceSettingDenyMaintenancePeriod {
             return this;
         }
         public GetDatabaseInstanceSettingDenyMaintenancePeriod build() {
-            final var o = new GetDatabaseInstanceSettingDenyMaintenancePeriod();
-            o.endDate = endDate;
-            o.startDate = startDate;
-            o.time = time;
-            return o;
+            final var _resultValue = new GetDatabaseInstanceSettingDenyMaintenancePeriod();
+            _resultValue.endDate = endDate;
+            _resultValue.startDate = startDate;
+            _resultValue.time = time;
+            return _resultValue;
         }
     }
 }

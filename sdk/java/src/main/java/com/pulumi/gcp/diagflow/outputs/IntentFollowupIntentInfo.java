@@ -71,10 +71,10 @@ public final class IntentFollowupIntentInfo {
             return this;
         }
         public IntentFollowupIntentInfo build() {
-            final var o = new IntentFollowupIntentInfo();
-            o.followupIntentName = followupIntentName;
-            o.parentFollowupIntentName = parentFollowupIntentName;
-            return o;
+            final var _resultValue = new IntentFollowupIntentInfo();
+            _resultValue.followupIntentName = followupIntentName;
+            _resultValue.parentFollowupIntentName = parentFollowupIntentName;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class GrpcRouteRuleActionFaultInjectionPolicyDelay {
             return this;
         }
         public GrpcRouteRuleActionFaultInjectionPolicyDelay build() {
-            final var o = new GrpcRouteRuleActionFaultInjectionPolicyDelay();
-            o.fixedDelay = fixedDelay;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new GrpcRouteRuleActionFaultInjectionPolicyDelay();
+            _resultValue.fixedDelay = fixedDelay;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

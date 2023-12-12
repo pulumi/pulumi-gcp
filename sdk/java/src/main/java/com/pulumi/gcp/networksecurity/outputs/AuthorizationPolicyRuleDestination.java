@@ -121,12 +121,12 @@ public final class AuthorizationPolicyRuleDestination {
             return ports(List.of(ports));
         }
         public AuthorizationPolicyRuleDestination build() {
-            final var o = new AuthorizationPolicyRuleDestination();
-            o.hosts = hosts;
-            o.httpHeaderMatch = httpHeaderMatch;
-            o.methods = methods;
-            o.ports = ports;
-            return o;
+            final var _resultValue = new AuthorizationPolicyRuleDestination();
+            _resultValue.hosts = hosts;
+            _resultValue.httpHeaderMatch = httpHeaderMatch;
+            _resultValue.methods = methods;
+            _resultValue.ports = ports;
+            return _resultValue;
         }
     }
 }

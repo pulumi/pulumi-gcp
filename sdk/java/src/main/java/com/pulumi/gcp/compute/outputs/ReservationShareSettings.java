@@ -76,10 +76,10 @@ public final class ReservationShareSettings {
             return this;
         }
         public ReservationShareSettings build() {
-            final var o = new ReservationShareSettings();
-            o.projectMaps = projectMaps;
-            o.shareType = shareType;
-            return o;
+            final var _resultValue = new ReservationShareSettings();
+            _resultValue.projectMaps = projectMaps;
+            _resultValue.shareType = shareType;
+            return _resultValue;
         }
     }
 }

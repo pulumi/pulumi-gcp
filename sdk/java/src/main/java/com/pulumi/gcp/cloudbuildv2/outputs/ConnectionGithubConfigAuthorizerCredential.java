@@ -67,10 +67,10 @@ public final class ConnectionGithubConfigAuthorizerCredential {
             return this;
         }
         public ConnectionGithubConfigAuthorizerCredential build() {
-            final var o = new ConnectionGithubConfigAuthorizerCredential();
-            o.oauthTokenSecretVersion = oauthTokenSecretVersion;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionGithubConfigAuthorizerCredential();
+            _resultValue.oauthTokenSecretVersion = oauthTokenSecretVersion;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

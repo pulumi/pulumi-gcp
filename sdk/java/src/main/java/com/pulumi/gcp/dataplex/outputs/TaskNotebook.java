@@ -115,12 +115,12 @@ public final class TaskNotebook {
             return this;
         }
         public TaskNotebook build() {
-            final var o = new TaskNotebook();
-            o.archiveUris = archiveUris;
-            o.fileUris = fileUris;
-            o.infrastructureSpec = infrastructureSpec;
-            o.notebook = notebook;
-            return o;
+            final var _resultValue = new TaskNotebook();
+            _resultValue.archiveUris = archiveUris;
+            _resultValue.fileUris = fileUris;
+            _resultValue.infrastructureSpec = infrastructureSpec;
+            _resultValue.notebook = notebook;
+            return _resultValue;
         }
     }
 }

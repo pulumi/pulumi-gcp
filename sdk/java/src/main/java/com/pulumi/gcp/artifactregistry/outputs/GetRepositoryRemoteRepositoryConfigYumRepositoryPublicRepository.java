@@ -49,10 +49,10 @@ public final class GetRepositoryRemoteRepositoryConfigYumRepositoryPublicReposit
             return this;
         }
         public GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository build() {
-            final var o = new GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository();
-            o.repositoryBase = repositoryBase;
-            o.repositoryPath = repositoryPath;
-            return o;
+            final var _resultValue = new GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository();
+            _resultValue.repositoryBase = repositoryBase;
+            _resultValue.repositoryPath = repositoryPath;
+            return _resultValue;
         }
     }
 }

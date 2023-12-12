@@ -56,9 +56,9 @@ public final class PolicyAlternativeNameServerConfig {
             return targetNameServers(List.of(targetNameServers));
         }
         public PolicyAlternativeNameServerConfig build() {
-            final var o = new PolicyAlternativeNameServerConfig();
-            o.targetNameServers = targetNameServers;
-            return o;
+            final var _resultValue = new PolicyAlternativeNameServerConfig();
+            _resultValue.targetNameServers = targetNameServers;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class ClusterStateInfo {
             return this;
         }
         public ClusterStateInfo build() {
-            final var o = new ClusterStateInfo();
-            o.updateInfo = updateInfo;
-            return o;
+            final var _resultValue = new ClusterStateInfo();
+            _resultValue.updateInfo = updateInfo;
+            return _resultValue;
         }
     }
 }

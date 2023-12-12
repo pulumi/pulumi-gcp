@@ -52,9 +52,9 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
             return infoTypes(List.of(infoTypes));
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes();
-            o.infoTypes = infoTypes;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes();
+            _resultValue.infoTypes = infoTypes;
+            return _resultValue;
         }
     }
 }

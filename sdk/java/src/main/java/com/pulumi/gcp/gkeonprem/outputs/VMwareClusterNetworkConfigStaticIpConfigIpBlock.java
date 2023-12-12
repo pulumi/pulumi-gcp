@@ -91,11 +91,11 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlock {
             return this;
         }
         public VMwareClusterNetworkConfigStaticIpConfigIpBlock build() {
-            final var o = new VMwareClusterNetworkConfigStaticIpConfigIpBlock();
-            o.gateway = gateway;
-            o.ips = ips;
-            o.netmask = netmask;
-            return o;
+            final var _resultValue = new VMwareClusterNetworkConfigStaticIpConfigIpBlock();
+            _resultValue.gateway = gateway;
+            _resultValue.ips = ips;
+            _resultValue.netmask = netmask;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class BareMetalClusterControlPlaneApiServerArg {
             return this;
         }
         public BareMetalClusterControlPlaneApiServerArg build() {
-            final var o = new BareMetalClusterControlPlaneApiServerArg();
-            o.argument = argument;
-            o.value = value;
-            return o;
+            final var _resultValue = new BareMetalClusterControlPlaneApiServerArg();
+            _resultValue.argument = argument;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

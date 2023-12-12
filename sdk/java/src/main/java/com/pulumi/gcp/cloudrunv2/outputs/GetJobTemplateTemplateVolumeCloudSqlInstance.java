@@ -42,9 +42,9 @@ public final class GetJobTemplateTemplateVolumeCloudSqlInstance {
             return instances(List.of(instances));
         }
         public GetJobTemplateTemplateVolumeCloudSqlInstance build() {
-            final var o = new GetJobTemplateTemplateVolumeCloudSqlInstance();
-            o.instances = instances;
-            return o;
+            final var _resultValue = new GetJobTemplateTemplateVolumeCloudSqlInstance();
+            _resultValue.instances = instances;
+            return _resultValue;
         }
     }
 }

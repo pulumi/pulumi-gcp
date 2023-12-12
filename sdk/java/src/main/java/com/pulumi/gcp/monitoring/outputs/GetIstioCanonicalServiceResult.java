@@ -179,18 +179,18 @@ public final class GetIstioCanonicalServiceResult {
             return this;
         }
         public GetIstioCanonicalServiceResult build() {
-            final var o = new GetIstioCanonicalServiceResult();
-            o.canonicalService = canonicalService;
-            o.canonicalServiceNamespace = canonicalServiceNamespace;
-            o.displayName = displayName;
-            o.id = id;
-            o.meshUid = meshUid;
-            o.name = name;
-            o.project = project;
-            o.serviceId = serviceId;
-            o.telemetries = telemetries;
-            o.userLabels = userLabels;
-            return o;
+            final var _resultValue = new GetIstioCanonicalServiceResult();
+            _resultValue.canonicalService = canonicalService;
+            _resultValue.canonicalServiceNamespace = canonicalServiceNamespace;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.meshUid = meshUid;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.serviceId = serviceId;
+            _resultValue.telemetries = telemetries;
+            _resultValue.userLabels = userLabels;
+            return _resultValue;
         }
     }
 }

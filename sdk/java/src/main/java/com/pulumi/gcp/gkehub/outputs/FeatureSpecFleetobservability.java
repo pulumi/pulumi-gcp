@@ -50,9 +50,9 @@ public final class FeatureSpecFleetobservability {
             return this;
         }
         public FeatureSpecFleetobservability build() {
-            final var o = new FeatureSpecFleetobservability();
-            o.loggingConfig = loggingConfig;
-            return o;
+            final var _resultValue = new FeatureSpecFleetobservability();
+            _resultValue.loggingConfig = loggingConfig;
+            return _resultValue;
         }
     }
 }

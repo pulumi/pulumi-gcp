@@ -171,14 +171,14 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule {
             return queryParameterMatches(List.of(queryParameterMatches));
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule();
-            o.fullPathMatch = fullPathMatch;
-            o.headerMatches = headerMatches;
-            o.ignoreCase = ignoreCase;
-            o.pathTemplateMatch = pathTemplateMatch;
-            o.prefixMatch = prefixMatch;
-            o.queryParameterMatches = queryParameterMatches;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule();
+            _resultValue.fullPathMatch = fullPathMatch;
+            _resultValue.headerMatches = headerMatches;
+            _resultValue.ignoreCase = ignoreCase;
+            _resultValue.pathTemplateMatch = pathTemplateMatch;
+            _resultValue.prefixMatch = prefixMatch;
+            _resultValue.queryParameterMatches = queryParameterMatches;
+            return _resultValue;
         }
     }
 }

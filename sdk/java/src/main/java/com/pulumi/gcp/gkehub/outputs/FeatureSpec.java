@@ -72,10 +72,10 @@ public final class FeatureSpec {
             return this;
         }
         public FeatureSpec build() {
-            final var o = new FeatureSpec();
-            o.fleetobservability = fleetobservability;
-            o.multiclusteringress = multiclusteringress;
-            return o;
+            final var _resultValue = new FeatureSpec();
+            _resultValue.fleetobservability = fleetobservability;
+            _resultValue.multiclusteringress = multiclusteringress;
+            return _resultValue;
         }
     }
 }

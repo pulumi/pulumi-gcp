@@ -61,11 +61,11 @@ public final class GetTriggerGithubPush {
             return this;
         }
         public GetTriggerGithubPush build() {
-            final var o = new GetTriggerGithubPush();
-            o.branch = branch;
-            o.invertRegex = invertRegex;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new GetTriggerGithubPush();
+            _resultValue.branch = branch;
+            _resultValue.invertRegex = invertRegex;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

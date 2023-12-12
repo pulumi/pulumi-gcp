@@ -113,13 +113,13 @@ public final class GetAddressesResult {
             return this;
         }
         public GetAddressesResult build() {
-            final var o = new GetAddressesResult();
-            o.addresses = addresses;
-            o.filter = filter;
-            o.id = id;
-            o.project = project;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetAddressesResult();
+            _resultValue.addresses = addresses;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

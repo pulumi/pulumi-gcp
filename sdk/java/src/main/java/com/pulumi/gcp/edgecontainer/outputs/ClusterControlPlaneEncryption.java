@@ -140,12 +140,12 @@ public final class ClusterControlPlaneEncryption {
             return kmsStatuses(List.of(kmsStatuses));
         }
         public ClusterControlPlaneEncryption build() {
-            final var o = new ClusterControlPlaneEncryption();
-            o.kmsKey = kmsKey;
-            o.kmsKeyActiveVersion = kmsKeyActiveVersion;
-            o.kmsKeyState = kmsKeyState;
-            o.kmsStatuses = kmsStatuses;
-            return o;
+            final var _resultValue = new ClusterControlPlaneEncryption();
+            _resultValue.kmsKey = kmsKey;
+            _resultValue.kmsKeyActiveVersion = kmsKeyActiveVersion;
+            _resultValue.kmsKeyState = kmsKeyState;
+            _resultValue.kmsStatuses = kmsStatuses;
+            return _resultValue;
         }
     }
 }

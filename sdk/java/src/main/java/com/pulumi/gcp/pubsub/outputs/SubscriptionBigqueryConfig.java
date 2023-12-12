@@ -110,12 +110,12 @@ public final class SubscriptionBigqueryConfig {
             return this;
         }
         public SubscriptionBigqueryConfig build() {
-            final var o = new SubscriptionBigqueryConfig();
-            o.dropUnknownFields = dropUnknownFields;
-            o.table = table;
-            o.useTopicSchema = useTopicSchema;
-            o.writeMetadata = writeMetadata;
-            return o;
+            final var _resultValue = new SubscriptionBigqueryConfig();
+            _resultValue.dropUnknownFields = dropUnknownFields;
+            _resultValue.table = table;
+            _resultValue.useTopicSchema = useTopicSchema;
+            _resultValue.writeMetadata = writeMetadata;
+            return _resultValue;
         }
     }
 }

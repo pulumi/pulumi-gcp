@@ -186,16 +186,16 @@ public final class GetSupportedDatabaseFlagsSupportedDatabaseFlag {
             return this;
         }
         public GetSupportedDatabaseFlagsSupportedDatabaseFlag build() {
-            final var o = new GetSupportedDatabaseFlagsSupportedDatabaseFlag();
-            o.acceptsMultipleValues = acceptsMultipleValues;
-            o.flagName = flagName;
-            o.integerRestrictions = integerRestrictions;
-            o.name = name;
-            o.requiresDbRestart = requiresDbRestart;
-            o.stringRestrictions = stringRestrictions;
-            o.supportedDbVersions = supportedDbVersions;
-            o.valueType = valueType;
-            return o;
+            final var _resultValue = new GetSupportedDatabaseFlagsSupportedDatabaseFlag();
+            _resultValue.acceptsMultipleValues = acceptsMultipleValues;
+            _resultValue.flagName = flagName;
+            _resultValue.integerRestrictions = integerRestrictions;
+            _resultValue.name = name;
+            _resultValue.requiresDbRestart = requiresDbRestart;
+            _resultValue.stringRestrictions = stringRestrictions;
+            _resultValue.supportedDbVersions = supportedDbVersions;
+            _resultValue.valueType = valueType;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class AwsNodePoolConfigInstancePlacement {
             return this;
         }
         public AwsNodePoolConfigInstancePlacement build() {
-            final var o = new AwsNodePoolConfigInstancePlacement();
-            o.tenancy = tenancy;
-            return o;
+            final var _resultValue = new AwsNodePoolConfigInstancePlacement();
+            _resultValue.tenancy = tenancy;
+            return _resultValue;
         }
     }
 }

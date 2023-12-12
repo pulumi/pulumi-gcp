@@ -48,9 +48,9 @@ public final class VMwareClusterUpgradePolicy {
             return this;
         }
         public VMwareClusterUpgradePolicy build() {
-            final var o = new VMwareClusterUpgradePolicy();
-            o.controlPlaneOnly = controlPlaneOnly;
-            return o;
+            final var _resultValue = new VMwareClusterUpgradePolicy();
+            _resultValue.controlPlaneOnly = controlPlaneOnly;
+            return _resultValue;
         }
     }
 }

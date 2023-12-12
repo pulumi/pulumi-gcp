@@ -106,11 +106,11 @@ public final class TriggerBuildArtifactsObjects {
             return timings(List.of(timings));
         }
         public TriggerBuildArtifactsObjects build() {
-            final var o = new TriggerBuildArtifactsObjects();
-            o.location = location;
-            o.paths = paths;
-            o.timings = timings;
-            return o;
+            final var _resultValue = new TriggerBuildArtifactsObjects();
+            _resultValue.location = location;
+            _resultValue.paths = paths;
+            _resultValue.timings = timings;
+            return _resultValue;
         }
     }
 }

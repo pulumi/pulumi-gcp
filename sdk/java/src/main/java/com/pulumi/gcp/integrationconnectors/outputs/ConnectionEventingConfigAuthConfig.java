@@ -117,12 +117,12 @@ public final class ConnectionEventingConfigAuthConfig {
             return this;
         }
         public ConnectionEventingConfigAuthConfig build() {
-            final var o = new ConnectionEventingConfigAuthConfig();
-            o.additionalVariables = additionalVariables;
-            o.authKey = authKey;
-            o.authType = authType;
-            o.userPassword = userPassword;
-            return o;
+            final var _resultValue = new ConnectionEventingConfigAuthConfig();
+            _resultValue.additionalVariables = additionalVariables;
+            _resultValue.authKey = authKey;
+            _resultValue.authType = authType;
+            _resultValue.userPassword = userPassword;
+            return _resultValue;
         }
     }
 }

@@ -175,20 +175,20 @@ public final class GetTriggerBuildOption {
             return this;
         }
         public GetTriggerBuildOption build() {
-            final var o = new GetTriggerBuildOption();
-            o.diskSizeGb = diskSizeGb;
-            o.dynamicSubstitutions = dynamicSubstitutions;
-            o.envs = envs;
-            o.logStreamingOption = logStreamingOption;
-            o.logging = logging;
-            o.machineType = machineType;
-            o.requestedVerifyOption = requestedVerifyOption;
-            o.secretEnvs = secretEnvs;
-            o.sourceProvenanceHashes = sourceProvenanceHashes;
-            o.substitutionOption = substitutionOption;
-            o.volumes = volumes;
-            o.workerPool = workerPool;
-            return o;
+            final var _resultValue = new GetTriggerBuildOption();
+            _resultValue.diskSizeGb = diskSizeGb;
+            _resultValue.dynamicSubstitutions = dynamicSubstitutions;
+            _resultValue.envs = envs;
+            _resultValue.logStreamingOption = logStreamingOption;
+            _resultValue.logging = logging;
+            _resultValue.machineType = machineType;
+            _resultValue.requestedVerifyOption = requestedVerifyOption;
+            _resultValue.secretEnvs = secretEnvs;
+            _resultValue.sourceProvenanceHashes = sourceProvenanceHashes;
+            _resultValue.substitutionOption = substitutionOption;
+            _resultValue.volumes = volumes;
+            _resultValue.workerPool = workerPool;
+            return _resultValue;
         }
     }
 }

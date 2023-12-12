@@ -153,14 +153,14 @@ public final class StandardAppVersionAutomaticScaling {
             return this;
         }
         public StandardAppVersionAutomaticScaling build() {
-            final var o = new StandardAppVersionAutomaticScaling();
-            o.maxConcurrentRequests = maxConcurrentRequests;
-            o.maxIdleInstances = maxIdleInstances;
-            o.maxPendingLatency = maxPendingLatency;
-            o.minIdleInstances = minIdleInstances;
-            o.minPendingLatency = minPendingLatency;
-            o.standardSchedulerSettings = standardSchedulerSettings;
-            return o;
+            final var _resultValue = new StandardAppVersionAutomaticScaling();
+            _resultValue.maxConcurrentRequests = maxConcurrentRequests;
+            _resultValue.maxIdleInstances = maxIdleInstances;
+            _resultValue.maxPendingLatency = maxPendingLatency;
+            _resultValue.minIdleInstances = minIdleInstances;
+            _resultValue.minPendingLatency = minPendingLatency;
+            _resultValue.standardSchedulerSettings = standardSchedulerSettings;
+            return _resultValue;
         }
     }
 }

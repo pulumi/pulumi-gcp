@@ -38,9 +38,9 @@ public final class GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
             return this;
         }
         public GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig build() {
-            final var o = new GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

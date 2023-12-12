@@ -50,9 +50,9 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
             return this;
         }
         public FeatureFleetDefaultMemberConfigConfigmanagement build() {
-            final var o = new FeatureFleetDefaultMemberConfigConfigmanagement();
-            o.configSync = configSync;
-            return o;
+            final var _resultValue = new FeatureFleetDefaultMemberConfigConfigmanagement();
+            _resultValue.configSync = configSync;
+            return _resultValue;
         }
     }
 }

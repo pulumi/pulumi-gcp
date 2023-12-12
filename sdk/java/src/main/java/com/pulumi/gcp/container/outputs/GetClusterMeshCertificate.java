@@ -38,9 +38,9 @@ public final class GetClusterMeshCertificate {
             return this;
         }
         public GetClusterMeshCertificate build() {
-            final var o = new GetClusterMeshCertificate();
-            o.enableCertificates = enableCertificates;
-            return o;
+            final var _resultValue = new GetClusterMeshCertificate();
+            _resultValue.enableCertificates = enableCertificates;
+            return _resultValue;
         }
     }
 }

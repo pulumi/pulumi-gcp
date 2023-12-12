@@ -71,11 +71,11 @@ public final class ZoneAssetStatus {
             return this;
         }
         public ZoneAssetStatus build() {
-            final var o = new ZoneAssetStatus();
-            o.activeAssets = activeAssets;
-            o.securityPolicyApplyingAssets = securityPolicyApplyingAssets;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new ZoneAssetStatus();
+            _resultValue.activeAssets = activeAssets;
+            _resultValue.securityPolicyApplyingAssets = securityPolicyApplyingAssets;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

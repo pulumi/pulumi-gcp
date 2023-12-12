@@ -131,13 +131,13 @@ public final class ConnectionCloudSql {
             return this;
         }
         public ConnectionCloudSql build() {
-            final var o = new ConnectionCloudSql();
-            o.credential = credential;
-            o.database = database;
-            o.instanceId = instanceId;
-            o.serviceAccountId = serviceAccountId;
-            o.type = type;
-            return o;
+            final var _resultValue = new ConnectionCloudSql();
+            _resultValue.credential = credential;
+            _resultValue.database = database;
+            _resultValue.instanceId = instanceId;
+            _resultValue.serviceAccountId = serviceAccountId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
             return this;
         }
         public GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig build() {
-            final var o = new GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig();
-            o.disabled = disabled;
-            return o;
+            final var _resultValue = new GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig();
+            _resultValue.disabled = disabled;
+            return _resultValue;
         }
     }
 }

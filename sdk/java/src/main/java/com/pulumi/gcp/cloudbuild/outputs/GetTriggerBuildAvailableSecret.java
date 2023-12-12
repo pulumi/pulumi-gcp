@@ -42,9 +42,9 @@ public final class GetTriggerBuildAvailableSecret {
             return secretManagers(List.of(secretManagers));
         }
         public GetTriggerBuildAvailableSecret build() {
-            final var o = new GetTriggerBuildAvailableSecret();
-            o.secretManagers = secretManagers;
-            return o;
+            final var _resultValue = new GetTriggerBuildAvailableSecret();
+            _resultValue.secretManagers = secretManagers;
+            return _resultValue;
         }
     }
 }

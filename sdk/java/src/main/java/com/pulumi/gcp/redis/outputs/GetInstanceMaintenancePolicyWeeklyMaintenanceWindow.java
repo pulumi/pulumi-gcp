@@ -65,11 +65,11 @@ public final class GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
             return startTimes(List.of(startTimes));
         }
         public GetInstanceMaintenancePolicyWeeklyMaintenanceWindow build() {
-            final var o = new GetInstanceMaintenancePolicyWeeklyMaintenanceWindow();
-            o.day = day;
-            o.duration = duration;
-            o.startTimes = startTimes;
-            return o;
+            final var _resultValue = new GetInstanceMaintenancePolicyWeeklyMaintenanceWindow();
+            _resultValue.day = day;
+            _resultValue.duration = duration;
+            _resultValue.startTimes = startTimes;
+            return _resultValue;
         }
     }
 }

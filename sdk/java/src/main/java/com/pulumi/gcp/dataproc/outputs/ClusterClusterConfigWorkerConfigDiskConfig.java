@@ -99,11 +99,11 @@ public final class ClusterClusterConfigWorkerConfigDiskConfig {
             return this;
         }
         public ClusterClusterConfigWorkerConfigDiskConfig build() {
-            final var o = new ClusterClusterConfigWorkerConfigDiskConfig();
-            o.bootDiskSizeGb = bootDiskSizeGb;
-            o.bootDiskType = bootDiskType;
-            o.numLocalSsds = numLocalSsds;
-            return o;
+            final var _resultValue = new ClusterClusterConfigWorkerConfigDiskConfig();
+            _resultValue.bootDiskSizeGb = bootDiskSizeGb;
+            _resultValue.bootDiskType = bootDiskType;
+            _resultValue.numLocalSsds = numLocalSsds;
+            return _resultValue;
         }
     }
 }

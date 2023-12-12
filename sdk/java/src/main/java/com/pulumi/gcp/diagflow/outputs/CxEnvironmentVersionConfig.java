@@ -50,9 +50,9 @@ public final class CxEnvironmentVersionConfig {
             return this;
         }
         public CxEnvironmentVersionConfig build() {
-            final var o = new CxEnvironmentVersionConfig();
-            o.version = version;
-            return o;
+            final var _resultValue = new CxEnvironmentVersionConfig();
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

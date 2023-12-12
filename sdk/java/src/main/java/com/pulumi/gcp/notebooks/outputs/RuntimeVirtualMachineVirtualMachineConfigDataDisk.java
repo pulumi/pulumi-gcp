@@ -349,20 +349,20 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
             return this;
         }
         public RuntimeVirtualMachineVirtualMachineConfigDataDisk build() {
-            final var o = new RuntimeVirtualMachineVirtualMachineConfigDataDisk();
-            o.autoDelete = autoDelete;
-            o.boot = boot;
-            o.deviceName = deviceName;
-            o.guestOsFeatures = guestOsFeatures;
-            o.index = index;
-            o.initializeParams = initializeParams;
-            o.interface_ = interface_;
-            o.kind = kind;
-            o.licenses = licenses;
-            o.mode = mode;
-            o.source = source;
-            o.type = type;
-            return o;
+            final var _resultValue = new RuntimeVirtualMachineVirtualMachineConfigDataDisk();
+            _resultValue.autoDelete = autoDelete;
+            _resultValue.boot = boot;
+            _resultValue.deviceName = deviceName;
+            _resultValue.guestOsFeatures = guestOsFeatures;
+            _resultValue.index = index;
+            _resultValue.initializeParams = initializeParams;
+            _resultValue.interface_ = interface_;
+            _resultValue.kind = kind;
+            _resultValue.licenses = licenses;
+            _resultValue.mode = mode;
+            _resultValue.source = source;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

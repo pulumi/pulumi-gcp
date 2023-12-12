@@ -200,16 +200,16 @@ public final class JobExtract {
             return this;
         }
         public JobExtract build() {
-            final var o = new JobExtract();
-            o.compression = compression;
-            o.destinationFormat = destinationFormat;
-            o.destinationUris = destinationUris;
-            o.fieldDelimiter = fieldDelimiter;
-            o.printHeader = printHeader;
-            o.sourceModel = sourceModel;
-            o.sourceTable = sourceTable;
-            o.useAvroLogicalTypes = useAvroLogicalTypes;
-            return o;
+            final var _resultValue = new JobExtract();
+            _resultValue.compression = compression;
+            _resultValue.destinationFormat = destinationFormat;
+            _resultValue.destinationUris = destinationUris;
+            _resultValue.fieldDelimiter = fieldDelimiter;
+            _resultValue.printHeader = printHeader;
+            _resultValue.sourceModel = sourceModel;
+            _resultValue.sourceTable = sourceTable;
+            _resultValue.useAvroLogicalTypes = useAvroLogicalTypes;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
             return this;
         }
         public CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff build() {
-            final var o = new CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff();
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff();
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

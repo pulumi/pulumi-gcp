@@ -119,11 +119,11 @@ public final class BackupPlanRetentionPolicy {
             return this;
         }
         public BackupPlanRetentionPolicy build() {
-            final var o = new BackupPlanRetentionPolicy();
-            o.backupDeleteLockDays = backupDeleteLockDays;
-            o.backupRetainDays = backupRetainDays;
-            o.locked = locked;
-            return o;
+            final var _resultValue = new BackupPlanRetentionPolicy();
+            _resultValue.backupDeleteLockDays = backupDeleteLockDays;
+            _resultValue.backupRetainDays = backupRetainDays;
+            _resultValue.locked = locked;
+            return _resultValue;
         }
     }
 }

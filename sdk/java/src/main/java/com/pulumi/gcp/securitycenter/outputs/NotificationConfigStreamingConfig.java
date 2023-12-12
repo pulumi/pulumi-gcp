@@ -86,9 +86,9 @@ public final class NotificationConfigStreamingConfig {
             return this;
         }
         public NotificationConfigStreamingConfig build() {
-            final var o = new NotificationConfigStreamingConfig();
-            o.filter = filter;
-            return o;
+            final var _resultValue = new NotificationConfigStreamingConfig();
+            _resultValue.filter = filter;
+            return _resultValue;
         }
     }
 }

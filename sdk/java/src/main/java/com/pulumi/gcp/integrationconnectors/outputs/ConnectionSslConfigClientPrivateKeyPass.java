@@ -46,9 +46,9 @@ public final class ConnectionSslConfigClientPrivateKeyPass {
             return this;
         }
         public ConnectionSslConfigClientPrivateKeyPass build() {
-            final var o = new ConnectionSslConfigClientPrivateKeyPass();
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new ConnectionSslConfigClientPrivateKeyPass();
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

@@ -103,11 +103,11 @@ public final class DomainMappingSpec {
             return this;
         }
         public DomainMappingSpec build() {
-            final var o = new DomainMappingSpec();
-            o.certificateMode = certificateMode;
-            o.forceOverride = forceOverride;
-            o.routeName = routeName;
-            return o;
+            final var _resultValue = new DomainMappingSpec();
+            _resultValue.certificateMode = certificateMode;
+            _resultValue.forceOverride = forceOverride;
+            _resultValue.routeName = routeName;
+            return _resultValue;
         }
     }
 }

@@ -159,16 +159,16 @@ public final class GetTagValueResult {
             return this;
         }
         public GetTagValueResult build() {
-            final var o = new GetTagValueResult();
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.namespacedName = namespacedName;
-            o.parent = parent;
-            o.shortName = shortName;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetTagValueResult();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.namespacedName = namespacedName;
+            _resultValue.parent = parent;
+            _resultValue.shortName = shortName;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

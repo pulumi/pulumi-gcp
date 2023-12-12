@@ -72,10 +72,10 @@ public final class URLMapDefaultRouteActionRetryPolicyPerTryTimeout {
             return this;
         }
         public URLMapDefaultRouteActionRetryPolicyPerTryTimeout build() {
-            final var o = new URLMapDefaultRouteActionRetryPolicyPerTryTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new URLMapDefaultRouteActionRetryPolicyPerTryTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

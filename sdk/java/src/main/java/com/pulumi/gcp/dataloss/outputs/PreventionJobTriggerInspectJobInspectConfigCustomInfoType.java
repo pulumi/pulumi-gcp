@@ -211,16 +211,16 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigCustomInfoType build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigCustomInfoType();
-            o.dictionary = dictionary;
-            o.exclusionType = exclusionType;
-            o.infoType = infoType;
-            o.likelihood = likelihood;
-            o.regex = regex;
-            o.sensitivityScore = sensitivityScore;
-            o.storedType = storedType;
-            o.surrogateType = surrogateType;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigCustomInfoType();
+            _resultValue.dictionary = dictionary;
+            _resultValue.exclusionType = exclusionType;
+            _resultValue.infoType = infoType;
+            _resultValue.likelihood = likelihood;
+            _resultValue.regex = regex;
+            _resultValue.sensitivityScore = sensitivityScore;
+            _resultValue.storedType = storedType;
+            _resultValue.surrogateType = surrogateType;
+            return _resultValue;
         }
     }
 }

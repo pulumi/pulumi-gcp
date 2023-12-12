@@ -77,10 +77,10 @@ public final class AuthorizationPolicyRuleSource {
             return principals(List.of(principals));
         }
         public AuthorizationPolicyRuleSource build() {
-            final var o = new AuthorizationPolicyRuleSource();
-            o.ipBlocks = ipBlocks;
-            o.principals = principals;
-            return o;
+            final var _resultValue = new AuthorizationPolicyRuleSource();
+            _resultValue.ipBlocks = ipBlocks;
+            _resultValue.principals = principals;
+            return _resultValue;
         }
     }
 }

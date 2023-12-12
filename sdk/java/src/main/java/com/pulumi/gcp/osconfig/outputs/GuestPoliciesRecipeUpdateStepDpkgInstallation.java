@@ -46,9 +46,9 @@ public final class GuestPoliciesRecipeUpdateStepDpkgInstallation {
             return this;
         }
         public GuestPoliciesRecipeUpdateStepDpkgInstallation build() {
-            final var o = new GuestPoliciesRecipeUpdateStepDpkgInstallation();
-            o.artifactId = artifactId;
-            return o;
+            final var _resultValue = new GuestPoliciesRecipeUpdateStepDpkgInstallation();
+            _resultValue.artifactId = artifactId;
+            return _resultValue;
         }
     }
 }

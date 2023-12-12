@@ -74,10 +74,10 @@ public final class ServicePerimeterStatusEgressPolicy {
             return this;
         }
         public ServicePerimeterStatusEgressPolicy build() {
-            final var o = new ServicePerimeterStatusEgressPolicy();
-            o.egressFrom = egressFrom;
-            o.egressTo = egressTo;
-            return o;
+            final var _resultValue = new ServicePerimeterStatusEgressPolicy();
+            _resultValue.egressFrom = egressFrom;
+            _resultValue.egressTo = egressTo;
+            return _resultValue;
         }
     }
 }

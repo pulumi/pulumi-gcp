@@ -94,11 +94,11 @@ public final class NodePoolLocalDiskEncryption {
             return this;
         }
         public NodePoolLocalDiskEncryption build() {
-            final var o = new NodePoolLocalDiskEncryption();
-            o.kmsKey = kmsKey;
-            o.kmsKeyActiveVersion = kmsKeyActiveVersion;
-            o.kmsKeyState = kmsKeyState;
-            return o;
+            final var _resultValue = new NodePoolLocalDiskEncryption();
+            _resultValue.kmsKey = kmsKey;
+            _resultValue.kmsKeyActiveVersion = kmsKeyActiveVersion;
+            _resultValue.kmsKeyState = kmsKeyState;
+            return _resultValue;
         }
     }
 }

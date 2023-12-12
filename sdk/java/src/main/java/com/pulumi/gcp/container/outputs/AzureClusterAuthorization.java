@@ -74,10 +74,10 @@ public final class AzureClusterAuthorization {
             return adminUsers(List.of(adminUsers));
         }
         public AzureClusterAuthorization build() {
-            final var o = new AzureClusterAuthorization();
-            o.adminGroups = adminGroups;
-            o.adminUsers = adminUsers;
-            return o;
+            final var _resultValue = new AzureClusterAuthorization();
+            _resultValue.adminGroups = adminGroups;
+            _resultValue.adminUsers = adminUsers;
+            return _resultValue;
         }
     }
 }

@@ -111,12 +111,12 @@ public final class PipelineWorkloadDataflowFlexTemplateRequest {
             return this;
         }
         public PipelineWorkloadDataflowFlexTemplateRequest build() {
-            final var o = new PipelineWorkloadDataflowFlexTemplateRequest();
-            o.launchParameter = launchParameter;
-            o.location = location;
-            o.projectId = projectId;
-            o.validateOnly = validateOnly;
-            return o;
+            final var _resultValue = new PipelineWorkloadDataflowFlexTemplateRequest();
+            _resultValue.launchParameter = launchParameter;
+            _resultValue.location = location;
+            _resultValue.projectId = projectId;
+            _resultValue.validateOnly = validateOnly;
+            return _resultValue;
         }
     }
 }

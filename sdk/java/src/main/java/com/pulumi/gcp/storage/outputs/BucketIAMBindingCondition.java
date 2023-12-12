@@ -94,11 +94,11 @@ public final class BucketIAMBindingCondition {
             return this;
         }
         public BucketIAMBindingCondition build() {
-            final var o = new BucketIAMBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new BucketIAMBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

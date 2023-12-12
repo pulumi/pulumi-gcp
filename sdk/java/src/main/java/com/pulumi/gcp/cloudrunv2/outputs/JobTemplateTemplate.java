@@ -202,16 +202,16 @@ public final class JobTemplateTemplate {
             return this;
         }
         public JobTemplateTemplate build() {
-            final var o = new JobTemplateTemplate();
-            o.containers = containers;
-            o.encryptionKey = encryptionKey;
-            o.executionEnvironment = executionEnvironment;
-            o.maxRetries = maxRetries;
-            o.serviceAccount = serviceAccount;
-            o.timeout = timeout;
-            o.volumes = volumes;
-            o.vpcAccess = vpcAccess;
-            return o;
+            final var _resultValue = new JobTemplateTemplate();
+            _resultValue.containers = containers;
+            _resultValue.encryptionKey = encryptionKey;
+            _resultValue.executionEnvironment = executionEnvironment;
+            _resultValue.maxRetries = maxRetries;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.timeout = timeout;
+            _resultValue.volumes = volumes;
+            _resultValue.vpcAccess = vpcAccess;
+            return _resultValue;
         }
     }
 }

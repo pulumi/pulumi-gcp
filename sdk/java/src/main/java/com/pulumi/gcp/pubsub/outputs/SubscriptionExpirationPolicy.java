@@ -54,9 +54,9 @@ public final class SubscriptionExpirationPolicy {
             return this;
         }
         public SubscriptionExpirationPolicy build() {
-            final var o = new SubscriptionExpirationPolicy();
-            o.ttl = ttl;
-            return o;
+            final var _resultValue = new SubscriptionExpirationPolicy();
+            _resultValue.ttl = ttl;
+            return _resultValue;
         }
     }
 }

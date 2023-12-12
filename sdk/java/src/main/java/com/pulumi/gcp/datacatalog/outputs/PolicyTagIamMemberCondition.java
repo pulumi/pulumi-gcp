@@ -62,11 +62,11 @@ public final class PolicyTagIamMemberCondition {
             return this;
         }
         public PolicyTagIamMemberCondition build() {
-            final var o = new PolicyTagIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new PolicyTagIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

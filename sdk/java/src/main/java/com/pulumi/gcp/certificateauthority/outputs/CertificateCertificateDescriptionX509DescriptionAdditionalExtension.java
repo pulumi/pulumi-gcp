@@ -96,11 +96,11 @@ public final class CertificateCertificateDescriptionX509DescriptionAdditionalExt
             return this;
         }
         public CertificateCertificateDescriptionX509DescriptionAdditionalExtension build() {
-            final var o = new CertificateCertificateDescriptionX509DescriptionAdditionalExtension();
-            o.critical = critical;
-            o.objectIds = objectIds;
-            o.value = value;
-            return o;
+            final var _resultValue = new CertificateCertificateDescriptionX509DescriptionAdditionalExtension();
+            _resultValue.critical = critical;
+            _resultValue.objectIds = objectIds;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

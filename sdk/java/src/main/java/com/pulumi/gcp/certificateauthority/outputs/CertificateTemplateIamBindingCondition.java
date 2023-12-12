@@ -78,11 +78,11 @@ public final class CertificateTemplateIamBindingCondition {
             return this;
         }
         public CertificateTemplateIamBindingCondition build() {
-            final var o = new CertificateTemplateIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new CertificateTemplateIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

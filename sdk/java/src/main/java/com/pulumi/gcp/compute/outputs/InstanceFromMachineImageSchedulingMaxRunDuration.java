@@ -51,10 +51,10 @@ public final class InstanceFromMachineImageSchedulingMaxRunDuration {
             return this;
         }
         public InstanceFromMachineImageSchedulingMaxRunDuration build() {
-            final var o = new InstanceFromMachineImageSchedulingMaxRunDuration();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageSchedulingMaxRunDuration();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

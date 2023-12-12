@@ -81,10 +81,10 @@ public final class CxEntityTypeEntity {
             return this;
         }
         public CxEntityTypeEntity build() {
-            final var o = new CxEntityTypeEntity();
-            o.synonyms = synonyms;
-            o.value = value;
-            return o;
+            final var _resultValue = new CxEntityTypeEntity();
+            _resultValue.synonyms = synonyms;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

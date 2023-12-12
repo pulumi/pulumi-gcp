@@ -105,11 +105,11 @@ public final class HostingCustomDomainCert {
             return this;
         }
         public HostingCustomDomainCert build() {
-            final var o = new HostingCustomDomainCert();
-            o.state = state;
-            o.type = type;
-            o.verification = verification;
-            return o;
+            final var _resultValue = new HostingCustomDomainCert();
+            _resultValue.state = state;
+            _resultValue.type = type;
+            _resultValue.verification = verification;
+            return _resultValue;
         }
     }
 }

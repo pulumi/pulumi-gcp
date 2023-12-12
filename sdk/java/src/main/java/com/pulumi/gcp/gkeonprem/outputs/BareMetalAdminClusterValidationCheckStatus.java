@@ -55,9 +55,9 @@ public final class BareMetalAdminClusterValidationCheckStatus {
             return results(List.of(results));
         }
         public BareMetalAdminClusterValidationCheckStatus build() {
-            final var o = new BareMetalAdminClusterValidationCheckStatus();
-            o.results = results;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterValidationCheckStatus();
+            _resultValue.results = results;
+            return _resultValue;
         }
     }
 }

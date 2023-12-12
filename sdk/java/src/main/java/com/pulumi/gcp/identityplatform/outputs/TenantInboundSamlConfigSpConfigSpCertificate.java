@@ -48,9 +48,9 @@ public final class TenantInboundSamlConfigSpConfigSpCertificate {
             return this;
         }
         public TenantInboundSamlConfigSpConfigSpCertificate build() {
-            final var o = new TenantInboundSamlConfigSpConfigSpCertificate();
-            o.x509Certificate = x509Certificate;
-            return o;
+            final var _resultValue = new TenantInboundSamlConfigSpConfigSpCertificate();
+            _resultValue.x509Certificate = x509Certificate;
+            return _resultValue;
         }
     }
 }

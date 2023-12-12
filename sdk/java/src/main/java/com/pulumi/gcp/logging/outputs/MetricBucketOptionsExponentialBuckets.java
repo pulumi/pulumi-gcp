@@ -85,11 +85,11 @@ public final class MetricBucketOptionsExponentialBuckets {
             return this;
         }
         public MetricBucketOptionsExponentialBuckets build() {
-            final var o = new MetricBucketOptionsExponentialBuckets();
-            o.growthFactor = growthFactor;
-            o.numFiniteBuckets = numFiniteBuckets;
-            o.scale = scale;
-            return o;
+            final var _resultValue = new MetricBucketOptionsExponentialBuckets();
+            _resultValue.growthFactor = growthFactor;
+            _resultValue.numFiniteBuckets = numFiniteBuckets;
+            _resultValue.scale = scale;
+            return _resultValue;
         }
     }
 }

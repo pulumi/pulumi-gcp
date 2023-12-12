@@ -70,10 +70,10 @@ public final class SpokeLinkedVpnTunnels {
             return uris(List.of(uris));
         }
         public SpokeLinkedVpnTunnels build() {
-            final var o = new SpokeLinkedVpnTunnels();
-            o.siteToSiteDataTransfer = siteToSiteDataTransfer;
-            o.uris = uris;
-            return o;
+            final var _resultValue = new SpokeLinkedVpnTunnels();
+            _resultValue.siteToSiteDataTransfer = siteToSiteDataTransfer;
+            _resultValue.uris = uris;
+            return _resultValue;
         }
     }
 }

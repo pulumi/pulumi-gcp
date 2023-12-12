@@ -50,9 +50,9 @@ public final class FleetState {
             return this;
         }
         public FleetState build() {
-            final var o = new FleetState();
-            o.code = code;
-            return o;
+            final var _resultValue = new FleetState();
+            _resultValue.code = code;
+            return _resultValue;
         }
     }
 }

@@ -40,9 +40,9 @@ public final class InstanceGroupManagerStatusAllInstancesConfig {
             return this;
         }
         public InstanceGroupManagerStatusAllInstancesConfig build() {
-            final var o = new InstanceGroupManagerStatusAllInstancesConfig();
-            o.effective = effective;
-            return o;
+            final var _resultValue = new InstanceGroupManagerStatusAllInstancesConfig();
+            _resultValue.effective = effective;
+            return _resultValue;
         }
     }
 }

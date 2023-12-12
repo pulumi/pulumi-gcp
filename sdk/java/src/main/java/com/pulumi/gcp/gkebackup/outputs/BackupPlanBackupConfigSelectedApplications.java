@@ -52,9 +52,9 @@ public final class BackupPlanBackupConfigSelectedApplications {
             return namespacedNames(List.of(namespacedNames));
         }
         public BackupPlanBackupConfigSelectedApplications build() {
-            final var o = new BackupPlanBackupConfigSelectedApplications();
-            o.namespacedNames = namespacedNames;
-            return o;
+            final var _resultValue = new BackupPlanBackupConfigSelectedApplications();
+            _resultValue.namespacedNames = namespacedNames;
+            return _resultValue;
         }
     }
 }

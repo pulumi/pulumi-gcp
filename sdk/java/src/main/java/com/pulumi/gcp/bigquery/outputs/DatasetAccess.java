@@ -239,17 +239,17 @@ public final class DatasetAccess {
             return this;
         }
         public DatasetAccess build() {
-            final var o = new DatasetAccess();
-            o.dataset = dataset;
-            o.domain = domain;
-            o.groupByEmail = groupByEmail;
-            o.iamMember = iamMember;
-            o.role = role;
-            o.routine = routine;
-            o.specialGroup = specialGroup;
-            o.userByEmail = userByEmail;
-            o.view = view;
-            return o;
+            final var _resultValue = new DatasetAccess();
+            _resultValue.dataset = dataset;
+            _resultValue.domain = domain;
+            _resultValue.groupByEmail = groupByEmail;
+            _resultValue.iamMember = iamMember;
+            _resultValue.role = role;
+            _resultValue.routine = routine;
+            _resultValue.specialGroup = specialGroup;
+            _resultValue.userByEmail = userByEmail;
+            _resultValue.view = view;
+            return _resultValue;
         }
     }
 }

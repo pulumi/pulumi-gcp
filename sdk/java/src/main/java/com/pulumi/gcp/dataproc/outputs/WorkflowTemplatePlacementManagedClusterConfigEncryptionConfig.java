@@ -48,9 +48,9 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig();
-            o.gcePdKmsKeyName = gcePdKmsKeyName;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig();
+            _resultValue.gcePdKmsKeyName = gcePdKmsKeyName;
+            return _resultValue;
         }
     }
 }

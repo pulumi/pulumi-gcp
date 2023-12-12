@@ -87,10 +87,10 @@ public final class GroupMembershipPreferredMemberKey {
             return this;
         }
         public GroupMembershipPreferredMemberKey build() {
-            final var o = new GroupMembershipPreferredMemberKey();
-            o.id = id;
-            o.namespace = namespace;
-            return o;
+            final var _resultValue = new GroupMembershipPreferredMemberKey();
+            _resultValue.id = id;
+            _resultValue.namespace = namespace;
+            return _resultValue;
         }
     }
 }

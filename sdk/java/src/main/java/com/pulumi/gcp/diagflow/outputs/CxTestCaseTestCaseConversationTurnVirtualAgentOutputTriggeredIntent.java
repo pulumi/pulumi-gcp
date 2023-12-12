@@ -71,10 +71,10 @@ public final class CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggered
             return this;
         }
         public CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent build() {
-            final var o = new CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent();
-            o.displayName = displayName;
-            o.name = name;
-            return o;
+            final var _resultValue = new CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent();
+            _resultValue.displayName = displayName;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

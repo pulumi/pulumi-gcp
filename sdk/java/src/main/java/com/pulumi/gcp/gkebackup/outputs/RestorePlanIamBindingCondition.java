@@ -70,11 +70,11 @@ public final class RestorePlanIamBindingCondition {
             return this;
         }
         public RestorePlanIamBindingCondition build() {
-            final var o = new RestorePlanIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new RestorePlanIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

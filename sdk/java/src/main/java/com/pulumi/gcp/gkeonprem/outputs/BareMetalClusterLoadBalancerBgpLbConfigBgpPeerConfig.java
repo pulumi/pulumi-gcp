@@ -100,11 +100,11 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig {
             return this;
         }
         public BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig build() {
-            final var o = new BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig();
-            o.asn = asn;
-            o.controlPlaneNodes = controlPlaneNodes;
-            o.ipAddress = ipAddress;
-            return o;
+            final var _resultValue = new BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig();
+            _resultValue.asn = asn;
+            _resultValue.controlPlaneNodes = controlPlaneNodes;
+            _resultValue.ipAddress = ipAddress;
+            return _resultValue;
         }
     }
 }

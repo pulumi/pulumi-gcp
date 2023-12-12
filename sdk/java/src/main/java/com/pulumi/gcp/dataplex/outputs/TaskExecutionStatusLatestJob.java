@@ -217,17 +217,17 @@ public final class TaskExecutionStatusLatestJob {
             return this;
         }
         public TaskExecutionStatusLatestJob build() {
-            final var o = new TaskExecutionStatusLatestJob();
-            o.endTime = endTime;
-            o.message = message;
-            o.name = name;
-            o.retryCount = retryCount;
-            o.service = service;
-            o.serviceJob = serviceJob;
-            o.startTime = startTime;
-            o.state = state;
-            o.uid = uid;
-            return o;
+            final var _resultValue = new TaskExecutionStatusLatestJob();
+            _resultValue.endTime = endTime;
+            _resultValue.message = message;
+            _resultValue.name = name;
+            _resultValue.retryCount = retryCount;
+            _resultValue.service = service;
+            _resultValue.serviceJob = serviceJob;
+            _resultValue.startTime = startTime;
+            _resultValue.state = state;
+            _resultValue.uid = uid;
+            return _resultValue;
         }
     }
 }

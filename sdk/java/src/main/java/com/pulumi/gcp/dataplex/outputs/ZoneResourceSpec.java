@@ -50,9 +50,9 @@ public final class ZoneResourceSpec {
             return this;
         }
         public ZoneResourceSpec build() {
-            final var o = new ZoneResourceSpec();
-            o.locationType = locationType;
-            return o;
+            final var _resultValue = new ZoneResourceSpec();
+            _resultValue.locationType = locationType;
+            return _resultValue;
         }
     }
 }

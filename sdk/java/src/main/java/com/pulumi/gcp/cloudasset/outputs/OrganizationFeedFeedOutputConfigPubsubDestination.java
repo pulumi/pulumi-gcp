@@ -50,9 +50,9 @@ public final class OrganizationFeedFeedOutputConfigPubsubDestination {
             return this;
         }
         public OrganizationFeedFeedOutputConfigPubsubDestination build() {
-            final var o = new OrganizationFeedFeedOutputConfigPubsubDestination();
-            o.topic = topic;
-            return o;
+            final var _resultValue = new OrganizationFeedFeedOutputConfigPubsubDestination();
+            _resultValue.topic = topic;
+            return _resultValue;
         }
     }
 }

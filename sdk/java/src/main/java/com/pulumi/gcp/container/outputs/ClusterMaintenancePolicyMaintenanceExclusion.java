@@ -82,12 +82,12 @@ public final class ClusterMaintenancePolicyMaintenanceExclusion {
             return this;
         }
         public ClusterMaintenancePolicyMaintenanceExclusion build() {
-            final var o = new ClusterMaintenancePolicyMaintenanceExclusion();
-            o.endTime = endTime;
-            o.exclusionName = exclusionName;
-            o.exclusionOptions = exclusionOptions;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new ClusterMaintenancePolicyMaintenanceExclusion();
+            _resultValue.endTime = endTime;
+            _resultValue.exclusionName = exclusionName;
+            _resultValue.exclusionOptions = exclusionOptions;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

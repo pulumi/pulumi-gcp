@@ -168,14 +168,14 @@ public final class ConnectionProfileMysqlProfileSslConfig {
             return this;
         }
         public ConnectionProfileMysqlProfileSslConfig build() {
-            final var o = new ConnectionProfileMysqlProfileSslConfig();
-            o.caCertificate = caCertificate;
-            o.caCertificateSet = caCertificateSet;
-            o.clientCertificate = clientCertificate;
-            o.clientCertificateSet = clientCertificateSet;
-            o.clientKey = clientKey;
-            o.clientKeySet = clientKeySet;
-            return o;
+            final var _resultValue = new ConnectionProfileMysqlProfileSslConfig();
+            _resultValue.caCertificate = caCertificate;
+            _resultValue.caCertificateSet = caCertificateSet;
+            _resultValue.clientCertificate = clientCertificate;
+            _resultValue.clientCertificateSet = clientCertificateSet;
+            _resultValue.clientKey = clientKey;
+            _resultValue.clientKeySet = clientKeySet;
+            return _resultValue;
         }
     }
 }

@@ -54,9 +54,9 @@ public final class ClusterSystemAddonsConfig {
             return this;
         }
         public ClusterSystemAddonsConfig build() {
-            final var o = new ClusterSystemAddonsConfig();
-            o.ingress = ingress;
-            return o;
+            final var _resultValue = new ClusterSystemAddonsConfig();
+            _resultValue.ingress = ingress;
+            return _resultValue;
         }
     }
 }

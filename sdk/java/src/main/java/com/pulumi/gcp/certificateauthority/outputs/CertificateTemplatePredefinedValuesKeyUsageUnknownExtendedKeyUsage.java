@@ -50,9 +50,9 @@ public final class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKey
             return objectIdPaths(List.of(objectIdPaths));
         }
         public CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage build() {
-            final var o = new CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
             return this;
         }
         public URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy build() {
-            final var o = new URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy();
-            o.backendService = backendService;
-            return o;
+            final var _resultValue = new URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicy();
+            _resultValue.backendService = backendService;
+            return _resultValue;
         }
     }
 }

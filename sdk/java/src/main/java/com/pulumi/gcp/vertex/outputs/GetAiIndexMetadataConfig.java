@@ -99,14 +99,14 @@ public final class GetAiIndexMetadataConfig {
             return this;
         }
         public GetAiIndexMetadataConfig build() {
-            final var o = new GetAiIndexMetadataConfig();
-            o.algorithmConfigs = algorithmConfigs;
-            o.approximateNeighborsCount = approximateNeighborsCount;
-            o.dimensions = dimensions;
-            o.distanceMeasureType = distanceMeasureType;
-            o.featureNormType = featureNormType;
-            o.shardSize = shardSize;
-            return o;
+            final var _resultValue = new GetAiIndexMetadataConfig();
+            _resultValue.algorithmConfigs = algorithmConfigs;
+            _resultValue.approximateNeighborsCount = approximateNeighborsCount;
+            _resultValue.dimensions = dimensions;
+            _resultValue.distanceMeasureType = distanceMeasureType;
+            _resultValue.featureNormType = featureNormType;
+            _resultValue.shardSize = shardSize;
+            return _resultValue;
         }
     }
 }

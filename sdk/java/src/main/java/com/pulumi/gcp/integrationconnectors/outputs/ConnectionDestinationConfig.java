@@ -73,10 +73,10 @@ public final class ConnectionDestinationConfig {
             return this;
         }
         public ConnectionDestinationConfig build() {
-            final var o = new ConnectionDestinationConfig();
-            o.destinations = destinations;
-            o.key = key;
-            return o;
+            final var _resultValue = new ConnectionDestinationConfig();
+            _resultValue.destinations = destinations;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

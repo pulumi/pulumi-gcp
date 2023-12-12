@@ -67,10 +67,10 @@ public final class TaskNotebookInfrastructureSpecBatch {
             return this;
         }
         public TaskNotebookInfrastructureSpecBatch build() {
-            final var o = new TaskNotebookInfrastructureSpecBatch();
-            o.executorsCount = executorsCount;
-            o.maxExecutorsCount = maxExecutorsCount;
-            return o;
+            final var _resultValue = new TaskNotebookInfrastructureSpecBatch();
+            _resultValue.executorsCount = executorsCount;
+            _resultValue.maxExecutorsCount = maxExecutorsCount;
+            return _resultValue;
         }
     }
 }

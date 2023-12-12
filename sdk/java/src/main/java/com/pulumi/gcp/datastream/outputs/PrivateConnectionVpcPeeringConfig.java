@@ -71,10 +71,10 @@ public final class PrivateConnectionVpcPeeringConfig {
             return this;
         }
         public PrivateConnectionVpcPeeringConfig build() {
-            final var o = new PrivateConnectionVpcPeeringConfig();
-            o.subnet = subnet;
-            o.vpc = vpc;
-            return o;
+            final var _resultValue = new PrivateConnectionVpcPeeringConfig();
+            _resultValue.subnet = subnet;
+            _resultValue.vpc = vpc;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class ReservationShareSettingsProjectMap {
             return this;
         }
         public ReservationShareSettingsProjectMap build() {
-            final var o = new ReservationShareSettingsProjectMap();
-            o.id = id;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new ReservationShareSettingsProjectMap();
+            _resultValue.id = id;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

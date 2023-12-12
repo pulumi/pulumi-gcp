@@ -142,13 +142,13 @@ public final class DatascanDataProfileSpec {
             return this;
         }
         public DatascanDataProfileSpec build() {
-            final var o = new DatascanDataProfileSpec();
-            o.excludeFields = excludeFields;
-            o.includeFields = includeFields;
-            o.postScanActions = postScanActions;
-            o.rowFilter = rowFilter;
-            o.samplingPercent = samplingPercent;
-            return o;
+            final var _resultValue = new DatascanDataProfileSpec();
+            _resultValue.excludeFields = excludeFields;
+            _resultValue.includeFields = includeFields;
+            _resultValue.postScanActions = postScanActions;
+            _resultValue.rowFilter = rowFilter;
+            _resultValue.samplingPercent = samplingPercent;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class GetAppEngineServiceTelemetry {
             return this;
         }
         public GetAppEngineServiceTelemetry build() {
-            final var o = new GetAppEngineServiceTelemetry();
-            o.resourceName = resourceName;
-            return o;
+            final var _resultValue = new GetAppEngineServiceTelemetry();
+            _resultValue.resourceName = resourceName;
+            return _resultValue;
         }
     }
 }

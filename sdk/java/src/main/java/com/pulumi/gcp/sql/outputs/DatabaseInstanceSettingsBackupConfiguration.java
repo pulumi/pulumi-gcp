@@ -169,15 +169,15 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
             return this;
         }
         public DatabaseInstanceSettingsBackupConfiguration build() {
-            final var o = new DatabaseInstanceSettingsBackupConfiguration();
-            o.backupRetentionSettings = backupRetentionSettings;
-            o.binaryLogEnabled = binaryLogEnabled;
-            o.enabled = enabled;
-            o.location = location;
-            o.pointInTimeRecoveryEnabled = pointInTimeRecoveryEnabled;
-            o.startTime = startTime;
-            o.transactionLogRetentionDays = transactionLogRetentionDays;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettingsBackupConfiguration();
+            _resultValue.backupRetentionSettings = backupRetentionSettings;
+            _resultValue.binaryLogEnabled = binaryLogEnabled;
+            _resultValue.enabled = enabled;
+            _resultValue.location = location;
+            _resultValue.pointInTimeRecoveryEnabled = pointInTimeRecoveryEnabled;
+            _resultValue.startTime = startTime;
+            _resultValue.transactionLogRetentionDays = transactionLogRetentionDays;
+            return _resultValue;
         }
     }
 }

@@ -50,10 +50,10 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
             return this;
         }
         public GetClusterNodeConfigLinuxNodeConfig build() {
-            final var o = new GetClusterNodeConfigLinuxNodeConfig();
-            o.cgroupMode = cgroupMode;
-            o.sysctls = sysctls;
-            return o;
+            final var _resultValue = new GetClusterNodeConfigLinuxNodeConfig();
+            _resultValue.cgroupMode = cgroupMode;
+            _resultValue.sysctls = sysctls;
+            return _resultValue;
         }
     }
 }

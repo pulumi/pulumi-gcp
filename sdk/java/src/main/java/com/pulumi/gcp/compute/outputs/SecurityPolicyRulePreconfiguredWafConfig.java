@@ -51,9 +51,9 @@ public final class SecurityPolicyRulePreconfiguredWafConfig {
             return exclusions(List.of(exclusions));
         }
         public SecurityPolicyRulePreconfiguredWafConfig build() {
-            final var o = new SecurityPolicyRulePreconfiguredWafConfig();
-            o.exclusions = exclusions;
-            return o;
+            final var _resultValue = new SecurityPolicyRulePreconfiguredWafConfig();
+            _resultValue.exclusions = exclusions;
+            return _resultValue;
         }
     }
 }

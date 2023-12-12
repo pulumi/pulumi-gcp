@@ -70,10 +70,10 @@ public final class UptimeCheckConfigHttpCheckAcceptedResponseStatusCode {
             return this;
         }
         public UptimeCheckConfigHttpCheckAcceptedResponseStatusCode build() {
-            final var o = new UptimeCheckConfigHttpCheckAcceptedResponseStatusCode();
-            o.statusClass = statusClass;
-            o.statusValue = statusValue;
-            return o;
+            final var _resultValue = new UptimeCheckConfigHttpCheckAcceptedResponseStatusCode();
+            _resultValue.statusClass = statusClass;
+            _resultValue.statusValue = statusValue;
+            return _resultValue;
         }
     }
 }

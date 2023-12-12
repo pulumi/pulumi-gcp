@@ -67,10 +67,10 @@ public final class AzureClusterFleet {
             return this;
         }
         public AzureClusterFleet build() {
-            final var o = new AzureClusterFleet();
-            o.membership = membership;
-            o.project = project;
-            return o;
+            final var _resultValue = new AzureClusterFleet();
+            _resultValue.membership = membership;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

@@ -50,10 +50,10 @@ public final class GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
             return this;
         }
         public GetResourcePolicySnapshotSchedulePolicyRetentionPolicy build() {
-            final var o = new GetResourcePolicySnapshotSchedulePolicyRetentionPolicy();
-            o.maxRetentionDays = maxRetentionDays;
-            o.onSourceDiskDelete = onSourceDiskDelete;
-            return o;
+            final var _resultValue = new GetResourcePolicySnapshotSchedulePolicyRetentionPolicy();
+            _resultValue.maxRetentionDays = maxRetentionDays;
+            _resultValue.onSourceDiskDelete = onSourceDiskDelete;
+            return _resultValue;
         }
     }
 }

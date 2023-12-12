@@ -142,13 +142,13 @@ public final class ConfigSignIn {
             return this;
         }
         public ConfigSignIn build() {
-            final var o = new ConfigSignIn();
-            o.allowDuplicateEmails = allowDuplicateEmails;
-            o.anonymous = anonymous;
-            o.email = email;
-            o.hashConfigs = hashConfigs;
-            o.phoneNumber = phoneNumber;
-            return o;
+            final var _resultValue = new ConfigSignIn();
+            _resultValue.allowDuplicateEmails = allowDuplicateEmails;
+            _resultValue.anonymous = anonymous;
+            _resultValue.email = email;
+            _resultValue.hashConfigs = hashConfigs;
+            _resultValue.phoneNumber = phoneNumber;
+            return _resultValue;
         }
     }
 }

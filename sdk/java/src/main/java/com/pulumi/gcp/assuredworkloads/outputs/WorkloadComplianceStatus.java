@@ -57,10 +57,10 @@ public final class WorkloadComplianceStatus {
             return activeViolationCounts(List.of(activeViolationCounts));
         }
         public WorkloadComplianceStatus build() {
-            final var o = new WorkloadComplianceStatus();
-            o.acknowledgedViolationCounts = acknowledgedViolationCounts;
-            o.activeViolationCounts = activeViolationCounts;
-            return o;
+            final var _resultValue = new WorkloadComplianceStatus();
+            _resultValue.acknowledgedViolationCounts = acknowledgedViolationCounts;
+            _resultValue.activeViolationCounts = activeViolationCounts;
+            return _resultValue;
         }
     }
 }

@@ -113,12 +113,12 @@ public final class V2VmSymptom {
             return this;
         }
         public V2VmSymptom build() {
-            final var o = new V2VmSymptom();
-            o.createTime = createTime;
-            o.details = details;
-            o.symptomType = symptomType;
-            o.workerId = workerId;
-            return o;
+            final var _resultValue = new V2VmSymptom();
+            _resultValue.createTime = createTime;
+            _resultValue.details = details;
+            _resultValue.symptomType = symptomType;
+            _resultValue.workerId = workerId;
+            return _resultValue;
         }
     }
 }

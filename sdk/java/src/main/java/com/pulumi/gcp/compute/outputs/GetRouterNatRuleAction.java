@@ -84,12 +84,12 @@ public final class GetRouterNatRuleAction {
             return sourceNatDrainRanges(List.of(sourceNatDrainRanges));
         }
         public GetRouterNatRuleAction build() {
-            final var o = new GetRouterNatRuleAction();
-            o.sourceNatActiveIps = sourceNatActiveIps;
-            o.sourceNatActiveRanges = sourceNatActiveRanges;
-            o.sourceNatDrainIps = sourceNatDrainIps;
-            o.sourceNatDrainRanges = sourceNatDrainRanges;
-            return o;
+            final var _resultValue = new GetRouterNatRuleAction();
+            _resultValue.sourceNatActiveIps = sourceNatActiveIps;
+            _resultValue.sourceNatActiveRanges = sourceNatActiveRanges;
+            _resultValue.sourceNatDrainIps = sourceNatDrainIps;
+            _resultValue.sourceNatDrainRanges = sourceNatDrainRanges;
+            return _resultValue;
         }
     }
 }

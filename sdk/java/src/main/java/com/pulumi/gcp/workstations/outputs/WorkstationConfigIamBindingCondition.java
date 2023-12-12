@@ -62,11 +62,11 @@ public final class WorkstationConfigIamBindingCondition {
             return this;
         }
         public WorkstationConfigIamBindingCondition build() {
-            final var o = new WorkstationConfigIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new WorkstationConfigIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

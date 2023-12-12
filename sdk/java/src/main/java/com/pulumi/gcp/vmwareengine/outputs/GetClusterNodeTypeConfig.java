@@ -61,11 +61,11 @@ public final class GetClusterNodeTypeConfig {
             return this;
         }
         public GetClusterNodeTypeConfig build() {
-            final var o = new GetClusterNodeTypeConfig();
-            o.customCoreCount = customCoreCount;
-            o.nodeCount = nodeCount;
-            o.nodeTypeId = nodeTypeId;
-            return o;
+            final var _resultValue = new GetClusterNodeTypeConfig();
+            _resultValue.customCoreCount = customCoreCount;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.nodeTypeId = nodeTypeId;
+            return _resultValue;
         }
     }
 }

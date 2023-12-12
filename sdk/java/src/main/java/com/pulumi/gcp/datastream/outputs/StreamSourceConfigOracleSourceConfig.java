@@ -155,14 +155,14 @@ public final class StreamSourceConfigOracleSourceConfig {
             return this;
         }
         public StreamSourceConfigOracleSourceConfig build() {
-            final var o = new StreamSourceConfigOracleSourceConfig();
-            o.dropLargeObjects = dropLargeObjects;
-            o.excludeObjects = excludeObjects;
-            o.includeObjects = includeObjects;
-            o.maxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
-            o.maxConcurrentCdcTasks = maxConcurrentCdcTasks;
-            o.streamLargeObjects = streamLargeObjects;
-            return o;
+            final var _resultValue = new StreamSourceConfigOracleSourceConfig();
+            _resultValue.dropLargeObjects = dropLargeObjects;
+            _resultValue.excludeObjects = excludeObjects;
+            _resultValue.includeObjects = includeObjects;
+            _resultValue.maxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
+            _resultValue.maxConcurrentCdcTasks = maxConcurrentCdcTasks;
+            _resultValue.streamLargeObjects = streamLargeObjects;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolic
             return this;
         }
         public RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy build() {
-            final var o = new RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy();
-            o.backendService = backendService;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicy();
+            _resultValue.backendService = backendService;
+            return _resultValue;
         }
     }
 }

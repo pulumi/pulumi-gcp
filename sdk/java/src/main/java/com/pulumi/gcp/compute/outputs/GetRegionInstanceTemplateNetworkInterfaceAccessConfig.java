@@ -82,11 +82,11 @@ public final class GetRegionInstanceTemplateNetworkInterfaceAccessConfig {
             return this;
         }
         public GetRegionInstanceTemplateNetworkInterfaceAccessConfig build() {
-            final var o = new GetRegionInstanceTemplateNetworkInterfaceAccessConfig();
-            o.natIp = natIp;
-            o.networkTier = networkTier;
-            o.publicPtrDomainName = publicPtrDomainName;
-            return o;
+            final var _resultValue = new GetRegionInstanceTemplateNetworkInterfaceAccessConfig();
+            _resultValue.natIp = natIp;
+            _resultValue.networkTier = networkTier;
+            _resultValue.publicPtrDomainName = publicPtrDomainName;
+            return _resultValue;
         }
     }
 }

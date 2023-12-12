@@ -60,11 +60,11 @@ public final class GetRegionNetworkEndpointGroupAppEngine {
             return this;
         }
         public GetRegionNetworkEndpointGroupAppEngine build() {
-            final var o = new GetRegionNetworkEndpointGroupAppEngine();
-            o.service = service;
-            o.urlMask = urlMask;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetRegionNetworkEndpointGroupAppEngine();
+            _resultValue.service = service;
+            _resultValue.urlMask = urlMask;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

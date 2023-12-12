@@ -50,9 +50,9 @@ public final class DatasetDefaultEncryptionConfiguration {
             return this;
         }
         public DatasetDefaultEncryptionConfiguration build() {
-            final var o = new DatasetDefaultEncryptionConfiguration();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new DatasetDefaultEncryptionConfiguration();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

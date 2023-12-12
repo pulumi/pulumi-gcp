@@ -74,10 +74,10 @@ public final class BackendServiceLogConfig {
             return this;
         }
         public BackendServiceLogConfig build() {
-            final var o = new BackendServiceLogConfig();
-            o.enable = enable;
-            o.sampleRate = sampleRate;
-            return o;
+            final var _resultValue = new BackendServiceLogConfig();
+            _resultValue.enable = enable;
+            _resultValue.sampleRate = sampleRate;
+            return _resultValue;
         }
     }
 }

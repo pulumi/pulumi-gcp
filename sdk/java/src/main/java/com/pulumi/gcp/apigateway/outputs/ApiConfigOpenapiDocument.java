@@ -48,9 +48,9 @@ public final class ApiConfigOpenapiDocument {
             return this;
         }
         public ApiConfigOpenapiDocument build() {
-            final var o = new ApiConfigOpenapiDocument();
-            o.document = document;
-            return o;
+            final var _resultValue = new ApiConfigOpenapiDocument();
+            _resultValue.document = document;
+            return _resultValue;
         }
     }
 }

@@ -123,12 +123,12 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendSer
             return responseHeadersToRemoves(List.of(responseHeadersToRemoves));
         }
         public RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction build() {
-            final var o = new RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction();
-            o.requestHeadersToAdds = requestHeadersToAdds;
-            o.requestHeadersToRemoves = requestHeadersToRemoves;
-            o.responseHeadersToAdds = responseHeadersToAdds;
-            o.responseHeadersToRemoves = responseHeadersToRemoves;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction();
+            _resultValue.requestHeadersToAdds = requestHeadersToAdds;
+            _resultValue.requestHeadersToRemoves = requestHeadersToRemoves;
+            _resultValue.responseHeadersToAdds = responseHeadersToAdds;
+            _resultValue.responseHeadersToRemoves = responseHeadersToRemoves;
+            return _resultValue;
         }
     }
 }

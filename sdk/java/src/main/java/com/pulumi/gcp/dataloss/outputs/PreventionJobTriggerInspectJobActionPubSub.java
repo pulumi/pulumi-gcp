@@ -46,9 +46,9 @@ public final class PreventionJobTriggerInspectJobActionPubSub {
             return this;
         }
         public PreventionJobTriggerInspectJobActionPubSub build() {
-            final var o = new PreventionJobTriggerInspectJobActionPubSub();
-            o.topic = topic;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobActionPubSub();
+            _resultValue.topic = topic;
+            return _resultValue;
         }
     }
 }

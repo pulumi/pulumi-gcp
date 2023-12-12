@@ -78,11 +78,11 @@ public final class BackendServiceIamMemberCondition {
             return this;
         }
         public BackendServiceIamMemberCondition build() {
-            final var o = new BackendServiceIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new BackendServiceIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

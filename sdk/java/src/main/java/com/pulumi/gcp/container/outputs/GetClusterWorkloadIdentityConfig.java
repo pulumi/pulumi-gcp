@@ -38,9 +38,9 @@ public final class GetClusterWorkloadIdentityConfig {
             return this;
         }
         public GetClusterWorkloadIdentityConfig build() {
-            final var o = new GetClusterWorkloadIdentityConfig();
-            o.workloadPool = workloadPool;
-            return o;
+            final var _resultValue = new GetClusterWorkloadIdentityConfig();
+            _resultValue.workloadPool = workloadPool;
+            return _resultValue;
         }
     }
 }

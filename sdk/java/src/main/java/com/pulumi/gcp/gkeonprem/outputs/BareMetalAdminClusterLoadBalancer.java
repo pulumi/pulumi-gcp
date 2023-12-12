@@ -94,11 +94,11 @@ public final class BareMetalAdminClusterLoadBalancer {
             return this;
         }
         public BareMetalAdminClusterLoadBalancer build() {
-            final var o = new BareMetalAdminClusterLoadBalancer();
-            o.manualLbConfig = manualLbConfig;
-            o.portConfig = portConfig;
-            o.vipConfig = vipConfig;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterLoadBalancer();
+            _resultValue.manualLbConfig = manualLbConfig;
+            _resultValue.portConfig = portConfig;
+            _resultValue.vipConfig = vipConfig;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfig {
             return this;
         }
         public ClusterVirtualClusterConfigAuxiliaryServicesConfig build() {
-            final var o = new ClusterVirtualClusterConfigAuxiliaryServicesConfig();
-            o.metastoreConfig = metastoreConfig;
-            o.sparkHistoryServerConfig = sparkHistoryServerConfig;
-            return o;
+            final var _resultValue = new ClusterVirtualClusterConfigAuxiliaryServicesConfig();
+            _resultValue.metastoreConfig = metastoreConfig;
+            _resultValue.sparkHistoryServerConfig = sparkHistoryServerConfig;
+            return _resultValue;
         }
     }
 }

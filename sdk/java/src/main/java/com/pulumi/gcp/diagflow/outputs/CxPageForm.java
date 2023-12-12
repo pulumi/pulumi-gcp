@@ -53,9 +53,9 @@ public final class CxPageForm {
             return parameters(List.of(parameters));
         }
         public CxPageForm build() {
-            final var o = new CxPageForm();
-            o.parameters = parameters;
-            return o;
+            final var _resultValue = new CxPageForm();
+            _resultValue.parameters = parameters;
+            return _resultValue;
         }
     }
 }

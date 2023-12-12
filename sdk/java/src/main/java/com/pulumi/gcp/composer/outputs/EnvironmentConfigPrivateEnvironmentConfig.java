@@ -118,16 +118,16 @@ public final class EnvironmentConfigPrivateEnvironmentConfig {
             return this;
         }
         public EnvironmentConfigPrivateEnvironmentConfig build() {
-            final var o = new EnvironmentConfigPrivateEnvironmentConfig();
-            o.cloudComposerConnectionSubnetwork = cloudComposerConnectionSubnetwork;
-            o.cloudComposerNetworkIpv4CidrBlock = cloudComposerNetworkIpv4CidrBlock;
-            o.cloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
-            o.connectionType = connectionType;
-            o.enablePrivateEndpoint = enablePrivateEndpoint;
-            o.enablePrivatelyUsedPublicIps = enablePrivatelyUsedPublicIps;
-            o.masterIpv4CidrBlock = masterIpv4CidrBlock;
-            o.webServerIpv4CidrBlock = webServerIpv4CidrBlock;
-            return o;
+            final var _resultValue = new EnvironmentConfigPrivateEnvironmentConfig();
+            _resultValue.cloudComposerConnectionSubnetwork = cloudComposerConnectionSubnetwork;
+            _resultValue.cloudComposerNetworkIpv4CidrBlock = cloudComposerNetworkIpv4CidrBlock;
+            _resultValue.cloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
+            _resultValue.connectionType = connectionType;
+            _resultValue.enablePrivateEndpoint = enablePrivateEndpoint;
+            _resultValue.enablePrivatelyUsedPublicIps = enablePrivatelyUsedPublicIps;
+            _resultValue.masterIpv4CidrBlock = masterIpv4CidrBlock;
+            _resultValue.webServerIpv4CidrBlock = webServerIpv4CidrBlock;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class CxAgentGitIntegrationSettings {
             return this;
         }
         public CxAgentGitIntegrationSettings build() {
-            final var o = new CxAgentGitIntegrationSettings();
-            o.githubSettings = githubSettings;
-            return o;
+            final var _resultValue = new CxAgentGitIntegrationSettings();
+            _resultValue.githubSettings = githubSettings;
+            return _resultValue;
         }
     }
 }

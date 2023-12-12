@@ -50,9 +50,9 @@ public final class V2VmNetworkEndpointAccessConfig {
             return this;
         }
         public V2VmNetworkEndpointAccessConfig build() {
-            final var o = new V2VmNetworkEndpointAccessConfig();
-            o.externalIp = externalIp;
-            return o;
+            final var _resultValue = new V2VmNetworkEndpointAccessConfig();
+            _resultValue.externalIp = externalIp;
+            return _resultValue;
         }
     }
 }

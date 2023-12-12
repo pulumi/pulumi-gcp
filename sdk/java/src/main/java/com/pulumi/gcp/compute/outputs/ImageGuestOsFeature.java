@@ -48,9 +48,9 @@ public final class ImageGuestOsFeature {
             return this;
         }
         public ImageGuestOsFeature build() {
-            final var o = new ImageGuestOsFeature();
-            o.type = type;
-            return o;
+            final var _resultValue = new ImageGuestOsFeature();
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

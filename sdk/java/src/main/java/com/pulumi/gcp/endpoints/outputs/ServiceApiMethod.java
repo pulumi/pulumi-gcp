@@ -105,12 +105,12 @@ public final class ServiceApiMethod {
             return this;
         }
         public ServiceApiMethod build() {
-            final var o = new ServiceApiMethod();
-            o.name = name;
-            o.requestType = requestType;
-            o.responseType = responseType;
-            o.syntax = syntax;
-            return o;
+            final var _resultValue = new ServiceApiMethod();
+            _resultValue.name = name;
+            _resultValue.requestType = requestType;
+            _resultValue.responseType = responseType;
+            _resultValue.syntax = syntax;
+            return _resultValue;
         }
     }
 }

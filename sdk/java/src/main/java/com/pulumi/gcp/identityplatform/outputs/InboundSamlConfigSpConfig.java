@@ -99,11 +99,11 @@ public final class InboundSamlConfigSpConfig {
             return this;
         }
         public InboundSamlConfigSpConfig build() {
-            final var o = new InboundSamlConfigSpConfig();
-            o.callbackUri = callbackUri;
-            o.spCertificates = spCertificates;
-            o.spEntityId = spEntityId;
-            return o;
+            final var _resultValue = new InboundSamlConfigSpConfig();
+            _resultValue.callbackUri = callbackUri;
+            _resultValue.spCertificates = spCertificates;
+            _resultValue.spEntityId = spEntityId;
+            return _resultValue;
         }
     }
 }

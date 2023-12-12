@@ -38,9 +38,9 @@ public final class GetClusterServiceExternalIpsConfig {
             return this;
         }
         public GetClusterServiceExternalIpsConfig build() {
-            final var o = new GetClusterServiceExternalIpsConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClusterServiceExternalIpsConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class AwsClusterAuthorizationAdminUser {
             return this;
         }
         public AwsClusterAuthorizationAdminUser build() {
-            final var o = new AwsClusterAuthorizationAdminUser();
-            o.username = username;
-            return o;
+            final var _resultValue = new AwsClusterAuthorizationAdminUser();
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

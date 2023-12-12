@@ -81,12 +81,12 @@ public final class BillingAccountBucketConfigCmekSettings {
             return this;
         }
         public BillingAccountBucketConfigCmekSettings build() {
-            final var o = new BillingAccountBucketConfigCmekSettings();
-            o.kmsKeyName = kmsKeyName;
-            o.kmsKeyVersionName = kmsKeyVersionName;
-            o.name = name;
-            o.serviceAccountId = serviceAccountId;
-            return o;
+            final var _resultValue = new BillingAccountBucketConfigCmekSettings();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.kmsKeyVersionName = kmsKeyVersionName;
+            _resultValue.name = name;
+            _resultValue.serviceAccountId = serviceAccountId;
+            return _resultValue;
         }
     }
 }

@@ -93,11 +93,11 @@ public final class PolicyBasedRouteWarning {
             return this;
         }
         public PolicyBasedRouteWarning build() {
-            final var o = new PolicyBasedRouteWarning();
-            o.code = code;
-            o.data = data;
-            o.warningMessage = warningMessage;
-            return o;
+            final var _resultValue = new PolicyBasedRouteWarning();
+            _resultValue.code = code;
+            _resultValue.data = data;
+            _resultValue.warningMessage = warningMessage;
+            return _resultValue;
         }
     }
 }

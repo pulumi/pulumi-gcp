@@ -155,14 +155,14 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
             return this;
         }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig();
-            o.percentage = percentage;
-            o.phaseId = phaseId;
-            o.postdeploy = postdeploy;
-            o.predeploy = predeploy;
-            o.profiles = profiles;
-            o.verify = verify;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig();
+            _resultValue.percentage = percentage;
+            _resultValue.phaseId = phaseId;
+            _resultValue.postdeploy = postdeploy;
+            _resultValue.predeploy = predeploy;
+            _resultValue.profiles = profiles;
+            _resultValue.verify = verify;
+            return _resultValue;
         }
     }
 }

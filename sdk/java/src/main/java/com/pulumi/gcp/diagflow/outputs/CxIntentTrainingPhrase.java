@@ -108,11 +108,11 @@ public final class CxIntentTrainingPhrase {
             return this;
         }
         public CxIntentTrainingPhrase build() {
-            final var o = new CxIntentTrainingPhrase();
-            o.id = id;
-            o.parts = parts;
-            o.repeatCount = repeatCount;
-            return o;
+            final var _resultValue = new CxIntentTrainingPhrase();
+            _resultValue.id = id;
+            _resultValue.parts = parts;
+            _resultValue.repeatCount = repeatCount;
+            return _resultValue;
         }
     }
 }

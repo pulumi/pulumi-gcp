@@ -67,10 +67,10 @@ public final class ClusterStateInfoUpdateInfo {
             return this;
         }
         public ClusterStateInfoUpdateInfo build() {
-            final var o = new ClusterStateInfoUpdateInfo();
-            o.targetReplicaCount = targetReplicaCount;
-            o.targetShardCount = targetShardCount;
-            return o;
+            final var _resultValue = new ClusterStateInfoUpdateInfo();
+            _resultValue.targetReplicaCount = targetReplicaCount;
+            _resultValue.targetShardCount = targetShardCount;
+            return _resultValue;
         }
     }
 }

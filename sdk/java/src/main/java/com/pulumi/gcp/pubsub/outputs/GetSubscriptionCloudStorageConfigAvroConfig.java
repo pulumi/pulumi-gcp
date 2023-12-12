@@ -38,9 +38,9 @@ public final class GetSubscriptionCloudStorageConfigAvroConfig {
             return this;
         }
         public GetSubscriptionCloudStorageConfigAvroConfig build() {
-            final var o = new GetSubscriptionCloudStorageConfigAvroConfig();
-            o.writeMetadata = writeMetadata;
-            return o;
+            final var _resultValue = new GetSubscriptionCloudStorageConfigAvroConfig();
+            _resultValue.writeMetadata = writeMetadata;
+            return _resultValue;
         }
     }
 }

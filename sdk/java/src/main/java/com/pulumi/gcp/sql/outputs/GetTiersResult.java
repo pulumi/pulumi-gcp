@@ -81,11 +81,11 @@ public final class GetTiersResult {
             return tiers(List.of(tiers));
         }
         public GetTiersResult build() {
-            final var o = new GetTiersResult();
-            o.id = id;
-            o.project = project;
-            o.tiers = tiers;
-            return o;
+            final var _resultValue = new GetTiersResult();
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.tiers = tiers;
+            return _resultValue;
         }
     }
 }

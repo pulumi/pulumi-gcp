@@ -96,11 +96,11 @@ public final class WorkstationConfigCondition {
             return this;
         }
         public WorkstationConfigCondition build() {
-            final var o = new WorkstationConfigCondition();
-            o.code = code;
-            o.details = details;
-            o.message = message;
-            return o;
+            final var _resultValue = new WorkstationConfigCondition();
+            _resultValue.code = code;
+            _resultValue.details = details;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

@@ -51,10 +51,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigMana
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig();
-            o.instanceGroupManagerName = instanceGroupManagerName;
-            o.instanceTemplateName = instanceTemplateName;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig();
+            _resultValue.instanceGroupManagerName = instanceGroupManagerName;
+            _resultValue.instanceTemplateName = instanceTemplateName;
+            return _resultValue;
         }
     }
 }

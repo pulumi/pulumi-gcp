@@ -50,9 +50,9 @@ public final class ClusterIpAllocationPolicyAdditionalPodRangesConfig {
             return podRangeNames(List.of(podRangeNames));
         }
         public ClusterIpAllocationPolicyAdditionalPodRangesConfig build() {
-            final var o = new ClusterIpAllocationPolicyAdditionalPodRangesConfig();
-            o.podRangeNames = podRangeNames;
-            return o;
+            final var _resultValue = new ClusterIpAllocationPolicyAdditionalPodRangesConfig();
+            _resultValue.podRangeNames = podRangeNames;
+            return _resultValue;
         }
     }
 }

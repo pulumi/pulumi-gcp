@@ -93,11 +93,11 @@ public final class AccessBoundaryPolicyRuleAccessBoundaryRule {
             return this;
         }
         public AccessBoundaryPolicyRuleAccessBoundaryRule build() {
-            final var o = new AccessBoundaryPolicyRuleAccessBoundaryRule();
-            o.availabilityCondition = availabilityCondition;
-            o.availablePermissions = availablePermissions;
-            o.availableResource = availableResource;
-            return o;
+            final var _resultValue = new AccessBoundaryPolicyRuleAccessBoundaryRule();
+            _resultValue.availabilityCondition = availabilityCondition;
+            _resultValue.availablePermissions = availablePermissions;
+            _resultValue.availableResource = availableResource;
+            return _resultValue;
         }
     }
 }

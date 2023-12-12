@@ -50,10 +50,10 @@ public final class GetBackendServiceLogConfig {
             return this;
         }
         public GetBackendServiceLogConfig build() {
-            final var o = new GetBackendServiceLogConfig();
-            o.enable = enable;
-            o.sampleRate = sampleRate;
-            return o;
+            final var _resultValue = new GetBackendServiceLogConfig();
+            _resultValue.enable = enable;
+            _resultValue.sampleRate = sampleRate;
+            return _resultValue;
         }
     }
 }

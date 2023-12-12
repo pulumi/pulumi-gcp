@@ -70,10 +70,10 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField {
             return this;
         }
         public PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField build() {
-            final var o = new PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField();
-            o.field = field;
-            o.table = table;
-            return o;
+            final var _resultValue = new PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField();
+            _resultValue.field = field;
+            _resultValue.table = table;
+            return _resultValue;
         }
     }
 }

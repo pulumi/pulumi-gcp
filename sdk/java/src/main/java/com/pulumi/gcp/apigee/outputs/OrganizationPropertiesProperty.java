@@ -67,10 +67,10 @@ public final class OrganizationPropertiesProperty {
             return this;
         }
         public OrganizationPropertiesProperty build() {
-            final var o = new OrganizationPropertiesProperty();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new OrganizationPropertiesProperty();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

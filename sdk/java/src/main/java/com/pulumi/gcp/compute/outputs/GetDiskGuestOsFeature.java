@@ -48,9 +48,9 @@ public final class GetDiskGuestOsFeature {
             return this;
         }
         public GetDiskGuestOsFeature build() {
-            final var o = new GetDiskGuestOsFeature();
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDiskGuestOsFeature();
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

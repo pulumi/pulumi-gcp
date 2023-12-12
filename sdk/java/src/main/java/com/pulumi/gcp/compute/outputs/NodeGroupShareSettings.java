@@ -75,10 +75,10 @@ public final class NodeGroupShareSettings {
             return this;
         }
         public NodeGroupShareSettings build() {
-            final var o = new NodeGroupShareSettings();
-            o.projectMaps = projectMaps;
-            o.shareType = shareType;
-            return o;
+            final var _resultValue = new NodeGroupShareSettings();
+            _resultValue.projectMaps = projectMaps;
+            _resultValue.shareType = shareType;
+            return _resultValue;
         }
     }
 }

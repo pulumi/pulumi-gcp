@@ -412,26 +412,26 @@ public final class GetInstanceTemplateDisk {
             return this;
         }
         public GetInstanceTemplateDisk build() {
-            final var o = new GetInstanceTemplateDisk();
-            o.autoDelete = autoDelete;
-            o.boot = boot;
-            o.deviceName = deviceName;
-            o.diskEncryptionKeys = diskEncryptionKeys;
-            o.diskName = diskName;
-            o.diskSizeGb = diskSizeGb;
-            o.diskType = diskType;
-            o.interface_ = interface_;
-            o.labels = labels;
-            o.mode = mode;
-            o.provisionedIops = provisionedIops;
-            o.resourcePolicies = resourcePolicies;
-            o.source = source;
-            o.sourceImage = sourceImage;
-            o.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
-            o.sourceSnapshot = sourceSnapshot;
-            o.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetInstanceTemplateDisk();
+            _resultValue.autoDelete = autoDelete;
+            _resultValue.boot = boot;
+            _resultValue.deviceName = deviceName;
+            _resultValue.diskEncryptionKeys = diskEncryptionKeys;
+            _resultValue.diskName = diskName;
+            _resultValue.diskSizeGb = diskSizeGb;
+            _resultValue.diskType = diskType;
+            _resultValue.interface_ = interface_;
+            _resultValue.labels = labels;
+            _resultValue.mode = mode;
+            _resultValue.provisionedIops = provisionedIops;
+            _resultValue.resourcePolicies = resourcePolicies;
+            _resultValue.source = source;
+            _resultValue.sourceImage = sourceImage;
+            _resultValue.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
+            _resultValue.sourceSnapshot = sourceSnapshot;
+            _resultValue.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

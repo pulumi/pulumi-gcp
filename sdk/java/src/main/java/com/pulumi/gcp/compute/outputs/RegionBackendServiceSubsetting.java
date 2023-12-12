@@ -48,9 +48,9 @@ public final class RegionBackendServiceSubsetting {
             return this;
         }
         public RegionBackendServiceSubsetting build() {
-            final var o = new RegionBackendServiceSubsetting();
-            o.policy = policy;
-            return o;
+            final var _resultValue = new RegionBackendServiceSubsetting();
+            _resultValue.policy = policy;
+            return _resultValue;
         }
     }
 }

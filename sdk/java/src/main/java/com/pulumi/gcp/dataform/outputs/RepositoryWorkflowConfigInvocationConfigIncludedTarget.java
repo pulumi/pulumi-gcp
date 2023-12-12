@@ -86,11 +86,11 @@ public final class RepositoryWorkflowConfigInvocationConfigIncludedTarget {
             return this;
         }
         public RepositoryWorkflowConfigInvocationConfigIncludedTarget build() {
-            final var o = new RepositoryWorkflowConfigInvocationConfigIncludedTarget();
-            o.database = database;
-            o.name = name;
-            o.schema = schema;
-            return o;
+            final var _resultValue = new RepositoryWorkflowConfigInvocationConfigIncludedTarget();
+            _resultValue.database = database;
+            _resultValue.name = name;
+            _resultValue.schema = schema;
+            return _resultValue;
         }
     }
 }

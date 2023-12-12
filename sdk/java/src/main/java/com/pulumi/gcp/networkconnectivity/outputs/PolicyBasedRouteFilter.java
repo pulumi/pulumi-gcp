@@ -111,12 +111,12 @@ public final class PolicyBasedRouteFilter {
             return this;
         }
         public PolicyBasedRouteFilter build() {
-            final var o = new PolicyBasedRouteFilter();
-            o.destRange = destRange;
-            o.ipProtocol = ipProtocol;
-            o.protocolVersion = protocolVersion;
-            o.srcRange = srcRange;
-            return o;
+            final var _resultValue = new PolicyBasedRouteFilter();
+            _resultValue.destRange = destRange;
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.protocolVersion = protocolVersion;
+            _resultValue.srcRange = srcRange;
+            return _resultValue;
         }
     }
 }

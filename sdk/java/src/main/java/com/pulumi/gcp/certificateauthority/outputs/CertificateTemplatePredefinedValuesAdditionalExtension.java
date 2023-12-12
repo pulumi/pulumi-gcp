@@ -88,11 +88,11 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtension {
             return this;
         }
         public CertificateTemplatePredefinedValuesAdditionalExtension build() {
-            final var o = new CertificateTemplatePredefinedValuesAdditionalExtension();
-            o.critical = critical;
-            o.objectId = objectId;
-            o.value = value;
-            return o;
+            final var _resultValue = new CertificateTemplatePredefinedValuesAdditionalExtension();
+            _resultValue.critical = critical;
+            _resultValue.objectId = objectId;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransf
             return this;
         }
         public CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall build() {
-            final var o = new CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall();
-            o.phoneNumber = phoneNumber;
-            return o;
+            final var _resultValue = new CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall();
+            _resultValue.phoneNumber = phoneNumber;
+            return _resultValue;
         }
     }
 }

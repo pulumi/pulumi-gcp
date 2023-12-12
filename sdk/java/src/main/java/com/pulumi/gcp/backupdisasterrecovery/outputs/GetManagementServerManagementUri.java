@@ -49,10 +49,10 @@ public final class GetManagementServerManagementUri {
             return this;
         }
         public GetManagementServerManagementUri build() {
-            final var o = new GetManagementServerManagementUri();
-            o.api = api;
-            o.webUi = webUi;
-            return o;
+            final var _resultValue = new GetManagementServerManagementUri();
+            _resultValue.api = api;
+            _resultValue.webUi = webUi;
+            return _resultValue;
         }
     }
 }

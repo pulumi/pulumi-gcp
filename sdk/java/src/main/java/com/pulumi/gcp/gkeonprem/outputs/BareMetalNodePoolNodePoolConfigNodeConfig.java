@@ -88,10 +88,10 @@ public final class BareMetalNodePoolNodePoolConfigNodeConfig {
             return this;
         }
         public BareMetalNodePoolNodePoolConfigNodeConfig build() {
-            final var o = new BareMetalNodePoolNodePoolConfigNodeConfig();
-            o.labels = labels;
-            o.nodeIp = nodeIp;
-            return o;
+            final var _resultValue = new BareMetalNodePoolNodePoolConfigNodeConfig();
+            _resultValue.labels = labels;
+            _resultValue.nodeIp = nodeIp;
+            return _resultValue;
         }
     }
 }

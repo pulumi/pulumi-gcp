@@ -65,10 +65,10 @@ public final class AzureNodePoolConfigProxyConfig {
             return this;
         }
         public AzureNodePoolConfigProxyConfig build() {
-            final var o = new AzureNodePoolConfigProxyConfig();
-            o.resourceGroupId = resourceGroupId;
-            o.secretId = secretId;
-            return o;
+            final var _resultValue = new AzureNodePoolConfigProxyConfig();
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.secretId = secretId;
+            return _resultValue;
         }
     }
 }

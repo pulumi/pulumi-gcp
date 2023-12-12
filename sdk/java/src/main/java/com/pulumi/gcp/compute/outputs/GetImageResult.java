@@ -419,29 +419,29 @@ public final class GetImageResult {
             return this;
         }
         public GetImageResult build() {
-            final var o = new GetImageResult();
-            o.archiveSizeBytes = archiveSizeBytes;
-            o.creationTimestamp = creationTimestamp;
-            o.description = description;
-            o.diskSizeGb = diskSizeGb;
-            o.family = family;
-            o.filter = filter;
-            o.id = id;
-            o.imageEncryptionKeySha256 = imageEncryptionKeySha256;
-            o.imageId = imageId;
-            o.labelFingerprint = labelFingerprint;
-            o.labels = labels;
-            o.licenses = licenses;
-            o.mostRecent = mostRecent;
-            o.name = name;
-            o.project = project;
-            o.selfLink = selfLink;
-            o.sourceDisk = sourceDisk;
-            o.sourceDiskEncryptionKeySha256 = sourceDiskEncryptionKeySha256;
-            o.sourceDiskId = sourceDiskId;
-            o.sourceImageId = sourceImageId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetImageResult();
+            _resultValue.archiveSizeBytes = archiveSizeBytes;
+            _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.description = description;
+            _resultValue.diskSizeGb = diskSizeGb;
+            _resultValue.family = family;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.imageEncryptionKeySha256 = imageEncryptionKeySha256;
+            _resultValue.imageId = imageId;
+            _resultValue.labelFingerprint = labelFingerprint;
+            _resultValue.labels = labels;
+            _resultValue.licenses = licenses;
+            _resultValue.mostRecent = mostRecent;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            _resultValue.sourceDisk = sourceDisk;
+            _resultValue.sourceDiskEncryptionKeySha256 = sourceDiskEncryptionKeySha256;
+            _resultValue.sourceDiskId = sourceDiskId;
+            _resultValue.sourceImageId = sourceImageId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

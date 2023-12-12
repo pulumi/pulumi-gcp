@@ -58,9 +58,9 @@ public final class PreventionJobTriggerTriggerSchedule {
             return this;
         }
         public PreventionJobTriggerTriggerSchedule build() {
-            final var o = new PreventionJobTriggerTriggerSchedule();
-            o.recurrencePeriodDuration = recurrencePeriodDuration;
-            return o;
+            final var _resultValue = new PreventionJobTriggerTriggerSchedule();
+            _resultValue.recurrencePeriodDuration = recurrencePeriodDuration;
+            return _resultValue;
         }
     }
 }

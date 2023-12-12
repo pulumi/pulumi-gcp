@@ -144,15 +144,15 @@ public final class GetVPNGatewayResult {
             return this;
         }
         public GetVPNGatewayResult build() {
-            final var o = new GetVPNGatewayResult();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.network = network;
-            o.project = project;
-            o.region = region;
-            o.selfLink = selfLink;
-            return o;
+            final var _resultValue = new GetVPNGatewayResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.selfLink = selfLink;
+            return _resultValue;
         }
     }
 }

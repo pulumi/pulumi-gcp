@@ -70,10 +70,10 @@ public final class SpokeLinkedVpcNetwork {
             return this;
         }
         public SpokeLinkedVpcNetwork build() {
-            final var o = new SpokeLinkedVpcNetwork();
-            o.excludeExportRanges = excludeExportRanges;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new SpokeLinkedVpcNetwork();
+            _resultValue.excludeExportRanges = excludeExportRanges;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

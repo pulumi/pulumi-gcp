@@ -72,11 +72,11 @@ public final class GetResourcePolicySnapshotSchedulePolicySchedule {
             return weeklySchedules(List.of(weeklySchedules));
         }
         public GetResourcePolicySnapshotSchedulePolicySchedule build() {
-            final var o = new GetResourcePolicySnapshotSchedulePolicySchedule();
-            o.dailySchedules = dailySchedules;
-            o.hourlySchedules = hourlySchedules;
-            o.weeklySchedules = weeklySchedules;
-            return o;
+            final var _resultValue = new GetResourcePolicySnapshotSchedulePolicySchedule();
+            _resultValue.dailySchedules = dailySchedules;
+            _resultValue.hourlySchedules = hourlySchedules;
+            _resultValue.weeklySchedules = weeklySchedules;
+            return _resultValue;
         }
     }
 }

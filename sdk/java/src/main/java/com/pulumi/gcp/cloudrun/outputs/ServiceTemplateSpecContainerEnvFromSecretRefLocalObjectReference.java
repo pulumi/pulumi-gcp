@@ -46,9 +46,9 @@ public final class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectRefere
             return this;
         }
         public ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference build() {
-            final var o = new ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference();
-            o.name = name;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

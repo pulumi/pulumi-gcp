@@ -314,21 +314,21 @@ public final class ServiceTemplate {
             return this;
         }
         public ServiceTemplate build() {
-            final var o = new ServiceTemplate();
-            o.annotations = annotations;
-            o.containers = containers;
-            o.encryptionKey = encryptionKey;
-            o.executionEnvironment = executionEnvironment;
-            o.labels = labels;
-            o.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
-            o.revision = revision;
-            o.scaling = scaling;
-            o.serviceAccount = serviceAccount;
-            o.sessionAffinity = sessionAffinity;
-            o.timeout = timeout;
-            o.volumes = volumes;
-            o.vpcAccess = vpcAccess;
-            return o;
+            final var _resultValue = new ServiceTemplate();
+            _resultValue.annotations = annotations;
+            _resultValue.containers = containers;
+            _resultValue.encryptionKey = encryptionKey;
+            _resultValue.executionEnvironment = executionEnvironment;
+            _resultValue.labels = labels;
+            _resultValue.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
+            _resultValue.revision = revision;
+            _resultValue.scaling = scaling;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.sessionAffinity = sessionAffinity;
+            _resultValue.timeout = timeout;
+            _resultValue.volumes = volumes;
+            _resultValue.vpcAccess = vpcAccess;
+            return _resultValue;
         }
     }
 }

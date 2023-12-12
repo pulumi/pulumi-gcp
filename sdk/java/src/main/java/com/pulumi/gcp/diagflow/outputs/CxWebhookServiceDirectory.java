@@ -68,10 +68,10 @@ public final class CxWebhookServiceDirectory {
             return this;
         }
         public CxWebhookServiceDirectory build() {
-            final var o = new CxWebhookServiceDirectory();
-            o.genericWebService = genericWebService;
-            o.service = service;
-            return o;
+            final var _resultValue = new CxWebhookServiceDirectory();
+            _resultValue.genericWebService = genericWebService;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

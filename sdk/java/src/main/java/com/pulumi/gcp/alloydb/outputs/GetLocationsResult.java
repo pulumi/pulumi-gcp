@@ -83,11 +83,11 @@ public final class GetLocationsResult {
             return this;
         }
         public GetLocationsResult build() {
-            final var o = new GetLocationsResult();
-            o.id = id;
-            o.locations = locations;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetLocationsResult();
+            _resultValue.id = id;
+            _resultValue.locations = locations;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

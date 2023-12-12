@@ -105,11 +105,11 @@ public final class QueueRateLimits {
             return this;
         }
         public QueueRateLimits build() {
-            final var o = new QueueRateLimits();
-            o.maxBurstSize = maxBurstSize;
-            o.maxConcurrentDispatches = maxConcurrentDispatches;
-            o.maxDispatchesPerSecond = maxDispatchesPerSecond;
-            return o;
+            final var _resultValue = new QueueRateLimits();
+            _resultValue.maxBurstSize = maxBurstSize;
+            _resultValue.maxConcurrentDispatches = maxConcurrentDispatches;
+            _resultValue.maxDispatchesPerSecond = maxDispatchesPerSecond;
+            return _resultValue;
         }
     }
 }

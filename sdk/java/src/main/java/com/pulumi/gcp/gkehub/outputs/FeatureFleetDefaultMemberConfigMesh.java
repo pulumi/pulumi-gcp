@@ -48,9 +48,9 @@ public final class FeatureFleetDefaultMemberConfigMesh {
             return this;
         }
         public FeatureFleetDefaultMemberConfigMesh build() {
-            final var o = new FeatureFleetDefaultMemberConfigMesh();
-            o.management = management;
-            return o;
+            final var _resultValue = new FeatureFleetDefaultMemberConfigMesh();
+            _resultValue.management = management;
+            return _resultValue;
         }
     }
 }

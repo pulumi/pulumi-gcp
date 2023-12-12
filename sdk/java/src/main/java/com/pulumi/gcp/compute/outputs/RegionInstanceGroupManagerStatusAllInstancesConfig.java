@@ -40,9 +40,9 @@ public final class RegionInstanceGroupManagerStatusAllInstancesConfig {
             return this;
         }
         public RegionInstanceGroupManagerStatusAllInstancesConfig build() {
-            final var o = new RegionInstanceGroupManagerStatusAllInstancesConfig();
-            o.effective = effective;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerStatusAllInstancesConfig();
+            _resultValue.effective = effective;
+            return _resultValue;
         }
     }
 }

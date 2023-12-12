@@ -70,10 +70,10 @@ public final class AppProfileSingleClusterRouting {
             return this;
         }
         public AppProfileSingleClusterRouting build() {
-            final var o = new AppProfileSingleClusterRouting();
-            o.allowTransactionalWrites = allowTransactionalWrites;
-            o.clusterId = clusterId;
-            return o;
+            final var _resultValue = new AppProfileSingleClusterRouting();
+            _resultValue.allowTransactionalWrites = allowTransactionalWrites;
+            _resultValue.clusterId = clusterId;
+            return _resultValue;
         }
     }
 }

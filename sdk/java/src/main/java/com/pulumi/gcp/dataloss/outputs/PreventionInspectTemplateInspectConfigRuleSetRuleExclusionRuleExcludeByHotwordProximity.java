@@ -67,10 +67,10 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity();
-            o.windowAfter = windowAfter;
-            o.windowBefore = windowBefore;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity();
+            _resultValue.windowAfter = windowAfter;
+            _resultValue.windowBefore = windowBefore;
+            return _resultValue;
         }
     }
 }

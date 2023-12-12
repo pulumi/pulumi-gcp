@@ -54,10 +54,10 @@ public final class GetSecretReplicationUserManagedReplica {
             return this;
         }
         public GetSecretReplicationUserManagedReplica build() {
-            final var o = new GetSecretReplicationUserManagedReplica();
-            o.customerManagedEncryptions = customerManagedEncryptions;
-            o.location = location;
-            return o;
+            final var _resultValue = new GetSecretReplicationUserManagedReplica();
+            _resultValue.customerManagedEncryptions = customerManagedEncryptions;
+            _resultValue.location = location;
+            return _resultValue;
         }
     }
 }

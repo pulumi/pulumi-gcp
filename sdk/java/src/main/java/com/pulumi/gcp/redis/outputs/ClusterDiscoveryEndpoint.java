@@ -92,11 +92,11 @@ public final class ClusterDiscoveryEndpoint {
             return this;
         }
         public ClusterDiscoveryEndpoint build() {
-            final var o = new ClusterDiscoveryEndpoint();
-            o.address = address;
-            o.port = port;
-            o.pscConfig = pscConfig;
-            return o;
+            final var _resultValue = new ClusterDiscoveryEndpoint();
+            _resultValue.address = address;
+            _resultValue.port = port;
+            _resultValue.pscConfig = pscConfig;
+            return _resultValue;
         }
     }
 }

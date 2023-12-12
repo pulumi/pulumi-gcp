@@ -92,11 +92,11 @@ public final class GetUptimeCheckIPsUptimeCheckIp {
             return this;
         }
         public GetUptimeCheckIPsUptimeCheckIp build() {
-            final var o = new GetUptimeCheckIPsUptimeCheckIp();
-            o.ipAddress = ipAddress;
-            o.location = location;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetUptimeCheckIPsUptimeCheckIp();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.location = location;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

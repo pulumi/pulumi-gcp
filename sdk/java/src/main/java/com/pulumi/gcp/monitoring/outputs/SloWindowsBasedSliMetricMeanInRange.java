@@ -90,10 +90,10 @@ public final class SloWindowsBasedSliMetricMeanInRange {
             return this;
         }
         public SloWindowsBasedSliMetricMeanInRange build() {
-            final var o = new SloWindowsBasedSliMetricMeanInRange();
-            o.range = range;
-            o.timeSeries = timeSeries;
-            return o;
+            final var _resultValue = new SloWindowsBasedSliMetricMeanInRange();
+            _resultValue.range = range;
+            _resultValue.timeSeries = timeSeries;
+            return _resultValue;
         }
     }
 }

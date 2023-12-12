@@ -138,13 +138,13 @@ public final class AddonsConfigAddonsConfig {
             return this;
         }
         public AddonsConfigAddonsConfig build() {
-            final var o = new AddonsConfigAddonsConfig();
-            o.advancedApiOpsConfig = advancedApiOpsConfig;
-            o.apiSecurityConfig = apiSecurityConfig;
-            o.connectorsPlatformConfig = connectorsPlatformConfig;
-            o.integrationConfig = integrationConfig;
-            o.monetizationConfig = monetizationConfig;
-            return o;
+            final var _resultValue = new AddonsConfigAddonsConfig();
+            _resultValue.advancedApiOpsConfig = advancedApiOpsConfig;
+            _resultValue.apiSecurityConfig = apiSecurityConfig;
+            _resultValue.connectorsPlatformConfig = connectorsPlatformConfig;
+            _resultValue.integrationConfig = integrationConfig;
+            _resultValue.monetizationConfig = monetizationConfig;
+            return _resultValue;
         }
     }
 }

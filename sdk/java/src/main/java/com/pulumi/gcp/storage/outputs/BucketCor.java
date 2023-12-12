@@ -116,12 +116,12 @@ public final class BucketCor {
             return responseHeaders(List.of(responseHeaders));
         }
         public BucketCor build() {
-            final var o = new BucketCor();
-            o.maxAgeSeconds = maxAgeSeconds;
-            o.methods = methods;
-            o.origins = origins;
-            o.responseHeaders = responseHeaders;
-            return o;
+            final var _resultValue = new BucketCor();
+            _resultValue.maxAgeSeconds = maxAgeSeconds;
+            _resultValue.methods = methods;
+            _resultValue.origins = origins;
+            _resultValue.responseHeaders = responseHeaders;
+            return _resultValue;
         }
     }
 }

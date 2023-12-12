@@ -69,10 +69,10 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQuery
             return this;
         }
         public SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam build() {
-            final var o = new SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam();
-            o.operator = operator;
-            o.value = value;
-            return o;
+            final var _resultValue = new SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam();
+            _resultValue.operator = operator;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

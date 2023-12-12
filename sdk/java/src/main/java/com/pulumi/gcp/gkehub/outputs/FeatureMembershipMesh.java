@@ -71,10 +71,10 @@ public final class FeatureMembershipMesh {
             return this;
         }
         public FeatureMembershipMesh build() {
-            final var o = new FeatureMembershipMesh();
-            o.controlPlane = controlPlane;
-            o.management = management;
-            return o;
+            final var _resultValue = new FeatureMembershipMesh();
+            _resultValue.controlPlane = controlPlane;
+            _resultValue.management = management;
+            return _resultValue;
         }
     }
 }

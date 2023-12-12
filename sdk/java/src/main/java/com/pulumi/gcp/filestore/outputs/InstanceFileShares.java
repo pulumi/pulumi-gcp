@@ -121,12 +121,12 @@ public final class InstanceFileShares {
             return this;
         }
         public InstanceFileShares build() {
-            final var o = new InstanceFileShares();
-            o.capacityGb = capacityGb;
-            o.name = name;
-            o.nfsExportOptions = nfsExportOptions;
-            o.sourceBackup = sourceBackup;
-            return o;
+            final var _resultValue = new InstanceFileShares();
+            _resultValue.capacityGb = capacityGb;
+            _resultValue.name = name;
+            _resultValue.nfsExportOptions = nfsExportOptions;
+            _resultValue.sourceBackup = sourceBackup;
+            return _resultValue;
         }
     }
 }

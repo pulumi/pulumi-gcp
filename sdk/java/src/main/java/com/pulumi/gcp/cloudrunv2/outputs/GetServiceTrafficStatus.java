@@ -83,13 +83,13 @@ public final class GetServiceTrafficStatus {
             return this;
         }
         public GetServiceTrafficStatus build() {
-            final var o = new GetServiceTrafficStatus();
-            o.percent = percent;
-            o.revision = revision;
-            o.tag = tag;
-            o.type = type;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new GetServiceTrafficStatus();
+            _resultValue.percent = percent;
+            _resultValue.revision = revision;
+            _resultValue.tag = tag;
+            _resultValue.type = type;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

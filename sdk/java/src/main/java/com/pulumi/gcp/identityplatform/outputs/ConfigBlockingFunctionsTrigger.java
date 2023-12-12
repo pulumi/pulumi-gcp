@@ -88,11 +88,11 @@ public final class ConfigBlockingFunctionsTrigger {
             return this;
         }
         public ConfigBlockingFunctionsTrigger build() {
-            final var o = new ConfigBlockingFunctionsTrigger();
-            o.eventType = eventType;
-            o.functionUri = functionUri;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new ConfigBlockingFunctionsTrigger();
+            _resultValue.eventType = eventType;
+            _resultValue.functionUri = functionUri;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

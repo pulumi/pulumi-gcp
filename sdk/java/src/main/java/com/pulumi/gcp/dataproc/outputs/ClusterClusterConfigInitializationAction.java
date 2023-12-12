@@ -78,10 +78,10 @@ public final class ClusterClusterConfigInitializationAction {
             return this;
         }
         public ClusterClusterConfigInitializationAction build() {
-            final var o = new ClusterClusterConfigInitializationAction();
-            o.script = script;
-            o.timeoutSec = timeoutSec;
-            return o;
+            final var _resultValue = new ClusterClusterConfigInitializationAction();
+            _resultValue.script = script;
+            _resultValue.timeoutSec = timeoutSec;
+            return _resultValue;
         }
     }
 }

@@ -91,11 +91,11 @@ public final class PreventionJobTriggerInspectJobInspectConfigInfoType {
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigInfoType build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigInfoType();
-            o.name = name;
-            o.sensitivityScore = sensitivityScore;
-            o.version = version;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigInfoType();
+            _resultValue.name = name;
+            _resultValue.sensitivityScore = sensitivityScore;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

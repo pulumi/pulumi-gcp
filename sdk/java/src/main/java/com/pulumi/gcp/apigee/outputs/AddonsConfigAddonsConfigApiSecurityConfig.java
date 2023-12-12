@@ -70,10 +70,10 @@ public final class AddonsConfigAddonsConfigApiSecurityConfig {
             return this;
         }
         public AddonsConfigAddonsConfigApiSecurityConfig build() {
-            final var o = new AddonsConfigAddonsConfigApiSecurityConfig();
-            o.enabled = enabled;
-            o.expiresAt = expiresAt;
-            return o;
+            final var _resultValue = new AddonsConfigAddonsConfigApiSecurityConfig();
+            _resultValue.enabled = enabled;
+            _resultValue.expiresAt = expiresAt;
+            return _resultValue;
         }
     }
 }

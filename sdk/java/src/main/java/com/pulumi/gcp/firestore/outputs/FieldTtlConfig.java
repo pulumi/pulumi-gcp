@@ -50,9 +50,9 @@ public final class FieldTtlConfig {
             return this;
         }
         public FieldTtlConfig build() {
-            final var o = new FieldTtlConfig();
-            o.state = state;
-            return o;
+            final var _resultValue = new FieldTtlConfig();
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

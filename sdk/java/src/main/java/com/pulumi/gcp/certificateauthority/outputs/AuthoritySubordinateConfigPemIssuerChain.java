@@ -51,9 +51,9 @@ public final class AuthoritySubordinateConfigPemIssuerChain {
             return pemCertificates(List.of(pemCertificates));
         }
         public AuthoritySubordinateConfigPemIssuerChain build() {
-            final var o = new AuthoritySubordinateConfigPemIssuerChain();
-            o.pemCertificates = pemCertificates;
-            return o;
+            final var _resultValue = new AuthoritySubordinateConfigPemIssuerChain();
+            _resultValue.pemCertificates = pemCertificates;
+            return _resultValue;
         }
     }
 }

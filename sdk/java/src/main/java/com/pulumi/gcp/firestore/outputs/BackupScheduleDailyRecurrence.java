@@ -25,8 +25,8 @@ public final class BackupScheduleDailyRecurrence {
         }
 
         public BackupScheduleDailyRecurrence build() {
-            final var o = new BackupScheduleDailyRecurrence();
-            return o;
+            final var _resultValue = new BackupScheduleDailyRecurrence();
+            return _resultValue;
         }
     }
 }

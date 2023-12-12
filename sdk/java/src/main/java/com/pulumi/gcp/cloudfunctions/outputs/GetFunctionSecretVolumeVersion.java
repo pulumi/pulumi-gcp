@@ -49,10 +49,10 @@ public final class GetFunctionSecretVolumeVersion {
             return this;
         }
         public GetFunctionSecretVolumeVersion build() {
-            final var o = new GetFunctionSecretVolumeVersion();
-            o.path = path;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetFunctionSecretVolumeVersion();
+            _resultValue.path = path;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

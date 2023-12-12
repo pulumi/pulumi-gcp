@@ -25,8 +25,8 @@ public final class PreventionJobTriggerInspectJobActionPublishToStackdriver {
         }
 
         public PreventionJobTriggerInspectJobActionPublishToStackdriver build() {
-            final var o = new PreventionJobTriggerInspectJobActionPublishToStackdriver();
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobActionPublishToStackdriver();
+            return _resultValue;
         }
     }
 }

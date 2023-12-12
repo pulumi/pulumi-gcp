@@ -108,13 +108,13 @@ public final class GetMachineImageIamPolicyResult {
             return this;
         }
         public GetMachineImageIamPolicyResult build() {
-            final var o = new GetMachineImageIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.machineImage = machineImage;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetMachineImageIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.machineImage = machineImage;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

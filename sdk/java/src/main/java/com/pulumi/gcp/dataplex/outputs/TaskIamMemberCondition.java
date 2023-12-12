@@ -62,11 +62,11 @@ public final class TaskIamMemberCondition {
             return this;
         }
         public TaskIamMemberCondition build() {
-            final var o = new TaskIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new TaskIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

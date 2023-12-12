@@ -84,11 +84,11 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTab
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference();
-            o.datasetId = datasetId;
-            o.projectId = projectId;
-            o.tableId = tableId;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference();
+            _resultValue.datasetId = datasetId;
+            _resultValue.projectId = projectId;
+            _resultValue.tableId = tableId;
+            return _resultValue;
         }
     }
 }

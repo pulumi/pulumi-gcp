@@ -73,10 +73,10 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesS
             return this;
         }
         public ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig build() {
-            final var o = new ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig();
-            o.componentVersion = componentVersion;
-            o.properties = properties;
-            return o;
+            final var _resultValue = new ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig();
+            _resultValue.componentVersion = componentVersion;
+            _resultValue.properties = properties;
+            return _resultValue;
         }
     }
 }

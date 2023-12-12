@@ -49,10 +49,10 @@ public final class GetRegionInstanceTemplateSchedulingMaxRunDuration {
             return this;
         }
         public GetRegionInstanceTemplateSchedulingMaxRunDuration build() {
-            final var o = new GetRegionInstanceTemplateSchedulingMaxRunDuration();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new GetRegionInstanceTemplateSchedulingMaxRunDuration();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

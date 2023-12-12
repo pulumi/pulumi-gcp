@@ -90,11 +90,11 @@ public final class JobQueryScriptOptions {
             return this;
         }
         public JobQueryScriptOptions build() {
-            final var o = new JobQueryScriptOptions();
-            o.keyResultStatement = keyResultStatement;
-            o.statementByteBudget = statementByteBudget;
-            o.statementTimeoutMs = statementTimeoutMs;
-            return o;
+            final var _resultValue = new JobQueryScriptOptions();
+            _resultValue.keyResultStatement = keyResultStatement;
+            _resultValue.statementByteBudget = statementByteBudget;
+            _resultValue.statementTimeoutMs = statementTimeoutMs;
+            return _resultValue;
         }
     }
 }

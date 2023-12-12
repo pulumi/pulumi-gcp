@@ -62,11 +62,11 @@ public final class ConnectionIamBindingCondition {
             return this;
         }
         public ConnectionIamBindingCondition build() {
-            final var o = new ConnectionIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new ConnectionIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

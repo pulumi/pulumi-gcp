@@ -106,12 +106,12 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
             return this;
         }
         public TransferJobTransferSpecAzureBlobStorageDataSource build() {
-            final var o = new TransferJobTransferSpecAzureBlobStorageDataSource();
-            o.azureCredentials = azureCredentials;
-            o.container = container;
-            o.path = path;
-            o.storageAccount = storageAccount;
-            return o;
+            final var _resultValue = new TransferJobTransferSpecAzureBlobStorageDataSource();
+            _resultValue.azureCredentials = azureCredentials;
+            _resultValue.container = container;
+            _resultValue.path = path;
+            _resultValue.storageAccount = storageAccount;
+            return _resultValue;
         }
     }
 }

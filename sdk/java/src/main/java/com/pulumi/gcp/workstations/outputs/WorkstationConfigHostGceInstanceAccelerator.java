@@ -66,10 +66,10 @@ public final class WorkstationConfigHostGceInstanceAccelerator {
             return this;
         }
         public WorkstationConfigHostGceInstanceAccelerator build() {
-            final var o = new WorkstationConfigHostGceInstanceAccelerator();
-            o.count = count;
-            o.type = type;
-            return o;
+            final var _resultValue = new WorkstationConfigHostGceInstanceAccelerator();
+            _resultValue.count = count;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

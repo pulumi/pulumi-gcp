@@ -52,9 +52,9 @@ public final class KeyRingImportJobPublicKey {
             return this;
         }
         public KeyRingImportJobPublicKey build() {
-            final var o = new KeyRingImportJobPublicKey();
-            o.pem = pem;
-            return o;
+            final var _resultValue = new KeyRingImportJobPublicKey();
+            _resultValue.pem = pem;
+            return _resultValue;
         }
     }
 }

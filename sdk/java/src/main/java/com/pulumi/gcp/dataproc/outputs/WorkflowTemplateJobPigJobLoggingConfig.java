@@ -48,9 +48,9 @@ public final class WorkflowTemplateJobPigJobLoggingConfig {
             return this;
         }
         public WorkflowTemplateJobPigJobLoggingConfig build() {
-            final var o = new WorkflowTemplateJobPigJobLoggingConfig();
-            o.driverLogLevels = driverLogLevels;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobPigJobLoggingConfig();
+            _resultValue.driverLogLevels = driverLogLevels;
+            return _resultValue;
         }
     }
 }

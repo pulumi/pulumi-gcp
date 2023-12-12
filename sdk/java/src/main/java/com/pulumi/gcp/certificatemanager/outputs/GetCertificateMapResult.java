@@ -153,18 +153,18 @@ public final class GetCertificateMapResult {
             return this;
         }
         public GetCertificateMapResult build() {
-            final var o = new GetCertificateMapResult();
-            o.createTime = createTime;
-            o.description = description;
-            o.effectiveLabels = effectiveLabels;
-            o.gclbTargets = gclbTargets;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetCertificateMapResult();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.gclbTargets = gclbTargets;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

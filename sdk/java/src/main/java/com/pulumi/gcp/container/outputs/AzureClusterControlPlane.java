@@ -230,18 +230,18 @@ public final class AzureClusterControlPlane {
             return this;
         }
         public AzureClusterControlPlane build() {
-            final var o = new AzureClusterControlPlane();
-            o.databaseEncryption = databaseEncryption;
-            o.mainVolume = mainVolume;
-            o.proxyConfig = proxyConfig;
-            o.replicaPlacements = replicaPlacements;
-            o.rootVolume = rootVolume;
-            o.sshConfig = sshConfig;
-            o.subnetId = subnetId;
-            o.tags = tags;
-            o.version = version;
-            o.vmSize = vmSize;
-            return o;
+            final var _resultValue = new AzureClusterControlPlane();
+            _resultValue.databaseEncryption = databaseEncryption;
+            _resultValue.mainVolume = mainVolume;
+            _resultValue.proxyConfig = proxyConfig;
+            _resultValue.replicaPlacements = replicaPlacements;
+            _resultValue.rootVolume = rootVolume;
+            _resultValue.sshConfig = sshConfig;
+            _resultValue.subnetId = subnetId;
+            _resultValue.tags = tags;
+            _resultValue.version = version;
+            _resultValue.vmSize = vmSize;
+            return _resultValue;
         }
     }
 }

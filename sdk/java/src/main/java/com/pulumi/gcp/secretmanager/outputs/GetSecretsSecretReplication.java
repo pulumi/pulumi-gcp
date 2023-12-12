@@ -77,10 +77,10 @@ public final class GetSecretsSecretReplication {
             return userManageds(List.of(userManageds));
         }
         public GetSecretsSecretReplication build() {
-            final var o = new GetSecretsSecretReplication();
-            o.autos = autos;
-            o.userManageds = userManageds;
-            return o;
+            final var _resultValue = new GetSecretsSecretReplication();
+            _resultValue.autos = autos;
+            _resultValue.userManageds = userManageds;
+            return _resultValue;
         }
     }
 }

@@ -75,10 +75,10 @@ public final class EndpointPolicyEndpointMatcherMetadataLabelMatcher {
             return metadataLabels(List.of(metadataLabels));
         }
         public EndpointPolicyEndpointMatcherMetadataLabelMatcher build() {
-            final var o = new EndpointPolicyEndpointMatcherMetadataLabelMatcher();
-            o.metadataLabelMatchCriteria = metadataLabelMatchCriteria;
-            o.metadataLabels = metadataLabels;
-            return o;
+            final var _resultValue = new EndpointPolicyEndpointMatcherMetadataLabelMatcher();
+            _resultValue.metadataLabelMatchCriteria = metadataLabelMatchCriteria;
+            _resultValue.metadataLabels = metadataLabels;
+            return _resultValue;
         }
     }
 }

@@ -376,20 +376,20 @@ public final class ClusterAddonsConfig {
             return this;
         }
         public ClusterAddonsConfig build() {
-            final var o = new ClusterAddonsConfig();
-            o.cloudrunConfig = cloudrunConfig;
-            o.configConnectorConfig = configConnectorConfig;
-            o.dnsCacheConfig = dnsCacheConfig;
-            o.gcePersistentDiskCsiDriverConfig = gcePersistentDiskCsiDriverConfig;
-            o.gcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
-            o.gcsFuseCsiDriverConfig = gcsFuseCsiDriverConfig;
-            o.gkeBackupAgentConfig = gkeBackupAgentConfig;
-            o.horizontalPodAutoscaling = horizontalPodAutoscaling;
-            o.httpLoadBalancing = httpLoadBalancing;
-            o.istioConfig = istioConfig;
-            o.kalmConfig = kalmConfig;
-            o.networkPolicyConfig = networkPolicyConfig;
-            return o;
+            final var _resultValue = new ClusterAddonsConfig();
+            _resultValue.cloudrunConfig = cloudrunConfig;
+            _resultValue.configConnectorConfig = configConnectorConfig;
+            _resultValue.dnsCacheConfig = dnsCacheConfig;
+            _resultValue.gcePersistentDiskCsiDriverConfig = gcePersistentDiskCsiDriverConfig;
+            _resultValue.gcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
+            _resultValue.gcsFuseCsiDriverConfig = gcsFuseCsiDriverConfig;
+            _resultValue.gkeBackupAgentConfig = gkeBackupAgentConfig;
+            _resultValue.horizontalPodAutoscaling = horizontalPodAutoscaling;
+            _resultValue.httpLoadBalancing = httpLoadBalancing;
+            _resultValue.istioConfig = istioConfig;
+            _resultValue.kalmConfig = kalmConfig;
+            _resultValue.networkPolicyConfig = networkPolicyConfig;
+            return _resultValue;
         }
     }
 }

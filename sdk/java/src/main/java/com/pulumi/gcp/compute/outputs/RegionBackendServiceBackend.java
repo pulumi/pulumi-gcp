@@ -380,20 +380,20 @@ public final class RegionBackendServiceBackend {
             return this;
         }
         public RegionBackendServiceBackend build() {
-            final var o = new RegionBackendServiceBackend();
-            o.balancingMode = balancingMode;
-            o.capacityScaler = capacityScaler;
-            o.description = description;
-            o.failover = failover;
-            o.group = group;
-            o.maxConnections = maxConnections;
-            o.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
-            o.maxConnectionsPerInstance = maxConnectionsPerInstance;
-            o.maxRate = maxRate;
-            o.maxRatePerEndpoint = maxRatePerEndpoint;
-            o.maxRatePerInstance = maxRatePerInstance;
-            o.maxUtilization = maxUtilization;
-            return o;
+            final var _resultValue = new RegionBackendServiceBackend();
+            _resultValue.balancingMode = balancingMode;
+            _resultValue.capacityScaler = capacityScaler;
+            _resultValue.description = description;
+            _resultValue.failover = failover;
+            _resultValue.group = group;
+            _resultValue.maxConnections = maxConnections;
+            _resultValue.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
+            _resultValue.maxConnectionsPerInstance = maxConnectionsPerInstance;
+            _resultValue.maxRate = maxRate;
+            _resultValue.maxRatePerEndpoint = maxRatePerEndpoint;
+            _resultValue.maxRatePerInstance = maxRatePerInstance;
+            _resultValue.maxUtilization = maxUtilization;
+            return _resultValue;
         }
     }
 }

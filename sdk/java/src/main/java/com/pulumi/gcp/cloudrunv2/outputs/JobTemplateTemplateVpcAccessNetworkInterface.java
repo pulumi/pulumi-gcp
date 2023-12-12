@@ -102,11 +102,11 @@ public final class JobTemplateTemplateVpcAccessNetworkInterface {
             return tags(List.of(tags));
         }
         public JobTemplateTemplateVpcAccessNetworkInterface build() {
-            final var o = new JobTemplateTemplateVpcAccessNetworkInterface();
-            o.network = network;
-            o.subnetwork = subnetwork;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new JobTemplateTemplateVpcAccessNetworkInterface();
+            _resultValue.network = network;
+            _resultValue.subnetwork = subnetwork;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

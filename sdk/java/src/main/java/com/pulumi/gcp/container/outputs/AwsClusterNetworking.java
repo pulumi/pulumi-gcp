@@ -117,12 +117,12 @@ public final class AwsClusterNetworking {
             return this;
         }
         public AwsClusterNetworking build() {
-            final var o = new AwsClusterNetworking();
-            o.perNodePoolSgRulesDisabled = perNodePoolSgRulesDisabled;
-            o.podAddressCidrBlocks = podAddressCidrBlocks;
-            o.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new AwsClusterNetworking();
+            _resultValue.perNodePoolSgRulesDisabled = perNodePoolSgRulesDisabled;
+            _resultValue.podAddressCidrBlocks = podAddressCidrBlocks;
+            _resultValue.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

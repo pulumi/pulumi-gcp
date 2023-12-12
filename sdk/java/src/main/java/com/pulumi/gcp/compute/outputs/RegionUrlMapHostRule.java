@@ -100,11 +100,11 @@ public final class RegionUrlMapHostRule {
             return this;
         }
         public RegionUrlMapHostRule build() {
-            final var o = new RegionUrlMapHostRule();
-            o.description = description;
-            o.hosts = hosts;
-            o.pathMatcher = pathMatcher;
-            return o;
+            final var _resultValue = new RegionUrlMapHostRule();
+            _resultValue.description = description;
+            _resultValue.hosts = hosts;
+            _resultValue.pathMatcher = pathMatcher;
+            return _resultValue;
         }
     }
 }

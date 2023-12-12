@@ -135,13 +135,13 @@ public final class ConfigSignInHashConfig {
             return this;
         }
         public ConfigSignInHashConfig build() {
-            final var o = new ConfigSignInHashConfig();
-            o.algorithm = algorithm;
-            o.memoryCost = memoryCost;
-            o.rounds = rounds;
-            o.saltSeparator = saltSeparator;
-            o.signerKey = signerKey;
-            return o;
+            final var _resultValue = new ConfigSignInHashConfig();
+            _resultValue.algorithm = algorithm;
+            _resultValue.memoryCost = memoryCost;
+            _resultValue.rounds = rounds;
+            _resultValue.saltSeparator = saltSeparator;
+            _resultValue.signerKey = signerKey;
+            return _resultValue;
         }
     }
 }

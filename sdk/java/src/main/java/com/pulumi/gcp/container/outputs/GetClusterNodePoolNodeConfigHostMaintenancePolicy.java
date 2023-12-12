@@ -38,9 +38,9 @@ public final class GetClusterNodePoolNodeConfigHostMaintenancePolicy {
             return this;
         }
         public GetClusterNodePoolNodeConfigHostMaintenancePolicy build() {
-            final var o = new GetClusterNodePoolNodeConfigHostMaintenancePolicy();
-            o.maintenanceInterval = maintenanceInterval;
-            return o;
+            final var _resultValue = new GetClusterNodePoolNodeConfigHostMaintenancePolicy();
+            _resultValue.maintenanceInterval = maintenanceInterval;
+            return _resultValue;
         }
     }
 }

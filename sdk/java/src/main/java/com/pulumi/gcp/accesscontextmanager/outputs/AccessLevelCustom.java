@@ -52,9 +52,9 @@ public final class AccessLevelCustom {
             return this;
         }
         public AccessLevelCustom build() {
-            final var o = new AccessLevelCustom();
-            o.expr = expr;
-            return o;
+            final var _resultValue = new AccessLevelCustom();
+            _resultValue.expr = expr;
+            return _resultValue;
         }
     }
 }

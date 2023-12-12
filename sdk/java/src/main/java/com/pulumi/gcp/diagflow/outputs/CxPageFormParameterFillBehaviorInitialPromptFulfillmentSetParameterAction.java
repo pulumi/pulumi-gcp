@@ -67,10 +67,10 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetPar
             return this;
         }
         public CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction build() {
-            final var o = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction();
-            o.parameter = parameter;
-            o.value = value;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction();
+            _resultValue.parameter = parameter;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

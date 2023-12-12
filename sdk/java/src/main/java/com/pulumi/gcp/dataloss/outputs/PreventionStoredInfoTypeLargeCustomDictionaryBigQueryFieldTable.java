@@ -84,11 +84,11 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTab
             return this;
         }
         public PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable build() {
-            final var o = new PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable();
-            o.datasetId = datasetId;
-            o.projectId = projectId;
-            o.tableId = tableId;
-            return o;
+            final var _resultValue = new PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable();
+            _resultValue.datasetId = datasetId;
+            _resultValue.projectId = projectId;
+            _resultValue.tableId = tableId;
+            return _resultValue;
         }
     }
 }

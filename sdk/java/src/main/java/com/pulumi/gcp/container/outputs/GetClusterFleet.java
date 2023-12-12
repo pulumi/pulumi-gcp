@@ -71,11 +71,11 @@ public final class GetClusterFleet {
             return this;
         }
         public GetClusterFleet build() {
-            final var o = new GetClusterFleet();
-            o.membership = membership;
-            o.preRegistered = preRegistered;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetClusterFleet();
+            _resultValue.membership = membership;
+            _resultValue.preRegistered = preRegistered;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

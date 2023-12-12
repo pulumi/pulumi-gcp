@@ -38,9 +38,9 @@ public final class GetInstanceGroupManagerStatusAllInstancesConfig {
             return this;
         }
         public GetInstanceGroupManagerStatusAllInstancesConfig build() {
-            final var o = new GetInstanceGroupManagerStatusAllInstancesConfig();
-            o.effective = effective;
-            return o;
+            final var _resultValue = new GetInstanceGroupManagerStatusAllInstancesConfig();
+            _resultValue.effective = effective;
+            return _resultValue;
         }
     }
 }

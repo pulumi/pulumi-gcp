@@ -71,12 +71,12 @@ public final class GetSnapshotSnapshotEncryptionKey {
             return this;
         }
         public GetSnapshotSnapshotEncryptionKey build() {
-            final var o = new GetSnapshotSnapshotEncryptionKey();
-            o.kmsKeySelfLink = kmsKeySelfLink;
-            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
-            o.rawKey = rawKey;
-            o.sha256 = sha256;
-            return o;
+            final var _resultValue = new GetSnapshotSnapshotEncryptionKey();
+            _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            _resultValue.rawKey = rawKey;
+            _resultValue.sha256 = sha256;
+            return _resultValue;
         }
     }
 }

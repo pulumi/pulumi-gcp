@@ -61,11 +61,11 @@ public final class EnvironmentConfigWorkloadsConfigTriggerer {
             return this;
         }
         public EnvironmentConfigWorkloadsConfigTriggerer build() {
-            final var o = new EnvironmentConfigWorkloadsConfigTriggerer();
-            o.count = count;
-            o.cpu = cpu;
-            o.memoryGb = memoryGb;
-            return o;
+            final var _resultValue = new EnvironmentConfigWorkloadsConfigTriggerer();
+            _resultValue.count = count;
+            _resultValue.cpu = cpu;
+            _resultValue.memoryGb = memoryGb;
+            return _resultValue;
         }
     }
 }

@@ -74,10 +74,10 @@ public final class CertificateTemplatePassthroughExtensions {
             return knownExtensions(List.of(knownExtensions));
         }
         public CertificateTemplatePassthroughExtensions build() {
-            final var o = new CertificateTemplatePassthroughExtensions();
-            o.additionalExtensions = additionalExtensions;
-            o.knownExtensions = knownExtensions;
-            return o;
+            final var _resultValue = new CertificateTemplatePassthroughExtensions();
+            _resultValue.additionalExtensions = additionalExtensions;
+            _resultValue.knownExtensions = knownExtensions;
+            return _resultValue;
         }
     }
 }

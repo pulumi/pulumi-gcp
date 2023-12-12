@@ -130,15 +130,15 @@ public final class GetZoneIamPolicyResult {
             return this;
         }
         public GetZoneIamPolicyResult build() {
-            final var o = new GetZoneIamPolicyResult();
-            o.dataplexZone = dataplexZone;
-            o.etag = etag;
-            o.id = id;
-            o.lake = lake;
-            o.location = location;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetZoneIamPolicyResult();
+            _resultValue.dataplexZone = dataplexZone;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.lake = lake;
+            _resultValue.location = location;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

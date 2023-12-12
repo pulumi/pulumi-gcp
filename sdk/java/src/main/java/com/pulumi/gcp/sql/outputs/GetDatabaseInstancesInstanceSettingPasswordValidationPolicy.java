@@ -95,14 +95,14 @@ public final class GetDatabaseInstancesInstanceSettingPasswordValidationPolicy {
             return this;
         }
         public GetDatabaseInstancesInstanceSettingPasswordValidationPolicy build() {
-            final var o = new GetDatabaseInstancesInstanceSettingPasswordValidationPolicy();
-            o.complexity = complexity;
-            o.disallowUsernameSubstring = disallowUsernameSubstring;
-            o.enablePasswordPolicy = enablePasswordPolicy;
-            o.minLength = minLength;
-            o.passwordChangeInterval = passwordChangeInterval;
-            o.reuseInterval = reuseInterval;
-            return o;
+            final var _resultValue = new GetDatabaseInstancesInstanceSettingPasswordValidationPolicy();
+            _resultValue.complexity = complexity;
+            _resultValue.disallowUsernameSubstring = disallowUsernameSubstring;
+            _resultValue.enablePasswordPolicy = enablePasswordPolicy;
+            _resultValue.minLength = minLength;
+            _resultValue.passwordChangeInterval = passwordChangeInterval;
+            _resultValue.reuseInterval = reuseInterval;
+            return _resultValue;
         }
     }
 }

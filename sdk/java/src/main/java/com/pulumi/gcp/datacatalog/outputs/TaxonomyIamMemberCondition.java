@@ -62,11 +62,11 @@ public final class TaxonomyIamMemberCondition {
             return this;
         }
         public TaxonomyIamMemberCondition build() {
-            final var o = new TaxonomyIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new TaxonomyIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

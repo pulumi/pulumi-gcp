@@ -48,9 +48,9 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessag
             return this;
         }
         public CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff build() {
-            final var o = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff();
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff();
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

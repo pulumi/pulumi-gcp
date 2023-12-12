@@ -88,11 +88,11 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRollou
             return this;
         }
         public ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy build() {
-            final var o = new ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy();
-            o.batchNodeCount = batchNodeCount;
-            o.batchPercentage = batchPercentage;
-            o.batchSoakDuration = batchSoakDuration;
-            return o;
+            final var _resultValue = new ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy();
+            _resultValue.batchNodeCount = batchNodeCount;
+            _resultValue.batchPercentage = batchPercentage;
+            _resultValue.batchSoakDuration = batchSoakDuration;
+            return _resultValue;
         }
     }
 }

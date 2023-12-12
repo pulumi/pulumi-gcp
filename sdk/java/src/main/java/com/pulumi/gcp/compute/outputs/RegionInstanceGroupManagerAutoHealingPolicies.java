@@ -68,10 +68,10 @@ public final class RegionInstanceGroupManagerAutoHealingPolicies {
             return this;
         }
         public RegionInstanceGroupManagerAutoHealingPolicies build() {
-            final var o = new RegionInstanceGroupManagerAutoHealingPolicies();
-            o.healthCheck = healthCheck;
-            o.initialDelaySec = initialDelaySec;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerAutoHealingPolicies();
+            _resultValue.healthCheck = healthCheck;
+            _resultValue.initialDelaySec = initialDelaySec;
+            return _resultValue;
         }
     }
 }

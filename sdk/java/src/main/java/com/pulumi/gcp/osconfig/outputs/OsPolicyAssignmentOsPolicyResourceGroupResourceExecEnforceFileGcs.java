@@ -87,11 +87,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFil
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs();
-            o.bucket = bucket;
-            o.generation = generation;
-            o.object = object;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs();
+            _resultValue.bucket = bucket;
+            _resultValue.generation = generation;
+            _resultValue.object = object;
+            return _resultValue;
         }
     }
 }

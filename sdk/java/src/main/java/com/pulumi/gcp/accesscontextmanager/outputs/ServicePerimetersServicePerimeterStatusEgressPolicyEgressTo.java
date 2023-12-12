@@ -112,11 +112,11 @@ public final class ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
             return resources(List.of(resources));
         }
         public ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo build() {
-            final var o = new ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo();
-            o.externalResources = externalResources;
-            o.operations = operations;
-            o.resources = resources;
-            return o;
+            final var _resultValue = new ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo();
+            _resultValue.externalResources = externalResources;
+            _resultValue.operations = operations;
+            _resultValue.resources = resources;
+            return _resultValue;
         }
     }
 }

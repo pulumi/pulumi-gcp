@@ -92,11 +92,11 @@ public final class PreventionInspectTemplateInspectConfigLimits {
             return this;
         }
         public PreventionInspectTemplateInspectConfigLimits build() {
-            final var o = new PreventionInspectTemplateInspectConfigLimits();
-            o.maxFindingsPerInfoTypes = maxFindingsPerInfoTypes;
-            o.maxFindingsPerItem = maxFindingsPerItem;
-            o.maxFindingsPerRequest = maxFindingsPerRequest;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigLimits();
+            _resultValue.maxFindingsPerInfoTypes = maxFindingsPerInfoTypes;
+            _resultValue.maxFindingsPerItem = maxFindingsPerItem;
+            _resultValue.maxFindingsPerRequest = maxFindingsPerRequest;
+            return _resultValue;
         }
     }
 }

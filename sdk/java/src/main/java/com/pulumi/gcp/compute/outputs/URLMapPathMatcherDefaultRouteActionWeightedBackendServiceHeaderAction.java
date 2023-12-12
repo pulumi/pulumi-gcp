@@ -127,12 +127,12 @@ public final class URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHead
             return responseHeadersToRemoves(List.of(responseHeadersToRemoves));
         }
         public URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction build() {
-            final var o = new URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction();
-            o.requestHeadersToAdds = requestHeadersToAdds;
-            o.requestHeadersToRemoves = requestHeadersToRemoves;
-            o.responseHeadersToAdds = responseHeadersToAdds;
-            o.responseHeadersToRemoves = responseHeadersToRemoves;
-            return o;
+            final var _resultValue = new URLMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderAction();
+            _resultValue.requestHeadersToAdds = requestHeadersToAdds;
+            _resultValue.requestHeadersToRemoves = requestHeadersToRemoves;
+            _resultValue.responseHeadersToAdds = responseHeadersToAdds;
+            _resultValue.responseHeadersToRemoves = responseHeadersToRemoves;
+            return _resultValue;
         }
     }
 }

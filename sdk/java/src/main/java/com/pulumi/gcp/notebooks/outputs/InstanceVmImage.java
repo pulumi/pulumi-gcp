@@ -88,11 +88,11 @@ public final class InstanceVmImage {
             return this;
         }
         public InstanceVmImage build() {
-            final var o = new InstanceVmImage();
-            o.imageFamily = imageFamily;
-            o.imageName = imageName;
-            o.project = project;
-            return o;
+            final var _resultValue = new InstanceVmImage();
+            _resultValue.imageFamily = imageFamily;
+            _resultValue.imageName = imageName;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

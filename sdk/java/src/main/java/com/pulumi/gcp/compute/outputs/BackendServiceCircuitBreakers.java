@@ -160,14 +160,14 @@ public final class BackendServiceCircuitBreakers {
             return this;
         }
         public BackendServiceCircuitBreakers build() {
-            final var o = new BackendServiceCircuitBreakers();
-            o.connectTimeout = connectTimeout;
-            o.maxConnections = maxConnections;
-            o.maxPendingRequests = maxPendingRequests;
-            o.maxRequests = maxRequests;
-            o.maxRequestsPerConnection = maxRequestsPerConnection;
-            o.maxRetries = maxRetries;
-            return o;
+            final var _resultValue = new BackendServiceCircuitBreakers();
+            _resultValue.connectTimeout = connectTimeout;
+            _resultValue.maxConnections = maxConnections;
+            _resultValue.maxPendingRequests = maxPendingRequests;
+            _resultValue.maxRequests = maxRequests;
+            _resultValue.maxRequestsPerConnection = maxRequestsPerConnection;
+            _resultValue.maxRetries = maxRetries;
+            return _resultValue;
         }
     }
 }

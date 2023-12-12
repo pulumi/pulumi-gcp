@@ -57,10 +57,10 @@ public final class GetBucketLifecycleRule {
             return conditions(List.of(conditions));
         }
         public GetBucketLifecycleRule build() {
-            final var o = new GetBucketLifecycleRule();
-            o.actions = actions;
-            o.conditions = conditions;
-            return o;
+            final var _resultValue = new GetBucketLifecycleRule();
+            _resultValue.actions = actions;
+            _resultValue.conditions = conditions;
+            return _resultValue;
         }
     }
 }

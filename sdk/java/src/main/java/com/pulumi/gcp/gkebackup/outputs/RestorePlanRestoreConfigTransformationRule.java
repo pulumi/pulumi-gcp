@@ -110,11 +110,11 @@ public final class RestorePlanRestoreConfigTransformationRule {
             return this;
         }
         public RestorePlanRestoreConfigTransformationRule build() {
-            final var o = new RestorePlanRestoreConfigTransformationRule();
-            o.description = description;
-            o.fieldActions = fieldActions;
-            o.resourceFilter = resourceFilter;
-            return o;
+            final var _resultValue = new RestorePlanRestoreConfigTransformationRule();
+            _resultValue.description = description;
+            _resultValue.fieldActions = fieldActions;
+            _resultValue.resourceFilter = resourceFilter;
+            return _resultValue;
         }
     }
 }

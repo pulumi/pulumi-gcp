@@ -72,10 +72,10 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRule {
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRule build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRule();
-            o.exclusionRule = exclusionRule;
-            o.hotwordRule = hotwordRule;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRule();
+            _resultValue.exclusionRule = exclusionRule;
+            _resultValue.hotwordRule = hotwordRule;
+            return _resultValue;
         }
     }
 }

@@ -88,11 +88,11 @@ public final class DatasetAccessRoutine {
             return this;
         }
         public DatasetAccessRoutine build() {
-            final var o = new DatasetAccessRoutine();
-            o.datasetId = datasetId;
-            o.projectId = projectId;
-            o.routineId = routineId;
-            return o;
+            final var _resultValue = new DatasetAccessRoutine();
+            _resultValue.datasetId = datasetId;
+            _resultValue.projectId = projectId;
+            _resultValue.routineId = routineId;
+            return _resultValue;
         }
     }
 }

@@ -130,12 +130,12 @@ public final class ClusterMasterAuth {
             return this;
         }
         public ClusterMasterAuth build() {
-            final var o = new ClusterMasterAuth();
-            o.clientCertificate = clientCertificate;
-            o.clientCertificateConfig = clientCertificateConfig;
-            o.clientKey = clientKey;
-            o.clusterCaCertificate = clusterCaCertificate;
-            return o;
+            final var _resultValue = new ClusterMasterAuth();
+            _resultValue.clientCertificate = clientCertificate;
+            _resultValue.clientCertificateConfig = clientCertificateConfig;
+            _resultValue.clientKey = clientKey;
+            _resultValue.clusterCaCertificate = clusterCaCertificate;
+            return _resultValue;
         }
     }
 }

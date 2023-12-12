@@ -90,11 +90,11 @@ public final class GrpcRouteRuleMatchHeader {
             return this;
         }
         public GrpcRouteRuleMatchHeader build() {
-            final var o = new GrpcRouteRuleMatchHeader();
-            o.key = key;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new GrpcRouteRuleMatchHeader();
+            _resultValue.key = key;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -73,10 +73,10 @@ public final class RestorePlanRestoreConfigTransformationRuleResourceFilterGroup
             return this;
         }
         public RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind build() {
-            final var o = new RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind();
-            o.resourceGroup = resourceGroup;
-            o.resourceKind = resourceKind;
-            return o;
+            final var _resultValue = new RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind();
+            _resultValue.resourceGroup = resourceGroup;
+            _resultValue.resourceKind = resourceKind;
+            return _resultValue;
         }
     }
 }

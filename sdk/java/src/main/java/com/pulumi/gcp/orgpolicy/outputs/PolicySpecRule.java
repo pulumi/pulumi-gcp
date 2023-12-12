@@ -126,13 +126,13 @@ public final class PolicySpecRule {
             return this;
         }
         public PolicySpecRule build() {
-            final var o = new PolicySpecRule();
-            o.allowAll = allowAll;
-            o.condition = condition;
-            o.denyAll = denyAll;
-            o.enforce = enforce;
-            o.values = values;
-            return o;
+            final var _resultValue = new PolicySpecRule();
+            _resultValue.allowAll = allowAll;
+            _resultValue.condition = condition;
+            _resultValue.denyAll = denyAll;
+            _resultValue.enforce = enforce;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

@@ -92,11 +92,11 @@ public final class RegionBackendServiceIap {
             return this;
         }
         public RegionBackendServiceIap build() {
-            final var o = new RegionBackendServiceIap();
-            o.oauth2ClientId = oauth2ClientId;
-            o.oauth2ClientSecret = oauth2ClientSecret;
-            o.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
-            return o;
+            final var _resultValue = new RegionBackendServiceIap();
+            _resultValue.oauth2ClientId = oauth2ClientId;
+            _resultValue.oauth2ClientSecret = oauth2ClientSecret;
+            _resultValue.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
+            return _resultValue;
         }
     }
 }

@@ -113,12 +113,12 @@ public final class TenantInboundSamlConfigIdpConfig {
             return this;
         }
         public TenantInboundSamlConfigIdpConfig build() {
-            final var o = new TenantInboundSamlConfigIdpConfig();
-            o.idpCertificates = idpCertificates;
-            o.idpEntityId = idpEntityId;
-            o.signRequest = signRequest;
-            o.ssoUrl = ssoUrl;
-            return o;
+            final var _resultValue = new TenantInboundSamlConfigIdpConfig();
+            _resultValue.idpCertificates = idpCertificates;
+            _resultValue.idpEntityId = idpEntityId;
+            _resultValue.signRequest = signRequest;
+            _resultValue.ssoUrl = ssoUrl;
+            return _resultValue;
         }
     }
 }

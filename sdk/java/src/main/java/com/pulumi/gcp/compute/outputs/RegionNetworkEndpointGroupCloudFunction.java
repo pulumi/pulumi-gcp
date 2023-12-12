@@ -81,10 +81,10 @@ public final class RegionNetworkEndpointGroupCloudFunction {
             return this;
         }
         public RegionNetworkEndpointGroupCloudFunction build() {
-            final var o = new RegionNetworkEndpointGroupCloudFunction();
-            o.function = function;
-            o.urlMask = urlMask;
-            return o;
+            final var _resultValue = new RegionNetworkEndpointGroupCloudFunction();
+            _resultValue.function = function;
+            _resultValue.urlMask = urlMask;
+            return _resultValue;
         }
     }
 }

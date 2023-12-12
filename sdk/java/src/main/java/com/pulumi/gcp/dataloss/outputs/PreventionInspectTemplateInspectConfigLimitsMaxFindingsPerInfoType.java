@@ -72,10 +72,10 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
             return this;
         }
         public PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType build() {
-            final var o = new PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType();
-            o.infoType = infoType;
-            o.maxFindings = maxFindings;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType();
+            _resultValue.infoType = infoType;
+            _resultValue.maxFindings = maxFindings;
+            return _resultValue;
         }
     }
 }

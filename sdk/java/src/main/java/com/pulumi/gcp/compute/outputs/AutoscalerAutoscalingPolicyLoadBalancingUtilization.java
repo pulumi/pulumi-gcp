@@ -50,9 +50,9 @@ public final class AutoscalerAutoscalingPolicyLoadBalancingUtilization {
             return this;
         }
         public AutoscalerAutoscalingPolicyLoadBalancingUtilization build() {
-            final var o = new AutoscalerAutoscalingPolicyLoadBalancingUtilization();
-            o.target = target;
-            return o;
+            final var _resultValue = new AutoscalerAutoscalingPolicyLoadBalancingUtilization();
+            _resultValue.target = target;
+            return _resultValue;
         }
     }
 }

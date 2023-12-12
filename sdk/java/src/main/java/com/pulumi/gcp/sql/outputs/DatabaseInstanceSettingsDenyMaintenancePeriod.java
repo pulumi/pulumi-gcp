@@ -84,11 +84,11 @@ public final class DatabaseInstanceSettingsDenyMaintenancePeriod {
             return this;
         }
         public DatabaseInstanceSettingsDenyMaintenancePeriod build() {
-            final var o = new DatabaseInstanceSettingsDenyMaintenancePeriod();
-            o.endDate = endDate;
-            o.startDate = startDate;
-            o.time = time;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettingsDenyMaintenancePeriod();
+            _resultValue.endDate = endDate;
+            _resultValue.startDate = startDate;
+            _resultValue.time = time;
+            return _resultValue;
         }
     }
 }

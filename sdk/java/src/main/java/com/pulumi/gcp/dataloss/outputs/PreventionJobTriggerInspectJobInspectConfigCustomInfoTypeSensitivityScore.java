@@ -48,9 +48,9 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSens
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore();
-            o.score = score;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore();
+            _resultValue.score = score;
+            return _resultValue;
         }
     }
 }

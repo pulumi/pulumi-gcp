@@ -113,12 +113,12 @@ public final class ServiceStatusCondition {
             return this;
         }
         public ServiceStatusCondition build() {
-            final var o = new ServiceStatusCondition();
-            o.message = message;
-            o.reason = reason;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new ServiceStatusCondition();
+            _resultValue.message = message;
+            _resultValue.reason = reason;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

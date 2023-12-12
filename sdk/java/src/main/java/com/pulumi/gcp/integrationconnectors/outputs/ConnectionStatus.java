@@ -92,11 +92,11 @@ public final class ConnectionStatus {
             return this;
         }
         public ConnectionStatus build() {
-            final var o = new ConnectionStatus();
-            o.description = description;
-            o.state = state;
-            o.status = status;
-            return o;
+            final var _resultValue = new ConnectionStatus();
+            _resultValue.description = description;
+            _resultValue.state = state;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

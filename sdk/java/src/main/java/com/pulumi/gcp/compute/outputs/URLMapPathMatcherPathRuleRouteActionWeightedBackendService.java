@@ -110,11 +110,11 @@ public final class URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
             return this;
         }
         public URLMapPathMatcherPathRuleRouteActionWeightedBackendService build() {
-            final var o = new URLMapPathMatcherPathRuleRouteActionWeightedBackendService();
-            o.backendService = backendService;
-            o.headerAction = headerAction;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new URLMapPathMatcherPathRuleRouteActionWeightedBackendService();
+            _resultValue.backendService = backendService;
+            _resultValue.headerAction = headerAction;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

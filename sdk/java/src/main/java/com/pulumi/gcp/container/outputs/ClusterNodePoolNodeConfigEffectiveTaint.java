@@ -86,11 +86,11 @@ public final class ClusterNodePoolNodeConfigEffectiveTaint {
             return this;
         }
         public ClusterNodePoolNodeConfigEffectiveTaint build() {
-            final var o = new ClusterNodePoolNodeConfigEffectiveTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ClusterNodePoolNodeConfigEffectiveTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

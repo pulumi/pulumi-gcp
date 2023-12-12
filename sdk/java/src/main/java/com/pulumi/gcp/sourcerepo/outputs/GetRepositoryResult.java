@@ -109,14 +109,14 @@ public final class GetRepositoryResult {
             return this;
         }
         public GetRepositoryResult build() {
-            final var o = new GetRepositoryResult();
-            o.id = id;
-            o.name = name;
-            o.project = project;
-            o.pubsubConfigs = pubsubConfigs;
-            o.size = size;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetRepositoryResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pubsubConfigs = pubsubConfigs;
+            _resultValue.size = size;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

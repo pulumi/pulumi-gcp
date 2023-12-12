@@ -56,9 +56,9 @@ public final class Hl7StoreNotificationConfig {
             return this;
         }
         public Hl7StoreNotificationConfig build() {
-            final var o = new Hl7StoreNotificationConfig();
-            o.pubsubTopic = pubsubTopic;
-            return o;
+            final var _resultValue = new Hl7StoreNotificationConfig();
+            _resultValue.pubsubTopic = pubsubTopic;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class QueueStackdriverLoggingConfig {
             return this;
         }
         public QueueStackdriverLoggingConfig build() {
-            final var o = new QueueStackdriverLoggingConfig();
-            o.samplingRatio = samplingRatio;
-            return o;
+            final var _resultValue = new QueueStackdriverLoggingConfig();
+            _resultValue.samplingRatio = samplingRatio;
+            return _resultValue;
         }
     }
 }

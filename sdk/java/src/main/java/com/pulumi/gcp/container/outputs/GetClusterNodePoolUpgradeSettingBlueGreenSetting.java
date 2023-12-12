@@ -54,10 +54,10 @@ public final class GetClusterNodePoolUpgradeSettingBlueGreenSetting {
             return standardRolloutPolicies(List.of(standardRolloutPolicies));
         }
         public GetClusterNodePoolUpgradeSettingBlueGreenSetting build() {
-            final var o = new GetClusterNodePoolUpgradeSettingBlueGreenSetting();
-            o.nodePoolSoakDuration = nodePoolSoakDuration;
-            o.standardRolloutPolicies = standardRolloutPolicies;
-            return o;
+            final var _resultValue = new GetClusterNodePoolUpgradeSettingBlueGreenSetting();
+            _resultValue.nodePoolSoakDuration = nodePoolSoakDuration;
+            _resultValue.standardRolloutPolicies = standardRolloutPolicies;
+            return _resultValue;
         }
     }
 }

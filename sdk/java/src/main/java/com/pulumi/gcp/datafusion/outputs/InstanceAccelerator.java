@@ -69,10 +69,10 @@ public final class InstanceAccelerator {
             return this;
         }
         public InstanceAccelerator build() {
-            final var o = new InstanceAccelerator();
-            o.acceleratorType = acceleratorType;
-            o.state = state;
-            return o;
+            final var _resultValue = new InstanceAccelerator();
+            _resultValue.acceleratorType = acceleratorType;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

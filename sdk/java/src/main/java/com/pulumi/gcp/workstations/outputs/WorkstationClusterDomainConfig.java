@@ -46,9 +46,9 @@ public final class WorkstationClusterDomainConfig {
             return this;
         }
         public WorkstationClusterDomainConfig build() {
-            final var o = new WorkstationClusterDomainConfig();
-            o.domain = domain;
-            return o;
+            final var _resultValue = new WorkstationClusterDomainConfig();
+            _resultValue.domain = domain;
+            return _resultValue;
         }
     }
 }

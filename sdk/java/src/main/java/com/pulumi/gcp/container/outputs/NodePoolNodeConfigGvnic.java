@@ -48,9 +48,9 @@ public final class NodePoolNodeConfigGvnic {
             return this;
         }
         public NodePoolNodeConfigGvnic build() {
-            final var o = new NodePoolNodeConfigGvnic();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigGvnic();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

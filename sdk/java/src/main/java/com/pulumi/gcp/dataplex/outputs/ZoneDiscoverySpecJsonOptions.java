@@ -68,10 +68,10 @@ public final class ZoneDiscoverySpecJsonOptions {
             return this;
         }
         public ZoneDiscoverySpecJsonOptions build() {
-            final var o = new ZoneDiscoverySpecJsonOptions();
-            o.disableTypeInference = disableTypeInference;
-            o.encoding = encoding;
-            return o;
+            final var _resultValue = new ZoneDiscoverySpecJsonOptions();
+            _resultValue.disableTypeInference = disableTypeInference;
+            _resultValue.encoding = encoding;
+            return _resultValue;
         }
     }
 }

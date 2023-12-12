@@ -74,10 +74,10 @@ public final class DatasetAccessAuthorizedDataset {
             return targetTypes(List.of(targetTypes));
         }
         public DatasetAccessAuthorizedDataset build() {
-            final var o = new DatasetAccessAuthorizedDataset();
-            o.dataset = dataset;
-            o.targetTypes = targetTypes;
-            return o;
+            final var _resultValue = new DatasetAccessAuthorizedDataset();
+            _resultValue.dataset = dataset;
+            _resultValue.targetTypes = targetTypes;
+            return _resultValue;
         }
     }
 }

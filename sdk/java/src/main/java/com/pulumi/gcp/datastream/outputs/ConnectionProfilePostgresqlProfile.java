@@ -127,13 +127,13 @@ public final class ConnectionProfilePostgresqlProfile {
             return this;
         }
         public ConnectionProfilePostgresqlProfile build() {
-            final var o = new ConnectionProfilePostgresqlProfile();
-            o.database = database;
-            o.hostname = hostname;
-            o.password = password;
-            o.port = port;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionProfilePostgresqlProfile();
+            _resultValue.database = database;
+            _resultValue.hostname = hostname;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

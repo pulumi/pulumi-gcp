@@ -290,19 +290,19 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation();
-            o.bucketingConfig = bucketingConfig;
-            o.characterMaskConfig = characterMaskConfig;
-            o.cryptoDeterministicConfig = cryptoDeterministicConfig;
-            o.cryptoHashConfig = cryptoHashConfig;
-            o.cryptoReplaceFfxFpeConfig = cryptoReplaceFfxFpeConfig;
-            o.dateShiftConfig = dateShiftConfig;
-            o.fixedSizeBucketingConfig = fixedSizeBucketingConfig;
-            o.redactConfig = redactConfig;
-            o.replaceConfig = replaceConfig;
-            o.replaceDictionaryConfig = replaceDictionaryConfig;
-            o.timePartConfig = timePartConfig;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation();
+            _resultValue.bucketingConfig = bucketingConfig;
+            _resultValue.characterMaskConfig = characterMaskConfig;
+            _resultValue.cryptoDeterministicConfig = cryptoDeterministicConfig;
+            _resultValue.cryptoHashConfig = cryptoHashConfig;
+            _resultValue.cryptoReplaceFfxFpeConfig = cryptoReplaceFfxFpeConfig;
+            _resultValue.dateShiftConfig = dateShiftConfig;
+            _resultValue.fixedSizeBucketingConfig = fixedSizeBucketingConfig;
+            _resultValue.redactConfig = redactConfig;
+            _resultValue.replaceConfig = replaceConfig;
+            _resultValue.replaceDictionaryConfig = replaceDictionaryConfig;
+            _resultValue.timePartConfig = timePartConfig;
+            return _resultValue;
         }
     }
 }

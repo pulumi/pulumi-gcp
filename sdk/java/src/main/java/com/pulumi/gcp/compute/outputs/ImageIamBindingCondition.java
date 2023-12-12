@@ -94,11 +94,11 @@ public final class ImageIamBindingCondition {
             return this;
         }
         public ImageIamBindingCondition build() {
-            final var o = new ImageIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new ImageIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

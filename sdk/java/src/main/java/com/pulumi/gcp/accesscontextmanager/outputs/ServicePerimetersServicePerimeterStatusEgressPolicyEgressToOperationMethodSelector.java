@@ -73,10 +73,10 @@ public final class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOp
             return this;
         }
         public ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector build() {
-            final var o = new ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector();
-            o.method = method;
-            o.permission = permission;
-            return o;
+            final var _resultValue = new ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector();
+            _resultValue.method = method;
+            _resultValue.permission = permission;
+            return _resultValue;
         }
     }
 }

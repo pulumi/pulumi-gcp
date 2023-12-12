@@ -199,18 +199,18 @@ public final class GetGroupsGroup {
             return this;
         }
         public GetGroupsGroup build() {
-            final var o = new GetGroupsGroup();
-            o.additionalGroupKeys = additionalGroupKeys;
-            o.createTime = createTime;
-            o.description = description;
-            o.displayName = displayName;
-            o.groupKeys = groupKeys;
-            o.initialGroupConfig = initialGroupConfig;
-            o.labels = labels;
-            o.name = name;
-            o.parent = parent;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetGroupsGroup();
+            _resultValue.additionalGroupKeys = additionalGroupKeys;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.groupKeys = groupKeys;
+            _resultValue.initialGroupConfig = initialGroupConfig;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class EnvironmentIamMemberCondition {
             return this;
         }
         public EnvironmentIamMemberCondition build() {
-            final var o = new EnvironmentIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new EnvironmentIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

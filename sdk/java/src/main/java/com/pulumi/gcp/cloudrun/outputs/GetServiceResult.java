@@ -154,17 +154,17 @@ public final class GetServiceResult {
             return traffics(List.of(traffics));
         }
         public GetServiceResult build() {
-            final var o = new GetServiceResult();
-            o.autogenerateRevisionName = autogenerateRevisionName;
-            o.id = id;
-            o.location = location;
-            o.metadatas = metadatas;
-            o.name = name;
-            o.project = project;
-            o.statuses = statuses;
-            o.templates = templates;
-            o.traffics = traffics;
-            return o;
+            final var _resultValue = new GetServiceResult();
+            _resultValue.autogenerateRevisionName = autogenerateRevisionName;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.metadatas = metadatas;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.statuses = statuses;
+            _resultValue.templates = templates;
+            _resultValue.traffics = traffics;
+            return _resultValue;
         }
     }
 }

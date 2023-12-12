@@ -130,13 +130,13 @@ public final class ConnectionProfileAlloydbSettingsPrimaryInstanceSettings {
             return this;
         }
         public ConnectionProfileAlloydbSettingsPrimaryInstanceSettings build() {
-            final var o = new ConnectionProfileAlloydbSettingsPrimaryInstanceSettings();
-            o.databaseFlags = databaseFlags;
-            o.id = id;
-            o.labels = labels;
-            o.machineConfig = machineConfig;
-            o.privateIp = privateIp;
-            return o;
+            final var _resultValue = new ConnectionProfileAlloydbSettingsPrimaryInstanceSettings();
+            _resultValue.databaseFlags = databaseFlags;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.machineConfig = machineConfig;
+            _resultValue.privateIp = privateIp;
+            return _resultValue;
         }
     }
 }

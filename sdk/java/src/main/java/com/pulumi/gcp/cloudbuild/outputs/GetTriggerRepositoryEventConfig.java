@@ -69,11 +69,11 @@ public final class GetTriggerRepositoryEventConfig {
             return this;
         }
         public GetTriggerRepositoryEventConfig build() {
-            final var o = new GetTriggerRepositoryEventConfig();
-            o.pullRequests = pullRequests;
-            o.pushes = pushes;
-            o.repository = repository;
-            return o;
+            final var _resultValue = new GetTriggerRepositoryEventConfig();
+            _resultValue.pullRequests = pullRequests;
+            _resultValue.pushes = pushes;
+            _resultValue.repository = repository;
+            return _resultValue;
         }
     }
 }

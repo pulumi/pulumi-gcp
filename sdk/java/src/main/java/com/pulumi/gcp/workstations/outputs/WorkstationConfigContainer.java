@@ -154,14 +154,14 @@ public final class WorkstationConfigContainer {
             return this;
         }
         public WorkstationConfigContainer build() {
-            final var o = new WorkstationConfigContainer();
-            o.args = args;
-            o.commands = commands;
-            o.env = env;
-            o.image = image;
-            o.runAsUser = runAsUser;
-            o.workingDir = workingDir;
-            return o;
+            final var _resultValue = new WorkstationConfigContainer();
+            _resultValue.args = args;
+            _resultValue.commands = commands;
+            _resultValue.env = env;
+            _resultValue.image = image;
+            _resultValue.runAsUser = runAsUser;
+            _resultValue.workingDir = workingDir;
+            return _resultValue;
         }
     }
 }

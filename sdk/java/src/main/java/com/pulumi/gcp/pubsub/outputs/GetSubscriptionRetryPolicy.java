@@ -49,10 +49,10 @@ public final class GetSubscriptionRetryPolicy {
             return this;
         }
         public GetSubscriptionRetryPolicy build() {
-            final var o = new GetSubscriptionRetryPolicy();
-            o.maximumBackoff = maximumBackoff;
-            o.minimumBackoff = minimumBackoff;
-            return o;
+            final var _resultValue = new GetSubscriptionRetryPolicy();
+            _resultValue.maximumBackoff = maximumBackoff;
+            _resultValue.minimumBackoff = minimumBackoff;
+            return _resultValue;
         }
     }
 }

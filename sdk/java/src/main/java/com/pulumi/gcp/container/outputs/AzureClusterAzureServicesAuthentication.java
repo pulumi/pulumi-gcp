@@ -65,10 +65,10 @@ public final class AzureClusterAzureServicesAuthentication {
             return this;
         }
         public AzureClusterAzureServicesAuthentication build() {
-            final var o = new AzureClusterAzureServicesAuthentication();
-            o.applicationId = applicationId;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new AzureClusterAzureServicesAuthentication();
+            _resultValue.applicationId = applicationId;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

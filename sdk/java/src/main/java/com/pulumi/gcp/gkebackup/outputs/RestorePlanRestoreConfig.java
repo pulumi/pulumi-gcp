@@ -295,18 +295,18 @@ public final class RestorePlanRestoreConfig {
             return this;
         }
         public RestorePlanRestoreConfig build() {
-            final var o = new RestorePlanRestoreConfig();
-            o.allNamespaces = allNamespaces;
-            o.clusterResourceConflictPolicy = clusterResourceConflictPolicy;
-            o.clusterResourceRestoreScope = clusterResourceRestoreScope;
-            o.excludedNamespaces = excludedNamespaces;
-            o.namespacedResourceRestoreMode = namespacedResourceRestoreMode;
-            o.noNamespaces = noNamespaces;
-            o.selectedApplications = selectedApplications;
-            o.selectedNamespaces = selectedNamespaces;
-            o.transformationRules = transformationRules;
-            o.volumeDataRestorePolicy = volumeDataRestorePolicy;
-            return o;
+            final var _resultValue = new RestorePlanRestoreConfig();
+            _resultValue.allNamespaces = allNamespaces;
+            _resultValue.clusterResourceConflictPolicy = clusterResourceConflictPolicy;
+            _resultValue.clusterResourceRestoreScope = clusterResourceRestoreScope;
+            _resultValue.excludedNamespaces = excludedNamespaces;
+            _resultValue.namespacedResourceRestoreMode = namespacedResourceRestoreMode;
+            _resultValue.noNamespaces = noNamespaces;
+            _resultValue.selectedApplications = selectedApplications;
+            _resultValue.selectedNamespaces = selectedNamespaces;
+            _resultValue.transformationRules = transformationRules;
+            _resultValue.volumeDataRestorePolicy = volumeDataRestorePolicy;
+            return _resultValue;
         }
     }
 }

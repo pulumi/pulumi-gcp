@@ -118,15 +118,15 @@ public final class GetClusterNodePoolNetworkConfig {
             return this;
         }
         public GetClusterNodePoolNetworkConfig build() {
-            final var o = new GetClusterNodePoolNetworkConfig();
-            o.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
-            o.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
-            o.createPodRange = createPodRange;
-            o.enablePrivateNodes = enablePrivateNodes;
-            o.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
-            o.podIpv4CidrBlock = podIpv4CidrBlock;
-            o.podRange = podRange;
-            return o;
+            final var _resultValue = new GetClusterNodePoolNetworkConfig();
+            _resultValue.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
+            _resultValue.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
+            _resultValue.createPodRange = createPodRange;
+            _resultValue.enablePrivateNodes = enablePrivateNodes;
+            _resultValue.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
+            _resultValue.podIpv4CidrBlock = podIpv4CidrBlock;
+            _resultValue.podRange = podRange;
+            return _resultValue;
         }
     }
 }

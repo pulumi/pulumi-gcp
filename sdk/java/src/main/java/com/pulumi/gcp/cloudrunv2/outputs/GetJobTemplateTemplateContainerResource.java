@@ -39,9 +39,9 @@ public final class GetJobTemplateTemplateContainerResource {
             return this;
         }
         public GetJobTemplateTemplateContainerResource build() {
-            final var o = new GetJobTemplateTemplateContainerResource();
-            o.limits = limits;
-            return o;
+            final var _resultValue = new GetJobTemplateTemplateContainerResource();
+            _resultValue.limits = limits;
+            return _resultValue;
         }
     }
 }

@@ -87,11 +87,11 @@ public final class CertificateTemplateIdentityConstraints {
             return this;
         }
         public CertificateTemplateIdentityConstraints build() {
-            final var o = new CertificateTemplateIdentityConstraints();
-            o.allowSubjectAltNamesPassthrough = allowSubjectAltNamesPassthrough;
-            o.allowSubjectPassthrough = allowSubjectPassthrough;
-            o.celExpression = celExpression;
-            return o;
+            final var _resultValue = new CertificateTemplateIdentityConstraints();
+            _resultValue.allowSubjectAltNamesPassthrough = allowSubjectAltNamesPassthrough;
+            _resultValue.allowSubjectPassthrough = allowSubjectPassthrough;
+            _resultValue.celExpression = celExpression;
+            return _resultValue;
         }
     }
 }

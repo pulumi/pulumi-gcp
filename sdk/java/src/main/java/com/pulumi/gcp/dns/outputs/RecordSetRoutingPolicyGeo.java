@@ -93,11 +93,11 @@ public final class RecordSetRoutingPolicyGeo {
             return rrdatas(List.of(rrdatas));
         }
         public RecordSetRoutingPolicyGeo build() {
-            final var o = new RecordSetRoutingPolicyGeo();
-            o.healthCheckedTargets = healthCheckedTargets;
-            o.location = location;
-            o.rrdatas = rrdatas;
-            return o;
+            final var _resultValue = new RecordSetRoutingPolicyGeo();
+            _resultValue.healthCheckedTargets = healthCheckedTargets;
+            _resultValue.location = location;
+            _resultValue.rrdatas = rrdatas;
+            return _resultValue;
         }
     }
 }

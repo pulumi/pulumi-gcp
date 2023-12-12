@@ -67,10 +67,10 @@ public final class HttpRouteRuleActionUrlRewrite {
             return this;
         }
         public HttpRouteRuleActionUrlRewrite build() {
-            final var o = new HttpRouteRuleActionUrlRewrite();
-            o.hostRewrite = hostRewrite;
-            o.pathPrefixRewrite = pathPrefixRewrite;
-            return o;
+            final var _resultValue = new HttpRouteRuleActionUrlRewrite();
+            _resultValue.hostRewrite = hostRewrite;
+            _resultValue.pathPrefixRewrite = pathPrefixRewrite;
+            return _resultValue;
         }
     }
 }

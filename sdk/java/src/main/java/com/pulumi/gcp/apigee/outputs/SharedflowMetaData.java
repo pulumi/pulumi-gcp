@@ -86,11 +86,11 @@ public final class SharedflowMetaData {
             return this;
         }
         public SharedflowMetaData build() {
-            final var o = new SharedflowMetaData();
-            o.createdAt = createdAt;
-            o.lastModifiedAt = lastModifiedAt;
-            o.subType = subType;
-            return o;
+            final var _resultValue = new SharedflowMetaData();
+            _resultValue.createdAt = createdAt;
+            _resultValue.lastModifiedAt = lastModifiedAt;
+            _resultValue.subType = subType;
+            return _resultValue;
         }
     }
 }

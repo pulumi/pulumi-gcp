@@ -60,11 +60,11 @@ public final class GetRegionNetworkEndpointGroupCloudRun {
             return this;
         }
         public GetRegionNetworkEndpointGroupCloudRun build() {
-            final var o = new GetRegionNetworkEndpointGroupCloudRun();
-            o.service = service;
-            o.tag = tag;
-            o.urlMask = urlMask;
-            return o;
+            final var _resultValue = new GetRegionNetworkEndpointGroupCloudRun();
+            _resultValue.service = service;
+            _resultValue.tag = tag;
+            _resultValue.urlMask = urlMask;
+            return _resultValue;
         }
     }
 }

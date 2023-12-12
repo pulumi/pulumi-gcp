@@ -300,30 +300,30 @@ public final class GetRouterNatResult {
             return this;
         }
         public GetRouterNatResult build() {
-            final var o = new GetRouterNatResult();
-            o.drainNatIps = drainNatIps;
-            o.enableDynamicPortAllocation = enableDynamicPortAllocation;
-            o.enableEndpointIndependentMapping = enableEndpointIndependentMapping;
-            o.icmpIdleTimeoutSec = icmpIdleTimeoutSec;
-            o.id = id;
-            o.logConfigs = logConfigs;
-            o.maxPortsPerVm = maxPortsPerVm;
-            o.minPortsPerVm = minPortsPerVm;
-            o.name = name;
-            o.natIpAllocateOption = natIpAllocateOption;
-            o.natIps = natIps;
-            o.project = project;
-            o.region = region;
-            o.router = router;
-            o.rules = rules;
-            o.sourceSubnetworkIpRangesToNat = sourceSubnetworkIpRangesToNat;
-            o.subnetworks = subnetworks;
-            o.tcpEstablishedIdleTimeoutSec = tcpEstablishedIdleTimeoutSec;
-            o.tcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;
-            o.tcpTransitoryIdleTimeoutSec = tcpTransitoryIdleTimeoutSec;
-            o.type = type;
-            o.udpIdleTimeoutSec = udpIdleTimeoutSec;
-            return o;
+            final var _resultValue = new GetRouterNatResult();
+            _resultValue.drainNatIps = drainNatIps;
+            _resultValue.enableDynamicPortAllocation = enableDynamicPortAllocation;
+            _resultValue.enableEndpointIndependentMapping = enableEndpointIndependentMapping;
+            _resultValue.icmpIdleTimeoutSec = icmpIdleTimeoutSec;
+            _resultValue.id = id;
+            _resultValue.logConfigs = logConfigs;
+            _resultValue.maxPortsPerVm = maxPortsPerVm;
+            _resultValue.minPortsPerVm = minPortsPerVm;
+            _resultValue.name = name;
+            _resultValue.natIpAllocateOption = natIpAllocateOption;
+            _resultValue.natIps = natIps;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.router = router;
+            _resultValue.rules = rules;
+            _resultValue.sourceSubnetworkIpRangesToNat = sourceSubnetworkIpRangesToNat;
+            _resultValue.subnetworks = subnetworks;
+            _resultValue.tcpEstablishedIdleTimeoutSec = tcpEstablishedIdleTimeoutSec;
+            _resultValue.tcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;
+            _resultValue.tcpTransitoryIdleTimeoutSec = tcpTransitoryIdleTimeoutSec;
+            _resultValue.type = type;
+            _resultValue.udpIdleTimeoutSec = udpIdleTimeoutSec;
+            return _resultValue;
         }
     }
 }

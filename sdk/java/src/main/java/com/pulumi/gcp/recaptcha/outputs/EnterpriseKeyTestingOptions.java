@@ -68,10 +68,10 @@ public final class EnterpriseKeyTestingOptions {
             return this;
         }
         public EnterpriseKeyTestingOptions build() {
-            final var o = new EnterpriseKeyTestingOptions();
-            o.testingChallenge = testingChallenge;
-            o.testingScore = testingScore;
-            return o;
+            final var _resultValue = new EnterpriseKeyTestingOptions();
+            _resultValue.testingChallenge = testingChallenge;
+            _resultValue.testingScore = testingScore;
+            return _resultValue;
         }
     }
 }

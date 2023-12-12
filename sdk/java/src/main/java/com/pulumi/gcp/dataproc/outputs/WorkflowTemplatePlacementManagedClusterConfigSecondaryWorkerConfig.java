@@ -234,18 +234,18 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig();
-            o.accelerators = accelerators;
-            o.diskConfig = diskConfig;
-            o.image = image;
-            o.instanceNames = instanceNames;
-            o.isPreemptible = isPreemptible;
-            o.machineType = machineType;
-            o.managedGroupConfigs = managedGroupConfigs;
-            o.minCpuPlatform = minCpuPlatform;
-            o.numInstances = numInstances;
-            o.preemptibility = preemptibility;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig();
+            _resultValue.accelerators = accelerators;
+            _resultValue.diskConfig = diskConfig;
+            _resultValue.image = image;
+            _resultValue.instanceNames = instanceNames;
+            _resultValue.isPreemptible = isPreemptible;
+            _resultValue.machineType = machineType;
+            _resultValue.managedGroupConfigs = managedGroupConfigs;
+            _resultValue.minCpuPlatform = minCpuPlatform;
+            _resultValue.numInstances = numInstances;
+            _resultValue.preemptibility = preemptibility;
+            return _resultValue;
         }
     }
 }

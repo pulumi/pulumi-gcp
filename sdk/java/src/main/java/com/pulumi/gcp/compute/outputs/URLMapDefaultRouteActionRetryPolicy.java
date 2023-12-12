@@ -126,11 +126,11 @@ public final class URLMapDefaultRouteActionRetryPolicy {
             return retryConditions(List.of(retryConditions));
         }
         public URLMapDefaultRouteActionRetryPolicy build() {
-            final var o = new URLMapDefaultRouteActionRetryPolicy();
-            o.numRetries = numRetries;
-            o.perTryTimeout = perTryTimeout;
-            o.retryConditions = retryConditions;
-            return o;
+            final var _resultValue = new URLMapDefaultRouteActionRetryPolicy();
+            _resultValue.numRetries = numRetries;
+            _resultValue.perTryTimeout = perTryTimeout;
+            _resultValue.retryConditions = retryConditions;
+            return _resultValue;
         }
     }
 }

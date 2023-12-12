@@ -91,10 +91,10 @@ public final class RegionInstanceTemplateServiceAccount {
             return scopes(List.of(scopes));
         }
         public RegionInstanceTemplateServiceAccount build() {
-            final var o = new RegionInstanceTemplateServiceAccount();
-            o.email = email;
-            o.scopes = scopes;
-            return o;
+            final var _resultValue = new RegionInstanceTemplateServiceAccount();
+            _resultValue.email = email;
+            _resultValue.scopes = scopes;
+            return _resultValue;
         }
     }
 }

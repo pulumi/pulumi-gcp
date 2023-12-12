@@ -48,9 +48,9 @@ public final class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandof
             return this;
         }
         public CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff build() {
-            final var o = new CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff();
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff();
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

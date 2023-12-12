@@ -68,11 +68,11 @@ public final class GetJobLatestCreatedExecution {
             return this;
         }
         public GetJobLatestCreatedExecution build() {
-            final var o = new GetJobLatestCreatedExecution();
-            o.completionTime = completionTime;
-            o.createTime = createTime;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetJobLatestCreatedExecution();
+            _resultValue.completionTime = completionTime;
+            _resultValue.createTime = createTime;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

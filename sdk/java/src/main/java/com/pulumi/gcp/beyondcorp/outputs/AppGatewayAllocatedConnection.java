@@ -68,10 +68,10 @@ public final class AppGatewayAllocatedConnection {
             return this;
         }
         public AppGatewayAllocatedConnection build() {
-            final var o = new AppGatewayAllocatedConnection();
-            o.ingressPort = ingressPort;
-            o.pscUri = pscUri;
-            return o;
+            final var _resultValue = new AppGatewayAllocatedConnection();
+            _resultValue.ingressPort = ingressPort;
+            _resultValue.pscUri = pscUri;
+            return _resultValue;
         }
     }
 }

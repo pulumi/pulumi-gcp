@@ -46,9 +46,9 @@ public final class ClusterNotificationConfig {
             return this;
         }
         public ClusterNotificationConfig build() {
-            final var o = new ClusterNotificationConfig();
-            o.pubsub = pubsub;
-            return o;
+            final var _resultValue = new ClusterNotificationConfig();
+            _resultValue.pubsub = pubsub;
+            return _resultValue;
         }
     }
 }

@@ -79,10 +79,10 @@ public final class DeploymentTarget {
             return imports(List.of(imports));
         }
         public DeploymentTarget build() {
-            final var o = new DeploymentTarget();
-            o.config = config;
-            o.imports = imports;
-            return o;
+            final var _resultValue = new DeploymentTarget();
+            _resultValue.config = config;
+            _resultValue.imports = imports;
+            return _resultValue;
         }
     }
 }

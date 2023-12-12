@@ -130,12 +130,12 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
             return responseHeaderToRemoves(List.of(responseHeaderToRemoves));
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction();
-            o.requestHeaderToAdds = requestHeaderToAdds;
-            o.requestHeaderToRemoves = requestHeaderToRemoves;
-            o.responseHeaderToAdds = responseHeaderToAdds;
-            o.responseHeaderToRemoves = responseHeaderToRemoves;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction();
+            _resultValue.requestHeaderToAdds = requestHeaderToAdds;
+            _resultValue.requestHeaderToRemoves = requestHeaderToRemoves;
+            _resultValue.responseHeaderToAdds = responseHeaderToAdds;
+            _resultValue.responseHeaderToRemoves = responseHeaderToRemoves;
+            return _resultValue;
         }
     }
 }

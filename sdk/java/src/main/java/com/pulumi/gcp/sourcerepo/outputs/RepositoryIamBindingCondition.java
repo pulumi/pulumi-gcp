@@ -62,11 +62,11 @@ public final class RepositoryIamBindingCondition {
             return this;
         }
         public RepositoryIamBindingCondition build() {
-            final var o = new RepositoryIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new RepositoryIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

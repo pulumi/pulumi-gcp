@@ -48,9 +48,9 @@ public final class ClusterMaintenancePolicy {
             return this;
         }
         public ClusterMaintenancePolicy build() {
-            final var o = new ClusterMaintenancePolicy();
-            o.window = window;
-            return o;
+            final var _resultValue = new ClusterMaintenancePolicy();
+            _resultValue.window = window;
+            return _resultValue;
         }
     }
 }

@@ -51,9 +51,9 @@ public final class DeliveryPipelineSerialPipeline {
             return stages(List.of(stages));
         }
         public DeliveryPipelineSerialPipeline build() {
-            final var o = new DeliveryPipelineSerialPipeline();
-            o.stages = stages;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipeline();
+            _resultValue.stages = stages;
+            return _resultValue;
         }
     }
 }

@@ -73,10 +73,10 @@ public final class TriggerBuildStepVolume {
             return this;
         }
         public TriggerBuildStepVolume build() {
-            final var o = new TriggerBuildStepVolume();
-            o.name = name;
-            o.path = path;
-            return o;
+            final var _resultValue = new TriggerBuildStepVolume();
+            _resultValue.name = name;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
             return this;
         }
         public CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve build() {
-            final var o = new CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve();
-            o.signatureAlgorithm = signatureAlgorithm;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve();
+            _resultValue.signatureAlgorithm = signatureAlgorithm;
+            return _resultValue;
         }
     }
 }

@@ -57,10 +57,10 @@ public final class GetAiIndexMetadataConfigAlgorithmConfig {
             return treeAhConfigs(List.of(treeAhConfigs));
         }
         public GetAiIndexMetadataConfigAlgorithmConfig build() {
-            final var o = new GetAiIndexMetadataConfigAlgorithmConfig();
-            o.bruteForceConfigs = bruteForceConfigs;
-            o.treeAhConfigs = treeAhConfigs;
-            return o;
+            final var _resultValue = new GetAiIndexMetadataConfigAlgorithmConfig();
+            _resultValue.bruteForceConfigs = bruteForceConfigs;
+            _resultValue.treeAhConfigs = treeAhConfigs;
+            return _resultValue;
         }
     }
 }

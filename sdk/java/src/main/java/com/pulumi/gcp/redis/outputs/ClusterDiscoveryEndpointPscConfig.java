@@ -56,9 +56,9 @@ public final class ClusterDiscoveryEndpointPscConfig {
             return this;
         }
         public ClusterDiscoveryEndpointPscConfig build() {
-            final var o = new ClusterDiscoveryEndpointPscConfig();
-            o.network = network;
-            return o;
+            final var _resultValue = new ClusterDiscoveryEndpointPscConfig();
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

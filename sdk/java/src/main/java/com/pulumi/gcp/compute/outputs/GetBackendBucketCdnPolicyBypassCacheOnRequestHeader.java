@@ -38,9 +38,9 @@ public final class GetBackendBucketCdnPolicyBypassCacheOnRequestHeader {
             return this;
         }
         public GetBackendBucketCdnPolicyBypassCacheOnRequestHeader build() {
-            final var o = new GetBackendBucketCdnPolicyBypassCacheOnRequestHeader();
-            o.headerName = headerName;
-            return o;
+            final var _resultValue = new GetBackendBucketCdnPolicyBypassCacheOnRequestHeader();
+            _resultValue.headerName = headerName;
+            return _resultValue;
         }
     }
 }

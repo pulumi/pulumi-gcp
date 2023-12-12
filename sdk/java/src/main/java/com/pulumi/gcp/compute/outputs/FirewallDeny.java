@@ -86,10 +86,10 @@ public final class FirewallDeny {
             return this;
         }
         public FirewallDeny build() {
-            final var o = new FirewallDeny();
-            o.ports = ports;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new FirewallDeny();
+            _resultValue.ports = ports;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

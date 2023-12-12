@@ -95,12 +95,12 @@ public final class GetDatasetIamPolicyResult {
             return this;
         }
         public GetDatasetIamPolicyResult build() {
-            final var o = new GetDatasetIamPolicyResult();
-            o.datasetId = datasetId;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            return o;
+            final var _resultValue = new GetDatasetIamPolicyResult();
+            _resultValue.datasetId = datasetId;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class ManagedZonePrivateVisibilityConfigGkeCluster {
             return this;
         }
         public ManagedZonePrivateVisibilityConfigGkeCluster build() {
-            final var o = new ManagedZonePrivateVisibilityConfigGkeCluster();
-            o.gkeClusterName = gkeClusterName;
-            return o;
+            final var _resultValue = new ManagedZonePrivateVisibilityConfigGkeCluster();
+            _resultValue.gkeClusterName = gkeClusterName;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class TargetMultiTarget {
             return targetIds(List.of(targetIds));
         }
         public TargetMultiTarget build() {
-            final var o = new TargetMultiTarget();
-            o.targetIds = targetIds;
-            return o;
+            final var _resultValue = new TargetMultiTarget();
+            _resultValue.targetIds = targetIds;
+            return _resultValue;
         }
     }
 }

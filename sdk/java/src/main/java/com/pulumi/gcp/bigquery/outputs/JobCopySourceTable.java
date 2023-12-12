@@ -88,11 +88,11 @@ public final class JobCopySourceTable {
             return this;
         }
         public JobCopySourceTable build() {
-            final var o = new JobCopySourceTable();
-            o.datasetId = datasetId;
-            o.projectId = projectId;
-            o.tableId = tableId;
-            return o;
+            final var _resultValue = new JobCopySourceTable();
+            _resultValue.datasetId = datasetId;
+            _resultValue.projectId = projectId;
+            _resultValue.tableId = tableId;
+            return _resultValue;
         }
     }
 }

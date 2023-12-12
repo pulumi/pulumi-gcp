@@ -76,10 +76,10 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTy
             return this;
         }
         public DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions build() {
-            final var o = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions();
-            o.possibleValues = possibleValues;
-            o.validationCheckDisabled = validationCheckDisabled;
-            return o;
+            final var _resultValue = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions();
+            _resultValue.possibleValues = possibleValues;
+            _resultValue.validationCheckDisabled = validationCheckDisabled;
+            return _resultValue;
         }
     }
 }

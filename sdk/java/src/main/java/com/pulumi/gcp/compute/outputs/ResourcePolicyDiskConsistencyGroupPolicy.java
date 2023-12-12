@@ -46,9 +46,9 @@ public final class ResourcePolicyDiskConsistencyGroupPolicy {
             return this;
         }
         public ResourcePolicyDiskConsistencyGroupPolicy build() {
-            final var o = new ResourcePolicyDiskConsistencyGroupPolicy();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ResourcePolicyDiskConsistencyGroupPolicy();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

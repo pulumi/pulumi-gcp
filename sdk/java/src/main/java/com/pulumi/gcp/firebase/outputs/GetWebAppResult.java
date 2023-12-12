@@ -149,16 +149,16 @@ public final class GetWebAppResult {
             return this;
         }
         public GetWebAppResult build() {
-            final var o = new GetWebAppResult();
-            o.apiKeyId = apiKeyId;
-            o.appId = appId;
-            o.appUrls = appUrls;
-            o.deletionPolicy = deletionPolicy;
-            o.displayName = displayName;
-            o.id = id;
-            o.name = name;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetWebAppResult();
+            _resultValue.apiKeyId = apiKeyId;
+            _resultValue.appId = appId;
+            _resultValue.appUrls = appUrls;
+            _resultValue.deletionPolicy = deletionPolicy;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

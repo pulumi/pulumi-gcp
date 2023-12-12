@@ -73,10 +73,10 @@ public final class KeyRingImportJobAttestation {
             return this;
         }
         public KeyRingImportJobAttestation build() {
-            final var o = new KeyRingImportJobAttestation();
-            o.content = content;
-            o.format = format;
-            return o;
+            final var _resultValue = new KeyRingImportJobAttestation();
+            _resultValue.content = content;
+            _resultValue.format = format;
+            return _resultValue;
         }
     }
 }

@@ -178,14 +178,14 @@ public final class CertificateCertificateDescriptionX509Description {
             return policyIds(List.of(policyIds));
         }
         public CertificateCertificateDescriptionX509Description build() {
-            final var o = new CertificateCertificateDescriptionX509Description();
-            o.additionalExtensions = additionalExtensions;
-            o.aiaOcspServers = aiaOcspServers;
-            o.caOptions = caOptions;
-            o.keyUsages = keyUsages;
-            o.nameConstraints = nameConstraints;
-            o.policyIds = policyIds;
-            return o;
+            final var _resultValue = new CertificateCertificateDescriptionX509Description();
+            _resultValue.additionalExtensions = additionalExtensions;
+            _resultValue.aiaOcspServers = aiaOcspServers;
+            _resultValue.caOptions = caOptions;
+            _resultValue.keyUsages = keyUsages;
+            _resultValue.nameConstraints = nameConstraints;
+            _resultValue.policyIds = policyIds;
+            return _resultValue;
         }
     }
 }

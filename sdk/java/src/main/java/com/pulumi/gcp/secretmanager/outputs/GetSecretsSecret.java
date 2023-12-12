@@ -292,23 +292,23 @@ public final class GetSecretsSecret {
             return this;
         }
         public GetSecretsSecret build() {
-            final var o = new GetSecretsSecret();
-            o.annotations = annotations;
-            o.createTime = createTime;
-            o.effectiveAnnotations = effectiveAnnotations;
-            o.effectiveLabels = effectiveLabels;
-            o.expireTime = expireTime;
-            o.labels = labels;
-            o.name = name;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.replications = replications;
-            o.rotations = rotations;
-            o.secretId = secretId;
-            o.topics = topics;
-            o.ttl = ttl;
-            o.versionAliases = versionAliases;
-            return o;
+            final var _resultValue = new GetSecretsSecret();
+            _resultValue.annotations = annotations;
+            _resultValue.createTime = createTime;
+            _resultValue.effectiveAnnotations = effectiveAnnotations;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.expireTime = expireTime;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.replications = replications;
+            _resultValue.rotations = rotations;
+            _resultValue.secretId = secretId;
+            _resultValue.topics = topics;
+            _resultValue.ttl = ttl;
+            _resultValue.versionAliases = versionAliases;
+            return _resultValue;
         }
     }
 }

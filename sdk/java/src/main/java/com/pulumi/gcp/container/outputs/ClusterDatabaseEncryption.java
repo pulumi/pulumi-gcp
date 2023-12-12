@@ -71,10 +71,10 @@ public final class ClusterDatabaseEncryption {
             return this;
         }
         public ClusterDatabaseEncryption build() {
-            final var o = new ClusterDatabaseEncryption();
-            o.keyName = keyName;
-            o.state = state;
-            return o;
+            final var _resultValue = new ClusterDatabaseEncryption();
+            _resultValue.keyName = keyName;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

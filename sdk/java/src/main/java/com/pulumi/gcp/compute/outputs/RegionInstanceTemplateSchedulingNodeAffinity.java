@@ -90,11 +90,11 @@ public final class RegionInstanceTemplateSchedulingNodeAffinity {
             return values(List.of(values));
         }
         public RegionInstanceTemplateSchedulingNodeAffinity build() {
-            final var o = new RegionInstanceTemplateSchedulingNodeAffinity();
-            o.key = key;
-            o.operator = operator;
-            o.values = values;
-            return o;
+            final var _resultValue = new RegionInstanceTemplateSchedulingNodeAffinity();
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

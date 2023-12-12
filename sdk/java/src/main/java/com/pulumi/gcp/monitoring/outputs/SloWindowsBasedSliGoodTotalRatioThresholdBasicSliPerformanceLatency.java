@@ -50,9 +50,9 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceL
             return this;
         }
         public SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency build() {
-            final var o = new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency();
-            o.threshold = threshold;
-            return o;
+            final var _resultValue = new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency();
+            _resultValue.threshold = threshold;
+            return _resultValue;
         }
     }
 }

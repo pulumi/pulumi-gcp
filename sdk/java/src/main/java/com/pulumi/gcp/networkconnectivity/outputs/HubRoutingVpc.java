@@ -40,9 +40,9 @@ public final class HubRoutingVpc {
             return this;
         }
         public HubRoutingVpc build() {
-            final var o = new HubRoutingVpc();
-            o.uri = uri;
-            return o;
+            final var _resultValue = new HubRoutingVpc();
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

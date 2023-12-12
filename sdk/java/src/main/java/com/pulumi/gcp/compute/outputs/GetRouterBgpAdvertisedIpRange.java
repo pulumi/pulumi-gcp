@@ -49,10 +49,10 @@ public final class GetRouterBgpAdvertisedIpRange {
             return this;
         }
         public GetRouterBgpAdvertisedIpRange build() {
-            final var o = new GetRouterBgpAdvertisedIpRange();
-            o.description = description;
-            o.range = range;
-            return o;
+            final var _resultValue = new GetRouterBgpAdvertisedIpRange();
+            _resultValue.description = description;
+            _resultValue.range = range;
+            return _resultValue;
         }
     }
 }

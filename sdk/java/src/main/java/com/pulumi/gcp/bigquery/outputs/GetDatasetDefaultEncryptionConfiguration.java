@@ -38,9 +38,9 @@ public final class GetDatasetDefaultEncryptionConfiguration {
             return this;
         }
         public GetDatasetDefaultEncryptionConfiguration build() {
-            final var o = new GetDatasetDefaultEncryptionConfiguration();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new GetDatasetDefaultEncryptionConfiguration();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

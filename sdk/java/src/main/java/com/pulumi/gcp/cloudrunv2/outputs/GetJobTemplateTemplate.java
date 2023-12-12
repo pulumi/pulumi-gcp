@@ -129,16 +129,16 @@ public final class GetJobTemplateTemplate {
             return vpcAccesses(List.of(vpcAccesses));
         }
         public GetJobTemplateTemplate build() {
-            final var o = new GetJobTemplateTemplate();
-            o.containers = containers;
-            o.encryptionKey = encryptionKey;
-            o.executionEnvironment = executionEnvironment;
-            o.maxRetries = maxRetries;
-            o.serviceAccount = serviceAccount;
-            o.timeout = timeout;
-            o.volumes = volumes;
-            o.vpcAccesses = vpcAccesses;
-            return o;
+            final var _resultValue = new GetJobTemplateTemplate();
+            _resultValue.containers = containers;
+            _resultValue.encryptionKey = encryptionKey;
+            _resultValue.executionEnvironment = executionEnvironment;
+            _resultValue.maxRetries = maxRetries;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.timeout = timeout;
+            _resultValue.volumes = volumes;
+            _resultValue.vpcAccesses = vpcAccesses;
+            return _resultValue;
         }
     }
 }

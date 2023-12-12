@@ -225,19 +225,19 @@ public final class GetSSLPolicyResult {
             return this;
         }
         public GetSSLPolicyResult build() {
-            final var o = new GetSSLPolicyResult();
-            o.creationTimestamp = creationTimestamp;
-            o.customFeatures = customFeatures;
-            o.description = description;
-            o.enabledFeatures = enabledFeatures;
-            o.fingerprint = fingerprint;
-            o.id = id;
-            o.minTlsVersion = minTlsVersion;
-            o.name = name;
-            o.profile = profile;
-            o.project = project;
-            o.selfLink = selfLink;
-            return o;
+            final var _resultValue = new GetSSLPolicyResult();
+            _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.customFeatures = customFeatures;
+            _resultValue.description = description;
+            _resultValue.enabledFeatures = enabledFeatures;
+            _resultValue.fingerprint = fingerprint;
+            _resultValue.id = id;
+            _resultValue.minTlsVersion = minTlsVersion;
+            _resultValue.name = name;
+            _resultValue.profile = profile;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            return _resultValue;
         }
     }
 }

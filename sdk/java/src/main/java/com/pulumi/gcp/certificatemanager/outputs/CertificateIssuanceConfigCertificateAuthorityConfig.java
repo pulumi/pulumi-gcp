@@ -50,9 +50,9 @@ public final class CertificateIssuanceConfigCertificateAuthorityConfig {
             return this;
         }
         public CertificateIssuanceConfigCertificateAuthorityConfig build() {
-            final var o = new CertificateIssuanceConfigCertificateAuthorityConfig();
-            o.certificateAuthorityServiceConfig = certificateAuthorityServiceConfig;
-            return o;
+            final var _resultValue = new CertificateIssuanceConfigCertificateAuthorityConfig();
+            _resultValue.certificateAuthorityServiceConfig = certificateAuthorityServiceConfig;
+            return _resultValue;
         }
     }
 }

@@ -83,12 +83,12 @@ public final class RepositoryCleanupPolicy {
             return this;
         }
         public RepositoryCleanupPolicy build() {
-            final var o = new RepositoryCleanupPolicy();
-            o.action = action;
-            o.condition = condition;
-            o.id = id;
-            o.mostRecentVersions = mostRecentVersions;
-            return o;
+            final var _resultValue = new RepositoryCleanupPolicy();
+            _resultValue.action = action;
+            _resultValue.condition = condition;
+            _resultValue.id = id;
+            _resultValue.mostRecentVersions = mostRecentVersions;
+            return _resultValue;
         }
     }
 }

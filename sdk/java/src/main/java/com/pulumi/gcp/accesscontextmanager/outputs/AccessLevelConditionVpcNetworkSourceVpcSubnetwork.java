@@ -70,10 +70,10 @@ public final class AccessLevelConditionVpcNetworkSourceVpcSubnetwork {
             return vpcIpSubnetworks(List.of(vpcIpSubnetworks));
         }
         public AccessLevelConditionVpcNetworkSourceVpcSubnetwork build() {
-            final var o = new AccessLevelConditionVpcNetworkSourceVpcSubnetwork();
-            o.network = network;
-            o.vpcIpSubnetworks = vpcIpSubnetworks;
-            return o;
+            final var _resultValue = new AccessLevelConditionVpcNetworkSourceVpcSubnetwork();
+            _resultValue.network = network;
+            _resultValue.vpcIpSubnetworks = vpcIpSubnetworks;
+            return _resultValue;
         }
     }
 }

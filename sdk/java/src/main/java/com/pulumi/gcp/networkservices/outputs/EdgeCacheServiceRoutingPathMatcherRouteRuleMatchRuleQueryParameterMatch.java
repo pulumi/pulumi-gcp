@@ -87,11 +87,11 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryPara
             return this;
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch();
-            o.exactMatch = exactMatch;
-            o.name = name;
-            o.presentMatch = presentMatch;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch();
+            _resultValue.exactMatch = exactMatch;
+            _resultValue.name = name;
+            _resultValue.presentMatch = presentMatch;
+            return _resultValue;
         }
     }
 }

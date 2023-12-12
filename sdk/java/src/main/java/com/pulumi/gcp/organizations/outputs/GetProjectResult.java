@@ -179,20 +179,20 @@ public final class GetProjectResult {
             return this;
         }
         public GetProjectResult build() {
-            final var o = new GetProjectResult();
-            o.autoCreateNetwork = autoCreateNetwork;
-            o.billingAccount = billingAccount;
-            o.effectiveLabels = effectiveLabels;
-            o.folderId = folderId;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.number = number;
-            o.orgId = orgId;
-            o.projectId = projectId;
-            o.pulumiLabels = pulumiLabels;
-            o.skipDelete = skipDelete;
-            return o;
+            final var _resultValue = new GetProjectResult();
+            _resultValue.autoCreateNetwork = autoCreateNetwork;
+            _resultValue.billingAccount = billingAccount;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.folderId = folderId;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.number = number;
+            _resultValue.orgId = orgId;
+            _resultValue.projectId = projectId;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.skipDelete = skipDelete;
+            return _resultValue;
         }
     }
 }

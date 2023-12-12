@@ -76,10 +76,10 @@ public final class RegionSecurityPolicyRuleMatch {
             return this;
         }
         public RegionSecurityPolicyRuleMatch build() {
-            final var o = new RegionSecurityPolicyRuleMatch();
-            o.config = config;
-            o.versionedExpr = versionedExpr;
-            return o;
+            final var _resultValue = new RegionSecurityPolicyRuleMatch();
+            _resultValue.config = config;
+            _resultValue.versionedExpr = versionedExpr;
+            return _resultValue;
         }
     }
 }

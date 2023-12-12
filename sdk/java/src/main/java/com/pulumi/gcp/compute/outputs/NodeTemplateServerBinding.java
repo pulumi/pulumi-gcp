@@ -68,9 +68,9 @@ public final class NodeTemplateServerBinding {
             return this;
         }
         public NodeTemplateServerBinding build() {
-            final var o = new NodeTemplateServerBinding();
-            o.type = type;
-            return o;
+            final var _resultValue = new NodeTemplateServerBinding();
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

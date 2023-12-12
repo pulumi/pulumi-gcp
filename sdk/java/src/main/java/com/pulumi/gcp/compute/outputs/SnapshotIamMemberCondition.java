@@ -62,11 +62,11 @@ public final class SnapshotIamMemberCondition {
             return this;
         }
         public SnapshotIamMemberCondition build() {
-            final var o = new SnapshotIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new SnapshotIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

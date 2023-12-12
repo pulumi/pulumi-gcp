@@ -174,15 +174,15 @@ public final class PreventionJobTriggerInspectJobAction {
             return this;
         }
         public PreventionJobTriggerInspectJobAction build() {
-            final var o = new PreventionJobTriggerInspectJobAction();
-            o.deidentify = deidentify;
-            o.jobNotificationEmails = jobNotificationEmails;
-            o.pubSub = pubSub;
-            o.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
-            o.publishSummaryToCscc = publishSummaryToCscc;
-            o.publishToStackdriver = publishToStackdriver;
-            o.saveFindings = saveFindings;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobAction();
+            _resultValue.deidentify = deidentify;
+            _resultValue.jobNotificationEmails = jobNotificationEmails;
+            _resultValue.pubSub = pubSub;
+            _resultValue.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
+            _resultValue.publishSummaryToCscc = publishSummaryToCscc;
+            _resultValue.publishToStackdriver = publishToStackdriver;
+            _resultValue.saveFindings = saveFindings;
+            return _resultValue;
         }
     }
 }

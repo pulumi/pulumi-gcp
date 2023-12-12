@@ -38,9 +38,9 @@ public final class GetBucketVersioning {
             return this;
         }
         public GetBucketVersioning build() {
-            final var o = new GetBucketVersioning();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetBucketVersioning();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

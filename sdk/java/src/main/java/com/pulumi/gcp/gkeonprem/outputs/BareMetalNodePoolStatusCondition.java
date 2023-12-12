@@ -130,13 +130,13 @@ public final class BareMetalNodePoolStatusCondition {
             return this;
         }
         public BareMetalNodePoolStatusCondition build() {
-            final var o = new BareMetalNodePoolStatusCondition();
-            o.lastTransitionTime = lastTransitionTime;
-            o.message = message;
-            o.reason = reason;
-            o.state = state;
-            o.type = type;
-            return o;
+            final var _resultValue = new BareMetalNodePoolStatusCondition();
+            _resultValue.lastTransitionTime = lastTransitionTime;
+            _resultValue.message = message;
+            _resultValue.reason = reason;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

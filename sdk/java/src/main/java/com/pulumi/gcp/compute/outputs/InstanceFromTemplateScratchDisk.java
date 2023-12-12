@@ -63,11 +63,11 @@ public final class InstanceFromTemplateScratchDisk {
             return this;
         }
         public InstanceFromTemplateScratchDisk build() {
-            final var o = new InstanceFromTemplateScratchDisk();
-            o.deviceName = deviceName;
-            o.interface_ = interface_;
-            o.size = size;
-            return o;
+            final var _resultValue = new InstanceFromTemplateScratchDisk();
+            _resultValue.deviceName = deviceName;
+            _resultValue.interface_ = interface_;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class NodePoolNodeConfigConfidentialNodes {
             return this;
         }
         public NodePoolNodeConfigConfidentialNodes build() {
-            final var o = new NodePoolNodeConfigConfidentialNodes();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigConfidentialNodes();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

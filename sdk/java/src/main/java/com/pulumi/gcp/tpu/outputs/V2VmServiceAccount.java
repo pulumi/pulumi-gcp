@@ -73,10 +73,10 @@ public final class V2VmServiceAccount {
             return scopes(List.of(scopes));
         }
         public V2VmServiceAccount build() {
-            final var o = new V2VmServiceAccount();
-            o.email = email;
-            o.scopes = scopes;
-            return o;
+            final var _resultValue = new V2VmServiceAccount();
+            _resultValue.email = email;
+            _resultValue.scopes = scopes;
+            return _resultValue;
         }
     }
 }

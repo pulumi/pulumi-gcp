@@ -62,11 +62,11 @@ public final class BackupPlanIamBindingCondition {
             return this;
         }
         public BackupPlanIamBindingCondition build() {
-            final var o = new BackupPlanIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new BackupPlanIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

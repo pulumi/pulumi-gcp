@@ -129,13 +129,13 @@ public final class ConnectionProfileForwardSshConnectivity {
             return this;
         }
         public ConnectionProfileForwardSshConnectivity build() {
-            final var o = new ConnectionProfileForwardSshConnectivity();
-            o.hostname = hostname;
-            o.password = password;
-            o.port = port;
-            o.privateKey = privateKey;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionProfileForwardSshConnectivity();
+            _resultValue.hostname = hostname;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.privateKey = privateKey;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

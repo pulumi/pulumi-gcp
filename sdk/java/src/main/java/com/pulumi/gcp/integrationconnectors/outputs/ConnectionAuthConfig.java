@@ -205,16 +205,16 @@ public final class ConnectionAuthConfig {
             return this;
         }
         public ConnectionAuthConfig build() {
-            final var o = new ConnectionAuthConfig();
-            o.additionalVariables = additionalVariables;
-            o.authKey = authKey;
-            o.authType = authType;
-            o.oauth2AuthCodeFlow = oauth2AuthCodeFlow;
-            o.oauth2ClientCredentials = oauth2ClientCredentials;
-            o.oauth2JwtBearer = oauth2JwtBearer;
-            o.sshPublicKey = sshPublicKey;
-            o.userPassword = userPassword;
-            return o;
+            final var _resultValue = new ConnectionAuthConfig();
+            _resultValue.additionalVariables = additionalVariables;
+            _resultValue.authKey = authKey;
+            _resultValue.authType = authType;
+            _resultValue.oauth2AuthCodeFlow = oauth2AuthCodeFlow;
+            _resultValue.oauth2ClientCredentials = oauth2ClientCredentials;
+            _resultValue.oauth2JwtBearer = oauth2JwtBearer;
+            _resultValue.sshPublicKey = sshPublicKey;
+            _resultValue.userPassword = userPassword;
+            return _resultValue;
         }
     }
 }

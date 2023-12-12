@@ -62,11 +62,11 @@ public final class SchemaIamBindingCondition {
             return this;
         }
         public SchemaIamBindingCondition build() {
-            final var o = new SchemaIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new SchemaIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

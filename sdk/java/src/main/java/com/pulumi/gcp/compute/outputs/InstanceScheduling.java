@@ -230,18 +230,18 @@ public final class InstanceScheduling {
             return this;
         }
         public InstanceScheduling build() {
-            final var o = new InstanceScheduling();
-            o.automaticRestart = automaticRestart;
-            o.instanceTerminationAction = instanceTerminationAction;
-            o.localSsdRecoveryTimeout = localSsdRecoveryTimeout;
-            o.maintenanceInterval = maintenanceInterval;
-            o.maxRunDuration = maxRunDuration;
-            o.minNodeCpus = minNodeCpus;
-            o.nodeAffinities = nodeAffinities;
-            o.onHostMaintenance = onHostMaintenance;
-            o.preemptible = preemptible;
-            o.provisioningModel = provisioningModel;
-            return o;
+            final var _resultValue = new InstanceScheduling();
+            _resultValue.automaticRestart = automaticRestart;
+            _resultValue.instanceTerminationAction = instanceTerminationAction;
+            _resultValue.localSsdRecoveryTimeout = localSsdRecoveryTimeout;
+            _resultValue.maintenanceInterval = maintenanceInterval;
+            _resultValue.maxRunDuration = maxRunDuration;
+            _resultValue.minNodeCpus = minNodeCpus;
+            _resultValue.nodeAffinities = nodeAffinities;
+            _resultValue.onHostMaintenance = onHostMaintenance;
+            _resultValue.preemptible = preemptible;
+            _resultValue.provisioningModel = provisioningModel;
+            return _resultValue;
         }
     }
 }

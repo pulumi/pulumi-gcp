@@ -71,10 +71,10 @@ public final class WorkforcePoolProviderOidcClientSecretValue {
             return this;
         }
         public WorkforcePoolProviderOidcClientSecretValue build() {
-            final var o = new WorkforcePoolProviderOidcClientSecretValue();
-            o.plainText = plainText;
-            o.thumbprint = thumbprint;
-            return o;
+            final var _resultValue = new WorkforcePoolProviderOidcClientSecretValue();
+            _resultValue.plainText = plainText;
+            _resultValue.thumbprint = thumbprint;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class FunctionSourceRepository {
             return this;
         }
         public FunctionSourceRepository build() {
-            final var o = new FunctionSourceRepository();
-            o.deployedUrl = deployedUrl;
-            o.url = url;
-            return o;
+            final var _resultValue = new FunctionSourceRepository();
+            _resultValue.deployedUrl = deployedUrl;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

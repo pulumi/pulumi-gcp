@@ -112,12 +112,12 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
             return this;
         }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment();
-            o.percentages = percentages;
-            o.postdeploy = postdeploy;
-            o.predeploy = predeploy;
-            o.verify = verify;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment();
+            _resultValue.percentages = percentages;
+            _resultValue.postdeploy = postdeploy;
+            _resultValue.predeploy = predeploy;
+            _resultValue.verify = verify;
+            return _resultValue;
         }
     }
 }

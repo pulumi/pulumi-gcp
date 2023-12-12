@@ -25,8 +25,8 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogate
         }
 
         public PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType build() {
-            final var o = new PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType();
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType();
+            return _resultValue;
         }
     }
 }

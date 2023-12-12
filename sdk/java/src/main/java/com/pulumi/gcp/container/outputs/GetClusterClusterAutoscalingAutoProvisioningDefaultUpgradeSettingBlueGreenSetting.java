@@ -54,10 +54,10 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSet
             return standardRolloutPolicies(List.of(standardRolloutPolicies));
         }
         public GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting build() {
-            final var o = new GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting();
-            o.nodePoolSoakDuration = nodePoolSoakDuration;
-            o.standardRolloutPolicies = standardRolloutPolicies;
-            return o;
+            final var _resultValue = new GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting();
+            _resultValue.nodePoolSoakDuration = nodePoolSoakDuration;
+            _resultValue.standardRolloutPolicies = standardRolloutPolicies;
+            return _resultValue;
         }
     }
 }

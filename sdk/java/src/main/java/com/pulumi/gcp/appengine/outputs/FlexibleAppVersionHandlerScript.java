@@ -46,9 +46,9 @@ public final class FlexibleAppVersionHandlerScript {
             return this;
         }
         public FlexibleAppVersionHandlerScript build() {
-            final var o = new FlexibleAppVersionHandlerScript();
-            o.scriptPath = scriptPath;
-            return o;
+            final var _resultValue = new FlexibleAppVersionHandlerScript();
+            _resultValue.scriptPath = scriptPath;
+            return _resultValue;
         }
     }
 }

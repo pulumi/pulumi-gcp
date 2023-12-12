@@ -57,10 +57,10 @@ public final class GetInstanceTemplateDiskSourceSnapshotEncryptionKey {
             return this;
         }
         public GetInstanceTemplateDiskSourceSnapshotEncryptionKey build() {
-            final var o = new GetInstanceTemplateDiskSourceSnapshotEncryptionKey();
-            o.kmsKeySelfLink = kmsKeySelfLink;
-            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
-            return o;
+            final var _resultValue = new GetInstanceTemplateDiskSourceSnapshotEncryptionKey();
+            _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            return _resultValue;
         }
     }
 }

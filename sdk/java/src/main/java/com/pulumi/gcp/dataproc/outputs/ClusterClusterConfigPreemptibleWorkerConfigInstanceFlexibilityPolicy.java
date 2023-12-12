@@ -66,10 +66,10 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
             return instanceSelectionResults(List.of(instanceSelectionResults));
         }
         public ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy build() {
-            final var o = new ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy();
-            o.instanceSelectionLists = instanceSelectionLists;
-            o.instanceSelectionResults = instanceSelectionResults;
-            return o;
+            final var _resultValue = new ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy();
+            _resultValue.instanceSelectionLists = instanceSelectionLists;
+            _resultValue.instanceSelectionResults = instanceSelectionResults;
+            return _resultValue;
         }
     }
 }

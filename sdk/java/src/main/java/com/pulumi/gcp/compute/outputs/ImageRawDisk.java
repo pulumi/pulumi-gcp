@@ -102,11 +102,11 @@ public final class ImageRawDisk {
             return this;
         }
         public ImageRawDisk build() {
-            final var o = new ImageRawDisk();
-            o.containerType = containerType;
-            o.sha1 = sha1;
-            o.source = source;
-            return o;
+            final var _resultValue = new ImageRawDisk();
+            _resultValue.containerType = containerType;
+            _resultValue.sha1 = sha1;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

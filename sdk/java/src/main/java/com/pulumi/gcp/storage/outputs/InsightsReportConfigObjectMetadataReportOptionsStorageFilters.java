@@ -48,9 +48,9 @@ public final class InsightsReportConfigObjectMetadataReportOptionsStorageFilters
             return this;
         }
         public InsightsReportConfigObjectMetadataReportOptionsStorageFilters build() {
-            final var o = new InsightsReportConfigObjectMetadataReportOptionsStorageFilters();
-            o.bucket = bucket;
-            return o;
+            final var _resultValue = new InsightsReportConfigObjectMetadataReportOptionsStorageFilters();
+            _resultValue.bucket = bucket;
+            return _resultValue;
         }
     }
 }

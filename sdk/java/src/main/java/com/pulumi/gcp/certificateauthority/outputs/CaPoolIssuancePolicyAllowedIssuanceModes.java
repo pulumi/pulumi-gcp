@@ -65,10 +65,10 @@ public final class CaPoolIssuancePolicyAllowedIssuanceModes {
             return this;
         }
         public CaPoolIssuancePolicyAllowedIssuanceModes build() {
-            final var o = new CaPoolIssuancePolicyAllowedIssuanceModes();
-            o.allowConfigBasedIssuance = allowConfigBasedIssuance;
-            o.allowCsrBasedIssuance = allowCsrBasedIssuance;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyAllowedIssuanceModes();
+            _resultValue.allowConfigBasedIssuance = allowConfigBasedIssuance;
+            _resultValue.allowCsrBasedIssuance = allowCsrBasedIssuance;
+            return _resultValue;
         }
     }
 }

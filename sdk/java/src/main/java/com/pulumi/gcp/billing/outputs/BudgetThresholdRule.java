@@ -76,10 +76,10 @@ public final class BudgetThresholdRule {
             return this;
         }
         public BudgetThresholdRule build() {
-            final var o = new BudgetThresholdRule();
-            o.spendBasis = spendBasis;
-            o.thresholdPercent = thresholdPercent;
-            return o;
+            final var _resultValue = new BudgetThresholdRule();
+            _resultValue.spendBasis = spendBasis;
+            _resultValue.thresholdPercent = thresholdPercent;
+            return _resultValue;
         }
     }
 }

@@ -142,13 +142,13 @@ public final class VMwareClusterControlPlaneNode {
             return vsphereConfigs(List.of(vsphereConfigs));
         }
         public VMwareClusterControlPlaneNode build() {
-            final var o = new VMwareClusterControlPlaneNode();
-            o.autoResizeConfig = autoResizeConfig;
-            o.cpus = cpus;
-            o.memory = memory;
-            o.replicas = replicas;
-            o.vsphereConfigs = vsphereConfigs;
-            return o;
+            final var _resultValue = new VMwareClusterControlPlaneNode();
+            _resultValue.autoResizeConfig = autoResizeConfig;
+            _resultValue.cpus = cpus;
+            _resultValue.memory = memory;
+            _resultValue.replicas = replicas;
+            _resultValue.vsphereConfigs = vsphereConfigs;
+            return _resultValue;
         }
     }
 }

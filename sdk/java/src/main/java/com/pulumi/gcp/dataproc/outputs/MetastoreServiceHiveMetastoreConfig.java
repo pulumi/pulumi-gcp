@@ -119,13 +119,13 @@ public final class MetastoreServiceHiveMetastoreConfig {
             return this;
         }
         public MetastoreServiceHiveMetastoreConfig build() {
-            final var o = new MetastoreServiceHiveMetastoreConfig();
-            o.auxiliaryVersions = auxiliaryVersions;
-            o.configOverrides = configOverrides;
-            o.endpointProtocol = endpointProtocol;
-            o.kerberosConfig = kerberosConfig;
-            o.version = version;
-            return o;
+            final var _resultValue = new MetastoreServiceHiveMetastoreConfig();
+            _resultValue.auxiliaryVersions = auxiliaryVersions;
+            _resultValue.configOverrides = configOverrides;
+            _resultValue.endpointProtocol = endpointProtocol;
+            _resultValue.kerberosConfig = kerberosConfig;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

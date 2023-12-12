@@ -123,13 +123,13 @@ public final class FeatureMembershipConfigmanagementConfigSync {
             return this;
         }
         public FeatureMembershipConfigmanagementConfigSync build() {
-            final var o = new FeatureMembershipConfigmanagementConfigSync();
-            o.git = git;
-            o.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
-            o.oci = oci;
-            o.preventDrift = preventDrift;
-            o.sourceFormat = sourceFormat;
-            return o;
+            final var _resultValue = new FeatureMembershipConfigmanagementConfigSync();
+            _resultValue.git = git;
+            _resultValue.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
+            _resultValue.oci = oci;
+            _resultValue.preventDrift = preventDrift;
+            _resultValue.sourceFormat = sourceFormat;
+            return _resultValue;
         }
     }
 }

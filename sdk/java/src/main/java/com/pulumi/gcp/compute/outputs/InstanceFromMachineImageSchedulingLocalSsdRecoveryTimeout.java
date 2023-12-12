@@ -51,10 +51,10 @@ public final class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout {
             return this;
         }
         public InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout build() {
-            final var o = new InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

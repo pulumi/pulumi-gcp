@@ -69,11 +69,11 @@ public final class GetServiceTemplateSpecContainerEnvFrom {
             return secretReves(List.of(secretReves));
         }
         public GetServiceTemplateSpecContainerEnvFrom build() {
-            final var o = new GetServiceTemplateSpecContainerEnvFrom();
-            o.configMapReves = configMapReves;
-            o.prefix = prefix;
-            o.secretReves = secretReves;
-            return o;
+            final var _resultValue = new GetServiceTemplateSpecContainerEnvFrom();
+            _resultValue.configMapReves = configMapReves;
+            _resultValue.prefix = prefix;
+            _resultValue.secretReves = secretReves;
+            return _resultValue;
         }
     }
 }
