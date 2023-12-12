@@ -50,9 +50,9 @@ public final class RestorePlanRestoreConfigSelectedNamespaces {
             return namespaces(List.of(namespaces));
         }
         public RestorePlanRestoreConfigSelectedNamespaces build() {
-            final var o = new RestorePlanRestoreConfigSelectedNamespaces();
-            o.namespaces = namespaces;
-            return o;
+            final var _resultValue = new RestorePlanRestoreConfigSelectedNamespaces();
+            _resultValue.namespaces = namespaces;
+            return _resultValue;
         }
     }
 }

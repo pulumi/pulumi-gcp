@@ -67,10 +67,10 @@ public final class AwsClusterFleet {
             return this;
         }
         public AwsClusterFleet build() {
-            final var o = new AwsClusterFleet();
-            o.membership = membership;
-            o.project = project;
-            return o;
+            final var _resultValue = new AwsClusterFleet();
+            _resultValue.membership = membership;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

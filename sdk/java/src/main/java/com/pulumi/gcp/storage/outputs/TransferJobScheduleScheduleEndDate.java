@@ -88,11 +88,11 @@ public final class TransferJobScheduleScheduleEndDate {
             return this;
         }
         public TransferJobScheduleScheduleEndDate build() {
-            final var o = new TransferJobScheduleScheduleEndDate();
-            o.day = day;
-            o.month = month;
-            o.year = year;
-            return o;
+            final var _resultValue = new TransferJobScheduleScheduleEndDate();
+            _resultValue.day = day;
+            _resultValue.month = month;
+            _resultValue.year = year;
+            return _resultValue;
         }
     }
 }

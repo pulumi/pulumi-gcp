@@ -129,12 +129,12 @@ public final class ClusterNodePoolNodeConfigKubeletConfig {
             return this;
         }
         public ClusterNodePoolNodeConfigKubeletConfig build() {
-            final var o = new ClusterNodePoolNodeConfigKubeletConfig();
-            o.cpuCfsQuota = cpuCfsQuota;
-            o.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
-            o.cpuManagerPolicy = cpuManagerPolicy;
-            o.podPidsLimit = podPidsLimit;
-            return o;
+            final var _resultValue = new ClusterNodePoolNodeConfigKubeletConfig();
+            _resultValue.cpuCfsQuota = cpuCfsQuota;
+            _resultValue.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
+            _resultValue.cpuManagerPolicy = cpuManagerPolicy;
+            _resultValue.podPidsLimit = podPidsLimit;
+            return _resultValue;
         }
     }
 }

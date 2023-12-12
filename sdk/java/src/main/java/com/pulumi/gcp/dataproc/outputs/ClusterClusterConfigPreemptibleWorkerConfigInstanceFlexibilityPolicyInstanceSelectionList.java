@@ -76,10 +76,10 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
             return this;
         }
         public ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList build() {
-            final var o = new ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList();
-            o.machineTypes = machineTypes;
-            o.rank = rank;
-            return o;
+            final var _resultValue = new ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList();
+            _resultValue.machineTypes = machineTypes;
+            _resultValue.rank = rank;
+            return _resultValue;
         }
     }
 }

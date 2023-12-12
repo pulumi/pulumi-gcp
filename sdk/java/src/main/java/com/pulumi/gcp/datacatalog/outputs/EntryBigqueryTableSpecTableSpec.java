@@ -56,9 +56,9 @@ public final class EntryBigqueryTableSpecTableSpec {
             return this;
         }
         public EntryBigqueryTableSpecTableSpec build() {
-            final var o = new EntryBigqueryTableSpecTableSpec();
-            o.groupedEntry = groupedEntry;
-            return o;
+            final var _resultValue = new EntryBigqueryTableSpecTableSpec();
+            _resultValue.groupedEntry = groupedEntry;
+            return _resultValue;
         }
     }
 }

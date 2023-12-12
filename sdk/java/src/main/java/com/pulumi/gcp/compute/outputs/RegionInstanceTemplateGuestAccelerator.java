@@ -68,10 +68,10 @@ public final class RegionInstanceTemplateGuestAccelerator {
             return this;
         }
         public RegionInstanceTemplateGuestAccelerator build() {
-            final var o = new RegionInstanceTemplateGuestAccelerator();
-            o.count = count;
-            o.type = type;
-            return o;
+            final var _resultValue = new RegionInstanceTemplateGuestAccelerator();
+            _resultValue.count = count;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

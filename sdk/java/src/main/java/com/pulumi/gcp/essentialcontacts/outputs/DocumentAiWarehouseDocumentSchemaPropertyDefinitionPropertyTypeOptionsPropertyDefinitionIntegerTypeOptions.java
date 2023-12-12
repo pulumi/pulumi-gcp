@@ -25,8 +25,8 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTy
         }
 
         public DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions build() {
-            final var o = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions();
-            return o;
+            final var _resultValue = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions();
+            return _resultValue;
         }
     }
 }

@@ -70,10 +70,10 @@ public final class DenyPolicyRule {
             return this;
         }
         public DenyPolicyRule build() {
-            final var o = new DenyPolicyRule();
-            o.denyRule = denyRule;
-            o.description = description;
-            return o;
+            final var _resultValue = new DenyPolicyRule();
+            _resultValue.denyRule = denyRule;
+            _resultValue.description = description;
+            return _resultValue;
         }
     }
 }

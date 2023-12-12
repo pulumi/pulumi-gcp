@@ -437,24 +437,24 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
             return this;
         }
         public RuntimeVirtualMachineVirtualMachineConfig build() {
-            final var o = new RuntimeVirtualMachineVirtualMachineConfig();
-            o.acceleratorConfig = acceleratorConfig;
-            o.containerImages = containerImages;
-            o.dataDisk = dataDisk;
-            o.encryptionConfig = encryptionConfig;
-            o.guestAttributes = guestAttributes;
-            o.internalIpOnly = internalIpOnly;
-            o.labels = labels;
-            o.machineType = machineType;
-            o.metadata = metadata;
-            o.network = network;
-            o.nicType = nicType;
-            o.reservedIpRange = reservedIpRange;
-            o.shieldedInstanceConfig = shieldedInstanceConfig;
-            o.subnet = subnet;
-            o.tags = tags;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new RuntimeVirtualMachineVirtualMachineConfig();
+            _resultValue.acceleratorConfig = acceleratorConfig;
+            _resultValue.containerImages = containerImages;
+            _resultValue.dataDisk = dataDisk;
+            _resultValue.encryptionConfig = encryptionConfig;
+            _resultValue.guestAttributes = guestAttributes;
+            _resultValue.internalIpOnly = internalIpOnly;
+            _resultValue.labels = labels;
+            _resultValue.machineType = machineType;
+            _resultValue.metadata = metadata;
+            _resultValue.network = network;
+            _resultValue.nicType = nicType;
+            _resultValue.reservedIpRange = reservedIpRange;
+            _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
+            _resultValue.subnet = subnet;
+            _resultValue.tags = tags;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

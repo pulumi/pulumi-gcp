@@ -88,11 +88,11 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandard {
             return this;
         }
         public DeliveryPipelineSerialPipelineStageStrategyStandard build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategyStandard();
-            o.postdeploy = postdeploy;
-            o.predeploy = predeploy;
-            o.verify = verify;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyStandard();
+            _resultValue.postdeploy = postdeploy;
+            _resultValue.predeploy = predeploy;
+            _resultValue.verify = verify;
+            return _resultValue;
         }
     }
 }

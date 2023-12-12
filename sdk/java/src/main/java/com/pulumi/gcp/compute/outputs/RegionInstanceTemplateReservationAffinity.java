@@ -70,10 +70,10 @@ public final class RegionInstanceTemplateReservationAffinity {
             return this;
         }
         public RegionInstanceTemplateReservationAffinity build() {
-            final var o = new RegionInstanceTemplateReservationAffinity();
-            o.specificReservation = specificReservation;
-            o.type = type;
-            return o;
+            final var _resultValue = new RegionInstanceTemplateReservationAffinity();
+            _resultValue.specificReservation = specificReservation;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -62,10 +62,10 @@ public final class GetInstanceReservationAffinity {
             return this;
         }
         public GetInstanceReservationAffinity build() {
-            final var o = new GetInstanceReservationAffinity();
-            o.specificReservations = specificReservations;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetInstanceReservationAffinity();
+            _resultValue.specificReservations = specificReservations;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

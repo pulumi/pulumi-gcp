@@ -50,9 +50,9 @@ public final class VMwareClusterAntiAffinityGroups {
             return this;
         }
         public VMwareClusterAntiAffinityGroups build() {
-            final var o = new VMwareClusterAntiAffinityGroups();
-            o.aagConfigDisabled = aagConfigDisabled;
-            return o;
+            final var _resultValue = new VMwareClusterAntiAffinityGroups();
+            _resultValue.aagConfigDisabled = aagConfigDisabled;
+            return _resultValue;
         }
     }
 }

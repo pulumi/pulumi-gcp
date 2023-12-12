@@ -89,11 +89,11 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText {
             return this;
         }
         public CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText build() {
-            final var o = new CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.ssml = ssml;
-            o.text = text;
-            return o;
+            final var _resultValue = new CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.ssml = ssml;
+            _resultValue.text = text;
+            return _resultValue;
         }
     }
 }

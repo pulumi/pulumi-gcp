@@ -46,9 +46,9 @@ public final class AiEndpointEncryptionSpec {
             return this;
         }
         public AiEndpointEncryptionSpec build() {
-            final var o = new AiEndpointEncryptionSpec();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new AiEndpointEncryptionSpec();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

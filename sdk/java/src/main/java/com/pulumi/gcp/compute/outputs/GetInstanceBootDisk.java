@@ -165,16 +165,16 @@ public final class GetInstanceBootDisk {
             return this;
         }
         public GetInstanceBootDisk build() {
-            final var o = new GetInstanceBootDisk();
-            o.autoDelete = autoDelete;
-            o.deviceName = deviceName;
-            o.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
-            o.diskEncryptionKeySha256 = diskEncryptionKeySha256;
-            o.initializeParams = initializeParams;
-            o.kmsKeySelfLink = kmsKeySelfLink;
-            o.mode = mode;
-            o.source = source;
-            return o;
+            final var _resultValue = new GetInstanceBootDisk();
+            _resultValue.autoDelete = autoDelete;
+            _resultValue.deviceName = deviceName;
+            _resultValue.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
+            _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            _resultValue.initializeParams = initializeParams;
+            _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            _resultValue.mode = mode;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConf
             return this;
         }
         public GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig build() {
-            final var o = new GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig();
-            o.gpuDriverVersion = gpuDriverVersion;
-            return o;
+            final var _resultValue = new GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig();
+            _resultValue.gpuDriverVersion = gpuDriverVersion;
+            return _resultValue;
         }
     }
 }

@@ -82,11 +82,11 @@ public final class GetInstanceTemplateNetworkInterfaceAccessConfig {
             return this;
         }
         public GetInstanceTemplateNetworkInterfaceAccessConfig build() {
-            final var o = new GetInstanceTemplateNetworkInterfaceAccessConfig();
-            o.natIp = natIp;
-            o.networkTier = networkTier;
-            o.publicPtrDomainName = publicPtrDomainName;
-            return o;
+            final var _resultValue = new GetInstanceTemplateNetworkInterfaceAccessConfig();
+            _resultValue.natIp = natIp;
+            _resultValue.networkTier = networkTier;
+            _resultValue.publicPtrDomainName = publicPtrDomainName;
+            return _resultValue;
         }
     }
 }

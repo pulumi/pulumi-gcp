@@ -65,11 +65,11 @@ public final class GetClusterResourceUsageExportConfig {
             return this;
         }
         public GetClusterResourceUsageExportConfig build() {
-            final var o = new GetClusterResourceUsageExportConfig();
-            o.bigqueryDestinations = bigqueryDestinations;
-            o.enableNetworkEgressMetering = enableNetworkEgressMetering;
-            o.enableResourceConsumptionMetering = enableResourceConsumptionMetering;
-            return o;
+            final var _resultValue = new GetClusterResourceUsageExportConfig();
+            _resultValue.bigqueryDestinations = bigqueryDestinations;
+            _resultValue.enableNetworkEgressMetering = enableNetworkEgressMetering;
+            _resultValue.enableResourceConsumptionMetering = enableResourceConsumptionMetering;
+            return _resultValue;
         }
     }
 }

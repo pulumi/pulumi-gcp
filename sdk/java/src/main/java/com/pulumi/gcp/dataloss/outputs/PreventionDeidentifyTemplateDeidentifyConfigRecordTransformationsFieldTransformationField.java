@@ -48,9 +48,9 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField();
-            o.name = name;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

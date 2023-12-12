@@ -69,10 +69,10 @@ public final class InstanceNodeConfig {
             return this;
         }
         public InstanceNodeConfig build() {
-            final var o = new InstanceNodeConfig();
-            o.cpuCount = cpuCount;
-            o.memorySizeMb = memorySizeMb;
-            return o;
+            final var _resultValue = new InstanceNodeConfig();
+            _resultValue.cpuCount = cpuCount;
+            _resultValue.memorySizeMb = memorySizeMb;
+            return _resultValue;
         }
     }
 }

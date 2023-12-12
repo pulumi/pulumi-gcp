@@ -49,10 +49,10 @@ public final class GetSubscriptionPushConfigOidcToken {
             return this;
         }
         public GetSubscriptionPushConfigOidcToken build() {
-            final var o = new GetSubscriptionPushConfigOidcToken();
-            o.audience = audience;
-            o.serviceAccountEmail = serviceAccountEmail;
-            return o;
+            final var _resultValue = new GetSubscriptionPushConfigOidcToken();
+            _resultValue.audience = audience;
+            _resultValue.serviceAccountEmail = serviceAccountEmail;
+            return _resultValue;
         }
     }
 }

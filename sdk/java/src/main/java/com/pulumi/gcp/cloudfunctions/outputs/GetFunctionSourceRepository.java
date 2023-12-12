@@ -57,10 +57,10 @@ public final class GetFunctionSourceRepository {
             return this;
         }
         public GetFunctionSourceRepository build() {
-            final var o = new GetFunctionSourceRepository();
-            o.deployedUrl = deployedUrl;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetFunctionSourceRepository();
+            _resultValue.deployedUrl = deployedUrl;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

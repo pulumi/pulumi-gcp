@@ -50,9 +50,9 @@ public final class CaPoolIssuancePolicyBaselineValuesPolicyId {
             return objectIdPaths(List.of(objectIdPaths));
         }
         public CaPoolIssuancePolicyBaselineValuesPolicyId build() {
-            final var o = new CaPoolIssuancePolicyBaselineValuesPolicyId();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyBaselineValuesPolicyId();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

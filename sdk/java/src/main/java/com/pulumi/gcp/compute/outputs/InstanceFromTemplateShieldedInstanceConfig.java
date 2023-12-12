@@ -62,11 +62,11 @@ public final class InstanceFromTemplateShieldedInstanceConfig {
             return this;
         }
         public InstanceFromTemplateShieldedInstanceConfig build() {
-            final var o = new InstanceFromTemplateShieldedInstanceConfig();
-            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
-            o.enableSecureBoot = enableSecureBoot;
-            o.enableVtpm = enableVtpm;
-            return o;
+            final var _resultValue = new InstanceFromTemplateShieldedInstanceConfig();
+            _resultValue.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            _resultValue.enableSecureBoot = enableSecureBoot;
+            _resultValue.enableVtpm = enableVtpm;
+            return _resultValue;
         }
     }
 }

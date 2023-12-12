@@ -46,9 +46,9 @@ public final class AwsClusterAuthorizationAdminGroup {
             return this;
         }
         public AwsClusterAuthorizationAdminGroup build() {
-            final var o = new AwsClusterAuthorizationAdminGroup();
-            o.group = group;
-            return o;
+            final var _resultValue = new AwsClusterAuthorizationAdminGroup();
+            _resultValue.group = group;
+            return _resultValue;
         }
     }
 }

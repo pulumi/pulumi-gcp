@@ -123,12 +123,12 @@ public final class RegionPerInstanceConfigPreservedStateDisk {
             return this;
         }
         public RegionPerInstanceConfigPreservedStateDisk build() {
-            final var o = new RegionPerInstanceConfigPreservedStateDisk();
-            o.deleteRule = deleteRule;
-            o.deviceName = deviceName;
-            o.mode = mode;
-            o.source = source;
-            return o;
+            final var _resultValue = new RegionPerInstanceConfigPreservedStateDisk();
+            _resultValue.deleteRule = deleteRule;
+            _resultValue.deviceName = deviceName;
+            _resultValue.mode = mode;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

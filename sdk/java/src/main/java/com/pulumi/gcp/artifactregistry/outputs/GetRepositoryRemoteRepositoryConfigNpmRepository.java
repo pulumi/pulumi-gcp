@@ -38,9 +38,9 @@ public final class GetRepositoryRemoteRepositoryConfigNpmRepository {
             return this;
         }
         public GetRepositoryRemoteRepositoryConfigNpmRepository build() {
-            final var o = new GetRepositoryRemoteRepositoryConfigNpmRepository();
-            o.publicRepository = publicRepository;
-            return o;
+            final var _resultValue = new GetRepositoryRemoteRepositoryConfigNpmRepository();
+            _resultValue.publicRepository = publicRepository;
+            return _resultValue;
         }
     }
 }

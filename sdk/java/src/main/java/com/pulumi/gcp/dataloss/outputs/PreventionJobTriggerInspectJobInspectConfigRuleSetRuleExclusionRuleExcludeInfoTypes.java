@@ -52,9 +52,9 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
             return infoTypes(List.of(infoTypes));
         }
         public PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes();
-            o.infoTypes = infoTypes;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes();
+            _resultValue.infoTypes = infoTypes;
+            return _resultValue;
         }
     }
 }

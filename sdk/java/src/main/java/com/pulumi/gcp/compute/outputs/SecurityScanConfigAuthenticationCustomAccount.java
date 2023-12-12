@@ -88,11 +88,11 @@ public final class SecurityScanConfigAuthenticationCustomAccount {
             return this;
         }
         public SecurityScanConfigAuthenticationCustomAccount build() {
-            final var o = new SecurityScanConfigAuthenticationCustomAccount();
-            o.loginUrl = loginUrl;
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new SecurityScanConfigAuthenticationCustomAccount();
+            _resultValue.loginUrl = loginUrl;
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

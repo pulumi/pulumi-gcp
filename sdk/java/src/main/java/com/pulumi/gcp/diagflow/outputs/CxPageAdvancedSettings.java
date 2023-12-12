@@ -58,9 +58,9 @@ public final class CxPageAdvancedSettings {
             return this;
         }
         public CxPageAdvancedSettings build() {
-            final var o = new CxPageAdvancedSettings();
-            o.dtmfSettings = dtmfSettings;
-            return o;
+            final var _resultValue = new CxPageAdvancedSettings();
+            _resultValue.dtmfSettings = dtmfSettings;
+            return _resultValue;
         }
     }
 }

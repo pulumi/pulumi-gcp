@@ -137,12 +137,12 @@ public final class BareMetalNodePoolNodePoolConfig {
             return taints(List.of(taints));
         }
         public BareMetalNodePoolNodePoolConfig build() {
-            final var o = new BareMetalNodePoolNodePoolConfig();
-            o.labels = labels;
-            o.nodeConfigs = nodeConfigs;
-            o.operatingSystem = operatingSystem;
-            o.taints = taints;
-            return o;
+            final var _resultValue = new BareMetalNodePoolNodePoolConfig();
+            _resultValue.labels = labels;
+            _resultValue.nodeConfigs = nodeConfigs;
+            _resultValue.operatingSystem = operatingSystem;
+            _resultValue.taints = taints;
+            return _resultValue;
         }
     }
 }

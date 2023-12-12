@@ -178,20 +178,20 @@ public final class GetBackendBucketResult {
             return this;
         }
         public GetBackendBucketResult build() {
-            final var o = new GetBackendBucketResult();
-            o.bucketName = bucketName;
-            o.cdnPolicies = cdnPolicies;
-            o.compressionMode = compressionMode;
-            o.creationTimestamp = creationTimestamp;
-            o.customResponseHeaders = customResponseHeaders;
-            o.description = description;
-            o.edgeSecurityPolicy = edgeSecurityPolicy;
-            o.enableCdn = enableCdn;
-            o.id = id;
-            o.name = name;
-            o.project = project;
-            o.selfLink = selfLink;
-            return o;
+            final var _resultValue = new GetBackendBucketResult();
+            _resultValue.bucketName = bucketName;
+            _resultValue.cdnPolicies = cdnPolicies;
+            _resultValue.compressionMode = compressionMode;
+            _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.customResponseHeaders = customResponseHeaders;
+            _resultValue.description = description;
+            _resultValue.edgeSecurityPolicy = edgeSecurityPolicy;
+            _resultValue.enableCdn = enableCdn;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            return _resultValue;
         }
     }
 }

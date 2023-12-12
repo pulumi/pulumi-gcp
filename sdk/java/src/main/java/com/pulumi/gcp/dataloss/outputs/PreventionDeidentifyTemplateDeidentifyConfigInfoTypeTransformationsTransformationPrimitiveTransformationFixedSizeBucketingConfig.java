@@ -102,11 +102,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig();
-            o.bucketSize = bucketSize;
-            o.lowerBound = lowerBound;
-            o.upperBound = upperBound;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig();
+            _resultValue.bucketSize = bucketSize;
+            _resultValue.lowerBound = lowerBound;
+            _resultValue.upperBound = upperBound;
+            return _resultValue;
         }
     }
 }

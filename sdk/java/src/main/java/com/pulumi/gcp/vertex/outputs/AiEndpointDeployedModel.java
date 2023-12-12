@@ -299,20 +299,20 @@ public final class AiEndpointDeployedModel {
             return this;
         }
         public AiEndpointDeployedModel build() {
-            final var o = new AiEndpointDeployedModel();
-            o.automaticResources = automaticResources;
-            o.createTime = createTime;
-            o.dedicatedResources = dedicatedResources;
-            o.displayName = displayName;
-            o.enableAccessLogging = enableAccessLogging;
-            o.enableContainerLogging = enableContainerLogging;
-            o.id = id;
-            o.model = model;
-            o.modelVersionId = modelVersionId;
-            o.privateEndpoints = privateEndpoints;
-            o.serviceAccount = serviceAccount;
-            o.sharedResources = sharedResources;
-            return o;
+            final var _resultValue = new AiEndpointDeployedModel();
+            _resultValue.automaticResources = automaticResources;
+            _resultValue.createTime = createTime;
+            _resultValue.dedicatedResources = dedicatedResources;
+            _resultValue.displayName = displayName;
+            _resultValue.enableAccessLogging = enableAccessLogging;
+            _resultValue.enableContainerLogging = enableContainerLogging;
+            _resultValue.id = id;
+            _resultValue.model = model;
+            _resultValue.modelVersionId = modelVersionId;
+            _resultValue.privateEndpoints = privateEndpoints;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.sharedResources = sharedResources;
+            return _resultValue;
         }
     }
 }

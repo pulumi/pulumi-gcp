@@ -67,10 +67,10 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
             return this;
         }
         public SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions build() {
-            final var o = new SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions();
-            o.target = target;
-            o.type = type;
-            return o;
+            final var _resultValue = new SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions();
+            _resultValue.target = target;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

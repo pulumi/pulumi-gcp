@@ -125,13 +125,13 @@ public final class AwsNodePoolConfigRootVolume {
             return this;
         }
         public AwsNodePoolConfigRootVolume build() {
-            final var o = new AwsNodePoolConfigRootVolume();
-            o.iops = iops;
-            o.kmsKeyArn = kmsKeyArn;
-            o.sizeGib = sizeGib;
-            o.throughput = throughput;
-            o.volumeType = volumeType;
-            return o;
+            final var _resultValue = new AwsNodePoolConfigRootVolume();
+            _resultValue.iops = iops;
+            _resultValue.kmsKeyArn = kmsKeyArn;
+            _resultValue.sizeGib = sizeGib;
+            _resultValue.throughput = throughput;
+            _resultValue.volumeType = volumeType;
+            return _resultValue;
         }
     }
 }

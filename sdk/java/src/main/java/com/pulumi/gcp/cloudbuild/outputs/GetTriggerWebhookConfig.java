@@ -49,10 +49,10 @@ public final class GetTriggerWebhookConfig {
             return this;
         }
         public GetTriggerWebhookConfig build() {
-            final var o = new GetTriggerWebhookConfig();
-            o.secret = secret;
-            o.state = state;
-            return o;
+            final var _resultValue = new GetTriggerWebhookConfig();
+            _resultValue.secret = secret;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

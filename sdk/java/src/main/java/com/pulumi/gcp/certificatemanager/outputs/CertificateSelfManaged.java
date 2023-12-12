@@ -145,12 +145,12 @@ public final class CertificateSelfManaged {
             return this;
         }
         public CertificateSelfManaged build() {
-            final var o = new CertificateSelfManaged();
-            o.certificatePem = certificatePem;
-            o.pemCertificate = pemCertificate;
-            o.pemPrivateKey = pemPrivateKey;
-            o.privateKeyPem = privateKeyPem;
-            return o;
+            final var _resultValue = new CertificateSelfManaged();
+            _resultValue.certificatePem = certificatePem;
+            _resultValue.pemCertificate = pemCertificate;
+            _resultValue.pemPrivateKey = pemPrivateKey;
+            _resultValue.privateKeyPem = privateKeyPem;
+            return _resultValue;
         }
     }
 }

@@ -156,18 +156,18 @@ public final class GetObjectSignedUrlResult {
             return this;
         }
         public GetObjectSignedUrlResult build() {
-            final var o = new GetObjectSignedUrlResult();
-            o.bucket = bucket;
-            o.contentMd5 = contentMd5;
-            o.contentType = contentType;
-            o.credentials = credentials;
-            o.duration = duration;
-            o.extensionHeaders = extensionHeaders;
-            o.httpMethod = httpMethod;
-            o.id = id;
-            o.path = path;
-            o.signedUrl = signedUrl;
-            return o;
+            final var _resultValue = new GetObjectSignedUrlResult();
+            _resultValue.bucket = bucket;
+            _resultValue.contentMd5 = contentMd5;
+            _resultValue.contentType = contentType;
+            _resultValue.credentials = credentials;
+            _resultValue.duration = duration;
+            _resultValue.extensionHeaders = extensionHeaders;
+            _resultValue.httpMethod = httpMethod;
+            _resultValue.id = id;
+            _resultValue.path = path;
+            _resultValue.signedUrl = signedUrl;
+            return _resultValue;
         }
     }
 }

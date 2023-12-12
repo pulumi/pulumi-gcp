@@ -92,10 +92,10 @@ public final class RegionAutoscalerAutoscalingPolicyCpuUtilization {
             return this;
         }
         public RegionAutoscalerAutoscalingPolicyCpuUtilization build() {
-            final var o = new RegionAutoscalerAutoscalingPolicyCpuUtilization();
-            o.predictiveMethod = predictiveMethod;
-            o.target = target;
-            return o;
+            final var _resultValue = new RegionAutoscalerAutoscalingPolicyCpuUtilization();
+            _resultValue.predictiveMethod = predictiveMethod;
+            _resultValue.target = target;
+            return _resultValue;
         }
     }
 }

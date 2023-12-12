@@ -139,18 +139,18 @@ public final class GetServiceMetadata {
             return this;
         }
         public GetServiceMetadata build() {
-            final var o = new GetServiceMetadata();
-            o.annotations = annotations;
-            o.effectiveAnnotations = effectiveAnnotations;
-            o.effectiveLabels = effectiveLabels;
-            o.generation = generation;
-            o.labels = labels;
-            o.namespace = namespace;
-            o.pulumiLabels = pulumiLabels;
-            o.resourceVersion = resourceVersion;
-            o.selfLink = selfLink;
-            o.uid = uid;
-            return o;
+            final var _resultValue = new GetServiceMetadata();
+            _resultValue.annotations = annotations;
+            _resultValue.effectiveAnnotations = effectiveAnnotations;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.generation = generation;
+            _resultValue.labels = labels;
+            _resultValue.namespace = namespace;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.resourceVersion = resourceVersion;
+            _resultValue.selfLink = selfLink;
+            _resultValue.uid = uid;
+            return _resultValue;
         }
     }
 }

@@ -141,16 +141,16 @@ public final class GetWorkstationIamPolicyResult {
             return this;
         }
         public GetWorkstationIamPolicyResult build() {
-            final var o = new GetWorkstationIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.location = location;
-            o.policyData = policyData;
-            o.project = project;
-            o.workstationClusterId = workstationClusterId;
-            o.workstationConfigId = workstationConfigId;
-            o.workstationId = workstationId;
-            return o;
+            final var _resultValue = new GetWorkstationIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.workstationClusterId = workstationClusterId;
+            _resultValue.workstationConfigId = workstationConfigId;
+            _resultValue.workstationId = workstationId;
+            return _resultValue;
         }
     }
 }

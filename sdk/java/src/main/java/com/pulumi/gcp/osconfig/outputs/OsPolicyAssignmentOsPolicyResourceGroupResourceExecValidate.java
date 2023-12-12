@@ -145,13 +145,13 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate();
-            o.args = args;
-            o.file = file;
-            o.interpreter = interpreter;
-            o.outputFilePath = outputFilePath;
-            o.script = script;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate();
+            _resultValue.args = args;
+            _resultValue.file = file;
+            _resultValue.interpreter = interpreter;
+            _resultValue.outputFilePath = outputFilePath;
+            _resultValue.script = script;
+            return _resultValue;
         }
     }
 }

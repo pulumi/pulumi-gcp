@@ -67,10 +67,10 @@ public final class CryptoKeyVersionAttestationExternalProtectionLevelOptions {
             return this;
         }
         public CryptoKeyVersionAttestationExternalProtectionLevelOptions build() {
-            final var o = new CryptoKeyVersionAttestationExternalProtectionLevelOptions();
-            o.ekmConnectionKeyPath = ekmConnectionKeyPath;
-            o.externalKeyUri = externalKeyUri;
-            return o;
+            final var _resultValue = new CryptoKeyVersionAttestationExternalProtectionLevelOptions();
+            _resultValue.ekmConnectionKeyPath = ekmConnectionKeyPath;
+            _resultValue.externalKeyUri = externalKeyUri;
+            return _resultValue;
         }
     }
 }

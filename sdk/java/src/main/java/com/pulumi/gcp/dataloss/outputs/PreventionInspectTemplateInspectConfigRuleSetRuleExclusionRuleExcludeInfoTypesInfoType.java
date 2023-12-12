@@ -91,11 +91,11 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType();
-            o.name = name;
-            o.sensitivityScore = sensitivityScore;
-            o.version = version;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType();
+            _resultValue.name = name;
+            _resultValue.sensitivityScore = sensitivityScore;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

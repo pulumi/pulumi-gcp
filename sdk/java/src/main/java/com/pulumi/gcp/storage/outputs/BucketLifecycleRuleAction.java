@@ -67,10 +67,10 @@ public final class BucketLifecycleRuleAction {
             return this;
         }
         public BucketLifecycleRuleAction build() {
-            final var o = new BucketLifecycleRuleAction();
-            o.storageClass = storageClass;
-            o.type = type;
-            return o;
+            final var _resultValue = new BucketLifecycleRuleAction();
+            _resultValue.storageClass = storageClass;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

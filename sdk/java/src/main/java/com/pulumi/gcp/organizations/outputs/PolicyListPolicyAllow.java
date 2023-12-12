@@ -72,10 +72,10 @@ public final class PolicyListPolicyAllow {
             return values(List.of(values));
         }
         public PolicyListPolicyAllow build() {
-            final var o = new PolicyListPolicyAllow();
-            o.all = all;
-            o.values = values;
-            return o;
+            final var _resultValue = new PolicyListPolicyAllow();
+            _resultValue.all = all;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

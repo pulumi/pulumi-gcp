@@ -153,14 +153,14 @@ public final class InstanceAttachedDisk {
             return this;
         }
         public InstanceAttachedDisk build() {
-            final var o = new InstanceAttachedDisk();
-            o.deviceName = deviceName;
-            o.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
-            o.diskEncryptionKeySha256 = diskEncryptionKeySha256;
-            o.kmsKeySelfLink = kmsKeySelfLink;
-            o.mode = mode;
-            o.source = source;
-            return o;
+            final var _resultValue = new InstanceAttachedDisk();
+            _resultValue.deviceName = deviceName;
+            _resultValue.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
+            _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
+            _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            _resultValue.mode = mode;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

@@ -178,15 +178,15 @@ public final class FlexibleAppVersionHandlerStaticFiles {
             return this;
         }
         public FlexibleAppVersionHandlerStaticFiles build() {
-            final var o = new FlexibleAppVersionHandlerStaticFiles();
-            o.applicationReadable = applicationReadable;
-            o.expiration = expiration;
-            o.httpHeaders = httpHeaders;
-            o.mimeType = mimeType;
-            o.path = path;
-            o.requireMatchingFile = requireMatchingFile;
-            o.uploadPathRegex = uploadPathRegex;
-            return o;
+            final var _resultValue = new FlexibleAppVersionHandlerStaticFiles();
+            _resultValue.applicationReadable = applicationReadable;
+            _resultValue.expiration = expiration;
+            _resultValue.httpHeaders = httpHeaders;
+            _resultValue.mimeType = mimeType;
+            _resultValue.path = path;
+            _resultValue.requireMatchingFile = requireMatchingFile;
+            _resultValue.uploadPathRegex = uploadPathRegex;
+            return _resultValue;
         }
     }
 }

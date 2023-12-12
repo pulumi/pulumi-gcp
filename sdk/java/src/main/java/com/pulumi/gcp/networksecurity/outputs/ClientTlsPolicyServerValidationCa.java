@@ -72,10 +72,10 @@ public final class ClientTlsPolicyServerValidationCa {
             return this;
         }
         public ClientTlsPolicyServerValidationCa build() {
-            final var o = new ClientTlsPolicyServerValidationCa();
-            o.certificateProviderInstance = certificateProviderInstance;
-            o.grpcEndpoint = grpcEndpoint;
-            return o;
+            final var _resultValue = new ClientTlsPolicyServerValidationCa();
+            _resultValue.certificateProviderInstance = certificateProviderInstance;
+            _resultValue.grpcEndpoint = grpcEndpoint;
+            return _resultValue;
         }
     }
 }

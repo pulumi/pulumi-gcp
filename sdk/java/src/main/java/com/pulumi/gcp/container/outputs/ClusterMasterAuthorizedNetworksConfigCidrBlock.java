@@ -69,10 +69,10 @@ public final class ClusterMasterAuthorizedNetworksConfigCidrBlock {
             return this;
         }
         public ClusterMasterAuthorizedNetworksConfigCidrBlock build() {
-            final var o = new ClusterMasterAuthorizedNetworksConfigCidrBlock();
-            o.cidrBlock = cidrBlock;
-            o.displayName = displayName;
-            return o;
+            final var _resultValue = new ClusterMasterAuthorizedNetworksConfigCidrBlock();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.displayName = displayName;
+            return _resultValue;
         }
     }
 }

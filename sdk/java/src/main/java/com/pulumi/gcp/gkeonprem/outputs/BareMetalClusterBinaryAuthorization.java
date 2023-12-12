@@ -52,9 +52,9 @@ public final class BareMetalClusterBinaryAuthorization {
             return this;
         }
         public BareMetalClusterBinaryAuthorization build() {
-            final var o = new BareMetalClusterBinaryAuthorization();
-            o.evaluationMode = evaluationMode;
-            return o;
+            final var _resultValue = new BareMetalClusterBinaryAuthorization();
+            _resultValue.evaluationMode = evaluationMode;
+            return _resultValue;
         }
     }
 }

@@ -178,15 +178,15 @@ public final class ClusterClusterConfigMasterConfig {
             return this;
         }
         public ClusterClusterConfigMasterConfig build() {
-            final var o = new ClusterClusterConfigMasterConfig();
-            o.accelerators = accelerators;
-            o.diskConfig = diskConfig;
-            o.imageUri = imageUri;
-            o.instanceNames = instanceNames;
-            o.machineType = machineType;
-            o.minCpuPlatform = minCpuPlatform;
-            o.numInstances = numInstances;
-            return o;
+            final var _resultValue = new ClusterClusterConfigMasterConfig();
+            _resultValue.accelerators = accelerators;
+            _resultValue.diskConfig = diskConfig;
+            _resultValue.imageUri = imageUri;
+            _resultValue.instanceNames = instanceNames;
+            _resultValue.machineType = machineType;
+            _resultValue.minCpuPlatform = minCpuPlatform;
+            _resultValue.numInstances = numInstances;
+            return _resultValue;
         }
     }
 }

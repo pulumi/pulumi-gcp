@@ -235,16 +235,16 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch {
             return this;
         }
         public RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch build() {
-            final var o = new RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch();
-            o.exactMatch = exactMatch;
-            o.headerName = headerName;
-            o.invertMatch = invertMatch;
-            o.prefixMatch = prefixMatch;
-            o.presentMatch = presentMatch;
-            o.rangeMatch = rangeMatch;
-            o.regexMatch = regexMatch;
-            o.suffixMatch = suffixMatch;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch();
+            _resultValue.exactMatch = exactMatch;
+            _resultValue.headerName = headerName;
+            _resultValue.invertMatch = invertMatch;
+            _resultValue.prefixMatch = prefixMatch;
+            _resultValue.presentMatch = presentMatch;
+            _resultValue.rangeMatch = rangeMatch;
+            _resultValue.regexMatch = regexMatch;
+            _resultValue.suffixMatch = suffixMatch;
+            return _resultValue;
         }
     }
 }

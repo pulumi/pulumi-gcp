@@ -38,9 +38,9 @@ public final class ClusterNodeConfigHostMaintenancePolicy {
             return this;
         }
         public ClusterNodeConfigHostMaintenancePolicy build() {
-            final var o = new ClusterNodeConfigHostMaintenancePolicy();
-            o.maintenanceInterval = maintenanceInterval;
-            return o;
+            final var _resultValue = new ClusterNodeConfigHostMaintenancePolicy();
+            _resultValue.maintenanceInterval = maintenanceInterval;
+            return _resultValue;
         }
     }
 }

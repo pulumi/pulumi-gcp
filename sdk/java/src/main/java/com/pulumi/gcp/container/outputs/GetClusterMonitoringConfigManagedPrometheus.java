@@ -38,9 +38,9 @@ public final class GetClusterMonitoringConfigManagedPrometheus {
             return this;
         }
         public GetClusterMonitoringConfigManagedPrometheus build() {
-            final var o = new GetClusterMonitoringConfigManagedPrometheus();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClusterMonitoringConfigManagedPrometheus();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

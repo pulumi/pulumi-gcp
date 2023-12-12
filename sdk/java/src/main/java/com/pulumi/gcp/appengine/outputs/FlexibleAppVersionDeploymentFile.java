@@ -86,11 +86,11 @@ public final class FlexibleAppVersionDeploymentFile {
             return this;
         }
         public FlexibleAppVersionDeploymentFile build() {
-            final var o = new FlexibleAppVersionDeploymentFile();
-            o.name = name;
-            o.sha1Sum = sha1Sum;
-            o.sourceUrl = sourceUrl;
-            return o;
+            final var _resultValue = new FlexibleAppVersionDeploymentFile();
+            _resultValue.name = name;
+            _resultValue.sha1Sum = sha1Sum;
+            _resultValue.sourceUrl = sourceUrl;
+            return _resultValue;
         }
     }
 }

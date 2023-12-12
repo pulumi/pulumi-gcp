@@ -71,10 +71,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStor
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType();
-            o.createTime = createTime;
-            o.name = name;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType();
+            _resultValue.createTime = createTime;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

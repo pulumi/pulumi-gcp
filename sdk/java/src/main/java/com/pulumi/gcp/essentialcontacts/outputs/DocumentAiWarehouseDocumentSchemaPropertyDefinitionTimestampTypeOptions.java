@@ -25,8 +25,8 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampT
         }
 
         public DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions build() {
-            final var o = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions();
-            return o;
+            final var _resultValue = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions();
+            return _resultValue;
         }
     }
 }

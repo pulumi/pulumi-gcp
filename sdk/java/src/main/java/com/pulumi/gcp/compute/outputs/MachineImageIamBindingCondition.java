@@ -86,11 +86,11 @@ public final class MachineImageIamBindingCondition {
             return this;
         }
         public MachineImageIamBindingCondition build() {
-            final var o = new MachineImageIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new MachineImageIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

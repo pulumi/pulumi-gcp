@@ -69,10 +69,10 @@ public final class InstanceContainerImage {
             return this;
         }
         public InstanceContainerImage build() {
-            final var o = new InstanceContainerImage();
-            o.repository = repository;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new InstanceContainerImage();
+            _resultValue.repository = repository;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

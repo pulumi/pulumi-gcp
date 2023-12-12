@@ -108,12 +108,12 @@ public final class OrganizationSinkExclusion {
             return this;
         }
         public OrganizationSinkExclusion build() {
-            final var o = new OrganizationSinkExclusion();
-            o.description = description;
-            o.disabled = disabled;
-            o.filter = filter;
-            o.name = name;
-            return o;
+            final var _resultValue = new OrganizationSinkExclusion();
+            _resultValue.description = description;
+            _resultValue.disabled = disabled;
+            _resultValue.filter = filter;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

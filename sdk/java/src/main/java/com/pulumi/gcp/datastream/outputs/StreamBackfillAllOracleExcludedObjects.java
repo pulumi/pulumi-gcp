@@ -52,9 +52,9 @@ public final class StreamBackfillAllOracleExcludedObjects {
             return oracleSchemas(List.of(oracleSchemas));
         }
         public StreamBackfillAllOracleExcludedObjects build() {
-            final var o = new StreamBackfillAllOracleExcludedObjects();
-            o.oracleSchemas = oracleSchemas;
-            return o;
+            final var _resultValue = new StreamBackfillAllOracleExcludedObjects();
+            _resultValue.oracleSchemas = oracleSchemas;
+            return _resultValue;
         }
     }
 }

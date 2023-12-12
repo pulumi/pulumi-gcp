@@ -81,10 +81,10 @@ public final class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
             return this;
         }
         public AttestorAttestationAuthorityNotePublicKeyPkixPublicKey build() {
-            final var o = new AttestorAttestationAuthorityNotePublicKeyPkixPublicKey();
-            o.publicKeyPem = publicKeyPem;
-            o.signatureAlgorithm = signatureAlgorithm;
-            return o;
+            final var _resultValue = new AttestorAttestationAuthorityNotePublicKeyPkixPublicKey();
+            _resultValue.publicKeyPem = publicKeyPem;
+            _resultValue.signatureAlgorithm = signatureAlgorithm;
+            return _resultValue;
         }
     }
 }

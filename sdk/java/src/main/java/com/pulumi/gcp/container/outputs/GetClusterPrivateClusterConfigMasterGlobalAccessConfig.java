@@ -38,9 +38,9 @@ public final class GetClusterPrivateClusterConfigMasterGlobalAccessConfig {
             return this;
         }
         public GetClusterPrivateClusterConfigMasterGlobalAccessConfig build() {
-            final var o = new GetClusterPrivateClusterConfigMasterGlobalAccessConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClusterPrivateClusterConfigMasterGlobalAccessConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

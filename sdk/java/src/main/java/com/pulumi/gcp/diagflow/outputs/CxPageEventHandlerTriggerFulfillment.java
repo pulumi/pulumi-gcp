@@ -163,14 +163,14 @@ public final class CxPageEventHandlerTriggerFulfillment {
             return this;
         }
         public CxPageEventHandlerTriggerFulfillment build() {
-            final var o = new CxPageEventHandlerTriggerFulfillment();
-            o.conditionalCases = conditionalCases;
-            o.messages = messages;
-            o.returnPartialResponses = returnPartialResponses;
-            o.setParameterActions = setParameterActions;
-            o.tag = tag;
-            o.webhook = webhook;
-            return o;
+            final var _resultValue = new CxPageEventHandlerTriggerFulfillment();
+            _resultValue.conditionalCases = conditionalCases;
+            _resultValue.messages = messages;
+            _resultValue.returnPartialResponses = returnPartialResponses;
+            _resultValue.setParameterActions = setParameterActions;
+            _resultValue.tag = tag;
+            _resultValue.webhook = webhook;
+            return _resultValue;
         }
     }
 }

@@ -61,11 +61,11 @@ public final class GetHcVpnGatewayVpnInterface {
             return this;
         }
         public GetHcVpnGatewayVpnInterface build() {
-            final var o = new GetHcVpnGatewayVpnInterface();
-            o.id = id;
-            o.interconnectAttachment = interconnectAttachment;
-            o.ipAddress = ipAddress;
-            return o;
+            final var _resultValue = new GetHcVpnGatewayVpnInterface();
+            _resultValue.id = id;
+            _resultValue.interconnectAttachment = interconnectAttachment;
+            _resultValue.ipAddress = ipAddress;
+            return _resultValue;
         }
     }
 }

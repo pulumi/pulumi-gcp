@@ -65,10 +65,10 @@ public final class WorkstationConfigEncryptionKey {
             return this;
         }
         public WorkstationConfigEncryptionKey build() {
-            final var o = new WorkstationConfigEncryptionKey();
-            o.kmsKey = kmsKey;
-            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
-            return o;
+            final var _resultValue = new WorkstationConfigEncryptionKey();
+            _resultValue.kmsKey = kmsKey;
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            return _resultValue;
         }
     }
 }

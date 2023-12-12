@@ -119,14 +119,14 @@ public final class GetMetastoreServiceIamPolicyResult {
             return this;
         }
         public GetMetastoreServiceIamPolicyResult build() {
-            final var o = new GetMetastoreServiceIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.location = location;
-            o.policyData = policyData;
-            o.project = project;
-            o.serviceId = serviceId;
-            return o;
+            final var _resultValue = new GetMetastoreServiceIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.serviceId = serviceId;
+            return _resultValue;
         }
     }
 }

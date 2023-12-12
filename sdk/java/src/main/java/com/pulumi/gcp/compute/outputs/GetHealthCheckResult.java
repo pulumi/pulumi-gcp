@@ -265,26 +265,26 @@ public final class GetHealthCheckResult {
             return this;
         }
         public GetHealthCheckResult build() {
-            final var o = new GetHealthCheckResult();
-            o.checkIntervalSec = checkIntervalSec;
-            o.creationTimestamp = creationTimestamp;
-            o.description = description;
-            o.grpcHealthChecks = grpcHealthChecks;
-            o.healthyThreshold = healthyThreshold;
-            o.http2HealthChecks = http2HealthChecks;
-            o.httpHealthChecks = httpHealthChecks;
-            o.httpsHealthChecks = httpsHealthChecks;
-            o.id = id;
-            o.logConfigs = logConfigs;
-            o.name = name;
-            o.project = project;
-            o.selfLink = selfLink;
-            o.sslHealthChecks = sslHealthChecks;
-            o.tcpHealthChecks = tcpHealthChecks;
-            o.timeoutSec = timeoutSec;
-            o.type = type;
-            o.unhealthyThreshold = unhealthyThreshold;
-            return o;
+            final var _resultValue = new GetHealthCheckResult();
+            _resultValue.checkIntervalSec = checkIntervalSec;
+            _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.description = description;
+            _resultValue.grpcHealthChecks = grpcHealthChecks;
+            _resultValue.healthyThreshold = healthyThreshold;
+            _resultValue.http2HealthChecks = http2HealthChecks;
+            _resultValue.httpHealthChecks = httpHealthChecks;
+            _resultValue.httpsHealthChecks = httpsHealthChecks;
+            _resultValue.id = id;
+            _resultValue.logConfigs = logConfigs;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            _resultValue.sslHealthChecks = sslHealthChecks;
+            _resultValue.tcpHealthChecks = tcpHealthChecks;
+            _resultValue.timeoutSec = timeoutSec;
+            _resultValue.type = type;
+            _resultValue.unhealthyThreshold = unhealthyThreshold;
+            return _resultValue;
         }
     }
 }

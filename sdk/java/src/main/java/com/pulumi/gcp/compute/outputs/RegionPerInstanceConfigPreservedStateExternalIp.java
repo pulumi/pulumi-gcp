@@ -93,11 +93,11 @@ public final class RegionPerInstanceConfigPreservedStateExternalIp {
             return this;
         }
         public RegionPerInstanceConfigPreservedStateExternalIp build() {
-            final var o = new RegionPerInstanceConfigPreservedStateExternalIp();
-            o.autoDelete = autoDelete;
-            o.interfaceName = interfaceName;
-            o.ipAddress = ipAddress;
-            return o;
+            final var _resultValue = new RegionPerInstanceConfigPreservedStateExternalIp();
+            _resultValue.autoDelete = autoDelete;
+            _resultValue.interfaceName = interfaceName;
+            _resultValue.ipAddress = ipAddress;
+            return _resultValue;
         }
     }
 }

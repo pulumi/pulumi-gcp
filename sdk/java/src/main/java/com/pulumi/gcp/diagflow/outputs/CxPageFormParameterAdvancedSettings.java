@@ -58,9 +58,9 @@ public final class CxPageFormParameterAdvancedSettings {
             return this;
         }
         public CxPageFormParameterAdvancedSettings build() {
-            final var o = new CxPageFormParameterAdvancedSettings();
-            o.dtmfSettings = dtmfSettings;
-            return o;
+            final var _resultValue = new CxPageFormParameterAdvancedSettings();
+            _resultValue.dtmfSettings = dtmfSettings;
+            return _resultValue;
         }
     }
 }

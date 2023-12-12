@@ -276,19 +276,19 @@ public final class FirewallPolicyRuleMatch {
             return srcThreatIntelligences(List.of(srcThreatIntelligences));
         }
         public FirewallPolicyRuleMatch build() {
-            final var o = new FirewallPolicyRuleMatch();
-            o.destAddressGroups = destAddressGroups;
-            o.destFqdns = destFqdns;
-            o.destIpRanges = destIpRanges;
-            o.destRegionCodes = destRegionCodes;
-            o.destThreatIntelligences = destThreatIntelligences;
-            o.layer4Configs = layer4Configs;
-            o.srcAddressGroups = srcAddressGroups;
-            o.srcFqdns = srcFqdns;
-            o.srcIpRanges = srcIpRanges;
-            o.srcRegionCodes = srcRegionCodes;
-            o.srcThreatIntelligences = srcThreatIntelligences;
-            return o;
+            final var _resultValue = new FirewallPolicyRuleMatch();
+            _resultValue.destAddressGroups = destAddressGroups;
+            _resultValue.destFqdns = destFqdns;
+            _resultValue.destIpRanges = destIpRanges;
+            _resultValue.destRegionCodes = destRegionCodes;
+            _resultValue.destThreatIntelligences = destThreatIntelligences;
+            _resultValue.layer4Configs = layer4Configs;
+            _resultValue.srcAddressGroups = srcAddressGroups;
+            _resultValue.srcFqdns = srcFqdns;
+            _resultValue.srcIpRanges = srcIpRanges;
+            _resultValue.srcRegionCodes = srcRegionCodes;
+            _resultValue.srcThreatIntelligences = srcThreatIntelligences;
+            return _resultValue;
         }
     }
 }

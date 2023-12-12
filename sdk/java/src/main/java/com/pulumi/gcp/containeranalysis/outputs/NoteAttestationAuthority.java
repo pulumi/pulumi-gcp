@@ -62,9 +62,9 @@ public final class NoteAttestationAuthority {
             return this;
         }
         public NoteAttestationAuthority build() {
-            final var o = new NoteAttestationAuthority();
-            o.hint = hint;
-            return o;
+            final var _resultValue = new NoteAttestationAuthority();
+            _resultValue.hint = hint;
+            return _resultValue;
         }
     }
 }

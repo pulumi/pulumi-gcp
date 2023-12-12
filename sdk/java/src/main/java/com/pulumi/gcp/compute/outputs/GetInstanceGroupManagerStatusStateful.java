@@ -54,10 +54,10 @@ public final class GetInstanceGroupManagerStatusStateful {
             return perInstanceConfigs(List.of(perInstanceConfigs));
         }
         public GetInstanceGroupManagerStatusStateful build() {
-            final var o = new GetInstanceGroupManagerStatusStateful();
-            o.hasStatefulConfig = hasStatefulConfig;
-            o.perInstanceConfigs = perInstanceConfigs;
-            return o;
+            final var _resultValue = new GetInstanceGroupManagerStatusStateful();
+            _resultValue.hasStatefulConfig = hasStatefulConfig;
+            _resultValue.perInstanceConfigs = perInstanceConfigs;
+            return _resultValue;
         }
     }
 }

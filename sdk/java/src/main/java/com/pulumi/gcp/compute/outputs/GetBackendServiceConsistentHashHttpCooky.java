@@ -77,11 +77,11 @@ public final class GetBackendServiceConsistentHashHttpCooky {
             return ttls(List.of(ttls));
         }
         public GetBackendServiceConsistentHashHttpCooky build() {
-            final var o = new GetBackendServiceConsistentHashHttpCooky();
-            o.name = name;
-            o.path = path;
-            o.ttls = ttls;
-            return o;
+            final var _resultValue = new GetBackendServiceConsistentHashHttpCooky();
+            _resultValue.name = name;
+            _resultValue.path = path;
+            _resultValue.ttls = ttls;
+            return _resultValue;
         }
     }
 }

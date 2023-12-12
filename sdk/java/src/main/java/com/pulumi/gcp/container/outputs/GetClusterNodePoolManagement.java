@@ -49,10 +49,10 @@ public final class GetClusterNodePoolManagement {
             return this;
         }
         public GetClusterNodePoolManagement build() {
-            final var o = new GetClusterNodePoolManagement();
-            o.autoRepair = autoRepair;
-            o.autoUpgrade = autoUpgrade;
-            return o;
+            final var _resultValue = new GetClusterNodePoolManagement();
+            _resultValue.autoRepair = autoRepair;
+            _resultValue.autoUpgrade = autoUpgrade;
+            return _resultValue;
         }
     }
 }

@@ -50,10 +50,10 @@ public final class GetInstanceGroupManagerAllInstancesConfig {
             return this;
         }
         public GetInstanceGroupManagerAllInstancesConfig build() {
-            final var o = new GetInstanceGroupManagerAllInstancesConfig();
-            o.labels = labels;
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new GetInstanceGroupManagerAllInstancesConfig();
+            _resultValue.labels = labels;
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

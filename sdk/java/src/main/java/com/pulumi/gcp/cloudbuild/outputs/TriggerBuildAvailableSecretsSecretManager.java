@@ -69,10 +69,10 @@ public final class TriggerBuildAvailableSecretsSecretManager {
             return this;
         }
         public TriggerBuildAvailableSecretsSecretManager build() {
-            final var o = new TriggerBuildAvailableSecretsSecretManager();
-            o.env = env;
-            o.versionName = versionName;
-            return o;
+            final var _resultValue = new TriggerBuildAvailableSecretsSecretManager();
+            _resultValue.env = env;
+            _resultValue.versionName = versionName;
+            return _resultValue;
         }
     }
 }

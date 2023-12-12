@@ -88,11 +88,11 @@ public final class CxFlowAdvancedSettingsDtmfSettings {
             return this;
         }
         public CxFlowAdvancedSettingsDtmfSettings build() {
-            final var o = new CxFlowAdvancedSettingsDtmfSettings();
-            o.enabled = enabled;
-            o.finishDigit = finishDigit;
-            o.maxDigits = maxDigits;
-            return o;
+            final var _resultValue = new CxFlowAdvancedSettingsDtmfSettings();
+            _resultValue.enabled = enabled;
+            _resultValue.finishDigit = finishDigit;
+            _resultValue.maxDigits = maxDigits;
+            return _resultValue;
         }
     }
 }

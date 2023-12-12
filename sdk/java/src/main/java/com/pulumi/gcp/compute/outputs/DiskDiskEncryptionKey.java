@@ -148,13 +148,13 @@ public final class DiskDiskEncryptionKey {
             return this;
         }
         public DiskDiskEncryptionKey build() {
-            final var o = new DiskDiskEncryptionKey();
-            o.kmsKeySelfLink = kmsKeySelfLink;
-            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
-            o.rawKey = rawKey;
-            o.rsaEncryptedKey = rsaEncryptedKey;
-            o.sha256 = sha256;
-            return o;
+            final var _resultValue = new DiskDiskEncryptionKey();
+            _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            _resultValue.rawKey = rawKey;
+            _resultValue.rsaEncryptedKey = rsaEncryptedKey;
+            _resultValue.sha256 = sha256;
+            return _resultValue;
         }
     }
 }

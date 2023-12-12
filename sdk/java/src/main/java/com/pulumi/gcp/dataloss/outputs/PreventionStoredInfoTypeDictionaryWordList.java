@@ -52,9 +52,9 @@ public final class PreventionStoredInfoTypeDictionaryWordList {
             return words(List.of(words));
         }
         public PreventionStoredInfoTypeDictionaryWordList build() {
-            final var o = new PreventionStoredInfoTypeDictionaryWordList();
-            o.words = words;
-            return o;
+            final var _resultValue = new PreventionStoredInfoTypeDictionaryWordList();
+            _resultValue.words = words;
+            return _resultValue;
         }
     }
 }

@@ -70,10 +70,10 @@ public final class UptimeCheckConfigTcpCheck {
             return this;
         }
         public UptimeCheckConfigTcpCheck build() {
-            final var o = new UptimeCheckConfigTcpCheck();
-            o.pingConfig = pingConfig;
-            o.port = port;
-            return o;
+            final var _resultValue = new UptimeCheckConfigTcpCheck();
+            _resultValue.pingConfig = pingConfig;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

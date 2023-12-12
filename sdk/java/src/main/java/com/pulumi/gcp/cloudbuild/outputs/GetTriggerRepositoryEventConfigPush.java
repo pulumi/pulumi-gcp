@@ -61,11 +61,11 @@ public final class GetTriggerRepositoryEventConfigPush {
             return this;
         }
         public GetTriggerRepositoryEventConfigPush build() {
-            final var o = new GetTriggerRepositoryEventConfigPush();
-            o.branch = branch;
-            o.invertRegex = invertRegex;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new GetTriggerRepositoryEventConfigPush();
+            _resultValue.branch = branch;
+            _resultValue.invertRegex = invertRegex;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

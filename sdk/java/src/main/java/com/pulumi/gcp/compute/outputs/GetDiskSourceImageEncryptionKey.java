@@ -71,12 +71,12 @@ public final class GetDiskSourceImageEncryptionKey {
             return this;
         }
         public GetDiskSourceImageEncryptionKey build() {
-            final var o = new GetDiskSourceImageEncryptionKey();
-            o.kmsKeySelfLink = kmsKeySelfLink;
-            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
-            o.rawKey = rawKey;
-            o.sha256 = sha256;
-            return o;
+            final var _resultValue = new GetDiskSourceImageEncryptionKey();
+            _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            _resultValue.rawKey = rawKey;
+            _resultValue.sha256 = sha256;
+            return _resultValue;
         }
     }
 }

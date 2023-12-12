@@ -71,12 +71,12 @@ public final class GetPrivateCloudHcx {
             return this;
         }
         public GetPrivateCloudHcx build() {
-            final var o = new GetPrivateCloudHcx();
-            o.fqdn = fqdn;
-            o.internalIp = internalIp;
-            o.state = state;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetPrivateCloudHcx();
+            _resultValue.fqdn = fqdn;
+            _resultValue.internalIp = internalIp;
+            _resultValue.state = state;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

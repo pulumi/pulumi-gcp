@@ -40,9 +40,9 @@ public final class GetInstanceParam {
             return this;
         }
         public GetInstanceParam build() {
-            final var o = new GetInstanceParam();
-            o.resourceManagerTags = resourceManagerTags;
-            return o;
+            final var _resultValue = new GetInstanceParam();
+            _resultValue.resourceManagerTags = resourceManagerTags;
+            return _resultValue;
         }
     }
 }

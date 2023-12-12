@@ -67,10 +67,10 @@ public final class TableTableConstraintsForeignKeyColumnReferences {
             return this;
         }
         public TableTableConstraintsForeignKeyColumnReferences build() {
-            final var o = new TableTableConstraintsForeignKeyColumnReferences();
-            o.referencedColumn = referencedColumn;
-            o.referencingColumn = referencingColumn;
-            return o;
+            final var _resultValue = new TableTableConstraintsForeignKeyColumnReferences();
+            _resultValue.referencedColumn = referencedColumn;
+            _resultValue.referencingColumn = referencingColumn;
+            return _resultValue;
         }
     }
 }

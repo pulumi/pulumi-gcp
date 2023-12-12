@@ -70,10 +70,10 @@ public final class AwsNodePoolConfigAutoscalingMetricsCollection {
             return metrics(List.of(metrics));
         }
         public AwsNodePoolConfigAutoscalingMetricsCollection build() {
-            final var o = new AwsNodePoolConfigAutoscalingMetricsCollection();
-            o.granularity = granularity;
-            o.metrics = metrics;
-            return o;
+            final var _resultValue = new AwsNodePoolConfigAutoscalingMetricsCollection();
+            _resultValue.granularity = granularity;
+            _resultValue.metrics = metrics;
+            return _resultValue;
         }
     }
 }

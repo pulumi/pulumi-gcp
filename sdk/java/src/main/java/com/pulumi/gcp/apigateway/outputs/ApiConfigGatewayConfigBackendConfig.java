@@ -48,9 +48,9 @@ public final class ApiConfigGatewayConfigBackendConfig {
             return this;
         }
         public ApiConfigGatewayConfigBackendConfig build() {
-            final var o = new ApiConfigGatewayConfigBackendConfig();
-            o.googleServiceAccount = googleServiceAccount;
-            return o;
+            final var _resultValue = new ApiConfigGatewayConfigBackendConfig();
+            _resultValue.googleServiceAccount = googleServiceAccount;
+            return _resultValue;
         }
     }
 }

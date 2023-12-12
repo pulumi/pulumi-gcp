@@ -38,9 +38,9 @@ public final class GetRepositoryRemoteRepositoryConfigDockerRepository {
             return this;
         }
         public GetRepositoryRemoteRepositoryConfigDockerRepository build() {
-            final var o = new GetRepositoryRemoteRepositoryConfigDockerRepository();
-            o.publicRepository = publicRepository;
-            return o;
+            final var _resultValue = new GetRepositoryRemoteRepositoryConfigDockerRepository();
+            _resultValue.publicRepository = publicRepository;
+            return _resultValue;
         }
     }
 }

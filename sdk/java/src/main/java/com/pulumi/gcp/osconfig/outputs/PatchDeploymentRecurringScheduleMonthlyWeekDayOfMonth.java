@@ -89,11 +89,11 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
             return this;
         }
         public PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth build() {
-            final var o = new PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth();
-            o.dayOfWeek = dayOfWeek;
-            o.dayOffset = dayOffset;
-            o.weekOrdinal = weekOrdinal;
-            return o;
+            final var _resultValue = new PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth();
+            _resultValue.dayOfWeek = dayOfWeek;
+            _resultValue.dayOffset = dayOffset;
+            _resultValue.weekOrdinal = weekOrdinal;
+            return _resultValue;
         }
     }
 }

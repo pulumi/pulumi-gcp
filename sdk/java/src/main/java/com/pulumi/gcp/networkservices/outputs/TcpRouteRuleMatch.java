@@ -67,10 +67,10 @@ public final class TcpRouteRuleMatch {
             return this;
         }
         public TcpRouteRuleMatch build() {
-            final var o = new TcpRouteRuleMatch();
-            o.address = address;
-            o.port = port;
-            return o;
+            final var _resultValue = new TcpRouteRuleMatch();
+            _resultValue.address = address;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

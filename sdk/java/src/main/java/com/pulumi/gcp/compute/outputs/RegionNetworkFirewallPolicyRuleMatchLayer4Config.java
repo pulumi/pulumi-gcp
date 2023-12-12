@@ -74,10 +74,10 @@ public final class RegionNetworkFirewallPolicyRuleMatchLayer4Config {
             return ports(List.of(ports));
         }
         public RegionNetworkFirewallPolicyRuleMatchLayer4Config build() {
-            final var o = new RegionNetworkFirewallPolicyRuleMatchLayer4Config();
-            o.ipProtocol = ipProtocol;
-            o.ports = ports;
-            return o;
+            final var _resultValue = new RegionNetworkFirewallPolicyRuleMatchLayer4Config();
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.ports = ports;
+            return _resultValue;
         }
     }
 }

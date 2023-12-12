@@ -127,17 +127,17 @@ public final class GetInstanceGroupManagerUpdatePolicy {
             return this;
         }
         public GetInstanceGroupManagerUpdatePolicy build() {
-            final var o = new GetInstanceGroupManagerUpdatePolicy();
-            o.maxSurgeFixed = maxSurgeFixed;
-            o.maxSurgePercent = maxSurgePercent;
-            o.maxUnavailableFixed = maxUnavailableFixed;
-            o.maxUnavailablePercent = maxUnavailablePercent;
-            o.minReadySec = minReadySec;
-            o.minimalAction = minimalAction;
-            o.mostDisruptiveAllowedAction = mostDisruptiveAllowedAction;
-            o.replacementMethod = replacementMethod;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetInstanceGroupManagerUpdatePolicy();
+            _resultValue.maxSurgeFixed = maxSurgeFixed;
+            _resultValue.maxSurgePercent = maxSurgePercent;
+            _resultValue.maxUnavailableFixed = maxUnavailableFixed;
+            _resultValue.maxUnavailablePercent = maxUnavailablePercent;
+            _resultValue.minReadySec = minReadySec;
+            _resultValue.minimalAction = minimalAction;
+            _resultValue.mostDisruptiveAllowedAction = mostDisruptiveAllowedAction;
+            _resultValue.replacementMethod = replacementMethod;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

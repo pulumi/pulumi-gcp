@@ -114,12 +114,12 @@ public final class DeliveryPipelineSerialPipelineStage {
             return this;
         }
         public DeliveryPipelineSerialPipelineStage build() {
-            final var o = new DeliveryPipelineSerialPipelineStage();
-            o.deployParameters = deployParameters;
-            o.profiles = profiles;
-            o.strategy = strategy;
-            o.targetId = targetId;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStage();
+            _resultValue.deployParameters = deployParameters;
+            _resultValue.profiles = profiles;
+            _resultValue.strategy = strategy;
+            _resultValue.targetId = targetId;
+            return _resultValue;
         }
     }
 }

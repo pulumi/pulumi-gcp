@@ -84,11 +84,11 @@ public final class InsightsReportConfigFrequencyOptionsStartDate {
             return this;
         }
         public InsightsReportConfigFrequencyOptionsStartDate build() {
-            final var o = new InsightsReportConfigFrequencyOptionsStartDate();
-            o.day = day;
-            o.month = month;
-            o.year = year;
-            return o;
+            final var _resultValue = new InsightsReportConfigFrequencyOptionsStartDate();
+            _resultValue.day = day;
+            _resultValue.month = month;
+            _resultValue.year = year;
+            return _resultValue;
         }
     }
 }

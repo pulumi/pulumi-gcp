@@ -46,9 +46,9 @@ public final class ClusterNodePoolNodeConfigGcfsConfig {
             return this;
         }
         public ClusterNodePoolNodeConfigGcfsConfig build() {
-            final var o = new ClusterNodePoolNodeConfigGcfsConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterNodePoolNodeConfigGcfsConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

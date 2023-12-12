@@ -49,10 +49,10 @@ public final class GetTriggerBuildStepVolume {
             return this;
         }
         public GetTriggerBuildStepVolume build() {
-            final var o = new GetTriggerBuildStepVolume();
-            o.name = name;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetTriggerBuildStepVolume();
+            _resultValue.name = name;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

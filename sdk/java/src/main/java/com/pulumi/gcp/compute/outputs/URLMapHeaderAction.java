@@ -127,12 +127,12 @@ public final class URLMapHeaderAction {
             return responseHeadersToRemoves(List.of(responseHeadersToRemoves));
         }
         public URLMapHeaderAction build() {
-            final var o = new URLMapHeaderAction();
-            o.requestHeadersToAdds = requestHeadersToAdds;
-            o.requestHeadersToRemoves = requestHeadersToRemoves;
-            o.responseHeadersToAdds = responseHeadersToAdds;
-            o.responseHeadersToRemoves = responseHeadersToRemoves;
-            return o;
+            final var _resultValue = new URLMapHeaderAction();
+            _resultValue.requestHeadersToAdds = requestHeadersToAdds;
+            _resultValue.requestHeadersToRemoves = requestHeadersToRemoves;
+            _resultValue.responseHeadersToAdds = responseHeadersToAdds;
+            _resultValue.responseHeadersToRemoves = responseHeadersToRemoves;
+            return _resultValue;
         }
     }
 }

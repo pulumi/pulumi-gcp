@@ -156,14 +156,14 @@ public final class CxPageTransitionRoute {
             return this;
         }
         public CxPageTransitionRoute build() {
-            final var o = new CxPageTransitionRoute();
-            o.condition = condition;
-            o.intent = intent;
-            o.name = name;
-            o.targetFlow = targetFlow;
-            o.targetPage = targetPage;
-            o.triggerFulfillment = triggerFulfillment;
-            return o;
+            final var _resultValue = new CxPageTransitionRoute();
+            _resultValue.condition = condition;
+            _resultValue.intent = intent;
+            _resultValue.name = name;
+            _resultValue.targetFlow = targetFlow;
+            _resultValue.targetPage = targetPage;
+            _resultValue.triggerFulfillment = triggerFulfillment;
+            return _resultValue;
         }
     }
 }

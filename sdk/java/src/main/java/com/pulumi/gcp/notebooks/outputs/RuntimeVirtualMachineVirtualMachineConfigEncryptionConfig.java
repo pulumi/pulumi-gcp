@@ -56,9 +56,9 @@ public final class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
             return this;
         }
         public RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig build() {
-            final var o = new RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig();
-            o.kmsKey = kmsKey;
-            return o;
+            final var _resultValue = new RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig();
+            _resultValue.kmsKey = kmsKey;
+            return _resultValue;
         }
     }
 }

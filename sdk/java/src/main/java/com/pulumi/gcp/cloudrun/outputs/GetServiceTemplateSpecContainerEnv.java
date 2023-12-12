@@ -73,11 +73,11 @@ public final class GetServiceTemplateSpecContainerEnv {
             return valueFroms(List.of(valueFroms));
         }
         public GetServiceTemplateSpecContainerEnv build() {
-            final var o = new GetServiceTemplateSpecContainerEnv();
-            o.name = name;
-            o.value = value;
-            o.valueFroms = valueFroms;
-            return o;
+            final var _resultValue = new GetServiceTemplateSpecContainerEnv();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            _resultValue.valueFroms = valueFroms;
+            return _resultValue;
         }
     }
 }

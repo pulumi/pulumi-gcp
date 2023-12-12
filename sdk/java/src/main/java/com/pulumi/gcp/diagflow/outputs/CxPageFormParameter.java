@@ -196,16 +196,16 @@ public final class CxPageFormParameter {
             return this;
         }
         public CxPageFormParameter build() {
-            final var o = new CxPageFormParameter();
-            o.advancedSettings = advancedSettings;
-            o.defaultValue = defaultValue;
-            o.displayName = displayName;
-            o.entityType = entityType;
-            o.fillBehavior = fillBehavior;
-            o.isList = isList;
-            o.redact = redact;
-            o.required = required;
-            return o;
+            final var _resultValue = new CxPageFormParameter();
+            _resultValue.advancedSettings = advancedSettings;
+            _resultValue.defaultValue = defaultValue;
+            _resultValue.displayName = displayName;
+            _resultValue.entityType = entityType;
+            _resultValue.fillBehavior = fillBehavior;
+            _resultValue.isList = isList;
+            _resultValue.redact = redact;
+            _resultValue.required = required;
+            return _resultValue;
         }
     }
 }

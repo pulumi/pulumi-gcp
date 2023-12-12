@@ -108,13 +108,13 @@ public final class GetKMSSecretAsymmetricResult {
             return this;
         }
         public GetKMSSecretAsymmetricResult build() {
-            final var o = new GetKMSSecretAsymmetricResult();
-            o.ciphertext = ciphertext;
-            o.crc32 = crc32;
-            o.cryptoKeyVersion = cryptoKeyVersion;
-            o.id = id;
-            o.plaintext = plaintext;
-            return o;
+            final var _resultValue = new GetKMSSecretAsymmetricResult();
+            _resultValue.ciphertext = ciphertext;
+            _resultValue.crc32 = crc32;
+            _resultValue.cryptoKeyVersion = cryptoKeyVersion;
+            _resultValue.id = id;
+            _resultValue.plaintext = plaintext;
+            return _resultValue;
         }
     }
 }

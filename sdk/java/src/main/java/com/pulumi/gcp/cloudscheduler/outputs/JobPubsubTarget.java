@@ -99,11 +99,11 @@ public final class JobPubsubTarget {
             return this;
         }
         public JobPubsubTarget build() {
-            final var o = new JobPubsubTarget();
-            o.attributes = attributes;
-            o.data = data;
-            o.topicName = topicName;
-            return o;
+            final var _resultValue = new JobPubsubTarget();
+            _resultValue.attributes = attributes;
+            _resultValue.data = data;
+            _resultValue.topicName = topicName;
+            return _resultValue;
         }
     }
 }

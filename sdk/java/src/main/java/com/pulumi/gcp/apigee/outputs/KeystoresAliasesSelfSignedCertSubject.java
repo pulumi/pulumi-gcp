@@ -166,15 +166,15 @@ public final class KeystoresAliasesSelfSignedCertSubject {
             return this;
         }
         public KeystoresAliasesSelfSignedCertSubject build() {
-            final var o = new KeystoresAliasesSelfSignedCertSubject();
-            o.commonName = commonName;
-            o.countryCode = countryCode;
-            o.email = email;
-            o.locality = locality;
-            o.org = org;
-            o.orgUnit = orgUnit;
-            o.state = state;
-            return o;
+            final var _resultValue = new KeystoresAliasesSelfSignedCertSubject();
+            _resultValue.commonName = commonName;
+            _resultValue.countryCode = countryCode;
+            _resultValue.email = email;
+            _resultValue.locality = locality;
+            _resultValue.org = org;
+            _resultValue.orgUnit = orgUnit;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

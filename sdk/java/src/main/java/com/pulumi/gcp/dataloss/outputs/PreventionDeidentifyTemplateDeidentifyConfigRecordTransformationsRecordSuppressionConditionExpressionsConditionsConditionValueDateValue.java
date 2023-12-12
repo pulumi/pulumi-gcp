@@ -90,11 +90,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue();
-            o.day = day;
-            o.month = month;
-            o.year = year;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue();
+            _resultValue.day = day;
+            _resultValue.month = month;
+            _resultValue.year = year;
+            return _resultValue;
         }
     }
 }

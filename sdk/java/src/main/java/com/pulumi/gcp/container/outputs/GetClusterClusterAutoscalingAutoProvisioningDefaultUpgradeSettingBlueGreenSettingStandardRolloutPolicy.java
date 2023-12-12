@@ -62,11 +62,11 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSet
             return this;
         }
         public GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy build() {
-            final var o = new GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy();
-            o.batchNodeCount = batchNodeCount;
-            o.batchPercentage = batchPercentage;
-            o.batchSoakDuration = batchSoakDuration;
-            return o;
+            final var _resultValue = new GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy();
+            _resultValue.batchNodeCount = batchNodeCount;
+            _resultValue.batchPercentage = batchPercentage;
+            _resultValue.batchSoakDuration = batchSoakDuration;
+            return _resultValue;
         }
     }
 }

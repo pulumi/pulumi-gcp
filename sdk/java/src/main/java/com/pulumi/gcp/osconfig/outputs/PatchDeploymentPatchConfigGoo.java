@@ -46,9 +46,9 @@ public final class PatchDeploymentPatchConfigGoo {
             return this;
         }
         public PatchDeploymentPatchConfigGoo build() {
-            final var o = new PatchDeploymentPatchConfigGoo();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new PatchDeploymentPatchConfigGoo();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

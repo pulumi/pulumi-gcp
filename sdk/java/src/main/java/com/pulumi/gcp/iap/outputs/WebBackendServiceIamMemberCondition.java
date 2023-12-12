@@ -94,11 +94,11 @@ public final class WebBackendServiceIamMemberCondition {
             return this;
         }
         public WebBackendServiceIamMemberCondition build() {
-            final var o = new WebBackendServiceIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new WebBackendServiceIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

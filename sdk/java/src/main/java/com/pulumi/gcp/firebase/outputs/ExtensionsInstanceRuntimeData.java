@@ -92,11 +92,11 @@ public final class ExtensionsInstanceRuntimeData {
             return this;
         }
         public ExtensionsInstanceRuntimeData build() {
-            final var o = new ExtensionsInstanceRuntimeData();
-            o.fatalError = fatalError;
-            o.processingState = processingState;
-            o.stateUpdateTime = stateUpdateTime;
-            return o;
+            final var _resultValue = new ExtensionsInstanceRuntimeData();
+            _resultValue.fatalError = fatalError;
+            _resultValue.processingState = processingState;
+            _resultValue.stateUpdateTime = stateUpdateTime;
+            return _resultValue;
         }
     }
 }

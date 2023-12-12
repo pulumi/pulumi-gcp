@@ -52,9 +52,9 @@ public final class RecordSetRoutingPolicyGeoHealthCheckedTargets {
             return internalLoadBalancers(List.of(internalLoadBalancers));
         }
         public RecordSetRoutingPolicyGeoHealthCheckedTargets build() {
-            final var o = new RecordSetRoutingPolicyGeoHealthCheckedTargets();
-            o.internalLoadBalancers = internalLoadBalancers;
-            return o;
+            final var _resultValue = new RecordSetRoutingPolicyGeoHealthCheckedTargets();
+            _resultValue.internalLoadBalancers = internalLoadBalancers;
+            return _resultValue;
         }
     }
 }

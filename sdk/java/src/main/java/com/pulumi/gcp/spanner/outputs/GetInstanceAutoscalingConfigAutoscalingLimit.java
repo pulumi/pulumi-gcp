@@ -49,10 +49,10 @@ public final class GetInstanceAutoscalingConfigAutoscalingLimit {
             return this;
         }
         public GetInstanceAutoscalingConfigAutoscalingLimit build() {
-            final var o = new GetInstanceAutoscalingConfigAutoscalingLimit();
-            o.maxProcessingUnits = maxProcessingUnits;
-            o.minProcessingUnits = minProcessingUnits;
-            return o;
+            final var _resultValue = new GetInstanceAutoscalingConfigAutoscalingLimit();
+            _resultValue.maxProcessingUnits = maxProcessingUnits;
+            _resultValue.minProcessingUnits = minProcessingUnits;
+            return _resultValue;
         }
     }
 }

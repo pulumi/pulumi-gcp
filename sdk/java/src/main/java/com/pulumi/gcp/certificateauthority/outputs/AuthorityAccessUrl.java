@@ -79,10 +79,10 @@ public final class AuthorityAccessUrl {
             return crlAccessUrls(List.of(crlAccessUrls));
         }
         public AuthorityAccessUrl build() {
-            final var o = new AuthorityAccessUrl();
-            o.caCertificateAccessUrl = caCertificateAccessUrl;
-            o.crlAccessUrls = crlAccessUrls;
-            return o;
+            final var _resultValue = new AuthorityAccessUrl();
+            _resultValue.caCertificateAccessUrl = caCertificateAccessUrl;
+            _resultValue.crlAccessUrls = crlAccessUrls;
+            return _resultValue;
         }
     }
 }

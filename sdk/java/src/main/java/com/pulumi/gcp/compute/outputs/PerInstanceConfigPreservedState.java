@@ -124,12 +124,12 @@ public final class PerInstanceConfigPreservedState {
             return this;
         }
         public PerInstanceConfigPreservedState build() {
-            final var o = new PerInstanceConfigPreservedState();
-            o.disks = disks;
-            o.externalIps = externalIps;
-            o.internalIps = internalIps;
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new PerInstanceConfigPreservedState();
+            _resultValue.disks = disks;
+            _resultValue.externalIps = externalIps;
+            _resultValue.internalIps = internalIps;
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

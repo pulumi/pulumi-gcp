@@ -50,9 +50,9 @@ public final class ClusterAddonsConfigNetworkPolicyConfig {
             return this;
         }
         public ClusterAddonsConfigNetworkPolicyConfig build() {
-            final var o = new ClusterAddonsConfigNetworkPolicyConfig();
-            o.disabled = disabled;
-            return o;
+            final var _resultValue = new ClusterAddonsConfigNetworkPolicyConfig();
+            _resultValue.disabled = disabled;
+            return _resultValue;
         }
     }
 }

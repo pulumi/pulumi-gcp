@@ -74,10 +74,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsP
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType();
-            o.infoType = infoType;
-            o.maxFindings = maxFindings;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType();
+            _resultValue.infoType = infoType;
+            _resultValue.maxFindings = maxFindings;
+            return _resultValue;
         }
     }
 }

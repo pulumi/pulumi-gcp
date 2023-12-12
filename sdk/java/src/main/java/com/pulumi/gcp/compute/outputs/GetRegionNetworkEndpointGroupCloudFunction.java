@@ -49,10 +49,10 @@ public final class GetRegionNetworkEndpointGroupCloudFunction {
             return this;
         }
         public GetRegionNetworkEndpointGroupCloudFunction build() {
-            final var o = new GetRegionNetworkEndpointGroupCloudFunction();
-            o.function = function;
-            o.urlMask = urlMask;
-            return o;
+            final var _resultValue = new GetRegionNetworkEndpointGroupCloudFunction();
+            _resultValue.function = function;
+            _resultValue.urlMask = urlMask;
+            return _resultValue;
         }
     }
 }

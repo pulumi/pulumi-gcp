@@ -48,9 +48,9 @@ public final class VMwareClusterStorage {
             return this;
         }
         public VMwareClusterStorage build() {
-            final var o = new VMwareClusterStorage();
-            o.vsphereCsiDisabled = vsphereCsiDisabled;
-            return o;
+            final var _resultValue = new VMwareClusterStorage();
+            _resultValue.vsphereCsiDisabled = vsphereCsiDisabled;
+            return _resultValue;
         }
     }
 }

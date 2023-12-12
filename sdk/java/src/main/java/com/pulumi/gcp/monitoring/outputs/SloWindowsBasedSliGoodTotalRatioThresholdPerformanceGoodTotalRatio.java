@@ -120,11 +120,11 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotal
             return this;
         }
         public SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio build() {
-            final var o = new SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio();
-            o.badServiceFilter = badServiceFilter;
-            o.goodServiceFilter = goodServiceFilter;
-            o.totalServiceFilter = totalServiceFilter;
-            return o;
+            final var _resultValue = new SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio();
+            _resultValue.badServiceFilter = badServiceFilter;
+            _resultValue.goodServiceFilter = goodServiceFilter;
+            _resultValue.totalServiceFilter = totalServiceFilter;
+            return _resultValue;
         }
     }
 }

@@ -211,17 +211,17 @@ public final class TargetServerSSlInfo {
             return this;
         }
         public TargetServerSSlInfo build() {
-            final var o = new TargetServerSSlInfo();
-            o.ciphers = ciphers;
-            o.clientAuthEnabled = clientAuthEnabled;
-            o.commonName = commonName;
-            o.enabled = enabled;
-            o.ignoreValidationErrors = ignoreValidationErrors;
-            o.keyAlias = keyAlias;
-            o.keyStore = keyStore;
-            o.protocols = protocols;
-            o.trustStore = trustStore;
-            return o;
+            final var _resultValue = new TargetServerSSlInfo();
+            _resultValue.ciphers = ciphers;
+            _resultValue.clientAuthEnabled = clientAuthEnabled;
+            _resultValue.commonName = commonName;
+            _resultValue.enabled = enabled;
+            _resultValue.ignoreValidationErrors = ignoreValidationErrors;
+            _resultValue.keyAlias = keyAlias;
+            _resultValue.keyStore = keyStore;
+            _resultValue.protocols = protocols;
+            _resultValue.trustStore = trustStore;
+            return _resultValue;
         }
     }
 }

@@ -94,11 +94,11 @@ public final class TableHiveOptions {
             return this;
         }
         public TableHiveOptions build() {
-            final var o = new TableHiveOptions();
-            o.parameters = parameters;
-            o.storageDescriptor = storageDescriptor;
-            o.tableType = tableType;
-            return o;
+            final var _resultValue = new TableHiveOptions();
+            _resultValue.parameters = parameters;
+            _resultValue.storageDescriptor = storageDescriptor;
+            _resultValue.tableType = tableType;
+            return _resultValue;
         }
     }
 }

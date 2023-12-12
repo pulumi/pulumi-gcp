@@ -122,12 +122,12 @@ public final class V2VmNetworkConfig {
             return this;
         }
         public V2VmNetworkConfig build() {
-            final var o = new V2VmNetworkConfig();
-            o.canIpForward = canIpForward;
-            o.enableExternalIps = enableExternalIps;
-            o.network = network;
-            o.subnetwork = subnetwork;
-            return o;
+            final var _resultValue = new V2VmNetworkConfig();
+            _resultValue.canIpForward = canIpForward;
+            _resultValue.enableExternalIps = enableExternalIps;
+            _resultValue.network = network;
+            _resultValue.subnetwork = subnetwork;
+            return _resultValue;
         }
     }
 }

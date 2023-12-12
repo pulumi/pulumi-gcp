@@ -116,12 +116,12 @@ public final class AiFeatureStoreEntityTypeMonitoringConfig {
             return this;
         }
         public AiFeatureStoreEntityTypeMonitoringConfig build() {
-            final var o = new AiFeatureStoreEntityTypeMonitoringConfig();
-            o.categoricalThresholdConfig = categoricalThresholdConfig;
-            o.importFeaturesAnalysis = importFeaturesAnalysis;
-            o.numericalThresholdConfig = numericalThresholdConfig;
-            o.snapshotAnalysis = snapshotAnalysis;
-            return o;
+            final var _resultValue = new AiFeatureStoreEntityTypeMonitoringConfig();
+            _resultValue.categoricalThresholdConfig = categoricalThresholdConfig;
+            _resultValue.importFeaturesAnalysis = importFeaturesAnalysis;
+            _resultValue.numericalThresholdConfig = numericalThresholdConfig;
+            _resultValue.snapshotAnalysis = snapshotAnalysis;
+            return _resultValue;
         }
     }
 }

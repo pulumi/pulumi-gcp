@@ -48,9 +48,9 @@ public final class RegionPerInstanceConfigPreservedStateInternalIpIpAddress {
             return this;
         }
         public RegionPerInstanceConfigPreservedStateInternalIpIpAddress build() {
-            final var o = new RegionPerInstanceConfigPreservedStateInternalIpIpAddress();
-            o.address = address;
-            return o;
+            final var _resultValue = new RegionPerInstanceConfigPreservedStateInternalIpIpAddress();
+            _resultValue.address = address;
+            return _resultValue;
         }
     }
 }

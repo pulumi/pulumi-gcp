@@ -86,10 +86,10 @@ public final class FirewallAllow {
             return this;
         }
         public FirewallAllow build() {
-            final var o = new FirewallAllow();
-            o.ports = ports;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new FirewallAllow();
+            _resultValue.ports = ports;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

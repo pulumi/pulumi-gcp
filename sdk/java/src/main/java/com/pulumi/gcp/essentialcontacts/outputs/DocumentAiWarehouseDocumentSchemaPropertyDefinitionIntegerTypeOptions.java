@@ -25,8 +25,8 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTyp
         }
 
         public DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions build() {
-            final var o = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions();
-            return o;
+            final var _resultValue = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions();
+            return _resultValue;
         }
     }
 }

@@ -154,18 +154,18 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
             return upgradeSettings(List.of(upgradeSettings));
         }
         public GetClusterClusterAutoscalingAutoProvisioningDefault build() {
-            final var o = new GetClusterClusterAutoscalingAutoProvisioningDefault();
-            o.bootDiskKmsKey = bootDiskKmsKey;
-            o.diskSize = diskSize;
-            o.diskType = diskType;
-            o.imageType = imageType;
-            o.managements = managements;
-            o.minCpuPlatform = minCpuPlatform;
-            o.oauthScopes = oauthScopes;
-            o.serviceAccount = serviceAccount;
-            o.shieldedInstanceConfigs = shieldedInstanceConfigs;
-            o.upgradeSettings = upgradeSettings;
-            return o;
+            final var _resultValue = new GetClusterClusterAutoscalingAutoProvisioningDefault();
+            _resultValue.bootDiskKmsKey = bootDiskKmsKey;
+            _resultValue.diskSize = diskSize;
+            _resultValue.diskType = diskType;
+            _resultValue.imageType = imageType;
+            _resultValue.managements = managements;
+            _resultValue.minCpuPlatform = minCpuPlatform;
+            _resultValue.oauthScopes = oauthScopes;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.shieldedInstanceConfigs = shieldedInstanceConfigs;
+            _resultValue.upgradeSettings = upgradeSettings;
+            return _resultValue;
         }
     }
 }

@@ -105,15 +105,15 @@ public final class GetHealthCheckHttp2HealthCheck {
             return this;
         }
         public GetHealthCheckHttp2HealthCheck build() {
-            final var o = new GetHealthCheckHttp2HealthCheck();
-            o.host = host;
-            o.port = port;
-            o.portName = portName;
-            o.portSpecification = portSpecification;
-            o.proxyHeader = proxyHeader;
-            o.requestPath = requestPath;
-            o.response = response;
-            return o;
+            final var _resultValue = new GetHealthCheckHttp2HealthCheck();
+            _resultValue.host = host;
+            _resultValue.port = port;
+            _resultValue.portName = portName;
+            _resultValue.portSpecification = portSpecification;
+            _resultValue.proxyHeader = proxyHeader;
+            _resultValue.requestPath = requestPath;
+            _resultValue.response = response;
+            return _resultValue;
         }
     }
 }

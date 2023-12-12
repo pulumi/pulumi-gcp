@@ -106,12 +106,12 @@ public final class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
             return this;
         }
         public SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig build() {
-            final var o = new SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig();
-            o.confidenceThreshold = confidenceThreshold;
-            o.expirationSec = expirationSec;
-            o.impactedBaselineThreshold = impactedBaselineThreshold;
-            o.loadThreshold = loadThreshold;
-            return o;
+            final var _resultValue = new SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig();
+            _resultValue.confidenceThreshold = confidenceThreshold;
+            _resultValue.expirationSec = expirationSec;
+            _resultValue.impactedBaselineThreshold = impactedBaselineThreshold;
+            _resultValue.loadThreshold = loadThreshold;
+            return _resultValue;
         }
     }
 }

@@ -76,10 +76,10 @@ public final class TagTemplateFieldType {
             return this;
         }
         public TagTemplateFieldType build() {
-            final var o = new TagTemplateFieldType();
-            o.enumType = enumType;
-            o.primitiveType = primitiveType;
-            return o;
+            final var _resultValue = new TagTemplateFieldType();
+            _resultValue.enumType = enumType;
+            _resultValue.primitiveType = primitiveType;
+            return _resultValue;
         }
     }
 }

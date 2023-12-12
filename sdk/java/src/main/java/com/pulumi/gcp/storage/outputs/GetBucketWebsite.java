@@ -49,10 +49,10 @@ public final class GetBucketWebsite {
             return this;
         }
         public GetBucketWebsite build() {
-            final var o = new GetBucketWebsite();
-            o.mainPageSuffix = mainPageSuffix;
-            o.notFoundPage = notFoundPage;
-            return o;
+            final var _resultValue = new GetBucketWebsite();
+            _resultValue.mainPageSuffix = mainPageSuffix;
+            _resultValue.notFoundPage = notFoundPage;
+            return _resultValue;
         }
     }
 }

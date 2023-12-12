@@ -69,10 +69,10 @@ public final class GetSubnetworkSecondaryIpRange {
             return this;
         }
         public GetSubnetworkSecondaryIpRange build() {
-            final var o = new GetSubnetworkSecondaryIpRange();
-            o.ipCidrRange = ipCidrRange;
-            o.rangeName = rangeName;
-            return o;
+            final var _resultValue = new GetSubnetworkSecondaryIpRange();
+            _resultValue.ipCidrRange = ipCidrRange;
+            _resultValue.rangeName = rangeName;
+            return _resultValue;
         }
     }
 }

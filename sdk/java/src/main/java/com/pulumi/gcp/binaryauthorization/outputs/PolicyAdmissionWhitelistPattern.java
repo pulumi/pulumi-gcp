@@ -52,9 +52,9 @@ public final class PolicyAdmissionWhitelistPattern {
             return this;
         }
         public PolicyAdmissionWhitelistPattern build() {
-            final var o = new PolicyAdmissionWhitelistPattern();
-            o.namePattern = namePattern;
-            return o;
+            final var _resultValue = new PolicyAdmissionWhitelistPattern();
+            _resultValue.namePattern = namePattern;
+            return _resultValue;
         }
     }
 }

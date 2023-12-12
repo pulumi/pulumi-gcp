@@ -94,13 +94,13 @@ public final class DatabaseInstanceServerCaCert {
             return this;
         }
         public DatabaseInstanceServerCaCert build() {
-            final var o = new DatabaseInstanceServerCaCert();
-            o.cert = cert;
-            o.commonName = commonName;
-            o.createTime = createTime;
-            o.expirationTime = expirationTime;
-            o.sha1Fingerprint = sha1Fingerprint;
-            return o;
+            final var _resultValue = new DatabaseInstanceServerCaCert();
+            _resultValue.cert = cert;
+            _resultValue.commonName = commonName;
+            _resultValue.createTime = createTime;
+            _resultValue.expirationTime = expirationTime;
+            _resultValue.sha1Fingerprint = sha1Fingerprint;
+            return _resultValue;
         }
     }
 }

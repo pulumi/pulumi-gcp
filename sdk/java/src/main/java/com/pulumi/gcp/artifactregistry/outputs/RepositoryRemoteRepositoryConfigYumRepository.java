@@ -50,9 +50,9 @@ public final class RepositoryRemoteRepositoryConfigYumRepository {
             return this;
         }
         public RepositoryRemoteRepositoryConfigYumRepository build() {
-            final var o = new RepositoryRemoteRepositoryConfigYumRepository();
-            o.publicRepository = publicRepository;
-            return o;
+            final var _resultValue = new RepositoryRemoteRepositoryConfigYumRepository();
+            _resultValue.publicRepository = publicRepository;
+            return _resultValue;
         }
     }
 }

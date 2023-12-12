@@ -50,9 +50,9 @@ public final class FolderFeedFeedOutputConfigPubsubDestination {
             return this;
         }
         public FolderFeedFeedOutputConfigPubsubDestination build() {
-            final var o = new FolderFeedFeedOutputConfigPubsubDestination();
-            o.topic = topic;
-            return o;
+            final var _resultValue = new FolderFeedFeedOutputConfigPubsubDestination();
+            _resultValue.topic = topic;
+            return _resultValue;
         }
     }
 }

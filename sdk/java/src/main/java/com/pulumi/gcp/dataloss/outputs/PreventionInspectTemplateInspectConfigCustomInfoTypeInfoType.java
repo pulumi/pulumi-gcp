@@ -91,11 +91,11 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType 
             return this;
         }
         public PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType build() {
-            final var o = new PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType();
-            o.name = name;
-            o.sensitivityScore = sensitivityScore;
-            o.version = version;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType();
+            _resultValue.name = name;
+            _resultValue.sensitivityScore = sensitivityScore;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

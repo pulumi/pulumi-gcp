@@ -71,10 +71,10 @@ public final class UptimeCheckConfigContentMatcherJsonPathMatcher {
             return this;
         }
         public UptimeCheckConfigContentMatcherJsonPathMatcher build() {
-            final var o = new UptimeCheckConfigContentMatcherJsonPathMatcher();
-            o.jsonMatcher = jsonMatcher;
-            o.jsonPath = jsonPath;
-            return o;
+            final var _resultValue = new UptimeCheckConfigContentMatcherJsonPathMatcher();
+            _resultValue.jsonMatcher = jsonMatcher;
+            _resultValue.jsonPath = jsonPath;
+            return _resultValue;
         }
     }
 }

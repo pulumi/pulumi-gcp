@@ -116,12 +116,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig();
-            o.charactersToIgnores = charactersToIgnores;
-            o.maskingCharacter = maskingCharacter;
-            o.numberToMask = numberToMask;
-            o.reverseOrder = reverseOrder;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig();
+            _resultValue.charactersToIgnores = charactersToIgnores;
+            _resultValue.maskingCharacter = maskingCharacter;
+            _resultValue.numberToMask = numberToMask;
+            _resultValue.reverseOrder = reverseOrder;
+            return _resultValue;
         }
     }
 }

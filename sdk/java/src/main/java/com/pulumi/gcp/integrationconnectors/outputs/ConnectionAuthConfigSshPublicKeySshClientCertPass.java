@@ -52,9 +52,9 @@ public final class ConnectionAuthConfigSshPublicKeySshClientCertPass {
             return this;
         }
         public ConnectionAuthConfigSshPublicKeySshClientCertPass build() {
-            final var o = new ConnectionAuthConfigSshPublicKeySshClientCertPass();
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigSshPublicKeySshClientCertPass();
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

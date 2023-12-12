@@ -67,10 +67,10 @@ public final class PatchDeploymentRecurringScheduleTimeZone {
             return this;
         }
         public PatchDeploymentRecurringScheduleTimeZone build() {
-            final var o = new PatchDeploymentRecurringScheduleTimeZone();
-            o.id = id;
-            o.version = version;
-            return o;
+            final var _resultValue = new PatchDeploymentRecurringScheduleTimeZone();
+            _resultValue.id = id;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

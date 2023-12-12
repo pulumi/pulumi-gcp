@@ -126,13 +126,13 @@ public final class GetNetblockIPRangesResult {
             return this;
         }
         public GetNetblockIPRangesResult build() {
-            final var o = new GetNetblockIPRangesResult();
-            o.cidrBlocks = cidrBlocks;
-            o.cidrBlocksIpv4s = cidrBlocksIpv4s;
-            o.cidrBlocksIpv6s = cidrBlocksIpv6s;
-            o.id = id;
-            o.rangeType = rangeType;
-            return o;
+            final var _resultValue = new GetNetblockIPRangesResult();
+            _resultValue.cidrBlocks = cidrBlocks;
+            _resultValue.cidrBlocksIpv4s = cidrBlocksIpv4s;
+            _resultValue.cidrBlocksIpv6s = cidrBlocksIpv6s;
+            _resultValue.id = id;
+            _resultValue.rangeType = rangeType;
+            return _resultValue;
         }
     }
 }

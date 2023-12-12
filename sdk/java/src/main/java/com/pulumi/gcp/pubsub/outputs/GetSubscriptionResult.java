@@ -274,27 +274,27 @@ public final class GetSubscriptionResult {
             return this;
         }
         public GetSubscriptionResult build() {
-            final var o = new GetSubscriptionResult();
-            o.ackDeadlineSeconds = ackDeadlineSeconds;
-            o.bigqueryConfigs = bigqueryConfigs;
-            o.cloudStorageConfigs = cloudStorageConfigs;
-            o.deadLetterPolicies = deadLetterPolicies;
-            o.effectiveLabels = effectiveLabels;
-            o.enableExactlyOnceDelivery = enableExactlyOnceDelivery;
-            o.enableMessageOrdering = enableMessageOrdering;
-            o.expirationPolicies = expirationPolicies;
-            o.filter = filter;
-            o.id = id;
-            o.labels = labels;
-            o.messageRetentionDuration = messageRetentionDuration;
-            o.name = name;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.pushConfigs = pushConfigs;
-            o.retainAckedMessages = retainAckedMessages;
-            o.retryPolicies = retryPolicies;
-            o.topic = topic;
-            return o;
+            final var _resultValue = new GetSubscriptionResult();
+            _resultValue.ackDeadlineSeconds = ackDeadlineSeconds;
+            _resultValue.bigqueryConfigs = bigqueryConfigs;
+            _resultValue.cloudStorageConfigs = cloudStorageConfigs;
+            _resultValue.deadLetterPolicies = deadLetterPolicies;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.enableExactlyOnceDelivery = enableExactlyOnceDelivery;
+            _resultValue.enableMessageOrdering = enableMessageOrdering;
+            _resultValue.expirationPolicies = expirationPolicies;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.messageRetentionDuration = messageRetentionDuration;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.pushConfigs = pushConfigs;
+            _resultValue.retainAckedMessages = retainAckedMessages;
+            _resultValue.retryPolicies = retryPolicies;
+            _resultValue.topic = topic;
+            return _resultValue;
         }
     }
 }

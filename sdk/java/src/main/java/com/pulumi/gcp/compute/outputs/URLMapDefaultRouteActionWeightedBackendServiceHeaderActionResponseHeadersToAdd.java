@@ -89,11 +89,11 @@ public final class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRes
             return this;
         }
         public URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd build() {
-            final var o = new URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd();
-            o.headerName = headerName;
-            o.headerValue = headerValue;
-            o.replace = replace;
-            return o;
+            final var _resultValue = new URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd();
+            _resultValue.headerName = headerName;
+            _resultValue.headerValue = headerValue;
+            _resultValue.replace = replace;
+            return _resultValue;
         }
     }
 }

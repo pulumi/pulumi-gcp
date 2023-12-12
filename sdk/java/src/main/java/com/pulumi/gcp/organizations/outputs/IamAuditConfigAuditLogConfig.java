@@ -80,10 +80,10 @@ public final class IamAuditConfigAuditLogConfig {
             return this;
         }
         public IamAuditConfigAuditLogConfig build() {
-            final var o = new IamAuditConfigAuditLogConfig();
-            o.exemptedMembers = exemptedMembers;
-            o.logType = logType;
-            return o;
+            final var _resultValue = new IamAuditConfigAuditLogConfig();
+            _resultValue.exemptedMembers = exemptedMembers;
+            _resultValue.logType = logType;
+            return _resultValue;
         }
     }
 }

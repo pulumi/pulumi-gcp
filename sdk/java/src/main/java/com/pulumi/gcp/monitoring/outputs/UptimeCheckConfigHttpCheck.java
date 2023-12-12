@@ -298,21 +298,21 @@ public final class UptimeCheckConfigHttpCheck {
             return this;
         }
         public UptimeCheckConfigHttpCheck build() {
-            final var o = new UptimeCheckConfigHttpCheck();
-            o.acceptedResponseStatusCodes = acceptedResponseStatusCodes;
-            o.authInfo = authInfo;
-            o.body = body;
-            o.contentType = contentType;
-            o.customContentType = customContentType;
-            o.headers = headers;
-            o.maskHeaders = maskHeaders;
-            o.path = path;
-            o.pingConfig = pingConfig;
-            o.port = port;
-            o.requestMethod = requestMethod;
-            o.useSsl = useSsl;
-            o.validateSsl = validateSsl;
-            return o;
+            final var _resultValue = new UptimeCheckConfigHttpCheck();
+            _resultValue.acceptedResponseStatusCodes = acceptedResponseStatusCodes;
+            _resultValue.authInfo = authInfo;
+            _resultValue.body = body;
+            _resultValue.contentType = contentType;
+            _resultValue.customContentType = customContentType;
+            _resultValue.headers = headers;
+            _resultValue.maskHeaders = maskHeaders;
+            _resultValue.path = path;
+            _resultValue.pingConfig = pingConfig;
+            _resultValue.port = port;
+            _resultValue.requestMethod = requestMethod;
+            _resultValue.useSsl = useSsl;
+            _resultValue.validateSsl = validateSsl;
+            return _resultValue;
         }
     }
 }

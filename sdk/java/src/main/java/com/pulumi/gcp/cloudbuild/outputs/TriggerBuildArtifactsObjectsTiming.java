@@ -75,10 +75,10 @@ public final class TriggerBuildArtifactsObjectsTiming {
             return this;
         }
         public TriggerBuildArtifactsObjectsTiming build() {
-            final var o = new TriggerBuildArtifactsObjectsTiming();
-            o.endTime = endTime;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new TriggerBuildArtifactsObjectsTiming();
+            _resultValue.endTime = endTime;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

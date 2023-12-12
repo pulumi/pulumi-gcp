@@ -38,9 +38,9 @@ public final class GetClusterMasterAuthClientCertificateConfig {
             return this;
         }
         public GetClusterMasterAuthClientCertificateConfig build() {
-            final var o = new GetClusterMasterAuthClientCertificateConfig();
-            o.issueClientCertificate = issueClientCertificate;
-            return o;
+            final var _resultValue = new GetClusterMasterAuthClientCertificateConfig();
+            _resultValue.issueClientCertificate = issueClientCertificate;
+            return _resultValue;
         }
     }
 }

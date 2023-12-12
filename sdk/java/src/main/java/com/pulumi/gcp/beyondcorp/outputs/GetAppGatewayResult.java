@@ -186,21 +186,21 @@ public final class GetAppGatewayResult {
             return this;
         }
         public GetAppGatewayResult build() {
-            final var o = new GetAppGatewayResult();
-            o.allocatedConnections = allocatedConnections;
-            o.displayName = displayName;
-            o.effectiveLabels = effectiveLabels;
-            o.hostType = hostType;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.region = region;
-            o.state = state;
-            o.type = type;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new GetAppGatewayResult();
+            _resultValue.allocatedConnections = allocatedConnections;
+            _resultValue.displayName = displayName;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.hostType = hostType;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.region = region;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

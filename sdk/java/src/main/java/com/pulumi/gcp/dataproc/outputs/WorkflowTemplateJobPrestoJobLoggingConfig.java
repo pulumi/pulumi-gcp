@@ -48,9 +48,9 @@ public final class WorkflowTemplateJobPrestoJobLoggingConfig {
             return this;
         }
         public WorkflowTemplateJobPrestoJobLoggingConfig build() {
-            final var o = new WorkflowTemplateJobPrestoJobLoggingConfig();
-            o.driverLogLevels = driverLogLevels;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobPrestoJobLoggingConfig();
+            _resultValue.driverLogLevels = driverLogLevels;
+            return _resultValue;
         }
     }
 }

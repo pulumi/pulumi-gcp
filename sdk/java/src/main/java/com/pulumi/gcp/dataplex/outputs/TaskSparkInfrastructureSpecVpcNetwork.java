@@ -90,11 +90,11 @@ public final class TaskSparkInfrastructureSpecVpcNetwork {
             return this;
         }
         public TaskSparkInfrastructureSpecVpcNetwork build() {
-            final var o = new TaskSparkInfrastructureSpecVpcNetwork();
-            o.network = network;
-            o.networkTags = networkTags;
-            o.subNetwork = subNetwork;
-            return o;
+            final var _resultValue = new TaskSparkInfrastructureSpecVpcNetwork();
+            _resultValue.network = network;
+            _resultValue.networkTags = networkTags;
+            _resultValue.subNetwork = subNetwork;
+            return _resultValue;
         }
     }
 }

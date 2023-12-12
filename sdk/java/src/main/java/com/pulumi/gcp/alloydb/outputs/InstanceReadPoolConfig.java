@@ -48,9 +48,9 @@ public final class InstanceReadPoolConfig {
             return this;
         }
         public InstanceReadPoolConfig build() {
-            final var o = new InstanceReadPoolConfig();
-            o.nodeCount = nodeCount;
-            return o;
+            final var _resultValue = new InstanceReadPoolConfig();
+            _resultValue.nodeCount = nodeCount;
+            return _resultValue;
         }
     }
 }

@@ -69,10 +69,10 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
             return this;
         }
         public ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek build() {
-            final var o = new ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek();
-            o.day = day;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek();
+            _resultValue.day = day;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

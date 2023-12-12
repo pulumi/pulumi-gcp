@@ -89,11 +89,11 @@ public final class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText
             return this;
         }
         public CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText build() {
-            final var o = new CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.ssml = ssml;
-            o.text = text;
-            return o;
+            final var _resultValue = new CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.ssml = ssml;
+            _resultValue.text = text;
+            return _resultValue;
         }
     }
 }

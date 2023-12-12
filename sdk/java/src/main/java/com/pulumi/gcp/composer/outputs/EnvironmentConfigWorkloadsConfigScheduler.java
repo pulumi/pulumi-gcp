@@ -74,12 +74,12 @@ public final class EnvironmentConfigWorkloadsConfigScheduler {
             return this;
         }
         public EnvironmentConfigWorkloadsConfigScheduler build() {
-            final var o = new EnvironmentConfigWorkloadsConfigScheduler();
-            o.count = count;
-            o.cpu = cpu;
-            o.memoryGb = memoryGb;
-            o.storageGb = storageGb;
-            return o;
+            final var _resultValue = new EnvironmentConfigWorkloadsConfigScheduler();
+            _resultValue.count = count;
+            _resultValue.cpu = cpu;
+            _resultValue.memoryGb = memoryGb;
+            _resultValue.storageGb = storageGb;
+            return _resultValue;
         }
     }
 }

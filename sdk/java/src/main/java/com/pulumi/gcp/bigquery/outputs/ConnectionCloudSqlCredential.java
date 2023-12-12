@@ -67,10 +67,10 @@ public final class ConnectionCloudSqlCredential {
             return this;
         }
         public ConnectionCloudSqlCredential build() {
-            final var o = new ConnectionCloudSqlCredential();
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionCloudSqlCredential();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

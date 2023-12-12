@@ -65,10 +65,10 @@ public final class AuthorizationPolicyRuleDestinationHttpHeaderMatch {
             return this;
         }
         public AuthorizationPolicyRuleDestinationHttpHeaderMatch build() {
-            final var o = new AuthorizationPolicyRuleDestinationHttpHeaderMatch();
-            o.headerName = headerName;
-            o.regexMatch = regexMatch;
-            return o;
+            final var _resultValue = new AuthorizationPolicyRuleDestinationHttpHeaderMatch();
+            _resultValue.headerName = headerName;
+            _resultValue.regexMatch = regexMatch;
+            return _resultValue;
         }
     }
 }

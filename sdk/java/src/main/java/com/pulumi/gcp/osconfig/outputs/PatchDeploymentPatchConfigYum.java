@@ -117,12 +117,12 @@ public final class PatchDeploymentPatchConfigYum {
             return this;
         }
         public PatchDeploymentPatchConfigYum build() {
-            final var o = new PatchDeploymentPatchConfigYum();
-            o.excludes = excludes;
-            o.exclusivePackages = exclusivePackages;
-            o.minimal = minimal;
-            o.security = security;
-            return o;
+            final var _resultValue = new PatchDeploymentPatchConfigYum();
+            _resultValue.excludes = excludes;
+            _resultValue.exclusivePackages = exclusivePackages;
+            _resultValue.minimal = minimal;
+            _resultValue.security = security;
+            return _resultValue;
         }
     }
 }

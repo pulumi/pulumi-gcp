@@ -46,9 +46,9 @@ public final class ResourcePolicyInstanceSchedulePolicyVmStartSchedule {
             return this;
         }
         public ResourcePolicyInstanceSchedulePolicyVmStartSchedule build() {
-            final var o = new ResourcePolicyInstanceSchedulePolicyVmStartSchedule();
-            o.schedule = schedule;
-            return o;
+            final var _resultValue = new ResourcePolicyInstanceSchedulePolicyVmStartSchedule();
+            _resultValue.schedule = schedule;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class GetBackendServiceCircuitBreakerConnectTimeout {
             return this;
         }
         public GetBackendServiceCircuitBreakerConnectTimeout build() {
-            final var o = new GetBackendServiceCircuitBreakerConnectTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new GetBackendServiceCircuitBreakerConnectTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

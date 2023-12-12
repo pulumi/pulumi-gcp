@@ -50,9 +50,9 @@ public final class BareMetalAdminClusterNetworkConfig {
             return this;
         }
         public BareMetalAdminClusterNetworkConfig build() {
-            final var o = new BareMetalAdminClusterNetworkConfig();
-            o.islandModeCidr = islandModeCidr;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterNetworkConfig();
+            _resultValue.islandModeCidr = islandModeCidr;
+            return _resultValue;
         }
     }
 }

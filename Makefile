@@ -9,7 +9,6 @@ TFGEN := pulumi-tfgen-$(PACK)
 PROVIDER := pulumi-resource-$(PACK)
 VERSION := $(shell pulumictl get version)
 JAVA_GEN := pulumi-java-gen
-JAVA_GEN_VERSION := v0.9.7
 TESTPARALLELISM := 10
 WORKING_DIR := $(shell pwd)
 PULUMI_PROVIDER_BUILD_PARALLELISM ?= -p 2
@@ -138,8 +137,8 @@ upstream.finalize:
 upstream.rebase:
 	scripts/upstream.sh "$@" start_rebase
 
-bin/pulumi-java-gen:
-	pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java
+bin/pulumi-java-gen: .pulumi-java-gen.version
+	pulumictl download-binary -n pulumi-language-java -v v$(shell cat .pulumi-java-gen.version) -r pulumi/pulumi-java
 
 # To make an immediately observable change to .ci-mgmt.yaml:
 #

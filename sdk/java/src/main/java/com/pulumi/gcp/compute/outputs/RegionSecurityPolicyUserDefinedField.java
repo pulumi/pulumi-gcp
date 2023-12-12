@@ -139,13 +139,13 @@ public final class RegionSecurityPolicyUserDefinedField {
             return this;
         }
         public RegionSecurityPolicyUserDefinedField build() {
-            final var o = new RegionSecurityPolicyUserDefinedField();
-            o.base = base;
-            o.mask = mask;
-            o.name = name;
-            o.offset = offset;
-            o.size = size;
-            return o;
+            final var _resultValue = new RegionSecurityPolicyUserDefinedField();
+            _resultValue.base = base;
+            _resultValue.mask = mask;
+            _resultValue.name = name;
+            _resultValue.offset = offset;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

@@ -71,10 +71,10 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeRsa {
             return this;
         }
         public CaPoolIssuancePolicyAllowedKeyTypeRsa build() {
-            final var o = new CaPoolIssuancePolicyAllowedKeyTypeRsa();
-            o.maxModulusSize = maxModulusSize;
-            o.minModulusSize = minModulusSize;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyAllowedKeyTypeRsa();
+            _resultValue.maxModulusSize = maxModulusSize;
+            _resultValue.minModulusSize = minModulusSize;
+            return _resultValue;
         }
     }
 }

@@ -167,13 +167,13 @@ public final class AutoscalingPolicyBasicAlgorithmYarnConfig {
             return this;
         }
         public AutoscalingPolicyBasicAlgorithmYarnConfig build() {
-            final var o = new AutoscalingPolicyBasicAlgorithmYarnConfig();
-            o.gracefulDecommissionTimeout = gracefulDecommissionTimeout;
-            o.scaleDownFactor = scaleDownFactor;
-            o.scaleDownMinWorkerFraction = scaleDownMinWorkerFraction;
-            o.scaleUpFactor = scaleUpFactor;
-            o.scaleUpMinWorkerFraction = scaleUpMinWorkerFraction;
-            return o;
+            final var _resultValue = new AutoscalingPolicyBasicAlgorithmYarnConfig();
+            _resultValue.gracefulDecommissionTimeout = gracefulDecommissionTimeout;
+            _resultValue.scaleDownFactor = scaleDownFactor;
+            _resultValue.scaleDownMinWorkerFraction = scaleDownMinWorkerFraction;
+            _resultValue.scaleUpFactor = scaleUpFactor;
+            _resultValue.scaleUpMinWorkerFraction = scaleUpMinWorkerFraction;
+            return _resultValue;
         }
     }
 }

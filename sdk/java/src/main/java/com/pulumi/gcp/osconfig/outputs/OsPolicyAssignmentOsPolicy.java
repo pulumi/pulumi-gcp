@@ -164,13 +164,13 @@ public final class OsPolicyAssignmentOsPolicy {
             return resourceGroups(List.of(resourceGroups));
         }
         public OsPolicyAssignmentOsPolicy build() {
-            final var o = new OsPolicyAssignmentOsPolicy();
-            o.allowNoResourceGroupMatch = allowNoResourceGroupMatch;
-            o.description = description;
-            o.id = id;
-            o.mode = mode;
-            o.resourceGroups = resourceGroups;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicy();
+            _resultValue.allowNoResourceGroupMatch = allowNoResourceGroupMatch;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.mode = mode;
+            _resultValue.resourceGroups = resourceGroups;
+            return _resultValue;
         }
     }
 }

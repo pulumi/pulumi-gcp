@@ -62,11 +62,11 @@ public final class MetastoreServiceIamMemberCondition {
             return this;
         }
         public MetastoreServiceIamMemberCondition build() {
-            final var o = new MetastoreServiceIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new MetastoreServiceIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

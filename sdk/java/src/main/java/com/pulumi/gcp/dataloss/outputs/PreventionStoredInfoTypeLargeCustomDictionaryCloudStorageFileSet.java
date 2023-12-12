@@ -46,9 +46,9 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFile
             return this;
         }
         public PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet build() {
-            final var o = new PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet();
-            o.url = url;
-            return o;
+            final var _resultValue = new PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet();
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

@@ -109,12 +109,12 @@ public final class GetNetworksResult {
             return this;
         }
         public GetNetworksResult build() {
-            final var o = new GetNetworksResult();
-            o.id = id;
-            o.networks = networks;
-            o.project = project;
-            o.selfLink = selfLink;
-            return o;
+            final var _resultValue = new GetNetworksResult();
+            _resultValue.id = id;
+            _resultValue.networks = networks;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            return _resultValue;
         }
     }
 }

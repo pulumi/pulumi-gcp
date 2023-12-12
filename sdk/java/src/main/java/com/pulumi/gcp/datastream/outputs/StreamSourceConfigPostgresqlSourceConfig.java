@@ -137,13 +137,13 @@ public final class StreamSourceConfigPostgresqlSourceConfig {
             return this;
         }
         public StreamSourceConfigPostgresqlSourceConfig build() {
-            final var o = new StreamSourceConfigPostgresqlSourceConfig();
-            o.excludeObjects = excludeObjects;
-            o.includeObjects = includeObjects;
-            o.maxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
-            o.publication = publication;
-            o.replicationSlot = replicationSlot;
-            return o;
+            final var _resultValue = new StreamSourceConfigPostgresqlSourceConfig();
+            _resultValue.excludeObjects = excludeObjects;
+            _resultValue.includeObjects = includeObjects;
+            _resultValue.maxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
+            _resultValue.publication = publication;
+            _resultValue.replicationSlot = replicationSlot;
+            return _resultValue;
         }
     }
 }

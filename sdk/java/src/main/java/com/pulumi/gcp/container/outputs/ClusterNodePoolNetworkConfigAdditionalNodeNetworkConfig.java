@@ -73,10 +73,10 @@ public final class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
             return this;
         }
         public ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig build() {
-            final var o = new ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig();
-            o.network = network;
-            o.subnetwork = subnetwork;
-            return o;
+            final var _resultValue = new ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig();
+            _resultValue.network = network;
+            _resultValue.subnetwork = subnetwork;
+            return _resultValue;
         }
     }
 }

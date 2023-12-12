@@ -70,10 +70,10 @@ public final class ClusterAddonsConfigCloudrunConfig {
             return this;
         }
         public ClusterAddonsConfigCloudrunConfig build() {
-            final var o = new ClusterAddonsConfigCloudrunConfig();
-            o.disabled = disabled;
-            o.loadBalancerType = loadBalancerType;
-            return o;
+            final var _resultValue = new ClusterAddonsConfigCloudrunConfig();
+            _resultValue.disabled = disabled;
+            _resultValue.loadBalancerType = loadBalancerType;
+            return _resultValue;
         }
     }
 }

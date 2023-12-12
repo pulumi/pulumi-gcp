@@ -72,10 +72,10 @@ public final class PreventionStoredInfoTypeDictionary {
             return this;
         }
         public PreventionStoredInfoTypeDictionary build() {
-            final var o = new PreventionStoredInfoTypeDictionary();
-            o.cloudStoragePath = cloudStoragePath;
-            o.wordList = wordList;
-            return o;
+            final var _resultValue = new PreventionStoredInfoTypeDictionary();
+            _resultValue.cloudStoragePath = cloudStoragePath;
+            _resultValue.wordList = wordList;
+            return _resultValue;
         }
     }
 }

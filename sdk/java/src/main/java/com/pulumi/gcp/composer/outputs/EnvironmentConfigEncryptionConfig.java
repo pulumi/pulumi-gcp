@@ -38,9 +38,9 @@ public final class EnvironmentConfigEncryptionConfig {
             return this;
         }
         public EnvironmentConfigEncryptionConfig build() {
-            final var o = new EnvironmentConfigEncryptionConfig();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new EnvironmentConfigEncryptionConfig();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

@@ -58,10 +58,10 @@ public final class GetJobTemplateTemplateContainerPort {
             return this;
         }
         public GetJobTemplateTemplateContainerPort build() {
-            final var o = new GetJobTemplateTemplateContainerPort();
-            o.containerPort = containerPort;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetJobTemplateTemplateContainerPort();
+            _resultValue.containerPort = containerPort;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

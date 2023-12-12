@@ -49,10 +49,10 @@ public final class GetInstanceNode {
             return this;
         }
         public GetInstanceNode build() {
-            final var o = new GetInstanceNode();
-            o.id = id;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetInstanceNode();
+            _resultValue.id = id;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

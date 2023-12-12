@@ -70,10 +70,10 @@ public final class PreventionJobTriggerTrigger {
             return this;
         }
         public PreventionJobTriggerTrigger build() {
-            final var o = new PreventionJobTriggerTrigger();
-            o.manual = manual;
-            o.schedule = schedule;
-            return o;
+            final var _resultValue = new PreventionJobTriggerTrigger();
+            _resultValue.manual = manual;
+            _resultValue.schedule = schedule;
+            return _resultValue;
         }
     }
 }

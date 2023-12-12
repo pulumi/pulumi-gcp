@@ -119,14 +119,14 @@ public final class GetFunctionIamPolicyResult {
             return this;
         }
         public GetFunctionIamPolicyResult build() {
-            final var o = new GetFunctionIamPolicyResult();
-            o.cloudFunction = cloudFunction;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetFunctionIamPolicyResult();
+            _resultValue.cloudFunction = cloudFunction;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

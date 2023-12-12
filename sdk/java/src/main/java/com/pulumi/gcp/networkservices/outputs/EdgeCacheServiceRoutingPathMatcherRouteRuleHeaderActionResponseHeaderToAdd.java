@@ -87,11 +87,11 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRespon
             return this;
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd();
-            o.headerName = headerName;
-            o.headerValue = headerValue;
-            o.replace = replace;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd();
+            _resultValue.headerName = headerName;
+            _resultValue.headerValue = headerValue;
+            _resultValue.replace = replace;
+            return _resultValue;
         }
     }
 }

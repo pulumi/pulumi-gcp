@@ -71,10 +71,10 @@ public final class RegionSecurityPolicyRuleNetworkMatchUserDefinedField {
             return values(List.of(values));
         }
         public RegionSecurityPolicyRuleNetworkMatchUserDefinedField build() {
-            final var o = new RegionSecurityPolicyRuleNetworkMatchUserDefinedField();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new RegionSecurityPolicyRuleNetworkMatchUserDefinedField();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

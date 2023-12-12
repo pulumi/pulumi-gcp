@@ -104,13 +104,13 @@ public final class GetZonesResult {
             return this;
         }
         public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.id = id;
-            o.names = names;
-            o.project = project;
-            o.region = region;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetZonesResult();
+            _resultValue.id = id;
+            _resultValue.names = names;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

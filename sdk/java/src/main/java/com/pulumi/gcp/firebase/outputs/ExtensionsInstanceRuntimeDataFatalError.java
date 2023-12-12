@@ -52,9 +52,9 @@ public final class ExtensionsInstanceRuntimeDataFatalError {
             return this;
         }
         public ExtensionsInstanceRuntimeDataFatalError build() {
-            final var o = new ExtensionsInstanceRuntimeDataFatalError();
-            o.errorMessage = errorMessage;
-            return o;
+            final var _resultValue = new ExtensionsInstanceRuntimeDataFatalError();
+            _resultValue.errorMessage = errorMessage;
+            return _resultValue;
         }
     }
 }

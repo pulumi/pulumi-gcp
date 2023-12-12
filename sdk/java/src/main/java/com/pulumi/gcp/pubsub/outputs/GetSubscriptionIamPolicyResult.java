@@ -106,13 +106,13 @@ public final class GetSubscriptionIamPolicyResult {
             return this;
         }
         public GetSubscriptionIamPolicyResult build() {
-            final var o = new GetSubscriptionIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.subscription = subscription;
-            return o;
+            final var _resultValue = new GetSubscriptionIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.subscription = subscription;
+            return _resultValue;
         }
     }
 }

@@ -87,11 +87,11 @@ public final class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHe
             return this;
         }
         public URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd build() {
-            final var o = new URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd();
-            o.headerName = headerName;
-            o.headerValue = headerValue;
-            o.replace = replace;
-            return o;
+            final var _resultValue = new URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd();
+            _resultValue.headerName = headerName;
+            _resultValue.headerValue = headerValue;
+            _resultValue.replace = replace;
+            return _resultValue;
         }
     }
 }

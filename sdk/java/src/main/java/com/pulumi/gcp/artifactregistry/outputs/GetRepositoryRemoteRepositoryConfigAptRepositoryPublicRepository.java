@@ -49,10 +49,10 @@ public final class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicReposit
             return this;
         }
         public GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository build() {
-            final var o = new GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository();
-            o.repositoryBase = repositoryBase;
-            o.repositoryPath = repositoryPath;
-            return o;
+            final var _resultValue = new GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository();
+            _resultValue.repositoryBase = repositoryBase;
+            _resultValue.repositoryPath = repositoryPath;
+            return _resultValue;
         }
     }
 }

@@ -227,19 +227,19 @@ public final class GetAndroidAppResult {
             return sha256Hashes(List.of(sha256Hashes));
         }
         public GetAndroidAppResult build() {
-            final var o = new GetAndroidAppResult();
-            o.apiKeyId = apiKeyId;
-            o.appId = appId;
-            o.deletionPolicy = deletionPolicy;
-            o.displayName = displayName;
-            o.etag = etag;
-            o.id = id;
-            o.name = name;
-            o.packageName = packageName;
-            o.project = project;
-            o.sha1Hashes = sha1Hashes;
-            o.sha256Hashes = sha256Hashes;
-            return o;
+            final var _resultValue = new GetAndroidAppResult();
+            _resultValue.apiKeyId = apiKeyId;
+            _resultValue.appId = appId;
+            _resultValue.deletionPolicy = deletionPolicy;
+            _resultValue.displayName = displayName;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.packageName = packageName;
+            _resultValue.project = project;
+            _resultValue.sha1Hashes = sha1Hashes;
+            _resultValue.sha256Hashes = sha256Hashes;
+            return _resultValue;
         }
     }
 }

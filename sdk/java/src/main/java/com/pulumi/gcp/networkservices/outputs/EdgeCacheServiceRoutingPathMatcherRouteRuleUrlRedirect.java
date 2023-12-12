@@ -158,14 +158,14 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect {
             return this;
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect();
-            o.hostRedirect = hostRedirect;
-            o.httpsRedirect = httpsRedirect;
-            o.pathRedirect = pathRedirect;
-            o.prefixRedirect = prefixRedirect;
-            o.redirectResponseCode = redirectResponseCode;
-            o.stripQuery = stripQuery;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect();
+            _resultValue.hostRedirect = hostRedirect;
+            _resultValue.httpsRedirect = httpsRedirect;
+            _resultValue.pathRedirect = pathRedirect;
+            _resultValue.prefixRedirect = prefixRedirect;
+            _resultValue.redirectResponseCode = redirectResponseCode;
+            _resultValue.stripQuery = stripQuery;
+            return _resultValue;
         }
     }
 }

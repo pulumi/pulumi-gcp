@@ -46,9 +46,9 @@ public final class ConnectionGitlabConfigServiceDirectoryConfig {
             return this;
         }
         public ConnectionGitlabConfigServiceDirectoryConfig build() {
-            final var o = new ConnectionGitlabConfigServiceDirectoryConfig();
-            o.service = service;
-            return o;
+            final var _resultValue = new ConnectionGitlabConfigServiceDirectoryConfig();
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

@@ -52,9 +52,9 @@ public final class TrustConfigTrustStoreTrustAnchor {
             return this;
         }
         public TrustConfigTrustStoreTrustAnchor build() {
-            final var o = new TrustConfigTrustStoreTrustAnchor();
-            o.pemCertificate = pemCertificate;
-            return o;
+            final var _resultValue = new TrustConfigTrustStoreTrustAnchor();
+            _resultValue.pemCertificate = pemCertificate;
+            return _resultValue;
         }
     }
 }

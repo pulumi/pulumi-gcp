@@ -72,10 +72,10 @@ public final class ClusterControlPlane {
             return this;
         }
         public ClusterControlPlane build() {
-            final var o = new ClusterControlPlane();
-            o.local = local;
-            o.remote = remote;
-            return o;
+            final var _resultValue = new ClusterControlPlane();
+            _resultValue.local = local;
+            _resultValue.remote = remote;
+            return _resultValue;
         }
     }
 }

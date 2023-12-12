@@ -154,12 +154,12 @@ public final class HostingVersionConfigRedirect {
             return this;
         }
         public HostingVersionConfigRedirect build() {
-            final var o = new HostingVersionConfigRedirect();
-            o.glob = glob;
-            o.location = location;
-            o.regex = regex;
-            o.statusCode = statusCode;
-            return o;
+            final var _resultValue = new HostingVersionConfigRedirect();
+            _resultValue.glob = glob;
+            _resultValue.location = location;
+            _resultValue.regex = regex;
+            _resultValue.statusCode = statusCode;
+            return _resultValue;
         }
     }
 }

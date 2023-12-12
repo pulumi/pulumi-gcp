@@ -73,11 +73,11 @@ public final class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
             return this;
         }
         public ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig build() {
-            final var o = new ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig();
-            o.maxPodsPerNode = maxPodsPerNode;
-            o.secondaryPodRange = secondaryPodRange;
-            o.subnetwork = subnetwork;
-            return o;
+            final var _resultValue = new ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig();
+            _resultValue.maxPodsPerNode = maxPodsPerNode;
+            _resultValue.secondaryPodRange = secondaryPodRange;
+            _resultValue.subnetwork = subnetwork;
+            return _resultValue;
         }
     }
 }

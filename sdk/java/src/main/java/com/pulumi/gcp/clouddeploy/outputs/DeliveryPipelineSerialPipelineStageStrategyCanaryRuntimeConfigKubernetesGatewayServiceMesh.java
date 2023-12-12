@@ -105,12 +105,12 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
             return this;
         }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh();
-            o.deployment = deployment;
-            o.httpRoute = httpRoute;
-            o.routeUpdateWaitTime = routeUpdateWaitTime;
-            o.service = service;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh();
+            _resultValue.deployment = deployment;
+            _resultValue.httpRoute = httpRoute;
+            _resultValue.routeUpdateWaitTime = routeUpdateWaitTime;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

@@ -126,12 +126,12 @@ public final class AiEndpointDeployedModelDedicatedResource {
             return this;
         }
         public AiEndpointDeployedModelDedicatedResource build() {
-            final var o = new AiEndpointDeployedModelDedicatedResource();
-            o.autoscalingMetricSpecs = autoscalingMetricSpecs;
-            o.machineSpecs = machineSpecs;
-            o.maxReplicaCount = maxReplicaCount;
-            o.minReplicaCount = minReplicaCount;
-            return o;
+            final var _resultValue = new AiEndpointDeployedModelDedicatedResource();
+            _resultValue.autoscalingMetricSpecs = autoscalingMetricSpecs;
+            _resultValue.machineSpecs = machineSpecs;
+            _resultValue.maxReplicaCount = maxReplicaCount;
+            _resultValue.minReplicaCount = minReplicaCount;
+            return _resultValue;
         }
     }
 }

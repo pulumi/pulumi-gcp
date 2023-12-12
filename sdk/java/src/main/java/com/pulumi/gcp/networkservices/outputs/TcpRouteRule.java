@@ -77,10 +77,10 @@ public final class TcpRouteRule {
             return matches(List.of(matches));
         }
         public TcpRouteRule build() {
-            final var o = new TcpRouteRule();
-            o.action = action;
-            o.matches = matches;
-            return o;
+            final var _resultValue = new TcpRouteRule();
+            _resultValue.action = action;
+            _resultValue.matches = matches;
+            return _resultValue;
         }
     }
 }

@@ -107,12 +107,12 @@ public final class PrivateCloudVcenter {
             return this;
         }
         public PrivateCloudVcenter build() {
-            final var o = new PrivateCloudVcenter();
-            o.fqdn = fqdn;
-            o.internalIp = internalIp;
-            o.state = state;
-            o.version = version;
-            return o;
+            final var _resultValue = new PrivateCloudVcenter();
+            _resultValue.fqdn = fqdn;
+            _resultValue.internalIp = internalIp;
+            _resultValue.state = state;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

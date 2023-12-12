@@ -67,10 +67,10 @@ public final class HostingVersionConfigRewriteRun {
             return this;
         }
         public HostingVersionConfigRewriteRun build() {
-            final var o = new HostingVersionConfigRewriteRun();
-            o.region = region;
-            o.serviceId = serviceId;
-            return o;
+            final var _resultValue = new HostingVersionConfigRewriteRun();
+            _resultValue.region = region;
+            _resultValue.serviceId = serviceId;
+            return _resultValue;
         }
     }
 }

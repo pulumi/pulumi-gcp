@@ -50,9 +50,9 @@ public final class ResponsePolicyGkeCluster {
             return this;
         }
         public ResponsePolicyGkeCluster build() {
-            final var o = new ResponsePolicyGkeCluster();
-            o.gkeClusterName = gkeClusterName;
-            return o;
+            final var _resultValue = new ResponsePolicyGkeCluster();
+            _resultValue.gkeClusterName = gkeClusterName;
+            return _resultValue;
         }
     }
 }

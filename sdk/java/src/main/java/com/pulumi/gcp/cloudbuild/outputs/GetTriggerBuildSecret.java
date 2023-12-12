@@ -50,10 +50,10 @@ public final class GetTriggerBuildSecret {
             return this;
         }
         public GetTriggerBuildSecret build() {
-            final var o = new GetTriggerBuildSecret();
-            o.kmsKeyName = kmsKeyName;
-            o.secretEnv = secretEnv;
-            return o;
+            final var _resultValue = new GetTriggerBuildSecret();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.secretEnv = secretEnv;
+            return _resultValue;
         }
     }
 }

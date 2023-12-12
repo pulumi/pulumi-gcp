@@ -202,20 +202,20 @@ public final class GetServiceTemplateSpecContainer {
             return this;
         }
         public GetServiceTemplateSpecContainer build() {
-            final var o = new GetServiceTemplateSpecContainer();
-            o.args = args;
-            o.commands = commands;
-            o.envFroms = envFroms;
-            o.envs = envs;
-            o.image = image;
-            o.livenessProbes = livenessProbes;
-            o.name = name;
-            o.ports = ports;
-            o.resources = resources;
-            o.startupProbes = startupProbes;
-            o.volumeMounts = volumeMounts;
-            o.workingDir = workingDir;
-            return o;
+            final var _resultValue = new GetServiceTemplateSpecContainer();
+            _resultValue.args = args;
+            _resultValue.commands = commands;
+            _resultValue.envFroms = envFroms;
+            _resultValue.envs = envs;
+            _resultValue.image = image;
+            _resultValue.livenessProbes = livenessProbes;
+            _resultValue.name = name;
+            _resultValue.ports = ports;
+            _resultValue.resources = resources;
+            _resultValue.startupProbes = startupProbes;
+            _resultValue.volumeMounts = volumeMounts;
+            _resultValue.workingDir = workingDir;
+            return _resultValue;
         }
     }
 }

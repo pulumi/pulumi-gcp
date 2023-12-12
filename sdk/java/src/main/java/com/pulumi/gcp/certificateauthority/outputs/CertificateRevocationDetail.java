@@ -71,10 +71,10 @@ public final class CertificateRevocationDetail {
             return this;
         }
         public CertificateRevocationDetail build() {
-            final var o = new CertificateRevocationDetail();
-            o.revocationState = revocationState;
-            o.revocationTime = revocationTime;
-            return o;
+            final var _resultValue = new CertificateRevocationDetail();
+            _resultValue.revocationState = revocationState;
+            _resultValue.revocationTime = revocationTime;
+            return _resultValue;
         }
     }
 }

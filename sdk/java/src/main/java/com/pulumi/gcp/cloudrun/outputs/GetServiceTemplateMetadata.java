@@ -125,16 +125,16 @@ public final class GetServiceTemplateMetadata {
             return this;
         }
         public GetServiceTemplateMetadata build() {
-            final var o = new GetServiceTemplateMetadata();
-            o.annotations = annotations;
-            o.generation = generation;
-            o.labels = labels;
-            o.name = name;
-            o.namespace = namespace;
-            o.resourceVersion = resourceVersion;
-            o.selfLink = selfLink;
-            o.uid = uid;
-            return o;
+            final var _resultValue = new GetServiceTemplateMetadata();
+            _resultValue.annotations = annotations;
+            _resultValue.generation = generation;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.namespace = namespace;
+            _resultValue.resourceVersion = resourceVersion;
+            _resultValue.selfLink = selfLink;
+            _resultValue.uid = uid;
+            return _resultValue;
         }
     }
 }

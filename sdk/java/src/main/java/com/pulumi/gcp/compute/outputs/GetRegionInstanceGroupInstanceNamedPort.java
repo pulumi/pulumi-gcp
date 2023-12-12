@@ -66,10 +66,10 @@ public final class GetRegionInstanceGroupInstanceNamedPort {
             return this;
         }
         public GetRegionInstanceGroupInstanceNamedPort build() {
-            final var o = new GetRegionInstanceGroupInstanceNamedPort();
-            o.name = name;
-            o.port = port;
-            return o;
+            final var _resultValue = new GetRegionInstanceGroupInstanceNamedPort();
+            _resultValue.name = name;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

@@ -218,18 +218,18 @@ public final class GetRegionInstanceTemplateScheduling {
             return this;
         }
         public GetRegionInstanceTemplateScheduling build() {
-            final var o = new GetRegionInstanceTemplateScheduling();
-            o.automaticRestart = automaticRestart;
-            o.instanceTerminationAction = instanceTerminationAction;
-            o.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;
-            o.maintenanceInterval = maintenanceInterval;
-            o.maxRunDurations = maxRunDurations;
-            o.minNodeCpus = minNodeCpus;
-            o.nodeAffinities = nodeAffinities;
-            o.onHostMaintenance = onHostMaintenance;
-            o.preemptible = preemptible;
-            o.provisioningModel = provisioningModel;
-            return o;
+            final var _resultValue = new GetRegionInstanceTemplateScheduling();
+            _resultValue.automaticRestart = automaticRestart;
+            _resultValue.instanceTerminationAction = instanceTerminationAction;
+            _resultValue.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;
+            _resultValue.maintenanceInterval = maintenanceInterval;
+            _resultValue.maxRunDurations = maxRunDurations;
+            _resultValue.minNodeCpus = minNodeCpus;
+            _resultValue.nodeAffinities = nodeAffinities;
+            _resultValue.onHostMaintenance = onHostMaintenance;
+            _resultValue.preemptible = preemptible;
+            _resultValue.provisioningModel = provisioningModel;
+            return _resultValue;
         }
     }
 }

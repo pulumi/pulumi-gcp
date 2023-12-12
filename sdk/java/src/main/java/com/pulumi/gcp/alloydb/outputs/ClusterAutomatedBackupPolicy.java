@@ -199,16 +199,16 @@ public final class ClusterAutomatedBackupPolicy {
             return this;
         }
         public ClusterAutomatedBackupPolicy build() {
-            final var o = new ClusterAutomatedBackupPolicy();
-            o.backupWindow = backupWindow;
-            o.enabled = enabled;
-            o.encryptionConfig = encryptionConfig;
-            o.labels = labels;
-            o.location = location;
-            o.quantityBasedRetention = quantityBasedRetention;
-            o.timeBasedRetention = timeBasedRetention;
-            o.weeklySchedule = weeklySchedule;
-            return o;
+            final var _resultValue = new ClusterAutomatedBackupPolicy();
+            _resultValue.backupWindow = backupWindow;
+            _resultValue.enabled = enabled;
+            _resultValue.encryptionConfig = encryptionConfig;
+            _resultValue.labels = labels;
+            _resultValue.location = location;
+            _resultValue.quantityBasedRetention = quantityBasedRetention;
+            _resultValue.timeBasedRetention = timeBasedRetention;
+            _resultValue.weeklySchedule = weeklySchedule;
+            return _resultValue;
         }
     }
 }

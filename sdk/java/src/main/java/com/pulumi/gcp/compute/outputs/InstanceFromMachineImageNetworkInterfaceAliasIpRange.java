@@ -51,10 +51,10 @@ public final class InstanceFromMachineImageNetworkInterfaceAliasIpRange {
             return this;
         }
         public InstanceFromMachineImageNetworkInterfaceAliasIpRange build() {
-            final var o = new InstanceFromMachineImageNetworkInterfaceAliasIpRange();
-            o.ipCidrRange = ipCidrRange;
-            o.subnetworkRangeName = subnetworkRangeName;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageNetworkInterfaceAliasIpRange();
+            _resultValue.ipCidrRange = ipCidrRange;
+            _resultValue.subnetworkRangeName = subnetworkRangeName;
+            return _resultValue;
         }
     }
 }

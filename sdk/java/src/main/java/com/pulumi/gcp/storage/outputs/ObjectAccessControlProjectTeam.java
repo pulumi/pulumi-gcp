@@ -69,10 +69,10 @@ public final class ObjectAccessControlProjectTeam {
             return this;
         }
         public ObjectAccessControlProjectTeam build() {
-            final var o = new ObjectAccessControlProjectTeam();
-            o.projectNumber = projectNumber;
-            o.team = team;
-            return o;
+            final var _resultValue = new ObjectAccessControlProjectTeam();
+            _resultValue.projectNumber = projectNumber;
+            _resultValue.team = team;
+            return _resultValue;
         }
     }
 }

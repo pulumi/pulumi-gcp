@@ -132,13 +132,13 @@ public final class ResourcePolicyInstanceSchedulePolicy {
             return this;
         }
         public ResourcePolicyInstanceSchedulePolicy build() {
-            final var o = new ResourcePolicyInstanceSchedulePolicy();
-            o.expirationTime = expirationTime;
-            o.startTime = startTime;
-            o.timeZone = timeZone;
-            o.vmStartSchedule = vmStartSchedule;
-            o.vmStopSchedule = vmStopSchedule;
-            return o;
+            final var _resultValue = new ResourcePolicyInstanceSchedulePolicy();
+            _resultValue.expirationTime = expirationTime;
+            _resultValue.startTime = startTime;
+            _resultValue.timeZone = timeZone;
+            _resultValue.vmStartSchedule = vmStartSchedule;
+            _resultValue.vmStopSchedule = vmStopSchedule;
+            return _resultValue;
         }
     }
 }

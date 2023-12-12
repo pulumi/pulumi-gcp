@@ -52,9 +52,9 @@ public final class BillingAccountSinkBigqueryOptions {
             return this;
         }
         public BillingAccountSinkBigqueryOptions build() {
-            final var o = new BillingAccountSinkBigqueryOptions();
-            o.usePartitionedTables = usePartitionedTables;
-            return o;
+            final var _resultValue = new BillingAccountSinkBigqueryOptions();
+            _resultValue.usePartitionedTables = usePartitionedTables;
+            return _resultValue;
         }
     }
 }

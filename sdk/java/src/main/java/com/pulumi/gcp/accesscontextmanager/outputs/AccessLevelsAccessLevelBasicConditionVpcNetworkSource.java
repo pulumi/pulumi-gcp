@@ -50,9 +50,9 @@ public final class AccessLevelsAccessLevelBasicConditionVpcNetworkSource {
             return this;
         }
         public AccessLevelsAccessLevelBasicConditionVpcNetworkSource build() {
-            final var o = new AccessLevelsAccessLevelBasicConditionVpcNetworkSource();
-            o.vpcSubnetwork = vpcSubnetwork;
-            return o;
+            final var _resultValue = new AccessLevelsAccessLevelBasicConditionVpcNetworkSource();
+            _resultValue.vpcSubnetwork = vpcSubnetwork;
+            return _resultValue;
         }
     }
 }

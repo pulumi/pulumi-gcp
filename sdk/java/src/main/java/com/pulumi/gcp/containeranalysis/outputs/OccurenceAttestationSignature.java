@@ -101,10 +101,10 @@ public final class OccurenceAttestationSignature {
             return this;
         }
         public OccurenceAttestationSignature build() {
-            final var o = new OccurenceAttestationSignature();
-            o.publicKeyId = publicKeyId;
-            o.signature = signature;
-            return o;
+            final var _resultValue = new OccurenceAttestationSignature();
+            _resultValue.publicKeyId = publicKeyId;
+            _resultValue.signature = signature;
+            return _resultValue;
         }
     }
 }

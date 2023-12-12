@@ -70,10 +70,10 @@ public final class StandardAppVersionBasicScaling {
             return this;
         }
         public StandardAppVersionBasicScaling build() {
-            final var o = new StandardAppVersionBasicScaling();
-            o.idleTimeout = idleTimeout;
-            o.maxInstances = maxInstances;
-            return o;
+            final var _resultValue = new StandardAppVersionBasicScaling();
+            _resultValue.idleTimeout = idleTimeout;
+            _resultValue.maxInstances = maxInstances;
+            return _resultValue;
         }
     }
 }

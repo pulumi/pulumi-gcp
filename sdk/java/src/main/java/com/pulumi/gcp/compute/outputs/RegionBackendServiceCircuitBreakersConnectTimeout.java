@@ -75,10 +75,10 @@ public final class RegionBackendServiceCircuitBreakersConnectTimeout {
             return this;
         }
         public RegionBackendServiceCircuitBreakersConnectTimeout build() {
-            final var o = new RegionBackendServiceCircuitBreakersConnectTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new RegionBackendServiceCircuitBreakersConnectTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

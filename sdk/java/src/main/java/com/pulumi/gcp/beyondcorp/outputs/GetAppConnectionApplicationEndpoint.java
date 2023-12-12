@@ -50,10 +50,10 @@ public final class GetAppConnectionApplicationEndpoint {
             return this;
         }
         public GetAppConnectionApplicationEndpoint build() {
-            final var o = new GetAppConnectionApplicationEndpoint();
-            o.host = host;
-            o.port = port;
-            return o;
+            final var _resultValue = new GetAppConnectionApplicationEndpoint();
+            _resultValue.host = host;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

@@ -108,13 +108,13 @@ public final class GetSecretIamPolicyResult {
             return this;
         }
         public GetSecretIamPolicyResult build() {
-            final var o = new GetSecretIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.secretId = secretId;
-            return o;
+            final var _resultValue = new GetSecretIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.secretId = secretId;
+            return _resultValue;
         }
     }
 }

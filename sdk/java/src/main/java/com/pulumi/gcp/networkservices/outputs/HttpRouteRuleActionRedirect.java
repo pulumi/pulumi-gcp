@@ -164,15 +164,15 @@ public final class HttpRouteRuleActionRedirect {
             return this;
         }
         public HttpRouteRuleActionRedirect build() {
-            final var o = new HttpRouteRuleActionRedirect();
-            o.hostRedirect = hostRedirect;
-            o.httpsRedirect = httpsRedirect;
-            o.pathRedirect = pathRedirect;
-            o.portRedirect = portRedirect;
-            o.prefixRewrite = prefixRewrite;
-            o.responseCode = responseCode;
-            o.stripQuery = stripQuery;
-            return o;
+            final var _resultValue = new HttpRouteRuleActionRedirect();
+            _resultValue.hostRedirect = hostRedirect;
+            _resultValue.httpsRedirect = httpsRedirect;
+            _resultValue.pathRedirect = pathRedirect;
+            _resultValue.portRedirect = portRedirect;
+            _resultValue.prefixRewrite = prefixRewrite;
+            _resultValue.responseCode = responseCode;
+            _resultValue.stripQuery = stripQuery;
+            return _resultValue;
         }
     }
 }

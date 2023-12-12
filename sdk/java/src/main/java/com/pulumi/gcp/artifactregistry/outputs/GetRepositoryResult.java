@@ -280,28 +280,28 @@ public final class GetRepositoryResult {
             return virtualRepositoryConfigs(List.of(virtualRepositoryConfigs));
         }
         public GetRepositoryResult build() {
-            final var o = new GetRepositoryResult();
-            o.cleanupPolicies = cleanupPolicies;
-            o.cleanupPolicyDryRun = cleanupPolicyDryRun;
-            o.createTime = createTime;
-            o.description = description;
-            o.dockerConfigs = dockerConfigs;
-            o.effectiveLabels = effectiveLabels;
-            o.format = format;
-            o.id = id;
-            o.kmsKeyName = kmsKeyName;
-            o.labels = labels;
-            o.location = location;
-            o.mavenConfigs = mavenConfigs;
-            o.mode = mode;
-            o.name = name;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.remoteRepositoryConfigs = remoteRepositoryConfigs;
-            o.repositoryId = repositoryId;
-            o.updateTime = updateTime;
-            o.virtualRepositoryConfigs = virtualRepositoryConfigs;
-            return o;
+            final var _resultValue = new GetRepositoryResult();
+            _resultValue.cleanupPolicies = cleanupPolicies;
+            _resultValue.cleanupPolicyDryRun = cleanupPolicyDryRun;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.dockerConfigs = dockerConfigs;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.format = format;
+            _resultValue.id = id;
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.labels = labels;
+            _resultValue.location = location;
+            _resultValue.mavenConfigs = mavenConfigs;
+            _resultValue.mode = mode;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.remoteRepositoryConfigs = remoteRepositoryConfigs;
+            _resultValue.repositoryId = repositoryId;
+            _resultValue.updateTime = updateTime;
+            _resultValue.virtualRepositoryConfigs = virtualRepositoryConfigs;
+            return _resultValue;
         }
     }
 }

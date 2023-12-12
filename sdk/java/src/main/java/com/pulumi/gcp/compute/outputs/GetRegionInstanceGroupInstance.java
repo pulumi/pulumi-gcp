@@ -89,11 +89,11 @@ public final class GetRegionInstanceGroupInstance {
             return this;
         }
         public GetRegionInstanceGroupInstance build() {
-            final var o = new GetRegionInstanceGroupInstance();
-            o.instance = instance;
-            o.namedPorts = namedPorts;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRegionInstanceGroupInstance();
+            _resultValue.instance = instance;
+            _resultValue.namedPorts = namedPorts;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

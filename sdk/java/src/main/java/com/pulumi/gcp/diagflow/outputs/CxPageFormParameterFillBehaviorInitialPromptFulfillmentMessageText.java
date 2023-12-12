@@ -74,10 +74,10 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessag
             return texts(List.of(texts));
         }
         public CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText build() {
-            final var o = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.texts = texts;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.texts = texts;
+            return _resultValue;
         }
     }
 }

@@ -90,11 +90,11 @@ public final class ExtensionsInstanceErrorStatus {
             return this;
         }
         public ExtensionsInstanceErrorStatus build() {
-            final var o = new ExtensionsInstanceErrorStatus();
-            o.code = code;
-            o.details = details;
-            o.message = message;
-            return o;
+            final var _resultValue = new ExtensionsInstanceErrorStatus();
+            _resultValue.code = code;
+            _resultValue.details = details;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

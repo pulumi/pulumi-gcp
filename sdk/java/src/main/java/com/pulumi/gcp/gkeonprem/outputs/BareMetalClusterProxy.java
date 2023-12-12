@@ -78,10 +78,10 @@ public final class BareMetalClusterProxy {
             return this;
         }
         public BareMetalClusterProxy build() {
-            final var o = new BareMetalClusterProxy();
-            o.noProxies = noProxies;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new BareMetalClusterProxy();
+            _resultValue.noProxies = noProxies;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

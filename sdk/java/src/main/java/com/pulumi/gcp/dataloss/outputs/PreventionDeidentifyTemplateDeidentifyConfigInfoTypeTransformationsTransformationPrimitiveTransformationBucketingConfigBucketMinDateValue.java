@@ -90,11 +90,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue();
-            o.day = day;
-            o.month = month;
-            o.year = year;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue();
+            _resultValue.day = day;
+            _resultValue.month = month;
+            _resultValue.year = year;
+            return _resultValue;
         }
     }
 }

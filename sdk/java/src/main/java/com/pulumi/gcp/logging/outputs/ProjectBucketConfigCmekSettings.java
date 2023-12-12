@@ -129,12 +129,12 @@ public final class ProjectBucketConfigCmekSettings {
             return this;
         }
         public ProjectBucketConfigCmekSettings build() {
-            final var o = new ProjectBucketConfigCmekSettings();
-            o.kmsKeyName = kmsKeyName;
-            o.kmsKeyVersionName = kmsKeyVersionName;
-            o.name = name;
-            o.serviceAccountId = serviceAccountId;
-            return o;
+            final var _resultValue = new ProjectBucketConfigCmekSettings();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.kmsKeyVersionName = kmsKeyVersionName;
+            _resultValue.name = name;
+            _resultValue.serviceAccountId = serviceAccountId;
+            return _resultValue;
         }
     }
 }

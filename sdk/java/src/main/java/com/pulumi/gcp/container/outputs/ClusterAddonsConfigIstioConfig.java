@@ -70,10 +70,10 @@ public final class ClusterAddonsConfigIstioConfig {
             return this;
         }
         public ClusterAddonsConfigIstioConfig build() {
-            final var o = new ClusterAddonsConfigIstioConfig();
-            o.auth = auth;
-            o.disabled = disabled;
-            return o;
+            final var _resultValue = new ClusterAddonsConfigIstioConfig();
+            _resultValue.auth = auth;
+            _resultValue.disabled = disabled;
+            return _resultValue;
         }
     }
 }

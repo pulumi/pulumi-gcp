@@ -38,9 +38,9 @@ public final class GetSubscriptionPushConfigNoWrapper {
             return this;
         }
         public GetSubscriptionPushConfigNoWrapper build() {
-            final var o = new GetSubscriptionPushConfigNoWrapper();
-            o.writeMetadata = writeMetadata;
-            return o;
+            final var _resultValue = new GetSubscriptionPushConfigNoWrapper();
+            _resultValue.writeMetadata = writeMetadata;
+            return _resultValue;
         }
     }
 }

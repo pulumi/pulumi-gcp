@@ -48,9 +48,9 @@ public final class DicomStoreStreamConfig {
             return this;
         }
         public DicomStoreStreamConfig build() {
-            final var o = new DicomStoreStreamConfig();
-            o.bigqueryDestination = bigqueryDestination;
-            return o;
+            final var _resultValue = new DicomStoreStreamConfig();
+            _resultValue.bigqueryDestination = bigqueryDestination;
+            return _resultValue;
         }
     }
 }

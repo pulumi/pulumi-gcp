@@ -90,11 +90,11 @@ public final class TriggerMatchingCriteria {
             return this;
         }
         public TriggerMatchingCriteria build() {
-            final var o = new TriggerMatchingCriteria();
-            o.attribute = attribute;
-            o.operator = operator;
-            o.value = value;
-            return o;
+            final var _resultValue = new TriggerMatchingCriteria();
+            _resultValue.attribute = attribute;
+            _resultValue.operator = operator;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

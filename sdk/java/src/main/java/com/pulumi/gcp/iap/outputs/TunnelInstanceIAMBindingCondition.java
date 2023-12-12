@@ -94,11 +94,11 @@ public final class TunnelInstanceIAMBindingCondition {
             return this;
         }
         public TunnelInstanceIAMBindingCondition build() {
-            final var o = new TunnelInstanceIAMBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new TunnelInstanceIAMBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

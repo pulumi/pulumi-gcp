@@ -50,9 +50,9 @@ public final class ClusterNotificationConfigPubsubFilter {
             return eventTypes(List.of(eventTypes));
         }
         public ClusterNotificationConfigPubsubFilter build() {
-            final var o = new ClusterNotificationConfigPubsubFilter();
-            o.eventTypes = eventTypes;
-            return o;
+            final var _resultValue = new ClusterNotificationConfigPubsubFilter();
+            _resultValue.eventTypes = eventTypes;
+            return _resultValue;
         }
     }
 }

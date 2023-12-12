@@ -116,12 +116,12 @@ public final class VMwareClusterLoadBalancer {
             return this;
         }
         public VMwareClusterLoadBalancer build() {
-            final var o = new VMwareClusterLoadBalancer();
-            o.f5Config = f5Config;
-            o.manualLbConfig = manualLbConfig;
-            o.metalLbConfig = metalLbConfig;
-            o.vipConfig = vipConfig;
-            return o;
+            final var _resultValue = new VMwareClusterLoadBalancer();
+            _resultValue.f5Config = f5Config;
+            _resultValue.manualLbConfig = manualLbConfig;
+            _resultValue.metalLbConfig = metalLbConfig;
+            _resultValue.vipConfig = vipConfig;
+            return _resultValue;
         }
     }
 }

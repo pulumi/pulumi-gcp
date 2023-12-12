@@ -88,10 +88,10 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolCo
             return this;
         }
         public BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig build() {
-            final var o = new BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig();
-            o.labels = labels;
-            o.nodeIp = nodeIp;
-            return o;
+            final var _resultValue = new BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig();
+            _resultValue.labels = labels;
+            _resultValue.nodeIp = nodeIp;
+            return _resultValue;
         }
     }
 }

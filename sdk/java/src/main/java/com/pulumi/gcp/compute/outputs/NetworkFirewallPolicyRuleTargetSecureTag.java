@@ -67,10 +67,10 @@ public final class NetworkFirewallPolicyRuleTargetSecureTag {
             return this;
         }
         public NetworkFirewallPolicyRuleTargetSecureTag build() {
-            final var o = new NetworkFirewallPolicyRuleTargetSecureTag();
-            o.name = name;
-            o.state = state;
-            return o;
+            final var _resultValue = new NetworkFirewallPolicyRuleTargetSecureTag();
+            _resultValue.name = name;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class AzureNodePoolManagement {
             return this;
         }
         public AzureNodePoolManagement build() {
-            final var o = new AzureNodePoolManagement();
-            o.autoRepair = autoRepair;
-            return o;
+            final var _resultValue = new AzureNodePoolManagement();
+            _resultValue.autoRepair = autoRepair;
+            return _resultValue;
         }
     }
 }

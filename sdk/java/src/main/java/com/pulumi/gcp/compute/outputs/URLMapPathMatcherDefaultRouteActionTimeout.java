@@ -72,10 +72,10 @@ public final class URLMapPathMatcherDefaultRouteActionTimeout {
             return this;
         }
         public URLMapPathMatcherDefaultRouteActionTimeout build() {
-            final var o = new URLMapPathMatcherDefaultRouteActionTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new URLMapPathMatcherDefaultRouteActionTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

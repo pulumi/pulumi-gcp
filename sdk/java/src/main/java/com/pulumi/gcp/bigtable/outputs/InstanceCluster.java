@@ -182,15 +182,15 @@ public final class InstanceCluster {
             return this;
         }
         public InstanceCluster build() {
-            final var o = new InstanceCluster();
-            o.autoscalingConfig = autoscalingConfig;
-            o.clusterId = clusterId;
-            o.kmsKeyName = kmsKeyName;
-            o.numNodes = numNodes;
-            o.state = state;
-            o.storageType = storageType;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new InstanceCluster();
+            _resultValue.autoscalingConfig = autoscalingConfig;
+            _resultValue.clusterId = clusterId;
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.numNodes = numNodes;
+            _resultValue.state = state;
+            _resultValue.storageType = storageType;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

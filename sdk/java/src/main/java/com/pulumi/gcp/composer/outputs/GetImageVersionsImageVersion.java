@@ -69,10 +69,10 @@ public final class GetImageVersionsImageVersion {
             return supportedPythonVersions(List.of(supportedPythonVersions));
         }
         public GetImageVersionsImageVersion build() {
-            final var o = new GetImageVersionsImageVersion();
-            o.imageVersionId = imageVersionId;
-            o.supportedPythonVersions = supportedPythonVersions;
-            return o;
+            final var _resultValue = new GetImageVersionsImageVersion();
+            _resultValue.imageVersionId = imageVersionId;
+            _resultValue.supportedPythonVersions = supportedPythonVersions;
+            return _resultValue;
         }
     }
 }

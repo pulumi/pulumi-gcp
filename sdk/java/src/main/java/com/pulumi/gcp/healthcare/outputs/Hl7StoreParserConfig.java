@@ -114,12 +114,12 @@ public final class Hl7StoreParserConfig {
             return this;
         }
         public Hl7StoreParserConfig build() {
-            final var o = new Hl7StoreParserConfig();
-            o.allowNullHeader = allowNullHeader;
-            o.schema = schema;
-            o.segmentTerminator = segmentTerminator;
-            o.version = version;
-            return o;
+            final var _resultValue = new Hl7StoreParserConfig();
+            _resultValue.allowNullHeader = allowNullHeader;
+            _resultValue.schema = schema;
+            _resultValue.segmentTerminator = segmentTerminator;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -113,12 +113,12 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
             return this;
         }
         public AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis build() {
-            final var o = new AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis();
-            o.disabled = disabled;
-            o.monitoringInterval = monitoringInterval;
-            o.monitoringIntervalDays = monitoringIntervalDays;
-            o.stalenessDays = stalenessDays;
-            return o;
+            final var _resultValue = new AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis();
+            _resultValue.disabled = disabled;
+            _resultValue.monitoringInterval = monitoringInterval;
+            _resultValue.monitoringIntervalDays = monitoringIntervalDays;
+            _resultValue.stalenessDays = stalenessDays;
+            return _resultValue;
         }
     }
 }

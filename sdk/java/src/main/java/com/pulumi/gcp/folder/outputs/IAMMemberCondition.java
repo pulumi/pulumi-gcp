@@ -94,11 +94,11 @@ public final class IAMMemberCondition {
             return this;
         }
         public IAMMemberCondition build() {
-            final var o = new IAMMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new IAMMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

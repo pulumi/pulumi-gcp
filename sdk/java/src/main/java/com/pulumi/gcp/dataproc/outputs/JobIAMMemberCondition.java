@@ -62,11 +62,11 @@ public final class JobIAMMemberCondition {
             return this;
         }
         public JobIAMMemberCondition build() {
-            final var o = new JobIAMMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new JobIAMMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

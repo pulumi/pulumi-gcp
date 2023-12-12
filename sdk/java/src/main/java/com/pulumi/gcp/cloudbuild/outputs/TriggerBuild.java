@@ -313,20 +313,20 @@ public final class TriggerBuild {
             return this;
         }
         public TriggerBuild build() {
-            final var o = new TriggerBuild();
-            o.artifacts = artifacts;
-            o.availableSecrets = availableSecrets;
-            o.images = images;
-            o.logsBucket = logsBucket;
-            o.options = options;
-            o.queueTtl = queueTtl;
-            o.secrets = secrets;
-            o.source = source;
-            o.steps = steps;
-            o.substitutions = substitutions;
-            o.tags = tags;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new TriggerBuild();
+            _resultValue.artifacts = artifacts;
+            _resultValue.availableSecrets = availableSecrets;
+            _resultValue.images = images;
+            _resultValue.logsBucket = logsBucket;
+            _resultValue.options = options;
+            _resultValue.queueTtl = queueTtl;
+            _resultValue.secrets = secrets;
+            _resultValue.source = source;
+            _resultValue.steps = steps;
+            _resultValue.substitutions = substitutions;
+            _resultValue.tags = tags;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

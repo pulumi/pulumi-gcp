@@ -134,13 +134,13 @@ public final class GuestPoliciesPackageRepositoryApt {
             return this;
         }
         public GuestPoliciesPackageRepositoryApt build() {
-            final var o = new GuestPoliciesPackageRepositoryApt();
-            o.archiveType = archiveType;
-            o.components = components;
-            o.distribution = distribution;
-            o.gpgKey = gpgKey;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new GuestPoliciesPackageRepositoryApt();
+            _resultValue.archiveType = archiveType;
+            _resultValue.components = components;
+            _resultValue.distribution = distribution;
+            _resultValue.gpgKey = gpgKey;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

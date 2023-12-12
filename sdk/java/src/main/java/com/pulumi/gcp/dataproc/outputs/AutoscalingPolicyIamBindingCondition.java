@@ -62,11 +62,11 @@ public final class AutoscalingPolicyIamBindingCondition {
             return this;
         }
         public AutoscalingPolicyIamBindingCondition build() {
-            final var o = new AutoscalingPolicyIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new AutoscalingPolicyIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

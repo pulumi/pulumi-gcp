@@ -48,9 +48,9 @@ public final class VpnConnectionVpcProject {
             return this;
         }
         public VpnConnectionVpcProject build() {
-            final var o = new VpnConnectionVpcProject();
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new VpnConnectionVpcProject();
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

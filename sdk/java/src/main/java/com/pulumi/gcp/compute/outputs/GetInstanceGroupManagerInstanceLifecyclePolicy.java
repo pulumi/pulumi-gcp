@@ -38,9 +38,9 @@ public final class GetInstanceGroupManagerInstanceLifecyclePolicy {
             return this;
         }
         public GetInstanceGroupManagerInstanceLifecyclePolicy build() {
-            final var o = new GetInstanceGroupManagerInstanceLifecyclePolicy();
-            o.forceUpdateOnRepair = forceUpdateOnRepair;
-            return o;
+            final var _resultValue = new GetInstanceGroupManagerInstanceLifecyclePolicy();
+            _resultValue.forceUpdateOnRepair = forceUpdateOnRepair;
+            return _resultValue;
         }
     }
 }

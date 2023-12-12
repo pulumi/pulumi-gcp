@@ -50,9 +50,9 @@ public final class ScopeRbacRoleBindingState {
             return this;
         }
         public ScopeRbacRoleBindingState build() {
-            final var o = new ScopeRbacRoleBindingState();
-            o.code = code;
-            return o;
+            final var _resultValue = new ScopeRbacRoleBindingState();
+            _resultValue.code = code;
+            return _resultValue;
         }
     }
 }

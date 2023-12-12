@@ -108,13 +108,13 @@ public final class GetSourceIamPolicyResult {
             return this;
         }
         public GetSourceIamPolicyResult build() {
-            final var o = new GetSourceIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.organization = organization;
-            o.policyData = policyData;
-            o.source = source;
-            return o;
+            final var _resultValue = new GetSourceIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.organization = organization;
+            _resultValue.policyData = policyData;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

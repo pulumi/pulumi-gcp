@@ -67,10 +67,10 @@ public final class HttpRouteRuleActionFaultInjectionPolicyAbort {
             return this;
         }
         public HttpRouteRuleActionFaultInjectionPolicyAbort build() {
-            final var o = new HttpRouteRuleActionFaultInjectionPolicyAbort();
-            o.httpStatus = httpStatus;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new HttpRouteRuleActionFaultInjectionPolicyAbort();
+            _resultValue.httpStatus = httpStatus;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

@@ -87,11 +87,11 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
             return upgradeOptions(List.of(upgradeOptions));
         }
         public ClusterClusterAutoscalingAutoProvisioningDefaultsManagement build() {
-            final var o = new ClusterClusterAutoscalingAutoProvisioningDefaultsManagement();
-            o.autoRepair = autoRepair;
-            o.autoUpgrade = autoUpgrade;
-            o.upgradeOptions = upgradeOptions;
-            return o;
+            final var _resultValue = new ClusterClusterAutoscalingAutoProvisioningDefaultsManagement();
+            _resultValue.autoRepair = autoRepair;
+            _resultValue.autoUpgrade = autoUpgrade;
+            _resultValue.upgradeOptions = upgradeOptions;
+            return _resultValue;
         }
     }
 }

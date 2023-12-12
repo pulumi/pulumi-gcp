@@ -68,10 +68,10 @@ public final class TargetServerSSlInfoCommonName {
             return this;
         }
         public TargetServerSSlInfoCommonName build() {
-            final var o = new TargetServerSSlInfoCommonName();
-            o.value = value;
-            o.wildcardMatch = wildcardMatch;
-            return o;
+            final var _resultValue = new TargetServerSSlInfoCommonName();
+            _resultValue.value = value;
+            _resultValue.wildcardMatch = wildcardMatch;
+            return _resultValue;
         }
     }
 }

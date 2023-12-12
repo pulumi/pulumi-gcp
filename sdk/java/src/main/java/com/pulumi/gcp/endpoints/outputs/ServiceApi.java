@@ -110,12 +110,12 @@ public final class ServiceApi {
             return this;
         }
         public ServiceApi build() {
-            final var o = new ServiceApi();
-            o.methods = methods;
-            o.name = name;
-            o.syntax = syntax;
-            o.version = version;
-            return o;
+            final var _resultValue = new ServiceApi();
+            _resultValue.methods = methods;
+            _resultValue.name = name;
+            _resultValue.syntax = syntax;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

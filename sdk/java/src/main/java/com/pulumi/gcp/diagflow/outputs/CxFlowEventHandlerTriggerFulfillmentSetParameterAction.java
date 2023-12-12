@@ -67,10 +67,10 @@ public final class CxFlowEventHandlerTriggerFulfillmentSetParameterAction {
             return this;
         }
         public CxFlowEventHandlerTriggerFulfillmentSetParameterAction build() {
-            final var o = new CxFlowEventHandlerTriggerFulfillmentSetParameterAction();
-            o.parameter = parameter;
-            o.value = value;
-            return o;
+            final var _resultValue = new CxFlowEventHandlerTriggerFulfillmentSetParameterAction();
+            _resultValue.parameter = parameter;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

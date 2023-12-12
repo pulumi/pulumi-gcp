@@ -65,10 +65,10 @@ public final class NodeGroupShareSettingsProjectMap {
             return this;
         }
         public NodeGroupShareSettingsProjectMap build() {
-            final var o = new NodeGroupShareSettingsProjectMap();
-            o.id = id;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new NodeGroupShareSettingsProjectMap();
+            _resultValue.id = id;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

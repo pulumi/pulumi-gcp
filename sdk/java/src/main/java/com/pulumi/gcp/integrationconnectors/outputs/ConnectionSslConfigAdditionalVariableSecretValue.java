@@ -46,9 +46,9 @@ public final class ConnectionSslConfigAdditionalVariableSecretValue {
             return this;
         }
         public ConnectionSslConfigAdditionalVariableSecretValue build() {
-            final var o = new ConnectionSslConfigAdditionalVariableSecretValue();
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new ConnectionSslConfigAdditionalVariableSecretValue();
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

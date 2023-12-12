@@ -100,11 +100,11 @@ public final class AlertPolicyDocumentation {
             return this;
         }
         public AlertPolicyDocumentation build() {
-            final var o = new AlertPolicyDocumentation();
-            o.content = content;
-            o.mimeType = mimeType;
-            o.subject = subject;
-            return o;
+            final var _resultValue = new AlertPolicyDocumentation();
+            _resultValue.content = content;
+            _resultValue.mimeType = mimeType;
+            _resultValue.subject = subject;
+            return _resultValue;
         }
     }
 }

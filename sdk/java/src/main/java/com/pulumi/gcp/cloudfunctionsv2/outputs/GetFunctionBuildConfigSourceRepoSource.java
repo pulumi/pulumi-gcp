@@ -105,15 +105,15 @@ public final class GetFunctionBuildConfigSourceRepoSource {
             return this;
         }
         public GetFunctionBuildConfigSourceRepoSource build() {
-            final var o = new GetFunctionBuildConfigSourceRepoSource();
-            o.branchName = branchName;
-            o.commitSha = commitSha;
-            o.dir = dir;
-            o.invertRegex = invertRegex;
-            o.projectId = projectId;
-            o.repoName = repoName;
-            o.tagName = tagName;
-            return o;
+            final var _resultValue = new GetFunctionBuildConfigSourceRepoSource();
+            _resultValue.branchName = branchName;
+            _resultValue.commitSha = commitSha;
+            _resultValue.dir = dir;
+            _resultValue.invertRegex = invertRegex;
+            _resultValue.projectId = projectId;
+            _resultValue.repoName = repoName;
+            _resultValue.tagName = tagName;
+            return _resultValue;
         }
     }
 }

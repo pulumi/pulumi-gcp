@@ -225,13 +225,13 @@ public final class AutoscalerAutoscalingPolicyMetric {
             return this;
         }
         public AutoscalerAutoscalingPolicyMetric build() {
-            final var o = new AutoscalerAutoscalingPolicyMetric();
-            o.filter = filter;
-            o.name = name;
-            o.singleInstanceAssignment = singleInstanceAssignment;
-            o.target = target;
-            o.type = type;
-            return o;
+            final var _resultValue = new AutoscalerAutoscalingPolicyMetric();
+            _resultValue.filter = filter;
+            _resultValue.name = name;
+            _resultValue.singleInstanceAssignment = singleInstanceAssignment;
+            _resultValue.target = target;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

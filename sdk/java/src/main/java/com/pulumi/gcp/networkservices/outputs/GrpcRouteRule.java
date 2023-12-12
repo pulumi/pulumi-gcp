@@ -76,10 +76,10 @@ public final class GrpcRouteRule {
             return matches(List.of(matches));
         }
         public GrpcRouteRule build() {
-            final var o = new GrpcRouteRule();
-            o.action = action;
-            o.matches = matches;
-            return o;
+            final var _resultValue = new GrpcRouteRule();
+            _resultValue.action = action;
+            _resultValue.matches = matches;
+            return _resultValue;
         }
     }
 }

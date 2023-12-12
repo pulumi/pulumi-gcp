@@ -48,9 +48,9 @@ public final class ManagedZonePeeringConfig {
             return this;
         }
         public ManagedZonePeeringConfig build() {
-            final var o = new ManagedZonePeeringConfig();
-            o.targetNetwork = targetNetwork;
-            return o;
+            final var _resultValue = new ManagedZonePeeringConfig();
+            _resultValue.targetNetwork = targetNetwork;
+            return _resultValue;
         }
     }
 }

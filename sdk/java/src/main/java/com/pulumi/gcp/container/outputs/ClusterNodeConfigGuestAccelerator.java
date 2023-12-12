@@ -127,13 +127,13 @@ public final class ClusterNodeConfigGuestAccelerator {
             return this;
         }
         public ClusterNodeConfigGuestAccelerator build() {
-            final var o = new ClusterNodeConfigGuestAccelerator();
-            o.count = count;
-            o.gpuDriverInstallationConfig = gpuDriverInstallationConfig;
-            o.gpuPartitionSize = gpuPartitionSize;
-            o.gpuSharingConfig = gpuSharingConfig;
-            o.type = type;
-            return o;
+            final var _resultValue = new ClusterNodeConfigGuestAccelerator();
+            _resultValue.count = count;
+            _resultValue.gpuDriverInstallationConfig = gpuDriverInstallationConfig;
+            _resultValue.gpuPartitionSize = gpuPartitionSize;
+            _resultValue.gpuSharingConfig = gpuSharingConfig;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

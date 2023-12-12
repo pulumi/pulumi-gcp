@@ -48,9 +48,9 @@ public final class RepositoryDockerConfig {
             return this;
         }
         public RepositoryDockerConfig build() {
-            final var o = new RepositoryDockerConfig();
-            o.immutableTags = immutableTags;
-            return o;
+            final var _resultValue = new RepositoryDockerConfig();
+            _resultValue.immutableTags = immutableTags;
+            return _resultValue;
         }
     }
 }

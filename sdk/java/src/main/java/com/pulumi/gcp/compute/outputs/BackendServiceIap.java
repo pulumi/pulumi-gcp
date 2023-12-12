@@ -92,11 +92,11 @@ public final class BackendServiceIap {
             return this;
         }
         public BackendServiceIap build() {
-            final var o = new BackendServiceIap();
-            o.oauth2ClientId = oauth2ClientId;
-            o.oauth2ClientSecret = oauth2ClientSecret;
-            o.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
-            return o;
+            final var _resultValue = new BackendServiceIap();
+            _resultValue.oauth2ClientId = oauth2ClientId;
+            _resultValue.oauth2ClientSecret = oauth2ClientSecret;
+            _resultValue.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
+            return _resultValue;
         }
     }
 }

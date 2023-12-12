@@ -70,10 +70,10 @@ public final class ConnectionAuthConfigUserPassword {
             return this;
         }
         public ConnectionAuthConfigUserPassword build() {
-            final var o = new ConnectionAuthConfigUserPassword();
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigUserPassword();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

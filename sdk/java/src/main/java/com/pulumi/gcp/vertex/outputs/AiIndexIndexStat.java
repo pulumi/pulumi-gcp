@@ -72,10 +72,10 @@ public final class AiIndexIndexStat {
             return this;
         }
         public AiIndexIndexStat build() {
-            final var o = new AiIndexIndexStat();
-            o.shardsCount = shardsCount;
-            o.vectorsCount = vectorsCount;
-            return o;
+            final var _resultValue = new AiIndexIndexStat();
+            _resultValue.shardsCount = shardsCount;
+            _resultValue.vectorsCount = vectorsCount;
+            return _resultValue;
         }
     }
 }

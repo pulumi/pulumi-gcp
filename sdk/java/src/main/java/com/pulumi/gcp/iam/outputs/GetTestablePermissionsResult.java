@@ -116,13 +116,13 @@ public final class GetTestablePermissionsResult {
             return stages(List.of(stages));
         }
         public GetTestablePermissionsResult build() {
-            final var o = new GetTestablePermissionsResult();
-            o.customSupportLevel = customSupportLevel;
-            o.fullResourceName = fullResourceName;
-            o.id = id;
-            o.permissions = permissions;
-            o.stages = stages;
-            return o;
+            final var _resultValue = new GetTestablePermissionsResult();
+            _resultValue.customSupportLevel = customSupportLevel;
+            _resultValue.fullResourceName = fullResourceName;
+            _resultValue.id = id;
+            _resultValue.permissions = permissions;
+            _resultValue.stages = stages;
+            return _resultValue;
         }
     }
 }

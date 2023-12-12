@@ -48,9 +48,9 @@ public final class NodePoolNodeConfigFastSocket {
             return this;
         }
         public NodePoolNodeConfigFastSocket build() {
-            final var o = new NodePoolNodeConfigFastSocket();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigFastSocket();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

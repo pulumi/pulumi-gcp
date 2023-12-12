@@ -94,11 +94,11 @@ public final class CryptoKeyIAMBindingCondition {
             return this;
         }
         public CryptoKeyIAMBindingCondition build() {
-            final var o = new CryptoKeyIAMBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new CryptoKeyIAMBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

@@ -121,12 +121,12 @@ public final class DiskSourceSnapshotEncryptionKey {
             return this;
         }
         public DiskSourceSnapshotEncryptionKey build() {
-            final var o = new DiskSourceSnapshotEncryptionKey();
-            o.kmsKeySelfLink = kmsKeySelfLink;
-            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
-            o.rawKey = rawKey;
-            o.sha256 = sha256;
-            return o;
+            final var _resultValue = new DiskSourceSnapshotEncryptionKey();
+            _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            _resultValue.rawKey = rawKey;
+            _resultValue.sha256 = sha256;
+            return _resultValue;
         }
     }
 }

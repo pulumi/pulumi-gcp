@@ -52,9 +52,9 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionar
             return words(List.of(words));
         }
         public PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList build() {
-            final var o = new PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList();
-            o.words = words;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList();
+            _resultValue.words = words;
+            return _resultValue;
         }
     }
 }

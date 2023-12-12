@@ -105,12 +105,12 @@ public final class InstanceDenyMaintenancePeriodTime {
             return this;
         }
         public InstanceDenyMaintenancePeriodTime build() {
-            final var o = new InstanceDenyMaintenancePeriodTime();
-            o.hours = hours;
-            o.minutes = minutes;
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new InstanceDenyMaintenancePeriodTime();
+            _resultValue.hours = hours;
+            _resultValue.minutes = minutes;
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

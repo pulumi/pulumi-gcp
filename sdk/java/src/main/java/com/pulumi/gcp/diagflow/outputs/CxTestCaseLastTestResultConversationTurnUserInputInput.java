@@ -116,12 +116,12 @@ public final class CxTestCaseLastTestResultConversationTurnUserInputInput {
             return this;
         }
         public CxTestCaseLastTestResultConversationTurnUserInputInput build() {
-            final var o = new CxTestCaseLastTestResultConversationTurnUserInputInput();
-            o.dtmf = dtmf;
-            o.event = event;
-            o.languageCode = languageCode;
-            o.text = text;
-            return o;
+            final var _resultValue = new CxTestCaseLastTestResultConversationTurnUserInputInput();
+            _resultValue.dtmf = dtmf;
+            _resultValue.event = event;
+            _resultValue.languageCode = languageCode;
+            _resultValue.text = text;
+            return _resultValue;
         }
     }
 }

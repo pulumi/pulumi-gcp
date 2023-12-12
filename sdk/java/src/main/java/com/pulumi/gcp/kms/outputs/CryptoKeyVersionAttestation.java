@@ -115,12 +115,12 @@ public final class CryptoKeyVersionAttestation {
             return this;
         }
         public CryptoKeyVersionAttestation build() {
-            final var o = new CryptoKeyVersionAttestation();
-            o.certChains = certChains;
-            o.content = content;
-            o.externalProtectionLevelOptions = externalProtectionLevelOptions;
-            o.format = format;
-            return o;
+            final var _resultValue = new CryptoKeyVersionAttestation();
+            _resultValue.certChains = certChains;
+            _resultValue.content = content;
+            _resultValue.externalProtectionLevelOptions = externalProtectionLevelOptions;
+            _resultValue.format = format;
+            return _resultValue;
         }
     }
 }

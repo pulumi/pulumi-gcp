@@ -49,10 +49,10 @@ public final class GetClusterDatabaseEncryption {
             return this;
         }
         public GetClusterDatabaseEncryption build() {
-            final var o = new GetClusterDatabaseEncryption();
-            o.keyName = keyName;
-            o.state = state;
-            return o;
+            final var _resultValue = new GetClusterDatabaseEncryption();
+            _resultValue.keyName = keyName;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

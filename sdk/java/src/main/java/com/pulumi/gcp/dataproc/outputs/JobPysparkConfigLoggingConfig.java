@@ -39,9 +39,9 @@ public final class JobPysparkConfigLoggingConfig {
             return this;
         }
         public JobPysparkConfigLoggingConfig build() {
-            final var o = new JobPysparkConfigLoggingConfig();
-            o.driverLogLevels = driverLogLevels;
-            return o;
+            final var _resultValue = new JobPysparkConfigLoggingConfig();
+            _resultValue.driverLogLevels = driverLogLevels;
+            return _resultValue;
         }
     }
 }

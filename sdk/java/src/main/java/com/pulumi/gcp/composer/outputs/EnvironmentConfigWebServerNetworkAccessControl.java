@@ -43,9 +43,9 @@ public final class EnvironmentConfigWebServerNetworkAccessControl {
             return allowedIpRanges(List.of(allowedIpRanges));
         }
         public EnvironmentConfigWebServerNetworkAccessControl build() {
-            final var o = new EnvironmentConfigWebServerNetworkAccessControl();
-            o.allowedIpRanges = allowedIpRanges;
-            return o;
+            final var _resultValue = new EnvironmentConfigWebServerNetworkAccessControl();
+            _resultValue.allowedIpRanges = allowedIpRanges;
+            return _resultValue;
         }
     }
 }

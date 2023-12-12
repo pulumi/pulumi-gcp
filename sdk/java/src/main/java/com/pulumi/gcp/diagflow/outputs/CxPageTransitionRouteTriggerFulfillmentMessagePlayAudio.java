@@ -70,10 +70,10 @@ public final class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio {
             return this;
         }
         public CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio build() {
-            final var o = new CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.audioUri = audioUri;
-            return o;
+            final var _resultValue = new CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.audioUri = audioUri;
+            return _resultValue;
         }
     }
 }

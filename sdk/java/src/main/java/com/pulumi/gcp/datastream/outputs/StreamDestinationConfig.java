@@ -92,11 +92,11 @@ public final class StreamDestinationConfig {
             return this;
         }
         public StreamDestinationConfig build() {
-            final var o = new StreamDestinationConfig();
-            o.bigqueryDestinationConfig = bigqueryDestinationConfig;
-            o.destinationConnectionProfile = destinationConnectionProfile;
-            o.gcsDestinationConfig = gcsDestinationConfig;
-            return o;
+            final var _resultValue = new StreamDestinationConfig();
+            _resultValue.bigqueryDestinationConfig = bigqueryDestinationConfig;
+            _resultValue.destinationConnectionProfile = destinationConnectionProfile;
+            _resultValue.gcsDestinationConfig = gcsDestinationConfig;
+            return _resultValue;
         }
     }
 }

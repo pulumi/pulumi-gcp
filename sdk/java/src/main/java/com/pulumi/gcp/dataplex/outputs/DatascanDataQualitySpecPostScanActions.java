@@ -50,9 +50,9 @@ public final class DatascanDataQualitySpecPostScanActions {
             return this;
         }
         public DatascanDataQualitySpecPostScanActions build() {
-            final var o = new DatascanDataQualitySpecPostScanActions();
-            o.bigqueryExport = bigqueryExport;
-            return o;
+            final var _resultValue = new DatascanDataQualitySpecPostScanActions();
+            _resultValue.bigqueryExport = bigqueryExport;
+            return _resultValue;
         }
     }
 }

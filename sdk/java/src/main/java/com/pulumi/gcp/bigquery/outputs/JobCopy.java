@@ -161,13 +161,13 @@ public final class JobCopy {
             return this;
         }
         public JobCopy build() {
-            final var o = new JobCopy();
-            o.createDisposition = createDisposition;
-            o.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
-            o.destinationTable = destinationTable;
-            o.sourceTables = sourceTables;
-            o.writeDisposition = writeDisposition;
-            return o;
+            final var _resultValue = new JobCopy();
+            _resultValue.createDisposition = createDisposition;
+            _resultValue.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
+            _resultValue.destinationTable = destinationTable;
+            _resultValue.sourceTables = sourceTables;
+            _resultValue.writeDisposition = writeDisposition;
+            return _resultValue;
         }
     }
 }

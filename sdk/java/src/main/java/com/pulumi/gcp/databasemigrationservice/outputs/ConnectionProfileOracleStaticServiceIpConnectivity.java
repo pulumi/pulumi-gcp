@@ -25,8 +25,8 @@ public final class ConnectionProfileOracleStaticServiceIpConnectivity {
         }
 
         public ConnectionProfileOracleStaticServiceIpConnectivity build() {
-            final var o = new ConnectionProfileOracleStaticServiceIpConnectivity();
-            return o;
+            final var _resultValue = new ConnectionProfileOracleStaticServiceIpConnectivity();
+            return _resultValue;
         }
     }
 }

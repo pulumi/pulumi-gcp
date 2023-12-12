@@ -52,9 +52,9 @@ public final class ClusterClusterConfigEncryptionConfig {
             return this;
         }
         public ClusterClusterConfigEncryptionConfig build() {
-            final var o = new ClusterClusterConfigEncryptionConfig();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new ClusterClusterConfigEncryptionConfig();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

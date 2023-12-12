@@ -70,10 +70,10 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolic
             return this;
         }
         public RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay build() {
-            final var o = new RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay();
-            o.fixedDelay = fixedDelay;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay();
+            _resultValue.fixedDelay = fixedDelay;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

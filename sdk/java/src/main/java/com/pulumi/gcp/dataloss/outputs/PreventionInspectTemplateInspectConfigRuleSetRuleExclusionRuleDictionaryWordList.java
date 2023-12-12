@@ -52,9 +52,9 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
             return words(List.of(words));
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList();
-            o.words = words;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordList();
+            _resultValue.words = words;
+            return _resultValue;
         }
     }
 }

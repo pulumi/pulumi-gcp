@@ -117,15 +117,15 @@ public final class GetServiceTemplateSpecContainerStartupProbe {
             return this;
         }
         public GetServiceTemplateSpecContainerStartupProbe build() {
-            final var o = new GetServiceTemplateSpecContainerStartupProbe();
-            o.failureThreshold = failureThreshold;
-            o.grpcs = grpcs;
-            o.httpGets = httpGets;
-            o.initialDelaySeconds = initialDelaySeconds;
-            o.periodSeconds = periodSeconds;
-            o.tcpSockets = tcpSockets;
-            o.timeoutSeconds = timeoutSeconds;
-            return o;
+            final var _resultValue = new GetServiceTemplateSpecContainerStartupProbe();
+            _resultValue.failureThreshold = failureThreshold;
+            _resultValue.grpcs = grpcs;
+            _resultValue.httpGets = httpGets;
+            _resultValue.initialDelaySeconds = initialDelaySeconds;
+            _resultValue.periodSeconds = periodSeconds;
+            _resultValue.tcpSockets = tcpSockets;
+            _resultValue.timeoutSeconds = timeoutSeconds;
+            return _resultValue;
         }
     }
 }

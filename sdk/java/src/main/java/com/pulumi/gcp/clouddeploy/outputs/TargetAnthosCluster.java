@@ -48,9 +48,9 @@ public final class TargetAnthosCluster {
             return this;
         }
         public TargetAnthosCluster build() {
-            final var o = new TargetAnthosCluster();
-            o.membership = membership;
-            return o;
+            final var _resultValue = new TargetAnthosCluster();
+            _resultValue.membership = membership;
+            return _resultValue;
         }
     }
 }

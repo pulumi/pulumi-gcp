@@ -106,11 +106,11 @@ public final class ClusterVirtualClusterConfig {
             return this;
         }
         public ClusterVirtualClusterConfig build() {
-            final var o = new ClusterVirtualClusterConfig();
-            o.auxiliaryServicesConfig = auxiliaryServicesConfig;
-            o.kubernetesClusterConfig = kubernetesClusterConfig;
-            o.stagingBucket = stagingBucket;
-            return o;
+            final var _resultValue = new ClusterVirtualClusterConfig();
+            _resultValue.auxiliaryServicesConfig = auxiliaryServicesConfig;
+            _resultValue.kubernetesClusterConfig = kubernetesClusterConfig;
+            _resultValue.stagingBucket = stagingBucket;
+            return _resultValue;
         }
     }
 }

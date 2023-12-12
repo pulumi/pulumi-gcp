@@ -89,11 +89,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType();
-            o.name = name;
-            o.sensitivityScore = sensitivityScore;
-            o.version = version;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType();
+            _resultValue.name = name;
+            _resultValue.sensitivityScore = sensitivityScore;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

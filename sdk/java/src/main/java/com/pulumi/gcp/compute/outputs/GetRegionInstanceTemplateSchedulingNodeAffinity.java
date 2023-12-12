@@ -82,11 +82,11 @@ public final class GetRegionInstanceTemplateSchedulingNodeAffinity {
             return values(List.of(values));
         }
         public GetRegionInstanceTemplateSchedulingNodeAffinity build() {
-            final var o = new GetRegionInstanceTemplateSchedulingNodeAffinity();
-            o.key = key;
-            o.operator = operator;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRegionInstanceTemplateSchedulingNodeAffinity();
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

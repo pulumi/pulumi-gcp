@@ -50,9 +50,9 @@ public final class BackupScheduleWeeklyRecurrence {
             return this;
         }
         public BackupScheduleWeeklyRecurrence build() {
-            final var o = new BackupScheduleWeeklyRecurrence();
-            o.day = day;
-            return o;
+            final var _resultValue = new BackupScheduleWeeklyRecurrence();
+            _resultValue.day = day;
+            return _resultValue;
         }
     }
 }

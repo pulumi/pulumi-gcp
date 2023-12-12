@@ -65,10 +65,10 @@ public final class GuestPoliciesPackageRepositoryGoo {
             return this;
         }
         public GuestPoliciesPackageRepositoryGoo build() {
-            final var o = new GuestPoliciesPackageRepositoryGoo();
-            o.name = name;
-            o.url = url;
-            return o;
+            final var _resultValue = new GuestPoliciesPackageRepositoryGoo();
+            _resultValue.name = name;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

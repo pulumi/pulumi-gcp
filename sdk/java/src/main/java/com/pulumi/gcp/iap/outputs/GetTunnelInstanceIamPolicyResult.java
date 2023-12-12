@@ -119,14 +119,14 @@ public final class GetTunnelInstanceIamPolicyResult {
             return this;
         }
         public GetTunnelInstanceIamPolicyResult build() {
-            final var o = new GetTunnelInstanceIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.instance = instance;
-            o.policyData = policyData;
-            o.project = project;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetTunnelInstanceIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.instance = instance;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

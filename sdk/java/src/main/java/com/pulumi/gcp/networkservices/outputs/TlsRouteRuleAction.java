@@ -53,9 +53,9 @@ public final class TlsRouteRuleAction {
             return destinations(List.of(destinations));
         }
         public TlsRouteRuleAction build() {
-            final var o = new TlsRouteRuleAction();
-            o.destinations = destinations;
-            return o;
+            final var _resultValue = new TlsRouteRuleAction();
+            _resultValue.destinations = destinations;
+            return _resultValue;
         }
     }
 }

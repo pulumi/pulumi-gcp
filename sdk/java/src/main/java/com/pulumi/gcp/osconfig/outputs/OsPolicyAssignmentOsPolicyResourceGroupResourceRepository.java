@@ -116,12 +116,12 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceRepository build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepository();
-            o.apt = apt;
-            o.goo = goo;
-            o.yum = yum;
-            o.zypper = zypper;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepository();
+            _resultValue.apt = apt;
+            _resultValue.goo = goo;
+            _resultValue.yum = yum;
+            _resultValue.zypper = zypper;
+            return _resultValue;
         }
     }
 }

@@ -107,12 +107,12 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
             return this;
         }
         public ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings build() {
-            final var o = new ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings();
-            o.blueGreenSettings = blueGreenSettings;
-            o.maxSurge = maxSurge;
-            o.maxUnavailable = maxUnavailable;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings();
+            _resultValue.blueGreenSettings = blueGreenSettings;
+            _resultValue.maxSurge = maxSurge;
+            _resultValue.maxUnavailable = maxUnavailable;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

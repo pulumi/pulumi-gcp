@@ -53,10 +53,10 @@ public final class InstanceFromMachineImageReservationAffinitySpecificReservatio
             return values(List.of(values));
         }
         public InstanceFromMachineImageReservationAffinitySpecificReservation build() {
-            final var o = new InstanceFromMachineImageReservationAffinitySpecificReservation();
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageReservationAffinitySpecificReservation();
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

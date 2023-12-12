@@ -72,10 +72,10 @@ public final class EntryGcsFilesetSpecSampleGcsFileSpec {
             return this;
         }
         public EntryGcsFilesetSpecSampleGcsFileSpec build() {
-            final var o = new EntryGcsFilesetSpecSampleGcsFileSpec();
-            o.filePath = filePath;
-            o.sizeBytes = sizeBytes;
-            return o;
+            final var _resultValue = new EntryGcsFilesetSpecSampleGcsFileSpec();
+            _resultValue.filePath = filePath;
+            _resultValue.sizeBytes = sizeBytes;
+            return _resultValue;
         }
     }
 }

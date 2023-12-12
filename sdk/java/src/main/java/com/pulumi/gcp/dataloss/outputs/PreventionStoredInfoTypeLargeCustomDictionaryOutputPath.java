@@ -46,9 +46,9 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryOutputPath {
             return this;
         }
         public PreventionStoredInfoTypeLargeCustomDictionaryOutputPath build() {
-            final var o = new PreventionStoredInfoTypeLargeCustomDictionaryOutputPath();
-            o.path = path;
-            return o;
+            final var _resultValue = new PreventionStoredInfoTypeLargeCustomDictionaryOutputPath();
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

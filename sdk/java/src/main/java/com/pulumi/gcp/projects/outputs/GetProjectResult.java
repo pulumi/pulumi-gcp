@@ -81,11 +81,11 @@ public final class GetProjectResult {
             return projects(List.of(projects));
         }
         public GetProjectResult build() {
-            final var o = new GetProjectResult();
-            o.filter = filter;
-            o.id = id;
-            o.projects = projects;
-            return o;
+            final var _resultValue = new GetProjectResult();
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.projects = projects;
+            return _resultValue;
         }
     }
 }

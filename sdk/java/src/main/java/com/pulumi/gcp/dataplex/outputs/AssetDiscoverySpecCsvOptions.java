@@ -107,12 +107,12 @@ public final class AssetDiscoverySpecCsvOptions {
             return this;
         }
         public AssetDiscoverySpecCsvOptions build() {
-            final var o = new AssetDiscoverySpecCsvOptions();
-            o.delimiter = delimiter;
-            o.disableTypeInference = disableTypeInference;
-            o.encoding = encoding;
-            o.headerRows = headerRows;
-            return o;
+            final var _resultValue = new AssetDiscoverySpecCsvOptions();
+            _resultValue.delimiter = delimiter;
+            _resultValue.disableTypeInference = disableTypeInference;
+            _resultValue.encoding = encoding;
+            _resultValue.headerRows = headerRows;
+            return _resultValue;
         }
     }
 }

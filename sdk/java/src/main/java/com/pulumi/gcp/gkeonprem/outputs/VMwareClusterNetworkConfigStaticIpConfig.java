@@ -52,9 +52,9 @@ public final class VMwareClusterNetworkConfigStaticIpConfig {
             return ipBlocks(List.of(ipBlocks));
         }
         public VMwareClusterNetworkConfigStaticIpConfig build() {
-            final var o = new VMwareClusterNetworkConfigStaticIpConfig();
-            o.ipBlocks = ipBlocks;
-            return o;
+            final var _resultValue = new VMwareClusterNetworkConfigStaticIpConfig();
+            _resultValue.ipBlocks = ipBlocks;
+            return _resultValue;
         }
     }
 }

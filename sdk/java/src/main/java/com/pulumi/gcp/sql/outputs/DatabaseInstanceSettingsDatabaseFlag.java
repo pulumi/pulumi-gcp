@@ -65,10 +65,10 @@ public final class DatabaseInstanceSettingsDatabaseFlag {
             return this;
         }
         public DatabaseInstanceSettingsDatabaseFlag build() {
-            final var o = new DatabaseInstanceSettingsDatabaseFlag();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettingsDatabaseFlag();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

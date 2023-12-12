@@ -194,16 +194,16 @@ public final class ConnectionProfilePostgresql {
             return this;
         }
         public ConnectionProfilePostgresql build() {
-            final var o = new ConnectionProfilePostgresql();
-            o.cloudSqlId = cloudSqlId;
-            o.host = host;
-            o.networkArchitecture = networkArchitecture;
-            o.password = password;
-            o.passwordSet = passwordSet;
-            o.port = port;
-            o.ssl = ssl;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionProfilePostgresql();
+            _resultValue.cloudSqlId = cloudSqlId;
+            _resultValue.host = host;
+            _resultValue.networkArchitecture = networkArchitecture;
+            _resultValue.password = password;
+            _resultValue.passwordSet = passwordSet;
+            _resultValue.port = port;
+            _resultValue.ssl = ssl;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

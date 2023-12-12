@@ -114,12 +114,12 @@ public final class CaPoolIssuancePolicyBaselineValuesCaOptions {
             return this;
         }
         public CaPoolIssuancePolicyBaselineValuesCaOptions build() {
-            final var o = new CaPoolIssuancePolicyBaselineValuesCaOptions();
-            o.isCa = isCa;
-            o.maxIssuerPathLength = maxIssuerPathLength;
-            o.nonCa = nonCa;
-            o.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyBaselineValuesCaOptions();
+            _resultValue.isCa = isCa;
+            _resultValue.maxIssuerPathLength = maxIssuerPathLength;
+            _resultValue.nonCa = nonCa;
+            _resultValue.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
+            return _resultValue;
         }
     }
 }

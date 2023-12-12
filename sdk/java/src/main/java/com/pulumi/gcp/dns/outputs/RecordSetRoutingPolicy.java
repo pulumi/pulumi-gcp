@@ -121,12 +121,12 @@ public final class RecordSetRoutingPolicy {
             return wrrs(List.of(wrrs));
         }
         public RecordSetRoutingPolicy build() {
-            final var o = new RecordSetRoutingPolicy();
-            o.enableGeoFencing = enableGeoFencing;
-            o.geos = geos;
-            o.primaryBackup = primaryBackup;
-            o.wrrs = wrrs;
-            return o;
+            final var _resultValue = new RecordSetRoutingPolicy();
+            _resultValue.enableGeoFencing = enableGeoFencing;
+            _resultValue.geos = geos;
+            _resultValue.primaryBackup = primaryBackup;
+            _resultValue.wrrs = wrrs;
+            return _resultValue;
         }
     }
 }

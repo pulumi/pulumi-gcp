@@ -72,10 +72,10 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolic
             return this;
         }
         public RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay build() {
-            final var o = new RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

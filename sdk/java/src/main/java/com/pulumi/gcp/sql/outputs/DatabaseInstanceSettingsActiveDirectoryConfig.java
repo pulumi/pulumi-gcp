@@ -48,9 +48,9 @@ public final class DatabaseInstanceSettingsActiveDirectoryConfig {
             return this;
         }
         public DatabaseInstanceSettingsActiveDirectoryConfig build() {
-            final var o = new DatabaseInstanceSettingsActiveDirectoryConfig();
-            o.domain = domain;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettingsActiveDirectoryConfig();
+            _resultValue.domain = domain;
+            return _resultValue;
         }
     }
 }

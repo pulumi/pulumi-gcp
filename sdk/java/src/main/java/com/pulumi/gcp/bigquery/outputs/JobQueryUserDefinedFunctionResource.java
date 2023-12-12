@@ -69,10 +69,10 @@ public final class JobQueryUserDefinedFunctionResource {
             return this;
         }
         public JobQueryUserDefinedFunctionResource build() {
-            final var o = new JobQueryUserDefinedFunctionResource();
-            o.inlineCode = inlineCode;
-            o.resourceUri = resourceUri;
-            return o;
+            final var _resultValue = new JobQueryUserDefinedFunctionResource();
+            _resultValue.inlineCode = inlineCode;
+            _resultValue.resourceUri = resourceUri;
+            return _resultValue;
         }
     }
 }

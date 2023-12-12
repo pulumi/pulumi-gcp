@@ -93,11 +93,11 @@ public final class InstanceGroupManagerVersion {
             return this;
         }
         public InstanceGroupManagerVersion build() {
-            final var o = new InstanceGroupManagerVersion();
-            o.instanceTemplate = instanceTemplate;
-            o.name = name;
-            o.targetSize = targetSize;
-            return o;
+            final var _resultValue = new InstanceGroupManagerVersion();
+            _resultValue.instanceTemplate = instanceTemplate;
+            _resultValue.name = name;
+            _resultValue.targetSize = targetSize;
+            return _resultValue;
         }
     }
 }

@@ -98,11 +98,11 @@ public final class IndexField {
             return this;
         }
         public IndexField build() {
-            final var o = new IndexField();
-            o.arrayConfig = arrayConfig;
-            o.fieldPath = fieldPath;
-            o.order = order;
-            return o;
+            final var _resultValue = new IndexField();
+            _resultValue.arrayConfig = arrayConfig;
+            _resultValue.fieldPath = fieldPath;
+            _resultValue.order = order;
+            return _resultValue;
         }
     }
 }

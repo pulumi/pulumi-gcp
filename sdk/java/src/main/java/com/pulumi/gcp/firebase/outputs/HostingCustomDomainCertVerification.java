@@ -76,10 +76,10 @@ public final class HostingCustomDomainCertVerification {
             return this;
         }
         public HostingCustomDomainCertVerification build() {
-            final var o = new HostingCustomDomainCertVerification();
-            o.dns = dns;
-            o.http = http;
-            return o;
+            final var _resultValue = new HostingCustomDomainCertVerification();
+            _resultValue.dns = dns;
+            _resultValue.http = http;
+            return _resultValue;
         }
     }
 }

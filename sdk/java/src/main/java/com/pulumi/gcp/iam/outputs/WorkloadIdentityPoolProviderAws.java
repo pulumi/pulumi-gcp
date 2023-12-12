@@ -46,9 +46,9 @@ public final class WorkloadIdentityPoolProviderAws {
             return this;
         }
         public WorkloadIdentityPoolProviderAws build() {
-            final var o = new WorkloadIdentityPoolProviderAws();
-            o.accountId = accountId;
-            return o;
+            final var _resultValue = new WorkloadIdentityPoolProviderAws();
+            _resultValue.accountId = accountId;
+            return _resultValue;
         }
     }
 }

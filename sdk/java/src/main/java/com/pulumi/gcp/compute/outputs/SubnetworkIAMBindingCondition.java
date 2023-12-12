@@ -94,11 +94,11 @@ public final class SubnetworkIAMBindingCondition {
             return this;
         }
         public SubnetworkIAMBindingCondition build() {
-            final var o = new SubnetworkIAMBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new SubnetworkIAMBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

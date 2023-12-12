@@ -52,9 +52,9 @@ public final class MangedSslCertificateManaged {
             return domains(List.of(domains));
         }
         public MangedSslCertificateManaged build() {
-            final var o = new MangedSslCertificateManaged();
-            o.domains = domains;
-            return o;
+            final var _resultValue = new MangedSslCertificateManaged();
+            _resultValue.domains = domains;
+            return _resultValue;
         }
     }
 }

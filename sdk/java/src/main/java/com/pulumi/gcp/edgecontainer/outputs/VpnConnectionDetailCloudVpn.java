@@ -50,9 +50,9 @@ public final class VpnConnectionDetailCloudVpn {
             return this;
         }
         public VpnConnectionDetailCloudVpn build() {
-            final var o = new VpnConnectionDetailCloudVpn();
-            o.gateway = gateway;
-            return o;
+            final var _resultValue = new VpnConnectionDetailCloudVpn();
+            _resultValue.gateway = gateway;
+            return _resultValue;
         }
     }
 }

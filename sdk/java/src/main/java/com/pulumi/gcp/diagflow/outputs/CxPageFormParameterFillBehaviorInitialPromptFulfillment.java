@@ -163,14 +163,14 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
             return this;
         }
         public CxPageFormParameterFillBehaviorInitialPromptFulfillment build() {
-            final var o = new CxPageFormParameterFillBehaviorInitialPromptFulfillment();
-            o.conditionalCases = conditionalCases;
-            o.messages = messages;
-            o.returnPartialResponses = returnPartialResponses;
-            o.setParameterActions = setParameterActions;
-            o.tag = tag;
-            o.webhook = webhook;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorInitialPromptFulfillment();
+            _resultValue.conditionalCases = conditionalCases;
+            _resultValue.messages = messages;
+            _resultValue.returnPartialResponses = returnPartialResponses;
+            _resultValue.setParameterActions = setParameterActions;
+            _resultValue.tag = tag;
+            _resultValue.webhook = webhook;
+            return _resultValue;
         }
     }
 }

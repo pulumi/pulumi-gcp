@@ -46,9 +46,9 @@ public final class GetRegionInstanceTemplateNetworkPerformanceConfig {
             return this;
         }
         public GetRegionInstanceTemplateNetworkPerformanceConfig build() {
-            final var o = new GetRegionInstanceTemplateNetworkPerformanceConfig();
-            o.totalEgressBandwidthTier = totalEgressBandwidthTier;
-            return o;
+            final var _resultValue = new GetRegionInstanceTemplateNetworkPerformanceConfig();
+            _resultValue.totalEgressBandwidthTier = totalEgressBandwidthTier;
+            return _resultValue;
         }
     }
 }

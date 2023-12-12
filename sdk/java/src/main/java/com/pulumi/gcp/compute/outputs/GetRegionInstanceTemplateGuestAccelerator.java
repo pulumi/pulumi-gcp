@@ -66,10 +66,10 @@ public final class GetRegionInstanceTemplateGuestAccelerator {
             return this;
         }
         public GetRegionInstanceTemplateGuestAccelerator build() {
-            final var o = new GetRegionInstanceTemplateGuestAccelerator();
-            o.count = count;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetRegionInstanceTemplateGuestAccelerator();
+            _resultValue.count = count;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

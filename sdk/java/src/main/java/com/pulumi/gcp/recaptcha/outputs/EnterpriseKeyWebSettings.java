@@ -129,13 +129,13 @@ public final class EnterpriseKeyWebSettings {
             return this;
         }
         public EnterpriseKeyWebSettings build() {
-            final var o = new EnterpriseKeyWebSettings();
-            o.allowAllDomains = allowAllDomains;
-            o.allowAmpTraffic = allowAmpTraffic;
-            o.allowedDomains = allowedDomains;
-            o.challengeSecurityPreference = challengeSecurityPreference;
-            o.integrationType = integrationType;
-            return o;
+            final var _resultValue = new EnterpriseKeyWebSettings();
+            _resultValue.allowAllDomains = allowAllDomains;
+            _resultValue.allowAmpTraffic = allowAmpTraffic;
+            _resultValue.allowedDomains = allowedDomains;
+            _resultValue.challengeSecurityPreference = challengeSecurityPreference;
+            _resultValue.integrationType = integrationType;
+            return _resultValue;
         }
     }
 }

@@ -71,10 +71,10 @@ public final class DatascanExecutionStatus {
             return this;
         }
         public DatascanExecutionStatus build() {
-            final var o = new DatascanExecutionStatus();
-            o.latestJobEndTime = latestJobEndTime;
-            o.latestJobStartTime = latestJobStartTime;
-            return o;
+            final var _resultValue = new DatascanExecutionStatus();
+            _resultValue.latestJobEndTime = latestJobEndTime;
+            _resultValue.latestJobStartTime = latestJobStartTime;
+            return _resultValue;
         }
     }
 }

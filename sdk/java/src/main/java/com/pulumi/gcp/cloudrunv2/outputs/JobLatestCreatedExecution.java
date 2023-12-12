@@ -94,11 +94,11 @@ public final class JobLatestCreatedExecution {
             return this;
         }
         public JobLatestCreatedExecution build() {
-            final var o = new JobLatestCreatedExecution();
-            o.completionTime = completionTime;
-            o.createTime = createTime;
-            o.name = name;
-            return o;
+            final var _resultValue = new JobLatestCreatedExecution();
+            _resultValue.completionTime = completionTime;
+            _resultValue.createTime = createTime;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

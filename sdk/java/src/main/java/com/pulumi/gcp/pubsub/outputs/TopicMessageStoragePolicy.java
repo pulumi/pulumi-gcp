@@ -60,9 +60,9 @@ public final class TopicMessageStoragePolicy {
             return allowedPersistenceRegions(List.of(allowedPersistenceRegions));
         }
         public TopicMessageStoragePolicy build() {
-            final var o = new TopicMessageStoragePolicy();
-            o.allowedPersistenceRegions = allowedPersistenceRegions;
-            return o;
+            final var _resultValue = new TopicMessageStoragePolicy();
+            _resultValue.allowedPersistenceRegions = allowedPersistenceRegions;
+            return _resultValue;
         }
     }
 }

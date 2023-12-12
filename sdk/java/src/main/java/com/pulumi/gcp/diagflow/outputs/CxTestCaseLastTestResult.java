@@ -139,13 +139,13 @@ public final class CxTestCaseLastTestResult {
             return this;
         }
         public CxTestCaseLastTestResult build() {
-            final var o = new CxTestCaseLastTestResult();
-            o.conversationTurns = conversationTurns;
-            o.environment = environment;
-            o.name = name;
-            o.testResult = testResult;
-            o.testTime = testTime;
-            return o;
+            final var _resultValue = new CxTestCaseLastTestResult();
+            _resultValue.conversationTurns = conversationTurns;
+            _resultValue.environment = environment;
+            _resultValue.name = name;
+            _resultValue.testResult = testResult;
+            _resultValue.testTime = testTime;
+            return _resultValue;
         }
     }
 }

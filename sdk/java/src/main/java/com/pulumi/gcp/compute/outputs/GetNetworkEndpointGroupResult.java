@@ -207,19 +207,19 @@ public final class GetNetworkEndpointGroupResult {
             return this;
         }
         public GetNetworkEndpointGroupResult build() {
-            final var o = new GetNetworkEndpointGroupResult();
-            o.defaultPort = defaultPort;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.network = network;
-            o.networkEndpointType = networkEndpointType;
-            o.project = project;
-            o.selfLink = selfLink;
-            o.size = size;
-            o.subnetwork = subnetwork;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetNetworkEndpointGroupResult();
+            _resultValue.defaultPort = defaultPort;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.networkEndpointType = networkEndpointType;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            _resultValue.size = size;
+            _resultValue.subnetwork = subnetwork;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class NamespaceIamBindingCondition {
             return this;
         }
         public NamespaceIamBindingCondition build() {
-            final var o = new NamespaceIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new NamespaceIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

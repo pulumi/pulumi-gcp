@@ -50,9 +50,9 @@ public final class RepositoryRemoteRepositoryConfigAptRepository {
             return this;
         }
         public RepositoryRemoteRepositoryConfigAptRepository build() {
-            final var o = new RepositoryRemoteRepositoryConfigAptRepository();
-            o.publicRepository = publicRepository;
-            return o;
+            final var _resultValue = new RepositoryRemoteRepositoryConfigAptRepository();
+            _resultValue.publicRepository = publicRepository;
+            return _resultValue;
         }
     }
 }

@@ -161,19 +161,19 @@ public final class GetEnvironmentConfigNodeConfig {
             return this;
         }
         public GetEnvironmentConfigNodeConfig build() {
-            final var o = new GetEnvironmentConfigNodeConfig();
-            o.diskSizeGb = diskSizeGb;
-            o.enableIpMasqAgent = enableIpMasqAgent;
-            o.ipAllocationPolicies = ipAllocationPolicies;
-            o.machineType = machineType;
-            o.maxPodsPerNode = maxPodsPerNode;
-            o.network = network;
-            o.oauthScopes = oauthScopes;
-            o.serviceAccount = serviceAccount;
-            o.subnetwork = subnetwork;
-            o.tags = tags;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetEnvironmentConfigNodeConfig();
+            _resultValue.diskSizeGb = diskSizeGb;
+            _resultValue.enableIpMasqAgent = enableIpMasqAgent;
+            _resultValue.ipAllocationPolicies = ipAllocationPolicies;
+            _resultValue.machineType = machineType;
+            _resultValue.maxPodsPerNode = maxPodsPerNode;
+            _resultValue.network = network;
+            _resultValue.oauthScopes = oauthScopes;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.subnetwork = subnetwork;
+            _resultValue.tags = tags;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

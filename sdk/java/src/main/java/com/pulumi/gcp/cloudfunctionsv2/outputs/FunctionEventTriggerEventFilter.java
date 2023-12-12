@@ -100,11 +100,11 @@ public final class FunctionEventTriggerEventFilter {
             return this;
         }
         public FunctionEventTriggerEventFilter build() {
-            final var o = new FunctionEventTriggerEventFilter();
-            o.attribute = attribute;
-            o.operator = operator;
-            o.value = value;
-            return o;
+            final var _resultValue = new FunctionEventTriggerEventFilter();
+            _resultValue.attribute = attribute;
+            _resultValue.operator = operator;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

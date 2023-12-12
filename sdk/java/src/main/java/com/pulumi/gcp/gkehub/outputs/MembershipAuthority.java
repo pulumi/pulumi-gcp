@@ -38,9 +38,9 @@ public final class MembershipAuthority {
             return this;
         }
         public MembershipAuthority build() {
-            final var o = new MembershipAuthority();
-            o.issuer = issuer;
-            return o;
+            final var _resultValue = new MembershipAuthority();
+            _resultValue.issuer = issuer;
+            return _resultValue;
         }
     }
 }

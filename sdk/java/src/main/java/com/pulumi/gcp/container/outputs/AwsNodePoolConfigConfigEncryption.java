@@ -46,9 +46,9 @@ public final class AwsNodePoolConfigConfigEncryption {
             return this;
         }
         public AwsNodePoolConfigConfigEncryption build() {
-            final var o = new AwsNodePoolConfigConfigEncryption();
-            o.kmsKeyArn = kmsKeyArn;
-            return o;
+            final var _resultValue = new AwsNodePoolConfigConfigEncryption();
+            _resultValue.kmsKeyArn = kmsKeyArn;
+            return _resultValue;
         }
     }
 }

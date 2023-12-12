@@ -103,11 +103,11 @@ public final class CertificateCertificateDescriptionX509DescriptionKeyUsage {
             return unknownExtendedKeyUsages(List.of(unknownExtendedKeyUsages));
         }
         public CertificateCertificateDescriptionX509DescriptionKeyUsage build() {
-            final var o = new CertificateCertificateDescriptionX509DescriptionKeyUsage();
-            o.baseKeyUsages = baseKeyUsages;
-            o.extendedKeyUsages = extendedKeyUsages;
-            o.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
-            return o;
+            final var _resultValue = new CertificateCertificateDescriptionX509DescriptionKeyUsage();
+            _resultValue.baseKeyUsages = baseKeyUsages;
+            _resultValue.extendedKeyUsages = extendedKeyUsages;
+            _resultValue.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
+            return _resultValue;
         }
     }
 }

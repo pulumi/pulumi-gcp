@@ -73,11 +73,11 @@ public final class GetJobTemplateTemplateContainerEnv {
             return valueSources(List.of(valueSources));
         }
         public GetJobTemplateTemplateContainerEnv build() {
-            final var o = new GetJobTemplateTemplateContainerEnv();
-            o.name = name;
-            o.value = value;
-            o.valueSources = valueSources;
-            return o;
+            final var _resultValue = new GetJobTemplateTemplateContainerEnv();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            _resultValue.valueSources = valueSources;
+            return _resultValue;
         }
     }
 }

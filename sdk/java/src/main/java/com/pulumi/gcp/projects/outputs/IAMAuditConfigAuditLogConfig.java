@@ -70,10 +70,10 @@ public final class IAMAuditConfigAuditLogConfig {
             return this;
         }
         public IAMAuditConfigAuditLogConfig build() {
-            final var o = new IAMAuditConfigAuditLogConfig();
-            o.exemptedMembers = exemptedMembers;
-            o.logType = logType;
-            return o;
+            final var _resultValue = new IAMAuditConfigAuditLogConfig();
+            _resultValue.exemptedMembers = exemptedMembers;
+            _resultValue.logType = logType;
+            return _resultValue;
         }
     }
 }

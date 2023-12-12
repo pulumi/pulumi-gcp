@@ -49,10 +49,10 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefaultManagement
             return this;
         }
         public GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption build() {
-            final var o = new GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption();
-            o.autoUpgradeStartTime = autoUpgradeStartTime;
-            o.description = description;
-            return o;
+            final var _resultValue = new GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption();
+            _resultValue.autoUpgradeStartTime = autoUpgradeStartTime;
+            _resultValue.description = description;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class ApiConfigGatewayConfig {
             return this;
         }
         public ApiConfigGatewayConfig build() {
-            final var o = new ApiConfigGatewayConfig();
-            o.backendConfig = backendConfig;
-            return o;
+            final var _resultValue = new ApiConfigGatewayConfig();
+            _resultValue.backendConfig = backendConfig;
+            return _resultValue;
         }
     }
 }

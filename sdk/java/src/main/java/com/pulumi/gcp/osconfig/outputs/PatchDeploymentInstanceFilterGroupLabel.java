@@ -51,9 +51,9 @@ public final class PatchDeploymentInstanceFilterGroupLabel {
             return this;
         }
         public PatchDeploymentInstanceFilterGroupLabel build() {
-            final var o = new PatchDeploymentInstanceFilterGroupLabel();
-            o.labels = labels;
-            return o;
+            final var _resultValue = new PatchDeploymentInstanceFilterGroupLabel();
+            _resultValue.labels = labels;
+            return _resultValue;
         }
     }
 }

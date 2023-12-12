@@ -154,12 +154,12 @@ public final class SubscriptionPushConfig {
             return this;
         }
         public SubscriptionPushConfig build() {
-            final var o = new SubscriptionPushConfig();
-            o.attributes = attributes;
-            o.noWrapper = noWrapper;
-            o.oidcToken = oidcToken;
-            o.pushEndpoint = pushEndpoint;
-            return o;
+            final var _resultValue = new SubscriptionPushConfig();
+            _resultValue.attributes = attributes;
+            _resultValue.noWrapper = noWrapper;
+            _resultValue.oidcToken = oidcToken;
+            _resultValue.pushEndpoint = pushEndpoint;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class BackupPlanBackupConfigSelectedNamespaces {
             return namespaces(List.of(namespaces));
         }
         public BackupPlanBackupConfigSelectedNamespaces build() {
-            final var o = new BackupPlanBackupConfigSelectedNamespaces();
-            o.namespaces = namespaces;
-            return o;
+            final var _resultValue = new BackupPlanBackupConfigSelectedNamespaces();
+            _resultValue.namespaces = namespaces;
+            return _resultValue;
         }
     }
 }

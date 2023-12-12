@@ -122,13 +122,13 @@ public final class GetCaCertsCert {
             return this;
         }
         public GetCaCertsCert build() {
-            final var o = new GetCaCertsCert();
-            o.cert = cert;
-            o.commonName = commonName;
-            o.createTime = createTime;
-            o.expirationTime = expirationTime;
-            o.sha1Fingerprint = sha1Fingerprint;
-            return o;
+            final var _resultValue = new GetCaCertsCert();
+            _resultValue.cert = cert;
+            _resultValue.commonName = commonName;
+            _resultValue.createTime = createTime;
+            _resultValue.expirationTime = expirationTime;
+            _resultValue.sha1Fingerprint = sha1Fingerprint;
+            return _resultValue;
         }
     }
 }

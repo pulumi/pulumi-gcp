@@ -92,12 +92,12 @@ public final class GetServiceTemplateVolume {
             return secrets(List.of(secrets));
         }
         public GetServiceTemplateVolume build() {
-            final var o = new GetServiceTemplateVolume();
-            o.cloudSqlInstances = cloudSqlInstances;
-            o.emptyDirs = emptyDirs;
-            o.name = name;
-            o.secrets = secrets;
-            return o;
+            final var _resultValue = new GetServiceTemplateVolume();
+            _resultValue.cloudSqlInstances = cloudSqlInstances;
+            _resultValue.emptyDirs = emptyDirs;
+            _resultValue.name = name;
+            _resultValue.secrets = secrets;
+            return _resultValue;
         }
     }
 }

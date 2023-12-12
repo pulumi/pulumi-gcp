@@ -86,11 +86,11 @@ public final class TableHiveOptionsStorageDescriptor {
             return this;
         }
         public TableHiveOptionsStorageDescriptor build() {
-            final var o = new TableHiveOptionsStorageDescriptor();
-            o.inputFormat = inputFormat;
-            o.locationUri = locationUri;
-            o.outputFormat = outputFormat;
-            return o;
+            final var _resultValue = new TableHiveOptionsStorageDescriptor();
+            _resultValue.inputFormat = inputFormat;
+            _resultValue.locationUri = locationUri;
+            _resultValue.outputFormat = outputFormat;
+            return _resultValue;
         }
     }
 }

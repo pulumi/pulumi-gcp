@@ -65,10 +65,10 @@ public final class DatasetAccessDatasetDataset {
             return this;
         }
         public DatasetAccessDatasetDataset build() {
-            final var o = new DatasetAccessDatasetDataset();
-            o.datasetId = datasetId;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new DatasetAccessDatasetDataset();
+            _resultValue.datasetId = datasetId;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

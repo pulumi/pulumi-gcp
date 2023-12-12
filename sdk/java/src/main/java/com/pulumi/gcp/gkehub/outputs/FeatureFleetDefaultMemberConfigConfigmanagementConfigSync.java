@@ -92,11 +92,11 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
             return this;
         }
         public FeatureFleetDefaultMemberConfigConfigmanagementConfigSync build() {
-            final var o = new FeatureFleetDefaultMemberConfigConfigmanagementConfigSync();
-            o.git = git;
-            o.oci = oci;
-            o.sourceFormat = sourceFormat;
-            return o;
+            final var _resultValue = new FeatureFleetDefaultMemberConfigConfigmanagementConfigSync();
+            _resultValue.git = git;
+            _resultValue.oci = oci;
+            _resultValue.sourceFormat = sourceFormat;
+            return _resultValue;
         }
     }
 }

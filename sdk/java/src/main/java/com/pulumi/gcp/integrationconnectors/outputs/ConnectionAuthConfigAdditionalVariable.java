@@ -151,14 +151,14 @@ public final class ConnectionAuthConfigAdditionalVariable {
             return this;
         }
         public ConnectionAuthConfigAdditionalVariable build() {
-            final var o = new ConnectionAuthConfigAdditionalVariable();
-            o.booleanValue = booleanValue;
-            o.encryptionKeyValue = encryptionKeyValue;
-            o.integerValue = integerValue;
-            o.key = key;
-            o.secretValue = secretValue;
-            o.stringValue = stringValue;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigAdditionalVariable();
+            _resultValue.booleanValue = booleanValue;
+            _resultValue.encryptionKeyValue = encryptionKeyValue;
+            _resultValue.integerValue = integerValue;
+            _resultValue.key = key;
+            _resultValue.secretValue = secretValue;
+            _resultValue.stringValue = stringValue;
+            return _resultValue;
         }
     }
 }

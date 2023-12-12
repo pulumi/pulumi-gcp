@@ -53,9 +53,9 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return conditions(List.of(conditions));
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions();
-            o.conditions = conditions;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions();
+            _resultValue.conditions = conditions;
+            return _resultValue;
         }
     }
 }

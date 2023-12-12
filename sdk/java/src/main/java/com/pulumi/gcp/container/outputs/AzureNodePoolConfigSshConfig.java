@@ -46,9 +46,9 @@ public final class AzureNodePoolConfigSshConfig {
             return this;
         }
         public AzureNodePoolConfigSshConfig build() {
-            final var o = new AzureNodePoolConfigSshConfig();
-            o.authorizedKey = authorizedKey;
-            return o;
+            final var _resultValue = new AzureNodePoolConfigSshConfig();
+            _resultValue.authorizedKey = authorizedKey;
+            return _resultValue;
         }
     }
 }

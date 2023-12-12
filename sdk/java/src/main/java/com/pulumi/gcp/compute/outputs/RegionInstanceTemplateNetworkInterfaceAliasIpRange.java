@@ -79,10 +79,10 @@ public final class RegionInstanceTemplateNetworkInterfaceAliasIpRange {
             return this;
         }
         public RegionInstanceTemplateNetworkInterfaceAliasIpRange build() {
-            final var o = new RegionInstanceTemplateNetworkInterfaceAliasIpRange();
-            o.ipCidrRange = ipCidrRange;
-            o.subnetworkRangeName = subnetworkRangeName;
-            return o;
+            final var _resultValue = new RegionInstanceTemplateNetworkInterfaceAliasIpRange();
+            _resultValue.ipCidrRange = ipCidrRange;
+            _resultValue.subnetworkRangeName = subnetworkRangeName;
+            return _resultValue;
         }
     }
 }

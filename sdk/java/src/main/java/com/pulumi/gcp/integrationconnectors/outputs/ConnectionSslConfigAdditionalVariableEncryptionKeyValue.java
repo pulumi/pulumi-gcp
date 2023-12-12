@@ -73,10 +73,10 @@ public final class ConnectionSslConfigAdditionalVariableEncryptionKeyValue {
             return this;
         }
         public ConnectionSslConfigAdditionalVariableEncryptionKeyValue build() {
-            final var o = new ConnectionSslConfigAdditionalVariableEncryptionKeyValue();
-            o.kmsKeyName = kmsKeyName;
-            o.type = type;
-            return o;
+            final var _resultValue = new ConnectionSslConfigAdditionalVariableEncryptionKeyValue();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

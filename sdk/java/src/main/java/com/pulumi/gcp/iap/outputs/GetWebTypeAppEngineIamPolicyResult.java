@@ -108,13 +108,13 @@ public final class GetWebTypeAppEngineIamPolicyResult {
             return this;
         }
         public GetWebTypeAppEngineIamPolicyResult build() {
-            final var o = new GetWebTypeAppEngineIamPolicyResult();
-            o.appId = appId;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetWebTypeAppEngineIamPolicyResult();
+            _resultValue.appId = appId;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

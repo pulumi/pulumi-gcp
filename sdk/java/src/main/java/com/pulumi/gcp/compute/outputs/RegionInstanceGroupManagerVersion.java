@@ -93,11 +93,11 @@ public final class RegionInstanceGroupManagerVersion {
             return this;
         }
         public RegionInstanceGroupManagerVersion build() {
-            final var o = new RegionInstanceGroupManagerVersion();
-            o.instanceTemplate = instanceTemplate;
-            o.name = name;
-            o.targetSize = targetSize;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerVersion();
+            _resultValue.instanceTemplate = instanceTemplate;
+            _resultValue.name = name;
+            _resultValue.targetSize = targetSize;
+            return _resultValue;
         }
     }
 }

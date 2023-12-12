@@ -148,13 +148,13 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializePa
             return this;
         }
         public RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams build() {
-            final var o = new RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams();
-            o.description = description;
-            o.diskName = diskName;
-            o.diskSizeGb = diskSizeGb;
-            o.diskType = diskType;
-            o.labels = labels;
-            return o;
+            final var _resultValue = new RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams();
+            _resultValue.description = description;
+            _resultValue.diskName = diskName;
+            _resultValue.diskSizeGb = diskSizeGb;
+            _resultValue.diskType = diskType;
+            _resultValue.labels = labels;
+            return _resultValue;
         }
     }
 }

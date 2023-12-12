@@ -78,11 +78,11 @@ public final class AssetSecurityStatus {
             return this;
         }
         public AssetSecurityStatus build() {
-            final var o = new AssetSecurityStatus();
-            o.message = message;
-            o.state = state;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new AssetSecurityStatus();
+            _resultValue.message = message;
+            _resultValue.state = state;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

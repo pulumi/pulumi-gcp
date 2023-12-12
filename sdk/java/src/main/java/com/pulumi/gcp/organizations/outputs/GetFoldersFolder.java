@@ -179,16 +179,16 @@ public final class GetFoldersFolder {
             return this;
         }
         public GetFoldersFolder build() {
-            final var o = new GetFoldersFolder();
-            o.createTime = createTime;
-            o.deleteTime = deleteTime;
-            o.displayName = displayName;
-            o.etag = etag;
-            o.name = name;
-            o.parent = parent;
-            o.state = state;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetFoldersFolder();
+            _resultValue.createTime = createTime;
+            _resultValue.deleteTime = deleteTime;
+            _resultValue.displayName = displayName;
+            _resultValue.etag = etag;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
+            _resultValue.state = state;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

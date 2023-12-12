@@ -54,10 +54,10 @@ public final class GetClusterMasterAuthorizedNetworksConfig {
             return this;
         }
         public GetClusterMasterAuthorizedNetworksConfig build() {
-            final var o = new GetClusterMasterAuthorizedNetworksConfig();
-            o.cidrBlocks = cidrBlocks;
-            o.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
-            return o;
+            final var _resultValue = new GetClusterMasterAuthorizedNetworksConfig();
+            _resultValue.cidrBlocks = cidrBlocks;
+            _resultValue.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
+            return _resultValue;
         }
     }
 }

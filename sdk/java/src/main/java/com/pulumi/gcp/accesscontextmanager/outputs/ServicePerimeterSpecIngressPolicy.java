@@ -76,10 +76,10 @@ public final class ServicePerimeterSpecIngressPolicy {
             return this;
         }
         public ServicePerimeterSpecIngressPolicy build() {
-            final var o = new ServicePerimeterSpecIngressPolicy();
-            o.ingressFrom = ingressFrom;
-            o.ingressTo = ingressTo;
-            return o;
+            final var _resultValue = new ServicePerimeterSpecIngressPolicy();
+            _resultValue.ingressFrom = ingressFrom;
+            _resultValue.ingressTo = ingressTo;
+            return _resultValue;
         }
     }
 }

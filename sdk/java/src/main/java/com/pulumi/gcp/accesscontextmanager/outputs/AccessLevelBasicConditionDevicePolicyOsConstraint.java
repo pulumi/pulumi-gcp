@@ -93,11 +93,11 @@ public final class AccessLevelBasicConditionDevicePolicyOsConstraint {
             return this;
         }
         public AccessLevelBasicConditionDevicePolicyOsConstraint build() {
-            final var o = new AccessLevelBasicConditionDevicePolicyOsConstraint();
-            o.minimumVersion = minimumVersion;
-            o.osType = osType;
-            o.requireVerifiedChromeOs = requireVerifiedChromeOs;
-            return o;
+            final var _resultValue = new AccessLevelBasicConditionDevicePolicyOsConstraint();
+            _resultValue.minimumVersion = minimumVersion;
+            _resultValue.osType = osType;
+            _resultValue.requireVerifiedChromeOs = requireVerifiedChromeOs;
+            return _resultValue;
         }
     }
 }

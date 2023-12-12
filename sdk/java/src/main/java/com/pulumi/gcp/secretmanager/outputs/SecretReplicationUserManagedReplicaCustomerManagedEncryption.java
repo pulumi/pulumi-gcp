@@ -50,9 +50,9 @@ public final class SecretReplicationUserManagedReplicaCustomerManagedEncryption 
             return this;
         }
         public SecretReplicationUserManagedReplicaCustomerManagedEncryption build() {
-            final var o = new SecretReplicationUserManagedReplicaCustomerManagedEncryption();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new SecretReplicationUserManagedReplicaCustomerManagedEncryption();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

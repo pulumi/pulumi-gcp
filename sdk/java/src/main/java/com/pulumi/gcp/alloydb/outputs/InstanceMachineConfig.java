@@ -48,9 +48,9 @@ public final class InstanceMachineConfig {
             return this;
         }
         public InstanceMachineConfig build() {
-            final var o = new InstanceMachineConfig();
-            o.cpuCount = cpuCount;
-            return o;
+            final var _resultValue = new InstanceMachineConfig();
+            _resultValue.cpuCount = cpuCount;
+            return _resultValue;
         }
     }
 }

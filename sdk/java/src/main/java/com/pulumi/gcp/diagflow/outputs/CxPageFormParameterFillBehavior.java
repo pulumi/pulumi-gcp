@@ -96,10 +96,10 @@ public final class CxPageFormParameterFillBehavior {
             return repromptEventHandlers(List.of(repromptEventHandlers));
         }
         public CxPageFormParameterFillBehavior build() {
-            final var o = new CxPageFormParameterFillBehavior();
-            o.initialPromptFulfillment = initialPromptFulfillment;
-            o.repromptEventHandlers = repromptEventHandlers;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehavior();
+            _resultValue.initialPromptFulfillment = initialPromptFulfillment;
+            _resultValue.repromptEventHandlers = repromptEventHandlers;
+            return _resultValue;
         }
     }
 }

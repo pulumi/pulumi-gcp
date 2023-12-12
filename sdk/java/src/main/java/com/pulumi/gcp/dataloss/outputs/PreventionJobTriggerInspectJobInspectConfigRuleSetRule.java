@@ -72,10 +72,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRule {
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigRuleSetRule build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigRuleSetRule();
-            o.exclusionRule = exclusionRule;
-            o.hotwordRule = hotwordRule;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigRuleSetRule();
+            _resultValue.exclusionRule = exclusionRule;
+            _resultValue.hotwordRule = hotwordRule;
+            return _resultValue;
         }
     }
 }

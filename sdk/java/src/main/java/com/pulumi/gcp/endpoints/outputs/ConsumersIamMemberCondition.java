@@ -62,11 +62,11 @@ public final class ConsumersIamMemberCondition {
             return this;
         }
         public ConsumersIamMemberCondition build() {
-            final var o = new ConsumersIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new ConsumersIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

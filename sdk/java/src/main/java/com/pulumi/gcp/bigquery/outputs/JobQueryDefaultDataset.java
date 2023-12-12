@@ -69,10 +69,10 @@ public final class JobQueryDefaultDataset {
             return this;
         }
         public JobQueryDefaultDataset build() {
-            final var o = new JobQueryDefaultDataset();
-            o.datasetId = datasetId;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new JobQueryDefaultDataset();
+            _resultValue.datasetId = datasetId;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

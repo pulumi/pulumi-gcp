@@ -97,12 +97,12 @@ public final class GetTagKeyIamPolicyResult {
             return this;
         }
         public GetTagKeyIamPolicyResult build() {
-            final var o = new GetTagKeyIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.tagKey = tagKey;
-            return o;
+            final var _resultValue = new GetTagKeyIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.tagKey = tagKey;
+            return _resultValue;
         }
     }
 }

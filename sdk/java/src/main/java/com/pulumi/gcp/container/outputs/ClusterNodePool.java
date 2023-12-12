@@ -313,23 +313,23 @@ public final class ClusterNodePool {
             return this;
         }
         public ClusterNodePool build() {
-            final var o = new ClusterNodePool();
-            o.autoscaling = autoscaling;
-            o.initialNodeCount = initialNodeCount;
-            o.instanceGroupUrls = instanceGroupUrls;
-            o.managedInstanceGroupUrls = managedInstanceGroupUrls;
-            o.management = management;
-            o.maxPodsPerNode = maxPodsPerNode;
-            o.name = name;
-            o.namePrefix = namePrefix;
-            o.networkConfig = networkConfig;
-            o.nodeConfig = nodeConfig;
-            o.nodeCount = nodeCount;
-            o.nodeLocations = nodeLocations;
-            o.placementPolicy = placementPolicy;
-            o.upgradeSettings = upgradeSettings;
-            o.version = version;
-            return o;
+            final var _resultValue = new ClusterNodePool();
+            _resultValue.autoscaling = autoscaling;
+            _resultValue.initialNodeCount = initialNodeCount;
+            _resultValue.instanceGroupUrls = instanceGroupUrls;
+            _resultValue.managedInstanceGroupUrls = managedInstanceGroupUrls;
+            _resultValue.management = management;
+            _resultValue.maxPodsPerNode = maxPodsPerNode;
+            _resultValue.name = name;
+            _resultValue.namePrefix = namePrefix;
+            _resultValue.networkConfig = networkConfig;
+            _resultValue.nodeConfig = nodeConfig;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.nodeLocations = nodeLocations;
+            _resultValue.placementPolicy = placementPolicy;
+            _resultValue.upgradeSettings = upgradeSettings;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

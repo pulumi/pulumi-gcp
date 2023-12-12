@@ -142,15 +142,15 @@ public final class GetRegionInstanceGroupResult {
             return this;
         }
         public GetRegionInstanceGroupResult build() {
-            final var o = new GetRegionInstanceGroupResult();
-            o.id = id;
-            o.instances = instances;
-            o.name = name;
-            o.project = project;
-            o.region = region;
-            o.selfLink = selfLink;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetRegionInstanceGroupResult();
+            _resultValue.id = id;
+            _resultValue.instances = instances;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.selfLink = selfLink;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

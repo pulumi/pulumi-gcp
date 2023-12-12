@@ -70,10 +70,10 @@ public final class SpokeLinkedRouterApplianceInstances {
             return this;
         }
         public SpokeLinkedRouterApplianceInstances build() {
-            final var o = new SpokeLinkedRouterApplianceInstances();
-            o.instances = instances;
-            o.siteToSiteDataTransfer = siteToSiteDataTransfer;
-            return o;
+            final var _resultValue = new SpokeLinkedRouterApplianceInstances();
+            _resultValue.instances = instances;
+            _resultValue.siteToSiteDataTransfer = siteToSiteDataTransfer;
+            return _resultValue;
         }
     }
 }

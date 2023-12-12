@@ -67,10 +67,10 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTy
             return this;
         }
         public DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource build() {
-            final var o = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource();
-            o.name = name;
-            o.processorType = processorType;
-            return o;
+            final var _resultValue = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource();
+            _resultValue.name = name;
+            _resultValue.processorType = processorType;
+            return _resultValue;
         }
     }
 }

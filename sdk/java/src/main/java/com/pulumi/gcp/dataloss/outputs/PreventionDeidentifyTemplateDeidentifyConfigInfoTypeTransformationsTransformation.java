@@ -79,10 +79,10 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation();
-            o.infoTypes = infoTypes;
-            o.primitiveTransformation = primitiveTransformation;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation();
+            _resultValue.infoTypes = infoTypes;
+            _resultValue.primitiveTransformation = primitiveTransformation;
+            return _resultValue;
         }
     }
 }

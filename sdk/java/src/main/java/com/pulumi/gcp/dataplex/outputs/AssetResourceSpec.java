@@ -90,11 +90,11 @@ public final class AssetResourceSpec {
             return this;
         }
         public AssetResourceSpec build() {
-            final var o = new AssetResourceSpec();
-            o.name = name;
-            o.readAccessMode = readAccessMode;
-            o.type = type;
-            return o;
+            final var _resultValue = new AssetResourceSpec();
+            _resultValue.name = name;
+            _resultValue.readAccessMode = readAccessMode;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

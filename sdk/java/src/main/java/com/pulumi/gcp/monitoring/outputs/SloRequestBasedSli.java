@@ -92,10 +92,10 @@ public final class SloRequestBasedSli {
             return this;
         }
         public SloRequestBasedSli build() {
-            final var o = new SloRequestBasedSli();
-            o.distributionCut = distributionCut;
-            o.goodTotalRatio = goodTotalRatio;
-            return o;
+            final var _resultValue = new SloRequestBasedSli();
+            _resultValue.distributionCut = distributionCut;
+            _resultValue.goodTotalRatio = goodTotalRatio;
+            return _resultValue;
         }
     }
 }

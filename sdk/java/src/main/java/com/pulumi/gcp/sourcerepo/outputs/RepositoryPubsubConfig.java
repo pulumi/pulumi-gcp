@@ -98,11 +98,11 @@ public final class RepositoryPubsubConfig {
             return this;
         }
         public RepositoryPubsubConfig build() {
-            final var o = new RepositoryPubsubConfig();
-            o.messageFormat = messageFormat;
-            o.serviceAccountEmail = serviceAccountEmail;
-            o.topic = topic;
-            return o;
+            final var _resultValue = new RepositoryPubsubConfig();
+            _resultValue.messageFormat = messageFormat;
+            _resultValue.serviceAccountEmail = serviceAccountEmail;
+            _resultValue.topic = topic;
+            return _resultValue;
         }
     }
 }

@@ -99,11 +99,11 @@ public final class VMwareClusterValidationCheck {
             return statuses(List.of(statuses));
         }
         public VMwareClusterValidationCheck build() {
-            final var o = new VMwareClusterValidationCheck();
-            o.options = options;
-            o.scenario = scenario;
-            o.statuses = statuses;
-            return o;
+            final var _resultValue = new VMwareClusterValidationCheck();
+            _resultValue.options = options;
+            _resultValue.scenario = scenario;
+            _resultValue.statuses = statuses;
+            return _resultValue;
         }
     }
 }

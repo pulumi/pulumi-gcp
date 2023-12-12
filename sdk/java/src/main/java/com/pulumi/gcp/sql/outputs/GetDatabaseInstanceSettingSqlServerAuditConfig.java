@@ -60,11 +60,11 @@ public final class GetDatabaseInstanceSettingSqlServerAuditConfig {
             return this;
         }
         public GetDatabaseInstanceSettingSqlServerAuditConfig build() {
-            final var o = new GetDatabaseInstanceSettingSqlServerAuditConfig();
-            o.bucket = bucket;
-            o.retentionInterval = retentionInterval;
-            o.uploadInterval = uploadInterval;
-            return o;
+            final var _resultValue = new GetDatabaseInstanceSettingSqlServerAuditConfig();
+            _resultValue.bucket = bucket;
+            _resultValue.retentionInterval = retentionInterval;
+            _resultValue.uploadInterval = uploadInterval;
+            return _resultValue;
         }
     }
 }

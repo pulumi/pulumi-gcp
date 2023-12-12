@@ -96,11 +96,11 @@ public final class ServiceTemplateContainerStartupProbeHttpGet {
             return this;
         }
         public ServiceTemplateContainerStartupProbeHttpGet build() {
-            final var o = new ServiceTemplateContainerStartupProbeHttpGet();
-            o.httpHeaders = httpHeaders;
-            o.path = path;
-            o.port = port;
-            return o;
+            final var _resultValue = new ServiceTemplateContainerStartupProbeHttpGet();
+            _resultValue.httpHeaders = httpHeaders;
+            _resultValue.path = path;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

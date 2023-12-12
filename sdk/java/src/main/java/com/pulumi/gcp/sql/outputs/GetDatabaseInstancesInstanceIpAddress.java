@@ -60,11 +60,11 @@ public final class GetDatabaseInstancesInstanceIpAddress {
             return this;
         }
         public GetDatabaseInstancesInstanceIpAddress build() {
-            final var o = new GetDatabaseInstancesInstanceIpAddress();
-            o.ipAddress = ipAddress;
-            o.timeToRetire = timeToRetire;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDatabaseInstancesInstanceIpAddress();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.timeToRetire = timeToRetire;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

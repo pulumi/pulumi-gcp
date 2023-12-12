@@ -94,11 +94,11 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfig {
             return this;
         }
         public ClusterVirtualClusterConfigKubernetesClusterConfig build() {
-            final var o = new ClusterVirtualClusterConfigKubernetesClusterConfig();
-            o.gkeClusterConfig = gkeClusterConfig;
-            o.kubernetesNamespace = kubernetesNamespace;
-            o.kubernetesSoftwareConfig = kubernetesSoftwareConfig;
-            return o;
+            final var _resultValue = new ClusterVirtualClusterConfigKubernetesClusterConfig();
+            _resultValue.gkeClusterConfig = gkeClusterConfig;
+            _resultValue.kubernetesNamespace = kubernetesNamespace;
+            _resultValue.kubernetesSoftwareConfig = kubernetesSoftwareConfig;
+            return _resultValue;
         }
     }
 }

@@ -82,10 +82,10 @@ public final class ExternalVpnGatewayInterface {
             return this;
         }
         public ExternalVpnGatewayInterface build() {
-            final var o = new ExternalVpnGatewayInterface();
-            o.id = id;
-            o.ipAddress = ipAddress;
-            return o;
+            final var _resultValue = new ExternalVpnGatewayInterface();
+            _resultValue.id = id;
+            _resultValue.ipAddress = ipAddress;
+            return _resultValue;
         }
     }
 }

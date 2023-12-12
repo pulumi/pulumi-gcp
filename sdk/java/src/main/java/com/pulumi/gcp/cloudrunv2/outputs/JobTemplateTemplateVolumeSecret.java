@@ -94,11 +94,11 @@ public final class JobTemplateTemplateVolumeSecret {
             return this;
         }
         public JobTemplateTemplateVolumeSecret build() {
-            final var o = new JobTemplateTemplateVolumeSecret();
-            o.defaultMode = defaultMode;
-            o.items = items;
-            o.secret = secret;
-            return o;
+            final var _resultValue = new JobTemplateTemplateVolumeSecret();
+            _resultValue.defaultMode = defaultMode;
+            _resultValue.items = items;
+            _resultValue.secret = secret;
+            return _resultValue;
         }
     }
 }

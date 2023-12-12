@@ -203,22 +203,22 @@ public final class GetTriggerBuildStep {
             return waitFors(List.of(waitFors));
         }
         public GetTriggerBuildStep build() {
-            final var o = new GetTriggerBuildStep();
-            o.allowExitCodes = allowExitCodes;
-            o.allowFailure = allowFailure;
-            o.args = args;
-            o.dir = dir;
-            o.entrypoint = entrypoint;
-            o.envs = envs;
-            o.id = id;
-            o.name = name;
-            o.script = script;
-            o.secretEnvs = secretEnvs;
-            o.timeout = timeout;
-            o.timing = timing;
-            o.volumes = volumes;
-            o.waitFors = waitFors;
-            return o;
+            final var _resultValue = new GetTriggerBuildStep();
+            _resultValue.allowExitCodes = allowExitCodes;
+            _resultValue.allowFailure = allowFailure;
+            _resultValue.args = args;
+            _resultValue.dir = dir;
+            _resultValue.entrypoint = entrypoint;
+            _resultValue.envs = envs;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.script = script;
+            _resultValue.secretEnvs = secretEnvs;
+            _resultValue.timeout = timeout;
+            _resultValue.timing = timing;
+            _resultValue.volumes = volumes;
+            _resultValue.waitFors = waitFors;
+            return _resultValue;
         }
     }
 }

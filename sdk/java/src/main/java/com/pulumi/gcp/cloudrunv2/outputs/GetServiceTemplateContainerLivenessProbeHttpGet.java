@@ -66,11 +66,11 @@ public final class GetServiceTemplateContainerLivenessProbeHttpGet {
             return this;
         }
         public GetServiceTemplateContainerLivenessProbeHttpGet build() {
-            final var o = new GetServiceTemplateContainerLivenessProbeHttpGet();
-            o.httpHeaders = httpHeaders;
-            o.path = path;
-            o.port = port;
-            return o;
+            final var _resultValue = new GetServiceTemplateContainerLivenessProbeHttpGet();
+            _resultValue.httpHeaders = httpHeaders;
+            _resultValue.path = path;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

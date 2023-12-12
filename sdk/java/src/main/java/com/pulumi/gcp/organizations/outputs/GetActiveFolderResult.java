@@ -87,12 +87,12 @@ public final class GetActiveFolderResult {
             return this;
         }
         public GetActiveFolderResult build() {
-            final var o = new GetActiveFolderResult();
-            o.displayName = displayName;
-            o.id = id;
-            o.name = name;
-            o.parent = parent;
-            return o;
+            final var _resultValue = new GetActiveFolderResult();
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
+            return _resultValue;
         }
     }
 }

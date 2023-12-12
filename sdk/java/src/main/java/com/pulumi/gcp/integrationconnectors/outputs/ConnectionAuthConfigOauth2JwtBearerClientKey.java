@@ -48,9 +48,9 @@ public final class ConnectionAuthConfigOauth2JwtBearerClientKey {
             return this;
         }
         public ConnectionAuthConfigOauth2JwtBearerClientKey build() {
-            final var o = new ConnectionAuthConfigOauth2JwtBearerClientKey();
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigOauth2JwtBearerClientKey();
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

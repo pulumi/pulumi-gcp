@@ -25,8 +25,8 @@ public final class ConnectionProfileBigqueryProfile {
         }
 
         public ConnectionProfileBigqueryProfile build() {
-            final var o = new ConnectionProfileBigqueryProfile();
-            return o;
+            final var _resultValue = new ConnectionProfileBigqueryProfile();
+            return _resultValue;
         }
     }
 }

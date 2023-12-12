@@ -70,10 +70,10 @@ public final class InstanceClientConnectionConfig {
             return this;
         }
         public InstanceClientConnectionConfig build() {
-            final var o = new InstanceClientConnectionConfig();
-            o.requireConnectors = requireConnectors;
-            o.sslConfig = sslConfig;
-            return o;
+            final var _resultValue = new InstanceClientConnectionConfig();
+            _resultValue.requireConnectors = requireConnectors;
+            _resultValue.sslConfig = sslConfig;
+            return _resultValue;
         }
     }
 }

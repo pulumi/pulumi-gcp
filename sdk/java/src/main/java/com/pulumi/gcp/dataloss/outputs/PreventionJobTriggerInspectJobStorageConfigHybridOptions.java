@@ -131,12 +131,12 @@ public final class PreventionJobTriggerInspectJobStorageConfigHybridOptions {
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigHybridOptions build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigHybridOptions();
-            o.description = description;
-            o.labels = labels;
-            o.requiredFindingLabelKeys = requiredFindingLabelKeys;
-            o.tableOptions = tableOptions;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigHybridOptions();
+            _resultValue.description = description;
+            _resultValue.labels = labels;
+            _resultValue.requiredFindingLabelKeys = requiredFindingLabelKeys;
+            _resultValue.tableOptions = tableOptions;
+            return _resultValue;
         }
     }
 }

@@ -115,12 +115,12 @@ public final class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditi
             return this;
         }
         public AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition build() {
-            final var o = new AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition();
-            o.description = description;
-            o.expression = expression;
-            o.location = location;
-            o.title = title;
-            return o;
+            final var _resultValue = new AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.location = location;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

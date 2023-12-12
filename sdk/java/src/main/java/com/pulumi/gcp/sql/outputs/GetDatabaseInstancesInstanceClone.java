@@ -86,13 +86,13 @@ public final class GetDatabaseInstancesInstanceClone {
             return this;
         }
         public GetDatabaseInstancesInstanceClone build() {
-            final var o = new GetDatabaseInstancesInstanceClone();
-            o.allocatedIpRange = allocatedIpRange;
-            o.databaseNames = databaseNames;
-            o.pointInTime = pointInTime;
-            o.preferredZone = preferredZone;
-            o.sourceInstanceName = sourceInstanceName;
-            return o;
+            final var _resultValue = new GetDatabaseInstancesInstanceClone();
+            _resultValue.allocatedIpRange = allocatedIpRange;
+            _resultValue.databaseNames = databaseNames;
+            _resultValue.pointInTime = pointInTime;
+            _resultValue.preferredZone = preferredZone;
+            _resultValue.sourceInstanceName = sourceInstanceName;
+            return _resultValue;
         }
     }
 }

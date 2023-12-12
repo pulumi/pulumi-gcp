@@ -46,9 +46,9 @@ public final class V2VmShieldedInstanceConfig {
             return this;
         }
         public V2VmShieldedInstanceConfig build() {
-            final var o = new V2VmShieldedInstanceConfig();
-            o.enableSecureBoot = enableSecureBoot;
-            return o;
+            final var _resultValue = new V2VmShieldedInstanceConfig();
+            _resultValue.enableSecureBoot = enableSecureBoot;
+            return _resultValue;
         }
     }
 }

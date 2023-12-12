@@ -111,14 +111,14 @@ public final class GetAccountKeyResult {
             return this;
         }
         public GetAccountKeyResult build() {
-            final var o = new GetAccountKeyResult();
-            o.id = id;
-            o.keyAlgorithm = keyAlgorithm;
-            o.name = name;
-            o.project = project;
-            o.publicKey = publicKey;
-            o.publicKeyType = publicKeyType;
-            return o;
+            final var _resultValue = new GetAccountKeyResult();
+            _resultValue.id = id;
+            _resultValue.keyAlgorithm = keyAlgorithm;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.publicKey = publicKey;
+            _resultValue.publicKeyType = publicKeyType;
+            return _resultValue;
         }
     }
 }

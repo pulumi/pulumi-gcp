@@ -276,20 +276,20 @@ public final class FlexibleAppVersionAutomaticScaling {
             return this;
         }
         public FlexibleAppVersionAutomaticScaling build() {
-            final var o = new FlexibleAppVersionAutomaticScaling();
-            o.coolDownPeriod = coolDownPeriod;
-            o.cpuUtilization = cpuUtilization;
-            o.diskUtilization = diskUtilization;
-            o.maxConcurrentRequests = maxConcurrentRequests;
-            o.maxIdleInstances = maxIdleInstances;
-            o.maxPendingLatency = maxPendingLatency;
-            o.maxTotalInstances = maxTotalInstances;
-            o.minIdleInstances = minIdleInstances;
-            o.minPendingLatency = minPendingLatency;
-            o.minTotalInstances = minTotalInstances;
-            o.networkUtilization = networkUtilization;
-            o.requestUtilization = requestUtilization;
-            return o;
+            final var _resultValue = new FlexibleAppVersionAutomaticScaling();
+            _resultValue.coolDownPeriod = coolDownPeriod;
+            _resultValue.cpuUtilization = cpuUtilization;
+            _resultValue.diskUtilization = diskUtilization;
+            _resultValue.maxConcurrentRequests = maxConcurrentRequests;
+            _resultValue.maxIdleInstances = maxIdleInstances;
+            _resultValue.maxPendingLatency = maxPendingLatency;
+            _resultValue.maxTotalInstances = maxTotalInstances;
+            _resultValue.minIdleInstances = minIdleInstances;
+            _resultValue.minPendingLatency = minPendingLatency;
+            _resultValue.minTotalInstances = minTotalInstances;
+            _resultValue.networkUtilization = networkUtilization;
+            _resultValue.requestUtilization = requestUtilization;
+            return _resultValue;
         }
     }
 }

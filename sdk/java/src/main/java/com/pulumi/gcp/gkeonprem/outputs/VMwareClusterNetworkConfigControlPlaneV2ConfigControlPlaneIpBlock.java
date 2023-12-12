@@ -93,11 +93,11 @@ public final class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpB
             return this;
         }
         public VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock build() {
-            final var o = new VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock();
-            o.gateway = gateway;
-            o.ips = ips;
-            o.netmask = netmask;
-            return o;
+            final var _resultValue = new VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock();
+            _resultValue.gateway = gateway;
+            _resultValue.ips = ips;
+            _resultValue.netmask = netmask;
+            return _resultValue;
         }
     }
 }

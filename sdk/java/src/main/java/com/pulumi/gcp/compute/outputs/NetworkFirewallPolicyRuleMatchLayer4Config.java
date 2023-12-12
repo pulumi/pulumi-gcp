@@ -74,10 +74,10 @@ public final class NetworkFirewallPolicyRuleMatchLayer4Config {
             return ports(List.of(ports));
         }
         public NetworkFirewallPolicyRuleMatchLayer4Config build() {
-            final var o = new NetworkFirewallPolicyRuleMatchLayer4Config();
-            o.ipProtocol = ipProtocol;
-            o.ports = ports;
-            return o;
+            final var _resultValue = new NetworkFirewallPolicyRuleMatchLayer4Config();
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.ports = ports;
+            return _resultValue;
         }
     }
 }

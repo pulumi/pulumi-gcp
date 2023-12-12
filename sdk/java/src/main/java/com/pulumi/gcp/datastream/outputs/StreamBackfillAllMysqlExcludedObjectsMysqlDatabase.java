@@ -73,10 +73,10 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
             return mysqlTables(List.of(mysqlTables));
         }
         public StreamBackfillAllMysqlExcludedObjectsMysqlDatabase build() {
-            final var o = new StreamBackfillAllMysqlExcludedObjectsMysqlDatabase();
-            o.database = database;
-            o.mysqlTables = mysqlTables;
-            return o;
+            final var _resultValue = new StreamBackfillAllMysqlExcludedObjectsMysqlDatabase();
+            _resultValue.database = database;
+            _resultValue.mysqlTables = mysqlTables;
+            return _resultValue;
         }
     }
 }

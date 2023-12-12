@@ -42,9 +42,9 @@ public final class GetEnvironmentConfigRecoveryConfig {
             return scheduledSnapshotsConfigs(List.of(scheduledSnapshotsConfigs));
         }
         public GetEnvironmentConfigRecoveryConfig build() {
-            final var o = new GetEnvironmentConfigRecoveryConfig();
-            o.scheduledSnapshotsConfigs = scheduledSnapshotsConfigs;
-            return o;
+            final var _resultValue = new GetEnvironmentConfigRecoveryConfig();
+            _resultValue.scheduledSnapshotsConfigs = scheduledSnapshotsConfigs;
+            return _resultValue;
         }
     }
 }

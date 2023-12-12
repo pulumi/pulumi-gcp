@@ -120,12 +120,12 @@ public final class DatascanDataQualitySpec {
             return this;
         }
         public DatascanDataQualitySpec build() {
-            final var o = new DatascanDataQualitySpec();
-            o.postScanActions = postScanActions;
-            o.rowFilter = rowFilter;
-            o.rules = rules;
-            o.samplingPercent = samplingPercent;
-            return o;
+            final var _resultValue = new DatascanDataQualitySpec();
+            _resultValue.postScanActions = postScanActions;
+            _resultValue.rowFilter = rowFilter;
+            _resultValue.rules = rules;
+            _resultValue.samplingPercent = samplingPercent;
+            return _resultValue;
         }
     }
 }

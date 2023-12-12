@@ -175,15 +175,15 @@ public final class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter {
             return this;
         }
         public PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter build() {
-            final var o = new PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter();
-            o.containerSpecGcsPath = containerSpecGcsPath;
-            o.environment = environment;
-            o.jobName = jobName;
-            o.launchOptions = launchOptions;
-            o.parameters = parameters;
-            o.transformNameMappings = transformNameMappings;
-            o.update = update;
-            return o;
+            final var _resultValue = new PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter();
+            _resultValue.containerSpecGcsPath = containerSpecGcsPath;
+            _resultValue.environment = environment;
+            _resultValue.jobName = jobName;
+            _resultValue.launchOptions = launchOptions;
+            _resultValue.parameters = parameters;
+            _resultValue.transformNameMappings = transformNameMappings;
+            _resultValue.update = update;
+            return _resultValue;
         }
     }
 }

@@ -83,10 +83,10 @@ public final class SubscriptionPushConfigOidcToken {
             return this;
         }
         public SubscriptionPushConfigOidcToken build() {
-            final var o = new SubscriptionPushConfigOidcToken();
-            o.audience = audience;
-            o.serviceAccountEmail = serviceAccountEmail;
-            return o;
+            final var _resultValue = new SubscriptionPushConfigOidcToken();
+            _resultValue.audience = audience;
+            _resultValue.serviceAccountEmail = serviceAccountEmail;
+            return _resultValue;
         }
     }
 }

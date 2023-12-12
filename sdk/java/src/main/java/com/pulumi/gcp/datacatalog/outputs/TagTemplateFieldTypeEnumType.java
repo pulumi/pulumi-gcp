@@ -60,9 +60,9 @@ public final class TagTemplateFieldTypeEnumType {
             return allowedValues(List.of(allowedValues));
         }
         public TagTemplateFieldTypeEnumType build() {
-            final var o = new TagTemplateFieldTypeEnumType();
-            o.allowedValues = allowedValues;
-            return o;
+            final var _resultValue = new TagTemplateFieldTypeEnumType();
+            _resultValue.allowedValues = allowedValues;
+            return _resultValue;
         }
     }
 }

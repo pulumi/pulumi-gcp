@@ -67,10 +67,10 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlockIp {
             return this;
         }
         public VMwareClusterNetworkConfigStaticIpConfigIpBlockIp build() {
-            final var o = new VMwareClusterNetworkConfigStaticIpConfigIpBlockIp();
-            o.hostname = hostname;
-            o.ip = ip;
-            return o;
+            final var _resultValue = new VMwareClusterNetworkConfigStaticIpConfigIpBlockIp();
+            _resultValue.hostname = hostname;
+            _resultValue.ip = ip;
+            return _resultValue;
         }
     }
 }

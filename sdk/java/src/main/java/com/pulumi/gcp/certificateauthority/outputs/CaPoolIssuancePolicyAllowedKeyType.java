@@ -72,10 +72,10 @@ public final class CaPoolIssuancePolicyAllowedKeyType {
             return this;
         }
         public CaPoolIssuancePolicyAllowedKeyType build() {
-            final var o = new CaPoolIssuancePolicyAllowedKeyType();
-            o.ellipticCurve = ellipticCurve;
-            o.rsa = rsa;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyAllowedKeyType();
+            _resultValue.ellipticCurve = ellipticCurve;
+            _resultValue.rsa = rsa;
+            return _resultValue;
         }
     }
 }

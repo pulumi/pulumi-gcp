@@ -67,10 +67,10 @@ public final class RegionInstanceGroupManagerStatefulDisk {
             return this;
         }
         public RegionInstanceGroupManagerStatefulDisk build() {
-            final var o = new RegionInstanceGroupManagerStatefulDisk();
-            o.deleteRule = deleteRule;
-            o.deviceName = deviceName;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerStatefulDisk();
+            _resultValue.deleteRule = deleteRule;
+            _resultValue.deviceName = deviceName;
+            return _resultValue;
         }
     }
 }

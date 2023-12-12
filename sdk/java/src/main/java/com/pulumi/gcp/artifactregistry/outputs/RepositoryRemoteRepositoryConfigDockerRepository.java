@@ -52,9 +52,9 @@ public final class RepositoryRemoteRepositoryConfigDockerRepository {
             return this;
         }
         public RepositoryRemoteRepositoryConfigDockerRepository build() {
-            final var o = new RepositoryRemoteRepositoryConfigDockerRepository();
-            o.publicRepository = publicRepository;
-            return o;
+            final var _resultValue = new RepositoryRemoteRepositoryConfigDockerRepository();
+            _resultValue.publicRepository = publicRepository;
+            return _resultValue;
         }
     }
 }

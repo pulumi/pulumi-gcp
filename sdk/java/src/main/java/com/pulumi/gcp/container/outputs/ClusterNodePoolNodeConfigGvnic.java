@@ -46,9 +46,9 @@ public final class ClusterNodePoolNodeConfigGvnic {
             return this;
         }
         public ClusterNodePoolNodeConfigGvnic build() {
-            final var o = new ClusterNodePoolNodeConfigGvnic();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterNodePoolNodeConfigGvnic();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

@@ -52,9 +52,9 @@ public final class TrustConfigTrustStoreIntermediateCa {
             return this;
         }
         public TrustConfigTrustStoreIntermediateCa build() {
-            final var o = new TrustConfigTrustStoreIntermediateCa();
-            o.pemCertificate = pemCertificate;
-            return o;
+            final var _resultValue = new TrustConfigTrustStoreIntermediateCa();
+            _resultValue.pemCertificate = pemCertificate;
+            return _resultValue;
         }
     }
 }

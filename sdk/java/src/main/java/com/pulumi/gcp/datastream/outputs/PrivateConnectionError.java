@@ -68,10 +68,10 @@ public final class PrivateConnectionError {
             return this;
         }
         public PrivateConnectionError build() {
-            final var o = new PrivateConnectionError();
-            o.details = details;
-            o.message = message;
-            return o;
+            final var _resultValue = new PrivateConnectionError();
+            _resultValue.details = details;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

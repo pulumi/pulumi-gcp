@@ -105,11 +105,11 @@ public final class WorkforcePoolProviderOidcWebSsoConfig {
             return this;
         }
         public WorkforcePoolProviderOidcWebSsoConfig build() {
-            final var o = new WorkforcePoolProviderOidcWebSsoConfig();
-            o.additionalScopes = additionalScopes;
-            o.assertionClaimsBehavior = assertionClaimsBehavior;
-            o.responseType = responseType;
-            return o;
+            final var _resultValue = new WorkforcePoolProviderOidcWebSsoConfig();
+            _resultValue.additionalScopes = additionalScopes;
+            _resultValue.assertionClaimsBehavior = assertionClaimsBehavior;
+            _resultValue.responseType = responseType;
+            return _resultValue;
         }
     }
 }

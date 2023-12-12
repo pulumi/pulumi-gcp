@@ -119,14 +119,14 @@ public final class GetAppEngineServiceIamPolicyResult {
             return this;
         }
         public GetAppEngineServiceIamPolicyResult build() {
-            final var o = new GetAppEngineServiceIamPolicyResult();
-            o.appId = appId;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.service = service;
-            return o;
+            final var _resultValue = new GetAppEngineServiceIamPolicyResult();
+            _resultValue.appId = appId;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

@@ -25,8 +25,8 @@ public final class PreventionJobTriggerInspectJobActionJobNotificationEmails {
         }
 
         public PreventionJobTriggerInspectJobActionJobNotificationEmails build() {
-            final var o = new PreventionJobTriggerInspectJobActionJobNotificationEmails();
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobActionJobNotificationEmails();
+            return _resultValue;
         }
     }
 }

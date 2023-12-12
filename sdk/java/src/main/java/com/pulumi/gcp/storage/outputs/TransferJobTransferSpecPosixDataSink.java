@@ -46,9 +46,9 @@ public final class TransferJobTransferSpecPosixDataSink {
             return this;
         }
         public TransferJobTransferSpecPosixDataSink build() {
-            final var o = new TransferJobTransferSpecPosixDataSink();
-            o.rootDirectory = rootDirectory;
-            return o;
+            final var _resultValue = new TransferJobTransferSpecPosixDataSink();
+            _resultValue.rootDirectory = rootDirectory;
+            return _resultValue;
         }
     }
 }

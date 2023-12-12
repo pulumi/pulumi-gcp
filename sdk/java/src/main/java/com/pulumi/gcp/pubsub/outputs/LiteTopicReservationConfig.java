@@ -48,9 +48,9 @@ public final class LiteTopicReservationConfig {
             return this;
         }
         public LiteTopicReservationConfig build() {
-            final var o = new LiteTopicReservationConfig();
-            o.throughputReservation = throughputReservation;
-            return o;
+            final var _resultValue = new LiteTopicReservationConfig();
+            _resultValue.throughputReservation = throughputReservation;
+            return _resultValue;
         }
     }
 }

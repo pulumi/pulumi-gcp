@@ -66,11 +66,11 @@ public final class GetAiIndexMetadata {
             return this;
         }
         public GetAiIndexMetadata build() {
-            final var o = new GetAiIndexMetadata();
-            o.configs = configs;
-            o.contentsDeltaUri = contentsDeltaUri;
-            o.isCompleteOverwrite = isCompleteOverwrite;
-            return o;
+            final var _resultValue = new GetAiIndexMetadata();
+            _resultValue.configs = configs;
+            _resultValue.contentsDeltaUri = contentsDeltaUri;
+            _resultValue.isCompleteOverwrite = isCompleteOverwrite;
+            return _resultValue;
         }
     }
 }

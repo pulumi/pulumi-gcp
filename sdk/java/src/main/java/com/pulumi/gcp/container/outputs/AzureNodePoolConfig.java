@@ -147,14 +147,14 @@ public final class AzureNodePoolConfig {
             return this;
         }
         public AzureNodePoolConfig build() {
-            final var o = new AzureNodePoolConfig();
-            o.imageType = imageType;
-            o.proxyConfig = proxyConfig;
-            o.rootVolume = rootVolume;
-            o.sshConfig = sshConfig;
-            o.tags = tags;
-            o.vmSize = vmSize;
-            return o;
+            final var _resultValue = new AzureNodePoolConfig();
+            _resultValue.imageType = imageType;
+            _resultValue.proxyConfig = proxyConfig;
+            _resultValue.rootVolume = rootVolume;
+            _resultValue.sshConfig = sshConfig;
+            _resultValue.tags = tags;
+            _resultValue.vmSize = vmSize;
+            return _resultValue;
         }
     }
 }

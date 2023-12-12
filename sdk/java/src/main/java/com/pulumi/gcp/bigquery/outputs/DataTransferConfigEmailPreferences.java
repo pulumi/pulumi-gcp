@@ -46,9 +46,9 @@ public final class DataTransferConfigEmailPreferences {
             return this;
         }
         public DataTransferConfigEmailPreferences build() {
-            final var o = new DataTransferConfigEmailPreferences();
-            o.enableFailureEmail = enableFailureEmail;
-            return o;
+            final var _resultValue = new DataTransferConfigEmailPreferences();
+            _resultValue.enableFailureEmail = enableFailureEmail;
+            return _resultValue;
         }
     }
 }

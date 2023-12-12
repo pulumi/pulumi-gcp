@@ -46,9 +46,9 @@ public final class AwsClusterControlPlaneDatabaseEncryption {
             return this;
         }
         public AwsClusterControlPlaneDatabaseEncryption build() {
-            final var o = new AwsClusterControlPlaneDatabaseEncryption();
-            o.kmsKeyArn = kmsKeyArn;
-            return o;
+            final var _resultValue = new AwsClusterControlPlaneDatabaseEncryption();
+            _resultValue.kmsKeyArn = kmsKeyArn;
+            return _resultValue;
         }
     }
 }

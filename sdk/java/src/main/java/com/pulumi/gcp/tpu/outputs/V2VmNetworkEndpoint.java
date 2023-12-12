@@ -100,11 +100,11 @@ public final class V2VmNetworkEndpoint {
             return this;
         }
         public V2VmNetworkEndpoint build() {
-            final var o = new V2VmNetworkEndpoint();
-            o.accessConfigs = accessConfigs;
-            o.ipAddress = ipAddress;
-            o.port = port;
-            return o;
+            final var _resultValue = new V2VmNetworkEndpoint();
+            _resultValue.accessConfigs = accessConfigs;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

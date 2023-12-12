@@ -52,9 +52,9 @@ public final class RuntimeMetric {
             return this;
         }
         public RuntimeMetric build() {
-            final var o = new RuntimeMetric();
-            o.systemMetrics = systemMetrics;
-            return o;
+            final var _resultValue = new RuntimeMetric();
+            _resultValue.systemMetrics = systemMetrics;
+            return _resultValue;
         }
     }
 }

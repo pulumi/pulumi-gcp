@@ -131,12 +131,12 @@ public final class ClusterClusterConfigSoftwareConfig {
             return this;
         }
         public ClusterClusterConfigSoftwareConfig build() {
-            final var o = new ClusterClusterConfigSoftwareConfig();
-            o.imageVersion = imageVersion;
-            o.optionalComponents = optionalComponents;
-            o.overrideProperties = overrideProperties;
-            o.properties = properties;
-            return o;
+            final var _resultValue = new ClusterClusterConfigSoftwareConfig();
+            _resultValue.imageVersion = imageVersion;
+            _resultValue.optionalComponents = optionalComponents;
+            _resultValue.overrideProperties = overrideProperties;
+            _resultValue.properties = properties;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class CxPageEntryFulfillmentMessageTelephonyTransferCall {
             return this;
         }
         public CxPageEntryFulfillmentMessageTelephonyTransferCall build() {
-            final var o = new CxPageEntryFulfillmentMessageTelephonyTransferCall();
-            o.phoneNumber = phoneNumber;
-            return o;
+            final var _resultValue = new CxPageEntryFulfillmentMessageTelephonyTransferCall();
+            _resultValue.phoneNumber = phoneNumber;
+            return _resultValue;
         }
     }
 }

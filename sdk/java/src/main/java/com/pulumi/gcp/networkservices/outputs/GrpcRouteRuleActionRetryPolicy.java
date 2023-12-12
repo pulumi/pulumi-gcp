@@ -78,10 +78,10 @@ public final class GrpcRouteRuleActionRetryPolicy {
             return retryConditions(List.of(retryConditions));
         }
         public GrpcRouteRuleActionRetryPolicy build() {
-            final var o = new GrpcRouteRuleActionRetryPolicy();
-            o.numRetries = numRetries;
-            o.retryConditions = retryConditions;
-            return o;
+            final var _resultValue = new GrpcRouteRuleActionRetryPolicy();
+            _resultValue.numRetries = numRetries;
+            _resultValue.retryConditions = retryConditions;
+            return _resultValue;
         }
     }
 }

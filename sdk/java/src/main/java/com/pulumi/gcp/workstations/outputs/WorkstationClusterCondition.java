@@ -96,11 +96,11 @@ public final class WorkstationClusterCondition {
             return this;
         }
         public WorkstationClusterCondition build() {
-            final var o = new WorkstationClusterCondition();
-            o.code = code;
-            o.details = details;
-            o.message = message;
-            return o;
+            final var _resultValue = new WorkstationClusterCondition();
+            _resultValue.code = code;
+            _resultValue.details = details;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath();
-            o.path = path;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath();
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

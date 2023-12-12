@@ -50,9 +50,9 @@ public final class MetricBucketOptionsExplicitBuckets {
             return bounds(List.of(bounds));
         }
         public MetricBucketOptionsExplicitBuckets build() {
-            final var o = new MetricBucketOptionsExplicitBuckets();
-            o.bounds = bounds;
-            return o;
+            final var _resultValue = new MetricBucketOptionsExplicitBuckets();
+            _resultValue.bounds = bounds;
+            return _resultValue;
         }
     }
 }

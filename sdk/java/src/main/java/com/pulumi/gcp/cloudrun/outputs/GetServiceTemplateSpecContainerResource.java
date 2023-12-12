@@ -50,10 +50,10 @@ public final class GetServiceTemplateSpecContainerResource {
             return this;
         }
         public GetServiceTemplateSpecContainerResource build() {
-            final var o = new GetServiceTemplateSpecContainerResource();
-            o.limits = limits;
-            o.requests = requests;
-            return o;
+            final var _resultValue = new GetServiceTemplateSpecContainerResource();
+            _resultValue.limits = limits;
+            _resultValue.requests = requests;
+            return _resultValue;
         }
     }
 }

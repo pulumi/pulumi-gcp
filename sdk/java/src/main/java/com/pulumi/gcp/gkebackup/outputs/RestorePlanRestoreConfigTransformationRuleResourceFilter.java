@@ -122,11 +122,11 @@ public final class RestorePlanRestoreConfigTransformationRuleResourceFilter {
             return namespaces(List.of(namespaces));
         }
         public RestorePlanRestoreConfigTransformationRuleResourceFilter build() {
-            final var o = new RestorePlanRestoreConfigTransformationRuleResourceFilter();
-            o.groupKinds = groupKinds;
-            o.jsonPath = jsonPath;
-            o.namespaces = namespaces;
-            return o;
+            final var _resultValue = new RestorePlanRestoreConfigTransformationRuleResourceFilter();
+            _resultValue.groupKinds = groupKinds;
+            _resultValue.jsonPath = jsonPath;
+            _resultValue.namespaces = namespaces;
+            return _resultValue;
         }
     }
 }

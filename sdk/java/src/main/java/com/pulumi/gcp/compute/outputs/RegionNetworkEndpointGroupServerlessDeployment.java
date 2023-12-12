@@ -119,12 +119,12 @@ public final class RegionNetworkEndpointGroupServerlessDeployment {
             return this;
         }
         public RegionNetworkEndpointGroupServerlessDeployment build() {
-            final var o = new RegionNetworkEndpointGroupServerlessDeployment();
-            o.platform = platform;
-            o.resource = resource;
-            o.urlMask = urlMask;
-            o.version = version;
-            return o;
+            final var _resultValue = new RegionNetworkEndpointGroupServerlessDeployment();
+            _resultValue.platform = platform;
+            _resultValue.resource = resource;
+            _resultValue.urlMask = urlMask;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

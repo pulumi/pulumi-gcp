@@ -153,16 +153,16 @@ public final class GetBackupRunResult {
             return this;
         }
         public GetBackupRunResult build() {
-            final var o = new GetBackupRunResult();
-            o.backupId = backupId;
-            o.id = id;
-            o.instance = instance;
-            o.location = location;
-            o.mostRecent = mostRecent;
-            o.project = project;
-            o.startTime = startTime;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBackupRunResult();
+            _resultValue.backupId = backupId;
+            _resultValue.id = id;
+            _resultValue.instance = instance;
+            _resultValue.location = location;
+            _resultValue.mostRecent = mostRecent;
+            _resultValue.project = project;
+            _resultValue.startTime = startTime;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

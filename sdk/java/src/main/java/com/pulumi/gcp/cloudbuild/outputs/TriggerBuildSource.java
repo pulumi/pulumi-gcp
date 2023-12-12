@@ -72,10 +72,10 @@ public final class TriggerBuildSource {
             return this;
         }
         public TriggerBuildSource build() {
-            final var o = new TriggerBuildSource();
-            o.repoSource = repoSource;
-            o.storageSource = storageSource;
-            return o;
+            final var _resultValue = new TriggerBuildSource();
+            _resultValue.repoSource = repoSource;
+            _resultValue.storageSource = storageSource;
+            return _resultValue;
         }
     }
 }

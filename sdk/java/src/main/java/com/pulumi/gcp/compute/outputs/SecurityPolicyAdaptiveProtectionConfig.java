@@ -72,10 +72,10 @@ public final class SecurityPolicyAdaptiveProtectionConfig {
             return this;
         }
         public SecurityPolicyAdaptiveProtectionConfig build() {
-            final var o = new SecurityPolicyAdaptiveProtectionConfig();
-            o.autoDeployConfig = autoDeployConfig;
-            o.layer7DdosDefenseConfig = layer7DdosDefenseConfig;
-            return o;
+            final var _resultValue = new SecurityPolicyAdaptiveProtectionConfig();
+            _resultValue.autoDeployConfig = autoDeployConfig;
+            _resultValue.layer7DdosDefenseConfig = layer7DdosDefenseConfig;
+            return _resultValue;
         }
     }
 }

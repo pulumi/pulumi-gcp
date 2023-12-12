@@ -48,9 +48,9 @@ public final class PerInstanceConfigPreservedStateInternalIpIpAddress {
             return this;
         }
         public PerInstanceConfigPreservedStateInternalIpIpAddress build() {
-            final var o = new PerInstanceConfigPreservedStateInternalIpIpAddress();
-            o.address = address;
-            return o;
+            final var _resultValue = new PerInstanceConfigPreservedStateInternalIpIpAddress();
+            _resultValue.address = address;
+            return _resultValue;
         }
     }
 }

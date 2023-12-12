@@ -118,11 +118,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig();
-            o.context = context;
-            o.cryptoKey = cryptoKey;
-            o.surrogateInfoType = surrogateInfoType;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig();
+            _resultValue.context = context;
+            _resultValue.cryptoKey = cryptoKey;
+            _resultValue.surrogateInfoType = surrogateInfoType;
+            return _resultValue;
         }
     }
 }

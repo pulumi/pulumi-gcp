@@ -119,14 +119,14 @@ public final class GetGatewayIamPolicyResult {
             return this;
         }
         public GetGatewayIamPolicyResult build() {
-            final var o = new GetGatewayIamPolicyResult();
-            o.etag = etag;
-            o.gateway = gateway;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetGatewayIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.gateway = gateway;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

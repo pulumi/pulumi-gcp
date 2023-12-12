@@ -71,10 +71,10 @@ public final class AiIndexEndpointPrivateServiceConnectConfig {
             return projectAllowlists(List.of(projectAllowlists));
         }
         public AiIndexEndpointPrivateServiceConnectConfig build() {
-            final var o = new AiIndexEndpointPrivateServiceConnectConfig();
-            o.enablePrivateServiceConnect = enablePrivateServiceConnect;
-            o.projectAllowlists = projectAllowlists;
-            return o;
+            final var _resultValue = new AiIndexEndpointPrivateServiceConnectConfig();
+            _resultValue.enablePrivateServiceConnect = enablePrivateServiceConnect;
+            _resultValue.projectAllowlists = projectAllowlists;
+            return _resultValue;
         }
     }
 }

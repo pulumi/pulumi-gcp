@@ -43,9 +43,9 @@ public final class InstanceAdminSettings {
             return allowedEmailDomains(List.of(allowedEmailDomains));
         }
         public InstanceAdminSettings build() {
-            final var o = new InstanceAdminSettings();
-            o.allowedEmailDomains = allowedEmailDomains;
-            return o;
+            final var _resultValue = new InstanceAdminSettings();
+            _resultValue.allowedEmailDomains = allowedEmailDomains;
+            return _resultValue;
         }
     }
 }

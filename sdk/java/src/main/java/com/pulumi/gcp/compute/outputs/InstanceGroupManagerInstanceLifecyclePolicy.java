@@ -52,9 +52,9 @@ public final class InstanceGroupManagerInstanceLifecyclePolicy {
             return this;
         }
         public InstanceGroupManagerInstanceLifecyclePolicy build() {
-            final var o = new InstanceGroupManagerInstanceLifecyclePolicy();
-            o.forceUpdateOnRepair = forceUpdateOnRepair;
-            return o;
+            final var _resultValue = new InstanceGroupManagerInstanceLifecyclePolicy();
+            _resultValue.forceUpdateOnRepair = forceUpdateOnRepair;
+            return _resultValue;
         }
     }
 }

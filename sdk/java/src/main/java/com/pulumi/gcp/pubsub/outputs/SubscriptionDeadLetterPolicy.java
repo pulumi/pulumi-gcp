@@ -98,10 +98,10 @@ public final class SubscriptionDeadLetterPolicy {
             return this;
         }
         public SubscriptionDeadLetterPolicy build() {
-            final var o = new SubscriptionDeadLetterPolicy();
-            o.deadLetterTopic = deadLetterTopic;
-            o.maxDeliveryAttempts = maxDeliveryAttempts;
-            return o;
+            final var _resultValue = new SubscriptionDeadLetterPolicy();
+            _resultValue.deadLetterTopic = deadLetterTopic;
+            _resultValue.maxDeliveryAttempts = maxDeliveryAttempts;
+            return _resultValue;
         }
     }
 }

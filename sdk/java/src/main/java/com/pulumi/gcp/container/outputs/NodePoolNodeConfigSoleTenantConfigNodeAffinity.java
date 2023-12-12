@@ -64,11 +64,11 @@ public final class NodePoolNodeConfigSoleTenantConfigNodeAffinity {
             return values(List.of(values));
         }
         public NodePoolNodeConfigSoleTenantConfigNodeAffinity build() {
-            final var o = new NodePoolNodeConfigSoleTenantConfigNodeAffinity();
-            o.key = key;
-            o.operator = operator;
-            o.values = values;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigSoleTenantConfigNodeAffinity();
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

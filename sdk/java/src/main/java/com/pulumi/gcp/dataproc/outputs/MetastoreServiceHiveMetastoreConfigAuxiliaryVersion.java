@@ -88,11 +88,11 @@ public final class MetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
             return this;
         }
         public MetastoreServiceHiveMetastoreConfigAuxiliaryVersion build() {
-            final var o = new MetastoreServiceHiveMetastoreConfigAuxiliaryVersion();
-            o.configOverrides = configOverrides;
-            o.key = key;
-            o.version = version;
-            return o;
+            final var _resultValue = new MetastoreServiceHiveMetastoreConfigAuxiliaryVersion();
+            _resultValue.configOverrides = configOverrides;
+            _resultValue.key = key;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

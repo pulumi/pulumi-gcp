@@ -95,11 +95,11 @@ public final class EdgeCacheKeysetPublicKey {
             return this;
         }
         public EdgeCacheKeysetPublicKey build() {
-            final var o = new EdgeCacheKeysetPublicKey();
-            o.id = id;
-            o.managed = managed;
-            o.value = value;
-            return o;
+            final var _resultValue = new EdgeCacheKeysetPublicKey();
+            _resultValue.id = id;
+            _resultValue.managed = managed;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

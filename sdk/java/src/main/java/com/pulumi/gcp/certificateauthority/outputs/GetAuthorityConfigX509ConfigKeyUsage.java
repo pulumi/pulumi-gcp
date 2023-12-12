@@ -72,11 +72,11 @@ public final class GetAuthorityConfigX509ConfigKeyUsage {
             return unknownExtendedKeyUsages(List.of(unknownExtendedKeyUsages));
         }
         public GetAuthorityConfigX509ConfigKeyUsage build() {
-            final var o = new GetAuthorityConfigX509ConfigKeyUsage();
-            o.baseKeyUsages = baseKeyUsages;
-            o.extendedKeyUsages = extendedKeyUsages;
-            o.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
-            return o;
+            final var _resultValue = new GetAuthorityConfigX509ConfigKeyUsage();
+            _resultValue.baseKeyUsages = baseKeyUsages;
+            _resultValue.extendedKeyUsages = extendedKeyUsages;
+            _resultValue.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
+            return _resultValue;
         }
     }
 }

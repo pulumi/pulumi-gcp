@@ -46,9 +46,9 @@ public final class TransferAgentPoolBandwidthLimit {
             return this;
         }
         public TransferAgentPoolBandwidthLimit build() {
-            final var o = new TransferAgentPoolBandwidthLimit();
-            o.limitMbps = limitMbps;
-            return o;
+            final var _resultValue = new TransferAgentPoolBandwidthLimit();
+            _resultValue.limitMbps = limitMbps;
+            return _resultValue;
         }
     }
 }

@@ -62,10 +62,10 @@ public final class GetRegionInstanceTemplateReservationAffinity {
             return this;
         }
         public GetRegionInstanceTemplateReservationAffinity build() {
-            final var o = new GetRegionInstanceTemplateReservationAffinity();
-            o.specificReservations = specificReservations;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetRegionInstanceTemplateReservationAffinity();
+            _resultValue.specificReservations = specificReservations;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -106,11 +106,11 @@ public final class RegionNetworkEndpointGroupAppEngine {
             return this;
         }
         public RegionNetworkEndpointGroupAppEngine build() {
-            final var o = new RegionNetworkEndpointGroupAppEngine();
-            o.service = service;
-            o.urlMask = urlMask;
-            o.version = version;
-            return o;
+            final var _resultValue = new RegionNetworkEndpointGroupAppEngine();
+            _resultValue.service = service;
+            _resultValue.urlMask = urlMask;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

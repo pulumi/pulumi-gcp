@@ -72,10 +72,10 @@ public final class BareMetalClusterNodeConfig {
             return this;
         }
         public BareMetalClusterNodeConfig build() {
-            final var o = new BareMetalClusterNodeConfig();
-            o.containerRuntime = containerRuntime;
-            o.maxPodsPerNode = maxPodsPerNode;
-            return o;
+            final var _resultValue = new BareMetalClusterNodeConfig();
+            _resultValue.containerRuntime = containerRuntime;
+            _resultValue.maxPodsPerNode = maxPodsPerNode;
+            return _resultValue;
         }
     }
 }

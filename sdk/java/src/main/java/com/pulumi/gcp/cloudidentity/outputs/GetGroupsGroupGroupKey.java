@@ -81,10 +81,10 @@ public final class GetGroupsGroupGroupKey {
             return this;
         }
         public GetGroupsGroupGroupKey build() {
-            final var o = new GetGroupsGroupGroupKey();
-            o.id = id;
-            o.namespace = namespace;
-            return o;
+            final var _resultValue = new GetGroupsGroupGroupKey();
+            _resultValue.id = id;
+            _resultValue.namespace = namespace;
+            return _resultValue;
         }
     }
 }

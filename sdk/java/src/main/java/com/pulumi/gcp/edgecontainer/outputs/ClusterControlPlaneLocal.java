@@ -116,12 +116,12 @@ public final class ClusterControlPlaneLocal {
             return this;
         }
         public ClusterControlPlaneLocal build() {
-            final var o = new ClusterControlPlaneLocal();
-            o.machineFilter = machineFilter;
-            o.nodeCount = nodeCount;
-            o.nodeLocation = nodeLocation;
-            o.sharedDeploymentPolicy = sharedDeploymentPolicy;
-            return o;
+            final var _resultValue = new ClusterControlPlaneLocal();
+            _resultValue.machineFilter = machineFilter;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.nodeLocation = nodeLocation;
+            _resultValue.sharedDeploymentPolicy = sharedDeploymentPolicy;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig
             return this;
         }
         public NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig build() {
-            final var o = new NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig();
-            o.gpuDriverVersion = gpuDriverVersion;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig();
+            _resultValue.gpuDriverVersion = gpuDriverVersion;
+            return _resultValue;
         }
     }
 }

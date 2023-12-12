@@ -106,12 +106,12 @@ public final class StandardAppVersionAutomaticScalingStandardSchedulerSettings {
             return this;
         }
         public StandardAppVersionAutomaticScalingStandardSchedulerSettings build() {
-            final var o = new StandardAppVersionAutomaticScalingStandardSchedulerSettings();
-            o.maxInstances = maxInstances;
-            o.minInstances = minInstances;
-            o.targetCpuUtilization = targetCpuUtilization;
-            o.targetThroughputUtilization = targetThroughputUtilization;
-            return o;
+            final var _resultValue = new StandardAppVersionAutomaticScalingStandardSchedulerSettings();
+            _resultValue.maxInstances = maxInstances;
+            _resultValue.minInstances = minInstances;
+            _resultValue.targetCpuUtilization = targetCpuUtilization;
+            _resultValue.targetThroughputUtilization = targetThroughputUtilization;
+            return _resultValue;
         }
     }
 }

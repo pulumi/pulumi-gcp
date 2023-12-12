@@ -48,9 +48,9 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSingleTargetD
             return this;
         }
         public StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset build() {
-            final var o = new StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset();
-            o.datasetId = datasetId;
-            return o;
+            final var _resultValue = new StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset();
+            _resultValue.datasetId = datasetId;
+            return _resultValue;
         }
     }
 }

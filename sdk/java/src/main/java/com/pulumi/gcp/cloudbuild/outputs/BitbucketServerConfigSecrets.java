@@ -90,11 +90,11 @@ public final class BitbucketServerConfigSecrets {
             return this;
         }
         public BitbucketServerConfigSecrets build() {
-            final var o = new BitbucketServerConfigSecrets();
-            o.adminAccessTokenVersionName = adminAccessTokenVersionName;
-            o.readAccessTokenVersionName = readAccessTokenVersionName;
-            o.webhookSecretVersionName = webhookSecretVersionName;
-            return o;
+            final var _resultValue = new BitbucketServerConfigSecrets();
+            _resultValue.adminAccessTokenVersionName = adminAccessTokenVersionName;
+            _resultValue.readAccessTokenVersionName = readAccessTokenVersionName;
+            _resultValue.webhookSecretVersionName = webhookSecretVersionName;
+            return _resultValue;
         }
     }
 }

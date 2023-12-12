@@ -98,11 +98,11 @@ public final class SecurityPolicyRuleMatch {
             return this;
         }
         public SecurityPolicyRuleMatch build() {
-            final var o = new SecurityPolicyRuleMatch();
-            o.config = config;
-            o.expr = expr;
-            o.versionedExpr = versionedExpr;
-            return o;
+            final var _resultValue = new SecurityPolicyRuleMatch();
+            _resultValue.config = config;
+            _resultValue.expr = expr;
+            _resultValue.versionedExpr = versionedExpr;
+            return _resultValue;
         }
     }
 }

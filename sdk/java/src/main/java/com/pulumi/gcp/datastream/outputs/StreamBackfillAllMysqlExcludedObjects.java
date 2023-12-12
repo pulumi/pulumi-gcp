@@ -52,9 +52,9 @@ public final class StreamBackfillAllMysqlExcludedObjects {
             return mysqlDatabases(List.of(mysqlDatabases));
         }
         public StreamBackfillAllMysqlExcludedObjects build() {
-            final var o = new StreamBackfillAllMysqlExcludedObjects();
-            o.mysqlDatabases = mysqlDatabases;
-            return o;
+            final var _resultValue = new StreamBackfillAllMysqlExcludedObjects();
+            _resultValue.mysqlDatabases = mysqlDatabases;
+            return _resultValue;
         }
     }
 }

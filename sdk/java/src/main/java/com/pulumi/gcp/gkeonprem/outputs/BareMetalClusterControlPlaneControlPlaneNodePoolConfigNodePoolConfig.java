@@ -137,12 +137,12 @@ public final class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoo
             return taints(List.of(taints));
         }
         public BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig build() {
-            final var o = new BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig();
-            o.labels = labels;
-            o.nodeConfigs = nodeConfigs;
-            o.operatingSystem = operatingSystem;
-            o.taints = taints;
-            return o;
+            final var _resultValue = new BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig();
+            _resultValue.labels = labels;
+            _resultValue.nodeConfigs = nodeConfigs;
+            _resultValue.operatingSystem = operatingSystem;
+            _resultValue.taints = taints;
+            return _resultValue;
         }
     }
 }

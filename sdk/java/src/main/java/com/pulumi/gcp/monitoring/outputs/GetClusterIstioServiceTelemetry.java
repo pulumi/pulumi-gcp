@@ -50,9 +50,9 @@ public final class GetClusterIstioServiceTelemetry {
             return this;
         }
         public GetClusterIstioServiceTelemetry build() {
-            final var o = new GetClusterIstioServiceTelemetry();
-            o.resourceName = resourceName;
-            return o;
+            final var _resultValue = new GetClusterIstioServiceTelemetry();
+            _resultValue.resourceName = resourceName;
+            return _resultValue;
         }
     }
 }

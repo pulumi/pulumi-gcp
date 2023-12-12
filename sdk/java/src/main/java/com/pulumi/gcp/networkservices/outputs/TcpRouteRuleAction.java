@@ -74,10 +74,10 @@ public final class TcpRouteRuleAction {
             return this;
         }
         public TcpRouteRuleAction build() {
-            final var o = new TcpRouteRuleAction();
-            o.destinations = destinations;
-            o.originalDestination = originalDestination;
-            return o;
+            final var _resultValue = new TcpRouteRuleAction();
+            _resultValue.destinations = destinations;
+            _resultValue.originalDestination = originalDestination;
+            return _resultValue;
         }
     }
 }

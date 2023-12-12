@@ -77,10 +77,10 @@ public final class ClusterFleet {
             return this;
         }
         public ClusterFleet build() {
-            final var o = new ClusterFleet();
-            o.membership = membership;
-            o.project = project;
-            return o;
+            final var _resultValue = new ClusterFleet();
+            _resultValue.membership = membership;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

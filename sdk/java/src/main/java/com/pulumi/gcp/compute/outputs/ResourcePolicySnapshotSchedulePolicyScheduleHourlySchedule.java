@@ -72,10 +72,10 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
             return this;
         }
         public ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule build() {
-            final var o = new ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule();
-            o.hoursInCycle = hoursInCycle;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule();
+            _resultValue.hoursInCycle = hoursInCycle;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

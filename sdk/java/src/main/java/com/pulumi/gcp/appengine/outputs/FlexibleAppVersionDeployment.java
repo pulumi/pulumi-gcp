@@ -122,12 +122,12 @@ public final class FlexibleAppVersionDeployment {
             return this;
         }
         public FlexibleAppVersionDeployment build() {
-            final var o = new FlexibleAppVersionDeployment();
-            o.cloudBuildOptions = cloudBuildOptions;
-            o.container = container;
-            o.files = files;
-            o.zip = zip;
-            return o;
+            final var _resultValue = new FlexibleAppVersionDeployment();
+            _resultValue.cloudBuildOptions = cloudBuildOptions;
+            _resultValue.container = container;
+            _resultValue.files = files;
+            _resultValue.zip = zip;
+            return _resultValue;
         }
     }
 }

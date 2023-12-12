@@ -39,9 +39,9 @@ public final class JobHadoopConfigLoggingConfig {
             return this;
         }
         public JobHadoopConfigLoggingConfig build() {
-            final var o = new JobHadoopConfigLoggingConfig();
-            o.driverLogLevels = driverLogLevels;
-            return o;
+            final var _resultValue = new JobHadoopConfigLoggingConfig();
+            _resultValue.driverLogLevels = driverLogLevels;
+            return _resultValue;
         }
     }
 }

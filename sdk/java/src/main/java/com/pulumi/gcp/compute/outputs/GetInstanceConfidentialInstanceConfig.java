@@ -38,9 +38,9 @@ public final class GetInstanceConfidentialInstanceConfig {
             return this;
         }
         public GetInstanceConfidentialInstanceConfig build() {
-            final var o = new GetInstanceConfidentialInstanceConfig();
-            o.enableConfidentialCompute = enableConfidentialCompute;
-            return o;
+            final var _resultValue = new GetInstanceConfidentialInstanceConfig();
+            _resultValue.enableConfidentialCompute = enableConfidentialCompute;
+            return _resultValue;
         }
     }
 }

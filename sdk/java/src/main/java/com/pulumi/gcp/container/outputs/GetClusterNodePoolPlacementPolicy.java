@@ -60,11 +60,11 @@ public final class GetClusterNodePoolPlacementPolicy {
             return this;
         }
         public GetClusterNodePoolPlacementPolicy build() {
-            final var o = new GetClusterNodePoolPlacementPolicy();
-            o.policyName = policyName;
-            o.tpuTopology = tpuTopology;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetClusterNodePoolPlacementPolicy();
+            _resultValue.policyName = policyName;
+            _resultValue.tpuTopology = tpuTopology;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -118,12 +118,12 @@ public final class PreventionJobTriggerInspectJob {
             return this;
         }
         public PreventionJobTriggerInspectJob build() {
-            final var o = new PreventionJobTriggerInspectJob();
-            o.actions = actions;
-            o.inspectConfig = inspectConfig;
-            o.inspectTemplateName = inspectTemplateName;
-            o.storageConfig = storageConfig;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJob();
+            _resultValue.actions = actions;
+            _resultValue.inspectConfig = inspectConfig;
+            _resultValue.inspectTemplateName = inspectTemplateName;
+            _resultValue.storageConfig = storageConfig;
+            return _resultValue;
         }
     }
 }

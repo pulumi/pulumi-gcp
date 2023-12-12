@@ -86,12 +86,12 @@ public final class GetDatabasesResult {
             return this;
         }
         public GetDatabasesResult build() {
-            final var o = new GetDatabasesResult();
-            o.databases = databases;
-            o.id = id;
-            o.instance = instance;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetDatabasesResult();
+            _resultValue.databases = databases;
+            _resultValue.id = id;
+            _resultValue.instance = instance;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

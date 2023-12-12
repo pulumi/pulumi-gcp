@@ -94,11 +94,11 @@ public final class StreamBackfillAll {
             return this;
         }
         public StreamBackfillAll build() {
-            final var o = new StreamBackfillAll();
-            o.mysqlExcludedObjects = mysqlExcludedObjects;
-            o.oracleExcludedObjects = oracleExcludedObjects;
-            o.postgresqlExcludedObjects = postgresqlExcludedObjects;
-            return o;
+            final var _resultValue = new StreamBackfillAll();
+            _resultValue.mysqlExcludedObjects = mysqlExcludedObjects;
+            _resultValue.oracleExcludedObjects = oracleExcludedObjects;
+            _resultValue.postgresqlExcludedObjects = postgresqlExcludedObjects;
+            return _resultValue;
         }
     }
 }

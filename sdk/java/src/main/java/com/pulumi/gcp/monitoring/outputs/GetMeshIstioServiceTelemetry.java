@@ -50,9 +50,9 @@ public final class GetMeshIstioServiceTelemetry {
             return this;
         }
         public GetMeshIstioServiceTelemetry build() {
-            final var o = new GetMeshIstioServiceTelemetry();
-            o.resourceName = resourceName;
-            return o;
+            final var _resultValue = new GetMeshIstioServiceTelemetry();
+            _resultValue.resourceName = resourceName;
+            return _resultValue;
         }
     }
 }

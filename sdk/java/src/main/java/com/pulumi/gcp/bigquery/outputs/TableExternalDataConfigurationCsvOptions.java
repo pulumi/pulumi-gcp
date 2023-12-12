@@ -167,14 +167,14 @@ public final class TableExternalDataConfigurationCsvOptions {
             return this;
         }
         public TableExternalDataConfigurationCsvOptions build() {
-            final var o = new TableExternalDataConfigurationCsvOptions();
-            o.allowJaggedRows = allowJaggedRows;
-            o.allowQuotedNewlines = allowQuotedNewlines;
-            o.encoding = encoding;
-            o.fieldDelimiter = fieldDelimiter;
-            o.quote = quote;
-            o.skipLeadingRows = skipLeadingRows;
-            return o;
+            final var _resultValue = new TableExternalDataConfigurationCsvOptions();
+            _resultValue.allowJaggedRows = allowJaggedRows;
+            _resultValue.allowQuotedNewlines = allowQuotedNewlines;
+            _resultValue.encoding = encoding;
+            _resultValue.fieldDelimiter = fieldDelimiter;
+            _resultValue.quote = quote;
+            _resultValue.skipLeadingRows = skipLeadingRows;
+            return _resultValue;
         }
     }
 }

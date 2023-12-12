@@ -80,10 +80,10 @@ public final class BudgetAmount {
             return this;
         }
         public BudgetAmount build() {
-            final var o = new BudgetAmount();
-            o.lastPeriodAmount = lastPeriodAmount;
-            o.specifiedAmount = specifiedAmount;
-            return o;
+            final var _resultValue = new BudgetAmount();
+            _resultValue.lastPeriodAmount = lastPeriodAmount;
+            _resultValue.specifiedAmount = specifiedAmount;
+            return _resultValue;
         }
     }
 }

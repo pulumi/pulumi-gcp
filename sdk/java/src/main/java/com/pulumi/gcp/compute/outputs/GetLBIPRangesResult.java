@@ -91,11 +91,11 @@ public final class GetLBIPRangesResult {
             return networks(List.of(networks));
         }
         public GetLBIPRangesResult build() {
-            final var o = new GetLBIPRangesResult();
-            o.httpSslTcpInternals = httpSslTcpInternals;
-            o.id = id;
-            o.networks = networks;
-            return o;
+            final var _resultValue = new GetLBIPRangesResult();
+            _resultValue.httpSslTcpInternals = httpSslTcpInternals;
+            _resultValue.id = id;
+            _resultValue.networks = networks;
+            return _resultValue;
         }
     }
 }

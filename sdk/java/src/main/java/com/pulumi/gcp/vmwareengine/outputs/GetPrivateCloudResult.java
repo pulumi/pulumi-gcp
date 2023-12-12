@@ -190,20 +190,20 @@ public final class GetPrivateCloudResult {
             return vcenters(List.of(vcenters));
         }
         public GetPrivateCloudResult build() {
-            final var o = new GetPrivateCloudResult();
-            o.description = description;
-            o.hcxes = hcxes;
-            o.id = id;
-            o.location = location;
-            o.managementClusters = managementClusters;
-            o.name = name;
-            o.networkConfigs = networkConfigs;
-            o.nsxes = nsxes;
-            o.project = project;
-            o.state = state;
-            o.uid = uid;
-            o.vcenters = vcenters;
-            return o;
+            final var _resultValue = new GetPrivateCloudResult();
+            _resultValue.description = description;
+            _resultValue.hcxes = hcxes;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.managementClusters = managementClusters;
+            _resultValue.name = name;
+            _resultValue.networkConfigs = networkConfigs;
+            _resultValue.nsxes = nsxes;
+            _resultValue.project = project;
+            _resultValue.state = state;
+            _resultValue.uid = uid;
+            _resultValue.vcenters = vcenters;
+            return _resultValue;
         }
     }
 }

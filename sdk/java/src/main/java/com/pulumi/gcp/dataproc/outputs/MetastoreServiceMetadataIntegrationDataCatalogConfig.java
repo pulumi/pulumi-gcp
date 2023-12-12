@@ -46,9 +46,9 @@ public final class MetastoreServiceMetadataIntegrationDataCatalogConfig {
             return this;
         }
         public MetastoreServiceMetadataIntegrationDataCatalogConfig build() {
-            final var o = new MetastoreServiceMetadataIntegrationDataCatalogConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new MetastoreServiceMetadataIntegrationDataCatalogConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

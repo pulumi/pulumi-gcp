@@ -46,9 +46,9 @@ public final class PolicyBasedRouteInterconnectAttachment {
             return this;
         }
         public PolicyBasedRouteInterconnectAttachment build() {
-            final var o = new PolicyBasedRouteInterconnectAttachment();
-            o.region = region;
-            return o;
+            final var _resultValue = new PolicyBasedRouteInterconnectAttachment();
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

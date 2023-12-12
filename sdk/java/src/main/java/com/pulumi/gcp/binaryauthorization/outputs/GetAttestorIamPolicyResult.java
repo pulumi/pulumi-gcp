@@ -108,13 +108,13 @@ public final class GetAttestorIamPolicyResult {
             return this;
         }
         public GetAttestorIamPolicyResult build() {
-            final var o = new GetAttestorIamPolicyResult();
-            o.attestor = attestor;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetAttestorIamPolicyResult();
+            _resultValue.attestor = attestor;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

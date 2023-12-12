@@ -55,9 +55,9 @@ public final class DatascanDataProfileSpecIncludeFields {
             return fieldNames(List.of(fieldNames));
         }
         public DatascanDataProfileSpecIncludeFields build() {
-            final var o = new DatascanDataProfileSpecIncludeFields();
-            o.fieldNames = fieldNames;
-            return o;
+            final var _resultValue = new DatascanDataProfileSpecIncludeFields();
+            _resultValue.fieldNames = fieldNames;
+            return _resultValue;
         }
     }
 }

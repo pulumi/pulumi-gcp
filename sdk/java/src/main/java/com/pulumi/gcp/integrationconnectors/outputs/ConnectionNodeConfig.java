@@ -67,10 +67,10 @@ public final class ConnectionNodeConfig {
             return this;
         }
         public ConnectionNodeConfig build() {
-            final var o = new ConnectionNodeConfig();
-            o.maxNodeCount = maxNodeCount;
-            o.minNodeCount = minNodeCount;
-            return o;
+            final var _resultValue = new ConnectionNodeConfig();
+            _resultValue.maxNodeCount = maxNodeCount;
+            _resultValue.minNodeCount = minNodeCount;
+            return _resultValue;
         }
     }
 }

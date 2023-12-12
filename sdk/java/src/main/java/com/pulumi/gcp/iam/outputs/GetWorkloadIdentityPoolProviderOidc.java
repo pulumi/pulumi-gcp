@@ -64,11 +64,11 @@ public final class GetWorkloadIdentityPoolProviderOidc {
             return this;
         }
         public GetWorkloadIdentityPoolProviderOidc build() {
-            final var o = new GetWorkloadIdentityPoolProviderOidc();
-            o.allowedAudiences = allowedAudiences;
-            o.issuerUri = issuerUri;
-            o.jwksJson = jwksJson;
-            return o;
+            final var _resultValue = new GetWorkloadIdentityPoolProviderOidc();
+            _resultValue.allowedAudiences = allowedAudiences;
+            _resultValue.issuerUri = issuerUri;
+            _resultValue.jwksJson = jwksJson;
+            return _resultValue;
         }
     }
 }

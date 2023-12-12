@@ -50,9 +50,9 @@ public final class ManagedZonePrivateVisibilityConfigNetwork {
             return this;
         }
         public ManagedZonePrivateVisibilityConfigNetwork build() {
-            final var o = new ManagedZonePrivateVisibilityConfigNetwork();
-            o.networkUrl = networkUrl;
-            return o;
+            final var _resultValue = new ManagedZonePrivateVisibilityConfigNetwork();
+            _resultValue.networkUrl = networkUrl;
+            return _resultValue;
         }
     }
 }

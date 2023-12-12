@@ -52,9 +52,9 @@ public final class StreamSourceConfigMysqlSourceConfigIncludeObjects {
             return mysqlDatabases(List.of(mysqlDatabases));
         }
         public StreamSourceConfigMysqlSourceConfigIncludeObjects build() {
-            final var o = new StreamSourceConfigMysqlSourceConfigIncludeObjects();
-            o.mysqlDatabases = mysqlDatabases;
-            return o;
+            final var _resultValue = new StreamSourceConfigMysqlSourceConfigIncludeObjects();
+            _resultValue.mysqlDatabases = mysqlDatabases;
+            return _resultValue;
         }
     }
 }

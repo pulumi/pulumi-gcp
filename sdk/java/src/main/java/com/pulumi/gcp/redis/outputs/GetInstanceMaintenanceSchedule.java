@@ -60,11 +60,11 @@ public final class GetInstanceMaintenanceSchedule {
             return this;
         }
         public GetInstanceMaintenanceSchedule build() {
-            final var o = new GetInstanceMaintenanceSchedule();
-            o.endTime = endTime;
-            o.scheduleDeadlineTime = scheduleDeadlineTime;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new GetInstanceMaintenanceSchedule();
+            _resultValue.endTime = endTime;
+            _resultValue.scheduleDeadlineTime = scheduleDeadlineTime;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

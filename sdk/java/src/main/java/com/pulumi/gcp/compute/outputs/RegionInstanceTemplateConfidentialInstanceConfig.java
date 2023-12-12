@@ -46,9 +46,9 @@ public final class RegionInstanceTemplateConfidentialInstanceConfig {
             return this;
         }
         public RegionInstanceTemplateConfidentialInstanceConfig build() {
-            final var o = new RegionInstanceTemplateConfidentialInstanceConfig();
-            o.enableConfidentialCompute = enableConfidentialCompute;
-            return o;
+            final var _resultValue = new RegionInstanceTemplateConfidentialInstanceConfig();
+            _resultValue.enableConfidentialCompute = enableConfidentialCompute;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class Hl7StoreIamMemberCondition {
             return this;
         }
         public Hl7StoreIamMemberCondition build() {
-            final var o = new Hl7StoreIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new Hl7StoreIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

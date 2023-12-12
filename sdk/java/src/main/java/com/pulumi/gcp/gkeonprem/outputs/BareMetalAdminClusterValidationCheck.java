@@ -99,11 +99,11 @@ public final class BareMetalAdminClusterValidationCheck {
             return statuses(List.of(statuses));
         }
         public BareMetalAdminClusterValidationCheck build() {
-            final var o = new BareMetalAdminClusterValidationCheck();
-            o.options = options;
-            o.scenario = scenario;
-            o.statuses = statuses;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterValidationCheck();
+            _resultValue.options = options;
+            _resultValue.scenario = scenario;
+            _resultValue.statuses = statuses;
+            return _resultValue;
         }
     }
 }

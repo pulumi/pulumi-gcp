@@ -129,13 +129,13 @@ public final class DatabaseInstanceSettingsInsightsConfig {
             return this;
         }
         public DatabaseInstanceSettingsInsightsConfig build() {
-            final var o = new DatabaseInstanceSettingsInsightsConfig();
-            o.queryInsightsEnabled = queryInsightsEnabled;
-            o.queryPlansPerMinute = queryPlansPerMinute;
-            o.queryStringLength = queryStringLength;
-            o.recordApplicationTags = recordApplicationTags;
-            o.recordClientAddress = recordClientAddress;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettingsInsightsConfig();
+            _resultValue.queryInsightsEnabled = queryInsightsEnabled;
+            _resultValue.queryPlansPerMinute = queryPlansPerMinute;
+            _resultValue.queryStringLength = queryStringLength;
+            _resultValue.recordApplicationTags = recordApplicationTags;
+            _resultValue.recordClientAddress = recordClientAddress;
+            return _resultValue;
         }
     }
 }

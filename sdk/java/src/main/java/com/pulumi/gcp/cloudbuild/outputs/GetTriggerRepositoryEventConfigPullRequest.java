@@ -61,11 +61,11 @@ public final class GetTriggerRepositoryEventConfigPullRequest {
             return this;
         }
         public GetTriggerRepositoryEventConfigPullRequest build() {
-            final var o = new GetTriggerRepositoryEventConfigPullRequest();
-            o.branch = branch;
-            o.commentControl = commentControl;
-            o.invertRegex = invertRegex;
-            return o;
+            final var _resultValue = new GetTriggerRepositoryEventConfigPullRequest();
+            _resultValue.branch = branch;
+            _resultValue.commentControl = commentControl;
+            _resultValue.invertRegex = invertRegex;
+            return _resultValue;
         }
     }
 }

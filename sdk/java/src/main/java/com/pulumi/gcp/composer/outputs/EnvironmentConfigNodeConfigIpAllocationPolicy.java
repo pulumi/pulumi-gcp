@@ -85,13 +85,13 @@ public final class EnvironmentConfigNodeConfigIpAllocationPolicy {
             return this;
         }
         public EnvironmentConfigNodeConfigIpAllocationPolicy build() {
-            final var o = new EnvironmentConfigNodeConfigIpAllocationPolicy();
-            o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
-            o.clusterSecondaryRangeName = clusterSecondaryRangeName;
-            o.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
-            o.servicesSecondaryRangeName = servicesSecondaryRangeName;
-            o.useIpAliases = useIpAliases;
-            return o;
+            final var _resultValue = new EnvironmentConfigNodeConfigIpAllocationPolicy();
+            _resultValue.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
+            _resultValue.clusterSecondaryRangeName = clusterSecondaryRangeName;
+            _resultValue.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
+            _resultValue.servicesSecondaryRangeName = servicesSecondaryRangeName;
+            _resultValue.useIpAliases = useIpAliases;
+            return _resultValue;
         }
     }
 }

@@ -77,12 +77,12 @@ public final class GetClusterNodePoolUpgradeSetting {
             return this;
         }
         public GetClusterNodePoolUpgradeSetting build() {
-            final var o = new GetClusterNodePoolUpgradeSetting();
-            o.blueGreenSettings = blueGreenSettings;
-            o.maxSurge = maxSurge;
-            o.maxUnavailable = maxUnavailable;
-            o.strategy = strategy;
-            return o;
+            final var _resultValue = new GetClusterNodePoolUpgradeSetting();
+            _resultValue.blueGreenSettings = blueGreenSettings;
+            _resultValue.maxSurge = maxSurge;
+            _resultValue.maxUnavailable = maxUnavailable;
+            _resultValue.strategy = strategy;
+            return _resultValue;
         }
     }
 }

@@ -72,10 +72,10 @@ public final class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
             return this;
         }
         public RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig build() {
-            final var o = new RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig();
-            o.coreCount = coreCount;
-            o.type = type;
-            return o;
+            final var _resultValue = new RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig();
+            _resultValue.coreCount = coreCount;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

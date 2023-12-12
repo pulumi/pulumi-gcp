@@ -78,11 +78,11 @@ public final class CaPoolIamBindingCondition {
             return this;
         }
         public CaPoolIamBindingCondition build() {
-            final var o = new CaPoolIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new CaPoolIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

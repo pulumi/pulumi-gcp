@@ -71,10 +71,10 @@ public final class JobHttpTargetOauthToken {
             return this;
         }
         public JobHttpTargetOauthToken build() {
-            final var o = new JobHttpTargetOauthToken();
-            o.scope = scope;
-            o.serviceAccountEmail = serviceAccountEmail;
-            return o;
+            final var _resultValue = new JobHttpTargetOauthToken();
+            _resultValue.scope = scope;
+            _resultValue.serviceAccountEmail = serviceAccountEmail;
+            return _resultValue;
         }
     }
 }

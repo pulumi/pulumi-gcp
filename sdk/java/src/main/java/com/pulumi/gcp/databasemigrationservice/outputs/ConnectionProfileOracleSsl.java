@@ -119,12 +119,12 @@ public final class ConnectionProfileOracleSsl {
             return this;
         }
         public ConnectionProfileOracleSsl build() {
-            final var o = new ConnectionProfileOracleSsl();
-            o.caCertificate = caCertificate;
-            o.clientCertificate = clientCertificate;
-            o.clientKey = clientKey;
-            o.type = type;
-            return o;
+            final var _resultValue = new ConnectionProfileOracleSsl();
+            _resultValue.caCertificate = caCertificate;
+            _resultValue.clientCertificate = clientCertificate;
+            _resultValue.clientKey = clientKey;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class BareMetalClusterUpgradePolicy {
             return this;
         }
         public BareMetalClusterUpgradePolicy build() {
-            final var o = new BareMetalClusterUpgradePolicy();
-            o.policy = policy;
-            return o;
+            final var _resultValue = new BareMetalClusterUpgradePolicy();
+            _resultValue.policy = policy;
+            return _resultValue;
         }
     }
 }

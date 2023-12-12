@@ -46,9 +46,9 @@ public final class InstanceCryptoKeyConfig {
             return this;
         }
         public InstanceCryptoKeyConfig build() {
-            final var o = new InstanceCryptoKeyConfig();
-            o.keyReference = keyReference;
-            return o;
+            final var _resultValue = new InstanceCryptoKeyConfig();
+            _resultValue.keyReference = keyReference;
+            return _resultValue;
         }
     }
 }

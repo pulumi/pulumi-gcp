@@ -39,9 +39,9 @@ public final class JobPrestoConfigLoggingConfig {
             return this;
         }
         public JobPrestoConfigLoggingConfig build() {
-            final var o = new JobPrestoConfigLoggingConfig();
-            o.driverLogLevels = driverLogLevels;
-            return o;
+            final var _resultValue = new JobPrestoConfigLoggingConfig();
+            _resultValue.driverLogLevels = driverLogLevels;
+            return _resultValue;
         }
     }
 }

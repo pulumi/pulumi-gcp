@@ -50,10 +50,10 @@ public final class GetClusterBinaryAuthorization {
             return this;
         }
         public GetClusterBinaryAuthorization build() {
-            final var o = new GetClusterBinaryAuthorization();
-            o.enabled = enabled;
-            o.evaluationMode = evaluationMode;
-            return o;
+            final var _resultValue = new GetClusterBinaryAuthorization();
+            _resultValue.enabled = enabled;
+            _resultValue.evaluationMode = evaluationMode;
+            return _resultValue;
         }
     }
 }

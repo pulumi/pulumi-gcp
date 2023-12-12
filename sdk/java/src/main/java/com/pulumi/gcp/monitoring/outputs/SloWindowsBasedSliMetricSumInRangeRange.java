@@ -75,10 +75,10 @@ public final class SloWindowsBasedSliMetricSumInRangeRange {
             return this;
         }
         public SloWindowsBasedSliMetricSumInRangeRange build() {
-            final var o = new SloWindowsBasedSliMetricSumInRangeRange();
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new SloWindowsBasedSliMetricSumInRangeRange();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

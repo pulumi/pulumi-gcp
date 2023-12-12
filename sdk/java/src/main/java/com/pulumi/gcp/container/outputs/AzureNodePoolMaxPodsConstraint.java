@@ -50,9 +50,9 @@ public final class AzureNodePoolMaxPodsConstraint {
             return this;
         }
         public AzureNodePoolMaxPodsConstraint build() {
-            final var o = new AzureNodePoolMaxPodsConstraint();
-            o.maxPodsPerNode = maxPodsPerNode;
-            return o;
+            final var _resultValue = new AzureNodePoolMaxPodsConstraint();
+            _resultValue.maxPodsPerNode = maxPodsPerNode;
+            return _resultValue;
         }
     }
 }

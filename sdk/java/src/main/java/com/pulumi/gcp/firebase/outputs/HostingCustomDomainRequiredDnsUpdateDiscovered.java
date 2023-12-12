@@ -74,10 +74,10 @@ public final class HostingCustomDomainRequiredDnsUpdateDiscovered {
             return records(List.of(records));
         }
         public HostingCustomDomainRequiredDnsUpdateDiscovered build() {
-            final var o = new HostingCustomDomainRequiredDnsUpdateDiscovered();
-            o.domainName = domainName;
-            o.records = records;
-            return o;
+            final var _resultValue = new HostingCustomDomainRequiredDnsUpdateDiscovered();
+            _resultValue.domainName = domainName;
+            _resultValue.records = records;
+            return _resultValue;
         }
     }
 }

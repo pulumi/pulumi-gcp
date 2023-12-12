@@ -130,13 +130,13 @@ public final class ConnectionProfileMysqlProfile {
             return this;
         }
         public ConnectionProfileMysqlProfile build() {
-            final var o = new ConnectionProfileMysqlProfile();
-            o.hostname = hostname;
-            o.password = password;
-            o.port = port;
-            o.sslConfig = sslConfig;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionProfileMysqlProfile();
+            _resultValue.hostname = hostname;
+            _resultValue.password = password;
+            _resultValue.port = port;
+            _resultValue.sslConfig = sslConfig;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

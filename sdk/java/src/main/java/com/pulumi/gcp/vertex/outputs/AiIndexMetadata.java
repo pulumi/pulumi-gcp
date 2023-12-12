@@ -102,11 +102,11 @@ public final class AiIndexMetadata {
             return this;
         }
         public AiIndexMetadata build() {
-            final var o = new AiIndexMetadata();
-            o.config = config;
-            o.contentsDeltaUri = contentsDeltaUri;
-            o.isCompleteOverwrite = isCompleteOverwrite;
-            return o;
+            final var _resultValue = new AiIndexMetadata();
+            _resultValue.config = config;
+            _resultValue.contentsDeltaUri = contentsDeltaUri;
+            _resultValue.isCompleteOverwrite = isCompleteOverwrite;
+            return _resultValue;
         }
     }
 }

@@ -114,12 +114,12 @@ public final class ResponsePolicyRuleLocalDataLocalData {
             return this;
         }
         public ResponsePolicyRuleLocalDataLocalData build() {
-            final var o = new ResponsePolicyRuleLocalDataLocalData();
-            o.name = name;
-            o.rrdatas = rrdatas;
-            o.ttl = ttl;
-            o.type = type;
-            return o;
+            final var _resultValue = new ResponsePolicyRuleLocalDataLocalData();
+            _resultValue.name = name;
+            _resultValue.rrdatas = rrdatas;
+            _resultValue.ttl = ttl;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

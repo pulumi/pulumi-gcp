@@ -56,9 +56,9 @@ public final class ClusterReleaseChannel {
             return this;
         }
         public ClusterReleaseChannel build() {
-            final var o = new ClusterReleaseChannel();
-            o.channel = channel;
-            return o;
+            final var _resultValue = new ClusterReleaseChannel();
+            _resultValue.channel = channel;
+            return _resultValue;
         }
     }
 }

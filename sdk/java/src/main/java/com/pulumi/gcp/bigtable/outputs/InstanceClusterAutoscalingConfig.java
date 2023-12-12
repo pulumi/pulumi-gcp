@@ -109,12 +109,12 @@ public final class InstanceClusterAutoscalingConfig {
             return this;
         }
         public InstanceClusterAutoscalingConfig build() {
-            final var o = new InstanceClusterAutoscalingConfig();
-            o.cpuTarget = cpuTarget;
-            o.maxNodes = maxNodes;
-            o.minNodes = minNodes;
-            o.storageTarget = storageTarget;
-            return o;
+            final var _resultValue = new InstanceClusterAutoscalingConfig();
+            _resultValue.cpuTarget = cpuTarget;
+            _resultValue.maxNodes = maxNodes;
+            _resultValue.minNodes = minNodes;
+            _resultValue.storageTarget = storageTarget;
+            return _resultValue;
         }
     }
 }

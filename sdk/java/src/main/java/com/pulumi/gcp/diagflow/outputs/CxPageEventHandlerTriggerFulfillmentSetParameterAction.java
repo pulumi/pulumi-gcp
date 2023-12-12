@@ -67,10 +67,10 @@ public final class CxPageEventHandlerTriggerFulfillmentSetParameterAction {
             return this;
         }
         public CxPageEventHandlerTriggerFulfillmentSetParameterAction build() {
-            final var o = new CxPageEventHandlerTriggerFulfillmentSetParameterAction();
-            o.parameter = parameter;
-            o.value = value;
-            return o;
+            final var _resultValue = new CxPageEventHandlerTriggerFulfillmentSetParameterAction();
+            _resultValue.parameter = parameter;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class ServiceTemplateScaling {
             return this;
         }
         public ServiceTemplateScaling build() {
-            final var o = new ServiceTemplateScaling();
-            o.maxInstanceCount = maxInstanceCount;
-            o.minInstanceCount = minInstanceCount;
-            return o;
+            final var _resultValue = new ServiceTemplateScaling();
+            _resultValue.maxInstanceCount = maxInstanceCount;
+            _resultValue.minInstanceCount = minInstanceCount;
+            return _resultValue;
         }
     }
 }

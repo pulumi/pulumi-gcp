@@ -71,10 +71,10 @@ public final class BackendServiceCdnPolicyNegativeCachingPolicy {
             return this;
         }
         public BackendServiceCdnPolicyNegativeCachingPolicy build() {
-            final var o = new BackendServiceCdnPolicyNegativeCachingPolicy();
-            o.code = code;
-            o.ttl = ttl;
-            return o;
+            final var _resultValue = new BackendServiceCdnPolicyNegativeCachingPolicy();
+            _resultValue.code = code;
+            _resultValue.ttl = ttl;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class BareMetalClusterControlPlaneControlPlaneNodePoolConfig {
             return this;
         }
         public BareMetalClusterControlPlaneControlPlaneNodePoolConfig build() {
-            final var o = new BareMetalClusterControlPlaneControlPlaneNodePoolConfig();
-            o.nodePoolConfig = nodePoolConfig;
-            return o;
+            final var _resultValue = new BareMetalClusterControlPlaneControlPlaneNodePoolConfig();
+            _resultValue.nodePoolConfig = nodePoolConfig;
+            return _resultValue;
         }
     }
 }

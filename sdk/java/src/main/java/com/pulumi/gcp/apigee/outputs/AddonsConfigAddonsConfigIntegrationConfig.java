@@ -48,9 +48,9 @@ public final class AddonsConfigAddonsConfigIntegrationConfig {
             return this;
         }
         public AddonsConfigAddonsConfigIntegrationConfig build() {
-            final var o = new AddonsConfigAddonsConfigIntegrationConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new AddonsConfigAddonsConfigIntegrationConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

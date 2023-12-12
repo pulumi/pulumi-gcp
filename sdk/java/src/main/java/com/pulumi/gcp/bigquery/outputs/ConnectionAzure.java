@@ -172,15 +172,15 @@ public final class ConnectionAzure {
             return this;
         }
         public ConnectionAzure build() {
-            final var o = new ConnectionAzure();
-            o.application = application;
-            o.clientId = clientId;
-            o.customerTenantId = customerTenantId;
-            o.federatedApplicationClientId = federatedApplicationClientId;
-            o.identity = identity;
-            o.objectId = objectId;
-            o.redirectUri = redirectUri;
-            return o;
+            final var _resultValue = new ConnectionAzure();
+            _resultValue.application = application;
+            _resultValue.clientId = clientId;
+            _resultValue.customerTenantId = customerTenantId;
+            _resultValue.federatedApplicationClientId = federatedApplicationClientId;
+            _resultValue.identity = identity;
+            _resultValue.objectId = objectId;
+            _resultValue.redirectUri = redirectUri;
+            return _resultValue;
         }
     }
 }

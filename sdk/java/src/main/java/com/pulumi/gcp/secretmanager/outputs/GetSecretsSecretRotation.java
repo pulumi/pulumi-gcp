@@ -65,10 +65,10 @@ public final class GetSecretsSecretRotation {
             return this;
         }
         public GetSecretsSecretRotation build() {
-            final var o = new GetSecretsSecretRotation();
-            o.nextRotationTime = nextRotationTime;
-            o.rotationPeriod = rotationPeriod;
-            return o;
+            final var _resultValue = new GetSecretsSecretRotation();
+            _resultValue.nextRotationTime = nextRotationTime;
+            _resultValue.rotationPeriod = rotationPeriod;
+            return _resultValue;
         }
     }
 }

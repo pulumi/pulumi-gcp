@@ -143,14 +143,14 @@ public final class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
             return this;
         }
         public AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage build() {
-            final var o = new AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage();
-            o.clientAuth = clientAuth;
-            o.codeSigning = codeSigning;
-            o.emailProtection = emailProtection;
-            o.ocspSigning = ocspSigning;
-            o.serverAuth = serverAuth;
-            o.timeStamping = timeStamping;
-            return o;
+            final var _resultValue = new AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage();
+            _resultValue.clientAuth = clientAuth;
+            _resultValue.codeSigning = codeSigning;
+            _resultValue.emailProtection = emailProtection;
+            _resultValue.ocspSigning = ocspSigning;
+            _resultValue.serverAuth = serverAuth;
+            _resultValue.timeStamping = timeStamping;
+            return _resultValue;
         }
     }
 }

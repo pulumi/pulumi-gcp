@@ -71,10 +71,10 @@ public final class VMwareClusterLoadBalancerVipConfig {
             return this;
         }
         public VMwareClusterLoadBalancerVipConfig build() {
-            final var o = new VMwareClusterLoadBalancerVipConfig();
-            o.controlPlaneVip = controlPlaneVip;
-            o.ingressVip = ingressVip;
-            return o;
+            final var _resultValue = new VMwareClusterLoadBalancerVipConfig();
+            _resultValue.controlPlaneVip = controlPlaneVip;
+            _resultValue.ingressVip = ingressVip;
+            return _resultValue;
         }
     }
 }

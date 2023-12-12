@@ -161,13 +161,13 @@ public final class QueueRetryConfig {
             return this;
         }
         public QueueRetryConfig build() {
-            final var o = new QueueRetryConfig();
-            o.maxAttempts = maxAttempts;
-            o.maxBackoff = maxBackoff;
-            o.maxDoublings = maxDoublings;
-            o.maxRetryDuration = maxRetryDuration;
-            o.minBackoff = minBackoff;
-            return o;
+            final var _resultValue = new QueueRetryConfig();
+            _resultValue.maxAttempts = maxAttempts;
+            _resultValue.maxBackoff = maxBackoff;
+            _resultValue.maxDoublings = maxDoublings;
+            _resultValue.maxRetryDuration = maxRetryDuration;
+            _resultValue.minBackoff = minBackoff;
+            return _resultValue;
         }
     }
 }

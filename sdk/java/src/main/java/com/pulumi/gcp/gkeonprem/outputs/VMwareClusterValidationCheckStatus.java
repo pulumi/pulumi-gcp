@@ -55,9 +55,9 @@ public final class VMwareClusterValidationCheckStatus {
             return results(List.of(results));
         }
         public VMwareClusterValidationCheckStatus build() {
-            final var o = new VMwareClusterValidationCheckStatus();
-            o.results = results;
-            return o;
+            final var _resultValue = new VMwareClusterValidationCheckStatus();
+            _resultValue.results = results;
+            return _resultValue;
         }
     }
 }

@@ -91,13 +91,13 @@ public final class GetTriggerBitbucketServerTriggerConfig {
             return this;
         }
         public GetTriggerBitbucketServerTriggerConfig build() {
-            final var o = new GetTriggerBitbucketServerTriggerConfig();
-            o.bitbucketServerConfigResource = bitbucketServerConfigResource;
-            o.projectKey = projectKey;
-            o.pullRequests = pullRequests;
-            o.pushes = pushes;
-            o.repoSlug = repoSlug;
-            return o;
+            final var _resultValue = new GetTriggerBitbucketServerTriggerConfig();
+            _resultValue.bitbucketServerConfigResource = bitbucketServerConfigResource;
+            _resultValue.projectKey = projectKey;
+            _resultValue.pullRequests = pullRequests;
+            _resultValue.pushes = pushes;
+            _resultValue.repoSlug = repoSlug;
+            return _resultValue;
         }
     }
 }

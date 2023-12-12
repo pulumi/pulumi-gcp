@@ -86,11 +86,11 @@ public final class StandardAppVersionDeploymentFile {
             return this;
         }
         public StandardAppVersionDeploymentFile build() {
-            final var o = new StandardAppVersionDeploymentFile();
-            o.name = name;
-            o.sha1Sum = sha1Sum;
-            o.sourceUrl = sourceUrl;
-            return o;
+            final var _resultValue = new StandardAppVersionDeploymentFile();
+            _resultValue.name = name;
+            _resultValue.sha1Sum = sha1Sum;
+            _resultValue.sourceUrl = sourceUrl;
+            return _resultValue;
         }
     }
 }

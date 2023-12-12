@@ -68,10 +68,10 @@ public final class StandardAppVersionDeploymentZip {
             return this;
         }
         public StandardAppVersionDeploymentZip build() {
-            final var o = new StandardAppVersionDeploymentZip();
-            o.filesCount = filesCount;
-            o.sourceUrl = sourceUrl;
-            return o;
+            final var _resultValue = new StandardAppVersionDeploymentZip();
+            _resultValue.filesCount = filesCount;
+            _resultValue.sourceUrl = sourceUrl;
+            return _resultValue;
         }
     }
 }

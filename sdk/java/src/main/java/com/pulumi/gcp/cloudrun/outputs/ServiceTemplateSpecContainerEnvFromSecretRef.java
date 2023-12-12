@@ -70,10 +70,10 @@ public final class ServiceTemplateSpecContainerEnvFromSecretRef {
             return this;
         }
         public ServiceTemplateSpecContainerEnvFromSecretRef build() {
-            final var o = new ServiceTemplateSpecContainerEnvFromSecretRef();
-            o.localObjectReference = localObjectReference;
-            o.optional = optional;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecContainerEnvFromSecretRef();
+            _resultValue.localObjectReference = localObjectReference;
+            _resultValue.optional = optional;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class ClusterNodeConfigLocalNvmeSsdBlockConfig {
             return this;
         }
         public ClusterNodeConfigLocalNvmeSsdBlockConfig build() {
-            final var o = new ClusterNodeConfigLocalNvmeSsdBlockConfig();
-            o.localSsdCount = localSsdCount;
-            return o;
+            final var _resultValue = new ClusterNodeConfigLocalNvmeSsdBlockConfig();
+            _resultValue.localSsdCount = localSsdCount;
+            return _resultValue;
         }
     }
 }

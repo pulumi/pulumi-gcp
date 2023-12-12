@@ -71,10 +71,10 @@ public final class DiskAsyncReplicationSecondaryDisk {
             return this;
         }
         public DiskAsyncReplicationSecondaryDisk build() {
-            final var o = new DiskAsyncReplicationSecondaryDisk();
-            o.disk = disk;
-            o.state = state;
-            return o;
+            final var _resultValue = new DiskAsyncReplicationSecondaryDisk();
+            _resultValue.disk = disk;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

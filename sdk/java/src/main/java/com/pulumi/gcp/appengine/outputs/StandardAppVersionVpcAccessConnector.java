@@ -67,10 +67,10 @@ public final class StandardAppVersionVpcAccessConnector {
             return this;
         }
         public StandardAppVersionVpcAccessConnector build() {
-            final var o = new StandardAppVersionVpcAccessConnector();
-            o.egressSetting = egressSetting;
-            o.name = name;
-            return o;
+            final var _resultValue = new StandardAppVersionVpcAccessConnector();
+            _resultValue.egressSetting = egressSetting;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

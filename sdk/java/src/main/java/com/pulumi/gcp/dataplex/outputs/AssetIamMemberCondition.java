@@ -62,11 +62,11 @@ public final class AssetIamMemberCondition {
             return this;
         }
         public AssetIamMemberCondition build() {
-            final var o = new AssetIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new AssetIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

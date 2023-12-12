@@ -94,11 +94,11 @@ public final class RegionDiskDiskEncryptionKey {
             return this;
         }
         public RegionDiskDiskEncryptionKey build() {
-            final var o = new RegionDiskDiskEncryptionKey();
-            o.kmsKeyName = kmsKeyName;
-            o.rawKey = rawKey;
-            o.sha256 = sha256;
-            return o;
+            final var _resultValue = new RegionDiskDiskEncryptionKey();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.rawKey = rawKey;
+            _resultValue.sha256 = sha256;
+            return _resultValue;
         }
     }
 }

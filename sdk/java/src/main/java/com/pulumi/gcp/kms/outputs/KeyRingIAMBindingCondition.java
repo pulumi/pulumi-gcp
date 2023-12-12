@@ -94,11 +94,11 @@ public final class KeyRingIAMBindingCondition {
             return this;
         }
         public KeyRingIAMBindingCondition build() {
-            final var o = new KeyRingIAMBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new KeyRingIAMBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

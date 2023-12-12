@@ -65,10 +65,10 @@ public final class GetKeysZoneSigningKeyDigest {
             return this;
         }
         public GetKeysZoneSigningKeyDigest build() {
-            final var o = new GetKeysZoneSigningKeyDigest();
-            o.digest = digest;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetKeysZoneSigningKeyDigest();
+            _resultValue.digest = digest;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

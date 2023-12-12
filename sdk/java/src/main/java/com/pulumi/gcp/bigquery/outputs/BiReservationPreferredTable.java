@@ -86,11 +86,11 @@ public final class BiReservationPreferredTable {
             return this;
         }
         public BiReservationPreferredTable build() {
-            final var o = new BiReservationPreferredTable();
-            o.datasetId = datasetId;
-            o.projectId = projectId;
-            o.tableId = tableId;
-            return o;
+            final var _resultValue = new BiReservationPreferredTable();
+            _resultValue.datasetId = datasetId;
+            _resultValue.projectId = projectId;
+            _resultValue.tableId = tableId;
+            return _resultValue;
         }
     }
 }

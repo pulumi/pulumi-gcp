@@ -70,10 +70,10 @@ public final class EdgeCacheServiceLogConfig {
             return this;
         }
         public EdgeCacheServiceLogConfig build() {
-            final var o = new EdgeCacheServiceLogConfig();
-            o.enable = enable;
-            o.sampleRate = sampleRate;
-            return o;
+            final var _resultValue = new EdgeCacheServiceLogConfig();
+            _resultValue.enable = enable;
+            _resultValue.sampleRate = sampleRate;
+            return _resultValue;
         }
     }
 }

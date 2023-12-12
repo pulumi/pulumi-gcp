@@ -42,9 +42,9 @@ public final class GetClusterNotificationConfigPubsubFilter {
             return eventTypes(List.of(eventTypes));
         }
         public GetClusterNotificationConfigPubsubFilter build() {
-            final var o = new GetClusterNotificationConfigPubsubFilter();
-            o.eventTypes = eventTypes;
-            return o;
+            final var _resultValue = new GetClusterNotificationConfigPubsubFilter();
+            _resultValue.eventTypes = eventTypes;
+            return _resultValue;
         }
     }
 }

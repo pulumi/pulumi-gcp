@@ -48,9 +48,9 @@ public final class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames {
             return this;
         }
         public KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames build() {
-            final var o = new KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames();
-            o.subjectAlternativeName = subjectAlternativeName;
-            return o;
+            final var _resultValue = new KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames();
+            _resultValue.subjectAlternativeName = subjectAlternativeName;
+            return _resultValue;
         }
     }
 }

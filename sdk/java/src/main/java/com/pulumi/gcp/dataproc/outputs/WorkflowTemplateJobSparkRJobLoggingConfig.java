@@ -48,9 +48,9 @@ public final class WorkflowTemplateJobSparkRJobLoggingConfig {
             return this;
         }
         public WorkflowTemplateJobSparkRJobLoggingConfig build() {
-            final var o = new WorkflowTemplateJobSparkRJobLoggingConfig();
-            o.driverLogLevels = driverLogLevels;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobSparkRJobLoggingConfig();
+            _resultValue.driverLogLevels = driverLogLevels;
+            return _resultValue;
         }
     }
 }

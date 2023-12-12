@@ -56,9 +56,9 @@ public final class LinkedDatasetBigqueryDataset {
             return this;
         }
         public LinkedDatasetBigqueryDataset build() {
-            final var o = new LinkedDatasetBigqueryDataset();
-            o.datasetId = datasetId;
-            return o;
+            final var _resultValue = new LinkedDatasetBigqueryDataset();
+            _resultValue.datasetId = datasetId;
+            return _resultValue;
         }
     }
 }

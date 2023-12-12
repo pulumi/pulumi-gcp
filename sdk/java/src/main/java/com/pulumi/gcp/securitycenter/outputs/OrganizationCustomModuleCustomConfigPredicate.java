@@ -111,12 +111,12 @@ public final class OrganizationCustomModuleCustomConfigPredicate {
             return this;
         }
         public OrganizationCustomModuleCustomConfigPredicate build() {
-            final var o = new OrganizationCustomModuleCustomConfigPredicate();
-            o.description = description;
-            o.expression = expression;
-            o.location = location;
-            o.title = title;
-            return o;
+            final var _resultValue = new OrganizationCustomModuleCustomConfigPredicate();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.location = location;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

@@ -80,10 +80,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword();
-            o.hotwordRegex = hotwordRegex;
-            o.proximity = proximity;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword();
+            _resultValue.hotwordRegex = hotwordRegex;
+            _resultValue.proximity = proximity;
+            return _resultValue;
         }
     }
 }

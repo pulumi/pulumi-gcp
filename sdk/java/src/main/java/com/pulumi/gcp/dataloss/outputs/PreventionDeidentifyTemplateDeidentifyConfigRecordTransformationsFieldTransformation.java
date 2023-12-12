@@ -134,12 +134,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation();
-            o.condition = condition;
-            o.fields = fields;
-            o.infoTypeTransformations = infoTypeTransformations;
-            o.primitiveTransformation = primitiveTransformation;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation();
+            _resultValue.condition = condition;
+            _resultValue.fields = fields;
+            _resultValue.infoTypeTransformations = infoTypeTransformations;
+            _resultValue.primitiveTransformation = primitiveTransformation;
+            return _resultValue;
         }
     }
 }

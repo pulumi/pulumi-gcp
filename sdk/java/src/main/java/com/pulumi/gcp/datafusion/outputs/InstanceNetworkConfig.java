@@ -71,10 +71,10 @@ public final class InstanceNetworkConfig {
             return this;
         }
         public InstanceNetworkConfig build() {
-            final var o = new InstanceNetworkConfig();
-            o.ipAllocation = ipAllocation;
-            o.network = network;
-            return o;
+            final var _resultValue = new InstanceNetworkConfig();
+            _resultValue.ipAllocation = ipAllocation;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

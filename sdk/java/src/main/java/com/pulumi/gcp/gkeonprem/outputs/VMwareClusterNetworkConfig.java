@@ -189,15 +189,15 @@ public final class VMwareClusterNetworkConfig {
             return this;
         }
         public VMwareClusterNetworkConfig build() {
-            final var o = new VMwareClusterNetworkConfig();
-            o.controlPlaneV2Config = controlPlaneV2Config;
-            o.dhcpIpConfig = dhcpIpConfig;
-            o.hostConfig = hostConfig;
-            o.podAddressCidrBlocks = podAddressCidrBlocks;
-            o.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
-            o.staticIpConfig = staticIpConfig;
-            o.vcenterNetwork = vcenterNetwork;
-            return o;
+            final var _resultValue = new VMwareClusterNetworkConfig();
+            _resultValue.controlPlaneV2Config = controlPlaneV2Config;
+            _resultValue.dhcpIpConfig = dhcpIpConfig;
+            _resultValue.hostConfig = hostConfig;
+            _resultValue.podAddressCidrBlocks = podAddressCidrBlocks;
+            _resultValue.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
+            _resultValue.staticIpConfig = staticIpConfig;
+            _resultValue.vcenterNetwork = vcenterNetwork;
+            return _resultValue;
         }
     }
 }

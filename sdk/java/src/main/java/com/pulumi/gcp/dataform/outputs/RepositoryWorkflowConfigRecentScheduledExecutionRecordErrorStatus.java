@@ -72,10 +72,10 @@ public final class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorSt
             return this;
         }
         public RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus build() {
-            final var o = new RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus();
-            o.code = code;
-            o.message = message;
-            return o;
+            final var _resultValue = new RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus();
+            _resultValue.code = code;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

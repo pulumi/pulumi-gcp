@@ -46,9 +46,9 @@ public final class TargetRun {
             return this;
         }
         public TargetRun build() {
-            final var o = new TargetRun();
-            o.location = location;
-            return o;
+            final var _resultValue = new TargetRun();
+            _resultValue.location = location;
+            return _resultValue;
         }
     }
 }

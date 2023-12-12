@@ -161,13 +161,13 @@ public final class SubnetworkLogConfig {
             return metadataFields(List.of(metadataFields));
         }
         public SubnetworkLogConfig build() {
-            final var o = new SubnetworkLogConfig();
-            o.aggregationInterval = aggregationInterval;
-            o.filterExpr = filterExpr;
-            o.flowSampling = flowSampling;
-            o.metadata = metadata;
-            o.metadataFields = metadataFields;
-            return o;
+            final var _resultValue = new SubnetworkLogConfig();
+            _resultValue.aggregationInterval = aggregationInterval;
+            _resultValue.filterExpr = filterExpr;
+            _resultValue.flowSampling = flowSampling;
+            _resultValue.metadata = metadata;
+            _resultValue.metadataFields = metadataFields;
+            return _resultValue;
         }
     }
 }

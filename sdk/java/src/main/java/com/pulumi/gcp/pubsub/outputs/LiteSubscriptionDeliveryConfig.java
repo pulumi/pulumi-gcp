@@ -48,9 +48,9 @@ public final class LiteSubscriptionDeliveryConfig {
             return this;
         }
         public LiteSubscriptionDeliveryConfig build() {
-            final var o = new LiteSubscriptionDeliveryConfig();
-            o.deliveryRequirement = deliveryRequirement;
-            return o;
+            final var _resultValue = new LiteSubscriptionDeliveryConfig();
+            _resultValue.deliveryRequirement = deliveryRequirement;
+            return _resultValue;
         }
     }
 }

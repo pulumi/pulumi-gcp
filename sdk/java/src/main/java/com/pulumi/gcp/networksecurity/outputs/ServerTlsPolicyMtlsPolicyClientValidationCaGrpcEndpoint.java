@@ -46,9 +46,9 @@ public final class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint {
             return this;
         }
         public ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint build() {
-            final var o = new ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint();
-            o.targetUri = targetUri;
-            return o;
+            final var _resultValue = new ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint();
+            _resultValue.targetUri = targetUri;
+            return _resultValue;
         }
     }
 }

@@ -271,20 +271,20 @@ public final class WorkflowTemplateJob {
             return this;
         }
         public WorkflowTemplateJob build() {
-            final var o = new WorkflowTemplateJob();
-            o.hadoopJob = hadoopJob;
-            o.hiveJob = hiveJob;
-            o.labels = labels;
-            o.pigJob = pigJob;
-            o.prerequisiteStepIds = prerequisiteStepIds;
-            o.prestoJob = prestoJob;
-            o.pysparkJob = pysparkJob;
-            o.scheduling = scheduling;
-            o.sparkJob = sparkJob;
-            o.sparkRJob = sparkRJob;
-            o.sparkSqlJob = sparkSqlJob;
-            o.stepId = stepId;
-            return o;
+            final var _resultValue = new WorkflowTemplateJob();
+            _resultValue.hadoopJob = hadoopJob;
+            _resultValue.hiveJob = hiveJob;
+            _resultValue.labels = labels;
+            _resultValue.pigJob = pigJob;
+            _resultValue.prerequisiteStepIds = prerequisiteStepIds;
+            _resultValue.prestoJob = prestoJob;
+            _resultValue.pysparkJob = pysparkJob;
+            _resultValue.scheduling = scheduling;
+            _resultValue.sparkJob = sparkJob;
+            _resultValue.sparkRJob = sparkRJob;
+            _resultValue.sparkSqlJob = sparkSqlJob;
+            _resultValue.stepId = stepId;
+            return _resultValue;
         }
     }
 }

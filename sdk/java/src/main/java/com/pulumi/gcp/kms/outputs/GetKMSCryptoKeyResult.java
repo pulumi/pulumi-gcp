@@ -194,20 +194,20 @@ public final class GetKMSCryptoKeyResult {
             return versionTemplates(List.of(versionTemplates));
         }
         public GetKMSCryptoKeyResult build() {
-            final var o = new GetKMSCryptoKeyResult();
-            o.destroyScheduledDuration = destroyScheduledDuration;
-            o.effectiveLabels = effectiveLabels;
-            o.id = id;
-            o.importOnly = importOnly;
-            o.keyRing = keyRing;
-            o.labels = labels;
-            o.name = name;
-            o.pulumiLabels = pulumiLabels;
-            o.purpose = purpose;
-            o.rotationPeriod = rotationPeriod;
-            o.skipInitialVersionCreation = skipInitialVersionCreation;
-            o.versionTemplates = versionTemplates;
-            return o;
+            final var _resultValue = new GetKMSCryptoKeyResult();
+            _resultValue.destroyScheduledDuration = destroyScheduledDuration;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.id = id;
+            _resultValue.importOnly = importOnly;
+            _resultValue.keyRing = keyRing;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.purpose = purpose;
+            _resultValue.rotationPeriod = rotationPeriod;
+            _resultValue.skipInitialVersionCreation = skipInitialVersionCreation;
+            _resultValue.versionTemplates = versionTemplates;
+            return _resultValue;
         }
     }
 }

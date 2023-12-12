@@ -68,10 +68,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator();
-            o.acceleratorCount = acceleratorCount;
-            o.acceleratorType = acceleratorType;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator();
+            _resultValue.acceleratorCount = acceleratorCount;
+            _resultValue.acceleratorType = acceleratorType;
+            return _resultValue;
         }
     }
 }

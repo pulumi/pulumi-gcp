@@ -89,11 +89,11 @@ public final class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFul
             return this;
         }
         public CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText build() {
-            final var o = new CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.ssml = ssml;
-            o.text = text;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.ssml = ssml;
+            _resultValue.text = text;
+            return _resultValue;
         }
     }
 }

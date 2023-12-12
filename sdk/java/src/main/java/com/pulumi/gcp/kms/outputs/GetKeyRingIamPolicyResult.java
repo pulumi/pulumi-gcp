@@ -95,12 +95,12 @@ public final class GetKeyRingIamPolicyResult {
             return this;
         }
         public GetKeyRingIamPolicyResult build() {
-            final var o = new GetKeyRingIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.keyRingId = keyRingId;
-            o.policyData = policyData;
-            return o;
+            final var _resultValue = new GetKeyRingIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.keyRingId = keyRingId;
+            _resultValue.policyData = policyData;
+            return _resultValue;
         }
     }
 }

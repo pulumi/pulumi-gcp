@@ -106,12 +106,12 @@ public final class OrganizationPolicyListPolicy {
             return this;
         }
         public OrganizationPolicyListPolicy build() {
-            final var o = new OrganizationPolicyListPolicy();
-            o.allow = allow;
-            o.deny = deny;
-            o.inheritFromParent = inheritFromParent;
-            o.suggestedValue = suggestedValue;
-            return o;
+            final var _resultValue = new OrganizationPolicyListPolicy();
+            _resultValue.allow = allow;
+            _resultValue.deny = deny;
+            _resultValue.inheritFromParent = inheritFromParent;
+            _resultValue.suggestedValue = suggestedValue;
+            return _resultValue;
         }
     }
 }

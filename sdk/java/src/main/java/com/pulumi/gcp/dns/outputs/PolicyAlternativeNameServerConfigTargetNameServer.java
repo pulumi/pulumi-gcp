@@ -73,10 +73,10 @@ public final class PolicyAlternativeNameServerConfigTargetNameServer {
             return this;
         }
         public PolicyAlternativeNameServerConfigTargetNameServer build() {
-            final var o = new PolicyAlternativeNameServerConfigTargetNameServer();
-            o.forwardingPath = forwardingPath;
-            o.ipv4Address = ipv4Address;
-            return o;
+            final var _resultValue = new PolicyAlternativeNameServerConfigTargetNameServer();
+            _resultValue.forwardingPath = forwardingPath;
+            _resultValue.ipv4Address = ipv4Address;
+            return _resultValue;
         }
     }
 }

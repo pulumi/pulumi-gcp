@@ -103,12 +103,12 @@ public final class FunctionServiceConfigSecretEnvironmentVariable {
             return this;
         }
         public FunctionServiceConfigSecretEnvironmentVariable build() {
-            final var o = new FunctionServiceConfigSecretEnvironmentVariable();
-            o.key = key;
-            o.projectId = projectId;
-            o.secret = secret;
-            o.version = version;
-            return o;
+            final var _resultValue = new FunctionServiceConfigSecretEnvironmentVariable();
+            _resultValue.key = key;
+            _resultValue.projectId = projectId;
+            _resultValue.secret = secret;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

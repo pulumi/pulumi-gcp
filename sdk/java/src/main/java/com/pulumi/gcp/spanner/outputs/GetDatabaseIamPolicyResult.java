@@ -117,14 +117,14 @@ public final class GetDatabaseIamPolicyResult {
             return this;
         }
         public GetDatabaseIamPolicyResult build() {
-            final var o = new GetDatabaseIamPolicyResult();
-            o.database = database;
-            o.etag = etag;
-            o.id = id;
-            o.instance = instance;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetDatabaseIamPolicyResult();
+            _resultValue.database = database;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.instance = instance;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

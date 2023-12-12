@@ -50,9 +50,9 @@ public final class CertificateConfigX509ConfigAdditionalExtensionObjectId {
             return objectIdPaths(List.of(objectIdPaths));
         }
         public CertificateConfigX509ConfigAdditionalExtensionObjectId build() {
-            final var o = new CertificateConfigX509ConfigAdditionalExtensionObjectId();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new CertificateConfigX509ConfigAdditionalExtensionObjectId();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

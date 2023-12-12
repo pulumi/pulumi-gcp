@@ -50,9 +50,9 @@ public final class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization {
             return this;
         }
         public RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization build() {
-            final var o = new RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization();
-            o.target = target;
-            return o;
+            final var _resultValue = new RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization();
+            _resultValue.target = target;
+            return _resultValue;
         }
     }
 }

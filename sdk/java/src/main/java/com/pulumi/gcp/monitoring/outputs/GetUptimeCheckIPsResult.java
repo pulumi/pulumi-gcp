@@ -70,10 +70,10 @@ public final class GetUptimeCheckIPsResult {
             return uptimeCheckIps(List.of(uptimeCheckIps));
         }
         public GetUptimeCheckIPsResult build() {
-            final var o = new GetUptimeCheckIPsResult();
-            o.id = id;
-            o.uptimeCheckIps = uptimeCheckIps;
-            return o;
+            final var _resultValue = new GetUptimeCheckIPsResult();
+            _resultValue.id = id;
+            _resultValue.uptimeCheckIps = uptimeCheckIps;
+            return _resultValue;
         }
     }
 }

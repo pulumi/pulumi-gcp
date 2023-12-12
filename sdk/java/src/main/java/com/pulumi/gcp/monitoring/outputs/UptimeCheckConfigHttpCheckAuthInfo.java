@@ -67,10 +67,10 @@ public final class UptimeCheckConfigHttpCheckAuthInfo {
             return this;
         }
         public UptimeCheckConfigHttpCheckAuthInfo build() {
-            final var o = new UptimeCheckConfigHttpCheckAuthInfo();
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new UptimeCheckConfigHttpCheckAuthInfo();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

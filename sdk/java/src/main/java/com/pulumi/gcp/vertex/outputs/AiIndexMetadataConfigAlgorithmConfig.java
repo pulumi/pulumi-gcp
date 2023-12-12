@@ -74,10 +74,10 @@ public final class AiIndexMetadataConfigAlgorithmConfig {
             return this;
         }
         public AiIndexMetadataConfigAlgorithmConfig build() {
-            final var o = new AiIndexMetadataConfigAlgorithmConfig();
-            o.bruteForceConfig = bruteForceConfig;
-            o.treeAhConfig = treeAhConfig;
-            return o;
+            final var _resultValue = new AiIndexMetadataConfigAlgorithmConfig();
+            _resultValue.bruteForceConfig = bruteForceConfig;
+            _resultValue.treeAhConfig = treeAhConfig;
+            return _resultValue;
         }
     }
 }

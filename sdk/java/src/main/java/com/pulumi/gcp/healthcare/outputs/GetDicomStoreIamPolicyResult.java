@@ -95,12 +95,12 @@ public final class GetDicomStoreIamPolicyResult {
             return this;
         }
         public GetDicomStoreIamPolicyResult build() {
-            final var o = new GetDicomStoreIamPolicyResult();
-            o.dicomStoreId = dicomStoreId;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            return o;
+            final var _resultValue = new GetDicomStoreIamPolicyResult();
+            _resultValue.dicomStoreId = dicomStoreId;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            return _resultValue;
         }
     }
 }

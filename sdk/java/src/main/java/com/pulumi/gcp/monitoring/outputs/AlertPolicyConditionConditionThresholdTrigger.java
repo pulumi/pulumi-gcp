@@ -76,10 +76,10 @@ public final class AlertPolicyConditionConditionThresholdTrigger {
             return this;
         }
         public AlertPolicyConditionConditionThresholdTrigger build() {
-            final var o = new AlertPolicyConditionConditionThresholdTrigger();
-            o.count = count;
-            o.percent = percent;
-            return o;
+            final var _resultValue = new AlertPolicyConditionConditionThresholdTrigger();
+            _resultValue.count = count;
+            _resultValue.percent = percent;
+            return _resultValue;
         }
     }
 }

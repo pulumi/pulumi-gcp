@@ -46,9 +46,9 @@ public final class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
             return this;
         }
         public ClusterAddonsConfigGcePersistentDiskCsiDriverConfig build() {
-            final var o = new ClusterAddonsConfigGcePersistentDiskCsiDriverConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterAddonsConfigGcePersistentDiskCsiDriverConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class OrganizationBucketConfigIndexConfig {
             return this;
         }
         public OrganizationBucketConfigIndexConfig build() {
-            final var o = new OrganizationBucketConfigIndexConfig();
-            o.fieldPath = fieldPath;
-            o.type = type;
-            return o;
+            final var _resultValue = new OrganizationBucketConfigIndexConfig();
+            _resultValue.fieldPath = fieldPath;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

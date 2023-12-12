@@ -75,10 +75,10 @@ public final class V2VmDataDisk {
             return this;
         }
         public V2VmDataDisk build() {
-            final var o = new V2VmDataDisk();
-            o.mode = mode;
-            o.sourceDisk = sourceDisk;
-            return o;
+            final var _resultValue = new V2VmDataDisk();
+            _resultValue.mode = mode;
+            _resultValue.sourceDisk = sourceDisk;
+            return _resultValue;
         }
     }
 }

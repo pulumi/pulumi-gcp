@@ -69,10 +69,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFi
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote();
-            o.sha256Checksum = sha256Checksum;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote();
+            _resultValue.sha256Checksum = sha256Checksum;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

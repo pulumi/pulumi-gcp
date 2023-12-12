@@ -48,9 +48,9 @@ public final class DiskGuestOsFeature {
             return this;
         }
         public DiskGuestOsFeature build() {
-            final var o = new DiskGuestOsFeature();
-            o.type = type;
-            return o;
+            final var _resultValue = new DiskGuestOsFeature();
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

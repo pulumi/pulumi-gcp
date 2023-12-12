@@ -76,12 +76,12 @@ public final class EnvironmentConfigWorkloadsConfig {
             return this;
         }
         public EnvironmentConfigWorkloadsConfig build() {
-            final var o = new EnvironmentConfigWorkloadsConfig();
-            o.scheduler = scheduler;
-            o.triggerer = triggerer;
-            o.webServer = webServer;
-            o.worker = worker;
-            return o;
+            final var _resultValue = new EnvironmentConfigWorkloadsConfig();
+            _resultValue.scheduler = scheduler;
+            _resultValue.triggerer = triggerer;
+            _resultValue.webServer = webServer;
+            _resultValue.worker = worker;
+            return _resultValue;
         }
     }
 }

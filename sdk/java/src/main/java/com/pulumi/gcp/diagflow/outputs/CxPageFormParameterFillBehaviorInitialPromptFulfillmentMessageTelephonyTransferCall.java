@@ -46,9 +46,9 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessag
             return this;
         }
         public CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall build() {
-            final var o = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall();
-            o.phoneNumber = phoneNumber;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall();
+            _resultValue.phoneNumber = phoneNumber;
+            return _resultValue;
         }
     }
 }

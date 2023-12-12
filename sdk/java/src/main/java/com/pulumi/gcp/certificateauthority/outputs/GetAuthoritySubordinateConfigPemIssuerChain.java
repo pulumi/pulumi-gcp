@@ -42,9 +42,9 @@ public final class GetAuthoritySubordinateConfigPemIssuerChain {
             return pemCertificates(List.of(pemCertificates));
         }
         public GetAuthoritySubordinateConfigPemIssuerChain build() {
-            final var o = new GetAuthoritySubordinateConfigPemIssuerChain();
-            o.pemCertificates = pemCertificates;
-            return o;
+            final var _resultValue = new GetAuthoritySubordinateConfigPemIssuerChain();
+            _resultValue.pemCertificates = pemCertificates;
+            return _resultValue;
         }
     }
 }

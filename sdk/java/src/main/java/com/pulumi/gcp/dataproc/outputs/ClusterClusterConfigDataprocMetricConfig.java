@@ -50,9 +50,9 @@ public final class ClusterClusterConfigDataprocMetricConfig {
             return metrics(List.of(metrics));
         }
         public ClusterClusterConfigDataprocMetricConfig build() {
-            final var o = new ClusterClusterConfigDataprocMetricConfig();
-            o.metrics = metrics;
-            return o;
+            final var _resultValue = new ClusterClusterConfigDataprocMetricConfig();
+            _resultValue.metrics = metrics;
+            return _resultValue;
         }
     }
 }

@@ -87,11 +87,11 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDisk
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig();
-            o.bootDiskSizeGb = bootDiskSizeGb;
-            o.bootDiskType = bootDiskType;
-            o.numLocalSsds = numLocalSsds;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig();
+            _resultValue.bootDiskSizeGb = bootDiskSizeGb;
+            _resultValue.bootDiskType = bootDiskType;
+            _resultValue.numLocalSsds = numLocalSsds;
+            return _resultValue;
         }
     }
 }

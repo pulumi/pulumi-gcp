@@ -95,12 +95,12 @@ public final class GetHl7V2StoreIamPolicyResult {
             return this;
         }
         public GetHl7V2StoreIamPolicyResult build() {
-            final var o = new GetHl7V2StoreIamPolicyResult();
-            o.etag = etag;
-            o.hl7V2StoreId = hl7V2StoreId;
-            o.id = id;
-            o.policyData = policyData;
-            return o;
+            final var _resultValue = new GetHl7V2StoreIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.hl7V2StoreId = hl7V2StoreId;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            return _resultValue;
         }
     }
 }

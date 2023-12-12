@@ -69,10 +69,10 @@ public final class ConnectionEventingRuntimeDataStatus {
             return this;
         }
         public ConnectionEventingRuntimeDataStatus build() {
-            final var o = new ConnectionEventingRuntimeDataStatus();
-            o.description = description;
-            o.state = state;
-            return o;
+            final var _resultValue = new ConnectionEventingRuntimeDataStatus();
+            _resultValue.description = description;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

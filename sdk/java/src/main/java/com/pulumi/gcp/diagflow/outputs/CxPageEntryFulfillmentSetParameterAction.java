@@ -67,10 +67,10 @@ public final class CxPageEntryFulfillmentSetParameterAction {
             return this;
         }
         public CxPageEntryFulfillmentSetParameterAction build() {
-            final var o = new CxPageEntryFulfillmentSetParameterAction();
-            o.parameter = parameter;
-            o.value = value;
-            return o;
+            final var _resultValue = new CxPageEntryFulfillmentSetParameterAction();
+            _resultValue.parameter = parameter;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

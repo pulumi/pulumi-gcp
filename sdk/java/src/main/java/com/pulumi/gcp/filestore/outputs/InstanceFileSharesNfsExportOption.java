@@ -153,13 +153,13 @@ public final class InstanceFileSharesNfsExportOption {
             return this;
         }
         public InstanceFileSharesNfsExportOption build() {
-            final var o = new InstanceFileSharesNfsExportOption();
-            o.accessMode = accessMode;
-            o.anonGid = anonGid;
-            o.anonUid = anonUid;
-            o.ipRanges = ipRanges;
-            o.squashMode = squashMode;
-            return o;
+            final var _resultValue = new InstanceFileSharesNfsExportOption();
+            _resultValue.accessMode = accessMode;
+            _resultValue.anonGid = anonGid;
+            _resultValue.anonUid = anonUid;
+            _resultValue.ipRanges = ipRanges;
+            _resultValue.squashMode = squashMode;
+            return _resultValue;
         }
     }
 }

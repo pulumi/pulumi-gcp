@@ -108,13 +108,13 @@ public final class GetApiIamPolicyResult {
             return this;
         }
         public GetApiIamPolicyResult build() {
-            final var o = new GetApiIamPolicyResult();
-            o.api = api;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetApiIamPolicyResult();
+            _resultValue.api = api;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

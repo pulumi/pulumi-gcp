@@ -119,11 +119,11 @@ public final class TableExternalDataConfigurationHivePartitioningOptions {
             return this;
         }
         public TableExternalDataConfigurationHivePartitioningOptions build() {
-            final var o = new TableExternalDataConfigurationHivePartitioningOptions();
-            o.mode = mode;
-            o.requirePartitionFilter = requirePartitionFilter;
-            o.sourceUriPrefix = sourceUriPrefix;
-            return o;
+            final var _resultValue = new TableExternalDataConfigurationHivePartitioningOptions();
+            _resultValue.mode = mode;
+            _resultValue.requirePartitionFilter = requirePartitionFilter;
+            _resultValue.sourceUriPrefix = sourceUriPrefix;
+            return _resultValue;
         }
     }
 }

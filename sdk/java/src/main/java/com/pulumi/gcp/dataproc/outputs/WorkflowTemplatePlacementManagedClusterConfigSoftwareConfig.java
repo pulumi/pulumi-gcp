@@ -119,11 +119,11 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig();
-            o.imageVersion = imageVersion;
-            o.optionalComponents = optionalComponents;
-            o.properties = properties;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig();
+            _resultValue.imageVersion = imageVersion;
+            _resultValue.optionalComponents = optionalComponents;
+            _resultValue.properties = properties;
+            return _resultValue;
         }
     }
 }

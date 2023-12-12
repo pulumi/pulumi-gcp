@@ -52,9 +52,9 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDict
             return words(List.of(words));
         }
         public PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList();
-            o.words = words;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList();
+            _resultValue.words = words;
+            return _resultValue;
         }
     }
 }

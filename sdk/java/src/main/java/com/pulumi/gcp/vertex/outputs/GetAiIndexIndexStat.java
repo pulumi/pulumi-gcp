@@ -50,10 +50,10 @@ public final class GetAiIndexIndexStat {
             return this;
         }
         public GetAiIndexIndexStat build() {
-            final var o = new GetAiIndexIndexStat();
-            o.shardsCount = shardsCount;
-            o.vectorsCount = vectorsCount;
-            return o;
+            final var _resultValue = new GetAiIndexIndexStat();
+            _resultValue.shardsCount = shardsCount;
+            _resultValue.vectorsCount = vectorsCount;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class WorkloadEkmProvisioningResponse {
             return this;
         }
         public WorkloadEkmProvisioningResponse build() {
-            final var o = new WorkloadEkmProvisioningResponse();
-            o.ekmProvisioningErrorDomain = ekmProvisioningErrorDomain;
-            o.ekmProvisioningErrorMapping = ekmProvisioningErrorMapping;
-            o.ekmProvisioningState = ekmProvisioningState;
-            return o;
+            final var _resultValue = new WorkloadEkmProvisioningResponse();
+            _resultValue.ekmProvisioningErrorDomain = ekmProvisioningErrorDomain;
+            _resultValue.ekmProvisioningErrorMapping = ekmProvisioningErrorMapping;
+            _resultValue.ekmProvisioningState = ekmProvisioningState;
+            return _resultValue;
         }
     }
 }

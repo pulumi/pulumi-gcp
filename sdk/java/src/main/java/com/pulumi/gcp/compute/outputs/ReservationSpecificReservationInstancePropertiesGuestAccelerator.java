@@ -74,10 +74,10 @@ public final class ReservationSpecificReservationInstancePropertiesGuestAccelera
             return this;
         }
         public ReservationSpecificReservationInstancePropertiesGuestAccelerator build() {
-            final var o = new ReservationSpecificReservationInstancePropertiesGuestAccelerator();
-            o.acceleratorCount = acceleratorCount;
-            o.acceleratorType = acceleratorType;
-            return o;
+            final var _resultValue = new ReservationSpecificReservationInstancePropertiesGuestAccelerator();
+            _resultValue.acceleratorCount = acceleratorCount;
+            _resultValue.acceleratorType = acceleratorType;
+            return _resultValue;
         }
     }
 }

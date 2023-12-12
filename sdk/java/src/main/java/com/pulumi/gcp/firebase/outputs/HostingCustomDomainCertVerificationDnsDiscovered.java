@@ -74,10 +74,10 @@ public final class HostingCustomDomainCertVerificationDnsDiscovered {
             return records(List.of(records));
         }
         public HostingCustomDomainCertVerificationDnsDiscovered build() {
-            final var o = new HostingCustomDomainCertVerificationDnsDiscovered();
-            o.domainName = domainName;
-            o.records = records;
-            return o;
+            final var _resultValue = new HostingCustomDomainCertVerificationDnsDiscovered();
+            _resultValue.domainName = domainName;
+            _resultValue.records = records;
+            return _resultValue;
         }
     }
 }

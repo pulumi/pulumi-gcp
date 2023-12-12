@@ -60,11 +60,11 @@ public final class GetNotificationChannelSensitiveLabel {
             return this;
         }
         public GetNotificationChannelSensitiveLabel build() {
-            final var o = new GetNotificationChannelSensitiveLabel();
-            o.authToken = authToken;
-            o.password = password;
-            o.serviceKey = serviceKey;
-            return o;
+            final var _resultValue = new GetNotificationChannelSensitiveLabel();
+            _resultValue.authToken = authToken;
+            _resultValue.password = password;
+            _resultValue.serviceKey = serviceKey;
+            return _resultValue;
         }
     }
 }

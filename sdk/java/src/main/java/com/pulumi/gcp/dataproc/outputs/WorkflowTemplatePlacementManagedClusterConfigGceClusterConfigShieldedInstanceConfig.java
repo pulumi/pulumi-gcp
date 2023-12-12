@@ -86,11 +86,11 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig();
-            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
-            o.enableSecureBoot = enableSecureBoot;
-            o.enableVtpm = enableVtpm;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig();
+            _resultValue.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            _resultValue.enableSecureBoot = enableSecureBoot;
+            _resultValue.enableVtpm = enableVtpm;
+            return _resultValue;
         }
     }
 }

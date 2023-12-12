@@ -50,9 +50,9 @@ public final class GetIstioCanonicalServiceTelemetry {
             return this;
         }
         public GetIstioCanonicalServiceTelemetry build() {
-            final var o = new GetIstioCanonicalServiceTelemetry();
-            o.resourceName = resourceName;
-            return o;
+            final var _resultValue = new GetIstioCanonicalServiceTelemetry();
+            _resultValue.resourceName = resourceName;
+            return _resultValue;
         }
     }
 }

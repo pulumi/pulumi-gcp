@@ -56,9 +56,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTime
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField();
-            o.name = name;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

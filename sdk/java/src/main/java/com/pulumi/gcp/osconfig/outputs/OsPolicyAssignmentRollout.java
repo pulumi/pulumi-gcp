@@ -78,10 +78,10 @@ public final class OsPolicyAssignmentRollout {
             return this;
         }
         public OsPolicyAssignmentRollout build() {
-            final var o = new OsPolicyAssignmentRollout();
-            o.disruptionBudget = disruptionBudget;
-            o.minWaitDuration = minWaitDuration;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentRollout();
+            _resultValue.disruptionBudget = disruptionBudget;
+            _resultValue.minWaitDuration = minWaitDuration;
+            return _resultValue;
         }
     }
 }

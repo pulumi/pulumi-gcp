@@ -65,10 +65,10 @@ public final class SecurityPolicyRuleRateLimitOptionsRateLimitThreshold {
             return this;
         }
         public SecurityPolicyRuleRateLimitOptionsRateLimitThreshold build() {
-            final var o = new SecurityPolicyRuleRateLimitOptionsRateLimitThreshold();
-            o.count = count;
-            o.intervalSec = intervalSec;
-            return o;
+            final var _resultValue = new SecurityPolicyRuleRateLimitOptionsRateLimitThreshold();
+            _resultValue.count = count;
+            _resultValue.intervalSec = intervalSec;
+            return _resultValue;
         }
     }
 }

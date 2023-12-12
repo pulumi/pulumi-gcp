@@ -102,11 +102,11 @@ public final class FieldIndexConfigIndex {
             return this;
         }
         public FieldIndexConfigIndex build() {
-            final var o = new FieldIndexConfigIndex();
-            o.arrayConfig = arrayConfig;
-            o.order = order;
-            o.queryScope = queryScope;
-            return o;
+            final var _resultValue = new FieldIndexConfigIndex();
+            _resultValue.arrayConfig = arrayConfig;
+            _resultValue.order = order;
+            _resultValue.queryScope = queryScope;
+            return _resultValue;
         }
     }
 }

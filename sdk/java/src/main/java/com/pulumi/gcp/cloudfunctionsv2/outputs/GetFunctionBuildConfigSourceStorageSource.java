@@ -61,11 +61,11 @@ public final class GetFunctionBuildConfigSourceStorageSource {
             return this;
         }
         public GetFunctionBuildConfigSourceStorageSource build() {
-            final var o = new GetFunctionBuildConfigSourceStorageSource();
-            o.bucket = bucket;
-            o.generation = generation;
-            o.object = object;
-            return o;
+            final var _resultValue = new GetFunctionBuildConfigSourceStorageSource();
+            _resultValue.bucket = bucket;
+            _resultValue.generation = generation;
+            _resultValue.object = object;
+            return _resultValue;
         }
     }
 }

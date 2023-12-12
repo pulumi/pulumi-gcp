@@ -62,11 +62,11 @@ public final class DataExchangeIamMemberCondition {
             return this;
         }
         public DataExchangeIamMemberCondition build() {
-            final var o = new DataExchangeIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new DataExchangeIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

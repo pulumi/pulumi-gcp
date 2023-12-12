@@ -110,12 +110,12 @@ public final class ApplicationIap {
             return this;
         }
         public ApplicationIap build() {
-            final var o = new ApplicationIap();
-            o.enabled = enabled;
-            o.oauth2ClientId = oauth2ClientId;
-            o.oauth2ClientSecret = oauth2ClientSecret;
-            o.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
-            return o;
+            final var _resultValue = new ApplicationIap();
+            _resultValue.enabled = enabled;
+            _resultValue.oauth2ClientId = oauth2ClientId;
+            _resultValue.oauth2ClientSecret = oauth2ClientSecret;
+            _resultValue.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
+            return _resultValue;
         }
     }
 }

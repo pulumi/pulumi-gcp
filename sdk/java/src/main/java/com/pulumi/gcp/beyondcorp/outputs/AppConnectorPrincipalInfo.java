@@ -48,9 +48,9 @@ public final class AppConnectorPrincipalInfo {
             return this;
         }
         public AppConnectorPrincipalInfo build() {
-            final var o = new AppConnectorPrincipalInfo();
-            o.serviceAccount = serviceAccount;
-            return o;
+            final var _resultValue = new AppConnectorPrincipalInfo();
+            _resultValue.serviceAccount = serviceAccount;
+            return _resultValue;
         }
     }
 }

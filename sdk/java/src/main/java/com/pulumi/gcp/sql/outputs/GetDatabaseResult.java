@@ -125,16 +125,16 @@ public final class GetDatabaseResult {
             return this;
         }
         public GetDatabaseResult build() {
-            final var o = new GetDatabaseResult();
-            o.charset = charset;
-            o.collation = collation;
-            o.deletionPolicy = deletionPolicy;
-            o.id = id;
-            o.instance = instance;
-            o.name = name;
-            o.project = project;
-            o.selfLink = selfLink;
-            return o;
+            final var _resultValue = new GetDatabaseResult();
+            _resultValue.charset = charset;
+            _resultValue.collation = collation;
+            _resultValue.deletionPolicy = deletionPolicy;
+            _resultValue.id = id;
+            _resultValue.instance = instance;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            return _resultValue;
         }
     }
 }

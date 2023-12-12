@@ -241,20 +241,20 @@ public final class GetSubnetworkResult {
             return this;
         }
         public GetSubnetworkResult build() {
-            final var o = new GetSubnetworkResult();
-            o.description = description;
-            o.gatewayAddress = gatewayAddress;
-            o.id = id;
-            o.internalIpv6Prefix = internalIpv6Prefix;
-            o.ipCidrRange = ipCidrRange;
-            o.name = name;
-            o.network = network;
-            o.privateIpGoogleAccess = privateIpGoogleAccess;
-            o.project = project;
-            o.region = region;
-            o.secondaryIpRanges = secondaryIpRanges;
-            o.selfLink = selfLink;
-            return o;
+            final var _resultValue = new GetSubnetworkResult();
+            _resultValue.description = description;
+            _resultValue.gatewayAddress = gatewayAddress;
+            _resultValue.id = id;
+            _resultValue.internalIpv6Prefix = internalIpv6Prefix;
+            _resultValue.ipCidrRange = ipCidrRange;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.privateIpGoogleAccess = privateIpGoogleAccess;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.secondaryIpRanges = secondaryIpRanges;
+            _resultValue.selfLink = selfLink;
+            return _resultValue;
         }
     }
 }

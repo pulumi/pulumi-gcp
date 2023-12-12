@@ -90,11 +90,11 @@ public final class PipelineScheduleInfo {
             return this;
         }
         public PipelineScheduleInfo build() {
-            final var o = new PipelineScheduleInfo();
-            o.nextJobTime = nextJobTime;
-            o.schedule = schedule;
-            o.timeZone = timeZone;
-            return o;
+            final var _resultValue = new PipelineScheduleInfo();
+            _resultValue.nextJobTime = nextJobTime;
+            _resultValue.schedule = schedule;
+            _resultValue.timeZone = timeZone;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class FlexibleAppVersionDeploymentZip {
             return this;
         }
         public FlexibleAppVersionDeploymentZip build() {
-            final var o = new FlexibleAppVersionDeploymentZip();
-            o.filesCount = filesCount;
-            o.sourceUrl = sourceUrl;
-            return o;
+            final var _resultValue = new FlexibleAppVersionDeploymentZip();
+            _resultValue.filesCount = filesCount;
+            _resultValue.sourceUrl = sourceUrl;
+            return _resultValue;
         }
     }
 }

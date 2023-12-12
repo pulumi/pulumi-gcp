@@ -66,11 +66,11 @@ public final class NodePoolNodeConfigReservationAffinity {
             return values(List.of(values));
         }
         public NodePoolNodeConfigReservationAffinity build() {
-            final var o = new NodePoolNodeConfigReservationAffinity();
-            o.consumeReservationType = consumeReservationType;
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigReservationAffinity();
+            _resultValue.consumeReservationType = consumeReservationType;
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

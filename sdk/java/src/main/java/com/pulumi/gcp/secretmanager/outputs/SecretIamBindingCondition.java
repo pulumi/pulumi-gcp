@@ -62,11 +62,11 @@ public final class SecretIamBindingCondition {
             return this;
         }
         public SecretIamBindingCondition build() {
-            final var o = new SecretIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new SecretIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

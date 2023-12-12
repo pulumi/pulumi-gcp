@@ -247,19 +247,19 @@ public final class TransferJobTransferSpec {
             return this;
         }
         public TransferJobTransferSpec build() {
-            final var o = new TransferJobTransferSpec();
-            o.awsS3DataSource = awsS3DataSource;
-            o.azureBlobStorageDataSource = azureBlobStorageDataSource;
-            o.gcsDataSink = gcsDataSink;
-            o.gcsDataSource = gcsDataSource;
-            o.httpDataSource = httpDataSource;
-            o.objectConditions = objectConditions;
-            o.posixDataSink = posixDataSink;
-            o.posixDataSource = posixDataSource;
-            o.sinkAgentPoolName = sinkAgentPoolName;
-            o.sourceAgentPoolName = sourceAgentPoolName;
-            o.transferOptions = transferOptions;
-            return o;
+            final var _resultValue = new TransferJobTransferSpec();
+            _resultValue.awsS3DataSource = awsS3DataSource;
+            _resultValue.azureBlobStorageDataSource = azureBlobStorageDataSource;
+            _resultValue.gcsDataSink = gcsDataSink;
+            _resultValue.gcsDataSource = gcsDataSource;
+            _resultValue.httpDataSource = httpDataSource;
+            _resultValue.objectConditions = objectConditions;
+            _resultValue.posixDataSink = posixDataSink;
+            _resultValue.posixDataSource = posixDataSource;
+            _resultValue.sinkAgentPoolName = sinkAgentPoolName;
+            _resultValue.sourceAgentPoolName = sourceAgentPoolName;
+            _resultValue.transferOptions = transferOptions;
+            return _resultValue;
         }
     }
 }

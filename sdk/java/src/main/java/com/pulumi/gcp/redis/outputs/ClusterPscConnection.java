@@ -132,13 +132,13 @@ public final class ClusterPscConnection {
             return this;
         }
         public ClusterPscConnection build() {
-            final var o = new ClusterPscConnection();
-            o.address = address;
-            o.forwardingRule = forwardingRule;
-            o.network = network;
-            o.projectId = projectId;
-            o.pscConnectionId = pscConnectionId;
-            return o;
+            final var _resultValue = new ClusterPscConnection();
+            _resultValue.address = address;
+            _resultValue.forwardingRule = forwardingRule;
+            _resultValue.network = network;
+            _resultValue.projectId = projectId;
+            _resultValue.pscConnectionId = pscConnectionId;
+            return _resultValue;
         }
     }
 }

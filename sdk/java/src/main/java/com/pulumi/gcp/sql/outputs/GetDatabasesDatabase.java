@@ -124,15 +124,15 @@ public final class GetDatabasesDatabase {
             return this;
         }
         public GetDatabasesDatabase build() {
-            final var o = new GetDatabasesDatabase();
-            o.charset = charset;
-            o.collation = collation;
-            o.deletionPolicy = deletionPolicy;
-            o.instance = instance;
-            o.name = name;
-            o.project = project;
-            o.selfLink = selfLink;
-            return o;
+            final var _resultValue = new GetDatabasesDatabase();
+            _resultValue.charset = charset;
+            _resultValue.collation = collation;
+            _resultValue.deletionPolicy = deletionPolicy;
+            _resultValue.instance = instance;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            return _resultValue;
         }
     }
 }

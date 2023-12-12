@@ -72,10 +72,10 @@ public final class RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort {
             return this;
         }
         public RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort build() {
-            final var o = new RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort();
-            o.httpStatus = httpStatus;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort();
+            _resultValue.httpStatus = httpStatus;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

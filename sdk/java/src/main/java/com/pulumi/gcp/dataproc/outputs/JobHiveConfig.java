@@ -156,14 +156,14 @@ public final class JobHiveConfig {
             return this;
         }
         public JobHiveConfig build() {
-            final var o = new JobHiveConfig();
-            o.continueOnFailure = continueOnFailure;
-            o.jarFileUris = jarFileUris;
-            o.properties = properties;
-            o.queryFileUri = queryFileUri;
-            o.queryLists = queryLists;
-            o.scriptVariables = scriptVariables;
-            return o;
+            final var _resultValue = new JobHiveConfig();
+            _resultValue.continueOnFailure = continueOnFailure;
+            _resultValue.jarFileUris = jarFileUris;
+            _resultValue.properties = properties;
+            _resultValue.queryFileUri = queryFileUri;
+            _resultValue.queryLists = queryLists;
+            _resultValue.scriptVariables = scriptVariables;
+            return _resultValue;
         }
     }
 }

@@ -86,11 +86,11 @@ public final class TransferJobEventStream {
             return this;
         }
         public TransferJobEventStream build() {
-            final var o = new TransferJobEventStream();
-            o.eventStreamExpirationTime = eventStreamExpirationTime;
-            o.eventStreamStartTime = eventStreamStartTime;
-            o.name = name;
-            return o;
+            final var _resultValue = new TransferJobEventStream();
+            _resultValue.eventStreamExpirationTime = eventStreamExpirationTime;
+            _resultValue.eventStreamStartTime = eventStreamStartTime;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

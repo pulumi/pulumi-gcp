@@ -117,14 +117,14 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
             return this;
         }
         public GetInstanceNetworkInterfaceIpv6AccessConfig build() {
-            final var o = new GetInstanceNetworkInterfaceIpv6AccessConfig();
-            o.externalIpv6 = externalIpv6;
-            o.externalIpv6PrefixLength = externalIpv6PrefixLength;
-            o.name = name;
-            o.networkTier = networkTier;
-            o.publicPtrDomainName = publicPtrDomainName;
-            o.securityPolicy = securityPolicy;
-            return o;
+            final var _resultValue = new GetInstanceNetworkInterfaceIpv6AccessConfig();
+            _resultValue.externalIpv6 = externalIpv6;
+            _resultValue.externalIpv6PrefixLength = externalIpv6PrefixLength;
+            _resultValue.name = name;
+            _resultValue.networkTier = networkTier;
+            _resultValue.publicPtrDomainName = publicPtrDomainName;
+            _resultValue.securityPolicy = securityPolicy;
+            return _resultValue;
         }
     }
 }

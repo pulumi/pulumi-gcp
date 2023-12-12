@@ -117,12 +117,12 @@ public final class RestorePlanRestoreConfigTransformationRuleFieldAction {
             return this;
         }
         public RestorePlanRestoreConfigTransformationRuleFieldAction build() {
-            final var o = new RestorePlanRestoreConfigTransformationRuleFieldAction();
-            o.fromPath = fromPath;
-            o.op = op;
-            o.path = path;
-            o.value = value;
-            return o;
+            final var _resultValue = new RestorePlanRestoreConfigTransformationRuleFieldAction();
+            _resultValue.fromPath = fromPath;
+            _resultValue.op = op;
+            _resultValue.path = path;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -72,10 +72,10 @@ public final class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDela
             return this;
         }
         public URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay build() {
-            final var o = new URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

@@ -206,16 +206,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkg build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkg();
-            o.apt = apt;
-            o.deb = deb;
-            o.desiredState = desiredState;
-            o.googet = googet;
-            o.msi = msi;
-            o.rpm = rpm;
-            o.yum = yum;
-            o.zypper = zypper;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkg();
+            _resultValue.apt = apt;
+            _resultValue.deb = deb;
+            _resultValue.desiredState = desiredState;
+            _resultValue.googet = googet;
+            _resultValue.msi = msi;
+            _resultValue.rpm = rpm;
+            _resultValue.yum = yum;
+            _resultValue.zypper = zypper;
+            return _resultValue;
         }
     }
 }

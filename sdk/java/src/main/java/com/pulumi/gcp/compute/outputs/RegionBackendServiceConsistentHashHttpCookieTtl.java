@@ -75,10 +75,10 @@ public final class RegionBackendServiceConsistentHashHttpCookieTtl {
             return this;
         }
         public RegionBackendServiceConsistentHashHttpCookieTtl build() {
-            final var o = new RegionBackendServiceConsistentHashHttpCookieTtl();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new RegionBackendServiceConsistentHashHttpCookieTtl();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

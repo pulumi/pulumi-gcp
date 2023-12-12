@@ -50,9 +50,9 @@ public final class CxFlowAdvancedSettingsAudioExportGcsDestination {
             return this;
         }
         public CxFlowAdvancedSettingsAudioExportGcsDestination build() {
-            final var o = new CxFlowAdvancedSettingsAudioExportGcsDestination();
-            o.uri = uri;
-            return o;
+            final var _resultValue = new CxFlowAdvancedSettingsAudioExportGcsDestination();
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

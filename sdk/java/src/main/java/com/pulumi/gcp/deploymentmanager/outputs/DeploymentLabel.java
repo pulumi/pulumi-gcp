@@ -67,10 +67,10 @@ public final class DeploymentLabel {
             return this;
         }
         public DeploymentLabel build() {
-            final var o = new DeploymentLabel();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new DeploymentLabel();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

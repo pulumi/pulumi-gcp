@@ -57,10 +57,10 @@ public final class GetSecretReplication {
             return userManageds(List.of(userManageds));
         }
         public GetSecretReplication build() {
-            final var o = new GetSecretReplication();
-            o.autos = autos;
-            o.userManageds = userManageds;
-            return o;
+            final var _resultValue = new GetSecretReplication();
+            _resultValue.autos = autos;
+            _resultValue.userManageds = userManageds;
+            return _resultValue;
         }
     }
 }

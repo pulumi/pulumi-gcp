@@ -188,15 +188,15 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPol
             return this;
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy();
-            o.allowCredentials = allowCredentials;
-            o.allowHeaders = allowHeaders;
-            o.allowMethods = allowMethods;
-            o.allowOrigins = allowOrigins;
-            o.disabled = disabled;
-            o.exposeHeaders = exposeHeaders;
-            o.maxAge = maxAge;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy();
+            _resultValue.allowCredentials = allowCredentials;
+            _resultValue.allowHeaders = allowHeaders;
+            _resultValue.allowMethods = allowMethods;
+            _resultValue.allowOrigins = allowOrigins;
+            _resultValue.disabled = disabled;
+            _resultValue.exposeHeaders = exposeHeaders;
+            _resultValue.maxAge = maxAge;
+            return _resultValue;
         }
     }
 }

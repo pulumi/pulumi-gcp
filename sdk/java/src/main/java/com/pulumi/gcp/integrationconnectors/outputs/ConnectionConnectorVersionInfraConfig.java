@@ -50,9 +50,9 @@ public final class ConnectionConnectorVersionInfraConfig {
             return this;
         }
         public ConnectionConnectorVersionInfraConfig build() {
-            final var o = new ConnectionConnectorVersionInfraConfig();
-            o.ratelimitThreshold = ratelimitThreshold;
-            return o;
+            final var _resultValue = new ConnectionConnectorVersionInfraConfig();
+            _resultValue.ratelimitThreshold = ratelimitThreshold;
+            return _resultValue;
         }
     }
 }

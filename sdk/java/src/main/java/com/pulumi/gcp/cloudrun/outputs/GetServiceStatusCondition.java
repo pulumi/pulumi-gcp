@@ -71,12 +71,12 @@ public final class GetServiceStatusCondition {
             return this;
         }
         public GetServiceStatusCondition build() {
-            final var o = new GetServiceStatusCondition();
-            o.message = message;
-            o.reason = reason;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetServiceStatusCondition();
+            _resultValue.message = message;
+            _resultValue.reason = reason;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

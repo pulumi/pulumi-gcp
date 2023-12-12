@@ -67,10 +67,10 @@ public final class FolderBucketConfigIndexConfig {
             return this;
         }
         public FolderBucketConfigIndexConfig build() {
-            final var o = new FolderBucketConfigIndexConfig();
-            o.fieldPath = fieldPath;
-            o.type = type;
-            return o;
+            final var _resultValue = new FolderBucketConfigIndexConfig();
+            _resultValue.fieldPath = fieldPath;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

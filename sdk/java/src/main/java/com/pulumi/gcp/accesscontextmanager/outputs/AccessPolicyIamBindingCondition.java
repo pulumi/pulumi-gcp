@@ -62,11 +62,11 @@ public final class AccessPolicyIamBindingCondition {
             return this;
         }
         public AccessPolicyIamBindingCondition build() {
-            final var o = new AccessPolicyIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new AccessPolicyIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

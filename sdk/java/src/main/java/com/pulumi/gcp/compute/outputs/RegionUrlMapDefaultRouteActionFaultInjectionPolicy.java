@@ -72,10 +72,10 @@ public final class RegionUrlMapDefaultRouteActionFaultInjectionPolicy {
             return this;
         }
         public RegionUrlMapDefaultRouteActionFaultInjectionPolicy build() {
-            final var o = new RegionUrlMapDefaultRouteActionFaultInjectionPolicy();
-            o.abort = abort;
-            o.delay = delay;
-            return o;
+            final var _resultValue = new RegionUrlMapDefaultRouteActionFaultInjectionPolicy();
+            _resultValue.abort = abort;
+            _resultValue.delay = delay;
+            return _resultValue;
         }
     }
 }

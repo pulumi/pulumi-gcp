@@ -57,10 +57,10 @@ public final class GetJobTemplateTemplateContainerVolumeMount {
             return this;
         }
         public GetJobTemplateTemplateContainerVolumeMount build() {
-            final var o = new GetJobTemplateTemplateContainerVolumeMount();
-            o.mountPath = mountPath;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetJobTemplateTemplateContainerVolumeMount();
+            _resultValue.mountPath = mountPath;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

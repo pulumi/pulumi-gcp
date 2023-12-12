@@ -56,9 +56,9 @@ public final class AlertPolicyConditionConditionThresholdForecastOptions {
             return this;
         }
         public AlertPolicyConditionConditionThresholdForecastOptions build() {
-            final var o = new AlertPolicyConditionConditionThresholdForecastOptions();
-            o.forecastHorizon = forecastHorizon;
-            return o;
+            final var _resultValue = new AlertPolicyConditionConditionThresholdForecastOptions();
+            _resultValue.forecastHorizon = forecastHorizon;
+            return _resultValue;
         }
     }
 }

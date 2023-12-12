@@ -129,13 +129,13 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
             return this;
         }
         public WorkstationConfigPersistentDirectoryGcePd build() {
-            final var o = new WorkstationConfigPersistentDirectoryGcePd();
-            o.diskType = diskType;
-            o.fsType = fsType;
-            o.reclaimPolicy = reclaimPolicy;
-            o.sizeGb = sizeGb;
-            o.sourceSnapshot = sourceSnapshot;
-            return o;
+            final var _resultValue = new WorkstationConfigPersistentDirectoryGcePd();
+            _resultValue.diskType = diskType;
+            _resultValue.fsType = fsType;
+            _resultValue.reclaimPolicy = reclaimPolicy;
+            _resultValue.sizeGb = sizeGb;
+            _resultValue.sourceSnapshot = sourceSnapshot;
+            return _resultValue;
         }
     }
 }

@@ -76,10 +76,10 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsd {
             return this;
         }
         public ReservationSpecificReservationInstancePropertiesLocalSsd build() {
-            final var o = new ReservationSpecificReservationInstancePropertiesLocalSsd();
-            o.diskSizeGb = diskSizeGb;
-            o.interface_ = interface_;
-            return o;
+            final var _resultValue = new ReservationSpecificReservationInstancePropertiesLocalSsd();
+            _resultValue.diskSizeGb = diskSizeGb;
+            _resultValue.interface_ = interface_;
+            return _resultValue;
         }
     }
 }

@@ -111,12 +111,12 @@ public final class FolderCustomModuleCustomConfigCustomOutputPropertyValueExpres
             return this;
         }
         public FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression build() {
-            final var o = new FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression();
-            o.description = description;
-            o.expression = expression;
-            o.location = location;
-            o.title = title;
-            return o;
+            final var _resultValue = new FolderCustomModuleCustomConfigCustomOutputPropertyValueExpression();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.location = location;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

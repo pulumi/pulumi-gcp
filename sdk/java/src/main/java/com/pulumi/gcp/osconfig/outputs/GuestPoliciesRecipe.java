@@ -184,14 +184,14 @@ public final class GuestPoliciesRecipe {
             return this;
         }
         public GuestPoliciesRecipe build() {
-            final var o = new GuestPoliciesRecipe();
-            o.artifacts = artifacts;
-            o.desiredState = desiredState;
-            o.installSteps = installSteps;
-            o.name = name;
-            o.updateSteps = updateSteps;
-            o.version = version;
-            return o;
+            final var _resultValue = new GuestPoliciesRecipe();
+            _resultValue.artifacts = artifacts;
+            _resultValue.desiredState = desiredState;
+            _resultValue.installSteps = installSteps;
+            _resultValue.name = name;
+            _resultValue.updateSteps = updateSteps;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

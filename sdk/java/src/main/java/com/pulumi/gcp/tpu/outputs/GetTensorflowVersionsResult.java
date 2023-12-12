@@ -91,12 +91,12 @@ public final class GetTensorflowVersionsResult {
             return this;
         }
         public GetTensorflowVersionsResult build() {
-            final var o = new GetTensorflowVersionsResult();
-            o.id = id;
-            o.project = project;
-            o.versions = versions;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetTensorflowVersionsResult();
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.versions = versions;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

@@ -112,12 +112,12 @@ public final class SecurityPolicyAdvancedOptionsConfig {
             return userIpRequestHeaders(List.of(userIpRequestHeaders));
         }
         public SecurityPolicyAdvancedOptionsConfig build() {
-            final var o = new SecurityPolicyAdvancedOptionsConfig();
-            o.jsonCustomConfig = jsonCustomConfig;
-            o.jsonParsing = jsonParsing;
-            o.logLevel = logLevel;
-            o.userIpRequestHeaders = userIpRequestHeaders;
-            return o;
+            final var _resultValue = new SecurityPolicyAdvancedOptionsConfig();
+            _resultValue.jsonCustomConfig = jsonCustomConfig;
+            _resultValue.jsonParsing = jsonParsing;
+            _resultValue.logLevel = logLevel;
+            _resultValue.userIpRequestHeaders = userIpRequestHeaders;
+            return _resultValue;
         }
     }
 }

@@ -58,10 +58,10 @@ public final class GetInstanceGroupManagerNamedPort {
             return this;
         }
         public GetInstanceGroupManagerNamedPort build() {
-            final var o = new GetInstanceGroupManagerNamedPort();
-            o.name = name;
-            o.port = port;
-            return o;
+            final var _resultValue = new GetInstanceGroupManagerNamedPort();
+            _resultValue.name = name;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

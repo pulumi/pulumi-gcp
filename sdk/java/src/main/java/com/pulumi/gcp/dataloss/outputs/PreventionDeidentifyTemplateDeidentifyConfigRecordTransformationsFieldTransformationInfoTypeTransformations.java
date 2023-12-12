@@ -52,9 +52,9 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return transformations(List.of(transformations));
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations();
-            o.transformations = transformations;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations();
+            _resultValue.transformations = transformations;
+            return _resultValue;
         }
     }
 }

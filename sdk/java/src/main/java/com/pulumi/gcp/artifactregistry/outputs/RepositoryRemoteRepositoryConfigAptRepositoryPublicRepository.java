@@ -67,10 +67,10 @@ public final class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository
             return this;
         }
         public RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository build() {
-            final var o = new RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository();
-            o.repositoryBase = repositoryBase;
-            o.repositoryPath = repositoryPath;
-            return o;
+            final var _resultValue = new RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository();
+            _resultValue.repositoryBase = repositoryBase;
+            _resultValue.repositoryPath = repositoryPath;
+            return _resultValue;
         }
     }
 }

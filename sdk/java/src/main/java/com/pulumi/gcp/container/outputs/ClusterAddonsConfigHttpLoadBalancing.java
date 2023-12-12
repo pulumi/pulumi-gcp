@@ -50,9 +50,9 @@ public final class ClusterAddonsConfigHttpLoadBalancing {
             return this;
         }
         public ClusterAddonsConfigHttpLoadBalancing build() {
-            final var o = new ClusterAddonsConfigHttpLoadBalancing();
-            o.disabled = disabled;
-            return o;
+            final var _resultValue = new ClusterAddonsConfigHttpLoadBalancing();
+            _resultValue.disabled = disabled;
+            return _resultValue;
         }
     }
 }

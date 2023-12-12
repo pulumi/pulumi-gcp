@@ -69,10 +69,10 @@ public final class ClusterInitialUser {
             return this;
         }
         public ClusterInitialUser build() {
-            final var o = new ClusterInitialUser();
-            o.password = password;
-            o.user = user;
-            return o;
+            final var _resultValue = new ClusterInitialUser();
+            _resultValue.password = password;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

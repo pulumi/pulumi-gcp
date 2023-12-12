@@ -93,11 +93,11 @@ public final class PerInstanceConfigPreservedStateExternalIp {
             return this;
         }
         public PerInstanceConfigPreservedStateExternalIp build() {
-            final var o = new PerInstanceConfigPreservedStateExternalIp();
-            o.autoDelete = autoDelete;
-            o.interfaceName = interfaceName;
-            o.ipAddress = ipAddress;
-            return o;
+            final var _resultValue = new PerInstanceConfigPreservedStateExternalIp();
+            _resultValue.autoDelete = autoDelete;
+            _resultValue.interfaceName = interfaceName;
+            _resultValue.ipAddress = ipAddress;
+            return _resultValue;
         }
     }
 }

@@ -203,15 +203,15 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigBigQueryOptions build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptions();
-            o.excludedFields = excludedFields;
-            o.identifyingFields = identifyingFields;
-            o.includedFields = includedFields;
-            o.rowsLimit = rowsLimit;
-            o.rowsLimitPercent = rowsLimitPercent;
-            o.sampleMethod = sampleMethod;
-            o.tableReference = tableReference;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptions();
+            _resultValue.excludedFields = excludedFields;
+            _resultValue.identifyingFields = identifyingFields;
+            _resultValue.includedFields = includedFields;
+            _resultValue.rowsLimit = rowsLimit;
+            _resultValue.rowsLimitPercent = rowsLimitPercent;
+            _resultValue.sampleMethod = sampleMethod;
+            _resultValue.tableReference = tableReference;
+            return _resultValue;
         }
     }
 }

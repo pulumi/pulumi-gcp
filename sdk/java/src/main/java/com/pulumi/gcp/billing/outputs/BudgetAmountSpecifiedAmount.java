@@ -105,11 +105,11 @@ public final class BudgetAmountSpecifiedAmount {
             return this;
         }
         public BudgetAmountSpecifiedAmount build() {
-            final var o = new BudgetAmountSpecifiedAmount();
-            o.currencyCode = currencyCode;
-            o.nanos = nanos;
-            o.units = units;
-            return o;
+            final var _resultValue = new BudgetAmountSpecifiedAmount();
+            _resultValue.currencyCode = currencyCode;
+            _resultValue.nanos = nanos;
+            _resultValue.units = units;
+            return _resultValue;
         }
     }
 }

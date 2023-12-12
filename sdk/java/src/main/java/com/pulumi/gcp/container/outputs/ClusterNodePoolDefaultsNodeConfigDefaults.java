@@ -68,10 +68,10 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
             return this;
         }
         public ClusterNodePoolDefaultsNodeConfigDefaults build() {
-            final var o = new ClusterNodePoolDefaultsNodeConfigDefaults();
-            o.gcfsConfig = gcfsConfig;
-            o.loggingVariant = loggingVariant;
-            return o;
+            final var _resultValue = new ClusterNodePoolDefaultsNodeConfigDefaults();
+            _resultValue.gcfsConfig = gcfsConfig;
+            _resultValue.loggingVariant = loggingVariant;
+            return _resultValue;
         }
     }
 }

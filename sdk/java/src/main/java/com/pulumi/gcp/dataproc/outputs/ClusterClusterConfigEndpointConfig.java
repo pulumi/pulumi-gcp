@@ -63,10 +63,10 @@ public final class ClusterClusterConfigEndpointConfig {
             return this;
         }
         public ClusterClusterConfigEndpointConfig build() {
-            final var o = new ClusterClusterConfigEndpointConfig();
-            o.enableHttpPortAccess = enableHttpPortAccess;
-            o.httpPorts = httpPorts;
-            return o;
+            final var _resultValue = new ClusterClusterConfigEndpointConfig();
+            _resultValue.enableHttpPortAccess = enableHttpPortAccess;
+            _resultValue.httpPorts = httpPorts;
+            return _resultValue;
         }
     }
 }

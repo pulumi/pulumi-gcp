@@ -95,12 +95,12 @@ public final class GetCryptoKeyIamPolicyResult {
             return this;
         }
         public GetCryptoKeyIamPolicyResult build() {
-            final var o = new GetCryptoKeyIamPolicyResult();
-            o.cryptoKeyId = cryptoKeyId;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            return o;
+            final var _resultValue = new GetCryptoKeyIamPolicyResult();
+            _resultValue.cryptoKeyId = cryptoKeyId;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            return _resultValue;
         }
     }
 }

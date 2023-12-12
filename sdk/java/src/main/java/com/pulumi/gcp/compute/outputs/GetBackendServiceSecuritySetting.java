@@ -53,10 +53,10 @@ public final class GetBackendServiceSecuritySetting {
             return subjectAltNames(List.of(subjectAltNames));
         }
         public GetBackendServiceSecuritySetting build() {
-            final var o = new GetBackendServiceSecuritySetting();
-            o.clientTlsPolicy = clientTlsPolicy;
-            o.subjectAltNames = subjectAltNames;
-            return o;
+            final var _resultValue = new GetBackendServiceSecuritySetting();
+            _resultValue.clientTlsPolicy = clientTlsPolicy;
+            _resultValue.subjectAltNames = subjectAltNames;
+            return _resultValue;
         }
     }
 }

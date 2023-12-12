@@ -50,9 +50,9 @@ public final class WorkflowTemplateJobSparkSqlJobQueryList {
             return queries(List.of(queries));
         }
         public WorkflowTemplateJobSparkSqlJobQueryList build() {
-            final var o = new WorkflowTemplateJobSparkSqlJobQueryList();
-            o.queries = queries;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobSparkSqlJobQueryList();
+            _resultValue.queries = queries;
+            return _resultValue;
         }
     }
 }

@@ -75,10 +75,10 @@ public final class MetastoreServiceNetworkConfigConsumer {
             return this;
         }
         public MetastoreServiceNetworkConfigConsumer build() {
-            final var o = new MetastoreServiceNetworkConfigConsumer();
-            o.endpointUri = endpointUri;
-            o.subnetwork = subnetwork;
-            return o;
+            final var _resultValue = new MetastoreServiceNetworkConfigConsumer();
+            _resultValue.endpointUri = endpointUri;
+            _resultValue.subnetwork = subnetwork;
+            return _resultValue;
         }
     }
 }

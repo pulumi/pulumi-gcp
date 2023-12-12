@@ -92,11 +92,11 @@ public final class DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
             return this;
         }
         public DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork build() {
-            final var o = new DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork();
-            o.expirationTime = expirationTime;
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork();
+            _resultValue.expirationTime = expirationTime;
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

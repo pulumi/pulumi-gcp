@@ -353,34 +353,34 @@ public final class GetAuthorityResult {
             return this;
         }
         public GetAuthorityResult build() {
-            final var o = new GetAuthorityResult();
-            o.accessUrls = accessUrls;
-            o.certificateAuthorityId = certificateAuthorityId;
-            o.configs = configs;
-            o.createTime = createTime;
-            o.deletionProtection = deletionProtection;
-            o.desiredState = desiredState;
-            o.effectiveLabels = effectiveLabels;
-            o.gcsBucket = gcsBucket;
-            o.id = id;
-            o.ignoreActiveCertificatesOnDeletion = ignoreActiveCertificatesOnDeletion;
-            o.keySpecs = keySpecs;
-            o.labels = labels;
-            o.lifetime = lifetime;
-            o.location = location;
-            o.name = name;
-            o.pemCaCertificate = pemCaCertificate;
-            o.pemCaCertificates = pemCaCertificates;
-            o.pemCsr = pemCsr;
-            o.pool = pool;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.skipGracePeriod = skipGracePeriod;
-            o.state = state;
-            o.subordinateConfigs = subordinateConfigs;
-            o.type = type;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetAuthorityResult();
+            _resultValue.accessUrls = accessUrls;
+            _resultValue.certificateAuthorityId = certificateAuthorityId;
+            _resultValue.configs = configs;
+            _resultValue.createTime = createTime;
+            _resultValue.deletionProtection = deletionProtection;
+            _resultValue.desiredState = desiredState;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.gcsBucket = gcsBucket;
+            _resultValue.id = id;
+            _resultValue.ignoreActiveCertificatesOnDeletion = ignoreActiveCertificatesOnDeletion;
+            _resultValue.keySpecs = keySpecs;
+            _resultValue.labels = labels;
+            _resultValue.lifetime = lifetime;
+            _resultValue.location = location;
+            _resultValue.name = name;
+            _resultValue.pemCaCertificate = pemCaCertificate;
+            _resultValue.pemCaCertificates = pemCaCertificates;
+            _resultValue.pemCsr = pemCsr;
+            _resultValue.pool = pool;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.skipGracePeriod = skipGracePeriod;
+            _resultValue.state = state;
+            _resultValue.subordinateConfigs = subordinateConfigs;
+            _resultValue.type = type;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

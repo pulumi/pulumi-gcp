@@ -77,10 +77,10 @@ public final class PreventionInspectTemplateInspectConfigRuleSet {
             return rules(List.of(rules));
         }
         public PreventionInspectTemplateInspectConfigRuleSet build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSet();
-            o.infoTypes = infoTypes;
-            o.rules = rules;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSet();
+            _resultValue.infoTypes = infoTypes;
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

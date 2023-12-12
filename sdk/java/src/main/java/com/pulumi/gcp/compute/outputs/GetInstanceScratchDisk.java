@@ -87,11 +87,11 @@ public final class GetInstanceScratchDisk {
             return this;
         }
         public GetInstanceScratchDisk build() {
-            final var o = new GetInstanceScratchDisk();
-            o.deviceName = deviceName;
-            o.interface_ = interface_;
-            o.size = size;
-            return o;
+            final var _resultValue = new GetInstanceScratchDisk();
+            _resultValue.deviceName = deviceName;
+            _resultValue.interface_ = interface_;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

@@ -70,10 +70,10 @@ public final class TableView {
             return this;
         }
         public TableView build() {
-            final var o = new TableView();
-            o.query = query;
-            o.useLegacySql = useLegacySql;
-            return o;
+            final var _resultValue = new TableView();
+            _resultValue.query = query;
+            _resultValue.useLegacySql = useLegacySql;
+            return _resultValue;
         }
     }
 }

@@ -111,12 +111,12 @@ public final class GuestPoliciesPackageRepositoryYum {
             return this;
         }
         public GuestPoliciesPackageRepositoryYum build() {
-            final var o = new GuestPoliciesPackageRepositoryYum();
-            o.baseUrl = baseUrl;
-            o.displayName = displayName;
-            o.gpgKeys = gpgKeys;
-            o.id = id;
-            return o;
+            final var _resultValue = new GuestPoliciesPackageRepositoryYum();
+            _resultValue.baseUrl = baseUrl;
+            _resultValue.displayName = displayName;
+            _resultValue.gpgKeys = gpgKeys;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

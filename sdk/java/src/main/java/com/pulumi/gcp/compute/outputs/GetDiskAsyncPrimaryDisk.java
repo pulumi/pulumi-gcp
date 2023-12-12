@@ -38,9 +38,9 @@ public final class GetDiskAsyncPrimaryDisk {
             return this;
         }
         public GetDiskAsyncPrimaryDisk build() {
-            final var o = new GetDiskAsyncPrimaryDisk();
-            o.disk = disk;
-            return o;
+            final var _resultValue = new GetDiskAsyncPrimaryDisk();
+            _resultValue.disk = disk;
+            return _resultValue;
         }
     }
 }

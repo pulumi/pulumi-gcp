@@ -68,10 +68,10 @@ public final class ServiceAttachmentConsumerAcceptList {
             return this;
         }
         public ServiceAttachmentConsumerAcceptList build() {
-            final var o = new ServiceAttachmentConsumerAcceptList();
-            o.connectionLimit = connectionLimit;
-            o.projectIdOrNum = projectIdOrNum;
-            return o;
+            final var _resultValue = new ServiceAttachmentConsumerAcceptList();
+            _resultValue.connectionLimit = connectionLimit;
+            _resultValue.projectIdOrNum = projectIdOrNum;
+            return _resultValue;
         }
     }
 }

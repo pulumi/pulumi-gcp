@@ -136,13 +136,13 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
             return this;
         }
         public ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig build() {
-            final var o = new ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig();
-            o.localSsdCount = localSsdCount;
-            o.machineType = machineType;
-            o.minCpuPlatform = minCpuPlatform;
-            o.preemptible = preemptible;
-            o.spot = spot;
-            return o;
+            final var _resultValue = new ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig();
+            _resultValue.localSsdCount = localSsdCount;
+            _resultValue.machineType = machineType;
+            _resultValue.minCpuPlatform = minCpuPlatform;
+            _resultValue.preemptible = preemptible;
+            _resultValue.spot = spot;
+            return _resultValue;
         }
     }
 }

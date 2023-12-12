@@ -92,11 +92,11 @@ public final class CertificateTemplatePredefinedValuesKeyUsage {
             return unknownExtendedKeyUsages(List.of(unknownExtendedKeyUsages));
         }
         public CertificateTemplatePredefinedValuesKeyUsage build() {
-            final var o = new CertificateTemplatePredefinedValuesKeyUsage();
-            o.baseKeyUsage = baseKeyUsage;
-            o.extendedKeyUsage = extendedKeyUsage;
-            o.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
-            return o;
+            final var _resultValue = new CertificateTemplatePredefinedValuesKeyUsage();
+            _resultValue.baseKeyUsage = baseKeyUsage;
+            _resultValue.extendedKeyUsage = extendedKeyUsage;
+            _resultValue.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
+            return _resultValue;
         }
     }
 }

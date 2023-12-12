@@ -75,10 +75,10 @@ public final class URLMapPathMatcherPathRuleRouteActionUrlRewrite {
             return this;
         }
         public URLMapPathMatcherPathRuleRouteActionUrlRewrite build() {
-            final var o = new URLMapPathMatcherPathRuleRouteActionUrlRewrite();
-            o.hostRewrite = hostRewrite;
-            o.pathPrefixRewrite = pathPrefixRewrite;
-            return o;
+            final var _resultValue = new URLMapPathMatcherPathRuleRouteActionUrlRewrite();
+            _resultValue.hostRewrite = hostRewrite;
+            _resultValue.pathPrefixRewrite = pathPrefixRewrite;
+            return _resultValue;
         }
     }
 }

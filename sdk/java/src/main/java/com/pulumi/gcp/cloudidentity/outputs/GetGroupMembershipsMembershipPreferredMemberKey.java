@@ -75,10 +75,10 @@ public final class GetGroupMembershipsMembershipPreferredMemberKey {
             return this;
         }
         public GetGroupMembershipsMembershipPreferredMemberKey build() {
-            final var o = new GetGroupMembershipsMembershipPreferredMemberKey();
-            o.id = id;
-            o.namespace = namespace;
-            return o;
+            final var _resultValue = new GetGroupMembershipsMembershipPreferredMemberKey();
+            _resultValue.id = id;
+            _resultValue.namespace = namespace;
+            return _resultValue;
         }
     }
 }

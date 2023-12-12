@@ -123,13 +123,13 @@ public final class GetLocationsLocation {
             return this;
         }
         public GetLocationsLocation build() {
-            final var o = new GetLocationsLocation();
-            o.displayName = displayName;
-            o.labels = labels;
-            o.locationId = locationId;
-            o.metadata = metadata;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetLocationsLocation();
+            _resultValue.displayName = displayName;
+            _resultValue.labels = labels;
+            _resultValue.locationId = locationId;
+            _resultValue.metadata = metadata;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

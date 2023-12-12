@@ -74,10 +74,10 @@ public final class HttpRouteRuleActionRequestMirrorPolicyDestination {
             return this;
         }
         public HttpRouteRuleActionRequestMirrorPolicyDestination build() {
-            final var o = new HttpRouteRuleActionRequestMirrorPolicyDestination();
-            o.serviceName = serviceName;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new HttpRouteRuleActionRequestMirrorPolicyDestination();
+            _resultValue.serviceName = serviceName;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

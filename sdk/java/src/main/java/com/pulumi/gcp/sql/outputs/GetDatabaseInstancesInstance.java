@@ -355,33 +355,33 @@ public final class GetDatabaseInstancesInstance {
             return settings(List.of(settings));
         }
         public GetDatabaseInstancesInstance build() {
-            final var o = new GetDatabaseInstancesInstance();
-            o.availableMaintenanceVersions = availableMaintenanceVersions;
-            o.clones = clones;
-            o.connectionName = connectionName;
-            o.databaseVersion = databaseVersion;
-            o.deletionProtection = deletionProtection;
-            o.dnsName = dnsName;
-            o.encryptionKeyName = encryptionKeyName;
-            o.firstIpAddress = firstIpAddress;
-            o.instanceType = instanceType;
-            o.ipAddresses = ipAddresses;
-            o.maintenanceVersion = maintenanceVersion;
-            o.masterInstanceName = masterInstanceName;
-            o.name = name;
-            o.privateIpAddress = privateIpAddress;
-            o.project = project;
-            o.pscServiceAttachmentLink = pscServiceAttachmentLink;
-            o.publicIpAddress = publicIpAddress;
-            o.region = region;
-            o.replicaConfigurations = replicaConfigurations;
-            o.restoreBackupContexts = restoreBackupContexts;
-            o.rootPassword = rootPassword;
-            o.selfLink = selfLink;
-            o.serverCaCerts = serverCaCerts;
-            o.serviceAccountEmailAddress = serviceAccountEmailAddress;
-            o.settings = settings;
-            return o;
+            final var _resultValue = new GetDatabaseInstancesInstance();
+            _resultValue.availableMaintenanceVersions = availableMaintenanceVersions;
+            _resultValue.clones = clones;
+            _resultValue.connectionName = connectionName;
+            _resultValue.databaseVersion = databaseVersion;
+            _resultValue.deletionProtection = deletionProtection;
+            _resultValue.dnsName = dnsName;
+            _resultValue.encryptionKeyName = encryptionKeyName;
+            _resultValue.firstIpAddress = firstIpAddress;
+            _resultValue.instanceType = instanceType;
+            _resultValue.ipAddresses = ipAddresses;
+            _resultValue.maintenanceVersion = maintenanceVersion;
+            _resultValue.masterInstanceName = masterInstanceName;
+            _resultValue.name = name;
+            _resultValue.privateIpAddress = privateIpAddress;
+            _resultValue.project = project;
+            _resultValue.pscServiceAttachmentLink = pscServiceAttachmentLink;
+            _resultValue.publicIpAddress = publicIpAddress;
+            _resultValue.region = region;
+            _resultValue.replicaConfigurations = replicaConfigurations;
+            _resultValue.restoreBackupContexts = restoreBackupContexts;
+            _resultValue.rootPassword = rootPassword;
+            _resultValue.selfLink = selfLink;
+            _resultValue.serverCaCerts = serverCaCerts;
+            _resultValue.serviceAccountEmailAddress = serviceAccountEmailAddress;
+            _resultValue.settings = settings;
+            return _resultValue;
         }
     }
 }

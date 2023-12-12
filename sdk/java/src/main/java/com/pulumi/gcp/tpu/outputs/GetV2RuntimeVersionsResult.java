@@ -91,12 +91,12 @@ public final class GetV2RuntimeVersionsResult {
             return this;
         }
         public GetV2RuntimeVersionsResult build() {
-            final var o = new GetV2RuntimeVersionsResult();
-            o.id = id;
-            o.project = project;
-            o.versions = versions;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetV2RuntimeVersionsResult();
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.versions = versions;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

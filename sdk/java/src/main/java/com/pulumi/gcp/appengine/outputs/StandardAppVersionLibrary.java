@@ -67,10 +67,10 @@ public final class StandardAppVersionLibrary {
             return this;
         }
         public StandardAppVersionLibrary build() {
-            final var o = new StandardAppVersionLibrary();
-            o.name = name;
-            o.version = version;
-            return o;
+            final var _resultValue = new StandardAppVersionLibrary();
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -87,11 +87,11 @@ public final class URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd {
             return this;
         }
         public URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd build() {
-            final var o = new URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd();
-            o.headerName = headerName;
-            o.headerValue = headerValue;
-            o.replace = replace;
-            return o;
+            final var _resultValue = new URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAdd();
+            _resultValue.headerName = headerName;
+            _resultValue.headerValue = headerValue;
+            _resultValue.replace = replace;
+            return _resultValue;
         }
     }
 }

@@ -105,12 +105,12 @@ public final class URLMapTest {
             return this;
         }
         public URLMapTest build() {
-            final var o = new URLMapTest();
-            o.description = description;
-            o.host = host;
-            o.path = path;
-            o.service = service;
-            return o;
+            final var _resultValue = new URLMapTest();
+            _resultValue.description = description;
+            _resultValue.host = host;
+            _resultValue.path = path;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class NodePoolManagement {
             return this;
         }
         public NodePoolManagement build() {
-            final var o = new NodePoolManagement();
-            o.autoRepair = autoRepair;
-            o.autoUpgrade = autoUpgrade;
-            return o;
+            final var _resultValue = new NodePoolManagement();
+            _resultValue.autoRepair = autoRepair;
+            _resultValue.autoUpgrade = autoUpgrade;
+            return _resultValue;
         }
     }
 }

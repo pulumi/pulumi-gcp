@@ -108,11 +108,11 @@ public final class AutoscalingPolicyWorkerConfig {
             return this;
         }
         public AutoscalingPolicyWorkerConfig build() {
-            final var o = new AutoscalingPolicyWorkerConfig();
-            o.maxInstances = maxInstances;
-            o.minInstances = minInstances;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new AutoscalingPolicyWorkerConfig();
+            _resultValue.maxInstances = maxInstances;
+            _resultValue.minInstances = minInstances;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class CertificateConfigX509ConfigPolicyId {
             return objectIdPaths(List.of(objectIdPaths));
         }
         public CertificateConfigX509ConfigPolicyId build() {
-            final var o = new CertificateConfigX509ConfigPolicyId();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new CertificateConfigX509ConfigPolicyId();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

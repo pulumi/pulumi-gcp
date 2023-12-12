@@ -38,9 +38,9 @@ public final class GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
             return this;
         }
         public GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig build() {
-            final var o = new GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig();
-            o.localSsdCount = localSsdCount;
-            return o;
+            final var _resultValue = new GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig();
+            _resultValue.localSsdCount = localSsdCount;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class GetHealthCheckLogConfig {
             return this;
         }
         public GetHealthCheckLogConfig build() {
-            final var o = new GetHealthCheckLogConfig();
-            o.enable = enable;
-            return o;
+            final var _resultValue = new GetHealthCheckLogConfig();
+            _resultValue.enable = enable;
+            return _resultValue;
         }
     }
 }

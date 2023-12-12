@@ -85,11 +85,11 @@ public final class FlexibleAppVersionResourcesVolume {
             return this;
         }
         public FlexibleAppVersionResourcesVolume build() {
-            final var o = new FlexibleAppVersionResourcesVolume();
-            o.name = name;
-            o.sizeGb = sizeGb;
-            o.volumeType = volumeType;
-            return o;
+            final var _resultValue = new FlexibleAppVersionResourcesVolume();
+            _resultValue.name = name;
+            _resultValue.sizeGb = sizeGb;
+            _resultValue.volumeType = volumeType;
+            return _resultValue;
         }
     }
 }

@@ -90,13 +90,13 @@ public final class GetClientResult {
             return this;
         }
         public GetClientResult build() {
-            final var o = new GetClientResult();
-            o.brand = brand;
-            o.clientId = clientId;
-            o.displayName = displayName;
-            o.id = id;
-            o.secret = secret;
-            return o;
+            final var _resultValue = new GetClientResult();
+            _resultValue.brand = brand;
+            _resultValue.clientId = clientId;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.secret = secret;
+            return _resultValue;
         }
     }
 }

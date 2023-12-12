@@ -97,12 +97,12 @@ public final class GetProjectServiceAccountResult {
             return this;
         }
         public GetProjectServiceAccountResult build() {
-            final var o = new GetProjectServiceAccountResult();
-            o.accountEmail = accountEmail;
-            o.id = id;
-            o.name = name;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new GetProjectServiceAccountResult();
+            _resultValue.accountEmail = accountEmail;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

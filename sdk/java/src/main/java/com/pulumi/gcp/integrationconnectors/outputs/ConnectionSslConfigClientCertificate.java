@@ -46,9 +46,9 @@ public final class ConnectionSslConfigClientCertificate {
             return this;
         }
         public ConnectionSslConfigClientCertificate build() {
-            final var o = new ConnectionSslConfigClientCertificate();
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new ConnectionSslConfigClientCertificate();
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

@@ -69,10 +69,10 @@ public final class RouterBgpAdvertisedIpRange {
             return this;
         }
         public RouterBgpAdvertisedIpRange build() {
-            final var o = new RouterBgpAdvertisedIpRange();
-            o.description = description;
-            o.range = range;
-            return o;
+            final var _resultValue = new RouterBgpAdvertisedIpRange();
+            _resultValue.description = description;
+            _resultValue.range = range;
+            return _resultValue;
         }
     }
 }

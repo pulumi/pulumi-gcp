@@ -46,9 +46,9 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDict
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath();
-            o.path = path;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath();
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

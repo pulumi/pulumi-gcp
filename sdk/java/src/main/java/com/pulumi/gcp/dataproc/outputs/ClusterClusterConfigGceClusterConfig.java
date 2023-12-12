@@ -294,19 +294,19 @@ public final class ClusterClusterConfigGceClusterConfig {
             return this;
         }
         public ClusterClusterConfigGceClusterConfig build() {
-            final var o = new ClusterClusterConfigGceClusterConfig();
-            o.internalIpOnly = internalIpOnly;
-            o.metadata = metadata;
-            o.network = network;
-            o.nodeGroupAffinity = nodeGroupAffinity;
-            o.reservationAffinity = reservationAffinity;
-            o.serviceAccount = serviceAccount;
-            o.serviceAccountScopes = serviceAccountScopes;
-            o.shieldedInstanceConfig = shieldedInstanceConfig;
-            o.subnetwork = subnetwork;
-            o.tags = tags;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new ClusterClusterConfigGceClusterConfig();
+            _resultValue.internalIpOnly = internalIpOnly;
+            _resultValue.metadata = metadata;
+            _resultValue.network = network;
+            _resultValue.nodeGroupAffinity = nodeGroupAffinity;
+            _resultValue.reservationAffinity = reservationAffinity;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.serviceAccountScopes = serviceAccountScopes;
+            _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
+            _resultValue.subnetwork = subnetwork;
+            _resultValue.tags = tags;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

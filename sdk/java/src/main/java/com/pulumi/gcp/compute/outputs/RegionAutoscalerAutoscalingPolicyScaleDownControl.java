@@ -72,10 +72,10 @@ public final class RegionAutoscalerAutoscalingPolicyScaleDownControl {
             return this;
         }
         public RegionAutoscalerAutoscalingPolicyScaleDownControl build() {
-            final var o = new RegionAutoscalerAutoscalingPolicyScaleDownControl();
-            o.maxScaledDownReplicas = maxScaledDownReplicas;
-            o.timeWindowSec = timeWindowSec;
-            return o;
+            final var _resultValue = new RegionAutoscalerAutoscalingPolicyScaleDownControl();
+            _resultValue.maxScaledDownReplicas = maxScaledDownReplicas;
+            _resultValue.timeWindowSec = timeWindowSec;
+            return _resultValue;
         }
     }
 }

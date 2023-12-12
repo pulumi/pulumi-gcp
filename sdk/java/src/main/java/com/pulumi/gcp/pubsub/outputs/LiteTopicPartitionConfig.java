@@ -70,10 +70,10 @@ public final class LiteTopicPartitionConfig {
             return this;
         }
         public LiteTopicPartitionConfig build() {
-            final var o = new LiteTopicPartitionConfig();
-            o.capacity = capacity;
-            o.count = count;
-            return o;
+            final var _resultValue = new LiteTopicPartitionConfig();
+            _resultValue.capacity = capacity;
+            _resultValue.count = count;
+            return _resultValue;
         }
     }
 }

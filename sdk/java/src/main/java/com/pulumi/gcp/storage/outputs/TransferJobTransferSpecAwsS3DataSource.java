@@ -106,12 +106,12 @@ public final class TransferJobTransferSpecAwsS3DataSource {
             return this;
         }
         public TransferJobTransferSpecAwsS3DataSource build() {
-            final var o = new TransferJobTransferSpecAwsS3DataSource();
-            o.awsAccessKey = awsAccessKey;
-            o.bucketName = bucketName;
-            o.path = path;
-            o.roleArn = roleArn;
-            return o;
+            final var _resultValue = new TransferJobTransferSpecAwsS3DataSource();
+            _resultValue.awsAccessKey = awsAccessKey;
+            _resultValue.bucketName = bucketName;
+            _resultValue.path = path;
+            _resultValue.roleArn = roleArn;
+            return _resultValue;
         }
     }
 }

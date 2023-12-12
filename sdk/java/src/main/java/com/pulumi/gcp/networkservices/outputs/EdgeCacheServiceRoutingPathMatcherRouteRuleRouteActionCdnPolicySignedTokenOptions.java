@@ -81,10 +81,10 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
             return this;
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions();
-            o.allowedSignatureAlgorithms = allowedSignatureAlgorithms;
-            o.tokenQueryParameter = tokenQueryParameter;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions();
+            _resultValue.allowedSignatureAlgorithms = allowedSignatureAlgorithms;
+            _resultValue.tokenQueryParameter = tokenQueryParameter;
+            return _resultValue;
         }
     }
 }

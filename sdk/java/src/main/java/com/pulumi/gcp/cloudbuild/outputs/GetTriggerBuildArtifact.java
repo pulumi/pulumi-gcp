@@ -57,10 +57,10 @@ public final class GetTriggerBuildArtifact {
             return objects(List.of(objects));
         }
         public GetTriggerBuildArtifact build() {
-            final var o = new GetTriggerBuildArtifact();
-            o.images = images;
-            o.objects = objects;
-            return o;
+            final var _resultValue = new GetTriggerBuildArtifact();
+            _resultValue.images = images;
+            _resultValue.objects = objects;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class HttpRouteRuleActionFaultInjectionPolicyDelay {
             return this;
         }
         public HttpRouteRuleActionFaultInjectionPolicyDelay build() {
-            final var o = new HttpRouteRuleActionFaultInjectionPolicyDelay();
-            o.fixedDelay = fixedDelay;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new HttpRouteRuleActionFaultInjectionPolicyDelay();
+            _resultValue.fixedDelay = fixedDelay;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

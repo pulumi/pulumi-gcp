@@ -87,11 +87,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFi
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs();
-            o.bucket = bucket;
-            o.generation = generation;
-            o.object = object;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs();
+            _resultValue.bucket = bucket;
+            _resultValue.generation = generation;
+            _resultValue.object = object;
+            return _resultValue;
         }
     }
 }

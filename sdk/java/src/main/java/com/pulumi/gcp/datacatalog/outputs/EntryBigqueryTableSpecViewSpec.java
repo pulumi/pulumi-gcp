@@ -50,9 +50,9 @@ public final class EntryBigqueryTableSpecViewSpec {
             return this;
         }
         public EntryBigqueryTableSpecViewSpec build() {
-            final var o = new EntryBigqueryTableSpecViewSpec();
-            o.viewQuery = viewQuery;
-            return o;
+            final var _resultValue = new EntryBigqueryTableSpecViewSpec();
+            _resultValue.viewQuery = viewQuery;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class ClusterSecondaryConfig {
             return this;
         }
         public ClusterSecondaryConfig build() {
-            final var o = new ClusterSecondaryConfig();
-            o.primaryClusterName = primaryClusterName;
-            return o;
+            final var _resultValue = new ClusterSecondaryConfig();
+            _resultValue.primaryClusterName = primaryClusterName;
+            return _resultValue;
         }
     }
 }

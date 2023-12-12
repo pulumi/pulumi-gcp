@@ -165,13 +165,13 @@ public final class GuestPoliciesAssignment {
             return zones(List.of(zones));
         }
         public GuestPoliciesAssignment build() {
-            final var o = new GuestPoliciesAssignment();
-            o.groupLabels = groupLabels;
-            o.instanceNamePrefixes = instanceNamePrefixes;
-            o.instances = instances;
-            o.osTypes = osTypes;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GuestPoliciesAssignment();
+            _resultValue.groupLabels = groupLabels;
+            _resultValue.instanceNamePrefixes = instanceNamePrefixes;
+            _resultValue.instances = instances;
+            _resultValue.osTypes = osTypes;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

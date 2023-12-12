@@ -52,9 +52,9 @@ public final class RecordSetRoutingPolicyWrrHealthCheckedTargets {
             return internalLoadBalancers(List.of(internalLoadBalancers));
         }
         public RecordSetRoutingPolicyWrrHealthCheckedTargets build() {
-            final var o = new RecordSetRoutingPolicyWrrHealthCheckedTargets();
-            o.internalLoadBalancers = internalLoadBalancers;
-            return o;
+            final var _resultValue = new RecordSetRoutingPolicyWrrHealthCheckedTargets();
+            _resultValue.internalLoadBalancers = internalLoadBalancers;
+            return _resultValue;
         }
     }
 }

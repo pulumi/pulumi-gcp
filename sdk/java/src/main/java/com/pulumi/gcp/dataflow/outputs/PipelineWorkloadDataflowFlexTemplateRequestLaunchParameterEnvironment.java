@@ -352,24 +352,24 @@ public final class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnv
             return this;
         }
         public PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment build() {
-            final var o = new PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment();
-            o.additionalExperiments = additionalExperiments;
-            o.additionalUserLabels = additionalUserLabels;
-            o.enableStreamingEngine = enableStreamingEngine;
-            o.flexrsGoal = flexrsGoal;
-            o.ipConfiguration = ipConfiguration;
-            o.kmsKeyName = kmsKeyName;
-            o.machineType = machineType;
-            o.maxWorkers = maxWorkers;
-            o.network = network;
-            o.numWorkers = numWorkers;
-            o.serviceAccountEmail = serviceAccountEmail;
-            o.subnetwork = subnetwork;
-            o.tempLocation = tempLocation;
-            o.workerRegion = workerRegion;
-            o.workerZone = workerZone;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment();
+            _resultValue.additionalExperiments = additionalExperiments;
+            _resultValue.additionalUserLabels = additionalUserLabels;
+            _resultValue.enableStreamingEngine = enableStreamingEngine;
+            _resultValue.flexrsGoal = flexrsGoal;
+            _resultValue.ipConfiguration = ipConfiguration;
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.machineType = machineType;
+            _resultValue.maxWorkers = maxWorkers;
+            _resultValue.network = network;
+            _resultValue.numWorkers = numWorkers;
+            _resultValue.serviceAccountEmail = serviceAccountEmail;
+            _resultValue.subnetwork = subnetwork;
+            _resultValue.tempLocation = tempLocation;
+            _resultValue.workerRegion = workerRegion;
+            _resultValue.workerZone = workerZone;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

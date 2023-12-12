@@ -140,13 +140,13 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule();
-            o.dictionary = dictionary;
-            o.excludeByHotword = excludeByHotword;
-            o.excludeInfoTypes = excludeInfoTypes;
-            o.matchingType = matchingType;
-            o.regex = regex;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule();
+            _resultValue.dictionary = dictionary;
+            _resultValue.excludeByHotword = excludeByHotword;
+            _resultValue.excludeInfoTypes = excludeInfoTypes;
+            _resultValue.matchingType = matchingType;
+            _resultValue.regex = regex;
+            return _resultValue;
         }
     }
 }

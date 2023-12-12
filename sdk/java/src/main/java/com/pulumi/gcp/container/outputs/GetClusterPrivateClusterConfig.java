@@ -121,16 +121,16 @@ public final class GetClusterPrivateClusterConfig {
             return this;
         }
         public GetClusterPrivateClusterConfig build() {
-            final var o = new GetClusterPrivateClusterConfig();
-            o.enablePrivateEndpoint = enablePrivateEndpoint;
-            o.enablePrivateNodes = enablePrivateNodes;
-            o.masterGlobalAccessConfigs = masterGlobalAccessConfigs;
-            o.masterIpv4CidrBlock = masterIpv4CidrBlock;
-            o.peeringName = peeringName;
-            o.privateEndpoint = privateEndpoint;
-            o.privateEndpointSubnetwork = privateEndpointSubnetwork;
-            o.publicEndpoint = publicEndpoint;
-            return o;
+            final var _resultValue = new GetClusterPrivateClusterConfig();
+            _resultValue.enablePrivateEndpoint = enablePrivateEndpoint;
+            _resultValue.enablePrivateNodes = enablePrivateNodes;
+            _resultValue.masterGlobalAccessConfigs = masterGlobalAccessConfigs;
+            _resultValue.masterIpv4CidrBlock = masterIpv4CidrBlock;
+            _resultValue.peeringName = peeringName;
+            _resultValue.privateEndpoint = privateEndpoint;
+            _resultValue.privateEndpointSubnetwork = privateEndpointSubnetwork;
+            _resultValue.publicEndpoint = publicEndpoint;
+            return _resultValue;
         }
     }
 }

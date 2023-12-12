@@ -38,9 +38,9 @@ public final class NodePoolNodeConfigSandboxConfig {
             return this;
         }
         public NodePoolNodeConfigSandboxConfig build() {
-            final var o = new NodePoolNodeConfigSandboxConfig();
-            o.sandboxType = sandboxType;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigSandboxConfig();
+            _resultValue.sandboxType = sandboxType;
+            return _resultValue;
         }
     }
 }

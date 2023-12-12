@@ -67,10 +67,10 @@ public final class TriggerTransportPubsub {
             return this;
         }
         public TriggerTransportPubsub build() {
-            final var o = new TriggerTransportPubsub();
-            o.subscription = subscription;
-            o.topic = topic;
-            return o;
+            final var _resultValue = new TriggerTransportPubsub();
+            _resultValue.subscription = subscription;
+            _resultValue.topic = topic;
+            return _resultValue;
         }
     }
 }

@@ -61,11 +61,11 @@ public final class GetClusterClusterAutoscalingResourceLimit {
             return this;
         }
         public GetClusterClusterAutoscalingResourceLimit build() {
-            final var o = new GetClusterClusterAutoscalingResourceLimit();
-            o.maximum = maximum;
-            o.minimum = minimum;
-            o.resourceType = resourceType;
-            return o;
+            final var _resultValue = new GetClusterClusterAutoscalingResourceLimit();
+            _resultValue.maximum = maximum;
+            _resultValue.minimum = minimum;
+            _resultValue.resourceType = resourceType;
+            return _resultValue;
         }
     }
 }

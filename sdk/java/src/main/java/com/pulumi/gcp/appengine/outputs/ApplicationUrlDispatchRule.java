@@ -62,11 +62,11 @@ public final class ApplicationUrlDispatchRule {
             return this;
         }
         public ApplicationUrlDispatchRule build() {
-            final var o = new ApplicationUrlDispatchRule();
-            o.domain = domain;
-            o.path = path;
-            o.service = service;
-            return o;
+            final var _resultValue = new ApplicationUrlDispatchRule();
+            _resultValue.domain = domain;
+            _resultValue.path = path;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

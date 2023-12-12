@@ -25,8 +25,8 @@ public final class PreventionJobTriggerInspectJobActionPublishFindingsToCloudDat
         }
 
         public PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog build() {
-            final var o = new PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog();
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog();
+            return _resultValue;
         }
     }
 }

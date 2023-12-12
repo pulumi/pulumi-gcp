@@ -69,10 +69,10 @@ public final class UptimeCheckConfigResourceGroup {
             return this;
         }
         public UptimeCheckConfigResourceGroup build() {
-            final var o = new UptimeCheckConfigResourceGroup();
-            o.groupId = groupId;
-            o.resourceType = resourceType;
-            return o;
+            final var _resultValue = new UptimeCheckConfigResourceGroup();
+            _resultValue.groupId = groupId;
+            _resultValue.resourceType = resourceType;
+            return _resultValue;
         }
     }
 }

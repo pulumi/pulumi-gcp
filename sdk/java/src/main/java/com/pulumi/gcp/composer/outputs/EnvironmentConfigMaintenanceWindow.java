@@ -60,11 +60,11 @@ public final class EnvironmentConfigMaintenanceWindow {
             return this;
         }
         public EnvironmentConfigMaintenanceWindow build() {
-            final var o = new EnvironmentConfigMaintenanceWindow();
-            o.endTime = endTime;
-            o.recurrence = recurrence;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new EnvironmentConfigMaintenanceWindow();
+            _resultValue.endTime = endTime;
+            _resultValue.recurrence = recurrence;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

@@ -179,14 +179,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig();
-            o.commonAlphabet = commonAlphabet;
-            o.context = context;
-            o.cryptoKey = cryptoKey;
-            o.customAlphabet = customAlphabet;
-            o.radix = radix;
-            o.surrogateInfoType = surrogateInfoType;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig();
+            _resultValue.commonAlphabet = commonAlphabet;
+            _resultValue.context = context;
+            _resultValue.cryptoKey = cryptoKey;
+            _resultValue.customAlphabet = customAlphabet;
+            _resultValue.radix = radix;
+            _resultValue.surrogateInfoType = surrogateInfoType;
+            return _resultValue;
         }
     }
 }

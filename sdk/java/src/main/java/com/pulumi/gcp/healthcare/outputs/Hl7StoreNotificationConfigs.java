@@ -95,10 +95,10 @@ public final class Hl7StoreNotificationConfigs {
             return this;
         }
         public Hl7StoreNotificationConfigs build() {
-            final var o = new Hl7StoreNotificationConfigs();
-            o.filter = filter;
-            o.pubsubTopic = pubsubTopic;
-            return o;
+            final var _resultValue = new Hl7StoreNotificationConfigs();
+            _resultValue.filter = filter;
+            _resultValue.pubsubTopic = pubsubTopic;
+            return _resultValue;
         }
     }
 }

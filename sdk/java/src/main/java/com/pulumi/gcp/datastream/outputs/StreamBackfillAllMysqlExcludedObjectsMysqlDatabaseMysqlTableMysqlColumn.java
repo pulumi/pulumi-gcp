@@ -168,15 +168,15 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
             return this;
         }
         public StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn build() {
-            final var o = new StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn();
-            o.collation = collation;
-            o.column = column;
-            o.dataType = dataType;
-            o.length = length;
-            o.nullable = nullable;
-            o.ordinalPosition = ordinalPosition;
-            o.primaryKey = primaryKey;
-            return o;
+            final var _resultValue = new StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn();
+            _resultValue.collation = collation;
+            _resultValue.column = column;
+            _resultValue.dataType = dataType;
+            _resultValue.length = length;
+            _resultValue.nullable = nullable;
+            _resultValue.ordinalPosition = ordinalPosition;
+            _resultValue.primaryKey = primaryKey;
+            return _resultValue;
         }
     }
 }

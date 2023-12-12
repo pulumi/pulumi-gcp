@@ -50,9 +50,9 @@ public final class WorkflowTemplateParameterValidationValues {
             return values(List.of(values));
         }
         public WorkflowTemplateParameterValidationValues build() {
-            final var o = new WorkflowTemplateParameterValidationValues();
-            o.values = values;
-            return o;
+            final var _resultValue = new WorkflowTemplateParameterValidationValues();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

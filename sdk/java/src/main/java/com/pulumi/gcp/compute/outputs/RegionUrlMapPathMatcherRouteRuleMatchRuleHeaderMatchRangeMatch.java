@@ -65,10 +65,10 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatc
             return this;
         }
         public RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch build() {
-            final var o = new RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch();
-            o.rangeEnd = rangeEnd;
-            o.rangeStart = rangeStart;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch();
+            _resultValue.rangeEnd = rangeEnd;
+            _resultValue.rangeStart = rangeStart;
+            return _resultValue;
         }
     }
 }

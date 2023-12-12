@@ -38,9 +38,9 @@ public final class GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
             return this;
         }
         public GetClusterAddonsConfigGcpFilestoreCsiDriverConfig build() {
-            final var o = new GetClusterAddonsConfigGcpFilestoreCsiDriverConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClusterAddonsConfigGcpFilestoreCsiDriverConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

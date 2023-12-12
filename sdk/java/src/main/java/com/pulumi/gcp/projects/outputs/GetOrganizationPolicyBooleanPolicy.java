@@ -38,9 +38,9 @@ public final class GetOrganizationPolicyBooleanPolicy {
             return this;
         }
         public GetOrganizationPolicyBooleanPolicy build() {
-            final var o = new GetOrganizationPolicyBooleanPolicy();
-            o.enforced = enforced;
-            return o;
+            final var _resultValue = new GetOrganizationPolicyBooleanPolicy();
+            _resultValue.enforced = enforced;
+            return _resultValue;
         }
     }
 }

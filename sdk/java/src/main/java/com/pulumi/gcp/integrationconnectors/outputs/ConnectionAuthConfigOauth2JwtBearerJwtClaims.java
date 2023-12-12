@@ -90,11 +90,11 @@ public final class ConnectionAuthConfigOauth2JwtBearerJwtClaims {
             return this;
         }
         public ConnectionAuthConfigOauth2JwtBearerJwtClaims build() {
-            final var o = new ConnectionAuthConfigOauth2JwtBearerJwtClaims();
-            o.audience = audience;
-            o.issuer = issuer;
-            o.subject = subject;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigOauth2JwtBearerJwtClaims();
+            _resultValue.audience = audience;
+            _resultValue.issuer = issuer;
+            _resultValue.subject = subject;
+            return _resultValue;
         }
     }
 }

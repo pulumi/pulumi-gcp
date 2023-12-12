@@ -138,13 +138,13 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule();
-            o.dictionary = dictionary;
-            o.excludeByHotword = excludeByHotword;
-            o.excludeInfoTypes = excludeInfoTypes;
-            o.matchingType = matchingType;
-            o.regex = regex;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule();
+            _resultValue.dictionary = dictionary;
+            _resultValue.excludeByHotword = excludeByHotword;
+            _resultValue.excludeInfoTypes = excludeInfoTypes;
+            _resultValue.matchingType = matchingType;
+            _resultValue.regex = regex;
+            return _resultValue;
         }
     }
 }

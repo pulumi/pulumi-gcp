@@ -38,9 +38,9 @@ public final class GetEnvironmentConfigDatabaseConfig {
             return this;
         }
         public GetEnvironmentConfigDatabaseConfig build() {
-            final var o = new GetEnvironmentConfigDatabaseConfig();
-            o.machineType = machineType;
-            return o;
+            final var _resultValue = new GetEnvironmentConfigDatabaseConfig();
+            _resultValue.machineType = machineType;
+            return _resultValue;
         }
     }
 }

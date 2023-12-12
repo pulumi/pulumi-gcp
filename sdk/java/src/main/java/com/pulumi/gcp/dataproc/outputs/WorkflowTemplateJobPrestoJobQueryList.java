@@ -50,9 +50,9 @@ public final class WorkflowTemplateJobPrestoJobQueryList {
             return queries(List.of(queries));
         }
         public WorkflowTemplateJobPrestoJobQueryList build() {
-            final var o = new WorkflowTemplateJobPrestoJobQueryList();
-            o.queries = queries;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobPrestoJobQueryList();
+            _resultValue.queries = queries;
+            return _resultValue;
         }
     }
 }

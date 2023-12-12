@@ -68,10 +68,10 @@ public final class ManagedZonePrivateVisibilityConfig {
             return networks(List.of(networks));
         }
         public ManagedZonePrivateVisibilityConfig build() {
-            final var o = new ManagedZonePrivateVisibilityConfig();
-            o.gkeClusters = gkeClusters;
-            o.networks = networks;
-            return o;
+            final var _resultValue = new ManagedZonePrivateVisibilityConfig();
+            _resultValue.gkeClusters = gkeClusters;
+            _resultValue.networks = networks;
+            return _resultValue;
         }
     }
 }

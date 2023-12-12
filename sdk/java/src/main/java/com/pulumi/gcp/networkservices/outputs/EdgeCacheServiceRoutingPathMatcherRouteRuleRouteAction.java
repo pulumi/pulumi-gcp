@@ -94,11 +94,11 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
             return this;
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction();
-            o.cdnPolicy = cdnPolicy;
-            o.corsPolicy = corsPolicy;
-            o.urlRewrite = urlRewrite;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction();
+            _resultValue.cdnPolicy = cdnPolicy;
+            _resultValue.corsPolicy = corsPolicy;
+            _resultValue.urlRewrite = urlRewrite;
+            return _resultValue;
         }
     }
 }

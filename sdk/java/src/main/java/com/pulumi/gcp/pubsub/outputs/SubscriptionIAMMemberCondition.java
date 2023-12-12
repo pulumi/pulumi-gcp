@@ -62,11 +62,11 @@ public final class SubscriptionIAMMemberCondition {
             return this;
         }
         public SubscriptionIAMMemberCondition build() {
-            final var o = new SubscriptionIAMMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new SubscriptionIAMMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

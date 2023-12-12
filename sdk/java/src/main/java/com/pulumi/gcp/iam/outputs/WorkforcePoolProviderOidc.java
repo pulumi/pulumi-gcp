@@ -184,13 +184,13 @@ public final class WorkforcePoolProviderOidc {
             return this;
         }
         public WorkforcePoolProviderOidc build() {
-            final var o = new WorkforcePoolProviderOidc();
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            o.issuerUri = issuerUri;
-            o.jwksJson = jwksJson;
-            o.webSsoConfig = webSsoConfig;
-            return o;
+            final var _resultValue = new WorkforcePoolProviderOidc();
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.issuerUri = issuerUri;
+            _resultValue.jwksJson = jwksJson;
+            _resultValue.webSsoConfig = webSsoConfig;
+            return _resultValue;
         }
     }
 }

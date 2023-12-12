@@ -75,11 +75,11 @@ public final class DeliveryPipelineConditionTargetsPresentCondition {
             return this;
         }
         public DeliveryPipelineConditionTargetsPresentCondition build() {
-            final var o = new DeliveryPipelineConditionTargetsPresentCondition();
-            o.missingTargets = missingTargets;
-            o.status = status;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new DeliveryPipelineConditionTargetsPresentCondition();
+            _resultValue.missingTargets = missingTargets;
+            _resultValue.status = status;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

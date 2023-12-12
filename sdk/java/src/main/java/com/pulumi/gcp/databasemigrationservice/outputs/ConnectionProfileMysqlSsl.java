@@ -119,12 +119,12 @@ public final class ConnectionProfileMysqlSsl {
             return this;
         }
         public ConnectionProfileMysqlSsl build() {
-            final var o = new ConnectionProfileMysqlSsl();
-            o.caCertificate = caCertificate;
-            o.clientCertificate = clientCertificate;
-            o.clientKey = clientKey;
-            o.type = type;
-            return o;
+            final var _resultValue = new ConnectionProfileMysqlSsl();
+            _resultValue.caCertificate = caCertificate;
+            _resultValue.clientCertificate = clientCertificate;
+            _resultValue.clientKey = clientKey;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

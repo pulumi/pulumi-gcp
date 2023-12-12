@@ -251,12 +251,12 @@ public final class AlertPolicyConditionConditionThresholdDenominatorAggregation 
             return this;
         }
         public AlertPolicyConditionConditionThresholdDenominatorAggregation build() {
-            final var o = new AlertPolicyConditionConditionThresholdDenominatorAggregation();
-            o.alignmentPeriod = alignmentPeriod;
-            o.crossSeriesReducer = crossSeriesReducer;
-            o.groupByFields = groupByFields;
-            o.perSeriesAligner = perSeriesAligner;
-            return o;
+            final var _resultValue = new AlertPolicyConditionConditionThresholdDenominatorAggregation();
+            _resultValue.alignmentPeriod = alignmentPeriod;
+            _resultValue.crossSeriesReducer = crossSeriesReducer;
+            _resultValue.groupByFields = groupByFields;
+            _resultValue.perSeriesAligner = perSeriesAligner;
+            return _resultValue;
         }
     }
 }

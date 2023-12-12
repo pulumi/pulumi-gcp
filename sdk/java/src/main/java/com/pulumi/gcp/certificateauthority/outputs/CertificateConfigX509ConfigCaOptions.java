@@ -114,12 +114,12 @@ public final class CertificateConfigX509ConfigCaOptions {
             return this;
         }
         public CertificateConfigX509ConfigCaOptions build() {
-            final var o = new CertificateConfigX509ConfigCaOptions();
-            o.isCa = isCa;
-            o.maxIssuerPathLength = maxIssuerPathLength;
-            o.nonCa = nonCa;
-            o.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
-            return o;
+            final var _resultValue = new CertificateConfigX509ConfigCaOptions();
+            _resultValue.isCa = isCa;
+            _resultValue.maxIssuerPathLength = maxIssuerPathLength;
+            _resultValue.nonCa = nonCa;
+            _resultValue.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
+            return _resultValue;
         }
     }
 }

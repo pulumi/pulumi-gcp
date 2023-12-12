@@ -46,9 +46,9 @@ public final class UptimeCheckConfigTcpCheckPingConfig {
             return this;
         }
         public UptimeCheckConfigTcpCheckPingConfig build() {
-            final var o = new UptimeCheckConfigTcpCheckPingConfig();
-            o.pingsCount = pingsCount;
-            return o;
+            final var _resultValue = new UptimeCheckConfigTcpCheckPingConfig();
+            _resultValue.pingsCount = pingsCount;
+            return _resultValue;
         }
     }
 }

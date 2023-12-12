@@ -72,10 +72,10 @@ public final class URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout 
             return this;
         }
         public URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout build() {
-            final var o = new URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

@@ -71,10 +71,10 @@ public final class BackupExpiryQuantity {
             return this;
         }
         public BackupExpiryQuantity build() {
-            final var o = new BackupExpiryQuantity();
-            o.retentionCount = retentionCount;
-            o.totalRetentionCount = totalRetentionCount;
-            return o;
+            final var _resultValue = new BackupExpiryQuantity();
+            _resultValue.retentionCount = retentionCount;
+            _resultValue.totalRetentionCount = totalRetentionCount;
+            return _resultValue;
         }
     }
 }

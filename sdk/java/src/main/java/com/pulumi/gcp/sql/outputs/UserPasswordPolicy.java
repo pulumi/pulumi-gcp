@@ -123,13 +123,13 @@ public final class UserPasswordPolicy {
             return statuses(List.of(statuses));
         }
         public UserPasswordPolicy build() {
-            final var o = new UserPasswordPolicy();
-            o.allowedFailedAttempts = allowedFailedAttempts;
-            o.enableFailedAttemptsCheck = enableFailedAttemptsCheck;
-            o.enablePasswordVerification = enablePasswordVerification;
-            o.passwordExpirationDuration = passwordExpirationDuration;
-            o.statuses = statuses;
-            return o;
+            final var _resultValue = new UserPasswordPolicy();
+            _resultValue.allowedFailedAttempts = allowedFailedAttempts;
+            _resultValue.enableFailedAttemptsCheck = enableFailedAttemptsCheck;
+            _resultValue.enablePasswordVerification = enablePasswordVerification;
+            _resultValue.passwordExpirationDuration = passwordExpirationDuration;
+            _resultValue.statuses = statuses;
+            return _resultValue;
         }
     }
 }

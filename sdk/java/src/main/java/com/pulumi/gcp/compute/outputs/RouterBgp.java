@@ -179,13 +179,13 @@ public final class RouterBgp {
             return this;
         }
         public RouterBgp build() {
-            final var o = new RouterBgp();
-            o.advertiseMode = advertiseMode;
-            o.advertisedGroups = advertisedGroups;
-            o.advertisedIpRanges = advertisedIpRanges;
-            o.asn = asn;
-            o.keepaliveInterval = keepaliveInterval;
-            return o;
+            final var _resultValue = new RouterBgp();
+            _resultValue.advertiseMode = advertiseMode;
+            _resultValue.advertisedGroups = advertisedGroups;
+            _resultValue.advertisedIpRanges = advertisedIpRanges;
+            _resultValue.asn = asn;
+            _resultValue.keepaliveInterval = keepaliveInterval;
+            return _resultValue;
         }
     }
 }

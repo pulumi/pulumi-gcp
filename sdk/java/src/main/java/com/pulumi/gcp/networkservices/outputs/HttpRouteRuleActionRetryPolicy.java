@@ -91,11 +91,11 @@ public final class HttpRouteRuleActionRetryPolicy {
             return retryConditions(List.of(retryConditions));
         }
         public HttpRouteRuleActionRetryPolicy build() {
-            final var o = new HttpRouteRuleActionRetryPolicy();
-            o.numRetries = numRetries;
-            o.perTryTimeout = perTryTimeout;
-            o.retryConditions = retryConditions;
-            return o;
+            final var _resultValue = new HttpRouteRuleActionRetryPolicy();
+            _resultValue.numRetries = numRetries;
+            _resultValue.perTryTimeout = perTryTimeout;
+            _resultValue.retryConditions = retryConditions;
+            return _resultValue;
         }
     }
 }

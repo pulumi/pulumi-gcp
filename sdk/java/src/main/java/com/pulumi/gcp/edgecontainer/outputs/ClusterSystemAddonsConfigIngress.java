@@ -68,10 +68,10 @@ public final class ClusterSystemAddonsConfigIngress {
             return this;
         }
         public ClusterSystemAddonsConfigIngress build() {
-            final var o = new ClusterSystemAddonsConfigIngress();
-            o.disabled = disabled;
-            o.ipv4Vip = ipv4Vip;
-            return o;
+            final var _resultValue = new ClusterSystemAddonsConfigIngress();
+            _resultValue.disabled = disabled;
+            _resultValue.ipv4Vip = ipv4Vip;
+            return _resultValue;
         }
     }
 }

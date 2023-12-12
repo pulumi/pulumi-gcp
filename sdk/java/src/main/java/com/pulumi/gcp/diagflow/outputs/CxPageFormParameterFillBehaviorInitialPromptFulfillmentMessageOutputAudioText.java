@@ -89,11 +89,11 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessag
             return this;
         }
         public CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText build() {
-            final var o = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.ssml = ssml;
-            o.text = text;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.ssml = ssml;
+            _resultValue.text = text;
+            return _resultValue;
         }
     }
 }

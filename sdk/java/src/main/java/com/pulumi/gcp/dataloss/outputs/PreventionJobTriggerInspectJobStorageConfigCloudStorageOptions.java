@@ -167,14 +167,14 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions();
-            o.bytesLimitPerFile = bytesLimitPerFile;
-            o.bytesLimitPerFilePercent = bytesLimitPerFilePercent;
-            o.fileSet = fileSet;
-            o.fileTypes = fileTypes;
-            o.filesLimitPercent = filesLimitPercent;
-            o.sampleMethod = sampleMethod;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions();
+            _resultValue.bytesLimitPerFile = bytesLimitPerFile;
+            _resultValue.bytesLimitPerFilePercent = bytesLimitPerFilePercent;
+            _resultValue.fileSet = fileSet;
+            _resultValue.fileTypes = fileTypes;
+            _resultValue.filesLimitPercent = filesLimitPercent;
+            _resultValue.sampleMethod = sampleMethod;
+            return _resultValue;
         }
     }
 }

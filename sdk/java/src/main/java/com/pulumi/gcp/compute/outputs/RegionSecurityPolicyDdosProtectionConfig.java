@@ -54,9 +54,9 @@ public final class RegionSecurityPolicyDdosProtectionConfig {
             return this;
         }
         public RegionSecurityPolicyDdosProtectionConfig build() {
-            final var o = new RegionSecurityPolicyDdosProtectionConfig();
-            o.ddosProtection = ddosProtection;
-            return o;
+            final var _resultValue = new RegionSecurityPolicyDdosProtectionConfig();
+            _resultValue.ddosProtection = ddosProtection;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class CxEntityTypeExcludedPhrase {
             return this;
         }
         public CxEntityTypeExcludedPhrase build() {
-            final var o = new CxEntityTypeExcludedPhrase();
-            o.value = value;
-            return o;
+            final var _resultValue = new CxEntityTypeExcludedPhrase();
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

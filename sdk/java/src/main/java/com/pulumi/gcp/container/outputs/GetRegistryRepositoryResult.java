@@ -89,12 +89,12 @@ public final class GetRegistryRepositoryResult {
             return this;
         }
         public GetRegistryRepositoryResult build() {
-            final var o = new GetRegistryRepositoryResult();
-            o.id = id;
-            o.project = project;
-            o.region = region;
-            o.repositoryUrl = repositoryUrl;
-            return o;
+            final var _resultValue = new GetRegistryRepositoryResult();
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.repositoryUrl = repositoryUrl;
+            return _resultValue;
         }
     }
 }

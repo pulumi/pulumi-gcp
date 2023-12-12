@@ -38,9 +38,9 @@ public final class GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration
             return this;
         }
         public GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration build() {
-            final var o = new GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

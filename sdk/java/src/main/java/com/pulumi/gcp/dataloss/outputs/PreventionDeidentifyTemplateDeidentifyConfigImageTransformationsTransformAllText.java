@@ -25,8 +25,8 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigImageTransformati
         }
 
         public PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllText build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllText();
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllText();
+            return _resultValue;
         }
     }
 }

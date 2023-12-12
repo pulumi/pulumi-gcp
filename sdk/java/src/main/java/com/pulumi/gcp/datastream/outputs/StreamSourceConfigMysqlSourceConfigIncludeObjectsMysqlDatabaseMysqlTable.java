@@ -73,10 +73,10 @@ public final class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabas
             return this;
         }
         public StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable build() {
-            final var o = new StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable();
-            o.mysqlColumns = mysqlColumns;
-            o.table = table;
-            return o;
+            final var _resultValue = new StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable();
+            _resultValue.mysqlColumns = mysqlColumns;
+            _resultValue.table = table;
+            return _resultValue;
         }
     }
 }

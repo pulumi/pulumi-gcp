@@ -70,10 +70,10 @@ public final class DatascanExecutionSpecTrigger {
             return this;
         }
         public DatascanExecutionSpecTrigger build() {
-            final var o = new DatascanExecutionSpecTrigger();
-            o.onDemand = onDemand;
-            o.schedule = schedule;
-            return o;
+            final var _resultValue = new DatascanExecutionSpecTrigger();
+            _resultValue.onDemand = onDemand;
+            _resultValue.schedule = schedule;
+            return _resultValue;
         }
     }
 }

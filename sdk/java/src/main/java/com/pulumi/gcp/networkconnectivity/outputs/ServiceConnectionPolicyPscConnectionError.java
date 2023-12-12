@@ -92,11 +92,11 @@ public final class ServiceConnectionPolicyPscConnectionError {
             return this;
         }
         public ServiceConnectionPolicyPscConnectionError build() {
-            final var o = new ServiceConnectionPolicyPscConnectionError();
-            o.code = code;
-            o.details = details;
-            o.message = message;
-            return o;
+            final var _resultValue = new ServiceConnectionPolicyPscConnectionError();
+            _resultValue.code = code;
+            _resultValue.details = details;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

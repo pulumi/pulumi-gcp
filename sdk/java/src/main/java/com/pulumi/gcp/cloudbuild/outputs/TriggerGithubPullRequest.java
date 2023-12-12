@@ -91,11 +91,11 @@ public final class TriggerGithubPullRequest {
             return this;
         }
         public TriggerGithubPullRequest build() {
-            final var o = new TriggerGithubPullRequest();
-            o.branch = branch;
-            o.commentControl = commentControl;
-            o.invertRegex = invertRegex;
-            return o;
+            final var _resultValue = new TriggerGithubPullRequest();
+            _resultValue.branch = branch;
+            _resultValue.commentControl = commentControl;
+            _resultValue.invertRegex = invertRegex;
+            return _resultValue;
         }
     }
 }

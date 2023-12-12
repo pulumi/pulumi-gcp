@@ -25,8 +25,8 @@ public final class PreventionJobTriggerInspectJobActionPublishSummaryToCscc {
         }
 
         public PreventionJobTriggerInspectJobActionPublishSummaryToCscc build() {
-            final var o = new PreventionJobTriggerInspectJobActionPublishSummaryToCscc();
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobActionPublishSummaryToCscc();
+            return _resultValue;
         }
     }
 }

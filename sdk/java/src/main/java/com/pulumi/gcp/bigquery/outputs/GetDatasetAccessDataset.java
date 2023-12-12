@@ -57,10 +57,10 @@ public final class GetDatasetAccessDataset {
             return targetTypes(List.of(targetTypes));
         }
         public GetDatasetAccessDataset build() {
-            final var o = new GetDatasetAccessDataset();
-            o.datasets = datasets;
-            o.targetTypes = targetTypes;
-            return o;
+            final var _resultValue = new GetDatasetAccessDataset();
+            _resultValue.datasets = datasets;
+            _resultValue.targetTypes = targetTypes;
+            return _resultValue;
         }
     }
 }

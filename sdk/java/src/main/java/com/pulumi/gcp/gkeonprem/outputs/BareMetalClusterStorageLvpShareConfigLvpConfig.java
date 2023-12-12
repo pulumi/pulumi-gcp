@@ -65,10 +65,10 @@ public final class BareMetalClusterStorageLvpShareConfigLvpConfig {
             return this;
         }
         public BareMetalClusterStorageLvpShareConfigLvpConfig build() {
-            final var o = new BareMetalClusterStorageLvpShareConfigLvpConfig();
-            o.path = path;
-            o.storageClass = storageClass;
-            return o;
+            final var _resultValue = new BareMetalClusterStorageLvpShareConfigLvpConfig();
+            _resultValue.path = path;
+            _resultValue.storageClass = storageClass;
+            return _resultValue;
         }
     }
 }

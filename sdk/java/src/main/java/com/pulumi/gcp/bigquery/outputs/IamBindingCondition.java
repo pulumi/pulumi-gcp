@@ -94,11 +94,11 @@ public final class IamBindingCondition {
             return this;
         }
         public IamBindingCondition build() {
-            final var o = new IamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new IamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

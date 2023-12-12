@@ -113,15 +113,15 @@ public final class GetClusterIpAllocationPolicy {
             return this;
         }
         public GetClusterIpAllocationPolicy build() {
-            final var o = new GetClusterIpAllocationPolicy();
-            o.additionalPodRangesConfigs = additionalPodRangesConfigs;
-            o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
-            o.clusterSecondaryRangeName = clusterSecondaryRangeName;
-            o.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
-            o.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
-            o.servicesSecondaryRangeName = servicesSecondaryRangeName;
-            o.stackType = stackType;
-            return o;
+            final var _resultValue = new GetClusterIpAllocationPolicy();
+            _resultValue.additionalPodRangesConfigs = additionalPodRangesConfigs;
+            _resultValue.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
+            _resultValue.clusterSecondaryRangeName = clusterSecondaryRangeName;
+            _resultValue.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
+            _resultValue.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
+            _resultValue.servicesSecondaryRangeName = servicesSecondaryRangeName;
+            _resultValue.stackType = stackType;
+            return _resultValue;
         }
     }
 }

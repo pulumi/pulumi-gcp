@@ -73,11 +73,11 @@ public final class GetInstanceGroupManagerVersion {
             return targetSizes(List.of(targetSizes));
         }
         public GetInstanceGroupManagerVersion build() {
-            final var o = new GetInstanceGroupManagerVersion();
-            o.instanceTemplate = instanceTemplate;
-            o.name = name;
-            o.targetSizes = targetSizes;
-            return o;
+            final var _resultValue = new GetInstanceGroupManagerVersion();
+            _resultValue.instanceTemplate = instanceTemplate;
+            _resultValue.name = name;
+            _resultValue.targetSizes = targetSizes;
+            return _resultValue;
         }
     }
 }

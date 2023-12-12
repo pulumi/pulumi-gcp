@@ -100,11 +100,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket();
-            o.max = max;
-            o.min = min;
-            o.replacementValue = replacementValue;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucket();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            _resultValue.replacementValue = replacementValue;
+            return _resultValue;
         }
     }
 }

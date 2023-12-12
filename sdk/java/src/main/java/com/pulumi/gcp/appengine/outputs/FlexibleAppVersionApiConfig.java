@@ -134,13 +134,13 @@ public final class FlexibleAppVersionApiConfig {
             return this;
         }
         public FlexibleAppVersionApiConfig build() {
-            final var o = new FlexibleAppVersionApiConfig();
-            o.authFailAction = authFailAction;
-            o.login = login;
-            o.script = script;
-            o.securityLevel = securityLevel;
-            o.url = url;
-            return o;
+            final var _resultValue = new FlexibleAppVersionApiConfig();
+            _resultValue.authFailAction = authFailAction;
+            _resultValue.login = login;
+            _resultValue.script = script;
+            _resultValue.securityLevel = securityLevel;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

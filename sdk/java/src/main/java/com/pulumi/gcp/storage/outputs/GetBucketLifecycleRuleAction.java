@@ -49,10 +49,10 @@ public final class GetBucketLifecycleRuleAction {
             return this;
         }
         public GetBucketLifecycleRuleAction build() {
-            final var o = new GetBucketLifecycleRuleAction();
-            o.storageClass = storageClass;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetBucketLifecycleRuleAction();
+            _resultValue.storageClass = storageClass;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

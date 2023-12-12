@@ -93,14 +93,14 @@ public final class GetTriggerSourceToBuild {
             return this;
         }
         public GetTriggerSourceToBuild build() {
-            final var o = new GetTriggerSourceToBuild();
-            o.bitbucketServerConfig = bitbucketServerConfig;
-            o.githubEnterpriseConfig = githubEnterpriseConfig;
-            o.ref = ref;
-            o.repoType = repoType;
-            o.repository = repository;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new GetTriggerSourceToBuild();
+            _resultValue.bitbucketServerConfig = bitbucketServerConfig;
+            _resultValue.githubEnterpriseConfig = githubEnterpriseConfig;
+            _resultValue.ref = ref;
+            _resultValue.repoType = repoType;
+            _resultValue.repository = repository;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

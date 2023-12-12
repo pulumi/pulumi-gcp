@@ -51,10 +51,10 @@ public final class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
             return this;
         }
         public EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock build() {
-            final var o = new EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock();
-            o.cidrBlock = cidrBlock;
-            o.displayName = displayName;
-            return o;
+            final var _resultValue = new EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.displayName = displayName;
+            return _resultValue;
         }
     }
 }

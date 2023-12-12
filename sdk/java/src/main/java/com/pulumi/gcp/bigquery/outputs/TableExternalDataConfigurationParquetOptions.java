@@ -67,10 +67,10 @@ public final class TableExternalDataConfigurationParquetOptions {
             return this;
         }
         public TableExternalDataConfigurationParquetOptions build() {
-            final var o = new TableExternalDataConfigurationParquetOptions();
-            o.enableListInference = enableListInference;
-            o.enumAsString = enumAsString;
-            return o;
+            final var _resultValue = new TableExternalDataConfigurationParquetOptions();
+            _resultValue.enableListInference = enableListInference;
+            _resultValue.enumAsString = enumAsString;
+            return _resultValue;
         }
     }
 }

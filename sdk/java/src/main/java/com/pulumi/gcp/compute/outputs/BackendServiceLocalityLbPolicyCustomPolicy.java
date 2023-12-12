@@ -81,10 +81,10 @@ public final class BackendServiceLocalityLbPolicyCustomPolicy {
             return this;
         }
         public BackendServiceLocalityLbPolicyCustomPolicy build() {
-            final var o = new BackendServiceLocalityLbPolicyCustomPolicy();
-            o.data = data;
-            o.name = name;
-            return o;
+            final var _resultValue = new BackendServiceLocalityLbPolicyCustomPolicy();
+            _resultValue.data = data;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

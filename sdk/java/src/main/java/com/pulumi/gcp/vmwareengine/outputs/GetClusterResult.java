@@ -118,15 +118,15 @@ public final class GetClusterResult {
             return this;
         }
         public GetClusterResult build() {
-            final var o = new GetClusterResult();
-            o.id = id;
-            o.management = management;
-            o.name = name;
-            o.nodeTypeConfigs = nodeTypeConfigs;
-            o.parent = parent;
-            o.state = state;
-            o.uid = uid;
-            return o;
+            final var _resultValue = new GetClusterResult();
+            _resultValue.id = id;
+            _resultValue.management = management;
+            _resultValue.name = name;
+            _resultValue.nodeTypeConfigs = nodeTypeConfigs;
+            _resultValue.parent = parent;
+            _resultValue.state = state;
+            _resultValue.uid = uid;
+            return _resultValue;
         }
     }
 }

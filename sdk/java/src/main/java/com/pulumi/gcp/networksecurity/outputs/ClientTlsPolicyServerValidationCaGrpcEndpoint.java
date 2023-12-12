@@ -46,9 +46,9 @@ public final class ClientTlsPolicyServerValidationCaGrpcEndpoint {
             return this;
         }
         public ClientTlsPolicyServerValidationCaGrpcEndpoint build() {
-            final var o = new ClientTlsPolicyServerValidationCaGrpcEndpoint();
-            o.targetUri = targetUri;
-            return o;
+            final var _resultValue = new ClientTlsPolicyServerValidationCaGrpcEndpoint();
+            _resultValue.targetUri = targetUri;
+            return _resultValue;
         }
     }
 }

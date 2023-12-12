@@ -70,10 +70,10 @@ public final class DatascanExecutionSpec {
             return this;
         }
         public DatascanExecutionSpec build() {
-            final var o = new DatascanExecutionSpec();
-            o.field = field;
-            o.trigger = trigger;
-            return o;
+            final var _resultValue = new DatascanExecutionSpec();
+            _resultValue.field = field;
+            _resultValue.trigger = trigger;
+            return _resultValue;
         }
     }
 }

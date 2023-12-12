@@ -93,13 +93,13 @@ public final class GetProjectServiceResult {
             return this;
         }
         public GetProjectServiceResult build() {
-            final var o = new GetProjectServiceResult();
-            o.disableDependentServices = disableDependentServices;
-            o.disableOnDestroy = disableOnDestroy;
-            o.id = id;
-            o.project = project;
-            o.service = service;
-            return o;
+            final var _resultValue = new GetProjectServiceResult();
+            _resultValue.disableDependentServices = disableDependentServices;
+            _resultValue.disableOnDestroy = disableOnDestroy;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

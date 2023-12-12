@@ -291,30 +291,30 @@ public final class GetDatasetResult {
             return this;
         }
         public GetDatasetResult build() {
-            final var o = new GetDatasetResult();
-            o.accesses = accesses;
-            o.creationTime = creationTime;
-            o.datasetId = datasetId;
-            o.defaultCollation = defaultCollation;
-            o.defaultEncryptionConfigurations = defaultEncryptionConfigurations;
-            o.defaultPartitionExpirationMs = defaultPartitionExpirationMs;
-            o.defaultTableExpirationMs = defaultTableExpirationMs;
-            o.deleteContentsOnDestroy = deleteContentsOnDestroy;
-            o.description = description;
-            o.effectiveLabels = effectiveLabels;
-            o.etag = etag;
-            o.friendlyName = friendlyName;
-            o.id = id;
-            o.isCaseInsensitive = isCaseInsensitive;
-            o.labels = labels;
-            o.lastModifiedTime = lastModifiedTime;
-            o.location = location;
-            o.maxTimeTravelHours = maxTimeTravelHours;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.selfLink = selfLink;
-            o.storageBillingModel = storageBillingModel;
-            return o;
+            final var _resultValue = new GetDatasetResult();
+            _resultValue.accesses = accesses;
+            _resultValue.creationTime = creationTime;
+            _resultValue.datasetId = datasetId;
+            _resultValue.defaultCollation = defaultCollation;
+            _resultValue.defaultEncryptionConfigurations = defaultEncryptionConfigurations;
+            _resultValue.defaultPartitionExpirationMs = defaultPartitionExpirationMs;
+            _resultValue.defaultTableExpirationMs = defaultTableExpirationMs;
+            _resultValue.deleteContentsOnDestroy = deleteContentsOnDestroy;
+            _resultValue.description = description;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.etag = etag;
+            _resultValue.friendlyName = friendlyName;
+            _resultValue.id = id;
+            _resultValue.isCaseInsensitive = isCaseInsensitive;
+            _resultValue.labels = labels;
+            _resultValue.lastModifiedTime = lastModifiedTime;
+            _resultValue.location = location;
+            _resultValue.maxTimeTravelHours = maxTimeTravelHours;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.selfLink = selfLink;
+            _resultValue.storageBillingModel = storageBillingModel;
+            return _resultValue;
         }
     }
 }

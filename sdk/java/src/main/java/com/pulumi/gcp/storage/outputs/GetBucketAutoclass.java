@@ -50,10 +50,10 @@ public final class GetBucketAutoclass {
             return this;
         }
         public GetBucketAutoclass build() {
-            final var o = new GetBucketAutoclass();
-            o.enabled = enabled;
-            o.terminalStorageClass = terminalStorageClass;
-            return o;
+            final var _resultValue = new GetBucketAutoclass();
+            _resultValue.enabled = enabled;
+            _resultValue.terminalStorageClass = terminalStorageClass;
+            return _resultValue;
         }
     }
 }

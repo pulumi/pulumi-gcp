@@ -117,14 +117,14 @@ public final class GetTableIamPolicyResult {
             return this;
         }
         public GetTableIamPolicyResult build() {
-            final var o = new GetTableIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.instance = instance;
-            o.policyData = policyData;
-            o.project = project;
-            o.table = table;
-            return o;
+            final var _resultValue = new GetTableIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.instance = instance;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.table = table;
+            return _resultValue;
         }
     }
 }

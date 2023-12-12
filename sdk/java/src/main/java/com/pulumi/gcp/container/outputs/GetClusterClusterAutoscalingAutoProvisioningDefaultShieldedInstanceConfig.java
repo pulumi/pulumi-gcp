@@ -49,10 +49,10 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedIn
             return this;
         }
         public GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig build() {
-            final var o = new GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig();
-            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
-            o.enableSecureBoot = enableSecureBoot;
-            return o;
+            final var _resultValue = new GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig();
+            _resultValue.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            _resultValue.enableSecureBoot = enableSecureBoot;
+            return _resultValue;
         }
     }
 }

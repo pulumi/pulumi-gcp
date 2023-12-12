@@ -349,33 +349,33 @@ public final class GetBucketResult {
             return websites(List.of(websites));
         }
         public GetBucketResult build() {
-            final var o = new GetBucketResult();
-            o.autoclasses = autoclasses;
-            o.cors = cors;
-            o.customPlacementConfigs = customPlacementConfigs;
-            o.defaultEventBasedHold = defaultEventBasedHold;
-            o.effectiveLabels = effectiveLabels;
-            o.enableObjectRetention = enableObjectRetention;
-            o.encryptions = encryptions;
-            o.forceDestroy = forceDestroy;
-            o.id = id;
-            o.labels = labels;
-            o.lifecycleRules = lifecycleRules;
-            o.location = location;
-            o.loggings = loggings;
-            o.name = name;
-            o.project = project;
-            o.publicAccessPrevention = publicAccessPrevention;
-            o.pulumiLabels = pulumiLabels;
-            o.requesterPays = requesterPays;
-            o.retentionPolicies = retentionPolicies;
-            o.selfLink = selfLink;
-            o.storageClass = storageClass;
-            o.uniformBucketLevelAccess = uniformBucketLevelAccess;
-            o.url = url;
-            o.versionings = versionings;
-            o.websites = websites;
-            return o;
+            final var _resultValue = new GetBucketResult();
+            _resultValue.autoclasses = autoclasses;
+            _resultValue.cors = cors;
+            _resultValue.customPlacementConfigs = customPlacementConfigs;
+            _resultValue.defaultEventBasedHold = defaultEventBasedHold;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.enableObjectRetention = enableObjectRetention;
+            _resultValue.encryptions = encryptions;
+            _resultValue.forceDestroy = forceDestroy;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.lifecycleRules = lifecycleRules;
+            _resultValue.location = location;
+            _resultValue.loggings = loggings;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.publicAccessPrevention = publicAccessPrevention;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.requesterPays = requesterPays;
+            _resultValue.retentionPolicies = retentionPolicies;
+            _resultValue.selfLink = selfLink;
+            _resultValue.storageClass = storageClass;
+            _resultValue.uniformBucketLevelAccess = uniformBucketLevelAccess;
+            _resultValue.url = url;
+            _resultValue.versionings = versionings;
+            _resultValue.websites = websites;
+            return _resultValue;
         }
     }
 }

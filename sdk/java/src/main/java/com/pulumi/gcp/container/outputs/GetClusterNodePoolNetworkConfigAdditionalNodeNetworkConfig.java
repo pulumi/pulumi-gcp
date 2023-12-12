@@ -49,10 +49,10 @@ public final class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
             return this;
         }
         public GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig build() {
-            final var o = new GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig();
-            o.network = network;
-            o.subnetwork = subnetwork;
-            return o;
+            final var _resultValue = new GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig();
+            _resultValue.network = network;
+            _resultValue.subnetwork = subnetwork;
+            return _resultValue;
         }
     }
 }

@@ -101,11 +101,11 @@ public final class CxVersionNluSetting {
             return this;
         }
         public CxVersionNluSetting build() {
-            final var o = new CxVersionNluSetting();
-            o.classificationThreshold = classificationThreshold;
-            o.modelTrainingMode = modelTrainingMode;
-            o.modelType = modelType;
-            return o;
+            final var _resultValue = new CxVersionNluSetting();
+            _resultValue.classificationThreshold = classificationThreshold;
+            _resultValue.modelTrainingMode = modelTrainingMode;
+            _resultValue.modelType = modelType;
+            return _resultValue;
         }
     }
 }

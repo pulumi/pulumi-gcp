@@ -38,9 +38,9 @@ public final class GetClusterAddonsConfigGkeBackupAgentConfig {
             return this;
         }
         public GetClusterAddonsConfigGkeBackupAgentConfig build() {
-            final var o = new GetClusterAddonsConfigGkeBackupAgentConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new GetClusterAddonsConfigGkeBackupAgentConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

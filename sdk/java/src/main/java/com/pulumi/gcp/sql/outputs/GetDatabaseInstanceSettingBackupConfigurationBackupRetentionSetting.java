@@ -50,10 +50,10 @@ public final class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionS
             return this;
         }
         public GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting build() {
-            final var o = new GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting();
-            o.retainedBackups = retainedBackups;
-            o.retentionUnit = retentionUnit;
-            return o;
+            final var _resultValue = new GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting();
+            _resultValue.retainedBackups = retainedBackups;
+            _resultValue.retentionUnit = retentionUnit;
+            return _resultValue;
         }
     }
 }

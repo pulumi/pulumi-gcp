@@ -65,10 +65,10 @@ public final class AzureNodePoolAutoscaling {
             return this;
         }
         public AzureNodePoolAutoscaling build() {
-            final var o = new AzureNodePoolAutoscaling();
-            o.maxNodeCount = maxNodeCount;
-            o.minNodeCount = minNodeCount;
-            return o;
+            final var _resultValue = new AzureNodePoolAutoscaling();
+            _resultValue.maxNodeCount = maxNodeCount;
+            _resultValue.minNodeCount = minNodeCount;
+            return _resultValue;
         }
     }
 }

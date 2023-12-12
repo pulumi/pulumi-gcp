@@ -68,10 +68,10 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionTimeout {
             return this;
         }
         public RegionUrlMapPathMatcherRouteRuleRouteActionTimeout build() {
-            final var o = new RegionUrlMapPathMatcherRouteRuleRouteActionTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherRouteRuleRouteActionTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

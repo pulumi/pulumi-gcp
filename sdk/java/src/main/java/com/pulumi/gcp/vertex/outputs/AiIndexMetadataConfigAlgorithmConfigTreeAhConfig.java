@@ -69,10 +69,10 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
             return this;
         }
         public AiIndexMetadataConfigAlgorithmConfigTreeAhConfig build() {
-            final var o = new AiIndexMetadataConfigAlgorithmConfigTreeAhConfig();
-            o.leafNodeEmbeddingCount = leafNodeEmbeddingCount;
-            o.leafNodesToSearchPercent = leafNodesToSearchPercent;
-            return o;
+            final var _resultValue = new AiIndexMetadataConfigAlgorithmConfigTreeAhConfig();
+            _resultValue.leafNodeEmbeddingCount = leafNodeEmbeddingCount;
+            _resultValue.leafNodesToSearchPercent = leafNodesToSearchPercent;
+            return _resultValue;
         }
     }
 }

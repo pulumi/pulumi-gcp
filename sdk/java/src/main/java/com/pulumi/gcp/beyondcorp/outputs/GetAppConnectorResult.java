@@ -153,18 +153,18 @@ public final class GetAppConnectorResult {
             return this;
         }
         public GetAppConnectorResult build() {
-            final var o = new GetAppConnectorResult();
-            o.displayName = displayName;
-            o.effectiveLabels = effectiveLabels;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.principalInfos = principalInfos;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.region = region;
-            o.state = state;
-            return o;
+            final var _resultValue = new GetAppConnectorResult();
+            _resultValue.displayName = displayName;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.principalInfos = principalInfos;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.region = region;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

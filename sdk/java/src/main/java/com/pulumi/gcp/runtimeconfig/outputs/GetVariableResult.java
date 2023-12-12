@@ -114,15 +114,15 @@ public final class GetVariableResult {
             return this;
         }
         public GetVariableResult build() {
-            final var o = new GetVariableResult();
-            o.id = id;
-            o.name = name;
-            o.parent = parent;
-            o.project = project;
-            o.text = text;
-            o.updateTime = updateTime;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetVariableResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.parent = parent;
+            _resultValue.project = project;
+            _resultValue.text = text;
+            _resultValue.updateTime = updateTime;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

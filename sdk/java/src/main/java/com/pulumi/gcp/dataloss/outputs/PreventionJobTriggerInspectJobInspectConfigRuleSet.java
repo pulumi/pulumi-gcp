@@ -78,10 +78,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSet {
             return rules(List.of(rules));
         }
         public PreventionJobTriggerInspectJobInspectConfigRuleSet build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigRuleSet();
-            o.infoTypes = infoTypes;
-            o.rules = rules;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigRuleSet();
+            _resultValue.infoTypes = infoTypes;
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

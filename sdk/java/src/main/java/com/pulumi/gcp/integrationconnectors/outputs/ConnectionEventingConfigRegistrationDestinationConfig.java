@@ -74,10 +74,10 @@ public final class ConnectionEventingConfigRegistrationDestinationConfig {
             return this;
         }
         public ConnectionEventingConfigRegistrationDestinationConfig build() {
-            final var o = new ConnectionEventingConfigRegistrationDestinationConfig();
-            o.destinations = destinations;
-            o.key = key;
-            return o;
+            final var _resultValue = new ConnectionEventingConfigRegistrationDestinationConfig();
+            _resultValue.destinations = destinations;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

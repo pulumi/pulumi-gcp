@@ -115,12 +115,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig();
-            o.context = context;
-            o.cryptoKey = cryptoKey;
-            o.lowerBoundDays = lowerBoundDays;
-            o.upperBoundDays = upperBoundDays;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig();
+            _resultValue.context = context;
+            _resultValue.cryptoKey = cryptoKey;
+            _resultValue.lowerBoundDays = lowerBoundDays;
+            _resultValue.upperBoundDays = upperBoundDays;
+            return _resultValue;
         }
     }
 }

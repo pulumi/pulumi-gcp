@@ -77,10 +77,10 @@ public final class AlertPolicyAlertStrategyNotificationChannelStrategy {
             return this;
         }
         public AlertPolicyAlertStrategyNotificationChannelStrategy build() {
-            final var o = new AlertPolicyAlertStrategyNotificationChannelStrategy();
-            o.notificationChannelNames = notificationChannelNames;
-            o.renotifyInterval = renotifyInterval;
-            return o;
+            final var _resultValue = new AlertPolicyAlertStrategyNotificationChannelStrategy();
+            _resultValue.notificationChannelNames = notificationChannelNames;
+            _resultValue.renotifyInterval = renotifyInterval;
+            return _resultValue;
         }
     }
 }

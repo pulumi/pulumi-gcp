@@ -145,13 +145,13 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceFile build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceFile();
-            o.content = content;
-            o.file = file;
-            o.path = path;
-            o.permissions = permissions;
-            o.state = state;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourceFile();
+            _resultValue.content = content;
+            _resultValue.file = file;
+            _resultValue.path = path;
+            _resultValue.permissions = permissions;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

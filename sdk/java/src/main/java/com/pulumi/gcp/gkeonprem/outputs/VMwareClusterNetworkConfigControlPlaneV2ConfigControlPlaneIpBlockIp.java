@@ -67,10 +67,10 @@ public final class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpB
             return this;
         }
         public VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp build() {
-            final var o = new VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp();
-            o.hostname = hostname;
-            o.ip = ip;
-            return o;
+            final var _resultValue = new VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp();
+            _resultValue.hostname = hostname;
+            _resultValue.ip = ip;
+            return _resultValue;
         }
     }
 }

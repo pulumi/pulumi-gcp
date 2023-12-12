@@ -42,9 +42,9 @@ public final class GetClusterNotificationConfig {
             return pubsubs(List.of(pubsubs));
         }
         public GetClusterNotificationConfig build() {
-            final var o = new GetClusterNotificationConfig();
-            o.pubsubs = pubsubs;
-            return o;
+            final var _resultValue = new GetClusterNotificationConfig();
+            _resultValue.pubsubs = pubsubs;
+            return _resultValue;
         }
     }
 }

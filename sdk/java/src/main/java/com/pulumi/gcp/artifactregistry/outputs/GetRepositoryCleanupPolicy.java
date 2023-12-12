@@ -80,12 +80,12 @@ public final class GetRepositoryCleanupPolicy {
             return mostRecentVersions(List.of(mostRecentVersions));
         }
         public GetRepositoryCleanupPolicy build() {
-            final var o = new GetRepositoryCleanupPolicy();
-            o.action = action;
-            o.conditions = conditions;
-            o.id = id;
-            o.mostRecentVersions = mostRecentVersions;
-            return o;
+            final var _resultValue = new GetRepositoryCleanupPolicy();
+            _resultValue.action = action;
+            _resultValue.conditions = conditions;
+            _resultValue.id = id;
+            _resultValue.mostRecentVersions = mostRecentVersions;
+            return _resultValue;
         }
     }
 }

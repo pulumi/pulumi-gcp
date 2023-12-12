@@ -46,9 +46,9 @@ public final class GetRegionInstanceTemplateDiskDiskEncryptionKey {
             return this;
         }
         public GetRegionInstanceTemplateDiskDiskEncryptionKey build() {
-            final var o = new GetRegionInstanceTemplateDiskDiskEncryptionKey();
-            o.kmsKeySelfLink = kmsKeySelfLink;
-            return o;
+            final var _resultValue = new GetRegionInstanceTemplateDiskDiskEncryptionKey();
+            _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            return _resultValue;
         }
     }
 }

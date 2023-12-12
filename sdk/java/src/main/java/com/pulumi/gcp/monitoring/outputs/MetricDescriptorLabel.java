@@ -90,11 +90,11 @@ public final class MetricDescriptorLabel {
             return this;
         }
         public MetricDescriptorLabel build() {
-            final var o = new MetricDescriptorLabel();
-            o.description = description;
-            o.key = key;
-            o.valueType = valueType;
-            return o;
+            final var _resultValue = new MetricDescriptorLabel();
+            _resultValue.description = description;
+            _resultValue.key = key;
+            _resultValue.valueType = valueType;
+            return _resultValue;
         }
     }
 }

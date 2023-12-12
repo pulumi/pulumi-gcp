@@ -52,9 +52,9 @@ public final class MembershipRbacRoleBindingRole {
             return this;
         }
         public MembershipRbacRoleBindingRole build() {
-            final var o = new MembershipRbacRoleBindingRole();
-            o.predefinedRole = predefinedRole;
-            return o;
+            final var _resultValue = new MembershipRbacRoleBindingRole();
+            _resultValue.predefinedRole = predefinedRole;
+            return _resultValue;
         }
     }
 }

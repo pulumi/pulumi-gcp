@@ -70,10 +70,10 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolic
             return this;
         }
         public RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort build() {
-            final var o = new RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort();
-            o.httpStatus = httpStatus;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort();
+            _resultValue.httpStatus = httpStatus;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

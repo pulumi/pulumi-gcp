@@ -66,10 +66,10 @@ public final class InstanceGroupNamedPort {
             return this;
         }
         public InstanceGroupNamedPort build() {
-            final var o = new InstanceGroupNamedPort();
-            o.name = name;
-            o.port = port;
-            return o;
+            final var _resultValue = new InstanceGroupNamedPort();
+            _resultValue.name = name;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

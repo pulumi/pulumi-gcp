@@ -132,11 +132,11 @@ public final class ClusterNotificationConfigPubsub {
             return this;
         }
         public ClusterNotificationConfigPubsub build() {
-            final var o = new ClusterNotificationConfigPubsub();
-            o.enabled = enabled;
-            o.filter = filter;
-            o.topic = topic;
-            return o;
+            final var _resultValue = new ClusterNotificationConfigPubsub();
+            _resultValue.enabled = enabled;
+            _resultValue.filter = filter;
+            _resultValue.topic = topic;
+            return _resultValue;
         }
     }
 }

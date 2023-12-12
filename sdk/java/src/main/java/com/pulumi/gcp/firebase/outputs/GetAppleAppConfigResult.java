@@ -100,13 +100,13 @@ public final class GetAppleAppConfigResult {
             return this;
         }
         public GetAppleAppConfigResult build() {
-            final var o = new GetAppleAppConfigResult();
-            o.appId = appId;
-            o.configFileContents = configFileContents;
-            o.configFilename = configFilename;
-            o.id = id;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetAppleAppConfigResult();
+            _resultValue.appId = appId;
+            _resultValue.configFileContents = configFileContents;
+            _resultValue.configFilename = configFilename;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

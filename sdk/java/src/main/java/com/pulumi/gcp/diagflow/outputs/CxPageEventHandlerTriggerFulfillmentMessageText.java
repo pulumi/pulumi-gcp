@@ -74,10 +74,10 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageText {
             return texts(List.of(texts));
         }
         public CxPageEventHandlerTriggerFulfillmentMessageText build() {
-            final var o = new CxPageEventHandlerTriggerFulfillmentMessageText();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.texts = texts;
-            return o;
+            final var _resultValue = new CxPageEventHandlerTriggerFulfillmentMessageText();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.texts = texts;
+            return _resultValue;
         }
     }
 }

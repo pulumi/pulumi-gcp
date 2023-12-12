@@ -46,9 +46,9 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdCon
             return this;
         }
         public AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig build() {
-            final var o = new AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig();
-            o.value = value;
-            return o;
+            final var _resultValue = new AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig();
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

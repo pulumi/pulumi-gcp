@@ -57,10 +57,10 @@ public final class GetTriggerBuildSource {
             return storageSources(List.of(storageSources));
         }
         public GetTriggerBuildSource build() {
-            final var o = new GetTriggerBuildSource();
-            o.repoSources = repoSources;
-            o.storageSources = storageSources;
-            return o;
+            final var _resultValue = new GetTriggerBuildSource();
+            _resultValue.repoSources = repoSources;
+            _resultValue.storageSources = storageSources;
+            return _resultValue;
         }
     }
 }

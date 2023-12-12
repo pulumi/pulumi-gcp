@@ -129,14 +129,14 @@ public final class GetInstanceBootDiskInitializeParam {
             return this;
         }
         public GetInstanceBootDiskInitializeParam build() {
-            final var o = new GetInstanceBootDiskInitializeParam();
-            o.enableConfidentialCompute = enableConfidentialCompute;
-            o.image = image;
-            o.labels = labels;
-            o.resourceManagerTags = resourceManagerTags;
-            o.size = size;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetInstanceBootDiskInitializeParam();
+            _resultValue.enableConfidentialCompute = enableConfidentialCompute;
+            _resultValue.image = image;
+            _resultValue.labels = labels;
+            _resultValue.resourceManagerTags = resourceManagerTags;
+            _resultValue.size = size;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -80,11 +80,11 @@ public final class GetTriggerBuildArtifactObject {
             return timings(List.of(timings));
         }
         public GetTriggerBuildArtifactObject build() {
-            final var o = new GetTriggerBuildArtifactObject();
-            o.location = location;
-            o.paths = paths;
-            o.timings = timings;
-            return o;
+            final var _resultValue = new GetTriggerBuildArtifactObject();
+            _resultValue.location = location;
+            _resultValue.paths = paths;
+            _resultValue.timings = timings;
+            return _resultValue;
         }
     }
 }

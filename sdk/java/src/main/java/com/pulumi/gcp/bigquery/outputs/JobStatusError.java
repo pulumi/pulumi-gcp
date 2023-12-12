@@ -86,11 +86,11 @@ public final class JobStatusError {
             return this;
         }
         public JobStatusError build() {
-            final var o = new JobStatusError();
-            o.location = location;
-            o.message = message;
-            o.reason = reason;
-            return o;
+            final var _resultValue = new JobStatusError();
+            _resultValue.location = location;
+            _resultValue.message = message;
+            _resultValue.reason = reason;
+            return _resultValue;
         }
     }
 }

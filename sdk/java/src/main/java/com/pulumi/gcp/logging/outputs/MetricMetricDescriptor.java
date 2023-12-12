@@ -157,13 +157,13 @@ public final class MetricMetricDescriptor {
             return this;
         }
         public MetricMetricDescriptor build() {
-            final var o = new MetricMetricDescriptor();
-            o.displayName = displayName;
-            o.labels = labels;
-            o.metricKind = metricKind;
-            o.unit = unit;
-            o.valueType = valueType;
-            return o;
+            final var _resultValue = new MetricMetricDescriptor();
+            _resultValue.displayName = displayName;
+            _resultValue.labels = labels;
+            _resultValue.metricKind = metricKind;
+            _resultValue.unit = unit;
+            _resultValue.valueType = valueType;
+            return _resultValue;
         }
     }
 }

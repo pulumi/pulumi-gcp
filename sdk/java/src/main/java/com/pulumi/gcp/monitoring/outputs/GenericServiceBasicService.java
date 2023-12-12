@@ -72,10 +72,10 @@ public final class GenericServiceBasicService {
             return this;
         }
         public GenericServiceBasicService build() {
-            final var o = new GenericServiceBasicService();
-            o.serviceLabels = serviceLabels;
-            o.serviceType = serviceType;
-            return o;
+            final var _resultValue = new GenericServiceBasicService();
+            _resultValue.serviceLabels = serviceLabels;
+            _resultValue.serviceType = serviceType;
+            return _resultValue;
         }
     }
 }

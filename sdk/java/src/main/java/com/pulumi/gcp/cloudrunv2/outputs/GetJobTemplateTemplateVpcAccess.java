@@ -65,11 +65,11 @@ public final class GetJobTemplateTemplateVpcAccess {
             return networkInterfaces(List.of(networkInterfaces));
         }
         public GetJobTemplateTemplateVpcAccess build() {
-            final var o = new GetJobTemplateTemplateVpcAccess();
-            o.connector = connector;
-            o.egress = egress;
-            o.networkInterfaces = networkInterfaces;
-            return o;
+            final var _resultValue = new GetJobTemplateTemplateVpcAccess();
+            _resultValue.connector = connector;
+            _resultValue.egress = egress;
+            _resultValue.networkInterfaces = networkInterfaces;
+            return _resultValue;
         }
     }
 }

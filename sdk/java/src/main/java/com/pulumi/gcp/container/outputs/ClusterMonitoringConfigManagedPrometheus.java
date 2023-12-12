@@ -46,9 +46,9 @@ public final class ClusterMonitoringConfigManagedPrometheus {
             return this;
         }
         public ClusterMonitoringConfigManagedPrometheus build() {
-            final var o = new ClusterMonitoringConfigManagedPrometheus();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterMonitoringConfigManagedPrometheus();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

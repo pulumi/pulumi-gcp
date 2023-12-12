@@ -69,10 +69,10 @@ public final class GetInstanceServiceAccount {
             return scopes(List.of(scopes));
         }
         public GetInstanceServiceAccount build() {
-            final var o = new GetInstanceServiceAccount();
-            o.email = email;
-            o.scopes = scopes;
-            return o;
+            final var _resultValue = new GetInstanceServiceAccount();
+            _resultValue.email = email;
+            _resultValue.scopes = scopes;
+            return _resultValue;
         }
     }
 }

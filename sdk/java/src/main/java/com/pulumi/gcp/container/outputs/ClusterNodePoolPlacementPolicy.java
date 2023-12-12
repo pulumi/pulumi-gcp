@@ -72,11 +72,11 @@ public final class ClusterNodePoolPlacementPolicy {
             return this;
         }
         public ClusterNodePoolPlacementPolicy build() {
-            final var o = new ClusterNodePoolPlacementPolicy();
-            o.policyName = policyName;
-            o.tpuTopology = tpuTopology;
-            o.type = type;
-            return o;
+            final var _resultValue = new ClusterNodePoolPlacementPolicy();
+            _resultValue.policyName = policyName;
+            _resultValue.tpuTopology = tpuTopology;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

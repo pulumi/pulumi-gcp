@@ -93,11 +93,11 @@ public final class RuntimeVirtualMachine {
             return this;
         }
         public RuntimeVirtualMachine build() {
-            final var o = new RuntimeVirtualMachine();
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.virtualMachineConfig = virtualMachineConfig;
-            return o;
+            final var _resultValue = new RuntimeVirtualMachine();
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.virtualMachineConfig = virtualMachineConfig;
+            return _resultValue;
         }
     }
 }

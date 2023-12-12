@@ -68,10 +68,10 @@ public final class InstanceAcceleratorConfig {
             return this;
         }
         public InstanceAcceleratorConfig build() {
-            final var o = new InstanceAcceleratorConfig();
-            o.coreCount = coreCount;
-            o.type = type;
-            return o;
+            final var _resultValue = new InstanceAcceleratorConfig();
+            _resultValue.coreCount = coreCount;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

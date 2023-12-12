@@ -56,9 +56,9 @@ public final class ManagedZoneForwardingConfig {
             return targetNameServers(List.of(targetNameServers));
         }
         public ManagedZoneForwardingConfig build() {
-            final var o = new ManagedZoneForwardingConfig();
-            o.targetNameServers = targetNameServers;
-            return o;
+            final var _resultValue = new ManagedZoneForwardingConfig();
+            _resultValue.targetNameServers = targetNameServers;
+            return _resultValue;
         }
     }
 }

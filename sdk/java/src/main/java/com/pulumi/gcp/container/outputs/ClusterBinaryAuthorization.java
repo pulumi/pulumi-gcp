@@ -78,10 +78,10 @@ public final class ClusterBinaryAuthorization {
             return this;
         }
         public ClusterBinaryAuthorization build() {
-            final var o = new ClusterBinaryAuthorization();
-            o.enabled = enabled;
-            o.evaluationMode = evaluationMode;
-            return o;
+            final var _resultValue = new ClusterBinaryAuthorization();
+            _resultValue.enabled = enabled;
+            _resultValue.evaluationMode = evaluationMode;
+            return _resultValue;
         }
     }
 }

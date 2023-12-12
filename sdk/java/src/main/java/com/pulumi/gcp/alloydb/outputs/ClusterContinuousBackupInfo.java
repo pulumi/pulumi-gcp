@@ -123,12 +123,12 @@ public final class ClusterContinuousBackupInfo {
             return schedules(List.of(schedules));
         }
         public ClusterContinuousBackupInfo build() {
-            final var o = new ClusterContinuousBackupInfo();
-            o.earliestRestorableTime = earliestRestorableTime;
-            o.enabledTime = enabledTime;
-            o.encryptionInfos = encryptionInfos;
-            o.schedules = schedules;
-            return o;
+            final var _resultValue = new ClusterContinuousBackupInfo();
+            _resultValue.earliestRestorableTime = earliestRestorableTime;
+            _resultValue.enabledTime = enabledTime;
+            _resultValue.encryptionInfos = encryptionInfos;
+            _resultValue.schedules = schedules;
+            return _resultValue;
         }
     }
 }

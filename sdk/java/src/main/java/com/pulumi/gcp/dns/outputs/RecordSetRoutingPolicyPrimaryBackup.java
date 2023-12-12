@@ -116,12 +116,12 @@ public final class RecordSetRoutingPolicyPrimaryBackup {
             return this;
         }
         public RecordSetRoutingPolicyPrimaryBackup build() {
-            final var o = new RecordSetRoutingPolicyPrimaryBackup();
-            o.backupGeos = backupGeos;
-            o.enableGeoFencingForBackups = enableGeoFencingForBackups;
-            o.primary = primary;
-            o.trickleRatio = trickleRatio;
-            return o;
+            final var _resultValue = new RecordSetRoutingPolicyPrimaryBackup();
+            _resultValue.backupGeos = backupGeos;
+            _resultValue.enableGeoFencingForBackups = enableGeoFencingForBackups;
+            _resultValue.primary = primary;
+            _resultValue.trickleRatio = trickleRatio;
+            return _resultValue;
         }
     }
 }

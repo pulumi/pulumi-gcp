@@ -159,14 +159,14 @@ public final class PatchDeploymentPatchConfigZypper {
             return this;
         }
         public PatchDeploymentPatchConfigZypper build() {
-            final var o = new PatchDeploymentPatchConfigZypper();
-            o.categories = categories;
-            o.excludes = excludes;
-            o.exclusivePatches = exclusivePatches;
-            o.severities = severities;
-            o.withOptional = withOptional;
-            o.withUpdate = withUpdate;
-            return o;
+            final var _resultValue = new PatchDeploymentPatchConfigZypper();
+            _resultValue.categories = categories;
+            _resultValue.excludes = excludes;
+            _resultValue.exclusivePatches = exclusivePatches;
+            _resultValue.severities = severities;
+            _resultValue.withOptional = withOptional;
+            _resultValue.withUpdate = withUpdate;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
             return this;
         }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig();
-            o.cloudRun = cloudRun;
-            o.kubernetes = kubernetes;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig();
+            _resultValue.cloudRun = cloudRun;
+            _resultValue.kubernetes = kubernetes;
+            return _resultValue;
         }
     }
 }

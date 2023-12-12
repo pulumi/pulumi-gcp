@@ -65,10 +65,10 @@ public final class ApiConfigManagedServiceConfig {
             return this;
         }
         public ApiConfigManagedServiceConfig build() {
-            final var o = new ApiConfigManagedServiceConfig();
-            o.contents = contents;
-            o.path = path;
-            return o;
+            final var _resultValue = new ApiConfigManagedServiceConfig();
+            _resultValue.contents = contents;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

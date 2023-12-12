@@ -108,13 +108,13 @@ public final class GetBackendBucketIamPolicyResult {
             return this;
         }
         public GetBackendBucketIamPolicyResult build() {
-            final var o = new GetBackendBucketIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.name = name;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetBackendBucketIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

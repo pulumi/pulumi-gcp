@@ -97,11 +97,11 @@ public final class CaPoolIssuancePolicyBaselineValuesKeyUsage {
             return unknownExtendedKeyUsages(List.of(unknownExtendedKeyUsages));
         }
         public CaPoolIssuancePolicyBaselineValuesKeyUsage build() {
-            final var o = new CaPoolIssuancePolicyBaselineValuesKeyUsage();
-            o.baseKeyUsage = baseKeyUsage;
-            o.extendedKeyUsage = extendedKeyUsage;
-            o.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
-            return o;
+            final var _resultValue = new CaPoolIssuancePolicyBaselineValuesKeyUsage();
+            _resultValue.baseKeyUsage = baseKeyUsage;
+            _resultValue.extendedKeyUsage = extendedKeyUsage;
+            _resultValue.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
+            return _resultValue;
         }
     }
 }

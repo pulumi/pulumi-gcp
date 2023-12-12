@@ -69,10 +69,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRe
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote();
-            o.sha256Checksum = sha256Checksum;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote();
+            _resultValue.sha256Checksum = sha256Checksum;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

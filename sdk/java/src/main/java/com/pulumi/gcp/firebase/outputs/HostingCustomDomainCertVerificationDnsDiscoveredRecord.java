@@ -117,12 +117,12 @@ public final class HostingCustomDomainCertVerificationDnsDiscoveredRecord {
             return this;
         }
         public HostingCustomDomainCertVerificationDnsDiscoveredRecord build() {
-            final var o = new HostingCustomDomainCertVerificationDnsDiscoveredRecord();
-            o.domainName = domainName;
-            o.rdata = rdata;
-            o.requiredAction = requiredAction;
-            o.type = type;
-            return o;
+            final var _resultValue = new HostingCustomDomainCertVerificationDnsDiscoveredRecord();
+            _resultValue.domainName = domainName;
+            _resultValue.rdata = rdata;
+            _resultValue.requiredAction = requiredAction;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

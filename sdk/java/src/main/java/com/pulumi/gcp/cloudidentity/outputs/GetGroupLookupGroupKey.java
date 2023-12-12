@@ -83,10 +83,10 @@ public final class GetGroupLookupGroupKey {
             return this;
         }
         public GetGroupLookupGroupKey build() {
-            final var o = new GetGroupLookupGroupKey();
-            o.id = id;
-            o.namespace = namespace;
-            return o;
+            final var _resultValue = new GetGroupLookupGroupKey();
+            _resultValue.id = id;
+            _resultValue.namespace = namespace;
+            return _resultValue;
         }
     }
 }

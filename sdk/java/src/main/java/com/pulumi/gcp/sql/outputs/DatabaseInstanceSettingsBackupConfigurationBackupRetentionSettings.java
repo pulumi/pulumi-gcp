@@ -70,10 +70,10 @@ public final class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSet
             return this;
         }
         public DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings build() {
-            final var o = new DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings();
-            o.retainedBackups = retainedBackups;
-            o.retentionUnit = retentionUnit;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings();
+            _resultValue.retainedBackups = retainedBackups;
+            _resultValue.retentionUnit = retentionUnit;
+            return _resultValue;
         }
     }
 }

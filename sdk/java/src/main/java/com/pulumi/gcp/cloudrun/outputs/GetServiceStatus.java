@@ -103,14 +103,14 @@ public final class GetServiceStatus {
             return this;
         }
         public GetServiceStatus build() {
-            final var o = new GetServiceStatus();
-            o.conditions = conditions;
-            o.latestCreatedRevisionName = latestCreatedRevisionName;
-            o.latestReadyRevisionName = latestReadyRevisionName;
-            o.observedGeneration = observedGeneration;
-            o.traffics = traffics;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetServiceStatus();
+            _resultValue.conditions = conditions;
+            _resultValue.latestCreatedRevisionName = latestCreatedRevisionName;
+            _resultValue.latestReadyRevisionName = latestReadyRevisionName;
+            _resultValue.observedGeneration = observedGeneration;
+            _resultValue.traffics = traffics;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

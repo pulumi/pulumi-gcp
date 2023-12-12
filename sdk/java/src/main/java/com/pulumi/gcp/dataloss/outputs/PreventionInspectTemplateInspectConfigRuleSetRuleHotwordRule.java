@@ -100,11 +100,11 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule 
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule();
-            o.hotwordRegex = hotwordRegex;
-            o.likelihoodAdjustment = likelihoodAdjustment;
-            o.proximity = proximity;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule();
+            _resultValue.hotwordRegex = hotwordRegex;
+            _resultValue.likelihoodAdjustment = likelihoodAdjustment;
+            _resultValue.proximity = proximity;
+            return _resultValue;
         }
     }
 }

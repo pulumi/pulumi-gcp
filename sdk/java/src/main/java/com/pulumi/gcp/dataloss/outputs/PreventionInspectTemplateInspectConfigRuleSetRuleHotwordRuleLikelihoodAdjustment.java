@@ -80,10 +80,10 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleL
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment();
-            o.fixedLikelihood = fixedLikelihood;
-            o.relativeLikelihood = relativeLikelihood;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment();
+            _resultValue.fixedLikelihood = fixedLikelihood;
+            _resultValue.relativeLikelihood = relativeLikelihood;
+            return _resultValue;
         }
     }
 }

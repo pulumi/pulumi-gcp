@@ -105,12 +105,12 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime {
             return this;
         }
         public ClusterAutomatedBackupPolicyWeeklyScheduleStartTime build() {
-            final var o = new ClusterAutomatedBackupPolicyWeeklyScheduleStartTime();
-            o.hours = hours;
-            o.minutes = minutes;
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new ClusterAutomatedBackupPolicyWeeklyScheduleStartTime();
+            _resultValue.hours = hours;
+            _resultValue.minutes = minutes;
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

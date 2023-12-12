@@ -375,34 +375,34 @@ public final class GetTriggerResult {
             return webhookConfigs(List.of(webhookConfigs));
         }
         public GetTriggerResult build() {
-            final var o = new GetTriggerResult();
-            o.approvalConfigs = approvalConfigs;
-            o.bitbucketServerTriggerConfigs = bitbucketServerTriggerConfigs;
-            o.builds = builds;
-            o.createTime = createTime;
-            o.description = description;
-            o.disabled = disabled;
-            o.filename = filename;
-            o.filter = filter;
-            o.gitFileSources = gitFileSources;
-            o.githubs = githubs;
-            o.id = id;
-            o.ignoredFiles = ignoredFiles;
-            o.includeBuildLogs = includeBuildLogs;
-            o.includedFiles = includedFiles;
-            o.location = location;
-            o.name = name;
-            o.project = project;
-            o.pubsubConfigs = pubsubConfigs;
-            o.repositoryEventConfigs = repositoryEventConfigs;
-            o.serviceAccount = serviceAccount;
-            o.sourceToBuilds = sourceToBuilds;
-            o.substitutions = substitutions;
-            o.tags = tags;
-            o.triggerId = triggerId;
-            o.triggerTemplates = triggerTemplates;
-            o.webhookConfigs = webhookConfigs;
-            return o;
+            final var _resultValue = new GetTriggerResult();
+            _resultValue.approvalConfigs = approvalConfigs;
+            _resultValue.bitbucketServerTriggerConfigs = bitbucketServerTriggerConfigs;
+            _resultValue.builds = builds;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.disabled = disabled;
+            _resultValue.filename = filename;
+            _resultValue.filter = filter;
+            _resultValue.gitFileSources = gitFileSources;
+            _resultValue.githubs = githubs;
+            _resultValue.id = id;
+            _resultValue.ignoredFiles = ignoredFiles;
+            _resultValue.includeBuildLogs = includeBuildLogs;
+            _resultValue.includedFiles = includedFiles;
+            _resultValue.location = location;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pubsubConfigs = pubsubConfigs;
+            _resultValue.repositoryEventConfigs = repositoryEventConfigs;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.sourceToBuilds = sourceToBuilds;
+            _resultValue.substitutions = substitutions;
+            _resultValue.tags = tags;
+            _resultValue.triggerId = triggerId;
+            _resultValue.triggerTemplates = triggerTemplates;
+            _resultValue.webhookConfigs = webhookConfigs;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class NodePoolNodeConfigAdvancedMachineFeatures {
             return this;
         }
         public NodePoolNodeConfigAdvancedMachineFeatures build() {
-            final var o = new NodePoolNodeConfigAdvancedMachineFeatures();
-            o.threadsPerCore = threadsPerCore;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigAdvancedMachineFeatures();
+            _resultValue.threadsPerCore = threadsPerCore;
+            return _resultValue;
         }
     }
 }

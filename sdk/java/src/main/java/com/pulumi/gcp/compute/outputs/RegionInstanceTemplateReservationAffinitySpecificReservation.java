@@ -69,10 +69,10 @@ public final class RegionInstanceTemplateReservationAffinitySpecificReservation 
             return values(List.of(values));
         }
         public RegionInstanceTemplateReservationAffinitySpecificReservation build() {
-            final var o = new RegionInstanceTemplateReservationAffinitySpecificReservation();
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new RegionInstanceTemplateReservationAffinitySpecificReservation();
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

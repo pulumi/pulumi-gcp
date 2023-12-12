@@ -86,11 +86,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigImageTransformati
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor();
-            o.blue = blue;
-            o.green = green;
-            o.red = red;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor();
+            _resultValue.blue = blue;
+            _resultValue.green = green;
+            _resultValue.red = red;
+            return _resultValue;
         }
     }
 }

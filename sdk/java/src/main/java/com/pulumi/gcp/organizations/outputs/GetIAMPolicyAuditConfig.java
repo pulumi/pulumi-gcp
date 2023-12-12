@@ -70,10 +70,10 @@ public final class GetIAMPolicyAuditConfig {
             return this;
         }
         public GetIAMPolicyAuditConfig build() {
-            final var o = new GetIAMPolicyAuditConfig();
-            o.auditLogConfigs = auditLogConfigs;
-            o.service = service;
-            return o;
+            final var _resultValue = new GetIAMPolicyAuditConfig();
+            _resultValue.auditLogConfigs = auditLogConfigs;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

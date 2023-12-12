@@ -50,9 +50,9 @@ public final class ResponsePolicyNetwork {
             return this;
         }
         public ResponsePolicyNetwork build() {
-            final var o = new ResponsePolicyNetwork();
-            o.networkUrl = networkUrl;
-            return o;
+            final var _resultValue = new ResponsePolicyNetwork();
+            _resultValue.networkUrl = networkUrl;
+            return _resultValue;
         }
     }
 }

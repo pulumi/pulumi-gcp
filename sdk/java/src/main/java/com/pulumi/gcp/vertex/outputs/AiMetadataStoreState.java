@@ -50,9 +50,9 @@ public final class AiMetadataStoreState {
             return this;
         }
         public AiMetadataStoreState build() {
-            final var o = new AiMetadataStoreState();
-            o.diskUtilizationBytes = diskUtilizationBytes;
-            return o;
+            final var _resultValue = new AiMetadataStoreState();
+            _resultValue.diskUtilizationBytes = diskUtilizationBytes;
+            return _resultValue;
         }
     }
 }

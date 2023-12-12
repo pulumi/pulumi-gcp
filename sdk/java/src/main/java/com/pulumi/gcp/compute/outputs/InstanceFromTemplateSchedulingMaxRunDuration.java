@@ -51,10 +51,10 @@ public final class InstanceFromTemplateSchedulingMaxRunDuration {
             return this;
         }
         public InstanceFromTemplateSchedulingMaxRunDuration build() {
-            final var o = new InstanceFromTemplateSchedulingMaxRunDuration();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new InstanceFromTemplateSchedulingMaxRunDuration();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

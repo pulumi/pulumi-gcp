@@ -46,9 +46,9 @@ public final class RegionDiskAsyncPrimaryDisk {
             return this;
         }
         public RegionDiskAsyncPrimaryDisk build() {
-            final var o = new RegionDiskAsyncPrimaryDisk();
-            o.disk = disk;
-            return o;
+            final var _resultValue = new RegionDiskAsyncPrimaryDisk();
+            _resultValue.disk = disk;
+            return _resultValue;
         }
     }
 }

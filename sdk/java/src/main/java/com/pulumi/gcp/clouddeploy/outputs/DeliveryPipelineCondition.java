@@ -73,11 +73,11 @@ public final class DeliveryPipelineCondition {
             return targetsTypeConditions(List.of(targetsTypeConditions));
         }
         public DeliveryPipelineCondition build() {
-            final var o = new DeliveryPipelineCondition();
-            o.pipelineReadyConditions = pipelineReadyConditions;
-            o.targetsPresentConditions = targetsPresentConditions;
-            o.targetsTypeConditions = targetsTypeConditions;
-            return o;
+            final var _resultValue = new DeliveryPipelineCondition();
+            _resultValue.pipelineReadyConditions = pipelineReadyConditions;
+            _resultValue.targetsPresentConditions = targetsPresentConditions;
+            _resultValue.targetsTypeConditions = targetsTypeConditions;
+            return _resultValue;
         }
     }
 }

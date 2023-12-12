@@ -170,15 +170,15 @@ public final class WorkflowTemplateJobPrestoJob {
             return this;
         }
         public WorkflowTemplateJobPrestoJob build() {
-            final var o = new WorkflowTemplateJobPrestoJob();
-            o.clientTags = clientTags;
-            o.continueOnFailure = continueOnFailure;
-            o.loggingConfig = loggingConfig;
-            o.outputFormat = outputFormat;
-            o.properties = properties;
-            o.queryFileUri = queryFileUri;
-            o.queryList = queryList;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobPrestoJob();
+            _resultValue.clientTags = clientTags;
+            _resultValue.continueOnFailure = continueOnFailure;
+            _resultValue.loggingConfig = loggingConfig;
+            _resultValue.outputFormat = outputFormat;
+            _resultValue.properties = properties;
+            _resultValue.queryFileUri = queryFileUri;
+            _resultValue.queryList = queryList;
+            return _resultValue;
         }
     }
 }

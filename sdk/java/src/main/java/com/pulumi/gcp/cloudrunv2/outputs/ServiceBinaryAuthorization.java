@@ -68,10 +68,10 @@ public final class ServiceBinaryAuthorization {
             return this;
         }
         public ServiceBinaryAuthorization build() {
-            final var o = new ServiceBinaryAuthorization();
-            o.breakglassJustification = breakglassJustification;
-            o.useDefault = useDefault;
-            return o;
+            final var _resultValue = new ServiceBinaryAuthorization();
+            _resultValue.breakglassJustification = breakglassJustification;
+            _resultValue.useDefault = useDefault;
+            return _resultValue;
         }
     }
 }

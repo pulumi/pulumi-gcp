@@ -156,12 +156,12 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
             return this;
         }
         public AlertPolicyConditionConditionMonitoringQueryLanguage build() {
-            final var o = new AlertPolicyConditionConditionMonitoringQueryLanguage();
-            o.duration = duration;
-            o.evaluationMissingData = evaluationMissingData;
-            o.query = query;
-            o.trigger = trigger;
-            return o;
+            final var _resultValue = new AlertPolicyConditionConditionMonitoringQueryLanguage();
+            _resultValue.duration = duration;
+            _resultValue.evaluationMissingData = evaluationMissingData;
+            _resultValue.query = query;
+            _resultValue.trigger = trigger;
+            return _resultValue;
         }
     }
 }

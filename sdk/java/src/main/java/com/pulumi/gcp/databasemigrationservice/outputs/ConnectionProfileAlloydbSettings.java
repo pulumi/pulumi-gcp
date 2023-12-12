@@ -114,12 +114,12 @@ public final class ConnectionProfileAlloydbSettings {
             return this;
         }
         public ConnectionProfileAlloydbSettings build() {
-            final var o = new ConnectionProfileAlloydbSettings();
-            o.initialUser = initialUser;
-            o.labels = labels;
-            o.primaryInstanceSettings = primaryInstanceSettings;
-            o.vpcNetwork = vpcNetwork;
-            return o;
+            final var _resultValue = new ConnectionProfileAlloydbSettings();
+            _resultValue.initialUser = initialUser;
+            _resultValue.labels = labels;
+            _resultValue.primaryInstanceSettings = primaryInstanceSettings;
+            _resultValue.vpcNetwork = vpcNetwork;
+            return _resultValue;
         }
     }
 }

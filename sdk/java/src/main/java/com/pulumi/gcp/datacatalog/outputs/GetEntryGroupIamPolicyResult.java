@@ -119,14 +119,14 @@ public final class GetEntryGroupIamPolicyResult {
             return this;
         }
         public GetEntryGroupIamPolicyResult build() {
-            final var o = new GetEntryGroupIamPolicyResult();
-            o.entryGroup = entryGroup;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetEntryGroupIamPolicyResult();
+            _resultValue.entryGroup = entryGroup;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

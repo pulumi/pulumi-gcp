@@ -86,10 +86,10 @@ public final class AccessLevelBasic {
             return conditions(List.of(conditions));
         }
         public AccessLevelBasic build() {
-            final var o = new AccessLevelBasic();
-            o.combiningFunction = combiningFunction;
-            o.conditions = conditions;
-            return o;
+            final var _resultValue = new AccessLevelBasic();
+            _resultValue.combiningFunction = combiningFunction;
+            _resultValue.conditions = conditions;
+            return _resultValue;
         }
     }
 }

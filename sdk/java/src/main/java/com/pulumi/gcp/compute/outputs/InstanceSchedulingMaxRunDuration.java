@@ -77,10 +77,10 @@ public final class InstanceSchedulingMaxRunDuration {
             return this;
         }
         public InstanceSchedulingMaxRunDuration build() {
-            final var o = new InstanceSchedulingMaxRunDuration();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new InstanceSchedulingMaxRunDuration();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

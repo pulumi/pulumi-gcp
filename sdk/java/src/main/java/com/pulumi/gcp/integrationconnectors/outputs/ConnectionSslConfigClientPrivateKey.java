@@ -46,9 +46,9 @@ public final class ConnectionSslConfigClientPrivateKey {
             return this;
         }
         public ConnectionSslConfigClientPrivateKey build() {
-            final var o = new ConnectionSslConfigClientPrivateKey();
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new ConnectionSslConfigClientPrivateKey();
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

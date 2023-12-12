@@ -207,20 +207,20 @@ public final class GetClusterAddonsConfig {
             return networkPolicyConfigs(List.of(networkPolicyConfigs));
         }
         public GetClusterAddonsConfig build() {
-            final var o = new GetClusterAddonsConfig();
-            o.cloudrunConfigs = cloudrunConfigs;
-            o.configConnectorConfigs = configConnectorConfigs;
-            o.dnsCacheConfigs = dnsCacheConfigs;
-            o.gcePersistentDiskCsiDriverConfigs = gcePersistentDiskCsiDriverConfigs;
-            o.gcpFilestoreCsiDriverConfigs = gcpFilestoreCsiDriverConfigs;
-            o.gcsFuseCsiDriverConfigs = gcsFuseCsiDriverConfigs;
-            o.gkeBackupAgentConfigs = gkeBackupAgentConfigs;
-            o.horizontalPodAutoscalings = horizontalPodAutoscalings;
-            o.httpLoadBalancings = httpLoadBalancings;
-            o.istioConfigs = istioConfigs;
-            o.kalmConfigs = kalmConfigs;
-            o.networkPolicyConfigs = networkPolicyConfigs;
-            return o;
+            final var _resultValue = new GetClusterAddonsConfig();
+            _resultValue.cloudrunConfigs = cloudrunConfigs;
+            _resultValue.configConnectorConfigs = configConnectorConfigs;
+            _resultValue.dnsCacheConfigs = dnsCacheConfigs;
+            _resultValue.gcePersistentDiskCsiDriverConfigs = gcePersistentDiskCsiDriverConfigs;
+            _resultValue.gcpFilestoreCsiDriverConfigs = gcpFilestoreCsiDriverConfigs;
+            _resultValue.gcsFuseCsiDriverConfigs = gcsFuseCsiDriverConfigs;
+            _resultValue.gkeBackupAgentConfigs = gkeBackupAgentConfigs;
+            _resultValue.horizontalPodAutoscalings = horizontalPodAutoscalings;
+            _resultValue.httpLoadBalancings = httpLoadBalancings;
+            _resultValue.istioConfigs = istioConfigs;
+            _resultValue.kalmConfigs = kalmConfigs;
+            _resultValue.networkPolicyConfigs = networkPolicyConfigs;
+            return _resultValue;
         }
     }
 }

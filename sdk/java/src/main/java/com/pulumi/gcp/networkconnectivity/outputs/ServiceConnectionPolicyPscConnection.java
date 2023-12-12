@@ -212,17 +212,17 @@ public final class ServiceConnectionPolicyPscConnection {
             return this;
         }
         public ServiceConnectionPolicyPscConnection build() {
-            final var o = new ServiceConnectionPolicyPscConnection();
-            o.consumerAddress = consumerAddress;
-            o.consumerForwardingRule = consumerForwardingRule;
-            o.consumerTargetProject = consumerTargetProject;
-            o.error = error;
-            o.errorInfo = errorInfo;
-            o.errorType = errorType;
-            o.gceOperation = gceOperation;
-            o.pscConnectionId = pscConnectionId;
-            o.state = state;
-            return o;
+            final var _resultValue = new ServiceConnectionPolicyPscConnection();
+            _resultValue.consumerAddress = consumerAddress;
+            _resultValue.consumerForwardingRule = consumerForwardingRule;
+            _resultValue.consumerTargetProject = consumerTargetProject;
+            _resultValue.error = error;
+            _resultValue.errorInfo = errorInfo;
+            _resultValue.errorType = errorType;
+            _resultValue.gceOperation = gceOperation;
+            _resultValue.pscConnectionId = pscConnectionId;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

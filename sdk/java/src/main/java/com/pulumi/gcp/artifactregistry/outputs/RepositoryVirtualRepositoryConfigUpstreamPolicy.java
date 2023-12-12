@@ -89,11 +89,11 @@ public final class RepositoryVirtualRepositoryConfigUpstreamPolicy {
             return this;
         }
         public RepositoryVirtualRepositoryConfigUpstreamPolicy build() {
-            final var o = new RepositoryVirtualRepositoryConfigUpstreamPolicy();
-            o.id = id;
-            o.priority = priority;
-            o.repository = repository;
-            return o;
+            final var _resultValue = new RepositoryVirtualRepositoryConfigUpstreamPolicy();
+            _resultValue.id = id;
+            _resultValue.priority = priority;
+            _resultValue.repository = repository;
+            return _resultValue;
         }
     }
 }

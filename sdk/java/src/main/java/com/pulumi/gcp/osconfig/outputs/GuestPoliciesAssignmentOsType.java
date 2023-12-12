@@ -90,11 +90,11 @@ public final class GuestPoliciesAssignmentOsType {
             return this;
         }
         public GuestPoliciesAssignmentOsType build() {
-            final var o = new GuestPoliciesAssignmentOsType();
-            o.osArchitecture = osArchitecture;
-            o.osShortName = osShortName;
-            o.osVersion = osVersion;
-            return o;
+            final var _resultValue = new GuestPoliciesAssignmentOsType();
+            _resultValue.osArchitecture = osArchitecture;
+            _resultValue.osShortName = osShortName;
+            _resultValue.osVersion = osVersion;
+            return _resultValue;
         }
     }
 }

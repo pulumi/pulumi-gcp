@@ -62,11 +62,11 @@ public final class DnsManagedZoneIamMemberCondition {
             return this;
         }
         public DnsManagedZoneIamMemberCondition build() {
-            final var o = new DnsManagedZoneIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new DnsManagedZoneIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

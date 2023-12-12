@@ -196,16 +196,16 @@ public final class WorkflowTemplateJobSparkJob {
             return this;
         }
         public WorkflowTemplateJobSparkJob build() {
-            final var o = new WorkflowTemplateJobSparkJob();
-            o.archiveUris = archiveUris;
-            o.args = args;
-            o.fileUris = fileUris;
-            o.jarFileUris = jarFileUris;
-            o.loggingConfig = loggingConfig;
-            o.mainClass = mainClass;
-            o.mainJarFileUri = mainJarFileUri;
-            o.properties = properties;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobSparkJob();
+            _resultValue.archiveUris = archiveUris;
+            _resultValue.args = args;
+            _resultValue.fileUris = fileUris;
+            _resultValue.jarFileUris = jarFileUris;
+            _resultValue.loggingConfig = loggingConfig;
+            _resultValue.mainClass = mainClass;
+            _resultValue.mainJarFileUri = mainJarFileUri;
+            _resultValue.properties = properties;
+            return _resultValue;
         }
     }
 }

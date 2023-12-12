@@ -52,9 +52,9 @@ public final class MetastoreServiceTelemetryConfig {
             return this;
         }
         public MetastoreServiceTelemetryConfig build() {
-            final var o = new MetastoreServiceTelemetryConfig();
-            o.logFormat = logFormat;
-            return o;
+            final var _resultValue = new MetastoreServiceTelemetryConfig();
+            _resultValue.logFormat = logFormat;
+            return _resultValue;
         }
     }
 }

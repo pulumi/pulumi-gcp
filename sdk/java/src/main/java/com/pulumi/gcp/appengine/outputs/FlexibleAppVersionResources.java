@@ -113,12 +113,12 @@ public final class FlexibleAppVersionResources {
             return volumes(List.of(volumes));
         }
         public FlexibleAppVersionResources build() {
-            final var o = new FlexibleAppVersionResources();
-            o.cpu = cpu;
-            o.diskGb = diskGb;
-            o.memoryGb = memoryGb;
-            o.volumes = volumes;
-            return o;
+            final var _resultValue = new FlexibleAppVersionResources();
+            _resultValue.cpu = cpu;
+            _resultValue.diskGb = diskGb;
+            _resultValue.memoryGb = memoryGb;
+            _resultValue.volumes = volumes;
+            return _resultValue;
         }
     }
 }

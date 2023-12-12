@@ -85,10 +85,10 @@ public final class EntityTypeEntity {
             return this;
         }
         public EntityTypeEntity build() {
-            final var o = new EntityTypeEntity();
-            o.synonyms = synonyms;
-            o.value = value;
-            return o;
+            final var _resultValue = new EntityTypeEntity();
+            _resultValue.synonyms = synonyms;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class CertificateTemplatePredefinedValuesPolicyId {
             return objectIdPaths(List.of(objectIdPaths));
         }
         public CertificateTemplatePredefinedValuesPolicyId build() {
-            final var o = new CertificateTemplatePredefinedValuesPolicyId();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new CertificateTemplatePredefinedValuesPolicyId();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

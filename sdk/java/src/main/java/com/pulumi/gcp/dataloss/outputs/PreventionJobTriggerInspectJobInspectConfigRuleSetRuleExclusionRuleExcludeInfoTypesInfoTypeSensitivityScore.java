@@ -48,9 +48,9 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore();
-            o.score = score;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore();
+            _resultValue.score = score;
+            return _resultValue;
         }
     }
 }

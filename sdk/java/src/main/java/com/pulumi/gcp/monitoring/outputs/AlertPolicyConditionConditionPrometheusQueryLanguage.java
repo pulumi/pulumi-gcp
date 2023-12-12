@@ -204,14 +204,14 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
             return this;
         }
         public AlertPolicyConditionConditionPrometheusQueryLanguage build() {
-            final var o = new AlertPolicyConditionConditionPrometheusQueryLanguage();
-            o.alertRule = alertRule;
-            o.duration = duration;
-            o.evaluationInterval = evaluationInterval;
-            o.labels = labels;
-            o.query = query;
-            o.ruleGroup = ruleGroup;
-            return o;
+            final var _resultValue = new AlertPolicyConditionConditionPrometheusQueryLanguage();
+            _resultValue.alertRule = alertRule;
+            _resultValue.duration = duration;
+            _resultValue.evaluationInterval = evaluationInterval;
+            _resultValue.labels = labels;
+            _resultValue.query = query;
+            _resultValue.ruleGroup = ruleGroup;
+            return _resultValue;
         }
     }
 }

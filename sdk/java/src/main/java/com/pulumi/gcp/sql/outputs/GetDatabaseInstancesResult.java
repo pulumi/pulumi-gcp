@@ -130,16 +130,16 @@ public final class GetDatabaseInstancesResult {
             return this;
         }
         public GetDatabaseInstancesResult build() {
-            final var o = new GetDatabaseInstancesResult();
-            o.databaseVersion = databaseVersion;
-            o.id = id;
-            o.instances = instances;
-            o.project = project;
-            o.region = region;
-            o.state = state;
-            o.tier = tier;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetDatabaseInstancesResult();
+            _resultValue.databaseVersion = databaseVersion;
+            _resultValue.id = id;
+            _resultValue.instances = instances;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.state = state;
+            _resultValue.tier = tier;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

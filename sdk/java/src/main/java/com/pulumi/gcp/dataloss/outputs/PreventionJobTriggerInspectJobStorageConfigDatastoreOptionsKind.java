@@ -46,9 +46,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKi
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind();
-            o.name = name;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

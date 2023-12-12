@@ -48,9 +48,9 @@ public final class ServiceTemplateSpecContainerEnvValueFrom {
             return this;
         }
         public ServiceTemplateSpecContainerEnvValueFrom build() {
-            final var o = new ServiceTemplateSpecContainerEnvValueFrom();
-            o.secretKeyRef = secretKeyRef;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecContainerEnvValueFrom();
+            _resultValue.secretKeyRef = secretKeyRef;
+            return _resultValue;
         }
     }
 }

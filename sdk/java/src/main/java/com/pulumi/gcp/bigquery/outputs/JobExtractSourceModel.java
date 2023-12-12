@@ -88,11 +88,11 @@ public final class JobExtractSourceModel {
             return this;
         }
         public JobExtractSourceModel build() {
-            final var o = new JobExtractSourceModel();
-            o.datasetId = datasetId;
-            o.modelId = modelId;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new JobExtractSourceModel();
+            _resultValue.datasetId = datasetId;
+            _resultValue.modelId = modelId;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

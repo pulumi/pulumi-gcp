@@ -52,9 +52,9 @@ public final class SecretReplicationUserManaged {
             return replicas(List.of(replicas));
         }
         public SecretReplicationUserManaged build() {
-            final var o = new SecretReplicationUserManaged();
-            o.replicas = replicas;
-            return o;
+            final var _resultValue = new SecretReplicationUserManaged();
+            _resultValue.replicas = replicas;
+            return _resultValue;
         }
     }
 }

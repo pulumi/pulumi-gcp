@@ -60,11 +60,11 @@ public final class GetFunctionEventTriggerEventFilter {
             return this;
         }
         public GetFunctionEventTriggerEventFilter build() {
-            final var o = new GetFunctionEventTriggerEventFilter();
-            o.attribute = attribute;
-            o.operator = operator;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetFunctionEventTriggerEventFilter();
+            _resultValue.attribute = attribute;
+            _resultValue.operator = operator;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

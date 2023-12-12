@@ -53,9 +53,9 @@ public final class AttachedClusterLoggingConfigComponentConfig {
             return enableComponents(List.of(enableComponents));
         }
         public AttachedClusterLoggingConfigComponentConfig build() {
-            final var o = new AttachedClusterLoggingConfigComponentConfig();
-            o.enableComponents = enableComponents;
-            return o;
+            final var _resultValue = new AttachedClusterLoggingConfigComponentConfig();
+            _resultValue.enableComponents = enableComponents;
+            return _resultValue;
         }
     }
 }

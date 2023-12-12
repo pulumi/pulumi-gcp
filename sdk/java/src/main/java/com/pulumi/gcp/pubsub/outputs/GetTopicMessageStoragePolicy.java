@@ -42,9 +42,9 @@ public final class GetTopicMessageStoragePolicy {
             return allowedPersistenceRegions(List.of(allowedPersistenceRegions));
         }
         public GetTopicMessageStoragePolicy build() {
-            final var o = new GetTopicMessageStoragePolicy();
-            o.allowedPersistenceRegions = allowedPersistenceRegions;
-            return o;
+            final var _resultValue = new GetTopicMessageStoragePolicy();
+            _resultValue.allowedPersistenceRegions = allowedPersistenceRegions;
+            return _resultValue;
         }
     }
 }

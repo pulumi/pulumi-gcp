@@ -50,9 +50,9 @@ public final class ScopeState {
             return this;
         }
         public ScopeState build() {
-            final var o = new ScopeState();
-            o.code = code;
-            return o;
+            final var _resultValue = new ScopeState();
+            _resultValue.code = code;
+            return _resultValue;
         }
     }
 }

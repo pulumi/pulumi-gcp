@@ -206,17 +206,17 @@ public final class GetResourcesSearchAllResult {
             return this;
         }
         public GetResourcesSearchAllResult build() {
-            final var o = new GetResourcesSearchAllResult();
-            o.additionalAttributes = additionalAttributes;
-            o.assetType = assetType;
-            o.description = description;
-            o.displayName = displayName;
-            o.labels = labels;
-            o.location = location;
-            o.name = name;
-            o.networkTags = networkTags;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetResourcesSearchAllResult();
+            _resultValue.additionalAttributes = additionalAttributes;
+            _resultValue.assetType = assetType;
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.labels = labels;
+            _resultValue.location = location;
+            _resultValue.name = name;
+            _resultValue.networkTags = networkTags;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

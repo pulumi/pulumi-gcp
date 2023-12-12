@@ -112,12 +112,12 @@ public final class ResourcePolicyGroupPlacementPolicy {
             return this;
         }
         public ResourcePolicyGroupPlacementPolicy build() {
-            final var o = new ResourcePolicyGroupPlacementPolicy();
-            o.availabilityDomainCount = availabilityDomainCount;
-            o.collocation = collocation;
-            o.maxDistance = maxDistance;
-            o.vmCount = vmCount;
-            return o;
+            final var _resultValue = new ResourcePolicyGroupPlacementPolicy();
+            _resultValue.availabilityDomainCount = availabilityDomainCount;
+            _resultValue.collocation = collocation;
+            _resultValue.maxDistance = maxDistance;
+            _resultValue.vmCount = vmCount;
+            return _resultValue;
         }
     }
 }

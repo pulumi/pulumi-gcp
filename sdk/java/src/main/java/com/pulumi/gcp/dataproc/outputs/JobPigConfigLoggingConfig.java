@@ -39,9 +39,9 @@ public final class JobPigConfigLoggingConfig {
             return this;
         }
         public JobPigConfigLoggingConfig build() {
-            final var o = new JobPigConfigLoggingConfig();
-            o.driverLogLevels = driverLogLevels;
-            return o;
+            final var _resultValue = new JobPigConfigLoggingConfig();
+            _resultValue.driverLogLevels = driverLogLevels;
+            return _resultValue;
         }
     }
 }

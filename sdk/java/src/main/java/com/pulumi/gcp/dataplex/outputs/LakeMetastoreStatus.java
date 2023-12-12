@@ -89,12 +89,12 @@ public final class LakeMetastoreStatus {
             return this;
         }
         public LakeMetastoreStatus build() {
-            final var o = new LakeMetastoreStatus();
-            o.endpoint = endpoint;
-            o.message = message;
-            o.state = state;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new LakeMetastoreStatus();
+            _resultValue.endpoint = endpoint;
+            _resultValue.message = message;
+            _resultValue.state = state;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

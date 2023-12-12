@@ -54,10 +54,10 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
             return this;
         }
         public GetClusterNodePoolDefaultNodeConfigDefault build() {
-            final var o = new GetClusterNodePoolDefaultNodeConfigDefault();
-            o.gcfsConfigs = gcfsConfigs;
-            o.loggingVariant = loggingVariant;
-            return o;
+            final var _resultValue = new GetClusterNodePoolDefaultNodeConfigDefault();
+            _resultValue.gcfsConfigs = gcfsConfigs;
+            _resultValue.loggingVariant = loggingVariant;
+            return _resultValue;
         }
     }
 }

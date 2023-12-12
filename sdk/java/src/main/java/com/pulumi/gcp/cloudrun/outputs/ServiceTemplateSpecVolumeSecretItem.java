@@ -101,11 +101,11 @@ public final class ServiceTemplateSpecVolumeSecretItem {
             return this;
         }
         public ServiceTemplateSpecVolumeSecretItem build() {
-            final var o = new ServiceTemplateSpecVolumeSecretItem();
-            o.key = key;
-            o.mode = mode;
-            o.path = path;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecVolumeSecretItem();
+            _resultValue.key = key;
+            _resultValue.mode = mode;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

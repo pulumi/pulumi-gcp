@@ -48,9 +48,9 @@ public final class ManagedZoneServiceDirectoryConfig {
             return this;
         }
         public ManagedZoneServiceDirectoryConfig build() {
-            final var o = new ManagedZoneServiceDirectoryConfig();
-            o.namespace = namespace;
-            return o;
+            final var _resultValue = new ManagedZoneServiceDirectoryConfig();
+            _resultValue.namespace = namespace;
+            return _resultValue;
         }
     }
 }

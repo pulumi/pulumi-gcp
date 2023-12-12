@@ -95,9 +95,9 @@ public final class ClusterNodePoolAutoConfigNetworkTags {
             return tags(List.of(tags));
         }
         public ClusterNodePoolAutoConfigNetworkTags build() {
-            final var o = new ClusterNodePoolAutoConfigNetworkTags();
-            o.tags = tags;
-            return o;
+            final var _resultValue = new ClusterNodePoolAutoConfigNetworkTags();
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

@@ -91,12 +91,12 @@ public final class GetNodeTypesResult {
             return this;
         }
         public GetNodeTypesResult build() {
-            final var o = new GetNodeTypesResult();
-            o.id = id;
-            o.names = names;
-            o.project = project;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetNodeTypesResult();
+            _resultValue.id = id;
+            _resultValue.names = names;
+            _resultValue.project = project;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

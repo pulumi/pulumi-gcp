@@ -297,30 +297,30 @@ public final class GetSnapshotResult {
             return this;
         }
         public GetSnapshotResult build() {
-            final var o = new GetSnapshotResult();
-            o.chainName = chainName;
-            o.creationTimestamp = creationTimestamp;
-            o.description = description;
-            o.diskSizeGb = diskSizeGb;
-            o.effectiveLabels = effectiveLabels;
-            o.filter = filter;
-            o.id = id;
-            o.labelFingerprint = labelFingerprint;
-            o.labels = labels;
-            o.licenses = licenses;
-            o.mostRecent = mostRecent;
-            o.name = name;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.selfLink = selfLink;
-            o.snapshotEncryptionKeys = snapshotEncryptionKeys;
-            o.snapshotId = snapshotId;
-            o.sourceDisk = sourceDisk;
-            o.sourceDiskEncryptionKeys = sourceDiskEncryptionKeys;
-            o.storageBytes = storageBytes;
-            o.storageLocations = storageLocations;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetSnapshotResult();
+            _resultValue.chainName = chainName;
+            _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.description = description;
+            _resultValue.diskSizeGb = diskSizeGb;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.labelFingerprint = labelFingerprint;
+            _resultValue.labels = labels;
+            _resultValue.licenses = licenses;
+            _resultValue.mostRecent = mostRecent;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.selfLink = selfLink;
+            _resultValue.snapshotEncryptionKeys = snapshotEncryptionKeys;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.sourceDisk = sourceDisk;
+            _resultValue.sourceDiskEncryptionKeys = sourceDiskEncryptionKeys;
+            _resultValue.storageBytes = storageBytes;
+            _resultValue.storageLocations = storageLocations;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

@@ -42,9 +42,9 @@ public final class GetServiceTemplateContainerEnvValueSource {
             return secretKeyReves(List.of(secretKeyReves));
         }
         public GetServiceTemplateContainerEnvValueSource build() {
-            final var o = new GetServiceTemplateContainerEnvValueSource();
-            o.secretKeyReves = secretKeyReves;
-            return o;
+            final var _resultValue = new GetServiceTemplateContainerEnvValueSource();
+            _resultValue.secretKeyReves = secretKeyReves;
+            return _resultValue;
         }
     }
 }

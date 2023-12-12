@@ -75,10 +75,10 @@ public final class InstanceAutoscalingConfigAutoscalingTargets {
             return this;
         }
         public InstanceAutoscalingConfigAutoscalingTargets build() {
-            final var o = new InstanceAutoscalingConfigAutoscalingTargets();
-            o.highPriorityCpuUtilizationPercent = highPriorityCpuUtilizationPercent;
-            o.storageUtilizationPercent = storageUtilizationPercent;
-            return o;
+            final var _resultValue = new InstanceAutoscalingConfigAutoscalingTargets();
+            _resultValue.highPriorityCpuUtilizationPercent = highPriorityCpuUtilizationPercent;
+            _resultValue.storageUtilizationPercent = storageUtilizationPercent;
+            return _resultValue;
         }
     }
 }

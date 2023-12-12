@@ -52,10 +52,10 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
             return this;
         }
         public NodePoolNodeConfigLinuxNodeConfig build() {
-            final var o = new NodePoolNodeConfigLinuxNodeConfig();
-            o.cgroupMode = cgroupMode;
-            o.sysctls = sysctls;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigLinuxNodeConfig();
+            _resultValue.cgroupMode = cgroupMode;
+            _resultValue.sysctls = sysctls;
+            return _resultValue;
         }
     }
 }

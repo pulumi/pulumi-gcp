@@ -71,10 +71,10 @@ public final class JobTemplateTemplateVolumeEmptyDir {
             return this;
         }
         public JobTemplateTemplateVolumeEmptyDir build() {
-            final var o = new JobTemplateTemplateVolumeEmptyDir();
-            o.medium = medium;
-            o.sizeLimit = sizeLimit;
-            return o;
+            final var _resultValue = new JobTemplateTemplateVolumeEmptyDir();
+            _resultValue.medium = medium;
+            _resultValue.sizeLimit = sizeLimit;
+            return _resultValue;
         }
     }
 }

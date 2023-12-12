@@ -46,9 +46,9 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath();
-            o.path = path;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath();
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

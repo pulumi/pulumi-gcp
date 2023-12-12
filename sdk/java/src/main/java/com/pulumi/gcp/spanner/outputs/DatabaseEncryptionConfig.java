@@ -48,9 +48,9 @@ public final class DatabaseEncryptionConfig {
             return this;
         }
         public DatabaseEncryptionConfig build() {
-            final var o = new DatabaseEncryptionConfig();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new DatabaseEncryptionConfig();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

@@ -52,9 +52,9 @@ public final class InterconnectAttachmentPrivateInterconnectInfo {
             return this;
         }
         public InterconnectAttachmentPrivateInterconnectInfo build() {
-            final var o = new InterconnectAttachmentPrivateInterconnectInfo();
-            o.tag8021q = tag8021q;
-            return o;
+            final var _resultValue = new InterconnectAttachmentPrivateInterconnectInfo();
+            _resultValue.tag8021q = tag8021q;
+            return _resultValue;
         }
     }
 }

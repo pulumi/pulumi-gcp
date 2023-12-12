@@ -88,11 +88,11 @@ public final class EnvironmentVmImage {
             return this;
         }
         public EnvironmentVmImage build() {
-            final var o = new EnvironmentVmImage();
-            o.imageFamily = imageFamily;
-            o.imageName = imageName;
-            o.project = project;
-            return o;
+            final var _resultValue = new EnvironmentVmImage();
+            _resultValue.imageFamily = imageFamily;
+            _resultValue.imageName = imageName;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

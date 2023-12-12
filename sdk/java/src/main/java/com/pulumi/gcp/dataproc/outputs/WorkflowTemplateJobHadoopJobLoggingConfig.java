@@ -48,9 +48,9 @@ public final class WorkflowTemplateJobHadoopJobLoggingConfig {
             return this;
         }
         public WorkflowTemplateJobHadoopJobLoggingConfig build() {
-            final var o = new WorkflowTemplateJobHadoopJobLoggingConfig();
-            o.driverLogLevels = driverLogLevels;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobHadoopJobLoggingConfig();
+            _resultValue.driverLogLevels = driverLogLevels;
+            return _resultValue;
         }
     }
 }

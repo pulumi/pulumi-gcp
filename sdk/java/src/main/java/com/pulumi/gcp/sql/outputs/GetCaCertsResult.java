@@ -111,13 +111,13 @@ public final class GetCaCertsResult {
             return this;
         }
         public GetCaCertsResult build() {
-            final var o = new GetCaCertsResult();
-            o.activeVersion = activeVersion;
-            o.certs = certs;
-            o.id = id;
-            o.instance = instance;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetCaCertsResult();
+            _resultValue.activeVersion = activeVersion;
+            _resultValue.certs = certs;
+            _resultValue.id = id;
+            _resultValue.instance = instance;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

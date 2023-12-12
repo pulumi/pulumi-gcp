@@ -97,12 +97,12 @@ public final class GetWebTypeComputeIamPolicyResult {
             return this;
         }
         public GetWebTypeComputeIamPolicyResult build() {
-            final var o = new GetWebTypeComputeIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetWebTypeComputeIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

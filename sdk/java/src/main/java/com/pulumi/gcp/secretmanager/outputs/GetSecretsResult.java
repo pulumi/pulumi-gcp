@@ -102,12 +102,12 @@ public final class GetSecretsResult {
             return secrets(List.of(secrets));
         }
         public GetSecretsResult build() {
-            final var o = new GetSecretsResult();
-            o.filter = filter;
-            o.id = id;
-            o.project = project;
-            o.secrets = secrets;
-            return o;
+            final var _resultValue = new GetSecretsResult();
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.secrets = secrets;
+            return _resultValue;
         }
     }
 }

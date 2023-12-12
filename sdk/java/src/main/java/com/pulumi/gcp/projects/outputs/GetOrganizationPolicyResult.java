@@ -148,17 +148,17 @@ public final class GetOrganizationPolicyResult {
             return this;
         }
         public GetOrganizationPolicyResult build() {
-            final var o = new GetOrganizationPolicyResult();
-            o.booleanPolicies = booleanPolicies;
-            o.constraint = constraint;
-            o.etag = etag;
-            o.id = id;
-            o.listPolicies = listPolicies;
-            o.project = project;
-            o.restorePolicies = restorePolicies;
-            o.updateTime = updateTime;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetOrganizationPolicyResult();
+            _resultValue.booleanPolicies = booleanPolicies;
+            _resultValue.constraint = constraint;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.listPolicies = listPolicies;
+            _resultValue.project = project;
+            _resultValue.restorePolicies = restorePolicies;
+            _resultValue.updateTime = updateTime;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

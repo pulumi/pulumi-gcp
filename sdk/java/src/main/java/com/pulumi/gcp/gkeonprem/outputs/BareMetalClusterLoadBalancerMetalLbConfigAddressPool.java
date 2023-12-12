@@ -112,12 +112,12 @@ public final class BareMetalClusterLoadBalancerMetalLbConfigAddressPool {
             return this;
         }
         public BareMetalClusterLoadBalancerMetalLbConfigAddressPool build() {
-            final var o = new BareMetalClusterLoadBalancerMetalLbConfigAddressPool();
-            o.addresses = addresses;
-            o.avoidBuggyIps = avoidBuggyIps;
-            o.manualAssign = manualAssign;
-            o.pool = pool;
-            return o;
+            final var _resultValue = new BareMetalClusterLoadBalancerMetalLbConfigAddressPool();
+            _resultValue.addresses = addresses;
+            _resultValue.avoidBuggyIps = avoidBuggyIps;
+            _resultValue.manualAssign = manualAssign;
+            _resultValue.pool = pool;
+            return _resultValue;
         }
     }
 }

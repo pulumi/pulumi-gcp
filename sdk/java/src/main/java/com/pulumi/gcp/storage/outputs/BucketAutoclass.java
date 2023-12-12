@@ -68,10 +68,10 @@ public final class BucketAutoclass {
             return this;
         }
         public BucketAutoclass build() {
-            final var o = new BucketAutoclass();
-            o.enabled = enabled;
-            o.terminalStorageClass = terminalStorageClass;
-            return o;
+            final var _resultValue = new BucketAutoclass();
+            _resultValue.enabled = enabled;
+            _resultValue.terminalStorageClass = terminalStorageClass;
+            return _resultValue;
         }
     }
 }

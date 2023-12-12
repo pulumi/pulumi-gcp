@@ -46,9 +46,9 @@ public final class AzureClusterControlPlaneDatabaseEncryption {
             return this;
         }
         public AzureClusterControlPlaneDatabaseEncryption build() {
-            final var o = new AzureClusterControlPlaneDatabaseEncryption();
-            o.keyId = keyId;
-            return o;
+            final var _resultValue = new AzureClusterControlPlaneDatabaseEncryption();
+            _resultValue.keyId = keyId;
+            return _resultValue;
         }
     }
 }

@@ -69,10 +69,10 @@ public final class ProjectDefaultConfigSignInPhoneNumber {
             return this;
         }
         public ProjectDefaultConfigSignInPhoneNumber build() {
-            final var o = new ProjectDefaultConfigSignInPhoneNumber();
-            o.enabled = enabled;
-            o.testPhoneNumbers = testPhoneNumbers;
-            return o;
+            final var _resultValue = new ProjectDefaultConfigSignInPhoneNumber();
+            _resultValue.enabled = enabled;
+            _resultValue.testPhoneNumbers = testPhoneNumbers;
+            return _resultValue;
         }
     }
 }

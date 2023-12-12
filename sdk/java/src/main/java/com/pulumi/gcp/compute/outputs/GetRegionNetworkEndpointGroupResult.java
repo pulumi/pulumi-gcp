@@ -248,22 +248,22 @@ public final class GetRegionNetworkEndpointGroupResult {
             return this;
         }
         public GetRegionNetworkEndpointGroupResult build() {
-            final var o = new GetRegionNetworkEndpointGroupResult();
-            o.appEngines = appEngines;
-            o.cloudFunctions = cloudFunctions;
-            o.cloudRuns = cloudRuns;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.network = network;
-            o.networkEndpointType = networkEndpointType;
-            o.project = project;
-            o.pscTargetService = pscTargetService;
-            o.region = region;
-            o.selfLink = selfLink;
-            o.serverlessDeployments = serverlessDeployments;
-            o.subnetwork = subnetwork;
-            return o;
+            final var _resultValue = new GetRegionNetworkEndpointGroupResult();
+            _resultValue.appEngines = appEngines;
+            _resultValue.cloudFunctions = cloudFunctions;
+            _resultValue.cloudRuns = cloudRuns;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.networkEndpointType = networkEndpointType;
+            _resultValue.project = project;
+            _resultValue.pscTargetService = pscTargetService;
+            _resultValue.region = region;
+            _resultValue.selfLink = selfLink;
+            _resultValue.serverlessDeployments = serverlessDeployments;
+            _resultValue.subnetwork = subnetwork;
+            return _resultValue;
         }
     }
 }

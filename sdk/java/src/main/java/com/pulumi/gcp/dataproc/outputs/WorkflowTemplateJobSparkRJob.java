@@ -155,14 +155,14 @@ public final class WorkflowTemplateJobSparkRJob {
             return this;
         }
         public WorkflowTemplateJobSparkRJob build() {
-            final var o = new WorkflowTemplateJobSparkRJob();
-            o.archiveUris = archiveUris;
-            o.args = args;
-            o.fileUris = fileUris;
-            o.loggingConfig = loggingConfig;
-            o.mainRFileUri = mainRFileUri;
-            o.properties = properties;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobSparkRJob();
+            _resultValue.archiveUris = archiveUris;
+            _resultValue.args = args;
+            _resultValue.fileUris = fileUris;
+            _resultValue.loggingConfig = loggingConfig;
+            _resultValue.mainRFileUri = mainRFileUri;
+            _resultValue.properties = properties;
+            return _resultValue;
         }
     }
 }

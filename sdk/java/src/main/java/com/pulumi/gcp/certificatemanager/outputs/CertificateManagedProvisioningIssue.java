@@ -75,10 +75,10 @@ public final class CertificateManagedProvisioningIssue {
             return this;
         }
         public CertificateManagedProvisioningIssue build() {
-            final var o = new CertificateManagedProvisioningIssue();
-            o.details = details;
-            o.reason = reason;
-            return o;
+            final var _resultValue = new CertificateManagedProvisioningIssue();
+            _resultValue.details = details;
+            _resultValue.reason = reason;
+            return _resultValue;
         }
     }
 }

@@ -114,13 +114,13 @@ public final class GetTransferProjectServieAccountResult {
             return this;
         }
         public GetTransferProjectServieAccountResult build() {
-            final var o = new GetTransferProjectServieAccountResult();
-            o.email = email;
-            o.id = id;
-            o.member = member;
-            o.project = project;
-            o.subjectId = subjectId;
-            return o;
+            final var _resultValue = new GetTransferProjectServieAccountResult();
+            _resultValue.email = email;
+            _resultValue.id = id;
+            _resultValue.member = member;
+            _resultValue.project = project;
+            _resultValue.subjectId = subjectId;
+            return _resultValue;
         }
     }
 }

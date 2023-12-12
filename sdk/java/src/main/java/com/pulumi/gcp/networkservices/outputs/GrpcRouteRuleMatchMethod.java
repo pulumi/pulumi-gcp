@@ -87,11 +87,11 @@ public final class GrpcRouteRuleMatchMethod {
             return this;
         }
         public GrpcRouteRuleMatchMethod build() {
-            final var o = new GrpcRouteRuleMatchMethod();
-            o.caseSensitive = caseSensitive;
-            o.grpcMethod = grpcMethod;
-            o.grpcService = grpcService;
-            return o;
+            final var _resultValue = new GrpcRouteRuleMatchMethod();
+            _resultValue.caseSensitive = caseSensitive;
+            _resultValue.grpcMethod = grpcMethod;
+            _resultValue.grpcService = grpcService;
+            return _resultValue;
         }
     }
 }

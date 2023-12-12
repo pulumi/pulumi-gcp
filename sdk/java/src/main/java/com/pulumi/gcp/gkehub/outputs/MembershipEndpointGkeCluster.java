@@ -38,9 +38,9 @@ public final class MembershipEndpointGkeCluster {
             return this;
         }
         public MembershipEndpointGkeCluster build() {
-            final var o = new MembershipEndpointGkeCluster();
-            o.resourceLink = resourceLink;
-            return o;
+            final var _resultValue = new MembershipEndpointGkeCluster();
+            _resultValue.resourceLink = resourceLink;
+            return _resultValue;
         }
     }
 }

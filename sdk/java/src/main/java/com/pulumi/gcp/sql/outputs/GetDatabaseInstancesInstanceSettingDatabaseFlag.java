@@ -49,10 +49,10 @@ public final class GetDatabaseInstancesInstanceSettingDatabaseFlag {
             return this;
         }
         public GetDatabaseInstancesInstanceSettingDatabaseFlag build() {
-            final var o = new GetDatabaseInstancesInstanceSettingDatabaseFlag();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetDatabaseInstancesInstanceSettingDatabaseFlag();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

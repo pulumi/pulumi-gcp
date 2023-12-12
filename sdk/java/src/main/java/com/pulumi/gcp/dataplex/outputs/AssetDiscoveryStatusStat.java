@@ -73,12 +73,12 @@ public final class AssetDiscoveryStatusStat {
             return this;
         }
         public AssetDiscoveryStatusStat build() {
-            final var o = new AssetDiscoveryStatusStat();
-            o.dataItems = dataItems;
-            o.dataSize = dataSize;
-            o.filesets = filesets;
-            o.tables = tables;
-            return o;
+            final var _resultValue = new AssetDiscoveryStatusStat();
+            _resultValue.dataItems = dataItems;
+            _resultValue.dataSize = dataSize;
+            _resultValue.filesets = filesets;
+            _resultValue.tables = tables;
+            return _resultValue;
         }
     }
 }

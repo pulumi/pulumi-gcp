@@ -42,9 +42,9 @@ public final class GetClusterNodePoolNodeConfigSoleTenantConfig {
             return nodeAffinities(List.of(nodeAffinities));
         }
         public GetClusterNodePoolNodeConfigSoleTenantConfig build() {
-            final var o = new GetClusterNodePoolNodeConfigSoleTenantConfig();
-            o.nodeAffinities = nodeAffinities;
-            return o;
+            final var _resultValue = new GetClusterNodePoolNodeConfigSoleTenantConfig();
+            _resultValue.nodeAffinities = nodeAffinities;
+            return _resultValue;
         }
     }
 }

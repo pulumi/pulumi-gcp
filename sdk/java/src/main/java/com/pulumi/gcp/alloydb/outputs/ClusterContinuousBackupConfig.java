@@ -92,11 +92,11 @@ public final class ClusterContinuousBackupConfig {
             return this;
         }
         public ClusterContinuousBackupConfig build() {
-            final var o = new ClusterContinuousBackupConfig();
-            o.enabled = enabled;
-            o.encryptionConfig = encryptionConfig;
-            o.recoveryWindowDays = recoveryWindowDays;
-            return o;
+            final var _resultValue = new ClusterContinuousBackupConfig();
+            _resultValue.enabled = enabled;
+            _resultValue.encryptionConfig = encryptionConfig;
+            _resultValue.recoveryWindowDays = recoveryWindowDays;
+            return _resultValue;
         }
     }
 }

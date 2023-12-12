@@ -108,13 +108,13 @@ public final class GetScopeIamPolicyResult {
             return this;
         }
         public GetScopeIamPolicyResult build() {
-            final var o = new GetScopeIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.scopeId = scopeId;
-            return o;
+            final var _resultValue = new GetScopeIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.scopeId = scopeId;
+            return _resultValue;
         }
     }
 }

@@ -76,10 +76,10 @@ public final class ConnectionAuthConfigOauth2JwtBearer {
             return this;
         }
         public ConnectionAuthConfigOauth2JwtBearer build() {
-            final var o = new ConnectionAuthConfigOauth2JwtBearer();
-            o.clientKey = clientKey;
-            o.jwtClaims = jwtClaims;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigOauth2JwtBearer();
+            _resultValue.clientKey = clientKey;
+            _resultValue.jwtClaims = jwtClaims;
+            return _resultValue;
         }
     }
 }

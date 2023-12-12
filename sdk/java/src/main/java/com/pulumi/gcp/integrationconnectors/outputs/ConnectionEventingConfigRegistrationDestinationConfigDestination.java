@@ -87,11 +87,11 @@ public final class ConnectionEventingConfigRegistrationDestinationConfigDestinat
             return this;
         }
         public ConnectionEventingConfigRegistrationDestinationConfigDestination build() {
-            final var o = new ConnectionEventingConfigRegistrationDestinationConfigDestination();
-            o.host = host;
-            o.port = port;
-            o.serviceAttachment = serviceAttachment;
-            return o;
+            final var _resultValue = new ConnectionEventingConfigRegistrationDestinationConfigDestination();
+            _resultValue.host = host;
+            _resultValue.port = port;
+            _resultValue.serviceAttachment = serviceAttachment;
+            return _resultValue;
         }
     }
 }

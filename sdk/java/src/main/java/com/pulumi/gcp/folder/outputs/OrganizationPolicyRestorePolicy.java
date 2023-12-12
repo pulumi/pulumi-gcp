@@ -46,9 +46,9 @@ public final class OrganizationPolicyRestorePolicy {
             return this;
         }
         public OrganizationPolicyRestorePolicy build() {
-            final var o = new OrganizationPolicyRestorePolicy();
-            o.default_ = default_;
-            return o;
+            final var _resultValue = new OrganizationPolicyRestorePolicy();
+            _resultValue.default_ = default_;
+            return _resultValue;
         }
     }
 }

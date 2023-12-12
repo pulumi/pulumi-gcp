@@ -65,10 +65,10 @@ public final class AttachedClusterProxyConfigKubernetesSecret {
             return this;
         }
         public AttachedClusterProxyConfigKubernetesSecret build() {
-            final var o = new AttachedClusterProxyConfigKubernetesSecret();
-            o.name = name;
-            o.namespace = namespace;
-            return o;
+            final var _resultValue = new AttachedClusterProxyConfigKubernetesSecret();
+            _resultValue.name = name;
+            _resultValue.namespace = namespace;
+            return _resultValue;
         }
     }
 }

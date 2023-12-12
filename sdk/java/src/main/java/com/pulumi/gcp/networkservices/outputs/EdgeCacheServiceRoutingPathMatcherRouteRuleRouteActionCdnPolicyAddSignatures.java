@@ -150,13 +150,13 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
             return this;
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures();
-            o.actions = actions;
-            o.copiedParameters = copiedParameters;
-            o.keyset = keyset;
-            o.tokenQueryParameter = tokenQueryParameter;
-            o.tokenTtl = tokenTtl;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures();
+            _resultValue.actions = actions;
+            _resultValue.copiedParameters = copiedParameters;
+            _resultValue.keyset = keyset;
+            _resultValue.tokenQueryParameter = tokenQueryParameter;
+            _resultValue.tokenTtl = tokenTtl;
+            return _resultValue;
         }
     }
 }

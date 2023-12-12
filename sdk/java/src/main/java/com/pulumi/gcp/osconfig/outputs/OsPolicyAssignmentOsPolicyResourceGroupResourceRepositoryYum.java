@@ -115,12 +115,12 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum 
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum();
-            o.baseUrl = baseUrl;
-            o.displayName = displayName;
-            o.gpgKeys = gpgKeys;
-            o.id = id;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum();
+            _resultValue.baseUrl = baseUrl;
+            _resultValue.displayName = displayName;
+            _resultValue.gpgKeys = gpgKeys;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

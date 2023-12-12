@@ -50,9 +50,9 @@ public final class VMwareClusterNetworkConfigControlPlaneV2Config {
             return this;
         }
         public VMwareClusterNetworkConfigControlPlaneV2Config build() {
-            final var o = new VMwareClusterNetworkConfigControlPlaneV2Config();
-            o.controlPlaneIpBlock = controlPlaneIpBlock;
-            return o;
+            final var _resultValue = new VMwareClusterNetworkConfigControlPlaneV2Config();
+            _resultValue.controlPlaneIpBlock = controlPlaneIpBlock;
+            return _resultValue;
         }
     }
 }

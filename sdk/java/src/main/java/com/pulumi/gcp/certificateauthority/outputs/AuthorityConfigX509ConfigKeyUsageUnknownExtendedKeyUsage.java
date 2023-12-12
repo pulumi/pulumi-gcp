@@ -50,9 +50,9 @@ public final class AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
             return objectIdPaths(List.of(objectIdPaths));
         }
         public AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage build() {
-            final var o = new AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

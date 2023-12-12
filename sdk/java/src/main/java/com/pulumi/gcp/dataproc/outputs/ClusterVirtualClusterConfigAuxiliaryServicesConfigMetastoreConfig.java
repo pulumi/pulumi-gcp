@@ -56,9 +56,9 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreCo
             return this;
         }
         public ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig build() {
-            final var o = new ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig();
-            o.dataprocMetastoreService = dataprocMetastoreService;
-            return o;
+            final var _resultValue = new ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig();
+            _resultValue.dataprocMetastoreService = dataprocMetastoreService;
+            return _resultValue;
         }
     }
 }

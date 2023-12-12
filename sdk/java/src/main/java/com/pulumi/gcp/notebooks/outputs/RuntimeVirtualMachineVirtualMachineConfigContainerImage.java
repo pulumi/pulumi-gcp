@@ -69,10 +69,10 @@ public final class RuntimeVirtualMachineVirtualMachineConfigContainerImage {
             return this;
         }
         public RuntimeVirtualMachineVirtualMachineConfigContainerImage build() {
-            final var o = new RuntimeVirtualMachineVirtualMachineConfigContainerImage();
-            o.repository = repository;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new RuntimeVirtualMachineVirtualMachineConfigContainerImage();
+            _resultValue.repository = repository;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

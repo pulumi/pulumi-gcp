@@ -132,13 +132,13 @@ public final class ConnectionAuthConfigOauth2AuthCodeFlow {
             return scopes(List.of(scopes));
         }
         public ConnectionAuthConfigOauth2AuthCodeFlow build() {
-            final var o = new ConnectionAuthConfigOauth2AuthCodeFlow();
-            o.authUri = authUri;
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            o.enablePkce = enablePkce;
-            o.scopes = scopes;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigOauth2AuthCodeFlow();
+            _resultValue.authUri = authUri;
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.enablePkce = enablePkce;
+            _resultValue.scopes = scopes;
+            return _resultValue;
         }
     }
 }

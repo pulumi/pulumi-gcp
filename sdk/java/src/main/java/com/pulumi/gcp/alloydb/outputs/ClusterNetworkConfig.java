@@ -71,10 +71,10 @@ public final class ClusterNetworkConfig {
             return this;
         }
         public ClusterNetworkConfig build() {
-            final var o = new ClusterNetworkConfig();
-            o.allocatedIpRange = allocatedIpRange;
-            o.network = network;
-            return o;
+            final var _resultValue = new ClusterNetworkConfig();
+            _resultValue.allocatedIpRange = allocatedIpRange;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

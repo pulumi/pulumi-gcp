@@ -73,12 +73,12 @@ public final class GetClusterNodePoolNodeConfigKubeletConfig {
             return this;
         }
         public GetClusterNodePoolNodeConfigKubeletConfig build() {
-            final var o = new GetClusterNodePoolNodeConfigKubeletConfig();
-            o.cpuCfsQuota = cpuCfsQuota;
-            o.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
-            o.cpuManagerPolicy = cpuManagerPolicy;
-            o.podPidsLimit = podPidsLimit;
-            return o;
+            final var _resultValue = new GetClusterNodePoolNodeConfigKubeletConfig();
+            _resultValue.cpuCfsQuota = cpuCfsQuota;
+            _resultValue.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
+            _resultValue.cpuManagerPolicy = cpuManagerPolicy;
+            _resultValue.podPidsLimit = podPidsLimit;
+            return _resultValue;
         }
     }
 }

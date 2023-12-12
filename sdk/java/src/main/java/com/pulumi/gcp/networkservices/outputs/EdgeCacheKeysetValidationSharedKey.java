@@ -56,9 +56,9 @@ public final class EdgeCacheKeysetValidationSharedKey {
             return this;
         }
         public EdgeCacheKeysetValidationSharedKey build() {
-            final var o = new EdgeCacheKeysetValidationSharedKey();
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new EdgeCacheKeysetValidationSharedKey();
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

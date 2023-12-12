@@ -71,10 +71,10 @@ public final class InstanceGroupManagerVersionTargetSize {
             return this;
         }
         public InstanceGroupManagerVersionTargetSize build() {
-            final var o = new InstanceGroupManagerVersionTargetSize();
-            o.fixed = fixed;
-            o.percent = percent;
-            return o;
+            final var _resultValue = new InstanceGroupManagerVersionTargetSize();
+            _resultValue.fixed = fixed;
+            _resultValue.percent = percent;
+            return _resultValue;
         }
     }
 }

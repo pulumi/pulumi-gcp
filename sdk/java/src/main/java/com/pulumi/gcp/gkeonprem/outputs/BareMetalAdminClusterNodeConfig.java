@@ -50,9 +50,9 @@ public final class BareMetalAdminClusterNodeConfig {
             return this;
         }
         public BareMetalAdminClusterNodeConfig build() {
-            final var o = new BareMetalAdminClusterNodeConfig();
-            o.maxPodsPerNode = maxPodsPerNode;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterNodeConfig();
+            _resultValue.maxPodsPerNode = maxPodsPerNode;
+            return _resultValue;
         }
     }
 }

@@ -200,17 +200,17 @@ public final class GetSinkResult {
             return this;
         }
         public GetSinkResult build() {
-            final var o = new GetSinkResult();
-            o.bigqueryOptions = bigqueryOptions;
-            o.description = description;
-            o.destination = destination;
-            o.disabled = disabled;
-            o.exclusions = exclusions;
-            o.filter = filter;
-            o.id = id;
-            o.name = name;
-            o.writerIdentity = writerIdentity;
-            return o;
+            final var _resultValue = new GetSinkResult();
+            _resultValue.bigqueryOptions = bigqueryOptions;
+            _resultValue.description = description;
+            _resultValue.destination = destination;
+            _resultValue.disabled = disabled;
+            _resultValue.exclusions = exclusions;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.writerIdentity = writerIdentity;
+            return _resultValue;
         }
     }
 }

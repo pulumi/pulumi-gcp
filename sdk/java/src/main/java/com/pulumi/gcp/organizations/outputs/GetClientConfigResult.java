@@ -114,13 +114,13 @@ public final class GetClientConfigResult {
             return this;
         }
         public GetClientConfigResult build() {
-            final var o = new GetClientConfigResult();
-            o.accessToken = accessToken;
-            o.id = id;
-            o.project = project;
-            o.region = region;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetClientConfigResult();
+            _resultValue.accessToken = accessToken;
+            _resultValue.id = id;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

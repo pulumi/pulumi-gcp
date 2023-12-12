@@ -78,10 +78,10 @@ public final class StandardAppVersionDeployment {
             return this;
         }
         public StandardAppVersionDeployment build() {
-            final var o = new StandardAppVersionDeployment();
-            o.files = files;
-            o.zip = zip;
-            return o;
+            final var _resultValue = new StandardAppVersionDeployment();
+            _resultValue.files = files;
+            _resultValue.zip = zip;
+            return _resultValue;
         }
     }
 }

@@ -111,12 +111,12 @@ public final class ConnectionAuthConfigSshPublicKey {
             return this;
         }
         public ConnectionAuthConfigSshPublicKey build() {
-            final var o = new ConnectionAuthConfigSshPublicKey();
-            o.certType = certType;
-            o.sshClientCert = sshClientCert;
-            o.sshClientCertPass = sshClientCertPass;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigSshPublicKey();
+            _resultValue.certType = certType;
+            _resultValue.sshClientCert = sshClientCert;
+            _resultValue.sshClientCertPass = sshClientCertPass;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

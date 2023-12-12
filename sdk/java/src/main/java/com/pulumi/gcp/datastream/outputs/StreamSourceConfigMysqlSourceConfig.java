@@ -115,12 +115,12 @@ public final class StreamSourceConfigMysqlSourceConfig {
             return this;
         }
         public StreamSourceConfigMysqlSourceConfig build() {
-            final var o = new StreamSourceConfigMysqlSourceConfig();
-            o.excludeObjects = excludeObjects;
-            o.includeObjects = includeObjects;
-            o.maxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
-            o.maxConcurrentCdcTasks = maxConcurrentCdcTasks;
-            return o;
+            final var _resultValue = new StreamSourceConfigMysqlSourceConfig();
+            _resultValue.excludeObjects = excludeObjects;
+            _resultValue.includeObjects = includeObjects;
+            _resultValue.maxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
+            _resultValue.maxConcurrentCdcTasks = maxConcurrentCdcTasks;
+            return _resultValue;
         }
     }
 }

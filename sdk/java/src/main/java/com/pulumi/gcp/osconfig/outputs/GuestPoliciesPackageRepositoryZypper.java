@@ -111,12 +111,12 @@ public final class GuestPoliciesPackageRepositoryZypper {
             return this;
         }
         public GuestPoliciesPackageRepositoryZypper build() {
-            final var o = new GuestPoliciesPackageRepositoryZypper();
-            o.baseUrl = baseUrl;
-            o.displayName = displayName;
-            o.gpgKeys = gpgKeys;
-            o.id = id;
-            return o;
+            final var _resultValue = new GuestPoliciesPackageRepositoryZypper();
+            _resultValue.baseUrl = baseUrl;
+            _resultValue.displayName = displayName;
+            _resultValue.gpgKeys = gpgKeys;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

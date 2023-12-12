@@ -227,24 +227,24 @@ public final class GetFunctionResult {
             return this;
         }
         public GetFunctionResult build() {
-            final var o = new GetFunctionResult();
-            o.buildConfigs = buildConfigs;
-            o.description = description;
-            o.effectiveLabels = effectiveLabels;
-            o.environment = environment;
-            o.eventTriggers = eventTriggers;
-            o.id = id;
-            o.kmsKeyName = kmsKeyName;
-            o.labels = labels;
-            o.location = location;
-            o.name = name;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.serviceConfigs = serviceConfigs;
-            o.state = state;
-            o.updateTime = updateTime;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetFunctionResult();
+            _resultValue.buildConfigs = buildConfigs;
+            _resultValue.description = description;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.environment = environment;
+            _resultValue.eventTriggers = eventTriggers;
+            _resultValue.id = id;
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.labels = labels;
+            _resultValue.location = location;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.serviceConfigs = serviceConfigs;
+            _resultValue.state = state;
+            _resultValue.updateTime = updateTime;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

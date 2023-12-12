@@ -126,12 +126,12 @@ public final class PolicyClusterAdmissionRule {
             return requireAttestationsBies(List.of(requireAttestationsBies));
         }
         public PolicyClusterAdmissionRule build() {
-            final var o = new PolicyClusterAdmissionRule();
-            o.cluster = cluster;
-            o.enforcementMode = enforcementMode;
-            o.evaluationMode = evaluationMode;
-            o.requireAttestationsBies = requireAttestationsBies;
-            return o;
+            final var _resultValue = new PolicyClusterAdmissionRule();
+            _resultValue.cluster = cluster;
+            _resultValue.enforcementMode = enforcementMode;
+            _resultValue.evaluationMode = evaluationMode;
+            _resultValue.requireAttestationsBies = requireAttestationsBies;
+            return _resultValue;
         }
     }
 }

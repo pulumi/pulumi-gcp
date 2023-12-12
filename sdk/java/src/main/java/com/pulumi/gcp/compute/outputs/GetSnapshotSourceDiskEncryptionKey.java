@@ -49,10 +49,10 @@ public final class GetSnapshotSourceDiskEncryptionKey {
             return this;
         }
         public GetSnapshotSourceDiskEncryptionKey build() {
-            final var o = new GetSnapshotSourceDiskEncryptionKey();
-            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
-            o.rawKey = rawKey;
-            return o;
+            final var _resultValue = new GetSnapshotSourceDiskEncryptionKey();
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            _resultValue.rawKey = rawKey;
+            return _resultValue;
         }
     }
 }

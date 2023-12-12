@@ -50,9 +50,9 @@ public final class CxFlowEventHandlerTriggerFulfillmentConditionalCase {
             return this;
         }
         public CxFlowEventHandlerTriggerFulfillmentConditionalCase build() {
-            final var o = new CxFlowEventHandlerTriggerFulfillmentConditionalCase();
-            o.cases = cases;
-            return o;
+            final var _resultValue = new CxFlowEventHandlerTriggerFulfillmentConditionalCase();
+            _resultValue.cases = cases;
+            return _resultValue;
         }
     }
 }

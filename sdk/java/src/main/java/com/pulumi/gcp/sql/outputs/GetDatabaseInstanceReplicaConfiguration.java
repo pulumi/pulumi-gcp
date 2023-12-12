@@ -150,19 +150,19 @@ public final class GetDatabaseInstanceReplicaConfiguration {
             return this;
         }
         public GetDatabaseInstanceReplicaConfiguration build() {
-            final var o = new GetDatabaseInstanceReplicaConfiguration();
-            o.caCertificate = caCertificate;
-            o.clientCertificate = clientCertificate;
-            o.clientKey = clientKey;
-            o.connectRetryInterval = connectRetryInterval;
-            o.dumpFilePath = dumpFilePath;
-            o.failoverTarget = failoverTarget;
-            o.masterHeartbeatPeriod = masterHeartbeatPeriod;
-            o.password = password;
-            o.sslCipher = sslCipher;
-            o.username = username;
-            o.verifyServerCertificate = verifyServerCertificate;
-            return o;
+            final var _resultValue = new GetDatabaseInstanceReplicaConfiguration();
+            _resultValue.caCertificate = caCertificate;
+            _resultValue.clientCertificate = clientCertificate;
+            _resultValue.clientKey = clientKey;
+            _resultValue.connectRetryInterval = connectRetryInterval;
+            _resultValue.dumpFilePath = dumpFilePath;
+            _resultValue.failoverTarget = failoverTarget;
+            _resultValue.masterHeartbeatPeriod = masterHeartbeatPeriod;
+            _resultValue.password = password;
+            _resultValue.sslCipher = sslCipher;
+            _resultValue.username = username;
+            _resultValue.verifyServerCertificate = verifyServerCertificate;
+            return _resultValue;
         }
     }
 }

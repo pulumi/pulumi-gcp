@@ -82,10 +82,10 @@ public final class OccurenceAttestation {
             return signatures(List.of(signatures));
         }
         public OccurenceAttestation build() {
-            final var o = new OccurenceAttestation();
-            o.serializedPayload = serializedPayload;
-            o.signatures = signatures;
-            return o;
+            final var _resultValue = new OccurenceAttestation();
+            _resultValue.serializedPayload = serializedPayload;
+            _resultValue.signatures = signatures;
+            return _resultValue;
         }
     }
 }

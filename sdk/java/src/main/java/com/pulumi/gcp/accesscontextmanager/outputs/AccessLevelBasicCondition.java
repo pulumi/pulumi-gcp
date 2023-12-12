@@ -235,15 +235,15 @@ public final class AccessLevelBasicCondition {
             return vpcNetworkSources(List.of(vpcNetworkSources));
         }
         public AccessLevelBasicCondition build() {
-            final var o = new AccessLevelBasicCondition();
-            o.devicePolicy = devicePolicy;
-            o.ipSubnetworks = ipSubnetworks;
-            o.members = members;
-            o.negate = negate;
-            o.regions = regions;
-            o.requiredAccessLevels = requiredAccessLevels;
-            o.vpcNetworkSources = vpcNetworkSources;
-            return o;
+            final var _resultValue = new AccessLevelBasicCondition();
+            _resultValue.devicePolicy = devicePolicy;
+            _resultValue.ipSubnetworks = ipSubnetworks;
+            _resultValue.members = members;
+            _resultValue.negate = negate;
+            _resultValue.regions = regions;
+            _resultValue.requiredAccessLevels = requiredAccessLevels;
+            _resultValue.vpcNetworkSources = vpcNetworkSources;
+            return _resultValue;
         }
     }
 }

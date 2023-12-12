@@ -62,11 +62,11 @@ public final class InstanceFromMachineImageShieldedInstanceConfig {
             return this;
         }
         public InstanceFromMachineImageShieldedInstanceConfig build() {
-            final var o = new InstanceFromMachineImageShieldedInstanceConfig();
-            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
-            o.enableSecureBoot = enableSecureBoot;
-            o.enableVtpm = enableVtpm;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageShieldedInstanceConfig();
+            _resultValue.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            _resultValue.enableSecureBoot = enableSecureBoot;
+            _resultValue.enableVtpm = enableVtpm;
+            return _resultValue;
         }
     }
 }

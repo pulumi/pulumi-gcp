@@ -130,13 +130,13 @@ public final class CxAgentGitIntegrationSettingsGithubSettings {
             return this;
         }
         public CxAgentGitIntegrationSettingsGithubSettings build() {
-            final var o = new CxAgentGitIntegrationSettingsGithubSettings();
-            o.accessToken = accessToken;
-            o.branches = branches;
-            o.displayName = displayName;
-            o.repositoryUri = repositoryUri;
-            o.trackingBranch = trackingBranch;
-            return o;
+            final var _resultValue = new CxAgentGitIntegrationSettingsGithubSettings();
+            _resultValue.accessToken = accessToken;
+            _resultValue.branches = branches;
+            _resultValue.displayName = displayName;
+            _resultValue.repositoryUri = repositoryUri;
+            _resultValue.trackingBranch = trackingBranch;
+            return _resultValue;
         }
     }
 }

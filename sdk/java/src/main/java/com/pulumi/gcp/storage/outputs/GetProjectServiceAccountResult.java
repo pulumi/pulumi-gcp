@@ -110,13 +110,13 @@ public final class GetProjectServiceAccountResult {
             return this;
         }
         public GetProjectServiceAccountResult build() {
-            final var o = new GetProjectServiceAccountResult();
-            o.emailAddress = emailAddress;
-            o.id = id;
-            o.member = member;
-            o.project = project;
-            o.userProject = userProject;
-            return o;
+            final var _resultValue = new GetProjectServiceAccountResult();
+            _resultValue.emailAddress = emailAddress;
+            _resultValue.id = id;
+            _resultValue.member = member;
+            _resultValue.project = project;
+            _resultValue.userProject = userProject;
+            return _resultValue;
         }
     }
 }

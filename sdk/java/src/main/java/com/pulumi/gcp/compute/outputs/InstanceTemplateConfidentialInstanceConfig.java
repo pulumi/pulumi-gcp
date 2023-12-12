@@ -46,9 +46,9 @@ public final class InstanceTemplateConfidentialInstanceConfig {
             return this;
         }
         public InstanceTemplateConfidentialInstanceConfig build() {
-            final var o = new InstanceTemplateConfidentialInstanceConfig();
-            o.enableConfidentialCompute = enableConfidentialCompute;
-            return o;
+            final var _resultValue = new InstanceTemplateConfidentialInstanceConfig();
+            _resultValue.enableConfidentialCompute = enableConfidentialCompute;
+            return _resultValue;
         }
     }
 }

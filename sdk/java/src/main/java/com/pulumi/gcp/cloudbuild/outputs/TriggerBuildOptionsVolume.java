@@ -75,10 +75,10 @@ public final class TriggerBuildOptionsVolume {
             return this;
         }
         public TriggerBuildOptionsVolume build() {
-            final var o = new TriggerBuildOptionsVolume();
-            o.name = name;
-            o.path = path;
-            return o;
+            final var _resultValue = new TriggerBuildOptionsVolume();
+            _resultValue.name = name;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

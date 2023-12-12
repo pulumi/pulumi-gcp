@@ -70,10 +70,10 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio {
             return this;
         }
         public CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio build() {
-            final var o = new CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.audioUri = audioUri;
-            return o;
+            final var _resultValue = new CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.audioUri = audioUri;
+            return _resultValue;
         }
     }
 }

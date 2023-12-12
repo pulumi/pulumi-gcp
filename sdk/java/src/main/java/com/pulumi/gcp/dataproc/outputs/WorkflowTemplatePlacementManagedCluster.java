@@ -87,11 +87,11 @@ public final class WorkflowTemplatePlacementManagedCluster {
             return this;
         }
         public WorkflowTemplatePlacementManagedCluster build() {
-            final var o = new WorkflowTemplatePlacementManagedCluster();
-            o.clusterName = clusterName;
-            o.config = config;
-            o.labels = labels;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedCluster();
+            _resultValue.clusterName = clusterName;
+            _resultValue.config = config;
+            _resultValue.labels = labels;
+            return _resultValue;
         }
     }
 }

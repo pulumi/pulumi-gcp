@@ -166,14 +166,14 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
             return this;
         }
         public SecurityPolicyRulePreconfiguredWafConfigExclusion build() {
-            final var o = new SecurityPolicyRulePreconfiguredWafConfigExclusion();
-            o.requestCookies = requestCookies;
-            o.requestHeaders = requestHeaders;
-            o.requestQueryParams = requestQueryParams;
-            o.requestUris = requestUris;
-            o.targetRuleIds = targetRuleIds;
-            o.targetRuleSet = targetRuleSet;
-            return o;
+            final var _resultValue = new SecurityPolicyRulePreconfiguredWafConfigExclusion();
+            _resultValue.requestCookies = requestCookies;
+            _resultValue.requestHeaders = requestHeaders;
+            _resultValue.requestQueryParams = requestQueryParams;
+            _resultValue.requestUris = requestUris;
+            _resultValue.targetRuleIds = targetRuleIds;
+            _resultValue.targetRuleSet = targetRuleSet;
+            return _resultValue;
         }
     }
 }

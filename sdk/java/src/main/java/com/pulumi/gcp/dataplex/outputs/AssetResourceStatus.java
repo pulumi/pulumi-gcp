@@ -78,11 +78,11 @@ public final class AssetResourceStatus {
             return this;
         }
         public AssetResourceStatus build() {
-            final var o = new AssetResourceStatus();
-            o.message = message;
-            o.state = state;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new AssetResourceStatus();
+            _resultValue.message = message;
+            _resultValue.state = state;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

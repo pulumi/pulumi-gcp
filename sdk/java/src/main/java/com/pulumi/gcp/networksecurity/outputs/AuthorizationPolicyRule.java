@@ -82,10 +82,10 @@ public final class AuthorizationPolicyRule {
             return sources(List.of(sources));
         }
         public AuthorizationPolicyRule build() {
-            final var o = new AuthorizationPolicyRule();
-            o.destinations = destinations;
-            o.sources = sources;
-            return o;
+            final var _resultValue = new AuthorizationPolicyRule();
+            _resultValue.destinations = destinations;
+            _resultValue.sources = sources;
+            return _resultValue;
         }
     }
 }

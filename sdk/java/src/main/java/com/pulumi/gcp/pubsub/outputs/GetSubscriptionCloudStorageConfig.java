@@ -110,15 +110,15 @@ public final class GetSubscriptionCloudStorageConfig {
             return this;
         }
         public GetSubscriptionCloudStorageConfig build() {
-            final var o = new GetSubscriptionCloudStorageConfig();
-            o.avroConfigs = avroConfigs;
-            o.bucket = bucket;
-            o.filenamePrefix = filenamePrefix;
-            o.filenameSuffix = filenameSuffix;
-            o.maxBytes = maxBytes;
-            o.maxDuration = maxDuration;
-            o.state = state;
-            return o;
+            final var _resultValue = new GetSubscriptionCloudStorageConfig();
+            _resultValue.avroConfigs = avroConfigs;
+            _resultValue.bucket = bucket;
+            _resultValue.filenamePrefix = filenamePrefix;
+            _resultValue.filenameSuffix = filenameSuffix;
+            _resultValue.maxBytes = maxBytes;
+            _resultValue.maxDuration = maxDuration;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

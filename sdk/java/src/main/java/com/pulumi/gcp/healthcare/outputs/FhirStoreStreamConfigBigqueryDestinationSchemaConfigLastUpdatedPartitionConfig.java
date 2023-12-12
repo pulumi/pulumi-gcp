@@ -69,10 +69,10 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdat
             return this;
         }
         public FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig build() {
-            final var o = new FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig();
-            o.expirationMs = expirationMs;
-            o.type = type;
-            return o;
+            final var _resultValue = new FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig();
+            _resultValue.expirationMs = expirationMs;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

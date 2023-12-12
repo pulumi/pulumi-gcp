@@ -70,10 +70,10 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRef {
             return this;
         }
         public ServiceTemplateSpecContainerEnvFromConfigMapRef build() {
-            final var o = new ServiceTemplateSpecContainerEnvFromConfigMapRef();
-            o.localObjectReference = localObjectReference;
-            o.optional = optional;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecContainerEnvFromConfigMapRef();
+            _resultValue.localObjectReference = localObjectReference;
+            _resultValue.optional = optional;
+            return _resultValue;
         }
     }
 }

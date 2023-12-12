@@ -51,9 +51,9 @@ public final class ServiceTemplateVolumeCloudSqlInstance {
             return instances(List.of(instances));
         }
         public ServiceTemplateVolumeCloudSqlInstance build() {
-            final var o = new ServiceTemplateVolumeCloudSqlInstance();
-            o.instances = instances;
-            return o;
+            final var _resultValue = new ServiceTemplateVolumeCloudSqlInstance();
+            _resultValue.instances = instances;
+            return _resultValue;
         }
     }
 }

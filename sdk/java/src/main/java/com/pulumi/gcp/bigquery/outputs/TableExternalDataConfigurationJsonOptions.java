@@ -48,9 +48,9 @@ public final class TableExternalDataConfigurationJsonOptions {
             return this;
         }
         public TableExternalDataConfigurationJsonOptions build() {
-            final var o = new TableExternalDataConfigurationJsonOptions();
-            o.encoding = encoding;
-            return o;
+            final var _resultValue = new TableExternalDataConfigurationJsonOptions();
+            _resultValue.encoding = encoding;
+            return _resultValue;
         }
     }
 }

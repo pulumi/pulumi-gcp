@@ -42,9 +42,9 @@ public final class GetClusterLoggingConfig {
             return enableComponents(List.of(enableComponents));
         }
         public GetClusterLoggingConfig build() {
-            final var o = new GetClusterLoggingConfig();
-            o.enableComponents = enableComponents;
-            return o;
+            final var _resultValue = new GetClusterLoggingConfig();
+            _resultValue.enableComponents = enableComponents;
+            return _resultValue;
         }
     }
 }

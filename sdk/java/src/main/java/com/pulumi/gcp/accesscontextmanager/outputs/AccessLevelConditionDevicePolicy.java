@@ -169,14 +169,14 @@ public final class AccessLevelConditionDevicePolicy {
             return this;
         }
         public AccessLevelConditionDevicePolicy build() {
-            final var o = new AccessLevelConditionDevicePolicy();
-            o.allowedDeviceManagementLevels = allowedDeviceManagementLevels;
-            o.allowedEncryptionStatuses = allowedEncryptionStatuses;
-            o.osConstraints = osConstraints;
-            o.requireAdminApproval = requireAdminApproval;
-            o.requireCorpOwned = requireCorpOwned;
-            o.requireScreenLock = requireScreenLock;
-            return o;
+            final var _resultValue = new AccessLevelConditionDevicePolicy();
+            _resultValue.allowedDeviceManagementLevels = allowedDeviceManagementLevels;
+            _resultValue.allowedEncryptionStatuses = allowedEncryptionStatuses;
+            _resultValue.osConstraints = osConstraints;
+            _resultValue.requireAdminApproval = requireAdminApproval;
+            _resultValue.requireCorpOwned = requireCorpOwned;
+            _resultValue.requireScreenLock = requireScreenLock;
+            return _resultValue;
         }
     }
 }

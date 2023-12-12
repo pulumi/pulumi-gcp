@@ -46,9 +46,9 @@ public final class ClusterRestoreBackupSource {
             return this;
         }
         public ClusterRestoreBackupSource build() {
-            final var o = new ClusterRestoreBackupSource();
-            o.backupName = backupName;
-            return o;
+            final var _resultValue = new ClusterRestoreBackupSource();
+            _resultValue.backupName = backupName;
+            return _resultValue;
         }
     }
 }

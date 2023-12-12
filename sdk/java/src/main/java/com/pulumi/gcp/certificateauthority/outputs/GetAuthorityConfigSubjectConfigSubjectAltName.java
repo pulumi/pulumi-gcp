@@ -84,12 +84,12 @@ public final class GetAuthorityConfigSubjectConfigSubjectAltName {
             return uris(List.of(uris));
         }
         public GetAuthorityConfigSubjectConfigSubjectAltName build() {
-            final var o = new GetAuthorityConfigSubjectConfigSubjectAltName();
-            o.dnsNames = dnsNames;
-            o.emailAddresses = emailAddresses;
-            o.ipAddresses = ipAddresses;
-            o.uris = uris;
-            return o;
+            final var _resultValue = new GetAuthorityConfigSubjectConfigSubjectAltName();
+            _resultValue.dnsNames = dnsNames;
+            _resultValue.emailAddresses = emailAddresses;
+            _resultValue.ipAddresses = ipAddresses;
+            _resultValue.uris = uris;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class GetBucketEncryption {
             return this;
         }
         public GetBucketEncryption build() {
-            final var o = new GetBucketEncryption();
-            o.defaultKmsKeyName = defaultKmsKeyName;
-            return o;
+            final var _resultValue = new GetBucketEncryption();
+            _resultValue.defaultKmsKeyName = defaultKmsKeyName;
+            return _resultValue;
         }
     }
 }

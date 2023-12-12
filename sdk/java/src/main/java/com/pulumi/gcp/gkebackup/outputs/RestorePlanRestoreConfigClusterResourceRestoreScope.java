@@ -132,12 +132,12 @@ public final class RestorePlanRestoreConfigClusterResourceRestoreScope {
             return selectedGroupKinds(List.of(selectedGroupKinds));
         }
         public RestorePlanRestoreConfigClusterResourceRestoreScope build() {
-            final var o = new RestorePlanRestoreConfigClusterResourceRestoreScope();
-            o.allGroupKinds = allGroupKinds;
-            o.excludedGroupKinds = excludedGroupKinds;
-            o.noGroupKinds = noGroupKinds;
-            o.selectedGroupKinds = selectedGroupKinds;
-            return o;
+            final var _resultValue = new RestorePlanRestoreConfigClusterResourceRestoreScope();
+            _resultValue.allGroupKinds = allGroupKinds;
+            _resultValue.excludedGroupKinds = excludedGroupKinds;
+            _resultValue.noGroupKinds = noGroupKinds;
+            _resultValue.selectedGroupKinds = selectedGroupKinds;
+            return _resultValue;
         }
     }
 }

@@ -157,19 +157,19 @@ public final class GetBackendServiceOutlierDetection {
             return this;
         }
         public GetBackendServiceOutlierDetection build() {
-            final var o = new GetBackendServiceOutlierDetection();
-            o.baseEjectionTimes = baseEjectionTimes;
-            o.consecutiveErrors = consecutiveErrors;
-            o.consecutiveGatewayFailure = consecutiveGatewayFailure;
-            o.enforcingConsecutiveErrors = enforcingConsecutiveErrors;
-            o.enforcingConsecutiveGatewayFailure = enforcingConsecutiveGatewayFailure;
-            o.enforcingSuccessRate = enforcingSuccessRate;
-            o.intervals = intervals;
-            o.maxEjectionPercent = maxEjectionPercent;
-            o.successRateMinimumHosts = successRateMinimumHosts;
-            o.successRateRequestVolume = successRateRequestVolume;
-            o.successRateStdevFactor = successRateStdevFactor;
-            return o;
+            final var _resultValue = new GetBackendServiceOutlierDetection();
+            _resultValue.baseEjectionTimes = baseEjectionTimes;
+            _resultValue.consecutiveErrors = consecutiveErrors;
+            _resultValue.consecutiveGatewayFailure = consecutiveGatewayFailure;
+            _resultValue.enforcingConsecutiveErrors = enforcingConsecutiveErrors;
+            _resultValue.enforcingConsecutiveGatewayFailure = enforcingConsecutiveGatewayFailure;
+            _resultValue.enforcingSuccessRate = enforcingSuccessRate;
+            _resultValue.intervals = intervals;
+            _resultValue.maxEjectionPercent = maxEjectionPercent;
+            _resultValue.successRateMinimumHosts = successRateMinimumHosts;
+            _resultValue.successRateRequestVolume = successRateRequestVolume;
+            _resultValue.successRateStdevFactor = successRateStdevFactor;
+            return _resultValue;
         }
     }
 }

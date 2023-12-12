@@ -69,10 +69,10 @@ public final class ConnectionAwsAccessRole {
             return this;
         }
         public ConnectionAwsAccessRole build() {
-            final var o = new ConnectionAwsAccessRole();
-            o.iamRoleId = iamRoleId;
-            o.identity = identity;
-            return o;
+            final var _resultValue = new ConnectionAwsAccessRole();
+            _resultValue.iamRoleId = iamRoleId;
+            _resultValue.identity = identity;
+            return _resultValue;
         }
     }
 }

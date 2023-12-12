@@ -50,9 +50,9 @@ public final class DatascanExecutionSpecTriggerSchedule {
             return this;
         }
         public DatascanExecutionSpecTriggerSchedule build() {
-            final var o = new DatascanExecutionSpecTriggerSchedule();
-            o.cron = cron;
-            return o;
+            final var _resultValue = new DatascanExecutionSpecTriggerSchedule();
+            _resultValue.cron = cron;
+            return _resultValue;
         }
     }
 }

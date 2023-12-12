@@ -60,9 +60,9 @@ public final class BackendServiceLocalityLbPolicyPolicy {
             return this;
         }
         public BackendServiceLocalityLbPolicyPolicy build() {
-            final var o = new BackendServiceLocalityLbPolicyPolicy();
-            o.name = name;
-            return o;
+            final var _resultValue = new BackendServiceLocalityLbPolicyPolicy();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

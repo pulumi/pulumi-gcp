@@ -71,10 +71,10 @@ public final class AiIndexDeployedIndex {
             return this;
         }
         public AiIndexDeployedIndex build() {
-            final var o = new AiIndexDeployedIndex();
-            o.deployedIndexId = deployedIndexId;
-            o.indexEndpoint = indexEndpoint;
-            return o;
+            final var _resultValue = new AiIndexDeployedIndex();
+            _resultValue.deployedIndexId = deployedIndexId;
+            _resultValue.indexEndpoint = indexEndpoint;
+            return _resultValue;
         }
     }
 }

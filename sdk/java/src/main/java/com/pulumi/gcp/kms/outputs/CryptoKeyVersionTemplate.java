@@ -69,10 +69,10 @@ public final class CryptoKeyVersionTemplate {
             return this;
         }
         public CryptoKeyVersionTemplate build() {
-            final var o = new CryptoKeyVersionTemplate();
-            o.algorithm = algorithm;
-            o.protectionLevel = protectionLevel;
-            return o;
+            final var _resultValue = new CryptoKeyVersionTemplate();
+            _resultValue.algorithm = algorithm;
+            _resultValue.protectionLevel = protectionLevel;
+            return _resultValue;
         }
     }
 }

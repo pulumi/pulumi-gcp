@@ -54,9 +54,9 @@ public final class SecretReplicationAuto {
             return this;
         }
         public SecretReplicationAuto build() {
-            final var o = new SecretReplicationAuto();
-            o.customerManagedEncryption = customerManagedEncryption;
-            return o;
+            final var _resultValue = new SecretReplicationAuto();
+            _resultValue.customerManagedEncryption = customerManagedEncryption;
+            return _resultValue;
         }
     }
 }

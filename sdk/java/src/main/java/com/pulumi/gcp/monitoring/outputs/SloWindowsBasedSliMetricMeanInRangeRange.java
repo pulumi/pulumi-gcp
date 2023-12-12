@@ -75,10 +75,10 @@ public final class SloWindowsBasedSliMetricMeanInRangeRange {
             return this;
         }
         public SloWindowsBasedSliMetricMeanInRangeRange build() {
-            final var o = new SloWindowsBasedSliMetricMeanInRangeRange();
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new SloWindowsBasedSliMetricMeanInRangeRange();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

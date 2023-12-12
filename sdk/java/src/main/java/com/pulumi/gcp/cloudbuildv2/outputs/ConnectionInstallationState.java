@@ -62,11 +62,11 @@ public final class ConnectionInstallationState {
             return this;
         }
         public ConnectionInstallationState build() {
-            final var o = new ConnectionInstallationState();
-            o.actionUri = actionUri;
-            o.message = message;
-            o.stage = stage;
-            return o;
+            final var _resultValue = new ConnectionInstallationState();
+            _resultValue.actionUri = actionUri;
+            _resultValue.message = message;
+            _resultValue.stage = stage;
+            return _resultValue;
         }
     }
 }

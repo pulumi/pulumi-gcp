@@ -113,12 +113,12 @@ public final class PreventionJobTriggerInspectJobStorageConfigTimespanConfig {
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigTimespanConfig build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigTimespanConfig();
-            o.enableAutoPopulationOfTimespanConfig = enableAutoPopulationOfTimespanConfig;
-            o.endTime = endTime;
-            o.startTime = startTime;
-            o.timestampField = timestampField;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigTimespanConfig();
+            _resultValue.enableAutoPopulationOfTimespanConfig = enableAutoPopulationOfTimespanConfig;
+            _resultValue.endTime = endTime;
+            _resultValue.startTime = startTime;
+            _resultValue.timestampField = timestampField;
+            return _resultValue;
         }
     }
 }

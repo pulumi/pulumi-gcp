@@ -72,10 +72,10 @@ public final class RulesetSource {
             return this;
         }
         public RulesetSource build() {
-            final var o = new RulesetSource();
-            o.files = files;
-            o.language = language;
-            return o;
+            final var _resultValue = new RulesetSource();
+            _resultValue.files = files;
+            _resultValue.language = language;
+            return _resultValue;
         }
     }
 }

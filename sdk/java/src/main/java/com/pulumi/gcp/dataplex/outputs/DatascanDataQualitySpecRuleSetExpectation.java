@@ -50,9 +50,9 @@ public final class DatascanDataQualitySpecRuleSetExpectation {
             return values(List.of(values));
         }
         public DatascanDataQualitySpecRuleSetExpectation build() {
-            final var o = new DatascanDataQualitySpecRuleSetExpectation();
-            o.values = values;
-            return o;
+            final var _resultValue = new DatascanDataQualitySpecRuleSetExpectation();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

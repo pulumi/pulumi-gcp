@@ -38,9 +38,9 @@ public final class GetWorkloadIdentityPoolProviderAw {
             return this;
         }
         public GetWorkloadIdentityPoolProviderAw build() {
-            final var o = new GetWorkloadIdentityPoolProviderAw();
-            o.accountId = accountId;
-            return o;
+            final var _resultValue = new GetWorkloadIdentityPoolProviderAw();
+            _resultValue.accountId = accountId;
+            return _resultValue;
         }
     }
 }

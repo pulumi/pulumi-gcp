@@ -238,25 +238,25 @@ public final class GetAiIndexResult {
             return this;
         }
         public GetAiIndexResult build() {
-            final var o = new GetAiIndexResult();
-            o.createTime = createTime;
-            o.deployedIndexes = deployedIndexes;
-            o.description = description;
-            o.displayName = displayName;
-            o.effectiveLabels = effectiveLabels;
-            o.etag = etag;
-            o.id = id;
-            o.indexStats = indexStats;
-            o.indexUpdateMethod = indexUpdateMethod;
-            o.labels = labels;
-            o.metadataSchemaUri = metadataSchemaUri;
-            o.metadatas = metadatas;
-            o.name = name;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.region = region;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetAiIndexResult();
+            _resultValue.createTime = createTime;
+            _resultValue.deployedIndexes = deployedIndexes;
+            _resultValue.description = description;
+            _resultValue.displayName = displayName;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.indexStats = indexStats;
+            _resultValue.indexUpdateMethod = indexUpdateMethod;
+            _resultValue.labels = labels;
+            _resultValue.metadataSchemaUri = metadataSchemaUri;
+            _resultValue.metadatas = metadatas;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.region = region;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

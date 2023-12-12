@@ -67,10 +67,10 @@ public final class AttachedClusterOidcConfig {
             return this;
         }
         public AttachedClusterOidcConfig build() {
-            final var o = new AttachedClusterOidcConfig();
-            o.issuerUrl = issuerUrl;
-            o.jwks = jwks;
-            return o;
+            final var _resultValue = new AttachedClusterOidcConfig();
+            _resultValue.issuerUrl = issuerUrl;
+            _resultValue.jwks = jwks;
+            return _resultValue;
         }
     }
 }

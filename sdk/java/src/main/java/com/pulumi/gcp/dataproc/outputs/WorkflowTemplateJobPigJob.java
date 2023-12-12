@@ -170,15 +170,15 @@ public final class WorkflowTemplateJobPigJob {
             return this;
         }
         public WorkflowTemplateJobPigJob build() {
-            final var o = new WorkflowTemplateJobPigJob();
-            o.continueOnFailure = continueOnFailure;
-            o.jarFileUris = jarFileUris;
-            o.loggingConfig = loggingConfig;
-            o.properties = properties;
-            o.queryFileUri = queryFileUri;
-            o.queryList = queryList;
-            o.scriptVariables = scriptVariables;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobPigJob();
+            _resultValue.continueOnFailure = continueOnFailure;
+            _resultValue.jarFileUris = jarFileUris;
+            _resultValue.loggingConfig = loggingConfig;
+            _resultValue.properties = properties;
+            _resultValue.queryFileUri = queryFileUri;
+            _resultValue.queryList = queryList;
+            _resultValue.scriptVariables = scriptVariables;
+            return _resultValue;
         }
     }
 }

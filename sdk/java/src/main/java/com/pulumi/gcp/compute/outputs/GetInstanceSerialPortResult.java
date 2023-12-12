@@ -110,14 +110,14 @@ public final class GetInstanceSerialPortResult {
             return this;
         }
         public GetInstanceSerialPortResult build() {
-            final var o = new GetInstanceSerialPortResult();
-            o.contents = contents;
-            o.id = id;
-            o.instance = instance;
-            o.port = port;
-            o.project = project;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetInstanceSerialPortResult();
+            _resultValue.contents = contents;
+            _resultValue.id = id;
+            _resultValue.instance = instance;
+            _resultValue.port = port;
+            _resultValue.project = project;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

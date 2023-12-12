@@ -153,18 +153,18 @@ public final class GetRouterResult {
             return this;
         }
         public GetRouterResult build() {
-            final var o = new GetRouterResult();
-            o.bgps = bgps;
-            o.creationTimestamp = creationTimestamp;
-            o.description = description;
-            o.encryptedInterconnectRouter = encryptedInterconnectRouter;
-            o.id = id;
-            o.name = name;
-            o.network = network;
-            o.project = project;
-            o.region = region;
-            o.selfLink = selfLink;
-            return o;
+            final var _resultValue = new GetRouterResult();
+            _resultValue.bgps = bgps;
+            _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.description = description;
+            _resultValue.encryptedInterconnectRouter = encryptedInterconnectRouter;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.selfLink = selfLink;
+            return _resultValue;
         }
     }
 }

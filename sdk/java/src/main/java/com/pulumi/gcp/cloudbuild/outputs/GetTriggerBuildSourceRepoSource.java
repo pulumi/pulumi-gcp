@@ -117,16 +117,16 @@ public final class GetTriggerBuildSourceRepoSource {
             return this;
         }
         public GetTriggerBuildSourceRepoSource build() {
-            final var o = new GetTriggerBuildSourceRepoSource();
-            o.branchName = branchName;
-            o.commitSha = commitSha;
-            o.dir = dir;
-            o.invertRegex = invertRegex;
-            o.projectId = projectId;
-            o.repoName = repoName;
-            o.substitutions = substitutions;
-            o.tagName = tagName;
-            return o;
+            final var _resultValue = new GetTriggerBuildSourceRepoSource();
+            _resultValue.branchName = branchName;
+            _resultValue.commitSha = commitSha;
+            _resultValue.dir = dir;
+            _resultValue.invertRegex = invertRegex;
+            _resultValue.projectId = projectId;
+            _resultValue.repoName = repoName;
+            _resultValue.substitutions = substitutions;
+            _resultValue.tagName = tagName;
+            return _resultValue;
         }
     }
 }

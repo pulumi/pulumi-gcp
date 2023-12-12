@@ -50,9 +50,9 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistor
             return this;
         }
         public ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig build() {
-            final var o = new ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig();
-            o.dataprocCluster = dataprocCluster;
-            return o;
+            final var _resultValue = new ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig();
+            _resultValue.dataprocCluster = dataprocCluster;
+            return _resultValue;
         }
     }
 }

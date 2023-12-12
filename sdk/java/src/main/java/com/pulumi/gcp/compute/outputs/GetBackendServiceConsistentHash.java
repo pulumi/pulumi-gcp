@@ -66,11 +66,11 @@ public final class GetBackendServiceConsistentHash {
             return this;
         }
         public GetBackendServiceConsistentHash build() {
-            final var o = new GetBackendServiceConsistentHash();
-            o.httpCookies = httpCookies;
-            o.httpHeaderName = httpHeaderName;
-            o.minimumRingSize = minimumRingSize;
-            return o;
+            final var _resultValue = new GetBackendServiceConsistentHash();
+            _resultValue.httpCookies = httpCookies;
+            _resultValue.httpHeaderName = httpHeaderName;
+            _resultValue.minimumRingSize = minimumRingSize;
+            return _resultValue;
         }
     }
 }

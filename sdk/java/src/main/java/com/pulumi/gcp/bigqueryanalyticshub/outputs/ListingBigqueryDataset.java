@@ -50,9 +50,9 @@ public final class ListingBigqueryDataset {
             return this;
         }
         public ListingBigqueryDataset build() {
-            final var o = new ListingBigqueryDataset();
-            o.dataset = dataset;
-            return o;
+            final var _resultValue = new ListingBigqueryDataset();
+            _resultValue.dataset = dataset;
+            return _resultValue;
         }
     }
 }

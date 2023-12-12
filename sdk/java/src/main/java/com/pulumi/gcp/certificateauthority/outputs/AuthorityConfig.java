@@ -74,10 +74,10 @@ public final class AuthorityConfig {
             return this;
         }
         public AuthorityConfig build() {
-            final var o = new AuthorityConfig();
-            o.subjectConfig = subjectConfig;
-            o.x509Config = x509Config;
-            return o;
+            final var _resultValue = new AuthorityConfig();
+            _resultValue.subjectConfig = subjectConfig;
+            _resultValue.x509Config = x509Config;
+            return _resultValue;
         }
     }
 }

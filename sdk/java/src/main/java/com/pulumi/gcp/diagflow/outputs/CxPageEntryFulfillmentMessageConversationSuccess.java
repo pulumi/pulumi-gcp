@@ -48,9 +48,9 @@ public final class CxPageEntryFulfillmentMessageConversationSuccess {
             return this;
         }
         public CxPageEntryFulfillmentMessageConversationSuccess build() {
-            final var o = new CxPageEntryFulfillmentMessageConversationSuccess();
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new CxPageEntryFulfillmentMessageConversationSuccess();
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

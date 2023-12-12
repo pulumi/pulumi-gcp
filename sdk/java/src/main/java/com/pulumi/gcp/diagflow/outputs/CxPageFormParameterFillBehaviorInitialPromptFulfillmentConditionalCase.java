@@ -50,9 +50,9 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillmentCondit
             return this;
         }
         public CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase build() {
-            final var o = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase();
-            o.cases = cases;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase();
+            _resultValue.cases = cases;
+            return _resultValue;
         }
     }
 }

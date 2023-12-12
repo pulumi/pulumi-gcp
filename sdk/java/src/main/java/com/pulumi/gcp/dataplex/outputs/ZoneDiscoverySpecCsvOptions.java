@@ -107,12 +107,12 @@ public final class ZoneDiscoverySpecCsvOptions {
             return this;
         }
         public ZoneDiscoverySpecCsvOptions build() {
-            final var o = new ZoneDiscoverySpecCsvOptions();
-            o.delimiter = delimiter;
-            o.disableTypeInference = disableTypeInference;
-            o.encoding = encoding;
-            o.headerRows = headerRows;
-            return o;
+            final var _resultValue = new ZoneDiscoverySpecCsvOptions();
+            _resultValue.delimiter = delimiter;
+            _resultValue.disableTypeInference = disableTypeInference;
+            _resultValue.encoding = encoding;
+            _resultValue.headerRows = headerRows;
+            return _resultValue;
         }
     }
 }

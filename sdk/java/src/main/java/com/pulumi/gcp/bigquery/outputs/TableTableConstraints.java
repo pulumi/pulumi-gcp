@@ -82,10 +82,10 @@ public final class TableTableConstraints {
             return this;
         }
         public TableTableConstraints build() {
-            final var o = new TableTableConstraints();
-            o.foreignKeys = foreignKeys;
-            o.primaryKey = primaryKey;
-            return o;
+            final var _resultValue = new TableTableConstraints();
+            _resultValue.foreignKeys = foreignKeys;
+            _resultValue.primaryKey = primaryKey;
+            return _resultValue;
         }
     }
 }

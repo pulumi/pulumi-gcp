@@ -88,11 +88,11 @@ public final class JobLoadDestinationTable {
             return this;
         }
         public JobLoadDestinationTable build() {
-            final var o = new JobLoadDestinationTable();
-            o.datasetId = datasetId;
-            o.projectId = projectId;
-            o.tableId = tableId;
-            return o;
+            final var _resultValue = new JobLoadDestinationTable();
+            _resultValue.datasetId = datasetId;
+            _resultValue.projectId = projectId;
+            _resultValue.tableId = tableId;
+            return _resultValue;
         }
     }
 }

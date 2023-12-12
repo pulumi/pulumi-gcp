@@ -49,10 +49,10 @@ public final class GetClusterSecurityPostureConfig {
             return this;
         }
         public GetClusterSecurityPostureConfig build() {
-            final var o = new GetClusterSecurityPostureConfig();
-            o.mode = mode;
-            o.vulnerabilityMode = vulnerabilityMode;
-            return o;
+            final var _resultValue = new GetClusterSecurityPostureConfig();
+            _resultValue.mode = mode;
+            _resultValue.vulnerabilityMode = vulnerabilityMode;
+            return _resultValue;
         }
     }
 }

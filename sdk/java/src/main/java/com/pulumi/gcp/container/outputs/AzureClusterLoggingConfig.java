@@ -48,9 +48,9 @@ public final class AzureClusterLoggingConfig {
             return this;
         }
         public AzureClusterLoggingConfig build() {
-            final var o = new AzureClusterLoggingConfig();
-            o.componentConfig = componentConfig;
-            return o;
+            final var _resultValue = new AzureClusterLoggingConfig();
+            _resultValue.componentConfig = componentConfig;
+            return _resultValue;
         }
     }
 }

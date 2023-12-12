@@ -46,9 +46,9 @@ public final class GetSecretsSecretTopic {
             return this;
         }
         public GetSecretsSecretTopic build() {
-            final var o = new GetSecretsSecretTopic();
-            o.name = name;
-            return o;
+            final var _resultValue = new GetSecretsSecretTopic();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

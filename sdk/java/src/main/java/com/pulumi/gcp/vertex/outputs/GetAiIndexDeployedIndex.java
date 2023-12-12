@@ -49,10 +49,10 @@ public final class GetAiIndexDeployedIndex {
             return this;
         }
         public GetAiIndexDeployedIndex build() {
-            final var o = new GetAiIndexDeployedIndex();
-            o.deployedIndexId = deployedIndexId;
-            o.indexEndpoint = indexEndpoint;
-            return o;
+            final var _resultValue = new GetAiIndexDeployedIndex();
+            _resultValue.deployedIndexId = deployedIndexId;
+            _resultValue.indexEndpoint = indexEndpoint;
+            return _resultValue;
         }
     }
 }

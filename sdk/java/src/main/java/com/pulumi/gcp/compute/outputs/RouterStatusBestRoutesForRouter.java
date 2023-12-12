@@ -225,23 +225,23 @@ public final class RouterStatusBestRoutesForRouter {
             return tags(List.of(tags));
         }
         public RouterStatusBestRoutesForRouter build() {
-            final var o = new RouterStatusBestRoutesForRouter();
-            o.description = description;
-            o.destRange = destRange;
-            o.name = name;
-            o.network = network;
-            o.nextHopGateway = nextHopGateway;
-            o.nextHopIlb = nextHopIlb;
-            o.nextHopInstance = nextHopInstance;
-            o.nextHopInstanceZone = nextHopInstanceZone;
-            o.nextHopIp = nextHopIp;
-            o.nextHopNetwork = nextHopNetwork;
-            o.nextHopVpnTunnel = nextHopVpnTunnel;
-            o.priority = priority;
-            o.project = project;
-            o.selfLink = selfLink;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new RouterStatusBestRoutesForRouter();
+            _resultValue.description = description;
+            _resultValue.destRange = destRange;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.nextHopGateway = nextHopGateway;
+            _resultValue.nextHopIlb = nextHopIlb;
+            _resultValue.nextHopInstance = nextHopInstance;
+            _resultValue.nextHopInstanceZone = nextHopInstanceZone;
+            _resultValue.nextHopIp = nextHopIp;
+            _resultValue.nextHopNetwork = nextHopNetwork;
+            _resultValue.nextHopVpnTunnel = nextHopVpnTunnel;
+            _resultValue.priority = priority;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

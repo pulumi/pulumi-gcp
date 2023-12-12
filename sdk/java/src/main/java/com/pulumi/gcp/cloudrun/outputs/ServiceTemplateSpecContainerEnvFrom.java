@@ -92,11 +92,11 @@ public final class ServiceTemplateSpecContainerEnvFrom {
             return this;
         }
         public ServiceTemplateSpecContainerEnvFrom build() {
-            final var o = new ServiceTemplateSpecContainerEnvFrom();
-            o.configMapRef = configMapRef;
-            o.prefix = prefix;
-            o.secretRef = secretRef;
-            return o;
+            final var _resultValue = new ServiceTemplateSpecContainerEnvFrom();
+            _resultValue.configMapRef = configMapRef;
+            _resultValue.prefix = prefix;
+            _resultValue.secretRef = secretRef;
+            return _resultValue;
         }
     }
 }

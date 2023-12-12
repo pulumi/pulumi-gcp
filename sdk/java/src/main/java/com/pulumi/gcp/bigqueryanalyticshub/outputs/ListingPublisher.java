@@ -67,10 +67,10 @@ public final class ListingPublisher {
             return this;
         }
         public ListingPublisher build() {
-            final var o = new ListingPublisher();
-            o.name = name;
-            o.primaryContact = primaryContact;
-            return o;
+            final var _resultValue = new ListingPublisher();
+            _resultValue.name = name;
+            _resultValue.primaryContact = primaryContact;
+            return _resultValue;
         }
     }
 }

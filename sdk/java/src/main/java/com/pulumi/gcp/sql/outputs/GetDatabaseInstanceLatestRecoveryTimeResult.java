@@ -103,12 +103,12 @@ public final class GetDatabaseInstanceLatestRecoveryTimeResult {
             return this;
         }
         public GetDatabaseInstanceLatestRecoveryTimeResult build() {
-            final var o = new GetDatabaseInstanceLatestRecoveryTimeResult();
-            o.id = id;
-            o.instance = instance;
-            o.latestRecoveryTime = latestRecoveryTime;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetDatabaseInstanceLatestRecoveryTimeResult();
+            _resultValue.id = id;
+            _resultValue.instance = instance;
+            _resultValue.latestRecoveryTime = latestRecoveryTime;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

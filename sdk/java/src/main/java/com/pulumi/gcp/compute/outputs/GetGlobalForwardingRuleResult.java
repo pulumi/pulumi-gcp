@@ -311,32 +311,32 @@ public final class GetGlobalForwardingRuleResult {
             return this;
         }
         public GetGlobalForwardingRuleResult build() {
-            final var o = new GetGlobalForwardingRuleResult();
-            o.allowPscGlobalAccess = allowPscGlobalAccess;
-            o.baseForwardingRule = baseForwardingRule;
-            o.description = description;
-            o.effectiveLabels = effectiveLabels;
-            o.id = id;
-            o.ipAddress = ipAddress;
-            o.ipProtocol = ipProtocol;
-            o.ipVersion = ipVersion;
-            o.labelFingerprint = labelFingerprint;
-            o.labels = labels;
-            o.loadBalancingScheme = loadBalancingScheme;
-            o.metadataFilters = metadataFilters;
-            o.name = name;
-            o.network = network;
-            o.noAutomateDnsZone = noAutomateDnsZone;
-            o.portRange = portRange;
-            o.project = project;
-            o.pscConnectionId = pscConnectionId;
-            o.pscConnectionStatus = pscConnectionStatus;
-            o.pulumiLabels = pulumiLabels;
-            o.selfLink = selfLink;
-            o.sourceIpRanges = sourceIpRanges;
-            o.subnetwork = subnetwork;
-            o.target = target;
-            return o;
+            final var _resultValue = new GetGlobalForwardingRuleResult();
+            _resultValue.allowPscGlobalAccess = allowPscGlobalAccess;
+            _resultValue.baseForwardingRule = baseForwardingRule;
+            _resultValue.description = description;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.id = id;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.labelFingerprint = labelFingerprint;
+            _resultValue.labels = labels;
+            _resultValue.loadBalancingScheme = loadBalancingScheme;
+            _resultValue.metadataFilters = metadataFilters;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.noAutomateDnsZone = noAutomateDnsZone;
+            _resultValue.portRange = portRange;
+            _resultValue.project = project;
+            _resultValue.pscConnectionId = pscConnectionId;
+            _resultValue.pscConnectionStatus = pscConnectionStatus;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.selfLink = selfLink;
+            _resultValue.sourceIpRanges = sourceIpRanges;
+            _resultValue.subnetwork = subnetwork;
+            _resultValue.target = target;
+            return _resultValue;
         }
     }
 }

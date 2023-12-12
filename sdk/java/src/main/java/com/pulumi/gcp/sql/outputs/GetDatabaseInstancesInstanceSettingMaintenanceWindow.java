@@ -61,11 +61,11 @@ public final class GetDatabaseInstancesInstanceSettingMaintenanceWindow {
             return this;
         }
         public GetDatabaseInstancesInstanceSettingMaintenanceWindow build() {
-            final var o = new GetDatabaseInstancesInstanceSettingMaintenanceWindow();
-            o.day = day;
-            o.hour = hour;
-            o.updateTrack = updateTrack;
-            return o;
+            final var _resultValue = new GetDatabaseInstancesInstanceSettingMaintenanceWindow();
+            _resultValue.day = day;
+            _resultValue.hour = hour;
+            _resultValue.updateTrack = updateTrack;
+            return _resultValue;
         }
     }
 }

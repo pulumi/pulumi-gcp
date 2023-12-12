@@ -46,9 +46,9 @@ public final class NodeSchedulingConfig {
             return this;
         }
         public NodeSchedulingConfig build() {
-            final var o = new NodeSchedulingConfig();
-            o.preemptible = preemptible;
-            return o;
+            final var _resultValue = new NodeSchedulingConfig();
+            _resultValue.preemptible = preemptible;
+            return _resultValue;
         }
     }
 }

@@ -188,16 +188,16 @@ public final class RepositoryReleaseConfigCodeCompilationConfig {
             return this;
         }
         public RepositoryReleaseConfigCodeCompilationConfig build() {
-            final var o = new RepositoryReleaseConfigCodeCompilationConfig();
-            o.assertionSchema = assertionSchema;
-            o.databaseSuffix = databaseSuffix;
-            o.defaultDatabase = defaultDatabase;
-            o.defaultLocation = defaultLocation;
-            o.defaultSchema = defaultSchema;
-            o.schemaSuffix = schemaSuffix;
-            o.tablePrefix = tablePrefix;
-            o.vars = vars;
-            return o;
+            final var _resultValue = new RepositoryReleaseConfigCodeCompilationConfig();
+            _resultValue.assertionSchema = assertionSchema;
+            _resultValue.databaseSuffix = databaseSuffix;
+            _resultValue.defaultDatabase = defaultDatabase;
+            _resultValue.defaultLocation = defaultLocation;
+            _resultValue.defaultSchema = defaultSchema;
+            _resultValue.schemaSuffix = schemaSuffix;
+            _resultValue.tablePrefix = tablePrefix;
+            _resultValue.vars = vars;
+            return _resultValue;
         }
     }
 }

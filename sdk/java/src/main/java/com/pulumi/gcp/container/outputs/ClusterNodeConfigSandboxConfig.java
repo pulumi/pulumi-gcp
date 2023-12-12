@@ -52,9 +52,9 @@ public final class ClusterNodeConfigSandboxConfig {
             return this;
         }
         public ClusterNodeConfigSandboxConfig build() {
-            final var o = new ClusterNodeConfigSandboxConfig();
-            o.sandboxType = sandboxType;
-            return o;
+            final var _resultValue = new ClusterNodeConfigSandboxConfig();
+            _resultValue.sandboxType = sandboxType;
+            return _resultValue;
         }
     }
 }

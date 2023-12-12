@@ -151,14 +151,14 @@ public final class ConnectionConfigVariable {
             return this;
         }
         public ConnectionConfigVariable build() {
-            final var o = new ConnectionConfigVariable();
-            o.booleanValue = booleanValue;
-            o.encryptionKeyValue = encryptionKeyValue;
-            o.integerValue = integerValue;
-            o.key = key;
-            o.secretValue = secretValue;
-            o.stringValue = stringValue;
-            return o;
+            final var _resultValue = new ConnectionConfigVariable();
+            _resultValue.booleanValue = booleanValue;
+            _resultValue.encryptionKeyValue = encryptionKeyValue;
+            _resultValue.integerValue = integerValue;
+            _resultValue.key = key;
+            _resultValue.secretValue = secretValue;
+            _resultValue.stringValue = stringValue;
+            return _resultValue;
         }
     }
 }

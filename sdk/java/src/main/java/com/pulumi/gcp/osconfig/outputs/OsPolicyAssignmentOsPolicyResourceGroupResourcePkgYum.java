@@ -46,9 +46,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum();
-            o.name = name;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

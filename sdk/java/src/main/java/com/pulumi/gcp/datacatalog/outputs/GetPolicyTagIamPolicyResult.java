@@ -97,12 +97,12 @@ public final class GetPolicyTagIamPolicyResult {
             return this;
         }
         public GetPolicyTagIamPolicyResult build() {
-            final var o = new GetPolicyTagIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.policyTag = policyTag;
-            return o;
+            final var _resultValue = new GetPolicyTagIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.policyTag = policyTag;
+            return _resultValue;
         }
     }
 }

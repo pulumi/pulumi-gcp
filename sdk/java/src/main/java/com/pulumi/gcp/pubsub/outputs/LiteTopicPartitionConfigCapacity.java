@@ -65,10 +65,10 @@ public final class LiteTopicPartitionConfigCapacity {
             return this;
         }
         public LiteTopicPartitionConfigCapacity build() {
-            final var o = new LiteTopicPartitionConfigCapacity();
-            o.publishMibPerSec = publishMibPerSec;
-            o.subscribeMibPerSec = subscribeMibPerSec;
-            return o;
+            final var _resultValue = new LiteTopicPartitionConfigCapacity();
+            _resultValue.publishMibPerSec = publishMibPerSec;
+            _resultValue.subscribeMibPerSec = subscribeMibPerSec;
+            return _resultValue;
         }
     }
 }

@@ -54,9 +54,9 @@ public final class OrganizationCustomModuleCustomConfigResourceSelector {
             return resourceTypes(List.of(resourceTypes));
         }
         public OrganizationCustomModuleCustomConfigResourceSelector build() {
-            final var o = new OrganizationCustomModuleCustomConfigResourceSelector();
-            o.resourceTypes = resourceTypes;
-            return o;
+            final var _resultValue = new OrganizationCustomModuleCustomConfigResourceSelector();
+            _resultValue.resourceTypes = resourceTypes;
+            return _resultValue;
         }
     }
 }

@@ -352,23 +352,23 @@ public final class ClusterClusterConfigSecurityConfigKerberosConfig {
             return this;
         }
         public ClusterClusterConfigSecurityConfigKerberosConfig build() {
-            final var o = new ClusterClusterConfigSecurityConfigKerberosConfig();
-            o.crossRealmTrustAdminServer = crossRealmTrustAdminServer;
-            o.crossRealmTrustKdc = crossRealmTrustKdc;
-            o.crossRealmTrustRealm = crossRealmTrustRealm;
-            o.crossRealmTrustSharedPasswordUri = crossRealmTrustSharedPasswordUri;
-            o.enableKerberos = enableKerberos;
-            o.kdcDbKeyUri = kdcDbKeyUri;
-            o.keyPasswordUri = keyPasswordUri;
-            o.keystorePasswordUri = keystorePasswordUri;
-            o.keystoreUri = keystoreUri;
-            o.kmsKeyUri = kmsKeyUri;
-            o.realm = realm;
-            o.rootPrincipalPasswordUri = rootPrincipalPasswordUri;
-            o.tgtLifetimeHours = tgtLifetimeHours;
-            o.truststorePasswordUri = truststorePasswordUri;
-            o.truststoreUri = truststoreUri;
-            return o;
+            final var _resultValue = new ClusterClusterConfigSecurityConfigKerberosConfig();
+            _resultValue.crossRealmTrustAdminServer = crossRealmTrustAdminServer;
+            _resultValue.crossRealmTrustKdc = crossRealmTrustKdc;
+            _resultValue.crossRealmTrustRealm = crossRealmTrustRealm;
+            _resultValue.crossRealmTrustSharedPasswordUri = crossRealmTrustSharedPasswordUri;
+            _resultValue.enableKerberos = enableKerberos;
+            _resultValue.kdcDbKeyUri = kdcDbKeyUri;
+            _resultValue.keyPasswordUri = keyPasswordUri;
+            _resultValue.keystorePasswordUri = keystorePasswordUri;
+            _resultValue.keystoreUri = keystoreUri;
+            _resultValue.kmsKeyUri = kmsKeyUri;
+            _resultValue.realm = realm;
+            _resultValue.rootPrincipalPasswordUri = rootPrincipalPasswordUri;
+            _resultValue.tgtLifetimeHours = tgtLifetimeHours;
+            _resultValue.truststorePasswordUri = truststorePasswordUri;
+            _resultValue.truststoreUri = truststoreUri;
+            return _resultValue;
         }
     }
 }

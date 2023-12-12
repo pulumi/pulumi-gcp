@@ -53,9 +53,9 @@ public final class OrganizationCustomModuleCustomConfigCustomOutput {
             return properties(List.of(properties));
         }
         public OrganizationCustomModuleCustomConfigCustomOutput build() {
-            final var o = new OrganizationCustomModuleCustomConfigCustomOutput();
-            o.properties = properties;
-            return o;
+            final var _resultValue = new OrganizationCustomModuleCustomConfigCustomOutput();
+            _resultValue.properties = properties;
+            return _resultValue;
         }
     }
 }

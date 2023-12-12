@@ -119,14 +119,14 @@ public final class GetSecretVersionAccessResult {
             return this;
         }
         public GetSecretVersionAccessResult build() {
-            final var o = new GetSecretVersionAccessResult();
-            o.id = id;
-            o.name = name;
-            o.project = project;
-            o.secret = secret;
-            o.secretData = secretData;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetSecretVersionAccessResult();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.secret = secret;
+            _resultValue.secretData = secretData;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

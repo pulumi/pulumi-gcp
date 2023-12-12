@@ -99,11 +99,11 @@ public final class HostingCustomDomainRequiredDnsUpdate {
             return discovereds(List.of(discovereds));
         }
         public HostingCustomDomainRequiredDnsUpdate build() {
-            final var o = new HostingCustomDomainRequiredDnsUpdate();
-            o.checkTime = checkTime;
-            o.desireds = desireds;
-            o.discovereds = discovereds;
-            return o;
+            final var _resultValue = new HostingCustomDomainRequiredDnsUpdate();
+            _resultValue.checkTime = checkTime;
+            _resultValue.desireds = desireds;
+            _resultValue.discovereds = discovereds;
+            return _resultValue;
         }
     }
 }

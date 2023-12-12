@@ -69,10 +69,10 @@ public final class EnvironmentContainerImage {
             return this;
         }
         public EnvironmentContainerImage build() {
-            final var o = new EnvironmentContainerImage();
-            o.repository = repository;
-            o.tag = tag;
-            return o;
+            final var _resultValue = new EnvironmentContainerImage();
+            _resultValue.repository = repository;
+            _resultValue.tag = tag;
+            return _resultValue;
         }
     }
 }

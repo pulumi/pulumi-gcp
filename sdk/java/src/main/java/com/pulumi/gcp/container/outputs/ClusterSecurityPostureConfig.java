@@ -67,10 +67,10 @@ public final class ClusterSecurityPostureConfig {
             return this;
         }
         public ClusterSecurityPostureConfig build() {
-            final var o = new ClusterSecurityPostureConfig();
-            o.mode = mode;
-            o.vulnerabilityMode = vulnerabilityMode;
-            return o;
+            final var _resultValue = new ClusterSecurityPostureConfig();
+            _resultValue.mode = mode;
+            _resultValue.vulnerabilityMode = vulnerabilityMode;
+            return _resultValue;
         }
     }
 }

@@ -113,12 +113,12 @@ public final class TaskNotebookInfrastructureSpecContainerImage {
             return pythonPackages(List.of(pythonPackages));
         }
         public TaskNotebookInfrastructureSpecContainerImage build() {
-            final var o = new TaskNotebookInfrastructureSpecContainerImage();
-            o.image = image;
-            o.javaJars = javaJars;
-            o.properties = properties;
-            o.pythonPackages = pythonPackages;
-            return o;
+            final var _resultValue = new TaskNotebookInfrastructureSpecContainerImage();
+            _resultValue.image = image;
+            _resultValue.javaJars = javaJars;
+            _resultValue.properties = properties;
+            _resultValue.pythonPackages = pythonPackages;
+            return _resultValue;
         }
     }
 }

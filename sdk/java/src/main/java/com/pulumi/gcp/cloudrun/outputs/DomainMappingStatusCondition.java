@@ -113,12 +113,12 @@ public final class DomainMappingStatusCondition {
             return this;
         }
         public DomainMappingStatusCondition build() {
-            final var o = new DomainMappingStatusCondition();
-            o.message = message;
-            o.reason = reason;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new DomainMappingStatusCondition();
+            _resultValue.message = message;
+            _resultValue.reason = reason;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

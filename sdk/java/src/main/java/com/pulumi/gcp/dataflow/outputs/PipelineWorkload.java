@@ -76,10 +76,10 @@ public final class PipelineWorkload {
             return this;
         }
         public PipelineWorkload build() {
-            final var o = new PipelineWorkload();
-            o.dataflowFlexTemplateRequest = dataflowFlexTemplateRequest;
-            o.dataflowLaunchTemplateRequest = dataflowLaunchTemplateRequest;
-            return o;
+            final var _resultValue = new PipelineWorkload();
+            _resultValue.dataflowFlexTemplateRequest = dataflowFlexTemplateRequest;
+            _resultValue.dataflowLaunchTemplateRequest = dataflowLaunchTemplateRequest;
+            return _resultValue;
         }
     }
 }

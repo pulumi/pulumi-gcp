@@ -71,12 +71,12 @@ public final class GetFunctionSecretEnvironmentVariable {
             return this;
         }
         public GetFunctionSecretEnvironmentVariable build() {
-            final var o = new GetFunctionSecretEnvironmentVariable();
-            o.key = key;
-            o.projectId = projectId;
-            o.secret = secret;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetFunctionSecretEnvironmentVariable();
+            _resultValue.key = key;
+            _resultValue.projectId = projectId;
+            _resultValue.secret = secret;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

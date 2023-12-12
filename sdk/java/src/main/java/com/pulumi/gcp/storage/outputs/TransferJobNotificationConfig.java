@@ -89,11 +89,11 @@ public final class TransferJobNotificationConfig {
             return this;
         }
         public TransferJobNotificationConfig build() {
-            final var o = new TransferJobNotificationConfig();
-            o.eventTypes = eventTypes;
-            o.payloadFormat = payloadFormat;
-            o.pubsubTopic = pubsubTopic;
-            return o;
+            final var _resultValue = new TransferJobNotificationConfig();
+            _resultValue.eventTypes = eventTypes;
+            _resultValue.payloadFormat = payloadFormat;
+            _resultValue.pubsubTopic = pubsubTopic;
+            return _resultValue;
         }
     }
 }

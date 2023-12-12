@@ -141,17 +141,17 @@ public final class GetNetworkResult {
             return vpcNetworks(List.of(vpcNetworks));
         }
         public GetNetworkResult build() {
-            final var o = new GetNetworkResult();
-            o.description = description;
-            o.id = id;
-            o.location = location;
-            o.name = name;
-            o.project = project;
-            o.state = state;
-            o.type = type;
-            o.uid = uid;
-            o.vpcNetworks = vpcNetworks;
-            return o;
+            final var _resultValue = new GetNetworkResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            _resultValue.uid = uid;
+            _resultValue.vpcNetworks = vpcNetworks;
+            return _resultValue;
         }
     }
 }

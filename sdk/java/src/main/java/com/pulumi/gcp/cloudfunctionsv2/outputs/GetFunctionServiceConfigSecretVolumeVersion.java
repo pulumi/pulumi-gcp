@@ -49,10 +49,10 @@ public final class GetFunctionServiceConfigSecretVolumeVersion {
             return this;
         }
         public GetFunctionServiceConfigSecretVolumeVersion build() {
-            final var o = new GetFunctionServiceConfigSecretVolumeVersion();
-            o.path = path;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetFunctionServiceConfigSecretVolumeVersion();
+            _resultValue.path = path;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -120,11 +120,11 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy {
             return retryConditions(List.of(retryConditions));
         }
         public RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy build() {
-            final var o = new RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy();
-            o.numRetries = numRetries;
-            o.perTryTimeout = perTryTimeout;
-            o.retryConditions = retryConditions;
-            return o;
+            final var _resultValue = new RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy();
+            _resultValue.numRetries = numRetries;
+            _resultValue.perTryTimeout = perTryTimeout;
+            _resultValue.retryConditions = retryConditions;
+            return _resultValue;
         }
     }
 }

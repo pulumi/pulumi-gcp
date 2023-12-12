@@ -46,9 +46,9 @@ public final class CxSecuritySettingsInsightsExportSettings {
             return this;
         }
         public CxSecuritySettingsInsightsExportSettings build() {
-            final var o = new CxSecuritySettingsInsightsExportSettings();
-            o.enableInsightsExport = enableInsightsExport;
-            return o;
+            final var _resultValue = new CxSecuritySettingsInsightsExportSettings();
+            _resultValue.enableInsightsExport = enableInsightsExport;
+            return _resultValue;
         }
     }
 }

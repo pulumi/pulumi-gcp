@@ -51,10 +51,10 @@ public final class JobPlacement {
             return this;
         }
         public JobPlacement build() {
-            final var o = new JobPlacement();
-            o.clusterName = clusterName;
-            o.clusterUuid = clusterUuid;
-            return o;
+            final var _resultValue = new JobPlacement();
+            _resultValue.clusterName = clusterName;
+            _resultValue.clusterUuid = clusterUuid;
+            return _resultValue;
         }
     }
 }

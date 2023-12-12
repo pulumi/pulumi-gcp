@@ -46,9 +46,9 @@ public final class DeploymentTargetConfig {
             return this;
         }
         public DeploymentTargetConfig build() {
-            final var o = new DeploymentTargetConfig();
-            o.content = content;
-            return o;
+            final var _resultValue = new DeploymentTargetConfig();
+            _resultValue.content = content;
+            return _resultValue;
         }
     }
 }

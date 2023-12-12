@@ -72,10 +72,10 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary();
-            o.cloudStoragePath = cloudStoragePath;
-            o.wordList = wordList;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary();
+            _resultValue.cloudStoragePath = cloudStoragePath;
+            _resultValue.wordList = wordList;
+            return _resultValue;
         }
     }
 }

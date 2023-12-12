@@ -74,10 +74,10 @@ public final class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFul
             return texts(List.of(texts));
         }
         public CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText build() {
-            final var o = new CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.texts = texts;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.texts = texts;
+            return _resultValue;
         }
     }
 }

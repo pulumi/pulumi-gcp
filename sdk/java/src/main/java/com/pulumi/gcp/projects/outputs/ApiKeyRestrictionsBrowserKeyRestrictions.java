@@ -50,9 +50,9 @@ public final class ApiKeyRestrictionsBrowserKeyRestrictions {
             return allowedReferrers(List.of(allowedReferrers));
         }
         public ApiKeyRestrictionsBrowserKeyRestrictions build() {
-            final var o = new ApiKeyRestrictionsBrowserKeyRestrictions();
-            o.allowedReferrers = allowedReferrers;
-            return o;
+            final var _resultValue = new ApiKeyRestrictionsBrowserKeyRestrictions();
+            _resultValue.allowedReferrers = allowedReferrers;
+            return _resultValue;
         }
     }
 }

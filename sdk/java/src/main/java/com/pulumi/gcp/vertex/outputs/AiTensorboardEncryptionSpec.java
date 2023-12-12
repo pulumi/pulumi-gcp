@@ -48,9 +48,9 @@ public final class AiTensorboardEncryptionSpec {
             return this;
         }
         public AiTensorboardEncryptionSpec build() {
-            final var o = new AiTensorboardEncryptionSpec();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new AiTensorboardEncryptionSpec();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

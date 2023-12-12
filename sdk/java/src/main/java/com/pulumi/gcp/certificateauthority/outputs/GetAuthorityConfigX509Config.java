@@ -117,14 +117,14 @@ public final class GetAuthorityConfigX509Config {
             return policyIds(List.of(policyIds));
         }
         public GetAuthorityConfigX509Config build() {
-            final var o = new GetAuthorityConfigX509Config();
-            o.additionalExtensions = additionalExtensions;
-            o.aiaOcspServers = aiaOcspServers;
-            o.caOptions = caOptions;
-            o.keyUsages = keyUsages;
-            o.nameConstraints = nameConstraints;
-            o.policyIds = policyIds;
-            return o;
+            final var _resultValue = new GetAuthorityConfigX509Config();
+            _resultValue.additionalExtensions = additionalExtensions;
+            _resultValue.aiaOcspServers = aiaOcspServers;
+            _resultValue.caOptions = caOptions;
+            _resultValue.keyUsages = keyUsages;
+            _resultValue.nameConstraints = nameConstraints;
+            _resultValue.policyIds = policyIds;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class UptimeCheckConfigHttpCheckPingConfig {
             return this;
         }
         public UptimeCheckConfigHttpCheckPingConfig build() {
-            final var o = new UptimeCheckConfigHttpCheckPingConfig();
-            o.pingsCount = pingsCount;
-            return o;
+            final var _resultValue = new UptimeCheckConfigHttpCheckPingConfig();
+            _resultValue.pingsCount = pingsCount;
+            return _resultValue;
         }
     }
 }

@@ -152,18 +152,18 @@ public final class GetBackendServiceCdnPolicy {
             return this;
         }
         public GetBackendServiceCdnPolicy build() {
-            final var o = new GetBackendServiceCdnPolicy();
-            o.bypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
-            o.cacheKeyPolicies = cacheKeyPolicies;
-            o.cacheMode = cacheMode;
-            o.clientTtl = clientTtl;
-            o.defaultTtl = defaultTtl;
-            o.maxTtl = maxTtl;
-            o.negativeCaching = negativeCaching;
-            o.negativeCachingPolicies = negativeCachingPolicies;
-            o.serveWhileStale = serveWhileStale;
-            o.signedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
-            return o;
+            final var _resultValue = new GetBackendServiceCdnPolicy();
+            _resultValue.bypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
+            _resultValue.cacheKeyPolicies = cacheKeyPolicies;
+            _resultValue.cacheMode = cacheMode;
+            _resultValue.clientTtl = clientTtl;
+            _resultValue.defaultTtl = defaultTtl;
+            _resultValue.maxTtl = maxTtl;
+            _resultValue.negativeCaching = negativeCaching;
+            _resultValue.negativeCachingPolicies = negativeCachingPolicies;
+            _resultValue.serveWhileStale = serveWhileStale;
+            _resultValue.signedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
+            return _resultValue;
         }
     }
 }

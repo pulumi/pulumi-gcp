@@ -67,10 +67,10 @@ public final class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
             return this;
         }
         public SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig build() {
-            final var o = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig();
-            o.enforceOnKeyName = enforceOnKeyName;
-            o.enforceOnKeyType = enforceOnKeyType;
-            return o;
+            final var _resultValue = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig();
+            _resultValue.enforceOnKeyName = enforceOnKeyName;
+            _resultValue.enforceOnKeyType = enforceOnKeyType;
+            return _resultValue;
         }
     }
 }

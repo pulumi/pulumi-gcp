@@ -72,9 +72,9 @@ public final class BucketEncryption {
             return this;
         }
         public BucketEncryption build() {
-            final var o = new BucketEncryption();
-            o.defaultKmsKeyName = defaultKmsKeyName;
-            return o;
+            final var _resultValue = new BucketEncryption();
+            _resultValue.defaultKmsKeyName = defaultKmsKeyName;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class AccountIamBindingCondition {
             return this;
         }
         public AccountIamBindingCondition build() {
-            final var o = new AccountIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new AccountIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

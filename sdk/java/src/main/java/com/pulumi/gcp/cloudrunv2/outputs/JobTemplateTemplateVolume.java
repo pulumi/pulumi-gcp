@@ -104,12 +104,12 @@ public final class JobTemplateTemplateVolume {
             return this;
         }
         public JobTemplateTemplateVolume build() {
-            final var o = new JobTemplateTemplateVolume();
-            o.cloudSqlInstance = cloudSqlInstance;
-            o.emptyDir = emptyDir;
-            o.name = name;
-            o.secret = secret;
-            return o;
+            final var _resultValue = new JobTemplateTemplateVolume();
+            _resultValue.cloudSqlInstance = cloudSqlInstance;
+            _resultValue.emptyDir = emptyDir;
+            _resultValue.name = name;
+            _resultValue.secret = secret;
+            return _resultValue;
         }
     }
 }

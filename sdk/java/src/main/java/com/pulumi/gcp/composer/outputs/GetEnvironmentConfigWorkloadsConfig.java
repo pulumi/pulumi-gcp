@@ -87,12 +87,12 @@ public final class GetEnvironmentConfigWorkloadsConfig {
             return workers(List.of(workers));
         }
         public GetEnvironmentConfigWorkloadsConfig build() {
-            final var o = new GetEnvironmentConfigWorkloadsConfig();
-            o.schedulers = schedulers;
-            o.triggerers = triggerers;
-            o.webServers = webServers;
-            o.workers = workers;
-            return o;
+            final var _resultValue = new GetEnvironmentConfigWorkloadsConfig();
+            _resultValue.schedulers = schedulers;
+            _resultValue.triggerers = triggerers;
+            _resultValue.webServers = webServers;
+            _resultValue.workers = workers;
+            return _resultValue;
         }
     }
 }

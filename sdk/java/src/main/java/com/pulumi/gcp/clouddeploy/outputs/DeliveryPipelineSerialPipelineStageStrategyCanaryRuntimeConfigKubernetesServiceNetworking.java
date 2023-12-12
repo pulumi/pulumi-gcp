@@ -87,11 +87,11 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
             return this;
         }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking();
-            o.deployment = deployment;
-            o.disablePodOverprovisioning = disablePodOverprovisioning;
-            o.service = service;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking();
+            _resultValue.deployment = deployment;
+            _resultValue.disablePodOverprovisioning = disablePodOverprovisioning;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

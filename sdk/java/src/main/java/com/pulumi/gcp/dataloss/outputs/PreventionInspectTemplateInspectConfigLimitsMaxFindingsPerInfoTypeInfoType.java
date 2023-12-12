@@ -91,11 +91,11 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
             return this;
         }
         public PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType build() {
-            final var o = new PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType();
-            o.name = name;
-            o.sensitivityScore = sensitivityScore;
-            o.version = version;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType();
+            _resultValue.name = name;
+            _resultValue.sensitivityScore = sensitivityScore;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

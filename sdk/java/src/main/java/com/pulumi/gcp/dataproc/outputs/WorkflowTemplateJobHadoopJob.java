@@ -196,16 +196,16 @@ public final class WorkflowTemplateJobHadoopJob {
             return this;
         }
         public WorkflowTemplateJobHadoopJob build() {
-            final var o = new WorkflowTemplateJobHadoopJob();
-            o.archiveUris = archiveUris;
-            o.args = args;
-            o.fileUris = fileUris;
-            o.jarFileUris = jarFileUris;
-            o.loggingConfig = loggingConfig;
-            o.mainClass = mainClass;
-            o.mainJarFileUri = mainJarFileUri;
-            o.properties = properties;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobHadoopJob();
+            _resultValue.archiveUris = archiveUris;
+            _resultValue.args = args;
+            _resultValue.fileUris = fileUris;
+            _resultValue.jarFileUris = jarFileUris;
+            _resultValue.loggingConfig = loggingConfig;
+            _resultValue.mainClass = mainClass;
+            _resultValue.mainJarFileUri = mainJarFileUri;
+            _resultValue.properties = properties;
+            return _resultValue;
         }
     }
 }

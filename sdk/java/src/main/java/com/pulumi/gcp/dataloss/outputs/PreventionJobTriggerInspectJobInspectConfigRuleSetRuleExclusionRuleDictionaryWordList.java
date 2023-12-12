@@ -52,9 +52,9 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
             return words(List.of(words));
         }
         public PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList();
-            o.words = words;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList();
+            _resultValue.words = words;
+            return _resultValue;
         }
     }
 }

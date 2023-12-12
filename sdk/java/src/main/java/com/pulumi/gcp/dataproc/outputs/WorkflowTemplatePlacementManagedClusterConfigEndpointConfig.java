@@ -69,10 +69,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigEndpointConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigEndpointConfig();
-            o.enableHttpPortAccess = enableHttpPortAccess;
-            o.httpPorts = httpPorts;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigEndpointConfig();
+            _resultValue.enableHttpPortAccess = enableHttpPortAccess;
+            _resultValue.httpPorts = httpPorts;
+            return _resultValue;
         }
     }
 }

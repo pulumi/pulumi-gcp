@@ -72,10 +72,10 @@ public final class BackupPlanBackupSchedule {
             return this;
         }
         public BackupPlanBackupSchedule build() {
-            final var o = new BackupPlanBackupSchedule();
-            o.cronSchedule = cronSchedule;
-            o.paused = paused;
-            return o;
+            final var _resultValue = new BackupPlanBackupSchedule();
+            _resultValue.cronSchedule = cronSchedule;
+            _resultValue.paused = paused;
+            return _resultValue;
         }
     }
 }

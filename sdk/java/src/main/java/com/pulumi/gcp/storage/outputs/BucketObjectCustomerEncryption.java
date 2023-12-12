@@ -67,10 +67,10 @@ public final class BucketObjectCustomerEncryption {
             return this;
         }
         public BucketObjectCustomerEncryption build() {
-            final var o = new BucketObjectCustomerEncryption();
-            o.encryptionAlgorithm = encryptionAlgorithm;
-            o.encryptionKey = encryptionKey;
-            return o;
+            final var _resultValue = new BucketObjectCustomerEncryption();
+            _resultValue.encryptionAlgorithm = encryptionAlgorithm;
+            _resultValue.encryptionKey = encryptionKey;
+            return _resultValue;
         }
     }
 }

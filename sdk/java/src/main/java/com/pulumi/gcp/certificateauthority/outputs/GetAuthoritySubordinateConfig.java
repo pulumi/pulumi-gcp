@@ -54,10 +54,10 @@ public final class GetAuthoritySubordinateConfig {
             return pemIssuerChains(List.of(pemIssuerChains));
         }
         public GetAuthoritySubordinateConfig build() {
-            final var o = new GetAuthoritySubordinateConfig();
-            o.certificateAuthority = certificateAuthority;
-            o.pemIssuerChains = pemIssuerChains;
-            return o;
+            final var _resultValue = new GetAuthoritySubordinateConfig();
+            _resultValue.certificateAuthority = certificateAuthority;
+            _resultValue.pemIssuerChains = pemIssuerChains;
+            return _resultValue;
         }
     }
 }

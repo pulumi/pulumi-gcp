@@ -108,13 +108,13 @@ public final class GetResourcesSearchAllInvokeResult {
             return this;
         }
         public GetResourcesSearchAllInvokeResult build() {
-            final var o = new GetResourcesSearchAllInvokeResult();
-            o.assetTypes = assetTypes;
-            o.id = id;
-            o.query = query;
-            o.results = results;
-            o.scope = scope;
-            return o;
+            final var _resultValue = new GetResourcesSearchAllInvokeResult();
+            _resultValue.assetTypes = assetTypes;
+            _resultValue.id = id;
+            _resultValue.query = query;
+            _resultValue.results = results;
+            _resultValue.scope = scope;
+            return _resultValue;
         }
     }
 }

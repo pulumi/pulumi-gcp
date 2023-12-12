@@ -210,14 +210,14 @@ public final class ServicePerimetersServicePerimeterSpec {
             return this;
         }
         public ServicePerimetersServicePerimeterSpec build() {
-            final var o = new ServicePerimetersServicePerimeterSpec();
-            o.accessLevels = accessLevels;
-            o.egressPolicies = egressPolicies;
-            o.ingressPolicies = ingressPolicies;
-            o.resources = resources;
-            o.restrictedServices = restrictedServices;
-            o.vpcAccessibleServices = vpcAccessibleServices;
-            return o;
+            final var _resultValue = new ServicePerimetersServicePerimeterSpec();
+            _resultValue.accessLevels = accessLevels;
+            _resultValue.egressPolicies = egressPolicies;
+            _resultValue.ingressPolicies = ingressPolicies;
+            _resultValue.resources = resources;
+            _resultValue.restrictedServices = restrictedServices;
+            _resultValue.vpcAccessibleServices = vpcAccessibleServices;
+            return _resultValue;
         }
     }
 }

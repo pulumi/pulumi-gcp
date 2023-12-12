@@ -114,11 +114,11 @@ public final class URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
             return this;
         }
         public URLMapPathMatcherRouteRuleRouteActionUrlRewrite build() {
-            final var o = new URLMapPathMatcherRouteRuleRouteActionUrlRewrite();
-            o.hostRewrite = hostRewrite;
-            o.pathPrefixRewrite = pathPrefixRewrite;
-            o.pathTemplateRewrite = pathTemplateRewrite;
-            return o;
+            final var _resultValue = new URLMapPathMatcherRouteRuleRouteActionUrlRewrite();
+            _resultValue.hostRewrite = hostRewrite;
+            _resultValue.pathPrefixRewrite = pathPrefixRewrite;
+            _resultValue.pathTemplateRewrite = pathTemplateRewrite;
+            return _resultValue;
         }
     }
 }

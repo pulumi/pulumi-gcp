@@ -153,12 +153,12 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
             return this;
         }
         public RegionBackendServiceConnectionTrackingPolicy build() {
-            final var o = new RegionBackendServiceConnectionTrackingPolicy();
-            o.connectionPersistenceOnUnhealthyBackends = connectionPersistenceOnUnhealthyBackends;
-            o.enableStrongAffinity = enableStrongAffinity;
-            o.idleTimeoutSec = idleTimeoutSec;
-            o.trackingMode = trackingMode;
-            return o;
+            final var _resultValue = new RegionBackendServiceConnectionTrackingPolicy();
+            _resultValue.connectionPersistenceOnUnhealthyBackends = connectionPersistenceOnUnhealthyBackends;
+            _resultValue.enableStrongAffinity = enableStrongAffinity;
+            _resultValue.idleTimeoutSec = idleTimeoutSec;
+            _resultValue.trackingMode = trackingMode;
+            return _resultValue;
         }
     }
 }

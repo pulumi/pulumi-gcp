@@ -72,10 +72,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDict
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary();
-            o.cloudStoragePath = cloudStoragePath;
-            o.wordList = wordList;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary();
+            _resultValue.cloudStoragePath = cloudStoragePath;
+            _resultValue.wordList = wordList;
+            return _resultValue;
         }
     }
 }

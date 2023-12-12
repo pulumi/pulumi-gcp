@@ -199,16 +199,16 @@ public final class WorkflowTemplateJobPysparkJob {
             return pythonFileUris(List.of(pythonFileUris));
         }
         public WorkflowTemplateJobPysparkJob build() {
-            final var o = new WorkflowTemplateJobPysparkJob();
-            o.archiveUris = archiveUris;
-            o.args = args;
-            o.fileUris = fileUris;
-            o.jarFileUris = jarFileUris;
-            o.loggingConfig = loggingConfig;
-            o.mainPythonFileUri = mainPythonFileUri;
-            o.properties = properties;
-            o.pythonFileUris = pythonFileUris;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobPysparkJob();
+            _resultValue.archiveUris = archiveUris;
+            _resultValue.args = args;
+            _resultValue.fileUris = fileUris;
+            _resultValue.jarFileUris = jarFileUris;
+            _resultValue.loggingConfig = loggingConfig;
+            _resultValue.mainPythonFileUri = mainPythonFileUri;
+            _resultValue.properties = properties;
+            _resultValue.pythonFileUris = pythonFileUris;
+            return _resultValue;
         }
     }
 }

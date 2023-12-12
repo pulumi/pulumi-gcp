@@ -50,9 +50,9 @@ public final class TableTableConstraintsPrimaryKey {
             return columns(List.of(columns));
         }
         public TableTableConstraintsPrimaryKey build() {
-            final var o = new TableTableConstraintsPrimaryKey();
-            o.columns = columns;
-            return o;
+            final var _resultValue = new TableTableConstraintsPrimaryKey();
+            _resultValue.columns = columns;
+            return _resultValue;
         }
     }
 }

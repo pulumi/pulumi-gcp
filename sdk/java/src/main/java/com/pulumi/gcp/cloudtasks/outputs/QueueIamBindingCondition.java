@@ -62,11 +62,11 @@ public final class QueueIamBindingCondition {
             return this;
         }
         public QueueIamBindingCondition build() {
-            final var o = new QueueIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new QueueIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

@@ -105,12 +105,12 @@ public final class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork {
             return this;
         }
         public ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork build() {
-            final var o = new ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork();
-            o.expireTime = expireTime;
-            o.label = label;
-            o.ttl = ttl;
-            o.value = value;
-            return o;
+            final var _resultValue = new ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork();
+            _resultValue.expireTime = expireTime;
+            _resultValue.label = label;
+            _resultValue.ttl = ttl;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

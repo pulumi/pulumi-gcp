@@ -42,9 +42,9 @@ public final class GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
             return podRangeNames(List.of(podRangeNames));
         }
         public GetClusterIpAllocationPolicyAdditionalPodRangesConfig build() {
-            final var o = new GetClusterIpAllocationPolicyAdditionalPodRangesConfig();
-            o.podRangeNames = podRangeNames;
-            return o;
+            final var _resultValue = new GetClusterIpAllocationPolicyAdditionalPodRangesConfig();
+            _resultValue.podRangeNames = podRangeNames;
+            return _resultValue;
         }
     }
 }

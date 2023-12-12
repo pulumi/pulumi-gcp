@@ -188,15 +188,15 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRule {
             return this;
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRule build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRule();
-            o.description = description;
-            o.headerAction = headerAction;
-            o.matchRules = matchRules;
-            o.origin = origin;
-            o.priority = priority;
-            o.routeAction = routeAction;
-            o.urlRedirect = urlRedirect;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRule();
+            _resultValue.description = description;
+            _resultValue.headerAction = headerAction;
+            _resultValue.matchRules = matchRules;
+            _resultValue.origin = origin;
+            _resultValue.priority = priority;
+            _resultValue.routeAction = routeAction;
+            _resultValue.urlRedirect = urlRedirect;
+            return _resultValue;
         }
     }
 }

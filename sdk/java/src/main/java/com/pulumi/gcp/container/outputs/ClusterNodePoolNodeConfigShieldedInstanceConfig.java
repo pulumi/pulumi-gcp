@@ -75,10 +75,10 @@ public final class ClusterNodePoolNodeConfigShieldedInstanceConfig {
             return this;
         }
         public ClusterNodePoolNodeConfigShieldedInstanceConfig build() {
-            final var o = new ClusterNodePoolNodeConfigShieldedInstanceConfig();
-            o.enableIntegrityMonitoring = enableIntegrityMonitoring;
-            o.enableSecureBoot = enableSecureBoot;
-            return o;
+            final var _resultValue = new ClusterNodePoolNodeConfigShieldedInstanceConfig();
+            _resultValue.enableIntegrityMonitoring = enableIntegrityMonitoring;
+            _resultValue.enableSecureBoot = enableSecureBoot;
+            return _resultValue;
         }
     }
 }

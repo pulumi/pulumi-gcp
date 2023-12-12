@@ -73,10 +73,10 @@ public final class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGr
             return this;
         }
         public RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind build() {
-            final var o = new RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind();
-            o.resourceGroup = resourceGroup;
-            o.resourceKind = resourceKind;
-            return o;
+            final var _resultValue = new RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind();
+            _resultValue.resourceGroup = resourceGroup;
+            _resultValue.resourceKind = resourceKind;
+            return _resultValue;
         }
     }
 }

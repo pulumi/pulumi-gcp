@@ -78,10 +78,10 @@ public final class ClusterClusterConfigWorkerConfigAccelerator {
             return this;
         }
         public ClusterClusterConfigWorkerConfigAccelerator build() {
-            final var o = new ClusterClusterConfigWorkerConfigAccelerator();
-            o.acceleratorCount = acceleratorCount;
-            o.acceleratorType = acceleratorType;
-            return o;
+            final var _resultValue = new ClusterClusterConfigWorkerConfigAccelerator();
+            _resultValue.acceleratorCount = acceleratorCount;
+            _resultValue.acceleratorType = acceleratorType;
+            return _resultValue;
         }
     }
 }

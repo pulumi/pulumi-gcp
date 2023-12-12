@@ -129,15 +129,15 @@ public final class GetRepositoryRemoteRepositoryConfig {
             return yumRepositories(List.of(yumRepositories));
         }
         public GetRepositoryRemoteRepositoryConfig build() {
-            final var o = new GetRepositoryRemoteRepositoryConfig();
-            o.aptRepositories = aptRepositories;
-            o.description = description;
-            o.dockerRepositories = dockerRepositories;
-            o.mavenRepositories = mavenRepositories;
-            o.npmRepositories = npmRepositories;
-            o.pythonRepositories = pythonRepositories;
-            o.yumRepositories = yumRepositories;
-            return o;
+            final var _resultValue = new GetRepositoryRemoteRepositoryConfig();
+            _resultValue.aptRepositories = aptRepositories;
+            _resultValue.description = description;
+            _resultValue.dockerRepositories = dockerRepositories;
+            _resultValue.mavenRepositories = mavenRepositories;
+            _resultValue.npmRepositories = npmRepositories;
+            _resultValue.pythonRepositories = pythonRepositories;
+            _resultValue.yumRepositories = yumRepositories;
+            return _resultValue;
         }
     }
 }

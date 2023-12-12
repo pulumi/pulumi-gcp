@@ -46,9 +46,9 @@ public final class ClusterNodeConfigAdvancedMachineFeatures {
             return this;
         }
         public ClusterNodeConfigAdvancedMachineFeatures build() {
-            final var o = new ClusterNodeConfigAdvancedMachineFeatures();
-            o.threadsPerCore = threadsPerCore;
-            return o;
+            final var _resultValue = new ClusterNodeConfigAdvancedMachineFeatures();
+            _resultValue.threadsPerCore = threadsPerCore;
+            return _resultValue;
         }
     }
 }

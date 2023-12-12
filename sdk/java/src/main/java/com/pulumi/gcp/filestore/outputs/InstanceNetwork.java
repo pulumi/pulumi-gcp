@@ -153,13 +153,13 @@ public final class InstanceNetwork {
             return this;
         }
         public InstanceNetwork build() {
-            final var o = new InstanceNetwork();
-            o.connectMode = connectMode;
-            o.ipAddresses = ipAddresses;
-            o.modes = modes;
-            o.network = network;
-            o.reservedIpRange = reservedIpRange;
-            return o;
+            final var _resultValue = new InstanceNetwork();
+            _resultValue.connectMode = connectMode;
+            _resultValue.ipAddresses = ipAddresses;
+            _resultValue.modes = modes;
+            _resultValue.network = network;
+            _resultValue.reservedIpRange = reservedIpRange;
+            return _resultValue;
         }
     }
 }

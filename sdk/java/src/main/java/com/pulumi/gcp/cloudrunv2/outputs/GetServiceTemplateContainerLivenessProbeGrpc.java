@@ -50,10 +50,10 @@ public final class GetServiceTemplateContainerLivenessProbeGrpc {
             return this;
         }
         public GetServiceTemplateContainerLivenessProbeGrpc build() {
-            final var o = new GetServiceTemplateContainerLivenessProbeGrpc();
-            o.port = port;
-            o.service = service;
-            return o;
+            final var _resultValue = new GetServiceTemplateContainerLivenessProbeGrpc();
+            _resultValue.port = port;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

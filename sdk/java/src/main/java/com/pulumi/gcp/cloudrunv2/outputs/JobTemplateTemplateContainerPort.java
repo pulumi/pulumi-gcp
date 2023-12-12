@@ -68,10 +68,10 @@ public final class JobTemplateTemplateContainerPort {
             return this;
         }
         public JobTemplateTemplateContainerPort build() {
-            final var o = new JobTemplateTemplateContainerPort();
-            o.containerPort = containerPort;
-            o.name = name;
-            return o;
+            final var _resultValue = new JobTemplateTemplateContainerPort();
+            _resultValue.containerPort = containerPort;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

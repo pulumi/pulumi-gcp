@@ -38,9 +38,9 @@ public final class GetDatabaseInstancesInstanceSettingDataCacheConfig {
             return this;
         }
         public GetDatabaseInstancesInstanceSettingDataCacheConfig build() {
-            final var o = new GetDatabaseInstancesInstanceSettingDataCacheConfig();
-            o.dataCacheEnabled = dataCacheEnabled;
-            return o;
+            final var _resultValue = new GetDatabaseInstancesInstanceSettingDataCacheConfig();
+            _resultValue.dataCacheEnabled = dataCacheEnabled;
+            return _resultValue;
         }
     }
 }

@@ -73,10 +73,10 @@ public final class OsPolicyAssignmentRolloutDisruptionBudget {
             return this;
         }
         public OsPolicyAssignmentRolloutDisruptionBudget build() {
-            final var o = new OsPolicyAssignmentRolloutDisruptionBudget();
-            o.fixed = fixed;
-            o.percent = percent;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentRolloutDisruptionBudget();
+            _resultValue.fixed = fixed;
+            _resultValue.percent = percent;
+            return _resultValue;
         }
     }
 }

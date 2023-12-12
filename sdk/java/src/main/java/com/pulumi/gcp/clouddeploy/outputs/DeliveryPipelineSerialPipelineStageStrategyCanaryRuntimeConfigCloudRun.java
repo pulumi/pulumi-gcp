@@ -48,9 +48,9 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
             return this;
         }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun();
-            o.automaticTrafficControl = automaticTrafficControl;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun();
+            _resultValue.automaticTrafficControl = automaticTrafficControl;
+            return _resultValue;
         }
     }
 }

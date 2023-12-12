@@ -183,16 +183,16 @@ public final class ConnectionGithubEnterpriseConfig {
             return this;
         }
         public ConnectionGithubEnterpriseConfig build() {
-            final var o = new ConnectionGithubEnterpriseConfig();
-            o.appId = appId;
-            o.appInstallationId = appInstallationId;
-            o.appSlug = appSlug;
-            o.hostUri = hostUri;
-            o.privateKeySecretVersion = privateKeySecretVersion;
-            o.serviceDirectoryConfig = serviceDirectoryConfig;
-            o.sslCa = sslCa;
-            o.webhookSecretSecretVersion = webhookSecretSecretVersion;
-            return o;
+            final var _resultValue = new ConnectionGithubEnterpriseConfig();
+            _resultValue.appId = appId;
+            _resultValue.appInstallationId = appInstallationId;
+            _resultValue.appSlug = appSlug;
+            _resultValue.hostUri = hostUri;
+            _resultValue.privateKeySecretVersion = privateKeySecretVersion;
+            _resultValue.serviceDirectoryConfig = serviceDirectoryConfig;
+            _resultValue.sslCa = sslCa;
+            _resultValue.webhookSecretSecretVersion = webhookSecretSecretVersion;
+            return _resultValue;
         }
     }
 }

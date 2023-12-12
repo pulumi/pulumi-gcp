@@ -250,18 +250,18 @@ public final class HttpRouteRuleAction {
             return this;
         }
         public HttpRouteRuleAction build() {
-            final var o = new HttpRouteRuleAction();
-            o.corsPolicy = corsPolicy;
-            o.destinations = destinations;
-            o.faultInjectionPolicy = faultInjectionPolicy;
-            o.redirect = redirect;
-            o.requestHeaderModifier = requestHeaderModifier;
-            o.requestMirrorPolicy = requestMirrorPolicy;
-            o.responseHeaderModifier = responseHeaderModifier;
-            o.retryPolicy = retryPolicy;
-            o.timeout = timeout;
-            o.urlRewrite = urlRewrite;
-            return o;
+            final var _resultValue = new HttpRouteRuleAction();
+            _resultValue.corsPolicy = corsPolicy;
+            _resultValue.destinations = destinations;
+            _resultValue.faultInjectionPolicy = faultInjectionPolicy;
+            _resultValue.redirect = redirect;
+            _resultValue.requestHeaderModifier = requestHeaderModifier;
+            _resultValue.requestMirrorPolicy = requestMirrorPolicy;
+            _resultValue.responseHeaderModifier = responseHeaderModifier;
+            _resultValue.retryPolicy = retryPolicy;
+            _resultValue.timeout = timeout;
+            _resultValue.urlRewrite = urlRewrite;
+            return _resultValue;
         }
     }
 }

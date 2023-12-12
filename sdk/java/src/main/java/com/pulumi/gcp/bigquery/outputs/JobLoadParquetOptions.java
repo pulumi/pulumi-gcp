@@ -67,10 +67,10 @@ public final class JobLoadParquetOptions {
             return this;
         }
         public JobLoadParquetOptions build() {
-            final var o = new JobLoadParquetOptions();
-            o.enableListInference = enableListInference;
-            o.enumAsString = enumAsString;
-            return o;
+            final var _resultValue = new JobLoadParquetOptions();
+            _resultValue.enableListInference = enableListInference;
+            _resultValue.enumAsString = enumAsString;
+            return _resultValue;
         }
     }
 }

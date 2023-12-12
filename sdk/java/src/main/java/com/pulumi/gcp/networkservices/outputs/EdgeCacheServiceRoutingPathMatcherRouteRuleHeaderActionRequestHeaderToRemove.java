@@ -46,9 +46,9 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionReques
             return this;
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove();
-            o.headerName = headerName;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove();
+            _resultValue.headerName = headerName;
+            return _resultValue;
         }
     }
 }

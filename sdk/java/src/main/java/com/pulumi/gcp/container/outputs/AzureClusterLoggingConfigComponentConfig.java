@@ -51,9 +51,9 @@ public final class AzureClusterLoggingConfigComponentConfig {
             return enableComponents(List.of(enableComponents));
         }
         public AzureClusterLoggingConfigComponentConfig build() {
-            final var o = new AzureClusterLoggingConfigComponentConfig();
-            o.enableComponents = enableComponents;
-            return o;
+            final var _resultValue = new AzureClusterLoggingConfigComponentConfig();
+            _resultValue.enableComponents = enableComponents;
+            return _resultValue;
         }
     }
 }

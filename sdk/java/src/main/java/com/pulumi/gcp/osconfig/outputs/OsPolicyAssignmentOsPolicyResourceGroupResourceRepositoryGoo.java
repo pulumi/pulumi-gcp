@@ -65,10 +65,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo 
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo();
-            o.name = name;
-            o.url = url;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo();
+            _resultValue.name = name;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

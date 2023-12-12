@@ -149,15 +149,15 @@ public final class GetRouterStatusResult {
             return this;
         }
         public GetRouterStatusResult build() {
-            final var o = new GetRouterStatusResult();
-            o.bestRoutes = bestRoutes;
-            o.bestRoutesForRouters = bestRoutesForRouters;
-            o.id = id;
-            o.name = name;
-            o.network = network;
-            o.project = project;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetRouterStatusResult();
+            _resultValue.bestRoutes = bestRoutes;
+            _resultValue.bestRoutesForRouters = bestRoutesForRouters;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

@@ -165,14 +165,14 @@ public final class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
             return this;
         }
         public CxTestCaseLastTestResultConversationTurnVirtualAgentOutput build() {
-            final var o = new CxTestCaseLastTestResultConversationTurnVirtualAgentOutput();
-            o.currentPage = currentPage;
-            o.differences = differences;
-            o.sessionParameters = sessionParameters;
-            o.status = status;
-            o.textResponses = textResponses;
-            o.triggeredIntent = triggeredIntent;
-            return o;
+            final var _resultValue = new CxTestCaseLastTestResultConversationTurnVirtualAgentOutput();
+            _resultValue.currentPage = currentPage;
+            _resultValue.differences = differences;
+            _resultValue.sessionParameters = sessionParameters;
+            _resultValue.status = status;
+            _resultValue.textResponses = textResponses;
+            _resultValue.triggeredIntent = triggeredIntent;
+            return _resultValue;
         }
     }
 }

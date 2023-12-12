@@ -79,10 +79,10 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysi
             return this;
         }
         public AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis build() {
-            final var o = new AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis();
-            o.anomalyDetectionBaseline = anomalyDetectionBaseline;
-            o.state = state;
-            return o;
+            final var _resultValue = new AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis();
+            _resultValue.anomalyDetectionBaseline = anomalyDetectionBaseline;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

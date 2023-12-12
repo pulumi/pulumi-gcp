@@ -73,10 +73,10 @@ public final class ImageImageEncryptionKey {
             return this;
         }
         public ImageImageEncryptionKey build() {
-            final var o = new ImageImageEncryptionKey();
-            o.kmsKeySelfLink = kmsKeySelfLink;
-            o.kmsKeyServiceAccount = kmsKeyServiceAccount;
-            return o;
+            final var _resultValue = new ImageImageEncryptionKey();
+            _resultValue.kmsKeySelfLink = kmsKeySelfLink;
+            _resultValue.kmsKeyServiceAccount = kmsKeyServiceAccount;
+            return _resultValue;
         }
     }
 }

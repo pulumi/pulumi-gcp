@@ -48,9 +48,9 @@ public final class AzureClusterControlPlaneMainVolume {
             return this;
         }
         public AzureClusterControlPlaneMainVolume build() {
-            final var o = new AzureClusterControlPlaneMainVolume();
-            o.sizeGib = sizeGib;
-            return o;
+            final var _resultValue = new AzureClusterControlPlaneMainVolume();
+            _resultValue.sizeGib = sizeGib;
+            return _resultValue;
         }
     }
 }

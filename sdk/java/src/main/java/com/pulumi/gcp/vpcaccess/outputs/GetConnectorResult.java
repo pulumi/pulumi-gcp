@@ -211,23 +211,23 @@ public final class GetConnectorResult {
             return subnets(List.of(subnets));
         }
         public GetConnectorResult build() {
-            final var o = new GetConnectorResult();
-            o.connectedProjects = connectedProjects;
-            o.id = id;
-            o.ipCidrRange = ipCidrRange;
-            o.machineType = machineType;
-            o.maxInstances = maxInstances;
-            o.maxThroughput = maxThroughput;
-            o.minInstances = minInstances;
-            o.minThroughput = minThroughput;
-            o.name = name;
-            o.network = network;
-            o.project = project;
-            o.region = region;
-            o.selfLink = selfLink;
-            o.state = state;
-            o.subnets = subnets;
-            return o;
+            final var _resultValue = new GetConnectorResult();
+            _resultValue.connectedProjects = connectedProjects;
+            _resultValue.id = id;
+            _resultValue.ipCidrRange = ipCidrRange;
+            _resultValue.machineType = machineType;
+            _resultValue.maxInstances = maxInstances;
+            _resultValue.maxThroughput = maxThroughput;
+            _resultValue.minInstances = minInstances;
+            _resultValue.minThroughput = minThroughput;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.selfLink = selfLink;
+            _resultValue.state = state;
+            _resultValue.subnets = subnets;
+            return _resultValue;
         }
     }
 }

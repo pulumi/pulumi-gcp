@@ -48,9 +48,9 @@ public final class WorkflowTemplateJobPysparkJobLoggingConfig {
             return this;
         }
         public WorkflowTemplateJobPysparkJobLoggingConfig build() {
-            final var o = new WorkflowTemplateJobPysparkJobLoggingConfig();
-            o.driverLogLevels = driverLogLevels;
-            return o;
+            final var _resultValue = new WorkflowTemplateJobPysparkJobLoggingConfig();
+            _resultValue.driverLogLevels = driverLogLevels;
+            return _resultValue;
         }
     }
 }

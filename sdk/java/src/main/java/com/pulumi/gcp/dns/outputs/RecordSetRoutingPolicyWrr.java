@@ -94,11 +94,11 @@ public final class RecordSetRoutingPolicyWrr {
             return this;
         }
         public RecordSetRoutingPolicyWrr build() {
-            final var o = new RecordSetRoutingPolicyWrr();
-            o.healthCheckedTargets = healthCheckedTargets;
-            o.rrdatas = rrdatas;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new RecordSetRoutingPolicyWrr();
+            _resultValue.healthCheckedTargets = healthCheckedTargets;
+            _resultValue.rrdatas = rrdatas;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

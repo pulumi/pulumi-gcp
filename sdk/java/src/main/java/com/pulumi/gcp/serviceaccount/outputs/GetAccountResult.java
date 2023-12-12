@@ -169,16 +169,16 @@ public final class GetAccountResult {
             return this;
         }
         public GetAccountResult build() {
-            final var o = new GetAccountResult();
-            o.accountId = accountId;
-            o.displayName = displayName;
-            o.email = email;
-            o.id = id;
-            o.member = member;
-            o.name = name;
-            o.project = project;
-            o.uniqueId = uniqueId;
-            return o;
+            final var _resultValue = new GetAccountResult();
+            _resultValue.accountId = accountId;
+            _resultValue.displayName = displayName;
+            _resultValue.email = email;
+            _resultValue.id = id;
+            _resultValue.member = member;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.uniqueId = uniqueId;
+            return _resultValue;
         }
     }
 }

@@ -113,12 +113,12 @@ public final class VMwareClusterLoadBalancerManualLbConfig {
             return this;
         }
         public VMwareClusterLoadBalancerManualLbConfig build() {
-            final var o = new VMwareClusterLoadBalancerManualLbConfig();
-            o.controlPlaneNodePort = controlPlaneNodePort;
-            o.ingressHttpNodePort = ingressHttpNodePort;
-            o.ingressHttpsNodePort = ingressHttpsNodePort;
-            o.konnectivityServerNodePort = konnectivityServerNodePort;
-            return o;
+            final var _resultValue = new VMwareClusterLoadBalancerManualLbConfig();
+            _resultValue.controlPlaneNodePort = controlPlaneNodePort;
+            _resultValue.ingressHttpNodePort = ingressHttpNodePort;
+            _resultValue.ingressHttpsNodePort = ingressHttpsNodePort;
+            _resultValue.konnectivityServerNodePort = konnectivityServerNodePort;
+            return _resultValue;
         }
     }
 }

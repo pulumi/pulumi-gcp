@@ -109,12 +109,12 @@ public final class CxTestCaseLastTestResultConversationTurnUserInput {
             return this;
         }
         public CxTestCaseLastTestResultConversationTurnUserInput build() {
-            final var o = new CxTestCaseLastTestResultConversationTurnUserInput();
-            o.enableSentimentAnalysis = enableSentimentAnalysis;
-            o.injectedParameters = injectedParameters;
-            o.input = input;
-            o.isWebhookEnabled = isWebhookEnabled;
-            return o;
+            final var _resultValue = new CxTestCaseLastTestResultConversationTurnUserInput();
+            _resultValue.enableSentimentAnalysis = enableSentimentAnalysis;
+            _resultValue.injectedParameters = injectedParameters;
+            _resultValue.input = input;
+            _resultValue.isWebhookEnabled = isWebhookEnabled;
+            return _resultValue;
         }
     }
 }

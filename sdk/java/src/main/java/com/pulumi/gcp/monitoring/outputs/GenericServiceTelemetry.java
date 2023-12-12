@@ -52,9 +52,9 @@ public final class GenericServiceTelemetry {
             return this;
         }
         public GenericServiceTelemetry build() {
-            final var o = new GenericServiceTelemetry();
-            o.resourceName = resourceName;
-            return o;
+            final var _resultValue = new GenericServiceTelemetry();
+            _resultValue.resourceName = resourceName;
+            return _resultValue;
         }
     }
 }

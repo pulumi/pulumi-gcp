@@ -67,10 +67,10 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
             return this;
         }
         public ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling build() {
-            final var o = new ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling();
-            o.maxNodeCount = maxNodeCount;
-            o.minNodeCount = minNodeCount;
-            return o;
+            final var _resultValue = new ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling();
+            _resultValue.maxNodeCount = maxNodeCount;
+            _resultValue.minNodeCount = minNodeCount;
+            return _resultValue;
         }
     }
 }

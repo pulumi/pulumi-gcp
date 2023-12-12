@@ -173,15 +173,15 @@ public final class ConnectionProfileMysql {
             return this;
         }
         public ConnectionProfileMysql build() {
-            final var o = new ConnectionProfileMysql();
-            o.cloudSqlId = cloudSqlId;
-            o.host = host;
-            o.password = password;
-            o.passwordSet = passwordSet;
-            o.port = port;
-            o.ssl = ssl;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionProfileMysql();
+            _resultValue.cloudSqlId = cloudSqlId;
+            _resultValue.host = host;
+            _resultValue.password = password;
+            _resultValue.passwordSet = passwordSet;
+            _resultValue.port = port;
+            _resultValue.ssl = ssl;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

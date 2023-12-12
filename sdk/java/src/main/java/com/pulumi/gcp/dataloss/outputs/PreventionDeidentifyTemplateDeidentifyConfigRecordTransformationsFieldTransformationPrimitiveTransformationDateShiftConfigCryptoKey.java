@@ -100,11 +100,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKey build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKey();
-            o.kmsWrapped = kmsWrapped;
-            o.transient_ = transient_;
-            o.unwrapped = unwrapped;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKey();
+            _resultValue.kmsWrapped = kmsWrapped;
+            _resultValue.transient_ = transient_;
+            _resultValue.unwrapped = unwrapped;
+            return _resultValue;
         }
     }
 }

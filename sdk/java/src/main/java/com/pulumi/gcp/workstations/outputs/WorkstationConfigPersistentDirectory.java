@@ -70,10 +70,10 @@ public final class WorkstationConfigPersistentDirectory {
             return this;
         }
         public WorkstationConfigPersistentDirectory build() {
-            final var o = new WorkstationConfigPersistentDirectory();
-            o.gcePd = gcePd;
-            o.mountPath = mountPath;
-            return o;
+            final var _resultValue = new WorkstationConfigPersistentDirectory();
+            _resultValue.gcePd = gcePd;
+            _resultValue.mountPath = mountPath;
+            return _resultValue;
         }
     }
 }

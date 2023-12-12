@@ -183,16 +183,16 @@ public final class VMwareClusterVcenter {
             return this;
         }
         public VMwareClusterVcenter build() {
-            final var o = new VMwareClusterVcenter();
-            o.address = address;
-            o.caCertData = caCertData;
-            o.cluster = cluster;
-            o.datacenter = datacenter;
-            o.datastore = datastore;
-            o.folder = folder;
-            o.resourcePool = resourcePool;
-            o.storagePolicyName = storagePolicyName;
-            return o;
+            final var _resultValue = new VMwareClusterVcenter();
+            _resultValue.address = address;
+            _resultValue.caCertData = caCertData;
+            _resultValue.cluster = cluster;
+            _resultValue.datacenter = datacenter;
+            _resultValue.datastore = datastore;
+            _resultValue.folder = folder;
+            _resultValue.resourcePool = resourcePool;
+            _resultValue.storagePolicyName = storagePolicyName;
+            return _resultValue;
         }
     }
 }

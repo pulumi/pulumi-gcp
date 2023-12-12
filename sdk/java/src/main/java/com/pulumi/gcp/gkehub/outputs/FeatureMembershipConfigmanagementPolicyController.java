@@ -187,16 +187,16 @@ public final class FeatureMembershipConfigmanagementPolicyController {
             return this;
         }
         public FeatureMembershipConfigmanagementPolicyController build() {
-            final var o = new FeatureMembershipConfigmanagementPolicyController();
-            o.auditIntervalSeconds = auditIntervalSeconds;
-            o.enabled = enabled;
-            o.exemptableNamespaces = exemptableNamespaces;
-            o.logDeniesEnabled = logDeniesEnabled;
-            o.monitoring = monitoring;
-            o.mutationEnabled = mutationEnabled;
-            o.referentialRulesEnabled = referentialRulesEnabled;
-            o.templateLibraryInstalled = templateLibraryInstalled;
-            return o;
+            final var _resultValue = new FeatureMembershipConfigmanagementPolicyController();
+            _resultValue.auditIntervalSeconds = auditIntervalSeconds;
+            _resultValue.enabled = enabled;
+            _resultValue.exemptableNamespaces = exemptableNamespaces;
+            _resultValue.logDeniesEnabled = logDeniesEnabled;
+            _resultValue.monitoring = monitoring;
+            _resultValue.mutationEnabled = mutationEnabled;
+            _resultValue.referentialRulesEnabled = referentialRulesEnabled;
+            _resultValue.templateLibraryInstalled = templateLibraryInstalled;
+            return _resultValue;
         }
     }
 }

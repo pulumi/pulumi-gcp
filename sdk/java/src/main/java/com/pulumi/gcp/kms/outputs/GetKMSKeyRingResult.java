@@ -81,12 +81,12 @@ public final class GetKMSKeyRingResult {
             return this;
         }
         public GetKMSKeyRingResult build() {
-            final var o = new GetKMSKeyRingResult();
-            o.id = id;
-            o.location = location;
-            o.name = name;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetKMSKeyRingResult();
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

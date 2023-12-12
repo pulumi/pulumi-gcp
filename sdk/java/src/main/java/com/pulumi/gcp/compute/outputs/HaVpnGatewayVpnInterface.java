@@ -99,11 +99,11 @@ public final class HaVpnGatewayVpnInterface {
             return this;
         }
         public HaVpnGatewayVpnInterface build() {
-            final var o = new HaVpnGatewayVpnInterface();
-            o.id = id;
-            o.interconnectAttachment = interconnectAttachment;
-            o.ipAddress = ipAddress;
-            return o;
+            final var _resultValue = new HaVpnGatewayVpnInterface();
+            _resultValue.id = id;
+            _resultValue.interconnectAttachment = interconnectAttachment;
+            _resultValue.ipAddress = ipAddress;
+            return _resultValue;
         }
     }
 }

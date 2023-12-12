@@ -50,9 +50,9 @@ public final class MembershipBindingState {
             return this;
         }
         public MembershipBindingState build() {
-            final var o = new MembershipBindingState();
-            o.code = code;
-            return o;
+            final var _resultValue = new MembershipBindingState();
+            _resultValue.code = code;
+            return _resultValue;
         }
     }
 }

@@ -78,10 +78,10 @@ public final class BareMetalAdminClusterStorage {
             return this;
         }
         public BareMetalAdminClusterStorage build() {
-            final var o = new BareMetalAdminClusterStorage();
-            o.lvpNodeMountsConfig = lvpNodeMountsConfig;
-            o.lvpShareConfig = lvpShareConfig;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterStorage();
+            _resultValue.lvpNodeMountsConfig = lvpNodeMountsConfig;
+            _resultValue.lvpShareConfig = lvpShareConfig;
+            return _resultValue;
         }
     }
 }

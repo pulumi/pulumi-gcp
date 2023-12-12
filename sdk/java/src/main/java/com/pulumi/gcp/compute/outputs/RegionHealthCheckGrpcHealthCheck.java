@@ -122,12 +122,12 @@ public final class RegionHealthCheckGrpcHealthCheck {
             return this;
         }
         public RegionHealthCheckGrpcHealthCheck build() {
-            final var o = new RegionHealthCheckGrpcHealthCheck();
-            o.grpcServiceName = grpcServiceName;
-            o.port = port;
-            o.portName = portName;
-            o.portSpecification = portSpecification;
-            return o;
+            final var _resultValue = new RegionHealthCheckGrpcHealthCheck();
+            _resultValue.grpcServiceName = grpcServiceName;
+            _resultValue.port = port;
+            _resultValue.portName = portName;
+            _resultValue.portSpecification = portSpecification;
+            return _resultValue;
         }
     }
 }

@@ -52,9 +52,9 @@ public final class NoteAttestationAuthorityHint {
             return this;
         }
         public NoteAttestationAuthorityHint build() {
-            final var o = new NoteAttestationAuthorityHint();
-            o.humanReadableName = humanReadableName;
-            return o;
+            final var _resultValue = new NoteAttestationAuthorityHint();
+            _resultValue.humanReadableName = humanReadableName;
+            return _resultValue;
         }
     }
 }

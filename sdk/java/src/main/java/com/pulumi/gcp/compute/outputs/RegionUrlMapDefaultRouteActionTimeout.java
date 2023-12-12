@@ -68,10 +68,10 @@ public final class RegionUrlMapDefaultRouteActionTimeout {
             return this;
         }
         public RegionUrlMapDefaultRouteActionTimeout build() {
-            final var o = new RegionUrlMapDefaultRouteActionTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new RegionUrlMapDefaultRouteActionTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

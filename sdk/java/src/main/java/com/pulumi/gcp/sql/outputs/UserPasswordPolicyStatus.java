@@ -68,10 +68,10 @@ public final class UserPasswordPolicyStatus {
             return this;
         }
         public UserPasswordPolicyStatus build() {
-            final var o = new UserPasswordPolicyStatus();
-            o.locked = locked;
-            o.passwordExpirationTime = passwordExpirationTime;
-            return o;
+            final var _resultValue = new UserPasswordPolicyStatus();
+            _resultValue.locked = locked;
+            _resultValue.passwordExpirationTime = passwordExpirationTime;
+            return _resultValue;
         }
     }
 }

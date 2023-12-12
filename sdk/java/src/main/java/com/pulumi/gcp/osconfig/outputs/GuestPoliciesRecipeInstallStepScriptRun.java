@@ -95,11 +95,11 @@ public final class GuestPoliciesRecipeInstallStepScriptRun {
             return this;
         }
         public GuestPoliciesRecipeInstallStepScriptRun build() {
-            final var o = new GuestPoliciesRecipeInstallStepScriptRun();
-            o.allowedExitCodes = allowedExitCodes;
-            o.interpreter = interpreter;
-            o.script = script;
-            return o;
+            final var _resultValue = new GuestPoliciesRecipeInstallStepScriptRun();
+            _resultValue.allowedExitCodes = allowedExitCodes;
+            _resultValue.interpreter = interpreter;
+            _resultValue.script = script;
+            return _resultValue;
         }
     }
 }

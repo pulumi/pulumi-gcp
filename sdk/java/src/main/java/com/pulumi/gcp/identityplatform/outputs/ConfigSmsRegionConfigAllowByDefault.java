@@ -51,9 +51,9 @@ public final class ConfigSmsRegionConfigAllowByDefault {
             return disallowedRegions(List.of(disallowedRegions));
         }
         public ConfigSmsRegionConfigAllowByDefault build() {
-            final var o = new ConfigSmsRegionConfigAllowByDefault();
-            o.disallowedRegions = disallowedRegions;
-            return o;
+            final var _resultValue = new ConfigSmsRegionConfigAllowByDefault();
+            _resultValue.disallowedRegions = disallowedRegions;
+            return _resultValue;
         }
     }
 }

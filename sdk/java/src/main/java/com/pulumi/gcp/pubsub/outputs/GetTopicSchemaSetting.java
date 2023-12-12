@@ -49,10 +49,10 @@ public final class GetTopicSchemaSetting {
             return this;
         }
         public GetTopicSchemaSetting build() {
-            final var o = new GetTopicSchemaSetting();
-            o.encoding = encoding;
-            o.schema = schema;
-            return o;
+            final var _resultValue = new GetTopicSchemaSetting();
+            _resultValue.encoding = encoding;
+            _resultValue.schema = schema;
+            return _resultValue;
         }
     }
 }

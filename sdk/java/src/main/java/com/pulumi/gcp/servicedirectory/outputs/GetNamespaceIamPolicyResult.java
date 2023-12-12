@@ -97,12 +97,12 @@ public final class GetNamespaceIamPolicyResult {
             return this;
         }
         public GetNamespaceIamPolicyResult build() {
-            final var o = new GetNamespaceIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.name = name;
-            o.policyData = policyData;
-            return o;
+            final var _resultValue = new GetNamespaceIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.policyData = policyData;
+            return _resultValue;
         }
     }
 }

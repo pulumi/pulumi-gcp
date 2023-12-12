@@ -75,10 +75,10 @@ public final class TlsRouteRuleMatch {
             return sniHosts(List.of(sniHosts));
         }
         public TlsRouteRuleMatch build() {
-            final var o = new TlsRouteRuleMatch();
-            o.alpns = alpns;
-            o.sniHosts = sniHosts;
-            return o;
+            final var _resultValue = new TlsRouteRuleMatch();
+            _resultValue.alpns = alpns;
+            _resultValue.sniHosts = sniHosts;
+            return _resultValue;
         }
     }
 }

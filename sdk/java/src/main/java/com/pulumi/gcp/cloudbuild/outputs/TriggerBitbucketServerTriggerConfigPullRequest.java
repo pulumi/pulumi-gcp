@@ -91,11 +91,11 @@ public final class TriggerBitbucketServerTriggerConfigPullRequest {
             return this;
         }
         public TriggerBitbucketServerTriggerConfigPullRequest build() {
-            final var o = new TriggerBitbucketServerTriggerConfigPullRequest();
-            o.branch = branch;
-            o.commentControl = commentControl;
-            o.invertRegex = invertRegex;
-            return o;
+            final var _resultValue = new TriggerBitbucketServerTriggerConfigPullRequest();
+            _resultValue.branch = branch;
+            _resultValue.commentControl = commentControl;
+            _resultValue.invertRegex = invertRegex;
+            return _resultValue;
         }
     }
 }

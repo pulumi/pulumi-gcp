@@ -99,11 +99,11 @@ public final class PatchDeploymentPatchConfigWindowsUpdate {
             return exclusivePatches(List.of(exclusivePatches));
         }
         public PatchDeploymentPatchConfigWindowsUpdate build() {
-            final var o = new PatchDeploymentPatchConfigWindowsUpdate();
-            o.classifications = classifications;
-            o.excludes = excludes;
-            o.exclusivePatches = exclusivePatches;
-            return o;
+            final var _resultValue = new PatchDeploymentPatchConfigWindowsUpdate();
+            _resultValue.classifications = classifications;
+            _resultValue.excludes = excludes;
+            _resultValue.exclusivePatches = exclusivePatches;
+            return _resultValue;
         }
     }
 }

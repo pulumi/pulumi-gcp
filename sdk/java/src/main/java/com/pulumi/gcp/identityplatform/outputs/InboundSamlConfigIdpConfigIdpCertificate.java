@@ -48,9 +48,9 @@ public final class InboundSamlConfigIdpConfigIdpCertificate {
             return this;
         }
         public InboundSamlConfigIdpConfigIdpCertificate build() {
-            final var o = new InboundSamlConfigIdpConfigIdpCertificate();
-            o.x509Certificate = x509Certificate;
-            return o;
+            final var _resultValue = new InboundSamlConfigIdpConfigIdpCertificate();
+            _resultValue.x509Certificate = x509Certificate;
+            return _resultValue;
         }
     }
 }

@@ -119,14 +119,14 @@ public final class GetInstanceIamPolicyResult {
             return this;
         }
         public GetInstanceIamPolicyResult build() {
-            final var o = new GetInstanceIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.instanceName = instanceName;
-            o.policyData = policyData;
-            o.project = project;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetInstanceIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.instanceName = instanceName;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class AiFeatureStoreEntityTypeIamBindingCondition {
             return this;
         }
         public AiFeatureStoreEntityTypeIamBindingCondition build() {
-            final var o = new AiFeatureStoreEntityTypeIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new AiFeatureStoreEntityTypeIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

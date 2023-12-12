@@ -43,9 +43,9 @@ public final class FeatureMembershipConfigmanagementPolicyControllerMonitoring {
             return backends(List.of(backends));
         }
         public FeatureMembershipConfigmanagementPolicyControllerMonitoring build() {
-            final var o = new FeatureMembershipConfigmanagementPolicyControllerMonitoring();
-            o.backends = backends;
-            return o;
+            final var _resultValue = new FeatureMembershipConfigmanagementPolicyControllerMonitoring();
+            _resultValue.backends = backends;
+            return _resultValue;
         }
     }
 }

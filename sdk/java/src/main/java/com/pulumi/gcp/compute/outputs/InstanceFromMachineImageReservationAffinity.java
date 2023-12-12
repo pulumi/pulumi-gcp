@@ -52,10 +52,10 @@ public final class InstanceFromMachineImageReservationAffinity {
             return this;
         }
         public InstanceFromMachineImageReservationAffinity build() {
-            final var o = new InstanceFromMachineImageReservationAffinity();
-            o.specificReservation = specificReservation;
-            o.type = type;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageReservationAffinity();
+            _resultValue.specificReservation = specificReservation;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

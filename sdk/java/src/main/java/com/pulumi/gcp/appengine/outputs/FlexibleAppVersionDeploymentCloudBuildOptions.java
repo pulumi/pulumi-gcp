@@ -69,10 +69,10 @@ public final class FlexibleAppVersionDeploymentCloudBuildOptions {
             return this;
         }
         public FlexibleAppVersionDeploymentCloudBuildOptions build() {
-            final var o = new FlexibleAppVersionDeploymentCloudBuildOptions();
-            o.appYamlPath = appYamlPath;
-            o.cloudBuildTimeout = cloudBuildTimeout;
-            return o;
+            final var _resultValue = new FlexibleAppVersionDeploymentCloudBuildOptions();
+            _resultValue.appYamlPath = appYamlPath;
+            _resultValue.cloudBuildTimeout = cloudBuildTimeout;
+            return _resultValue;
         }
     }
 }

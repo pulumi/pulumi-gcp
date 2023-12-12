@@ -46,9 +46,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper();
-            o.name = name;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -25,8 +25,8 @@ public final class StreamBackfillNone {
         }
 
         public StreamBackfillNone build() {
-            final var o = new StreamBackfillNone();
-            return o;
+            final var _resultValue = new StreamBackfillNone();
+            return _resultValue;
         }
     }
 }

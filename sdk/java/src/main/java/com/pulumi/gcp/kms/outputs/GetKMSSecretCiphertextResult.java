@@ -87,12 +87,12 @@ public final class GetKMSSecretCiphertextResult {
             return this;
         }
         public GetKMSSecretCiphertextResult build() {
-            final var o = new GetKMSSecretCiphertextResult();
-            o.ciphertext = ciphertext;
-            o.cryptoKey = cryptoKey;
-            o.id = id;
-            o.plaintext = plaintext;
-            return o;
+            final var _resultValue = new GetKMSSecretCiphertextResult();
+            _resultValue.ciphertext = ciphertext;
+            _resultValue.cryptoKey = cryptoKey;
+            _resultValue.id = id;
+            _resultValue.plaintext = plaintext;
+            return _resultValue;
         }
     }
 }

@@ -96,11 +96,11 @@ public final class InsightsReportConfigObjectMetadataReportOptions {
             return this;
         }
         public InsightsReportConfigObjectMetadataReportOptions build() {
-            final var o = new InsightsReportConfigObjectMetadataReportOptions();
-            o.metadataFields = metadataFields;
-            o.storageDestinationOptions = storageDestinationOptions;
-            o.storageFilters = storageFilters;
-            return o;
+            final var _resultValue = new InsightsReportConfigObjectMetadataReportOptions();
+            _resultValue.metadataFields = metadataFields;
+            _resultValue.storageDestinationOptions = storageDestinationOptions;
+            _resultValue.storageFilters = storageFilters;
+            return _resultValue;
         }
     }
 }

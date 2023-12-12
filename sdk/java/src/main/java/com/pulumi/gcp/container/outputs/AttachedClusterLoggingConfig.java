@@ -50,9 +50,9 @@ public final class AttachedClusterLoggingConfig {
             return this;
         }
         public AttachedClusterLoggingConfig build() {
-            final var o = new AttachedClusterLoggingConfig();
-            o.componentConfig = componentConfig;
-            return o;
+            final var _resultValue = new AttachedClusterLoggingConfig();
+            _resultValue.componentConfig = componentConfig;
+            return _resultValue;
         }
     }
 }

@@ -66,11 +66,11 @@ public final class GetAuthorityConfigX509ConfigAdditionalExtension {
             return this;
         }
         public GetAuthorityConfigX509ConfigAdditionalExtension build() {
-            final var o = new GetAuthorityConfigX509ConfigAdditionalExtension();
-            o.critical = critical;
-            o.objectIds = objectIds;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetAuthorityConfigX509ConfigAdditionalExtension();
+            _resultValue.critical = critical;
+            _resultValue.objectIds = objectIds;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

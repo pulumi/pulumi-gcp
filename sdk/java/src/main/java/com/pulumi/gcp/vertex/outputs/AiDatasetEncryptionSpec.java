@@ -50,9 +50,9 @@ public final class AiDatasetEncryptionSpec {
             return this;
         }
         public AiDatasetEncryptionSpec build() {
-            final var o = new AiDatasetEncryptionSpec();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new AiDatasetEncryptionSpec();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

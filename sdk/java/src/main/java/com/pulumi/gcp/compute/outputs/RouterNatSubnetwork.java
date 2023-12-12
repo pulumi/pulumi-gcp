@@ -104,11 +104,11 @@ public final class RouterNatSubnetwork {
             return sourceIpRangesToNats(List.of(sourceIpRangesToNats));
         }
         public RouterNatSubnetwork build() {
-            final var o = new RouterNatSubnetwork();
-            o.name = name;
-            o.secondaryIpRangeNames = secondaryIpRangeNames;
-            o.sourceIpRangesToNats = sourceIpRangesToNats;
-            return o;
+            final var _resultValue = new RouterNatSubnetwork();
+            _resultValue.name = name;
+            _resultValue.secondaryIpRangeNames = secondaryIpRangeNames;
+            _resultValue.sourceIpRangesToNats = sourceIpRangesToNats;
+            return _resultValue;
         }
     }
 }

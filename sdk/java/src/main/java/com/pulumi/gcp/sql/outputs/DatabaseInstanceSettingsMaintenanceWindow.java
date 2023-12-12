@@ -93,11 +93,11 @@ public final class DatabaseInstanceSettingsMaintenanceWindow {
             return this;
         }
         public DatabaseInstanceSettingsMaintenanceWindow build() {
-            final var o = new DatabaseInstanceSettingsMaintenanceWindow();
-            o.day = day;
-            o.hour = hour;
-            o.updateTrack = updateTrack;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettingsMaintenanceWindow();
+            _resultValue.day = day;
+            _resultValue.hour = hour;
+            _resultValue.updateTrack = updateTrack;
+            return _resultValue;
         }
     }
 }

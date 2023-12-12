@@ -182,20 +182,20 @@ public final class GetAppConnectionResult {
             return this;
         }
         public GetAppConnectionResult build() {
-            final var o = new GetAppConnectionResult();
-            o.applicationEndpoints = applicationEndpoints;
-            o.connectors = connectors;
-            o.displayName = displayName;
-            o.effectiveLabels = effectiveLabels;
-            o.gateways = gateways;
-            o.id = id;
-            o.labels = labels;
-            o.name = name;
-            o.project = project;
-            o.pulumiLabels = pulumiLabels;
-            o.region = region;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetAppConnectionResult();
+            _resultValue.applicationEndpoints = applicationEndpoints;
+            _resultValue.connectors = connectors;
+            _resultValue.displayName = displayName;
+            _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.gateways = gateways;
+            _resultValue.id = id;
+            _resultValue.labels = labels;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.region = region;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

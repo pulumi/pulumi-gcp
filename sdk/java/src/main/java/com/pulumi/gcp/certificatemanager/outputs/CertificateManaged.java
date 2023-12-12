@@ -180,14 +180,14 @@ public final class CertificateManaged {
             return this;
         }
         public CertificateManaged build() {
-            final var o = new CertificateManaged();
-            o.authorizationAttemptInfos = authorizationAttemptInfos;
-            o.dnsAuthorizations = dnsAuthorizations;
-            o.domains = domains;
-            o.issuanceConfig = issuanceConfig;
-            o.provisioningIssues = provisioningIssues;
-            o.state = state;
-            return o;
+            final var _resultValue = new CertificateManaged();
+            _resultValue.authorizationAttemptInfos = authorizationAttemptInfos;
+            _resultValue.dnsAuthorizations = dnsAuthorizations;
+            _resultValue.domains = domains;
+            _resultValue.issuanceConfig = issuanceConfig;
+            _resultValue.provisioningIssues = provisioningIssues;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

@@ -104,15 +104,15 @@ public final class GetTriggerGitFileSource {
             return this;
         }
         public GetTriggerGitFileSource build() {
-            final var o = new GetTriggerGitFileSource();
-            o.bitbucketServerConfig = bitbucketServerConfig;
-            o.githubEnterpriseConfig = githubEnterpriseConfig;
-            o.path = path;
-            o.repoType = repoType;
-            o.repository = repository;
-            o.revision = revision;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new GetTriggerGitFileSource();
+            _resultValue.bitbucketServerConfig = bitbucketServerConfig;
+            _resultValue.githubEnterpriseConfig = githubEnterpriseConfig;
+            _resultValue.path = path;
+            _resultValue.repoType = repoType;
+            _resultValue.repository = repository;
+            _resultValue.revision = revision;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

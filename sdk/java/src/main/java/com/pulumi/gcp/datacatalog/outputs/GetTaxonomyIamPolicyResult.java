@@ -119,14 +119,14 @@ public final class GetTaxonomyIamPolicyResult {
             return this;
         }
         public GetTaxonomyIamPolicyResult build() {
-            final var o = new GetTaxonomyIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.region = region;
-            o.taxonomy = taxonomy;
-            return o;
+            final var _resultValue = new GetTaxonomyIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.taxonomy = taxonomy;
+            return _resultValue;
         }
     }
 }

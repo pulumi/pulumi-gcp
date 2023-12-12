@@ -52,9 +52,9 @@ public final class GroupMembershipRole {
             return this;
         }
         public GroupMembershipRole build() {
-            final var o = new GroupMembershipRole();
-            o.name = name;
-            return o;
+            final var _resultValue = new GroupMembershipRole();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

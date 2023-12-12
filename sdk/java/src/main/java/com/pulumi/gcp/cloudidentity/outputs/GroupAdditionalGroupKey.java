@@ -91,10 +91,10 @@ public final class GroupAdditionalGroupKey {
             return this;
         }
         public GroupAdditionalGroupKey build() {
-            final var o = new GroupAdditionalGroupKey();
-            o.id = id;
-            o.namespace = namespace;
-            return o;
+            final var _resultValue = new GroupAdditionalGroupKey();
+            _resultValue.id = id;
+            _resultValue.namespace = namespace;
+            return _resultValue;
         }
     }
 }

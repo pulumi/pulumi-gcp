@@ -46,9 +46,9 @@ public final class GetSinkBigqueryOption {
             return this;
         }
         public GetSinkBigqueryOption build() {
-            final var o = new GetSinkBigqueryOption();
-            o.usePartitionedTables = usePartitionedTables;
-            return o;
+            final var _resultValue = new GetSinkBigqueryOption();
+            _resultValue.usePartitionedTables = usePartitionedTables;
+            return _resultValue;
         }
     }
 }

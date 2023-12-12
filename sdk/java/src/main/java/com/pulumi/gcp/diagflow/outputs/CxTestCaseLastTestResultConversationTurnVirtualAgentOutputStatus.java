@@ -87,11 +87,11 @@ public final class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputSta
             return this;
         }
         public CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus build() {
-            final var o = new CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus();
-            o.code = code;
-            o.details = details;
-            o.message = message;
-            return o;
+            final var _resultValue = new CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus();
+            _resultValue.code = code;
+            _resultValue.details = details;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

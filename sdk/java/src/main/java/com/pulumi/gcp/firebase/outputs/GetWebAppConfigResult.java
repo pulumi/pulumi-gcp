@@ -213,18 +213,18 @@ public final class GetWebAppConfigResult {
             return this;
         }
         public GetWebAppConfigResult build() {
-            final var o = new GetWebAppConfigResult();
-            o.apiKey = apiKey;
-            o.authDomain = authDomain;
-            o.databaseUrl = databaseUrl;
-            o.id = id;
-            o.locationId = locationId;
-            o.measurementId = measurementId;
-            o.messagingSenderId = messagingSenderId;
-            o.project = project;
-            o.storageBucket = storageBucket;
-            o.webAppId = webAppId;
-            return o;
+            final var _resultValue = new GetWebAppConfigResult();
+            _resultValue.apiKey = apiKey;
+            _resultValue.authDomain = authDomain;
+            _resultValue.databaseUrl = databaseUrl;
+            _resultValue.id = id;
+            _resultValue.locationId = locationId;
+            _resultValue.measurementId = measurementId;
+            _resultValue.messagingSenderId = messagingSenderId;
+            _resultValue.project = project;
+            _resultValue.storageBucket = storageBucket;
+            _resultValue.webAppId = webAppId;
+            return _resultValue;
         }
     }
 }

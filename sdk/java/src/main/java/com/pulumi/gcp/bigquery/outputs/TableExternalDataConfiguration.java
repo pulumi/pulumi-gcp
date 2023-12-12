@@ -471,26 +471,26 @@ public final class TableExternalDataConfiguration {
             return sourceUris(List.of(sourceUris));
         }
         public TableExternalDataConfiguration build() {
-            final var o = new TableExternalDataConfiguration();
-            o.autodetect = autodetect;
-            o.avroOptions = avroOptions;
-            o.compression = compression;
-            o.connectionId = connectionId;
-            o.csvOptions = csvOptions;
-            o.fileSetSpecType = fileSetSpecType;
-            o.googleSheetsOptions = googleSheetsOptions;
-            o.hivePartitioningOptions = hivePartitioningOptions;
-            o.ignoreUnknownValues = ignoreUnknownValues;
-            o.jsonOptions = jsonOptions;
-            o.maxBadRecords = maxBadRecords;
-            o.metadataCacheMode = metadataCacheMode;
-            o.objectMetadata = objectMetadata;
-            o.parquetOptions = parquetOptions;
-            o.referenceFileSchemaUri = referenceFileSchemaUri;
-            o.schema = schema;
-            o.sourceFormat = sourceFormat;
-            o.sourceUris = sourceUris;
-            return o;
+            final var _resultValue = new TableExternalDataConfiguration();
+            _resultValue.autodetect = autodetect;
+            _resultValue.avroOptions = avroOptions;
+            _resultValue.compression = compression;
+            _resultValue.connectionId = connectionId;
+            _resultValue.csvOptions = csvOptions;
+            _resultValue.fileSetSpecType = fileSetSpecType;
+            _resultValue.googleSheetsOptions = googleSheetsOptions;
+            _resultValue.hivePartitioningOptions = hivePartitioningOptions;
+            _resultValue.ignoreUnknownValues = ignoreUnknownValues;
+            _resultValue.jsonOptions = jsonOptions;
+            _resultValue.maxBadRecords = maxBadRecords;
+            _resultValue.metadataCacheMode = metadataCacheMode;
+            _resultValue.objectMetadata = objectMetadata;
+            _resultValue.parquetOptions = parquetOptions;
+            _resultValue.referenceFileSchemaUri = referenceFileSchemaUri;
+            _resultValue.schema = schema;
+            _resultValue.sourceFormat = sourceFormat;
+            _resultValue.sourceUris = sourceUris;
+            return _resultValue;
         }
     }
 }

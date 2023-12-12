@@ -69,11 +69,11 @@ public final class GetServiceTemplateSpecContainerPort {
             return this;
         }
         public GetServiceTemplateSpecContainerPort build() {
-            final var o = new GetServiceTemplateSpecContainerPort();
-            o.containerPort = containerPort;
-            o.name = name;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new GetServiceTemplateSpecContainerPort();
+            _resultValue.containerPort = containerPort;
+            _resultValue.name = name;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

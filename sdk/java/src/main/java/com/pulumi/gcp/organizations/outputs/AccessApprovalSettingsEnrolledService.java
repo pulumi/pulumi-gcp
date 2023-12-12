@@ -95,10 +95,10 @@ public final class AccessApprovalSettingsEnrolledService {
             return this;
         }
         public AccessApprovalSettingsEnrolledService build() {
-            final var o = new AccessApprovalSettingsEnrolledService();
-            o.cloudProduct = cloudProduct;
-            o.enrollmentLevel = enrollmentLevel;
-            return o;
+            final var _resultValue = new AccessApprovalSettingsEnrolledService();
+            _resultValue.cloudProduct = cloudProduct;
+            _resultValue.enrollmentLevel = enrollmentLevel;
+            return _resultValue;
         }
     }
 }

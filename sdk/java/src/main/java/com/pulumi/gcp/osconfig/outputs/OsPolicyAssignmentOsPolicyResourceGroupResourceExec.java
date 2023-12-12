@@ -82,10 +82,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExec build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourceExec();
-            o.enforce = enforce;
-            o.validate = validate;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourceExec();
+            _resultValue.enforce = enforce;
+            _resultValue.validate = validate;
+            return _resultValue;
         }
     }
 }

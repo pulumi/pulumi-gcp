@@ -75,10 +75,10 @@ public final class BackupEncryptionInfo {
             return kmsKeyVersions(List.of(kmsKeyVersions));
         }
         public BackupEncryptionInfo build() {
-            final var o = new BackupEncryptionInfo();
-            o.encryptionType = encryptionType;
-            o.kmsKeyVersions = kmsKeyVersions;
-            return o;
+            final var _resultValue = new BackupEncryptionInfo();
+            _resultValue.encryptionType = encryptionType;
+            _resultValue.kmsKeyVersions = kmsKeyVersions;
+            return _resultValue;
         }
     }
 }

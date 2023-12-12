@@ -132,13 +132,13 @@ public final class VMwareClusterValidationCheckStatusResult {
             return this;
         }
         public VMwareClusterValidationCheckStatusResult build() {
-            final var o = new VMwareClusterValidationCheckStatusResult();
-            o.category = category;
-            o.description = description;
-            o.details = details;
-            o.options = options;
-            o.reason = reason;
-            return o;
+            final var _resultValue = new VMwareClusterValidationCheckStatusResult();
+            _resultValue.category = category;
+            _resultValue.description = description;
+            _resultValue.details = details;
+            _resultValue.options = options;
+            _resultValue.reason = reason;
+            return _resultValue;
         }
     }
 }

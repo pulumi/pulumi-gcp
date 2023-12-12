@@ -52,9 +52,9 @@ public final class RepositoryRemoteRepositoryConfigPythonRepository {
             return this;
         }
         public RepositoryRemoteRepositoryConfigPythonRepository build() {
-            final var o = new RepositoryRemoteRepositoryConfigPythonRepository();
-            o.publicRepository = publicRepository;
-            return o;
+            final var _resultValue = new RepositoryRemoteRepositoryConfigPythonRepository();
+            _resultValue.publicRepository = publicRepository;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class AwsNodePoolManagement {
             return this;
         }
         public AwsNodePoolManagement build() {
-            final var o = new AwsNodePoolManagement();
-            o.autoRepair = autoRepair;
-            return o;
+            final var _resultValue = new AwsNodePoolManagement();
+            _resultValue.autoRepair = autoRepair;
+            return _resultValue;
         }
     }
 }

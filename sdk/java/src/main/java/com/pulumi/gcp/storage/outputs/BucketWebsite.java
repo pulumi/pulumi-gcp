@@ -71,10 +71,10 @@ public final class BucketWebsite {
             return this;
         }
         public BucketWebsite build() {
-            final var o = new BucketWebsite();
-            o.mainPageSuffix = mainPageSuffix;
-            o.notFoundPage = notFoundPage;
-            return o;
+            final var _resultValue = new BucketWebsite();
+            _resultValue.mainPageSuffix = mainPageSuffix;
+            _resultValue.notFoundPage = notFoundPage;
+            return _resultValue;
         }
     }
 }

@@ -384,35 +384,35 @@ public final class GetDatabaseInstancesInstanceSetting {
             return this;
         }
         public GetDatabaseInstancesInstanceSetting build() {
-            final var o = new GetDatabaseInstancesInstanceSetting();
-            o.activationPolicy = activationPolicy;
-            o.activeDirectoryConfigs = activeDirectoryConfigs;
-            o.advancedMachineFeatures = advancedMachineFeatures;
-            o.availabilityType = availabilityType;
-            o.backupConfigurations = backupConfigurations;
-            o.collation = collation;
-            o.connectorEnforcement = connectorEnforcement;
-            o.dataCacheConfigs = dataCacheConfigs;
-            o.databaseFlags = databaseFlags;
-            o.deletionProtectionEnabled = deletionProtectionEnabled;
-            o.denyMaintenancePeriods = denyMaintenancePeriods;
-            o.diskAutoresize = diskAutoresize;
-            o.diskAutoresizeLimit = diskAutoresizeLimit;
-            o.diskSize = diskSize;
-            o.diskType = diskType;
-            o.edition = edition;
-            o.insightsConfigs = insightsConfigs;
-            o.ipConfigurations = ipConfigurations;
-            o.locationPreferences = locationPreferences;
-            o.maintenanceWindows = maintenanceWindows;
-            o.passwordValidationPolicies = passwordValidationPolicies;
-            o.pricingPlan = pricingPlan;
-            o.sqlServerAuditConfigs = sqlServerAuditConfigs;
-            o.tier = tier;
-            o.timeZone = timeZone;
-            o.userLabels = userLabels;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetDatabaseInstancesInstanceSetting();
+            _resultValue.activationPolicy = activationPolicy;
+            _resultValue.activeDirectoryConfigs = activeDirectoryConfigs;
+            _resultValue.advancedMachineFeatures = advancedMachineFeatures;
+            _resultValue.availabilityType = availabilityType;
+            _resultValue.backupConfigurations = backupConfigurations;
+            _resultValue.collation = collation;
+            _resultValue.connectorEnforcement = connectorEnforcement;
+            _resultValue.dataCacheConfigs = dataCacheConfigs;
+            _resultValue.databaseFlags = databaseFlags;
+            _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
+            _resultValue.denyMaintenancePeriods = denyMaintenancePeriods;
+            _resultValue.diskAutoresize = diskAutoresize;
+            _resultValue.diskAutoresizeLimit = diskAutoresizeLimit;
+            _resultValue.diskSize = diskSize;
+            _resultValue.diskType = diskType;
+            _resultValue.edition = edition;
+            _resultValue.insightsConfigs = insightsConfigs;
+            _resultValue.ipConfigurations = ipConfigurations;
+            _resultValue.locationPreferences = locationPreferences;
+            _resultValue.maintenanceWindows = maintenanceWindows;
+            _resultValue.passwordValidationPolicies = passwordValidationPolicies;
+            _resultValue.pricingPlan = pricingPlan;
+            _resultValue.sqlServerAuditConfigs = sqlServerAuditConfigs;
+            _resultValue.tier = tier;
+            _resultValue.timeZone = timeZone;
+            _resultValue.userLabels = userLabels;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class SecurityPolicyRuleRedirectOptions {
             return this;
         }
         public SecurityPolicyRuleRedirectOptions build() {
-            final var o = new SecurityPolicyRuleRedirectOptions();
-            o.target = target;
-            o.type = type;
-            return o;
+            final var _resultValue = new SecurityPolicyRuleRedirectOptions();
+            _resultValue.target = target;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

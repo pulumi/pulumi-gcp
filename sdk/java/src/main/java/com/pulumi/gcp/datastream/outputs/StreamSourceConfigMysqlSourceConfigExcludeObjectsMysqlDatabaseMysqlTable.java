@@ -73,10 +73,10 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
             return this;
         }
         public StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable build() {
-            final var o = new StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable();
-            o.mysqlColumns = mysqlColumns;
-            o.table = table;
-            return o;
+            final var _resultValue = new StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable();
+            _resultValue.mysqlColumns = mysqlColumns;
+            _resultValue.table = table;
+            return _resultValue;
         }
     }
 }

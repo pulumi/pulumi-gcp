@@ -88,10 +88,10 @@ public final class TriggerBuildArtifacts {
             return this;
         }
         public TriggerBuildArtifacts build() {
-            final var o = new TriggerBuildArtifacts();
-            o.images = images;
-            o.objects = objects;
-            return o;
+            final var _resultValue = new TriggerBuildArtifacts();
+            _resultValue.images = images;
+            _resultValue.objects = objects;
+            return _resultValue;
         }
     }
 }

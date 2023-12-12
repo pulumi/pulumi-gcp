@@ -73,10 +73,10 @@ public final class ConnectionAuthConfigAdditionalVariableEncryptionKeyValue {
             return this;
         }
         public ConnectionAuthConfigAdditionalVariableEncryptionKeyValue build() {
-            final var o = new ConnectionAuthConfigAdditionalVariableEncryptionKeyValue();
-            o.kmsKeyName = kmsKeyName;
-            o.type = type;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigAdditionalVariableEncryptionKeyValue();
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

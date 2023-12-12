@@ -46,9 +46,9 @@ public final class ConnectionGithubEnterpriseConfigServiceDirectoryConfig {
             return this;
         }
         public ConnectionGithubEnterpriseConfigServiceDirectoryConfig build() {
-            final var o = new ConnectionGithubEnterpriseConfigServiceDirectoryConfig();
-            o.service = service;
-            return o;
+            final var _resultValue = new ConnectionGithubEnterpriseConfigServiceDirectoryConfig();
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

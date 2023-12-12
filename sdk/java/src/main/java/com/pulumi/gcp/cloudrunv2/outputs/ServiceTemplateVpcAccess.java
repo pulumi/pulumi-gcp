@@ -95,11 +95,11 @@ public final class ServiceTemplateVpcAccess {
             return networkInterfaces(List.of(networkInterfaces));
         }
         public ServiceTemplateVpcAccess build() {
-            final var o = new ServiceTemplateVpcAccess();
-            o.connector = connector;
-            o.egress = egress;
-            o.networkInterfaces = networkInterfaces;
-            return o;
+            final var _resultValue = new ServiceTemplateVpcAccess();
+            _resultValue.connector = connector;
+            _resultValue.egress = egress;
+            _resultValue.networkInterfaces = networkInterfaces;
+            return _resultValue;
         }
     }
 }

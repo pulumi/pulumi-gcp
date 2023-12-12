@@ -67,10 +67,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigInitializationAc
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigInitializationAction build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigInitializationAction();
-            o.executableFile = executableFile;
-            o.executionTimeout = executionTimeout;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigInitializationAction();
+            _resultValue.executableFile = executableFile;
+            _resultValue.executionTimeout = executionTimeout;
+            return _resultValue;
         }
     }
 }

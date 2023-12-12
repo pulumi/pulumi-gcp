@@ -50,9 +50,9 @@ public final class AttachedClusterBinaryAuthorization {
             return this;
         }
         public AttachedClusterBinaryAuthorization build() {
-            final var o = new AttachedClusterBinaryAuthorization();
-            o.evaluationMode = evaluationMode;
-            return o;
+            final var _resultValue = new AttachedClusterBinaryAuthorization();
+            _resultValue.evaluationMode = evaluationMode;
+            return _resultValue;
         }
     }
 }

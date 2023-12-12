@@ -209,16 +209,16 @@ public final class RegionSecurityPolicyRuleNetworkMatch {
             return userDefinedFields(List.of(userDefinedFields));
         }
         public RegionSecurityPolicyRuleNetworkMatch build() {
-            final var o = new RegionSecurityPolicyRuleNetworkMatch();
-            o.destIpRanges = destIpRanges;
-            o.destPorts = destPorts;
-            o.ipProtocols = ipProtocols;
-            o.srcAsns = srcAsns;
-            o.srcIpRanges = srcIpRanges;
-            o.srcPorts = srcPorts;
-            o.srcRegionCodes = srcRegionCodes;
-            o.userDefinedFields = userDefinedFields;
-            return o;
+            final var _resultValue = new RegionSecurityPolicyRuleNetworkMatch();
+            _resultValue.destIpRanges = destIpRanges;
+            _resultValue.destPorts = destPorts;
+            _resultValue.ipProtocols = ipProtocols;
+            _resultValue.srcAsns = srcAsns;
+            _resultValue.srcIpRanges = srcIpRanges;
+            _resultValue.srcPorts = srcPorts;
+            _resultValue.srcRegionCodes = srcRegionCodes;
+            _resultValue.userDefinedFields = userDefinedFields;
+            return _resultValue;
         }
     }
 }

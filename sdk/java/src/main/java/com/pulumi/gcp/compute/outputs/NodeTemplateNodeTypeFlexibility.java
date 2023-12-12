@@ -88,11 +88,11 @@ public final class NodeTemplateNodeTypeFlexibility {
             return this;
         }
         public NodeTemplateNodeTypeFlexibility build() {
-            final var o = new NodeTemplateNodeTypeFlexibility();
-            o.cpus = cpus;
-            o.localSsd = localSsd;
-            o.memory = memory;
-            return o;
+            final var _resultValue = new NodeTemplateNodeTypeFlexibility();
+            _resultValue.cpus = cpus;
+            _resultValue.localSsd = localSsd;
+            _resultValue.memory = memory;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class BareMetalClusterNetworkConfigSrIovConfig {
             return this;
         }
         public BareMetalClusterNetworkConfigSrIovConfig build() {
-            final var o = new BareMetalClusterNetworkConfigSrIovConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new BareMetalClusterNetworkConfigSrIovConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

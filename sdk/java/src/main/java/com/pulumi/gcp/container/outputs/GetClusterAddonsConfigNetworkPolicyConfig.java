@@ -38,9 +38,9 @@ public final class GetClusterAddonsConfigNetworkPolicyConfig {
             return this;
         }
         public GetClusterAddonsConfigNetworkPolicyConfig build() {
-            final var o = new GetClusterAddonsConfigNetworkPolicyConfig();
-            o.disabled = disabled;
-            return o;
+            final var _resultValue = new GetClusterAddonsConfigNetworkPolicyConfig();
+            _resultValue.disabled = disabled;
+            return _resultValue;
         }
     }
 }

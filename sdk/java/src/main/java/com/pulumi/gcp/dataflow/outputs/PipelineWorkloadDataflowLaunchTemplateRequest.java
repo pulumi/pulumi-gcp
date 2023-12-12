@@ -130,13 +130,13 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequest {
             return this;
         }
         public PipelineWorkloadDataflowLaunchTemplateRequest build() {
-            final var o = new PipelineWorkloadDataflowLaunchTemplateRequest();
-            o.gcsPath = gcsPath;
-            o.launchParameters = launchParameters;
-            o.location = location;
-            o.projectId = projectId;
-            o.validateOnly = validateOnly;
-            return o;
+            final var _resultValue = new PipelineWorkloadDataflowLaunchTemplateRequest();
+            _resultValue.gcsPath = gcsPath;
+            _resultValue.launchParameters = launchParameters;
+            _resultValue.location = location;
+            _resultValue.projectId = projectId;
+            _resultValue.validateOnly = validateOnly;
+            return _resultValue;
         }
     }
 }

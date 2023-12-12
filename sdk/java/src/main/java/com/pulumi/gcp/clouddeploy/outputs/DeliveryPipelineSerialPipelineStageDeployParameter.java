@@ -67,10 +67,10 @@ public final class DeliveryPipelineSerialPipelineStageDeployParameter {
             return this;
         }
         public DeliveryPipelineSerialPipelineStageDeployParameter build() {
-            final var o = new DeliveryPipelineSerialPipelineStageDeployParameter();
-            o.matchTargetLabels = matchTargetLabels;
-            o.values = values;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageDeployParameter();
+            _resultValue.matchTargetLabels = matchTargetLabels;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

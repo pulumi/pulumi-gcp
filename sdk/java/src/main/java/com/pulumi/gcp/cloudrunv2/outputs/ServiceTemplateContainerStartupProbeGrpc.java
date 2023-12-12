@@ -74,10 +74,10 @@ public final class ServiceTemplateContainerStartupProbeGrpc {
             return this;
         }
         public ServiceTemplateContainerStartupProbeGrpc build() {
-            final var o = new ServiceTemplateContainerStartupProbeGrpc();
-            o.port = port;
-            o.service = service;
-            return o;
+            final var _resultValue = new ServiceTemplateContainerStartupProbeGrpc();
+            _resultValue.port = port;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

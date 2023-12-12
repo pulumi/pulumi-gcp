@@ -105,12 +105,12 @@ public final class PolicySpecRuleCondition {
             return this;
         }
         public PolicySpecRuleCondition build() {
-            final var o = new PolicySpecRuleCondition();
-            o.description = description;
-            o.expression = expression;
-            o.location = location;
-            o.title = title;
-            return o;
+            final var _resultValue = new PolicySpecRuleCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.location = location;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

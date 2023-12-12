@@ -135,13 +135,13 @@ public final class ProjectDefaultConfigSignInHashConfig {
             return this;
         }
         public ProjectDefaultConfigSignInHashConfig build() {
-            final var o = new ProjectDefaultConfigSignInHashConfig();
-            o.algorithm = algorithm;
-            o.memoryCost = memoryCost;
-            o.rounds = rounds;
-            o.saltSeparator = saltSeparator;
-            o.signerKey = signerKey;
-            return o;
+            final var _resultValue = new ProjectDefaultConfigSignInHashConfig();
+            _resultValue.algorithm = algorithm;
+            _resultValue.memoryCost = memoryCost;
+            _resultValue.rounds = rounds;
+            _resultValue.saltSeparator = saltSeparator;
+            _resultValue.signerKey = signerKey;
+            return _resultValue;
         }
     }
 }

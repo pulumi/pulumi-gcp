@@ -86,11 +86,11 @@ public final class ClusterMigrationSource {
             return this;
         }
         public ClusterMigrationSource build() {
-            final var o = new ClusterMigrationSource();
-            o.hostPort = hostPort;
-            o.referenceId = referenceId;
-            o.sourceType = sourceType;
-            return o;
+            final var _resultValue = new ClusterMigrationSource();
+            _resultValue.hostPort = hostPort;
+            _resultValue.referenceId = referenceId;
+            _resultValue.sourceType = sourceType;
+            return _resultValue;
         }
     }
 }

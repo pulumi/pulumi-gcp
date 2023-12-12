@@ -38,9 +38,9 @@ public final class NodePoolNodeConfigHostMaintenancePolicy {
             return this;
         }
         public NodePoolNodeConfigHostMaintenancePolicy build() {
-            final var o = new NodePoolNodeConfigHostMaintenancePolicy();
-            o.maintenanceInterval = maintenanceInterval;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigHostMaintenancePolicy();
+            _resultValue.maintenanceInterval = maintenanceInterval;
+            return _resultValue;
         }
     }
 }

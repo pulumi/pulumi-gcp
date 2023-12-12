@@ -95,12 +95,12 @@ public final class GetFhirStoreIamPolicyResult {
             return this;
         }
         public GetFhirStoreIamPolicyResult build() {
-            final var o = new GetFhirStoreIamPolicyResult();
-            o.etag = etag;
-            o.fhirStoreId = fhirStoreId;
-            o.id = id;
-            o.policyData = policyData;
-            return o;
+            final var _resultValue = new GetFhirStoreIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.fhirStoreId = fhirStoreId;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class ProjectBucketConfigIndexConfig {
             return this;
         }
         public ProjectBucketConfigIndexConfig build() {
-            final var o = new ProjectBucketConfigIndexConfig();
-            o.fieldPath = fieldPath;
-            o.type = type;
-            return o;
+            final var _resultValue = new ProjectBucketConfigIndexConfig();
+            _resultValue.fieldPath = fieldPath;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

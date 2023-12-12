@@ -48,9 +48,9 @@ public final class EndpointPolicyEndpointMatcher {
             return this;
         }
         public EndpointPolicyEndpointMatcher build() {
-            final var o = new EndpointPolicyEndpointMatcher();
-            o.metadataLabelMatcher = metadataLabelMatcher;
-            return o;
+            final var _resultValue = new EndpointPolicyEndpointMatcher();
+            _resultValue.metadataLabelMatcher = metadataLabelMatcher;
+            return _resultValue;
         }
     }
 }

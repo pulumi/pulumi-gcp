@@ -143,13 +143,13 @@ public final class JobRetryConfig {
             return this;
         }
         public JobRetryConfig build() {
-            final var o = new JobRetryConfig();
-            o.maxBackoffDuration = maxBackoffDuration;
-            o.maxDoublings = maxDoublings;
-            o.maxRetryDuration = maxRetryDuration;
-            o.minBackoffDuration = minBackoffDuration;
-            o.retryCount = retryCount;
-            return o;
+            final var _resultValue = new JobRetryConfig();
+            _resultValue.maxBackoffDuration = maxBackoffDuration;
+            _resultValue.maxDoublings = maxDoublings;
+            _resultValue.maxRetryDuration = maxRetryDuration;
+            _resultValue.minBackoffDuration = minBackoffDuration;
+            _resultValue.retryCount = retryCount;
+            return _resultValue;
         }
     }
 }

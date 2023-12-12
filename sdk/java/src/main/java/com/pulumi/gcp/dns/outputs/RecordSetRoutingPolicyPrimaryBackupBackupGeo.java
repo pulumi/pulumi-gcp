@@ -85,11 +85,11 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
             return rrdatas(List.of(rrdatas));
         }
         public RecordSetRoutingPolicyPrimaryBackupBackupGeo build() {
-            final var o = new RecordSetRoutingPolicyPrimaryBackupBackupGeo();
-            o.healthCheckedTargets = healthCheckedTargets;
-            o.location = location;
-            o.rrdatas = rrdatas;
-            return o;
+            final var _resultValue = new RecordSetRoutingPolicyPrimaryBackupBackupGeo();
+            _resultValue.healthCheckedTargets = healthCheckedTargets;
+            _resultValue.location = location;
+            _resultValue.rrdatas = rrdatas;
+            return _resultValue;
         }
     }
 }

@@ -94,11 +94,11 @@ public final class ResourcePolicySnapshotSchedulePolicy {
             return this;
         }
         public ResourcePolicySnapshotSchedulePolicy build() {
-            final var o = new ResourcePolicySnapshotSchedulePolicy();
-            o.retentionPolicy = retentionPolicy;
-            o.schedule = schedule;
-            o.snapshotProperties = snapshotProperties;
-            return o;
+            final var _resultValue = new ResourcePolicySnapshotSchedulePolicy();
+            _resultValue.retentionPolicy = retentionPolicy;
+            _resultValue.schedule = schedule;
+            _resultValue.snapshotProperties = snapshotProperties;
+            return _resultValue;
         }
     }
 }

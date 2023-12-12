@@ -78,10 +78,10 @@ public final class ClusterAutomatedBackupPolicyWeeklySchedule {
             return startTimes(List.of(startTimes));
         }
         public ClusterAutomatedBackupPolicyWeeklySchedule build() {
-            final var o = new ClusterAutomatedBackupPolicyWeeklySchedule();
-            o.daysOfWeeks = daysOfWeeks;
-            o.startTimes = startTimes;
-            return o;
+            final var _resultValue = new ClusterAutomatedBackupPolicyWeeklySchedule();
+            _resultValue.daysOfWeeks = daysOfWeeks;
+            _resultValue.startTimes = startTimes;
+            return _resultValue;
         }
     }
 }

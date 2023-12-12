@@ -67,10 +67,10 @@ public final class AwsNodePoolUpdateSettingsSurgeSettings {
             return this;
         }
         public AwsNodePoolUpdateSettingsSurgeSettings build() {
-            final var o = new AwsNodePoolUpdateSettingsSurgeSettings();
-            o.maxSurge = maxSurge;
-            o.maxUnavailable = maxUnavailable;
-            return o;
+            final var _resultValue = new AwsNodePoolUpdateSettingsSurgeSettings();
+            _resultValue.maxSurge = maxSurge;
+            _resultValue.maxUnavailable = maxUnavailable;
+            return _resultValue;
         }
     }
 }

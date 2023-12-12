@@ -136,13 +136,13 @@ public final class AccessLevelsAccessLevel {
             return this;
         }
         public AccessLevelsAccessLevel build() {
-            final var o = new AccessLevelsAccessLevel();
-            o.basic = basic;
-            o.custom = custom;
-            o.description = description;
-            o.name = name;
-            o.title = title;
-            return o;
+            final var _resultValue = new AccessLevelsAccessLevel();
+            _resultValue.basic = basic;
+            _resultValue.custom = custom;
+            _resultValue.description = description;
+            _resultValue.name = name;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

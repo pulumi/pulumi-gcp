@@ -92,11 +92,11 @@ public final class FeatureStateState {
             return this;
         }
         public FeatureStateState build() {
-            final var o = new FeatureStateState();
-            o.code = code;
-            o.description = description;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new FeatureStateState();
+            _resultValue.code = code;
+            _resultValue.description = description;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

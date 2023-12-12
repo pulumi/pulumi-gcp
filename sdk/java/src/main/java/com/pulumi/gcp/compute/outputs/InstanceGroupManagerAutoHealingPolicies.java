@@ -68,10 +68,10 @@ public final class InstanceGroupManagerAutoHealingPolicies {
             return this;
         }
         public InstanceGroupManagerAutoHealingPolicies build() {
-            final var o = new InstanceGroupManagerAutoHealingPolicies();
-            o.healthCheck = healthCheck;
-            o.initialDelaySec = initialDelaySec;
-            return o;
+            final var _resultValue = new InstanceGroupManagerAutoHealingPolicies();
+            _resultValue.healthCheck = healthCheck;
+            _resultValue.initialDelaySec = initialDelaySec;
+            return _resultValue;
         }
     }
 }

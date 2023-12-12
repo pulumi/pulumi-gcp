@@ -40,9 +40,9 @@ public final class EnvironmentConfigRecoveryConfig {
             return this;
         }
         public EnvironmentConfigRecoveryConfig build() {
-            final var o = new EnvironmentConfigRecoveryConfig();
-            o.scheduledSnapshotsConfig = scheduledSnapshotsConfig;
-            return o;
+            final var _resultValue = new EnvironmentConfigRecoveryConfig();
+            _resultValue.scheduledSnapshotsConfig = scheduledSnapshotsConfig;
+            return _resultValue;
         }
     }
 }

@@ -168,15 +168,15 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
             return this;
         }
         public StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn build() {
-            final var o = new StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn();
-            o.collation = collation;
-            o.column = column;
-            o.dataType = dataType;
-            o.length = length;
-            o.nullable = nullable;
-            o.ordinalPosition = ordinalPosition;
-            o.primaryKey = primaryKey;
-            return o;
+            final var _resultValue = new StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn();
+            _resultValue.collation = collation;
+            _resultValue.column = column;
+            _resultValue.dataType = dataType;
+            _resultValue.length = length;
+            _resultValue.nullable = nullable;
+            _resultValue.ordinalPosition = ordinalPosition;
+            _resultValue.primaryKey = primaryKey;
+            return _resultValue;
         }
     }
 }

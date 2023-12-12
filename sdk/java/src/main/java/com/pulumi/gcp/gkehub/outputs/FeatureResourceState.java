@@ -74,10 +74,10 @@ public final class FeatureResourceState {
             return this;
         }
         public FeatureResourceState build() {
-            final var o = new FeatureResourceState();
-            o.hasResources = hasResources;
-            o.state = state;
-            return o;
+            final var _resultValue = new FeatureResourceState();
+            _resultValue.hasResources = hasResources;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

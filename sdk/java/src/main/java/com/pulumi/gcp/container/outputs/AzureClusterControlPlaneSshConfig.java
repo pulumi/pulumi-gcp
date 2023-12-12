@@ -46,9 +46,9 @@ public final class AzureClusterControlPlaneSshConfig {
             return this;
         }
         public AzureClusterControlPlaneSshConfig build() {
-            final var o = new AzureClusterControlPlaneSshConfig();
-            o.authorizedKey = authorizedKey;
-            return o;
+            final var _resultValue = new AzureClusterControlPlaneSshConfig();
+            _resultValue.authorizedKey = authorizedKey;
+            return _resultValue;
         }
     }
 }

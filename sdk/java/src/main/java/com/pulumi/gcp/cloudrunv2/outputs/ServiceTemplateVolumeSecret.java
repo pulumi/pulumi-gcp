@@ -94,11 +94,11 @@ public final class ServiceTemplateVolumeSecret {
             return this;
         }
         public ServiceTemplateVolumeSecret build() {
-            final var o = new ServiceTemplateVolumeSecret();
-            o.defaultMode = defaultMode;
-            o.items = items;
-            o.secret = secret;
-            return o;
+            final var _resultValue = new ServiceTemplateVolumeSecret();
+            _resultValue.defaultMode = defaultMode;
+            _resultValue.items = items;
+            _resultValue.secret = secret;
+            return _resultValue;
         }
     }
 }

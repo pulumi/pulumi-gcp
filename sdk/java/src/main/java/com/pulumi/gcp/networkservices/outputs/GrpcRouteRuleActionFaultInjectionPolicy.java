@@ -72,10 +72,10 @@ public final class GrpcRouteRuleActionFaultInjectionPolicy {
             return this;
         }
         public GrpcRouteRuleActionFaultInjectionPolicy build() {
-            final var o = new GrpcRouteRuleActionFaultInjectionPolicy();
-            o.abort = abort;
-            o.delay = delay;
-            return o;
+            final var _resultValue = new GrpcRouteRuleActionFaultInjectionPolicy();
+            _resultValue.abort = abort;
+            _resultValue.delay = delay;
+            return _resultValue;
         }
     }
 }

@@ -62,11 +62,11 @@ public final class RegionDiskIamMemberCondition {
             return this;
         }
         public RegionDiskIamMemberCondition build() {
-            final var o = new RegionDiskIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new RegionDiskIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

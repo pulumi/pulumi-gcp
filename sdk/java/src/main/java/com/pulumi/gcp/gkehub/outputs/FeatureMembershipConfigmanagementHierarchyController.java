@@ -86,11 +86,11 @@ public final class FeatureMembershipConfigmanagementHierarchyController {
             return this;
         }
         public FeatureMembershipConfigmanagementHierarchyController build() {
-            final var o = new FeatureMembershipConfigmanagementHierarchyController();
-            o.enableHierarchicalResourceQuota = enableHierarchicalResourceQuota;
-            o.enablePodTreeLabels = enablePodTreeLabels;
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new FeatureMembershipConfigmanagementHierarchyController();
+            _resultValue.enableHierarchicalResourceQuota = enableHierarchicalResourceQuota;
+            _resultValue.enablePodTreeLabels = enablePodTreeLabels;
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

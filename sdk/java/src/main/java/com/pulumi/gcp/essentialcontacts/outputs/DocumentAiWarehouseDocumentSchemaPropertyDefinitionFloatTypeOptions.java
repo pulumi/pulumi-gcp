@@ -25,8 +25,8 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeO
         }
 
         public DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions build() {
-            final var o = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions();
-            return o;
+            final var _resultValue = new DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions();
+            return _resultValue;
         }
     }
 }

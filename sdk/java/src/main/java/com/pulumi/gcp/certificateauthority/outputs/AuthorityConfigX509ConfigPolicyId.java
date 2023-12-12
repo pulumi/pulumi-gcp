@@ -50,9 +50,9 @@ public final class AuthorityConfigX509ConfigPolicyId {
             return objectIdPaths(List.of(objectIdPaths));
         }
         public AuthorityConfigX509ConfigPolicyId build() {
-            final var o = new AuthorityConfigX509ConfigPolicyId();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new AuthorityConfigX509ConfigPolicyId();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

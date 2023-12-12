@@ -71,10 +71,10 @@ public final class InstanceNode {
             return this;
         }
         public InstanceNode build() {
-            final var o = new InstanceNode();
-            o.id = id;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new InstanceNode();
+            _resultValue.id = id;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

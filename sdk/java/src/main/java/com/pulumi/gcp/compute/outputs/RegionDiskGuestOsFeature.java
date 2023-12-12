@@ -48,9 +48,9 @@ public final class RegionDiskGuestOsFeature {
             return this;
         }
         public RegionDiskGuestOsFeature build() {
-            final var o = new RegionDiskGuestOsFeature();
-            o.type = type;
-            return o;
+            final var _resultValue = new RegionDiskGuestOsFeature();
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

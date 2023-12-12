@@ -102,11 +102,11 @@ public final class ClusterNodePoolNodeConfigReservationAffinity {
             return values(List.of(values));
         }
         public ClusterNodePoolNodeConfigReservationAffinity build() {
-            final var o = new ClusterNodePoolNodeConfigReservationAffinity();
-            o.consumeReservationType = consumeReservationType;
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new ClusterNodePoolNodeConfigReservationAffinity();
+            _resultValue.consumeReservationType = consumeReservationType;
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

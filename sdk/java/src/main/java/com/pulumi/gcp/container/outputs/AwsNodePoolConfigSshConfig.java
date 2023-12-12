@@ -46,9 +46,9 @@ public final class AwsNodePoolConfigSshConfig {
             return this;
         }
         public AwsNodePoolConfigSshConfig build() {
-            final var o = new AwsNodePoolConfigSshConfig();
-            o.ec2KeyPair = ec2KeyPair;
-            return o;
+            final var _resultValue = new AwsNodePoolConfigSshConfig();
+            _resultValue.ec2KeyPair = ec2KeyPair;
+            return _resultValue;
         }
     }
 }

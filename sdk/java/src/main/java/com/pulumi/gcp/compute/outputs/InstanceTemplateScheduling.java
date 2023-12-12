@@ -233,18 +233,18 @@ public final class InstanceTemplateScheduling {
             return this;
         }
         public InstanceTemplateScheduling build() {
-            final var o = new InstanceTemplateScheduling();
-            o.automaticRestart = automaticRestart;
-            o.instanceTerminationAction = instanceTerminationAction;
-            o.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;
-            o.maintenanceInterval = maintenanceInterval;
-            o.maxRunDuration = maxRunDuration;
-            o.minNodeCpus = minNodeCpus;
-            o.nodeAffinities = nodeAffinities;
-            o.onHostMaintenance = onHostMaintenance;
-            o.preemptible = preemptible;
-            o.provisioningModel = provisioningModel;
-            return o;
+            final var _resultValue = new InstanceTemplateScheduling();
+            _resultValue.automaticRestart = automaticRestart;
+            _resultValue.instanceTerminationAction = instanceTerminationAction;
+            _resultValue.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;
+            _resultValue.maintenanceInterval = maintenanceInterval;
+            _resultValue.maxRunDuration = maxRunDuration;
+            _resultValue.minNodeCpus = minNodeCpus;
+            _resultValue.nodeAffinities = nodeAffinities;
+            _resultValue.onHostMaintenance = onHostMaintenance;
+            _resultValue.preemptible = preemptible;
+            _resultValue.provisioningModel = provisioningModel;
+            return _resultValue;
         }
     }
 }

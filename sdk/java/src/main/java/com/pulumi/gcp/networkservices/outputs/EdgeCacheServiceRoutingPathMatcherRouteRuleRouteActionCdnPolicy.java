@@ -352,20 +352,20 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
             return this;
         }
         public EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy build() {
-            final var o = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy();
-            o.addSignatures = addSignatures;
-            o.cacheKeyPolicy = cacheKeyPolicy;
-            o.cacheMode = cacheMode;
-            o.clientTtl = clientTtl;
-            o.defaultTtl = defaultTtl;
-            o.maxTtl = maxTtl;
-            o.negativeCaching = negativeCaching;
-            o.negativeCachingPolicy = negativeCachingPolicy;
-            o.signedRequestKeyset = signedRequestKeyset;
-            o.signedRequestMaximumExpirationTtl = signedRequestMaximumExpirationTtl;
-            o.signedRequestMode = signedRequestMode;
-            o.signedTokenOptions = signedTokenOptions;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy();
+            _resultValue.addSignatures = addSignatures;
+            _resultValue.cacheKeyPolicy = cacheKeyPolicy;
+            _resultValue.cacheMode = cacheMode;
+            _resultValue.clientTtl = clientTtl;
+            _resultValue.defaultTtl = defaultTtl;
+            _resultValue.maxTtl = maxTtl;
+            _resultValue.negativeCaching = negativeCaching;
+            _resultValue.negativeCachingPolicy = negativeCachingPolicy;
+            _resultValue.signedRequestKeyset = signedRequestKeyset;
+            _resultValue.signedRequestMaximumExpirationTtl = signedRequestMaximumExpirationTtl;
+            _resultValue.signedRequestMode = signedRequestMode;
+            _resultValue.signedTokenOptions = signedTokenOptions;
+            return _resultValue;
         }
     }
 }

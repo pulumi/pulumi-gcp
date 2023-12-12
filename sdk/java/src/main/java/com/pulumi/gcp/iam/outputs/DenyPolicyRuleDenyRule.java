@@ -148,13 +148,13 @@ public final class DenyPolicyRuleDenyRule {
             return exceptionPrincipals(List.of(exceptionPrincipals));
         }
         public DenyPolicyRuleDenyRule build() {
-            final var o = new DenyPolicyRuleDenyRule();
-            o.denialCondition = denialCondition;
-            o.deniedPermissions = deniedPermissions;
-            o.deniedPrincipals = deniedPrincipals;
-            o.exceptionPermissions = exceptionPermissions;
-            o.exceptionPrincipals = exceptionPrincipals;
-            return o;
+            final var _resultValue = new DenyPolicyRuleDenyRule();
+            _resultValue.denialCondition = denialCondition;
+            _resultValue.deniedPermissions = deniedPermissions;
+            _resultValue.deniedPrincipals = deniedPrincipals;
+            _resultValue.exceptionPermissions = exceptionPermissions;
+            _resultValue.exceptionPrincipals = exceptionPrincipals;
+            return _resultValue;
         }
     }
 }

@@ -267,19 +267,19 @@ public final class KeystoresAliasesSelfSignedCertCertsInfoCertInfo {
             return this;
         }
         public KeystoresAliasesSelfSignedCertCertsInfoCertInfo build() {
-            final var o = new KeystoresAliasesSelfSignedCertCertsInfoCertInfo();
-            o.basicConstraints = basicConstraints;
-            o.expiryDate = expiryDate;
-            o.isValid = isValid;
-            o.issuer = issuer;
-            o.publicKey = publicKey;
-            o.serialNumber = serialNumber;
-            o.sigAlgName = sigAlgName;
-            o.subject = subject;
-            o.subjectAlternativeNames = subjectAlternativeNames;
-            o.validFrom = validFrom;
-            o.version = version;
-            return o;
+            final var _resultValue = new KeystoresAliasesSelfSignedCertCertsInfoCertInfo();
+            _resultValue.basicConstraints = basicConstraints;
+            _resultValue.expiryDate = expiryDate;
+            _resultValue.isValid = isValid;
+            _resultValue.issuer = issuer;
+            _resultValue.publicKey = publicKey;
+            _resultValue.serialNumber = serialNumber;
+            _resultValue.sigAlgName = sigAlgName;
+            _resultValue.subject = subject;
+            _resultValue.subjectAlternativeNames = subjectAlternativeNames;
+            _resultValue.validFrom = validFrom;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

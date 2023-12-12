@@ -48,9 +48,9 @@ public final class FeatureMembershipConfigmanagementBinauthz {
             return this;
         }
         public FeatureMembershipConfigmanagementBinauthz build() {
-            final var o = new FeatureMembershipConfigmanagementBinauthz();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new FeatureMembershipConfigmanagementBinauthz();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

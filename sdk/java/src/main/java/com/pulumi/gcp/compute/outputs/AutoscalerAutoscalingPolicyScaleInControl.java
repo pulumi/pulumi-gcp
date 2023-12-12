@@ -72,10 +72,10 @@ public final class AutoscalerAutoscalingPolicyScaleInControl {
             return this;
         }
         public AutoscalerAutoscalingPolicyScaleInControl build() {
-            final var o = new AutoscalerAutoscalingPolicyScaleInControl();
-            o.maxScaledInReplicas = maxScaledInReplicas;
-            o.timeWindowSec = timeWindowSec;
-            return o;
+            final var _resultValue = new AutoscalerAutoscalingPolicyScaleInControl();
+            _resultValue.maxScaledInReplicas = maxScaledInReplicas;
+            _resultValue.timeWindowSec = timeWindowSec;
+            return _resultValue;
         }
     }
 }

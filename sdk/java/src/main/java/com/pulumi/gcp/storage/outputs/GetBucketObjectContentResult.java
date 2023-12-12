@@ -309,31 +309,31 @@ public final class GetBucketObjectContentResult {
             return this;
         }
         public GetBucketObjectContentResult build() {
-            final var o = new GetBucketObjectContentResult();
-            o.bucket = bucket;
-            o.cacheControl = cacheControl;
-            o.content = content;
-            o.contentDisposition = contentDisposition;
-            o.contentEncoding = contentEncoding;
-            o.contentLanguage = contentLanguage;
-            o.contentType = contentType;
-            o.crc32c = crc32c;
-            o.customerEncryptions = customerEncryptions;
-            o.detectMd5hash = detectMd5hash;
-            o.eventBasedHold = eventBasedHold;
-            o.id = id;
-            o.kmsKeyName = kmsKeyName;
-            o.md5hash = md5hash;
-            o.mediaLink = mediaLink;
-            o.metadata = metadata;
-            o.name = name;
-            o.outputName = outputName;
-            o.retentions = retentions;
-            o.selfLink = selfLink;
-            o.source = source;
-            o.storageClass = storageClass;
-            o.temporaryHold = temporaryHold;
-            return o;
+            final var _resultValue = new GetBucketObjectContentResult();
+            _resultValue.bucket = bucket;
+            _resultValue.cacheControl = cacheControl;
+            _resultValue.content = content;
+            _resultValue.contentDisposition = contentDisposition;
+            _resultValue.contentEncoding = contentEncoding;
+            _resultValue.contentLanguage = contentLanguage;
+            _resultValue.contentType = contentType;
+            _resultValue.crc32c = crc32c;
+            _resultValue.customerEncryptions = customerEncryptions;
+            _resultValue.detectMd5hash = detectMd5hash;
+            _resultValue.eventBasedHold = eventBasedHold;
+            _resultValue.id = id;
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.md5hash = md5hash;
+            _resultValue.mediaLink = mediaLink;
+            _resultValue.metadata = metadata;
+            _resultValue.name = name;
+            _resultValue.outputName = outputName;
+            _resultValue.retentions = retentions;
+            _resultValue.selfLink = selfLink;
+            _resultValue.source = source;
+            _resultValue.storageClass = storageClass;
+            _resultValue.temporaryHold = temporaryHold;
+            return _resultValue;
         }
     }
 }

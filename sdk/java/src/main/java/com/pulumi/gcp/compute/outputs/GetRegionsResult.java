@@ -93,12 +93,12 @@ public final class GetRegionsResult {
             return this;
         }
         public GetRegionsResult build() {
-            final var o = new GetRegionsResult();
-            o.id = id;
-            o.names = names;
-            o.project = project;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRegionsResult();
+            _resultValue.id = id;
+            _resultValue.names = names;
+            _resultValue.project = project;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

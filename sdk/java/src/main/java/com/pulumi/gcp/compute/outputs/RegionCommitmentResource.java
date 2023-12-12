@@ -94,11 +94,11 @@ public final class RegionCommitmentResource {
             return this;
         }
         public RegionCommitmentResource build() {
-            final var o = new RegionCommitmentResource();
-            o.acceleratorType = acceleratorType;
-            o.amount = amount;
-            o.type = type;
-            return o;
+            final var _resultValue = new RegionCommitmentResource();
+            _resultValue.acceleratorType = acceleratorType;
+            _resultValue.amount = amount;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

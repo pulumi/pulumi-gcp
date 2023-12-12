@@ -48,9 +48,9 @@ public final class DatabaseInstanceSettingsAdvancedMachineFeatures {
             return this;
         }
         public DatabaseInstanceSettingsAdvancedMachineFeatures build() {
-            final var o = new DatabaseInstanceSettingsAdvancedMachineFeatures();
-            o.threadsPerCore = threadsPerCore;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettingsAdvancedMachineFeatures();
+            _resultValue.threadsPerCore = threadsPerCore;
+            return _resultValue;
         }
     }
 }

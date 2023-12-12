@@ -52,10 +52,10 @@ public final class Batching {
             return this;
         }
         public Batching build() {
-            final var o = new Batching();
-            o.enableBatching = enableBatching;
-            o.sendAfter = sendAfter;
-            return o;
+            final var _resultValue = new Batching();
+            _resultValue.enableBatching = enableBatching;
+            _resultValue.sendAfter = sendAfter;
+            return _resultValue;
         }
     }
 }

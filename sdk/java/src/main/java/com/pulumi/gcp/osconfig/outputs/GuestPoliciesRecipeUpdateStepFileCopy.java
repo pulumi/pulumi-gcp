@@ -118,12 +118,12 @@ public final class GuestPoliciesRecipeUpdateStepFileCopy {
             return this;
         }
         public GuestPoliciesRecipeUpdateStepFileCopy build() {
-            final var o = new GuestPoliciesRecipeUpdateStepFileCopy();
-            o.artifactId = artifactId;
-            o.destination = destination;
-            o.overwrite = overwrite;
-            o.permissions = permissions;
-            return o;
+            final var _resultValue = new GuestPoliciesRecipeUpdateStepFileCopy();
+            _resultValue.artifactId = artifactId;
+            _resultValue.destination = destination;
+            _resultValue.overwrite = overwrite;
+            _resultValue.permissions = permissions;
+            return _resultValue;
         }
     }
 }

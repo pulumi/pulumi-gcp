@@ -71,10 +71,10 @@ public final class ProjectDefaultConfigSignInEmail {
             return this;
         }
         public ProjectDefaultConfigSignInEmail build() {
-            final var o = new ProjectDefaultConfigSignInEmail();
-            o.enabled = enabled;
-            o.passwordRequired = passwordRequired;
-            return o;
+            final var _resultValue = new ProjectDefaultConfigSignInEmail();
+            _resultValue.enabled = enabled;
+            _resultValue.passwordRequired = passwordRequired;
+            return _resultValue;
         }
     }
 }

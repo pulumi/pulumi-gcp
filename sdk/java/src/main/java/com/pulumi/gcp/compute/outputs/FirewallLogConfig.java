@@ -48,9 +48,9 @@ public final class FirewallLogConfig {
             return this;
         }
         public FirewallLogConfig build() {
-            final var o = new FirewallLogConfig();
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new FirewallLogConfig();
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

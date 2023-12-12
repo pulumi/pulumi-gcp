@@ -69,10 +69,10 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky
             return this;
         }
         public SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky build() {
-            final var o = new SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky();
-            o.operator = operator;
-            o.value = value;
-            return o;
+            final var _resultValue = new SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky();
+            _resultValue.operator = operator;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

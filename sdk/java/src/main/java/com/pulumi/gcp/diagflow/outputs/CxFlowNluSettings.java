@@ -101,11 +101,11 @@ public final class CxFlowNluSettings {
             return this;
         }
         public CxFlowNluSettings build() {
-            final var o = new CxFlowNluSettings();
-            o.classificationThreshold = classificationThreshold;
-            o.modelTrainingMode = modelTrainingMode;
-            o.modelType = modelType;
-            return o;
+            final var _resultValue = new CxFlowNluSettings();
+            _resultValue.classificationThreshold = classificationThreshold;
+            _resultValue.modelTrainingMode = modelTrainingMode;
+            _resultValue.modelType = modelType;
+            return _resultValue;
         }
     }
 }

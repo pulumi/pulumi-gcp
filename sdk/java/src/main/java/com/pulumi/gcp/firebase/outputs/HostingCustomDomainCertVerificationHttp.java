@@ -109,12 +109,12 @@ public final class HostingCustomDomainCertVerificationHttp {
             return this;
         }
         public HostingCustomDomainCertVerificationHttp build() {
-            final var o = new HostingCustomDomainCertVerificationHttp();
-            o.desired = desired;
-            o.discovered = discovered;
-            o.lastCheckTime = lastCheckTime;
-            o.path = path;
-            return o;
+            final var _resultValue = new HostingCustomDomainCertVerificationHttp();
+            _resultValue.desired = desired;
+            _resultValue.discovered = discovered;
+            _resultValue.lastCheckTime = lastCheckTime;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

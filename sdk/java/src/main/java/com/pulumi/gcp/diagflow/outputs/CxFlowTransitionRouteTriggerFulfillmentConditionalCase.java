@@ -50,9 +50,9 @@ public final class CxFlowTransitionRouteTriggerFulfillmentConditionalCase {
             return this;
         }
         public CxFlowTransitionRouteTriggerFulfillmentConditionalCase build() {
-            final var o = new CxFlowTransitionRouteTriggerFulfillmentConditionalCase();
-            o.cases = cases;
-            return o;
+            final var _resultValue = new CxFlowTransitionRouteTriggerFulfillmentConditionalCase();
+            _resultValue.cases = cases;
+            return _resultValue;
         }
     }
 }

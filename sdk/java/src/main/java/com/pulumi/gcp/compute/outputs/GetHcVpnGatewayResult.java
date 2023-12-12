@@ -141,17 +141,17 @@ public final class GetHcVpnGatewayResult {
             return vpnInterfaces(List.of(vpnInterfaces));
         }
         public GetHcVpnGatewayResult build() {
-            final var o = new GetHcVpnGatewayResult();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.network = network;
-            o.project = project;
-            o.region = region;
-            o.selfLink = selfLink;
-            o.stackType = stackType;
-            o.vpnInterfaces = vpnInterfaces;
-            return o;
+            final var _resultValue = new GetHcVpnGatewayResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.selfLink = selfLink;
+            _resultValue.stackType = stackType;
+            _resultValue.vpnInterfaces = vpnInterfaces;
+            return _resultValue;
         }
     }
 }

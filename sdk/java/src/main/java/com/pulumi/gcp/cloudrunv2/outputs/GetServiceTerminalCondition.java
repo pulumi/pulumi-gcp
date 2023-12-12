@@ -115,16 +115,16 @@ public final class GetServiceTerminalCondition {
             return this;
         }
         public GetServiceTerminalCondition build() {
-            final var o = new GetServiceTerminalCondition();
-            o.executionReason = executionReason;
-            o.lastTransitionTime = lastTransitionTime;
-            o.message = message;
-            o.reason = reason;
-            o.revisionReason = revisionReason;
-            o.severity = severity;
-            o.state = state;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetServiceTerminalCondition();
+            _resultValue.executionReason = executionReason;
+            _resultValue.lastTransitionTime = lastTransitionTime;
+            _resultValue.message = message;
+            _resultValue.reason = reason;
+            _resultValue.revisionReason = revisionReason;
+            _resultValue.severity = severity;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

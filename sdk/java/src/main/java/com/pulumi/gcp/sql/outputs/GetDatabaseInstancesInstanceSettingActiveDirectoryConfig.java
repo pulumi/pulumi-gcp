@@ -38,9 +38,9 @@ public final class GetDatabaseInstancesInstanceSettingActiveDirectoryConfig {
             return this;
         }
         public GetDatabaseInstancesInstanceSettingActiveDirectoryConfig build() {
-            final var o = new GetDatabaseInstancesInstanceSettingActiveDirectoryConfig();
-            o.domain = domain;
-            return o;
+            final var _resultValue = new GetDatabaseInstancesInstanceSettingActiveDirectoryConfig();
+            _resultValue.domain = domain;
+            return _resultValue;
         }
     }
 }

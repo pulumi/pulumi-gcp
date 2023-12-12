@@ -84,11 +84,11 @@ public final class TableRangePartitioningRange {
             return this;
         }
         public TableRangePartitioningRange build() {
-            final var o = new TableRangePartitioningRange();
-            o.end = end;
-            o.interval = interval;
-            o.start = start;
-            return o;
+            final var _resultValue = new TableRangePartitioningRange();
+            _resultValue.end = end;
+            _resultValue.interval = interval;
+            _resultValue.start = start;
+            return _resultValue;
         }
     }
 }

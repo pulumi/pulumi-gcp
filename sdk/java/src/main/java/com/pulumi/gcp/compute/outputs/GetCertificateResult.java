@@ -159,19 +159,19 @@ public final class GetCertificateResult {
             return this;
         }
         public GetCertificateResult build() {
-            final var o = new GetCertificateResult();
-            o.certificate = certificate;
-            o.certificateId = certificateId;
-            o.creationTimestamp = creationTimestamp;
-            o.description = description;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.name = name;
-            o.namePrefix = namePrefix;
-            o.privateKey = privateKey;
-            o.project = project;
-            o.selfLink = selfLink;
-            return o;
+            final var _resultValue = new GetCertificateResult();
+            _resultValue.certificate = certificate;
+            _resultValue.certificateId = certificateId;
+            _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.description = description;
+            _resultValue.expireTime = expireTime;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.namePrefix = namePrefix;
+            _resultValue.privateKey = privateKey;
+            _resultValue.project = project;
+            _resultValue.selfLink = selfLink;
+            return _resultValue;
         }
     }
 }

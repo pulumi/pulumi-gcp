@@ -153,14 +153,14 @@ public final class AssetDiscoverySpec {
             return this;
         }
         public AssetDiscoverySpec build() {
-            final var o = new AssetDiscoverySpec();
-            o.csvOptions = csvOptions;
-            o.enabled = enabled;
-            o.excludePatterns = excludePatterns;
-            o.includePatterns = includePatterns;
-            o.jsonOptions = jsonOptions;
-            o.schedule = schedule;
-            return o;
+            final var _resultValue = new AssetDiscoverySpec();
+            _resultValue.csvOptions = csvOptions;
+            _resultValue.enabled = enabled;
+            _resultValue.excludePatterns = excludePatterns;
+            _resultValue.includePatterns = includePatterns;
+            _resultValue.jsonOptions = jsonOptions;
+            _resultValue.schedule = schedule;
+            return _resultValue;
         }
     }
 }

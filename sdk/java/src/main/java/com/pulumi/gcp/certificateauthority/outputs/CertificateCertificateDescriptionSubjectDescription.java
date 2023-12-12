@@ -166,14 +166,14 @@ public final class CertificateCertificateDescriptionSubjectDescription {
             return subjects(List.of(subjects));
         }
         public CertificateCertificateDescriptionSubjectDescription build() {
-            final var o = new CertificateCertificateDescriptionSubjectDescription();
-            o.hexSerialNumber = hexSerialNumber;
-            o.lifetime = lifetime;
-            o.notAfterTime = notAfterTime;
-            o.notBeforeTime = notBeforeTime;
-            o.subjectAltNames = subjectAltNames;
-            o.subjects = subjects;
-            return o;
+            final var _resultValue = new CertificateCertificateDescriptionSubjectDescription();
+            _resultValue.hexSerialNumber = hexSerialNumber;
+            _resultValue.lifetime = lifetime;
+            _resultValue.notAfterTime = notAfterTime;
+            _resultValue.notBeforeTime = notBeforeTime;
+            _resultValue.subjectAltNames = subjectAltNames;
+            _resultValue.subjects = subjects;
+            return _resultValue;
         }
     }
 }

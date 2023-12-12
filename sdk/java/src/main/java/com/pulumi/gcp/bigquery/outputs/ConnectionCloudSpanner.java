@@ -159,14 +159,14 @@ public final class ConnectionCloudSpanner {
             return this;
         }
         public ConnectionCloudSpanner build() {
-            final var o = new ConnectionCloudSpanner();
-            o.database = database;
-            o.databaseRole = databaseRole;
-            o.maxParallelism = maxParallelism;
-            o.useDataBoost = useDataBoost;
-            o.useParallelism = useParallelism;
-            o.useServerlessAnalytics = useServerlessAnalytics;
-            return o;
+            final var _resultValue = new ConnectionCloudSpanner();
+            _resultValue.database = database;
+            _resultValue.databaseRole = databaseRole;
+            _resultValue.maxParallelism = maxParallelism;
+            _resultValue.useDataBoost = useDataBoost;
+            _resultValue.useParallelism = useParallelism;
+            _resultValue.useServerlessAnalytics = useServerlessAnalytics;
+            return _resultValue;
         }
     }
 }

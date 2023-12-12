@@ -71,10 +71,10 @@ public final class ManagementServerManagementUri {
             return this;
         }
         public ManagementServerManagementUri build() {
-            final var o = new ManagementServerManagementUri();
-            o.api = api;
-            o.webUi = webUi;
-            return o;
+            final var _resultValue = new ManagementServerManagementUri();
+            _resultValue.api = api;
+            _resultValue.webUi = webUi;
+            return _resultValue;
         }
     }
 }

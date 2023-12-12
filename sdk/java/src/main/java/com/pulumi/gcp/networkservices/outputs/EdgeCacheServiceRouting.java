@@ -77,10 +77,10 @@ public final class EdgeCacheServiceRouting {
             return pathMatchers(List.of(pathMatchers));
         }
         public EdgeCacheServiceRouting build() {
-            final var o = new EdgeCacheServiceRouting();
-            o.hostRules = hostRules;
-            o.pathMatchers = pathMatchers;
-            return o;
+            final var _resultValue = new EdgeCacheServiceRouting();
+            _resultValue.hostRules = hostRules;
+            _resultValue.pathMatchers = pathMatchers;
+            return _resultValue;
         }
     }
 }

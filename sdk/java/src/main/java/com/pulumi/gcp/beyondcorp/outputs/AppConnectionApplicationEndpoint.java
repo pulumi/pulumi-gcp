@@ -70,10 +70,10 @@ public final class AppConnectionApplicationEndpoint {
             return this;
         }
         public AppConnectionApplicationEndpoint build() {
-            final var o = new AppConnectionApplicationEndpoint();
-            o.host = host;
-            o.port = port;
-            return o;
+            final var _resultValue = new AppConnectionApplicationEndpoint();
+            _resultValue.host = host;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

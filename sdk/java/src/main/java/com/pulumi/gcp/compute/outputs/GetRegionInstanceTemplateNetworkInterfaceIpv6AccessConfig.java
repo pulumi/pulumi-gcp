@@ -102,13 +102,13 @@ public final class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
             return this;
         }
         public GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig build() {
-            final var o = new GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig();
-            o.externalIpv6 = externalIpv6;
-            o.externalIpv6PrefixLength = externalIpv6PrefixLength;
-            o.name = name;
-            o.networkTier = networkTier;
-            o.publicPtrDomainName = publicPtrDomainName;
-            return o;
+            final var _resultValue = new GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig();
+            _resultValue.externalIpv6 = externalIpv6;
+            _resultValue.externalIpv6PrefixLength = externalIpv6PrefixLength;
+            _resultValue.name = name;
+            _resultValue.networkTier = networkTier;
+            _resultValue.publicPtrDomainName = publicPtrDomainName;
+            return _resultValue;
         }
     }
 }

@@ -70,10 +70,10 @@ public final class AiFeatureStoreOnlineServingConfig {
             return this;
         }
         public AiFeatureStoreOnlineServingConfig build() {
-            final var o = new AiFeatureStoreOnlineServingConfig();
-            o.fixedNodeCount = fixedNodeCount;
-            o.scaling = scaling;
-            return o;
+            final var _resultValue = new AiFeatureStoreOnlineServingConfig();
+            _resultValue.fixedNodeCount = fixedNodeCount;
+            _resultValue.scaling = scaling;
+            return _resultValue;
         }
     }
 }

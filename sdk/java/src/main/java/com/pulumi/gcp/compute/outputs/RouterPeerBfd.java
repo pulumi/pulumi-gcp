@@ -136,12 +136,12 @@ public final class RouterPeerBfd {
             return this;
         }
         public RouterPeerBfd build() {
-            final var o = new RouterPeerBfd();
-            o.minReceiveInterval = minReceiveInterval;
-            o.minTransmitInterval = minTransmitInterval;
-            o.multiplier = multiplier;
-            o.sessionInitializationMode = sessionInitializationMode;
-            return o;
+            final var _resultValue = new RouterPeerBfd();
+            _resultValue.minReceiveInterval = minReceiveInterval;
+            _resultValue.minTransmitInterval = minTransmitInterval;
+            _resultValue.multiplier = multiplier;
+            _resultValue.sessionInitializationMode = sessionInitializationMode;
+            return _resultValue;
         }
     }
 }

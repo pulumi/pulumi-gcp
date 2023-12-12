@@ -46,9 +46,9 @@ public final class BackendServiceCdnPolicyBypassCacheOnRequestHeader {
             return this;
         }
         public BackendServiceCdnPolicyBypassCacheOnRequestHeader build() {
-            final var o = new BackendServiceCdnPolicyBypassCacheOnRequestHeader();
-            o.headerName = headerName;
-            return o;
+            final var _resultValue = new BackendServiceCdnPolicyBypassCacheOnRequestHeader();
+            _resultValue.headerName = headerName;
+            return _resultValue;
         }
     }
 }

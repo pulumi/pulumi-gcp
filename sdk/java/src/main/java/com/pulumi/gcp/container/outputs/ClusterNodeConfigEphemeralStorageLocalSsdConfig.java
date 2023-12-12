@@ -46,9 +46,9 @@ public final class ClusterNodeConfigEphemeralStorageLocalSsdConfig {
             return this;
         }
         public ClusterNodeConfigEphemeralStorageLocalSsdConfig build() {
-            final var o = new ClusterNodeConfigEphemeralStorageLocalSsdConfig();
-            o.localSsdCount = localSsdCount;
-            return o;
+            final var _resultValue = new ClusterNodeConfigEphemeralStorageLocalSsdConfig();
+            _resultValue.localSsdCount = localSsdCount;
+            return _resultValue;
         }
     }
 }

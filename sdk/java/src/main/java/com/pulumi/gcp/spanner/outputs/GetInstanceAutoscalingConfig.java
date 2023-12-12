@@ -57,10 +57,10 @@ public final class GetInstanceAutoscalingConfig {
             return autoscalingTargets(List.of(autoscalingTargets));
         }
         public GetInstanceAutoscalingConfig build() {
-            final var o = new GetInstanceAutoscalingConfig();
-            o.autoscalingLimits = autoscalingLimits;
-            o.autoscalingTargets = autoscalingTargets;
-            return o;
+            final var _resultValue = new GetInstanceAutoscalingConfig();
+            _resultValue.autoscalingLimits = autoscalingLimits;
+            _resultValue.autoscalingTargets = autoscalingTargets;
+            return _resultValue;
         }
     }
 }

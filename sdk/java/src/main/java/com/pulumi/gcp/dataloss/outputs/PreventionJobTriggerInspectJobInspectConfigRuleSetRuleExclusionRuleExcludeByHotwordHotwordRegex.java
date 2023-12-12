@@ -76,10 +76,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex();
-            o.groupIndexes = groupIndexes;
-            o.pattern = pattern;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex();
+            _resultValue.groupIndexes = groupIndexes;
+            _resultValue.pattern = pattern;
+            return _resultValue;
         }
     }
 }

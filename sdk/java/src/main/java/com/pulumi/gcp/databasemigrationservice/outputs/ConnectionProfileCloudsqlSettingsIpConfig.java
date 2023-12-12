@@ -115,12 +115,12 @@ public final class ConnectionProfileCloudsqlSettingsIpConfig {
             return this;
         }
         public ConnectionProfileCloudsqlSettingsIpConfig build() {
-            final var o = new ConnectionProfileCloudsqlSettingsIpConfig();
-            o.authorizedNetworks = authorizedNetworks;
-            o.enableIpv4 = enableIpv4;
-            o.privateNetwork = privateNetwork;
-            o.requireSsl = requireSsl;
-            return o;
+            final var _resultValue = new ConnectionProfileCloudsqlSettingsIpConfig();
+            _resultValue.authorizedNetworks = authorizedNetworks;
+            _resultValue.enableIpv4 = enableIpv4;
+            _resultValue.privateNetwork = privateNetwork;
+            _resultValue.requireSsl = requireSsl;
+            return _resultValue;
         }
     }
 }

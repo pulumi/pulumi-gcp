@@ -83,13 +83,13 @@ public final class GetClusterNodePoolAutoscaling {
             return this;
         }
         public GetClusterNodePoolAutoscaling build() {
-            final var o = new GetClusterNodePoolAutoscaling();
-            o.locationPolicy = locationPolicy;
-            o.maxNodeCount = maxNodeCount;
-            o.minNodeCount = minNodeCount;
-            o.totalMaxNodeCount = totalMaxNodeCount;
-            o.totalMinNodeCount = totalMinNodeCount;
-            return o;
+            final var _resultValue = new GetClusterNodePoolAutoscaling();
+            _resultValue.locationPolicy = locationPolicy;
+            _resultValue.maxNodeCount = maxNodeCount;
+            _resultValue.minNodeCount = minNodeCount;
+            _resultValue.totalMaxNodeCount = totalMaxNodeCount;
+            _resultValue.totalMinNodeCount = totalMinNodeCount;
+            return _resultValue;
         }
     }
 }

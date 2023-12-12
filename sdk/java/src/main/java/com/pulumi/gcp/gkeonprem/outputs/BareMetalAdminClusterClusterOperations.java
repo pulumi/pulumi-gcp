@@ -48,9 +48,9 @@ public final class BareMetalAdminClusterClusterOperations {
             return this;
         }
         public BareMetalAdminClusterClusterOperations build() {
-            final var o = new BareMetalAdminClusterClusterOperations();
-            o.enableApplicationLogs = enableApplicationLogs;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterClusterOperations();
+            _resultValue.enableApplicationLogs = enableApplicationLogs;
+            return _resultValue;
         }
     }
 }

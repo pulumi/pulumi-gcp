@@ -241,16 +241,16 @@ public final class CertificateCertificateDescription {
             return x509Descriptions(List.of(x509Descriptions));
         }
         public CertificateCertificateDescription build() {
-            final var o = new CertificateCertificateDescription();
-            o.aiaIssuingCertificateUrls = aiaIssuingCertificateUrls;
-            o.authorityKeyIds = authorityKeyIds;
-            o.certFingerprints = certFingerprints;
-            o.crlDistributionPoints = crlDistributionPoints;
-            o.publicKeys = publicKeys;
-            o.subjectDescriptions = subjectDescriptions;
-            o.subjectKeyIds = subjectKeyIds;
-            o.x509Descriptions = x509Descriptions;
-            return o;
+            final var _resultValue = new CertificateCertificateDescription();
+            _resultValue.aiaIssuingCertificateUrls = aiaIssuingCertificateUrls;
+            _resultValue.authorityKeyIds = authorityKeyIds;
+            _resultValue.certFingerprints = certFingerprints;
+            _resultValue.crlDistributionPoints = crlDistributionPoints;
+            _resultValue.publicKeys = publicKeys;
+            _resultValue.subjectDescriptions = subjectDescriptions;
+            _resultValue.subjectKeyIds = subjectKeyIds;
+            _resultValue.x509Descriptions = x509Descriptions;
+            return _resultValue;
         }
     }
 }

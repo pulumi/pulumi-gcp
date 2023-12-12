@@ -98,11 +98,11 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
             return this;
         }
         public CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan build() {
-            final var o = new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan();
-            o.critical = critical;
-            o.obectIds = obectIds;
-            o.value = value;
-            return o;
+            final var _resultValue = new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan();
+            _resultValue.critical = critical;
+            _resultValue.obectIds = obectIds;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

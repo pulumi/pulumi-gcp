@@ -135,13 +135,13 @@ public final class InstanceMemcacheNode {
             return this;
         }
         public InstanceMemcacheNode build() {
-            final var o = new InstanceMemcacheNode();
-            o.host = host;
-            o.nodeId = nodeId;
-            o.port = port;
-            o.state = state;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new InstanceMemcacheNode();
+            _resultValue.host = host;
+            _resultValue.nodeId = nodeId;
+            _resultValue.port = port;
+            _resultValue.state = state;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

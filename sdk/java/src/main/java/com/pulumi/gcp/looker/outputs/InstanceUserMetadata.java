@@ -86,11 +86,11 @@ public final class InstanceUserMetadata {
             return this;
         }
         public InstanceUserMetadata build() {
-            final var o = new InstanceUserMetadata();
-            o.additionalDeveloperUserCount = additionalDeveloperUserCount;
-            o.additionalStandardUserCount = additionalStandardUserCount;
-            o.additionalViewerUserCount = additionalViewerUserCount;
-            return o;
+            final var _resultValue = new InstanceUserMetadata();
+            _resultValue.additionalDeveloperUserCount = additionalDeveloperUserCount;
+            _resultValue.additionalStandardUserCount = additionalStandardUserCount;
+            _resultValue.additionalViewerUserCount = additionalViewerUserCount;
+            return _resultValue;
         }
     }
 }

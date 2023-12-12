@@ -97,11 +97,11 @@ public final class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeaders
             return this;
         }
         public EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd build() {
-            final var o = new EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd();
-            o.headerName = headerName;
-            o.headerValue = headerValue;
-            o.replace = replace;
-            return o;
+            final var _resultValue = new EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd();
+            _resultValue.headerName = headerName;
+            _resultValue.headerValue = headerValue;
+            _resultValue.replace = replace;
+            return _resultValue;
         }
     }
 }

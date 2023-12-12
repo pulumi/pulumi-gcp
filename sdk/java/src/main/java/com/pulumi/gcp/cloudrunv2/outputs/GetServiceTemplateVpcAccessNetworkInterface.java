@@ -64,11 +64,11 @@ public final class GetServiceTemplateVpcAccessNetworkInterface {
             return tags(List.of(tags));
         }
         public GetServiceTemplateVpcAccessNetworkInterface build() {
-            final var o = new GetServiceTemplateVpcAccessNetworkInterface();
-            o.network = network;
-            o.subnetwork = subnetwork;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetServiceTemplateVpcAccessNetworkInterface();
+            _resultValue.network = network;
+            _resultValue.subnetwork = subnetwork;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

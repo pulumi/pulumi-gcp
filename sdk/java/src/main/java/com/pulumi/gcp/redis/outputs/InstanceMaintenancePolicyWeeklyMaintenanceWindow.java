@@ -115,11 +115,11 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
             return this;
         }
         public InstanceMaintenancePolicyWeeklyMaintenanceWindow build() {
-            final var o = new InstanceMaintenancePolicyWeeklyMaintenanceWindow();
-            o.day = day;
-            o.duration = duration;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new InstanceMaintenancePolicyWeeklyMaintenanceWindow();
+            _resultValue.day = day;
+            _resultValue.duration = duration;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

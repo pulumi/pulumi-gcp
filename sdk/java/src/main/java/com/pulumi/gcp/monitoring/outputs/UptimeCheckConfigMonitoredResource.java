@@ -66,10 +66,10 @@ public final class UptimeCheckConfigMonitoredResource {
             return this;
         }
         public UptimeCheckConfigMonitoredResource build() {
-            final var o = new UptimeCheckConfigMonitoredResource();
-            o.labels = labels;
-            o.type = type;
-            return o;
+            final var _resultValue = new UptimeCheckConfigMonitoredResource();
+            _resultValue.labels = labels;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -90,11 +90,11 @@ public final class InstanceTemplateSchedulingNodeAffinity {
             return values(List.of(values));
         }
         public InstanceTemplateSchedulingNodeAffinity build() {
-            final var o = new InstanceTemplateSchedulingNodeAffinity();
-            o.key = key;
-            o.operator = operator;
-            o.values = values;
-            return o;
+            final var _resultValue = new InstanceTemplateSchedulingNodeAffinity();
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

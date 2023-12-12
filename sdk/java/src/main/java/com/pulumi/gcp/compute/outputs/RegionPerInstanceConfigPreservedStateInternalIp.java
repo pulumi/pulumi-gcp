@@ -93,11 +93,11 @@ public final class RegionPerInstanceConfigPreservedStateInternalIp {
             return this;
         }
         public RegionPerInstanceConfigPreservedStateInternalIp build() {
-            final var o = new RegionPerInstanceConfigPreservedStateInternalIp();
-            o.autoDelete = autoDelete;
-            o.interfaceName = interfaceName;
-            o.ipAddress = ipAddress;
-            return o;
+            final var _resultValue = new RegionPerInstanceConfigPreservedStateInternalIp();
+            _resultValue.autoDelete = autoDelete;
+            _resultValue.interfaceName = interfaceName;
+            _resultValue.ipAddress = ipAddress;
+            return _resultValue;
         }
     }
 }

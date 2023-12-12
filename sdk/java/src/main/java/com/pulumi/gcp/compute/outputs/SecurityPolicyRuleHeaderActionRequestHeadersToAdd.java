@@ -67,10 +67,10 @@ public final class SecurityPolicyRuleHeaderActionRequestHeadersToAdd {
             return this;
         }
         public SecurityPolicyRuleHeaderActionRequestHeadersToAdd build() {
-            final var o = new SecurityPolicyRuleHeaderActionRequestHeadersToAdd();
-            o.headerName = headerName;
-            o.headerValue = headerValue;
-            return o;
+            final var _resultValue = new SecurityPolicyRuleHeaderActionRequestHeadersToAdd();
+            _resultValue.headerName = headerName;
+            _resultValue.headerValue = headerValue;
+            return _resultValue;
         }
     }
 }

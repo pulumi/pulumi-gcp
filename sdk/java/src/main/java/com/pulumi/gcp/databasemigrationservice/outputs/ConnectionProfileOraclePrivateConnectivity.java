@@ -46,9 +46,9 @@ public final class ConnectionProfileOraclePrivateConnectivity {
             return this;
         }
         public ConnectionProfileOraclePrivateConnectivity build() {
-            final var o = new ConnectionProfileOraclePrivateConnectivity();
-            o.privateConnection = privateConnection;
-            return o;
+            final var _resultValue = new ConnectionProfileOraclePrivateConnectivity();
+            _resultValue.privateConnection = privateConnection;
+            return _resultValue;
         }
     }
 }

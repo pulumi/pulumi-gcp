@@ -87,11 +87,11 @@ public final class ConfigQuotaSignUpQuotaConfig {
             return this;
         }
         public ConfigQuotaSignUpQuotaConfig build() {
-            final var o = new ConfigQuotaSignUpQuotaConfig();
-            o.quota = quota;
-            o.quotaDuration = quotaDuration;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new ConfigQuotaSignUpQuotaConfig();
+            _resultValue.quota = quota;
+            _resultValue.quotaDuration = quotaDuration;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

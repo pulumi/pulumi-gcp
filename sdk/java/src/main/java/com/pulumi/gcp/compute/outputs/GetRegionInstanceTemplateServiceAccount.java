@@ -75,10 +75,10 @@ public final class GetRegionInstanceTemplateServiceAccount {
             return scopes(List.of(scopes));
         }
         public GetRegionInstanceTemplateServiceAccount build() {
-            final var o = new GetRegionInstanceTemplateServiceAccount();
-            o.email = email;
-            o.scopes = scopes;
-            return o;
+            final var _resultValue = new GetRegionInstanceTemplateServiceAccount();
+            _resultValue.email = email;
+            _resultValue.scopes = scopes;
+            return _resultValue;
         }
     }
 }

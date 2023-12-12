@@ -48,9 +48,9 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
             return this;
         }
         public StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets build() {
-            final var o = new StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets();
-            o.datasetTemplate = datasetTemplate;
-            return o;
+            final var _resultValue = new StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets();
+            _resultValue.datasetTemplate = datasetTemplate;
+            return _resultValue;
         }
     }
 }

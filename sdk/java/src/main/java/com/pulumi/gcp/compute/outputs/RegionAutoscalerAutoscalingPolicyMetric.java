@@ -225,13 +225,13 @@ public final class RegionAutoscalerAutoscalingPolicyMetric {
             return this;
         }
         public RegionAutoscalerAutoscalingPolicyMetric build() {
-            final var o = new RegionAutoscalerAutoscalingPolicyMetric();
-            o.filter = filter;
-            o.name = name;
-            o.singleInstanceAssignment = singleInstanceAssignment;
-            o.target = target;
-            o.type = type;
-            return o;
+            final var _resultValue = new RegionAutoscalerAutoscalingPolicyMetric();
+            _resultValue.filter = filter;
+            _resultValue.name = name;
+            _resultValue.singleInstanceAssignment = singleInstanceAssignment;
+            _resultValue.target = target;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

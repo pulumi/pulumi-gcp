@@ -46,9 +46,9 @@ public final class PolicyBooleanPolicy {
             return this;
         }
         public PolicyBooleanPolicy build() {
-            final var o = new PolicyBooleanPolicy();
-            o.enforced = enforced;
-            return o;
+            final var _resultValue = new PolicyBooleanPolicy();
+            _resultValue.enforced = enforced;
+            return _resultValue;
         }
     }
 }

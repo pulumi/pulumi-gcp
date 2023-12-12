@@ -105,12 +105,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig 
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig();
-            o.autoDeleteTime = autoDeleteTime;
-            o.autoDeleteTtl = autoDeleteTtl;
-            o.idleDeleteTtl = idleDeleteTtl;
-            o.idleStartTime = idleStartTime;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig();
+            _resultValue.autoDeleteTime = autoDeleteTime;
+            _resultValue.autoDeleteTtl = autoDeleteTtl;
+            _resultValue.idleDeleteTtl = idleDeleteTtl;
+            _resultValue.idleStartTime = idleStartTime;
+            return _resultValue;
         }
     }
 }

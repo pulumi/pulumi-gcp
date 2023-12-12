@@ -38,9 +38,9 @@ public final class NodePoolNodeConfigEphemeralStorageConfig {
             return this;
         }
         public NodePoolNodeConfigEphemeralStorageConfig build() {
-            final var o = new NodePoolNodeConfigEphemeralStorageConfig();
-            o.localSsdCount = localSsdCount;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigEphemeralStorageConfig();
+            _resultValue.localSsdCount = localSsdCount;
+            return _resultValue;
         }
     }
 }

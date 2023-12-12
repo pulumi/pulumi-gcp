@@ -46,9 +46,9 @@ public final class ClusterNodeConfigFastSocket {
             return this;
         }
         public ClusterNodeConfigFastSocket build() {
-            final var o = new ClusterNodeConfigFastSocket();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterNodeConfigFastSocket();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

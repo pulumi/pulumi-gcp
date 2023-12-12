@@ -80,10 +80,10 @@ public final class TrustConfigTrustStore {
             return trustAnchors(List.of(trustAnchors));
         }
         public TrustConfigTrustStore build() {
-            final var o = new TrustConfigTrustStore();
-            o.intermediateCas = intermediateCas;
-            o.trustAnchors = trustAnchors;
-            return o;
+            final var _resultValue = new TrustConfigTrustStore();
+            _resultValue.intermediateCas = intermediateCas;
+            _resultValue.trustAnchors = trustAnchors;
+            return _resultValue;
         }
     }
 }

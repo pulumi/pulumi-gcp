@@ -50,9 +50,9 @@ public final class VMwareClusterControlPlaneNodeAutoResizeConfig {
             return this;
         }
         public VMwareClusterControlPlaneNodeAutoResizeConfig build() {
-            final var o = new VMwareClusterControlPlaneNodeAutoResizeConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new VMwareClusterControlPlaneNodeAutoResizeConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

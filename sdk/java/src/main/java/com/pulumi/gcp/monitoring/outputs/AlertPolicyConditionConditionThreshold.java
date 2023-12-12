@@ -419,18 +419,18 @@ public final class AlertPolicyConditionConditionThreshold {
             return this;
         }
         public AlertPolicyConditionConditionThreshold build() {
-            final var o = new AlertPolicyConditionConditionThreshold();
-            o.aggregations = aggregations;
-            o.comparison = comparison;
-            o.denominatorAggregations = denominatorAggregations;
-            o.denominatorFilter = denominatorFilter;
-            o.duration = duration;
-            o.evaluationMissingData = evaluationMissingData;
-            o.filter = filter;
-            o.forecastOptions = forecastOptions;
-            o.thresholdValue = thresholdValue;
-            o.trigger = trigger;
-            return o;
+            final var _resultValue = new AlertPolicyConditionConditionThreshold();
+            _resultValue.aggregations = aggregations;
+            _resultValue.comparison = comparison;
+            _resultValue.denominatorAggregations = denominatorAggregations;
+            _resultValue.denominatorFilter = denominatorFilter;
+            _resultValue.duration = duration;
+            _resultValue.evaluationMissingData = evaluationMissingData;
+            _resultValue.filter = filter;
+            _resultValue.forecastOptions = forecastOptions;
+            _resultValue.thresholdValue = thresholdValue;
+            _resultValue.trigger = trigger;
+            return _resultValue;
         }
     }
 }

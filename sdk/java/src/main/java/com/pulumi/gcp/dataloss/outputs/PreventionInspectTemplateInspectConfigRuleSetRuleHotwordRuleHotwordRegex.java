@@ -75,10 +75,10 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleH
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex();
-            o.groupIndexes = groupIndexes;
-            o.pattern = pattern;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex();
+            _resultValue.groupIndexes = groupIndexes;
+            _resultValue.pattern = pattern;
+            return _resultValue;
         }
     }
 }

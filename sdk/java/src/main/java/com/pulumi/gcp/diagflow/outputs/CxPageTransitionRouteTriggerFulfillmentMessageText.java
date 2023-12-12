@@ -74,10 +74,10 @@ public final class CxPageTransitionRouteTriggerFulfillmentMessageText {
             return texts(List.of(texts));
         }
         public CxPageTransitionRouteTriggerFulfillmentMessageText build() {
-            final var o = new CxPageTransitionRouteTriggerFulfillmentMessageText();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.texts = texts;
-            return o;
+            final var _resultValue = new CxPageTransitionRouteTriggerFulfillmentMessageText();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.texts = texts;
+            return _resultValue;
         }
     }
 }

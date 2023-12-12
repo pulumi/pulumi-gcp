@@ -49,10 +49,10 @@ public final class GetInstanceGroupManagerVersionTargetSize {
             return this;
         }
         public GetInstanceGroupManagerVersionTargetSize build() {
-            final var o = new GetInstanceGroupManagerVersionTargetSize();
-            o.fixed = fixed;
-            o.percent = percent;
-            return o;
+            final var _resultValue = new GetInstanceGroupManagerVersionTargetSize();
+            _resultValue.fixed = fixed;
+            _resultValue.percent = percent;
+            return _resultValue;
         }
     }
 }

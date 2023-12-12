@@ -46,9 +46,9 @@ public final class ManagedZoneCloudLoggingConfig {
             return this;
         }
         public ManagedZoneCloudLoggingConfig build() {
-            final var o = new ManagedZoneCloudLoggingConfig();
-            o.enableLogging = enableLogging;
-            return o;
+            final var _resultValue = new ManagedZoneCloudLoggingConfig();
+            _resultValue.enableLogging = enableLogging;
+            return _resultValue;
         }
     }
 }

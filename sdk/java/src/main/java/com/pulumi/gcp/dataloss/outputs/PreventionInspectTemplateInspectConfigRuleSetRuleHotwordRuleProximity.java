@@ -67,10 +67,10 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleP
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity build() {
-            final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity();
-            o.windowAfter = windowAfter;
-            o.windowBefore = windowBefore;
-            return o;
+            final var _resultValue = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity();
+            _resultValue.windowAfter = windowAfter;
+            _resultValue.windowBefore = windowBefore;
+            return _resultValue;
         }
     }
 }

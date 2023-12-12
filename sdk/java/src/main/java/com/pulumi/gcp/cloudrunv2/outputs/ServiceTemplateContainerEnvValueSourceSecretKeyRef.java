@@ -67,10 +67,10 @@ public final class ServiceTemplateContainerEnvValueSourceSecretKeyRef {
             return this;
         }
         public ServiceTemplateContainerEnvValueSourceSecretKeyRef build() {
-            final var o = new ServiceTemplateContainerEnvValueSourceSecretKeyRef();
-            o.secret = secret;
-            o.version = version;
-            return o;
+            final var _resultValue = new ServiceTemplateContainerEnvValueSourceSecretKeyRef();
+            _resultValue.secret = secret;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

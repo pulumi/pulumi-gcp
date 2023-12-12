@@ -70,10 +70,10 @@ public final class ConnectionAuthConfigOauth2ClientCredentials {
             return this;
         }
         public ConnectionAuthConfigOauth2ClientCredentials build() {
-            final var o = new ConnectionAuthConfigOauth2ClientCredentials();
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            return o;
+            final var _resultValue = new ConnectionAuthConfigOauth2ClientCredentials();
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            return _resultValue;
         }
     }
 }

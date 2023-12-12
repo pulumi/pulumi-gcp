@@ -162,15 +162,15 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalance
             return this;
         }
         public RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer build() {
-            final var o = new RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer();
-            o.ipAddress = ipAddress;
-            o.ipProtocol = ipProtocol;
-            o.loadBalancerType = loadBalancerType;
-            o.networkUrl = networkUrl;
-            o.port = port;
-            o.project = project;
-            o.region = region;
-            return o;
+            final var _resultValue = new RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.loadBalancerType = loadBalancerType;
+            _resultValue.networkUrl = networkUrl;
+            _resultValue.port = port;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

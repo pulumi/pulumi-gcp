@@ -197,15 +197,15 @@ public final class PreventionJobTriggerInspectJobInspectConfig {
             return ruleSets(List.of(ruleSets));
         }
         public PreventionJobTriggerInspectJobInspectConfig build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfig();
-            o.customInfoTypes = customInfoTypes;
-            o.excludeInfoTypes = excludeInfoTypes;
-            o.includeQuote = includeQuote;
-            o.infoTypes = infoTypes;
-            o.limits = limits;
-            o.minLikelihood = minLikelihood;
-            o.ruleSets = ruleSets;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfig();
+            _resultValue.customInfoTypes = customInfoTypes;
+            _resultValue.excludeInfoTypes = excludeInfoTypes;
+            _resultValue.includeQuote = includeQuote;
+            _resultValue.infoTypes = infoTypes;
+            _resultValue.limits = limits;
+            _resultValue.minLikelihood = minLikelihood;
+            _resultValue.ruleSets = ruleSets;
+            return _resultValue;
         }
     }
 }

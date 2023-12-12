@@ -48,9 +48,9 @@ public final class AwsClusterControlPlaneInstancePlacement {
             return this;
         }
         public AwsClusterControlPlaneInstancePlacement build() {
-            final var o = new AwsClusterControlPlaneInstancePlacement();
-            o.tenancy = tenancy;
-            return o;
+            final var _resultValue = new AwsClusterControlPlaneInstancePlacement();
+            _resultValue.tenancy = tenancy;
+            return _resultValue;
         }
     }
 }

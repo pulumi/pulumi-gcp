@@ -98,11 +98,11 @@ public final class DatabaseInstanceSettingsLocationPreference {
             return this;
         }
         public DatabaseInstanceSettingsLocationPreference build() {
-            final var o = new DatabaseInstanceSettingsLocationPreference();
-            o.followGaeApplication = followGaeApplication;
-            o.secondaryZone = secondaryZone;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettingsLocationPreference();
+            _resultValue.followGaeApplication = followGaeApplication;
+            _resultValue.secondaryZone = secondaryZone;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

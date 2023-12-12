@@ -50,9 +50,9 @@ public final class CertificateTemplatePassthroughExtensionsAdditionalExtension {
             return objectIdPaths(List.of(objectIdPaths));
         }
         public CertificateTemplatePassthroughExtensionsAdditionalExtension build() {
-            final var o = new CertificateTemplatePassthroughExtensionsAdditionalExtension();
-            o.objectIdPaths = objectIdPaths;
-            return o;
+            final var _resultValue = new CertificateTemplatePassthroughExtensionsAdditionalExtension();
+            _resultValue.objectIdPaths = objectIdPaths;
+            return _resultValue;
         }
     }
 }

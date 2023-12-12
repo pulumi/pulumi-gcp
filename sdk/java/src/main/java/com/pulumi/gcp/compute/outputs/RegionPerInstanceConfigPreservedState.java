@@ -124,12 +124,12 @@ public final class RegionPerInstanceConfigPreservedState {
             return this;
         }
         public RegionPerInstanceConfigPreservedState build() {
-            final var o = new RegionPerInstanceConfigPreservedState();
-            o.disks = disks;
-            o.externalIps = externalIps;
-            o.internalIps = internalIps;
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new RegionPerInstanceConfigPreservedState();
+            _resultValue.disks = disks;
+            _resultValue.externalIps = externalIps;
+            _resultValue.internalIps = internalIps;
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

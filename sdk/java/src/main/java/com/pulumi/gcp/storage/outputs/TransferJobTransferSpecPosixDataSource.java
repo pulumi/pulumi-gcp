@@ -50,9 +50,9 @@ public final class TransferJobTransferSpecPosixDataSource {
             return this;
         }
         public TransferJobTransferSpecPosixDataSource build() {
-            final var o = new TransferJobTransferSpecPosixDataSource();
-            o.rootDirectory = rootDirectory;
-            return o;
+            final var _resultValue = new TransferJobTransferSpecPosixDataSource();
+            _resultValue.rootDirectory = rootDirectory;
+            return _resultValue;
         }
     }
 }

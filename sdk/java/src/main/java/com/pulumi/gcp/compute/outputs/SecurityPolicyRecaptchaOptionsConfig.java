@@ -46,9 +46,9 @@ public final class SecurityPolicyRecaptchaOptionsConfig {
             return this;
         }
         public SecurityPolicyRecaptchaOptionsConfig build() {
-            final var o = new SecurityPolicyRecaptchaOptionsConfig();
-            o.redirectSiteKey = redirectSiteKey;
-            return o;
+            final var _resultValue = new SecurityPolicyRecaptchaOptionsConfig();
+            _resultValue.redirectSiteKey = redirectSiteKey;
+            return _resultValue;
         }
     }
 }

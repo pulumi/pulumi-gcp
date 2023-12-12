@@ -72,10 +72,10 @@ public final class ConfigSmsRegionConfig {
             return this;
         }
         public ConfigSmsRegionConfig build() {
-            final var o = new ConfigSmsRegionConfig();
-            o.allowByDefault = allowByDefault;
-            o.allowlistOnly = allowlistOnly;
-            return o;
+            final var _resultValue = new ConfigSmsRegionConfig();
+            _resultValue.allowByDefault = allowByDefault;
+            _resultValue.allowlistOnly = allowlistOnly;
+            return _resultValue;
         }
     }
 }

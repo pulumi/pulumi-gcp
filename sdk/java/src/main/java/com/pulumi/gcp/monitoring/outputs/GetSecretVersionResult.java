@@ -177,17 +177,17 @@ public final class GetSecretVersionResult {
             return this;
         }
         public GetSecretVersionResult build() {
-            final var o = new GetSecretVersionResult();
-            o.createTime = createTime;
-            o.destroyTime = destroyTime;
-            o.enabled = enabled;
-            o.id = id;
-            o.name = name;
-            o.project = project;
-            o.secret = secret;
-            o.secretData = secretData;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetSecretVersionResult();
+            _resultValue.createTime = createTime;
+            _resultValue.destroyTime = destroyTime;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.secret = secret;
+            _resultValue.secretData = secretData;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

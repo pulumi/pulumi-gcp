@@ -73,10 +73,10 @@ public final class ServiceAttachmentConnectedEndpoint {
             return this;
         }
         public ServiceAttachmentConnectedEndpoint build() {
-            final var o = new ServiceAttachmentConnectedEndpoint();
-            o.endpoint = endpoint;
-            o.status = status;
-            return o;
+            final var _resultValue = new ServiceAttachmentConnectedEndpoint();
+            _resultValue.endpoint = endpoint;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

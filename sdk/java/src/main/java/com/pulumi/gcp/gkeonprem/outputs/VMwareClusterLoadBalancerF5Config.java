@@ -92,11 +92,11 @@ public final class VMwareClusterLoadBalancerF5Config {
             return this;
         }
         public VMwareClusterLoadBalancerF5Config build() {
-            final var o = new VMwareClusterLoadBalancerF5Config();
-            o.address = address;
-            o.partition = partition;
-            o.snatPool = snatPool;
-            return o;
+            final var _resultValue = new VMwareClusterLoadBalancerF5Config();
+            _resultValue.address = address;
+            _resultValue.partition = partition;
+            _resultValue.snatPool = snatPool;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class TriggerTransport {
             return this;
         }
         public TriggerTransport build() {
-            final var o = new TriggerTransport();
-            o.pubsub = pubsub;
-            return o;
+            final var _resultValue = new TriggerTransport();
+            _resultValue.pubsub = pubsub;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class ApiKeyRestrictionsAndroidKeyRestrictions {
             return allowedApplications(List.of(allowedApplications));
         }
         public ApiKeyRestrictionsAndroidKeyRestrictions build() {
-            final var o = new ApiKeyRestrictionsAndroidKeyRestrictions();
-            o.allowedApplications = allowedApplications;
-            return o;
+            final var _resultValue = new ApiKeyRestrictionsAndroidKeyRestrictions();
+            _resultValue.allowedApplications = allowedApplications;
+            return _resultValue;
         }
     }
 }

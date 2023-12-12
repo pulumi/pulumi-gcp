@@ -54,9 +54,9 @@ public final class CertificateIssuanceConfigCertificateAuthorityConfigCertificat
             return this;
         }
         public CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig build() {
-            final var o = new CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig();
-            o.caPool = caPool;
-            return o;
+            final var _resultValue = new CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig();
+            _resultValue.caPool = caPool;
+            return _resultValue;
         }
     }
 }

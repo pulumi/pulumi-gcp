@@ -126,12 +126,12 @@ public final class VpnConnectionDetail {
             return this;
         }
         public VpnConnectionDetail build() {
-            final var o = new VpnConnectionDetail();
-            o.cloudRouters = cloudRouters;
-            o.cloudVpns = cloudVpns;
-            o.error = error;
-            o.state = state;
-            return o;
+            final var _resultValue = new VpnConnectionDetail();
+            _resultValue.cloudRouters = cloudRouters;
+            _resultValue.cloudVpns = cloudVpns;
+            _resultValue.error = error;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

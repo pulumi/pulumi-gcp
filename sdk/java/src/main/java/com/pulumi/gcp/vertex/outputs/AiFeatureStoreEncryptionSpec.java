@@ -46,9 +46,9 @@ public final class AiFeatureStoreEncryptionSpec {
             return this;
         }
         public AiFeatureStoreEncryptionSpec build() {
-            final var o = new AiFeatureStoreEncryptionSpec();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new AiFeatureStoreEncryptionSpec();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

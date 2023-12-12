@@ -46,9 +46,9 @@ public final class FlexibleAppVersionVpcAccessConnector {
             return this;
         }
         public FlexibleAppVersionVpcAccessConnector build() {
-            final var o = new FlexibleAppVersionVpcAccessConnector();
-            o.name = name;
-            return o;
+            final var _resultValue = new FlexibleAppVersionVpcAccessConnector();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

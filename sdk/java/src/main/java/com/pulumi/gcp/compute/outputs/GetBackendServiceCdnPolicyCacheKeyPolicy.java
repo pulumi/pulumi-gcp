@@ -118,15 +118,15 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
             return queryStringWhitelists(List.of(queryStringWhitelists));
         }
         public GetBackendServiceCdnPolicyCacheKeyPolicy build() {
-            final var o = new GetBackendServiceCdnPolicyCacheKeyPolicy();
-            o.includeHost = includeHost;
-            o.includeHttpHeaders = includeHttpHeaders;
-            o.includeNamedCookies = includeNamedCookies;
-            o.includeProtocol = includeProtocol;
-            o.includeQueryString = includeQueryString;
-            o.queryStringBlacklists = queryStringBlacklists;
-            o.queryStringWhitelists = queryStringWhitelists;
-            return o;
+            final var _resultValue = new GetBackendServiceCdnPolicyCacheKeyPolicy();
+            _resultValue.includeHost = includeHost;
+            _resultValue.includeHttpHeaders = includeHttpHeaders;
+            _resultValue.includeNamedCookies = includeNamedCookies;
+            _resultValue.includeProtocol = includeProtocol;
+            _resultValue.includeQueryString = includeQueryString;
+            _resultValue.queryStringBlacklists = queryStringBlacklists;
+            _resultValue.queryStringWhitelists = queryStringWhitelists;
+            return _resultValue;
         }
     }
 }

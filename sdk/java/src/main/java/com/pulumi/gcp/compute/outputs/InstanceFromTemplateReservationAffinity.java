@@ -52,10 +52,10 @@ public final class InstanceFromTemplateReservationAffinity {
             return this;
         }
         public InstanceFromTemplateReservationAffinity build() {
-            final var o = new InstanceFromTemplateReservationAffinity();
-            o.specificReservation = specificReservation;
-            o.type = type;
-            return o;
+            final var _resultValue = new InstanceFromTemplateReservationAffinity();
+            _resultValue.specificReservation = specificReservation;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -125,13 +125,13 @@ public final class AwsClusterControlPlaneRootVolume {
             return this;
         }
         public AwsClusterControlPlaneRootVolume build() {
-            final var o = new AwsClusterControlPlaneRootVolume();
-            o.iops = iops;
-            o.kmsKeyArn = kmsKeyArn;
-            o.sizeGib = sizeGib;
-            o.throughput = throughput;
-            o.volumeType = volumeType;
-            return o;
+            final var _resultValue = new AwsClusterControlPlaneRootVolume();
+            _resultValue.iops = iops;
+            _resultValue.kmsKeyArn = kmsKeyArn;
+            _resultValue.sizeGib = sizeGib;
+            _resultValue.throughput = throughput;
+            _resultValue.volumeType = volumeType;
+            return _resultValue;
         }
     }
 }

@@ -73,12 +73,12 @@ public final class JobStatus {
             return this;
         }
         public JobStatus build() {
-            final var o = new JobStatus();
-            o.details = details;
-            o.state = state;
-            o.stateStartTime = stateStartTime;
-            o.substate = substate;
-            return o;
+            final var _resultValue = new JobStatus();
+            _resultValue.details = details;
+            _resultValue.state = state;
+            _resultValue.stateStartTime = stateStartTime;
+            _resultValue.substate = substate;
+            return _resultValue;
         }
     }
 }

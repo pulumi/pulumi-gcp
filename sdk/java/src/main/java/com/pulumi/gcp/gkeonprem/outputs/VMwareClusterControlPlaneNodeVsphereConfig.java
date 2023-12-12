@@ -75,10 +75,10 @@ public final class VMwareClusterControlPlaneNodeVsphereConfig {
             return this;
         }
         public VMwareClusterControlPlaneNodeVsphereConfig build() {
-            final var o = new VMwareClusterControlPlaneNodeVsphereConfig();
-            o.datastore = datastore;
-            o.storagePolicyName = storagePolicyName;
-            return o;
+            final var _resultValue = new VMwareClusterControlPlaneNodeVsphereConfig();
+            _resultValue.datastore = datastore;
+            _resultValue.storagePolicyName = storagePolicyName;
+            return _resultValue;
         }
     }
 }

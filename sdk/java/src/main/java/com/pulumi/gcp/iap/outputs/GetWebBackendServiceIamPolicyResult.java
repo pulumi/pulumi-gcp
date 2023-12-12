@@ -108,13 +108,13 @@ public final class GetWebBackendServiceIamPolicyResult {
             return this;
         }
         public GetWebBackendServiceIamPolicyResult build() {
-            final var o = new GetWebBackendServiceIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            o.webBackendService = webBackendService;
-            return o;
+            final var _resultValue = new GetWebBackendServiceIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            _resultValue.webBackendService = webBackendService;
+            return _resultValue;
         }
     }
 }

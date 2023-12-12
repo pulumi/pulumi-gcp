@@ -100,11 +100,11 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
             return this;
         }
         public StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate build() {
-            final var o = new StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate();
-            o.datasetIdPrefix = datasetIdPrefix;
-            o.kmsKeyName = kmsKeyName;
-            o.location = location;
-            return o;
+            final var _resultValue = new StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate();
+            _resultValue.datasetIdPrefix = datasetIdPrefix;
+            _resultValue.kmsKeyName = kmsKeyName;
+            _resultValue.location = location;
+            return _resultValue;
         }
     }
 }

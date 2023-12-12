@@ -67,10 +67,10 @@ public final class BillingAccountBucketConfigIndexConfig {
             return this;
         }
         public BillingAccountBucketConfigIndexConfig build() {
-            final var o = new BillingAccountBucketConfigIndexConfig();
-            o.fieldPath = fieldPath;
-            o.type = type;
-            return o;
+            final var _resultValue = new BillingAccountBucketConfigIndexConfig();
+            _resultValue.fieldPath = fieldPath;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

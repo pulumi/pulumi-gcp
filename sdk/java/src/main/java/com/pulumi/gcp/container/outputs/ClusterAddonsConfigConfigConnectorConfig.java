@@ -46,9 +46,9 @@ public final class ClusterAddonsConfigConfigConnectorConfig {
             return this;
         }
         public ClusterAddonsConfigConfigConnectorConfig build() {
-            final var o = new ClusterAddonsConfigConfigConnectorConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterAddonsConfigConfigConnectorConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

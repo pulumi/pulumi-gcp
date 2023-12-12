@@ -67,10 +67,10 @@ public final class TransferJobTransferSpecGcsDataSink {
             return this;
         }
         public TransferJobTransferSpecGcsDataSink build() {
-            final var o = new TransferJobTransferSpecGcsDataSink();
-            o.bucketName = bucketName;
-            o.path = path;
-            return o;
+            final var _resultValue = new TransferJobTransferSpecGcsDataSink();
+            _resultValue.bucketName = bucketName;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

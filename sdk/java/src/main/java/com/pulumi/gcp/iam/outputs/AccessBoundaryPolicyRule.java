@@ -70,10 +70,10 @@ public final class AccessBoundaryPolicyRule {
             return this;
         }
         public AccessBoundaryPolicyRule build() {
-            final var o = new AccessBoundaryPolicyRule();
-            o.accessBoundaryRule = accessBoundaryRule;
-            o.description = description;
-            return o;
+            final var _resultValue = new AccessBoundaryPolicyRule();
+            _resultValue.accessBoundaryRule = accessBoundaryRule;
+            _resultValue.description = description;
+            return _resultValue;
         }
     }
 }

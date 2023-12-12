@@ -72,10 +72,10 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions {
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigDatastoreOptions build() {
-            final var o = new PreventionJobTriggerInspectJobStorageConfigDatastoreOptions();
-            o.kind = kind;
-            o.partitionId = partitionId;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobStorageConfigDatastoreOptions();
+            _resultValue.kind = kind;
+            _resultValue.partitionId = partitionId;
+            return _resultValue;
         }
     }
 }

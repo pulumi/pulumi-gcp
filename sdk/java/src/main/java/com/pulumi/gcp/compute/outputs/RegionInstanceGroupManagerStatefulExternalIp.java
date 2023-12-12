@@ -67,10 +67,10 @@ public final class RegionInstanceGroupManagerStatefulExternalIp {
             return this;
         }
         public RegionInstanceGroupManagerStatefulExternalIp build() {
-            final var o = new RegionInstanceGroupManagerStatefulExternalIp();
-            o.deleteRule = deleteRule;
-            o.interfaceName = interfaceName;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerStatefulExternalIp();
+            _resultValue.deleteRule = deleteRule;
+            _resultValue.interfaceName = interfaceName;
+            return _resultValue;
         }
     }
 }

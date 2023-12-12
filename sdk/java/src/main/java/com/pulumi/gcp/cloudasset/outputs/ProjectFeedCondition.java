@@ -111,12 +111,12 @@ public final class ProjectFeedCondition {
             return this;
         }
         public ProjectFeedCondition build() {
-            final var o = new ProjectFeedCondition();
-            o.description = description;
-            o.expression = expression;
-            o.location = location;
-            o.title = title;
-            return o;
+            final var _resultValue = new ProjectFeedCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.location = location;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class ClusterRestoreContinuousBackupSource {
             return this;
         }
         public ClusterRestoreContinuousBackupSource build() {
-            final var o = new ClusterRestoreContinuousBackupSource();
-            o.cluster = cluster;
-            o.pointInTime = pointInTime;
-            return o;
+            final var _resultValue = new ClusterRestoreContinuousBackupSource();
+            _resultValue.cluster = cluster;
+            _resultValue.pointInTime = pointInTime;
+            return _resultValue;
         }
     }
 }

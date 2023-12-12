@@ -71,10 +71,10 @@ public final class InstanceGroupManagerAllInstancesConfig {
             return this;
         }
         public InstanceGroupManagerAllInstancesConfig build() {
-            final var o = new InstanceGroupManagerAllInstancesConfig();
-            o.labels = labels;
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new InstanceGroupManagerAllInstancesConfig();
+            _resultValue.labels = labels;
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

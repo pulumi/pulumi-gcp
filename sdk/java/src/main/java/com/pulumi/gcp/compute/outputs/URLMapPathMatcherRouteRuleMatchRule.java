@@ -263,16 +263,16 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
             return this;
         }
         public URLMapPathMatcherRouteRuleMatchRule build() {
-            final var o = new URLMapPathMatcherRouteRuleMatchRule();
-            o.fullPathMatch = fullPathMatch;
-            o.headerMatches = headerMatches;
-            o.ignoreCase = ignoreCase;
-            o.metadataFilters = metadataFilters;
-            o.pathTemplateMatch = pathTemplateMatch;
-            o.prefixMatch = prefixMatch;
-            o.queryParameterMatches = queryParameterMatches;
-            o.regexMatch = regexMatch;
-            return o;
+            final var _resultValue = new URLMapPathMatcherRouteRuleMatchRule();
+            _resultValue.fullPathMatch = fullPathMatch;
+            _resultValue.headerMatches = headerMatches;
+            _resultValue.ignoreCase = ignoreCase;
+            _resultValue.metadataFilters = metadataFilters;
+            _resultValue.pathTemplateMatch = pathTemplateMatch;
+            _resultValue.prefixMatch = prefixMatch;
+            _resultValue.queryParameterMatches = queryParameterMatches;
+            _resultValue.regexMatch = regexMatch;
+            return _resultValue;
         }
     }
 }

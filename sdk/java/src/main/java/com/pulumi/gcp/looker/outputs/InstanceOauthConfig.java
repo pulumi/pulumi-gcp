@@ -65,10 +65,10 @@ public final class InstanceOauthConfig {
             return this;
         }
         public InstanceOauthConfig build() {
-            final var o = new InstanceOauthConfig();
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            return o;
+            final var _resultValue = new InstanceOauthConfig();
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            return _resultValue;
         }
     }
 }

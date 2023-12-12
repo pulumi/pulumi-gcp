@@ -103,11 +103,11 @@ public final class NodeGroupAutoscalingPolicy {
             return this;
         }
         public NodeGroupAutoscalingPolicy build() {
-            final var o = new NodeGroupAutoscalingPolicy();
-            o.maxNodes = maxNodes;
-            o.minNodes = minNodes;
-            o.mode = mode;
-            return o;
+            final var _resultValue = new NodeGroupAutoscalingPolicy();
+            _resultValue.maxNodes = maxNodes;
+            _resultValue.minNodes = minNodes;
+            _resultValue.mode = mode;
+            return _resultValue;
         }
     }
 }

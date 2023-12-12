@@ -52,9 +52,9 @@ public final class BareMetalAdminClusterSecurityConfigAuthorization {
             return adminUsers(List.of(adminUsers));
         }
         public BareMetalAdminClusterSecurityConfigAuthorization build() {
-            final var o = new BareMetalAdminClusterSecurityConfigAuthorization();
-            o.adminUsers = adminUsers;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterSecurityConfigAuthorization();
+            _resultValue.adminUsers = adminUsers;
+            return _resultValue;
         }
     }
 }

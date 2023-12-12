@@ -111,12 +111,12 @@ public final class OrganizationCustomModuleCustomConfigCustomOutputPropertyValue
             return this;
         }
         public OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression build() {
-            final var o = new OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression();
-            o.description = description;
-            o.expression = expression;
-            o.location = location;
-            o.title = title;
-            return o;
+            final var _resultValue = new OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.location = location;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

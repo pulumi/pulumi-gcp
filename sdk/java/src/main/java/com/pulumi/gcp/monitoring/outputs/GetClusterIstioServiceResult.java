@@ -190,19 +190,19 @@ public final class GetClusterIstioServiceResult {
             return this;
         }
         public GetClusterIstioServiceResult build() {
-            final var o = new GetClusterIstioServiceResult();
-            o.clusterName = clusterName;
-            o.displayName = displayName;
-            o.id = id;
-            o.location = location;
-            o.name = name;
-            o.project = project;
-            o.serviceId = serviceId;
-            o.serviceName = serviceName;
-            o.serviceNamespace = serviceNamespace;
-            o.telemetries = telemetries;
-            o.userLabels = userLabels;
-            return o;
+            final var _resultValue = new GetClusterIstioServiceResult();
+            _resultValue.clusterName = clusterName;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.serviceId = serviceId;
+            _resultValue.serviceName = serviceName;
+            _resultValue.serviceNamespace = serviceNamespace;
+            _resultValue.telemetries = telemetries;
+            _resultValue.userLabels = userLabels;
+            return _resultValue;
         }
     }
 }

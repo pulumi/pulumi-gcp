@@ -72,10 +72,10 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
             return this;
         }
         public DatabaseInstanceSettingsIpConfigurationPscConfig build() {
-            final var o = new DatabaseInstanceSettingsIpConfigurationPscConfig();
-            o.allowedConsumerProjects = allowedConsumerProjects;
-            o.pscEnabled = pscEnabled;
-            return o;
+            final var _resultValue = new DatabaseInstanceSettingsIpConfigurationPscConfig();
+            _resultValue.allowedConsumerProjects = allowedConsumerProjects;
+            _resultValue.pscEnabled = pscEnabled;
+            return _resultValue;
         }
     }
 }

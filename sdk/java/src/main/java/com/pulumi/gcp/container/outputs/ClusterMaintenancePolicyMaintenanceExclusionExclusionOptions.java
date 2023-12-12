@@ -104,9 +104,9 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions 
             return this;
         }
         public ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions build() {
-            final var o = new ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions();
-            o.scope = scope;
-            return o;
+            final var _resultValue = new ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions();
+            _resultValue.scope = scope;
+            return _resultValue;
         }
     }
 }

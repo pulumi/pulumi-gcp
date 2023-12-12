@@ -67,10 +67,10 @@ public final class MetricDescriptorMetadata {
             return this;
         }
         public MetricDescriptorMetadata build() {
-            final var o = new MetricDescriptorMetadata();
-            o.ingestDelay = ingestDelay;
-            o.samplePeriod = samplePeriod;
-            return o;
+            final var _resultValue = new MetricDescriptorMetadata();
+            _resultValue.ingestDelay = ingestDelay;
+            _resultValue.samplePeriod = samplePeriod;
+            return _resultValue;
         }
     }
 }

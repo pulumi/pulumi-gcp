@@ -69,10 +69,10 @@ public final class SecurityScanConfigAuthenticationGoogleAccount {
             return this;
         }
         public SecurityScanConfigAuthenticationGoogleAccount build() {
-            final var o = new SecurityScanConfigAuthenticationGoogleAccount();
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new SecurityScanConfigAuthenticationGoogleAccount();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

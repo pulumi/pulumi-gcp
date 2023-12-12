@@ -50,10 +50,10 @@ public final class InstanceFromTemplateGuestAccelerator {
             return this;
         }
         public InstanceFromTemplateGuestAccelerator build() {
-            final var o = new InstanceFromTemplateGuestAccelerator();
-            o.count = count;
-            o.type = type;
-            return o;
+            final var _resultValue = new InstanceFromTemplateGuestAccelerator();
+            _resultValue.count = count;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

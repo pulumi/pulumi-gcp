@@ -48,9 +48,9 @@ public final class SecretTopic {
             return this;
         }
         public SecretTopic build() {
-            final var o = new SecretTopic();
-            o.name = name;
-            return o;
+            final var _resultValue = new SecretTopic();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

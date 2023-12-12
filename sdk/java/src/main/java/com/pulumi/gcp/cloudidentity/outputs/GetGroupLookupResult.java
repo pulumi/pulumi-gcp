@@ -77,11 +77,11 @@ public final class GetGroupLookupResult {
             return this;
         }
         public GetGroupLookupResult build() {
-            final var o = new GetGroupLookupResult();
-            o.groupKey = groupKey;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetGroupLookupResult();
+            _resultValue.groupKey = groupKey;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

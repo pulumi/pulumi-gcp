@@ -92,11 +92,11 @@ public final class InstanceReservationAffinity {
             return values(List.of(values));
         }
         public InstanceReservationAffinity build() {
-            final var o = new InstanceReservationAffinity();
-            o.consumeReservationType = consumeReservationType;
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new InstanceReservationAffinity();
+            _resultValue.consumeReservationType = consumeReservationType;
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

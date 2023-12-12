@@ -50,9 +50,9 @@ public final class ClusterControlPlaneRemote {
             return this;
         }
         public ClusterControlPlaneRemote build() {
-            final var o = new ClusterControlPlaneRemote();
-            o.nodeLocation = nodeLocation;
-            return o;
+            final var _resultValue = new ClusterControlPlaneRemote();
+            _resultValue.nodeLocation = nodeLocation;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class TableExternalDataConfigurationAvroOptions {
             return this;
         }
         public TableExternalDataConfigurationAvroOptions build() {
-            final var o = new TableExternalDataConfigurationAvroOptions();
-            o.useAvroLogicalTypes = useAvroLogicalTypes;
-            return o;
+            final var _resultValue = new TableExternalDataConfigurationAvroOptions();
+            _resultValue.useAvroLogicalTypes = useAvroLogicalTypes;
+            return _resultValue;
         }
     }
 }

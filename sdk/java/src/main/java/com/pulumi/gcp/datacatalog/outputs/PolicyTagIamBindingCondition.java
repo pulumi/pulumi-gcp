@@ -62,11 +62,11 @@ public final class PolicyTagIamBindingCondition {
             return this;
         }
         public PolicyTagIamBindingCondition build() {
-            final var o = new PolicyTagIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new PolicyTagIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

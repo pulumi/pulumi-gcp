@@ -117,12 +117,12 @@ public final class CertificateManagedAuthorizationAttemptInfo {
             return this;
         }
         public CertificateManagedAuthorizationAttemptInfo build() {
-            final var o = new CertificateManagedAuthorizationAttemptInfo();
-            o.details = details;
-            o.domain = domain;
-            o.failureReason = failureReason;
-            o.state = state;
-            return o;
+            final var _resultValue = new CertificateManagedAuthorizationAttemptInfo();
+            _resultValue.details = details;
+            _resultValue.domain = domain;
+            _resultValue.failureReason = failureReason;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

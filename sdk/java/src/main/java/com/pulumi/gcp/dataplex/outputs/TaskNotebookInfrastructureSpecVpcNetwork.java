@@ -90,11 +90,11 @@ public final class TaskNotebookInfrastructureSpecVpcNetwork {
             return this;
         }
         public TaskNotebookInfrastructureSpecVpcNetwork build() {
-            final var o = new TaskNotebookInfrastructureSpecVpcNetwork();
-            o.network = network;
-            o.networkTags = networkTags;
-            o.subNetwork = subNetwork;
-            return o;
+            final var _resultValue = new TaskNotebookInfrastructureSpecVpcNetwork();
+            _resultValue.network = network;
+            _resultValue.networkTags = networkTags;
+            _resultValue.subNetwork = subNetwork;
+            return _resultValue;
         }
     }
 }

@@ -42,9 +42,9 @@ public final class GetClusterNodePoolAutoConfigNetworkTag {
             return tags(List.of(tags));
         }
         public GetClusterNodePoolAutoConfigNetworkTag build() {
-            final var o = new GetClusterNodePoolAutoConfigNetworkTag();
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetClusterNodePoolAutoConfigNetworkTag();
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

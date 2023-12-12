@@ -108,12 +108,12 @@ public final class HostingVersionConfigRewrite {
             return this;
         }
         public HostingVersionConfigRewrite build() {
-            final var o = new HostingVersionConfigRewrite();
-            o.function = function;
-            o.glob = glob;
-            o.regex = regex;
-            o.run = run;
-            return o;
+            final var _resultValue = new HostingVersionConfigRewrite();
+            _resultValue.function = function;
+            _resultValue.glob = glob;
+            _resultValue.regex = regex;
+            _resultValue.run = run;
+            return _resultValue;
         }
     }
 }

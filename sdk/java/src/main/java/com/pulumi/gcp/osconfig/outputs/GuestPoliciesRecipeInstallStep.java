@@ -182,15 +182,15 @@ public final class GuestPoliciesRecipeInstallStep {
             return this;
         }
         public GuestPoliciesRecipeInstallStep build() {
-            final var o = new GuestPoliciesRecipeInstallStep();
-            o.archiveExtraction = archiveExtraction;
-            o.dpkgInstallation = dpkgInstallation;
-            o.fileCopy = fileCopy;
-            o.fileExec = fileExec;
-            o.msiInstallation = msiInstallation;
-            o.rpmInstallation = rpmInstallation;
-            o.scriptRun = scriptRun;
-            return o;
+            final var _resultValue = new GuestPoliciesRecipeInstallStep();
+            _resultValue.archiveExtraction = archiveExtraction;
+            _resultValue.dpkgInstallation = dpkgInstallation;
+            _resultValue.fileCopy = fileCopy;
+            _resultValue.fileExec = fileExec;
+            _resultValue.msiInstallation = msiInstallation;
+            _resultValue.rpmInstallation = rpmInstallation;
+            _resultValue.scriptRun = scriptRun;
+            return _resultValue;
         }
     }
 }

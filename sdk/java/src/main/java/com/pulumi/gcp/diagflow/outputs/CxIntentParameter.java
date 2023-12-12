@@ -110,12 +110,12 @@ public final class CxIntentParameter {
             return this;
         }
         public CxIntentParameter build() {
-            final var o = new CxIntentParameter();
-            o.entityType = entityType;
-            o.id = id;
-            o.isList = isList;
-            o.redact = redact;
-            return o;
+            final var _resultValue = new CxIntentParameter();
+            _resultValue.entityType = entityType;
+            _resultValue.id = id;
+            _resultValue.isList = isList;
+            _resultValue.redact = redact;
+            return _resultValue;
         }
     }
 }

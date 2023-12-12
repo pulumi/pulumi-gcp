@@ -185,14 +185,14 @@ public final class ServiceTemplateSpec {
             return volumes(List.of(volumes));
         }
         public ServiceTemplateSpec build() {
-            final var o = new ServiceTemplateSpec();
-            o.containerConcurrency = containerConcurrency;
-            o.containers = containers;
-            o.serviceAccountName = serviceAccountName;
-            o.servingState = servingState;
-            o.timeoutSeconds = timeoutSeconds;
-            o.volumes = volumes;
-            return o;
+            final var _resultValue = new ServiceTemplateSpec();
+            _resultValue.containerConcurrency = containerConcurrency;
+            _resultValue.containers = containers;
+            _resultValue.serviceAccountName = serviceAccountName;
+            _resultValue.servingState = servingState;
+            _resultValue.timeoutSeconds = timeoutSeconds;
+            _resultValue.volumes = volumes;
+            return _resultValue;
         }
     }
 }

@@ -88,10 +88,10 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
             return this;
         }
         public SloWindowsBasedSliGoodTotalRatioThresholdPerformance build() {
-            final var o = new SloWindowsBasedSliGoodTotalRatioThresholdPerformance();
-            o.distributionCut = distributionCut;
-            o.goodTotalRatio = goodTotalRatio;
-            return o;
+            final var _resultValue = new SloWindowsBasedSliGoodTotalRatioThresholdPerformance();
+            _resultValue.distributionCut = distributionCut;
+            _resultValue.goodTotalRatio = goodTotalRatio;
+            return _resultValue;
         }
     }
 }

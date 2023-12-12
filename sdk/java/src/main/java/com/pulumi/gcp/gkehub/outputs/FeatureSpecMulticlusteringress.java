@@ -46,9 +46,9 @@ public final class FeatureSpecMulticlusteringress {
             return this;
         }
         public FeatureSpecMulticlusteringress build() {
-            final var o = new FeatureSpecMulticlusteringress();
-            o.configMembership = configMembership;
-            return o;
+            final var _resultValue = new FeatureSpecMulticlusteringress();
+            _resultValue.configMembership = configMembership;
+            return _resultValue;
         }
     }
 }

@@ -40,9 +40,9 @@ public final class JobReference {
             return this;
         }
         public JobReference build() {
-            final var o = new JobReference();
-            o.jobId = jobId;
-            return o;
+            final var _resultValue = new JobReference();
+            _resultValue.jobId = jobId;
+            return _resultValue;
         }
     }
 }

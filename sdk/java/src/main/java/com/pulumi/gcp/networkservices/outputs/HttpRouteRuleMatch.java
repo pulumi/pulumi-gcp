@@ -157,14 +157,14 @@ public final class HttpRouteRuleMatch {
             return this;
         }
         public HttpRouteRuleMatch build() {
-            final var o = new HttpRouteRuleMatch();
-            o.fullPathMatch = fullPathMatch;
-            o.headers = headers;
-            o.ignoreCase = ignoreCase;
-            o.prefixMatch = prefixMatch;
-            o.queryParameters = queryParameters;
-            o.regexMatch = regexMatch;
-            return o;
+            final var _resultValue = new HttpRouteRuleMatch();
+            _resultValue.fullPathMatch = fullPathMatch;
+            _resultValue.headers = headers;
+            _resultValue.ignoreCase = ignoreCase;
+            _resultValue.prefixMatch = prefixMatch;
+            _resultValue.queryParameters = queryParameters;
+            _resultValue.regexMatch = regexMatch;
+            return _resultValue;
         }
     }
 }

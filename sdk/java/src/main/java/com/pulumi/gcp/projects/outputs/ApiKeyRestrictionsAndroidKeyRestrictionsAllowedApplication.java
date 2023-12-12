@@ -69,10 +69,10 @@ public final class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication {
             return this;
         }
         public ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication build() {
-            final var o = new ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication();
-            o.packageName = packageName;
-            o.sha1Fingerprint = sha1Fingerprint;
-            return o;
+            final var _resultValue = new ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication();
+            _resultValue.packageName = packageName;
+            _resultValue.sha1Fingerprint = sha1Fingerprint;
+            return _resultValue;
         }
     }
 }

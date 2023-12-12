@@ -215,16 +215,16 @@ public final class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFul
             return this;
         }
         public CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage build() {
-            final var o = new CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage();
-            o.channel = channel;
-            o.conversationSuccess = conversationSuccess;
-            o.liveAgentHandoff = liveAgentHandoff;
-            o.outputAudioText = outputAudioText;
-            o.payload = payload;
-            o.playAudio = playAudio;
-            o.telephonyTransferCall = telephonyTransferCall;
-            o.text = text;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage();
+            _resultValue.channel = channel;
+            _resultValue.conversationSuccess = conversationSuccess;
+            _resultValue.liveAgentHandoff = liveAgentHandoff;
+            _resultValue.outputAudioText = outputAudioText;
+            _resultValue.payload = payload;
+            _resultValue.playAudio = playAudio;
+            _resultValue.telephonyTransferCall = telephonyTransferCall;
+            _resultValue.text = text;
+            return _resultValue;
         }
     }
 }

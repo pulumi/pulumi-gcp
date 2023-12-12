@@ -62,11 +62,11 @@ public final class GatewayIamBindingCondition {
             return this;
         }
         public GatewayIamBindingCondition build() {
-            final var o = new GatewayIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new GatewayIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

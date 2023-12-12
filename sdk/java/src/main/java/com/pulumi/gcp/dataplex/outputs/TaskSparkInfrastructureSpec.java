@@ -94,11 +94,11 @@ public final class TaskSparkInfrastructureSpec {
             return this;
         }
         public TaskSparkInfrastructureSpec build() {
-            final var o = new TaskSparkInfrastructureSpec();
-            o.batch = batch;
-            o.containerImage = containerImage;
-            o.vpcNetwork = vpcNetwork;
-            return o;
+            final var _resultValue = new TaskSparkInfrastructureSpec();
+            _resultValue.batch = batch;
+            _resultValue.containerImage = containerImage;
+            _resultValue.vpcNetwork = vpcNetwork;
+            return _resultValue;
         }
     }
 }

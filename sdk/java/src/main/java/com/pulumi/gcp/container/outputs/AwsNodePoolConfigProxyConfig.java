@@ -65,10 +65,10 @@ public final class AwsNodePoolConfigProxyConfig {
             return this;
         }
         public AwsNodePoolConfigProxyConfig build() {
-            final var o = new AwsNodePoolConfigProxyConfig();
-            o.secretArn = secretArn;
-            o.secretVersion = secretVersion;
-            return o;
+            final var _resultValue = new AwsNodePoolConfigProxyConfig();
+            _resultValue.secretArn = secretArn;
+            _resultValue.secretVersion = secretVersion;
+            return _resultValue;
         }
     }
 }

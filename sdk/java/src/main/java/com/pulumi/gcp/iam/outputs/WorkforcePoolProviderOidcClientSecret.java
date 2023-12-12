@@ -50,9 +50,9 @@ public final class WorkforcePoolProviderOidcClientSecret {
             return this;
         }
         public WorkforcePoolProviderOidcClientSecret build() {
-            final var o = new WorkforcePoolProviderOidcClientSecret();
-            o.value = value;
-            return o;
+            final var _resultValue = new WorkforcePoolProviderOidcClientSecret();
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -92,11 +92,11 @@ public final class BareMetalNodePoolNodePoolConfigTaint {
             return this;
         }
         public BareMetalNodePoolNodePoolConfigTaint build() {
-            final var o = new BareMetalNodePoolNodePoolConfigTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new BareMetalNodePoolNodePoolConfigTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

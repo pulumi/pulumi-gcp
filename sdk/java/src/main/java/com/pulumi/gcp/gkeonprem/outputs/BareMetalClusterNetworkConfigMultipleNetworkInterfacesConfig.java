@@ -52,9 +52,9 @@ public final class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig 
             return this;
         }
         public BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig build() {
-            final var o = new BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

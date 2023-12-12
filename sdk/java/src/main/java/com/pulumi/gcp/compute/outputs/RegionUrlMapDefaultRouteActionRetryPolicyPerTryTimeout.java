@@ -72,10 +72,10 @@ public final class RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout {
             return this;
         }
         public RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout build() {
-            final var o = new RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

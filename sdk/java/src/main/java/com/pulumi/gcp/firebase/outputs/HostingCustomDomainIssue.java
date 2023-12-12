@@ -90,11 +90,11 @@ public final class HostingCustomDomainIssue {
             return this;
         }
         public HostingCustomDomainIssue build() {
-            final var o = new HostingCustomDomainIssue();
-            o.code = code;
-            o.details = details;
-            o.message = message;
-            return o;
+            final var _resultValue = new HostingCustomDomainIssue();
+            _resultValue.code = code;
+            _resultValue.details = details;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

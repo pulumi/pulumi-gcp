@@ -180,18 +180,18 @@ public final class GetResourcePolicyResult {
             return snapshotSchedulePolicies(List.of(snapshotSchedulePolicies));
         }
         public GetResourcePolicyResult build() {
-            final var o = new GetResourcePolicyResult();
-            o.description = description;
-            o.diskConsistencyGroupPolicies = diskConsistencyGroupPolicies;
-            o.groupPlacementPolicies = groupPlacementPolicies;
-            o.id = id;
-            o.instanceSchedulePolicies = instanceSchedulePolicies;
-            o.name = name;
-            o.project = project;
-            o.region = region;
-            o.selfLink = selfLink;
-            o.snapshotSchedulePolicies = snapshotSchedulePolicies;
-            return o;
+            final var _resultValue = new GetResourcePolicyResult();
+            _resultValue.description = description;
+            _resultValue.diskConsistencyGroupPolicies = diskConsistencyGroupPolicies;
+            _resultValue.groupPlacementPolicies = groupPlacementPolicies;
+            _resultValue.id = id;
+            _resultValue.instanceSchedulePolicies = instanceSchedulePolicies;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.selfLink = selfLink;
+            _resultValue.snapshotSchedulePolicies = snapshotSchedulePolicies;
+            return _resultValue;
         }
     }
 }

@@ -244,18 +244,18 @@ public final class RuntimeSoftwareConfig {
             return this;
         }
         public RuntimeSoftwareConfig build() {
-            final var o = new RuntimeSoftwareConfig();
-            o.customGpuDriverPath = customGpuDriverPath;
-            o.enableHealthMonitoring = enableHealthMonitoring;
-            o.idleShutdown = idleShutdown;
-            o.idleShutdownTimeout = idleShutdownTimeout;
-            o.installGpuDriver = installGpuDriver;
-            o.kernels = kernels;
-            o.notebookUpgradeSchedule = notebookUpgradeSchedule;
-            o.postStartupScript = postStartupScript;
-            o.postStartupScriptBehavior = postStartupScriptBehavior;
-            o.upgradeable = upgradeable;
-            return o;
+            final var _resultValue = new RuntimeSoftwareConfig();
+            _resultValue.customGpuDriverPath = customGpuDriverPath;
+            _resultValue.enableHealthMonitoring = enableHealthMonitoring;
+            _resultValue.idleShutdown = idleShutdown;
+            _resultValue.idleShutdownTimeout = idleShutdownTimeout;
+            _resultValue.installGpuDriver = installGpuDriver;
+            _resultValue.kernels = kernels;
+            _resultValue.notebookUpgradeSchedule = notebookUpgradeSchedule;
+            _resultValue.postStartupScript = postStartupScript;
+            _resultValue.postStartupScriptBehavior = postStartupScriptBehavior;
+            _resultValue.upgradeable = upgradeable;
+            return _resultValue;
         }
     }
 }

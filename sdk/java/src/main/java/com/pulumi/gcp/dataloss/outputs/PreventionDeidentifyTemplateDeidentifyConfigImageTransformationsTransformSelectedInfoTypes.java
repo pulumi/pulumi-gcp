@@ -54,9 +54,9 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigImageTransformati
             return infoTypes(List.of(infoTypes));
         }
         public PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes();
-            o.infoTypes = infoTypes;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes();
+            _resultValue.infoTypes = infoTypes;
+            return _resultValue;
         }
     }
 }

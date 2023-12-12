@@ -48,9 +48,9 @@ public final class VMwareClusterNetworkConfigDhcpIpConfig {
             return this;
         }
         public VMwareClusterNetworkConfigDhcpIpConfig build() {
-            final var o = new VMwareClusterNetworkConfigDhcpIpConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new VMwareClusterNetworkConfigDhcpIpConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

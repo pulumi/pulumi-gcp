@@ -90,11 +90,11 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
             return values(List.of(values));
         }
         public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity();
-            o.consumeReservationType = consumeReservationType;
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity();
+            _resultValue.consumeReservationType = consumeReservationType;
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

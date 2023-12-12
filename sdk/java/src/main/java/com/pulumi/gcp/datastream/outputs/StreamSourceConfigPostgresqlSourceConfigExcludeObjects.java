@@ -52,9 +52,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjects {
             return postgresqlSchemas(List.of(postgresqlSchemas));
         }
         public StreamSourceConfigPostgresqlSourceConfigExcludeObjects build() {
-            final var o = new StreamSourceConfigPostgresqlSourceConfigExcludeObjects();
-            o.postgresqlSchemas = postgresqlSchemas;
-            return o;
+            final var _resultValue = new StreamSourceConfigPostgresqlSourceConfigExcludeObjects();
+            _resultValue.postgresqlSchemas = postgresqlSchemas;
+            return _resultValue;
         }
     }
 }

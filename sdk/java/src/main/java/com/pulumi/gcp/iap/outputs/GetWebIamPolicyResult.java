@@ -97,12 +97,12 @@ public final class GetWebIamPolicyResult {
             return this;
         }
         public GetWebIamPolicyResult build() {
-            final var o = new GetWebIamPolicyResult();
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetWebIamPolicyResult();
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

@@ -71,10 +71,10 @@ public final class ConfigSignInEmail {
             return this;
         }
         public ConfigSignInEmail build() {
-            final var o = new ConfigSignInEmail();
-            o.enabled = enabled;
-            o.passwordRequired = passwordRequired;
-            return o;
+            final var _resultValue = new ConfigSignInEmail();
+            _resultValue.enabled = enabled;
+            _resultValue.passwordRequired = passwordRequired;
+            return _resultValue;
         }
     }
 }

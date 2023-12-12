@@ -38,9 +38,9 @@ public final class GetClusterProtectConfigWorkloadConfig {
             return this;
         }
         public GetClusterProtectConfigWorkloadConfig build() {
-            final var o = new GetClusterProtectConfigWorkloadConfig();
-            o.auditMode = auditMode;
-            return o;
+            final var _resultValue = new GetClusterProtectConfigWorkloadConfig();
+            _resultValue.auditMode = auditMode;
+            return _resultValue;
         }
     }
 }

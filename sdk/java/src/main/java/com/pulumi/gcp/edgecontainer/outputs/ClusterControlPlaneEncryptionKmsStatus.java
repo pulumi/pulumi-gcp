@@ -72,10 +72,10 @@ public final class ClusterControlPlaneEncryptionKmsStatus {
             return this;
         }
         public ClusterControlPlaneEncryptionKmsStatus build() {
-            final var o = new ClusterControlPlaneEncryptionKmsStatus();
-            o.code = code;
-            o.message = message;
-            return o;
+            final var _resultValue = new ClusterControlPlaneEncryptionKmsStatus();
+            _resultValue.code = code;
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

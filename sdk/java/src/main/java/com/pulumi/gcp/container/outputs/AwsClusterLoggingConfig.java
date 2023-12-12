@@ -48,9 +48,9 @@ public final class AwsClusterLoggingConfig {
             return this;
         }
         public AwsClusterLoggingConfig build() {
-            final var o = new AwsClusterLoggingConfig();
-            o.componentConfig = componentConfig;
-            return o;
+            final var _resultValue = new AwsClusterLoggingConfig();
+            _resultValue.componentConfig = componentConfig;
+            return _resultValue;
         }
     }
 }

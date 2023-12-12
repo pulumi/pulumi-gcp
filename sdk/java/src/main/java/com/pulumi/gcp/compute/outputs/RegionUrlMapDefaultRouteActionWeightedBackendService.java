@@ -100,11 +100,11 @@ public final class RegionUrlMapDefaultRouteActionWeightedBackendService {
             return this;
         }
         public RegionUrlMapDefaultRouteActionWeightedBackendService build() {
-            final var o = new RegionUrlMapDefaultRouteActionWeightedBackendService();
-            o.backendService = backendService;
-            o.headerAction = headerAction;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new RegionUrlMapDefaultRouteActionWeightedBackendService();
+            _resultValue.backendService = backendService;
+            _resultValue.headerAction = headerAction;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

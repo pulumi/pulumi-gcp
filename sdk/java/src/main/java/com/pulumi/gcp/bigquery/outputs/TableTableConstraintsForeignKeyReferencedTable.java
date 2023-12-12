@@ -92,11 +92,11 @@ public final class TableTableConstraintsForeignKeyReferencedTable {
             return this;
         }
         public TableTableConstraintsForeignKeyReferencedTable build() {
-            final var o = new TableTableConstraintsForeignKeyReferencedTable();
-            o.datasetId = datasetId;
-            o.projectId = projectId;
-            o.tableId = tableId;
-            return o;
+            final var _resultValue = new TableTableConstraintsForeignKeyReferencedTable();
+            _resultValue.datasetId = datasetId;
+            _resultValue.projectId = projectId;
+            _resultValue.tableId = tableId;
+            return _resultValue;
         }
     }
 }

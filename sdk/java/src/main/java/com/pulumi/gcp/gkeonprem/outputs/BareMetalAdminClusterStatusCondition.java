@@ -132,13 +132,13 @@ public final class BareMetalAdminClusterStatusCondition {
             return this;
         }
         public BareMetalAdminClusterStatusCondition build() {
-            final var o = new BareMetalAdminClusterStatusCondition();
-            o.lastTransitionTime = lastTransitionTime;
-            o.message = message;
-            o.reason = reason;
-            o.state = state;
-            o.type = type;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterStatusCondition();
+            _resultValue.lastTransitionTime = lastTransitionTime;
+            _resultValue.message = message;
+            _resultValue.reason = reason;
+            _resultValue.state = state;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

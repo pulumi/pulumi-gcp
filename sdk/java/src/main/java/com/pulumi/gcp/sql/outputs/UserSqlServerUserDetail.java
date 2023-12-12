@@ -56,10 +56,10 @@ public final class UserSqlServerUserDetail {
             return serverRoles(List.of(serverRoles));
         }
         public UserSqlServerUserDetail build() {
-            final var o = new UserSqlServerUserDetail();
-            o.disabled = disabled;
-            o.serverRoles = serverRoles;
-            return o;
+            final var _resultValue = new UserSqlServerUserDetail();
+            _resultValue.disabled = disabled;
+            _resultValue.serverRoles = serverRoles;
+            return _resultValue;
         }
     }
 }

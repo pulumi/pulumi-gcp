@@ -241,18 +241,18 @@ public final class ClusterMaintenanceEvent {
             return this;
         }
         public ClusterMaintenanceEvent build() {
-            final var o = new ClusterMaintenanceEvent();
-            o.createTime = createTime;
-            o.endTime = endTime;
-            o.operation = operation;
-            o.schedule = schedule;
-            o.startTime = startTime;
-            o.state = state;
-            o.targetVersion = targetVersion;
-            o.type = type;
-            o.updateTime = updateTime;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new ClusterMaintenanceEvent();
+            _resultValue.createTime = createTime;
+            _resultValue.endTime = endTime;
+            _resultValue.operation = operation;
+            _resultValue.schedule = schedule;
+            _resultValue.startTime = startTime;
+            _resultValue.state = state;
+            _resultValue.targetVersion = targetVersion;
+            _resultValue.type = type;
+            _resultValue.updateTime = updateTime;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig 
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig();
-            o.dataprocMetastoreService = dataprocMetastoreService;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig();
+            _resultValue.dataprocMetastoreService = dataprocMetastoreService;
+            return _resultValue;
         }
     }
 }

@@ -61,11 +61,11 @@ public final class GetJobTemplateTemplateVolumeSecretItem {
             return this;
         }
         public GetJobTemplateTemplateVolumeSecretItem build() {
-            final var o = new GetJobTemplateTemplateVolumeSecretItem();
-            o.mode = mode;
-            o.path = path;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetJobTemplateTemplateVolumeSecretItem();
+            _resultValue.mode = mode;
+            _resultValue.path = path;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

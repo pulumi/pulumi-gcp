@@ -92,12 +92,12 @@ public final class GetJobTemplateTemplateVolume {
             return secrets(List.of(secrets));
         }
         public GetJobTemplateTemplateVolume build() {
-            final var o = new GetJobTemplateTemplateVolume();
-            o.cloudSqlInstances = cloudSqlInstances;
-            o.emptyDirs = emptyDirs;
-            o.name = name;
-            o.secrets = secrets;
-            return o;
+            final var _resultValue = new GetJobTemplateTemplateVolume();
+            _resultValue.cloudSqlInstances = cloudSqlInstances;
+            _resultValue.emptyDirs = emptyDirs;
+            _resultValue.name = name;
+            _resultValue.secrets = secrets;
+            return _resultValue;
         }
     }
 }

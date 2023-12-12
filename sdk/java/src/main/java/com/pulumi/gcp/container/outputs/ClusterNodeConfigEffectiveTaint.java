@@ -86,11 +86,11 @@ public final class ClusterNodeConfigEffectiveTaint {
             return this;
         }
         public ClusterNodeConfigEffectiveTaint build() {
-            final var o = new ClusterNodeConfigEffectiveTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ClusterNodeConfigEffectiveTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

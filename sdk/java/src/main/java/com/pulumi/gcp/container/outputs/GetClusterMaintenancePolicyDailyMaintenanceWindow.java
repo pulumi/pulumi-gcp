@@ -49,10 +49,10 @@ public final class GetClusterMaintenancePolicyDailyMaintenanceWindow {
             return this;
         }
         public GetClusterMaintenancePolicyDailyMaintenanceWindow build() {
-            final var o = new GetClusterMaintenancePolicyDailyMaintenanceWindow();
-            o.duration = duration;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new GetClusterMaintenancePolicyDailyMaintenanceWindow();
+            _resultValue.duration = duration;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

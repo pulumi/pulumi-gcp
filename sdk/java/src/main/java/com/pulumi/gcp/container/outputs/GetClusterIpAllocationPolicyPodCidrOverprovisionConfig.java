@@ -38,9 +38,9 @@ public final class GetClusterIpAllocationPolicyPodCidrOverprovisionConfig {
             return this;
         }
         public GetClusterIpAllocationPolicyPodCidrOverprovisionConfig build() {
-            final var o = new GetClusterIpAllocationPolicyPodCidrOverprovisionConfig();
-            o.disabled = disabled;
-            return o;
+            final var _resultValue = new GetClusterIpAllocationPolicyPodCidrOverprovisionConfig();
+            _resultValue.disabled = disabled;
+            return _resultValue;
         }
     }
 }

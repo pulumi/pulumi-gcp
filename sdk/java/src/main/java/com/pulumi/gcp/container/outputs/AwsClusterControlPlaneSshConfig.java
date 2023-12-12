@@ -46,9 +46,9 @@ public final class AwsClusterControlPlaneSshConfig {
             return this;
         }
         public AwsClusterControlPlaneSshConfig build() {
-            final var o = new AwsClusterControlPlaneSshConfig();
-            o.ec2KeyPair = ec2KeyPair;
-            return o;
+            final var _resultValue = new AwsClusterControlPlaneSshConfig();
+            _resultValue.ec2KeyPair = ec2KeyPair;
+            return _resultValue;
         }
     }
 }

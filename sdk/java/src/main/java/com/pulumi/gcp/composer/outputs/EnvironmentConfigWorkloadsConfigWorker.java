@@ -85,13 +85,13 @@ public final class EnvironmentConfigWorkloadsConfigWorker {
             return this;
         }
         public EnvironmentConfigWorkloadsConfigWorker build() {
-            final var o = new EnvironmentConfigWorkloadsConfigWorker();
-            o.cpu = cpu;
-            o.maxCount = maxCount;
-            o.memoryGb = memoryGb;
-            o.minCount = minCount;
-            o.storageGb = storageGb;
-            return o;
+            final var _resultValue = new EnvironmentConfigWorkloadsConfigWorker();
+            _resultValue.cpu = cpu;
+            _resultValue.maxCount = maxCount;
+            _resultValue.memoryGb = memoryGb;
+            _resultValue.minCount = minCount;
+            _resultValue.storageGb = storageGb;
+            return _resultValue;
         }
     }
 }

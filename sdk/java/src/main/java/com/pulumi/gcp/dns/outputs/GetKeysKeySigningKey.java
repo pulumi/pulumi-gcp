@@ -224,18 +224,18 @@ public final class GetKeysKeySigningKey {
             return this;
         }
         public GetKeysKeySigningKey build() {
-            final var o = new GetKeysKeySigningKey();
-            o.algorithm = algorithm;
-            o.creationTime = creationTime;
-            o.description = description;
-            o.digests = digests;
-            o.dsRecord = dsRecord;
-            o.id = id;
-            o.isActive = isActive;
-            o.keyLength = keyLength;
-            o.keyTag = keyTag;
-            o.publicKey = publicKey;
-            return o;
+            final var _resultValue = new GetKeysKeySigningKey();
+            _resultValue.algorithm = algorithm;
+            _resultValue.creationTime = creationTime;
+            _resultValue.description = description;
+            _resultValue.digests = digests;
+            _resultValue.dsRecord = dsRecord;
+            _resultValue.id = id;
+            _resultValue.isActive = isActive;
+            _resultValue.keyLength = keyLength;
+            _resultValue.keyTag = keyTag;
+            _resultValue.publicKey = publicKey;
+            return _resultValue;
         }
     }
 }

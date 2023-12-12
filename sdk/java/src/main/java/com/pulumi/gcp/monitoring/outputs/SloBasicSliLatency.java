@@ -50,9 +50,9 @@ public final class SloBasicSliLatency {
             return this;
         }
         public SloBasicSliLatency build() {
-            final var o = new SloBasicSliLatency();
-            o.threshold = threshold;
-            return o;
+            final var _resultValue = new SloBasicSliLatency();
+            _resultValue.threshold = threshold;
+            return _resultValue;
         }
     }
 }

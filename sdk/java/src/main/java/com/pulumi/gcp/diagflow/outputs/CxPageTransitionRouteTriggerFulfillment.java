@@ -163,14 +163,14 @@ public final class CxPageTransitionRouteTriggerFulfillment {
             return this;
         }
         public CxPageTransitionRouteTriggerFulfillment build() {
-            final var o = new CxPageTransitionRouteTriggerFulfillment();
-            o.conditionalCases = conditionalCases;
-            o.messages = messages;
-            o.returnPartialResponses = returnPartialResponses;
-            o.setParameterActions = setParameterActions;
-            o.tag = tag;
-            o.webhook = webhook;
-            return o;
+            final var _resultValue = new CxPageTransitionRouteTriggerFulfillment();
+            _resultValue.conditionalCases = conditionalCases;
+            _resultValue.messages = messages;
+            _resultValue.returnPartialResponses = returnPartialResponses;
+            _resultValue.setParameterActions = setParameterActions;
+            _resultValue.tag = tag;
+            _resultValue.webhook = webhook;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class GetInstanceGroupManagerStatusVersionTarget {
             return this;
         }
         public GetInstanceGroupManagerStatusVersionTarget build() {
-            final var o = new GetInstanceGroupManagerStatusVersionTarget();
-            o.isReached = isReached;
-            return o;
+            final var _resultValue = new GetInstanceGroupManagerStatusVersionTarget();
+            _resultValue.isReached = isReached;
+            return _resultValue;
         }
     }
 }

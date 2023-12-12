@@ -72,10 +72,10 @@ public final class BareMetalAdminClusterNetworkConfigIslandModeCidr {
             return serviceAddressCidrBlocks(List.of(serviceAddressCidrBlocks));
         }
         public BareMetalAdminClusterNetworkConfigIslandModeCidr build() {
-            final var o = new BareMetalAdminClusterNetworkConfigIslandModeCidr();
-            o.podAddressCidrBlocks = podAddressCidrBlocks;
-            o.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterNetworkConfigIslandModeCidr();
+            _resultValue.podAddressCidrBlocks = podAddressCidrBlocks;
+            _resultValue.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
+            return _resultValue;
         }
     }
 }

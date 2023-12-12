@@ -52,9 +52,9 @@ public final class RepositoryRemoteRepositoryConfigMavenRepository {
             return this;
         }
         public RepositoryRemoteRepositoryConfigMavenRepository build() {
-            final var o = new RepositoryRemoteRepositoryConfigMavenRepository();
-            o.publicRepository = publicRepository;
-            return o;
+            final var _resultValue = new RepositoryRemoteRepositoryConfigMavenRepository();
+            _resultValue.publicRepository = publicRepository;
+            return _resultValue;
         }
     }
 }

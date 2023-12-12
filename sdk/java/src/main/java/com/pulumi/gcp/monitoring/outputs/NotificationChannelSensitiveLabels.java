@@ -92,11 +92,11 @@ public final class NotificationChannelSensitiveLabels {
             return this;
         }
         public NotificationChannelSensitiveLabels build() {
-            final var o = new NotificationChannelSensitiveLabels();
-            o.authToken = authToken;
-            o.password = password;
-            o.serviceKey = serviceKey;
-            return o;
+            final var _resultValue = new NotificationChannelSensitiveLabels();
+            _resultValue.authToken = authToken;
+            _resultValue.password = password;
+            _resultValue.serviceKey = serviceKey;
+            return _resultValue;
         }
     }
 }

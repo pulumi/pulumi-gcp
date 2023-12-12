@@ -65,10 +65,10 @@ public final class HttpRouteRuleMatchHeaderRangeMatch {
             return this;
         }
         public HttpRouteRuleMatchHeaderRangeMatch build() {
-            final var o = new HttpRouteRuleMatchHeaderRangeMatch();
-            o.end = end;
-            o.start = start;
-            return o;
+            final var _resultValue = new HttpRouteRuleMatchHeaderRangeMatch();
+            _resultValue.end = end;
+            _resultValue.start = start;
+            return _resultValue;
         }
     }
 }

@@ -71,10 +71,10 @@ public final class GuestPoliciesRecipeArtifactRemote {
             return this;
         }
         public GuestPoliciesRecipeArtifactRemote build() {
-            final var o = new GuestPoliciesRecipeArtifactRemote();
-            o.checkSum = checkSum;
-            o.uri = uri;
-            return o;
+            final var _resultValue = new GuestPoliciesRecipeArtifactRemote();
+            _resultValue.checkSum = checkSum;
+            _resultValue.uri = uri;
+            return _resultValue;
         }
     }
 }

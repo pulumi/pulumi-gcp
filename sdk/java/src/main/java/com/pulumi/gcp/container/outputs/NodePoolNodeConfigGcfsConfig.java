@@ -48,9 +48,9 @@ public final class NodePoolNodeConfigGcfsConfig {
             return this;
         }
         public NodePoolNodeConfigGcfsConfig build() {
-            final var o = new NodePoolNodeConfigGcfsConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigGcfsConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

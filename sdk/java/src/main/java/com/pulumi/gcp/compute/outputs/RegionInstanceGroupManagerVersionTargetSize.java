@@ -71,10 +71,10 @@ public final class RegionInstanceGroupManagerVersionTargetSize {
             return this;
         }
         public RegionInstanceGroupManagerVersionTargetSize build() {
-            final var o = new RegionInstanceGroupManagerVersionTargetSize();
-            o.fixed = fixed;
-            o.percent = percent;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerVersionTargetSize();
+            _resultValue.fixed = fixed;
+            _resultValue.percent = percent;
+            return _resultValue;
         }
     }
 }

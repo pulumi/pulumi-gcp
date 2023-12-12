@@ -110,11 +110,11 @@ public final class DomainMappingSslSettings {
             return this;
         }
         public DomainMappingSslSettings build() {
-            final var o = new DomainMappingSslSettings();
-            o.certificateId = certificateId;
-            o.pendingManagedCertificateId = pendingManagedCertificateId;
-            o.sslManagementType = sslManagementType;
-            return o;
+            final var _resultValue = new DomainMappingSslSettings();
+            _resultValue.certificateId = certificateId;
+            _resultValue.pendingManagedCertificateId = pendingManagedCertificateId;
+            _resultValue.sslManagementType = sslManagementType;
+            return _resultValue;
         }
     }
 }

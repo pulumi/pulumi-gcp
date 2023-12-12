@@ -65,10 +65,10 @@ public final class WorkloadKmsSettings {
             return this;
         }
         public WorkloadKmsSettings build() {
-            final var o = new WorkloadKmsSettings();
-            o.nextRotationTime = nextRotationTime;
-            o.rotationPeriod = rotationPeriod;
-            return o;
+            final var _resultValue = new WorkloadKmsSettings();
+            _resultValue.nextRotationTime = nextRotationTime;
+            _resultValue.rotationPeriod = rotationPeriod;
+            return _resultValue;
         }
     }
 }

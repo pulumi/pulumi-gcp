@@ -124,13 +124,13 @@ public final class FeatureMembershipConfigmanagementConfigSyncOci {
             return this;
         }
         public FeatureMembershipConfigmanagementConfigSyncOci build() {
-            final var o = new FeatureMembershipConfigmanagementConfigSyncOci();
-            o.gcpServiceAccountEmail = gcpServiceAccountEmail;
-            o.policyDir = policyDir;
-            o.secretType = secretType;
-            o.syncRepo = syncRepo;
-            o.syncWaitSecs = syncWaitSecs;
-            return o;
+            final var _resultValue = new FeatureMembershipConfigmanagementConfigSyncOci();
+            _resultValue.gcpServiceAccountEmail = gcpServiceAccountEmail;
+            _resultValue.policyDir = policyDir;
+            _resultValue.secretType = secretType;
+            _resultValue.syncRepo = syncRepo;
+            _resultValue.syncWaitSecs = syncWaitSecs;
+            return _resultValue;
         }
     }
 }

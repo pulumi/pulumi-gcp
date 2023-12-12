@@ -48,9 +48,9 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessag
             return this;
         }
         public CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess build() {
-            final var o = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess();
-            o.metadata = metadata;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess();
+            _resultValue.metadata = metadata;
+            return _resultValue;
         }
     }
 }

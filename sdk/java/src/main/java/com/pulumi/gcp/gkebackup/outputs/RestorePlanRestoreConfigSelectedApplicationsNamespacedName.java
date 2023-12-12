@@ -65,10 +65,10 @@ public final class RestorePlanRestoreConfigSelectedApplicationsNamespacedName {
             return this;
         }
         public RestorePlanRestoreConfigSelectedApplicationsNamespacedName build() {
-            final var o = new RestorePlanRestoreConfigSelectedApplicationsNamespacedName();
-            o.name = name;
-            o.namespace = namespace;
-            return o;
+            final var _resultValue = new RestorePlanRestoreConfigSelectedApplicationsNamespacedName();
+            _resultValue.name = name;
+            _resultValue.namespace = namespace;
+            return _resultValue;
         }
     }
 }

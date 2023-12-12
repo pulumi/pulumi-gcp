@@ -51,9 +51,9 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy
             return actions(List.of(actions));
         }
         public DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy build() {
-            final var o = new DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy();
-            o.actions = actions;
-            return o;
+            final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy();
+            _resultValue.actions = actions;
+            return _resultValue;
         }
     }
 }

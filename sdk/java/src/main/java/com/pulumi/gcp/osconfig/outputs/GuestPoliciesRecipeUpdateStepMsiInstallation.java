@@ -93,11 +93,11 @@ public final class GuestPoliciesRecipeUpdateStepMsiInstallation {
             return flags(List.of(flags));
         }
         public GuestPoliciesRecipeUpdateStepMsiInstallation build() {
-            final var o = new GuestPoliciesRecipeUpdateStepMsiInstallation();
-            o.allowedExitCodes = allowedExitCodes;
-            o.artifactId = artifactId;
-            o.flags = flags;
-            return o;
+            final var _resultValue = new GuestPoliciesRecipeUpdateStepMsiInstallation();
+            _resultValue.allowedExitCodes = allowedExitCodes;
+            _resultValue.artifactId = artifactId;
+            _resultValue.flags = flags;
+            return _resultValue;
         }
     }
 }

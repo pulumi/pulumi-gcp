@@ -95,11 +95,11 @@ public final class AzureClusterNetworking {
             return this;
         }
         public AzureClusterNetworking build() {
-            final var o = new AzureClusterNetworking();
-            o.podAddressCidrBlocks = podAddressCidrBlocks;
-            o.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
-            o.virtualNetworkId = virtualNetworkId;
-            return o;
+            final var _resultValue = new AzureClusterNetworking();
+            _resultValue.podAddressCidrBlocks = podAddressCidrBlocks;
+            _resultValue.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
+            _resultValue.virtualNetworkId = virtualNetworkId;
+            return _resultValue;
         }
     }
 }

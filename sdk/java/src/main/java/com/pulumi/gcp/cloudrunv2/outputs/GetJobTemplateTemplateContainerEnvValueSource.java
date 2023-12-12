@@ -42,9 +42,9 @@ public final class GetJobTemplateTemplateContainerEnvValueSource {
             return secretKeyReves(List.of(secretKeyReves));
         }
         public GetJobTemplateTemplateContainerEnvValueSource build() {
-            final var o = new GetJobTemplateTemplateContainerEnvValueSource();
-            o.secretKeyReves = secretKeyReves;
-            return o;
+            final var _resultValue = new GetJobTemplateTemplateContainerEnvValueSource();
+            _resultValue.secretKeyReves = secretKeyReves;
+            return _resultValue;
         }
     }
 }

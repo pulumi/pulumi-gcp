@@ -70,10 +70,10 @@ public final class BareMetalAdminClusterStorageLvpShareConfig {
             return this;
         }
         public BareMetalAdminClusterStorageLvpShareConfig build() {
-            final var o = new BareMetalAdminClusterStorageLvpShareConfig();
-            o.lvpConfig = lvpConfig;
-            o.sharedPathPvCount = sharedPathPvCount;
-            return o;
+            final var _resultValue = new BareMetalAdminClusterStorageLvpShareConfig();
+            _resultValue.lvpConfig = lvpConfig;
+            _resultValue.sharedPathPvCount = sharedPathPvCount;
+            return _resultValue;
         }
     }
 }

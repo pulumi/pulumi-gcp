@@ -50,9 +50,9 @@ public final class ConfigQuota {
             return this;
         }
         public ConfigQuota build() {
-            final var o = new ConfigQuota();
-            o.signUpQuotaConfig = signUpQuotaConfig;
-            return o;
+            final var _resultValue = new ConfigQuota();
+            _resultValue.signUpQuotaConfig = signUpQuotaConfig;
+            return _resultValue;
         }
     }
 }

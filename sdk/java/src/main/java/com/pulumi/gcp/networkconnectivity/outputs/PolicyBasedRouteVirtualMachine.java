@@ -50,9 +50,9 @@ public final class PolicyBasedRouteVirtualMachine {
             return tags(List.of(tags));
         }
         public PolicyBasedRouteVirtualMachine build() {
-            final var o = new PolicyBasedRouteVirtualMachine();
-            o.tags = tags;
-            return o;
+            final var _resultValue = new PolicyBasedRouteVirtualMachine();
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

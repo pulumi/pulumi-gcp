@@ -72,10 +72,10 @@ public final class FolderCustomModuleCustomConfigCustomOutputProperty {
             return this;
         }
         public FolderCustomModuleCustomConfigCustomOutputProperty build() {
-            final var o = new FolderCustomModuleCustomConfigCustomOutputProperty();
-            o.name = name;
-            o.valueExpression = valueExpression;
-            return o;
+            final var _resultValue = new FolderCustomModuleCustomConfigCustomOutputProperty();
+            _resultValue.name = name;
+            _resultValue.valueExpression = valueExpression;
+            return _resultValue;
         }
     }
 }

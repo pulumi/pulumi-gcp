@@ -82,13 +82,13 @@ public final class GetInstanceServerCaCert {
             return this;
         }
         public GetInstanceServerCaCert build() {
-            final var o = new GetInstanceServerCaCert();
-            o.cert = cert;
-            o.createTime = createTime;
-            o.expireTime = expireTime;
-            o.serialNumber = serialNumber;
-            o.sha1Fingerprint = sha1Fingerprint;
-            return o;
+            final var _resultValue = new GetInstanceServerCaCert();
+            _resultValue.cert = cert;
+            _resultValue.createTime = createTime;
+            _resultValue.expireTime = expireTime;
+            _resultValue.serialNumber = serialNumber;
+            _resultValue.sha1Fingerprint = sha1Fingerprint;
+            return _resultValue;
         }
     }
 }

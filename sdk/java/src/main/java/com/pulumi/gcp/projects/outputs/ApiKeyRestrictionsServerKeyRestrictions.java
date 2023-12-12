@@ -50,9 +50,9 @@ public final class ApiKeyRestrictionsServerKeyRestrictions {
             return allowedIps(List.of(allowedIps));
         }
         public ApiKeyRestrictionsServerKeyRestrictions build() {
-            final var o = new ApiKeyRestrictionsServerKeyRestrictions();
-            o.allowedIps = allowedIps;
-            return o;
+            final var _resultValue = new ApiKeyRestrictionsServerKeyRestrictions();
+            _resultValue.allowedIps = allowedIps;
+            return _resultValue;
         }
     }
 }

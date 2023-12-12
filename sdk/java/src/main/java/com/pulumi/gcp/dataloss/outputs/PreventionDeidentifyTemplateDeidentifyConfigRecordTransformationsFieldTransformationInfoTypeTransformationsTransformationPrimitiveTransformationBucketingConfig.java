@@ -54,9 +54,9 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return buckets(List.of(buckets));
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig build() {
-            final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig();
-            o.buckets = buckets;
-            return o;
+            final var _resultValue = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig();
+            _resultValue.buckets = buckets;
+            return _resultValue;
         }
     }
 }

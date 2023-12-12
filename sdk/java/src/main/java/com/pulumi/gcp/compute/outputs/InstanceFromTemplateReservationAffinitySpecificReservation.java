@@ -53,10 +53,10 @@ public final class InstanceFromTemplateReservationAffinitySpecificReservation {
             return values(List.of(values));
         }
         public InstanceFromTemplateReservationAffinitySpecificReservation build() {
-            final var o = new InstanceFromTemplateReservationAffinitySpecificReservation();
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new InstanceFromTemplateReservationAffinitySpecificReservation();
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
             return this;
         }
         public ClusterClusterConfigGceClusterConfigNodeGroupAffinity build() {
-            final var o = new ClusterClusterConfigGceClusterConfigNodeGroupAffinity();
-            o.nodeGroupUri = nodeGroupUri;
-            return o;
+            final var _resultValue = new ClusterClusterConfigGceClusterConfigNodeGroupAffinity();
+            _resultValue.nodeGroupUri = nodeGroupUri;
+            return _resultValue;
         }
     }
 }

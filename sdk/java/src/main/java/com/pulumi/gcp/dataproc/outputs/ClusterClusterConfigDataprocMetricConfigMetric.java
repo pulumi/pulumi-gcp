@@ -74,10 +74,10 @@ public final class ClusterClusterConfigDataprocMetricConfigMetric {
             return this;
         }
         public ClusterClusterConfigDataprocMetricConfigMetric build() {
-            final var o = new ClusterClusterConfigDataprocMetricConfigMetric();
-            o.metricOverrides = metricOverrides;
-            o.metricSource = metricSource;
-            return o;
+            final var _resultValue = new ClusterClusterConfigDataprocMetricConfigMetric();
+            _resultValue.metricOverrides = metricOverrides;
+            _resultValue.metricSource = metricSource;
+            return _resultValue;
         }
     }
 }

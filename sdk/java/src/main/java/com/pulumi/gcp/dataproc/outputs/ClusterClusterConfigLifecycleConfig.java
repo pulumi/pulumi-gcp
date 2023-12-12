@@ -88,11 +88,11 @@ public final class ClusterClusterConfigLifecycleConfig {
             return this;
         }
         public ClusterClusterConfigLifecycleConfig build() {
-            final var o = new ClusterClusterConfigLifecycleConfig();
-            o.autoDeleteTime = autoDeleteTime;
-            o.idleDeleteTtl = idleDeleteTtl;
-            o.idleStartTime = idleStartTime;
-            return o;
+            final var _resultValue = new ClusterClusterConfigLifecycleConfig();
+            _resultValue.autoDeleteTime = autoDeleteTime;
+            _resultValue.idleDeleteTtl = idleDeleteTtl;
+            _resultValue.idleStartTime = idleStartTime;
+            return _resultValue;
         }
     }
 }

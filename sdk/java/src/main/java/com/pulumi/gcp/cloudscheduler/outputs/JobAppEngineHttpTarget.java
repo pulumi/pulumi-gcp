@@ -146,13 +146,13 @@ public final class JobAppEngineHttpTarget {
             return this;
         }
         public JobAppEngineHttpTarget build() {
-            final var o = new JobAppEngineHttpTarget();
-            o.appEngineRouting = appEngineRouting;
-            o.body = body;
-            o.headers = headers;
-            o.httpMethod = httpMethod;
-            o.relativeUri = relativeUri;
-            return o;
+            final var _resultValue = new JobAppEngineHttpTarget();
+            _resultValue.appEngineRouting = appEngineRouting;
+            _resultValue.body = body;
+            _resultValue.headers = headers;
+            _resultValue.httpMethod = httpMethod;
+            _resultValue.relativeUri = relativeUri;
+            return _resultValue;
         }
     }
 }

@@ -92,11 +92,11 @@ public final class VMwareNodePoolConfigTaint {
             return this;
         }
         public VMwareNodePoolConfigTaint build() {
-            final var o = new VMwareNodePoolConfigTaint();
-            o.effect = effect;
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new VMwareNodePoolConfigTaint();
+            _resultValue.effect = effect;
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

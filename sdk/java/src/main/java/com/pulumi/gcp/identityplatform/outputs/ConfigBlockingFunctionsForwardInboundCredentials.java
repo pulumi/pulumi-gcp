@@ -86,11 +86,11 @@ public final class ConfigBlockingFunctionsForwardInboundCredentials {
             return this;
         }
         public ConfigBlockingFunctionsForwardInboundCredentials build() {
-            final var o = new ConfigBlockingFunctionsForwardInboundCredentials();
-            o.accessToken = accessToken;
-            o.idToken = idToken;
-            o.refreshToken = refreshToken;
-            return o;
+            final var _resultValue = new ConfigBlockingFunctionsForwardInboundCredentials();
+            _resultValue.accessToken = accessToken;
+            _resultValue.idToken = idToken;
+            _resultValue.refreshToken = refreshToken;
+            return _resultValue;
         }
     }
 }

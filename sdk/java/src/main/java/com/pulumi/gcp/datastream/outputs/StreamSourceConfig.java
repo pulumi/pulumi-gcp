@@ -114,12 +114,12 @@ public final class StreamSourceConfig {
             return this;
         }
         public StreamSourceConfig build() {
-            final var o = new StreamSourceConfig();
-            o.mysqlSourceConfig = mysqlSourceConfig;
-            o.oracleSourceConfig = oracleSourceConfig;
-            o.postgresqlSourceConfig = postgresqlSourceConfig;
-            o.sourceConnectionProfile = sourceConnectionProfile;
-            return o;
+            final var _resultValue = new StreamSourceConfig();
+            _resultValue.mysqlSourceConfig = mysqlSourceConfig;
+            _resultValue.oracleSourceConfig = oracleSourceConfig;
+            _resultValue.postgresqlSourceConfig = postgresqlSourceConfig;
+            _resultValue.sourceConnectionProfile = sourceConnectionProfile;
+            return _resultValue;
         }
     }
 }

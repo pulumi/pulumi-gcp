@@ -72,10 +72,10 @@ public final class URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbor
             return this;
         }
         public URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort build() {
-            final var o = new URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort();
-            o.httpStatus = httpStatus;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort();
+            _resultValue.httpStatus = httpStatus;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class V2VmAcceleratorConfig {
             return this;
         }
         public V2VmAcceleratorConfig build() {
-            final var o = new V2VmAcceleratorConfig();
-            o.topology = topology;
-            o.type = type;
-            return o;
+            final var _resultValue = new V2VmAcceleratorConfig();
+            _resultValue.topology = topology;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

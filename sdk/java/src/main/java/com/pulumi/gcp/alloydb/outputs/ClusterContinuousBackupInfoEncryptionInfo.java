@@ -75,10 +75,10 @@ public final class ClusterContinuousBackupInfoEncryptionInfo {
             return kmsKeyVersions(List.of(kmsKeyVersions));
         }
         public ClusterContinuousBackupInfoEncryptionInfo build() {
-            final var o = new ClusterContinuousBackupInfoEncryptionInfo();
-            o.encryptionType = encryptionType;
-            o.kmsKeyVersions = kmsKeyVersions;
-            return o;
+            final var _resultValue = new ClusterContinuousBackupInfoEncryptionInfo();
+            _resultValue.encryptionType = encryptionType;
+            _resultValue.kmsKeyVersions = kmsKeyVersions;
+            return _resultValue;
         }
     }
 }

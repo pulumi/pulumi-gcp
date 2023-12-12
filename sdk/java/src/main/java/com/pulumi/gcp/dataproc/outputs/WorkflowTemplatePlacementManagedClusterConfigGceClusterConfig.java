@@ -269,20 +269,20 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig();
-            o.internalIpOnly = internalIpOnly;
-            o.metadata = metadata;
-            o.network = network;
-            o.nodeGroupAffinity = nodeGroupAffinity;
-            o.privateIpv6GoogleAccess = privateIpv6GoogleAccess;
-            o.reservationAffinity = reservationAffinity;
-            o.serviceAccount = serviceAccount;
-            o.serviceAccountScopes = serviceAccountScopes;
-            o.shieldedInstanceConfig = shieldedInstanceConfig;
-            o.subnetwork = subnetwork;
-            o.tags = tags;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig();
+            _resultValue.internalIpOnly = internalIpOnly;
+            _resultValue.metadata = metadata;
+            _resultValue.network = network;
+            _resultValue.nodeGroupAffinity = nodeGroupAffinity;
+            _resultValue.privateIpv6GoogleAccess = privateIpv6GoogleAccess;
+            _resultValue.reservationAffinity = reservationAffinity;
+            _resultValue.serviceAccount = serviceAccount;
+            _resultValue.serviceAccountScopes = serviceAccountScopes;
+            _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
+            _resultValue.subnetwork = subnetwork;
+            _resultValue.tags = tags;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

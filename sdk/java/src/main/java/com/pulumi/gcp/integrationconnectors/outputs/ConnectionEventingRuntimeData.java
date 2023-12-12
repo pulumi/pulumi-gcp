@@ -76,10 +76,10 @@ public final class ConnectionEventingRuntimeData {
             return statuses(List.of(statuses));
         }
         public ConnectionEventingRuntimeData build() {
-            final var o = new ConnectionEventingRuntimeData();
-            o.eventsListenerEndpoint = eventsListenerEndpoint;
-            o.statuses = statuses;
-            return o;
+            final var _resultValue = new ConnectionEventingRuntimeData();
+            _resultValue.eventsListenerEndpoint = eventsListenerEndpoint;
+            _resultValue.statuses = statuses;
+            return _resultValue;
         }
     }
 }

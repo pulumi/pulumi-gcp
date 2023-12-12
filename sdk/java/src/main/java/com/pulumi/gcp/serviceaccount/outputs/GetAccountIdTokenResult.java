@@ -116,14 +116,14 @@ public final class GetAccountIdTokenResult {
             return this;
         }
         public GetAccountIdTokenResult build() {
-            final var o = new GetAccountIdTokenResult();
-            o.delegates = delegates;
-            o.id = id;
-            o.idToken = idToken;
-            o.includeEmail = includeEmail;
-            o.targetAudience = targetAudience;
-            o.targetServiceAccount = targetServiceAccount;
-            return o;
+            final var _resultValue = new GetAccountIdTokenResult();
+            _resultValue.delegates = delegates;
+            _resultValue.id = id;
+            _resultValue.idToken = idToken;
+            _resultValue.includeEmail = includeEmail;
+            _resultValue.targetAudience = targetAudience;
+            _resultValue.targetServiceAccount = targetServiceAccount;
+            return _resultValue;
         }
     }
 }

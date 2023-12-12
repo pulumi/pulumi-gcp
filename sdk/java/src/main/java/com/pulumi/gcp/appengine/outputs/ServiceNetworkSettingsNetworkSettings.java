@@ -56,9 +56,9 @@ public final class ServiceNetworkSettingsNetworkSettings {
             return this;
         }
         public ServiceNetworkSettingsNetworkSettings build() {
-            final var o = new ServiceNetworkSettingsNetworkSettings();
-            o.ingressTrafficAllowed = ingressTrafficAllowed;
-            return o;
+            final var _resultValue = new ServiceNetworkSettingsNetworkSettings();
+            _resultValue.ingressTrafficAllowed = ingressTrafficAllowed;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class ClusterNodePoolAutoConfig {
             return this;
         }
         public ClusterNodePoolAutoConfig build() {
-            final var o = new ClusterNodePoolAutoConfig();
-            o.networkTags = networkTags;
-            return o;
+            final var _resultValue = new ClusterNodePoolAutoConfig();
+            _resultValue.networkTags = networkTags;
+            return _resultValue;
         }
     }
 }

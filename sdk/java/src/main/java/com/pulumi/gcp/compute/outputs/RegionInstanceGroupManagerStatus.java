@@ -124,12 +124,12 @@ public final class RegionInstanceGroupManagerStatus {
             return versionTargets(List.of(versionTargets));
         }
         public RegionInstanceGroupManagerStatus build() {
-            final var o = new RegionInstanceGroupManagerStatus();
-            o.allInstancesConfigs = allInstancesConfigs;
-            o.isStable = isStable;
-            o.statefuls = statefuls;
-            o.versionTargets = versionTargets;
-            return o;
+            final var _resultValue = new RegionInstanceGroupManagerStatus();
+            _resultValue.allInstancesConfigs = allInstancesConfigs;
+            _resultValue.isStable = isStable;
+            _resultValue.statefuls = statefuls;
+            _resultValue.versionTargets = versionTargets;
+            return _resultValue;
         }
     }
 }

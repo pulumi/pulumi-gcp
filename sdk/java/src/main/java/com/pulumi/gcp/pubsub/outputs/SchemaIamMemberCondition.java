@@ -62,11 +62,11 @@ public final class SchemaIamMemberCondition {
             return this;
         }
         public SchemaIamMemberCondition build() {
-            final var o = new SchemaIamMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new SchemaIamMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

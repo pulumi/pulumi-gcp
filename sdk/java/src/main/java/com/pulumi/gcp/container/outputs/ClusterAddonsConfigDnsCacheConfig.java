@@ -46,9 +46,9 @@ public final class ClusterAddonsConfigDnsCacheConfig {
             return this;
         }
         public ClusterAddonsConfigDnsCacheConfig build() {
-            final var o = new ClusterAddonsConfigDnsCacheConfig();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new ClusterAddonsConfigDnsCacheConfig();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

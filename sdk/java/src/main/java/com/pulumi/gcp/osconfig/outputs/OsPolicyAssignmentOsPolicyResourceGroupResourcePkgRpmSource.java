@@ -116,12 +116,12 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource();
-            o.allowInsecure = allowInsecure;
-            o.gcs = gcs;
-            o.localPath = localPath;
-            o.remote = remote;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource();
+            _resultValue.allowInsecure = allowInsecure;
+            _resultValue.gcs = gcs;
+            _resultValue.localPath = localPath;
+            _resultValue.remote = remote;
+            return _resultValue;
         }
     }
 }

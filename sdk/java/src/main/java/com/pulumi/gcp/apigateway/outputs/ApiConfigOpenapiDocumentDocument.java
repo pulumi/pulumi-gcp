@@ -65,10 +65,10 @@ public final class ApiConfigOpenapiDocumentDocument {
             return this;
         }
         public ApiConfigOpenapiDocumentDocument build() {
-            final var o = new ApiConfigOpenapiDocumentDocument();
-            o.contents = contents;
-            o.path = path;
-            return o;
+            final var _resultValue = new ApiConfigOpenapiDocumentDocument();
+            _resultValue.contents = contents;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

@@ -113,12 +113,12 @@ public final class AiEndpointDeployedModelPrivateEndpoint {
             return this;
         }
         public AiEndpointDeployedModelPrivateEndpoint build() {
-            final var o = new AiEndpointDeployedModelPrivateEndpoint();
-            o.explainHttpUri = explainHttpUri;
-            o.healthHttpUri = healthHttpUri;
-            o.predictHttpUri = predictHttpUri;
-            o.serviceAttachment = serviceAttachment;
-            return o;
+            final var _resultValue = new AiEndpointDeployedModelPrivateEndpoint();
+            _resultValue.explainHttpUri = explainHttpUri;
+            _resultValue.healthHttpUri = healthHttpUri;
+            _resultValue.predictHttpUri = predictHttpUri;
+            _resultValue.serviceAttachment = serviceAttachment;
+            return _resultValue;
         }
     }
 }

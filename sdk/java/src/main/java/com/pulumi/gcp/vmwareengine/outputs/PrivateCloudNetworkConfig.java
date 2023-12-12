@@ -126,12 +126,12 @@ public final class PrivateCloudNetworkConfig {
             return this;
         }
         public PrivateCloudNetworkConfig build() {
-            final var o = new PrivateCloudNetworkConfig();
-            o.managementCidr = managementCidr;
-            o.managementIpAddressLayoutVersion = managementIpAddressLayoutVersion;
-            o.vmwareEngineNetwork = vmwareEngineNetwork;
-            o.vmwareEngineNetworkCanonical = vmwareEngineNetworkCanonical;
-            return o;
+            final var _resultValue = new PrivateCloudNetworkConfig();
+            _resultValue.managementCidr = managementCidr;
+            _resultValue.managementIpAddressLayoutVersion = managementIpAddressLayoutVersion;
+            _resultValue.vmwareEngineNetwork = vmwareEngineNetwork;
+            _resultValue.vmwareEngineNetworkCanonical = vmwareEngineNetworkCanonical;
+            return _resultValue;
         }
     }
 }

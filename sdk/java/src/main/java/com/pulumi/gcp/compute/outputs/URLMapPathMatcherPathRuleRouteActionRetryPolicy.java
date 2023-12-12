@@ -126,11 +126,11 @@ public final class URLMapPathMatcherPathRuleRouteActionRetryPolicy {
             return retryConditions(List.of(retryConditions));
         }
         public URLMapPathMatcherPathRuleRouteActionRetryPolicy build() {
-            final var o = new URLMapPathMatcherPathRuleRouteActionRetryPolicy();
-            o.numRetries = numRetries;
-            o.perTryTimeout = perTryTimeout;
-            o.retryConditions = retryConditions;
-            return o;
+            final var _resultValue = new URLMapPathMatcherPathRuleRouteActionRetryPolicy();
+            _resultValue.numRetries = numRetries;
+            _resultValue.perTryTimeout = perTryTimeout;
+            _resultValue.retryConditions = retryConditions;
+            return _resultValue;
         }
     }
 }

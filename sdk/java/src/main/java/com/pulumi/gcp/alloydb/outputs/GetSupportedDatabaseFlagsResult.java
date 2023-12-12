@@ -94,12 +94,12 @@ public final class GetSupportedDatabaseFlagsResult {
             return supportedDatabaseFlags(List.of(supportedDatabaseFlags));
         }
         public GetSupportedDatabaseFlagsResult build() {
-            final var o = new GetSupportedDatabaseFlagsResult();
-            o.id = id;
-            o.location = location;
-            o.project = project;
-            o.supportedDatabaseFlags = supportedDatabaseFlags;
-            return o;
+            final var _resultValue = new GetSupportedDatabaseFlagsResult();
+            _resultValue.id = id;
+            _resultValue.location = location;
+            _resultValue.project = project;
+            _resultValue.supportedDatabaseFlags = supportedDatabaseFlags;
+            return _resultValue;
         }
     }
 }

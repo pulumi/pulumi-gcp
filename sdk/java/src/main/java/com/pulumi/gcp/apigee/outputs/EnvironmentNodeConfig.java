@@ -98,11 +98,11 @@ public final class EnvironmentNodeConfig {
             return this;
         }
         public EnvironmentNodeConfig build() {
-            final var o = new EnvironmentNodeConfig();
-            o.currentAggregateNodeCount = currentAggregateNodeCount;
-            o.maxNodeCount = maxNodeCount;
-            o.minNodeCount = minNodeCount;
-            return o;
+            final var _resultValue = new EnvironmentNodeConfig();
+            _resultValue.currentAggregateNodeCount = currentAggregateNodeCount;
+            _resultValue.maxNodeCount = maxNodeCount;
+            _resultValue.minNodeCount = minNodeCount;
+            return _resultValue;
         }
     }
 }

@@ -92,11 +92,11 @@ public final class InstanceDenyMaintenancePeriod {
             return this;
         }
         public InstanceDenyMaintenancePeriod build() {
-            final var o = new InstanceDenyMaintenancePeriod();
-            o.endDate = endDate;
-            o.startDate = startDate;
-            o.time = time;
-            return o;
+            final var _resultValue = new InstanceDenyMaintenancePeriod();
+            _resultValue.endDate = endDate;
+            _resultValue.startDate = startDate;
+            _resultValue.time = time;
+            return _resultValue;
         }
     }
 }

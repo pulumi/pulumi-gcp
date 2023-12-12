@@ -106,12 +106,12 @@ public final class FulfillmentGenericWebService {
             return this;
         }
         public FulfillmentGenericWebService build() {
-            final var o = new FulfillmentGenericWebService();
-            o.password = password;
-            o.requestHeaders = requestHeaders;
-            o.uri = uri;
-            o.username = username;
-            return o;
+            final var _resultValue = new FulfillmentGenericWebService();
+            _resultValue.password = password;
+            _resultValue.requestHeaders = requestHeaders;
+            _resultValue.uri = uri;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

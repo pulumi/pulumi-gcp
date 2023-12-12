@@ -335,23 +335,23 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfig build() {
-            final var o = new WorkflowTemplatePlacementManagedClusterConfig();
-            o.autoscalingConfig = autoscalingConfig;
-            o.encryptionConfig = encryptionConfig;
-            o.endpointConfig = endpointConfig;
-            o.gceClusterConfig = gceClusterConfig;
-            o.gkeClusterConfig = gkeClusterConfig;
-            o.initializationActions = initializationActions;
-            o.lifecycleConfig = lifecycleConfig;
-            o.masterConfig = masterConfig;
-            o.metastoreConfig = metastoreConfig;
-            o.secondaryWorkerConfig = secondaryWorkerConfig;
-            o.securityConfig = securityConfig;
-            o.softwareConfig = softwareConfig;
-            o.stagingBucket = stagingBucket;
-            o.tempBucket = tempBucket;
-            o.workerConfig = workerConfig;
-            return o;
+            final var _resultValue = new WorkflowTemplatePlacementManagedClusterConfig();
+            _resultValue.autoscalingConfig = autoscalingConfig;
+            _resultValue.encryptionConfig = encryptionConfig;
+            _resultValue.endpointConfig = endpointConfig;
+            _resultValue.gceClusterConfig = gceClusterConfig;
+            _resultValue.gkeClusterConfig = gkeClusterConfig;
+            _resultValue.initializationActions = initializationActions;
+            _resultValue.lifecycleConfig = lifecycleConfig;
+            _resultValue.masterConfig = masterConfig;
+            _resultValue.metastoreConfig = metastoreConfig;
+            _resultValue.secondaryWorkerConfig = secondaryWorkerConfig;
+            _resultValue.securityConfig = securityConfig;
+            _resultValue.softwareConfig = softwareConfig;
+            _resultValue.stagingBucket = stagingBucket;
+            _resultValue.tempBucket = tempBucket;
+            _resultValue.workerConfig = workerConfig;
+            return _resultValue;
         }
     }
 }

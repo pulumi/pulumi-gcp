@@ -64,11 +64,11 @@ public final class InstanceFromMachineImageSchedulingNodeAffinity {
             return values(List.of(values));
         }
         public InstanceFromMachineImageSchedulingNodeAffinity build() {
-            final var o = new InstanceFromMachineImageSchedulingNodeAffinity();
-            o.key = key;
-            o.operator = operator;
-            o.values = values;
-            return o;
+            final var _resultValue = new InstanceFromMachineImageSchedulingNodeAffinity();
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

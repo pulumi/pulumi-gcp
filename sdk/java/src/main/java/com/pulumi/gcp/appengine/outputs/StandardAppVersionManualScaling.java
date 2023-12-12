@@ -50,9 +50,9 @@ public final class StandardAppVersionManualScaling {
             return this;
         }
         public StandardAppVersionManualScaling build() {
-            final var o = new StandardAppVersionManualScaling();
-            o.instances = instances;
-            return o;
+            final var _resultValue = new StandardAppVersionManualScaling();
+            _resultValue.instances = instances;
+            return _resultValue;
         }
     }
 }

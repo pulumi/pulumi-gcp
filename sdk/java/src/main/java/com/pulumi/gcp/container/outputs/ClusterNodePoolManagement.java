@@ -71,10 +71,10 @@ public final class ClusterNodePoolManagement {
             return this;
         }
         public ClusterNodePoolManagement build() {
-            final var o = new ClusterNodePoolManagement();
-            o.autoRepair = autoRepair;
-            o.autoUpgrade = autoUpgrade;
-            return o;
+            final var _resultValue = new ClusterNodePoolManagement();
+            _resultValue.autoRepair = autoRepair;
+            _resultValue.autoUpgrade = autoUpgrade;
+            return _resultValue;
         }
     }
 }

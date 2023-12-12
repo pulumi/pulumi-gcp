@@ -84,11 +84,11 @@ public final class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject
             return this;
         }
         public PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject build() {
-            final var o = new PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject();
-            o.bucket = bucket;
-            o.generationNumber = generationNumber;
-            o.object = object;
-            return o;
+            final var _resultValue = new PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject();
+            _resultValue.bucket = bucket;
+            _resultValue.generationNumber = generationNumber;
+            _resultValue.object = object;
+            return _resultValue;
         }
     }
 }

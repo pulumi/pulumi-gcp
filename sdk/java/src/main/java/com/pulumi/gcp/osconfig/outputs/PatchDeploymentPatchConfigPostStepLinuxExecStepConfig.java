@@ -117,12 +117,12 @@ public final class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig {
             return this;
         }
         public PatchDeploymentPatchConfigPostStepLinuxExecStepConfig build() {
-            final var o = new PatchDeploymentPatchConfigPostStepLinuxExecStepConfig();
-            o.allowedSuccessCodes = allowedSuccessCodes;
-            o.gcsObject = gcsObject;
-            o.interpreter = interpreter;
-            o.localPath = localPath;
-            return o;
+            final var _resultValue = new PatchDeploymentPatchConfigPostStepLinuxExecStepConfig();
+            _resultValue.allowedSuccessCodes = allowedSuccessCodes;
+            _resultValue.gcsObject = gcsObject;
+            _resultValue.interpreter = interpreter;
+            _resultValue.localPath = localPath;
+            return _resultValue;
         }
     }
 }

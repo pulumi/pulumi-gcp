@@ -98,11 +98,11 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
             return locations(List.of(locations));
         }
         public ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig build() {
-            final var o = new ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig();
-            o.autoscaling = autoscaling;
-            o.config = config;
-            o.locations = locations;
-            return o;
+            final var _resultValue = new ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig();
+            _resultValue.autoscaling = autoscaling;
+            _resultValue.config = config;
+            _resultValue.locations = locations;
+            return _resultValue;
         }
     }
 }

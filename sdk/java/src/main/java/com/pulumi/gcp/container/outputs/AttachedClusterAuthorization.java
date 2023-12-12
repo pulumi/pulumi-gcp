@@ -89,10 +89,10 @@ public final class AttachedClusterAuthorization {
             return adminUsers(List.of(adminUsers));
         }
         public AttachedClusterAuthorization build() {
-            final var o = new AttachedClusterAuthorization();
-            o.adminGroups = adminGroups;
-            o.adminUsers = adminUsers;
-            return o;
+            final var _resultValue = new AttachedClusterAuthorization();
+            _resultValue.adminGroups = adminGroups;
+            _resultValue.adminUsers = adminUsers;
+            return _resultValue;
         }
     }
 }

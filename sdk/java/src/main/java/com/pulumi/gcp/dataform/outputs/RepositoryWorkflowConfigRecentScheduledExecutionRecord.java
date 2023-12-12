@@ -99,11 +99,11 @@ public final class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
             return this;
         }
         public RepositoryWorkflowConfigRecentScheduledExecutionRecord build() {
-            final var o = new RepositoryWorkflowConfigRecentScheduledExecutionRecord();
-            o.errorStatuses = errorStatuses;
-            o.executionTime = executionTime;
-            o.workflowInvocation = workflowInvocation;
-            return o;
+            final var _resultValue = new RepositoryWorkflowConfigRecentScheduledExecutionRecord();
+            _resultValue.errorStatuses = errorStatuses;
+            _resultValue.executionTime = executionTime;
+            _resultValue.workflowInvocation = workflowInvocation;
+            return _resultValue;
         }
     }
 }

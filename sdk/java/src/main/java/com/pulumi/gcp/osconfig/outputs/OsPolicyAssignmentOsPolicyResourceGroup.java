@@ -94,10 +94,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroup {
             return resources(List.of(resources));
         }
         public OsPolicyAssignmentOsPolicyResourceGroup build() {
-            final var o = new OsPolicyAssignmentOsPolicyResourceGroup();
-            o.inventoryFilters = inventoryFilters;
-            o.resources = resources;
-            return o;
+            final var _resultValue = new OsPolicyAssignmentOsPolicyResourceGroup();
+            _resultValue.inventoryFilters = inventoryFilters;
+            _resultValue.resources = resources;
+            return _resultValue;
         }
     }
 }

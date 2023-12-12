@@ -62,11 +62,11 @@ public final class RuntimeIamBindingCondition {
             return this;
         }
         public RuntimeIamBindingCondition build() {
-            final var o = new RuntimeIamBindingCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new RuntimeIamBindingCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

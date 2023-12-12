@@ -87,11 +87,11 @@ public final class ServiceTemplateVolumeSecretItem {
             return this;
         }
         public ServiceTemplateVolumeSecretItem build() {
-            final var o = new ServiceTemplateVolumeSecretItem();
-            o.mode = mode;
-            o.path = path;
-            o.version = version;
-            return o;
+            final var _resultValue = new ServiceTemplateVolumeSecretItem();
+            _resultValue.mode = mode;
+            _resultValue.path = path;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

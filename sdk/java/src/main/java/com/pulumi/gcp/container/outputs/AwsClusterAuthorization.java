@@ -74,10 +74,10 @@ public final class AwsClusterAuthorization {
             return adminUsers(List.of(adminUsers));
         }
         public AwsClusterAuthorization build() {
-            final var o = new AwsClusterAuthorization();
-            o.adminGroups = adminGroups;
-            o.adminUsers = adminUsers;
-            return o;
+            final var _resultValue = new AwsClusterAuthorization();
+            _resultValue.adminGroups = adminGroups;
+            _resultValue.adminUsers = adminUsers;
+            return _resultValue;
         }
     }
 }

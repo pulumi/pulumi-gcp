@@ -327,22 +327,22 @@ public final class DatascanDataQualitySpecRule {
             return this;
         }
         public DatascanDataQualitySpecRule build() {
-            final var o = new DatascanDataQualitySpecRule();
-            o.column = column;
-            o.description = description;
-            o.dimension = dimension;
-            o.ignoreNull = ignoreNull;
-            o.name = name;
-            o.nonNullExpectation = nonNullExpectation;
-            o.rangeExpectation = rangeExpectation;
-            o.regexExpectation = regexExpectation;
-            o.rowConditionExpectation = rowConditionExpectation;
-            o.setExpectation = setExpectation;
-            o.statisticRangeExpectation = statisticRangeExpectation;
-            o.tableConditionExpectation = tableConditionExpectation;
-            o.threshold = threshold;
-            o.uniquenessExpectation = uniquenessExpectation;
-            return o;
+            final var _resultValue = new DatascanDataQualitySpecRule();
+            _resultValue.column = column;
+            _resultValue.description = description;
+            _resultValue.dimension = dimension;
+            _resultValue.ignoreNull = ignoreNull;
+            _resultValue.name = name;
+            _resultValue.nonNullExpectation = nonNullExpectation;
+            _resultValue.rangeExpectation = rangeExpectation;
+            _resultValue.regexExpectation = regexExpectation;
+            _resultValue.rowConditionExpectation = rowConditionExpectation;
+            _resultValue.setExpectation = setExpectation;
+            _resultValue.statisticRangeExpectation = statisticRangeExpectation;
+            _resultValue.tableConditionExpectation = tableConditionExpectation;
+            _resultValue.threshold = threshold;
+            _resultValue.uniquenessExpectation = uniquenessExpectation;
+            return _resultValue;
         }
     }
 }

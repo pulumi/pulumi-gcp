@@ -50,10 +50,10 @@ public final class NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
             return this;
         }
         public NodePoolNodeConfigGuestAcceleratorGpuSharingConfig build() {
-            final var o = new NodePoolNodeConfigGuestAcceleratorGpuSharingConfig();
-            o.gpuSharingStrategy = gpuSharingStrategy;
-            o.maxSharedClientsPerGpu = maxSharedClientsPerGpu;
-            return o;
+            final var _resultValue = new NodePoolNodeConfigGuestAcceleratorGpuSharingConfig();
+            _resultValue.gpuSharingStrategy = gpuSharingStrategy;
+            _resultValue.maxSharedClientsPerGpu = maxSharedClientsPerGpu;
+            return _resultValue;
         }
     }
 }

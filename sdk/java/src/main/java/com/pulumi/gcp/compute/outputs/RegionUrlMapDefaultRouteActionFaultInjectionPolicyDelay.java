@@ -72,10 +72,10 @@ public final class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay {
             return this;
         }
         public RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay build() {
-            final var o = new RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay();
-            o.fixedDelay = fixedDelay;
-            o.percentage = percentage;
-            return o;
+            final var _resultValue = new RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay();
+            _resultValue.fixedDelay = fixedDelay;
+            _resultValue.percentage = percentage;
+            return _resultValue;
         }
     }
 }

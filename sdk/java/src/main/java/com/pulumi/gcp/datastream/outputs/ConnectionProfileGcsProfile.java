@@ -67,10 +67,10 @@ public final class ConnectionProfileGcsProfile {
             return this;
         }
         public ConnectionProfileGcsProfile build() {
-            final var o = new ConnectionProfileGcsProfile();
-            o.bucket = bucket;
-            o.rootPath = rootPath;
-            return o;
+            final var _resultValue = new ConnectionProfileGcsProfile();
+            _resultValue.bucket = bucket;
+            _resultValue.rootPath = rootPath;
+            return _resultValue;
         }
     }
 }

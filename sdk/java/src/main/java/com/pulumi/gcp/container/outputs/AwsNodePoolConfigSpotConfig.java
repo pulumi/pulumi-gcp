@@ -50,9 +50,9 @@ public final class AwsNodePoolConfigSpotConfig {
             return instanceTypes(List.of(instanceTypes));
         }
         public AwsNodePoolConfigSpotConfig build() {
-            final var o = new AwsNodePoolConfigSpotConfig();
-            o.instanceTypes = instanceTypes;
-            return o;
+            final var _resultValue = new AwsNodePoolConfigSpotConfig();
+            _resultValue.instanceTypes = instanceTypes;
+            return _resultValue;
         }
     }
 }

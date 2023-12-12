@@ -48,9 +48,9 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceA
             return this;
         }
         public SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability build() {
-            final var o = new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class JobTemplateTemplateContainerEnvValueSource {
             return this;
         }
         public JobTemplateTemplateContainerEnvValueSource build() {
-            final var o = new JobTemplateTemplateContainerEnvValueSource();
-            o.secretKeyRef = secretKeyRef;
-            return o;
+            final var _resultValue = new JobTemplateTemplateContainerEnvValueSource();
+            _resultValue.secretKeyRef = secretKeyRef;
+            return _resultValue;
         }
     }
 }

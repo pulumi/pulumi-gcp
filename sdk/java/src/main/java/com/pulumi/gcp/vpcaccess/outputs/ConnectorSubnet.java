@@ -69,10 +69,10 @@ public final class ConnectorSubnet {
             return this;
         }
         public ConnectorSubnet build() {
-            final var o = new ConnectorSubnet();
-            o.name = name;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new ConnectorSubnet();
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

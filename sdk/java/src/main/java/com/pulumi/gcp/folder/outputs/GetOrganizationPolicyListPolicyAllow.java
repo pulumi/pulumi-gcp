@@ -54,10 +54,10 @@ public final class GetOrganizationPolicyListPolicyAllow {
             return values(List.of(values));
         }
         public GetOrganizationPolicyListPolicyAllow build() {
-            final var o = new GetOrganizationPolicyListPolicyAllow();
-            o.all = all;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetOrganizationPolicyListPolicyAllow();
+            _resultValue.all = all;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

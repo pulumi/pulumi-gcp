@@ -93,11 +93,11 @@ public final class PreventionJobTriggerInspectJobInspectConfigLimits {
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigLimits build() {
-            final var o = new PreventionJobTriggerInspectJobInspectConfigLimits();
-            o.maxFindingsPerInfoTypes = maxFindingsPerInfoTypes;
-            o.maxFindingsPerItem = maxFindingsPerItem;
-            o.maxFindingsPerRequest = maxFindingsPerRequest;
-            return o;
+            final var _resultValue = new PreventionJobTriggerInspectJobInspectConfigLimits();
+            _resultValue.maxFindingsPerInfoTypes = maxFindingsPerInfoTypes;
+            _resultValue.maxFindingsPerItem = maxFindingsPerItem;
+            _resultValue.maxFindingsPerRequest = maxFindingsPerRequest;
+            return _resultValue;
         }
     }
 }

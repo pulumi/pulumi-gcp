@@ -62,9 +62,9 @@ public final class ClusterClusterConfigAutoscalingConfig {
             return this;
         }
         public ClusterClusterConfigAutoscalingConfig build() {
-            final var o = new ClusterClusterConfigAutoscalingConfig();
-            o.policyUri = policyUri;
-            return o;
+            final var _resultValue = new ClusterClusterConfigAutoscalingConfig();
+            _resultValue.policyUri = policyUri;
+            return _resultValue;
         }
     }
 }

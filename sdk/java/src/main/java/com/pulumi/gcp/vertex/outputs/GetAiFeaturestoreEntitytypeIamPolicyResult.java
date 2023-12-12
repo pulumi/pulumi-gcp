@@ -108,13 +108,13 @@ public final class GetAiFeaturestoreEntitytypeIamPolicyResult {
             return this;
         }
         public GetAiFeaturestoreEntitytypeIamPolicyResult build() {
-            final var o = new GetAiFeaturestoreEntitytypeIamPolicyResult();
-            o.entitytype = entitytype;
-            o.etag = etag;
-            o.featurestore = featurestore;
-            o.id = id;
-            o.policyData = policyData;
-            return o;
+            final var _resultValue = new GetAiFeaturestoreEntitytypeIamPolicyResult();
+            _resultValue.entitytype = entitytype;
+            _resultValue.etag = etag;
+            _resultValue.featurestore = featurestore;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            return _resultValue;
         }
     }
 }

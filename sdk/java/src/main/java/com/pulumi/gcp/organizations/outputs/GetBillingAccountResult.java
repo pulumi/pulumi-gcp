@@ -137,15 +137,15 @@ public final class GetBillingAccountResult {
             return projectIds(List.of(projectIds));
         }
         public GetBillingAccountResult build() {
-            final var o = new GetBillingAccountResult();
-            o.billingAccount = billingAccount;
-            o.displayName = displayName;
-            o.id = id;
-            o.lookupProjects = lookupProjects;
-            o.name = name;
-            o.open = open;
-            o.projectIds = projectIds;
-            return o;
+            final var _resultValue = new GetBillingAccountResult();
+            _resultValue.billingAccount = billingAccount;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.lookupProjects = lookupProjects;
+            _resultValue.name = name;
+            _resultValue.open = open;
+            _resultValue.projectIds = projectIds;
+            return _resultValue;
         }
     }
 }

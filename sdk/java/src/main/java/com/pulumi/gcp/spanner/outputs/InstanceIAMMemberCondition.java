@@ -62,11 +62,11 @@ public final class InstanceIAMMemberCondition {
             return this;
         }
         public InstanceIAMMemberCondition build() {
-            final var o = new InstanceIAMMemberCondition();
-            o.description = description;
-            o.expression = expression;
-            o.title = title;
-            return o;
+            final var _resultValue = new InstanceIAMMemberCondition();
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.title = title;
+            return _resultValue;
         }
     }
 }

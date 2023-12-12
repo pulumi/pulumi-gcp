@@ -46,9 +46,9 @@ public final class PacketMirroringNetwork {
             return this;
         }
         public PacketMirroringNetwork build() {
-            final var o = new PacketMirroringNetwork();
-            o.url = url;
-            return o;
+            final var _resultValue = new PacketMirroringNetwork();
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

@@ -281,18 +281,18 @@ public final class RegionAutoscalerAutoscalingPolicy {
             return scalingSchedules(List.of(scalingSchedules));
         }
         public RegionAutoscalerAutoscalingPolicy build() {
-            final var o = new RegionAutoscalerAutoscalingPolicy();
-            o.cooldownPeriod = cooldownPeriod;
-            o.cpuUtilization = cpuUtilization;
-            o.loadBalancingUtilization = loadBalancingUtilization;
-            o.maxReplicas = maxReplicas;
-            o.metrics = metrics;
-            o.minReplicas = minReplicas;
-            o.mode = mode;
-            o.scaleDownControl = scaleDownControl;
-            o.scaleInControl = scaleInControl;
-            o.scalingSchedules = scalingSchedules;
-            return o;
+            final var _resultValue = new RegionAutoscalerAutoscalingPolicy();
+            _resultValue.cooldownPeriod = cooldownPeriod;
+            _resultValue.cpuUtilization = cpuUtilization;
+            _resultValue.loadBalancingUtilization = loadBalancingUtilization;
+            _resultValue.maxReplicas = maxReplicas;
+            _resultValue.metrics = metrics;
+            _resultValue.minReplicas = minReplicas;
+            _resultValue.mode = mode;
+            _resultValue.scaleDownControl = scaleDownControl;
+            _resultValue.scaleInControl = scaleInControl;
+            _resultValue.scalingSchedules = scalingSchedules;
+            return _resultValue;
         }
     }
 }

@@ -72,12 +72,12 @@ public final class GetServiceTraffic {
             return this;
         }
         public GetServiceTraffic build() {
-            final var o = new GetServiceTraffic();
-            o.percent = percent;
-            o.revision = revision;
-            o.tag = tag;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetServiceTraffic();
+            _resultValue.percent = percent;
+            _resultValue.revision = revision;
+            _resultValue.tag = tag;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -50,9 +50,9 @@ public final class AppConnectorPrincipalInfoServiceAccount {
             return this;
         }
         public AppConnectorPrincipalInfoServiceAccount build() {
-            final var o = new AppConnectorPrincipalInfoServiceAccount();
-            o.email = email;
-            return o;
+            final var _resultValue = new AppConnectorPrincipalInfoServiceAccount();
+            _resultValue.email = email;
+            return _resultValue;
         }
     }
 }

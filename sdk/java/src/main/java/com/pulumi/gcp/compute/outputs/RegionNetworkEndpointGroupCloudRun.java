@@ -108,11 +108,11 @@ public final class RegionNetworkEndpointGroupCloudRun {
             return this;
         }
         public RegionNetworkEndpointGroupCloudRun build() {
-            final var o = new RegionNetworkEndpointGroupCloudRun();
-            o.service = service;
-            o.tag = tag;
-            o.urlMask = urlMask;
-            return o;
+            final var _resultValue = new RegionNetworkEndpointGroupCloudRun();
+            _resultValue.service = service;
+            _resultValue.tag = tag;
+            _resultValue.urlMask = urlMask;
+            return _resultValue;
         }
     }
 }

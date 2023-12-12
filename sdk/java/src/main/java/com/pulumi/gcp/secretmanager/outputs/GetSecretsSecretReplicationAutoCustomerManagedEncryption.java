@@ -46,9 +46,9 @@ public final class GetSecretsSecretReplicationAutoCustomerManagedEncryption {
             return this;
         }
         public GetSecretsSecretReplicationAutoCustomerManagedEncryption build() {
-            final var o = new GetSecretsSecretReplicationAutoCustomerManagedEncryption();
-            o.kmsKeyName = kmsKeyName;
-            return o;
+            final var _resultValue = new GetSecretsSecretReplicationAutoCustomerManagedEncryption();
+            _resultValue.kmsKeyName = kmsKeyName;
+            return _resultValue;
         }
     }
 }

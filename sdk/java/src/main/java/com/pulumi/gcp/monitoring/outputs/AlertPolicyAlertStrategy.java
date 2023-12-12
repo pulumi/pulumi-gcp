@@ -100,11 +100,11 @@ public final class AlertPolicyAlertStrategy {
             return this;
         }
         public AlertPolicyAlertStrategy build() {
-            final var o = new AlertPolicyAlertStrategy();
-            o.autoClose = autoClose;
-            o.notificationChannelStrategies = notificationChannelStrategies;
-            o.notificationRateLimit = notificationRateLimit;
-            return o;
+            final var _resultValue = new AlertPolicyAlertStrategy();
+            _resultValue.autoClose = autoClose;
+            _resultValue.notificationChannelStrategies = notificationChannelStrategies;
+            _resultValue.notificationRateLimit = notificationRateLimit;
+            return _resultValue;
         }
     }
 }

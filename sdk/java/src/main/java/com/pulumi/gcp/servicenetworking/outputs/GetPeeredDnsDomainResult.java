@@ -112,15 +112,15 @@ public final class GetPeeredDnsDomainResult {
             return this;
         }
         public GetPeeredDnsDomainResult build() {
-            final var o = new GetPeeredDnsDomainResult();
-            o.dnsSuffix = dnsSuffix;
-            o.id = id;
-            o.name = name;
-            o.network = network;
-            o.parent = parent;
-            o.project = project;
-            o.service = service;
-            return o;
+            final var _resultValue = new GetPeeredDnsDomainResult();
+            _resultValue.dnsSuffix = dnsSuffix;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.parent = parent;
+            _resultValue.project = project;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

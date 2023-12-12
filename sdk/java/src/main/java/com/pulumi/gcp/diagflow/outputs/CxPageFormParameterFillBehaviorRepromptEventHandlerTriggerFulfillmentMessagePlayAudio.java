@@ -70,10 +70,10 @@ public final class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFul
             return this;
         }
         public CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio build() {
-            final var o = new CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio();
-            o.allowPlaybackInterruption = allowPlaybackInterruption;
-            o.audioUri = audioUri;
-            return o;
+            final var _resultValue = new CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio();
+            _resultValue.allowPlaybackInterruption = allowPlaybackInterruption;
+            _resultValue.audioUri = audioUri;
+            return _resultValue;
         }
     }
 }

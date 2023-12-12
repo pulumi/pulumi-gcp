@@ -108,13 +108,13 @@ public final class GetConfigIamPolicyResult {
             return this;
         }
         public GetConfigIamPolicyResult build() {
-            final var o = new GetConfigIamPolicyResult();
-            o.config = config;
-            o.etag = etag;
-            o.id = id;
-            o.policyData = policyData;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetConfigIamPolicyResult();
+            _resultValue.config = config;
+            _resultValue.etag = etag;
+            _resultValue.id = id;
+            _resultValue.policyData = policyData;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

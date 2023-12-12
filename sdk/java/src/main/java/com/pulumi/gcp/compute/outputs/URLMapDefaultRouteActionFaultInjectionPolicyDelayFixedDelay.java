@@ -72,10 +72,10 @@ public final class URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay {
             return this;
         }
         public URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay build() {
-            final var o = new URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay();
-            o.nanos = nanos;
-            o.seconds = seconds;
-            return o;
+            final var _resultValue = new URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay();
+            _resultValue.nanos = nanos;
+            _resultValue.seconds = seconds;
+            return _resultValue;
         }
     }
 }

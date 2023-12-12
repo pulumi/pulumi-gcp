@@ -46,9 +46,9 @@ public final class StandardAppVersionHandlerScript {
             return this;
         }
         public StandardAppVersionHandlerScript build() {
-            final var o = new StandardAppVersionHandlerScript();
-            o.scriptPath = scriptPath;
-            return o;
+            final var _resultValue = new StandardAppVersionHandlerScript();
+            _resultValue.scriptPath = scriptPath;
+            return _resultValue;
         }
     }
 }

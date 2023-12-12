@@ -48,9 +48,9 @@ public final class FlexibleAppVersionDeploymentContainer {
             return this;
         }
         public FlexibleAppVersionDeploymentContainer build() {
-            final var o = new FlexibleAppVersionDeploymentContainer();
-            o.image = image;
-            return o;
+            final var _resultValue = new FlexibleAppVersionDeploymentContainer();
+            _resultValue.image = image;
+            return _resultValue;
         }
     }
 }

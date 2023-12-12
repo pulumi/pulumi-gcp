@@ -67,10 +67,10 @@ public final class V2VmSchedulingConfig {
             return this;
         }
         public V2VmSchedulingConfig build() {
-            final var o = new V2VmSchedulingConfig();
-            o.preemptible = preemptible;
-            o.reserved = reserved;
-            return o;
+            final var _resultValue = new V2VmSchedulingConfig();
+            _resultValue.preemptible = preemptible;
+            _resultValue.reserved = reserved;
+            return _resultValue;
         }
     }
 }
