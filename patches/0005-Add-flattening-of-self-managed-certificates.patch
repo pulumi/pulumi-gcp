@@ -1,0 +1,51 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Daniel Bradley <daniel@pulumi.com>
+Date: Tue, 7 Mar 2023 11:57:44 +0000
+Subject: [PATCH 05/11] Add flattening of self managed certificates
+
+
+diff --git a/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go b/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
+index 4a02b4530..4657f4c05 100644
+--- a/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
++++ b/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
+@@ -435,6 +435,9 @@ func resourceCertificateManagerCertificateRead(d *schema.ResourceData, meta inte
+ 	if err := d.Set("scope", flattenCertificateManagerCertificateScope(res["scope"], d, config)); err != nil {
+ 		return fmt.Errorf("Error reading Certificate: %s", err)
+ 	}
++	if err := d.Set("self_managed", flattenCertificateManagerCertificateSelfManaged(res["selfManaged"], d, config)); err != nil {
++		return fmt.Errorf("Error reading Certificate: %s", err)
++	}
+ 	if err := d.Set("managed", flattenCertificateManagerCertificateManaged(res["managed"], d, config)); err != nil {
+ 		return fmt.Errorf("Error reading Certificate: %s", err)
+ 	}
+@@ -630,6 +633,30 @@ func flattenCertificateManagerCertificateScope(v interface{}, d *schema.Resource
+ 	return v
+ }
+ 
++func flattenCertificateManagerCertificateSelfManaged(v interface{}, d *schema.ResourceData, config *transport_tpg.Config) interface{} {
++	if v == nil {
++		return nil
++	}
++	original := v.(map[string]interface{})
++	if len(original) == 0 {
++		return nil
++	}
++	transformed := make(map[string]interface{})
++	transformed["certificate_pem"] =
++		flattenCertificateManagerCertificateSelfManagedCertificatePem(original["certificatePem"], d, config)
++	transformed["private_key_pem"] =
++		flattenCertificateManagerCertificateSelfManagedPrivateKeyPem(original["privateKeyPem"], d, config)
++	return []interface{}{transformed}
++}
++
++func flattenCertificateManagerCertificateSelfManagedCertificatePem(v interface{}, d *schema.ResourceData, config *transport_tpg.Config) interface{} {
++	return v
++}
++
++func flattenCertificateManagerCertificateSelfManagedPrivateKeyPem(v interface{}, d *schema.ResourceData, config *transport_tpg.Config) interface{} {
++	return v
++}
++
+ func flattenCertificateManagerCertificateManaged(v interface{}, d *schema.ResourceData, config *transport_tpg.Config) interface{} {
+ 	if v == nil {
+ 		return nil

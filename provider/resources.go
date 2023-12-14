@@ -109,14 +109,16 @@ const (
 	gcpLooker                   = "Looker"                   // Looker resources
 	gcpMachingLearning          = "ML"                       // Machine Learning
 	gcpMemcache                 = "Memcache"                 // Memcache resources
+	gcpMigrationCenter          = "MigrationCenter"          // Migration Center
 	gcpMonitoring               = "Monitoring"               // Monitoring resources
+	gcpNetapp                   = "Netapp"                   // Netapp
 	gcpNetworkConnectivity      = "NetworkConnectivity"      // Network Connectivity resources
 	gcpNetworkManagement        = "NetworkManagement"        // Network Management resources
 	gcpNetworkSecurity          = "NetworkSecurity"          // Network Security resources
 	gcpNetworkServices          = "NetworkServices"          // Network Services resources
 	gcpNotebooks                = "Notebooks"                // Notebooks resources
-	gcpOrganization             = "Organizations"            // Organization resources
 	gcpOrgPolicy                = "OrgPolicy"                // Org Policy
+	gcpOrganization             = "Organizations"            // Organization resources
 	gcpOsConfig                 = "OsConfig"                 // OsConfig resources
 	gcpOsLogin                  = "OsLogin"                  // OsLogin resources
 	gcpProject                  = "Projects"                 // Project resources
@@ -125,23 +127,24 @@ const (
 	gcpRedis                    = "Redis"                    // Redis resources
 	gcpResourceManager          = "ResourceManager"          // Resource Manager resources
 	gcpRuntimeConfig            = "RuntimeConfig"            // Runtime Config resources
+	gcpSQL                      = "Sql"                      // SQL resources
 	gcpSecretManager            = "SecretManager"            // Secret Manager resources
+	gcpSecureSourceManager      = "SecureSourceManager"      // Secure Source Manager
+	gcpSecurityCenter           = "SecurityCenter"           // Security Center
+	gcpServiceAccount           = "ServiceAccount"           // Service Account resources
 	gcpServiceDirectory         = "ServiceDirectory"         // Service Directory resources
 	gcpServiceNetworking        = "ServiceNetworking"        // Service Networking resources
-	gcpSecurityCenter           = "SecurityCenter"           // Security Center
-	gcpSQL                      = "Sql"                      // SQL resources
-	gcpServiceAccount           = "ServiceAccount"           // Service Account resources
 	gcpServiceUsage             = "ServiceUsage"             // Service Usage resources
 	gcpSourceRepo               = "SourceRepo"               // Source Repo resources
 	gcpSpanner                  = "Spanner"                  // Spanner Resources
 	gcpStorage                  = "Storage"                  // Storage resources
-	gcpTags                     = "Tags"                     // Tags
 	gcpTPU                      = "Tpu"                      // Tensor Processing Units
+	gcpTags                     = "Tags"                     // Tags
+	gcpVMwareEngine             = "VMwareEngine"             // VMWare Engine
 	gcpVertex                   = "Vertex"                   // Vertex
 	gcpVpcAccess                = "VpcAccess"                // VPC Access
 	gcpWorkflows                = "Workflows"                // Workflows
 	gcpWorkstations             = "Workstations"             // Workstations
-	gcpVMwareEngine             = "VMwareEngine"             // VMWare Engine
 )
 
 var moduleMapping = map[string]string{
@@ -218,16 +221,18 @@ var moduleMapping = map[string]string{
 	"kms":                             gcpKMS,
 	"container":                       gcpKubernetes,
 	"logging":                         gcpLogging,
-	"ml":                              gcpMachingLearning,
 	"memcache":                        gcpMemcache,
+	"migration_center":                gcpMigrationCenter,
+	"ml":                              gcpMachingLearning,
 	"monitoring":                      gcpMonitoring,
 	"network_connectivity":            gcpNetworkConnectivity,
 	"network_management":              gcpNetworkManagement,
 	"network_security":                gcpNetworkSecurity,
+	"netapp":                          gcpNetapp,
 	"network_services":                gcpNetworkServices,
 	"notebooks":                       gcpNotebooks,
-	"organization":                    gcpOrganization,
 	"org_policy":                      gcpOrgPolicy,
+	"organization":                    gcpOrganization,
 	"os_config":                       gcpOsConfig,
 	"os_login":                        gcpOsLogin,
 	"project":                         gcpProject,
@@ -237,23 +242,24 @@ var moduleMapping = map[string]string{
 	"redis":                           gcpRedis,
 	"resource_manager":                gcpResourceManager,
 	"runtimeconfig":                   gcpRuntimeConfig,
+	"scc":                             gcpSecurityCenter,
 	"secret_manager":                  gcpSecretManager,
+	"secure_source_manager":           gcpSecureSourceManager,
+	"service_account":                 gcpServiceAccount,
 	"service_directory":               gcpServiceDirectory,
 	"service_networking":              gcpServiceNetworking,
-	"scc":                             gcpSecurityCenter,
-	"sql":                             gcpSQL,
-	"service_account":                 gcpServiceAccount,
 	"service_usage":                   gcpServiceUsage,
 	"sourcerepo":                      gcpSourceRepo,
 	"spanner":                         gcpSpanner,
+	"sql":                             gcpSQL,
 	"storage":                         gcpStorage,
 	"tags":                            gcpTags,
 	"tpu":                             gcpTPU,
 	"vertex":                          gcpVertex,
+	"vmwareengine":                    gcpVMwareEngine,
 	"vpc_access":                      gcpVpcAccess,
 	"workflows":                       gcpWorkflows,
 	"workstations":                    gcpWorkstations,
-	"vmwareengine":                    gcpVMwareEngine,
 }
 
 var namespaceMap = map[string]string{
@@ -3908,6 +3914,29 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustApplyAutoAliases()
 
 	fixLabelNames(&prov)
+
+	allowMissingResourceDocs := []string{
+		"google_dataform_repository_iam_binding",
+		"google_dataform_repository_iam_member",
+		"google_dataform_repository_iam_policy",
+		"google_secure_source_manager_instance_iam_binding",
+		"google_secure_source_manager_instance_iam_member",
+		"google_secure_source_manager_instance_iam_policy",
+		"google_vertex_ai_endpoint_iam_binding",
+		"google_vertex_ai_endpoint_iam_member",
+		"google_vertex_ai_endpoint_iam_policy",
+	}
+
+	for _, name := range allowMissingResourceDocs {
+		info, ok := prov.Resources[name]
+		if !ok {
+			panic("Missing mapped doc for " + name)
+		}
+		if info.Docs == nil {
+			info.Docs = &tfbridge.DocInfo{}
+		}
+		info.Docs.AllowMissing = true
+	}
 
 	return prov
 }
