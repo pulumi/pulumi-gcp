@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:57:44 +0000
-Subject: [PATCH 05/11] Add flattening of self managed certificates
+Subject: [PATCH 04/10] Add flattening of self managed certificates
 
 
 diff --git a/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go b/google-beta/services/certificatemanager/resource_certificate_manager_certificate.go
