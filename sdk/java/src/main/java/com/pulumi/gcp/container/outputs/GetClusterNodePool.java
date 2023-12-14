@@ -9,6 +9,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodePoolManagement;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolPlacementPolicy;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolQueuedProvisioning;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolUpgradeSetting;
 import java.lang.Integer;
 import java.lang.String;
@@ -34,6 +35,7 @@ public final class GetClusterNodePool {
     private Integer nodeCount;
     private List<String> nodeLocations;
     private List<GetClusterNodePoolPlacementPolicy> placementPolicies;
+    private List<GetClusterNodePoolQueuedProvisioning> queuedProvisionings;
     private List<GetClusterNodePoolUpgradeSetting> upgradeSettings;
     private String version;
 
@@ -81,6 +83,9 @@ public final class GetClusterNodePool {
     public List<GetClusterNodePoolPlacementPolicy> placementPolicies() {
         return this.placementPolicies;
     }
+    public List<GetClusterNodePoolQueuedProvisioning> queuedProvisionings() {
+        return this.queuedProvisionings;
+    }
     public List<GetClusterNodePoolUpgradeSetting> upgradeSettings() {
         return this.upgradeSettings;
     }
@@ -110,6 +115,7 @@ public final class GetClusterNodePool {
         private Integer nodeCount;
         private List<String> nodeLocations;
         private List<GetClusterNodePoolPlacementPolicy> placementPolicies;
+        private List<GetClusterNodePoolQueuedProvisioning> queuedProvisionings;
         private List<GetClusterNodePoolUpgradeSetting> upgradeSettings;
         private String version;
         public Builder() {}
@@ -128,6 +134,7 @@ public final class GetClusterNodePool {
     	      this.nodeCount = defaults.nodeCount;
     	      this.nodeLocations = defaults.nodeLocations;
     	      this.placementPolicies = defaults.placementPolicies;
+    	      this.queuedProvisionings = defaults.queuedProvisionings;
     	      this.upgradeSettings = defaults.upgradeSettings;
     	      this.version = defaults.version;
         }
@@ -222,6 +229,14 @@ public final class GetClusterNodePool {
             return placementPolicies(List.of(placementPolicies));
         }
         @CustomType.Setter
+        public Builder queuedProvisionings(List<GetClusterNodePoolQueuedProvisioning> queuedProvisionings) {
+            this.queuedProvisionings = Objects.requireNonNull(queuedProvisionings);
+            return this;
+        }
+        public Builder queuedProvisionings(GetClusterNodePoolQueuedProvisioning... queuedProvisionings) {
+            return queuedProvisionings(List.of(queuedProvisionings));
+        }
+        @CustomType.Setter
         public Builder upgradeSettings(List<GetClusterNodePoolUpgradeSetting> upgradeSettings) {
             this.upgradeSettings = Objects.requireNonNull(upgradeSettings);
             return this;
@@ -249,6 +264,7 @@ public final class GetClusterNodePool {
             _resultValue.nodeCount = nodeCount;
             _resultValue.nodeLocations = nodeLocations;
             _resultValue.placementPolicies = placementPolicies;
+            _resultValue.queuedProvisionings = queuedProvisionings;
             _resultValue.upgradeSettings = upgradeSettings;
             _resultValue.version = version;
             return _resultValue;

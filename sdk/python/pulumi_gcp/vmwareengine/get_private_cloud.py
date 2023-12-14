@@ -149,14 +149,19 @@ def get_private_cloud(location: Optional[str] = None,
                       project: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPrivateCloudResult:
     """
+    Use this data source to get details about a private cloud resource.
+
+    To get more information about private cloud, see:
+    * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
-    my_pc = gcp.vmwareengine.get_private_cloud(name="my-pc",
-        location="us-central1-a")
+    my_pc = gcp.vmwareengine.get_private_cloud(location="us-central1-a",
+        name="my-pc")
     ```
 
 
@@ -195,14 +200,19 @@ def get_private_cloud_output(location: Optional[pulumi.Input[str]] = None,
                              project: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateCloudResult]:
     """
+    Use this data source to get details about a private cloud resource.
+
+    To get more information about private cloud, see:
+    * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
-    my_pc = gcp.vmwareengine.get_private_cloud(name="my-pc",
-        location="us-central1-a")
+    my_pc = gcp.vmwareengine.get_private_cloud(location="us-central1-a",
+        name="my-pc")
     ```
 
 

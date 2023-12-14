@@ -442,6 +442,7 @@ class BucketLifecycleRuleConditionArgs:
                  matches_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  matches_storage_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  matches_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 no_age: Optional[pulumi.Input[bool]] = None,
                  noncurrent_time_before: Optional[pulumi.Input[str]] = None,
                  num_newer_versions: Optional[pulumi.Input[int]] = None,
                  with_state: Optional[pulumi.Input[str]] = None):
@@ -454,6 +455,7 @@ class BucketLifecycleRuleConditionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_prefixes: One or more matching name prefixes to satisfy this condition.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_storage_classes: [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_suffixes: One or more matching name suffixes to satisfy this condition.
+        :param pulumi.Input[bool] no_age: While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
         :param pulumi.Input[str] noncurrent_time_before: Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
         :param pulumi.Input[int] num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
         :param pulumi.Input[str] with_state: Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
@@ -474,6 +476,8 @@ class BucketLifecycleRuleConditionArgs:
             pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
         if matches_suffixes is not None:
             pulumi.set(__self__, "matches_suffixes", matches_suffixes)
+        if no_age is not None:
+            pulumi.set(__self__, "no_age", no_age)
         if noncurrent_time_before is not None:
             pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
         if num_newer_versions is not None:
@@ -576,6 +580,18 @@ class BucketLifecycleRuleConditionArgs:
     @matches_suffixes.setter
     def matches_suffixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "matches_suffixes", value)
+
+    @property
+    @pulumi.getter(name="noAge")
+    def no_age(self) -> Optional[pulumi.Input[bool]]:
+        """
+        While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+        """
+        return pulumi.get(self, "no_age")
+
+    @no_age.setter
+    def no_age(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_age", value)
 
     @property
     @pulumi.getter(name="noncurrentTimeBefore")

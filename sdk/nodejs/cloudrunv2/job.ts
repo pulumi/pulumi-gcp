@@ -33,6 +33,29 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Job Limits
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         template: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 resources: {
+ *                     limits: {
+ *                         cpu: "2",
+ *                         memory: "1024Mi",
+ *                     },
+ *                 },
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  * ### Cloudrunv2 Job Sql
  *
  * ```typescript

@@ -393,7 +393,8 @@ func (o EnvironmentConfigPtrOutput) WorkloadsConfig() EnvironmentConfigWorkloads
 }
 
 type EnvironmentConfigDatabaseConfig struct {
-	MachineType string `pulumi:"machineType"`
+	MachineType *string `pulumi:"machineType"`
+	Zone        *string `pulumi:"zone"`
 }
 
 // EnvironmentConfigDatabaseConfigInput is an input type that accepts EnvironmentConfigDatabaseConfigArgs and EnvironmentConfigDatabaseConfigOutput values.
@@ -408,7 +409,8 @@ type EnvironmentConfigDatabaseConfigInput interface {
 }
 
 type EnvironmentConfigDatabaseConfigArgs struct {
-	MachineType pulumi.StringInput `pulumi:"machineType"`
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	Zone        pulumi.StringPtrInput `pulumi:"zone"`
 }
 
 func (EnvironmentConfigDatabaseConfigArgs) ElementType() reflect.Type {
@@ -488,8 +490,12 @@ func (o EnvironmentConfigDatabaseConfigOutput) ToEnvironmentConfigDatabaseConfig
 	}).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
 
-func (o EnvironmentConfigDatabaseConfigOutput) MachineType() pulumi.StringOutput {
-	return o.ApplyT(func(v EnvironmentConfigDatabaseConfig) string { return v.MachineType }).(pulumi.StringOutput)
+func (o EnvironmentConfigDatabaseConfigOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigDatabaseConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentConfigDatabaseConfigOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigDatabaseConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
 
 type EnvironmentConfigDatabaseConfigPtrOutput struct{ *pulumi.OutputState }
@@ -521,7 +527,16 @@ func (o EnvironmentConfigDatabaseConfigPtrOutput) MachineType() pulumi.StringPtr
 		if v == nil {
 			return nil
 		}
-		return &v.MachineType
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentConfigDatabaseConfigPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigDatabaseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4040,6 +4055,7 @@ func (o GetEnvironmentConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironment
 
 type GetEnvironmentConfigDatabaseConfig struct {
 	MachineType string `pulumi:"machineType"`
+	Zone        string `pulumi:"zone"`
 }
 
 // GetEnvironmentConfigDatabaseConfigInput is an input type that accepts GetEnvironmentConfigDatabaseConfigArgs and GetEnvironmentConfigDatabaseConfigOutput values.
@@ -4055,6 +4071,7 @@ type GetEnvironmentConfigDatabaseConfigInput interface {
 
 type GetEnvironmentConfigDatabaseConfigArgs struct {
 	MachineType pulumi.StringInput `pulumi:"machineType"`
+	Zone        pulumi.StringInput `pulumi:"zone"`
 }
 
 func (GetEnvironmentConfigDatabaseConfigArgs) ElementType() reflect.Type {
@@ -4110,6 +4127,10 @@ func (o GetEnvironmentConfigDatabaseConfigOutput) ToGetEnvironmentConfigDatabase
 
 func (o GetEnvironmentConfigDatabaseConfigOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigDatabaseConfig) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigDatabaseConfigOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigDatabaseConfig) string { return v.Zone }).(pulumi.StringOutput)
 }
 
 type GetEnvironmentConfigDatabaseConfigArrayOutput struct{ *pulumi.OutputState }

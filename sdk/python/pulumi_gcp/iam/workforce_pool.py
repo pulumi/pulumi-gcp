@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['WorkforcePoolArgs', 'WorkforcePool']
 
@@ -17,6 +19,7 @@ class WorkforcePoolArgs:
                  location: pulumi.Input[str],
                  parent: pulumi.Input[str],
                  workforce_pool_id: pulumi.Input[str],
+                 access_restrictions: Optional[pulumi.Input['WorkforcePoolAccessRestrictionsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -31,6 +34,9 @@ class WorkforcePoolArgs:
         :param pulumi.Input[str] workforce_pool_id: The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
                digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen.
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
+        :param pulumi.Input['WorkforcePoolAccessRestrictionsArgs'] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+               sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+               Structure is documented below.
         :param pulumi.Input[str] description: A user-specified description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
                or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
@@ -44,6 +50,8 @@ class WorkforcePoolArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
+        if access_restrictions is not None:
+            pulumi.set(__self__, "access_restrictions", access_restrictions)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -93,6 +101,20 @@ class WorkforcePoolArgs:
     @workforce_pool_id.setter
     def workforce_pool_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "workforce_pool_id", value)
+
+    @property
+    @pulumi.getter(name="accessRestrictions")
+    def access_restrictions(self) -> Optional[pulumi.Input['WorkforcePoolAccessRestrictionsArgs']]:
+        """
+        Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+        sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_restrictions")
+
+    @access_restrictions.setter
+    def access_restrictions(self, value: Optional[pulumi.Input['WorkforcePoolAccessRestrictionsArgs']]):
+        pulumi.set(self, "access_restrictions", value)
 
     @property
     @pulumi.getter
@@ -151,6 +173,7 @@ class WorkforcePoolArgs:
 @pulumi.input_type
 class _WorkforcePoolState:
     def __init__(__self__, *,
+                 access_restrictions: Optional[pulumi.Input['WorkforcePoolAccessRestrictionsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -162,6 +185,9 @@ class _WorkforcePoolState:
                  workforce_pool_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WorkforcePool resources.
+        :param pulumi.Input['WorkforcePoolAccessRestrictionsArgs'] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+               sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+               Structure is documented below.
         :param pulumi.Input[str] description: A user-specified description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
                or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
@@ -192,6 +218,8 @@ class _WorkforcePoolState:
                digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen.
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
         """
+        if access_restrictions is not None:
+            pulumi.set(__self__, "access_restrictions", access_restrictions)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -210,6 +238,20 @@ class _WorkforcePoolState:
             pulumi.set(__self__, "state", state)
         if workforce_pool_id is not None:
             pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
+
+    @property
+    @pulumi.getter(name="accessRestrictions")
+    def access_restrictions(self) -> Optional[pulumi.Input['WorkforcePoolAccessRestrictionsArgs']]:
+        """
+        Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+        sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_restrictions")
+
+    @access_restrictions.setter
+    def access_restrictions(self, value: Optional[pulumi.Input['WorkforcePoolAccessRestrictionsArgs']]):
+        pulumi.set(self, "access_restrictions", value)
 
     @property
     @pulumi.getter
@@ -345,6 +387,7 @@ class WorkforcePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_restrictions: Optional[pulumi.Input[pulumi.InputType['WorkforcePoolAccessRestrictionsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -385,6 +428,12 @@ class WorkforcePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.iam.WorkforcePool("example",
+            access_restrictions=gcp.iam.WorkforcePoolAccessRestrictionsArgs(
+                allowed_services=[gcp.iam.WorkforcePoolAccessRestrictionsAllowedServiceArgs(
+                    domain="backstory.chronicle.security",
+                )],
+                disable_programmatic_signin=False,
+            ),
             description="A sample workforce pool.",
             disabled=False,
             display_name="Display name",
@@ -416,6 +465,9 @@ class WorkforcePool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['WorkforcePoolAccessRestrictionsArgs']] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+               sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+               Structure is documented below.
         :param pulumi.Input[str] description: A user-specified description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
                or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
@@ -472,6 +524,12 @@ class WorkforcePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.iam.WorkforcePool("example",
+            access_restrictions=gcp.iam.WorkforcePoolAccessRestrictionsArgs(
+                allowed_services=[gcp.iam.WorkforcePoolAccessRestrictionsAllowedServiceArgs(
+                    domain="backstory.chronicle.security",
+                )],
+                disable_programmatic_signin=False,
+            ),
             description="A sample workforce pool.",
             disabled=False,
             display_name="Display name",
@@ -516,6 +574,7 @@ class WorkforcePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_restrictions: Optional[pulumi.Input[pulumi.InputType['WorkforcePoolAccessRestrictionsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -532,6 +591,7 @@ class WorkforcePool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkforcePoolArgs.__new__(WorkforcePoolArgs)
 
+            __props__.__dict__["access_restrictions"] = access_restrictions
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
@@ -557,6 +617,7 @@ class WorkforcePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_restrictions: Optional[pulumi.Input[pulumi.InputType['WorkforcePoolAccessRestrictionsArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -573,6 +634,9 @@ class WorkforcePool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['WorkforcePoolAccessRestrictionsArgs']] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+               sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+               Structure is documented below.
         :param pulumi.Input[str] description: A user-specified description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
                or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
@@ -607,6 +671,7 @@ class WorkforcePool(pulumi.CustomResource):
 
         __props__ = _WorkforcePoolState.__new__(_WorkforcePoolState)
 
+        __props__.__dict__["access_restrictions"] = access_restrictions
         __props__.__dict__["description"] = description
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
@@ -617,6 +682,16 @@ class WorkforcePool(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["workforce_pool_id"] = workforce_pool_id
         return WorkforcePool(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessRestrictions")
+    def access_restrictions(self) -> pulumi.Output[Optional['outputs.WorkforcePoolAccessRestrictions']]:
+        """
+        Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+        sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_restrictions")
 
     @property
     @pulumi.getter

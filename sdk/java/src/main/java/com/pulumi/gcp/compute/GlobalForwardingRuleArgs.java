@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleMetadataFilterArgs;
+import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleServiceDirectoryRegistrationsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -407,6 +408,25 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Service Directory resources to register this forwarding rule with.
+     * Currently, only supports a single Service Directory resource.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="serviceDirectoryRegistrations")
+    private @Nullable Output<GlobalForwardingRuleServiceDirectoryRegistrationsArgs> serviceDirectoryRegistrations;
+
+    /**
+     * @return Service Directory resources to register this forwarding rule with.
+     * Currently, only supports a single Service Directory resource.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<GlobalForwardingRuleServiceDirectoryRegistrationsArgs>> serviceDirectoryRegistrations() {
+        return Optional.ofNullable(this.serviceDirectoryRegistrations);
+    }
+
+    /**
      * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
      * 
      */
@@ -501,6 +521,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
         this.noAutomateDnsZone = $.noAutomateDnsZone;
         this.portRange = $.portRange;
         this.project = $.project;
+        this.serviceDirectoryRegistrations = $.serviceDirectoryRegistrations;
         this.sourceIpRanges = $.sourceIpRanges;
         this.subnetwork = $.subnetwork;
         this.target = $.target;
@@ -1011,6 +1032,31 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param serviceDirectoryRegistrations Service Directory resources to register this forwarding rule with.
+         * Currently, only supports a single Service Directory resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceDirectoryRegistrations(@Nullable Output<GlobalForwardingRuleServiceDirectoryRegistrationsArgs> serviceDirectoryRegistrations) {
+            $.serviceDirectoryRegistrations = serviceDirectoryRegistrations;
+            return this;
+        }
+
+        /**
+         * @param serviceDirectoryRegistrations Service Directory resources to register this forwarding rule with.
+         * Currently, only supports a single Service Directory resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceDirectoryRegistrations(GlobalForwardingRuleServiceDirectoryRegistrationsArgs serviceDirectoryRegistrations) {
+            return serviceDirectoryRegistrations(Output.of(serviceDirectoryRegistrations));
         }
 
         /**

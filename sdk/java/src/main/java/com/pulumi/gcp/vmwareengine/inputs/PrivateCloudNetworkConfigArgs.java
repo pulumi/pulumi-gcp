@@ -17,6 +17,23 @@ public final class PrivateCloudNetworkConfigArgs extends com.pulumi.resources.Re
     public static final PrivateCloudNetworkConfigArgs Empty = new PrivateCloudNetworkConfigArgs();
 
     /**
+     * (Output)
+     * DNS Server IP of the Private Cloud.
+     * 
+     */
+    @Import(name="dnsServerIp")
+    private @Nullable Output<String> dnsServerIp;
+
+    /**
+     * @return (Output)
+     * DNS Server IP of the Private Cloud.
+     * 
+     */
+    public Optional<Output<String>> dnsServerIp() {
+        return Optional.ofNullable(this.dnsServerIp);
+    }
+
+    /**
      * Management CIDR used by VMware management appliances.
      * 
      */
@@ -99,6 +116,7 @@ public final class PrivateCloudNetworkConfigArgs extends com.pulumi.resources.Re
     private PrivateCloudNetworkConfigArgs() {}
 
     private PrivateCloudNetworkConfigArgs(PrivateCloudNetworkConfigArgs $) {
+        this.dnsServerIp = $.dnsServerIp;
         this.managementCidr = $.managementCidr;
         this.managementIpAddressLayoutVersion = $.managementIpAddressLayoutVersion;
         this.vmwareEngineNetwork = $.vmwareEngineNetwork;
@@ -121,6 +139,29 @@ public final class PrivateCloudNetworkConfigArgs extends com.pulumi.resources.Re
 
         public Builder(PrivateCloudNetworkConfigArgs defaults) {
             $ = new PrivateCloudNetworkConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param dnsServerIp (Output)
+         * DNS Server IP of the Private Cloud.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsServerIp(@Nullable Output<String> dnsServerIp) {
+            $.dnsServerIp = dnsServerIp;
+            return this;
+        }
+
+        /**
+         * @param dnsServerIp (Output)
+         * DNS Server IP of the Private Cloud.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsServerIp(String dnsServerIp) {
+            return dnsServerIp(Output.of(dnsServerIp));
         }
 
         /**

@@ -11,7 +11,10 @@ from .billing_account_sink import *
 from .folder_bucket_config import *
 from .folder_exclusion import *
 from .folder_sink import *
+from .get_folder_settings import *
+from .get_organization_settings import *
 from .get_project_cmek_settings import *
+from .get_project_settings import *
 from .get_sink import *
 from .linked_dataset import *
 from .log_view import *

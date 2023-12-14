@@ -83,7 +83,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * VMware Engine network type.
-     * Possible values are: `LEGACY`.
+     * Possible values are: `LEGACY`, `STANDARD`.
      * 
      */
     @Import(name="type", required=true)
@@ -91,7 +91,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return VMware Engine network type.
-     * Possible values are: `LEGACY`.
+     * Possible values are: `LEGACY`, `STANDARD`.
      * 
      */
     public Output<String> type() {
@@ -218,7 +218,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type VMware Engine network type.
-         * Possible values are: `LEGACY`.
+         * Possible values are: `LEGACY`, `STANDARD`.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type VMware Engine network type.
-         * Possible values are: `LEGACY`.
+         * Possible values are: `LEGACY`, `STANDARD`.
          * 
          * @return builder
          * 

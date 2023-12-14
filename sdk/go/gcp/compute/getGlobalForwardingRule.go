@@ -66,26 +66,27 @@ type LookupGlobalForwardingRuleResult struct {
 	Description          string            `pulumi:"description"`
 	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string                                  `pulumi:"id"`
-	IpAddress           string                                  `pulumi:"ipAddress"`
-	IpProtocol          string                                  `pulumi:"ipProtocol"`
-	IpVersion           string                                  `pulumi:"ipVersion"`
-	LabelFingerprint    string                                  `pulumi:"labelFingerprint"`
-	Labels              map[string]string                       `pulumi:"labels"`
-	LoadBalancingScheme string                                  `pulumi:"loadBalancingScheme"`
-	MetadataFilters     []GetGlobalForwardingRuleMetadataFilter `pulumi:"metadataFilters"`
-	Name                string                                  `pulumi:"name"`
-	Network             string                                  `pulumi:"network"`
-	NoAutomateDnsZone   bool                                    `pulumi:"noAutomateDnsZone"`
-	PortRange           string                                  `pulumi:"portRange"`
-	Project             *string                                 `pulumi:"project"`
-	PscConnectionId     string                                  `pulumi:"pscConnectionId"`
-	PscConnectionStatus string                                  `pulumi:"pscConnectionStatus"`
-	PulumiLabels        map[string]string                       `pulumi:"pulumiLabels"`
-	SelfLink            string                                  `pulumi:"selfLink"`
-	SourceIpRanges      []string                                `pulumi:"sourceIpRanges"`
-	Subnetwork          string                                  `pulumi:"subnetwork"`
-	Target              string                                  `pulumi:"target"`
+	Id                            string                                                `pulumi:"id"`
+	IpAddress                     string                                                `pulumi:"ipAddress"`
+	IpProtocol                    string                                                `pulumi:"ipProtocol"`
+	IpVersion                     string                                                `pulumi:"ipVersion"`
+	LabelFingerprint              string                                                `pulumi:"labelFingerprint"`
+	Labels                        map[string]string                                     `pulumi:"labels"`
+	LoadBalancingScheme           string                                                `pulumi:"loadBalancingScheme"`
+	MetadataFilters               []GetGlobalForwardingRuleMetadataFilter               `pulumi:"metadataFilters"`
+	Name                          string                                                `pulumi:"name"`
+	Network                       string                                                `pulumi:"network"`
+	NoAutomateDnsZone             bool                                                  `pulumi:"noAutomateDnsZone"`
+	PortRange                     string                                                `pulumi:"portRange"`
+	Project                       *string                                               `pulumi:"project"`
+	PscConnectionId               string                                                `pulumi:"pscConnectionId"`
+	PscConnectionStatus           string                                                `pulumi:"pscConnectionStatus"`
+	PulumiLabels                  map[string]string                                     `pulumi:"pulumiLabels"`
+	SelfLink                      string                                                `pulumi:"selfLink"`
+	ServiceDirectoryRegistrations []GetGlobalForwardingRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
+	SourceIpRanges                []string                                              `pulumi:"sourceIpRanges"`
+	Subnetwork                    string                                                `pulumi:"subnetwork"`
+	Target                        string                                                `pulumi:"target"`
 }
 
 func LookupGlobalForwardingRuleOutput(ctx *pulumi.Context, args LookupGlobalForwardingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalForwardingRuleResultOutput {
@@ -216,6 +217,12 @@ func (o LookupGlobalForwardingRuleResultOutput) PulumiLabels() pulumi.StringMapO
 
 func (o LookupGlobalForwardingRuleResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) ServiceDirectoryRegistrations() GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) []GetGlobalForwardingRuleServiceDirectoryRegistration {
+		return v.ServiceDirectoryRegistrations
+	}).(GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput)
 }
 
 func (o LookupGlobalForwardingRuleResultOutput) SourceIpRanges() pulumi.StringArrayOutput {

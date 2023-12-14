@@ -138,6 +138,11 @@ namespace Pulumi.Gcp.Compute
     ///         Network = network.Id,
     ///         IpAddress = defaultGlobalAddress.Id,
     ///         LoadBalancingScheme = "",
+    ///         ServiceDirectoryRegistrations = new Gcp.Compute.Inputs.GlobalForwardingRuleServiceDirectoryRegistrationsArgs
+    ///         {
+    ///             Namespace = "sd-namespace",
+    ///             ServiceDirectoryRegion = "europe-west3",
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -450,6 +455,14 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// Service Directory resources to register this forwarding rule with.
+        /// Currently, only supports a single Service Directory resource.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("serviceDirectoryRegistrations")]
+        public Output<Outputs.GlobalForwardingRuleServiceDirectoryRegistrations> ServiceDirectoryRegistrations { get; private set; } = null!;
+
+        /// <summary>
         /// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         /// </summary>
         [Output("sourceIpRanges")]
@@ -721,6 +734,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Service Directory resources to register this forwarding rule with.
+        /// Currently, only supports a single Service Directory resource.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("serviceDirectoryRegistrations")]
+        public Input<Inputs.GlobalForwardingRuleServiceDirectoryRegistrationsArgs>? ServiceDirectoryRegistrations { get; set; }
 
         [Input("sourceIpRanges")]
         private InputList<string>? _sourceIpRanges;
@@ -1021,6 +1042,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// Service Directory resources to register this forwarding rule with.
+        /// Currently, only supports a single Service Directory resource.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("serviceDirectoryRegistrations")]
+        public Input<Inputs.GlobalForwardingRuleServiceDirectoryRegistrationsGetArgs>? ServiceDirectoryRegistrations { get; set; }
 
         [Input("sourceIpRanges")]
         private InputList<string>? _sourceIpRanges;

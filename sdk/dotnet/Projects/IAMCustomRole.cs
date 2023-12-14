@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.Projects
         public Output<ImmutableArray<string>> Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// The project that the service account will be created in.
+        /// The project that the custom role will be created in.
         /// Defaults to the provider project configuration.
         /// </summary>
         [Output("project")]
@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.Projects
         }
 
         /// <summary>
-        /// The project that the service account will be created in.
+        /// The project that the custom role will be created in.
         /// Defaults to the provider project configuration.
         /// </summary>
         [Input("project")]
@@ -258,7 +258,7 @@ namespace Pulumi.Gcp.Projects
         }
 
         /// <summary>
-        /// The project that the service account will be created in.
+        /// The project that the custom role will be created in.
         /// Defaults to the provider project configuration.
         /// </summary>
         [Input("project")]

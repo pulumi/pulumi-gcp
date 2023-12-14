@@ -2054,7 +2054,7 @@ func (o JobTemplateTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) Jo
 }
 
 type JobTemplateTemplateContainerResources struct {
-	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
 }
 
@@ -2070,7 +2070,7 @@ type JobTemplateTemplateContainerResourcesInput interface {
 }
 
 type JobTemplateTemplateContainerResourcesArgs struct {
-	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 }
 
@@ -2151,7 +2151,7 @@ func (o JobTemplateTemplateContainerResourcesOutput) ToJobTemplateTemplateContai
 	}).(JobTemplateTemplateContainerResourcesPtrOutput)
 }
 
-// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o JobTemplateTemplateContainerResourcesOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -2180,7 +2180,7 @@ func (o JobTemplateTemplateContainerResourcesPtrOutput) Elem() JobTemplateTempla
 	}).(JobTemplateTemplateContainerResourcesOutput)
 }
 
-// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o JobTemplateTemplateContainerResourcesPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateContainerResources) map[string]string {
 		if v == nil {
@@ -4611,7 +4611,8 @@ type ServiceTemplateContainer struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Commands   []string `pulumi:"commands"`
+	Commands []string `pulumi:"commands"`
+	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
 	DependsOns []string `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
@@ -4655,7 +4656,8 @@ type ServiceTemplateContainerArgs struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Commands   pulumi.StringArrayInput `pulumi:"commands"`
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
 	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
@@ -4745,6 +4747,7 @@ func (o ServiceTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
+// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
 func (o ServiceTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
@@ -6050,7 +6053,7 @@ func (o ServiceTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) Servic
 type ServiceTemplateContainerResources struct {
 	// Determines whether CPU should be throttled or not outside of requests.
 	CpuIdle *bool `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
 	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
 	StartupCpuBoost *bool `pulumi:"startupCpuBoost"`
@@ -6070,7 +6073,7 @@ type ServiceTemplateContainerResourcesInput interface {
 type ServiceTemplateContainerResourcesArgs struct {
 	// Determines whether CPU should be throttled or not outside of requests.
 	CpuIdle pulumi.BoolPtrInput `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
 	StartupCpuBoost pulumi.BoolPtrInput `pulumi:"startupCpuBoost"`
@@ -6158,7 +6161,7 @@ func (o ServiceTemplateContainerResourcesOutput) CpuIdle() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v ServiceTemplateContainerResources) *bool { return v.CpuIdle }).(pulumi.BoolPtrOutput)
 }
 
-// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ServiceTemplateContainerResourcesOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -6202,7 +6205,7 @@ func (o ServiceTemplateContainerResourcesPtrOutput) CpuIdle() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ServiceTemplateContainerResourcesPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerResources) map[string]string {
 		if v == nil {

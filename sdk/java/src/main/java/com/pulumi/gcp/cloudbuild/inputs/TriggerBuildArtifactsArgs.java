@@ -5,7 +5,10 @@ package com.pulumi.gcp.cloudbuild.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsMavenArtifactArgs;
+import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsNpmPackageArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsObjectsArgs;
+import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsPythonPackageArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -39,6 +42,48 @@ public final class TriggerBuildArtifactsArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="mavenArtifacts")
+    private @Nullable Output<List<TriggerBuildArtifactsMavenArtifactArgs>> mavenArtifacts;
+
+    /**
+     * @return A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<TriggerBuildArtifactsMavenArtifactArgs>>> mavenArtifacts() {
+        return Optional.ofNullable(this.mavenArtifacts);
+    }
+
+    /**
+     * Npm package to upload to Artifact Registry upon successful completion of all build steps.
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="npmPackages")
+    private @Nullable Output<List<TriggerBuildArtifactsNpmPackageArgs>> npmPackages;
+
+    /**
+     * @return Npm package to upload to Artifact Registry upon successful completion of all build steps.
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<TriggerBuildArtifactsNpmPackageArgs>>> npmPackages() {
+        return Optional.ofNullable(this.npmPackages);
+    }
+
+    /**
      * A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
      * Files in the workspace matching specified paths globs will be uploaded to the
      * Cloud Storage location using the builder service account&#39;s credentials.
@@ -63,11 +108,35 @@ public final class TriggerBuildArtifactsArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.objects);
     }
 
+    /**
+     * Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pythonPackages")
+    private @Nullable Output<List<TriggerBuildArtifactsPythonPackageArgs>> pythonPackages;
+
+    /**
+     * @return Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<TriggerBuildArtifactsPythonPackageArgs>>> pythonPackages() {
+        return Optional.ofNullable(this.pythonPackages);
+    }
+
     private TriggerBuildArtifactsArgs() {}
 
     private TriggerBuildArtifactsArgs(TriggerBuildArtifactsArgs $) {
         this.images = $.images;
+        this.mavenArtifacts = $.mavenArtifacts;
+        this.npmPackages = $.npmPackages;
         this.objects = $.objects;
+        this.pythonPackages = $.pythonPackages;
     }
 
     public static Builder builder() {
@@ -129,6 +198,86 @@ public final class TriggerBuildArtifactsArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param mavenArtifacts A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+         * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mavenArtifacts(@Nullable Output<List<TriggerBuildArtifactsMavenArtifactArgs>> mavenArtifacts) {
+            $.mavenArtifacts = mavenArtifacts;
+            return this;
+        }
+
+        /**
+         * @param mavenArtifacts A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+         * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mavenArtifacts(List<TriggerBuildArtifactsMavenArtifactArgs> mavenArtifacts) {
+            return mavenArtifacts(Output.of(mavenArtifacts));
+        }
+
+        /**
+         * @param mavenArtifacts A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+         * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mavenArtifacts(TriggerBuildArtifactsMavenArtifactArgs... mavenArtifacts) {
+            return mavenArtifacts(List.of(mavenArtifacts));
+        }
+
+        /**
+         * @param npmPackages Npm package to upload to Artifact Registry upon successful completion of all build steps.
+         * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder npmPackages(@Nullable Output<List<TriggerBuildArtifactsNpmPackageArgs>> npmPackages) {
+            $.npmPackages = npmPackages;
+            return this;
+        }
+
+        /**
+         * @param npmPackages Npm package to upload to Artifact Registry upon successful completion of all build steps.
+         * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder npmPackages(List<TriggerBuildArtifactsNpmPackageArgs> npmPackages) {
+            return npmPackages(Output.of(npmPackages));
+        }
+
+        /**
+         * @param npmPackages Npm package to upload to Artifact Registry upon successful completion of all build steps.
+         * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder npmPackages(TriggerBuildArtifactsNpmPackageArgs... npmPackages) {
+            return npmPackages(List.of(npmPackages));
+        }
+
+        /**
          * @param objects A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
          * Files in the workspace matching specified paths globs will be uploaded to the
          * Cloud Storage location using the builder service account&#39;s credentials.
@@ -157,6 +306,46 @@ public final class TriggerBuildArtifactsArgs extends com.pulumi.resources.Resour
          */
         public Builder objects(TriggerBuildArtifactsObjectsArgs objects) {
             return objects(Output.of(objects));
+        }
+
+        /**
+         * @param pythonPackages Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+         * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pythonPackages(@Nullable Output<List<TriggerBuildArtifactsPythonPackageArgs>> pythonPackages) {
+            $.pythonPackages = pythonPackages;
+            return this;
+        }
+
+        /**
+         * @param pythonPackages Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+         * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pythonPackages(List<TriggerBuildArtifactsPythonPackageArgs> pythonPackages) {
+            return pythonPackages(Output.of(pythonPackages));
+        }
+
+        /**
+         * @param pythonPackages Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+         * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pythonPackages(TriggerBuildArtifactsPythonPackageArgs... pythonPackages) {
+            return pythonPackages(List.of(pythonPackages));
         }
 
         public TriggerBuildArtifactsArgs build() {

@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.VMwareEngine
     public static class GetPrivateCloud
     {
         /// <summary>
+        /// Use this data source to get details about a private cloud resource.
+        /// 
+        /// To get more information about private cloud, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -26,8 +31,8 @@ namespace Pulumi.Gcp.VMwareEngine
         /// {
         ///     var myPc = Gcp.VMwareEngine.GetPrivateCloud.Invoke(new()
         ///     {
-        ///         Name = "my-pc",
         ///         Location = "us-central1-a",
+        ///         Name = "my-pc",
         ///     });
         /// 
         /// });
@@ -39,6 +44,11 @@ namespace Pulumi.Gcp.VMwareEngine
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateCloudResult>("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", args ?? new GetPrivateCloudArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to get details about a private cloud resource.
+        /// 
+        /// To get more information about private cloud, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -53,8 +63,8 @@ namespace Pulumi.Gcp.VMwareEngine
         /// {
         ///     var myPc = Gcp.VMwareEngine.GetPrivateCloud.Invoke(new()
         ///     {
-        ///         Name = "my-pc",
         ///         Location = "us-central1-a",
+        ///         Name = "my-pc",
         ///     });
         /// 
         /// });

@@ -15475,7 +15475,7 @@ class PreventionJobTriggerInspectJobStorageConfig(dict):
                Structure is documented below.
         :param 'PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs' hybrid_options: Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
                Structure is documented below.
-        :param 'PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs' timespan_config: Information on where to inspect
+        :param 'PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs' timespan_config: Configuration of the timespan of the items to include in scanning
                Structure is documented below.
         """
         if big_query_options is not None:
@@ -15529,7 +15529,7 @@ class PreventionJobTriggerInspectJobStorageConfig(dict):
     @pulumi.getter(name="timespanConfig")
     def timespan_config(self) -> Optional['outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfig']:
         """
-        Information on where to inspect
+        Configuration of the timespan of the items to include in scanning
         Structure is documented below.
         """
         return pulumi.get(self, "timespan_config")
@@ -16325,14 +16325,14 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "timestampField":
-            suggest = "timestamp_field"
-        elif key == "enableAutoPopulationOfTimespanConfig":
+        if key == "enableAutoPopulationOfTimespanConfig":
             suggest = "enable_auto_population_of_timespan_config"
         elif key == "endTime":
             suggest = "end_time"
         elif key == "startTime":
             suggest = "start_time"
+        elif key == "timestampField":
+            suggest = "timestamp_field"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobStorageConfigTimespanConfig. Access the value via the '{suggest}' property getter instead.")
@@ -16346,35 +16346,28 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 timestamp_field: 'outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField',
                  enable_auto_population_of_timespan_config: Optional[bool] = None,
                  end_time: Optional[str] = None,
-                 start_time: Optional[str] = None):
+                 start_time: Optional[str] = None,
+                 timestamp_field: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField'] = None):
         """
-        :param 'PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs' timestamp_field: Information on where to inspect
-               Structure is documented below.
         :param bool enable_auto_population_of_timespan_config: When the job is started by a JobTrigger we will automatically figure out a valid startTime to avoid
                scanning files that have not been modified since the last time the JobTrigger executed. This will
-               be based on the time of the execution of the last run of the JobTrigger.
-        :param str end_time: Exclude files or rows newer than this value. If set to zero, no upper time limit is applied.
-        :param str start_time: Exclude files or rows older than this value.
+               be based on the time of the execution of the last run of the JobTrigger or the timespan endTime
+               used in the last run of the JobTrigger.
+        :param str end_time: Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
+        :param str start_time: Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
+        :param 'PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs' timestamp_field: Specification of the field containing the timestamp of scanned items.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "timestamp_field", timestamp_field)
         if enable_auto_population_of_timespan_config is not None:
             pulumi.set(__self__, "enable_auto_population_of_timespan_config", enable_auto_population_of_timespan_config)
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
-
-    @property
-    @pulumi.getter(name="timestampField")
-    def timestamp_field(self) -> 'outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField':
-        """
-        Information on where to inspect
-        Structure is documented below.
-        """
-        return pulumi.get(self, "timestamp_field")
+        if timestamp_field is not None:
+            pulumi.set(__self__, "timestamp_field", timestamp_field)
 
     @property
     @pulumi.getter(name="enableAutoPopulationOfTimespanConfig")
@@ -16382,7 +16375,8 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
         """
         When the job is started by a JobTrigger we will automatically figure out a valid startTime to avoid
         scanning files that have not been modified since the last time the JobTrigger executed. This will
-        be based on the time of the execution of the last run of the JobTrigger.
+        be based on the time of the execution of the last run of the JobTrigger or the timespan endTime
+        used in the last run of the JobTrigger.
         """
         return pulumi.get(self, "enable_auto_population_of_timespan_config")
 
@@ -16390,7 +16384,7 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[str]:
         """
-        Exclude files or rows newer than this value. If set to zero, no upper time limit is applied.
+        Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
         """
         return pulumi.get(self, "end_time")
 
@@ -16398,9 +16392,18 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[str]:
         """
-        Exclude files or rows older than this value.
+        Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
         """
         return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="timestampField")
+    def timestamp_field(self) -> Optional['outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField']:
+        """
+        Specification of the field containing the timestamp of scanned items.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "timestamp_field")
 
 
 @pulumi.output_type

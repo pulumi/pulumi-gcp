@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.VMwareEngine
 {
     /// <summary>
+    /// / Represents a private cloud resource. Private clouds are zonal resources.
+    /// 
+    /// To get more information about PrivateCloud, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+    /// 
     /// ## Example Usage
     /// ### Vmware Engine Private Cloud Basic
     /// 
@@ -23,12 +29,9 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var pc_nw = new Gcp.VMwareEngine.Network("pc-nw", new()
     ///     {
-    ///         Location = "us-west1",
-    ///         Type = "LEGACY",
+    ///         Location = "global",
+    ///         Type = "STANDARD",
     ///         Description = "PC network description.",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var vmw_engine_pc = new Gcp.VMwareEngine.PrivateCloud("vmw-engine-pc", new()
@@ -52,58 +55,6 @@ namespace Pulumi.Gcp.VMwareEngine
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Vmware Engine Private Cloud Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var pc_nw = new Gcp.VMwareEngine.Network("pc-nw", new()
-    ///     {
-    ///         Location = "us-west1",
-    ///         Type = "LEGACY",
-    ///         Description = "PC network description.",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
-    ///     var vmw_engine_pc = new Gcp.VMwareEngine.PrivateCloud("vmw-engine-pc", new()
-    ///     {
-    ///         Location = "us-west1-a",
-    ///         Description = "Sample test PC.",
-    ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs
-    ///         {
-    ///             ManagementCidr = "192.168.30.0/24",
-    ///             VmwareEngineNetwork = pc_nw.Id,
-    ///         },
-    ///         ManagementCluster = new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterArgs
-    ///         {
-    ///             ClusterId = "sample-mgmt-cluster",
-    ///             NodeTypeConfigs = new[]
-    ///             {
-    ///                 new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterNodeTypeConfigArgs
-    ///                 {
-    ///                     NodeTypeId = "standard-72",
-    ///                     NodeCount = 3,
-    ///                     CustomCoreCount = 32,
-    ///                 },
-    ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

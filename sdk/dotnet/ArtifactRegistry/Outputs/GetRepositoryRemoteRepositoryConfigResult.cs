@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult> MavenRepositories;
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult> NpmRepositories;
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult> PythonRepositories;
+        public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialResult> UpstreamCredentials;
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult> YumRepositories;
 
         [OutputConstructor]
@@ -35,6 +36,8 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
 
             ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult> pythonRepositories,
 
+            ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialResult> upstreamCredentials,
+
             ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult> yumRepositories)
         {
             AptRepositories = aptRepositories;
@@ -43,6 +46,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
             MavenRepositories = mavenRepositories;
             NpmRepositories = npmRepositories;
             PythonRepositories = pythonRepositories;
+            UpstreamCredentials = upstreamCredentials;
             YumRepositories = yumRepositories;
         }
     }

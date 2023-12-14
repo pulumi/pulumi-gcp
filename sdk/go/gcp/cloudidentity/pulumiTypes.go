@@ -752,10 +752,12 @@ func (o GroupMembershipPreferredMemberKeyPtrOutput) Namespace() pulumi.StringPtr
 }
 
 type GroupMembershipRole struct {
+	// The MembershipRole expiry details, only supported for MEMBER role.
+	// Other roles cannot be accompanied with MEMBER role having expiry.
+	// Structure is documented below.
+	ExpiryDetail *GroupMembershipRoleExpiryDetail `pulumi:"expiryDetail"`
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 	// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-	//
-	// ***
 	Name string `pulumi:"name"`
 }
 
@@ -771,10 +773,12 @@ type GroupMembershipRoleInput interface {
 }
 
 type GroupMembershipRoleArgs struct {
+	// The MembershipRole expiry details, only supported for MEMBER role.
+	// Other roles cannot be accompanied with MEMBER role having expiry.
+	// Structure is documented below.
+	ExpiryDetail GroupMembershipRoleExpiryDetailPtrInput `pulumi:"expiryDetail"`
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 	// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-	//
-	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -829,10 +833,15 @@ func (o GroupMembershipRoleOutput) ToGroupMembershipRoleOutputWithContext(ctx co
 	return o
 }
 
+// The MembershipRole expiry details, only supported for MEMBER role.
+// Other roles cannot be accompanied with MEMBER role having expiry.
+// Structure is documented below.
+func (o GroupMembershipRoleOutput) ExpiryDetail() GroupMembershipRoleExpiryDetailPtrOutput {
+	return o.ApplyT(func(v GroupMembershipRole) *GroupMembershipRoleExpiryDetail { return v.ExpiryDetail }).(GroupMembershipRoleExpiryDetailPtrOutput)
+}
+
 // The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 // Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-//
-// ***
 func (o GroupMembershipRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupMembershipRole) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -855,6 +864,163 @@ func (o GroupMembershipRoleArrayOutput) Index(i pulumi.IntInput) GroupMembership
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupMembershipRole {
 		return vs[0].([]GroupMembershipRole)[vs[1].(int)]
 	}).(GroupMembershipRoleOutput)
+}
+
+type GroupMembershipRoleExpiryDetail struct {
+	// The time at which the MembershipRole will expire.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	//
+	// ***
+	ExpireTime string `pulumi:"expireTime"`
+}
+
+// GroupMembershipRoleExpiryDetailInput is an input type that accepts GroupMembershipRoleExpiryDetailArgs and GroupMembershipRoleExpiryDetailOutput values.
+// You can construct a concrete instance of `GroupMembershipRoleExpiryDetailInput` via:
+//
+//	GroupMembershipRoleExpiryDetailArgs{...}
+type GroupMembershipRoleExpiryDetailInput interface {
+	pulumi.Input
+
+	ToGroupMembershipRoleExpiryDetailOutput() GroupMembershipRoleExpiryDetailOutput
+	ToGroupMembershipRoleExpiryDetailOutputWithContext(context.Context) GroupMembershipRoleExpiryDetailOutput
+}
+
+type GroupMembershipRoleExpiryDetailArgs struct {
+	// The time at which the MembershipRole will expire.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	//
+	// ***
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+}
+
+func (GroupMembershipRoleExpiryDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMembershipRoleExpiryDetail)(nil)).Elem()
+}
+
+func (i GroupMembershipRoleExpiryDetailArgs) ToGroupMembershipRoleExpiryDetailOutput() GroupMembershipRoleExpiryDetailOutput {
+	return i.ToGroupMembershipRoleExpiryDetailOutputWithContext(context.Background())
+}
+
+func (i GroupMembershipRoleExpiryDetailArgs) ToGroupMembershipRoleExpiryDetailOutputWithContext(ctx context.Context) GroupMembershipRoleExpiryDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipRoleExpiryDetailOutput)
+}
+
+func (i GroupMembershipRoleExpiryDetailArgs) ToGroupMembershipRoleExpiryDetailPtrOutput() GroupMembershipRoleExpiryDetailPtrOutput {
+	return i.ToGroupMembershipRoleExpiryDetailPtrOutputWithContext(context.Background())
+}
+
+func (i GroupMembershipRoleExpiryDetailArgs) ToGroupMembershipRoleExpiryDetailPtrOutputWithContext(ctx context.Context) GroupMembershipRoleExpiryDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipRoleExpiryDetailOutput).ToGroupMembershipRoleExpiryDetailPtrOutputWithContext(ctx)
+}
+
+// GroupMembershipRoleExpiryDetailPtrInput is an input type that accepts GroupMembershipRoleExpiryDetailArgs, GroupMembershipRoleExpiryDetailPtr and GroupMembershipRoleExpiryDetailPtrOutput values.
+// You can construct a concrete instance of `GroupMembershipRoleExpiryDetailPtrInput` via:
+//
+//	        GroupMembershipRoleExpiryDetailArgs{...}
+//
+//	or:
+//
+//	        nil
+type GroupMembershipRoleExpiryDetailPtrInput interface {
+	pulumi.Input
+
+	ToGroupMembershipRoleExpiryDetailPtrOutput() GroupMembershipRoleExpiryDetailPtrOutput
+	ToGroupMembershipRoleExpiryDetailPtrOutputWithContext(context.Context) GroupMembershipRoleExpiryDetailPtrOutput
+}
+
+type groupMembershipRoleExpiryDetailPtrType GroupMembershipRoleExpiryDetailArgs
+
+func GroupMembershipRoleExpiryDetailPtr(v *GroupMembershipRoleExpiryDetailArgs) GroupMembershipRoleExpiryDetailPtrInput {
+	return (*groupMembershipRoleExpiryDetailPtrType)(v)
+}
+
+func (*groupMembershipRoleExpiryDetailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupMembershipRoleExpiryDetail)(nil)).Elem()
+}
+
+func (i *groupMembershipRoleExpiryDetailPtrType) ToGroupMembershipRoleExpiryDetailPtrOutput() GroupMembershipRoleExpiryDetailPtrOutput {
+	return i.ToGroupMembershipRoleExpiryDetailPtrOutputWithContext(context.Background())
+}
+
+func (i *groupMembershipRoleExpiryDetailPtrType) ToGroupMembershipRoleExpiryDetailPtrOutputWithContext(ctx context.Context) GroupMembershipRoleExpiryDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMembershipRoleExpiryDetailPtrOutput)
+}
+
+type GroupMembershipRoleExpiryDetailOutput struct{ *pulumi.OutputState }
+
+func (GroupMembershipRoleExpiryDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMembershipRoleExpiryDetail)(nil)).Elem()
+}
+
+func (o GroupMembershipRoleExpiryDetailOutput) ToGroupMembershipRoleExpiryDetailOutput() GroupMembershipRoleExpiryDetailOutput {
+	return o
+}
+
+func (o GroupMembershipRoleExpiryDetailOutput) ToGroupMembershipRoleExpiryDetailOutputWithContext(ctx context.Context) GroupMembershipRoleExpiryDetailOutput {
+	return o
+}
+
+func (o GroupMembershipRoleExpiryDetailOutput) ToGroupMembershipRoleExpiryDetailPtrOutput() GroupMembershipRoleExpiryDetailPtrOutput {
+	return o.ToGroupMembershipRoleExpiryDetailPtrOutputWithContext(context.Background())
+}
+
+func (o GroupMembershipRoleExpiryDetailOutput) ToGroupMembershipRoleExpiryDetailPtrOutputWithContext(ctx context.Context) GroupMembershipRoleExpiryDetailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMembershipRoleExpiryDetail) *GroupMembershipRoleExpiryDetail {
+		return &v
+	}).(GroupMembershipRoleExpiryDetailPtrOutput)
+}
+
+// The time at which the MembershipRole will expire.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+//
+// ***
+func (o GroupMembershipRoleExpiryDetailOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupMembershipRoleExpiryDetail) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+type GroupMembershipRoleExpiryDetailPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupMembershipRoleExpiryDetailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupMembershipRoleExpiryDetail)(nil)).Elem()
+}
+
+func (o GroupMembershipRoleExpiryDetailPtrOutput) ToGroupMembershipRoleExpiryDetailPtrOutput() GroupMembershipRoleExpiryDetailPtrOutput {
+	return o
+}
+
+func (o GroupMembershipRoleExpiryDetailPtrOutput) ToGroupMembershipRoleExpiryDetailPtrOutputWithContext(ctx context.Context) GroupMembershipRoleExpiryDetailPtrOutput {
+	return o
+}
+
+func (o GroupMembershipRoleExpiryDetailPtrOutput) Elem() GroupMembershipRoleExpiryDetailOutput {
+	return o.ApplyT(func(v *GroupMembershipRoleExpiryDetail) GroupMembershipRoleExpiryDetail {
+		if v != nil {
+			return *v
+		}
+		var ret GroupMembershipRoleExpiryDetail
+		return ret
+	}).(GroupMembershipRoleExpiryDetailOutput)
+}
+
+// The time at which the MembershipRole will expire.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+//
+// ***
+func (o GroupMembershipRoleExpiryDetailPtrOutput) ExpireTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMembershipRoleExpiryDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpireTime
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetGroupLookupGroupKey struct {
@@ -1341,6 +1507,7 @@ func (o GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput) Index(i pulu
 }
 
 type GetGroupMembershipsMembershipRole struct {
+	ExpiryDetails []GetGroupMembershipsMembershipRoleExpiryDetail `pulumi:"expiryDetails"`
 	// The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
 	Name string `pulumi:"name"`
 }
@@ -1357,6 +1524,7 @@ type GetGroupMembershipsMembershipRoleInput interface {
 }
 
 type GetGroupMembershipsMembershipRoleArgs struct {
+	ExpiryDetails GetGroupMembershipsMembershipRoleExpiryDetailArrayInput `pulumi:"expiryDetails"`
 	// The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -1412,6 +1580,12 @@ func (o GetGroupMembershipsMembershipRoleOutput) ToGetGroupMembershipsMembership
 	return o
 }
 
+func (o GetGroupMembershipsMembershipRoleOutput) ExpiryDetails() GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput {
+	return o.ApplyT(func(v GetGroupMembershipsMembershipRole) []GetGroupMembershipsMembershipRoleExpiryDetail {
+		return v.ExpiryDetails
+	}).(GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput)
+}
+
 // The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
 func (o GetGroupMembershipsMembershipRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipsMembershipRole) string { return v.Name }).(pulumi.StringOutput)
@@ -1435,6 +1609,100 @@ func (o GetGroupMembershipsMembershipRoleArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMembershipsMembershipRole {
 		return vs[0].([]GetGroupMembershipsMembershipRole)[vs[1].(int)]
 	}).(GetGroupMembershipsMembershipRoleOutput)
+}
+
+type GetGroupMembershipsMembershipRoleExpiryDetail struct {
+	ExpireTime string `pulumi:"expireTime"`
+}
+
+// GetGroupMembershipsMembershipRoleExpiryDetailInput is an input type that accepts GetGroupMembershipsMembershipRoleExpiryDetailArgs and GetGroupMembershipsMembershipRoleExpiryDetailOutput values.
+// You can construct a concrete instance of `GetGroupMembershipsMembershipRoleExpiryDetailInput` via:
+//
+//	GetGroupMembershipsMembershipRoleExpiryDetailArgs{...}
+type GetGroupMembershipsMembershipRoleExpiryDetailInput interface {
+	pulumi.Input
+
+	ToGetGroupMembershipsMembershipRoleExpiryDetailOutput() GetGroupMembershipsMembershipRoleExpiryDetailOutput
+	ToGetGroupMembershipsMembershipRoleExpiryDetailOutputWithContext(context.Context) GetGroupMembershipsMembershipRoleExpiryDetailOutput
+}
+
+type GetGroupMembershipsMembershipRoleExpiryDetailArgs struct {
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+}
+
+func (GetGroupMembershipsMembershipRoleExpiryDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMembershipsMembershipRoleExpiryDetail)(nil)).Elem()
+}
+
+func (i GetGroupMembershipsMembershipRoleExpiryDetailArgs) ToGetGroupMembershipsMembershipRoleExpiryDetailOutput() GetGroupMembershipsMembershipRoleExpiryDetailOutput {
+	return i.ToGetGroupMembershipsMembershipRoleExpiryDetailOutputWithContext(context.Background())
+}
+
+func (i GetGroupMembershipsMembershipRoleExpiryDetailArgs) ToGetGroupMembershipsMembershipRoleExpiryDetailOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipRoleExpiryDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipRoleExpiryDetailOutput)
+}
+
+// GetGroupMembershipsMembershipRoleExpiryDetailArrayInput is an input type that accepts GetGroupMembershipsMembershipRoleExpiryDetailArray and GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput values.
+// You can construct a concrete instance of `GetGroupMembershipsMembershipRoleExpiryDetailArrayInput` via:
+//
+//	GetGroupMembershipsMembershipRoleExpiryDetailArray{ GetGroupMembershipsMembershipRoleExpiryDetailArgs{...} }
+type GetGroupMembershipsMembershipRoleExpiryDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupMembershipsMembershipRoleExpiryDetailArrayOutput() GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput
+	ToGetGroupMembershipsMembershipRoleExpiryDetailArrayOutputWithContext(context.Context) GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput
+}
+
+type GetGroupMembershipsMembershipRoleExpiryDetailArray []GetGroupMembershipsMembershipRoleExpiryDetailInput
+
+func (GetGroupMembershipsMembershipRoleExpiryDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMembershipsMembershipRoleExpiryDetail)(nil)).Elem()
+}
+
+func (i GetGroupMembershipsMembershipRoleExpiryDetailArray) ToGetGroupMembershipsMembershipRoleExpiryDetailArrayOutput() GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput {
+	return i.ToGetGroupMembershipsMembershipRoleExpiryDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupMembershipsMembershipRoleExpiryDetailArray) ToGetGroupMembershipsMembershipRoleExpiryDetailArrayOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput)
+}
+
+type GetGroupMembershipsMembershipRoleExpiryDetailOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMembershipsMembershipRoleExpiryDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupMembershipsMembershipRoleExpiryDetail)(nil)).Elem()
+}
+
+func (o GetGroupMembershipsMembershipRoleExpiryDetailOutput) ToGetGroupMembershipsMembershipRoleExpiryDetailOutput() GetGroupMembershipsMembershipRoleExpiryDetailOutput {
+	return o
+}
+
+func (o GetGroupMembershipsMembershipRoleExpiryDetailOutput) ToGetGroupMembershipsMembershipRoleExpiryDetailOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipRoleExpiryDetailOutput {
+	return o
+}
+
+func (o GetGroupMembershipsMembershipRoleExpiryDetailOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupMembershipsMembershipRoleExpiryDetail) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+type GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupMembershipsMembershipRoleExpiryDetail)(nil)).Elem()
+}
+
+func (o GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput) ToGetGroupMembershipsMembershipRoleExpiryDetailArrayOutput() GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput {
+	return o
+}
+
+func (o GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput) ToGetGroupMembershipsMembershipRoleExpiryDetailArrayOutputWithContext(ctx context.Context) GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput {
+	return o
+}
+
+func (o GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput) Index(i pulumi.IntInput) GetGroupMembershipsMembershipRoleExpiryDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupMembershipsMembershipRoleExpiryDetail {
+		return vs[0].([]GetGroupMembershipsMembershipRoleExpiryDetail)[vs[1].(int)]
+	}).(GetGroupMembershipsMembershipRoleExpiryDetailOutput)
 }
 
 type GetGroupsGroup struct {
@@ -1880,6 +2148,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipPreferredMemberKeyPtrInput)(nil)).Elem(), GroupMembershipPreferredMemberKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipRoleInput)(nil)).Elem(), GroupMembershipRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipRoleArrayInput)(nil)).Elem(), GroupMembershipRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipRoleExpiryDetailInput)(nil)).Elem(), GroupMembershipRoleExpiryDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupMembershipRoleExpiryDetailPtrInput)(nil)).Elem(), GroupMembershipRoleExpiryDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupLookupGroupKeyInput)(nil)).Elem(), GetGroupLookupGroupKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipInput)(nil)).Elem(), GetGroupMembershipsMembershipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipArrayInput)(nil)).Elem(), GetGroupMembershipsMembershipArray{})
@@ -1889,6 +2159,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipPreferredMemberKeyArrayInput)(nil)).Elem(), GetGroupMembershipsMembershipPreferredMemberKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipRoleInput)(nil)).Elem(), GetGroupMembershipsMembershipRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipRoleArrayInput)(nil)).Elem(), GetGroupMembershipsMembershipRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipRoleExpiryDetailInput)(nil)).Elem(), GetGroupMembershipsMembershipRoleExpiryDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupMembershipsMembershipRoleExpiryDetailArrayInput)(nil)).Elem(), GetGroupMembershipsMembershipRoleExpiryDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupAdditionalGroupKeyInput)(nil)).Elem(), GetGroupsGroupAdditionalGroupKeyArgs{})
@@ -1905,6 +2177,8 @@ func init() {
 	pulumi.RegisterOutputType(GroupMembershipPreferredMemberKeyPtrOutput{})
 	pulumi.RegisterOutputType(GroupMembershipRoleOutput{})
 	pulumi.RegisterOutputType(GroupMembershipRoleArrayOutput{})
+	pulumi.RegisterOutputType(GroupMembershipRoleExpiryDetailOutput{})
+	pulumi.RegisterOutputType(GroupMembershipRoleExpiryDetailPtrOutput{})
 	pulumi.RegisterOutputType(GetGroupLookupGroupKeyOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipArrayOutput{})
@@ -1914,6 +2188,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipRoleOutput{})
 	pulumi.RegisterOutputType(GetGroupMembershipsMembershipRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupMembershipsMembershipRoleExpiryDetailOutput{})
+	pulumi.RegisterOutputType(GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupAdditionalGroupKeyOutput{})

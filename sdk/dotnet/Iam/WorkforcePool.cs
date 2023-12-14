@@ -54,6 +54,17 @@ namespace Pulumi.Gcp.Iam
     /// {
     ///     var example = new Gcp.Iam.WorkforcePool("example", new()
     ///     {
+    ///         AccessRestrictions = new Gcp.Iam.Inputs.WorkforcePoolAccessRestrictionsArgs
+    ///         {
+    ///             AllowedServices = new[]
+    ///             {
+    ///                 new Gcp.Iam.Inputs.WorkforcePoolAccessRestrictionsAllowedServiceArgs
+    ///                 {
+    ///                     Domain = "backstory.chronicle.security",
+    ///                 },
+    ///             },
+    ///             DisableProgrammaticSignin = false,
+    ///         },
     ///         Description = "A sample workforce pool.",
     ///         Disabled = false,
     ///         DisplayName = "Display name",
@@ -89,6 +100,14 @@ namespace Pulumi.Gcp.Iam
     [GcpResourceType("gcp:iam/workforcePool:WorkforcePool")]
     public partial class WorkforcePool : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+        /// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("accessRestrictions")]
+        public Output<Outputs.WorkforcePoolAccessRestrictions?> AccessRestrictions { get; private set; } = null!;
+
         /// <summary>
         /// A user-specified description of the pool. Cannot exceed 256 characters.
         /// </summary>
@@ -210,6 +229,14 @@ namespace Pulumi.Gcp.Iam
     public sealed class WorkforcePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+        /// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("accessRestrictions")]
+        public Input<Inputs.WorkforcePoolAccessRestrictionsArgs>? AccessRestrictions { get; set; }
+
+        /// <summary>
         /// A user-specified description of the pool. Cannot exceed 256 characters.
         /// </summary>
         [Input("description")]
@@ -269,6 +296,14 @@ namespace Pulumi.Gcp.Iam
 
     public sealed class WorkforcePoolState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+        /// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("accessRestrictions")]
+        public Input<Inputs.WorkforcePoolAccessRestrictionsGetArgs>? AccessRestrictions { get; set; }
+
         /// <summary>
         /// A user-specified description of the pool. Cannot exceed 256 characters.
         /// </summary>

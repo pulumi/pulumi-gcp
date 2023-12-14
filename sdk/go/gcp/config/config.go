@@ -320,11 +320,17 @@ func GetLookerCustomEndpoint(ctx *pulumi.Context) string {
 func GetMemcacheCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:memcacheCustomEndpoint")
 }
+func GetMigrationCenterCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:migrationCenterCustomEndpoint")
+}
 func GetMlEngineCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:mlEngineCustomEndpoint")
 }
 func GetMonitoringCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:monitoringCustomEndpoint")
+}
+func GetNetappCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:netappCustomEndpoint")
 }
 func GetNetworkConnectivityCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:networkConnectivityCustomEndpoint")
@@ -413,6 +419,9 @@ func GetScopes(ctx *pulumi.Context) string {
 }
 func GetSecretManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:secretManagerCustomEndpoint")
+}
+func GetSecureSourceManagerCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:secureSourceManagerCustomEndpoint")
 }
 func GetSecurityCenterCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:securityCenterCustomEndpoint")

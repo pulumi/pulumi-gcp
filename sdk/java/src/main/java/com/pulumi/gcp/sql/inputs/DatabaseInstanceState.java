@@ -291,14 +291,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The link to service attachment of PSC instance.
+     * the URI that points to the service attachment of the instance.
      * 
      */
     @Import(name="pscServiceAttachmentLink")
     private @Nullable Output<String> pscServiceAttachmentLink;
 
     /**
-     * @return The link to service attachment of PSC instance.
+     * @return the URI that points to the service attachment of the instance.
      * 
      */
     public Optional<Output<String>> pscServiceAttachmentLink() {
@@ -866,7 +866,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param pscServiceAttachmentLink The link to service attachment of PSC instance.
+         * @param pscServiceAttachmentLink the URI that points to the service attachment of the instance.
          * 
          * @return builder
          * 
@@ -877,7 +877,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param pscServiceAttachmentLink The link to service attachment of PSC instance.
+         * @param pscServiceAttachmentLink the URI that points to the service attachment of the instance.
          * 
          * @return builder
          * 

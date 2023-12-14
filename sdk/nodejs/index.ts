@@ -85,8 +85,10 @@ import * as kms from "./kms";
 import * as logging from "./logging";
 import * as looker from "./looker";
 import * as memcache from "./memcache";
+import * as migrationcenter from "./migrationcenter";
 import * as ml from "./ml";
 import * as monitoring from "./monitoring";
+import * as netapp from "./netapp";
 import * as networkconnectivity from "./networkconnectivity";
 import * as networkmanagement from "./networkmanagement";
 import * as networksecurity from "./networksecurity";
@@ -103,6 +105,7 @@ import * as redis from "./redis";
 import * as resourcemanager from "./resourcemanager";
 import * as runtimeconfig from "./runtimeconfig";
 import * as secretmanager from "./secretmanager";
+import * as securesourcemanager from "./securesourcemanager";
 import * as securitycenter from "./securitycenter";
 import * as serviceaccount from "./serviceaccount";
 import * as servicedirectory from "./servicedirectory";
@@ -194,8 +197,10 @@ export {
     logging,
     looker,
     memcache,
+    migrationcenter,
     ml,
     monitoring,
+    netapp,
     networkconnectivity,
     networkmanagement,
     networksecurity,
@@ -212,6 +217,7 @@ export {
     resourcemanager,
     runtimeconfig,
     secretmanager,
+    securesourcemanager,
     securitycenter,
     serviceaccount,
     servicedirectory,

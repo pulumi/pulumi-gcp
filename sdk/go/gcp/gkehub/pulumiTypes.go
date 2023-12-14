@@ -20,6 +20,9 @@ type FeatureFleetDefaultMemberConfig struct {
 	// Service Mesh spec
 	// Structure is documented below.
 	Mesh *FeatureFleetDefaultMemberConfigMesh `pulumi:"mesh"`
+	// Policy Controller spec
+	// Structure is documented below.
+	Policycontroller *FeatureFleetDefaultMemberConfigPolicycontroller `pulumi:"policycontroller"`
 }
 
 // FeatureFleetDefaultMemberConfigInput is an input type that accepts FeatureFleetDefaultMemberConfigArgs and FeatureFleetDefaultMemberConfigOutput values.
@@ -40,6 +43,9 @@ type FeatureFleetDefaultMemberConfigArgs struct {
 	// Service Mesh spec
 	// Structure is documented below.
 	Mesh FeatureFleetDefaultMemberConfigMeshPtrInput `pulumi:"mesh"`
+	// Policy Controller spec
+	// Structure is documented below.
+	Policycontroller FeatureFleetDefaultMemberConfigPolicycontrollerPtrInput `pulumi:"policycontroller"`
 }
 
 func (FeatureFleetDefaultMemberConfigArgs) ElementType() reflect.Type {
@@ -133,6 +139,14 @@ func (o FeatureFleetDefaultMemberConfigOutput) Mesh() FeatureFleetDefaultMemberC
 	return o.ApplyT(func(v FeatureFleetDefaultMemberConfig) *FeatureFleetDefaultMemberConfigMesh { return v.Mesh }).(FeatureFleetDefaultMemberConfigMeshPtrOutput)
 }
 
+// Policy Controller spec
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigOutput) Policycontroller() FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfig) *FeatureFleetDefaultMemberConfigPolicycontroller {
+		return v.Policycontroller
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput)
+}
+
 type FeatureFleetDefaultMemberConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (FeatureFleetDefaultMemberConfigPtrOutput) ElementType() reflect.Type {
@@ -177,6 +191,17 @@ func (o FeatureFleetDefaultMemberConfigPtrOutput) Mesh() FeatureFleetDefaultMemb
 		}
 		return v.Mesh
 	}).(FeatureFleetDefaultMemberConfigMeshPtrOutput)
+}
+
+// Policy Controller spec
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPtrOutput) Policycontroller() FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfig) *FeatureFleetDefaultMemberConfigPolicycontroller {
+		if v == nil {
+			return nil
+		}
+		return v.Policycontroller
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput)
 }
 
 type FeatureFleetDefaultMemberConfigConfigmanagement struct {
@@ -1153,6 +1178,1848 @@ func (o FeatureFleetDefaultMemberConfigMeshPtrOutput) Management() pulumi.String
 			return nil
 		}
 		return &v.Management
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontroller struct {
+	// Configuration of Policy Controller
+	// Structure is documented below.
+	PolicyControllerHubConfig FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig `pulumi:"policyControllerHubConfig"`
+	// Configures the version of Policy Controller
+	Version *string `pulumi:"version"`
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerArgs and FeatureFleetDefaultMemberConfigPolicycontrollerOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerArgs{...}
+type FeatureFleetDefaultMemberConfigPolicycontrollerInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerOutput() FeatureFleetDefaultMemberConfigPolicycontrollerOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerArgs struct {
+	// Configuration of Policy Controller
+	// Structure is documented below.
+	PolicyControllerHubConfig FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigInput `pulumi:"policyControllerHubConfig"`
+	// Configures the version of Policy Controller
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontroller)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerOutput() FeatureFleetDefaultMemberConfigPolicycontrollerOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerOutput).ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerArgs, FeatureFleetDefaultMemberConfigPolicycontrollerPtr and FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigPolicycontrollerArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigPolicycontrollerPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput
+}
+
+type featureFleetDefaultMemberConfigPolicycontrollerPtrType FeatureFleetDefaultMemberConfigPolicycontrollerArgs
+
+func FeatureFleetDefaultMemberConfigPolicycontrollerPtr(v *FeatureFleetDefaultMemberConfigPolicycontrollerArgs) FeatureFleetDefaultMemberConfigPolicycontrollerPtrInput {
+	return (*featureFleetDefaultMemberConfigPolicycontrollerPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigPolicycontrollerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontroller)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontroller)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerOutput() FeatureFleetDefaultMemberConfigPolicycontrollerOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigPolicycontroller) *FeatureFleetDefaultMemberConfigPolicycontroller {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput)
+}
+
+// Configuration of Policy Controller
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerOutput) PolicyControllerHubConfig() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontroller) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig {
+		return v.PolicyControllerHubConfig
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput)
+}
+
+// Configures the version of Policy Controller
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontroller) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontroller)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput) Elem() FeatureFleetDefaultMemberConfigPolicycontrollerOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontroller) FeatureFleetDefaultMemberConfigPolicycontroller {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigPolicycontroller
+		return ret
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerOutput)
+}
+
+// Configuration of Policy Controller
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput) PolicyControllerHubConfig() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontroller) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.PolicyControllerHubConfig
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput)
+}
+
+// Configures the version of Policy Controller
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontroller) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig struct {
+	// Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+	AuditIntervalSeconds *int `pulumi:"auditIntervalSeconds"`
+	// The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+	ConstraintViolationLimit *int `pulumi:"constraintViolationLimit"`
+	// Map of deployment configs to deployments ("admission", "audit", "mutation").
+	// Structure is documented below.
+	DeploymentConfigs []FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig `pulumi:"deploymentConfigs"`
+	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+	ExemptableNamespaces []string `pulumi:"exemptableNamespaces"`
+	// Configures the mode of the Policy Controller installation
+	// Possible values are: `INSTALL_SPEC_UNSPECIFIED`, `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED`, `INSTALL_SPEC_DETACHED`.
+	InstallSpec string `pulumi:"installSpec"`
+	// Logs all denies and dry run failures.
+	LogDeniesEnabled *bool `pulumi:"logDeniesEnabled"`
+	// Monitoring specifies the configuration of monitoring Policy Controller.
+	// Structure is documented below.
+	Monitoring *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring `pulumi:"monitoring"`
+	// Enables the ability to mutate resources using Policy Controller.
+	MutationEnabled *bool `pulumi:"mutationEnabled"`
+	// Specifies the desired policy content on the cluster.
+	// Structure is documented below.
+	PolicyContent *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent `pulumi:"policyContent"`
+	// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+	ReferentialRulesEnabled *bool `pulumi:"referentialRulesEnabled"`
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{...}
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs struct {
+	// Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+	AuditIntervalSeconds pulumi.IntPtrInput `pulumi:"auditIntervalSeconds"`
+	// The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+	ConstraintViolationLimit pulumi.IntPtrInput `pulumi:"constraintViolationLimit"`
+	// Map of deployment configs to deployments ("admission", "audit", "mutation").
+	// Structure is documented below.
+	DeploymentConfigs FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayInput `pulumi:"deploymentConfigs"`
+	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+	ExemptableNamespaces pulumi.StringArrayInput `pulumi:"exemptableNamespaces"`
+	// Configures the mode of the Policy Controller installation
+	// Possible values are: `INSTALL_SPEC_UNSPECIFIED`, `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED`, `INSTALL_SPEC_DETACHED`.
+	InstallSpec pulumi.StringInput `pulumi:"installSpec"`
+	// Logs all denies and dry run failures.
+	LogDeniesEnabled pulumi.BoolPtrInput `pulumi:"logDeniesEnabled"`
+	// Monitoring specifies the configuration of monitoring Policy Controller.
+	// Structure is documented below.
+	Monitoring FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrInput `pulumi:"monitoring"`
+	// Enables the ability to mutate resources using Policy Controller.
+	MutationEnabled pulumi.BoolPtrInput `pulumi:"mutationEnabled"`
+	// Specifies the desired policy content on the cluster.
+	// Structure is documented below.
+	PolicyContent FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrInput `pulumi:"policyContent"`
+	// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+	ReferentialRulesEnabled pulumi.BoolPtrInput `pulumi:"referentialRulesEnabled"`
+}
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput).ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs, FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtr and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput
+}
+
+type featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrType FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs
+
+func FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtr(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrInput {
+	return (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput)
+}
+
+// Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) AuditIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *int {
+		return v.AuditIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ConstraintViolationLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *int {
+		return v.ConstraintViolationLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Map of deployment configs to deployments ("admission", "audit", "mutation").
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) DeploymentConfigs() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) []FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
+		return v.DeploymentConfigs
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput)
+}
+
+// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ExemptableNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) []string {
+		return v.ExemptableNamespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configures the mode of the Policy Controller installation
+// Possible values are: `INSTALL_SPEC_UNSPECIFIED`, `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED`, `INSTALL_SPEC_DETACHED`.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) InstallSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) string {
+		return v.InstallSpec
+	}).(pulumi.StringOutput)
+}
+
+// Logs all denies and dry run failures.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) LogDeniesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *bool {
+		return v.LogDeniesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Monitoring specifies the configuration of monitoring Policy Controller.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) Monitoring() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring {
+		return v.Monitoring
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput)
+}
+
+// Enables the ability to mutate resources using Policy Controller.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) MutationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *bool {
+		return v.MutationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the desired policy content on the cluster.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) PolicyContent() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent {
+		return v.PolicyContent
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput)
+}
+
+// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ReferentialRulesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *bool {
+		return v.ReferentialRulesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) Elem() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig
+		return ret
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput)
+}
+
+// Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) AuditIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AuditIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) ConstraintViolationLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConstraintViolationLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Map of deployment configs to deployments ("admission", "audit", "mutation").
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) DeploymentConfigs() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) []FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentConfigs
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput)
+}
+
+// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) ExemptableNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExemptableNamespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configures the mode of the Policy Controller installation
+// Possible values are: `INSTALL_SPEC_UNSPECIFIED`, `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED`, `INSTALL_SPEC_DETACHED`.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) InstallSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstallSpec
+	}).(pulumi.StringPtrOutput)
+}
+
+// Logs all denies and dry run failures.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) LogDeniesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogDeniesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Monitoring specifies the configuration of monitoring Policy Controller.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) Monitoring() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring {
+		if v == nil {
+			return nil
+		}
+		return v.Monitoring
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput)
+}
+
+// Enables the ability to mutate resources using Policy Controller.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) MutationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MutationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the desired policy content on the cluster.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) PolicyContent() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyContent
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput)
+}
+
+// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput) ReferentialRulesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReferentialRulesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig struct {
+	// The identifier for this object. Format specified above.
+	Component string `pulumi:"component"`
+	// Container resource requirements.
+	// Structure is documented below.
+	ContainerResources *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources `pulumi:"containerResources"`
+	// Pod affinity configuration.
+	// Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
+	PodAffinity *string `pulumi:"podAffinity"`
+	// Pod tolerations of node taints.
+	// Structure is documented below.
+	PodTolerations []FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration `pulumi:"podTolerations"`
+	// Pod replica count.
+	ReplicaCount *int `pulumi:"replicaCount"`
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs{...}
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs struct {
+	// The identifier for this object. Format specified above.
+	Component pulumi.StringInput `pulumi:"component"`
+	// Container resource requirements.
+	// Structure is documented below.
+	ContainerResources FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrInput `pulumi:"containerResources"`
+	// Pod affinity configuration.
+	// Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
+	PodAffinity pulumi.StringPtrInput `pulumi:"podAffinity"`
+	// Pod tolerations of node taints.
+	// Structure is documented below.
+	PodTolerations FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayInput `pulumi:"podTolerations"`
+	// Pod replica count.
+	ReplicaCount pulumi.IntPtrInput `pulumi:"replicaCount"`
+}
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput)
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray{ FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs{...} }
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray []FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigInput
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig) string {
+		return v.Component
+	}).(pulumi.StringOutput)
+}
+
+// Container resource requirements.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) ContainerResources() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources {
+		return v.ContainerResources
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput)
+}
+
+// Pod affinity configuration.
+// Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) PodAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig) *string {
+		return v.PodAffinity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pod tolerations of node taints.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) PodTolerations() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig) []FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
+		return v.PodTolerations
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput)
+}
+
+// Pod replica count.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) ReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig) *int {
+		return v.ReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput) Index(i pulumi.IntInput) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
+		return vs[0].([]FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig)[vs[1].(int)]
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources struct {
+	// Limits describes the maximum amount of compute resources allowed for use by the running container.
+	// Structure is documented below.
+	Limits *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits `pulumi:"limits"`
+	// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+	// Structure is documented below.
+	Requests *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests `pulumi:"requests"`
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs{...}
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs struct {
+	// Limits describes the maximum amount of compute resources allowed for use by the running container.
+	// Structure is documented below.
+	Limits FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrInput `pulumi:"limits"`
+	// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+	// Structure is documented below.
+	Requests FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrInput `pulumi:"requests"`
+}
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput).ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs, FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtr and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput
+}
+
+type featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrType FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs
+
+func FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtr(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrInput {
+	return (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput)
+}
+
+// Limits describes the maximum amount of compute resources allowed for use by the running container.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput) Limits() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits {
+		return v.Limits
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput)
+}
+
+// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput) Requests() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests {
+		return v.Requests
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput) Elem() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources
+		return ret
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput)
+}
+
+// Limits describes the maximum amount of compute resources allowed for use by the running container.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput) Limits() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput)
+}
+
+// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput) Requests() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests {
+		if v == nil {
+			return nil
+		}
+		return v.Requests
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits struct {
+	// CPU requirement expressed in Kubernetes resource units.
+	Cpu *string `pulumi:"cpu"`
+	// Memory requirement expressed in Kubernetes resource units.
+	Memory *string `pulumi:"memory"`
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs{...}
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs struct {
+	// CPU requirement expressed in Kubernetes resource units.
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory requirement expressed in Kubernetes resource units.
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput).ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs, FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtr and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput
+}
+
+type featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrType FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs
+
+func FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtr(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrInput {
+	return (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput)
+}
+
+// CPU requirement expressed in Kubernetes resource units.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits) *string {
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory requirement expressed in Kubernetes resource units.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits) *string {
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput) Elem() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits
+		return ret
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput)
+}
+
+// CPU requirement expressed in Kubernetes resource units.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory requirement expressed in Kubernetes resource units.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests struct {
+	// CPU requirement expressed in Kubernetes resource units.
+	Cpu *string `pulumi:"cpu"`
+	// Memory requirement expressed in Kubernetes resource units.
+	Memory *string `pulumi:"memory"`
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs{...}
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs struct {
+	// CPU requirement expressed in Kubernetes resource units.
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory requirement expressed in Kubernetes resource units.
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput).ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs, FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtr and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput
+}
+
+type featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrType FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs
+
+func FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtr(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrInput {
+	return (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput)
+}
+
+// CPU requirement expressed in Kubernetes resource units.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests) *string {
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory requirement expressed in Kubernetes resource units.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests) *string {
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput) Elem() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests
+		return ret
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput)
+}
+
+// CPU requirement expressed in Kubernetes resource units.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory requirement expressed in Kubernetes resource units.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration struct {
+	// Matches a taint effect.
+	Effect *string `pulumi:"effect"`
+	// Matches a taint key (not necessarily unique).
+	Key *string `pulumi:"key"`
+	// Matches a taint operator.
+	Operator *string `pulumi:"operator"`
+	// Matches a taint value.
+	Value *string `pulumi:"value"`
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs{...}
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs struct {
+	// Matches a taint effect.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// Matches a taint key (not necessarily unique).
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Matches a taint operator.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// Matches a taint value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput)
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray{ FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs{...} }
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray []FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationInput
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput {
+	return o
+}
+
+// Matches a taint effect.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration) *string {
+		return v.Effect
+	}).(pulumi.StringPtrOutput)
+}
+
+// Matches a taint key (not necessarily unique).
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration) *string {
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Matches a taint operator.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration) *string {
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Matches a taint value.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput) Index(i pulumi.IntInput) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
+		return vs[0].([]FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration)[vs[1].(int)]
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring struct {
+	// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+	// Each value may be one of: `MONITORING_BACKEND_UNSPECIFIED`, `PROMETHEUS`, `CLOUD_MONITORING`.
+	Backends []string `pulumi:"backends"`
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs{...}
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs struct {
+	// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+	// Each value may be one of: `MONITORING_BACKEND_UNSPECIFIED`, `PROMETHEUS`, `CLOUD_MONITORING`.
+	Backends pulumi.StringArrayInput `pulumi:"backends"`
+}
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput).ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs, FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtr and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput
+}
+
+type featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrType FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs
+
+func FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtr(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrInput {
+	return (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput)
+}
+
+// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+// Each value may be one of: `MONITORING_BACKEND_UNSPECIFIED`, `PROMETHEUS`, `CLOUD_MONITORING`.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput) Backends() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring) []string {
+		return v.Backends
+	}).(pulumi.StringArrayOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput) Elem() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring
+		return ret
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput)
+}
+
+// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+// Each value may be one of: `MONITORING_BACKEND_UNSPECIFIED`, `PROMETHEUS`, `CLOUD_MONITORING`.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput) Backends() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Backends
+	}).(pulumi.StringArrayOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent struct {
+	// Configures which bundles to install and their corresponding install specs.
+	// Structure is documented below.
+	Bundles []FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle `pulumi:"bundles"`
+	// Configures the installation of the Template Library.
+	// Structure is documented below.
+	TemplateLibrary *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary `pulumi:"templateLibrary"`
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{...}
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs struct {
+	// Configures which bundles to install and their corresponding install specs.
+	// Structure is documented below.
+	Bundles FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayInput `pulumi:"bundles"`
+	// Configures the installation of the Template Library.
+	// Structure is documented below.
+	TemplateLibrary FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrInput `pulumi:"templateLibrary"`
+}
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput).ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs, FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtr and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput
+}
+
+type featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrType FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs
+
+func FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtr(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrInput {
+	return (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput)
+}
+
+// Configures which bundles to install and their corresponding install specs.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) Bundles() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent) []FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle {
+		return v.Bundles
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput)
+}
+
+// Configures the installation of the Template Library.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) TemplateLibrary() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+		return v.TemplateLibrary
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput) Elem() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent
+		return ret
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput)
+}
+
+// Configures which bundles to install and their corresponding install specs.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput) Bundles() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent) []FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle {
+		if v == nil {
+			return nil
+		}
+		return v.Bundles
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput)
+}
+
+// Configures the installation of the Template Library.
+// Structure is documented below.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput) TemplateLibrary() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateLibrary
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle struct {
+	// The identifier for this object. Format specified above.
+	Bundle string `pulumi:"bundle"`
+	// The set of namespaces to be exempted from the bundle.
+	ExemptedNamespaces []string `pulumi:"exemptedNamespaces"`
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs{...}
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs struct {
+	// The identifier for this object. Format specified above.
+	Bundle pulumi.StringInput `pulumi:"bundle"`
+	// The set of namespaces to be exempted from the bundle.
+	ExemptedNamespaces pulumi.StringArrayInput `pulumi:"exemptedNamespaces"`
+}
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput)
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray{ FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs{...} }
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray []FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleInput
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput) Bundle() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle) string {
+		return v.Bundle
+	}).(pulumi.StringOutput)
+}
+
+// The set of namespaces to be exempted from the bundle.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput) ExemptedNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle) []string {
+		return v.ExemptedNamespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput) Index(i pulumi.IntInput) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle {
+		return vs[0].([]FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle)[vs[1].(int)]
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary struct {
+	// Configures the manner in which the template library is installed on the cluster.
+	// Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+	Installation *string `pulumi:"installation"`
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput` via:
+//
+//	FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{...}
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs struct {
+	// Configures the manner in which the template library is installed on the cluster.
+	// Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+	Installation pulumi.StringPtrInput `pulumi:"installation"`
+}
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)(nil)).Elem()
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput)
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput).ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(ctx)
+}
+
+// FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrInput is an input type that accepts FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs, FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtr and FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput values.
+// You can construct a concrete instance of `FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrInput` via:
+//
+//	        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrInput interface {
+	pulumi.Input
+
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput
+	ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput
+}
+
+type featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrType FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs
+
+func FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtr(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrInput {
+	return (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrType)(v)
+}
+
+func (*featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)(nil)).Elem()
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return i.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(context.Background())
+}
+
+func (i *featureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrType) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return o.ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary) *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+		return &v
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput)
+}
+
+// Configures the manner in which the template library is installed on the cluster.
+// Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) Installation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary) *string {
+		return v.Installation
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)(nil)).Elem()
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput) ToFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(ctx context.Context) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return o
+}
+
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput) Elem() FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary) FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary
+		return ret
+	}).(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput)
+}
+
+// Configures the manner in which the template library is installed on the cluster.
+// Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput) Installation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Installation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2730,7 +4597,7 @@ type FeatureMembershipConfigmanagementPolicyController struct {
 	ExemptableNamespaces []string `pulumi:"exemptableNamespaces"`
 	// Logs all denies and dry run failures.
 	LogDeniesEnabled *bool `pulumi:"logDeniesEnabled"`
-	// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
+	// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
 	Monitoring *FeatureMembershipConfigmanagementPolicyControllerMonitoring `pulumi:"monitoring"`
 	// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
 	MutationEnabled *bool `pulumi:"mutationEnabled"`
@@ -2760,7 +4627,7 @@ type FeatureMembershipConfigmanagementPolicyControllerArgs struct {
 	ExemptableNamespaces pulumi.StringArrayInput `pulumi:"exemptableNamespaces"`
 	// Logs all denies and dry run failures.
 	LogDeniesEnabled pulumi.BoolPtrInput `pulumi:"logDeniesEnabled"`
-	// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
+	// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
 	Monitoring FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput `pulumi:"monitoring"`
 	// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
 	MutationEnabled pulumi.BoolPtrInput `pulumi:"mutationEnabled"`
@@ -2867,7 +4734,7 @@ func (o FeatureMembershipConfigmanagementPolicyControllerOutput) LogDeniesEnable
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *bool { return v.LogDeniesEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
+// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
 func (o FeatureMembershipConfigmanagementPolicyControllerOutput) Monitoring() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyController) *FeatureMembershipConfigmanagementPolicyControllerMonitoring {
 		return v.Monitoring
@@ -2953,7 +4820,7 @@ func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) LogDeniesEna
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
+// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
 func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) Monitoring() FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyController) *FeatureMembershipConfigmanagementPolicyControllerMonitoring {
 		if v == nil {
@@ -4516,6 +6383,607 @@ func (o FeatureStateStateArrayOutput) Index(i pulumi.IntInput) FeatureStateState
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureStateState {
 		return vs[0].([]FeatureStateState)[vs[1].(int)]
 	}).(FeatureStateStateOutput)
+}
+
+type FleetDefaultClusterConfig struct {
+	// Enable/Disable binary authorization features for the cluster.
+	// Structure is documented below.
+	BinaryAuthorizationConfig *FleetDefaultClusterConfigBinaryAuthorizationConfig `pulumi:"binaryAuthorizationConfig"`
+	// Enable/Disable Security Posture features for the cluster.
+	// Structure is documented below.
+	SecurityPostureConfig *FleetDefaultClusterConfigSecurityPostureConfig `pulumi:"securityPostureConfig"`
+}
+
+// FleetDefaultClusterConfigInput is an input type that accepts FleetDefaultClusterConfigArgs and FleetDefaultClusterConfigOutput values.
+// You can construct a concrete instance of `FleetDefaultClusterConfigInput` via:
+//
+//	FleetDefaultClusterConfigArgs{...}
+type FleetDefaultClusterConfigInput interface {
+	pulumi.Input
+
+	ToFleetDefaultClusterConfigOutput() FleetDefaultClusterConfigOutput
+	ToFleetDefaultClusterConfigOutputWithContext(context.Context) FleetDefaultClusterConfigOutput
+}
+
+type FleetDefaultClusterConfigArgs struct {
+	// Enable/Disable binary authorization features for the cluster.
+	// Structure is documented below.
+	BinaryAuthorizationConfig FleetDefaultClusterConfigBinaryAuthorizationConfigPtrInput `pulumi:"binaryAuthorizationConfig"`
+	// Enable/Disable Security Posture features for the cluster.
+	// Structure is documented below.
+	SecurityPostureConfig FleetDefaultClusterConfigSecurityPostureConfigPtrInput `pulumi:"securityPostureConfig"`
+}
+
+func (FleetDefaultClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetDefaultClusterConfig)(nil)).Elem()
+}
+
+func (i FleetDefaultClusterConfigArgs) ToFleetDefaultClusterConfigOutput() FleetDefaultClusterConfigOutput {
+	return i.ToFleetDefaultClusterConfigOutputWithContext(context.Background())
+}
+
+func (i FleetDefaultClusterConfigArgs) ToFleetDefaultClusterConfigOutputWithContext(ctx context.Context) FleetDefaultClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigOutput)
+}
+
+func (i FleetDefaultClusterConfigArgs) ToFleetDefaultClusterConfigPtrOutput() FleetDefaultClusterConfigPtrOutput {
+	return i.ToFleetDefaultClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FleetDefaultClusterConfigArgs) ToFleetDefaultClusterConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigOutput).ToFleetDefaultClusterConfigPtrOutputWithContext(ctx)
+}
+
+// FleetDefaultClusterConfigPtrInput is an input type that accepts FleetDefaultClusterConfigArgs, FleetDefaultClusterConfigPtr and FleetDefaultClusterConfigPtrOutput values.
+// You can construct a concrete instance of `FleetDefaultClusterConfigPtrInput` via:
+//
+//	        FleetDefaultClusterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetDefaultClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToFleetDefaultClusterConfigPtrOutput() FleetDefaultClusterConfigPtrOutput
+	ToFleetDefaultClusterConfigPtrOutputWithContext(context.Context) FleetDefaultClusterConfigPtrOutput
+}
+
+type fleetDefaultClusterConfigPtrType FleetDefaultClusterConfigArgs
+
+func FleetDefaultClusterConfigPtr(v *FleetDefaultClusterConfigArgs) FleetDefaultClusterConfigPtrInput {
+	return (*fleetDefaultClusterConfigPtrType)(v)
+}
+
+func (*fleetDefaultClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetDefaultClusterConfig)(nil)).Elem()
+}
+
+func (i *fleetDefaultClusterConfigPtrType) ToFleetDefaultClusterConfigPtrOutput() FleetDefaultClusterConfigPtrOutput {
+	return i.ToFleetDefaultClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetDefaultClusterConfigPtrType) ToFleetDefaultClusterConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigPtrOutput)
+}
+
+type FleetDefaultClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (FleetDefaultClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetDefaultClusterConfig)(nil)).Elem()
+}
+
+func (o FleetDefaultClusterConfigOutput) ToFleetDefaultClusterConfigOutput() FleetDefaultClusterConfigOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigOutput) ToFleetDefaultClusterConfigOutputWithContext(ctx context.Context) FleetDefaultClusterConfigOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigOutput) ToFleetDefaultClusterConfigPtrOutput() FleetDefaultClusterConfigPtrOutput {
+	return o.ToFleetDefaultClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FleetDefaultClusterConfigOutput) ToFleetDefaultClusterConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetDefaultClusterConfig) *FleetDefaultClusterConfig {
+		return &v
+	}).(FleetDefaultClusterConfigPtrOutput)
+}
+
+// Enable/Disable binary authorization features for the cluster.
+// Structure is documented below.
+func (o FleetDefaultClusterConfigOutput) BinaryAuthorizationConfig() FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput {
+	return o.ApplyT(func(v FleetDefaultClusterConfig) *FleetDefaultClusterConfigBinaryAuthorizationConfig {
+		return v.BinaryAuthorizationConfig
+	}).(FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput)
+}
+
+// Enable/Disable Security Posture features for the cluster.
+// Structure is documented below.
+func (o FleetDefaultClusterConfigOutput) SecurityPostureConfig() FleetDefaultClusterConfigSecurityPostureConfigPtrOutput {
+	return o.ApplyT(func(v FleetDefaultClusterConfig) *FleetDefaultClusterConfigSecurityPostureConfig {
+		return v.SecurityPostureConfig
+	}).(FleetDefaultClusterConfigSecurityPostureConfigPtrOutput)
+}
+
+type FleetDefaultClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetDefaultClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetDefaultClusterConfig)(nil)).Elem()
+}
+
+func (o FleetDefaultClusterConfigPtrOutput) ToFleetDefaultClusterConfigPtrOutput() FleetDefaultClusterConfigPtrOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigPtrOutput) ToFleetDefaultClusterConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigPtrOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigPtrOutput) Elem() FleetDefaultClusterConfigOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfig) FleetDefaultClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FleetDefaultClusterConfig
+		return ret
+	}).(FleetDefaultClusterConfigOutput)
+}
+
+// Enable/Disable binary authorization features for the cluster.
+// Structure is documented below.
+func (o FleetDefaultClusterConfigPtrOutput) BinaryAuthorizationConfig() FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfig) *FleetDefaultClusterConfigBinaryAuthorizationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BinaryAuthorizationConfig
+	}).(FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput)
+}
+
+// Enable/Disable Security Posture features for the cluster.
+// Structure is documented below.
+func (o FleetDefaultClusterConfigPtrOutput) SecurityPostureConfig() FleetDefaultClusterConfigSecurityPostureConfigPtrOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfig) *FleetDefaultClusterConfigSecurityPostureConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityPostureConfig
+	}).(FleetDefaultClusterConfigSecurityPostureConfigPtrOutput)
+}
+
+type FleetDefaultClusterConfigBinaryAuthorizationConfig struct {
+	// Mode of operation for binauthz policy evaluation.
+	// Possible values are: `DISABLED`, `POLICY_BINDINGS`.
+	EvaluationMode *string `pulumi:"evaluationMode"`
+	// Binauthz policies that apply to this cluster.
+	// Structure is documented below.
+	PolicyBindings []FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding `pulumi:"policyBindings"`
+}
+
+// FleetDefaultClusterConfigBinaryAuthorizationConfigInput is an input type that accepts FleetDefaultClusterConfigBinaryAuthorizationConfigArgs and FleetDefaultClusterConfigBinaryAuthorizationConfigOutput values.
+// You can construct a concrete instance of `FleetDefaultClusterConfigBinaryAuthorizationConfigInput` via:
+//
+//	FleetDefaultClusterConfigBinaryAuthorizationConfigArgs{...}
+type FleetDefaultClusterConfigBinaryAuthorizationConfigInput interface {
+	pulumi.Input
+
+	ToFleetDefaultClusterConfigBinaryAuthorizationConfigOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigOutput
+	ToFleetDefaultClusterConfigBinaryAuthorizationConfigOutputWithContext(context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigOutput
+}
+
+type FleetDefaultClusterConfigBinaryAuthorizationConfigArgs struct {
+	// Mode of operation for binauthz policy evaluation.
+	// Possible values are: `DISABLED`, `POLICY_BINDINGS`.
+	EvaluationMode pulumi.StringPtrInput `pulumi:"evaluationMode"`
+	// Binauthz policies that apply to this cluster.
+	// Structure is documented below.
+	PolicyBindings FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayInput `pulumi:"policyBindings"`
+}
+
+func (FleetDefaultClusterConfigBinaryAuthorizationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetDefaultClusterConfigBinaryAuthorizationConfig)(nil)).Elem()
+}
+
+func (i FleetDefaultClusterConfigBinaryAuthorizationConfigArgs) ToFleetDefaultClusterConfigBinaryAuthorizationConfigOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigOutput {
+	return i.ToFleetDefaultClusterConfigBinaryAuthorizationConfigOutputWithContext(context.Background())
+}
+
+func (i FleetDefaultClusterConfigBinaryAuthorizationConfigArgs) ToFleetDefaultClusterConfigBinaryAuthorizationConfigOutputWithContext(ctx context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigBinaryAuthorizationConfigOutput)
+}
+
+func (i FleetDefaultClusterConfigBinaryAuthorizationConfigArgs) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput {
+	return i.ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FleetDefaultClusterConfigBinaryAuthorizationConfigArgs) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigBinaryAuthorizationConfigOutput).ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutputWithContext(ctx)
+}
+
+// FleetDefaultClusterConfigBinaryAuthorizationConfigPtrInput is an input type that accepts FleetDefaultClusterConfigBinaryAuthorizationConfigArgs, FleetDefaultClusterConfigBinaryAuthorizationConfigPtr and FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput values.
+// You can construct a concrete instance of `FleetDefaultClusterConfigBinaryAuthorizationConfigPtrInput` via:
+//
+//	        FleetDefaultClusterConfigBinaryAuthorizationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetDefaultClusterConfigBinaryAuthorizationConfigPtrInput interface {
+	pulumi.Input
+
+	ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput
+	ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutputWithContext(context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput
+}
+
+type fleetDefaultClusterConfigBinaryAuthorizationConfigPtrType FleetDefaultClusterConfigBinaryAuthorizationConfigArgs
+
+func FleetDefaultClusterConfigBinaryAuthorizationConfigPtr(v *FleetDefaultClusterConfigBinaryAuthorizationConfigArgs) FleetDefaultClusterConfigBinaryAuthorizationConfigPtrInput {
+	return (*fleetDefaultClusterConfigBinaryAuthorizationConfigPtrType)(v)
+}
+
+func (*fleetDefaultClusterConfigBinaryAuthorizationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetDefaultClusterConfigBinaryAuthorizationConfig)(nil)).Elem()
+}
+
+func (i *fleetDefaultClusterConfigBinaryAuthorizationConfigPtrType) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput {
+	return i.ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetDefaultClusterConfigBinaryAuthorizationConfigPtrType) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput)
+}
+
+type FleetDefaultClusterConfigBinaryAuthorizationConfigOutput struct{ *pulumi.OutputState }
+
+func (FleetDefaultClusterConfigBinaryAuthorizationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetDefaultClusterConfigBinaryAuthorizationConfig)(nil)).Elem()
+}
+
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigOutput) ToFleetDefaultClusterConfigBinaryAuthorizationConfigOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigOutput) ToFleetDefaultClusterConfigBinaryAuthorizationConfigOutputWithContext(ctx context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigOutput) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput {
+	return o.ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigOutput) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetDefaultClusterConfigBinaryAuthorizationConfig) *FleetDefaultClusterConfigBinaryAuthorizationConfig {
+		return &v
+	}).(FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput)
+}
+
+// Mode of operation for binauthz policy evaluation.
+// Possible values are: `DISABLED`, `POLICY_BINDINGS`.
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigOutput) EvaluationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetDefaultClusterConfigBinaryAuthorizationConfig) *string { return v.EvaluationMode }).(pulumi.StringPtrOutput)
+}
+
+// Binauthz policies that apply to this cluster.
+// Structure is documented below.
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigOutput) PolicyBindings() FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput {
+	return o.ApplyT(func(v FleetDefaultClusterConfigBinaryAuthorizationConfig) []FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding {
+		return v.PolicyBindings
+	}).(FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput)
+}
+
+type FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetDefaultClusterConfigBinaryAuthorizationConfig)(nil)).Elem()
+}
+
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput) Elem() FleetDefaultClusterConfigBinaryAuthorizationConfigOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfigBinaryAuthorizationConfig) FleetDefaultClusterConfigBinaryAuthorizationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FleetDefaultClusterConfigBinaryAuthorizationConfig
+		return ret
+	}).(FleetDefaultClusterConfigBinaryAuthorizationConfigOutput)
+}
+
+// Mode of operation for binauthz policy evaluation.
+// Possible values are: `DISABLED`, `POLICY_BINDINGS`.
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput) EvaluationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfigBinaryAuthorizationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Binauthz policies that apply to this cluster.
+// Structure is documented below.
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput) PolicyBindings() FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfigBinaryAuthorizationConfig) []FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyBindings
+	}).(FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput)
+}
+
+type FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding struct {
+	// The relative resource name of the binauthz platform policy to audit. GKE
+	// platform policies have the following format:
+	// `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+	Name *string `pulumi:"name"`
+}
+
+// FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingInput is an input type that accepts FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs and FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput values.
+// You can construct a concrete instance of `FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingInput` via:
+//
+//	FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs{...}
+type FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingInput interface {
+	pulumi.Input
+
+	ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput
+	ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutputWithContext(context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput
+}
+
+type FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs struct {
+	// The relative resource name of the binauthz platform policy to audit. GKE
+	// platform policies have the following format:
+	// `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding)(nil)).Elem()
+}
+
+func (i FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput {
+	return i.ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutputWithContext(context.Background())
+}
+
+func (i FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutputWithContext(ctx context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput)
+}
+
+// FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayInput is an input type that accepts FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArray and FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput values.
+// You can construct a concrete instance of `FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayInput` via:
+//
+//	FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArray{ FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs{...} }
+type FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayInput interface {
+	pulumi.Input
+
+	ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput
+	ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutputWithContext(context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput
+}
+
+type FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArray []FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingInput
+
+func (FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding)(nil)).Elem()
+}
+
+func (i FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArray) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput {
+	return i.ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutputWithContext(context.Background())
+}
+
+func (i FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArray) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutputWithContext(ctx context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput)
+}
+
+type FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput struct{ *pulumi.OutputState }
+
+func (FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding)(nil)).Elem()
+}
+
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutputWithContext(ctx context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput {
+	return o
+}
+
+// The relative resource name of the binauthz platform policy to audit. GKE
+// platform policies have the following format:
+// `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding)(nil)).Elem()
+}
+
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput() FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput) ToFleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutputWithContext(ctx context.Context) FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput) Index(i pulumi.IntInput) FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding {
+		return vs[0].([]FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding)[vs[1].(int)]
+	}).(FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput)
+}
+
+type FleetDefaultClusterConfigSecurityPostureConfig struct {
+	// Sets which mode to use for Security Posture features.
+	// Possible values are: `DISABLED`, `BASIC`.
+	Mode *string `pulumi:"mode"`
+	// Sets which mode to use for vulnerability scanning.
+	// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
+	VulnerabilityMode *string `pulumi:"vulnerabilityMode"`
+}
+
+// FleetDefaultClusterConfigSecurityPostureConfigInput is an input type that accepts FleetDefaultClusterConfigSecurityPostureConfigArgs and FleetDefaultClusterConfigSecurityPostureConfigOutput values.
+// You can construct a concrete instance of `FleetDefaultClusterConfigSecurityPostureConfigInput` via:
+//
+//	FleetDefaultClusterConfigSecurityPostureConfigArgs{...}
+type FleetDefaultClusterConfigSecurityPostureConfigInput interface {
+	pulumi.Input
+
+	ToFleetDefaultClusterConfigSecurityPostureConfigOutput() FleetDefaultClusterConfigSecurityPostureConfigOutput
+	ToFleetDefaultClusterConfigSecurityPostureConfigOutputWithContext(context.Context) FleetDefaultClusterConfigSecurityPostureConfigOutput
+}
+
+type FleetDefaultClusterConfigSecurityPostureConfigArgs struct {
+	// Sets which mode to use for Security Posture features.
+	// Possible values are: `DISABLED`, `BASIC`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Sets which mode to use for vulnerability scanning.
+	// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
+	VulnerabilityMode pulumi.StringPtrInput `pulumi:"vulnerabilityMode"`
+}
+
+func (FleetDefaultClusterConfigSecurityPostureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetDefaultClusterConfigSecurityPostureConfig)(nil)).Elem()
+}
+
+func (i FleetDefaultClusterConfigSecurityPostureConfigArgs) ToFleetDefaultClusterConfigSecurityPostureConfigOutput() FleetDefaultClusterConfigSecurityPostureConfigOutput {
+	return i.ToFleetDefaultClusterConfigSecurityPostureConfigOutputWithContext(context.Background())
+}
+
+func (i FleetDefaultClusterConfigSecurityPostureConfigArgs) ToFleetDefaultClusterConfigSecurityPostureConfigOutputWithContext(ctx context.Context) FleetDefaultClusterConfigSecurityPostureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigSecurityPostureConfigOutput)
+}
+
+func (i FleetDefaultClusterConfigSecurityPostureConfigArgs) ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutput() FleetDefaultClusterConfigSecurityPostureConfigPtrOutput {
+	return i.ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FleetDefaultClusterConfigSecurityPostureConfigArgs) ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigSecurityPostureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigSecurityPostureConfigOutput).ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutputWithContext(ctx)
+}
+
+// FleetDefaultClusterConfigSecurityPostureConfigPtrInput is an input type that accepts FleetDefaultClusterConfigSecurityPostureConfigArgs, FleetDefaultClusterConfigSecurityPostureConfigPtr and FleetDefaultClusterConfigSecurityPostureConfigPtrOutput values.
+// You can construct a concrete instance of `FleetDefaultClusterConfigSecurityPostureConfigPtrInput` via:
+//
+//	        FleetDefaultClusterConfigSecurityPostureConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FleetDefaultClusterConfigSecurityPostureConfigPtrInput interface {
+	pulumi.Input
+
+	ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutput() FleetDefaultClusterConfigSecurityPostureConfigPtrOutput
+	ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutputWithContext(context.Context) FleetDefaultClusterConfigSecurityPostureConfigPtrOutput
+}
+
+type fleetDefaultClusterConfigSecurityPostureConfigPtrType FleetDefaultClusterConfigSecurityPostureConfigArgs
+
+func FleetDefaultClusterConfigSecurityPostureConfigPtr(v *FleetDefaultClusterConfigSecurityPostureConfigArgs) FleetDefaultClusterConfigSecurityPostureConfigPtrInput {
+	return (*fleetDefaultClusterConfigSecurityPostureConfigPtrType)(v)
+}
+
+func (*fleetDefaultClusterConfigSecurityPostureConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetDefaultClusterConfigSecurityPostureConfig)(nil)).Elem()
+}
+
+func (i *fleetDefaultClusterConfigSecurityPostureConfigPtrType) ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutput() FleetDefaultClusterConfigSecurityPostureConfigPtrOutput {
+	return i.ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fleetDefaultClusterConfigSecurityPostureConfigPtrType) ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigSecurityPostureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FleetDefaultClusterConfigSecurityPostureConfigPtrOutput)
+}
+
+type FleetDefaultClusterConfigSecurityPostureConfigOutput struct{ *pulumi.OutputState }
+
+func (FleetDefaultClusterConfigSecurityPostureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FleetDefaultClusterConfigSecurityPostureConfig)(nil)).Elem()
+}
+
+func (o FleetDefaultClusterConfigSecurityPostureConfigOutput) ToFleetDefaultClusterConfigSecurityPostureConfigOutput() FleetDefaultClusterConfigSecurityPostureConfigOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigSecurityPostureConfigOutput) ToFleetDefaultClusterConfigSecurityPostureConfigOutputWithContext(ctx context.Context) FleetDefaultClusterConfigSecurityPostureConfigOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigSecurityPostureConfigOutput) ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutput() FleetDefaultClusterConfigSecurityPostureConfigPtrOutput {
+	return o.ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FleetDefaultClusterConfigSecurityPostureConfigOutput) ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigSecurityPostureConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FleetDefaultClusterConfigSecurityPostureConfig) *FleetDefaultClusterConfigSecurityPostureConfig {
+		return &v
+	}).(FleetDefaultClusterConfigSecurityPostureConfigPtrOutput)
+}
+
+// Sets which mode to use for Security Posture features.
+// Possible values are: `DISABLED`, `BASIC`.
+func (o FleetDefaultClusterConfigSecurityPostureConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetDefaultClusterConfigSecurityPostureConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Sets which mode to use for vulnerability scanning.
+// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
+func (o FleetDefaultClusterConfigSecurityPostureConfigOutput) VulnerabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FleetDefaultClusterConfigSecurityPostureConfig) *string { return v.VulnerabilityMode }).(pulumi.StringPtrOutput)
+}
+
+type FleetDefaultClusterConfigSecurityPostureConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FleetDefaultClusterConfigSecurityPostureConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FleetDefaultClusterConfigSecurityPostureConfig)(nil)).Elem()
+}
+
+func (o FleetDefaultClusterConfigSecurityPostureConfigPtrOutput) ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutput() FleetDefaultClusterConfigSecurityPostureConfigPtrOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigSecurityPostureConfigPtrOutput) ToFleetDefaultClusterConfigSecurityPostureConfigPtrOutputWithContext(ctx context.Context) FleetDefaultClusterConfigSecurityPostureConfigPtrOutput {
+	return o
+}
+
+func (o FleetDefaultClusterConfigSecurityPostureConfigPtrOutput) Elem() FleetDefaultClusterConfigSecurityPostureConfigOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfigSecurityPostureConfig) FleetDefaultClusterConfigSecurityPostureConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FleetDefaultClusterConfigSecurityPostureConfig
+		return ret
+	}).(FleetDefaultClusterConfigSecurityPostureConfigOutput)
+}
+
+// Sets which mode to use for Security Posture features.
+// Possible values are: `DISABLED`, `BASIC`.
+func (o FleetDefaultClusterConfigSecurityPostureConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfigSecurityPostureConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sets which mode to use for vulnerability scanning.
+// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
+func (o FleetDefaultClusterConfigSecurityPostureConfigPtrOutput) VulnerabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FleetDefaultClusterConfigSecurityPostureConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VulnerabilityMode
+	}).(pulumi.StringPtrOutput)
 }
 
 type FleetStateType struct {
@@ -6488,6 +8956,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigMeshInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigMeshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigMeshPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrInput)(nil)).Elem(), FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureIamBindingConditionInput)(nil)).Elem(), FeatureIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureIamBindingConditionPtrInput)(nil)).Elem(), FeatureIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureIamMemberConditionInput)(nil)).Elem(), FeatureIamMemberConditionArgs{})
@@ -6528,6 +9018,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateTypeArrayInput)(nil)).Elem(), FeatureStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateStateInput)(nil)).Elem(), FeatureStateStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateStateArrayInput)(nil)).Elem(), FeatureStateStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigInput)(nil)).Elem(), FleetDefaultClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigPtrInput)(nil)).Elem(), FleetDefaultClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigBinaryAuthorizationConfigInput)(nil)).Elem(), FleetDefaultClusterConfigBinaryAuthorizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigBinaryAuthorizationConfigPtrInput)(nil)).Elem(), FleetDefaultClusterConfigBinaryAuthorizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingInput)(nil)).Elem(), FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayInput)(nil)).Elem(), FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigSecurityPostureConfigInput)(nil)).Elem(), FleetDefaultClusterConfigSecurityPostureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FleetDefaultClusterConfigSecurityPostureConfigPtrInput)(nil)).Elem(), FleetDefaultClusterConfigSecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetStateTypeInput)(nil)).Elem(), FleetStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetStateTypeArrayInput)(nil)).Elem(), FleetStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipAuthorityInput)(nil)).Elem(), MembershipAuthorityArgs{})
@@ -6570,6 +9068,28 @@ func init() {
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput{})
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigMeshOutput{})
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigMeshPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput{})
+	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput{})
 	pulumi.RegisterOutputType(FeatureIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(FeatureIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(FeatureIamMemberConditionOutput{})
@@ -6610,6 +9130,14 @@ func init() {
 	pulumi.RegisterOutputType(FeatureStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(FeatureStateStateOutput{})
 	pulumi.RegisterOutputType(FeatureStateStateArrayOutput{})
+	pulumi.RegisterOutputType(FleetDefaultClusterConfigOutput{})
+	pulumi.RegisterOutputType(FleetDefaultClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(FleetDefaultClusterConfigBinaryAuthorizationConfigOutput{})
+	pulumi.RegisterOutputType(FleetDefaultClusterConfigBinaryAuthorizationConfigPtrOutput{})
+	pulumi.RegisterOutputType(FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingOutput{})
+	pulumi.RegisterOutputType(FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArrayOutput{})
+	pulumi.RegisterOutputType(FleetDefaultClusterConfigSecurityPostureConfigOutput{})
+	pulumi.RegisterOutputType(FleetDefaultClusterConfigSecurityPostureConfigPtrOutput{})
 	pulumi.RegisterOutputType(FleetStateTypeOutput{})
 	pulumi.RegisterOutputType(FleetStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(MembershipAuthorityOutput{})

@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.VMwareEngine.Inputs
 
         /// <summary>
         /// VMware Engine network type.
-        /// Possible values are: `LEGACY`.
+        /// Possible values are: `LEGACY`, `STANDARD`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

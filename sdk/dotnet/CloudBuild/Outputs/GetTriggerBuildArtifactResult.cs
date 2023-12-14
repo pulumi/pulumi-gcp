@@ -14,16 +14,28 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     public sealed class GetTriggerBuildArtifactResult
     {
         public readonly ImmutableArray<string> Images;
+        public readonly ImmutableArray<Outputs.GetTriggerBuildArtifactMavenArtifactResult> MavenArtifacts;
+        public readonly ImmutableArray<Outputs.GetTriggerBuildArtifactNpmPackageResult> NpmPackages;
         public readonly ImmutableArray<Outputs.GetTriggerBuildArtifactObjectResult> Objects;
+        public readonly ImmutableArray<Outputs.GetTriggerBuildArtifactPythonPackageResult> PythonPackages;
 
         [OutputConstructor]
         private GetTriggerBuildArtifactResult(
             ImmutableArray<string> images,
 
-            ImmutableArray<Outputs.GetTriggerBuildArtifactObjectResult> objects)
+            ImmutableArray<Outputs.GetTriggerBuildArtifactMavenArtifactResult> mavenArtifacts,
+
+            ImmutableArray<Outputs.GetTriggerBuildArtifactNpmPackageResult> npmPackages,
+
+            ImmutableArray<Outputs.GetTriggerBuildArtifactObjectResult> objects,
+
+            ImmutableArray<Outputs.GetTriggerBuildArtifactPythonPackageResult> pythonPackages)
         {
             Images = images;
+            MavenArtifacts = mavenArtifacts;
+            NpmPackages = npmPackages;
             Objects = objects;
+            PythonPackages = pythonPackages;
         }
     }
 }

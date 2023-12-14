@@ -32,11 +32,12 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  * });
  * ```
- * ### Datastream Connection Profile Bigquery Private Connection
+ * ### Datastream Connection Profile Postgresql Private Connection
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
  *
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
  * const privateConnection = new gcp.datastream.PrivateConnection("privateConnection", {
@@ -51,11 +52,52 @@ import * as utilities from "../utilities";
  *         subnet: "10.0.0.0/29",
  *     },
  * });
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     databaseVersion: "POSTGRES_14",
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         ipConfiguration: {
+ *             authorizedNetworks: [
+ *                 {
+ *                     value: "34.71.242.81",
+ *                 },
+ *                 {
+ *                     value: "34.72.28.29",
+ *                 },
+ *                 {
+ *                     value: "34.67.6.157",
+ *                 },
+ *                 {
+ *                     value: "34.67.234.134",
+ *                 },
+ *                 {
+ *                     value: "34.72.239.218",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * const pwd = new random.RandomPassword("pwd", {
+ *     length: 16,
+ *     special: false,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     instance: instance.name,
+ *     password: pwd.result,
+ * });
  * const defaultConnectionProfile = new gcp.datastream.ConnectionProfile("defaultConnectionProfile", {
  *     displayName: "Connection profile",
  *     location: "us-central1",
  *     connectionProfileId: "my-profile",
- *     bigqueryProfile: {},
+ *     postgresqlProfile: {
+ *         hostname: instance.publicIpAddress,
+ *         username: user.name,
+ *         password: user.password,
+ *         database: db.name,
+ *     },
  *     privateConnectivity: {
  *         privateConnection: privateConnection.id,
  *     },

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.GetGlobalForwardingRuleMetadataFilter;
+import com.pulumi.gcp.compute.outputs.GetGlobalForwardingRuleServiceDirectoryRegistration;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -40,6 +41,7 @@ public final class GetGlobalForwardingRuleResult {
     private String pscConnectionStatus;
     private Map<String,String> pulumiLabels;
     private String selfLink;
+    private List<GetGlobalForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
     private List<String> sourceIpRanges;
     private String subnetwork;
     private String target;
@@ -112,6 +114,9 @@ public final class GetGlobalForwardingRuleResult {
     public String selfLink() {
         return this.selfLink;
     }
+    public List<GetGlobalForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations() {
+        return this.serviceDirectoryRegistrations;
+    }
     public List<String> sourceIpRanges() {
         return this.sourceIpRanges;
     }
@@ -152,6 +157,7 @@ public final class GetGlobalForwardingRuleResult {
         private String pscConnectionStatus;
         private Map<String,String> pulumiLabels;
         private String selfLink;
+        private List<GetGlobalForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
         private List<String> sourceIpRanges;
         private String subnetwork;
         private String target;
@@ -179,6 +185,7 @@ public final class GetGlobalForwardingRuleResult {
     	      this.pscConnectionStatus = defaults.pscConnectionStatus;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.selfLink = defaults.selfLink;
+    	      this.serviceDirectoryRegistrations = defaults.serviceDirectoryRegistrations;
     	      this.sourceIpRanges = defaults.sourceIpRanges;
     	      this.subnetwork = defaults.subnetwork;
     	      this.target = defaults.target;
@@ -293,6 +300,14 @@ public final class GetGlobalForwardingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceDirectoryRegistrations(List<GetGlobalForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations) {
+            this.serviceDirectoryRegistrations = Objects.requireNonNull(serviceDirectoryRegistrations);
+            return this;
+        }
+        public Builder serviceDirectoryRegistrations(GetGlobalForwardingRuleServiceDirectoryRegistration... serviceDirectoryRegistrations) {
+            return serviceDirectoryRegistrations(List.of(serviceDirectoryRegistrations));
+        }
+        @CustomType.Setter
         public Builder sourceIpRanges(List<String> sourceIpRanges) {
             this.sourceIpRanges = Objects.requireNonNull(sourceIpRanges);
             return this;
@@ -333,6 +348,7 @@ public final class GetGlobalForwardingRuleResult {
             _resultValue.pscConnectionStatus = pscConnectionStatus;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.selfLink = selfLink;
+            _resultValue.serviceDirectoryRegistrations = serviceDirectoryRegistrations;
             _resultValue.sourceIpRanges = sourceIpRanges;
             _resultValue.subnetwork = subnetwork;
             _resultValue.target = target;

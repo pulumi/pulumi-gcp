@@ -324,11 +324,17 @@ public final class Config {
     public Optional<String> memcacheCustomEndpoint() {
         return Codegen.stringProp("memcacheCustomEndpoint").config(config).get();
     }
+    public Optional<String> migrationCenterCustomEndpoint() {
+        return Codegen.stringProp("migrationCenterCustomEndpoint").config(config).get();
+    }
     public Optional<String> mlEngineCustomEndpoint() {
         return Codegen.stringProp("mlEngineCustomEndpoint").config(config).get();
     }
     public Optional<String> monitoringCustomEndpoint() {
         return Codegen.stringProp("monitoringCustomEndpoint").config(config).get();
+    }
+    public Optional<String> netappCustomEndpoint() {
+        return Codegen.stringProp("netappCustomEndpoint").config(config).get();
     }
     public Optional<String> networkConnectivityCustomEndpoint() {
         return Codegen.stringProp("networkConnectivityCustomEndpoint").config(config).get();
@@ -401,6 +407,9 @@ public final class Config {
     }
     public Optional<String> secretManagerCustomEndpoint() {
         return Codegen.stringProp("secretManagerCustomEndpoint").config(config).get();
+    }
+    public Optional<String> secureSourceManagerCustomEndpoint() {
+        return Codegen.stringProp("secureSourceManagerCustomEndpoint").config(config).get();
     }
     public Optional<String> securityCenterCustomEndpoint() {
         return Codegen.stringProp("securityCenterCustomEndpoint").config(config).get();

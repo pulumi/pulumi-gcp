@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { EventThreatDetectionCustomModuleArgs, EventThreatDetectionCustomModuleState } from "./eventThreatDetectionCustomModule";
+export type EventThreatDetectionCustomModule = import("./eventThreatDetectionCustomModule").EventThreatDetectionCustomModule;
+export const EventThreatDetectionCustomModule: typeof import("./eventThreatDetectionCustomModule").EventThreatDetectionCustomModule = null as any;
+utilities.lazyLoad(exports, ["EventThreatDetectionCustomModule"], () => require("./eventThreatDetectionCustomModule"));
+
 export { FolderCustomModuleArgs, FolderCustomModuleState } from "./folderCustomModule";
 export type FolderCustomModule = import("./folderCustomModule").FolderCustomModule;
 export const FolderCustomModule: typeof import("./folderCustomModule").FolderCustomModule = null as any;
@@ -75,6 +80,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule":
+                return new EventThreatDetectionCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/folderCustomModule:FolderCustomModule":
                 return new FolderCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/instanceIamBinding:InstanceIamBinding":
@@ -104,6 +111,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/eventThreatDetectionCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/folderCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamMember", _module)

@@ -194,6 +194,9 @@ import (
 //												},
 //											},
 //										},
+//										&datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs{
+//											Table: pulumi.String("includedTable_2"),
+//										},
 //									},
 //								},
 //							},

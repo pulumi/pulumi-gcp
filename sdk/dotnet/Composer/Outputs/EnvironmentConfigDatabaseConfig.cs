@@ -13,12 +13,17 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentConfigDatabaseConfig
     {
-        public readonly string MachineType;
+        public readonly string? MachineType;
+        public readonly string? Zone;
 
         [OutputConstructor]
-        private EnvironmentConfigDatabaseConfig(string machineType)
+        private EnvironmentConfigDatabaseConfig(
+            string? machineType,
+
+            string? zone)
         {
             MachineType = machineType;
+            Zone = zone;
         }
     }
 }

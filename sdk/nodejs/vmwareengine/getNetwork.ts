@@ -7,6 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Use this data source to get details about a VMwareEngine network resource.
+ *
+ * To get more information about VMwareEngine Network, see:
+ * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -14,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myNw = gcp.vmwareengine.getNetwork({
- *     name: "us-central1-default",
  *     location: "us-central1",
+ *     name: "us-central1-default",
  * });
  * ```
  */
@@ -67,6 +72,11 @@ export interface GetNetworkResult {
     readonly vpcNetworks: outputs.vmwareengine.GetNetworkVpcNetwork[];
 }
 /**
+ * Use this data source to get details about a VMwareEngine network resource.
+ *
+ * To get more information about VMwareEngine Network, see:
+ * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -74,8 +84,8 @@ export interface GetNetworkResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const myNw = gcp.vmwareengine.getNetwork({
- *     name: "us-central1-default",
  *     location: "us-central1",
+ *     name: "us-central1-default",
  * });
  * ```
  */

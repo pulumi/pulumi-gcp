@@ -194,6 +194,152 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// ### Enable Fleet Default Member Config Service Mesh
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         FleetDefaultMemberConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigArgs
+    ///         {
+    ///             Mesh = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigMeshArgs
+    ///             {
+    ///                 Management = "MANAGEMENT_AUTOMATIC",
+    ///             },
+    ///         },
+    ///         Location = "global",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Enable Fleet Default Member Config Configmanagement
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         FleetDefaultMemberConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigArgs
+    ///         {
+    ///             Configmanagement = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigConfigmanagementArgs
+    ///             {
+    ///                 ConfigSync = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs
+    ///                 {
+    ///                     Git = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs
+    ///                     {
+    ///                         SyncRepo = "https://github.com/hashicorp/terraform",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Location = "global",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Enable Fleet Default Member Config Policycontroller
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         FleetDefaultMemberConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigArgs
+    ///         {
+    ///             Policycontroller = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerArgs
+    ///             {
+    ///                 PolicyControllerHubConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs
+    ///                 {
+    ///                     AuditIntervalSeconds = 30,
+    ///                     ExemptableNamespaces = new[]
+    ///                     {
+    ///                         "foo",
+    ///                     },
+    ///                     InstallSpec = "INSTALL_SPEC_ENABLED",
+    ///                     PolicyContent = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs
+    ///                     {
+    ///                         Bundles = new[]
+    ///                         {
+    ///                             new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs
+    ///                             {
+    ///                                 Bundle = "policy-essentials-v2022",
+    ///                                 ExemptedNamespaces = new[]
+    ///                                 {
+    ///                                     "foo",
+    ///                                     "bar",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         TemplateLibrary = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs
+    ///                         {
+    ///                             Installation = "ALL",
+    ///                         },
+    ///                     },
+    ///                     ReferentialRulesEnabled = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Location = "global",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Enable Fleet Default Member Config Policycontroller Set Empty
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         FleetDefaultMemberConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigArgs
+    ///         {
+    ///             Policycontroller = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerArgs
+    ///             {
+    ///                 PolicyControllerHubConfig = new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs
+    ///                 {
+    ///                     ConstraintViolationLimit = 50,
+    ///                     DeploymentConfigs = new[]
+    ///                     {
+    ///                         new Gcp.GkeHub.Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs
+    ///                         {
+    ///                             Component = "admission",
+    ///                         },
+    ///                     },
+    ///                     InstallSpec = "INSTALL_SPEC_ENABLED",
+    ///                     LogDeniesEnabled = true,
+    ///                     Monitoring = null,
+    ///                     MutationEnabled = true,
+    ///                     PolicyContent = null,
+    ///                     ReferentialRulesEnabled = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Location = "global",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -10,6 +10,7 @@ import com.pulumi.gcp.container.inputs.NodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNetworkConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolPlacementPolicyArgs;
+import com.pulumi.gcp.container.inputs.NodePoolQueuedProvisioningArgs;
 import com.pulumi.gcp.container.inputs.NodePoolUpgradeSettingsArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -302,8 +303,6 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * Specifies a custom placement policy for the
      * nodes.
      * 
-     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
-     * 
      */
     @Import(name="placementPolicy")
     private @Nullable Output<NodePoolPlacementPolicyArgs> placementPolicy;
@@ -311,8 +310,6 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Specifies a custom placement policy for the
      * nodes.
-     * 
-     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     public Optional<Output<NodePoolPlacementPolicyArgs>> placementPolicy() {
@@ -334,6 +331,27 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * Specifies node pool-level settings of queued provisioning.
+     * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * 
+     */
+    @Import(name="queuedProvisioning")
+    private @Nullable Output<NodePoolQueuedProvisioningArgs> queuedProvisioning;
+
+    /**
+     * @return Specifies node pool-level settings of queued provisioning.
+     * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * 
+     */
+    public Optional<Output<NodePoolQueuedProvisioningArgs>> queuedProvisioning() {
+        return Optional.ofNullable(this.queuedProvisioning);
     }
 
     /**
@@ -398,6 +416,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         this.operation = $.operation;
         this.placementPolicy = $.placementPolicy;
         this.project = $.project;
+        this.queuedProvisioning = $.queuedProvisioning;
         this.upgradeSettings = $.upgradeSettings;
         this.version = $.version;
     }
@@ -822,8 +841,6 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * @param placementPolicy Specifies a custom placement policy for the
          * nodes.
          * 
-         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
-         * 
          * @return builder
          * 
          */
@@ -835,8 +852,6 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param placementPolicy Specifies a custom placement policy for the
          * nodes.
-         * 
-         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
          * 
          * @return builder
          * 
@@ -866,6 +881,33 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param queuedProvisioning Specifies node pool-level settings of queued provisioning.
+         * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queuedProvisioning(@Nullable Output<NodePoolQueuedProvisioningArgs> queuedProvisioning) {
+            $.queuedProvisioning = queuedProvisioning;
+            return this;
+        }
+
+        /**
+         * @param queuedProvisioning Specifies node pool-level settings of queued provisioning.
+         * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queuedProvisioning(NodePoolQueuedProvisioningArgs queuedProvisioning) {
+            return queuedProvisioning(Output.of(queuedProvisioning));
         }
 
         /**

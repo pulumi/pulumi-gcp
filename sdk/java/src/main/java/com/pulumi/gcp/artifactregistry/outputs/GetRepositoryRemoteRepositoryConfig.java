@@ -9,6 +9,7 @@ import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConf
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigMavenRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigNpmRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigPythonRepository;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredential;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigYumRepository;
 import java.lang.String;
 import java.util.List;
@@ -22,6 +23,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
     private List<GetRepositoryRemoteRepositoryConfigMavenRepository> mavenRepositories;
     private List<GetRepositoryRemoteRepositoryConfigNpmRepository> npmRepositories;
     private List<GetRepositoryRemoteRepositoryConfigPythonRepository> pythonRepositories;
+    private List<GetRepositoryRemoteRepositoryConfigUpstreamCredential> upstreamCredentials;
     private List<GetRepositoryRemoteRepositoryConfigYumRepository> yumRepositories;
 
     private GetRepositoryRemoteRepositoryConfig() {}
@@ -43,6 +45,9 @@ public final class GetRepositoryRemoteRepositoryConfig {
     public List<GetRepositoryRemoteRepositoryConfigPythonRepository> pythonRepositories() {
         return this.pythonRepositories;
     }
+    public List<GetRepositoryRemoteRepositoryConfigUpstreamCredential> upstreamCredentials() {
+        return this.upstreamCredentials;
+    }
     public List<GetRepositoryRemoteRepositoryConfigYumRepository> yumRepositories() {
         return this.yumRepositories;
     }
@@ -62,6 +67,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
         private List<GetRepositoryRemoteRepositoryConfigMavenRepository> mavenRepositories;
         private List<GetRepositoryRemoteRepositoryConfigNpmRepository> npmRepositories;
         private List<GetRepositoryRemoteRepositoryConfigPythonRepository> pythonRepositories;
+        private List<GetRepositoryRemoteRepositoryConfigUpstreamCredential> upstreamCredentials;
         private List<GetRepositoryRemoteRepositoryConfigYumRepository> yumRepositories;
         public Builder() {}
         public Builder(GetRepositoryRemoteRepositoryConfig defaults) {
@@ -72,6 +78,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
     	      this.mavenRepositories = defaults.mavenRepositories;
     	      this.npmRepositories = defaults.npmRepositories;
     	      this.pythonRepositories = defaults.pythonRepositories;
+    	      this.upstreamCredentials = defaults.upstreamCredentials;
     	      this.yumRepositories = defaults.yumRepositories;
         }
 
@@ -121,6 +128,14 @@ public final class GetRepositoryRemoteRepositoryConfig {
             return pythonRepositories(List.of(pythonRepositories));
         }
         @CustomType.Setter
+        public Builder upstreamCredentials(List<GetRepositoryRemoteRepositoryConfigUpstreamCredential> upstreamCredentials) {
+            this.upstreamCredentials = Objects.requireNonNull(upstreamCredentials);
+            return this;
+        }
+        public Builder upstreamCredentials(GetRepositoryRemoteRepositoryConfigUpstreamCredential... upstreamCredentials) {
+            return upstreamCredentials(List.of(upstreamCredentials));
+        }
+        @CustomType.Setter
         public Builder yumRepositories(List<GetRepositoryRemoteRepositoryConfigYumRepository> yumRepositories) {
             this.yumRepositories = Objects.requireNonNull(yumRepositories);
             return this;
@@ -136,6 +151,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
             _resultValue.mavenRepositories = mavenRepositories;
             _resultValue.npmRepositories = npmRepositories;
             _resultValue.pythonRepositories = pythonRepositories;
+            _resultValue.upstreamCredentials = upstreamCredentials;
             _resultValue.yumRepositories = yumRepositories;
             return _resultValue;
         }

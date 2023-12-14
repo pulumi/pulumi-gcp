@@ -7,23 +7,33 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class EnvironmentConfigDatabaseConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EnvironmentConfigDatabaseConfigArgs Empty = new EnvironmentConfigDatabaseConfigArgs();
 
-    @Import(name="machineType", required=true)
-    private Output<String> machineType;
+    @Import(name="machineType")
+    private @Nullable Output<String> machineType;
 
-    public Output<String> machineType() {
-        return this.machineType;
+    public Optional<Output<String>> machineType() {
+        return Optional.ofNullable(this.machineType);
+    }
+
+    @Import(name="zone")
+    private @Nullable Output<String> zone;
+
+    public Optional<Output<String>> zone() {
+        return Optional.ofNullable(this.zone);
     }
 
     private EnvironmentConfigDatabaseConfigArgs() {}
 
     private EnvironmentConfigDatabaseConfigArgs(EnvironmentConfigDatabaseConfigArgs $) {
         this.machineType = $.machineType;
+        this.zone = $.zone;
     }
 
     public static Builder builder() {
@@ -44,7 +54,7 @@ public final class EnvironmentConfigDatabaseConfigArgs extends com.pulumi.resour
             $ = new EnvironmentConfigDatabaseConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder machineType(Output<String> machineType) {
+        public Builder machineType(@Nullable Output<String> machineType) {
             $.machineType = machineType;
             return this;
         }
@@ -53,8 +63,16 @@ public final class EnvironmentConfigDatabaseConfigArgs extends com.pulumi.resour
             return machineType(Output.of(machineType));
         }
 
+        public Builder zone(@Nullable Output<String> zone) {
+            $.zone = zone;
+            return this;
+        }
+
+        public Builder zone(String zone) {
+            return zone(Output.of(zone));
+        }
+
         public EnvironmentConfigDatabaseConfigArgs build() {
-            $.machineType = Objects.requireNonNull($.machineType, "expected parameter 'machineType' to be non-null");
             return $;
         }
     }

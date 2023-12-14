@@ -31,6 +31,14 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var @default = new Gcp.GkeHub.Fleet("default", new()
     ///     {
+    ///         DefaultClusterConfig = new Gcp.GkeHub.Inputs.FleetDefaultClusterConfigArgs
+    ///         {
+    ///             SecurityPostureConfig = new Gcp.GkeHub.Inputs.FleetDefaultClusterConfigSecurityPostureConfigArgs
+    ///             {
+    ///                 Mode = "DISABLED",
+    ///                 VulnerabilityMode = "VULNERABILITY_DISABLED",
+    ///             },
+    ///         },
     ///         DisplayName = "my production fleet",
     ///     });
     /// 
@@ -65,6 +73,13 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The default cluster configurations to apply across the fleet.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("defaultClusterConfig")]
+        public Output<Outputs.FleetDefaultClusterConfig?> DefaultClusterConfig { get; private set; } = null!;
 
         /// <summary>
         /// The time the fleet was deleted, in RFC3339 text format.
@@ -154,6 +169,13 @@ namespace Pulumi.Gcp.GkeHub
     public sealed class FleetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The default cluster configurations to apply across the fleet.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("defaultClusterConfig")]
+        public Input<Inputs.FleetDefaultClusterConfigArgs>? DefaultClusterConfig { get; set; }
+
+        /// <summary>
         /// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
         /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
         /// </summary>
@@ -180,6 +202,13 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The default cluster configurations to apply across the fleet.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("defaultClusterConfig")]
+        public Input<Inputs.FleetDefaultClusterConfigGetArgs>? DefaultClusterConfig { get; set; }
 
         /// <summary>
         /// The time the fleet was deleted, in RFC3339 text format.

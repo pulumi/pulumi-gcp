@@ -7,7 +7,25 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Provides connectivity for VMware Engine private clouds.
+ *
+ * To get more information about Network, see:
+ *
+ * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+ *
  * ## Example Usage
+ * ### Vmware Engine Network Standard
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vmw_engine_network = new gcp.vmwareengine.Network("vmw-engine-network", {
+ *     description: "VMwareEngine standard network sample",
+ *     location: "global",
+ *     type: "STANDARD",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -87,7 +105,7 @@ export class Network extends pulumi.CustomResource {
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * VMware Engine network type.
-     * Possible values are: `LEGACY`.
+     * Possible values are: `LEGACY`, `STANDARD`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -174,7 +192,7 @@ export interface NetworkState {
     state?: pulumi.Input<string>;
     /**
      * VMware Engine network type.
-     * Possible values are: `LEGACY`.
+     * Possible values are: `LEGACY`, `STANDARD`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -215,7 +233,7 @@ export interface NetworkArgs {
     project?: pulumi.Input<string>;
     /**
      * VMware Engine network type.
-     * Possible values are: `LEGACY`.
+     * Possible values are: `LEGACY`, `STANDARD`.
      */
     type: pulumi.Input<string>;
 }

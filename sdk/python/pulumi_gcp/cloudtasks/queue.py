@@ -328,11 +328,6 @@ class Queue(pulumi.CustomResource):
         """
         A named resource to which messages are sent by publishers.
 
-        > **Warning:** This resource requires an App Engine application to be created on the
-        project you're provisioning it on. If you haven't already enabled it, you
-        can create a `appengine.Application` resource to do so. This
-        resource's location will be the same as the App Engine location specified.
-
         ## Example Usage
         ### Queue Basic
 
@@ -428,11 +423,6 @@ class Queue(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A named resource to which messages are sent by publishers.
-
-        > **Warning:** This resource requires an App Engine application to be created on the
-        project you're provisioning it on. If you haven't already enabled it, you
-        can create a `appengine.Application` resource to do so. This
-        resource's location will be the same as the App Engine location specified.
 
         ## Example Usage
         ### Queue Basic

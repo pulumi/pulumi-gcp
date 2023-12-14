@@ -8,18 +8,33 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.vertex.inputs.GetAiEndpointIamPolicyArgs;
+import com.pulumi.gcp.vertex.inputs.GetAiEndpointIamPolicyPlainArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiFeaturestoreEntitytypeIamPolicyArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiFeaturestoreEntitytypeIamPolicyPlainArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiFeaturestoreIamPolicyArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiFeaturestoreIamPolicyPlainArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiIndexArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiIndexPlainArgs;
+import com.pulumi.gcp.vertex.outputs.GetAiEndpointIamPolicyResult;
 import com.pulumi.gcp.vertex.outputs.GetAiFeaturestoreEntitytypeIamPolicyResult;
 import com.pulumi.gcp.vertex.outputs.GetAiFeaturestoreIamPolicyResult;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class VertexFunctions {
+    public static Output<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicy(GetAiEndpointIamPolicyArgs args) {
+        return getAiEndpointIamPolicy(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicyPlain(GetAiEndpointIamPolicyPlainArgs args) {
+        return getAiEndpointIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicy(GetAiEndpointIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", TypeShape.of(GetAiEndpointIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicyPlain(GetAiEndpointIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", TypeShape.of(GetAiEndpointIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     public static Output<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntitytypeIamPolicy(GetAiFeaturestoreEntitytypeIamPolicyArgs args) {
         return getAiFeaturestoreEntitytypeIamPolicy(args, InvokeOptions.Empty);
     }

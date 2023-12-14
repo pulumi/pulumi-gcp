@@ -143,6 +143,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string PscConnectionStatus;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly string SelfLink;
+        public readonly ImmutableArray<Outputs.GetGlobalForwardingRuleServiceDirectoryRegistrationResult> ServiceDirectoryRegistrations;
         public readonly ImmutableArray<string> SourceIpRanges;
         public readonly string Subnetwork;
         public readonly string Target;
@@ -191,6 +192,8 @@ namespace Pulumi.Gcp.Compute
 
             string selfLink,
 
+            ImmutableArray<Outputs.GetGlobalForwardingRuleServiceDirectoryRegistrationResult> serviceDirectoryRegistrations,
+
             ImmutableArray<string> sourceIpRanges,
 
             string subnetwork,
@@ -218,6 +221,7 @@ namespace Pulumi.Gcp.Compute
             PscConnectionStatus = pscConnectionStatus;
             PulumiLabels = pulumiLabels;
             SelfLink = selfLink;
+            ServiceDirectoryRegistrations = serviceDirectoryRegistrations;
             SourceIpRanges = sourceIpRanges;
             Subnetwork = subnetwork;
             Target = target;

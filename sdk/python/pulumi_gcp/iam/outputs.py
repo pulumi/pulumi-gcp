@@ -17,6 +17,8 @@ __all__ = [
     'DenyPolicyRule',
     'DenyPolicyRuleDenyRule',
     'DenyPolicyRuleDenyRuleDenialCondition',
+    'WorkforcePoolAccessRestrictions',
+    'WorkforcePoolAccessRestrictionsAllowedService',
     'WorkforcePoolProviderOidc',
     'WorkforcePoolProviderOidcClientSecret',
     'WorkforcePoolProviderOidcClientSecretValue',
@@ -423,6 +425,83 @@ class DenyPolicyRuleDenyRuleDenialCondition(dict):
         This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class WorkforcePoolAccessRestrictions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedServices":
+            suggest = "allowed_services"
+        elif key == "disableProgrammaticSignin":
+            suggest = "disable_programmatic_signin"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkforcePoolAccessRestrictions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkforcePoolAccessRestrictions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkforcePoolAccessRestrictions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_services: Optional[Sequence['outputs.WorkforcePoolAccessRestrictionsAllowedService']] = None,
+                 disable_programmatic_signin: Optional[bool] = None):
+        """
+        :param Sequence['WorkforcePoolAccessRestrictionsAllowedServiceArgs'] allowed_services: Services allowed for web sign-in with the workforce pool.
+               If not set by default there are no restrictions.
+               Structure is documented below.
+        :param bool disable_programmatic_signin: Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
+               See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
+        """
+        if allowed_services is not None:
+            pulumi.set(__self__, "allowed_services", allowed_services)
+        if disable_programmatic_signin is not None:
+            pulumi.set(__self__, "disable_programmatic_signin", disable_programmatic_signin)
+
+    @property
+    @pulumi.getter(name="allowedServices")
+    def allowed_services(self) -> Optional[Sequence['outputs.WorkforcePoolAccessRestrictionsAllowedService']]:
+        """
+        Services allowed for web sign-in with the workforce pool.
+        If not set by default there are no restrictions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowed_services")
+
+    @property
+    @pulumi.getter(name="disableProgrammaticSignin")
+    def disable_programmatic_signin(self) -> Optional[bool]:
+        """
+        Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
+        See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
+        """
+        return pulumi.get(self, "disable_programmatic_signin")
+
+
+@pulumi.output_type
+class WorkforcePoolAccessRestrictionsAllowedService(dict):
+    def __init__(__self__, *,
+                 domain: Optional[str] = None):
+        """
+        :param str domain: Domain name of the service.
+               Example: console.cloud.google
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        """
+        Domain name of the service.
+        Example: console.cloud.google
+        """
+        return pulumi.get(self, "domain")
 
 
 @pulumi.output_type

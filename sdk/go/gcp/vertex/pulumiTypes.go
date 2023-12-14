@@ -1163,6 +1163,332 @@ func (o AiEndpointEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiEndpointIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AiEndpointIamBindingConditionInput is an input type that accepts AiEndpointIamBindingConditionArgs and AiEndpointIamBindingConditionOutput values.
+// You can construct a concrete instance of `AiEndpointIamBindingConditionInput` via:
+//
+//	AiEndpointIamBindingConditionArgs{...}
+type AiEndpointIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToAiEndpointIamBindingConditionOutput() AiEndpointIamBindingConditionOutput
+	ToAiEndpointIamBindingConditionOutputWithContext(context.Context) AiEndpointIamBindingConditionOutput
+}
+
+type AiEndpointIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AiEndpointIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointIamBindingCondition)(nil)).Elem()
+}
+
+func (i AiEndpointIamBindingConditionArgs) ToAiEndpointIamBindingConditionOutput() AiEndpointIamBindingConditionOutput {
+	return i.ToAiEndpointIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i AiEndpointIamBindingConditionArgs) ToAiEndpointIamBindingConditionOutputWithContext(ctx context.Context) AiEndpointIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointIamBindingConditionOutput)
+}
+
+func (i AiEndpointIamBindingConditionArgs) ToAiEndpointIamBindingConditionPtrOutput() AiEndpointIamBindingConditionPtrOutput {
+	return i.ToAiEndpointIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointIamBindingConditionArgs) ToAiEndpointIamBindingConditionPtrOutputWithContext(ctx context.Context) AiEndpointIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointIamBindingConditionOutput).ToAiEndpointIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// AiEndpointIamBindingConditionPtrInput is an input type that accepts AiEndpointIamBindingConditionArgs, AiEndpointIamBindingConditionPtr and AiEndpointIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `AiEndpointIamBindingConditionPtrInput` via:
+//
+//	        AiEndpointIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointIamBindingConditionPtrOutput() AiEndpointIamBindingConditionPtrOutput
+	ToAiEndpointIamBindingConditionPtrOutputWithContext(context.Context) AiEndpointIamBindingConditionPtrOutput
+}
+
+type aiEndpointIamBindingConditionPtrType AiEndpointIamBindingConditionArgs
+
+func AiEndpointIamBindingConditionPtr(v *AiEndpointIamBindingConditionArgs) AiEndpointIamBindingConditionPtrInput {
+	return (*aiEndpointIamBindingConditionPtrType)(v)
+}
+
+func (*aiEndpointIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointIamBindingCondition)(nil)).Elem()
+}
+
+func (i *aiEndpointIamBindingConditionPtrType) ToAiEndpointIamBindingConditionPtrOutput() AiEndpointIamBindingConditionPtrOutput {
+	return i.ToAiEndpointIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointIamBindingConditionPtrType) ToAiEndpointIamBindingConditionPtrOutputWithContext(ctx context.Context) AiEndpointIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointIamBindingConditionPtrOutput)
+}
+
+type AiEndpointIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointIamBindingCondition)(nil)).Elem()
+}
+
+func (o AiEndpointIamBindingConditionOutput) ToAiEndpointIamBindingConditionOutput() AiEndpointIamBindingConditionOutput {
+	return o
+}
+
+func (o AiEndpointIamBindingConditionOutput) ToAiEndpointIamBindingConditionOutputWithContext(ctx context.Context) AiEndpointIamBindingConditionOutput {
+	return o
+}
+
+func (o AiEndpointIamBindingConditionOutput) ToAiEndpointIamBindingConditionPtrOutput() AiEndpointIamBindingConditionPtrOutput {
+	return o.ToAiEndpointIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointIamBindingConditionOutput) ToAiEndpointIamBindingConditionPtrOutputWithContext(ctx context.Context) AiEndpointIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointIamBindingCondition) *AiEndpointIamBindingCondition {
+		return &v
+	}).(AiEndpointIamBindingConditionPtrOutput)
+}
+
+func (o AiEndpointIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AiEndpointIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AiEndpointIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointIamBindingCondition)(nil)).Elem()
+}
+
+func (o AiEndpointIamBindingConditionPtrOutput) ToAiEndpointIamBindingConditionPtrOutput() AiEndpointIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AiEndpointIamBindingConditionPtrOutput) ToAiEndpointIamBindingConditionPtrOutputWithContext(ctx context.Context) AiEndpointIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AiEndpointIamBindingConditionPtrOutput) Elem() AiEndpointIamBindingConditionOutput {
+	return o.ApplyT(func(v *AiEndpointIamBindingCondition) AiEndpointIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointIamBindingCondition
+		return ret
+	}).(AiEndpointIamBindingConditionOutput)
+}
+
+func (o AiEndpointIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AiEndpointIamMemberConditionInput is an input type that accepts AiEndpointIamMemberConditionArgs and AiEndpointIamMemberConditionOutput values.
+// You can construct a concrete instance of `AiEndpointIamMemberConditionInput` via:
+//
+//	AiEndpointIamMemberConditionArgs{...}
+type AiEndpointIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToAiEndpointIamMemberConditionOutput() AiEndpointIamMemberConditionOutput
+	ToAiEndpointIamMemberConditionOutputWithContext(context.Context) AiEndpointIamMemberConditionOutput
+}
+
+type AiEndpointIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AiEndpointIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointIamMemberCondition)(nil)).Elem()
+}
+
+func (i AiEndpointIamMemberConditionArgs) ToAiEndpointIamMemberConditionOutput() AiEndpointIamMemberConditionOutput {
+	return i.ToAiEndpointIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i AiEndpointIamMemberConditionArgs) ToAiEndpointIamMemberConditionOutputWithContext(ctx context.Context) AiEndpointIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointIamMemberConditionOutput)
+}
+
+func (i AiEndpointIamMemberConditionArgs) ToAiEndpointIamMemberConditionPtrOutput() AiEndpointIamMemberConditionPtrOutput {
+	return i.ToAiEndpointIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointIamMemberConditionArgs) ToAiEndpointIamMemberConditionPtrOutputWithContext(ctx context.Context) AiEndpointIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointIamMemberConditionOutput).ToAiEndpointIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// AiEndpointIamMemberConditionPtrInput is an input type that accepts AiEndpointIamMemberConditionArgs, AiEndpointIamMemberConditionPtr and AiEndpointIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `AiEndpointIamMemberConditionPtrInput` via:
+//
+//	        AiEndpointIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointIamMemberConditionPtrOutput() AiEndpointIamMemberConditionPtrOutput
+	ToAiEndpointIamMemberConditionPtrOutputWithContext(context.Context) AiEndpointIamMemberConditionPtrOutput
+}
+
+type aiEndpointIamMemberConditionPtrType AiEndpointIamMemberConditionArgs
+
+func AiEndpointIamMemberConditionPtr(v *AiEndpointIamMemberConditionArgs) AiEndpointIamMemberConditionPtrInput {
+	return (*aiEndpointIamMemberConditionPtrType)(v)
+}
+
+func (*aiEndpointIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointIamMemberCondition)(nil)).Elem()
+}
+
+func (i *aiEndpointIamMemberConditionPtrType) ToAiEndpointIamMemberConditionPtrOutput() AiEndpointIamMemberConditionPtrOutput {
+	return i.ToAiEndpointIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointIamMemberConditionPtrType) ToAiEndpointIamMemberConditionPtrOutputWithContext(ctx context.Context) AiEndpointIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointIamMemberConditionPtrOutput)
+}
+
+type AiEndpointIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointIamMemberCondition)(nil)).Elem()
+}
+
+func (o AiEndpointIamMemberConditionOutput) ToAiEndpointIamMemberConditionOutput() AiEndpointIamMemberConditionOutput {
+	return o
+}
+
+func (o AiEndpointIamMemberConditionOutput) ToAiEndpointIamMemberConditionOutputWithContext(ctx context.Context) AiEndpointIamMemberConditionOutput {
+	return o
+}
+
+func (o AiEndpointIamMemberConditionOutput) ToAiEndpointIamMemberConditionPtrOutput() AiEndpointIamMemberConditionPtrOutput {
+	return o.ToAiEndpointIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointIamMemberConditionOutput) ToAiEndpointIamMemberConditionPtrOutputWithContext(ctx context.Context) AiEndpointIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointIamMemberCondition) *AiEndpointIamMemberCondition {
+		return &v
+	}).(AiEndpointIamMemberConditionPtrOutput)
+}
+
+func (o AiEndpointIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AiEndpointIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AiEndpointIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AiEndpointIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointIamMemberCondition)(nil)).Elem()
+}
+
+func (o AiEndpointIamMemberConditionPtrOutput) ToAiEndpointIamMemberConditionPtrOutput() AiEndpointIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AiEndpointIamMemberConditionPtrOutput) ToAiEndpointIamMemberConditionPtrOutputWithContext(ctx context.Context) AiEndpointIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AiEndpointIamMemberConditionPtrOutput) Elem() AiEndpointIamMemberConditionOutput {
+	return o.ApplyT(func(v *AiEndpointIamMemberCondition) AiEndpointIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointIamMemberCondition
+		return ret
+	}).(AiEndpointIamMemberConditionOutput)
+}
+
+func (o AiEndpointIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AiEndpointIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiFeatureStoreEncryptionSpec struct {
 	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -5582,6 +5908,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointDeployedModelPrivateEndpointArrayInput)(nil)).Elem(), AiEndpointDeployedModelPrivateEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointEncryptionSpecInput)(nil)).Elem(), AiEndpointEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointEncryptionSpecPtrInput)(nil)).Elem(), AiEndpointEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointIamBindingConditionInput)(nil)).Elem(), AiEndpointIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointIamBindingConditionPtrInput)(nil)).Elem(), AiEndpointIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointIamMemberConditionInput)(nil)).Elem(), AiEndpointIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointIamMemberConditionPtrInput)(nil)).Elem(), AiEndpointIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecPtrInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeIamBindingConditionInput)(nil)).Elem(), AiFeatureStoreEntityTypeIamBindingConditionArgs{})
@@ -5658,6 +5988,10 @@ func init() {
 	pulumi.RegisterOutputType(AiEndpointDeployedModelPrivateEndpointArrayOutput{})
 	pulumi.RegisterOutputType(AiEndpointEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiEndpointEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(AiEndpointIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(AiEndpointIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeIamBindingConditionOutput{})

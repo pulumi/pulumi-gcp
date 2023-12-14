@@ -246,7 +246,7 @@ type DatabaseInstance struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The link to service attachment of PSC instance.
+	// the URI that points to the service attachment of the instance.
 	PscServiceAttachmentLink pulumi.StringOutput `pulumi:"pscServiceAttachmentLink"`
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
@@ -370,7 +370,7 @@ type databaseInstanceState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The link to service attachment of PSC instance.
+	// the URI that points to the service attachment of the instance.
 	PscServiceAttachmentLink *string `pulumi:"pscServiceAttachmentLink"`
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
@@ -455,7 +455,7 @@ type DatabaseInstanceState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The link to service attachment of PSC instance.
+	// the URI that points to the service attachment of the instance.
 	PscServiceAttachmentLink pulumi.StringPtrInput
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringPtrInput
@@ -802,7 +802,7 @@ func (o DatabaseInstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The link to service attachment of PSC instance.
+// the URI that points to the service attachment of the instance.
 func (o DatabaseInstanceOutput) PscServiceAttachmentLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.PscServiceAttachmentLink }).(pulumi.StringOutput)
 }

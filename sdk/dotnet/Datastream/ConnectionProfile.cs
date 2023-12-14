@@ -43,13 +43,14 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// });
     /// ```
-    /// ### Datastream Connection Profile Bigquery Private Connection
+    /// ### Datastream Connection Profile Postgresql Private Connection
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -71,12 +72,72 @@ namespace Pulumi.Gcp.Datastream
     ///         },
     ///     });
     /// 
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         DatabaseVersion = "POSTGRES_14",
+    ///         Region = "us-central1",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 AuthorizedNetworks = new[]
+    ///                 {
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.71.242.81",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.28.29",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.6.157",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.67.234.134",
+    ///                     },
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs
+    ///                     {
+    ///                         Value = "34.72.239.218",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var db = new Gcp.Sql.Database("db", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///     });
+    /// 
+    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     {
+    ///         Length = 16,
+    ///         Special = false,
+    ///     });
+    /// 
+    ///     var user = new Gcp.Sql.User("user", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         Password = pwd.Result,
+    ///     });
+    /// 
     ///     var defaultConnectionProfile = new Gcp.Datastream.ConnectionProfile("defaultConnectionProfile", new()
     ///     {
     ///         DisplayName = "Connection profile",
     ///         Location = "us-central1",
     ///         ConnectionProfileId = "my-profile",
-    ///         BigqueryProfile = null,
+    ///         PostgresqlProfile = new Gcp.Datastream.Inputs.ConnectionProfilePostgresqlProfileArgs
+    ///         {
+    ///             Hostname = instance.PublicIpAddress,
+    ///             Username = user.Name,
+    ///             Password = user.Password,
+    ///             Database = db.Name,
+    ///         },
     ///         PrivateConnectivity = new Gcp.Datastream.Inputs.ConnectionProfilePrivateConnectivityArgs
     ///         {
     ///             PrivateConnection = privateConnection.Id,

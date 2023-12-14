@@ -106,7 +106,7 @@ export class IAMCustomRole extends pulumi.CustomResource {
      */
     public readonly permissions!: pulumi.Output<string[]>;
     /**
-     * The project that the service account will be created in.
+     * The project that the custom role will be created in.
      * Defaults to the provider project configuration.
      */
     public readonly project!: pulumi.Output<string>;
@@ -192,7 +192,7 @@ export interface IAMCustomRoleState {
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The project that the service account will be created in.
+     * The project that the custom role will be created in.
      * Defaults to the provider project configuration.
      */
     project?: pulumi.Input<string>;
@@ -225,7 +225,7 @@ export interface IAMCustomRoleArgs {
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The project that the service account will be created in.
+     * The project that the custom role will be created in.
      * Defaults to the provider project configuration.
      */
     project?: pulumi.Input<string>;

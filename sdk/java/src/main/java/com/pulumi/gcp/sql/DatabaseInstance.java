@@ -514,14 +514,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The link to service attachment of PSC instance.
+     * the URI that points to the service attachment of the instance.
      * 
      */
     @Export(name="pscServiceAttachmentLink", refs={String.class}, tree="[0]")
     private Output<String> pscServiceAttachmentLink;
 
     /**
-     * @return The link to service attachment of PSC instance.
+     * @return the URI that points to the service attachment of the instance.
      * 
      */
     public Output<String> pscServiceAttachmentLink() {

@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get details about a VMwareEngine network resource.
+//
+// To get more information about VMwareEngine Network, see:
+// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+//
 // ## Example Usage
 //
 // ```go
@@ -26,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.LookupNetwork(ctx, &vmwareengine.LookupNetworkArgs{
-//				Name:     "us-central1-default",
 //				Location: "us-central1",
+//				Name:     "us-central1-default",
 //			}, nil)
 //			if err != nil {
 //				return err

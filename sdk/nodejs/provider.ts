@@ -126,8 +126,10 @@ export class Provider extends pulumi.ProviderResource {
     public readonly loggingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly lookerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly memcacheCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly migrationCenterCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly mlEngineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly monitoringCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly netappCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly networkConnectivityCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly networkManagementCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly networkSecurityCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -151,6 +153,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly runtimeConfigCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly runtimeconfigCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly secretManagerCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly secureSourceManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly securityCenterCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly securityScannerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly serviceDirectoryCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -289,8 +292,10 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["loggingCustomEndpoint"] = args ? args.loggingCustomEndpoint : undefined;
             resourceInputs["lookerCustomEndpoint"] = args ? args.lookerCustomEndpoint : undefined;
             resourceInputs["memcacheCustomEndpoint"] = args ? args.memcacheCustomEndpoint : undefined;
+            resourceInputs["migrationCenterCustomEndpoint"] = args ? args.migrationCenterCustomEndpoint : undefined;
             resourceInputs["mlEngineCustomEndpoint"] = args ? args.mlEngineCustomEndpoint : undefined;
             resourceInputs["monitoringCustomEndpoint"] = args ? args.monitoringCustomEndpoint : undefined;
+            resourceInputs["netappCustomEndpoint"] = args ? args.netappCustomEndpoint : undefined;
             resourceInputs["networkConnectivityCustomEndpoint"] = args ? args.networkConnectivityCustomEndpoint : undefined;
             resourceInputs["networkManagementCustomEndpoint"] = args ? args.networkManagementCustomEndpoint : undefined;
             resourceInputs["networkSecurityCustomEndpoint"] = args ? args.networkSecurityCustomEndpoint : undefined;
@@ -315,6 +320,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["runtimeconfigCustomEndpoint"] = args ? args.runtimeconfigCustomEndpoint : undefined;
             resourceInputs["scopes"] = pulumi.output(args ? args.scopes : undefined).apply(JSON.stringify);
             resourceInputs["secretManagerCustomEndpoint"] = args ? args.secretManagerCustomEndpoint : undefined;
+            resourceInputs["secureSourceManagerCustomEndpoint"] = args ? args.secureSourceManagerCustomEndpoint : undefined;
             resourceInputs["securityCenterCustomEndpoint"] = args ? args.securityCenterCustomEndpoint : undefined;
             resourceInputs["securityScannerCustomEndpoint"] = args ? args.securityScannerCustomEndpoint : undefined;
             resourceInputs["serviceDirectoryCustomEndpoint"] = args ? args.serviceDirectoryCustomEndpoint : undefined;
@@ -452,8 +458,10 @@ export interface ProviderArgs {
     loggingCustomEndpoint?: pulumi.Input<string>;
     lookerCustomEndpoint?: pulumi.Input<string>;
     memcacheCustomEndpoint?: pulumi.Input<string>;
+    migrationCenterCustomEndpoint?: pulumi.Input<string>;
     mlEngineCustomEndpoint?: pulumi.Input<string>;
     monitoringCustomEndpoint?: pulumi.Input<string>;
+    netappCustomEndpoint?: pulumi.Input<string>;
     networkConnectivityCustomEndpoint?: pulumi.Input<string>;
     networkManagementCustomEndpoint?: pulumi.Input<string>;
     networkSecurityCustomEndpoint?: pulumi.Input<string>;
@@ -478,6 +486,7 @@ export interface ProviderArgs {
     runtimeconfigCustomEndpoint?: pulumi.Input<string>;
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     secretManagerCustomEndpoint?: pulumi.Input<string>;
+    secureSourceManagerCustomEndpoint?: pulumi.Input<string>;
     securityCenterCustomEndpoint?: pulumi.Input<string>;
     securityScannerCustomEndpoint?: pulumi.Input<string>;
     serviceDirectoryCustomEndpoint?: pulumi.Input<string>;

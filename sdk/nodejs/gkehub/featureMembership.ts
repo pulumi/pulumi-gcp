@@ -19,8 +19,6 @@ import * as utilities from "../utilities";
  * const cluster = new gcp.container.Cluster("cluster", {
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
- * }, {
- *     provider: google_beta,
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
  *     membershipId: "my-membership",
@@ -29,16 +27,12 @@ import * as utilities from "../utilities";
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const feature = new gcp.gkehub.Feature("feature", {
  *     location: "global",
  *     labels: {
  *         foo: "bar",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
  *     location: "global",
@@ -52,8 +46,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Config Management With OCI
@@ -65,8 +57,6 @@ import * as utilities from "../utilities";
  * const cluster = new gcp.container.Cluster("cluster", {
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
- * }, {
- *     provider: google_beta,
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
  *     membershipId: "my-membership",
@@ -75,16 +65,12 @@ import * as utilities from "../utilities";
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const feature = new gcp.gkehub.Feature("feature", {
  *     location: "global",
  *     labels: {
  *         foo: "bar",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
  *     location: "global",
@@ -102,8 +88,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Multi Cluster Service Discovery
@@ -113,12 +97,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const feature = new gcp.gkehub.Feature("feature", {
- *     location: "global",
  *     labels: {
  *         foo: "bar",
  *     },
- * }, {
- *     provider: google_beta,
+ *     location: "global",
  * });
  * ```
  * ### Service Mesh
@@ -130,8 +112,6 @@ import * as utilities from "../utilities";
  * const cluster = new gcp.container.Cluster("cluster", {
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
- * }, {
- *     provider: google_beta,
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
  *     membershipId: "my-membership",
@@ -140,12 +120,8 @@ import * as utilities from "../utilities";
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const feature = new gcp.gkehub.Feature("feature", {location: "global"}, {
- *     provider: google_beta,
- * });
+ * const feature = new gcp.gkehub.Feature("feature", {location: "global"});
  * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
  *     location: "global",
  *     feature: feature.name,
@@ -153,8 +129,46 @@ import * as utilities from "../utilities";
  *     mesh: {
  *         management: "MANAGEMENT_AUTOMATIC",
  *     },
- * }, {
- *     provider: google_beta,
+ * });
+ * ```
+ * ### Config Management With Regional Membership
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cluster = new gcp.container.Cluster("cluster", {
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ * });
+ * const membership = new gcp.gkehub.Membership("membership", {
+ *     membershipId: "my-membership",
+ *     location: "us-central1",
+ *     endpoint: {
+ *         gkeCluster: {
+ *             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
+ *         },
+ *     },
+ * });
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     location: "global",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
+ *     location: "global",
+ *     feature: feature.name,
+ *     membership: membership.membershipId,
+ *     membershipLocation: membership.location,
+ *     configmanagement: {
+ *         version: "1.6.2",
+ *         configSync: {
+ *             git: {
+ *                 syncRepo: "https://github.com/hashicorp/terraform",
+ *             },
+ *         },
+ *     },
  * });
  * ```
  *
@@ -227,7 +241,7 @@ export class FeatureMembership extends pulumi.CustomResource {
      */
     public readonly membership!: pulumi.Output<string>;
     /**
-     * The location of the membership
+     * The location of the membership, for example, "us-central1". Default is "global".
      */
     public readonly membershipLocation!: pulumi.Output<string | undefined>;
     /**
@@ -304,7 +318,7 @@ export interface FeatureMembershipState {
      */
     membership?: pulumi.Input<string>;
     /**
-     * The location of the membership
+     * The location of the membership, for example, "us-central1". Default is "global".
      */
     membershipLocation?: pulumi.Input<string>;
     /**
@@ -338,7 +352,7 @@ export interface FeatureMembershipArgs {
      */
     membership: pulumi.Input<string>;
     /**
-     * The location of the membership
+     * The location of the membership, for example, "us-central1". Default is "global".
      */
     membershipLocation?: pulumi.Input<string>;
     /**

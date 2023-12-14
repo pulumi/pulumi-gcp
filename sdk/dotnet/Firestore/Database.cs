@@ -25,6 +25,27 @@ namespace Pulumi.Gcp.Firestore
     ///     * [Official Documentation](https://cloud.google.com/firestore/docs/)
     /// 
     /// ## Example Usage
+    /// ### Firestore Default Database
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///         LocationId = "nam5",
+    ///         Project = "my-project-name",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Firestore Database
     /// 
     /// ```csharp
@@ -39,10 +60,33 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         AppEngineIntegrationMode = "DISABLED",
     ///         ConcurrencyMode = "OPTIMISTIC",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
     ///         LocationId = "nam5",
     ///         PointInTimeRecoveryEnablement = "POINT_IN_TIME_RECOVERY_ENABLED",
     ///         Project = "my-project-name",
     ///         Type = "FIRESTORE_NATIVE",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Default Database In Datastore Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var datastoreModeDatabase = new Gcp.Firestore.Database("datastoreModeDatabase", new()
+    ///     {
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///         LocationId = "nam5",
+    ///         Project = "my-project-name",
+    ///         Type = "DATASTORE_MODE",
     ///     });
     /// 
     /// });
@@ -61,30 +105,12 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         AppEngineIntegrationMode = "DISABLED",
     ///         ConcurrencyMode = "OPTIMISTIC",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
     ///         LocationId = "nam5",
     ///         PointInTimeRecoveryEnablement = "POINT_IN_TIME_RECOVERY_ENABLED",
     ///         Project = "my-project-name",
     ///         Type = "DATASTORE_MODE",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Firestore Database With Delete Protection
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var database = new Gcp.Firestore.Database("database", new()
-    ///     {
-    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
-    ///         LocationId = "nam5",
-    ///         Project = "my-project-name",
-    ///         Type = "FIRESTORE_NATIVE",
     ///     });
     /// 
     /// });
@@ -138,11 +164,22 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// State of delete protection for the database.
-        /// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        /// State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
+        /// default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
+        /// **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
+        /// Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
         /// </summary>
         [Output("deleteProtectionState")]
         public Output<string> DeleteProtectionState { get; private set; } = null!;
+
+        /// <summary>
+        /// Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
+        /// state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
+        /// removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
+        /// 'delete_protection'.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
@@ -300,11 +337,22 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? ConcurrencyMode { get; set; }
 
         /// <summary>
-        /// State of delete protection for the database.
-        /// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        /// State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
+        /// default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
+        /// **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
+        /// Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
         /// </summary>
         [Input("deleteProtectionState")]
         public Input<string>? DeleteProtectionState { get; set; }
+
+        /// <summary>
+        /// Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
+        /// state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
+        /// removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
+        /// 'delete_protection'.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The location of the database. Available locations are listed at
@@ -384,11 +432,22 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// State of delete protection for the database.
-        /// Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        /// State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
+        /// default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
+        /// **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
+        /// Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
         /// </summary>
         [Input("deleteProtectionState")]
         public Input<string>? DeleteProtectionState { get; set; }
+
+        /// <summary>
+        /// Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
+        /// state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
+        /// removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
+        /// 'delete_protection'.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.

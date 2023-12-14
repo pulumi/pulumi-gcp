@@ -593,17 +593,22 @@ class Stream(pulumi.CustomResource):
                     include_objects=gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs(
                         mysql_databases=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs(
                             database="my-database",
-                            mysql_tables=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs(
-                                table="includedTable",
-                                mysql_columns=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
-                                    column="includedColumn",
-                                    data_type="VARCHAR",
-                                    collation="utf8mb4",
-                                    primary_key=False,
-                                    nullable=False,
-                                    ordinal_position=0,
-                                )],
-                            )],
+                            mysql_tables=[
+                                gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs(
+                                    table="includedTable",
+                                    mysql_columns=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
+                                        column="includedColumn",
+                                        data_type="VARCHAR",
+                                        collation="utf8mb4",
+                                        primary_key=False,
+                                        nullable=False,
+                                        ordinal_position=0,
+                                    )],
+                                ),
+                                gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs(
+                                    table="includedTable_2",
+                                ),
+                            ],
                         )],
                     ),
                     exclude_objects=gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs(
@@ -1150,17 +1155,22 @@ class Stream(pulumi.CustomResource):
                     include_objects=gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs(
                         mysql_databases=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs(
                             database="my-database",
-                            mysql_tables=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs(
-                                table="includedTable",
-                                mysql_columns=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
-                                    column="includedColumn",
-                                    data_type="VARCHAR",
-                                    collation="utf8mb4",
-                                    primary_key=False,
-                                    nullable=False,
-                                    ordinal_position=0,
-                                )],
-                            )],
+                            mysql_tables=[
+                                gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs(
+                                    table="includedTable",
+                                    mysql_columns=[gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs(
+                                        column="includedColumn",
+                                        data_type="VARCHAR",
+                                        collation="utf8mb4",
+                                        primary_key=False,
+                                        nullable=False,
+                                        ordinal_position=0,
+                                    )],
+                                ),
+                                gcp.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs(
+                                    table="includedTable_2",
+                                ),
+                            ],
                         )],
                     ),
                     exclude_objects=gcp.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs(

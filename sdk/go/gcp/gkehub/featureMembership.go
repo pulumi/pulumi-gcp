@@ -35,7 +35,7 @@ import (
 //			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -48,7 +48,7 @@ import (
 //						}).(pulumi.StringOutput),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -57,7 +57,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -73,7 +73,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -102,7 +102,7 @@ import (
 //			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -115,7 +115,7 @@ import (
 //						}).(pulumi.StringOutput),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -124,7 +124,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -144,7 +144,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -168,11 +168,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
-//				Location: pulumi.String("global"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//				Location: pulumi.String("global"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -201,7 +201,7 @@ import (
 //			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -214,13 +214,13 @@ import (
 //						}).(pulumi.StringOutput),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
 //				Location: pulumi.String("global"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -231,7 +231,76 @@ import (
 //				Mesh: &gkehub.FeatureMembershipMeshArgs{
 //					Management: pulumi.String("MANAGEMENT_AUTOMATIC"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Config Management With Regional Membership
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				MembershipId: pulumi.String("my-membership"),
+//				Location:     pulumi.String("us-central1"),
+//				Endpoint: &gkehub.MembershipEndpointArgs{
+//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+//						ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Location: pulumi.String("global"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
+//				Location:           pulumi.String("global"),
+//				Feature:            feature.Name,
+//				Membership:         membership.MembershipId,
+//				MembershipLocation: membership.Location,
+//				Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
+//					Version: pulumi.String("1.6.2"),
+//					ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
+//						Git: &gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs{
+//							SyncRepo: pulumi.String("https://github.com/hashicorp/terraform"),
+//						},
+//					},
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -283,7 +352,7 @@ type FeatureMembership struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the membership
 	Membership pulumi.StringOutput `pulumi:"membership"`
-	// The location of the membership
+	// The location of the membership, for example, "us-central1". Default is "global".
 	MembershipLocation pulumi.StringPtrOutput `pulumi:"membershipLocation"`
 	// Service mesh specific spec. Structure is documented below.
 	Mesh FeatureMembershipMeshPtrOutput `pulumi:"mesh"`
@@ -338,7 +407,7 @@ type featureMembershipState struct {
 	Location *string `pulumi:"location"`
 	// The name of the membership
 	Membership *string `pulumi:"membership"`
-	// The location of the membership
+	// The location of the membership, for example, "us-central1". Default is "global".
 	MembershipLocation *string `pulumi:"membershipLocation"`
 	// Service mesh specific spec. Structure is documented below.
 	Mesh *FeatureMembershipMesh `pulumi:"mesh"`
@@ -355,7 +424,7 @@ type FeatureMembershipState struct {
 	Location pulumi.StringPtrInput
 	// The name of the membership
 	Membership pulumi.StringPtrInput
-	// The location of the membership
+	// The location of the membership, for example, "us-central1". Default is "global".
 	MembershipLocation pulumi.StringPtrInput
 	// Service mesh specific spec. Structure is documented below.
 	Mesh FeatureMembershipMeshPtrInput
@@ -376,7 +445,7 @@ type featureMembershipArgs struct {
 	Location string `pulumi:"location"`
 	// The name of the membership
 	Membership string `pulumi:"membership"`
-	// The location of the membership
+	// The location of the membership, for example, "us-central1". Default is "global".
 	MembershipLocation *string `pulumi:"membershipLocation"`
 	// Service mesh specific spec. Structure is documented below.
 	Mesh *FeatureMembershipMesh `pulumi:"mesh"`
@@ -394,7 +463,7 @@ type FeatureMembershipArgs struct {
 	Location pulumi.StringInput
 	// The name of the membership
 	Membership pulumi.StringInput
-	// The location of the membership
+	// The location of the membership, for example, "us-central1". Default is "global".
 	MembershipLocation pulumi.StringPtrInput
 	// Service mesh specific spec. Structure is documented below.
 	Mesh FeatureMembershipMeshPtrInput
@@ -509,7 +578,7 @@ func (o FeatureMembershipOutput) Membership() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureMembership) pulumi.StringOutput { return v.Membership }).(pulumi.StringOutput)
 }
 
-// The location of the membership
+// The location of the membership, for example, "us-central1". Default is "global".
 func (o FeatureMembershipOutput) MembershipLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembership) pulumi.StringPtrOutput { return v.MembershipLocation }).(pulumi.StringPtrOutput)
 }

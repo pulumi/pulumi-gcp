@@ -2105,6 +2105,467 @@ func (o ConnectionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionSpark struct {
+	// Dataproc Metastore Service configuration for the connection.
+	// Structure is documented below.
+	MetastoreServiceConfig *ConnectionSparkMetastoreServiceConfig `pulumi:"metastoreServiceConfig"`
+	// (Output)
+	// The account ID of the service created for the purpose of this connection.
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+	// Spark History Server configuration for the connection.
+	// Structure is documented below.
+	SparkHistoryServerConfig *ConnectionSparkSparkHistoryServerConfig `pulumi:"sparkHistoryServerConfig"`
+}
+
+// ConnectionSparkInput is an input type that accepts ConnectionSparkArgs and ConnectionSparkOutput values.
+// You can construct a concrete instance of `ConnectionSparkInput` via:
+//
+//	ConnectionSparkArgs{...}
+type ConnectionSparkInput interface {
+	pulumi.Input
+
+	ToConnectionSparkOutput() ConnectionSparkOutput
+	ToConnectionSparkOutputWithContext(context.Context) ConnectionSparkOutput
+}
+
+type ConnectionSparkArgs struct {
+	// Dataproc Metastore Service configuration for the connection.
+	// Structure is documented below.
+	MetastoreServiceConfig ConnectionSparkMetastoreServiceConfigPtrInput `pulumi:"metastoreServiceConfig"`
+	// (Output)
+	// The account ID of the service created for the purpose of this connection.
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+	// Spark History Server configuration for the connection.
+	// Structure is documented below.
+	SparkHistoryServerConfig ConnectionSparkSparkHistoryServerConfigPtrInput `pulumi:"sparkHistoryServerConfig"`
+}
+
+func (ConnectionSparkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSpark)(nil)).Elem()
+}
+
+func (i ConnectionSparkArgs) ToConnectionSparkOutput() ConnectionSparkOutput {
+	return i.ToConnectionSparkOutputWithContext(context.Background())
+}
+
+func (i ConnectionSparkArgs) ToConnectionSparkOutputWithContext(ctx context.Context) ConnectionSparkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSparkOutput)
+}
+
+func (i ConnectionSparkArgs) ToConnectionSparkPtrOutput() ConnectionSparkPtrOutput {
+	return i.ToConnectionSparkPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionSparkArgs) ToConnectionSparkPtrOutputWithContext(ctx context.Context) ConnectionSparkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSparkOutput).ToConnectionSparkPtrOutputWithContext(ctx)
+}
+
+// ConnectionSparkPtrInput is an input type that accepts ConnectionSparkArgs, ConnectionSparkPtr and ConnectionSparkPtrOutput values.
+// You can construct a concrete instance of `ConnectionSparkPtrInput` via:
+//
+//	        ConnectionSparkArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionSparkPtrInput interface {
+	pulumi.Input
+
+	ToConnectionSparkPtrOutput() ConnectionSparkPtrOutput
+	ToConnectionSparkPtrOutputWithContext(context.Context) ConnectionSparkPtrOutput
+}
+
+type connectionSparkPtrType ConnectionSparkArgs
+
+func ConnectionSparkPtr(v *ConnectionSparkArgs) ConnectionSparkPtrInput {
+	return (*connectionSparkPtrType)(v)
+}
+
+func (*connectionSparkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSpark)(nil)).Elem()
+}
+
+func (i *connectionSparkPtrType) ToConnectionSparkPtrOutput() ConnectionSparkPtrOutput {
+	return i.ToConnectionSparkPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionSparkPtrType) ToConnectionSparkPtrOutputWithContext(ctx context.Context) ConnectionSparkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSparkPtrOutput)
+}
+
+type ConnectionSparkOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSparkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSpark)(nil)).Elem()
+}
+
+func (o ConnectionSparkOutput) ToConnectionSparkOutput() ConnectionSparkOutput {
+	return o
+}
+
+func (o ConnectionSparkOutput) ToConnectionSparkOutputWithContext(ctx context.Context) ConnectionSparkOutput {
+	return o
+}
+
+func (o ConnectionSparkOutput) ToConnectionSparkPtrOutput() ConnectionSparkPtrOutput {
+	return o.ToConnectionSparkPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionSparkOutput) ToConnectionSparkPtrOutputWithContext(ctx context.Context) ConnectionSparkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionSpark) *ConnectionSpark {
+		return &v
+	}).(ConnectionSparkPtrOutput)
+}
+
+// Dataproc Metastore Service configuration for the connection.
+// Structure is documented below.
+func (o ConnectionSparkOutput) MetastoreServiceConfig() ConnectionSparkMetastoreServiceConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionSpark) *ConnectionSparkMetastoreServiceConfig { return v.MetastoreServiceConfig }).(ConnectionSparkMetastoreServiceConfigPtrOutput)
+}
+
+// (Output)
+// The account ID of the service created for the purpose of this connection.
+func (o ConnectionSparkOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSpark) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Spark History Server configuration for the connection.
+// Structure is documented below.
+func (o ConnectionSparkOutput) SparkHistoryServerConfig() ConnectionSparkSparkHistoryServerConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionSpark) *ConnectionSparkSparkHistoryServerConfig { return v.SparkHistoryServerConfig }).(ConnectionSparkSparkHistoryServerConfigPtrOutput)
+}
+
+type ConnectionSparkPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSparkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSpark)(nil)).Elem()
+}
+
+func (o ConnectionSparkPtrOutput) ToConnectionSparkPtrOutput() ConnectionSparkPtrOutput {
+	return o
+}
+
+func (o ConnectionSparkPtrOutput) ToConnectionSparkPtrOutputWithContext(ctx context.Context) ConnectionSparkPtrOutput {
+	return o
+}
+
+func (o ConnectionSparkPtrOutput) Elem() ConnectionSparkOutput {
+	return o.ApplyT(func(v *ConnectionSpark) ConnectionSpark {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionSpark
+		return ret
+	}).(ConnectionSparkOutput)
+}
+
+// Dataproc Metastore Service configuration for the connection.
+// Structure is documented below.
+func (o ConnectionSparkPtrOutput) MetastoreServiceConfig() ConnectionSparkMetastoreServiceConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionSpark) *ConnectionSparkMetastoreServiceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreServiceConfig
+	}).(ConnectionSparkMetastoreServiceConfigPtrOutput)
+}
+
+// (Output)
+// The account ID of the service created for the purpose of this connection.
+func (o ConnectionSparkPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spark History Server configuration for the connection.
+// Structure is documented below.
+func (o ConnectionSparkPtrOutput) SparkHistoryServerConfig() ConnectionSparkSparkHistoryServerConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionSpark) *ConnectionSparkSparkHistoryServerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SparkHistoryServerConfig
+	}).(ConnectionSparkSparkHistoryServerConfigPtrOutput)
+}
+
+type ConnectionSparkMetastoreServiceConfig struct {
+	// Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
+	MetastoreService *string `pulumi:"metastoreService"`
+}
+
+// ConnectionSparkMetastoreServiceConfigInput is an input type that accepts ConnectionSparkMetastoreServiceConfigArgs and ConnectionSparkMetastoreServiceConfigOutput values.
+// You can construct a concrete instance of `ConnectionSparkMetastoreServiceConfigInput` via:
+//
+//	ConnectionSparkMetastoreServiceConfigArgs{...}
+type ConnectionSparkMetastoreServiceConfigInput interface {
+	pulumi.Input
+
+	ToConnectionSparkMetastoreServiceConfigOutput() ConnectionSparkMetastoreServiceConfigOutput
+	ToConnectionSparkMetastoreServiceConfigOutputWithContext(context.Context) ConnectionSparkMetastoreServiceConfigOutput
+}
+
+type ConnectionSparkMetastoreServiceConfigArgs struct {
+	// Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
+	MetastoreService pulumi.StringPtrInput `pulumi:"metastoreService"`
+}
+
+func (ConnectionSparkMetastoreServiceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSparkMetastoreServiceConfig)(nil)).Elem()
+}
+
+func (i ConnectionSparkMetastoreServiceConfigArgs) ToConnectionSparkMetastoreServiceConfigOutput() ConnectionSparkMetastoreServiceConfigOutput {
+	return i.ToConnectionSparkMetastoreServiceConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionSparkMetastoreServiceConfigArgs) ToConnectionSparkMetastoreServiceConfigOutputWithContext(ctx context.Context) ConnectionSparkMetastoreServiceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSparkMetastoreServiceConfigOutput)
+}
+
+func (i ConnectionSparkMetastoreServiceConfigArgs) ToConnectionSparkMetastoreServiceConfigPtrOutput() ConnectionSparkMetastoreServiceConfigPtrOutput {
+	return i.ToConnectionSparkMetastoreServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionSparkMetastoreServiceConfigArgs) ToConnectionSparkMetastoreServiceConfigPtrOutputWithContext(ctx context.Context) ConnectionSparkMetastoreServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSparkMetastoreServiceConfigOutput).ToConnectionSparkMetastoreServiceConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionSparkMetastoreServiceConfigPtrInput is an input type that accepts ConnectionSparkMetastoreServiceConfigArgs, ConnectionSparkMetastoreServiceConfigPtr and ConnectionSparkMetastoreServiceConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionSparkMetastoreServiceConfigPtrInput` via:
+//
+//	        ConnectionSparkMetastoreServiceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionSparkMetastoreServiceConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionSparkMetastoreServiceConfigPtrOutput() ConnectionSparkMetastoreServiceConfigPtrOutput
+	ToConnectionSparkMetastoreServiceConfigPtrOutputWithContext(context.Context) ConnectionSparkMetastoreServiceConfigPtrOutput
+}
+
+type connectionSparkMetastoreServiceConfigPtrType ConnectionSparkMetastoreServiceConfigArgs
+
+func ConnectionSparkMetastoreServiceConfigPtr(v *ConnectionSparkMetastoreServiceConfigArgs) ConnectionSparkMetastoreServiceConfigPtrInput {
+	return (*connectionSparkMetastoreServiceConfigPtrType)(v)
+}
+
+func (*connectionSparkMetastoreServiceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSparkMetastoreServiceConfig)(nil)).Elem()
+}
+
+func (i *connectionSparkMetastoreServiceConfigPtrType) ToConnectionSparkMetastoreServiceConfigPtrOutput() ConnectionSparkMetastoreServiceConfigPtrOutput {
+	return i.ToConnectionSparkMetastoreServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionSparkMetastoreServiceConfigPtrType) ToConnectionSparkMetastoreServiceConfigPtrOutputWithContext(ctx context.Context) ConnectionSparkMetastoreServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSparkMetastoreServiceConfigPtrOutput)
+}
+
+type ConnectionSparkMetastoreServiceConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSparkMetastoreServiceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSparkMetastoreServiceConfig)(nil)).Elem()
+}
+
+func (o ConnectionSparkMetastoreServiceConfigOutput) ToConnectionSparkMetastoreServiceConfigOutput() ConnectionSparkMetastoreServiceConfigOutput {
+	return o
+}
+
+func (o ConnectionSparkMetastoreServiceConfigOutput) ToConnectionSparkMetastoreServiceConfigOutputWithContext(ctx context.Context) ConnectionSparkMetastoreServiceConfigOutput {
+	return o
+}
+
+func (o ConnectionSparkMetastoreServiceConfigOutput) ToConnectionSparkMetastoreServiceConfigPtrOutput() ConnectionSparkMetastoreServiceConfigPtrOutput {
+	return o.ToConnectionSparkMetastoreServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionSparkMetastoreServiceConfigOutput) ToConnectionSparkMetastoreServiceConfigPtrOutputWithContext(ctx context.Context) ConnectionSparkMetastoreServiceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionSparkMetastoreServiceConfig) *ConnectionSparkMetastoreServiceConfig {
+		return &v
+	}).(ConnectionSparkMetastoreServiceConfigPtrOutput)
+}
+
+// Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
+func (o ConnectionSparkMetastoreServiceConfigOutput) MetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSparkMetastoreServiceConfig) *string { return v.MetastoreService }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionSparkMetastoreServiceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSparkMetastoreServiceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSparkMetastoreServiceConfig)(nil)).Elem()
+}
+
+func (o ConnectionSparkMetastoreServiceConfigPtrOutput) ToConnectionSparkMetastoreServiceConfigPtrOutput() ConnectionSparkMetastoreServiceConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionSparkMetastoreServiceConfigPtrOutput) ToConnectionSparkMetastoreServiceConfigPtrOutputWithContext(ctx context.Context) ConnectionSparkMetastoreServiceConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionSparkMetastoreServiceConfigPtrOutput) Elem() ConnectionSparkMetastoreServiceConfigOutput {
+	return o.ApplyT(func(v *ConnectionSparkMetastoreServiceConfig) ConnectionSparkMetastoreServiceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionSparkMetastoreServiceConfig
+		return ret
+	}).(ConnectionSparkMetastoreServiceConfigOutput)
+}
+
+// Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
+func (o ConnectionSparkMetastoreServiceConfigPtrOutput) MetastoreService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionSparkMetastoreServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreService
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionSparkSparkHistoryServerConfig struct {
+	// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[clusterName].
+	DataprocCluster *string `pulumi:"dataprocCluster"`
+}
+
+// ConnectionSparkSparkHistoryServerConfigInput is an input type that accepts ConnectionSparkSparkHistoryServerConfigArgs and ConnectionSparkSparkHistoryServerConfigOutput values.
+// You can construct a concrete instance of `ConnectionSparkSparkHistoryServerConfigInput` via:
+//
+//	ConnectionSparkSparkHistoryServerConfigArgs{...}
+type ConnectionSparkSparkHistoryServerConfigInput interface {
+	pulumi.Input
+
+	ToConnectionSparkSparkHistoryServerConfigOutput() ConnectionSparkSparkHistoryServerConfigOutput
+	ToConnectionSparkSparkHistoryServerConfigOutputWithContext(context.Context) ConnectionSparkSparkHistoryServerConfigOutput
+}
+
+type ConnectionSparkSparkHistoryServerConfigArgs struct {
+	// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[clusterName].
+	DataprocCluster pulumi.StringPtrInput `pulumi:"dataprocCluster"`
+}
+
+func (ConnectionSparkSparkHistoryServerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSparkSparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (i ConnectionSparkSparkHistoryServerConfigArgs) ToConnectionSparkSparkHistoryServerConfigOutput() ConnectionSparkSparkHistoryServerConfigOutput {
+	return i.ToConnectionSparkSparkHistoryServerConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionSparkSparkHistoryServerConfigArgs) ToConnectionSparkSparkHistoryServerConfigOutputWithContext(ctx context.Context) ConnectionSparkSparkHistoryServerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSparkSparkHistoryServerConfigOutput)
+}
+
+func (i ConnectionSparkSparkHistoryServerConfigArgs) ToConnectionSparkSparkHistoryServerConfigPtrOutput() ConnectionSparkSparkHistoryServerConfigPtrOutput {
+	return i.ToConnectionSparkSparkHistoryServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionSparkSparkHistoryServerConfigArgs) ToConnectionSparkSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) ConnectionSparkSparkHistoryServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSparkSparkHistoryServerConfigOutput).ToConnectionSparkSparkHistoryServerConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionSparkSparkHistoryServerConfigPtrInput is an input type that accepts ConnectionSparkSparkHistoryServerConfigArgs, ConnectionSparkSparkHistoryServerConfigPtr and ConnectionSparkSparkHistoryServerConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionSparkSparkHistoryServerConfigPtrInput` via:
+//
+//	        ConnectionSparkSparkHistoryServerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionSparkSparkHistoryServerConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionSparkSparkHistoryServerConfigPtrOutput() ConnectionSparkSparkHistoryServerConfigPtrOutput
+	ToConnectionSparkSparkHistoryServerConfigPtrOutputWithContext(context.Context) ConnectionSparkSparkHistoryServerConfigPtrOutput
+}
+
+type connectionSparkSparkHistoryServerConfigPtrType ConnectionSparkSparkHistoryServerConfigArgs
+
+func ConnectionSparkSparkHistoryServerConfigPtr(v *ConnectionSparkSparkHistoryServerConfigArgs) ConnectionSparkSparkHistoryServerConfigPtrInput {
+	return (*connectionSparkSparkHistoryServerConfigPtrType)(v)
+}
+
+func (*connectionSparkSparkHistoryServerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSparkSparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (i *connectionSparkSparkHistoryServerConfigPtrType) ToConnectionSparkSparkHistoryServerConfigPtrOutput() ConnectionSparkSparkHistoryServerConfigPtrOutput {
+	return i.ToConnectionSparkSparkHistoryServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionSparkSparkHistoryServerConfigPtrType) ToConnectionSparkSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) ConnectionSparkSparkHistoryServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionSparkSparkHistoryServerConfigPtrOutput)
+}
+
+type ConnectionSparkSparkHistoryServerConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSparkSparkHistoryServerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionSparkSparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (o ConnectionSparkSparkHistoryServerConfigOutput) ToConnectionSparkSparkHistoryServerConfigOutput() ConnectionSparkSparkHistoryServerConfigOutput {
+	return o
+}
+
+func (o ConnectionSparkSparkHistoryServerConfigOutput) ToConnectionSparkSparkHistoryServerConfigOutputWithContext(ctx context.Context) ConnectionSparkSparkHistoryServerConfigOutput {
+	return o
+}
+
+func (o ConnectionSparkSparkHistoryServerConfigOutput) ToConnectionSparkSparkHistoryServerConfigPtrOutput() ConnectionSparkSparkHistoryServerConfigPtrOutput {
+	return o.ToConnectionSparkSparkHistoryServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionSparkSparkHistoryServerConfigOutput) ToConnectionSparkSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) ConnectionSparkSparkHistoryServerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionSparkSparkHistoryServerConfig) *ConnectionSparkSparkHistoryServerConfig {
+		return &v
+	}).(ConnectionSparkSparkHistoryServerConfigPtrOutput)
+}
+
+// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[clusterName].
+func (o ConnectionSparkSparkHistoryServerConfigOutput) DataprocCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionSparkSparkHistoryServerConfig) *string { return v.DataprocCluster }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionSparkSparkHistoryServerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionSparkSparkHistoryServerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionSparkSparkHistoryServerConfig)(nil)).Elem()
+}
+
+func (o ConnectionSparkSparkHistoryServerConfigPtrOutput) ToConnectionSparkSparkHistoryServerConfigPtrOutput() ConnectionSparkSparkHistoryServerConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionSparkSparkHistoryServerConfigPtrOutput) ToConnectionSparkSparkHistoryServerConfigPtrOutputWithContext(ctx context.Context) ConnectionSparkSparkHistoryServerConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionSparkSparkHistoryServerConfigPtrOutput) Elem() ConnectionSparkSparkHistoryServerConfigOutput {
+	return o.ApplyT(func(v *ConnectionSparkSparkHistoryServerConfig) ConnectionSparkSparkHistoryServerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionSparkSparkHistoryServerConfig
+		return ret
+	}).(ConnectionSparkSparkHistoryServerConfigOutput)
+}
+
+// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[clusterName].
+func (o ConnectionSparkSparkHistoryServerConfigPtrOutput) DataprocCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionSparkSparkHistoryServerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataprocCluster
+	}).(pulumi.StringPtrOutput)
+}
+
 type DataTransferConfigEmailPreferences struct {
 	// If true, email notifications will be sent on transfer run failures.
 	EnableFailureEmail bool `pulumi:"enableFailureEmail"`
@@ -13739,6 +14200,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamBindingConditionPtrInput)(nil)).Elem(), ConnectionIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamMemberConditionInput)(nil)).Elem(), ConnectionIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamMemberConditionPtrInput)(nil)).Elem(), ConnectionIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSparkInput)(nil)).Elem(), ConnectionSparkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSparkPtrInput)(nil)).Elem(), ConnectionSparkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSparkMetastoreServiceConfigInput)(nil)).Elem(), ConnectionSparkMetastoreServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSparkMetastoreServiceConfigPtrInput)(nil)).Elem(), ConnectionSparkMetastoreServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSparkSparkHistoryServerConfigInput)(nil)).Elem(), ConnectionSparkSparkHistoryServerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionSparkSparkHistoryServerConfigPtrInput)(nil)).Elem(), ConnectionSparkSparkHistoryServerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigEmailPreferencesInput)(nil)).Elem(), DataTransferConfigEmailPreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigEmailPreferencesPtrInput)(nil)).Elem(), DataTransferConfigEmailPreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsInput)(nil)).Elem(), DataTransferConfigScheduleOptionsArgs{})
@@ -13885,6 +14352,12 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(ConnectionIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionSparkOutput{})
+	pulumi.RegisterOutputType(ConnectionSparkPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionSparkMetastoreServiceConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionSparkMetastoreServiceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionSparkSparkHistoryServerConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionSparkSparkHistoryServerConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigEmailPreferencesOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigEmailPreferencesPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsOutput{})

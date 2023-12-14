@@ -9,6 +9,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.gkehub.FleetArgs;
+import com.pulumi.gcp.gkehub.outputs.FleetDefaultClusterConfig;
 import com.pulumi.gcp.gkehub.outputs.FleetState;
 import java.lang.String;
 import java.util.List;
@@ -34,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.gkehub.Fleet;
  * import com.pulumi.gcp.gkehub.FleetArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FleetDefaultClusterConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FleetDefaultClusterConfigSecurityPostureConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,6 +51,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Fleet(&#34;default&#34;, FleetArgs.builder()        
+ *             .defaultClusterConfig(FleetDefaultClusterConfigArgs.builder()
+ *                 .securityPostureConfig(FleetDefaultClusterConfigSecurityPostureConfigArgs.builder()
+ *                     .mode(&#34;DISABLED&#34;)
+ *                     .vulnerabilityMode(&#34;VULNERABILITY_DISABLED&#34;)
+ *                     .build())
+ *                 .build())
  *             .displayName(&#34;my production fleet&#34;)
  *             .build());
  * 
@@ -91,6 +100,22 @@ public class Fleet extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * The default cluster configurations to apply across the fleet.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="defaultClusterConfig", refs={FleetDefaultClusterConfig.class}, tree="[0]")
+    private Output</* @Nullable */ FleetDefaultClusterConfig> defaultClusterConfig;
+
+    /**
+     * @return The default cluster configurations to apply across the fleet.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<FleetDefaultClusterConfig>> defaultClusterConfig() {
+        return Codegen.optional(this.defaultClusterConfig);
     }
     /**
      * The time the fleet was deleted, in RFC3339 text format.

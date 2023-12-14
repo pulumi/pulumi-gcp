@@ -4,11 +4,14 @@
 package com.pulumi.gcp.cloudidentity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsMembershipRoleExpiryDetail;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetGroupMembershipsMembershipRole {
+    private List<GetGroupMembershipsMembershipRoleExpiryDetail> expiryDetails;
     /**
      * @return The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
      * 
@@ -16,6 +19,9 @@ public final class GetGroupMembershipsMembershipRole {
     private String name;
 
     private GetGroupMembershipsMembershipRole() {}
+    public List<GetGroupMembershipsMembershipRoleExpiryDetail> expiryDetails() {
+        return this.expiryDetails;
+    }
     /**
      * @return The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
      * 
@@ -33,13 +39,23 @@ public final class GetGroupMembershipsMembershipRole {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetGroupMembershipsMembershipRoleExpiryDetail> expiryDetails;
         private String name;
         public Builder() {}
         public Builder(GetGroupMembershipsMembershipRole defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.expiryDetails = defaults.expiryDetails;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
+        public Builder expiryDetails(List<GetGroupMembershipsMembershipRoleExpiryDetail> expiryDetails) {
+            this.expiryDetails = Objects.requireNonNull(expiryDetails);
+            return this;
+        }
+        public Builder expiryDetails(GetGroupMembershipsMembershipRoleExpiryDetail... expiryDetails) {
+            return expiryDetails(List.of(expiryDetails));
+        }
         @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
@@ -47,6 +63,7 @@ public final class GetGroupMembershipsMembershipRole {
         }
         public GetGroupMembershipsMembershipRole build() {
             final var _resultValue = new GetGroupMembershipsMembershipRole();
+            _resultValue.expiryDetails = expiryDetails;
             _resultValue.name = name;
             return _resultValue;
         }

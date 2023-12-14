@@ -212,8 +212,6 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
      * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -221,8 +219,6 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
      * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

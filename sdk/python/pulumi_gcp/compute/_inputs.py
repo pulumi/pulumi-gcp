@@ -63,6 +63,7 @@ __all__ = [
     'ForwardingRuleServiceDirectoryRegistrationsArgs',
     'GlobalForwardingRuleMetadataFilterArgs',
     'GlobalForwardingRuleMetadataFilterFilterLabelArgs',
+    'GlobalForwardingRuleServiceDirectoryRegistrationsArgs',
     'HaVpnGatewayVpnInterfaceArgs',
     'HealthCheckGrpcHealthCheckArgs',
     'HealthCheckHttp2HealthCheckArgs',
@@ -4439,6 +4440,51 @@ class GlobalForwardingRuleMetadataFilterFilterLabelArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GlobalForwardingRuleServiceDirectoryRegistrationsArgs:
+    def __init__(__self__, *,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 service_directory_region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] namespace: Service Directory namespace to register the forwarding rule under.
+        :param pulumi.Input[str] service_directory_region: [Optional] Service Directory region to register this global forwarding rule under.
+               Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+               Google APIs Forwarding Rules on the same network should use the same Service
+               Directory region.
+        """
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if service_directory_region is not None:
+            pulumi.set(__self__, "service_directory_region", service_directory_region)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service Directory namespace to register the forwarding rule under.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="serviceDirectoryRegion")
+    def service_directory_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] Service Directory region to register this global forwarding rule under.
+        Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+        Google APIs Forwarding Rules on the same network should use the same Service
+        Directory region.
+        """
+        return pulumi.get(self, "service_directory_region")
+
+    @service_directory_region.setter
+    def service_directory_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_directory_region", value)
 
 
 @pulumi.input_type

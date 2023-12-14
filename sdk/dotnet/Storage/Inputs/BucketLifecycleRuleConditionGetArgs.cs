@@ -79,6 +79,12 @@ namespace Pulumi.Gcp.Storage.Inputs
         }
 
         /// <summary>
+        /// While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+        /// </summary>
+        [Input("noAge")]
+        public Input<bool>? NoAge { get; set; }
+
+        /// <summary>
         /// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
         /// </summary>
         [Input("noncurrentTimeBefore")]

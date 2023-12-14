@@ -40,7 +40,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -57,9 +56,7 @@ import javax.annotation.Nullable;
  *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
  *             .location(&#34;us-central1-a&#34;)
  *             .initialNodeCount(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
  *             .membershipId(&#34;my-membership&#34;)
@@ -68,16 +65,12 @@ import javax.annotation.Nullable;
  *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
  *             .location(&#34;global&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
  *             .location(&#34;global&#34;)
@@ -91,9 +84,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -118,7 +109,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncOciArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -135,9 +125,7 @@ import javax.annotation.Nullable;
  *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
  *             .location(&#34;us-central1-a&#34;)
  *             .initialNodeCount(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
  *             .membershipId(&#34;my-membership&#34;)
@@ -146,16 +134,12 @@ import javax.annotation.Nullable;
  *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
  *             .location(&#34;global&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
  *             .location(&#34;global&#34;)
@@ -173,9 +157,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -189,7 +171,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.gkehub.Feature;
  * import com.pulumi.gcp.gkehub.FeatureArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -204,11 +185,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
- *             .location(&#34;global&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .location(&#34;global&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -231,7 +210,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.FeatureMembership;
  * import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipMeshArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -248,9 +226,7 @@ import javax.annotation.Nullable;
  *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
  *             .location(&#34;us-central1-a&#34;)
  *             .initialNodeCount(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
  *             .membershipId(&#34;my-membership&#34;)
@@ -259,15 +235,11 @@ import javax.annotation.Nullable;
  *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
  *             .location(&#34;global&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
  *             .location(&#34;global&#34;)
@@ -276,9 +248,78 @@ import javax.annotation.Nullable;
  *             .mesh(FeatureMembershipMeshArgs.builder()
  *                 .management(&#34;MANAGEMENT_AUTOMATIC&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Config Management With Regional Membership
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.gkehub.Membership;
+ * import com.pulumi.gcp.gkehub.MembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.FeatureMembership;
+ * import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
+ *             .location(&#34;us-central1-a&#34;)
+ *             .initialNodeCount(1)
+ *             .build());
+ * 
+ *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
+ *             .membershipId(&#34;my-membership&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .endpoint(MembershipEndpointArgs.builder()
+ *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
+ *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .build());
+ * 
+ *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .feature(feature.name())
+ *             .membership(membership.membershipId())
+ *             .membershipLocation(membership.location())
+ *             .configmanagement(FeatureMembershipConfigmanagementArgs.builder()
+ *                 .version(&#34;1.6.2&#34;)
+ *                 .configSync(FeatureMembershipConfigmanagementConfigSyncArgs.builder()
+ *                     .git(FeatureMembershipConfigmanagementConfigSyncGitArgs.builder()
+ *                         .syncRepo(&#34;https://github.com/hashicorp/terraform&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
  * 
  *     }
  * }
@@ -368,14 +409,14 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
         return this.membership;
     }
     /**
-     * The location of the membership
+     * The location of the membership, for example, &#34;us-central1&#34;. Default is &#34;global&#34;.
      * 
      */
     @Export(name="membershipLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> membershipLocation;
 
     /**
-     * @return The location of the membership
+     * @return The location of the membership, for example, &#34;us-central1&#34;. Default is &#34;global&#34;.
      * 
      */
     public Output<Optional<String>> membershipLocation() {

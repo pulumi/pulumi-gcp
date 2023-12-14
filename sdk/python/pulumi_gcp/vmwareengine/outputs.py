@@ -12,6 +12,8 @@ from . import outputs
 
 __all__ = [
     'ClusterNodeTypeConfig',
+    'NetworkPolicyExternalIp',
+    'NetworkPolicyInternetAccess',
     'NetworkVpcNetwork',
     'PrivateCloudHcx',
     'PrivateCloudManagementCluster',
@@ -20,6 +22,8 @@ __all__ = [
     'PrivateCloudNsx',
     'PrivateCloudVcenter',
     'GetClusterNodeTypeConfigResult',
+    'GetNetworkPolicyExternalIpResult',
+    'GetNetworkPolicyInternetAccessResult',
     'GetNetworkVpcNetworkResult',
     'GetPrivateCloudHcxResult',
     'GetPrivateCloudManagementClusterResult',
@@ -98,6 +102,72 @@ class ClusterNodeTypeConfig(dict):
 
 
 @pulumi.output_type
+class NetworkPolicyExternalIp(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 state: Optional[str] = None):
+        """
+        :param bool enabled: True if the service is enabled; false otherwise.
+        :param str state: (Output)
+               State of the service. New values may be added to this enum when appropriate.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        True if the service is enabled; false otherwise.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        State of the service. New values may be added to this enum when appropriate.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class NetworkPolicyInternetAccess(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 state: Optional[str] = None):
+        """
+        :param bool enabled: True if the service is enabled; false otherwise.
+        :param str state: (Output)
+               State of the service. New values may be added to this enum when appropriate.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        True if the service is enabled; false otherwise.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        State of the service. New values may be added to this enum when appropriate.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
 class NetworkVpcNetwork(dict):
     def __init__(__self__, *,
                  network: Optional[str] = None,
@@ -107,7 +177,7 @@ class NetworkVpcNetwork(dict):
                The relative resource name of the service VPC network this VMware Engine network is attached to.
                For example: projects/123123/global/networks/my-network
         :param str type: VMware Engine network type.
-               Possible values are: `LEGACY`.
+               Possible values are: `LEGACY`, `STANDARD`.
         """
         if network is not None:
             pulumi.set(__self__, "network", network)
@@ -129,7 +199,7 @@ class NetworkVpcNetwork(dict):
     def type(self) -> Optional[str]:
         """
         VMware Engine network type.
-        Possible values are: `LEGACY`.
+        Possible values are: `LEGACY`, `STANDARD`.
         """
         return pulumi.get(self, "type")
 
@@ -350,6 +420,8 @@ class PrivateCloudNetworkConfig(dict):
         suggest = None
         if key == "managementCidr":
             suggest = "management_cidr"
+        elif key == "dnsServerIp":
+            suggest = "dns_server_ip"
         elif key == "managementIpAddressLayoutVersion":
             suggest = "management_ip_address_layout_version"
         elif key == "vmwareEngineNetwork":
@@ -370,11 +442,14 @@ class PrivateCloudNetworkConfig(dict):
 
     def __init__(__self__, *,
                  management_cidr: str,
+                 dns_server_ip: Optional[str] = None,
                  management_ip_address_layout_version: Optional[int] = None,
                  vmware_engine_network: Optional[str] = None,
                  vmware_engine_network_canonical: Optional[str] = None):
         """
         :param str management_cidr: Management CIDR used by VMware management appliances.
+        :param str dns_server_ip: (Output)
+               DNS Server IP of the Private Cloud.
         :param int management_ip_address_layout_version: (Output)
                The IP address layout version of the management IP address range.
                Possible versions include:
@@ -390,6 +465,8 @@ class PrivateCloudNetworkConfig(dict):
                the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
         """
         pulumi.set(__self__, "management_cidr", management_cidr)
+        if dns_server_ip is not None:
+            pulumi.set(__self__, "dns_server_ip", dns_server_ip)
         if management_ip_address_layout_version is not None:
             pulumi.set(__self__, "management_ip_address_layout_version", management_ip_address_layout_version)
         if vmware_engine_network is not None:
@@ -404,6 +481,15 @@ class PrivateCloudNetworkConfig(dict):
         Management CIDR used by VMware management appliances.
         """
         return pulumi.get(self, "management_cidr")
+
+    @property
+    @pulumi.getter(name="dnsServerIp")
+    def dns_server_ip(self) -> Optional[str]:
+        """
+        (Output)
+        DNS Server IP of the Private Cloud.
+        """
+        return pulumi.get(self, "dns_server_ip")
 
     @property
     @pulumi.getter(name="managementIpAddressLayoutVersion")
@@ -615,6 +701,44 @@ class GetClusterNodeTypeConfigResult(dict):
 
 
 @pulumi.output_type
+class GetNetworkPolicyExternalIpResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 state: str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetNetworkPolicyInternetAccessResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 state: str):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
 class GetNetworkVpcNetworkResult(dict):
     def __init__(__self__, *,
                  network: str,
@@ -714,14 +838,21 @@ class GetPrivateCloudManagementClusterNodeTypeConfigResult(dict):
 @pulumi.output_type
 class GetPrivateCloudNetworkConfigResult(dict):
     def __init__(__self__, *,
+                 dns_server_ip: str,
                  management_cidr: str,
                  management_ip_address_layout_version: int,
                  vmware_engine_network: str,
                  vmware_engine_network_canonical: str):
+        pulumi.set(__self__, "dns_server_ip", dns_server_ip)
         pulumi.set(__self__, "management_cidr", management_cidr)
         pulumi.set(__self__, "management_ip_address_layout_version", management_ip_address_layout_version)
         pulumi.set(__self__, "vmware_engine_network", vmware_engine_network)
         pulumi.set(__self__, "vmware_engine_network_canonical", vmware_engine_network_canonical)
+
+    @property
+    @pulumi.getter(name="dnsServerIp")
+    def dns_server_ip(self) -> str:
+        return pulumi.get(self, "dns_server_ip")
 
     @property
     @pulumi.getter(name="managementCidr")

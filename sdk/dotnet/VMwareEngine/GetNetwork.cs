@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.VMwareEngine
     public static class GetNetwork
     {
         /// <summary>
+        /// Use this data source to get details about a VMwareEngine network resource.
+        /// 
+        /// To get more information about VMwareEngine Network, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -26,8 +31,8 @@ namespace Pulumi.Gcp.VMwareEngine
         /// {
         ///     var myNw = Gcp.VMwareEngine.GetNetwork.Invoke(new()
         ///     {
-        ///         Name = "us-central1-default",
         ///         Location = "us-central1",
+        ///         Name = "us-central1-default",
         ///     });
         /// 
         /// });
@@ -39,6 +44,11 @@ namespace Pulumi.Gcp.VMwareEngine
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("gcp:vmwareengine/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to get details about a VMwareEngine network resource.
+        /// 
+        /// To get more information about VMwareEngine Network, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -53,8 +63,8 @@ namespace Pulumi.Gcp.VMwareEngine
         /// {
         ///     var myNw = Gcp.VMwareEngine.GetNetwork.Invoke(new()
         ///     {
-        ///         Name = "us-central1-default",
         ///         Location = "us-central1",
+        ///         Name = "us-central1-default",
         ///     });
         /// 
         /// });

@@ -176,8 +176,6 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Specifies a custom placement policy for the
      * nodes.
-     *
-     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     public readonly placementPolicy!: pulumi.Output<outputs.container.NodePoolPlacementPolicy | undefined>;
     /**
@@ -185,6 +183,13 @@ export class NodePool extends pulumi.CustomResource {
      * the provider-configured project will be used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Specifies node pool-level settings of queued provisioning.
+     * Structure is documented below.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+     */
+    public readonly queuedProvisioning!: pulumi.Output<outputs.container.NodePoolQueuedProvisioning | undefined>;
     /**
      * Specify node upgrade settings to change how GKE upgrades nodes.
      * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
@@ -230,6 +235,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["operation"] = state ? state.operation : undefined;
             resourceInputs["placementPolicy"] = state ? state.placementPolicy : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["queuedProvisioning"] = state ? state.queuedProvisioning : undefined;
             resourceInputs["upgradeSettings"] = state ? state.upgradeSettings : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
@@ -251,6 +257,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["nodeLocations"] = args ? args.nodeLocations : undefined;
             resourceInputs["placementPolicy"] = args ? args.placementPolicy : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["queuedProvisioning"] = args ? args.queuedProvisioning : undefined;
             resourceInputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["instanceGroupUrls"] = undefined /*out*/;
@@ -355,8 +362,6 @@ export interface NodePoolState {
     /**
      * Specifies a custom placement policy for the
      * nodes.
-     *
-     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     placementPolicy?: pulumi.Input<inputs.container.NodePoolPlacementPolicy>;
     /**
@@ -364,6 +369,13 @@ export interface NodePoolState {
      * the provider-configured project will be used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Specifies node pool-level settings of queued provisioning.
+     * Structure is documented below.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+     */
+    queuedProvisioning?: pulumi.Input<inputs.container.NodePoolQueuedProvisioning>;
     /**
      * Specify node upgrade settings to change how GKE upgrades nodes.
      * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
@@ -464,8 +476,6 @@ export interface NodePoolArgs {
     /**
      * Specifies a custom placement policy for the
      * nodes.
-     *
-     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     placementPolicy?: pulumi.Input<inputs.container.NodePoolPlacementPolicy>;
     /**
@@ -473,6 +483,13 @@ export interface NodePoolArgs {
      * the provider-configured project will be used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Specifies node pool-level settings of queued provisioning.
+     * Structure is documented below.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+     */
+    queuedProvisioning?: pulumi.Input<inputs.container.NodePoolQueuedProvisioning>;
     /**
      * Specify node upgrade settings to change how GKE upgrades nodes.
      * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.

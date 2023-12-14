@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
 import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleState;
 import com.pulumi.gcp.compute.outputs.GlobalForwardingRuleMetadataFilter;
+import com.pulumi.gcp.compute.outputs.GlobalForwardingRuleServiceDirectoryRegistrations;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -1276,6 +1277,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.compute.GlobalForwardingRule;
  * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleServiceDirectoryRegistrationsArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -1323,6 +1325,10 @@ import javax.annotation.Nullable;
  *             .network(network.id())
  *             .ipAddress(defaultGlobalAddress.id())
  *             .loadBalancingScheme(&#34;&#34;)
+ *             .serviceDirectoryRegistrations(GlobalForwardingRuleServiceDirectoryRegistrationsArgs.builder()
+ *                 .namespace(&#34;sd-namespace&#34;)
+ *                 .serviceDirectoryRegion(&#34;europe-west3&#34;)
+ *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -1903,6 +1909,24 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> selfLink() {
         return this.selfLink;
+    }
+    /**
+     * Service Directory resources to register this forwarding rule with.
+     * Currently, only supports a single Service Directory resource.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="serviceDirectoryRegistrations", refs={GlobalForwardingRuleServiceDirectoryRegistrations.class}, tree="[0]")
+    private Output<GlobalForwardingRuleServiceDirectoryRegistrations> serviceDirectoryRegistrations;
+
+    /**
+     * @return Service Directory resources to register this forwarding rule with.
+     * Currently, only supports a single Service Directory resource.
+     * Structure is documented below.
+     * 
+     */
+    public Output<GlobalForwardingRuleServiceDirectoryRegistrations> serviceDirectoryRegistrations() {
+        return this.serviceDirectoryRegistrations;
     }
     /**
      * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).

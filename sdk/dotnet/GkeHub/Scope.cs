@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.GkeHub
     ///             { "keyb", "valueb" },
     ///             { "keyc", "valuec" },
     ///         },
-    ///         ScopeId = "tf-test-scope%{random_suffix}",
+    ///         ScopeId = "my-scope",
     ///     });
     /// 
     /// });

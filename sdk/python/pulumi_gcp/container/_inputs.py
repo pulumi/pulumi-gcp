@@ -188,6 +188,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigTaintArgs',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs',
     'ClusterNodePoolPlacementPolicyArgs',
+    'ClusterNodePoolQueuedProvisioningArgs',
     'ClusterNodePoolUpgradeSettingsArgs',
     'ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs',
     'ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs',
@@ -237,6 +238,7 @@ __all__ = [
     'NodePoolNodeConfigTaintArgs',
     'NodePoolNodeConfigWorkloadMetadataConfigArgs',
     'NodePoolPlacementPolicyArgs',
+    'NodePoolQueuedProvisioningArgs',
     'NodePoolUpgradeSettingsArgs',
     'NodePoolUpgradeSettingsBlueGreenSettingsArgs',
     'NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs',
@@ -7104,6 +7106,7 @@ class ClusterNodePoolArgs:
                  node_count: Optional[pulumi.Input[int]] = None,
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  placement_policy: Optional[pulumi.Input['ClusterNodePoolPlacementPolicyArgs']] = None,
+                 queued_provisioning: Optional[pulumi.Input['ClusterNodePoolQueuedProvisioningArgs']] = None,
                  upgrade_settings: Optional[pulumi.Input['ClusterNodePoolUpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -7164,6 +7167,8 @@ class ClusterNodePoolArgs:
             pulumi.set(__self__, "node_locations", node_locations)
         if placement_policy is not None:
             pulumi.set(__self__, "placement_policy", placement_policy)
+        if queued_provisioning is not None:
+            pulumi.set(__self__, "queued_provisioning", queued_provisioning)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -7326,6 +7331,15 @@ class ClusterNodePoolArgs:
     @placement_policy.setter
     def placement_policy(self, value: Optional[pulumi.Input['ClusterNodePoolPlacementPolicyArgs']]):
         pulumi.set(self, "placement_policy", value)
+
+    @property
+    @pulumi.getter(name="queuedProvisioning")
+    def queued_provisioning(self) -> Optional[pulumi.Input['ClusterNodePoolQueuedProvisioningArgs']]:
+        return pulumi.get(self, "queued_provisioning")
+
+    @queued_provisioning.setter
+    def queued_provisioning(self, value: Optional[pulumi.Input['ClusterNodePoolQueuedProvisioningArgs']]):
+        pulumi.set(self, "queued_provisioning", value)
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -9458,6 +9472,28 @@ class ClusterNodePoolPlacementPolicyArgs:
     @tpu_topology.setter
     def tpu_topology(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tpu_topology", value)
+
+
+@pulumi.input_type
+class ClusterNodePoolQueuedProvisioningArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
@@ -11791,6 +11827,28 @@ class NodePoolPlacementPolicyArgs:
     @tpu_topology.setter
     def tpu_topology(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tpu_topology", value)
+
+
+@pulumi.input_type
+class NodePoolQueuedProvisioningArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

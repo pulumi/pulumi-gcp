@@ -377,7 +377,7 @@ class _DatabaseInstanceState:
         :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] psc_service_attachment_link: The link to service attachment of PSC instance.
+        :param pulumi.Input[str] psc_service_attachment_link: the URI that points to the service attachment of the instance.
         :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
         :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
@@ -653,7 +653,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="pscServiceAttachmentLink")
     def psc_service_attachment_link(self) -> Optional[pulumi.Input[str]]:
         """
-        The link to service attachment of PSC instance.
+        the URI that points to the service attachment of the instance.
         """
         return pulumi.get(self, "psc_service_attachment_link")
 
@@ -1209,7 +1209,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] psc_service_attachment_link: The link to service attachment of PSC instance.
+        :param pulumi.Input[str] psc_service_attachment_link: the URI that points to the service attachment of the instance.
         :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
         :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
@@ -1405,7 +1405,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="pscServiceAttachmentLink")
     def psc_service_attachment_link(self) -> pulumi.Output[str]:
         """
-        The link to service attachment of PSC instance.
+        the URI that points to the service attachment of the instance.
         """
         return pulumi.get(self, "psc_service_attachment_link")
 

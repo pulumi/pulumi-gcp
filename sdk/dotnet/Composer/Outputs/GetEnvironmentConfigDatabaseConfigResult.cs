@@ -14,11 +14,16 @@ namespace Pulumi.Gcp.Composer.Outputs
     public sealed class GetEnvironmentConfigDatabaseConfigResult
     {
         public readonly string MachineType;
+        public readonly string Zone;
 
         [OutputConstructor]
-        private GetEnvironmentConfigDatabaseConfigResult(string machineType)
+        private GetEnvironmentConfigDatabaseConfigResult(
+            string machineType,
+
+            string zone)
         {
             MachineType = machineType;
+            Zone = zone;
         }
     }
 }

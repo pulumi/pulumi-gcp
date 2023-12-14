@@ -13,6 +13,8 @@ from . import outputs
 __all__ = [
     'RepositoryGitRemoteSettings',
     'RepositoryGitRemoteSettingsSshAuthenticationConfig',
+    'RepositoryIamBindingCondition',
+    'RepositoryIamMemberCondition',
     'RepositoryReleaseConfigCodeCompilationConfig',
     'RepositoryReleaseConfigRecentScheduledReleaseRecord',
     'RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus',
@@ -161,6 +163,60 @@ class RepositoryGitRemoteSettingsSshAuthenticationConfig(dict):
         The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*/secrets/*/versions/*.
         """
         return pulumi.get(self, "user_private_key_secret_version")
+
+
+@pulumi.output_type
+class RepositoryIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class RepositoryIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

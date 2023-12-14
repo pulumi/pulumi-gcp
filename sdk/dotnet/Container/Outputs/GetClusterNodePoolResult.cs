@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly int NodeCount;
         public readonly ImmutableArray<string> NodeLocations;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolPlacementPolicyResult> PlacementPolicies;
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolQueuedProvisioningResult> QueuedProvisionings;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolUpgradeSettingResult> UpgradeSettings;
         public readonly string Version;
 
@@ -60,6 +61,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterNodePoolPlacementPolicyResult> placementPolicies,
 
+            ImmutableArray<Outputs.GetClusterNodePoolQueuedProvisioningResult> queuedProvisionings,
+
             ImmutableArray<Outputs.GetClusterNodePoolUpgradeSettingResult> upgradeSettings,
 
             string version)
@@ -77,6 +80,7 @@ namespace Pulumi.Gcp.Container.Outputs
             NodeCount = nodeCount;
             NodeLocations = nodeLocations;
             PlacementPolicies = placementPolicies;
+            QueuedProvisionings = queuedProvisionings;
             UpgradeSettings = upgradeSettings;
             Version = version;
         }

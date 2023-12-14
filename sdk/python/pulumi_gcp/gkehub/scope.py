@@ -315,7 +315,7 @@ class Scope(pulumi.CustomResource):
                 "keyb": "valueb",
                 "keyc": "valuec",
             },
-            scope_id="tf-test-scope%{random_suffix}")
+            scope_id="my-scope")
         ```
 
         ## Import
@@ -383,7 +383,7 @@ class Scope(pulumi.CustomResource):
                 "keyb": "valueb",
                 "keyc": "valuec",
             },
-            scope_id="tf-test-scope%{random_suffix}")
+            scope_id="my-scope")
         ```
 
         ## Import

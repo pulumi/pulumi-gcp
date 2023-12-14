@@ -5,6 +5,7 @@ package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.iam.inputs.WorkforcePoolAccessRestrictionsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,25 @@ import javax.annotation.Nullable;
 public final class WorkforcePoolState extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkforcePoolState Empty = new WorkforcePoolState();
+
+    /**
+     * Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+     * sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="accessRestrictions")
+    private @Nullable Output<WorkforcePoolAccessRestrictionsArgs> accessRestrictions;
+
+    /**
+     * @return Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+     * sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkforcePoolAccessRestrictionsArgs>> accessRestrictions() {
+        return Optional.ofNullable(this.accessRestrictions);
+    }
 
     /**
      * A user-specified description of the pool. Cannot exceed 256 characters.
@@ -192,6 +212,7 @@ public final class WorkforcePoolState extends com.pulumi.resources.ResourceArgs 
     private WorkforcePoolState() {}
 
     private WorkforcePoolState(WorkforcePoolState $) {
+        this.accessRestrictions = $.accessRestrictions;
         this.description = $.description;
         this.disabled = $.disabled;
         this.displayName = $.displayName;
@@ -219,6 +240,31 @@ public final class WorkforcePoolState extends com.pulumi.resources.ResourceArgs 
 
         public Builder(WorkforcePoolState defaults) {
             $ = new WorkforcePoolState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessRestrictions Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+         * sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessRestrictions(@Nullable Output<WorkforcePoolAccessRestrictionsArgs> accessRestrictions) {
+            $.accessRestrictions = accessRestrictions;
+            return this;
+        }
+
+        /**
+         * @param accessRestrictions Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+         * sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessRestrictions(WorkforcePoolAccessRestrictionsArgs accessRestrictions) {
+            return accessRestrictions(Output.of(accessRestrictions));
         }
 
         /**

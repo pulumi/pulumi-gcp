@@ -26,6 +26,13 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         [Input("mesh")]
         public Input<Inputs.FeatureFleetDefaultMemberConfigMeshArgs>? Mesh { get; set; }
 
+        /// <summary>
+        /// Policy Controller spec
+        /// Structure is documented below.
+        /// </summary>
+        [Input("policycontroller")]
+        public Input<Inputs.FeatureFleetDefaultMemberConfigPolicycontrollerArgs>? Policycontroller { get; set; }
+
         public FeatureFleetDefaultMemberConfigArgs()
         {
         }

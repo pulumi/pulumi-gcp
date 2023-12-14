@@ -122,17 +122,22 @@ import * as utilities from "../utilities";
  *             includeObjects: {
  *                 mysqlDatabases: [{
  *                     database: "my-database",
- *                     mysqlTables: [{
- *                         table: "includedTable",
- *                         mysqlColumns: [{
- *                             column: "includedColumn",
- *                             dataType: "VARCHAR",
- *                             collation: "utf8mb4",
- *                             primaryKey: false,
- *                             nullable: false,
- *                             ordinalPosition: 0,
- *                         }],
- *                     }],
+ *                     mysqlTables: [
+ *                         {
+ *                             table: "includedTable",
+ *                             mysqlColumns: [{
+ *                                 column: "includedColumn",
+ *                                 dataType: "VARCHAR",
+ *                                 collation: "utf8mb4",
+ *                                 primaryKey: false,
+ *                                 nullable: false,
+ *                                 ordinalPosition: 0,
+ *                             }],
+ *                         },
+ *                         {
+ *                             table: "includedTable_2",
+ *                         },
+ *                     ],
  *                 }],
  *             },
  *             excludeObjects: {

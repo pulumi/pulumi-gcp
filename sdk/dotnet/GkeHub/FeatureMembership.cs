@@ -27,9 +27,6 @@ namespace Pulumi.Gcp.GkeHub
     ///     {
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
@@ -42,9 +39,6 @@ namespace Pulumi.Gcp.GkeHub
     ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
@@ -54,9 +48,6 @@ namespace Pulumi.Gcp.GkeHub
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
@@ -75,9 +66,6 @@ namespace Pulumi.Gcp.GkeHub
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -96,9 +84,6 @@ namespace Pulumi.Gcp.GkeHub
     ///     {
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
@@ -111,9 +96,6 @@ namespace Pulumi.Gcp.GkeHub
     ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
@@ -123,9 +105,6 @@ namespace Pulumi.Gcp.GkeHub
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
@@ -148,9 +127,6 @@ namespace Pulumi.Gcp.GkeHub
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -167,14 +143,11 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
-    ///         Location = "global",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Location = "global",
     ///     });
     /// 
     /// });
@@ -193,9 +166,6 @@ namespace Pulumi.Gcp.GkeHub
     ///     {
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
@@ -208,17 +178,11 @@ namespace Pulumi.Gcp.GkeHub
     ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
     ///         Location = "global",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
@@ -230,9 +194,65 @@ namespace Pulumi.Gcp.GkeHub
     ///         {
     ///             Management = "MANAGEMENT_AUTOMATIC",
     ///         },
-    ///     }, new CustomResourceOptions
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Config Management With Regional Membership
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cluster = new Gcp.Container.Cluster("cluster", new()
     ///     {
-    ///         Provider = google_beta,
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///     });
+    /// 
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "my-membership",
+    ///         Location = "us-central1",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Location = "global",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
+    ///     {
+    ///         Location = "global",
+    ///         Feature = feature.Name,
+    ///         Membership = membership.MembershipId,
+    ///         MembershipLocation = membership.Location,
+    ///         Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
+    ///         {
+    ///             Version = "1.6.2",
+    ///             ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
+    ///             {
+    ///                 Git = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs
+    ///                 {
+    ///                     SyncRepo = "https://github.com/hashicorp/terraform",
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -290,7 +310,7 @@ namespace Pulumi.Gcp.GkeHub
         public Output<string> Membership { get; private set; } = null!;
 
         /// <summary>
-        /// The location of the membership
+        /// The location of the membership, for example, "us-central1". Default is "global".
         /// </summary>
         [Output("membershipLocation")]
         public Output<string?> MembershipLocation { get; private set; } = null!;
@@ -378,7 +398,7 @@ namespace Pulumi.Gcp.GkeHub
         public Input<string> Membership { get; set; } = null!;
 
         /// <summary>
-        /// The location of the membership
+        /// The location of the membership, for example, "us-central1". Default is "global".
         /// </summary>
         [Input("membershipLocation")]
         public Input<string>? MembershipLocation { get; set; }
@@ -428,7 +448,7 @@ namespace Pulumi.Gcp.GkeHub
         public Input<string>? Membership { get; set; }
 
         /// <summary>
-        /// The location of the membership
+        /// The location of the membership, for example, "us-central1". Default is "global".
         /// </summary>
         [Input("membershipLocation")]
         public Input<string>? MembershipLocation { get; set; }

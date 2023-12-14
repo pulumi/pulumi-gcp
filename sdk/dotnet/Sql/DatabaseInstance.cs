@@ -287,7 +287,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The link to service attachment of PSC instance.
+        /// the URI that points to the service attachment of the instance.
         /// </summary>
         [Output("pscServiceAttachmentLink")]
         public Output<string> PscServiceAttachmentLink { get; private set; } = null!;
@@ -660,7 +660,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The link to service attachment of PSC instance.
+        /// the URI that points to the service attachment of the instance.
         /// </summary>
         [Input("pscServiceAttachmentLink")]
         public Input<string>? PscServiceAttachmentLink { get; set; }

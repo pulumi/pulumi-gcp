@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -53,6 +54,11 @@ public final class BucketLifecycleRuleCondition {
      * 
      */
     private @Nullable List<String> matchesSuffixes;
+    /**
+     * @return While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+     * 
+     */
+    private @Nullable Boolean noAge;
     /**
      * @return Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
      * 
@@ -127,6 +133,13 @@ public final class BucketLifecycleRuleCondition {
         return this.matchesSuffixes == null ? List.of() : this.matchesSuffixes;
     }
     /**
+     * @return While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+     * 
+     */
+    public Optional<Boolean> noAge() {
+        return Optional.ofNullable(this.noAge);
+    }
+    /**
      * @return Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
      * 
      */
@@ -165,6 +178,7 @@ public final class BucketLifecycleRuleCondition {
         private @Nullable List<String> matchesPrefixes;
         private @Nullable List<String> matchesStorageClasses;
         private @Nullable List<String> matchesSuffixes;
+        private @Nullable Boolean noAge;
         private @Nullable String noncurrentTimeBefore;
         private @Nullable Integer numNewerVersions;
         private @Nullable String withState;
@@ -179,6 +193,7 @@ public final class BucketLifecycleRuleCondition {
     	      this.matchesPrefixes = defaults.matchesPrefixes;
     	      this.matchesStorageClasses = defaults.matchesStorageClasses;
     	      this.matchesSuffixes = defaults.matchesSuffixes;
+    	      this.noAge = defaults.noAge;
     	      this.noncurrentTimeBefore = defaults.noncurrentTimeBefore;
     	      this.numNewerVersions = defaults.numNewerVersions;
     	      this.withState = defaults.withState;
@@ -234,6 +249,11 @@ public final class BucketLifecycleRuleCondition {
             return matchesSuffixes(List.of(matchesSuffixes));
         }
         @CustomType.Setter
+        public Builder noAge(@Nullable Boolean noAge) {
+            this.noAge = noAge;
+            return this;
+        }
+        @CustomType.Setter
         public Builder noncurrentTimeBefore(@Nullable String noncurrentTimeBefore) {
             this.noncurrentTimeBefore = noncurrentTimeBefore;
             return this;
@@ -258,6 +278,7 @@ public final class BucketLifecycleRuleCondition {
             _resultValue.matchesPrefixes = matchesPrefixes;
             _resultValue.matchesStorageClasses = matchesStorageClasses;
             _resultValue.matchesSuffixes = matchesSuffixes;
+            _resultValue.noAge = noAge;
             _resultValue.noncurrentTimeBefore = noncurrentTimeBefore;
             _resultValue.numNewerVersions = numNewerVersions;
             _resultValue.withState = withState;

@@ -401,7 +401,9 @@ class FunctionEventTriggerArgs:
         :param pulumi.Input[str] retry_policy: Describes the retry policy in case of function's execution failure.
                Retried execution is charged as any other execution.
                Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
-        :param pulumi.Input[str] service_account_email: The email of the service account for this function.
+        :param pulumi.Input[str] service_account_email: Optional. The email of the trigger's service account. The service account
+               must have permission to invoke Cloud Run services. If empty, defaults to the
+               Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
         :param pulumi.Input[str] trigger: (Output)
                Output only. The resource name of the Eventarc trigger.
         :param pulumi.Input[str] trigger_region: The region that the trigger will be in. The trigger will only receive
@@ -480,7 +482,9 @@ class FunctionEventTriggerArgs:
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
-        The email of the service account for this function.
+        Optional. The email of the trigger's service account. The service account
+        must have permission to invoke Cloud Run services. If empty, defaults to the
+        Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
         """
         return pulumi.get(self, "service_account_email")
 

@@ -6,14 +6,20 @@ package com.pulumi.gcp.composer.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigDatabaseConfig {
-    private String machineType;
+    private @Nullable String machineType;
+    private @Nullable String zone;
 
     private EnvironmentConfigDatabaseConfig() {}
-    public String machineType() {
-        return this.machineType;
+    public Optional<String> machineType() {
+        return Optional.ofNullable(this.machineType);
+    }
+    public Optional<String> zone() {
+        return Optional.ofNullable(this.zone);
     }
 
     public static Builder builder() {
@@ -25,21 +31,29 @@ public final class EnvironmentConfigDatabaseConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String machineType;
+        private @Nullable String machineType;
+        private @Nullable String zone;
         public Builder() {}
         public Builder(EnvironmentConfigDatabaseConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.machineType = defaults.machineType;
+    	      this.zone = defaults.zone;
         }
 
         @CustomType.Setter
-        public Builder machineType(String machineType) {
-            this.machineType = Objects.requireNonNull(machineType);
+        public Builder machineType(@Nullable String machineType) {
+            this.machineType = machineType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder zone(@Nullable String zone) {
+            this.zone = zone;
             return this;
         }
         public EnvironmentConfigDatabaseConfig build() {
             final var _resultValue = new EnvironmentConfigDatabaseConfig();
             _resultValue.machineType = machineType;
+            _resultValue.zone = zone;
             return _resultValue;
         }
     }

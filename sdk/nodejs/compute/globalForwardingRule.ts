@@ -90,6 +90,10 @@ import * as utilities from "../utilities";
  *     network: network.id,
  *     ipAddress: defaultGlobalAddress.id,
  *     loadBalancingScheme: "",
+ *     serviceDirectoryRegistrations: {
+ *         namespace: "sd-namespace",
+ *         serviceDirectoryRegion: "europe-west3",
+ *     },
  * }, {
  *     provider: google_beta,
  * });
@@ -367,6 +371,12 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * Service Directory resources to register this forwarding rule with.
+     * Currently, only supports a single Service Directory resource.
+     * Structure is documented below.
+     */
+    public readonly serviceDirectoryRegistrations!: pulumi.Output<outputs.compute.GlobalForwardingRuleServiceDirectoryRegistrations>;
+    /**
      * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
      */
     public readonly sourceIpRanges!: pulumi.Output<string[] | undefined>;
@@ -430,6 +440,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["pscConnectionStatus"] = state ? state.pscConnectionStatus : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["serviceDirectoryRegistrations"] = state ? state.serviceDirectoryRegistrations : undefined;
             resourceInputs["sourceIpRanges"] = state ? state.sourceIpRanges : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
             resourceInputs["target"] = state ? state.target : undefined;
@@ -451,6 +462,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["noAutomateDnsZone"] = args ? args.noAutomateDnsZone : undefined;
             resourceInputs["portRange"] = args ? args.portRange : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["serviceDirectoryRegistrations"] = args ? args.serviceDirectoryRegistrations : undefined;
             resourceInputs["sourceIpRanges"] = args ? args.sourceIpRanges : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
@@ -652,6 +664,12 @@ export interface GlobalForwardingRuleState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * Service Directory resources to register this forwarding rule with.
+     * Currently, only supports a single Service Directory resource.
+     * Structure is documented below.
+     */
+    serviceDirectoryRegistrations?: pulumi.Input<inputs.compute.GlobalForwardingRuleServiceDirectoryRegistrations>;
+    /**
      * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
      */
     sourceIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
@@ -835,6 +853,12 @@ export interface GlobalForwardingRuleArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Service Directory resources to register this forwarding rule with.
+     * Currently, only supports a single Service Directory resource.
+     * Structure is documented below.
+     */
+    serviceDirectoryRegistrations?: pulumi.Input<inputs.compute.GlobalForwardingRuleServiceDirectoryRegistrations>;
     /**
      * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
      */

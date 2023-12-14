@@ -19,6 +19,8 @@ __all__ = [
     'AiEndpointDeployedModelDedicatedResourceMachineSpec',
     'AiEndpointDeployedModelPrivateEndpoint',
     'AiEndpointEncryptionSpec',
+    'AiEndpointIamBindingCondition',
+    'AiEndpointIamMemberCondition',
     'AiFeatureStoreEncryptionSpec',
     'AiFeatureStoreEntityTypeIamBindingCondition',
     'AiFeatureStoreEntityTypeIamMemberCondition',
@@ -688,6 +690,60 @@ class AiEndpointEncryptionSpec(dict):
         Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
         """
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class AiEndpointIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AiEndpointIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

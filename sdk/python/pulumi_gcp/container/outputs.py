@@ -189,6 +189,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigTaint',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfig',
     'ClusterNodePoolPlacementPolicy',
+    'ClusterNodePoolQueuedProvisioning',
     'ClusterNodePoolUpgradeSettings',
     'ClusterNodePoolUpgradeSettingsBlueGreenSettings',
     'ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy',
@@ -238,6 +239,7 @@ __all__ = [
     'NodePoolNodeConfigTaint',
     'NodePoolNodeConfigWorkloadMetadataConfig',
     'NodePoolPlacementPolicy',
+    'NodePoolQueuedProvisioning',
     'NodePoolUpgradeSettings',
     'NodePoolUpgradeSettingsBlueGreenSettings',
     'NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy',
@@ -352,6 +354,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigTaintResult',
     'GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult',
     'GetClusterNodePoolPlacementPolicyResult',
+    'GetClusterNodePoolQueuedProvisioningResult',
     'GetClusterNodePoolUpgradeSettingResult',
     'GetClusterNodePoolUpgradeSettingBlueGreenSettingResult',
     'GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult',
@@ -7838,6 +7841,8 @@ class ClusterNodePool(dict):
             suggest = "node_locations"
         elif key == "placementPolicy":
             suggest = "placement_policy"
+        elif key == "queuedProvisioning":
+            suggest = "queued_provisioning"
         elif key == "upgradeSettings":
             suggest = "upgrade_settings"
 
@@ -7866,6 +7871,7 @@ class ClusterNodePool(dict):
                  node_count: Optional[int] = None,
                  node_locations: Optional[Sequence[str]] = None,
                  placement_policy: Optional['outputs.ClusterNodePoolPlacementPolicy'] = None,
+                 queued_provisioning: Optional['outputs.ClusterNodePoolQueuedProvisioning'] = None,
                  upgrade_settings: Optional['outputs.ClusterNodePoolUpgradeSettings'] = None,
                  version: Optional[str] = None):
         """
@@ -7926,6 +7932,8 @@ class ClusterNodePool(dict):
             pulumi.set(__self__, "node_locations", node_locations)
         if placement_policy is not None:
             pulumi.set(__self__, "placement_policy", placement_policy)
+        if queued_provisioning is not None:
+            pulumi.set(__self__, "queued_provisioning", queued_provisioning)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -8036,6 +8044,11 @@ class ClusterNodePool(dict):
     @pulumi.getter(name="placementPolicy")
     def placement_policy(self) -> Optional['outputs.ClusterNodePoolPlacementPolicy']:
         return pulumi.get(self, "placement_policy")
+
+    @property
+    @pulumi.getter(name="queuedProvisioning")
+    def queued_provisioning(self) -> Optional['outputs.ClusterNodePoolQueuedProvisioning']:
+        return pulumi.get(self, "queued_provisioning")
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -10227,6 +10240,24 @@ class ClusterNodePoolPlacementPolicy(dict):
     @pulumi.getter(name="tpuTopology")
     def tpu_topology(self) -> Optional[str]:
         return pulumi.get(self, "tpu_topology")
+
+
+@pulumi.output_type
+class ClusterNodePoolQueuedProvisioning(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -12677,6 +12708,24 @@ class NodePoolPlacementPolicy(dict):
 
 
 @pulumi.output_type
+class NodePoolQueuedProvisioning(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class NodePoolUpgradeSettings(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -14645,6 +14694,7 @@ class GetClusterNodePoolResult(dict):
                  node_count: int,
                  node_locations: Sequence[str],
                  placement_policies: Sequence['outputs.GetClusterNodePoolPlacementPolicyResult'],
+                 queued_provisionings: Sequence['outputs.GetClusterNodePoolQueuedProvisioningResult'],
                  upgrade_settings: Sequence['outputs.GetClusterNodePoolUpgradeSettingResult'],
                  version: str):
         """
@@ -14663,6 +14713,7 @@ class GetClusterNodePoolResult(dict):
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "node_locations", node_locations)
         pulumi.set(__self__, "placement_policies", placement_policies)
+        pulumi.set(__self__, "queued_provisionings", queued_provisionings)
         pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         pulumi.set(__self__, "version", version)
 
@@ -14733,6 +14784,11 @@ class GetClusterNodePoolResult(dict):
     @pulumi.getter(name="placementPolicies")
     def placement_policies(self) -> Sequence['outputs.GetClusterNodePoolPlacementPolicyResult']:
         return pulumi.get(self, "placement_policies")
+
+    @property
+    @pulumi.getter(name="queuedProvisionings")
+    def queued_provisionings(self) -> Sequence['outputs.GetClusterNodePoolQueuedProvisioningResult']:
+        return pulumi.get(self, "queued_provisionings")
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -15660,6 +15716,18 @@ class GetClusterNodePoolPlacementPolicyResult(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetClusterNodePoolQueuedProvisioningResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

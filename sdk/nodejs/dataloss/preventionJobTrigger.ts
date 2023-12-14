@@ -401,6 +401,46 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Dlp Job Trigger Cloud Storage Optional Timespan Autopopulation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.dataloss.PreventionJobTrigger("basic", {
+ *     description: "Description",
+ *     displayName: "Displayname",
+ *     inspectJob: {
+ *         actions: [{
+ *             saveFindings: {
+ *                 outputConfig: {
+ *                     table: {
+ *                         datasetId: "dataset",
+ *                         projectId: "project",
+ *                     },
+ *                 },
+ *             },
+ *         }],
+ *         inspectTemplateName: "fake",
+ *         storageConfig: {
+ *             cloudStorageOptions: {
+ *                 fileSet: {
+ *                     url: "gs://mybucket/directory/",
+ *                 },
+ *             },
+ *             timespanConfig: {
+ *                 enableAutoPopulationOfTimespanConfig: true,
+ *             },
+ *         },
+ *     },
+ *     parent: "projects/my-project-name",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

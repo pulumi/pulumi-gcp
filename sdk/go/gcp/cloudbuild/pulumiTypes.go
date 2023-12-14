@@ -1456,6 +1456,16 @@ type TriggerBuildArtifacts struct {
 	// The digests of the pushed images will be stored in the Build resource's results field.
 	// If any of the images fail to be pushed, the build is marked FAILURE.
 	Images []string `pulumi:"images"`
+	// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+	// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+	// If any objects fail to be pushed, the build is marked FAILURE.
+	// Structure is documented below.
+	MavenArtifacts []TriggerBuildArtifactsMavenArtifact `pulumi:"mavenArtifacts"`
+	// Npm package to upload to Artifact Registry upon successful completion of all build steps.
+	// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+	// If any objects fail to be pushed, the build is marked FAILURE.
+	// Structure is documented below.
+	NpmPackages []TriggerBuildArtifactsNpmPackage `pulumi:"npmPackages"`
 	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
 	// Files in the workspace matching specified paths globs will be uploaded to the
 	// Cloud Storage location using the builder service account's credentials.
@@ -1463,6 +1473,11 @@ type TriggerBuildArtifacts struct {
 	// If any objects fail to be pushed, the build is marked FAILURE.
 	// Structure is documented below.
 	Objects *TriggerBuildArtifactsObjects `pulumi:"objects"`
+	// Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+	// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+	// If any objects fail to be pushed, the build is marked FAILURE.
+	// Structure is documented below.
+	PythonPackages []TriggerBuildArtifactsPythonPackage `pulumi:"pythonPackages"`
 }
 
 // TriggerBuildArtifactsInput is an input type that accepts TriggerBuildArtifactsArgs and TriggerBuildArtifactsOutput values.
@@ -1482,6 +1497,16 @@ type TriggerBuildArtifactsArgs struct {
 	// The digests of the pushed images will be stored in the Build resource's results field.
 	// If any of the images fail to be pushed, the build is marked FAILURE.
 	Images pulumi.StringArrayInput `pulumi:"images"`
+	// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+	// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+	// If any objects fail to be pushed, the build is marked FAILURE.
+	// Structure is documented below.
+	MavenArtifacts TriggerBuildArtifactsMavenArtifactArrayInput `pulumi:"mavenArtifacts"`
+	// Npm package to upload to Artifact Registry upon successful completion of all build steps.
+	// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+	// If any objects fail to be pushed, the build is marked FAILURE.
+	// Structure is documented below.
+	NpmPackages TriggerBuildArtifactsNpmPackageArrayInput `pulumi:"npmPackages"`
 	// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
 	// Files in the workspace matching specified paths globs will be uploaded to the
 	// Cloud Storage location using the builder service account's credentials.
@@ -1489,6 +1514,11 @@ type TriggerBuildArtifactsArgs struct {
 	// If any objects fail to be pushed, the build is marked FAILURE.
 	// Structure is documented below.
 	Objects TriggerBuildArtifactsObjectsPtrInput `pulumi:"objects"`
+	// Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+	// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+	// If any objects fail to be pushed, the build is marked FAILURE.
+	// Structure is documented below.
+	PythonPackages TriggerBuildArtifactsPythonPackageArrayInput `pulumi:"pythonPackages"`
 }
 
 func (TriggerBuildArtifactsArgs) ElementType() reflect.Type {
@@ -1576,6 +1606,22 @@ func (o TriggerBuildArtifactsOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuildArtifacts) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
+// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+// If any objects fail to be pushed, the build is marked FAILURE.
+// Structure is documented below.
+func (o TriggerBuildArtifactsOutput) MavenArtifacts() TriggerBuildArtifactsMavenArtifactArrayOutput {
+	return o.ApplyT(func(v TriggerBuildArtifacts) []TriggerBuildArtifactsMavenArtifact { return v.MavenArtifacts }).(TriggerBuildArtifactsMavenArtifactArrayOutput)
+}
+
+// Npm package to upload to Artifact Registry upon successful completion of all build steps.
+// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+// If any objects fail to be pushed, the build is marked FAILURE.
+// Structure is documented below.
+func (o TriggerBuildArtifactsOutput) NpmPackages() TriggerBuildArtifactsNpmPackageArrayOutput {
+	return o.ApplyT(func(v TriggerBuildArtifacts) []TriggerBuildArtifactsNpmPackage { return v.NpmPackages }).(TriggerBuildArtifactsNpmPackageArrayOutput)
+}
+
 // A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
 // Files in the workspace matching specified paths globs will be uploaded to the
 // Cloud Storage location using the builder service account's credentials.
@@ -1584,6 +1630,14 @@ func (o TriggerBuildArtifactsOutput) Images() pulumi.StringArrayOutput {
 // Structure is documented below.
 func (o TriggerBuildArtifactsOutput) Objects() TriggerBuildArtifactsObjectsPtrOutput {
 	return o.ApplyT(func(v TriggerBuildArtifacts) *TriggerBuildArtifactsObjects { return v.Objects }).(TriggerBuildArtifactsObjectsPtrOutput)
+}
+
+// Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+// If any objects fail to be pushed, the build is marked FAILURE.
+// Structure is documented below.
+func (o TriggerBuildArtifactsOutput) PythonPackages() TriggerBuildArtifactsPythonPackageArrayOutput {
+	return o.ApplyT(func(v TriggerBuildArtifacts) []TriggerBuildArtifactsPythonPackage { return v.PythonPackages }).(TriggerBuildArtifactsPythonPackageArrayOutput)
 }
 
 type TriggerBuildArtifactsPtrOutput struct{ *pulumi.OutputState }
@@ -1623,6 +1677,32 @@ func (o TriggerBuildArtifactsPtrOutput) Images() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+// If any objects fail to be pushed, the build is marked FAILURE.
+// Structure is documented below.
+func (o TriggerBuildArtifactsPtrOutput) MavenArtifacts() TriggerBuildArtifactsMavenArtifactArrayOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifacts) []TriggerBuildArtifactsMavenArtifact {
+		if v == nil {
+			return nil
+		}
+		return v.MavenArtifacts
+	}).(TriggerBuildArtifactsMavenArtifactArrayOutput)
+}
+
+// Npm package to upload to Artifact Registry upon successful completion of all build steps.
+// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+// If any objects fail to be pushed, the build is marked FAILURE.
+// Structure is documented below.
+func (o TriggerBuildArtifactsPtrOutput) NpmPackages() TriggerBuildArtifactsNpmPackageArrayOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifacts) []TriggerBuildArtifactsNpmPackage {
+		if v == nil {
+			return nil
+		}
+		return v.NpmPackages
+	}).(TriggerBuildArtifactsNpmPackageArrayOutput)
+}
+
 // A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
 // Files in the workspace matching specified paths globs will be uploaded to the
 // Cloud Storage location using the builder service account's credentials.
@@ -1636,6 +1716,264 @@ func (o TriggerBuildArtifactsPtrOutput) Objects() TriggerBuildArtifactsObjectsPt
 		}
 		return v.Objects
 	}).(TriggerBuildArtifactsObjectsPtrOutput)
+}
+
+// Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+// If any objects fail to be pushed, the build is marked FAILURE.
+// Structure is documented below.
+func (o TriggerBuildArtifactsPtrOutput) PythonPackages() TriggerBuildArtifactsPythonPackageArrayOutput {
+	return o.ApplyT(func(v *TriggerBuildArtifacts) []TriggerBuildArtifactsPythonPackage {
+		if v == nil {
+			return nil
+		}
+		return v.PythonPackages
+	}).(TriggerBuildArtifactsPythonPackageArrayOutput)
+}
+
+type TriggerBuildArtifactsMavenArtifact struct {
+	// Maven artifactId value used when uploading the artifact to Artifact Registry.
+	ArtifactId *string `pulumi:"artifactId"`
+	// Maven groupId value used when uploading the artifact to Artifact Registry.
+	GroupId *string `pulumi:"groupId"`
+	// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+	Path *string `pulumi:"path"`
+	// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY"
+	// Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+	Repository *string `pulumi:"repository"`
+	// Maven version value used when uploading the artifact to Artifact Registry.
+	Version *string `pulumi:"version"`
+}
+
+// TriggerBuildArtifactsMavenArtifactInput is an input type that accepts TriggerBuildArtifactsMavenArtifactArgs and TriggerBuildArtifactsMavenArtifactOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsMavenArtifactInput` via:
+//
+//	TriggerBuildArtifactsMavenArtifactArgs{...}
+type TriggerBuildArtifactsMavenArtifactInput interface {
+	pulumi.Input
+
+	ToTriggerBuildArtifactsMavenArtifactOutput() TriggerBuildArtifactsMavenArtifactOutput
+	ToTriggerBuildArtifactsMavenArtifactOutputWithContext(context.Context) TriggerBuildArtifactsMavenArtifactOutput
+}
+
+type TriggerBuildArtifactsMavenArtifactArgs struct {
+	// Maven artifactId value used when uploading the artifact to Artifact Registry.
+	ArtifactId pulumi.StringPtrInput `pulumi:"artifactId"`
+	// Maven groupId value used when uploading the artifact to Artifact Registry.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY"
+	// Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+	// Maven version value used when uploading the artifact to Artifact Registry.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (TriggerBuildArtifactsMavenArtifactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildArtifactsMavenArtifact)(nil)).Elem()
+}
+
+func (i TriggerBuildArtifactsMavenArtifactArgs) ToTriggerBuildArtifactsMavenArtifactOutput() TriggerBuildArtifactsMavenArtifactOutput {
+	return i.ToTriggerBuildArtifactsMavenArtifactOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildArtifactsMavenArtifactArgs) ToTriggerBuildArtifactsMavenArtifactOutputWithContext(ctx context.Context) TriggerBuildArtifactsMavenArtifactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsMavenArtifactOutput)
+}
+
+// TriggerBuildArtifactsMavenArtifactArrayInput is an input type that accepts TriggerBuildArtifactsMavenArtifactArray and TriggerBuildArtifactsMavenArtifactArrayOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsMavenArtifactArrayInput` via:
+//
+//	TriggerBuildArtifactsMavenArtifactArray{ TriggerBuildArtifactsMavenArtifactArgs{...} }
+type TriggerBuildArtifactsMavenArtifactArrayInput interface {
+	pulumi.Input
+
+	ToTriggerBuildArtifactsMavenArtifactArrayOutput() TriggerBuildArtifactsMavenArtifactArrayOutput
+	ToTriggerBuildArtifactsMavenArtifactArrayOutputWithContext(context.Context) TriggerBuildArtifactsMavenArtifactArrayOutput
+}
+
+type TriggerBuildArtifactsMavenArtifactArray []TriggerBuildArtifactsMavenArtifactInput
+
+func (TriggerBuildArtifactsMavenArtifactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildArtifactsMavenArtifact)(nil)).Elem()
+}
+
+func (i TriggerBuildArtifactsMavenArtifactArray) ToTriggerBuildArtifactsMavenArtifactArrayOutput() TriggerBuildArtifactsMavenArtifactArrayOutput {
+	return i.ToTriggerBuildArtifactsMavenArtifactArrayOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildArtifactsMavenArtifactArray) ToTriggerBuildArtifactsMavenArtifactArrayOutputWithContext(ctx context.Context) TriggerBuildArtifactsMavenArtifactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsMavenArtifactArrayOutput)
+}
+
+type TriggerBuildArtifactsMavenArtifactOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildArtifactsMavenArtifactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildArtifactsMavenArtifact)(nil)).Elem()
+}
+
+func (o TriggerBuildArtifactsMavenArtifactOutput) ToTriggerBuildArtifactsMavenArtifactOutput() TriggerBuildArtifactsMavenArtifactOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsMavenArtifactOutput) ToTriggerBuildArtifactsMavenArtifactOutputWithContext(ctx context.Context) TriggerBuildArtifactsMavenArtifactOutput {
+	return o
+}
+
+// Maven artifactId value used when uploading the artifact to Artifact Registry.
+func (o TriggerBuildArtifactsMavenArtifactOutput) ArtifactId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsMavenArtifact) *string { return v.ArtifactId }).(pulumi.StringPtrOutput)
+}
+
+// Maven groupId value used when uploading the artifact to Artifact Registry.
+func (o TriggerBuildArtifactsMavenArtifactOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsMavenArtifact) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+func (o TriggerBuildArtifactsMavenArtifactOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsMavenArtifact) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY"
+// Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+func (o TriggerBuildArtifactsMavenArtifactOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsMavenArtifact) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+// Maven version value used when uploading the artifact to Artifact Registry.
+func (o TriggerBuildArtifactsMavenArtifactOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsMavenArtifact) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type TriggerBuildArtifactsMavenArtifactArrayOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildArtifactsMavenArtifactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildArtifactsMavenArtifact)(nil)).Elem()
+}
+
+func (o TriggerBuildArtifactsMavenArtifactArrayOutput) ToTriggerBuildArtifactsMavenArtifactArrayOutput() TriggerBuildArtifactsMavenArtifactArrayOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsMavenArtifactArrayOutput) ToTriggerBuildArtifactsMavenArtifactArrayOutputWithContext(ctx context.Context) TriggerBuildArtifactsMavenArtifactArrayOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsMavenArtifactArrayOutput) Index(i pulumi.IntInput) TriggerBuildArtifactsMavenArtifactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBuildArtifactsMavenArtifact {
+		return vs[0].([]TriggerBuildArtifactsMavenArtifact)[vs[1].(int)]
+	}).(TriggerBuildArtifactsMavenArtifactOutput)
+}
+
+type TriggerBuildArtifactsNpmPackage struct {
+	// Path to the package.json. e.g. workspace/path/to/package
+	PackagePath *string `pulumi:"packagePath"`
+	// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY"
+	// Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+	Repository *string `pulumi:"repository"`
+}
+
+// TriggerBuildArtifactsNpmPackageInput is an input type that accepts TriggerBuildArtifactsNpmPackageArgs and TriggerBuildArtifactsNpmPackageOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsNpmPackageInput` via:
+//
+//	TriggerBuildArtifactsNpmPackageArgs{...}
+type TriggerBuildArtifactsNpmPackageInput interface {
+	pulumi.Input
+
+	ToTriggerBuildArtifactsNpmPackageOutput() TriggerBuildArtifactsNpmPackageOutput
+	ToTriggerBuildArtifactsNpmPackageOutputWithContext(context.Context) TriggerBuildArtifactsNpmPackageOutput
+}
+
+type TriggerBuildArtifactsNpmPackageArgs struct {
+	// Path to the package.json. e.g. workspace/path/to/package
+	PackagePath pulumi.StringPtrInput `pulumi:"packagePath"`
+	// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY"
+	// Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+}
+
+func (TriggerBuildArtifactsNpmPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildArtifactsNpmPackage)(nil)).Elem()
+}
+
+func (i TriggerBuildArtifactsNpmPackageArgs) ToTriggerBuildArtifactsNpmPackageOutput() TriggerBuildArtifactsNpmPackageOutput {
+	return i.ToTriggerBuildArtifactsNpmPackageOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildArtifactsNpmPackageArgs) ToTriggerBuildArtifactsNpmPackageOutputWithContext(ctx context.Context) TriggerBuildArtifactsNpmPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsNpmPackageOutput)
+}
+
+// TriggerBuildArtifactsNpmPackageArrayInput is an input type that accepts TriggerBuildArtifactsNpmPackageArray and TriggerBuildArtifactsNpmPackageArrayOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsNpmPackageArrayInput` via:
+//
+//	TriggerBuildArtifactsNpmPackageArray{ TriggerBuildArtifactsNpmPackageArgs{...} }
+type TriggerBuildArtifactsNpmPackageArrayInput interface {
+	pulumi.Input
+
+	ToTriggerBuildArtifactsNpmPackageArrayOutput() TriggerBuildArtifactsNpmPackageArrayOutput
+	ToTriggerBuildArtifactsNpmPackageArrayOutputWithContext(context.Context) TriggerBuildArtifactsNpmPackageArrayOutput
+}
+
+type TriggerBuildArtifactsNpmPackageArray []TriggerBuildArtifactsNpmPackageInput
+
+func (TriggerBuildArtifactsNpmPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildArtifactsNpmPackage)(nil)).Elem()
+}
+
+func (i TriggerBuildArtifactsNpmPackageArray) ToTriggerBuildArtifactsNpmPackageArrayOutput() TriggerBuildArtifactsNpmPackageArrayOutput {
+	return i.ToTriggerBuildArtifactsNpmPackageArrayOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildArtifactsNpmPackageArray) ToTriggerBuildArtifactsNpmPackageArrayOutputWithContext(ctx context.Context) TriggerBuildArtifactsNpmPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsNpmPackageArrayOutput)
+}
+
+type TriggerBuildArtifactsNpmPackageOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildArtifactsNpmPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildArtifactsNpmPackage)(nil)).Elem()
+}
+
+func (o TriggerBuildArtifactsNpmPackageOutput) ToTriggerBuildArtifactsNpmPackageOutput() TriggerBuildArtifactsNpmPackageOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsNpmPackageOutput) ToTriggerBuildArtifactsNpmPackageOutputWithContext(ctx context.Context) TriggerBuildArtifactsNpmPackageOutput {
+	return o
+}
+
+// Path to the package.json. e.g. workspace/path/to/package
+func (o TriggerBuildArtifactsNpmPackageOutput) PackagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsNpmPackage) *string { return v.PackagePath }).(pulumi.StringPtrOutput)
+}
+
+// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY"
+// Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+func (o TriggerBuildArtifactsNpmPackageOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsNpmPackage) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+type TriggerBuildArtifactsNpmPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildArtifactsNpmPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildArtifactsNpmPackage)(nil)).Elem()
+}
+
+func (o TriggerBuildArtifactsNpmPackageArrayOutput) ToTriggerBuildArtifactsNpmPackageArrayOutput() TriggerBuildArtifactsNpmPackageArrayOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsNpmPackageArrayOutput) ToTriggerBuildArtifactsNpmPackageArrayOutputWithContext(ctx context.Context) TriggerBuildArtifactsNpmPackageArrayOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsNpmPackageArrayOutput) Index(i pulumi.IntInput) TriggerBuildArtifactsNpmPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBuildArtifactsNpmPackage {
+		return vs[0].([]TriggerBuildArtifactsNpmPackage)[vs[1].(int)]
+	}).(TriggerBuildArtifactsNpmPackageOutput)
 }
 
 type TriggerBuildArtifactsObjects struct {
@@ -1953,6 +2291,115 @@ func (o TriggerBuildArtifactsObjectsTimingArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBuildArtifactsObjectsTiming {
 		return vs[0].([]TriggerBuildArtifactsObjectsTiming)[vs[1].(int)]
 	}).(TriggerBuildArtifactsObjectsTimingOutput)
+}
+
+type TriggerBuildArtifactsPythonPackage struct {
+	// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
+	Paths []string `pulumi:"paths"`
+	// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY"
+	// Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+	Repository *string `pulumi:"repository"`
+}
+
+// TriggerBuildArtifactsPythonPackageInput is an input type that accepts TriggerBuildArtifactsPythonPackageArgs and TriggerBuildArtifactsPythonPackageOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsPythonPackageInput` via:
+//
+//	TriggerBuildArtifactsPythonPackageArgs{...}
+type TriggerBuildArtifactsPythonPackageInput interface {
+	pulumi.Input
+
+	ToTriggerBuildArtifactsPythonPackageOutput() TriggerBuildArtifactsPythonPackageOutput
+	ToTriggerBuildArtifactsPythonPackageOutputWithContext(context.Context) TriggerBuildArtifactsPythonPackageOutput
+}
+
+type TriggerBuildArtifactsPythonPackageArgs struct {
+	// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY"
+	// Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+}
+
+func (TriggerBuildArtifactsPythonPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildArtifactsPythonPackage)(nil)).Elem()
+}
+
+func (i TriggerBuildArtifactsPythonPackageArgs) ToTriggerBuildArtifactsPythonPackageOutput() TriggerBuildArtifactsPythonPackageOutput {
+	return i.ToTriggerBuildArtifactsPythonPackageOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildArtifactsPythonPackageArgs) ToTriggerBuildArtifactsPythonPackageOutputWithContext(ctx context.Context) TriggerBuildArtifactsPythonPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsPythonPackageOutput)
+}
+
+// TriggerBuildArtifactsPythonPackageArrayInput is an input type that accepts TriggerBuildArtifactsPythonPackageArray and TriggerBuildArtifactsPythonPackageArrayOutput values.
+// You can construct a concrete instance of `TriggerBuildArtifactsPythonPackageArrayInput` via:
+//
+//	TriggerBuildArtifactsPythonPackageArray{ TriggerBuildArtifactsPythonPackageArgs{...} }
+type TriggerBuildArtifactsPythonPackageArrayInput interface {
+	pulumi.Input
+
+	ToTriggerBuildArtifactsPythonPackageArrayOutput() TriggerBuildArtifactsPythonPackageArrayOutput
+	ToTriggerBuildArtifactsPythonPackageArrayOutputWithContext(context.Context) TriggerBuildArtifactsPythonPackageArrayOutput
+}
+
+type TriggerBuildArtifactsPythonPackageArray []TriggerBuildArtifactsPythonPackageInput
+
+func (TriggerBuildArtifactsPythonPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildArtifactsPythonPackage)(nil)).Elem()
+}
+
+func (i TriggerBuildArtifactsPythonPackageArray) ToTriggerBuildArtifactsPythonPackageArrayOutput() TriggerBuildArtifactsPythonPackageArrayOutput {
+	return i.ToTriggerBuildArtifactsPythonPackageArrayOutputWithContext(context.Background())
+}
+
+func (i TriggerBuildArtifactsPythonPackageArray) ToTriggerBuildArtifactsPythonPackageArrayOutputWithContext(ctx context.Context) TriggerBuildArtifactsPythonPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerBuildArtifactsPythonPackageArrayOutput)
+}
+
+type TriggerBuildArtifactsPythonPackageOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildArtifactsPythonPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerBuildArtifactsPythonPackage)(nil)).Elem()
+}
+
+func (o TriggerBuildArtifactsPythonPackageOutput) ToTriggerBuildArtifactsPythonPackageOutput() TriggerBuildArtifactsPythonPackageOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsPythonPackageOutput) ToTriggerBuildArtifactsPythonPackageOutputWithContext(ctx context.Context) TriggerBuildArtifactsPythonPackageOutput {
+	return o
+}
+
+// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
+func (o TriggerBuildArtifactsPythonPackageOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsPythonPackage) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY"
+// Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+func (o TriggerBuildArtifactsPythonPackageOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerBuildArtifactsPythonPackage) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+type TriggerBuildArtifactsPythonPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (TriggerBuildArtifactsPythonPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TriggerBuildArtifactsPythonPackage)(nil)).Elem()
+}
+
+func (o TriggerBuildArtifactsPythonPackageArrayOutput) ToTriggerBuildArtifactsPythonPackageArrayOutput() TriggerBuildArtifactsPythonPackageArrayOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsPythonPackageArrayOutput) ToTriggerBuildArtifactsPythonPackageArrayOutputWithContext(ctx context.Context) TriggerBuildArtifactsPythonPackageArrayOutput {
+	return o
+}
+
+func (o TriggerBuildArtifactsPythonPackageArrayOutput) Index(i pulumi.IntInput) TriggerBuildArtifactsPythonPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TriggerBuildArtifactsPythonPackage {
+		return vs[0].([]TriggerBuildArtifactsPythonPackage)[vs[1].(int)]
+	}).(TriggerBuildArtifactsPythonPackageOutput)
 }
 
 type TriggerBuildAvailableSecrets struct {
@@ -7256,8 +7703,11 @@ func (o GetTriggerBuildArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildOutp
 }
 
 type GetTriggerBuildArtifact struct {
-	Images  []string                        `pulumi:"images"`
-	Objects []GetTriggerBuildArtifactObject `pulumi:"objects"`
+	Images         []string                               `pulumi:"images"`
+	MavenArtifacts []GetTriggerBuildArtifactMavenArtifact `pulumi:"mavenArtifacts"`
+	NpmPackages    []GetTriggerBuildArtifactNpmPackage    `pulumi:"npmPackages"`
+	Objects        []GetTriggerBuildArtifactObject        `pulumi:"objects"`
+	PythonPackages []GetTriggerBuildArtifactPythonPackage `pulumi:"pythonPackages"`
 }
 
 // GetTriggerBuildArtifactInput is an input type that accepts GetTriggerBuildArtifactArgs and GetTriggerBuildArtifactOutput values.
@@ -7272,8 +7722,11 @@ type GetTriggerBuildArtifactInput interface {
 }
 
 type GetTriggerBuildArtifactArgs struct {
-	Images  pulumi.StringArrayInput                 `pulumi:"images"`
-	Objects GetTriggerBuildArtifactObjectArrayInput `pulumi:"objects"`
+	Images         pulumi.StringArrayInput                        `pulumi:"images"`
+	MavenArtifacts GetTriggerBuildArtifactMavenArtifactArrayInput `pulumi:"mavenArtifacts"`
+	NpmPackages    GetTriggerBuildArtifactNpmPackageArrayInput    `pulumi:"npmPackages"`
+	Objects        GetTriggerBuildArtifactObjectArrayInput        `pulumi:"objects"`
+	PythonPackages GetTriggerBuildArtifactPythonPackageArrayInput `pulumi:"pythonPackages"`
 }
 
 func (GetTriggerBuildArtifactArgs) ElementType() reflect.Type {
@@ -7331,8 +7784,20 @@ func (o GetTriggerBuildArtifactOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTriggerBuildArtifact) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
+func (o GetTriggerBuildArtifactOutput) MavenArtifacts() GetTriggerBuildArtifactMavenArtifactArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifact) []GetTriggerBuildArtifactMavenArtifact { return v.MavenArtifacts }).(GetTriggerBuildArtifactMavenArtifactArrayOutput)
+}
+
+func (o GetTriggerBuildArtifactOutput) NpmPackages() GetTriggerBuildArtifactNpmPackageArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifact) []GetTriggerBuildArtifactNpmPackage { return v.NpmPackages }).(GetTriggerBuildArtifactNpmPackageArrayOutput)
+}
+
 func (o GetTriggerBuildArtifactOutput) Objects() GetTriggerBuildArtifactObjectArrayOutput {
 	return o.ApplyT(func(v GetTriggerBuildArtifact) []GetTriggerBuildArtifactObject { return v.Objects }).(GetTriggerBuildArtifactObjectArrayOutput)
+}
+
+func (o GetTriggerBuildArtifactOutput) PythonPackages() GetTriggerBuildArtifactPythonPackageArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifact) []GetTriggerBuildArtifactPythonPackage { return v.PythonPackages }).(GetTriggerBuildArtifactPythonPackageArrayOutput)
 }
 
 type GetTriggerBuildArtifactArrayOutput struct{ *pulumi.OutputState }
@@ -7353,6 +7818,224 @@ func (o GetTriggerBuildArtifactArrayOutput) Index(i pulumi.IntInput) GetTriggerB
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildArtifact {
 		return vs[0].([]GetTriggerBuildArtifact)[vs[1].(int)]
 	}).(GetTriggerBuildArtifactOutput)
+}
+
+type GetTriggerBuildArtifactMavenArtifact struct {
+	ArtifactId string `pulumi:"artifactId"`
+	GroupId    string `pulumi:"groupId"`
+	Path       string `pulumi:"path"`
+	Repository string `pulumi:"repository"`
+	Version    string `pulumi:"version"`
+}
+
+// GetTriggerBuildArtifactMavenArtifactInput is an input type that accepts GetTriggerBuildArtifactMavenArtifactArgs and GetTriggerBuildArtifactMavenArtifactOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArtifactMavenArtifactInput` via:
+//
+//	GetTriggerBuildArtifactMavenArtifactArgs{...}
+type GetTriggerBuildArtifactMavenArtifactInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArtifactMavenArtifactOutput() GetTriggerBuildArtifactMavenArtifactOutput
+	ToGetTriggerBuildArtifactMavenArtifactOutputWithContext(context.Context) GetTriggerBuildArtifactMavenArtifactOutput
+}
+
+type GetTriggerBuildArtifactMavenArtifactArgs struct {
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	GroupId    pulumi.StringInput `pulumi:"groupId"`
+	Path       pulumi.StringInput `pulumi:"path"`
+	Repository pulumi.StringInput `pulumi:"repository"`
+	Version    pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetTriggerBuildArtifactMavenArtifactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildArtifactMavenArtifact)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArtifactMavenArtifactArgs) ToGetTriggerBuildArtifactMavenArtifactOutput() GetTriggerBuildArtifactMavenArtifactOutput {
+	return i.ToGetTriggerBuildArtifactMavenArtifactOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArtifactMavenArtifactArgs) ToGetTriggerBuildArtifactMavenArtifactOutputWithContext(ctx context.Context) GetTriggerBuildArtifactMavenArtifactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactMavenArtifactOutput)
+}
+
+// GetTriggerBuildArtifactMavenArtifactArrayInput is an input type that accepts GetTriggerBuildArtifactMavenArtifactArray and GetTriggerBuildArtifactMavenArtifactArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArtifactMavenArtifactArrayInput` via:
+//
+//	GetTriggerBuildArtifactMavenArtifactArray{ GetTriggerBuildArtifactMavenArtifactArgs{...} }
+type GetTriggerBuildArtifactMavenArtifactArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArtifactMavenArtifactArrayOutput() GetTriggerBuildArtifactMavenArtifactArrayOutput
+	ToGetTriggerBuildArtifactMavenArtifactArrayOutputWithContext(context.Context) GetTriggerBuildArtifactMavenArtifactArrayOutput
+}
+
+type GetTriggerBuildArtifactMavenArtifactArray []GetTriggerBuildArtifactMavenArtifactInput
+
+func (GetTriggerBuildArtifactMavenArtifactArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildArtifactMavenArtifact)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArtifactMavenArtifactArray) ToGetTriggerBuildArtifactMavenArtifactArrayOutput() GetTriggerBuildArtifactMavenArtifactArrayOutput {
+	return i.ToGetTriggerBuildArtifactMavenArtifactArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArtifactMavenArtifactArray) ToGetTriggerBuildArtifactMavenArtifactArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactMavenArtifactArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactMavenArtifactArrayOutput)
+}
+
+type GetTriggerBuildArtifactMavenArtifactOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArtifactMavenArtifactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildArtifactMavenArtifact)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArtifactMavenArtifactOutput) ToGetTriggerBuildArtifactMavenArtifactOutput() GetTriggerBuildArtifactMavenArtifactOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactMavenArtifactOutput) ToGetTriggerBuildArtifactMavenArtifactOutputWithContext(ctx context.Context) GetTriggerBuildArtifactMavenArtifactOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactMavenArtifactOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactMavenArtifact) string { return v.ArtifactId }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildArtifactMavenArtifactOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactMavenArtifact) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildArtifactMavenArtifactOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactMavenArtifact) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildArtifactMavenArtifactOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactMavenArtifact) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildArtifactMavenArtifactOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactMavenArtifact) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetTriggerBuildArtifactMavenArtifactArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArtifactMavenArtifactArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildArtifactMavenArtifact)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArtifactMavenArtifactArrayOutput) ToGetTriggerBuildArtifactMavenArtifactArrayOutput() GetTriggerBuildArtifactMavenArtifactArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactMavenArtifactArrayOutput) ToGetTriggerBuildArtifactMavenArtifactArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactMavenArtifactArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactMavenArtifactArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildArtifactMavenArtifactOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildArtifactMavenArtifact {
+		return vs[0].([]GetTriggerBuildArtifactMavenArtifact)[vs[1].(int)]
+	}).(GetTriggerBuildArtifactMavenArtifactOutput)
+}
+
+type GetTriggerBuildArtifactNpmPackage struct {
+	PackagePath string `pulumi:"packagePath"`
+	Repository  string `pulumi:"repository"`
+}
+
+// GetTriggerBuildArtifactNpmPackageInput is an input type that accepts GetTriggerBuildArtifactNpmPackageArgs and GetTriggerBuildArtifactNpmPackageOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArtifactNpmPackageInput` via:
+//
+//	GetTriggerBuildArtifactNpmPackageArgs{...}
+type GetTriggerBuildArtifactNpmPackageInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArtifactNpmPackageOutput() GetTriggerBuildArtifactNpmPackageOutput
+	ToGetTriggerBuildArtifactNpmPackageOutputWithContext(context.Context) GetTriggerBuildArtifactNpmPackageOutput
+}
+
+type GetTriggerBuildArtifactNpmPackageArgs struct {
+	PackagePath pulumi.StringInput `pulumi:"packagePath"`
+	Repository  pulumi.StringInput `pulumi:"repository"`
+}
+
+func (GetTriggerBuildArtifactNpmPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildArtifactNpmPackage)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArtifactNpmPackageArgs) ToGetTriggerBuildArtifactNpmPackageOutput() GetTriggerBuildArtifactNpmPackageOutput {
+	return i.ToGetTriggerBuildArtifactNpmPackageOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArtifactNpmPackageArgs) ToGetTriggerBuildArtifactNpmPackageOutputWithContext(ctx context.Context) GetTriggerBuildArtifactNpmPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactNpmPackageOutput)
+}
+
+// GetTriggerBuildArtifactNpmPackageArrayInput is an input type that accepts GetTriggerBuildArtifactNpmPackageArray and GetTriggerBuildArtifactNpmPackageArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArtifactNpmPackageArrayInput` via:
+//
+//	GetTriggerBuildArtifactNpmPackageArray{ GetTriggerBuildArtifactNpmPackageArgs{...} }
+type GetTriggerBuildArtifactNpmPackageArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArtifactNpmPackageArrayOutput() GetTriggerBuildArtifactNpmPackageArrayOutput
+	ToGetTriggerBuildArtifactNpmPackageArrayOutputWithContext(context.Context) GetTriggerBuildArtifactNpmPackageArrayOutput
+}
+
+type GetTriggerBuildArtifactNpmPackageArray []GetTriggerBuildArtifactNpmPackageInput
+
+func (GetTriggerBuildArtifactNpmPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildArtifactNpmPackage)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArtifactNpmPackageArray) ToGetTriggerBuildArtifactNpmPackageArrayOutput() GetTriggerBuildArtifactNpmPackageArrayOutput {
+	return i.ToGetTriggerBuildArtifactNpmPackageArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArtifactNpmPackageArray) ToGetTriggerBuildArtifactNpmPackageArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactNpmPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactNpmPackageArrayOutput)
+}
+
+type GetTriggerBuildArtifactNpmPackageOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArtifactNpmPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildArtifactNpmPackage)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArtifactNpmPackageOutput) ToGetTriggerBuildArtifactNpmPackageOutput() GetTriggerBuildArtifactNpmPackageOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactNpmPackageOutput) ToGetTriggerBuildArtifactNpmPackageOutputWithContext(ctx context.Context) GetTriggerBuildArtifactNpmPackageOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactNpmPackageOutput) PackagePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactNpmPackage) string { return v.PackagePath }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerBuildArtifactNpmPackageOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactNpmPackage) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+type GetTriggerBuildArtifactNpmPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArtifactNpmPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildArtifactNpmPackage)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArtifactNpmPackageArrayOutput) ToGetTriggerBuildArtifactNpmPackageArrayOutput() GetTriggerBuildArtifactNpmPackageArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactNpmPackageArrayOutput) ToGetTriggerBuildArtifactNpmPackageArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactNpmPackageArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactNpmPackageArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildArtifactNpmPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildArtifactNpmPackage {
+		return vs[0].([]GetTriggerBuildArtifactNpmPackage)[vs[1].(int)]
+	}).(GetTriggerBuildArtifactNpmPackageOutput)
 }
 
 type GetTriggerBuildArtifactObject struct {
@@ -7568,6 +8251,106 @@ func (o GetTriggerBuildArtifactObjectTimingArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildArtifactObjectTiming {
 		return vs[0].([]GetTriggerBuildArtifactObjectTiming)[vs[1].(int)]
 	}).(GetTriggerBuildArtifactObjectTimingOutput)
+}
+
+type GetTriggerBuildArtifactPythonPackage struct {
+	Paths      []string `pulumi:"paths"`
+	Repository string   `pulumi:"repository"`
+}
+
+// GetTriggerBuildArtifactPythonPackageInput is an input type that accepts GetTriggerBuildArtifactPythonPackageArgs and GetTriggerBuildArtifactPythonPackageOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArtifactPythonPackageInput` via:
+//
+//	GetTriggerBuildArtifactPythonPackageArgs{...}
+type GetTriggerBuildArtifactPythonPackageInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArtifactPythonPackageOutput() GetTriggerBuildArtifactPythonPackageOutput
+	ToGetTriggerBuildArtifactPythonPackageOutputWithContext(context.Context) GetTriggerBuildArtifactPythonPackageOutput
+}
+
+type GetTriggerBuildArtifactPythonPackageArgs struct {
+	Paths      pulumi.StringArrayInput `pulumi:"paths"`
+	Repository pulumi.StringInput      `pulumi:"repository"`
+}
+
+func (GetTriggerBuildArtifactPythonPackageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildArtifactPythonPackage)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArtifactPythonPackageArgs) ToGetTriggerBuildArtifactPythonPackageOutput() GetTriggerBuildArtifactPythonPackageOutput {
+	return i.ToGetTriggerBuildArtifactPythonPackageOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArtifactPythonPackageArgs) ToGetTriggerBuildArtifactPythonPackageOutputWithContext(ctx context.Context) GetTriggerBuildArtifactPythonPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactPythonPackageOutput)
+}
+
+// GetTriggerBuildArtifactPythonPackageArrayInput is an input type that accepts GetTriggerBuildArtifactPythonPackageArray and GetTriggerBuildArtifactPythonPackageArrayOutput values.
+// You can construct a concrete instance of `GetTriggerBuildArtifactPythonPackageArrayInput` via:
+//
+//	GetTriggerBuildArtifactPythonPackageArray{ GetTriggerBuildArtifactPythonPackageArgs{...} }
+type GetTriggerBuildArtifactPythonPackageArrayInput interface {
+	pulumi.Input
+
+	ToGetTriggerBuildArtifactPythonPackageArrayOutput() GetTriggerBuildArtifactPythonPackageArrayOutput
+	ToGetTriggerBuildArtifactPythonPackageArrayOutputWithContext(context.Context) GetTriggerBuildArtifactPythonPackageArrayOutput
+}
+
+type GetTriggerBuildArtifactPythonPackageArray []GetTriggerBuildArtifactPythonPackageInput
+
+func (GetTriggerBuildArtifactPythonPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildArtifactPythonPackage)(nil)).Elem()
+}
+
+func (i GetTriggerBuildArtifactPythonPackageArray) ToGetTriggerBuildArtifactPythonPackageArrayOutput() GetTriggerBuildArtifactPythonPackageArrayOutput {
+	return i.ToGetTriggerBuildArtifactPythonPackageArrayOutputWithContext(context.Background())
+}
+
+func (i GetTriggerBuildArtifactPythonPackageArray) ToGetTriggerBuildArtifactPythonPackageArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactPythonPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTriggerBuildArtifactPythonPackageArrayOutput)
+}
+
+type GetTriggerBuildArtifactPythonPackageOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArtifactPythonPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTriggerBuildArtifactPythonPackage)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArtifactPythonPackageOutput) ToGetTriggerBuildArtifactPythonPackageOutput() GetTriggerBuildArtifactPythonPackageOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactPythonPackageOutput) ToGetTriggerBuildArtifactPythonPackageOutputWithContext(ctx context.Context) GetTriggerBuildArtifactPythonPackageOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactPythonPackageOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactPythonPackage) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTriggerBuildArtifactPythonPackageOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerBuildArtifactPythonPackage) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+type GetTriggerBuildArtifactPythonPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTriggerBuildArtifactPythonPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTriggerBuildArtifactPythonPackage)(nil)).Elem()
+}
+
+func (o GetTriggerBuildArtifactPythonPackageArrayOutput) ToGetTriggerBuildArtifactPythonPackageArrayOutput() GetTriggerBuildArtifactPythonPackageArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactPythonPackageArrayOutput) ToGetTriggerBuildArtifactPythonPackageArrayOutputWithContext(ctx context.Context) GetTriggerBuildArtifactPythonPackageArrayOutput {
+	return o
+}
+
+func (o GetTriggerBuildArtifactPythonPackageArrayOutput) Index(i pulumi.IntInput) GetTriggerBuildArtifactPythonPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTriggerBuildArtifactPythonPackage {
+		return vs[0].([]GetTriggerBuildArtifactPythonPackage)[vs[1].(int)]
+	}).(GetTriggerBuildArtifactPythonPackageOutput)
 }
 
 type GetTriggerBuildAvailableSecret struct {
@@ -10003,10 +10786,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildPtrInput)(nil)).Elem(), TriggerBuildArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsInput)(nil)).Elem(), TriggerBuildArtifactsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsPtrInput)(nil)).Elem(), TriggerBuildArtifactsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsMavenArtifactInput)(nil)).Elem(), TriggerBuildArtifactsMavenArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsMavenArtifactArrayInput)(nil)).Elem(), TriggerBuildArtifactsMavenArtifactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsNpmPackageInput)(nil)).Elem(), TriggerBuildArtifactsNpmPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsNpmPackageArrayInput)(nil)).Elem(), TriggerBuildArtifactsNpmPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsObjectsInput)(nil)).Elem(), TriggerBuildArtifactsObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsObjectsPtrInput)(nil)).Elem(), TriggerBuildArtifactsObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsObjectsTimingInput)(nil)).Elem(), TriggerBuildArtifactsObjectsTimingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsObjectsTimingArrayInput)(nil)).Elem(), TriggerBuildArtifactsObjectsTimingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsPythonPackageInput)(nil)).Elem(), TriggerBuildArtifactsPythonPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildArtifactsPythonPackageArrayInput)(nil)).Elem(), TriggerBuildArtifactsPythonPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildAvailableSecretsInput)(nil)).Elem(), TriggerBuildAvailableSecretsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildAvailableSecretsPtrInput)(nil)).Elem(), TriggerBuildAvailableSecretsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerBuildAvailableSecretsSecretManagerInput)(nil)).Elem(), TriggerBuildAvailableSecretsSecretManagerArgs{})
@@ -10065,10 +10854,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArrayInput)(nil)).Elem(), GetTriggerBuildArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactInput)(nil)).Elem(), GetTriggerBuildArtifactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactArrayInput)(nil)).Elem(), GetTriggerBuildArtifactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactMavenArtifactInput)(nil)).Elem(), GetTriggerBuildArtifactMavenArtifactArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactMavenArtifactArrayInput)(nil)).Elem(), GetTriggerBuildArtifactMavenArtifactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactNpmPackageInput)(nil)).Elem(), GetTriggerBuildArtifactNpmPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactNpmPackageArrayInput)(nil)).Elem(), GetTriggerBuildArtifactNpmPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactObjectInput)(nil)).Elem(), GetTriggerBuildArtifactObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactObjectArrayInput)(nil)).Elem(), GetTriggerBuildArtifactObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactObjectTimingInput)(nil)).Elem(), GetTriggerBuildArtifactObjectTimingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactObjectTimingArrayInput)(nil)).Elem(), GetTriggerBuildArtifactObjectTimingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactPythonPackageInput)(nil)).Elem(), GetTriggerBuildArtifactPythonPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildArtifactPythonPackageArrayInput)(nil)).Elem(), GetTriggerBuildArtifactPythonPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildAvailableSecretInput)(nil)).Elem(), GetTriggerBuildAvailableSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildAvailableSecretArrayInput)(nil)).Elem(), GetTriggerBuildAvailableSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerBuildAvailableSecretSecretManagerInput)(nil)).Elem(), GetTriggerBuildAvailableSecretSecretManagerArgs{})
@@ -10127,10 +10922,16 @@ func init() {
 	pulumi.RegisterOutputType(TriggerBuildPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildArtifactsOutput{})
 	pulumi.RegisterOutputType(TriggerBuildArtifactsPtrOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsMavenArtifactOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsMavenArtifactArrayOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsNpmPackageOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsNpmPackageArrayOutput{})
 	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsOutput{})
 	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsTimingOutput{})
 	pulumi.RegisterOutputType(TriggerBuildArtifactsObjectsTimingArrayOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsPythonPackageOutput{})
+	pulumi.RegisterOutputType(TriggerBuildArtifactsPythonPackageArrayOutput{})
 	pulumi.RegisterOutputType(TriggerBuildAvailableSecretsOutput{})
 	pulumi.RegisterOutputType(TriggerBuildAvailableSecretsPtrOutput{})
 	pulumi.RegisterOutputType(TriggerBuildAvailableSecretsSecretManagerOutput{})
@@ -10189,10 +10990,16 @@ func init() {
 	pulumi.RegisterOutputType(GetTriggerBuildArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildArtifactOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildArtifactArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArtifactMavenArtifactOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArtifactMavenArtifactArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArtifactNpmPackageOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArtifactNpmPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildArtifactObjectOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildArtifactObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildArtifactObjectTimingOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildArtifactObjectTimingArrayOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArtifactPythonPackageOutput{})
+	pulumi.RegisterOutputType(GetTriggerBuildArtifactPythonPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildAvailableSecretOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildAvailableSecretArrayOutput{})
 	pulumi.RegisterOutputType(GetTriggerBuildAvailableSecretSecretManagerOutput{})

@@ -12,7 +12,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides connectivity for VMware Engine private clouds.
+//
+// To get more information about Network, see:
+//
+// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+//
 // ## Example Usage
+// ### Vmware Engine Network Standard
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vmwareengine"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vmwareengine.NewNetwork(ctx, "vmw-engine-network", &vmwareengine.NetworkArgs{
+//				Description: pulumi.String("VMwareEngine standard network sample"),
+//				Location:    pulumi.String("global"),
+//				Type:        pulumi.String("STANDARD"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -62,7 +95,7 @@ type Network struct {
 	// State of the VMware Engine network.
 	State pulumi.StringOutput `pulumi:"state"`
 	// VMware Engine network type.
-	// Possible values are: `LEGACY`.
+	// Possible values are: `LEGACY`, `STANDARD`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -122,7 +155,7 @@ type networkState struct {
 	// State of the VMware Engine network.
 	State *string `pulumi:"state"`
 	// VMware Engine network type.
-	// Possible values are: `LEGACY`.
+	// Possible values are: `LEGACY`, `STANDARD`.
 	Type *string `pulumi:"type"`
 	// System-generated unique identifier for the resource.
 	Uid *string `pulumi:"uid"`
@@ -147,7 +180,7 @@ type NetworkState struct {
 	// State of the VMware Engine network.
 	State pulumi.StringPtrInput
 	// VMware Engine network type.
-	// Possible values are: `LEGACY`.
+	// Possible values are: `LEGACY`, `STANDARD`.
 	Type pulumi.StringPtrInput
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringPtrInput
@@ -174,7 +207,7 @@ type networkArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// VMware Engine network type.
-	// Possible values are: `LEGACY`.
+	// Possible values are: `LEGACY`, `STANDARD`.
 	Type string `pulumi:"type"`
 }
 
@@ -192,7 +225,7 @@ type NetworkArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// VMware Engine network type.
-	// Possible values are: `LEGACY`.
+	// Possible values are: `LEGACY`, `STANDARD`.
 	Type pulumi.StringInput
 }
 
@@ -312,7 +345,7 @@ func (o NetworkOutput) State() pulumi.StringOutput {
 }
 
 // VMware Engine network type.
-// Possible values are: `LEGACY`.
+// Possible values are: `LEGACY`, `STANDARD`.
 func (o NetworkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

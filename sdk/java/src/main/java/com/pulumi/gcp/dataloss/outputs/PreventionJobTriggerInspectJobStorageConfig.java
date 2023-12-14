@@ -40,7 +40,7 @@ public final class PreventionJobTriggerInspectJobStorageConfig {
      */
     private @Nullable PreventionJobTriggerInspectJobStorageConfigHybridOptions hybridOptions;
     /**
-     * @return Information on where to inspect
+     * @return Configuration of the timespan of the items to include in scanning
      * Structure is documented below.
      * 
      */
@@ -80,7 +80,7 @@ public final class PreventionJobTriggerInspectJobStorageConfig {
         return Optional.ofNullable(this.hybridOptions);
     }
     /**
-     * @return Information on where to inspect
+     * @return Configuration of the timespan of the items to include in scanning
      * Structure is documented below.
      * 
      */

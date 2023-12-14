@@ -64,6 +64,7 @@ __all__ = [
     'ForwardingRuleServiceDirectoryRegistrations',
     'GlobalForwardingRuleMetadataFilter',
     'GlobalForwardingRuleMetadataFilterFilterLabel',
+    'GlobalForwardingRuleServiceDirectoryRegistrations',
     'HaVpnGatewayVpnInterface',
     'HealthCheckGrpcHealthCheck',
     'HealthCheckHttp2HealthCheck',
@@ -556,6 +557,7 @@ __all__ = [
     'GetForwardingRuleServiceDirectoryRegistrationResult',
     'GetGlobalForwardingRuleMetadataFilterResult',
     'GetGlobalForwardingRuleMetadataFilterFilterLabelResult',
+    'GetGlobalForwardingRuleServiceDirectoryRegistrationResult',
     'GetHcVpnGatewayVpnInterfaceResult',
     'GetHealthCheckGrpcHealthCheckResult',
     'GetHealthCheckHttp2HealthCheckResult',
@@ -4476,6 +4478,60 @@ class GlobalForwardingRuleMetadataFilterFilterLabel(dict):
         length of 1024 characters.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GlobalForwardingRuleServiceDirectoryRegistrations(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceDirectoryRegion":
+            suggest = "service_directory_region"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GlobalForwardingRuleServiceDirectoryRegistrations. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GlobalForwardingRuleServiceDirectoryRegistrations.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GlobalForwardingRuleServiceDirectoryRegistrations.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 namespace: Optional[str] = None,
+                 service_directory_region: Optional[str] = None):
+        """
+        :param str namespace: Service Directory namespace to register the forwarding rule under.
+        :param str service_directory_region: [Optional] Service Directory region to register this global forwarding rule under.
+               Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+               Google APIs Forwarding Rules on the same network should use the same Service
+               Directory region.
+        """
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if service_directory_region is not None:
+            pulumi.set(__self__, "service_directory_region", service_directory_region)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[str]:
+        """
+        Service Directory namespace to register the forwarding rule under.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="serviceDirectoryRegion")
+    def service_directory_region(self) -> Optional[str]:
+        """
+        [Optional] Service Directory region to register this global forwarding rule under.
+        Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+        Google APIs Forwarding Rules on the same network should use the same Service
+        Directory region.
+        """
+        return pulumi.get(self, "service_directory_region")
 
 
 @pulumi.output_type
@@ -37555,6 +37611,25 @@ class GetGlobalForwardingRuleMetadataFilterFilterLabelResult(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetGlobalForwardingRuleServiceDirectoryRegistrationResult(dict):
+    def __init__(__self__, *,
+                 namespace: str,
+                 service_directory_region: str):
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "service_directory_region", service_directory_region)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="serviceDirectoryRegion")
+    def service_directory_region(self) -> str:
+        return pulumi.get(self, "service_directory_region")
 
 
 @pulumi.output_type

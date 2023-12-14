@@ -54,6 +54,13 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         public Input<Inputs.RepositoryRemoteRepositoryConfigPythonRepositoryArgs>? PythonRepository { get; set; }
 
         /// <summary>
+        /// The credentials used to access the remote repository.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("upstreamCredentials")]
+        public Input<Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs>? UpstreamCredentials { get; set; }
+
+        /// <summary>
         /// Specific settings for an Yum remote repository.
         /// Structure is documented below.
         /// </summary>

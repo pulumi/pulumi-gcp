@@ -49,6 +49,44 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Job Limits
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         Resources = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerResourcesArgs
+    ///                         {
+    ///                             Limits = 
+    ///                             {
+    ///                                 { "cpu", "2" },
+    ///                                 { "memory", "1024Mi" },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Cloudrunv2 Job Sql
     /// 
     /// ```csharp

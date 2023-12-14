@@ -118,8 +118,10 @@ class ProviderArgs:
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 migration_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 netapp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_connectivity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_security_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -144,6 +146,7 @@ class ProviderArgs:
                  runtimeconfig_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  secret_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 secure_source_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -377,10 +380,14 @@ class ProviderArgs:
             pulumi.set(__self__, "looker_custom_endpoint", looker_custom_endpoint)
         if memcache_custom_endpoint is not None:
             pulumi.set(__self__, "memcache_custom_endpoint", memcache_custom_endpoint)
+        if migration_center_custom_endpoint is not None:
+            pulumi.set(__self__, "migration_center_custom_endpoint", migration_center_custom_endpoint)
         if ml_engine_custom_endpoint is not None:
             pulumi.set(__self__, "ml_engine_custom_endpoint", ml_engine_custom_endpoint)
         if monitoring_custom_endpoint is not None:
             pulumi.set(__self__, "monitoring_custom_endpoint", monitoring_custom_endpoint)
+        if netapp_custom_endpoint is not None:
+            pulumi.set(__self__, "netapp_custom_endpoint", netapp_custom_endpoint)
         if network_connectivity_custom_endpoint is not None:
             pulumi.set(__self__, "network_connectivity_custom_endpoint", network_connectivity_custom_endpoint)
         if network_management_custom_endpoint is not None:
@@ -433,6 +440,8 @@ class ProviderArgs:
             pulumi.set(__self__, "scopes", scopes)
         if secret_manager_custom_endpoint is not None:
             pulumi.set(__self__, "secret_manager_custom_endpoint", secret_manager_custom_endpoint)
+        if secure_source_manager_custom_endpoint is not None:
+            pulumi.set(__self__, "secure_source_manager_custom_endpoint", secure_source_manager_custom_endpoint)
         if security_center_custom_endpoint is not None:
             pulumi.set(__self__, "security_center_custom_endpoint", security_center_custom_endpoint)
         if security_scanner_custom_endpoint is not None:
@@ -1412,6 +1421,15 @@ class ProviderArgs:
         pulumi.set(self, "memcache_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="migrationCenterCustomEndpoint")
+    def migration_center_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "migration_center_custom_endpoint")
+
+    @migration_center_custom_endpoint.setter
+    def migration_center_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "migration_center_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="mlEngineCustomEndpoint")
     def ml_engine_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "ml_engine_custom_endpoint")
@@ -1428,6 +1446,15 @@ class ProviderArgs:
     @monitoring_custom_endpoint.setter
     def monitoring_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "monitoring_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="netappCustomEndpoint")
+    def netapp_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "netapp_custom_endpoint")
+
+    @netapp_custom_endpoint.setter
+    def netapp_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "netapp_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="networkConnectivityCustomEndpoint")
@@ -1644,6 +1671,15 @@ class ProviderArgs:
     @secret_manager_custom_endpoint.setter
     def secret_manager_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_manager_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="secureSourceManagerCustomEndpoint")
+    def secure_source_manager_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secure_source_manager_custom_endpoint")
+
+    @secure_source_manager_custom_endpoint.setter
+    def secure_source_manager_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secure_source_manager_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="securityCenterCustomEndpoint")
@@ -1970,8 +2006,10 @@ class Provider(pulumi.ProviderResource):
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 migration_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 netapp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_connectivity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_security_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1996,6 +2034,7 @@ class Provider(pulumi.ProviderResource):
                  runtimeconfig_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  secret_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 secure_source_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2160,8 +2199,10 @@ class Provider(pulumi.ProviderResource):
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 migration_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 netapp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_connectivity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_security_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2186,6 +2227,7 @@ class Provider(pulumi.ProviderResource):
                  runtimeconfig_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  secret_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 secure_source_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2322,8 +2364,10 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["logging_custom_endpoint"] = logging_custom_endpoint
             __props__.__dict__["looker_custom_endpoint"] = looker_custom_endpoint
             __props__.__dict__["memcache_custom_endpoint"] = memcache_custom_endpoint
+            __props__.__dict__["migration_center_custom_endpoint"] = migration_center_custom_endpoint
             __props__.__dict__["ml_engine_custom_endpoint"] = ml_engine_custom_endpoint
             __props__.__dict__["monitoring_custom_endpoint"] = monitoring_custom_endpoint
+            __props__.__dict__["netapp_custom_endpoint"] = netapp_custom_endpoint
             __props__.__dict__["network_connectivity_custom_endpoint"] = network_connectivity_custom_endpoint
             __props__.__dict__["network_management_custom_endpoint"] = network_management_custom_endpoint
             __props__.__dict__["network_security_custom_endpoint"] = network_security_custom_endpoint
@@ -2352,6 +2396,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["runtimeconfig_custom_endpoint"] = runtimeconfig_custom_endpoint
             __props__.__dict__["scopes"] = pulumi.Output.from_input(scopes).apply(pulumi.runtime.to_json) if scopes is not None else None
             __props__.__dict__["secret_manager_custom_endpoint"] = secret_manager_custom_endpoint
+            __props__.__dict__["secure_source_manager_custom_endpoint"] = secure_source_manager_custom_endpoint
             __props__.__dict__["security_center_custom_endpoint"] = security_center_custom_endpoint
             __props__.__dict__["security_scanner_custom_endpoint"] = security_scanner_custom_endpoint
             __props__.__dict__["service_directory_custom_endpoint"] = service_directory_custom_endpoint
@@ -2880,6 +2925,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "memcache_custom_endpoint")
 
     @property
+    @pulumi.getter(name="migrationCenterCustomEndpoint")
+    def migration_center_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "migration_center_custom_endpoint")
+
+    @property
     @pulumi.getter(name="mlEngineCustomEndpoint")
     def ml_engine_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "ml_engine_custom_endpoint")
@@ -2888,6 +2938,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="monitoringCustomEndpoint")
     def monitoring_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "monitoring_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="netappCustomEndpoint")
+    def netapp_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "netapp_custom_endpoint")
 
     @property
     @pulumi.getter(name="networkConnectivityCustomEndpoint")
@@ -3003,6 +3058,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="secretManagerCustomEndpoint")
     def secret_manager_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "secret_manager_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="secureSourceManagerCustomEndpoint")
+    def secure_source_manager_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "secure_source_manager_custom_endpoint")
 
     @property
     @pulumi.getter(name="securityCenterCustomEndpoint")

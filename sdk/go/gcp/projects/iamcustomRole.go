@@ -102,7 +102,7 @@ type IAMCustomRole struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
-	// The project that the service account will be created in.
+	// The project that the custom role will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The camel case role id to use for this role. Cannot contain `-` characters.
@@ -162,7 +162,7 @@ type iamcustomRoleState struct {
 	Name *string `pulumi:"name"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions []string `pulumi:"permissions"`
-	// The project that the service account will be created in.
+	// The project that the custom role will be created in.
 	// Defaults to the provider project configuration.
 	Project *string `pulumi:"project"`
 	// The camel case role id to use for this role. Cannot contain `-` characters.
@@ -184,7 +184,7 @@ type IAMCustomRoleState struct {
 	Name pulumi.StringPtrInput
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions pulumi.StringArrayInput
-	// The project that the service account will be created in.
+	// The project that the custom role will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringPtrInput
 	// The camel case role id to use for this role. Cannot contain `-` characters.
@@ -206,7 +206,7 @@ type iamcustomRoleArgs struct {
 	Description *string `pulumi:"description"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions []string `pulumi:"permissions"`
-	// The project that the service account will be created in.
+	// The project that the custom role will be created in.
 	// Defaults to the provider project configuration.
 	Project *string `pulumi:"project"`
 	// The camel case role id to use for this role. Cannot contain `-` characters.
@@ -225,7 +225,7 @@ type IAMCustomRoleArgs struct {
 	Description pulumi.StringPtrInput
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions pulumi.StringArrayInput
-	// The project that the service account will be created in.
+	// The project that the custom role will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringPtrInput
 	// The camel case role id to use for this role. Cannot contain `-` characters.
@@ -345,7 +345,7 @@ func (o IAMCustomRoleOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IAMCustomRole) pulumi.StringArrayOutput { return v.Permissions }).(pulumi.StringArrayOutput)
 }
 
-// The project that the service account will be created in.
+// The project that the custom role will be created in.
 // Defaults to the provider project configuration.
 func (o IAMCustomRoleOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMCustomRole) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)

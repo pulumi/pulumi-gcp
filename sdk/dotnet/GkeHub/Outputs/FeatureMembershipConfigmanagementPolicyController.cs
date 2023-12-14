@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly bool? LogDeniesEnabled;
         /// <summary>
-        /// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
+        /// Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementPolicyControllerMonitoring? Monitoring;
         /// <summary>

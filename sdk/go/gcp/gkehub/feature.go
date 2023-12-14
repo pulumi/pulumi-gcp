@@ -233,6 +233,164 @@ import (
 //	}
 //
 // ```
+// ### Enable Fleet Default Member Config Service Mesh
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				FleetDefaultMemberConfig: &gkehub.FeatureFleetDefaultMemberConfigArgs{
+//					Mesh: &gkehub.FeatureFleetDefaultMemberConfigMeshArgs{
+//						Management: pulumi.String("MANAGEMENT_AUTOMATIC"),
+//					},
+//				},
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Enable Fleet Default Member Config Configmanagement
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				FleetDefaultMemberConfig: &gkehub.FeatureFleetDefaultMemberConfigArgs{
+//					Configmanagement: &gkehub.FeatureFleetDefaultMemberConfigConfigmanagementArgs{
+//						ConfigSync: &gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs{
+//							Git: &gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs{
+//								SyncRepo: pulumi.String("https://github.com/hashicorp/terraform"),
+//							},
+//						},
+//					},
+//				},
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Enable Fleet Default Member Config Policycontroller
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				FleetDefaultMemberConfig: &gkehub.FeatureFleetDefaultMemberConfigArgs{
+//					Policycontroller: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs{
+//						PolicyControllerHubConfig: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{
+//							AuditIntervalSeconds: pulumi.Int(30),
+//							ExemptableNamespaces: pulumi.StringArray{
+//								pulumi.String("foo"),
+//							},
+//							InstallSpec: pulumi.String("INSTALL_SPEC_ENABLED"),
+//							PolicyContent: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{
+//								Bundles: gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray{
+//									&gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs{
+//										Bundle: pulumi.String("policy-essentials-v2022"),
+//										ExemptedNamespaces: pulumi.StringArray{
+//											pulumi.String("foo"),
+//											pulumi.String("bar"),
+//										},
+//									},
+//								},
+//								TemplateLibrary: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{
+//									Installation: pulumi.String("ALL"),
+//								},
+//							},
+//							ReferentialRulesEnabled: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Enable Fleet Default Member Config Policycontroller Set Empty
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				FleetDefaultMemberConfig: &gkehub.FeatureFleetDefaultMemberConfigArgs{
+//					Policycontroller: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs{
+//						PolicyControllerHubConfig: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{
+//							ConstraintViolationLimit: pulumi.Int(50),
+//							DeploymentConfigs: gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray{
+//								&gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs{
+//									Component: pulumi.String("admission"),
+//								},
+//							},
+//							InstallSpec:             pulumi.String("INSTALL_SPEC_ENABLED"),
+//							LogDeniesEnabled:        pulumi.Bool(true),
+//							Monitoring:              nil,
+//							MutationEnabled:         pulumi.Bool(true),
+//							PolicyContent:           nil,
+//							ReferentialRulesEnabled: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

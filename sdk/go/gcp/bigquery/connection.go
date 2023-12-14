@@ -319,6 +319,60 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Connection Spark
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basic, err := dataproc.NewCluster(ctx, "basic", &dataproc.ClusterArgs{
+//				Region: pulumi.String("us-central1"),
+//				ClusterConfig: &dataproc.ClusterClusterConfigArgs{
+//					SoftwareConfig: &dataproc.ClusterClusterConfigSoftwareConfigArgs{
+//						OverrideProperties: pulumi.StringMap{
+//							"dataproc:dataproc.allow.zero.workers": pulumi.String("true"),
+//						},
+//					},
+//					MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
+//						NumInstances: pulumi.Int(1),
+//						MachineType:  pulumi.String("e2-standard-2"),
+//						DiskConfig: &dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs{
+//							BootDiskSizeGb: pulumi.Int(35),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+//				ConnectionId: pulumi.String("my-connection"),
+//				Location:     pulumi.String("US"),
+//				FriendlyName: pulumi.String("👋"),
+//				Description:  pulumi.String("a riveting description"),
+//				Spark: &bigquery.ConnectionSparkArgs{
+//					SparkHistoryServerConfig: &bigquery.ConnectionSparkSparkHistoryServerConfigArgs{
+//						DataprocCluster: basic.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -391,6 +445,9 @@ type Connection struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Container for connection properties to execute stored procedures for Apache Spark. resources.
+	// Structure is documented below.
+	Spark ConnectionSparkPtrOutput `pulumi:"spark"`
 }
 
 // NewConnection registers a new resource with the given unique name, arguments, and options.
@@ -460,6 +517,9 @@ type connectionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Container for connection properties to execute stored procedures for Apache Spark. resources.
+	// Structure is documented below.
+	Spark *ConnectionSpark `pulumi:"spark"`
 }
 
 type ConnectionState struct {
@@ -500,6 +560,9 @@ type ConnectionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Container for connection properties to execute stored procedures for Apache Spark. resources.
+	// Structure is documented below.
+	Spark ConnectionSparkPtrInput
 }
 
 func (ConnectionState) ElementType() reflect.Type {
@@ -539,6 +602,9 @@ type connectionArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Container for connection properties to execute stored procedures for Apache Spark. resources.
+	// Structure is documented below.
+	Spark *ConnectionSpark `pulumi:"spark"`
 }
 
 // The set of arguments for constructing a Connection resource.
@@ -575,6 +641,9 @@ type ConnectionArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Container for connection properties to execute stored procedures for Apache Spark. resources.
+	// Structure is documented below.
+	Spark ConnectionSparkPtrInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {
@@ -735,6 +804,12 @@ func (o ConnectionOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o ConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Container for connection properties to execute stored procedures for Apache Spark. resources.
+// Structure is documented below.
+func (o ConnectionOutput) Spark() ConnectionSparkPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionSparkPtrOutput { return v.Spark }).(ConnectionSparkPtrOutput)
 }
 
 type ConnectionArrayOutput struct{ *pulumi.OutputState }

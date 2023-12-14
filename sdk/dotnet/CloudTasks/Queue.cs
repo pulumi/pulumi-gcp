@@ -12,11 +12,6 @@ namespace Pulumi.Gcp.CloudTasks
     /// <summary>
     /// A named resource to which messages are sent by publishers.
     /// 
-    /// &gt; **Warning:** This resource requires an App Engine application to be created on the
-    /// project you're provisioning it on. If you haven't already enabled it, you
-    /// can create a `gcp.appengine.Application` resource to do so. This
-    /// resource's location will be the same as the App Engine location specified.
-    /// 
     /// ## Example Usage
     /// ### Queue Basic
     /// 

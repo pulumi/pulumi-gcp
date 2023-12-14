@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkehub.inputs.FleetDefaultClusterConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,23 @@ import javax.annotation.Nullable;
 public final class FleetArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FleetArgs Empty = new FleetArgs();
+
+    /**
+     * The default cluster configurations to apply across the fleet.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="defaultClusterConfig")
+    private @Nullable Output<FleetDefaultClusterConfigArgs> defaultClusterConfig;
+
+    /**
+     * @return The default cluster configurations to apply across the fleet.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FleetDefaultClusterConfigArgs>> defaultClusterConfig() {
+        return Optional.ofNullable(this.defaultClusterConfig);
+    }
 
     /**
      * A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
@@ -52,6 +70,7 @@ public final class FleetArgs extends com.pulumi.resources.ResourceArgs {
     private FleetArgs() {}
 
     private FleetArgs(FleetArgs $) {
+        this.defaultClusterConfig = $.defaultClusterConfig;
         this.displayName = $.displayName;
         this.project = $.project;
     }
@@ -72,6 +91,29 @@ public final class FleetArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FleetArgs defaults) {
             $ = new FleetArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param defaultClusterConfig The default cluster configurations to apply across the fleet.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultClusterConfig(@Nullable Output<FleetDefaultClusterConfigArgs> defaultClusterConfig) {
+            $.defaultClusterConfig = defaultClusterConfig;
+            return this;
+        }
+
+        /**
+         * @param defaultClusterConfig The default cluster configurations to apply across the fleet.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultClusterConfig(FleetDefaultClusterConfigArgs defaultClusterConfig) {
+            return defaultClusterConfig(Output.of(defaultClusterConfig));
         }
 
         /**

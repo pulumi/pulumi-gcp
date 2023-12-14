@@ -498,6 +498,94 @@ class Feature(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Enable Fleet Default Member Config Service Mesh
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
+                mesh=gcp.gkehub.FeatureFleetDefaultMemberConfigMeshArgs(
+                    management="MANAGEMENT_AUTOMATIC",
+                ),
+            ),
+            location="global")
+        ```
+        ### Enable Fleet Default Member Config Configmanagement
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
+                configmanagement=gcp.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementArgs(
+                    config_sync=gcp.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs(
+                        git=gcp.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs(
+                            sync_repo="https://github.com/hashicorp/terraform",
+                        ),
+                    ),
+                ),
+            ),
+            location="global")
+        ```
+        ### Enable Fleet Default Member Config Policycontroller
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
+                policycontroller=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs(
+                    policy_controller_hub_config=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs(
+                        audit_interval_seconds=30,
+                        exemptable_namespaces=["foo"],
+                        install_spec="INSTALL_SPEC_ENABLED",
+                        policy_content=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(
+                            bundles=[gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs(
+                                bundle="policy-essentials-v2022",
+                                exempted_namespaces=[
+                                    "foo",
+                                    "bar",
+                                ],
+                            )],
+                            template_library=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs(
+                                installation="ALL",
+                            ),
+                        ),
+                        referential_rules_enabled=True,
+                    ),
+                ),
+            ),
+            location="global")
+        ```
+        ### Enable Fleet Default Member Config Policycontroller Set Empty
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
+                policycontroller=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs(
+                    policy_controller_hub_config=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs(
+                        constraint_violation_limit=50,
+                        deployment_configs=[gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs(
+                            component="admission",
+                        )],
+                        install_spec="INSTALL_SPEC_ENABLED",
+                        log_denies_enabled=True,
+                        monitoring=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs(),
+                        mutation_enabled=True,
+                        policy_content=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(),
+                        referential_rules_enabled=True,
+                    ),
+                ),
+            ),
+            location="global")
+        ```
 
         ## Import
 
@@ -657,6 +745,94 @@ class Feature(pulumi.CustomResource):
                     ),
                 ),
             ))
+        ```
+        ### Enable Fleet Default Member Config Service Mesh
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
+                mesh=gcp.gkehub.FeatureFleetDefaultMemberConfigMeshArgs(
+                    management="MANAGEMENT_AUTOMATIC",
+                ),
+            ),
+            location="global")
+        ```
+        ### Enable Fleet Default Member Config Configmanagement
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
+                configmanagement=gcp.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementArgs(
+                    config_sync=gcp.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs(
+                        git=gcp.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs(
+                            sync_repo="https://github.com/hashicorp/terraform",
+                        ),
+                    ),
+                ),
+            ),
+            location="global")
+        ```
+        ### Enable Fleet Default Member Config Policycontroller
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
+                policycontroller=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs(
+                    policy_controller_hub_config=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs(
+                        audit_interval_seconds=30,
+                        exemptable_namespaces=["foo"],
+                        install_spec="INSTALL_SPEC_ENABLED",
+                        policy_content=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(
+                            bundles=[gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs(
+                                bundle="policy-essentials-v2022",
+                                exempted_namespaces=[
+                                    "foo",
+                                    "bar",
+                                ],
+                            )],
+                            template_library=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs(
+                                installation="ALL",
+                            ),
+                        ),
+                        referential_rules_enabled=True,
+                    ),
+                ),
+            ),
+            location="global")
+        ```
+        ### Enable Fleet Default Member Config Policycontroller Set Empty
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            fleet_default_member_config=gcp.gkehub.FeatureFleetDefaultMemberConfigArgs(
+                policycontroller=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs(
+                    policy_controller_hub_config=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs(
+                        constraint_violation_limit=50,
+                        deployment_configs=[gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs(
+                            component="admission",
+                        )],
+                        install_spec="INSTALL_SPEC_ENABLED",
+                        log_denies_enabled=True,
+                        monitoring=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs(),
+                        mutation_enabled=True,
+                        policy_content=gcp.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(),
+                        referential_rules_enabled=True,
+                    ),
+                ),
+            ),
+            location="global")
         ```
 
         ## Import

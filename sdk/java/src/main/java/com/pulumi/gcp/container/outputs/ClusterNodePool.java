@@ -9,6 +9,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodePoolManagement;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNetworkConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolPlacementPolicy;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolQueuedProvisioning;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolUpgradeSettings;
 import java.lang.Integer;
 import java.lang.String;
@@ -79,6 +80,7 @@ public final class ClusterNodePool {
      */
     private @Nullable List<String> nodeLocations;
     private @Nullable ClusterNodePoolPlacementPolicy placementPolicy;
+    private @Nullable ClusterNodePoolQueuedProvisioning queuedProvisioning;
     /**
      * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
      * 
@@ -173,6 +175,9 @@ public final class ClusterNodePool {
     public Optional<ClusterNodePoolPlacementPolicy> placementPolicy() {
         return Optional.ofNullable(this.placementPolicy);
     }
+    public Optional<ClusterNodePoolQueuedProvisioning> queuedProvisioning() {
+        return Optional.ofNullable(this.queuedProvisioning);
+    }
     /**
      * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
      * 
@@ -206,6 +211,7 @@ public final class ClusterNodePool {
         private @Nullable Integer nodeCount;
         private @Nullable List<String> nodeLocations;
         private @Nullable ClusterNodePoolPlacementPolicy placementPolicy;
+        private @Nullable ClusterNodePoolQueuedProvisioning queuedProvisioning;
         private @Nullable ClusterNodePoolUpgradeSettings upgradeSettings;
         private @Nullable String version;
         public Builder() {}
@@ -224,6 +230,7 @@ public final class ClusterNodePool {
     	      this.nodeCount = defaults.nodeCount;
     	      this.nodeLocations = defaults.nodeLocations;
     	      this.placementPolicy = defaults.placementPolicy;
+    	      this.queuedProvisioning = defaults.queuedProvisioning;
     	      this.upgradeSettings = defaults.upgradeSettings;
     	      this.version = defaults.version;
         }
@@ -303,6 +310,11 @@ public final class ClusterNodePool {
             return this;
         }
         @CustomType.Setter
+        public Builder queuedProvisioning(@Nullable ClusterNodePoolQueuedProvisioning queuedProvisioning) {
+            this.queuedProvisioning = queuedProvisioning;
+            return this;
+        }
+        @CustomType.Setter
         public Builder upgradeSettings(@Nullable ClusterNodePoolUpgradeSettings upgradeSettings) {
             this.upgradeSettings = upgradeSettings;
             return this;
@@ -327,6 +339,7 @@ public final class ClusterNodePool {
             _resultValue.nodeCount = nodeCount;
             _resultValue.nodeLocations = nodeLocations;
             _resultValue.placementPolicy = placementPolicy;
+            _resultValue.queuedProvisioning = queuedProvisioning;
             _resultValue.upgradeSettings = upgradeSettings;
             _resultValue.version = version;
             return _resultValue;

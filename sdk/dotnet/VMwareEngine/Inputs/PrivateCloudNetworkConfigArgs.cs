@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.VMwareEngine.Inputs
     public sealed class PrivateCloudNetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
+        /// DNS Server IP of the Private Cloud.
+        /// </summary>
+        [Input("dnsServerIp")]
+        public Input<string>? DnsServerIp { get; set; }
+
+        /// <summary>
         /// Management CIDR used by VMware management appliances.
         /// </summary>
         [Input("managementCidr", required: true)]

@@ -12,8 +12,11 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigDatabaseConfigArgs : global::Pulumi.ResourceArgs
     {
-        [Input("machineType", required: true)]
-        public Input<string> MachineType { get; set; } = null!;
+        [Input("machineType")]
+        public Input<string>? MachineType { get; set; }
+
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public EnvironmentConfigDatabaseConfigArgs()
         {

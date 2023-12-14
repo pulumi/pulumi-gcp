@@ -30,6 +30,7 @@ class NodePoolArgs:
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  placement_policy: Optional[pulumi.Input['NodePoolPlacementPolicyArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 queued_provisioning: Optional[pulumi.Input['NodePoolQueuedProvisioningArgs']] = None,
                  upgrade_settings: Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -77,10 +78,12 @@ class NodePoolArgs:
                cluster.
         :param pulumi.Input['NodePoolPlacementPolicyArgs'] placement_policy: Specifies a custom placement policy for the
                nodes.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
+        :param pulumi.Input['NodePoolQueuedProvisioningArgs'] queued_provisioning: Specifies node pool-level settings of queued provisioning.
+               Structure is documented below.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -117,6 +120,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if queued_provisioning is not None:
+            pulumi.set(__self__, "queued_provisioning", queued_provisioning)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -301,8 +306,6 @@ class NodePoolArgs:
         """
         Specifies a custom placement policy for the
         nodes.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "placement_policy")
 
@@ -322,6 +325,21 @@ class NodePoolArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="queuedProvisioning")
+    def queued_provisioning(self) -> Optional[pulumi.Input['NodePoolQueuedProvisioningArgs']]:
+        """
+        Specifies node pool-level settings of queued provisioning.
+        Structure is documented below.
+
+        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        """
+        return pulumi.get(self, "queued_provisioning")
+
+    @queued_provisioning.setter
+    def queued_provisioning(self, value: Optional[pulumi.Input['NodePoolQueuedProvisioningArgs']]):
+        pulumi.set(self, "queued_provisioning", value)
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -374,6 +392,7 @@ class _NodePoolState:
                  operation: Optional[pulumi.Input[str]] = None,
                  placement_policy: Optional[pulumi.Input['NodePoolPlacementPolicyArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 queued_provisioning: Optional[pulumi.Input['NodePoolQueuedProvisioningArgs']] = None,
                  upgrade_settings: Optional[pulumi.Input['NodePoolUpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -423,10 +442,12 @@ class _NodePoolState:
                cluster.
         :param pulumi.Input['NodePoolPlacementPolicyArgs'] placement_policy: Specifies a custom placement policy for the
                nodes.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
+        :param pulumi.Input['NodePoolQueuedProvisioningArgs'] queued_provisioning: Specifies node pool-level settings of queued provisioning.
+               Structure is documented below.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input['NodePoolUpgradeSettingsArgs'] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -470,6 +491,8 @@ class _NodePoolState:
             pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if queued_provisioning is not None:
+            pulumi.set(__self__, "queued_provisioning", queued_provisioning)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -687,8 +710,6 @@ class _NodePoolState:
         """
         Specifies a custom placement policy for the
         nodes.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "placement_policy")
 
@@ -708,6 +729,21 @@ class _NodePoolState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="queuedProvisioning")
+    def queued_provisioning(self) -> Optional[pulumi.Input['NodePoolQueuedProvisioningArgs']]:
+        """
+        Specifies node pool-level settings of queued provisioning.
+        Structure is documented below.
+
+        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        """
+        return pulumi.get(self, "queued_provisioning")
+
+    @queued_provisioning.setter
+    def queued_provisioning(self, value: Optional[pulumi.Input['NodePoolQueuedProvisioningArgs']]):
+        pulumi.set(self, "queued_provisioning", value)
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -759,6 +795,7 @@ class NodePool(pulumi.CustomResource):
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  placement_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 queued_provisioning: Optional[pulumi.Input[pulumi.InputType['NodePoolQueuedProvisioningArgs']]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -857,10 +894,12 @@ class NodePool(pulumi.CustomResource):
                cluster.
         :param pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']] placement_policy: Specifies a custom placement policy for the
                nodes.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
+        :param pulumi.Input[pulumi.InputType['NodePoolQueuedProvisioningArgs']] queued_provisioning: Specifies node pool-level settings of queued provisioning.
+               Structure is documented below.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -955,6 +994,7 @@ class NodePool(pulumi.CustomResource):
                  node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  placement_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 queued_provisioning: Optional[pulumi.Input[pulumi.InputType['NodePoolQueuedProvisioningArgs']]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -982,6 +1022,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["node_locations"] = node_locations
             __props__.__dict__["placement_policy"] = placement_policy
             __props__.__dict__["project"] = project
+            __props__.__dict__["queued_provisioning"] = queued_provisioning
             __props__.__dict__["upgrade_settings"] = upgrade_settings
             __props__.__dict__["version"] = version
             __props__.__dict__["instance_group_urls"] = None
@@ -1014,6 +1055,7 @@ class NodePool(pulumi.CustomResource):
             operation: Optional[pulumi.Input[str]] = None,
             placement_policy: Optional[pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            queued_provisioning: Optional[pulumi.Input[pulumi.InputType['NodePoolQueuedProvisioningArgs']]] = None,
             upgrade_settings: Optional[pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'NodePool':
         """
@@ -1068,10 +1110,12 @@ class NodePool(pulumi.CustomResource):
                cluster.
         :param pulumi.Input[pulumi.InputType['NodePoolPlacementPolicyArgs']] placement_policy: Specifies a custom placement policy for the
                nodes.
-               
-               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[str] project: The ID of the project in which to create the node pool. If blank,
                the provider-configured project will be used.
+        :param pulumi.Input[pulumi.InputType['NodePoolQueuedProvisioningArgs']] queued_provisioning: Specifies node pool-level settings of queued provisioning.
+               Structure is documented below.
+               
+               <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         :param pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']] upgrade_settings: Specify node upgrade settings to change how GKE upgrades nodes.
                The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
         :param pulumi.Input[str] version: The Kubernetes version for the nodes in this pool. Note that if this field
@@ -1102,6 +1146,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["operation"] = operation
         __props__.__dict__["placement_policy"] = placement_policy
         __props__.__dict__["project"] = project
+        __props__.__dict__["queued_provisioning"] = queued_provisioning
         __props__.__dict__["upgrade_settings"] = upgrade_settings
         __props__.__dict__["version"] = version
         return NodePool(resource_name, opts=opts, __props__=__props__)
@@ -1258,8 +1303,6 @@ class NodePool(pulumi.CustomResource):
         """
         Specifies a custom placement policy for the
         nodes.
-
-        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
         """
         return pulumi.get(self, "placement_policy")
 
@@ -1271,6 +1314,17 @@ class NodePool(pulumi.CustomResource):
         the provider-configured project will be used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="queuedProvisioning")
+    def queued_provisioning(self) -> pulumi.Output[Optional['outputs.NodePoolQueuedProvisioning']]:
+        """
+        Specifies node pool-level settings of queued provisioning.
+        Structure is documented below.
+
+        <a name="nested_autoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+        """
+        return pulumi.get(self, "queued_provisioning")
 
     @property
     @pulumi.getter(name="upgradeSettings")

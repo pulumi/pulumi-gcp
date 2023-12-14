@@ -15,6 +15,21 @@ export type AiEndpoint = import("./aiEndpoint").AiEndpoint;
 export const AiEndpoint: typeof import("./aiEndpoint").AiEndpoint = null as any;
 utilities.lazyLoad(exports, ["AiEndpoint"], () => require("./aiEndpoint"));
 
+export { AiEndpointIamBindingArgs, AiEndpointIamBindingState } from "./aiEndpointIamBinding";
+export type AiEndpointIamBinding = import("./aiEndpointIamBinding").AiEndpointIamBinding;
+export const AiEndpointIamBinding: typeof import("./aiEndpointIamBinding").AiEndpointIamBinding = null as any;
+utilities.lazyLoad(exports, ["AiEndpointIamBinding"], () => require("./aiEndpointIamBinding"));
+
+export { AiEndpointIamMemberArgs, AiEndpointIamMemberState } from "./aiEndpointIamMember";
+export type AiEndpointIamMember = import("./aiEndpointIamMember").AiEndpointIamMember;
+export const AiEndpointIamMember: typeof import("./aiEndpointIamMember").AiEndpointIamMember = null as any;
+utilities.lazyLoad(exports, ["AiEndpointIamMember"], () => require("./aiEndpointIamMember"));
+
+export { AiEndpointIamPolicyArgs, AiEndpointIamPolicyState } from "./aiEndpointIamPolicy";
+export type AiEndpointIamPolicy = import("./aiEndpointIamPolicy").AiEndpointIamPolicy;
+export const AiEndpointIamPolicy: typeof import("./aiEndpointIamPolicy").AiEndpointIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AiEndpointIamPolicy"], () => require("./aiEndpointIamPolicy"));
+
 export { AiFeatureStoreArgs, AiFeatureStoreState } from "./aiFeatureStore";
 export type AiFeatureStore = import("./aiFeatureStore").AiFeatureStore;
 export const AiFeatureStore: typeof import("./aiFeatureStore").AiFeatureStore = null as any;
@@ -80,6 +95,11 @@ export type AiTensorboard = import("./aiTensorboard").AiTensorboard;
 export const AiTensorboard: typeof import("./aiTensorboard").AiTensorboard = null as any;
 utilities.lazyLoad(exports, ["AiTensorboard"], () => require("./aiTensorboard"));
 
+export { GetAiEndpointIamPolicyArgs, GetAiEndpointIamPolicyResult, GetAiEndpointIamPolicyOutputArgs } from "./getAiEndpointIamPolicy";
+export const getAiEndpointIamPolicy: typeof import("./getAiEndpointIamPolicy").getAiEndpointIamPolicy = null as any;
+export const getAiEndpointIamPolicyOutput: typeof import("./getAiEndpointIamPolicy").getAiEndpointIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAiEndpointIamPolicy","getAiEndpointIamPolicyOutput"], () => require("./getAiEndpointIamPolicy"));
+
 export { GetAiFeaturestoreEntitytypeIamPolicyArgs, GetAiFeaturestoreEntitytypeIamPolicyResult, GetAiFeaturestoreEntitytypeIamPolicyOutputArgs } from "./getAiFeaturestoreEntitytypeIamPolicy";
 export const getAiFeaturestoreEntitytypeIamPolicy: typeof import("./getAiFeaturestoreEntitytypeIamPolicy").getAiFeaturestoreEntitytypeIamPolicy = null as any;
 export const getAiFeaturestoreEntitytypeIamPolicyOutput: typeof import("./getAiFeaturestoreEntitytypeIamPolicy").getAiFeaturestoreEntitytypeIamPolicyOutput = null as any;
@@ -104,6 +124,12 @@ const _module = {
                 return new AiDataset(name, <any>undefined, { urn })
             case "gcp:vertex/aiEndpoint:AiEndpoint":
                 return new AiEndpoint(name, <any>undefined, { urn })
+            case "gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding":
+                return new AiEndpointIamBinding(name, <any>undefined, { urn })
+            case "gcp:vertex/aiEndpointIamMember:AiEndpointIamMember":
+                return new AiEndpointIamMember(name, <any>undefined, { urn })
+            case "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy":
+                return new AiEndpointIamPolicy(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureStore:AiFeatureStore":
                 return new AiFeatureStore(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType":
@@ -137,6 +163,9 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiDataset", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpoint", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreEntityType", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreEntityTypeFeature", _module)

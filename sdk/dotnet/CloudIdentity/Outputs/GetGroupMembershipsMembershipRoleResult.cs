@@ -13,14 +13,19 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     [OutputType]
     public sealed class GetGroupMembershipsMembershipRoleResult
     {
+        public readonly ImmutableArray<Outputs.GetGroupMembershipsMembershipRoleExpiryDetailResult> ExpiryDetails;
         /// <summary>
         /// The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
         /// </summary>
         public readonly string Name;
 
         [OutputConstructor]
-        private GetGroupMembershipsMembershipRoleResult(string name)
+        private GetGroupMembershipsMembershipRoleResult(
+            ImmutableArray<Outputs.GetGroupMembershipsMembershipRoleExpiryDetailResult> expiryDetails,
+
+            string name)
         {
+            ExpiryDetails = expiryDetails;
             Name = name;
         }
     }

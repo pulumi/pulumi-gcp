@@ -616,6 +616,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> memcacheCustomEndpoint() {
         return Codegen.optional(this.memcacheCustomEndpoint);
     }
+    @Export(name="migrationCenterCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> migrationCenterCustomEndpoint;
+
+    public Output<Optional<String>> migrationCenterCustomEndpoint() {
+        return Codegen.optional(this.migrationCenterCustomEndpoint);
+    }
     @Export(name="mlEngineCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mlEngineCustomEndpoint;
 
@@ -627,6 +633,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> monitoringCustomEndpoint() {
         return Codegen.optional(this.monitoringCustomEndpoint);
+    }
+    @Export(name="netappCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> netappCustomEndpoint;
+
+    public Output<Optional<String>> netappCustomEndpoint() {
+        return Codegen.optional(this.netappCustomEndpoint);
     }
     @Export(name="networkConnectivityCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkConnectivityCustomEndpoint;
@@ -765,6 +777,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> secretManagerCustomEndpoint() {
         return Codegen.optional(this.secretManagerCustomEndpoint);
+    }
+    @Export(name="secureSourceManagerCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> secureSourceManagerCustomEndpoint;
+
+    public Output<Optional<String>> secureSourceManagerCustomEndpoint() {
+        return Codegen.optional(this.secureSourceManagerCustomEndpoint);
     }
     @Export(name="securityCenterCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityCenterCustomEndpoint;

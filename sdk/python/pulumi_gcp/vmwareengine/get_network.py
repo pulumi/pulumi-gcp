@@ -122,14 +122,19 @@ def get_network(location: Optional[str] = None,
                 project: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
+    Use this data source to get details about a VMwareEngine network resource.
+
+    To get more information about VMwareEngine Network, see:
+    * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
-    my_nw = gcp.vmwareengine.get_network(name="us-central1-default",
-        location="us-central1")
+    my_nw = gcp.vmwareengine.get_network(location="us-central1",
+        name="us-central1-default")
     ```
 
 
@@ -164,14 +169,19 @@ def get_network_output(location: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
     """
+    Use this data source to get details about a VMwareEngine network resource.
+
+    To get more information about VMwareEngine Network, see:
+    * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_gcp as gcp
 
-    my_nw = gcp.vmwareengine.get_network(name="us-central1-default",
-        location="us-central1")
+    my_nw = gcp.vmwareengine.get_network(location="us-central1",
+        name="us-central1-default")
     ```
 
 

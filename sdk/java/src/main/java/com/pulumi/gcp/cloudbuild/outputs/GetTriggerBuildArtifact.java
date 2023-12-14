@@ -4,7 +4,10 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildArtifactMavenArtifact;
+import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildArtifactNpmPackage;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildArtifactObject;
+import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildArtifactPythonPackage;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,14 +15,26 @@ import java.util.Objects;
 @CustomType
 public final class GetTriggerBuildArtifact {
     private List<String> images;
+    private List<GetTriggerBuildArtifactMavenArtifact> mavenArtifacts;
+    private List<GetTriggerBuildArtifactNpmPackage> npmPackages;
     private List<GetTriggerBuildArtifactObject> objects;
+    private List<GetTriggerBuildArtifactPythonPackage> pythonPackages;
 
     private GetTriggerBuildArtifact() {}
     public List<String> images() {
         return this.images;
     }
+    public List<GetTriggerBuildArtifactMavenArtifact> mavenArtifacts() {
+        return this.mavenArtifacts;
+    }
+    public List<GetTriggerBuildArtifactNpmPackage> npmPackages() {
+        return this.npmPackages;
+    }
     public List<GetTriggerBuildArtifactObject> objects() {
         return this.objects;
+    }
+    public List<GetTriggerBuildArtifactPythonPackage> pythonPackages() {
+        return this.pythonPackages;
     }
 
     public static Builder builder() {
@@ -32,12 +47,18 @@ public final class GetTriggerBuildArtifact {
     @CustomType.Builder
     public static final class Builder {
         private List<String> images;
+        private List<GetTriggerBuildArtifactMavenArtifact> mavenArtifacts;
+        private List<GetTriggerBuildArtifactNpmPackage> npmPackages;
         private List<GetTriggerBuildArtifactObject> objects;
+        private List<GetTriggerBuildArtifactPythonPackage> pythonPackages;
         public Builder() {}
         public Builder(GetTriggerBuildArtifact defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.images = defaults.images;
+    	      this.mavenArtifacts = defaults.mavenArtifacts;
+    	      this.npmPackages = defaults.npmPackages;
     	      this.objects = defaults.objects;
+    	      this.pythonPackages = defaults.pythonPackages;
         }
 
         @CustomType.Setter
@@ -49,6 +70,22 @@ public final class GetTriggerBuildArtifact {
             return images(List.of(images));
         }
         @CustomType.Setter
+        public Builder mavenArtifacts(List<GetTriggerBuildArtifactMavenArtifact> mavenArtifacts) {
+            this.mavenArtifacts = Objects.requireNonNull(mavenArtifacts);
+            return this;
+        }
+        public Builder mavenArtifacts(GetTriggerBuildArtifactMavenArtifact... mavenArtifacts) {
+            return mavenArtifacts(List.of(mavenArtifacts));
+        }
+        @CustomType.Setter
+        public Builder npmPackages(List<GetTriggerBuildArtifactNpmPackage> npmPackages) {
+            this.npmPackages = Objects.requireNonNull(npmPackages);
+            return this;
+        }
+        public Builder npmPackages(GetTriggerBuildArtifactNpmPackage... npmPackages) {
+            return npmPackages(List.of(npmPackages));
+        }
+        @CustomType.Setter
         public Builder objects(List<GetTriggerBuildArtifactObject> objects) {
             this.objects = Objects.requireNonNull(objects);
             return this;
@@ -56,10 +93,21 @@ public final class GetTriggerBuildArtifact {
         public Builder objects(GetTriggerBuildArtifactObject... objects) {
             return objects(List.of(objects));
         }
+        @CustomType.Setter
+        public Builder pythonPackages(List<GetTriggerBuildArtifactPythonPackage> pythonPackages) {
+            this.pythonPackages = Objects.requireNonNull(pythonPackages);
+            return this;
+        }
+        public Builder pythonPackages(GetTriggerBuildArtifactPythonPackage... pythonPackages) {
+            return pythonPackages(List.of(pythonPackages));
+        }
         public GetTriggerBuildArtifact build() {
             final var _resultValue = new GetTriggerBuildArtifact();
             _resultValue.images = images;
+            _resultValue.mavenArtifacts = mavenArtifacts;
+            _resultValue.npmPackages = npmPackages;
             _resultValue.objects = objects;
+            _resultValue.pythonPackages = pythonPackages;
             return _resultValue;
         }
     }

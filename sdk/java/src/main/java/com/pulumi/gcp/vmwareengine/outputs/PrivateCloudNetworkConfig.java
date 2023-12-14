@@ -13,6 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PrivateCloudNetworkConfig {
     /**
+     * @return (Output)
+     * DNS Server IP of the Private Cloud.
+     * 
+     */
+    private @Nullable String dnsServerIp;
+    /**
      * @return Management CIDR used by VMware management appliances.
      * 
      */
@@ -44,6 +50,14 @@ public final class PrivateCloudNetworkConfig {
     private @Nullable String vmwareEngineNetworkCanonical;
 
     private PrivateCloudNetworkConfig() {}
+    /**
+     * @return (Output)
+     * DNS Server IP of the Private Cloud.
+     * 
+     */
+    public Optional<String> dnsServerIp() {
+        return Optional.ofNullable(this.dnsServerIp);
+    }
     /**
      * @return Management CIDR used by VMware management appliances.
      * 
@@ -92,6 +106,7 @@ public final class PrivateCloudNetworkConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String dnsServerIp;
         private String managementCidr;
         private @Nullable Integer managementIpAddressLayoutVersion;
         private @Nullable String vmwareEngineNetwork;
@@ -99,12 +114,18 @@ public final class PrivateCloudNetworkConfig {
         public Builder() {}
         public Builder(PrivateCloudNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dnsServerIp = defaults.dnsServerIp;
     	      this.managementCidr = defaults.managementCidr;
     	      this.managementIpAddressLayoutVersion = defaults.managementIpAddressLayoutVersion;
     	      this.vmwareEngineNetwork = defaults.vmwareEngineNetwork;
     	      this.vmwareEngineNetworkCanonical = defaults.vmwareEngineNetworkCanonical;
         }
 
+        @CustomType.Setter
+        public Builder dnsServerIp(@Nullable String dnsServerIp) {
+            this.dnsServerIp = dnsServerIp;
+            return this;
+        }
         @CustomType.Setter
         public Builder managementCidr(String managementCidr) {
             this.managementCidr = Objects.requireNonNull(managementCidr);
@@ -127,6 +148,7 @@ public final class PrivateCloudNetworkConfig {
         }
         public PrivateCloudNetworkConfig build() {
             final var _resultValue = new PrivateCloudNetworkConfig();
+            _resultValue.dnsServerIp = dnsServerIp;
             _resultValue.managementCidr = managementCidr;
             _resultValue.managementIpAddressLayoutVersion = managementIpAddressLayoutVersion;
             _resultValue.vmwareEngineNetwork = vmwareEngineNetwork;
