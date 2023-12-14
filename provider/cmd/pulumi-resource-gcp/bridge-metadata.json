@@ -4380,7 +4380,7 @@
                 "majorVersion": 7
             },
             "google_compute_autoscaler": {
-                "current": "gcp:compute/autoscalar:Autoscalar",
+                "current": "gcp:compute/autoscaler:Autoscaler",
                 "past": [
                     {
                         "name": "gcp:compute/autoscalar:Autoscalar",
